@@ -1,5 +1,3 @@
-## Competition
-
 ### Inside the set
 
 The three products compete directly with each other. They share a niche, a department, and in two cases

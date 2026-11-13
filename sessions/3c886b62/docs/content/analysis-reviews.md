@@ -1,12 +1,12 @@
-## Reviews
-
 ### What was captured
 
 For each product, Amazon publishes an aggregate star value and an approximate ratings count on its
 search-results listing. Those were captured for all three:
 
 - CHEFMAN 6 quart dual basket: 4.2 out of 5 on 4.8K ratings.
+
 - Emeril Lagasse 26QT: 4.3 out of 5 on 18.3K ratings.
+
 - Chefman 8 quart TurboFry: 4.4 out of 5 on 16.8K ratings.
 
 Amazon displays those counts rounded to one decimal place with a K suffix, so they are approximate, not
