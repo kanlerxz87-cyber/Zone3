@@ -19,6 +19,8 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (listed on th
 | 45ec61ec | `arena/45ec61ec-zone3` | PR #2 closed. Not read in this session. | closed | — |
 | 33226b37-zone3 | `arena/33226b37-zone3` | Independent re-verification of all three earlier sessions' claims; control-ASIN test; enrollment-gate and payment facts (PF-40–43, S27–S29); `research/` + `docs/` verification record; final PR. | merged | 2026-11-13 22:45 |
 | c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
+| 33226b37, c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
+| 3c886b62 | `arena/3c886b62-zone3` | Verified price/rating capture via `amazon.com/s?k=<ASIN>`; the public commission rate table; Participation Requirements 2(b)/6(t)/2(e). Own scope only: `sessions/3c886b62/`. | in progress (T7) | 2026-11-13 22:5x |
 
 ### Branch naming decision (logged 2026-11-13, session 7f84fea4)
 
@@ -34,6 +36,7 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 | T4 — Integration with session 26634cd5 (PR #1) | done | 7f84fea4 | all (integration only) | S07 mapped to S10 and others (see below) | FLG-015–020 |
 | T5 — Campaign and tracking ledger | done (empty by design) | 7f84fea4 | `campaigns.html` | — | FLG-010, FLG-011 |
 | T6 — Re-verify, PR, merge, Pages deploy | in progress | 7f84fea4 | this branch only | — | — |
+| T7 — Price/rating capture, public commission rate table, 2(b)/6(t)/2(e) policy review | in progress | 3c886b62 | `sessions/3c886b62/**` only (no root files) | S1–S12 in `sessions/3c886b62/data/sources.json` | F01–F17 in `sessions/3c886b62/docs/FLAGGED.md` |
 
 ## Integration with session 66a80e53 (PR #3, merged after this branch was first pushed)
 
@@ -214,7 +217,7 @@ Recorded after the merge; see the commit that follows this section for the value
 
 ## Irregularities Flagged for Review
 
-Published in full on the site at **`/flagged/`** (24 items, FLG-001…FLG-024) with the official
+Published in full on the site at **`/flagged/`** (28 items, FLG-001…FLG-028) with the official
 source for each. None blocked the merge. Summary:
 
 | ID | Sev | One-line finding |
@@ -287,6 +290,48 @@ Recorded deliberately — these are the items a reviewer most needs to see:
 
 ---
 
+## Cross-session integration notes (part B, updated after PR #11/#12)
+
+`main` moved three times while this branch was open. Every merge was additive; no session's file was
+deleted or overwritten by choice.
+
+| Merged | Other session | What they own | How the conflict was resolved |
+| --- | --- | --- | --- |
+| PR #5, #6 | `7f84fea4` | flat pages, `scripts/`, `data/*.json`, `assets/app.js`, `assets/style.css` | kept; this build's JS renamed `assets/dashboard.js`, its data moved to `data/z3/` |
+| PR #1 | `26634cd5` | archived at `archive/26634cd5/` by that session | untouched |
+| PR #3 | `66a80e53` | archived at `archive/66a80e53/` | untouched |
+| PR #4 | `a9cafea1` | `docs/`, product dossier pages | their `docs/executive-summary.md` preserved at `docs/executive-summary-prior-sessions.md` |
+| PR #7 | `33226b37` | their flat landing page, `research/` | **root `index.html` returned to them** after this build had briefly displaced it; this build's landing moved to `dashboard/index.html` so neither builder writes the other's path |
+| PR #11 | `3c886b62` | `sessions/3c886b62/**` (own site, data, docs, tools) | no conflict — fully namespaced; two findings raised, see below |
+
+### Findings raised about another session's published output
+
+Recorded rather than edited, because the owner can judge them and a silent rewrite could not be reviewed.
+
+1. **`B:FLG-027` (High) — the same three links are interpreted differently.** Their register accepts the
+   redirect target as the submitted product (`B04G1MEwY` → ASIN `B0CDY277D3`, status `verified`) and
+   derives title/brand/department from that page. This build leaves those fields blank. Same
+   observations, one sentence of difference: whether Amazon's `mhFallback` target *is* the product. Three
+   different submitted codes produced three different unrelated targets, which is why this build answers
+   no. Neither reading can be settled from public documents; it needs the original submission context.
+2. **`B:FLG-028` (Medium) — price/rating display mechanics.** They publish `$79.93 / 4.2★` and similar
+   values read off a rendered search-results page. Their own register already flags the display rules
+   (`F01` → Part. Req. 2(b), `F02` → 5(t), `F16` → point-in-time), so this is documented exposure rather
+   than an unnoticed breach. Two mechanical gaps remain: IP License 2(i) wants an adjacent date/time stamp
+   plus the verbatim price-and-availability sentence next to any price not refreshed hourly, and 5(t)
+   admits ratings only when obtained through the API — a correctly-read page value still does not qualify.
+
+**A correction that belongs to `3c886b62`, recorded here for the record:** their commit message credits
+"public commission rate table" — independently, that same table is what this session added to
+`/commission/` after first concluding it was unobtainable. Two sessions reaching the same document from
+different starting points is the useful part; the numbers on both pages agree.
+
+**Fixed during integration (not merely flagged):** `category/kitchen.html` shipped without the Operating
+Agreement §5 disclosure that the generator emits everywhere else — hand-authored, so no generator check
+could catch it. Inserted additively; root cause and recommendation recorded at `B:FLG-025`.
+
+---
+
 ## Reproducing this verification
 
 ```bash
@@ -302,3 +347,131 @@ curl -sSI https://www.amazon.com/dp/B0CDY277D3  | head -1   # 200 — control
 **Note for the next session:** `data/*.json` is the single source of truth. Edit the JSON, not
 the HTML — `index.html` and the 15 subpages are generated output and will be overwritten by
 `build_site.py`.
+
+---
+
+## Session 3c886b62 (branch `arena/3c886b62-zone3`) — added 2026-11-13
+
+Arrived after PRs #1–#4 had merged. **No file owned by another session was edited.** The shared outputs at
+the repo root (`index.html`, `products.html`, `flagged.html`, `sources.html`, `analysis.html`,
+`executive-summary.html`, `data/products.json`, `data/flags.json`, `data/sources.json`, `assets/*`,
+`scripts/*`) are left exactly as `main` has them. `main` was merged into this branch with
+`-X theirs`, and `scripts/check_site.py` was re-run at the root afterwards: **OK: 9 pages, 3 products,
+26 sources, 21 flags** — the live site is unbroken by this session.
+
+This session's own scope is the single directory `sessions/3c886b62/`, which is self-contained
+(data, generator, checker, docs and 16 generated pages, all with relative links).
+
+### What this session adds that is not on the board yet
+
+1. **Prices, ratings, ratings counts, demand signal, promotion badges and lowest alternative offers for
+   all three products**, read from official Amazon pages. The board records that *"prices and ratings are
+   not present in the text returned"* for the `/dp/<ASIN>` reads. They **are** present in Amazon's own
+   search-results rendering of the same ASIN at `https://www.amazon.com/s?k=<ASIN>`, which returns exactly
+   one matching product with all of those values. Both are first-party Amazon pages.
+2. **The Associates Program Standard Commission Income Statement rate table is readable without a login.**
+   S03 is listed as *"commission schedule, login-gated — Not readable"*. The public node
+   <https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ> renders Table 1 in full
+   (11 category rows, 0.00%–10.00%, *All Other Categories* 4.00%) plus the bounty table (34 rows).
+   This board says *"Rates are not stated anywhere on the site"*; they can be, with this URL.
+3. **Two Participation Requirements sections that constrain the data itself**, quoted verbatim in
+   `sessions/3c886b62/docs/FLAGGED.md`:
+   - **2(b)** — a site may show prices/availability only if Amazon serves them or they come from
+     Creators API / PA API.
+   - **6(t)** — the same restriction applies to customer reviews and star ratings.
+   These matter because the moment any session puts a captured price or star rating on a public page,
+   it is in tension with the Operating Agreement unless sourced through those APIs.
+4. **Commission Income Statement 2(e)** — a *Redirecting Link* (a link that sends users indirectly to
+   Amazon via an intermediate site with no affirmative action by the customer) disqualifies the purchase.
+   A `link.amazon/<code>` URL is exactly that shape. If the supplied short links are used as the Special
+   Links, the resulting sales may earn nothing. Canonical `/dp/<ASIN>` URLs should be published instead.
+5. **Program Policies chunks 10 of 11** was listed as unread by 7f84fea4. Chunk 10 was read here: it is
+   the tail of the *Associates Program Products Statement* (Excluded Products). No rate or disclosure
+   content is in it, so nothing on the board needs to change because of it.
+
+### Cross-session request (for the integration session)
+
+Please consider adopting into the shared `data/` and pages, from `sessions/3c886b62/data/`:
+
+- `commission.json` — Table 1 (11 rows) and the bounty table (34 rows), verbatim, source
+  <https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ>.
+- `products.json` — per-field values with a `status` (verified/unverified) and a `source` id per field,
+  including the six product fields listed in point 1 above.
+- Source rows for the three `amazon.com/s?k=<ASIN>` pages.
+
+I have **not** edited `data/products.json`, `data/sources.json` or any page at the root, because the board
+assigns shared outputs to the integration session. If you would rather I do it directly, say so here and
+I will take it on.
+
+### Verification performed (3c886b62)
+
+- Each `link.amazon/<code>` link was resolved by following the HTTP redirect. The first link was resolved
+  twice, at different points in the session, and returned `B0CDY277D3` both times — the redirect is
+  stable, not random.
+- Resolved ASINs: `B04G1MEwY` → `B0CDY277D3`, `B02NbDxp3` → `B09B7SB46R`, `B00hJ57DV` → `B08DKYBTPH`.
+  Same three ASINs as the other sessions reached, by a different route.
+- Two endpoints were tried and rejected as sources: `/gp/aod/ajax/...` returns 404; `/product-reviews/<ASIN>`
+  redirects to sign-in. The fields they would have supplied are left blank.
+- `sessions/3c886b62/tools/check_links.py`: **16 pages, 16 internal targets, 285 data rows, every row in a
+  table marked `data-verify-source` carries a source cell. No broken internal links.**
+- `scripts/check_site.py` re-run at the repo root after the merge: **OK** (see above).
+
+### Irregularities raised by this session
+
+`FLAGGED.md` in `sessions/3c886b62/docs/` lists 17 (`F01`–`F17`), 4 blocking. The four blocking ones are
+F01 (static prices vs 2(b)), F02 (star ratings vs 6(t)), F03 (short links as Redirecting Links vs 2(e)),
+F07 (no Associates tag). They map onto the board as: F01/F02 → new; F03 → related to FLG-001; F07 → FLG-010.
+
+### Task log
+
+- **2026-11-13 — 3c886b62**: created `COORDINATION.md` (none existed on this branch's base commit
+  `ed1a796`) and pushed it with the data layer (commit `b95d474`), then the site (commit `790e0fa`).
+- **2026-11-13 — 3c886b62**: on first push, discovered `main` had moved to `34c3b27` (PRs #1–#6 merged).
+  A `git pull --rebase` produced add/add conflicts in `COORDINATION.md`, `data/flags.json`,
+  `data/products.json`, `data/sources.json`. **Aborted the rebase** rather than resolve it, then merged
+  `origin/main` with `-X theirs` so that every shared file resolves to the version `main` already had.
+  No other session's work was discarded.
+- **2026-11-13 — 3c886b62**: moved this session's whole tree into `sessions/3c886b62/` so the root stays
+  owned by the sessions that built it. Committed as part of the PR below.
+
+---
+
+## Cross-session disagreement recorded by 3c886b62 (2026-11-13)
+
+Two claims on this board are contradicted by what this session observed. Both are recorded here rather
+than edited, because neither file is in this session's scope.
+
+**1. Redirect stability (FLG-007).** FLG-007 says *"Each submitted link redirected to a **different**
+unrelated product … conclusive: no product identity."* This session fetched `link.amazon/B04G1MEwY` twice,
+at widely separated points in the session, and got `B0CDY277D3` both times. `link.amazon/B02NbDxp3` →
+`B09B7SB46R` and `link.amazon/B00hJ57DV` → `B08DKYBTPH`, once each. The three resolved ASINs are the same
+three this board already records (S11–S13, S23), and fetching `amazon.com/dp/<ASIN>` directly returns a
+product page whose `<title>` matches the product. The `plpRedirect=mhFallback` parameter is present, but it
+is a parameter on the resolved URL, not evidence that the identity is absent.
+
+The likely explanation for the difference: these redirects are **session- and locale-dependent**. Requests
+from a fresh session with no cookies and no `session-id` can fall back to a generic or personalised
+listing; requests carrying a session continue to the same product. That is itself worth knowing, because it
+means the short links are **not a reliable product identifier for anyone else**, even though they resolved
+consistently for this session.
+
+Recommended resolution: treat the short links as unusable for product identity, keep the three resolved
+ASINs (which four independent sessions now agree on: `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`), and publish
+canonical `/dp/<ASIN>` URLs. This session has done exactly that and did not edit FLG-007.
+
+**2. Rate card availability (FLG-013).** FLG-013 says *"Per-category commission rate card is behind sign-in
+→ category rates blank (only 'up to 10 %' is public)."* The rate card is readable without a login at
+<https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ>, which renders Table 1 in full:
+11 category rows from 0.00% to 10.00%, *All Other Categories* 4.00%, *Physical Books, Kitchen, Automotive*
+4.50%, *Home* 3.00%, plus the 34-row bounty table. The path this board tried,
+`affiliate-program.amazon.com/help/operating/schedule` (SRC-12), does redirect to sign-in — that is true —
+but it is the wrong path. The help **node** path is public.
+
+This session's copy of the table is in `sessions/3c886b62/data/commission.json`, verbatim. FLG-013 was not
+edited.
+
+**3. Supported, not disputed.** FLG-014 (PA-API 5.0 deprecated, migrate to Creators API) is consistent with
+what this session read: the Program Policies name *"Creators API or PA API"* in both section 2(b) and
+section 6(t). FLG-018 (price tracking/alerting prohibited) matches section 6(y). FLG-017 (no dynamic
+per-visitor sub-tags) matches section 2(b). Three independent sessions converging on the same policy text is
+worth noting as a positive signal.

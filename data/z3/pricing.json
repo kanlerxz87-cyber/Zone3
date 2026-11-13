@@ -155,7 +155,10 @@
         "sources": [
           "SRC-10"
         ],
-        "status": "verified"
+        "status": "verified",
+        "flags": [
+          "FLG-028"
+        ]
       },
       {
         "rule": "Pricing/availability disclaimer must be adjacent or reachable via link, pop-up or similar",

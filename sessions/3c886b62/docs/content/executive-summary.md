@@ -1,0 +1,78 @@
+## What was built
+
+Zone3 is an Amazon affiliate research and publishing dashboard for three supplied products. It resolves the
+supplied short links to real Amazon products, captures the facts Amazon itself publishes about them,
+models the commission economics against Amazon's own rate table, and tracks the policy obligations that
+come with publishing any of it. The site is a static dashboard served from GitHub Pages at
+**kanlerxz87-cyber.github.io/Zone3**, generated entirely from a JSON data layer so that changing one
+value in `data/products.json` regenerates every table on the site.
+
+## What the three links actually are
+
+The brief supplied three `link.amazon` short links. None of the three codes is an ASIN, because each is
+nine characters and mixed case, while an ASIN is ten characters. Following the HTTP redirect resolves
+them to three real products, and all three turn out to be air fryers in the Home & Kitchen department:
+
+- `B04G1MEwY` resolves to **B0CDY277D3**, a CHEFMAN 6 quart dual basket air fryer.
+- `B02NbDxp3` resolves to **B09B7SB46R**, the Emeril Lagasse 26QT French door air fryer toaster oven.
+- `B00hJ57DV` resolves to **B08DKYBTPH**, a Chefman 8 quart TurboFry air fryer.
+
+The redirect was checked twice for the first link and returned the same ASIN both times, so the mapping is
+stable rather than random. That matters, because the nine-character codes look like ASINs but are not, and
+building the wrong product set from them would have been easy.
+
+## The commercial picture
+
+All three products are in one tight niche, all three were discounted at capture time, and all three have
+large review bases. The Emeril Lagasse unit is the standout on volume: 18.3K ratings and 4K+ units bought
+in the past month, against 4.8K ratings and 1K+ for the CHEFMAN dual basket and 16.8K ratings and 3K+ for
+the Chefman 8 quart. It also carries the highest price at $149.99 against $79.93 and $79.91 for the other
+two. On Amazon's own published rates, air fryers plausibly sit in either the Kitchen row at 4.50% or the
+Home row at 3.00%, and Amazon does not publish which row a given ASIN belongs to. That is a 50% swing on
+the same sale, so the site leaves the per-product rate blank rather than picking one.
+
+## What is genuinely blocking
+
+Three findings are serious enough to stop the site from going live as an Associates property as it stands.
+
+First, Amazon's **Participation Requirements section 2(b)** says a site may only show prices and
+availability if Amazon serves the link containing that data, or if the data is obtained through the
+Product Advertising API or Creators API. The prices here were captured by other means.
+
+Second, **section 6(t)** says the same for customer reviews and star ratings. The 4.2, 4.3 and 4.4 star
+values on this site were not obtained through either API.
+
+Third, the supplied short links are themselves a risk. The Commission Income Statement **section 2(e)**
+disqualifies purchases made through a *Redirecting Link*, defined as a link that sends users indirectly to
+Amazon via an intermediate site without requiring an affirmative action. A `link.amazon/<code>` URL does
+exactly that. If those short links were used as the affiliate links, the resulting sales could earn
+nothing. The fix is to publish the resolved canonical `/dp/<ASIN>` URLs instead, which this site does.
+
+Alongside those, no Amazon Associates tag exists yet, so nothing on the site can currently earn.
+
+## Disclosure and the FTC
+
+There are two separate disclosure obligations and this project keeps them separate. Amazon's
+Participation Requirements **section 3(b)** makes the Associate responsible for compliance with
+disclosure law and names the FTC Endorsement Guides explicitly. The FTC's own guidance requires that a
+material connection be disclosed, that the disclosure be placed with the endorsement itself where it is
+hard to miss, and that it use plain language. Because no tag is configured and no commission is currently
+earned, the site says so plainly in a banner on every page rather than implying a relationship that does
+not exist yet.
+
+## What could not be verified, and was left blank
+
+Best Sellers Rank, review sentiment, clicks and conversions are all blank. BSR and review text are served
+by Amazon via JavaScript or behind sign-in; clicks and conversions exist only inside a logged-in
+Associates account. Per the rule for this project, each is rendered as an explicit *Unverified* cell
+rather than estimated. In total 17 irregularities are recorded on the Flagged for Review page, four of them blocking and seven
+needing a decision, and 30 requirements are tracked with 14 implemented, 12 partial and 4 blocked.
+
+## Recommendation
+
+Fix the blocking items before treating this as a revenue property: apply for Creators API or PA API
+access and rebuild the price and rating columns from that feed, add the Associates tag, and publish only
+canonical `/dp/<ASIN>` links. The automation requirements that the brief asks for, including product
+research, content generation and conversion tracking, cannot run on GitHub Pages because it serves static
+files with no runtime; they need a scheduled environment such as GitHub Actions publishing into this same
+static output.
