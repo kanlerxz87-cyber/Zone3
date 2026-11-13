@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Repo review · Zone3 Affiliate Intelligence</title>
+<meta name="description" content="Line-by-line audit of the repository as found, the irregularities in it, and the coordination record for this run.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/" data-page="repo-review">
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="disclose" role="note">
+  <div class="wrap row">
+    <span><b>Disclosure:</b> As an Amazon Associate I earn from qualifying purchases.</span>
+    <span style="color:#8a7a55">Links to Amazon carry an Associates tag once one is configured. See the <a href="../compliance/" style="color:#7a5f22">compliance register</a>.</span>
+  </div>
+</div>
+<header class="topbar">
+  <div class="wrap row">
+    <a class="logo" href="../index.html"><span class="mark">Z3</span>Zone3<span class="sub">Affiliate Intelligence</span></a>
+    <nav aria-label="Sections"><a href="../index.html">Dashboard</a><a href="../executive-summary/">Executive summary</a><a href="../requirements/">Requirements</a><a href="../repo-review/" class="on">Repo review</a><a href="../products/">Products</a><a href="../niches/">Niches</a><a href="../pricing/">Pricing</a><a href="../reviews/">Reviews</a><a href="../content/">Content</a><a href="../campaigns/">Campaigns</a><a href="../compliance/">Compliance</a><a href="../agent-terms/">Agent terms</a><a href="../methodology/">Methodology</a><a href="../sources/">Sources</a><a href="../flagged/">Flagged for review</a></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <header class="pagehead">
+      <div class="crumbs"><a href="../index.html">Zone3</a> <span aria-hidden="true">/</span> <span>Repo review</span></div>
+      <h1>Repo review</h1>
+      <p class="lead">Line-by-line audit of the repository as found, the irregularities in it, and the coordination record for this run.</p>
+      
+      <div class="meta-line">
+        <span>Data as of: <strong>2026-11-13</strong></span>
+        <span>Verification: <strong>every row cites an official source or is flagged</strong></span>
+        <span><a href="../flagged/">24 open flags</a></span>
+      </div>
+    </header>
+    <section><div class="prose"><h2>Baseline audit — commit by commit</h2><p><strong>Repository:</strong> <code>kanlerxz87-cyber/Zone3</code>. <strong>Base commit:</strong> <code>ed1a796dc01f52669864e98a72b9a521a3b7161b</code> ("Initial commit").</p><ul><li><strong>Contents:</strong> exactly one tracked file, <code>README.md</code>, 7 bytes, containing only <code># Zone3</code>. One commit on one branch; no tags; no releases; no other contributors.</li><li><strong>Absent:</strong> any application code, data, tests, CI workflow, LICENSE, .gitignore, package manifest, and <code>COORDINATION.md</code> (the brief assumes it may exist; it did not, so it was created).</li><li><strong>Pages:</strong> already configured — <code>build_type=legacy</code>, source <code>main</code> path <code>/</code>, <code>https_enforced=true</code>, at <code>kanlerxz87-cyber.github.io/Zone3/</code>. The <code>pages-build-deployment</code> workflow had run once, deploying an empty Jekyll build of the placeholder README.</li><li><strong>Working tree at branch creation:</strong> clean, so there was no uncommitted local work to preserve.</li></ul><p><strong>Irregularity (FLG-010):</strong> the repo is a scaffold, not an existing project. There was no prior code to review, no dataset to reconcile, and no convention to follow — which is why this session created the structure from scratch and recorded the baseline commit hash so the audit trail has a hard starting point.</p><p><strong>Licensing note.</strong> No LICENSE file exists. The content on this site is policy text quoted from Amazon's Program Documents under the terms those documents themselves grant for Program Content, and the code is original to this repository. If Zone3 is intended to be open source, a LICENSE should be added — flagged rather than assumed, since choosing a licence is not a mechanical call.</p><p><strong>Repository hygiene applied here:</strong> <code>.nojekyll</code> (prevents Jekyll from ignoring <code>_*</code> and from running an unnecessary Ruby build), <code>.gitignore</code> for build scratch, generated HTML committed because Pages deploys from branch root, and no secrets, tokens or credentials anywhere in the tree.</p></div>
+<div style="height:20px"></div>
+<div class="sec-h"><h2>Coordination record</h2><div class="rule"></div></div>
+<div class="prose"><p><code>COORDINATION.md</code> was created as the shared board before any feature work, claims were committed and pushed as the first commit on the branch, and file scopes were declared so a parallel session cannot collide. No other session had claimed work at branch creation, so no takeover or conflict occurred, and the Handoff Log and Change-Requests tables are empty by fact, not by omission.</p><p>Shared outputs (the site index, navigation and the datasets) were touched only by this session acting as the final integration session, per the brief's rule.</p></div></section>
+  </div>
+</main>
+<footer>
+  <div class="wrap row">
+    <div>
+      <p>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
+      <p>Zone3 is an independent affiliate-intelligence platform and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
+      <p style="color:#6e7a8b">Built statically by <code>tools/build_site.py</code> from <code>data/*.json</code>. Published via GitHub Pages from branch <code>main</code>.</p>
+    </div>
+    <div class="flinks">
+      <a href="../compliance/">Compliance</a>
+      <a href="../sources/">Sources</a>
+      <a href="../flagged/">Flagged</a>
+      <a href="../executive-summary/">Exec summary</a>
+      <a href="../index.html">Top</a>
+    </div>
+  </div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

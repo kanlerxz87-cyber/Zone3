@@ -1,0 +1,64 @@
+{
+  "_comment": "Zone3 platform configuration. Committed WITHOUT secrets on purpose: the credentials below are null, not placeholders. Fill them in a local copy or provide them as environment variables; never commit a real key.",
+  "marketplace": {
+    "id": "ATVPDKIKX0DER",
+    "domain": "www.amazon.com",
+    "locale": "en-US",
+    "currency": "USD",
+    "note": "Marketplace id verified from the session/host metadata on the fetched Amazon pages (SRC-01..07)."
+  },
+  "associates": {
+    "account_id": null,
+    "associates_tag": null,
+    "tag_pattern": "^[a-z0-9]{1,30}-\\d{2}$",
+    "sub_tags": [],
+    "sub_tag_rule": "Sub-tags must be STATIC and assigned at build time to a page or slot. Dynamically assigning a sub-tag per visitor is expressly prohibited (Participation Requirements 2(b)).",
+    "source": "https://affiliate-program.amazon.com/help/operating/policies"
+  },
+  "creators_api": {
+    "enabled": false,
+    "host": "webservices.amzn.com",
+    "access_key": null,
+    "secret_key": null,
+    "partner_tag": null,
+    "prerequisite": ">=10 qualifying sales within the past 30 days (official Creators API documentation)",
+    "pa_api_v5": "not used — deprecated; calls return HTTP 403 AccessDeniedException"
+  },
+  "agent_identity": {
+    "name": "Zone3ProductResearch",
+    "user_agent": "Zone3AffiliatePlatform/1.0 (Agent/Zone3ProductResearch)",
+    "policy": "Associates Program IP License and Usage Requirements, Section 4 (Agent Terms)",
+    "refrain_hosts": [],
+    "obey_block_responses": [401, 403, 429],
+    "captcha_solver_dependencies": "none permitted",
+    "human_interaction_mimicry": "forbidden by policy; not implemented"
+  },
+  "limits": {
+    "max_request_bytes": 40960,
+    "program_content_cache_hours": 24,
+    "store_images": false,
+    "store_asins": true,
+    "asin_storage_note": "ASINs may be stored indefinitely until the license terminates (IP License 2(h))."
+  },
+  "publishing": {
+    "allowed_targets": ["site:zone3-github-pages", "blog:owned", "newsletter:owned"],
+    "denied_targets": ["amazon:review", "amazon:forum", "amazon:wishlist", "amazon:guide",
+                       "any:popup", "any:pop-under", "any:transitional-ad", "paid-search:amazon-marks"],
+    "required_blocks": ["associate_disclosure", "amazon_content_disclaimer", "price_disclaimer_when_price_shown"]
+  },
+  "analysis": {
+    "display_price": false,
+    "price_alerting": false,
+    "price_history_charts": false,
+    "comparison_requires_lowest_new_and_used": true,
+    "display_review_bodies": false,
+    "display_api_sourced_aggregates_only": true,
+    "forbid_non_amazon_competitor_prices": true
+  },
+  "env_overrides": {
+    "ZONE3_ASSOCIATES_TAG": "associates.associates_tag",
+    "ZONE3_CREATORS_ACCESS_KEY": "creators_api.access_key",
+    "ZONE3_CREATORS_SECRET_KEY": "creators_api.secret_key",
+    "ZONE3_ACCOUNT_ID": "associates.account_id"
+  }
+}

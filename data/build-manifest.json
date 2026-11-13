@@ -1,0 +1,35 @@
+{
+  "built_utc": "2026-11-13T22:53:07Z",
+  "pages": 15,
+  "table_rows": 225,
+  "sources": 17,
+  "flags": 24,
+  "verification": {
+    "gates": [
+      "G1 row-has-source-or-flag",
+      "G2 no-blank-in-verified-row",
+      "G3 source-ids-resolve",
+      "G4 flag-ids-resolve",
+      "G7 no-placeholder-text",
+      "G8 flag-has-action"
+    ],
+    "result": "pass"
+  },
+  "files": {
+    "agent-terms": "4bb7a2f430f6",
+    "campaigns": "78765c4df12a",
+    "compliance": "b0d5f06110a4",
+    "content": "40bdfaae83fc",
+    "executive-summary": "136097609ed2",
+    "flagged": "c76f8a80a8e3",
+    "index": "3f5c7d6ea0a1",
+    "methodology": "f8dff234eb54",
+    "niches": "6ebdfe1ec67d",
+    "pricing": "ae8bafd20dab",
+    "products": "acd88f086f62",
+    "repo-review": "f1d4bf9d370e",
+    "requirements": "abc5db91816a",
+    "reviews": "e1fe17c52029",
+    "sources": "0fdef16dab97"
+  }
+}

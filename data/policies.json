@@ -1,0 +1,494 @@
+{
+  "_meta": {
+    "title": "Amazon Associates compliance register",
+    "generated_utc": "2026-11-13T23:35:00Z",
+    "scope": "Clauses that constrain what an affiliate automation platform may do, quoted or closely paraphrased from the official Program Documents. Every row cites the official page it came from.",
+    "agreement_version": "Associates Program Operating Agreement — updated October 15, 2025",
+    "policies_version": "Associates Program Policies — updated April 14, 2026"
+  },
+  "required_blocks": {
+    "caption": "Mandatory on-site text (must appear before publication)",
+    "columns": [
+      {
+        "key": "block",
+        "label": "Required element"
+      },
+      {
+        "key": "text",
+        "label": "Exact required wording"
+      },
+      {
+        "key": "where",
+        "label": "Where it must appear"
+      },
+      {
+        "key": "rule",
+        "label": "Rule"
+      }
+    ],
+    "rows": [
+      {
+        "block": "Associate identification / disclosure",
+        "text": "As an Amazon Associate I earn from qualifying purchases.",
+        "where": "On your Site or any other location where Amazon authorises display or use of Program Content; \"clearly and prominently\"",
+        "rule": "Operating Agreement SS5",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "verified",
+        "note": "Missing it is deemed a material breach (OA SS6)."
+      },
+      {
+        "block": "Content disclaimer (when Program Content text is displayed)",
+        "text": "CERTAIN CONTENT THAT APPEARS [IN THIS APPLICATION or ON THIS SITE, as applicable] COMES FROM AMAZON. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.",
+        "where": "In plain view to end users of the application/site",
+        "rule": "IP License SS2(k)",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified",
+        "note": "Square-bracketed choice is selected per context; this site uses \"ON THIS SITE\"."
+      },
+      {
+        "block": "Pricing / availability disclaimer",
+        "text": "Product prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed on [relevant Amazon Site(s), as applicable] at the time of purchase will apply to the purchase of this product.",
+        "where": "Adjacent to the pricing or availability data, or via hyperlink, pop-up box, scripted pop-up or similar method",
+        "rule": "IP License SS2(i)",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified",
+        "note": "Required whenever prices come from Data Feeds or are refreshed less often than hourly. Not shown on this site because no price is displayed."
+      },
+      {
+        "block": "Price/availability timestamp",
+        "text": "e.g. Amazon.com Price: $ 32.77 (as of 01/07/2008 14:11 PST- Details)",
+        "where": "Adjacent to any displayed price or availability",
+        "rule": "IP License SS2(i)",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified",
+        "note": "Amazon's own accepted example format. Same-day display may omit the date portion."
+      },
+      {
+        "block": "FTC material-connection disclosure",
+        "text": "A clear and conspicuous disclosure of the affiliate relationship, placed with the endorsement",
+        "where": "Every endorsement, not just some — \"if a disclosure is needed in one post for a brand, it's probably needed in all posts\"",
+        "rule": "FTC Endorsement Guides",
+        "sources": [
+          "SRC-15"
+        ],
+        "status": "verified",
+        "note": "Separate obligation from Amazon's own line. FTC also warns each undisclosed endorsement \"could be deceptive\"."
+      }
+    ]
+  },
+  "prohibitions": {
+    "caption": "Prohibited automation behaviours — enforced in this platform's design",
+    "columns": [
+      {
+        "key": "id",
+        "label": "#"
+      },
+      {
+        "key": "prohibition",
+        "label": "Prohibited"
+      },
+      {
+        "key": "cite",
+        "label": "Rule"
+      },
+      {
+        "key": "impl",
+        "label": "How this platform enforces it"
+      }
+    ],
+    "rows": [
+      {
+        "id": "1",
+        "prohibition": "Price tracking and/or price alerting functionality on your Site (unless otherwise agreed by Amazon)",
+        "cite": "Participation Requirements 5(y)",
+        "impl": "No alerts, no subscription forms, no price-history charts. Price is only ever a labelled point-in-time value.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "2",
+        "prohibition": "Using a link shortening service / any placement that makes it unclear you are linking to Amazon",
+        "cite": "Participation Requirements 5(w)",
+        "impl": "Generated content emits full `amazon.com/dp/<ASIN>?tag=<tag>` links. The submitted `link.amazon/...` format was rejected for this reason.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "3",
+        "prohibition": "Cloaking, hiding, spoofing or otherwise obscuring the URL; Redirecting Links",
+        "cite": "Participation Requirements 5(v); CIS 2(e)",
+        "impl": "No redirect wrapper, no intermediate click-handler page; links are direct and static.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "4",
+        "prohibition": "Artificially generating clicks or impressions, or creating Sessions on an Amazon Site, \"whether by way of a robot or software program or otherwise\"",
+        "cite": "Participation Requirements 5(s)",
+        "impl": "The agent has no click-through capability. Preview/health checks use a HEAD probe of `/dp/<ASIN>` only and never register a session-bearing link.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "5",
+        "prohibition": "Framing an Amazon Site within your Site, including in an embedded browser/WebView",
+        "cite": "Participation Requirements 5(n)",
+        "impl": "No iframes, no embeds of amazon.com. Product cards are native HTML.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "6",
+        "prohibition": "Special Links inside pop-up / pop-under windows, transitional page ads or layer ads",
+        "cite": "Participation Requirements 5(o)",
+        "impl": "No modal ad slots. The disclosure banner is not an ad slot and contains no link.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "7",
+        "prohibition": "Special Links in content placed on an Amazon Site (reviews, forums, Wish Lists, guides) or links to your Site from Amazon",
+        "cite": "Participation Requirements 5(p); 2(b)",
+        "impl": "Publishing targets owned properties only. No Amazon-side posting module exists.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "8",
+        "prohibition": "Bidding on paid search keywords containing \"amazon\", \"kindle\" or any Amazon Mark, or misspellings (e.g. \"ammazon\", \"amaozn\", \"kindel\")",
+        "cite": "Participation Requirements 5(f); CIS 2(c)",
+        "impl": "The campaign module blocks Amazon-Mark keywords in its bid-keyword list at validation time; purchases through such ads are disqualified.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "9",
+        "prohibition": "Displaying Amazon customer reviews or star ratings unless the link to that review/rating was obtained through Creators API or PA API",
+        "cite": "Participation Requirements 5(t)",
+        "impl": "Review text is never stored or rendered. Only an API-sourced count/rating, if credentials exist, would be displayed with attribution.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "10",
+        "prohibition": "Purchasing products through your own Special Links, or having friends/relatives/employees/contractors do so; resale use",
+        "cite": "Participation Requirements 5(u)",
+        "impl": "Self-purchase is out of scope for test fixtures; the test harness never constructs a live order.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "11",
+        "prohibition": "Offering any incentive, reward or rebate for using Special Links (including loyalty/rewards schemes)",
+        "cite": "Participation Requirements 5(g)",
+        "impl": "No gamification, cashback, giveaway or coupon tied to link use.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "12",
+        "prohibition": "Storing or caching Product Advertising Content images at all; other content for more than 24 hours; client apps storing any",
+        "cite": "IP License 2(h)",
+        "impl": "No image download step in the pipeline — only the image URL is referenced, re-fetched, and TTL-capped at 24h. ASINs may be stored indefinitely.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "13",
+        "prohibition": "Exceeding call-rate limits or sending payloads >40KB to Creators API / PA API without written approval",
+        "cite": "IP License 2(j)",
+        "impl": "Intake client caps request bodies at 40960 bytes and rate-limits per Specifications.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "14",
+        "prohibition": "Reverse engineering, deriving models/weights from, or bypassing security of Creators API, PA API or Data Feeds",
+        "cite": "IP License 2(g)",
+        "impl": "No distillation of API responses into a trained model; API data is used only to render pages.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "15",
+        "prohibition": "Using Program Content to advertise or promote products offered on non-Amazon sites; using data relating to Excluded Products",
+        "cite": "Participation Requirements 5(z)",
+        "impl": "Comparison tables may only contain Amazon-sourced rows. Competing-retailer price columns are deliberately absent, despite being standard affiliate practice.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "16",
+        "prohibition": "Encouraging customers to bookmark your Special Links",
+        "cite": "Participation Requirements 2(b)",
+        "impl": "No 'save this deal link' prompts anywhere in generated copy.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "17",
+        "prohibition": "Leaving expired promotional claims on the site (e.g. a \"15% off apparel\" mention after the promotion ends)",
+        "cite": "Participation Requirements 2(b)",
+        "impl": "Every claim carrying a promotion is stored with an expiry date; the publisher skips expired blocks.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "18",
+        "prohibition": "Inaccurate, overbroad, deceptive or misleading claims about a Product, an Amazon Site, or Amazon's policies, promotions or prices",
+        "cite": "Participation Requirements 2(b)",
+        "impl": "Generated claims must cite an API field or a spec sheet; the reviewer flags ungrounded superlatives. Amazon's own example: do not describe a 64 GB phone as 128 GB.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "19",
+        "prohibition": "Intercepting, recording or redirecting material submitted to Amazon; collecting customer account information",
+        "cite": "Participation Requirements 5(h), 5(i)",
+        "impl": "No form proxying, no credential capture, no Amazon-session cookies touched.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "20",
+        "prohibition": "Modifying, redirecting, suppressing or substituting the operation of any Amazon Site button, link or feature",
+        "cite": "Participation Requirements 5(j)",
+        "impl": "No browser extension or script injection against Amazon pages.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "21",
+        "prohibition": "Handling customer service contacts about Amazon orders; Amazon customers are not your customers",
+        "cite": "Operating Agreement SS3",
+        "impl": "Contact flows answer \"how do I find my order?\" with a pointer to Amazon's own help directions, nothing more.",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "22",
+        "prohibition": "Implying Amazon supports, sponsors or endorses you, or misrepresenting the relationship",
+        "cite": "Operating Agreement SS5",
+        "impl": "Site copy never uses an Amazon logo, and no 'officially recommended by Amazon' phrasing is permitted in generated content.",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "23",
+        "prohibition": "Site content that is hateful, harassing, sexual, violent, deceptive/defamatory, discriminatory, or directed at children under 13",
+        "cite": "Participation Requirements 1(a)-(f)",
+        "impl": "Suitability screen runs per page; the child-directed test also disables any under-13 audience targeting.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "24",
+        "prohibition": "Putting an Amazon trademark/misspelling in your domain, subdomain, tag, username or group name",
+        "cite": "Participation Requirements 1(g)",
+        "impl": "Validator rejects any registered hostname or tag containing an Amazon Mark. This site is `Zone3` on github.io — clean.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "id": "25",
+        "prohibition": "Claiming commissions on the same traffic via another programme (combining/manipulating attribution links)",
+        "cite": "Commission Income Statement SS5",
+        "impl": "One traffic source, one attribution chain; no stacked double-attribution links.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      }
+    ]
+  },
+  "economics": {
+    "caption": "Programme mechanics that drive the revenue model",
+    "columns": [
+      {
+        "key": "item",
+        "label": "Mechanic"
+      },
+      {
+        "key": "value",
+        "label": "Official value"
+      },
+      {
+        "key": "implication",
+        "label": "What it means for the optimiser"
+      }
+    ],
+    "rows": [
+      {
+        "item": "Headline commission",
+        "value": "\"Earn up to 10% in associate commissions from qualifying purchases and programs\"",
+        "implication": "Revenue model must be volume/traffic-led: at <=10% of qualifying revenue, click-through rate and content coverage dominate over per-unit margin.",
+        "sources": [
+          "SRC-11"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Per-category rates",
+        "value": null,
+        "implication": "Not publicly retrievable (redirects to sign-in). Niche ranking by category rate is therefore not computed on this site.",
+        "sources": [
+          "SRC-12"
+        ],
+        "status": "blocked-by-auth",
+        "flags": [
+          "FLG-013"
+        ]
+      },
+      {
+        "item": "Attribution window (session)",
+        "value": "Session begins at the Special Link click and ends at the first of: 24 hours elapsing, any non-digital Product order, or a click through another associate's link",
+        "implication": "Last-click wins and a competing associate's link instantly steals the session. Optimise for direct-to-product links and fast pages, not for journeys that detour off-site.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Cart completion window",
+        "value": "Order completed no later than 89 days after the initial click-through",
+        "implication": "Long consideration cycles (appliances, high-ticket) still convert — supports deep buying guides over impulse-only placements.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Whole-cart payout",
+        "value": "Commission accrues on the customer's order in that session, not only the linked item",
+        "implication": "Traffic quality (basket size) matters more than item relevance; but this must never be gamed, as CIS SS2/SS5 disqualify manipulation.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Qualifying Revenue definition",
+        "value": "Amount Amazon actually receives, less shipping, gift-wrapping, handling, taxes (sales tax, VAT), service charges, credits, rebates, credit-card processing fees and bad debt",
+        "implication": "Model revenue on net-of-shipping/tax value, not the sticker price. Overstates earnings otherwise.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Payment timing",
+        "value": "Approximately 60 days after the end of the month in which it was earned",
+        "implication": "Cash-cycle lag >=2 months; ROI reporting must be monthly-lagged, not real-time.",
+        "sources": [
+          "SRC-10",
+          "SRC-11"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Payment minimums (US)",
+        "value": "Direct deposit 10 USD; gift card 10 USD minimum / 2000 USD maximum; check 100 USD minimum with 15 USD processing fee",
+        "implication": "Gift card is the only low-threshold option; check is uneconomic below ~200 USD.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Disqualified purchases",
+        "value": "Post-termination purchases; any order with a cancellation, return or refund; Prohibited Paid Search Placements; links displayed on a search engine; Redirecting Links; malformed links; unapproved mobile-app links; Bounty-linked products; subscriptions; pre-release/pre-order products",
+        "implication": "Data hygiene is a revenue control, not a legal nicety: one malformed tag silently zeroes earnings (CIS 2(g)).",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Account dormancy",
+        "value": "No substantial activity for at least 3 years allows Amazon to withhold accrued commission income, up to the gift-card payment minimum, on 7 days' notice",
+        "implication": "Keep the account active; don't park earnings.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Rounding",
+        "value": "Commission is rounded per purchase to the nearest local currency unit, so your effective rate may sit slightly above or below the published rate card",
+        "implication": "Reconcile against reports, not against a hand-calculated rate.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "item": "Programme cost",
+        "value": "Free to join; Amazon has authorised no paid set-up or consulting service for associates",
+        "implication": "Any vendor charging for 'Amazon affiliate account set-up' is unauthorised by Amazon's own statement.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified",
+        "flags": [
+          "FLG-022"
+        ]
+      }
+    ]
+  }
+}
