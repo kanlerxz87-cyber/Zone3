@@ -1,0 +1,50 @@
+name: Deploy static site to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate site files and local navigation
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          root = Path('.')
+          files = [root / name for name in ('index.html', 'products.html', 'guides.html', 'review.html')]
+          class Links(HTMLParser):
+              def __init__(self): super().__init__(); self.hrefs=[]
+              def handle_starttag(self, tag, attrs):
+                  if tag in ('a','link'):
+                      href=dict(attrs).get('href','')
+                      if href and not href.startswith(('https://','http://','#','mailto:')): self.hrefs.append(href.split('#')[0])
+          for page in files:
+              parser=Links(); parser.feed(page.read_text())
+              missing=[href for href in parser.hrefs if href and not (root / href).exists()]
+              if missing: raise SystemExit(f'{page}: broken local links: {missing}')
+              if '<!doctype html>' not in page.read_text().lower(): raise SystemExit(f'{page}: missing doctype')
+          print('Validated four pages and local links.')
+          PY
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
