@@ -1,43 +1,41 @@
-# Zone3 — Amazon Affiliate Marketing Platform
+# Zone3
 
-Static dashboard for three supplied Amazon affiliate products. Published with GitHub Pages from `main` (root).
+Zone3 is an Amazon affiliate research dashboard. It shows every product link from the brief, the official sources behind each value, the verification status of each field, and the items that still need review.
 
-- **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
-- **Data:** `data/products.json`, `data/sources.json`, `data/flags.json`
-- **Build:** `python3 scripts/build_site.py` (generates the HTML pages)
-- **Check:** `python3 scripts/check_site.py` (broken links, source coverage, unverified values flagged)
-- **Coordination board:** `COORDINATION.md`
+**Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 
-## What this is
-A clean, simple dashboard site that collects, organizes, and analyzes three Amazon affiliate products (all air fryers, Home &amp; Kitchen category). Every table row links to its official Amazon product page; anything that could not be confirmed from an official source is left blank and flagged as unverified. No values were inferred or filled in.
+## What is in this repo
 
-## Verified products
-| ID | ASIN | Product | Official source | Affiliate link |
-|----|------|---------|-----------------|----------------|
-| P-001 / P1 | B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven | amazon.com/dp/B0CDY277D3 | link.amazon/B04G1MEwY |
-| P-002 / P2 | B09B7SB46R | Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | amazon.com/dp/B09B7SB46R | link.amazon/B02NbDxp3 |
-| P-003 / P3 | B08DKYBTPH | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | amazon.com/dp/B08DKYBTPH | link.amazon/B00hJ57DV |
+| Path | What it is |
+|---|---|
+| `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html` | Generated site pages (GitHub Pages serves `main` at `/`). |
+| `assets/style.css`, `.nojekyll` | Site styling; disables Jekyll processing. |
+| `data/sources.json` | Source registry: every official page used, its retrieval status, and what it supports. |
+| `data/policy_facts.json` | Verbatim policy quotes (PF-01 to PF-39, PF-14 withdrawn), each with its source and section. |
+| `data/products.json` | One record per product link. A `null` value means *unverified* and is shown blank. |
+| `data/flags.json` | Irregularities and unverified items (FLG-001 to FLG-021) with evidence and actions. |
+| `scripts/build_site.py` | Regenerates every page from `data/*.json` (standard library only). |
+| `scripts/check_site.py` | Verifies the data and the generated pages (see below). |
+| `COORDINATION.md` | Shared task board for parallel sessions. |
+| `analysis.html`, `categories/home-kitchen-air-fryers.html`, `disclosure.html` | Redirect stubs for URLs from the earlier PR #1 and PR #3 sites. |
+| `archive/26634cd5/`, `archive/66a80e53/` | Files from earlier sessions (PR #1 and PR #3), kept unchanged for reference. Not used by the site. |
 
-## Site structure
-- `index.html` — landing page / dashboard (with executive summary)
-- `categories/home-kitchen-air-fryers.html` — category subpage + product table
-- `analysis.html` — analysis & findings
-- `sources.html` — every official source used
-- `flagged.html` — unverified items flagged for review
-- `executive-summary.html` — dedicated executive summary (session arena/66a80e53-zone3)
-- `disclosure.html` — dedicated FTC + Amazon Associates affiliate disclosure (session arena/66a80e53-zone3)
-- `scripts/build_site.py` — static site generator
-- `scripts/check_site.py` — build-time link/source verification
+## Rebuild and check
 
-## Verification policy
-Every table row has a source link to an official site. Values not confirmed from an official source are left blank and flagged on the Flagged for Review page. No values were inferred or filled in.
+```bash
+python3 scripts/build_site.py   # regenerate the HTML pages from data/*.json
+python3 scripts/check_site.py   # must print "All checks passed."
+```
 
-Sources:
-- Amazon product pages (amazon.com/dp/<ASIN>) — official
-- Amazon Associates Commission Income Statements — affiliate-program.amazon.com
-- FTC Endorsement Guides — ftc.gov
+`check_site.py` fails if a product or a non-null value has no official source, if a table row's Source column has no link to an official site, if a link is broken, or if the Associates disclosure is missing from a page. Add `--online` to also request each official source URL from the machine running the check.
 
-## Pull request / merge
-Changes were proposed in PR #3 (`arena/66a80e53-zone3` → `main`) and merged into `main`. The merge added the dedicated executive-summary.html and disclosure.html pages and recorded both sessions' work in COORDINATION.md. GitHub Pages deploys from `main`; see COORDINATION.md for the deploy result.
+## Rules this project follows
 
-Affiliate disclosure: As an Amazon Associate I earn from qualifying purchases.
+- Only values confirmed from an official source are shown. Anything else is left blank and marked *Unverified*. Values are never inferred.
+- Product data comes from official sources only. Price and review data may be shown only through a Special Link or the Creators API (Program Policies, Participation Requirements §2(b) and §6(t)).
+- Creators API data may not be used for AI analysis, aggregation or model training without Amazon's written approval (Creators API IP License §1, §2(c)(e); Participation Requirements §5). No such analysis is built.
+- The Associates disclosure (`As an Amazon Associate I earn from qualifying purchases.`) appears on every page (Operating Agreement §5).
+
+## Status
+
+As of 2026-11-13 the three submitted identifiers are not valid product pages, so no product fields are verified yet. The earlier site from PR #1 is merged in; see `COORDINATION.md` for the integration and the ID mapping. See `flagged.html` (the live Flagged for review page) for the blockers and the owner actions.
