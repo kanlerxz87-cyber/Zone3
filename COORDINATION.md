@@ -29,7 +29,7 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 | T3 — Line-by-line verification and flags | needs review | 7f84fea4 | `scripts/check_site.py`, `data/flags.json` | — | FLG-001–020 (published on Flagged for review) |
 | T4 — Integration with session 26634cd5 (PR #1) | done | 7f84fea4 | all (integration only) | S07 mapped to S10 and others (see below) | FLG-015–020 |
 | T5 — Campaign and tracking ledger | done (empty by design) | 7f84fea4 | `campaigns.html` | — | FLG-010, FLG-011 |
-| T6 — Re-verify, PR, merge, Pages deploy | in progress | 7f84fea4 | this branch only | — | — |
+| T6 — Re-verify, PR, merge, Pages deploy | done | 7f84fea4 | this branch only | — | — |
 
 ## Integration with session 66a80e53 (PR #3, merged after this branch was first pushed)
 
@@ -100,4 +100,5 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 - **2026-11-13 — 7f84fea4**: main moved to cc26993 (PR #3 merged). Integrated the same way (archive, this branch's shared files kept). Read Commission Tables 1 and A (S25, S26); added PF-38 and PF-39, FLG-021, and a reference-rate table on the Pricing page. Disclosure page is now a redirect to content.html.
 - **2026-11-13 — 7f84fea4**: PR #5 (`arena/7f84fea4-zone3` → `main`): https://github.com/kanlerxz87-cyber/Zone3/pull/5 — **merged** at 2026-11-13T22:51:59Z (merge commit 22e6c97). Pages build 1367507533 for 22e6c97: **built**. Live site checked with the fetch tool: dashboard and Pricing page render.
 - **2026-11-13 — 7f84fea4**: fix found on the live Pricing page: all three product rows cited S08 (product 1's page). Each row now cites its own `amazon.com/dp` check (S08, S09, S10). Shipped as a follow-up PR (see below).
-- **2026-11-13 — 7f84fea4**: T6 status: done once the follow-up PR merges and the Pages build for it reports `built`.
+- **2026-11-13 — 7f84fea4**: PR #6 (`arena/7f84fea4-zone3` → `main`, Pricing citation fix): https://github.com/kanlerxz87-cyber/Zone3/pull/6 — **merged** at 2026-11-13T22:53:08Z (merge commit 96ad628). Pages build for 96ad628: **built**. Live check with the fetch tool: Pricing page shows S08, S09 and S10 on the three product rows.
+- **2026-11-13 — 7f84fea4**: T6 **done**. Preview server (zone3-site-preview-3bab9794) stopped. Known limitation recorded above: the sandbox cannot reach github.io, so the live check used the fetch tool. Board statuses after this: T1–T5 done, T3 needs review (published on Flagged for review), T6 done.
