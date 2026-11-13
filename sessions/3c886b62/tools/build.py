@@ -121,22 +121,40 @@ def md_table(block):
 def md(path, base=1):
     """Render the markdown subset used in docs/content.
 
+    Supported: ATX headings, unordered and ordered lists (including hard-wrapped
+    continuation lines), github-style tables, paragraphs, and inline
+    **bold**, *italic*, `code` and [text](url).
+
     base=1 (default) maps "##" to <h3>, for prose nested inside a card that
     already has an <h2>. base=0 maps "##" to <h2>, for a page whose card has no
     own heading.
     """
     with open(os.path.join(DOCS, path), "r", encoding="utf-8") as fh:
         lines = fh.read().splitlines()
-    out, para, list_type, table = [], [], None, []
+
+    out, para, items, list_type, table, blank = [], [], [], None, [], False
 
     def flush_text():
-        nonlocal para, list_type
-        if para:
-            out.append("<p>%s</p>" % md_inline(" ".join(para)))
-            para = []
-        if list_type:
-            out.append("</%s>" % list_type)
-            list_type = None
+        """Emit buffered prose. Inside a list it continues the current item."""
+        nonlocal para
+        if not para:
+            return
+        text = " ".join(para)
+        para = []
+        if list_type and items:
+            items[-1] = items[-1] + " " + text
+        else:
+            out.append("<p>%s</p>" % md_inline(text))
+
+    def flush_list():
+        nonlocal items, list_type
+        if not list_type:
+            return
+        out.append('<ul class="tight">' if list_type == "ul" else '<ol class="tight">')
+        for it in items:
+            out.append("<li>%s</li>" % md_inline(it))
+        out.append("</ul>" if list_type == "ul" else "</ol>")
+        items, list_type = [], None
 
     def flush_table():
         nonlocal table
@@ -146,50 +164,65 @@ def md(path, base=1):
 
     def flush():
         flush_text()
+        flush_list()
         flush_table()
 
     for raw in lines:
-        if raw.strip().startswith("|") and raw.count("|") >= 2:
+        line = raw.rstrip()
+
+        if not line.strip():
             flush_text()
-            table.append(raw)
+            blank = True
+            continue
+
+        if line.strip().startswith("|") and line.count("|") >= 2:
+            # flush prose and any open list, but NOT the table being collected
+            flush_text()
+            flush_list()
+            table.append(line)
+            blank = False
             continue
         if table:
             flush_table()
-        line = raw.rstrip()
-        if not line.strip():
-            flush()
-            continue
+
         m = re.match(r"^(#{1,6})\s+(.*)$", line)
         if m:
             flush()
             lvl = min(len(m.group(1)) + base, 4)
             out.append("<h%d>%s</h%d>" % (lvl, md_inline(m.group(2)), lvl))
+            blank = False
             continue
+
         m = re.match(r"^\s*[-*]\s+(.*)$", line)
         if m:
             if list_type != "ul":
                 flush()
-                out.append("<ul class=\"tight\">")
                 list_type = "ul"
-            out.append("<li>%s</li>" % md_inline(m.group(1)))
+            items.append(m.group(1).strip())
+            blank = False
             continue
+
         m = re.match(r"^\s*\d+\.\s+(.*)$", line)
         if m:
             if list_type != "ol":
                 flush()
-                out.append("<ol class=\"tight\">")
                 list_type = "ol"
-            out.append("<li>%s</li>" % md_inline(m.group(1)))
+            items.append(m.group(1).strip())
+            blank = False
             continue
-        flush() if False else None
+
+        # plain prose: a preceding blank line closes any open list and starts a
+        # new paragraph; otherwise the line continues the current paragraph, or
+        # the current list item via flush_text()
+        if blank:
+            flush_list()
+            flush_text()
         para.append(line.strip())
+        blank = False
+
     flush()
     return "\n".join(out)
 
-
-# ----------------------------------------------------------------------------
-# navigation
-# ----------------------------------------------------------------------------
 
 NAV = [
     ("Overview", [
@@ -225,7 +258,7 @@ DISCLOSURE = (
     '<strong>Disclosure &amp; status.</strong> This site is being prepared for the Amazon Associates program. '
     'No Amazon Associates tag is configured, so no commission is currently earned and these are not affiliate links. '
     'Prices and ratings shown are a one-time capture taken %s from Amazon and are stale the moment Amazon changes them. '
-    '&nbsp;<a href="compliance.html">Compliance</a> · <a href="flagged.html">Flagged for Review (%d blocking)</a>'
+    '&nbsp;<a href="compliance.html">Compliance</a> \u00b7 <a href="flagged.html">Flagged for Review (%d blocking)</a>'
 ) % (esc(CAPTURED), BLOCKING)
 
 

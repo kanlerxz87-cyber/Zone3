@@ -47,8 +47,6 @@ On the site: [Requirements](../requirements.html). Machine-readable version:
 | `R29` | Publish flagged irregularities on a clearly labeled Flagged for Review page with source links | Implemented | flagged.html renders data/flags.json with a source link or an explicit 'no official source' note per item. | — | — |
 | `R30` | Open a pull request, merge it, confirm GitHub Pages deploys, record the result in COORDINATION.md | Implemented | Recorded in COORDINATION.md task T12 after the deploy check. | — | — |
 
-## Automation design
-
 Four requirements are marked blocked: track clicks, track conversions, identify high-converting products,
 and continuously optimize campaigns. All four fail for the same two reasons, and both are fixable.
 

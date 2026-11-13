@@ -432,3 +432,11 @@ what this session read: the Program Policies name *"Creators API or PA API"* in 
 section 6(t). FLG-018 (price tracking/alerting prohibited) matches section 6(y). FLG-017 (no dynamic
 per-visitor sub-tags) matches section 2(b). Three independent sessions converging on the same policy text is
 worth noting as a positive signal.
+
+- **2026-11-13 — 3c886b62**: fixed a rendering bug found on the live pages after PR #11 merged. Wrapped
+  list items and a markdown table were being emitted as stray `<p>` elements. Fixed in
+  `sessions/3c886b62/tools/build.py` (list items are now buffered and hard-wrapped continuation lines are
+  folded into the item; a table row no longer flushes the table it belongs to) and the prose sources in
+  `sessions/3c886b62/docs/content/` were normalised so each list item is a single logical block. No root
+  file was touched. Re-verified: `tools/check_links.py` OK (16 pages, 285 sourced rows),
+  `scripts/check_site.py` OK at the root.

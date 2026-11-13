@@ -1,5 +1,3 @@
-## Findings
-
 **One niche, three direct comparators.** All three supplied links resolve to air fryers in Home &
 Kitchen. There is no category sprawl, which makes a single comparison page and a single buying guide the
 right shape for the content.

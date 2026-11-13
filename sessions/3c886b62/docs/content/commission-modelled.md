@@ -1,4 +1,3 @@
-
 **These numbers are arithmetic, not facts.** They multiply a verified captured price by each of the two
 candidate official commission rates. Amazon does not publish which rate applies to which ASIN, so neither
 column is a prediction. They are shown together so the size of the unresolved question is visible.
