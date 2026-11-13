@@ -148,3 +148,23 @@ follows.
 | **Do not run** `python3 scripts/build_site.py` | It regenerates the root `index.html` and its own flat pages, which would overwrite this session's landing page. To rebuild this site, run `python3 tools/build_site.py`. Both builders are independent and both pass their own checks. |
 | Anything found in *their* work? | One compliance gap, fixed additively: `category/kitchen.html` was hand-authored and had no Associates disclosure (required by Operating Agreement §5). Their generated pages all had it. Recorded at `B:FLG-025` in `COORDINATION.md`. |
 | Anything this session corrected about *itself*? | Yes — it had concluded per-category commission rates were unobtainable because one endpoint redirects to sign-in. The statement is public; rates are now published. Recorded at `B:FLG-013`. |
+---
+
+## Shared data layer owned by earlier sessions
+
+Kept intact by this integration; documented so the merged tree is navigable.
+
+| Path | Contents |
+| --- | --- |
+| `data/sources.json` | Source registry of the earlier build (S01–S29): every official page used, its retrieval status, what it supports. |
+| `data/policy_facts.json` | Verbatim policy quotes PF-01…PF-43 (PF-14 withdrawn), each with source and section. |
+| `data/products.json`, `data/flags.json` | The earlier build's product dataset and flag register. Identical numbering to `data/z3/*` means different items. |
+| `research/` | Session `33226b37`'s independent line-by-line verification record and product dossiers, with the ID mapping to that data layer. |
+| `scripts/build_site.py`, `scripts/check_site.py` | The earlier build and its audit. **Do not run the builder** — it rewrites the root `index.html`. |
+| `docs/executive-summary-33226b37.md` | Executive summary preserved from that session. |
+
+Two independent verification records now cover the same three links and agree on the substance: all
+three identifiers are 9 characters, every `/dp/` probe returns Amazon's *Page Not Found* page, and each
+short link falls back to a different unrelated product. Reaching that from separately fetched evidence
+is what makes it a finding rather than a shared assumption. This session additionally published the
+rate tables (`/commission/`), which neither earlier record had located.
