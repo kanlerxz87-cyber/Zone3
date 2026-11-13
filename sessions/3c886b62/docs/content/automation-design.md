@@ -1,5 +1,3 @@
-## Automation design
-
 Four requirements are marked blocked: track clicks, track conversions, identify high-converting products,
 and continuously optimize campaigns. All four fail for the same two reasons, and both are fixable.
 

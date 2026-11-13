@@ -636,3 +636,10 @@ serves at `/archive/c4e71983/` and renders its tables, disclosure banner and sou
 settings change was required: Pages redeploys from `main` automatically. A validation workflow written
 by this session is archived at `archive/c4e71983/.github/workflows/validate.yml` for reference only;
 it was intentionally **not** added to `.github/workflows/` because it does not deploy anything.
+- **2026-11-13 — 3c886b62**: fixed a rendering bug found on the live pages after PR #11 merged. Wrapped
+  list items and a markdown table were being emitted as stray `<p>` elements. Fixed in
+  `sessions/3c886b62/tools/build.py` (list items are now buffered and hard-wrapped continuation lines are
+  folded into the item; a table row no longer flushes the table it belongs to) and the prose sources in
+  `sessions/3c886b62/docs/content/` were normalised so each list item is a single logical block. No root
+  file was touched. Re-verified: `tools/check_links.py` OK (16 pages, 285 sourced rows),
+  `scripts/check_site.py` OK at the root.

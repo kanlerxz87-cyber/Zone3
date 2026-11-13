@@ -20,7 +20,9 @@ nine characters and mixed case, while an ASIN is ten characters. Following the H
 them to three real products, and all three turn out to be air fryers in the Home & Kitchen department:
 
 - `B04G1MEwY` resolves to **B0CDY277D3**, a CHEFMAN 6 quart dual basket air fryer.
+
 - `B02NbDxp3` resolves to **B09B7SB46R**, the Emeril Lagasse 26QT French door air fryer toaster oven.
+
 - `B00hJ57DV` resolves to **B08DKYBTPH**, a Chefman 8 quart TurboFry air fryer.
 
 The redirect was checked twice for the first link and returned the same ASIN both times, so the mapping is

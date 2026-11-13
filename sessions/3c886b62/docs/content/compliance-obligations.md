@@ -1,5 +1,3 @@
-## Obligations, with the policy text
-
 Every line below is quoted or closely summarised from the source linked beside it. Where the wording is
 Amazon's, it is in a quotation.
 

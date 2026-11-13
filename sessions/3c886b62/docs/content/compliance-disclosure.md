@@ -1,5 +1,3 @@
-## Disclosure requirement
-
 There are two separate obligations here, and they are worth keeping apart because they come from
 different places and bite at different times.
 
@@ -23,20 +21,27 @@ for the purposes of marketing law, including the CAN-SPAM Act and the Telephone 
 From the FTC's *Disclosures 101 for Social Media Influencers*:
 
 - Disclose when you have any **financial, employment, personal, or family relationship** with a brand. A
-  financial relationship is not limited to money; if you got anything of value to mention a product,
-  disclose it.
+financial relationship is not limited to money; if you got anything of value to mention a product,
+disclose it.
+
 - Make disclosures even if you think your evaluations are unbiased, and do not assume your followers
-  already know.
+already know.
+
 - Place the disclosure so it is **hard to miss**, and place it with the endorsement message itself. It will
-  be missed if it appears only on an About page, at the end of a post, or behind a *more* link.
+be missed if it appears only on an About page, at the end of a post, or behind a *more* link.
+
 - Use **simple and clear** language. Terms like *advertisement*, *ad* and *sponsored* are fine. Avoid vague
-  or confusing terms such as *sp*, *spon*, *collab*, or a bare *thanks*.
+or confusing terms such as *sp*, *spon*, *collab*, or a bare *thanks*.
+
 - Do not mix the disclosure into a group of hashtags or links.
+
 - In a video, put the disclosure in the video, ideally in both audio and video, not only in the
-  description.
+description.
+
 - It is your responsibility. Do not rely on a platform's disclosure tool.
+
 - You cannot talk about your experience with a product you have not tried, and you cannot claim a product
-  is terrific if you were paid to talk about it and thought it was terrible.
+is terrific if you were paid to talk about it and thought it was terrible.
 
 ### What this site does
 

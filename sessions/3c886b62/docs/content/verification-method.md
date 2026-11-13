@@ -1,5 +1,3 @@
-## Method
-
 ### The rule
 
 Every value on this site is either read verbatim from an official page, or left blank and flagged. Nothing
@@ -32,9 +30,13 @@ such on every row.
 ### What was deliberately left blank
 
 - **Best Sellers Rank** — JavaScript only, not readable from any official static render.
+
 - **Review sentiment and review text** — JavaScript and sign-in gated.
+
 - **Clicks and conversions** — exist only inside a logged-in Associates Central account.
+
 - **Commission rate per ASIN** — Amazon publishes rates by category, not by ASIN.
+
 - **Associates tag** — none exists in this repository.
 
 Each of these renders as an explicit *Unverified* cell, never as a dash that could be mistaken for zero,
