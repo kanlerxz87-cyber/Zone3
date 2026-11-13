@@ -1,5 +1,4 @@
 {
-  "built_utc": "2026-11-13T23:02:04Z",
   "pages": 16,
   "table_rows": 229,
   "sources": 19,
@@ -32,5 +31,7 @@
     "requirements": "805699d4f167",
     "reviews": "5b27e392208b",
     "sources": "d868d0dacfe3"
-  }
+  },
+  "content_digest": "ae74eef66076ba8e",
+  "built_utc_note": "deliberately absent: no build timestamp is recorded, so that a no-op rebuild is byte-identical and the tree stays clean. Use the commit date of the file for 'when', and content_digest for 'what'."
 }

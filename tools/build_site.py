@@ -1197,7 +1197,6 @@ def main():
                                      f"Sitemap: {SITE_ORIGIN}{SITE_BASE}/sitemap.xml\n", encoding="utf-8")
 
     manifest = {
-        "built_utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "pages": len(written), "table_rows": nrows,
         "sources": len(SOURCES), "flags": len(FLAGS),
         "verification": {"gates": ["G1 row-has-source-or-flag", "G2 no-blank-in-verified-row",
@@ -1206,7 +1205,20 @@ def main():
                          "result": "pass"},
         "files": {k: hashlib.sha256((out / v).read_bytes()).hexdigest()[:12] for k, v in sorted(written.items())},
     }
-    (out / "data" / "z3" / "build-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    # Generated HTML is committed here (Pages deploys from the branch root), so a build that
+    # changes nothing must leave the tree clean. A wall-clock stamp dirties every run and makes
+    # "is this rebuild faithful?" unanswerable. It is replaced by a content digest rather than by
+    # a faked date: when the output is byte-identical the manifest is byte-identical, and git
+    # history already supplies the real timestamp of any change that did happen.
+    body = json.dumps(manifest, indent=2, sort_keys=True)
+    manifest["content_digest"] = hashlib.sha256(body.encode()).hexdigest()[:16]
+    manifest["built_utc_note"] = ("deliberately absent: no build timestamp is recorded, so that a "
+                                  "no-op rebuild is byte-identical and the tree stays clean. Use the "
+                                  "commit date of the file for 'when', and content_digest for 'what'.")
+    mpath = out / "data" / "z3" / "build-manifest.json"
+    txt = json.dumps(manifest, indent=2) + "\n"
+    if not (mpath.exists() and mpath.read_text(encoding="utf-8") == txt):
+        mpath.write_text(txt, encoding="utf-8")
     print(f"OK  {len(written)} pages · {nrows} verified table rows · {len(SOURCES)} sources · {len(FLAGS)} flags · gate PASS")
     for k, v in sorted(written.items()):
         print("   ", v)
