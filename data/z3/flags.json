@@ -311,6 +311,33 @@
           "SRC-17"
         ],
         "status": "open"
+      },
+      {
+        "id": "FLG-027",
+        "sev": "High",
+        "item": "Two sessions resolved the same three links differently",
+        "finding": "Session 3c886b62 (published under `sessions/3c886b62/`) treats the target of each `link.amazon` redirect as the submitted product: it records ASIN B0CDY277D3 for `B04G1MEwY` with status `verified` and derives title, brand and department from that page. This build treats the submission as unresolved and leaves every dependent cell blank. Both readings rest on the same observations — the submitted code is 9 characters, `/dp/<code>` returns Page Not Found, and the short link lands on another product through `plpRedirect=mhFallback`. The divergence is one sentence of interpretation: whether Amazon's fallback target *is* the product. Three different submitted codes produced three different targets, which is the evidence this build relied on to answer no.",
+        "action": "Not resolvable from public documents; it needs the original submission context. Ask whoever supplied the links for the ten characters, or for the pages they were copied from. Until then the two tables should not be presented as interchangeable, and this site does not merge their product values into its own rows.",
+        "sources": [
+          "SRC-04",
+          "SRC-05",
+          "SRC-06",
+          "SRC-01",
+          "SRC-08"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "FLG-028",
+        "sev": "Medium",
+        "item": "Published prices and ratings need the IP License timestamp treatment",
+        "finding": "`sessions/3c886b62/data/products.json` displays prices ($79.93, $149.99, $79.91) and star ratings (4.2, 4.3, 4.4) marked `verified`, read from Amazon search-results renderings. That session's own register already flags the display rules around this (F01 for Part. Req. 2(b), F02 for 5(t), F16 for point-in-time capture), so the exposure is documented rather than unnoticed. Two mechanical gaps remain for the published pages: IP License 2(i) requires prices not refreshed hourly to carry an adjacent date/time stamp plus the verbatim price-and-availability sentence, and 5(t) admits ratings only when obtained through Creators/PA API — a value read off a rendered page does not qualify even though the number is correct on the day it was read.",
+        "action": "Two ways to close it, both cheap: put the timestamp and the verbatim 2(i) disclaimer next to each price on the page, and label the rating cells as page-rendered rather than API-sourced; or move both into a table titled as an observation of the fallback page with the date it was read. Do not relabel them as API data — that is the one change that would turn a dated observation into a false claim.",
+        "sources": [
+          "SRC-10",
+          "SRC-09"
+        ],
+        "status": "open"
       }
     ]
   }

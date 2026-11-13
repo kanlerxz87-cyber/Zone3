@@ -19,7 +19,7 @@ estimated.
 | Products passing intake verification | **0 of 3** |
 | Product attribute cells left blank | **36** (12 fields × 3 SKUs) |
 | Official sources cited | 17 primary documents |
-| Open flags published for review | 24 |
+| Open flags published for review | 28 |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks |
 | Verdict | Not launchable until inputs 1–2 below are supplied |
 
