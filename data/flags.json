@@ -1,0 +1,28 @@
+{
+  "flags": [
+    {"id": "F1", "type": "Irregularity", "item": "Short-link codes do not match the ASIN",
+     "detail": "Each link.amazon code (B04G1MEwY, B02NbDxp3, B00hJ57DV) resolves to a different product ID (B0CDY277D3, B09B7SB46R, B08DKYBTPH). The short code is not an ASIN. Verified by following the redirects.",
+     "sources": ["S1", "S2", "S3"], "action": "Confirm each short link is the intended product."},
+    {"id": "F2", "type": "Irregularity", "item": "No Associate tag visible in the resolved links",
+     "detail": "The resolved Amazon URLs contain tracking parameters (lv, btn_ref, channelId, plpRedirect) but no tag= parameter that identifies an Associates ID. No Associate ID was supplied, so none was added or invented. Commission on these links cannot be attributed to an account until a tagged link is generated.",
+     "sources": ["S1", "S2", "S3", "S8"], "action": "Owner: generate tagged links from your Associates account and replace the short links here."},
+    {"id": "F3", "type": "Irregularity", "item": "Marketplace and eligibility not confirmed",
+     "detail": "All three links resolve to amazon.com (United States). The site owner's location is Oslo, Norway. Whether the owner's Associates account and country match these US listings was not verified.",
+     "sources": ["S7", "S8"], "action": "Confirm the Associates account country and whether US-marketplace links are appropriate for your audience."},
+    {"id": "F4", "type": "Unverified", "item": "Price, rating, review count, availability — all three products",
+     "detail": "Amazon product pages returned only footer/navigation boilerplate, or a 'Continue shopping' interstitial, to automated retrieval. These values are left blank in the table. They change over time and must be checked on the live listing.",
+     "sources": ["S4", "S5", "S6"], "action": "Manually record price/rating/reviews with date and source screenshot."},
+    {"id": "F5", "type": "Unverified", "item": "Commission rate for Kitchen-category products",
+     "detail": "The official Associates rate schedule (S9) is login-gated and could not be read. Secondary sites cite 4.5% for Kitchen (e.g. geniuslink.com and sellersonar.com, not official). Not used in the table because it could not be confirmed from an official source.",
+     "sources": ["S8", "S9"], "action": "Read the Standard Commission Income table after logging into Associates Central and enter the Kitchen rate."},
+    {"id": "F6", "type": "Unverified", "item": "Product 3 direct page not verified",
+     "detail": "Fetching dp/B08DKYBTPH directly returned a 'Continue shopping' interstitial. Its title and brand were taken only from the redirect of link.amazon/B00hJ57DV.",
+     "sources": ["S3", "S6"], "action": "Open the listing in a browser and confirm the title."},
+    {"id": "F7", "type": "Scope gap", "item": "Platform automation not built",
+     "detail": "The brief describes an AI platform with automated product discovery, live pricing/review analysis, content generation, click and conversion tracking, and campaign optimisation. This repository currently contains a verified static dashboard for the three supplied products only. No data feeds, click tracking, or content automation were implemented, and no trend, competition, or revenue projections were produced because no verified data source was accessible.",
+     "sources": [], "action": "Decide whether to commission the automation layer in a follow-up task."},
+    {"id": "F8", "type": "Compliance note", "item": "FTC guidance dated 2019",
+     "detail": "The FTC Disclosures 101 guide was fetched; its page is dated November 2019. Newer FTC Endorsement Guide revisions reported by secondary sources were not verified on ftc.gov in this session.",
+     "sources": ["S10"], "action": "Check the current FTC Endorsement Guides before publishing marketing copy."}
+  ]
+}
