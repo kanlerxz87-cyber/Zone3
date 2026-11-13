@@ -249,6 +249,36 @@
       "status_note": "Read 2026-11-13. Table A row: 'Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive | 1.25%'. The text says Onsite Commission Income applies to Onsite Content (Publisher or Influencer Content used by Amazon within the Amazon Site).",
       "used_for": "Shown to prevent a wrong reading: the 1.25% Kitchen rate is for Onsite Content, not for Special Links on this site (FLG-021).",
       "alias_of_26634cd5": "S12 (66a80e53 session)"
+    },
+    {
+      "id": "S27",
+      "title": "Control lookup: Amazon's documented example ASIN B00005N5PF (Monopoly)",
+      "url": "https://www.amazon.com/dp/B00005N5PF",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13 (session 33226b37-zone3): served a 'Continue shopping' checkpoint interstitial, NOT the 'Page Not Found' error returned by S08-S10. B00005N5PF is Amazon's own published example ASIN (Monopoly) in Amazon help documentation.",
+      "used_for": "Control test: proves a cataloged ASIN does not return the Page-Not-Found error, so the S08-S10 results for the submitted identifiers are meaningful and not an automated-retrieval artifact.",
+      "alias_of_33226b37": "S15 (session-33226b37-zone3 registry)"
+    },
+    {
+      "id": "S28",
+      "title": "Associates Help: Account Dormancy (180 days to refer a sale)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G7MJTPEP9NC3YKMG",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13 (session 33226b37-zone3): 'you have 180 days to refer a sale through one of your Associates links... Your application can be withdrawn if there were not enough qualifying sales for 180 days after your application was submitted.'",
+      "used_for": "Campaign ramp planning: new-account survival gate (PF-41).",
+      "alias_of_33226b37": "S19 (session-33226b37-zone3 registry)"
+    },
+    {
+      "id": "S29",
+      "title": "Associates Help: What is the application review process?",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13 (session 33226b37-zone3): 'we require at least three [qualifying sales] within the first 180 days. Please note that personal orders do not qualify.' and 'All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.'",
+      "used_for": "Campaign ramp planning and content-feasibility bar (PF-40).",
+      "alias_of_33226b37": "S20 (session-33226b37-zone3 registry)"
     }
   ]
 }

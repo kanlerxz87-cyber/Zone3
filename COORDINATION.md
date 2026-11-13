@@ -14,7 +14,8 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (listed on th
 | 3c6cba43 | `arena/3c6cba43-zone3` | Own FLG-001–012 and SRC-01–010 IDs (not comparable to ours). Not read in this session beyond its COORDINATION.md. | not merged | — |
 | a9cafea1 | `arena/a9cafea1-zone3` | PR #4 open. Not read in this session. | not merged | — |
 | 45ec61ec | `arena/45ec61ec-zone3` | PR #2 closed. Not read in this session. | closed | — |
-| 33226b37, c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
+| 33226b37-zone3 | `arena/33226b37-zone3` | Independent re-verification of all three earlier sessions' claims; control-ASIN test; enrollment-gate and payment facts (PF-40–43, S27–S29); `research/` + `docs/` verification record; final PR. | merged | 2026-11-13 22:45 |
+| c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 
 ### Branch naming decision (logged 2026-11-13, session 7f84fea4)
 
@@ -92,6 +93,19 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 - Limitation: the checker verifies the structure (sources present, links resolve, official hosts, no Python leaks). It does not compare quotes to source text. Quotes were checked by hand against the fetched text, and that is recorded in each fact's `section` field.
 - Limitation: the Program Policies chunk 10 and the commission schedule (S03) were not read. Rates are not stated anywhere on the site.
 
+## Integration with session 33226b37-zone3 (final PR)
+
+Session 33226b37-zone3 worked in parallel from `ed1a796` and independently verified the same facts (its pushed branch carried a complete site built before `main` moved). To avoid clobbering the canonical site and data schema of sessions 26634cd5/66a80e53/7f84fea4, its branch was rebased onto `main` (96ad628) and reduced to non-overlapping, additive contributions. Nothing from `main` was overwritten or discarded; no generated page, script or CSS was changed. What was added:
+
+- **`research/verification-log.md`, `research/products.md`** — the independent line-by-line verification record, with a mapping note from its local IDs to the canonical scheme.
+- **`docs/executive-summary.md`** — markdown executive summary with a final-integration update.
+- **`data/sources.json`** — S27 (control lookup of Amazon's documented example ASIN `B00005N5PF`: checkpoint interstitial, NOT the S08–S10 Page-Not-Found — validates that those 404s are meaningful), S28 (Account Dormancy help topic), S29 (application review help topic).
+- **`data/policy_facts.json`** — PF-40 (≥3 qualifying sales within first 180 days; personal orders excluded; ≈10 posts of robust original content), PF-41 (180-day dormancy gate), PF-42 (payout ≈60 days after month end), PF-43 (US payment minimums $10/$10/$100 + $15 check fee).
+- **`README.md`** — rows for `research/` and `docs/`, PF range corrected to 43.
+- No flags were changed; no product rows were changed.
+
+Independent findings that corroborate existing entries (logged, not re-numbered): the S08–S10 Page-Not-Found results, the FLG-001 nine-character finding, and the S11–S13 redirect targets all reproduce exactly; the short-link redirects were re-fetched repeatedly across two sessions with identical targets (deterministic mapping — detail recorded in `research/verification-log.md` §1.5); FLG-017's FTC-2023 resolution was independently confirmed via the FTC's Endorsement Guides page.
+
 ## Task log
 
 - **2026-11-13 — 7f84fea4**: claimed T1–T3 and pushed (commit `28e5029`). Later commits: `ed1a796` (base), `2069837` (site, data, checker, flags, PF).
@@ -101,3 +115,6 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 - **2026-11-13 — 7f84fea4**: PR #5 (`arena/7f84fea4-zone3` → `main`): https://github.com/kanlerxz87-cyber/Zone3/pull/5 — **merged** at 2026-11-13T22:51:59Z (merge commit 22e6c97). Pages build 1367507533 for 22e6c97: **built**. Live site checked with the fetch tool: dashboard and Pricing page render.
 - **2026-11-13 — 7f84fea4**: fix found on the live Pricing page: all three product rows cited S08 (product 1's page). Each row now cites its own `amazon.com/dp` check (S08, S09, S10). Shipped as a follow-up PR (see below).
 - **2026-11-13 — 7f84fea4**: T6 status: done once the follow-up PR merges and the Pages build for it reports `built`.
+- **2026-11-13 22:45 UTC — 33226b37-zone3**: claimed T1–T5 on its own board from base `ed1a796` (main still showed only a README at fetch time) and pushed the claim before any fetch of `main`. Completed independent verification (`research/`, `docs/`).
+- **2026-11-13 — 33226b37-zone3**: discovered `main` had moved twice (PR #1 at 8cc2d4a, then PRs #3/#5/#6 at 96ad628 with the Sxx/PF/FLG schema). Its earlier add/add conflicts on COORDINATION.md and data/products.json (vs PR #1) were resolved by keeping the merged versions in full; after seeing PRs #5/#6 the branch was reset to `main` and reduced to additive contributions only. Logged here per the no-clobber rule.
+- **2026-11-13 — 33226b37-zone3**: merged S27–S29 and PF-40–43 into the canonical data layer (schema-compliant), added `research/` and `docs/`, updated README and this board. `scripts/build_site.py` re-run (no page changes) and `scripts/check_site.py` passes. PR: see merge log below.

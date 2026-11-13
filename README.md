@@ -10,12 +10,14 @@ Zone3 is an Amazon affiliate research dashboard. It shows every product link fro
 |---|---|
 | `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html` | Generated site pages (GitHub Pages serves `main` at `/`). |
 | `assets/style.css`, `.nojekyll` | Site styling; disables Jekyll processing. |
-| `data/sources.json` | Source registry: every official page used, its retrieval status, and what it supports. |
-| `data/policy_facts.json` | Verbatim policy quotes (PF-01 to PF-39, PF-14 withdrawn), each with its source and section. |
+| `data/sources.json` | Source registry: every official page used, its retrieval status, and what it supports (S01–S29). |
+| `data/policy_facts.json` | Verbatim policy quotes (PF-01 to PF-43, PF-14 withdrawn), each with its source and section. |
 | `data/products.json` | One record per product link. A `null` value means *unverified* and is shown blank. |
 | `data/flags.json` | Irregularities and unverified items (FLG-001 to FLG-021) with evidence and actions. |
 | `scripts/build_site.py` | Regenerates every page from `data/*.json` (standard library only). |
 | `scripts/check_site.py` | Verifies the data and the generated pages (see below). |
+| `research/` | Independent verification record of session 33226b37-zone3 (line-by-line log and product dossiers, with the ID mapping to the canonical data layer). |
+| `docs/executive-summary.md` | Markdown executive summary (the rendered version is `executive-summary.html`). |
 | `COORDINATION.md` | Shared task board for parallel sessions. |
 | `analysis.html`, `categories/home-kitchen-air-fryers.html`, `disclosure.html` | Redirect stubs for URLs from the earlier PR #1 and PR #3 sites. |
 | `archive/26634cd5/`, `archive/66a80e53/` | Files from earlier sessions (PR #1 and PR #3), kept unchanged for reference. Not used by the site. |

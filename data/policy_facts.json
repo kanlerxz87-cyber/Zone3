@@ -305,6 +305,38 @@
       "source": "S26",
       "section": "Onsite Associates Program Commission Income Statement, opening section (re-read 2026-11-13)",
       "applies_to": "The Onsite rate table (Kitchen 1.25%) is not the rate for links on this site (FLG-021)."
+    },
+    {
+      "id": "PF-40",
+      "topic": "Application review: three qualifying sales in 180 days; personal orders excluded",
+      "quote": "After you sign up, our Associates team will check your application once you've driven qualified sales (we require at least three within the first 180 days). Please note that personal orders do not qualify. In our review, we check all of the Sites you've provided (websites, mobile apps, social network pages, and Alexa skills) to ensure that they meet our customer experience bar. All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.",
+      "source": "S29",
+      "section": "Associates Help, application review process (read 2026-11-13)",
+      "applies_to": "Campaign ramp planning: a new account must drive at least three qualifying external sales within 180 days and carry substantial original content. Added by session 33226b37-zone3."
+    },
+    {
+      "id": "PF-41",
+      "topic": "Account dormancy: 180 days to refer a sale",
+      "quote": "Once you've applied, you have 180 days to refer a sale through one of your Associates links. ... Your application can be withdrawn if there were not enough qualifying sales for 180 days after your application was submitted.",
+      "source": "S28",
+      "section": "Associates Help, Account Dormancy (read 2026-11-13)",
+      "applies_to": "New-account survival gate, consistent with PF-40. Added by session 33226b37-zone3."
+    },
+    {
+      "id": "PF-42",
+      "topic": "Payment timing: approximately 60 days after month end",
+      "quote": "We will pay Standard Commission Income and Special Commission Income in the default currency for an Amazon Site approximately 60 days following the end of each calendar month in which they were earned by the method described below that you have selected.",
+      "source": "S02",
+      "section": "Associates Program Commission Income Statement, Section 6 (Commission Income Reporting and Payment) (read 2026-11-13)",
+      "applies_to": "Cash-flow planning: commissions lag the calendar month by roughly two months. Added by session 33226b37-zone3."
+    },
+    {
+      "id": "PF-43",
+      "topic": "Payment minimums (US): deposit $10, gift card $10, check $100",
+      "quote": "Option 1 (Deposit) 10 USD ... Option 2 (Gift Card) 10 USD 2000 USD ... Option 3 (Check) 100 USD ... Check Processing Fee 15 USD.",
+      "source": "S02",
+      "section": "Associates Program Commission Income Statement, Section 6, Payment Minimum Chart (read 2026-11-13)",
+      "applies_to": "Payout-method planning. Added by session 33226b37-zone3."
     }
   ]
 }
