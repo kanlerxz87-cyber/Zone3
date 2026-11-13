@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — Zone3 Amazon Affiliate Platform</title>
+<meta name="description" content="Affiliate dashboard: click and conversion tracking per product (client-side, localStorage).">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap topbar">
+    <a href="index.html" class="brand"><span class="mark">Z3</span>Zone3</a>
+    <nav class="navLinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="category/kitchen.html">Categories</a>
+      <a href="analysis.html">Analysis</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="disclosure.html">Affiliate Disclosure</a>
+      <a href="flagged-for-review.html">Flagged for Review</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="sectionHead">
+      <h2>Affiliate Dashboard</h2>
+      <p>Clicks and conversions per product. Data is stored in your browser (localStorage) only — no server, no manual input. Reset anytime.</p>
+    </div>
+
+    <div class="grid cols4">
+      <div class="card">
+        <div class="kpi"><b id="totClicks">0</b><span>total clicks</span></div>
+      </div>
+      <div class="card">
+        <div class="kpi"><b id="totConversions">0</b><span>total conversions</span></div>
+      </div>
+      <div class="card">
+        <div class="kpi"><b id="convRate">0%</b><span>conversion rate</span></div>
+      </div>
+      <div class="card">
+        <div class="kpi"><b>$0.00</b><span>illustrative commission (unverified price)</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h3 style="margin:0 0 10px 0;font-size:1.05rem;">Per-product tracking</h3>
+      <table class="data">
+        <thead>
+          <tr>
+            <th>#</th><th>Product</th><th style="width:12%">Clicks</th><th style="width:12%">Conversions</th><th style="width:12%">Rate</th><th style="width:18%">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="dashBody"></tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn primary" id="resetBtn">Reset all data</button>
+      <a href="products.html" class="btn outline">View products</a>
+    </div>
+    <p class="muted" style="margin-top:12px;">Note: this static GitHub Pages site tracks clicks in your browser only. A production platform would log clicks/conversions server-side (or via Amazon's reporting API) and attribute them to affiliate tags for campaign optimization.</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footerRow">
+    <div class="footerCol">
+      <div style="font-weight:700;color:var(--text);font-size:0.95rem;">Zone3</div>
+      <div style="font-size:0.8rem;color:var(--muted);">Client-side dashboard (localStorage). No server.</div>
+    </div>
+    <div class="footerCol">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+<script>
+const products = [
+  {id:1, title:'CHEFMAN 6 Quart Dual Basket Air Fryer Oven — Black', asin:'B0CDY277D3', short:'https://link.amazon/B04G1MEwY'},
+  {id:2, title:'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven', asin:'B09B7SB46R', short:'https://link.amazon/B02NbDxp3'},
+  {id:3, title:'Chefman Air Fryer 8 Qt TurboFry 4-in-1 — Stainless Steel', asin:'B08DKYBTPH', short:'https://link.amazon/B00hJ57DV'}
+];
+const body = document.getElementById('dashBody');
+function render(){
+  let tc=0, tconv=0;
+  body.innerHTML='';
+  products.forEach(p=>{
+    const keyC='zone3:clicks:'+p.id;
+    const keyV='zone3:conversions:'+p.id;
+    const c = parseInt(localStorage.getItem(keyC)||'0',10);
+    const v = parseInt(localStorage.getItem(keyV)||'0',10);
+    tc+=c; tconv+=v;
+    const rate = c? ((v/c)*100).toFixed(1):0;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td>${p.id}</td>
+      <td><div class="t-title">${p.title}</div><div class="t-meta">ASIN ${p.asin}</div></td>
+      <td>${c}</td><td>${v}</td><td>${rate}%</td>
+      <td>
+        <button class="btn small" onclick="zone3.click(${p.id})">+ click</button>
+        <button class="btn small" onclick="zone3.convert(${p.id})">+ conversion</button>
+      </td>`;
+    body.appendChild(tr);
+  });
+  document.getElementById('totClicks').textContent=tc;
+  document.getElementById('totConversions').textContent=tconv;
+  document.getElementById('convRate').textContent = tc? ((tconv/tc)*100).toFixed(1)+'%':'0%';
+}
+window.zone3 = {
+  click(id){ localStorage.setItem('zone3:clicks:'+id, String((parseInt(localStorage.getItem('zone3:clicks:'+id)||'0',10)+1)); render(); },
+  convert(id){ localStorage.setItem('zone3:conversions:'+id, String((parseInt(localStorage.getItem('zone3:conversions:'+id)||'0',10)+1)); render(); }
+};
+document.getElementById('resetBtn').onclick=()=>{
+  if(confirm('Reset all dashboard data?')){ products.forEach(p=>{ localStorage.removeItem('zone3:clicks:'+p.id); localStorage.removeItem('zone3:conversions:'+p.id); }); render(); }
+};
+render();
+</script>
+
+</body>
+</html>
