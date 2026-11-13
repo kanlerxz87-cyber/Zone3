@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for Review — Zone3 Affiliate Intelligence</title>
+<meta name="description" content="Open irregularities and unverified items: short-link format, third-party hop, missing commission schedule, blocked BSR, volatile prices. Each with source links.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="logo" href="index.html">Zone<span class="dot">3</span></a>
+    <div class="tagline">Affiliate Intelligence</div>
+    <nav>
+      <div class="grp">Overview</div>
+      <a href="index.html">Dashboard</a>
+      <a href="executive-summary.html">Executive Summary</a>
+      <div class="grp">Research</div>
+      <a href="products.html">Products</a>
+      <a href="analysis.html">Analysis &amp; Findings</a>
+      <div class="grp">Marketing</div>
+      <a href="content.html">SEO Content &amp; Guides</a>
+      <div class="grp">Governance</div>
+      <a href="compliance.html">Compliance &amp; Disclosure</a>
+      <a href="flagged.html">Flagged for Review</a>
+      <a href="sources.html">Sources &amp; Verification</a>
+    </nav>
+    <div class="disc">
+      <strong>Affiliate disclosure</strong>
+      As an Amazon Associate we earn from qualifying purchases. Prices/availability change; verify on Amazon.
+    </div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <h1>Flagged for Review</h1>
+      <div class="spacer"></div>
+      <span class="badge flag">5 open · non-blocking</span>
+    </header>
+    <main class="content">
+
+      <div class="disclosure">
+        <strong>As an Amazon Associate we earn from qualifying purchases.</strong>
+      </div>
+
+      <div class="callout flag">
+        <strong>What "flagged" means</strong>
+        Every item below is either an irregularity found during verification or a value that could not be confirmed from an official source. Flagged items are published here for your review — they do not block the site from going live. Unverified values are left <strong>blank</strong> everywhere else on this site; they are never inferred or filled in.
+      </div>
+
+      <div class="panel prose">
+        <h2 id="F1">F1 — Supplied codes are 9-character short-link paths, not ASINs <span class="badge flag">needs review</span></h2>
+        <p><strong>What we observed:</strong> the three supplied path codes are each <strong>9 characters</strong>:</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Supplied code</th><th class="num">Length</th><th>Valid ASIN length</th><th>Direct <code>amazon.com/dp/&lt;code&gt;</code></th></tr></thead>
+            <tbody>
+              <tr><td class="mono">B04G1MEwY</td><td class="num">9</td><td>10</td><td>HTTP 404 — "Page Not Found" (<a href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener nofollow">verify</a>)</td></tr>
+              <tr><td class="mono">B02NbDxp3</td><td class="num">9</td><td>10</td><td>HTTP 404 — "Page Not Found" (<a href="https://www.amazon.com/dp/B02NbDxp3" target="_blank" rel="noopener nofollow">verify</a>)</td></tr>
+              <tr><td class="mono">B00hJ57DV</td><td class="num">9</td><td>10</td><td>HTTP 404 — "Page Not Found" (<a href="https://www.amazon.com/dp/B00hJ57DV" target="_blank" rel="noopener nofollow">verify</a>)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Why it matters:</strong> Amazon defines an ASIN as a 10-character code (e.g., <code>B07FZ8S74R</code>); the codes as supplied cannot be ASINs and cannot be looked up directly on Amazon. They are <code>link.amazon</code> short-link path codes.</p>
+        <p><strong>What we did:</strong> followed each short link through to its real destination ASIN and verified the products there (see <a href="products.html">Products</a>). The destination ASINs <em>are</em> valid 10-character codes.</p>
+        <p><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener nofollow">404 test #1</a> · <a href="https://www.amazon.com/dp/B02NbDxp3" target="_blank" rel="noopener nofollow">404 test #2</a> · <a href="https://www.amazon.com/dp/B00hJ57DV" target="_blank" rel="noopener nofollow">404 test #3</a>; ASIN format per <a href="https://sell.amazon.com/learn/what-is-asin" target="_blank" rel="noopener nofollow">Amazon Seller Central — ASIN</a> and multiple Amazon-help references (see <a href="sources.html">Sources</a>).</p>
+        <p><strong>Suggested action:</strong> confirm with the link provider that the intended identifiers are the destination ASINs (B0CDY277D3, B09B7SB46R, B08DKYBTPH), or obtain full <code>amzn.to</code>/<code>/?tag=</code> links.</p>
+      </div>
+
+      <div class="panel prose">
+        <h2 id="F2">F2 — Short links hop through third-party <code>amzlinks.in</code> <span class="badge flag">needs review</span></h2>
+        <p><strong>What we observed:</strong> <code>link.amazon/&lt;code&gt;</code> redirects via <code>amzlinks.in</code> (a third-party short-link operator) before landing on <code>amazon.com</code>. Also, an Associates <strong>tag parameter could not be verified</strong> in the redirect chain we observed — meaning we cannot confirm from an official source that these links carry a monetizable Associates ID.</p>
+        <p><strong>Control tests (2026-11-13):</strong></p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Test URL</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td class="mono"><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener nofollow">link.amazon/B04G1MEwY</a></td><td><span class="badge ok">resolves</span> → <a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener nofollow">dp/B0CDY277D3</a> (same target ×3 fetches)</td></tr>
+              <tr><td class="mono"><a href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener nofollow">link.amazon/B02NbDxp3</a></td><td><span class="badge ok">resolves</span> → <a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener nofollow">dp/B09B7SB46R</a> (same target ×2 fetches)</td></tr>
+              <tr><td class="mono"><a href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener nofollow">link.amazon/B00hJ57DV</a></td><td><span class="badge ok">resolves</span> → <a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener nofollow">dp/B08DKYBTPH</a> (same target ×2 fetches)</td></tr>
+              <tr><td class="mono">link.amazon/ZZZZZZZZ99</td><td><span class="badge bad">403 Forbidden</span> (control: junk input rejected)</td></tr>
+              <tr><td class="mono">amzlinks.in/B0FAKE1234</td><td><span class="badge bad">404 "invalid URL"</span> (control: unregistered code rejected)</td></tr>
+              <tr><td class="mono">amzlinks.in/B0CDY277D3</td><td><span class="badge bad">404 "invalid URL"</span> (control: a real ASIN is <em>not</em> a valid short code)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Why it matters:</strong> Associates Program Participation Requirements §2(b) require Special Links to carry your assigned Associates ID/tag for tracking and commission. If these links don't carry your tag, clicks won't attribute to your account.</p>
+        <p><strong>Sources:</strong> live redirect tests above (2026-11-13); tag/format rule: <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener nofollow">Associates Program Policies → Participation Requirements §2(b)</a>.</p>
+        <p><strong>Suggested action:</strong> replace/augment with links generated from your own Associates account (SiteStripe or <code>?tag=YOUR-ID-20</code>) and re-test attribution before driving traffic.</p>
+      </div>
+
+      <div class="panel prose">
+        <h2 id="F3">F3 — Commission rates unverifiable (sign-in only) → left blank <span class="badge flag">needs review</span></h2>
+        <p><strong>What we attempted:</strong> the official Associates Commission rate schedule at <a href="https://affiliate-program.amazon.com/help/operating/schedule" target="_blank" rel="noopener nofollow">affiliate-program.amazon.com/help/operating/schedule</a> redirects to sign-in (HTTP redirect to <code>amazon.com/ap/signin</code>). The Policies page's Appendix links to that schedule but does not publish the rates inline.</p>
+        <p><strong>Result:</strong> no category commission percentage for Home &amp; Kitchen / Kitchen could be confirmed from an official, publicly accessible source.</p>
+        <p><strong>What we did instead:</strong> the commission-rate and estimated-commission cells in <a href="products.html">Products</a> and <a href="analysis.html">Analysis §4</a> are <strong>blank and marked unverified</strong>. We did not use third-party rate cards, cached figures, or estimates.</p>
+        <p><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/schedule" target="_blank" rel="noopener nofollow">rate schedule (sign-in required)</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener nofollow">Policies → Commission Income Statement §3 + Appendix</a> (both fetched 2026-11-13).</p>
+        <p><strong>Suggested action:</strong> sign in to Associates Central and paste the official rate for the applicable category; then fill the blank cells and remove this flag.</p>
+      </div>
+
+      <div class="panel prose">
+        <h2 id="F4">F4 — Best Sellers Rank unverifiable (bot-checkpoint) → left blank <span class="badge flag">needs review</span></h2>
+        <p><strong>What we observed:</strong> Amazon product detail pages intermittently served automated-traffic checkpoints ("To continue, please click the 'Continue shopping' button") to our fetcher, so the Product information section (where BSR is published) could not be read reliably.</p>
+        <p><strong>Result:</strong> BSR cells are <strong>blank and marked unverified</strong> for all three products. No BSR value, rank direction, or category-rank claim appears anywhere on this site.</p>
+        <p><strong>What we could still verify:</strong> titles, brands, prices, list prices, ratings, review counts and "bought in past month" from Amazon's search-result pages (each row links its source in <a href="products.html">Products</a>).</p>
+        <p><strong>Suggested action:</strong> re-check BSR manually on each product page (Product information section) or via an approved PA API/Creators API feed, then fill the cells and remove this flag.</p>
+      </div>
+
+      <div class="panel prose">
+        <h2 id="F5">F5 — Prices are volatile deal prices (observed 2026-11-13) <span class="badge flag">needs review</span></h2>
+        <p><strong>What we observed:</strong> all three products were on promotion at capture:</p>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>Product</th><th class="num">Observed price</th><th class="num">List</th><th>Deal badge</th></tr></thead>
+            <tbody>
+              <tr><td><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener nofollow">CHEFMAN 6 Qt</a></td><td class="num">$79.93</td><td class="num">$99.99</td><td><span class="badge warn">Limited time deal</span></td></tr>
+              <tr><td><a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener nofollow">Emeril Lagasse 26QT</a></td><td class="num">$149.99</td><td class="num">$209.99</td><td><span class="badge warn">Early Black Friday Deal</span></td></tr>
+              <tr><td><a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener nofollow">Chefman 8 Qt</a></td><td class="num">$79.91</td><td class="num">$119.99</td><td><span class="badge warn">Limited time deal</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Why it matters:</strong> (a) prices change frequently — any content quoting them must be re-verified; (b) Associates Program Policies restrict when a site may display prices: only when Amazon serves the link containing the price data, or when data comes from Creators API/PA API (<a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener nofollow">Participation Requirements §2(b)</a>); (c) references to limited-time promotions must be removed as soon as the promotion ends (same section).</p>
+        <p><strong>What we did:</strong> every price cell carries its source link and capture date; the <a href="content.html">content pipeline</a> includes a mandatory promo-expiry cleanup stage; prices on this site are labeled as research observations, not live quotes.</p>
+        <p><strong>Suggested action:</strong> before commercial launch, switch price display to Amazon-served links/widgets or Creators/PA API data, and schedule daily/weekly re-verification.</p>
+      </div>
+
+      <div class="panel prose">
+        <h2>Register summary</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <thead><tr><th>ID</th><th>Item</th><th>Type</th><th>Affects</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">F1</td><td>9-char codes, not 10-char ASINs</td><td>Input irregularity</td><td>All 3 supplied links</td><td><span class="badge flag">open</span></td></tr>
+              <tr><td class="mono">F2</td><td>Third-party <code>amzlinks.in</code> hop; Associates tag unverified</td><td>Input/link irregularity</td><td>All 3 supplied links</td><td><span class="badge flag">open</span></td></tr>
+              <tr><td class="mono">F3</td><td>Commission % sign-in-only → blank</td><td>Unverified data</td><td>9 cells (3 products × rate/comm fields)</td><td><span class="badge flag">open</span></td></tr>
+              <tr><td class="mono">F4</td><td>BSR bot-blocked → blank</td><td>Unverified data</td><td>3 cells</td><td><span class="badge flag">open</span></td></tr>
+              <tr><td class="mono">F5</td><td>Volatile deal prices + price-display policy</td><td>Volatility/policy</td><td>All price cells &amp; content</td><td><span class="badge flag">open</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="src-note">Mirrored in <a href="../COORDINATION.md">COORDINATION.md</a> (repo task board) so sessions and reviewers see the same register. None of these items block publication.</p>
+      </div>
+
+    </main>
+    <footer class="pagefoot">
+      <strong>Zone3</strong> · <a href="index.html">Dashboard</a> ·
+      <a href="compliance.html">Disclosures &amp; Policies</a> ·
+      <a href="flagged.html">Flagged for Review</a> ·
+      <a href="sources.html">Sources</a><br>
+      As an Amazon Associate we earn from qualifying purchases. Observations captured 2026-11-13.
+    </footer>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
