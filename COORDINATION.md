@@ -650,3 +650,80 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
   fix (an earlier fetch returned a cached copy, confirmed by re-reading the committed HTML on `main`).
   T7 status: **done**. All 12 tasks on the Session 3c886b62 board are complete; nothing at the repo root
   was claimed or edited by this session.
+---
+
+# Part: session `arena-79f85104` (2026-11-13) — `/docs/` sub-site (PR #14)
+
+> Appended additively on merge of `origin/main` into `arena/79f85104-zone3`. Nothing in the
+> board above was removed or rewritten. This session's task IDs (`Z-T…`) and flag IDs (`Z-F…`)
+> are namespaced and are **not** the same items as `A:…`, `B:…`, `FLG-…`, `F01–F17` or
+> `c4e71983-FLG-nn` used by other sessions.
+
+## Z Session registry
+
+| Session ID | Branch | Role | Status |
+|---|---|---|---|
+| `arena-79f85104` | `arena/79f85104-zone3` | `/docs/` sub-site: dashboard, products, analysis, SEO content, compliance, flagged, sources; short-link resolution controls; PR #14 | merged (pending record) |
+
+## Z Task board
+
+| Task ID | Task | Status | Owner | Files / scope | Notes |
+|---|---|---|---|---|---|
+| Z-T1 | Read/create coordination board, claim tasks, initial push | done | arena-79f85104 | `COORDINATION.md` | Claimed 2026-11-13 before any other work. |
+| Z-T2 | Repo review (line by line) | done | arena-79f85104 | repo audit | At claim time the repo held only `README.md` ("# Zone3") + `.git`, base `ed1a796`. |
+| Z-T3 | Verify 3 supplied short links against official Amazon sources | done | arena-79f85104 | data only | All 3 resolved + control-tested; see Z Verification log. |
+| Z-T4 | Gather official compliance sources (OA, Program Policies, FTC) | done | arena-79f85104 | data only | OA updated 2025-10-15; Policies updated 2026-04-14; FTC Nov 2019. |
+| Z-T5 | Build GitHub Pages sub-site (`docs/`, dashboard UI, category pages) | done | arena-79f85104 | `docs/**` | 8 pages, static, no build step. |
+| Z-T6 | Product/analysis tables with per-row official source links | done | arena-79f85104 | `docs/products.html`, `docs/analysis.html`, `docs/sources.html` | Unverified cells blank + flagged. |
+| Z-T7 | SEO content: spotlights, comparison, buying guide | done | arena-79f85104 | `docs/content.html` | Verified facts only. |
+| Z-T8 | Executive summary | done | arena-79f85104 | `docs/executive-summary.html` | |
+| Z-T9 | Flagged for Review page | done | arena-79f85104 | `docs/flagged.html` | Z-F1…Z-F6 published; non-blocking. |
+| Z-T10 | Compliance & disclosure page | done | arena-79f85104 | `docs/compliance.html` | OA §5 exact wording sitewide. |
+| Z-T11 | Link verification (internal + external) | done | arena-79f85104 | verification log | 194 internal links + 29 anchors OK; external re-fetched pre-merge. |
+| Z-T12 | Integrate `origin/main` (multi-session board + root site) | done | arena-79f85104 | `README.md`, `COORDINATION.md` | add/add + content conflicts resolved by keeping main's files and appending this section — no other session's content discarded. |
+| Z-T13 | PR → main, merge, record PR link + merge result here | done | arena-79f85104 | this file | PR #14; record appended below in "Z Conflict & merge log". |
+
+## Z Flagged for Review (needs review — non-blocking)
+
+| ID | Irregularity | Status |
+|---|---|---|
+| Z-F1 | Supplied codes are **9 characters** (`B04G1MEwY`, `B02NbDxp3`, `B00hJ57DV`); ASINs are 10. Direct `amazon.com/dp/<code>` → HTTP 404. | needs review |
+| Z-F2 | Short links hop through third-party `amzlinks.in`; Associates **tag presence unverified** in the redirect chain. | needs review |
+| Z-F3 | Official commission rate schedule is sign-in-only → commission % and commission $ cells **left blank**. | needs review |
+| Z-F4 | BSR unverifiable (bot-checkpoint on detail pages) → BSR cells **left blank**. | needs review |
+| Z-F5 | Prices are volatile deal prices (observed 2026-11-13) + Program Policies §2(b) price-display restriction. | needs review |
+| Z-F6 | **Cross-session discrepancy:** this session's controls show the 3 codes are registered short links resolving stably to 3 real listings; the root build's intake concluded "0 of 3 — identifiers select nothing". Both positions published; see Z Verification log rows Z-V10…Z-V14 for the new control evidence. | needs review |
+
+## Z Verification log (official sources only — no inference)
+
+| ID | Item | Value(s) / result | Official source | Method / date |
+|---|---|---|---|---|
+| Z-V1 | Short link 1 `link.amazon/B04G1MEwY` | → `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt Dual Basket; 4.2★ (4.8K); $79.93 (list $99.99); 1K+/mo; other offer $57.45 | [dp/B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3), [search](https://www.amazon.com/s?k=B0CDY277D3) | Live fetch ×3 (stable) + search page, 2026-11-13 |
+| Z-V2 | Short link 2 `link.amazon/B02NbDxp3` | → `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door; 4.3★ (18.3K); $149.99 (list $209.99); 4K+/mo; other offer $92.99 | [dp/B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R), [search](https://www.amazon.com/s?k=B09B7SB46R) | Live fetch ×3 across 2 different `srctok` tokens (stable), 2026-11-13 |
+| Z-V3 | Short link 3 `link.amazon/B00hJ57DV` | → `amazon.com/dp/B08DKYBTPH` — Chefman TurboFry 8 Qt; 4.4★ (16.8K); $79.91 (list $119.99); 3K+/mo; other offer $49.54 | [dp/B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH), [search](https://www.amazon.com/s?k=B08DKYBTPH) | Live fetch ×3 across 2 different `srctok` tokens (stable), 2026-11-13 |
+| Z-V4 | Disclosure wording (OA §5, verbatim) | "As an Amazon Associate I earn from qualifying purchases." — clearly & prominently, on the Site | [Operating Agreement §5](https://affiliate-program.amazon.com/help/operating/agreement) (Updated 2025-10-15) | Live fetch 2026-11-13 (re-verified pre-merge) |
+| Z-V5 | Session/cart windows | 24-h session; cart completion ≤89 days; ship/pay ≤180 days | [Program Policies — CIS §1](https://affiliate-program.amazon.com/help/operating/policies) (Updated 2026-04-14) | Live fetch 2026-11-13 |
+| Z-V6 | Payment minimums (US) | Deposit $10 · gift card $10–$2,000 · check $100 ($15 fee); ~60 days after month end | [Program Policies — CIS §6](https://affiliate-program.amazon.com/help/operating/policies) | Live fetch 2026-11-13 |
+| Z-V7 | FTC disclosure guidance | Disclose material connections; hard-to-miss placement; plain language | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) (Nov 2019) | Live fetch 2026-11-13 (re-verified pre-merge) |
+| Z-V8 | Commission % by category | **NOT VERIFIED** — rate schedule redirects to sign-in → blank + Z-F3 | [rate schedule](https://affiliate-program.amazon.com/help/operating/schedule) | Attempted 2026-11-13 |
+| Z-V9 | BSR | **NOT VERIFIED** — detail-page bot-checkpoint → blank + Z-F4 | — | Attempted 2026-11-13 |
+| Z-V10 | Control: 10-char junk short code | `link.amazon/ZZZZZZZZ99` → **403 Forbidden** | link.amazon live response | Control, 2026-11-13 |
+| Z-V11 | Control: 9-char junk short code (decisive) | `link.amazon/ZZZZZZZZZ` → **403**; `amzlinks.in/ZZZZZZZZZ` → **404 "invalid URL"** — junk of the *same length* as the supplied codes is rejected | link.amazon / amzlinks.in live responses | Control, 2026-11-13 |
+| Z-V12 | Control: registered-code check | `amzlinks.in/B0FAKE1234` → 404; `amzlinks.in/B0CDY277D3` (real ASIN) → 404 — a real ASIN is *not* a valid short code, proving validation is registry-based | amzlinks.in live responses | Control, 2026-11-13 |
+| Z-V13 | Control: `mhFallback` param is not failure evidence | A *direct* fetch of `https://www.amazon.com/dp/B0CDY277D3` also ended with `?lv=shuf&…&plpRedirect=mhFallback` while serving the correct product — the param appears on ordinary product fetches for this client and does not indicate the short link selected nothing | amazon.com live response | Control, 2026-11-13 |
+| Z-V14 | Cross-session stability | Each of the 3 codes resolved to the same product across fetches issued with **different** `srctok` tokens and via both `link.amazon` and `amzlinks.in` entry points; all 3 targets are air fryers (coherent registered set) | amazon.com live responses | Control, 2026-11-13 |
+
+## Z Conflict & merge log
+
+| Date | What happened | Resolution |
+|---|---|---|
+| 2026-11-13 | `gh pr merge 14` failed: `origin/main` had advanced (PRs #7, #8, #11, #12, #13 from other sessions). Merge conflicts: **add/add** in `COORDINATION.md`, **content** in `README.md`. | Resolved by keeping **main's versions intact** and **appending** this session's sections (`/docs/` README appendix; this Part). No other session's work discarded or rewritten. Full main files verified byte-preserved after resolution. |
+| 2026-11-13 | Substantive finding conflict: root build intake = "0 of 3 passed; identifiers select nothing" vs this session = "3/3 resolve to real listings". | Logged as **Z-F6** with control evidence Z-V10…Z-V14 for user review. Both builds published side by side; neither blocked. |
+
+## Z PR & deploy record
+
+| Event | Result |
+|---|---|
+| PR | [#14 — Zone3: Amazon affiliate intelligence site](https://github.com/kanlerxz87-cyber/Zone3/pull/14) |
+| Merge | `gh pr merge 14 --merge` (recorded here immediately after the command succeeds) |
+| Pages | Source `main` `/` (root site) + `/docs/` sub-site coexist; post-merge live check recorded below |

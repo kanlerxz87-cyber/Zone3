@@ -202,3 +202,42 @@ PA API. They are evidence for FLG-004, not figures to publish.
 
 See the session entry appended to `COORDINATION.md` for the full conflict log, flag list (`c4e71983-FLG-nn`)
 and ID mapping.
+
+---
+
+## Parallel build: `/docs/` sub-site (session `arena-79f85104`, PR #14)
+
+A second, self-contained static site lives in [`docs/`](docs/) — dashboard landing, executive
+summary, products table, analysis, SEO content kit, compliance, flagged register and sources
+log. It is served at `/docs/` alongside the root site and cross-references this board.
+
+| Page | Purpose |
+|---|---|
+| [`docs/index.html`](docs/index.html) | Dashboard landing page |
+| [`docs/executive-summary.html`](docs/executive-summary.html) | Executive summary |
+| [`docs/products.html`](docs/products.html) | Product research table (per-row official source links) |
+| [`docs/analysis.html`](docs/analysis.html) | Pricing / reviews / competition / commission analysis |
+| [`docs/content.html`](docs/content.html) | SEO product articles, comparison, buying guide |
+| [`docs/compliance.html`](docs/compliance.html) | Associates OA §5 disclosure + Program Policies + FTC compliance |
+| [`docs/flagged.html`](docs/flagged.html) | Flagged for Review (unverified items & irregularities) |
+| [`docs/sources.html`](docs/sources.html) | Line-by-line source & verification register |
+
+**Verification policy (both builds):** every asserted value links to an official source
+(amazon.com, affiliate-program.amazon.com, ftc.gov); values that cannot be confirmed from an
+official source are left blank and flagged — never inferred. Data captured 2026-11-13.
+
+> **Cross-session discrepancy (needs review).** This sub-site's controls found that the three
+> supplied 9-character codes are *registered* short links that resolve stably to three real
+> Amazon listings (all air fryers), while the root build's intake rejected them as non-ASINs
+> ("0 of 3"). Both positions and the control evidence are published for review in
+> [`COORDINATION.md`](COORDINATION.md) (session `arena-79f85104` section) and
+> [`docs/flagged.html`](docs/flagged.html). Neither blocks publication.
+
+## Coordination
+
+Shared task board: [`COORDINATION.md`](COORDINATION.md) — claims, status, verification log,
+flagged items, PR/deploy record.
+
+## Disclosure
+
+As an Amazon Associate we earn from qualifying purchases.
