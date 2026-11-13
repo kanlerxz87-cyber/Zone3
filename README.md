@@ -11,12 +11,14 @@ Zone3 is an Amazon affiliate research dashboard. It shows every product link fro
 | `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html` | Generated site pages (GitHub Pages serves `main` at `/`). |
 | `assets/style.css`, `.nojekyll` | Site styling; disables Jekyll processing. |
 | `data/sources.json` | Source registry: every official page used, its retrieval status, and what it supports. |
-| `data/policy_facts.json` | Verbatim policy quotes (PF-01 to PF-21), each with its source and section. |
+| `data/policy_facts.json` | Verbatim policy quotes (PF-01 to PF-37, PF-14 withdrawn), each with its source and section. |
 | `data/products.json` | One record per product link. A `null` value means *unverified* and is shown blank. |
-| `data/flags.json` | Irregularities and unverified items (FLG-001 to FLG-014) with evidence and actions. |
+| `data/flags.json` | Irregularities and unverified items (FLG-001 to FLG-020) with evidence and actions. |
 | `scripts/build_site.py` | Regenerates every page from `data/*.json` (standard library only). |
 | `scripts/check_site.py` | Verifies the data and the generated pages (see below). |
 | `COORDINATION.md` | Shared task board for parallel sessions. |
+| `analysis.html`, `categories/home-kitchen-air-fryers.html` | Redirect stubs for URLs from the earlier PR #1 site. |
+| `archive/26634cd5/` | The earlier session's files (PR #1), kept unchanged for reference. Not used by the site. |
 
 ## Rebuild and check
 
@@ -31,8 +33,9 @@ python3 scripts/check_site.py   # must print "All checks passed."
 
 - Only values confirmed from an official source are shown. Anything else is left blank and marked *Unverified*. Values are never inferred.
 - Product data comes from official sources only. Price and review data may be shown only through a Special Link or the Creators API (Program Policies, Participation Requirements §2(b) and §6(t)).
+- Creators API data may not be used for AI analysis, aggregation or model training without Amazon's written approval (Creators API IP License §1, §2(c)(e); Participation Requirements §5). No such analysis is built.
 - The Associates disclosure (`As an Amazon Associate I earn from qualifying purchases.`) appears on every page (Operating Agreement §5).
 
 ## Status
 
-As of 2026-11-13 the three submitted identifiers are not valid product pages, so no product fields are verified yet. See `flagged.html` (the live Flagged for review page) for the blockers and the owner actions.
+As of 2026-11-13 the three submitted identifiers are not valid product pages, so no product fields are verified yet. The earlier site from PR #1 is merged in; see `COORDINATION.md` for the integration and the ID mapping. See `flagged.html` (the live Flagged for review page) for the blockers and the owner actions.

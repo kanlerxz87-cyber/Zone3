@@ -260,6 +260,8 @@ def build_exec() -> None:
     <li><strong>Associates compliance of link.amazon is unconfirmed.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), and purchases from a Redirecting Link are disqualified (PF-07). Whether link.amazon redirects without a click has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
     <li><strong>Commission rates cannot be verified.</strong> The rate schedule redirected to a sign-in page on 2026-11-13 {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
     <li><strong>Automated product data needs Creators API access.</strong> The official prerequisite is &ldquo;at least 10 qualifying sales within the past 30 days&rdquo; {src_links(['S04'])}. Prices and reviews may be shown only through a Special Link or the API {src_links(['S02'])} (PF-04, PF-05) {flag_links(['FLG-006'])}.</li>
+    <li><strong>The AI layer needs written approval from Amazon.</strong> The Creators API terms bar analysing, aggregating or repurposing its data, and bar using Program Content to develop or train machine learning or language models, without express prior written approval {src_links(['S02'])} (PF-23, PF-24, PF-25) {flag_links(['FLG-016'])}.</li>
+    <li><strong>Eligibility for a Norway-based owner is not stated.</strong> Schedule 1 of the Operating Agreement lists only the United States site, amazon.com {src_links(['S01'])} (PF-35) {flag_links(['FLG-015'])}.</li>
     <li><strong>PA-API 5 is deprecated.</strong> The official notice says it is being replaced by the Creators API {src_links(['S05'])} (PF-17). Another session branch cites PA-API 5 as the sanctioned source {flag_links(['FLG-007'])}.</li>
     <li><strong>Disclosure is on every page.</strong> The required wording is quoted from the Operating Agreement, Section 5 {src_links(['S01'])} (PF-01). Placement for FTC purposes still needs owner review {flag_links(['FLG-013'])}.</li>
   </ul>
@@ -270,6 +272,7 @@ def build_exec() -> None:
   <ul class="findings">
     <li>A GitHub Pages site (this site) with a landing dashboard and category pages: Products, Pricing &amp; commission, Reviews &amp; competition, Content &amp; compliance, Campaigns &amp; tracking.</li>
     <li>A Flagged for review page with {len(FLAGS)} items, each with its evidence sources and the action needed.</li>
+    <li>The earlier session&rsquo;s site from PR #1 is merged in. Its scripts, data and HTML are archived under <code>archive/26634cd5/</code>, and its old <code>analysis.html</code> and category URLs redirect to the pages that replace them.</li>
     <li>A Sources page that lists each official page used, its retrieval status, and what it supports.</li>
     <li>A data layer (<code>data/*.json</code>) with a generator (<code>scripts/build_site.py</code>) and a checker (<code>scripts/check_site.py</code>). The checker fails if a table row has no official source link, or if a value appears without a source.</li>
   </ul>
@@ -380,7 +383,6 @@ def build_reviews() -> None:
         ["Product", "Rating", "Review count", "Competing listings", "Best-seller rank", "Flags", "Source"], rows)
     rules = [
         ["Reviews and star ratings", FACTS["PF-05"]["quote"], "Ratings and review counts are blank. They can only come from the API.", src_links(["S02"])],
-        ["Reviews must not be bought or traded", FACTS["PF-14"]["quote"], "This project writes no reviews and solicits none.", src_links(["S01"])],
         ["No inaccurate or misleading product claims", FACTS["PF-10"]["quote"], "Competition statements cannot be made until product data is verified.", src_links(["S02"])],
         ["Original content and third-party material", FACTS["PF-15"]["quote"], "Pages must add analysis to any product data they use.", src_links(["S02"])],
     ]
@@ -517,6 +519,26 @@ def build_assets() -> None:
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
 
 
+def build_legacy_stubs() -> None:
+    """Old URLs from PR #1 (session 26634cd5). They redirect to the pages that replace them."""
+    stubs = {
+        "analysis.html": "executive-summary.html",
+        "categories/home-kitchen-air-fryers.html": "products.html",
+    }
+    for name, target in stubs.items():
+        path = ROOT / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        rel = "../" + target if "/" in name else target
+        path.write_text(
+            '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            f'<meta http-equiv="refresh" content="0; url={rel}">'
+            '<link rel="canonical" href="' + rel + '">'
+            '<title>Moved</title></head><body>'
+            f'<p>This page has moved to <a href="{rel}">{rel}</a>.</p></body></html>\n',
+            encoding="utf-8",
+        )
+
+
 def main() -> None:
     build_assets()
     build_index()
@@ -528,6 +550,7 @@ def main() -> None:
     build_campaigns()
     build_flagged()
     build_sources()
+    build_legacy_stubs()
     print("built site in", ROOT)
 
 

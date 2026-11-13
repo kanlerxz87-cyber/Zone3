@@ -1,7 +1,7 @@
 {
   "retrieved": "2026-11-13",
-  "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3)",
-  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (not a product fact); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact.",
+  "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration.",
+  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page.",
   "sources": [
     {
       "id": "S01",
@@ -10,7 +10,8 @@
       "publisher": "Amazon Associates (official)",
       "status": "verified",
       "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'.",
-      "used_for": "Section 5 disclosure wording; Section 6 (Section 5 breach is material); Section 1 scope of Special Links."
+      "used_for": "Section 5 disclosure wording; Section 6 (breach of Section 5 is material); Section 1 Special Links; Schedule 1 lists only the United States Amazon Site (amazon.com) (see FLG-015).",
+      "alias_of_26634cd5": "S7"
     },
     {
       "id": "S02",
@@ -19,7 +20,8 @@
       "publisher": "Amazon Associates (official)",
       "status": "verified",
       "status_note": "Fetched 2026-11-13. Page header reads 'Updated: April 14, 2026'. Read in 11 chunks; the sections cited in policy_facts.json were read in full.",
-      "used_for": "Special Link and tag rules; price/review display rules; link shortener rule (section 6(w)); Redirecting Link disqualifier (Commission Income Statement section 2(e)); offline-use prohibition (section 4)."
+      "used_for": "Special Link and tag rules; price/review display rules; link shortener rule (section 6(w)); Redirecting Link disqualifier (Commission Income Statement section 2(e)); offline-use prohibition (section 4).",
+      "alias_of_26634cd5": "S8"
     },
     {
       "id": "S03",
@@ -28,7 +30,8 @@
       "publisher": "Amazon Associates (official)",
       "status": "not-accessible",
       "status_note": "On 2026-11-13 this URL redirected to an Amazon sign-in page (ap/signin). No rate values were read, so no commission rate is stated anywhere on this site.",
-      "used_for": "Nothing. Commission rates are left blank and flagged (FLG-005)."
+      "used_for": "Nothing. Commission rates are left blank and flagged (FLG-005).",
+      "alias_of_26634cd5": "S9"
     },
     {
       "id": "S04",
@@ -64,7 +67,8 @@
       "publisher": "U.S. Federal Trade Commission (official)",
       "status": "verified",
       "status_note": "Fetched 2026-11-13. Brochure dated November 2019 on the page.",
-      "used_for": "Disclosure placement and content honesty rules for the content section."
+      "used_for": "Disclosure placement and content honesty rules for the content section.",
+      "alias_of_26634cd5": "S10"
     },
     {
       "id": "S08",
@@ -99,8 +103,9 @@
       "url": "https://link.amazon/B04G1MEwY",
       "publisher": "Link as submitted by the owner",
       "status": "observed",
-      "status_note": "Fetched twice on 2026-11-13. Both fetches ended on https://www.amazon.com/dp/B0CDY277D3?... with parameters lv=shuf and plpRedirect=mhFallback.",
-      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002)."
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
+      "alias_of_26634cd5": "S1"
     },
     {
       "id": "S12",
@@ -108,8 +113,9 @@
       "url": "https://link.amazon/B02NbDxp3",
       "publisher": "Link as submitted by the owner",
       "status": "observed",
-      "status_note": "Fetched twice on 2026-11-13. Both fetches ended on https://www.amazon.com/dp/B09B7SB46R?... with parameters lv=shuf and plpRedirect=mhFallback.",
-      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002)."
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
+      "alias_of_26634cd5": "S2"
     },
     {
       "id": "S13",
@@ -117,8 +123,9 @@
       "url": "https://link.amazon/B00hJ57DV",
       "publisher": "Link as submitted by the owner",
       "status": "observed",
-      "status_note": "Fetched twice on 2026-11-13. Both fetches ended on https://www.amazon.com/dp/B08DKYBTPH?... with parameters lv=shuf and plpRedirect=mhFallback.",
-      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002)."
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
+      "alias_of_26634cd5": "S3"
     },
     {
       "id": "S14",
@@ -126,8 +133,9 @@
       "url": "https://www.amazon.com/dp/B0CDY277D3",
       "publisher": "Amazon.com (official retailer)",
       "status": "observed",
-      "status_note": "Page title read 2026-11-13. Only the page title was readable; price, rating and availability were not in the text returned by the verification tool.",
-      "used_for": "Title only, shown in the Flagged for Review page."
+      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B0CDY277D3 (no parameters). Page title read: CHEFMAN 6 Quart. Price, rating and availability not in the text returned.",
+      "used_for": "Title only, shown in the Flagged for Review page.",
+      "alias_of_26634cd5": "S4"
     },
     {
       "id": "S15",
@@ -135,17 +143,19 @@
       "url": "https://www.amazon.com/dp/B09B7SB46R",
       "publisher": "Amazon.com (official retailer)",
       "status": "observed",
-      "status_note": "Page title read 2026-11-13. Price, rating and availability not readable with the verification tool.",
-      "used_for": "Title only, shown in the Flagged for Review page."
+      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B09B7SB46R (no parameters). The tool returned the Emeril Lagasse 26QT title with the URL https://www.amazon.com/dp/B09B7SB46R?lv=shuf&channelId=500&plpRedirect=mhFallback. Price, rating and availability not in the text returned.",
+      "used_for": "Title only, shown in the Flagged for Review page.",
+      "alias_of_26634cd5": "S5"
     },
     {
       "id": "S16",
-      "title": "Observed redirect target: amazon.com/dp/B08DKYBTPH (page title)",
+      "title": "Amazon.com product page check: amazon.com/dp/B08DKYBTPH (direct)",
       "url": "https://www.amazon.com/dp/B08DKYBTPH",
       "publisher": "Amazon.com (official retailer)",
       "status": "observed",
-      "status_note": "Page title read 2026-11-13. Price, rating and availability not readable with the verification tool.",
-      "used_for": "Title only, shown in the Flagged for Review page."
+      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B08DKYBTPH (no parameters). Returned the 'To continue, please click the Continue shopping button' interstitial, page title 'Amazon.com'. No product text was readable from this URL.",
+      "used_for": "Direct-URL check for product 3 (interstitial only). The product title is taken from S13 and S23.",
+      "alias_of_26634cd5": "S6"
     },
     {
       "id": "S17",
@@ -200,6 +210,25 @@
       "status": "observed",
       "status_note": "Read 2026-11-13 with gh api: status 'built', build_type 'legacy', source branch 'main' path '/', public true.",
       "used_for": "Pages is enabled on main at / (no build step). Site files are at the repo root."
+    },
+    {
+      "id": "S23",
+      "title": "Destination page for product 3, reached through link.amazon/B00hJ57DV",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Read 2026-11-13 through the short link. Page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "used_for": "Title, brand, capacity and category of the product 3 destination (see S16 for the direct-URL interstitial).",
+      "alias_of_26634cd5": "S3 (destination page)"
+    },
+    {
+      "id": "S24",
+      "title": "FTC: Endorsements, Influencers, and Reviews (topic hub)",
+      "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+      "publisher": "U.S. Federal Trade Commission (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. States that the Endorsement Guides were 'revised in 2023' and links the Consumer Reviews and Testimonials Rule (16 CFR Part 465) and the Consumer Review Fairness Act.",
+      "used_for": "Current FTC guidance pointers (FLG-017). The 2019 brochure (S07) is older than the 2023 Endorsement Guides revision."
     }
   ]
 }

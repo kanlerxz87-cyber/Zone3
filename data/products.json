@@ -20,7 +20,10 @@
         "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
         "confirmed_as_submitted_product": false,
         "source": "S11",
-        "title_source": "S14"
+        "title_source": "S14",
+        "brand": "CHEFMAN",
+        "capacity": "6 Quart",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
       },
       "product_name": null,
       "brand": null,
@@ -65,7 +68,10 @@
         "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
         "confirmed_as_submitted_product": false,
         "source": "S12",
-        "title_source": "S15"
+        "title_source": "S15",
+        "brand": "Emeril Lagasse",
+        "capacity": "26QT",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
       },
       "product_name": null,
       "brand": null,
@@ -110,7 +116,10 @@
         "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
         "confirmed_as_submitted_product": false,
         "source": "S13",
-        "title_source": "S16"
+        "title_source": "S23",
+        "brand": "Chefman",
+        "capacity": "8 Qt",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
       },
       "product_name": null,
       "brand": null,

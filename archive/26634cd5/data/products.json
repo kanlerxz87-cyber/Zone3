@@ -1,0 +1,48 @@
+{
+  "retrieved": "2026-11-13",
+  "category": {"slug": "home-kitchen-air-fryers", "name": "Home & Kitchen › Air Fryers & Multi-Cookers"},
+  "products": [
+    {
+      "id": "P1",
+      "short_link": "https://link.amazon/B04G1MEwY",
+      "product_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "source_ids": ["S1", "S4"],
+      "title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "brand": "CHEFMAN",
+      "capacity": "6 Quart",
+      "category": "Home & Kitchen",
+      "asin": "B0CDY277D3",
+      "price": null, "rating": null, "review_count": null, "availability": null, "commission_rate": null,
+      "listing_claims": ["Dual basket: 2 independent 3 Qt nonstick, dishwasher-safe frying baskets", "Easy View Windows", "Sync Finish", "Hi-Fry", "Auto Shutoff", "Digital display"],
+      "flags": ["F1", "F2", "F3", "F4", "F5"]
+    },
+    {
+      "id": "P2",
+      "short_link": "https://link.amazon/B02NbDxp3",
+      "product_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "source_ids": ["S2", "S5"],
+      "title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals.",
+      "brand": "Emeril Lagasse",
+      "capacity": "26QT",
+      "category": "Home & Kitchen",
+      "asin": "B09B7SB46R",
+      "price": null, "rating": null, "review_count": null, "availability": null, "commission_rate": null,
+      "listing_claims": ["French door design", "24 cooking functions", "Dual-speed fan", "Rotisserie"],
+      "flags": ["F1", "F2", "F3", "F4", "F5"]
+    },
+    {
+      "id": "P3",
+      "short_link": "https://link.amazon/B00hJ57DV",
+      "product_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "source_ids": ["S3", "S6"],
+      "title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "brand": "Chefman",
+      "capacity": "8 Qt",
+      "category": "Home & Kitchen",
+      "asin": "B08DKYBTPH",
+      "price": null, "rating": null, "review_count": null, "availability": null, "commission_rate": null,
+      "listing_claims": ["4-in-1 (air fry, bake, dehydrate, frozen)", "450°F Hi-Fry option", "XL nonstick dishwasher-safe basket", "Stainless steel"],
+      "flags": ["F1", "F2", "F3", "F4", "F5", "F6"]
+    }
+  ]
+}
