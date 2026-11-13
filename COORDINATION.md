@@ -643,3 +643,10 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
   `sessions/3c886b62/docs/content/` were normalised so each list item is a single logical block. No root
   file was touched. Re-verified: `tools/check_links.py` OK (16 pages, 285 sourced rows),
   `scripts/check_site.py` OK at the root.
+
+- **2026-11-13 — 3c886b62**: PR #15 (`arena/3c886b62-zone3` → `main`): https://github.com/kanlerxz87-cyber/Zone3/pull/15
+  — **merged** at 2026-11-13T23:15:53Z (merge commit `aec6c72`). Pages build for `aec6c72`: **built**.
+  Live check with the fetch tool: the Dashboard at `/Zone3/sessions/3c886b62/` renders correctly after the
+  fix (an earlier fetch returned a cached copy, confirmed by re-reading the committed HTML on `main`).
+  T7 status: **done**. All 12 tasks on the Session 3c886b62 board are complete; nothing at the repo root
+  was claimed or edited by this session.
