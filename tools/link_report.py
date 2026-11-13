@@ -15,7 +15,7 @@ from __future__ import annotations
 import argparse, json, pathlib, sys, collections
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+DATA = ROOT / "data" / "z3"
 
 TABLES = [
     ("products", "intake & verification", "products.json", ["table", "attributes_table", "affiliate_link_table"]),

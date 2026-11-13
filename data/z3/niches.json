@@ -30,15 +30,13 @@
       {
         "input": "commission_index",
         "needs": "Per-category commission rate for the niche's dominant category",
-        "official_source": "In-account Standard Commission Income rate card (not public)",
-        "availability": "Blocked — requires Associates sign-in",
+        "official_source": "Standard Commission Income Statement, Table 1",
+        "availability": "AVAILABLE — published Table 1 rates; per-category index computed on the Commission page",
         "sources": [
-          "SRC-12"
+          "SRC-18"
         ],
-        "status": "blocked-by-auth",
-        "flags": [
-          "FLG-013"
-        ]
+        "status": "verified",
+        "flags": []
       },
       {
         "input": "demand_index",

@@ -87,8 +87,11 @@ Every statement below was read from the live page on 2026-11-13.
 | B43 | Rounding to nearest currency unit → effective rate may differ from rate card | CIS §6 | ✔ |
 | B44 | Programme free to join; **no** authorised paid set-up or consulting business | Part. Req. 1 | ✔ |
 | B45 | Commission "up to 10%"; differs by category; paid ≈60 days | https://affiliate-program.amazon.com/ | ✔ |
-| B46 | Per-category rate card **not** publicly retrievable | `/help/operating/schedule` → redirects to `amazon.com/ap/signin` | ✔ (negative) |
+| B46 | The `/help/operating/schedule` endpoint requires sign-in | `/help/operating/schedule` → redirects to `amazon.com/ap/signin` | ✔ (negative) |
 | B47 | Agreement updated **October 15, 2025**; Policies updated **April 14, 2026** | page headers | ✔ |
+| B48 | **Full published rate tables exist**: Standard Table 1 (11 bands, 10.00 % → 0.00 %, "All Other Categories 4.00 %") + Bounty schedule | https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ | ✔ |
+| B49 | Onsite Table A pays materially less on the same category (Kitchen 1.25 % vs 4.50 %) and covers only Direct Qualifying Purchases of the same ASIN variant; Table B (Creator Ads) differs again | https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA | ✔ |
+| B50 | Creators API `GetItems` documents `itemIds` as ASINs with 10-character examples | /creatorsapi/docs/en-us/api-reference/operations/get-items | ✔ (corroborates A4) |
 
 ---
 
@@ -150,7 +153,7 @@ Recorded so that "blank" is demonstrably *earned*, not laziness.
 | Star rating / review count | Only displayable if API-sourced (B21) — same blocker |
 | Availability | Same as price (B29) |
 | Variations | `GetVariations` needs a valid parent ASIN |
-| Per-category commission rate | Rate card behind sign-in (B46) |
+| Per-product commission | Category unresolved, so no band can be applied (rates themselves are now published — see Commission page) |
 | Per-product commission | Derived from the above two rows; both unavailable |
 | "Trending" score | No official Amazon trend metric for affiliates (C8) |
 | "High-converting" score | No official Amazon conversion metric for affiliates (C8) |
@@ -158,7 +161,13 @@ Recorded so that "blank" is demonstrably *earned*, not laziness.
 | Clicks / conversions / EPC | No campaign exists; Amazon is the system of record and reports in-account only |
 | Ranked niche list | Four of six scoring inputs unavailable; no imputation (see `tools/niche_score.py`) |
 
-**Total: 12 field families, 36 cells, all blank, all flagged, none guessed.**
+**Total: 11 field families and 36 product cells blank; none guessed.**
+
+> Superseded entry: an earlier revision of this log listed "per-category commission rate" as
+> unobtainable because `/help/operating/schedule` redirects to sign-in. That inference was wrong —
+> the statement is published publicly at the help centre. Added as **B48**; FLG-013 is marked
+> resolved. The *per-product* commission remains blank, for a different and still-valid reason:
+> no category can be attached to an unresolvable listing.
 
 ---
 

@@ -315,7 +315,7 @@
         "note": "Depends on the article inventory above.",
         "sources": [],
         "status": "blocked",
-        "self_attested": "data/content.json"
+        "self_attested": "data/z3/content.json"
       },
       {
         "item": "Keyword targeting",
@@ -323,7 +323,7 @@
         "note": "No category or product identity exists to target.",
         "sources": [],
         "status": "blocked",
-        "self_attested": "data/content.json"
+        "self_attested": "data/z3/content.json"
       },
       {
         "item": "Page speed",

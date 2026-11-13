@@ -13,7 +13,7 @@ from __future__ import annotations
 import json, html, hashlib, sys, datetime, pathlib, argparse, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+DATA = ROOT / "data" / "z3"   # namespaced: other sessions own data/*.json
 SITE_ORIGIN = "https://kanlerxz87-cyber.github.io"
 SITE_BASE = "/Zone3"
 
@@ -33,6 +33,7 @@ CAMPAIGNS = load("campaigns.json")
 CONTENT = load("content.json")
 REQUIREMENTS = load("requirements.json")
 AGENT = load("agent_terms.json")
+COMMISSION = load("commission.json")
 
 STATUS_CLASS = {
     "verified": "p-ok", "done": "p-ok", "delivered": "p-ok", "implemented": "p-ok",
@@ -228,7 +229,7 @@ NAV = [
     ("Overview", [("index", "Dashboard"), ("executive-summary", "Executive summary"),
                   ("requirements", "Requirements"), ("repo-review", "Repo review")]),
     ("Research", [("products", "Products"), ("niches", "Niches"),
-                  ("pricing", "Pricing"), ("reviews", "Reviews")]),
+                  ("pricing", "Pricing"), ("commission", "Commission"), ("reviews", "Reviews")]),
     ("Output", [("content", "Content"), ("campaigns", "Campaigns")]),
     ("Governance", [("compliance", "Compliance"), ("agent-terms", "Agent terms"),
                     ("methodology", "Methodology"), ("sources", "Sources")]),
@@ -362,6 +363,7 @@ def page_index(depth):
         ("products", "Products", "Intake and verification register for the three submitted links, plus the 12-field attribute sheet that is blocked."),
         ("niches", "Niches", "Niche scoring model, its six inputs, and ten verified category-level constraints on niche choice."),
         ("pricing", "Pricing", "Pricing rules engine, per-item price sheet, and the two prohibited price features."),
+        ("commission", "Commission", "Amazon's published rate tables (Standard, Onsite, Creator Ads) plus the Bounty schedule and what they imply."),
         ("reviews", "Reviews", "Review-integrity constraints and a compliant aggregate-only sentiment design."),
         ("content", "Content", "Article, comparison and buying-guide templates with claim-grounding gates and SEO mechanics."),
         ("campaigns", "Campaigns", "Link management, metrics schema and a permitted-vs-prohibited optimiser for 12 levers."),
@@ -646,6 +648,48 @@ def page_pricing(depth):
         "Per-product price sheet, the rules that govern displaying prices at all, and the exact sequence required to "
         "populate this page with verified numbers.",
         "\n".join(b), depth)
+
+
+def page_commission(depth):
+    b = [callout("ok", "This page is the one the brief was really about",
+        "<p>Commission is fixed by <strong>product category</strong>, so it is the single input an affiliate agent can optimise "
+        "with certainty. Every rate below is copied from Amazon's published statements — not from a rate card behind a login, "
+        "not from a third-party blog. Where an earlier draft of this project said the rates were unobtainable, that is corrected "
+        f'here and in <a href="{rel(depth,1,"flagged")}">FLG-013</a>.</p>')]
+    b.append('<div style="height:20px"></div>')
+    b.append(sec("Standard commissions"))
+    b.append(table(COMMISSION["standard_table1"], depth, "t1"))
+    b.append('<div style="height:22px"></div>')
+    b.append(sec("Onsite vs Standard — the same category pays far less on Amazon's own surfaces"))
+    b.append(table(COMMISSION["onsite_tableA"], depth, "ta"))
+    b.append('<div style="height:22px"></div>')
+    b.append(sec("Creator Ads variant (Table B)"))
+    b.append(table(COMMISSION["creators_ads_tableB"], depth, "tb"))
+    b.append('<div style="height:22px"></div>')
+    b.append(sec("Bounty events — flat per action, independent of basket size"))
+    b.append(table(COMMISSION["bounties"], depth, "bounty"))
+    b.append('<div style="height:22px"></div>')
+    b.append(sec("Findings from the rate card"))
+    b.append(table(COMMISSION["analysis"], depth, "analysis"))
+    b.append('<div style="height:22px"></div>')
+    b.append(prose("Why no rate appears next to P-01, P-02 or P-03", [
+        ("p", "Applying 4.50 % to these items would require knowing that they <em>are</em> Kitchen products. That fact comes from the "
+              "listing's browse node, and there is no listing: the identifiers do not resolve. The 4.50 % figure would have to be attached "
+              "to a category inferred from whatever page the short link happened to fall back to, which is Amazon's own recommendation "
+              "engine rather than the submitted product."),
+        ("p", "So the reference tables are published in full, and the three product rows stay blank. That is the difference between a rate "
+              "card and a guess dressed as one."),
+        ("p", "<strong>Worked example of the trap.</strong> An agent that accepted the fallback would write: 'this air fryer earns 4.50 % — "
+              "a strong kitchen category'. Every number in that sentence is individually sourced and the claim is still wrong, because it "
+              "describes a product nobody submitted. Per-row sourcing alone does not make a derived claim true; the join between the two has "
+              "to hold as well."),
+    ]))
+    return render_page("commission", "Commission structure & rate analysis",
+        "Amazon's published fixed commission tables — Standard, Onsite and Creator Ads — with the Bounty schedule, and what the "
+        "rate card implies for niche selection. Every rate cites the official statement it was read from.",
+        "\n".join(b), depth,
+        badges=[pill("11 rate bands verified", "p-ok"), pill("source: Associates help centre", "p-info")])
+
 
 
 def page_reviews(depth):
@@ -1031,6 +1075,7 @@ PAGES = {
     "products": page_products,
     "niches": page_niches,
     "pricing": page_pricing,
+    "commission": page_commission,
     "reviews": page_reviews,
     "content": page_content,
     "campaigns": page_campaigns,
@@ -1150,7 +1195,7 @@ def main():
                          "result": "pass"},
         "files": {k: hashlib.sha256((out / v).read_bytes()).hexdigest()[:12] for k, v in sorted(written.items())},
     }
-    (out / "data" / "build-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    (out / "data" / "z3" / "build-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     print(f"OK  {len(written)} pages · {nrows} verified table rows · {len(SOURCES)} sources · {len(FLAGS)} flags · gate PASS")
     for k, v in sorted(written.items()):
         print("   ", v)

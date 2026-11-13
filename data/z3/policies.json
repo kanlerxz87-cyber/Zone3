@@ -376,24 +376,24 @@
     "rows": [
       {
         "item": "Headline commission",
-        "value": "\"Earn up to 10% in associate commissions from qualifying purchases and programs\"",
+        "value": "\"Earn up to 10% in associate commissions from qualifying purchases and programs.\" Table 1 confirms 10.00% applies to Luxury Beauty, Luxury Stores Beauty and Amazon Explore only.",
         "implication": "Revenue model must be volume/traffic-led: at <=10% of qualifying revenue, click-through rate and content coverage dominate over per-unit margin.",
         "sources": [
-          "SRC-11"
+          "SRC-11",
+          "SRC-18"
         ],
         "status": "verified"
       },
       {
         "item": "Per-category rates",
-        "value": null,
-        "implication": "Not publicly retrievable (redirects to sign-in). Niche ranking by category rate is therefore not computed on this site.",
+        "value": "Public and now published on this site — see the Commission page: 11 fixed bands from 10.00% down to 0.00%, with a 4.00% 'All Other Categories' default.",
+        "implication": "Niche scoring now has a real commission_index. Highest broad bands: 4.50% (Physical Books, Kitchen, Automotive), 4.00% (Amazon devices, Apparel, Shoes, Jewelry, Luggage), 3.00% (Toys, Furniture, Home, Tools, Sports, Baby, Beauty).",
         "sources": [
+          "SRC-18",
           "SRC-12"
         ],
-        "status": "blocked-by-auth",
-        "flags": [
-          "FLG-013"
-        ]
+        "status": "verified",
+        "flags": []
       },
       {
         "item": "Attribution window (session)",

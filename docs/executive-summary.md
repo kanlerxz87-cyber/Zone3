@@ -96,9 +96,28 @@ gift card, gift card capped at 2,000 USD) and 100 USD by check + 15 USD fee.
 * any order with a **cancellation, return or refund** is excluded entirely;
 * rounding per purchase means the effective rate drifts slightly from the rate card.
 
-**Not published anywhere on this site:** per-category commission rates. The Appendix
-rate card (`/help/operating/schedule`) redirects to Amazon sign-in — it is not a
-public document. So commission cells are **blank**, not guessed. (FLG-013)
+**Published in full on `/commission/`** — after a correction during review. The Appendix link at
+`/help/operating/schedule` does redirect to sign-in, but the Standard Commission Income Statement is
+publicly available in the Associates help centre: eleven fixed bands from **10.00 % down to 0.00 %**,
+with **4.00 % as the "All Other Categories" default**, plus the Bounty schedule ($12.00 per Prime
+registration or membership; $0.25–$5.00 per Prime Video action).
+
+| Band | Categories (abridged) |
+| --- | --- |
+| **10.00 %** | Luxury Beauty, Luxury Stores Beauty, Amazon Explore |
+| 5.00 % | Digital/Physical Music, Handmade, Digital Videos |
+| 4.50 % | Physical Books, **Kitchen**, Automotive |
+| 4.00 % | Amazon devices, Luxury Stores Fashion, Apparel, Watches, Jewelry, Luggage, Shoes, Handbags |
+| 3.00 % | Toys, Furniture, Home, Home Improvement, Lawn & Garden, Pets, Headphones, Beauty, Tools, Sports, Baby |
+| 2.50 % / 2.00 % | PC & components, DVD/Blu-Ray · Televisions, Digital Video Games |
+| 1.00 % | Amazon Fresh, Video Games & Consoles, Grocery, Health & Personal Care |
+| **0.00 %** | Gift cards, wireless plans, alcohol, Kindle subscriptions, vehicles, pet Rx, restaurant delivery, Coach |
+
+Two consequences. **The default band beats four named bands**, so an unlisted niche is often the better
+bet. And **Kitchen 4.50 % versus Home 3.00 % is a 1.5× spread between categories that look like the same
+shelf** — so a rate may never be inferred from a product's topic, only from its browse node. What remains
+blank is the *per-product* commission for these three SKUs, because no category can be attached to an
+unresolvable listing. (FLG-013 resolved; FLG-008 still open.)
 
 **Strategic read.** Because the entire basket pays, *traffic quality beats item
 relevance*. Because the session is fragile, *direct-to-product links on fast pages
@@ -163,6 +182,8 @@ needed in one post for a brand, it's probably needed in all posts."*
 | 1 | **Correct the three ASINs** (10 characters), or send listing names/screenshots | Unblocks attributes, pricing, reviews, content, niches |
 | 2 | **Your Associates tag** `XXXXX-##` → `config/platform.json` | No Special Link can be built or tested; malformed tags silently zero earnings (CIS 2(g)) |
 | 3 | **Creators API credentials** (after the 10-sales threshold) | The only sanctioned product-data intake |
+| — | *(self-corrected, no action)* category rates were found public after an initial "inaccessible" read | Demonstrates why every cell cites the fetched page, not the first endpoint tried |
+| 3b | *(no action — self-corrected)* category rates were found public after an initial "inaccessible" read | Shows why the verification gate cites the fetched page, not the first endpoint tried |
 | 4 | **Decision on the 3 prohibited features** | Price alerts / per-visitor attribution require written agreement from Amazon |
 | 5 | **Target categories** for niche work | Shortlisting needs no API access; only scoring does |
 

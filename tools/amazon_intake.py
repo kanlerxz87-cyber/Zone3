@@ -37,7 +37,7 @@ from __future__ import annotations
 import argparse, datetime, json, pathlib, re, sys, urllib.parse, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT = ROOT / "data" / "intake-cache.json"
+OUT = ROOT / "data" / "z3" / "intake-cache.json"
 
 # ---- Agent Terms: identify ourselves. Changing this string is a policy violation.
 AGENT_NAME = "Zone3ProductResearch"

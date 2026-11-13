@@ -145,7 +145,7 @@ def main() -> int:
         cands = json.loads((ROOT / a.infile).read_text() if not pathlib.Path(a.infile).is_absolute()
                            else pathlib.Path(a.infile).read_text())
     else:
-        cand_path = ROOT / "data" / "niche-candidates.json"
+        cand_path = ROOT / "data" / "z3" / "niche-candidates.json"
         cands = json.loads(cand_path.read_text()) if cand_path.exists() else []
 
     ranked, excluded = score(cands)

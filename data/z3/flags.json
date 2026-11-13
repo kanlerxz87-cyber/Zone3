@@ -11,180 +11,284 @@
   "table": {
     "caption": "Open items",
     "columns": [
-      { "key": "id", "label": "ID" },
-      { "key": "sev", "label": "Severity" },
-      { "key": "item", "label": "Item" },
-      { "key": "finding", "label": "Verified finding" },
-      { "key": "action", "label": "What unblocks it" }
+      {
+        "key": "id",
+        "label": "ID"
+      },
+      {
+        "key": "sev",
+        "label": "Severity"
+      },
+      {
+        "key": "item",
+        "label": "Item"
+      },
+      {
+        "key": "finding",
+        "label": "Verified finding"
+      },
+      {
+        "key": "action",
+        "label": "What unblocks it"
+      }
     ],
     "rows": [
       {
-        "id": "FLG-001", "sev": "Critical",
+        "id": "FLG-001",
+        "sev": "Critical",
         "item": "Product link 1 — `https://link.amazon/B04G1MEwY`",
         "finding": "The host `link.amazon` is live and served from Amazon infrastructure (resolves to 18.172.170.20/.59/.77/.98). The submitted path is the problem, not the domain: it did not select the intended product.",
         "action": "Re-supply as `https://www.amazon.com/dp/<10-char ASIN>?tag=<your-associates-tag>` or a genuine `amzn.to` Smart Link generated in Associates Central.",
-        "sources": ["SRC-04", "SRC-16"]
+        "sources": [
+          "SRC-04",
+          "SRC-16"
+        ]
       },
       {
-        "id": "FLG-002", "sev": "Critical",
+        "id": "FLG-002",
+        "sev": "Critical",
         "item": "Product link 2 — `https://link.amazon/B02NbDxp3`",
         "finding": "Same failure mode as FLG-001.",
         "action": "Re-supply the exact 10-character ASIN.",
-        "sources": ["SRC-05", "SRC-16"]
+        "sources": [
+          "SRC-05",
+          "SRC-16"
+        ]
       },
       {
-        "id": "FLG-003", "sev": "Critical",
+        "id": "FLG-003",
+        "sev": "Critical",
         "item": "Product link 3 — `https://link.amazon/B00hJ57DV`",
         "finding": "Same failure mode as FLG-001.",
         "action": "Re-supply the exact 10-character ASIN.",
-        "sources": ["SRC-06", "SRC-16"]
+        "sources": [
+          "SRC-06",
+          "SRC-16"
+        ]
       },
       {
-        "id": "FLG-004", "sev": "Critical",
+        "id": "FLG-004",
+        "sev": "Critical",
         "item": "Identifier `B04G1MEwY`",
         "finding": "9 characters. Amazon states an ASIN is \"a unique 10-character alphanumeric code\". `https://www.amazon.com/dp/B04G1MEwY` returns the Amazon 'Page Not Found' error page.",
         "action": "Provide the full 10-character ASIN. Likely one character was dropped when the link was copied.",
-        "sources": ["SRC-01", "SRC-08"]
+        "sources": [
+          "SRC-01",
+          "SRC-08"
+        ]
       },
       {
-        "id": "FLG-005", "sev": "Critical",
+        "id": "FLG-005",
+        "sev": "Critical",
         "item": "Identifier `B02NbDxp3`",
         "finding": "9 characters; same rule; /dp/ probe returns 'Page Not Found'.",
         "action": "Provide the full 10-character ASIN.",
-        "sources": ["SRC-02", "SRC-08"]
+        "sources": [
+          "SRC-02",
+          "SRC-08"
+        ]
       },
       {
-        "id": "FLG-006", "sev": "Critical",
+        "id": "FLG-006",
+        "sev": "Critical",
         "item": "Identifier `B00hJ57DV`",
         "finding": "9 characters; same rule; /dp/ probe returns 'Page Not Found'.",
         "action": "Provide the full 10-character ASIN. Note this one begins `B00`, the prefix pattern Amazon documents for older ASINs, so a dropped trailing character is plausible.",
-        "sources": ["SRC-03", "SRC-08"]
+        "sources": [
+          "SRC-03",
+          "SRC-08"
+        ]
       },
       {
-        "id": "FLG-007", "sev": "High",
+        "id": "FLG-007",
+        "sev": "High",
         "item": "Redirect targets differ per request — decisive evidence the IDs are meaningless",
         "finding": "The three submitted links resolved to three DIFFERENT, unrelated products: B0CDY277D3 (CHEFMAN 6-Qt dual-basket air fryer), B09B7SB46R (Emeril Lagasse 26QT air fryer toaster oven) and B08DKYBTPH (Chefman Air Fryer 8 Qt). Every final URL carries `channelId=704&plpRedirect=mhFallback` — Amazon's fallback route, not a product deep link.",
         "action": "Do not treat any of those three landing pages as product data. They are Amazon's own recommendations, served at random. None of them is recorded anywhere in this dataset.",
-        "sources": ["SRC-04", "SRC-05", "SRC-06"]
+        "sources": [
+          "SRC-04",
+          "SRC-05",
+          "SRC-06"
+        ]
       },
       {
-        "id": "FLG-008", "sev": "High",
+        "id": "FLG-008",
+        "sev": "High",
         "item": "12 product attribute fields x 3 SKUs = 36 cells",
         "finding": "Title, brand, category, price, used price, rating, review count, availability, variations, per-category commission, trend signal and competition density are all blank. No official source exists for any of them while the identifier is invalid.",
         "action": "Valid ASIN + approved Creators API credentials. Until then these cells stay blank by design rather than being estimated.",
-        "sources": ["SRC-13"]
+        "sources": [
+          "SRC-13"
+        ]
       },
       {
-        "id": "FLG-009", "sev": "High",
+        "id": "FLG-009",
+        "sev": "High",
         "item": "Scraping was rejected as a data source",
         "finding": "Product, price, rating and review data may only be obtained via Creators API / PA API or a link Amazon serves; storing images is prohibited and other Program Content may be cached for at most 24 hours. Automated scraping of amazon.com to backfill these tables would breach the Program Policies, so it was not done.",
         "action": "Use Creators API GetItems as the sole intake. No action needed from you — this is a guard-rail the platform enforces.",
-        "sources": ["SRC-10"]
+        "sources": [
+          "SRC-10"
+        ]
       },
       {
-        "id": "FLG-010", "sev": "Medium",
+        "id": "FLG-010",
+        "sev": "Medium",
         "item": "Repository baseline",
         "finding": "At branch creation `main` held exactly one commit, `ed1a796` \"Initial commit\", containing one file: `README.md`, 7 bytes, contents `# Zone3`. No prior code, data, CI, or `COORDINATION.md` existed to review.",
         "action": "Nothing — recorded so the audit trail has a defined starting point.",
-        "sources": ["SRC-17"]
+        "sources": [
+          "SRC-17"
+        ]
       },
       {
-        "id": "FLG-011", "sev": "Medium",
+        "id": "FLG-011",
+        "sev": "Medium",
         "item": "No Associates tag / account credential supplied",
         "finding": "Affiliate link generation and attribution testing both require your own Associates ID in the form `XXXXX-##` plus approved API credentials. Neither was provided, and neither can be derived or guessed.",
         "action": "Add `associates_tag` to `config/platform.json` (or set `ZONE3_ASSOCIATES_TAG`) and register for Creators API in Associates Central.",
-        "sources": ["SRC-10", "SRC-13"]
+        "sources": [
+          "SRC-10",
+          "SRC-13"
+        ]
       },
       {
-        "id": "FLG-012", "sev": "Medium",
+        "id": "FLG-012",
+        "sev": "Medium",
         "item": "Click and conversion tracking",
         "finding": "Amazon, not the associate, is the system of record: it \"will use commercially reasonable efforts to accurately and comprehensively track Qualifying Purchases\" and pays ~60 days after month end. There is no public endpoint to pull those numbers, so the ledger ships empty and instrumented.",
         "action": "Export Earnings Reports from Associates Central monthly and ingest them into `data/campaign-metrics.json`; or leave the manual-entry form for it.",
-        "sources": ["SRC-10", "SRC-11"]
+        "sources": [
+          "SRC-10",
+          "SRC-11"
+        ]
       },
       {
-        "id": "FLG-013", "sev": "High",
-        "item": "Per-category commission rates",
-        "finding": "The Appendix rate card at `/help/operating/schedule` is not publicly retrievable — the request redirects to Amazon sign-in (`openid.assoc_handle=amzn_associates_us`). The only publicly stated figure is the marketing headline \"Earn up to 10% in associate commissions\".",
-        "action": "Read your own rate card while signed in to Associates Central. The site deliberately shows the headline figure and leaves category rates blank.",
-        "sources": ["SRC-11", "SRC-12"]
+        "id": "FLG-013",
+        "sev": "Resolved",
+        "item": "Per-category commission rates — CORRECTED after further verification",
+        "finding": "An earlier draft recorded these as unavailable because /help/operating/schedule redirects to sign-in. That was wrong: the Standard Commission Income Statement (Table 1) is published publicly at the Associates help centre, as is the Onsite statement. All 11 rate bands plus the Bounty rates are now on the Commission page with those citations.",
+        "action": "Resolved for category rates. What remains blank is only the per-product commission for P-01/P-02/P-03, because their category is unresolved while the identifiers are invalid — a category cannot be assigned to an unresolvable listing.",
+        "sources": [
+          "SRC-18",
+          "SRC-19",
+          "SRC-12"
+        ]
       },
       {
-        "id": "FLG-014", "sev": "High",
+        "id": "FLG-014",
+        "sev": "High",
         "item": "PA-API 5.0 is deprecated — any existing integration is dead",
         "finding": "The PA-API 5.0 documentation host now returns a deprecation notice: PA-API 5 \"has been deprecated and is being replaced by the Creators API\", and live callers receive HTTP 403 Forbidden / `com.amazon.paapi5#AccessDeniedException`. Most third-party \"Amazon affiliate AI\" tooling in this space still documents PA-API 5 as current.",
         "action": "Architect against Creators API only. Treat any vendor tutorial built on PA-API 5 as out of date.",
-        "sources": ["SRC-14", "SRC-13"]
+        "sources": [
+          "SRC-14",
+          "SRC-13"
+        ]
       },
       {
-        "id": "FLG-015", "sev": "Medium",
+        "id": "FLG-015",
+        "sev": "Medium",
         "item": "Link-shortener conflict with the submitted format",
         "finding": "The submitted `link.amazon/...` shape is a short, opaque path link. Program rules prohibit using a link shortening service in a way that makes it unclear you are linking to Amazon, prohibit obscuring the destination URL, and disqualify purchases arriving via a Redirecting Link. `amzn.to` (the shortener most affiliates use) resolves to 67.199.248.12/.13 — a third-party shortener range, not an Amazon address block.",
         "action": "Use full, self-assembled `amazon.com/dp/<ASIN>?tag=<your-tag>` links for content you generate. Reserve Smart Links for channels where Amazon supplies the link directly.",
-        "sources": ["SRC-10", "SRC-16"]
+        "sources": [
+          "SRC-10",
+          "SRC-16"
+        ]
       },
       {
-        "id": "FLG-016", "sev": "High",
+        "id": "FLG-016",
+        "sev": "High",
         "item": "\"Trending\" and \"high-converting\" product detection",
         "finding": "The brief asks the agent to identify trending and high-converting products and analyse competition. No official Amazon API provides trend rank, competitor density or conversion rate to affiliates: Creators API exposes only SearchItems, GetItems, GetVariations and GetBrowseNodes. Amazon also publishes no conversion-rate figure for affiliates. Any tool claiming these numbers derives them from scraping or a model, not from Amazon.",
         "action": "Either accept a proxy method you explicitly approve (e.g. SearchItems result count + publish date + rating count as an estimate, clearly labelled as an estimate) or drop these columns. No proxy values were computed here, because none could be sourced.",
-        "sources": ["SRC-13", "SRC-11"]
+        "sources": [
+          "SRC-13",
+          "SRC-11"
+        ]
       },
       {
-        "id": "FLG-017", "sev": "High",
+        "id": "FLG-017",
+        "sev": "High",
         "item": "\"Track clicks and continuously optimize campaigns\" vs. the sub-tag rule",
         "finding": "Per-user click tracking by dynamic sub-tagging is forbidden: \"Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).\"",
         "action": "Campaign optimisation must be page-level or slot-level with STATIC sub-tags only. The platform's optimiser is designed to that limit; no per-visitor attribution is attempted.",
-        "sources": ["SRC-10"]
+        "sources": [
+          "SRC-10"
+        ]
       },
       {
-        "id": "FLG-018", "sev": "High",
+        "id": "FLG-018",
+        "sev": "High",
         "item": "\"Analyze pricing\" vs. the price-alerting ban",
         "finding": "\"Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.\" A price-drop alert or a tracked-price history on the site is therefore not permitted, even though analysing price data internally is.",
         "action": "Pricing analysis is kept internal (ranking, threshold for 'deal' claims) and the site only ever displays a point-in-time price with the required timestamp and disclaimer. No alerts, no price history charts.",
-        "sources": ["SRC-10"]
+        "sources": [
+          "SRC-10"
+        ]
       },
       {
-        "id": "FLG-019", "sev": "Medium",
+        "id": "FLG-019",
+        "sev": "Medium",
         "item": "Agents must self-declare in the User-Agent",
         "finding": "New Agent Terms (IP License SS4) define an \"Agent\" as \"any software or service that takes autonomous or semi-autonomous action on behalf of, or at the instruction of, any person or entity\", and require every HTTP/HTTPS request to identify itself with `Agent/[agent name]` in the User-Agent string. Agents must not mimic human interaction patterns, must not complete CAPTCHAs, must answer truthfully when asked whether they are human, and must not circumvent access controls.",
         "action": "Set `User-Agent: ... Agent/Zone3ProductResearch` on every outbound request this platform makes. Already wired into `tools/amazon_intake.py`.",
-        "sources": ["SRC-10"]
+        "sources": [
+          "SRC-10"
+        ]
       },
       {
-        "id": "FLG-020", "sev": "Medium",
+        "id": "FLG-020",
+        "sev": "Medium",
         "item": "Creators API access is gated behind a sales threshold",
         "finding": "Prerequisite as published: \"Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API\". A brand-new account therefore cannot use the API at all.",
         "action": "Bootstrap with 10 qualifying sales using non-API links (SiteStripe-generated Smart Links) before the automated research loop can run. The platform is built to queue research jobs until credentials are present.",
-        "sources": ["SRC-13"]
+        "sources": [
+          "SRC-13"
+        ]
       },
       {
-        "id": "FLG-021", "sev": "Medium",
+        "id": "FLG-021",
+        "sev": "Medium",
         "item": "\"Publish and manage affiliate links\" — where publishing is NOT allowed",
         "finding": "Special Links may not be placed in any content on an Amazon Site (customer reviews, forums, Wish Lists, guides), may not be posted on Amazon itself, may not appear in pop-ups/pop-unders or transitional ads, and must not be encouraged to be bookmarked. Buying paid search on keywords containing \"amazon\"/\"kindle\" or any Amazon Mark disqualifies the resulting purchase entirely.",
         "action": "The publishing module targets owned properties (this site, your blog, your newsletter) only. Automated posting to Amazon or to paid Amazon-brand keywords is disabled in the design.",
-        "sources": ["SRC-10", "SRC-09"]
+        "sources": [
+          "SRC-10",
+          "SRC-09"
+        ]
       },
       {
-        "id": "FLG-022", "sev": "Medium",
+        "id": "FLG-022",
+        "sev": "Medium",
         "item": "Paid \"Amazon affiliate automation\" services are unauthorised",
         "finding": "Amazon states the Associates Program is free to join and: \"We have never authorized any business to provide paid set-up or consulting services to our associates, so please be wary if any business like that (even one attempting to appropriate the Amazon name) reaches out to offer you costly services.\"",
         "action": "Relevant if you evaluate third-party 'done-for-you Amazon AI' vendors. This platform is self-hosted in your repo and asks for no payment to any intermediary.",
-        "sources": ["SRC-10"]
+        "sources": [
+          "SRC-10"
+        ]
       },
       {
-        "id": "FLG-023", "sev": "Medium",
+        "id": "FLG-023",
+        "sev": "Medium",
         "item": "AI-generated content and review integrity",
         "finding": "The Operating Agreement incorporates Amazon's Community Guidelines \"including the prohibition of customer reviews that are created, edited, or removed in exchange for compensation\". An LLM on this platform generates editorial articles only; it must never be pointed at generating Amazon customer reviews, and the site must not present AI-written praise as an independent review.",
         "action": "Kept as an explicit design boundary. Editorial pages carry the Amazon text disclaimer and the associate disclosure; no synthetic reviews exist or are generated.",
-        "sources": ["SRC-09", "SRC-10"]
+        "sources": [
+          "SRC-09",
+          "SRC-10"
+        ]
       },
       {
-        "id": "FLG-024", "sev": "High",
+        "id": "FLG-024",
+        "sev": "High",
         "item": "Programme termination risk if anything here is automated badly",
         "finding": "Violation of Section 5 (identification/disclosure) is deemed a material breach, and Amazon reserves the right to \"permanently cease payment of ... any and all commission income\" for violations. Accounts can also be closed for sites that are unsuitable or that lack original content; the agreement is terminable by either party on 7 calendar days' notice.",
         "action": "Treat the disclosure + original-content requirements as release gates, not copy. `tools/verify_site.py` fails the build if a page is missing the disclosure block.",
-        "sources": ["SRC-09"]
+        "sources": [
+          "SRC-09"
+        ]
       }
     ]
   }
