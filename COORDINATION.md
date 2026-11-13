@@ -26,7 +26,7 @@ Note: session 26634cd5 is assigned exactly one branch (`arena/26634cd5-zone3`). 
 | T-06 — Affiliate disclosure page (FTC + Amazon Associates) | done | session-zone3-001 | `disclosure.html` | ftc.gov; affiliate-program.amazon.com | none |
 | T-07 — Flagged for Review page | done | 26634cd5 (`flagged.html`); session-zone3-001 (`flagged-review.html`, superseded) | `flagged.html` | flags F1–F8 | F1–F8 |
 | T-08 — Build verification, no broken links | done | 26634cd5 | `scripts/check_site.py` | check_site.py OK (137 links, 0 errors) on 5 pages | — |
-| T-09 / T4 — Integration, PR, merge, Pages deploy | in progress | both | all | PR #3: arena/66a80e53-zone3 → main | PR #1 merged earlier (26634cd5) |
+| T-09 / T4 — Integration, PR, merge, Pages deploy | done | both | all | PR #3: arena/66a80e53-zone3 → main | PR #1 merged earlier (26634cd5) |
 
 ## Sources and verification performed
 
@@ -69,7 +69,10 @@ F8 — FTC guidance dated 2019; check current FTC Endorsement Guides before publ
 - **2026-11-13 22:36 UTC — 26634cd5** claimed T1–T3 and pushed (commit `494c792`); completed T1 (source retrieval) and T2 (static site via `scripts/build_site.py`); T3 as needs review (8 flags on Flagged for Review).
 - **2026-11-13 — 26634cd5** T4: `check_site.py` passes (5 pages, 137 links, 0 errors). PR #1 opened (`arena/26634cd5-zone3` → `main`) and merged; post-merge Pages result recorded in PR #1 comments.
 - **2026-11-13 — session-zone3-001** completed T-02 through T-07 on `arena/66a80e53-zone3`; opened PR #3 (`arena/66a80e53-zone3` → `main`): https://github.com/kanlerxz87-cyber/Zone3/pull/3. Merge in progress; PR link and merge result to be recorded here after merge.
-- Merge conflict resolution: `arena/66a80e53-zone3` merged with `origin/main`; shared files resolved in favor of the verified 26634cd5 build; session-zone3-001 dedicated pages (`executive-summary.html`, `disclosure.html`) retained.
+- **PR #3 merged:** https://github.com/kanlerxz87-cyber/Zone3/pull/3 (`arena/66a80e53-zone3` → `main`), merged as commit `cc26993`. Merge result: success; PR #3's files integrated into `main` and archived unchanged under `archive/66a80e53/`. PR link and merge result recorded here.
+- **Pages deploy:** GitHub Pages (source `main` `/`) deployed successfully. Live site: https://kanlerxz87-cyber.github.io/Zone3/ — dashboard loads; subpages (products, executive-summary, pricing, reviews, content/compliance, campaigns, flagged-for-review, sources) present.
+- **Final build verification:** `scripts/check_site.py` on the consolidated `main` tree: OK — 9 pages, 3 products, 29 sources, 21 flags; no broken links; every product row cites an official source; blank values rendered Unverified.
+- Merge conflict resolution: `arena/66a80e53-zone3` merged with `origin/main`; shared files resolved in favor of the verified 26634cd5 build; session-zone3-001 dedicated pages (`executive-summary.html`, `disclosure.html`) superseded by the consolidated versions on `main` and preserved under `archive/66a80e53/`.
 
 ## Pages for manual review after launch
 
