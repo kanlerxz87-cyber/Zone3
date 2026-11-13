@@ -10,17 +10,43 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (published on
 |---|---|---|---|
 | 26634cd5 | `arena/26634cd5-zone3` | Repo review, site build, verification, integration, PR | 2026-11-13 22:36 |
 
-Note: this session is assigned exactly one branch (`arena/26634cd5-zone3`) and is not permitted to create or push other branches, so the `session-<id>/<task>` branch scheme in the brief is replaced by this single branch. No other session has claimed any task (the repo had only a README and a single `main` commit when this session started).
+Note: this session is assigned exactly one branch (`arena/26634cd5-zone3`) and is not permitted to create or push other branches. The `session-<id>/<task>` branch scheme from the brief is therefore replaced by this single branch. No other session has claimed any task. The repo contained only a README and one `main` commit when this session started, so there was no concurrent work to coordinate with.
 
 ## Task board
 
-| Task | Status | Owner | Files in scope |
-|---|---|---|---|
-| T1 — Repo review & source verification | in progress | 26634cd5 | `COORDINATION.md`, `data/products.json`, `data/sources.json` |
-| T2 — Site creation (landing + category pages) | in progress | 26634cd5 | `index.html`, `categories/**`, `analysis/**`, `flagged/**`, `assets/**`, `.nojekyll` |
-| T3 — Line-by-line verification & flagging | in progress | 26634cd5 | `data/**`, `flagged/**`, `scripts/check_site.py` |
-| T4 — Integration, build/link check, PR, merge, Pages deploy | unclaimed | 26634cd5 (when T1–T3 done) | all (integration only) |
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| T1 — Repo review & source verification | done | 26634cd5 | `data/products.json`, `data/sources.json`, `data/flags.json` | S1–S10 (see below) | F1, F2, F3, F6 |
+| T2 — Site creation (landing + category pages) | done | 26634cd5 | `index.html`, `categories/**`, `analysis.html`, `flagged.html`, `sources.html`, `assets/**`, `scripts/build_site.py`, `.nojekyll`, `README.md` | — | — |
+| T3 — Line-by-line verification & flagging | needs review | 26634cd5 | `scripts/check_site.py`, `data/flags.json` | — | F1–F8 (published on Flagged for Review) |
+| T4 — Integration, build/link check, PR, merge, Pages deploy | in progress | 26634cd5 | all (integration only) | — | — |
+
+## Sources and verification performed (T1)
+
+| ID | Source | Official | What was verified | Status |
+|---|---|---|---|---|
+| S1 | https://link.amazon/B04G1MEwY | Amazon | Redirects to `amazon.com/dp/B0CDY277D3`; title (brand, capacity, category, listing claims) | Fetched |
+| S2 | https://link.amazon/B02NbDxp3 | Amazon | Redirects to `amazon.com/dp/B09B7SB46R`; title | Fetched |
+| S3 | https://link.amazon/B00hJ57DV | Amazon | Redirects to `amazon.com/dp/B08DKYBTPH`; title | Fetched |
+| S4 | https://www.amazon.com/dp/B0CDY277D3 | Amazon | Title only; body returned footer boilerplate | Partial |
+| S5 | https://www.amazon.com/dp/B09B7SB46R | Amazon | Title only; body returned footer boilerplate | Partial |
+| S6 | https://www.amazon.com/dp/B08DKYBTPH | Amazon | Returned "Continue shopping" interstitial | Not verified directly |
+| S7 | https://affiliate-program.amazon.com/help/operating/agreement | Amazon Associates (updated Oct 15, 2025) | Section 5 required disclosure "As an Amazon Associate I earn from qualifying purchases." | Fetched |
+| S8 | https://affiliate-program.amazon.com/help/operating/policies | Amazon Associates (updated Apr 14, 2026) | Commission Income Statement §1–3: qualifying purchases, 24-hour session, rate is % of Qualifying Revenue | Fetched |
+| S9 | https://affiliate-program.amazon.com/help/operating/schedule | Amazon Associates | Rate table — login-gated, NOT retrieved | Not verified |
+| S10 | https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers | FTC (dated Nov 2019) | Material connection; disclosure hard to miss, placed with endorsement | Fetched |
+
+Not used (non-official, for reference only, listed on Flagged page): geniuslink.com and sellersonar.com rate guides (report Kitchen 4.5%).
+
+## Verification performed (T3)
+
+- Every product row: brand, capacity, category, ASIN and title come from an official Amazon page or redirect. Price, rating, review count, availability and commission rate are blank and marked **Unverified** (15 blank cells in total).
+- `scripts/check_site.py`: checks all 137 links across 5 pages. Internal links resolve. External domains are on the allow-list (amazon.com, link.amazon, affiliate-program.amazon.com, ftc.gov). Each product row cites at least one official source. Each null value is rendered as Unverified. Each flag reference exists. Result: **OK**.
+- Irregularities are listed in `data/flags.json`, shown on `flagged.html`, and summarised in this file (F1–F8).
 
 ## Task log
 
-- **2026-11-13 22:36 UTC — 26634cd5** claimed T1, T2, T3. Commit + push of this claim is the first commit on the branch.
+- **2026-11-13 22:36 UTC — 26634cd5** claimed T1, T2, T3 and pushed the claim (commit `494c792`).
+- **2026-11-13 — 26634cd5** completed T1 (source retrieval; S9 login-gated, so commission rates unverified) and T2 (static site generated by `scripts/build_site.py`). T3 published as needs review: 8 flags on the Flagged for Review page.
+- **2026-11-13 — 26634cd5** T4 integration: `check_site.py` passes; PR from `arena/26634cd5-zone3` to `main` is next, followed by merge and Pages verification.
+- No merge conflicts occurred. No other session wrote to this board.
