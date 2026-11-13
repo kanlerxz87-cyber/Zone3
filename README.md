@@ -1,95 +1,41 @@
-# Zone3 — AI-powered Amazon affiliate platform
+# Zone3
 
-An affiliate research, analysis and publishing dashboard for three Amazon products supplied as
-`link.amazon` short links. Every number on the site is read from an official Amazon or FTC page, or left
-blank and flagged.
+Zone3 is an Amazon affiliate research dashboard. It shows every product link from the brief, the official sources behind each value, the verification status of each field, and the items that still need review.
 
-**Live site:** <https://kanlerxz87-cyber.github.io/Zone3/>
-**Status:** merged to `main`, deployed via GitHub Pages (source: `main` branch, path `/`).
+**Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 
-## What it does
+## What is in this repo
 
-- Resolves the three supplied short links to real Amazon products and records the resolution.
-- Captures the facts Amazon publishes about each product: price, list price, promotion badge, star
-  rating, ratings volume, the *bought in the past month* demand signal, and the lowest alternative offer.
-- Reproduces Amazon's official Associates commission rate table and the qualifying-purchase rules, and
-  models the economics against them.
-- Maps every Amazon Associates policy obligation and the FTC disclosure requirement to the exact source
-  text.
-- Tracks 30 decomposed requirements and 17 flagged irregularities, each with its official source.
+| Path | What it is |
+|---|---|
+| `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html` | Generated site pages (GitHub Pages serves `main` at `/`). |
+| `assets/style.css`, `.nojekyll` | Site styling; disables Jekyll processing. |
+| `data/sources.json` | Source registry: every official page used, its retrieval status, and what it supports. |
+| `data/policy_facts.json` | Verbatim policy quotes (PF-01 to PF-39, PF-14 withdrawn), each with its source and section. |
+| `data/products.json` | One record per product link. A `null` value means *unverified* and is shown blank. |
+| `data/flags.json` | Irregularities and unverified items (FLG-001 to FLG-021) with evidence and actions. |
+| `scripts/build_site.py` | Regenerates every page from `data/*.json` (standard library only). |
+| `scripts/check_site.py` | Verifies the data and the generated pages (see below). |
+| `COORDINATION.md` | Shared task board for parallel sessions. |
+| `analysis.html`, `categories/home-kitchen-air-fryers.html`, `disclosure.html` | Redirect stubs for URLs from the earlier PR #1 and PR #3 sites. |
+| `archive/26634cd5/`, `archive/66a80e53/` | Files from earlier sessions (PR #1 and PR #3), kept unchanged for reference. Not used by the site. |
 
-## The three products
-
-| Supplied link | Resolves to | Product | Department |
-| --- | --- | --- | --- |
-| <https://link.amazon/B04G1MEwY> | `B0CDY277D3` | CHEFMAN 6 Qt dual basket air fryer | Home & Kitchen |
-| <https://link.amazon/B02NbDxp3> | `B09B7SB46R` | Emeril Lagasse 26QT French door air fryer oven | Home & Kitchen |
-| <https://link.amazon/B00hJ57DV> | `B08DKYBTPH` | Chefman 8 Qt TurboFry air fryer | Home & Kitchen |
-
-The supplied codes are 9 characters and mixed case, so they are **not** ASINs — an ASIN is 10
-characters. They are short-link slugs that redirect to the products above.
-
-## Read these first
-
-| Document | What it is |
-| --- | --- |
-| [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md) | One-page summary of the build, the findings and the blockers |
-| [`COORDINATION.md`](COORDINATION.md) | Shared task board for parallel agent sessions |
-| [`docs/RESEARCH.md`](docs/RESEARCH.md) | How the links were resolved and where each value came from |
-| [`docs/VERIFICATION.md`](docs/VERIFICATION.md) | Every field, its value, its status and its official source |
-| [`docs/FLAGGED.md`](docs/FLAGGED.md) | 17 irregularities, 4 of them blocking, with the policy text |
-| [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) | The decomposed requirements list and the automation design |
-
-## Four things block this from being a live Associates property
-
-1. **Prices.** Amazon's Participation Requirements [section 2(b)](https://affiliate-program.amazon.com/help/operating/policies)
-   allows a site to show prices only if Amazon serves them, or if they come from the Creators API or
-   Product Advertising API. These were captured another way. (`F01`)
-2. **Star ratings.** [Section 6(t)](https://affiliate-program.amazon.com/help/operating/policies) says the
-   same about customer reviews and star ratings. (`F02`)
-3. **The supplied short links.** The Commission Income Statement [section 2(e)](https://affiliate-program.amazon.com/help/operating/policies)
-   disqualifies purchases made through a *Redirecting Link*, which is what a `link.amazon/<code>` URL is.
-   The site publishes canonical `/dp/<ASIN>` URLs instead. (`F03`)
-4. **No Associates tag.** Nothing on the site can currently earn a commission. (`F07`)
-
-None of these block the merge or the deploy. They are published on the site's
-[Flagged for Review](flagged.html) page.
-
-## Layout
-
-```
-data/              verified data layer — the single source of truth
-  products.json      per-field values, each with status + source id
-  commission.json    official rate table, bounty events, qualifying-purchase rules
-  sources.json       the 12 sources, 11 of them official
-  requirements.json  30 decomposed requirements with delivery status
-  flags.json         17 irregularities with severity, impact and action
-docs/              generated repository documentation
-docs/content/      prose rendered into the site (single source, no drift)
-tools/
-  build.py           generates every HTML page from data/*.json
-  gen_docs.py        generates the markdown documents from the same data
-  check_links.py     link checker + enforces a source cell on every data row
-assets/            one stylesheet, one small vanilla-JS file
-*.html             generated site pages (do not hand-edit)
-```
-
-## Rebuilding
+## Rebuild and check
 
 ```bash
-python3 tools/build.py      # regenerate every HTML page
-python3 tools/gen_docs.py   # regenerate the markdown documents
-python3 tools/check_links.py # verify links and per-row source cells
+python3 scripts/build_site.py   # regenerate the HTML pages from data/*.json
+python3 scripts/check_site.py   # must print "All checks passed."
 ```
 
-All three exit non-zero on failure. No build step, no dependencies beyond Python 3, no framework.
+`check_site.py` fails if a product or a non-null value has no official source, if a table row's Source column has no link to an official site, if a link is broken, or if the Associates disclosure is missing from a page. Add `--online` to also request each official source URL from the machine running the check.
 
-## Verification rule
+## Rules this project follows
 
-A value appears only if it was read from a page published by Amazon (`amazon.com`,
-`affiliate-program.amazon.com`) or the U.S. Federal Trade Commission (`ftc.gov`). Anything else is left
-blank and listed as unverified. Nothing is inferred, interpolated, or taken from a price tracker, review
-aggregator or third-party blog.
+- Only values confirmed from an official source are shown. Anything else is left blank and marked *Unverified*. Values are never inferred.
+- Product data comes from official sources only. Price and review data may be shown only through a Special Link or the Creators API (Program Policies, Participation Requirements §2(b) and §6(t)).
+- Creators API data may not be used for AI analysis, aggregation or model training without Amazon's written approval (Creators API IP License §1, §2(c)(e); Participation Requirements §5). No such analysis is built.
+- The Associates disclosure (`As an Amazon Associate I earn from qualifying purchases.`) appears on every page (Operating Agreement §5).
 
-Amazon, Amazon.com and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates. This project
-is not endorsed by or affiliated with Amazon.com, Inc.
+## Status
+
+As of 2026-11-13 the three submitted identifiers are not valid product pages, so no product fields are verified yet. The earlier site from PR #1 is merged in; see `COORDINATION.md` for the integration and the ID mapping. See `flagged.html` (the live Flagged for review page) for the blockers and the owner actions.

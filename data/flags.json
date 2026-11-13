@@ -1,178 +1,272 @@
 {
-  "meta": {
-    "note": "Items are published on the site's 'Flagged for Review' page. Severity: blocking = must be resolved before this site operates as a live Amazon Associates property; review = needs an owner decision; info = context only.",
-    "captured": "2026-11-13"
-  },
+  "retrieved": "2026-11-13",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8).",
   "flags": [
     {
-      "id": "F01",
-      "severity": "blocking",
-      "title": "Displaying static prices conflicts with Associates Program Participation Requirements section 2(b)",
-      "detail": "Amazon's Participation Requirements section 2(b) states: 'Product prices and availability may vary from time to time. Because prices for and availability of Products that you have listed on your Site may change, your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.' The prices on this site were captured by a one-time read of an Amazon page, not served by Amazon and not obtained via PA API / Creators API.",
-      "impact": "The price columns cannot go live on an Associates property in their current form without risking a breach of the Operating Agreement.",
-      "recommended_action": "Either (1) obtain PA API / Creators API credentials and rebuild the price columns from that feed, or (2) remove price values from the public pages and keep them only in the internal analysis documents until such credentials exist.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-001",
+      "severity": "Critical",
+      "category": "Product identifiers",
+      "item": "The three submitted identifiers are not 10-character ASINs",
+      "detail": "The identifiers in the submitted links are B04G1MEwY, B02NbDxp3 and B00hJ57DV. Each is 9 characters long. The official Creators API documentation shows ASIN examples of 10 characters (S06), and all three redirect targets use 10-character IDs (S14-S16). Typing amazon.com/dp/<each ID> returns 'Page Not Found' (S08-S10). No product name, brand, price, rating or commission can be tied to these identifiers. Confirmed by the GetItems reference (S06, chunk 1 of 3): an ASIN is a 10-character identifier.",
+      "action": "Provide the intended product page URL or 10-character ASIN for each product (the owner's input is needed; this session cannot infer it).",
+      "sources": [
+        "S06",
+        "S08",
+        "S09",
+        "S10",
+        "S14",
+        "S15",
+        "S16"
+      ]
     },
     {
-      "id": "F02",
-      "severity": "blocking",
-      "title": "Displaying star ratings conflicts with Associates Program Participation Requirements section 6(t)",
-      "detail": "Amazon's Participation Requirements section 6(t) states: 'You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.' The 4.2 / 4.3 / 4.4 star values and the 4.8K / 18.3K / 16.8K ratings counts on this site were not obtained through PA API or Creators API.",
-      "impact": "The rating columns cannot go live on an Associates property in their current form.",
-      "recommended_action": "Same as F01: source them through PA API / Creators API, or remove them from public pages.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-002",
+      "severity": "High",
+      "category": "Redirect behaviour",
+      "item": "Short links redirect to three different products, not confirmed as the submitted products",
+      "detail": "Each short link ended on a different amazon.com product page (S11-S13), and the mapping was the same on two fetches each. The final URLs carry the parameters lv=shuf and plpRedirect=mhFallback. The page titles identify two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven (S14-S16). What these parameters mean is not documented in any official source reviewed, so they are recorded as observed only and never used as product data. The direct amazon.com/dp/B08DKYBTPH request returns a 'Continue shopping' interstitial (S16), so product 3's title is only readable through the short link (S23).",
+      "action": "Open each submitted link in a normal browser and confirm where it lands. Confirm which product was intended.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S23"
+      ]
     },
     {
-      "id": "F03",
-      "severity": "blocking",
-      "title": "The supplied link.amazon short links may be 'Redirecting Links' under Commission Income Statement section 2(e)",
-      "detail": "Commission Income Statement section 2(e) disqualifies 'any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \"Redirecting Link\").' A link.amazon/<code> URL is an intermediate URL that redirects straight through to the product page with no affirmative action by the customer. Separately, Participation Requirements section 6(w) prohibits using 'a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.'",
-      "impact": "If the supplied short links are used as the Special Links themselves, resulting purchases are at risk of being disqualified and the commission forfeited.",
-      "recommended_action": "Tag and publish the resolved canonical /dp/<ASIN> URLs (S1, S3, S5) rather than the link.amazon short links. Keep the short links only as the provenance record of what was supplied.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-003",
+      "severity": "Critical",
+      "category": "Affiliate compliance",
+      "item": "link.amazon links are not documented in the Associates policies reviewed and may be Redirecting Links",
+      "detail": "The Program Policies reviewed (S02) do not name link.amazon. The policies prohibit a link shortener that makes the Amazon destination unclear (PF-06, section 6(w)). They also disqualify purchases referred by a Redirecting Link, meaning a link that sends users through an intermediate site without a customer click (PF-07). The short links redirected automatically to amazon.com in the fetch tool (S11-S13). A third-party competitor claims link.amazon forwards to amzlinks.in (S17). That claim is not verified against any Amazon page.",
+      "action": "Test each link while logged in to an Associates account and record whether tracked clicks appear. Generate Special Links from Associates Central instead, if the owner wants to use them.",
+      "sources": [
+        "S02",
+        "S11",
+        "S12",
+        "S13",
+        "S17"
+      ]
     },
     {
-      "id": "F04",
-      "severity": "review",
-      "title": "The three short-link codes are 9 characters, so they are not Amazon ASINs",
-      "detail": "B04G1MEwY, B02NbDxp3 and B00hJ57DV are each 9 characters. A standard Amazon ASIN is 10 characters. They also contain mixed-case letters, which ASINs do not. They are opaque short-link slugs that happen to begin with 'B0'.",
-      "impact": "Anyone reading the brief could mistake the codes for ASINs and build the wrong product set. This site resolves them to the real ASINs B0CDY277D3, B09B7SB46R and B08DKYBTPH.",
-      "recommended_action": "Confirm with the link owner that the three resolved products are the intended ones.",
-      "source_id": "S12",
-      "source_url": "https://link.amazon/B04G1MEwY"
+      "id": "FLG-004",
+      "severity": "High",
+      "category": "Unverified values",
+      "item": "Product name, brand, price, rating, review count, competitor count, best-seller rank and availability are unverified for all 3 products",
+      "detail": "The identifiers do not resolve (FLG-001), so no official product record exists to read these values from. The fetch tool returned only the page title and the URL for the redirect targets (S14-S16); prices and ratings were not in its text. These cells are left blank on purpose.",
+      "action": "After FLG-001 is fixed, read the values from the Creators API (see FLG-006) or the live product page, then add them to data/products.json with a source ID.",
+      "sources": [
+        "S02",
+        "S08",
+        "S14",
+        "S15",
+        "S16"
+      ]
     },
     {
-      "id": "F05",
-      "severity": "review",
-      "title": "link.amazon is not a documented Amazon short domain",
-      "detail": "The links resolve today to live amazon.com product pages (verified). However, link.amazon is not among the Amazon short-link domains Amazon documents for public use; Amazon's commonly documented shortener is amzn.to. No official page was found that documents link.amazon as an Amazon-operated shortener.",
-      "impact": "The redirect behaviour is not contractually guaranteed and could change or be repurposed.",
-      "recommended_action": "Do not depend on the short links for anything except provenance. Use the canonical /dp/<ASIN> URLs (S1, S3, S5) everywhere.",
-      "source_id": "S12",
-      "source_url": "https://link.amazon/B04G1MEwY"
+      "id": "FLG-005",
+      "severity": "High",
+      "category": "Commission rates",
+      "item": "Commission rates are unverified; the official rate schedule is not accessible",
+      "detail": "The Commission Schedule link in the Program Policies (S03) redirected to an Amazon sign-in page on 2026-11-13. No rate was read, so no commission rate, commission-income estimate or payout figure is stated on this site.",
+      "action": "Sign in to Associates Central and export the rate card for the product category; send the file or the values so they can be added with a source.",
+      "sources": [
+        "S02",
+        "S03"
+      ]
     },
     {
-      "id": "F06",
-      "severity": "review",
-      "title": "Amazon does not publish the commission category for an individual ASIN",
-      "detail": "The official rate table (S7) has a 'Kitchen' row at 4.50% and a 'Home' row at 3.00%. All three products are in the 'Home & Kitchen' department. Amazon does not publish which of those two rows an individual ASIN maps to, and the difference is material (50% more commission on the Kitchen row).",
-      "impact": "A per-product commission rate cannot be verified from an official source, so it is left blank rather than guessed.",
-      "recommended_action": "Once an Associates tag is connected, read the realised per-order rate from Associates Central reports and backfill this column.",
-      "source_id": "S7",
-      "source_url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ"
+      "id": "FLG-006",
+      "severity": "High",
+      "category": "Data access",
+      "item": "Automated product, price and review data needs Creators API access, which needs qualifying sales",
+      "detail": "The Creators API prerequisites require enrolment and 'at least 10 qualifying sales within the past 30 days' (PF-16, S04). Price and availability may be shown only if the link serves them or they come from the API (PF-04). Reviews and star ratings may be shown only through the API (PF-05). Pulling this data from amazon.com pages instead would not meet these rules, so it was not done.",
+      "action": "Confirm Associates enrolment status. Once eligible, register for the Creators API (S04) and provide credentials through a secure secret store, never in the repo.",
+      "sources": [
+        "S02",
+        "S04"
+      ]
     },
     {
-      "id": "F07",
-      "severity": "blocking",
-      "title": "No Amazon Associates tag exists, so no commission can accrue",
-      "detail": "Participation Requirements section 2(b) requires that 'you must include your Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.' No Associates ID is stored in this repository, so every link here is untagged.",
-      "impact": "Zero revenue until a tag is added. Also blocks the click and conversion tracking requirements (R14, R15).",
-      "recommended_action": "Add the Associates tag to a single config value, then regenerate the links. Do not place a guessed tag into URLs.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-007",
+      "severity": "Medium",
+      "category": "Cross-session conflict",
+      "item": "Another session's COORDINATION.md says PA-API 5 is the only sanctioned data source; the official notice says it is deprecated",
+      "detail": "Branch arena/3c6cba43-zone3 (read-only, not edited) states that PA-API 5 is 'the only sanctioned data source'. The official PA-API 5 deprecation notice says it 'has been deprecated and is being replaced by the Creators API' (PF-17, S05). This site uses the Creators API as the data source.",
+      "action": "Integration session: correct the statement on the other branch before merging it.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
     },
     {
-      "id": "F08",
-      "severity": "review",
-      "title": "Deal badges must be removed the moment the promotion ends",
-      "detail": "Participation Requirements section 2(b): 'You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.' Two of the three products currently carry a promotion badge ('Limited time deal' x2, 'Early Black Friday Deal' x1).",
-      "impact": "The badge text on this site will become a policy breach as soon as Amazon ends those promotions, which is outside this project's control.",
-      "recommended_action": "Make the badge field a dated, refreshable value driven by a PA API / Creators API feed, or drop the badge column from public pages.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-008",
+      "severity": "Medium",
+      "category": "Cross-session conflict",
+      "item": "Three other session branches claim the same tasks; merging them will conflict",
+      "detail": "Read-only observation of origin branches arena/26634cd5-zone3, arena/3c6cba43-zone3 and arena/a9cafea1-zone3. Each has its own COORDINATION.md and task claims, and the same files as this branch (site pages, data, COORDINATION.md). This session did not edit or push to them.",
+      "action": "Integration session: reconcile the task boards, keep one data source, and re-run scripts/check_site.py after each merge.",
+      "sources": [
+        "S21",
+        "S20"
+      ]
     },
     {
-      "id": "F09",
-      "severity": "review",
-      "title": "Price-tracking and price-alerting functionality is prohibited by default",
-      "detail": "Participation Requirements section 6(y): 'Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.'",
-      "impact": "This constrains requirement R4 (analyze pricing) and R16 (continuously optimize). A historical price graph or 'price dropped' alert on the public site is not permitted unless Amazon agrees in writing.",
-      "recommended_action": "Keep price analysis internal (this repository's analysis documents) and do not ship a price-history or price-alert feature on the public site without Amazon's agreement.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-009",
+      "severity": "Medium",
+      "category": "Repository baseline",
+      "item": "Repository baseline was a single README; no license and no .gitignore",
+      "detail": "Before this session, main contained one commit (ed1a796 'Initial commit') with one file, README.md, whose contents were '# Zone3' (7 bytes). No license, data, code or COORDINATION.md existed.",
+      "action": "Owner: choose and add a license if the repo is to be reused. Not added in this session because the licence choice is the owner's.",
+      "sources": [
+        "S20",
+        "S22"
+      ]
     },
     {
-      "id": "F10",
-      "severity": "review",
-      "title": "GitHub Pages is a static host, so there is no runtime for automation or AI",
-      "detail": "The site is served as static files from the main branch. There is no server, database, scheduler, or model endpoint. Requirements R1, R2, R3, R8-R12, R14, R15 and R16 (automated research, content generation, click/conversion tracking, continuous optimisation) cannot execute on this host.",
-      "impact": "The automation layer is specified and scaffolded in docs/REQUIREMENTS.md, but it is not running.",
-      "recommended_action": "Run the automation in a scheduled environment (GitHub Actions is available on this repo) and publish only its static output to Pages, or move to a hosted backend.",
-      "source_id": null,
-      "source_url": null
+      "id": "FLG-010",
+      "severity": "Medium",
+      "category": "Tracking",
+      "item": "No Associates tag was supplied; no Special Links were created",
+      "detail": "Every Special Link must carry the Associates tag (PF-03, S02, section 2(b)). Without the owner's tag, no link on this site is a tracked Special Link. The submitted links carry only srctok and channelId parameters (S11-S13).",
+      "action": "Supply the Associates tag (not a password or token) so Special Links can be built and tested.",
+      "sources": [
+        "S02",
+        "S11",
+        "S12",
+        "S13"
+      ]
     },
     {
-      "id": "F11",
-      "severity": "review",
-      "title": "No PA API / Creators API credentials",
-      "detail": "Both F01 (prices) and F02 (star ratings) have the same compliant fix: source the data through Amazon's Creators API or Product Advertising API. No credentials for either API exist in this repository.",
-      "impact": "Blocks the compliant path for the two most important data columns on the site.",
-      "recommended_action": "Apply for Creators API / PA API access through Associates Central, then rebuild those columns from the feed.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-011",
+      "severity": "Medium",
+      "category": "Click and conversion tracking",
+      "item": "No click or conversion data exists; the campaigns ledger is empty on purpose",
+      "detail": "Click and conversion figures come only from the owner's Associates reports, which need a logged-in account. Tracking rules are recorded (PF-12, PF-13). No click or conversion value has been invented.",
+      "action": "Export the Associates reports for the tag once Special Links are live, then add them with source references.",
+      "sources": [
+        "S02"
+      ]
     },
     {
-      "id": "F12",
-      "severity": "info",
-      "title": "Best Sellers Rank was not captured",
-      "detail": "Amazon renders Best Sellers Rank via JavaScript on the product detail page, and the value could not be read from any official static render. Per the verification rule the field is left blank rather than estimated.",
-      "impact": "The 'trending product' requirement (R2) relies on Amazon's own 'N bought in past month' signal instead, which was captured for all three products.",
-      "recommended_action": "Source BSR through PA API together with the F01/F02 fix.",
-      "source_id": null,
-      "source_url": null
+      "id": "FLG-012",
+      "severity": "Medium",
+      "category": "Content",
+      "item": "No SEO articles, comparisons or buying guides were written",
+      "detail": "Content would need verified product facts (PF-10 forbids inaccurate or misleading product claims) and first-hand experience that has not happened (PF-21). Writing copy from the redirect titles would present unconfirmed products as the submitted ones. The content section records what is blocked and why.",
+      "action": "After FLG-001 and FLG-004 are resolved, the content pipeline can generate drafts from verified data for owner review.",
+      "sources": [
+        "S02",
+        "S07"
+      ]
     },
     {
-      "id": "F13",
-      "severity": "info",
-      "title": "Ratings counts are Amazon's rounded display values",
-      "detail": "Amazon displays '4.8K', '18.3K' and '16.8K' rather than exact counts. These are Amazon's own rounded figures, recorded verbatim, not exact integers.",
-      "impact": "Any arithmetic on these counts carries the rounding error.",
-      "recommended_action": "None, unless exact counts are needed, in which case source them from PA API.",
-      "source_id": "S2",
-      "source_url": "https://www.amazon.com/s?k=B0CDY277D3"
+      "id": "FLG-013",
+      "severity": "Low",
+      "category": "Disclosure placement",
+      "item": "Disclosure is in the footer; placement needs owner review",
+      "detail": "The required statement (PF-01) is on every page. The FTC asks that a disclosure be hard to miss and placed with the endorsement (PF-20). The footer may not meet that standard for a product recommendation. Account enrolment could not be checked from this session.",
+      "action": "Owner: review the placement and confirm the Associates account is active.",
+      "sources": [
+        "S01",
+        "S07"
+      ]
     },
     {
-      "id": "F14",
-      "severity": "info",
-      "title": "Star histogram and review text were not captured",
-      "detail": "Amazon's review breakdown and review bodies are served via JavaScript and behind sign-in. Per the verification rule these fields are left blank rather than summarised from third-party sources.",
-      "impact": "Requirement R5 (analyze reviews) is only partly satisfied: rating and volume are captured, sentiment and themes are not.",
-      "recommended_action": "Source review content through PA API, or analyse it via an approved route.",
-      "source_id": null,
-      "source_url": null
+      "id": "FLG-014",
+      "severity": "Low",
+      "category": "Source dates",
+      "item": "Source pages show different copyright years",
+      "detail": "The Associates Operating Agreement and Program Policies show a footer of '© 1996-2025'. The Amazon product pages show '© 1996-2026'. Both were read on 2026-11-13. The header dates (S01: October 15, 2025; S02: April 14, 2026) were used as the versions read.",
+      "action": "None required. Re-check the policy version before each content update.",
+      "sources": [
+        "S01",
+        "S02",
+        "S14"
+      ]
     },
     {
-      "id": "F15",
-      "severity": "info",
-      "title": "Clicks and conversions could not be captured",
-      "detail": "Amazon reports click and conversion data only inside Associates Central, behind a logged-in Associates account. No such account is connected, so both fields are blank.",
-      "impact": "Requirements R14 and R15 are unmet by data; they are specified as build work instead.",
-      "recommended_action": "Connect an Associates account and ingest the reports.",
-      "source_id": "S8",
-      "source_url": "https://affiliate-program.amazon.com/help/operating/policies"
+      "id": "FLG-015",
+      "severity": "High",
+      "category": "Eligibility",
+      "item": "Associates site eligibility for an Oslo-based site is not stated; Schedule 1 lists only the United States",
+      "detail": "Operating Agreement Schedule 1 lists one location, United States, with amazon.com. The text read does not say whether an Associate in Norway may use amazon.com links, and the Norwegian Amazon site is not listed. All three resolved links are amazon.com (US). This was raised by session 26634cd5 as F3.",
+      "sources": [
+        "S01"
+      ],
+      "action": "Owner: confirm in Associates Central which Amazon sites the account may link to, before publishing any link."
     },
     {
-      "id": "F16",
-      "severity": "info",
-      "title": "The price snapshot is a point-in-time capture",
-      "detail": "All prices and promotion badges were captured on 2026-11-13 from amazon.com. Amazon changes prices frequently and the values will drift.",
-      "impact": "Stale values on a live page are both a data-quality problem and, per F01, a policy problem.",
-      "recommended_action": "Automate a refresh, or remove the values from public pages.",
-      "source_id": "S2",
-      "source_url": "https://www.amazon.com/s?k=B0CDY277D3"
+      "id": "FLG-016",
+      "severity": "High",
+      "category": "AI and data use",
+      "item": "The AI analysis layer cannot use Creators API data without written approval",
+      "detail": "Creators API terms bar aggregating, analysing or repurposing Product Advertising Content without express prior written approval, and bar using Program Content to develop or train machine learning or language models (PF-23, PF-24, PF-25). The brief asks for an AI-powered platform. Any AI analysis of Amazon data is therefore blocked until approval is obtained. No AI analysis of Amazon data has been built.",
+      "sources": [
+        "S02"
+      ],
+      "action": "Owner: request written approval from Amazon for the planned analysis before building it, or limit the analysis to data the site already displays."
     },
     {
-      "id": "F17",
-      "severity": "info",
-      "title": "The repository was effectively empty at the start of this session",
-      "detail": "At the base commit ed1a796 the repository contained a single file, README.md, with the text '# Zone3'. There was no prior code, data, or site to review, and no COORDINATION.md existed.",
-      "impact": "The 'review the repo line by line' requirement reduces to reviewing the initial commit and the files added by this session. Nothing pre-existing was found to be irregular.",
-      "recommended_action": "None.",
-      "source_id": null,
-      "source_url": null
+      "id": "FLG-017",
+      "severity": "Medium",
+      "category": "Compliance note",
+      "item": "The FTC guidance used is from 2019; the Endorsement Guides were revised in 2023",
+      "detail": "The FTC brochure in S07 is dated November 2019. The FTC topic page (S24) states that the Endorsement Guides were 'revised in 2023'. The current guides were not read. The disclosure text used on the site is the Associates wording (PF-01), which is verified; the FTC points are not used as a finding.",
+      "sources": [
+        "S07",
+        "S24"
+      ],
+      "action": "Read the 2023 Endorsement Guides on ftc.gov before publishing marketing copy."
+    },
+    {
+      "id": "FLG-018",
+      "severity": "Low",
+      "category": "Withdrawn claim",
+      "item": "Claim on reviews created in exchange for compensation withdrawn",
+      "detail": "The earlier fact PF-14 quoted text attributed to the Operating Agreement that was not found in any section read on 2026-11-13. It has been removed from policy_facts.json and is not stated anywhere on the site.",
+      "sources": [
+        "S01"
+      ],
+      "action": "None. Re-add only with a verbatim quote from the official page."
+    },
+    {
+      "id": "FLG-019",
+      "severity": "Medium",
+      "category": "Automation constraints",
+      "item": "Automation needs rules that have not been built: caching, price date stamps, disclaimers, agent identification, no scraping",
+      "detail": "The Creators API terms limit caching (PF-26), require a date and time stamp next to price or availability (PF-27), require a disclaimer (PF-28), cap call rates and file sizes (PF-29), require agents to identify themselves (PF-31), and forbid data mining and robots (PF-22). Program Content may be used only for Amazon products (PF-32), and click generation and price tracking are prohibited (PF-33, PF-34). None of this automation has been built.",
+      "sources": [
+        "S02"
+      ],
+      "action": "Design the data layer around these rules before any automation is built."
+    },
+    {
+      "id": "FLG-020",
+      "severity": "Low",
+      "category": "Redirect behaviour",
+      "item": "Product 3 direct URL returns a 'Continue shopping' page",
+      "detail": "amazon.com/dp/B08DKYBTPH returns a 'Continue shopping' interstitial rather than a product page (S16). The title of product 3 is only readable through the short link (S23). This matches session 26634cd5's F6.",
+      "sources": [
+        "S16",
+        "S23"
+      ],
+      "action": "Open the listing in a browser and confirm the title."
+    },
+    {
+      "id": "FLG-021",
+      "severity": "Medium",
+      "category": "Commission rate",
+      "item": "Kitchen reference rate 4.50% is verified, but the listings' category is not",
+      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). The Onsite Table A lists 'Kitchen' at 1.25% for Onsite Content only (S26; PF-39). Neither is a product rate. To know which row applies, the category of each listing is needed. The product category is not stated in the text of the listings read (they show 'Home & Kitchen' as the department). The rate is therefore shown as a reference only and not on any product row. Raised by session 66a80e53 (PR #3).",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "action": "Owner: confirm each listing's category in Associates Central (or via the Creators API, once approved) before using any rate."
     }
   ]
 }
