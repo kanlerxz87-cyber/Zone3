@@ -289,6 +289,22 @@
       "source": "S24",
       "section": "FTC topic hub, Endorsements, Influencers, and Reviews (fetched 2026-11-13)",
       "applies_to": "The 2019 brochure (PF-19 to PF-21) predates the 2023 revision. The current guides text was not read (FLG-017)."
+    },
+    {
+      "id": "PF-38",
+      "topic": "Category reference rate: Kitchen (Standard Commission)",
+      "quote": "Physical Books, Kitchen, Automotive | 4.50%",
+      "source": "S25",
+      "section": "Standard Commission Income Statement, Table 1 (re-read 2026-11-13)",
+      "applies_to": "Applies only if a listing is in the Kitchen category. The product categories of the three listings are not verified (FLG-021)."
+    },
+    {
+      "id": "PF-39",
+      "topic": "Onsite Commission rates are for Onsite Content",
+      "quote": "We will pay you commission income (“Onsite Commission Income”) for Qualifying Purchases, which in the case of Onsite Commission Income is limited to Direct Qualifying Purchases.",
+      "source": "S26",
+      "section": "Onsite Associates Program Commission Income Statement, opening section (re-read 2026-11-13)",
+      "applies_to": "The Onsite rate table (Kitchen 1.25%) is not the rate for links on this site (FLG-021)."
     }
   ]
 }

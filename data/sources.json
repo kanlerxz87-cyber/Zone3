@@ -229,6 +229,26 @@
       "status": "verified",
       "status_note": "Fetched 2026-11-13. States that the Endorsement Guides were 'revised in 2023' and links the Consumer Reviews and Testimonials Rule (16 CFR Part 465) and the Consumer Review Fairness Act.",
       "used_for": "Current FTC guidance pointers (FLG-017). The 2019 brochure (S07) is older than the 2023 Endorsement Guides revision."
+    },
+    {
+      "id": "S25",
+      "title": "Associates Program Standard Commission Income Statement: Table 1 (fixed rates by category)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13. Table 1 row: 'Physical Books, Kitchen, Automotive | 4.50%'. Also 'All Other Categories | 4.00%' and 'Toys, Furniture, Home, ... | 3.00%'. The page does not show a revision date in the text read. The rate applies to Qualifying Revenue for the listed category.",
+      "used_for": "Category reference rate for Kitchen (PF-38). Not a product value: whether the listings are in the Kitchen category is not verified (FLG-021).",
+      "alias_of_26634cd5": "S11 (66a80e53 session)"
+    },
+    {
+      "id": "S26",
+      "title": "Onsite Associates Program Commission Income Statement: Table A (Onsite Content rates)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13. Table A row: 'Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive | 1.25%'. The text says Onsite Commission Income applies to Onsite Content (Publisher or Influencer Content used by Amazon within the Amazon Site).",
+      "used_for": "Shown to prevent a wrong reading: the 1.25% Kitchen rate is for Onsite Content, not for Special Links on this site (FLG-021).",
+      "alias_of_26634cd5": "S12 (66a80e53 session)"
     }
   ]
 }

@@ -10,9 +10,9 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (listed on th
 |---|---|---|---|---|
 | 7f84fea4 | `arena/7f84fea4-zone3` | Integration of session 26634cd5 with this session; repo review; site; PR to `main` | in progress (T6) | 2026-11-13 |
 | 26634cd5 | `arena/26634cd5-zone3` | Earlier site (PR #1, merged into `main` at 8cc2d4a). Its files are archived in `archive/26634cd5/` on this branch. | merged | 2026-11-13 22:36 |
+| 66a80e53 (session-zone3-001) | `arena/66a80e53-zone3` | Parallel build: executive summary, disclosure, product table, flagged-review page, commission table citations. Merged into `main` as PR #3 (cc26993). Files archived in `archive/66a80e53/` on this branch. | merged | 2026-11-13 |
 | 3c6cba43 | `arena/3c6cba43-zone3` | Own FLG-001–012 and SRC-01–010 IDs (not comparable to ours). Not read in this session beyond its COORDINATION.md. | not merged | — |
 | a9cafea1 | `arena/a9cafea1-zone3` | PR #4 open. Not read in this session. | not merged | — |
-| 66a80e53 | `arena/66a80e53-zone3` | PR #3 open. Not read in this session. | not merged | — |
 | 45ec61ec | `arena/45ec61ec-zone3` | PR #2 closed. Not read in this session. | closed | — |
 | 33226b37, c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 
@@ -30,6 +30,15 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 | T4 — Integration with session 26634cd5 (PR #1) | done | 7f84fea4 | all (integration only) | S07 mapped to S10 and others (see below) | FLG-015–020 |
 | T5 — Campaign and tracking ledger | done (empty by design) | 7f84fea4 | `campaigns.html` | — | FLG-010, FLG-011 |
 | T6 — Re-verify, PR, merge, Pages deploy | in progress | 7f84fea4 | this branch only | — | — |
+
+## Integration with session 66a80e53 (PR #3, merged after this branch was first pushed)
+
+`main` moved to cc26993 after PR #3 merged. Its files were integrated in the same way as PR #1: this branch's versions of shared files are kept, PR #3's versions are archived unchanged under `archive/66a80e53/`, and nothing is deleted. Automatic merge was not used for shared files, because it can combine two sessions' data into output neither wrote.
+
+- **New page from PR #3:** `disclosure.html`. It is now a redirect to `content.html`, where the Associates and FTC disclosure is already checked on every page.
+- **Replaced by this branch:** `executive-summary.html`, `index.html`, `README.md`, `COORDINATION.md` (merged content kept as the ID mapping), data files, scripts and CSS.
+- **New sources, read 2026-11-13:** Standard Commission Table 1 (Kitchen 4.50%) as S25 and Onsite Table A (Kitchen 1.25%) as S26. These map to PR #3's S11 and S12. The Kitchen rate is shown only as a category reference, not on any product row, because the listings' category is not verified (FLG-021; PF-38, PF-39).
+- **PR #3 task IDs:** T-02 to T-08 and T-09/T4 map to this board's T1–T6. PR #3's F1–F8 map as in the table below.
 
 ## Integration with session 26634cd5 (PR #1)
 
@@ -88,4 +97,5 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 - **2026-11-13 — 7f84fea4**: claimed T1–T3 and pushed (commit `28e5029`). Later commits: `ed1a796` (base), `2069837` (site, data, checker, flags, PF).
 - **2026-11-13 — 7f84fea4**: discovered that `main` had moved to 8cc2d4a (PR #1 merged). Logged the add/add conflicts above, resolved them on this branch, and archived the other session's files. No other branch was edited.
 - **2026-11-13 — 7f84fea4**: re-read the official pages listed above. Added PF-22–37, removed PF-14, updated PF-07, PF-08, PF-13, PF-18. Added FLG-015–020.
+- **2026-11-13 — 7f84fea4**: main moved to cc26993 (PR #3 merged). Integrated the same way (archive, this branch's shared files kept). Read Commission Tables 1 and A (S25, S26); added PF-38 and PF-39, FLG-021, and a reference-rate table on the Pricing page. Disclosure page is now a redirect to content.html.
 - **2026-11-13 — 7f84fea4**: T6 in progress: PR and merge follow this entry. PR link and merge result are recorded below once known.

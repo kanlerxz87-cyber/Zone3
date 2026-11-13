@@ -362,6 +362,11 @@ def build_pricing() -> None:
     ]
     rules_html = table(["Rule", "Verified wording (quoted)", "What it means here", "Source"], rules)
     body += f'<h2>Verified commission and pricing rules</h2>{rules_html}'
+    ref_rows = [
+        ["Kitchen (Standard Commission, Table 1)", "4.50%", "Reference only. Applies only if a listing is in the Kitchen category, which is not verified (FLG-021).", FACTS["PF-38"]["quote"], src_links(["S25"]) + " " + flag_links(["FLG-021"])],
+        ["Kitchen (Onsite Commission, Table A)", "1.25%", "Not a rate for links on this site. It applies to Onsite Content used by Amazon within the Amazon Site.", FACTS["PF-39"]["quote"], src_links(["S26"]) + " " + flag_links(["FLG-021"])],
+    ]
+    body += "<h2>Category reference rates (not product values)</h2>" + table(["Category and table", "Rate", "What it means here", "Verified wording (quoted)", "Source"], ref_rows)
     page("pricing.html", "Pricing &amp; commission", body,
          lead="Price and commission fields are blank because the source needed to fill them (the commission rate schedule, and the Creators API) is not available to this session. The rules below are verified.")
 
@@ -523,6 +528,7 @@ def build_legacy_stubs() -> None:
     """Old URLs from PR #1 (session 26634cd5). They redirect to the pages that replace them."""
     stubs = {
         "analysis.html": "executive-summary.html",
+        "disclosure.html": "content.html",
         "categories/home-kitchen-air-fryers.html": "products.html",
     }
     for name, target in stubs.items():

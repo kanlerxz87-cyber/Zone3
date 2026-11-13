@@ -255,6 +255,18 @@
         "S23"
       ],
       "action": "Open the listing in a browser and confirm the title."
+    },
+    {
+      "id": "FLG-021",
+      "severity": "Medium",
+      "category": "Commission rate",
+      "item": "Kitchen reference rate 4.50% is verified, but the listings' category is not",
+      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). The Onsite Table A lists 'Kitchen' at 1.25% for Onsite Content only (S26; PF-39). Neither is a product rate. To know which row applies, the category of each listing is needed. The product category is not stated in the text of the listings read (they show 'Home & Kitchen' as the department). The rate is therefore shown as a reference only and not on any product row. Raised by session 66a80e53 (PR #3).",
+      "sources": [
+        "S25",
+        "S26"
+      ],
+      "action": "Owner: confirm each listing's category in Associates Central (or via the Creators API, once approved) before using any rate."
     }
   ]
 }
