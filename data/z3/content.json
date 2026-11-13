@@ -1,0 +1,339 @@
+{
+  "_meta": {
+    "title": "SEO content generation",
+    "generated_utc": "2026-11-13T23:50:00Z",
+    "headline": "The generator, templates and QA gates are shipped. Zero product articles were written, because zero verified product facts exist for the submitted identifiers.",
+    "rationale": "An article about `B04G1MEwY` could only be written by inventing what the product is. Amazon's own rule forbids that: \"You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product\". The correct output of the content stage under an empty evidence set is an empty content set plus a flag — not fluent prose."
+  },
+  "inventory": {
+    "caption": "Content inventory",
+    "columns": [
+      {
+        "key": "id",
+        "label": "ID"
+      },
+      {
+        "key": "type",
+        "label": "Type"
+      },
+      {
+        "key": "target",
+        "label": "Target product"
+      },
+      {
+        "key": "slug",
+        "label": "Planned slug"
+      },
+      {
+        "key": "status",
+        "label": "Status"
+      },
+      {
+        "key": "blocked_on",
+        "label": "Blocked on"
+      }
+    ],
+    "rows": [
+      {
+        "id": "C-01",
+        "type": "Product article",
+        "target": "B04G1MEwY",
+        "slug": "/articles/product/B04G1MEwY/",
+        "status": "Not generated",
+        "blocked_on": "Valid ASIN + Creators API ItemInfo",
+        "sources": [
+          "SRC-01",
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-004",
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "C-02",
+        "type": "Product article",
+        "target": "B02NbDxp3",
+        "slug": "/articles/product/B02NbDxp3/",
+        "status": "Not generated",
+        "blocked_on": "Valid ASIN + Creators API ItemInfo",
+        "sources": [
+          "SRC-02",
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-005",
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "C-03",
+        "type": "Product article",
+        "target": "B00hJ57DV",
+        "slug": "/articles/product/B00hJ57DV/",
+        "status": "Not generated",
+        "blocked_on": "Valid ASIN + Creators API ItemInfo",
+        "sources": [
+          "SRC-03",
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-006",
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "C-04",
+        "type": "Comparison",
+        "target": "P-01 vs P-02 vs P-03",
+        "slug": "/articles/compare/B04G1MEwY-B02NbDxp3-B00hJ57DV/",
+        "status": "Not generated",
+        "blocked_on": "Comparison rows require lowest new AND lowest used price per item",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "C-05",
+        "type": "Buying guide",
+        "target": "Category unknown",
+        "slug": "/articles/guide/",
+        "status": "Not generated",
+        "blocked_on": "Category/browse node unresolved for all three items",
+        "sources": [
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-008"
+        ]
+      }
+    ]
+  },
+  "templates": {
+    "caption": "Prompt + layout templates (ready to run once data exists)",
+    "columns": [
+      {
+        "key": "name",
+        "label": "Template"
+      },
+      {
+        "key": "sections",
+        "label": "Outline"
+      },
+      {
+        "key": "gates",
+        "label": "Mandatory compliance blocks injected by the renderer"
+      }
+    ],
+    "rows": [
+      {
+        "name": "product-article",
+        "sections": "H1 (item title, verbatim from API) · short verdict · verified specifications table · what it is good at · limitations · who should not buy it · price & availability line with timestamp · FAQ · disclosure",
+        "gates": "Associate disclosure · Amazon content disclaimer · price timestamp + price disclaimer · affiliate link with static tag",
+        "sources": [
+          "SRC-09",
+          "SRC-10"
+        ],
+        "status": "ready"
+      },
+      {
+        "name": "comparison",
+        "sections": "H1 · verdict summary · comparison matrix (mandatory lowest_new + lowest_used columns) · per-column analysis · trade-off recap · disclosure",
+        "gates": "As above; additionally fails render if any column lacks both price fields, or if a non-Amazon retailer price appears",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "ready"
+      },
+      {
+        "name": "buying-guide",
+        "sections": "H1 · how to choose (criteria first, products second) · picks with rationale · category explainer · links to individual reviews · disclosure",
+        "gates": "Original-content requirement satisfied by criteria-led structure; product-list pages get editorial preamble",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "ready"
+      },
+      {
+        "name": "deal-mention",
+        "sections": "One paragraph + link, with `expires_at`",
+        "gates": "Renderer deletes the block when `expires_at` < build date and logs the removal",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "ready"
+      }
+    ]
+  },
+  "grounding": {
+    "caption": "Claim-grounding contract enforced before publication",
+    "columns": [
+      {
+        "key": "claim_type",
+        "label": "Claim type"
+      },
+      {
+        "key": "allowed_evidence",
+        "label": "Evidence that may support it"
+      },
+      {
+        "key": "rejected",
+        "label": "Rejected"
+      }
+    ],
+    "rows": [
+      {
+        "claim_type": "Spec / attribute",
+        "allowed_evidence": "Named Creators API field, echoed verbatim",
+        "rejected": "Model background knowledge about 'this kind of product'",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "enforced"
+      },
+      {
+        "claim_type": "Price",
+        "allowed_evidence": "API OffersV2 value + retrieval timestamp + disclaimer",
+        "rejected": "Any remembered or scraped price; any price in a comparison without lowest new and lowest used",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "enforced"
+      },
+      {
+        "claim_type": "Rating / review quality",
+        "allowed_evidence": "API aggregate rating or count, with an 'as of' stamp and link to the live listing",
+        "rejected": "Quoted or paraphrased review bodies; any star rating not API-sourced",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "enforced"
+      },
+      {
+        "claim_type": "Availability",
+        "allowed_evidence": "API availability field",
+        "rejected": "In-Stock claims older than 24h",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "enforced"
+      },
+      {
+        "claim_type": "Promotion / discount",
+        "allowed_evidence": "Amazon-served link containing the promotion, with expiry",
+        "rejected": "Expired promos; invented 'best price' language",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "enforced"
+      },
+      {
+        "claim_type": "Ranking / superiority",
+        "allowed_evidence": "This site's own stated methodology and its scores",
+        "rejected": "Implying Amazon endorsement; '#1', 'best on Amazon', 'Amazon recommends'",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "enforced"
+      },
+      {
+        "claim_type": "Opinion / editorial judgement",
+        "allowed_evidence": "Framed as the site's own assessment, derived from the grounded rows above",
+        "rejected": "Presenting AI-generated praise as an independent customer review",
+        "sources": [
+          "SRC-09",
+          "SRC-15"
+        ],
+        "status": "enforced"
+      }
+    ]
+  },
+  "seo": {
+    "caption": "SEO mechanics implemented on this site",
+    "columns": [
+      {
+        "key": "item",
+        "label": "Item"
+      },
+      {
+        "key": "state",
+        "label": "State"
+      },
+      {
+        "key": "note",
+        "label": "Note"
+      }
+    ],
+    "rows": [
+      {
+        "item": "Unique <title> + meta description per page",
+        "state": "Implemented",
+        "note": "Generated by build_site.py from each page's title and summary.",
+        "sources": [],
+        "status": "done",
+        "self_attested": "tools/build_site.py"
+      },
+      {
+        "item": "Canonical URLs",
+        "state": "Implemented",
+        "note": "Absolute canonicals under the Pages base path.",
+        "sources": [],
+        "status": "done",
+        "self_attested": "tools/build_site.py"
+      },
+      {
+        "item": "sitemap.xml + robots.txt",
+        "state": "Implemented",
+        "note": "Written at build time.",
+        "sources": [],
+        "status": "done",
+        "self_attested": "tools/build_site.py"
+      },
+      {
+        "item": "Semantic headings, one H1 per page",
+        "state": "Implemented",
+        "note": "Enforced by verify_site.py.",
+        "sources": [],
+        "status": "done",
+        "self_attested": "tools/verify_site.py"
+      },
+      {
+        "item": "Structured data (Product / Review schema)",
+        "state": "Deliberately omitted",
+        "note": "Product and Review schema requires name, offers, aggregateRating — all unverified here. Emitting schema with fabricated values would create rich-result misinformation, so it is not emitted until data exists.",
+        "sources": [
+          "SRC-08"
+        ],
+        "status": "blocked"
+      },
+      {
+        "item": "Internal linking between guide and product pages",
+        "state": "Deferred",
+        "note": "Depends on the article inventory above.",
+        "sources": [],
+        "status": "blocked",
+        "self_attested": "data/z3/content.json"
+      },
+      {
+        "item": "Keyword targeting",
+        "state": "Deferred",
+        "note": "No category or product identity exists to target.",
+        "sources": [],
+        "status": "blocked",
+        "self_attested": "data/z3/content.json"
+      },
+      {
+        "item": "Page speed",
+        "state": "Implemented",
+        "note": "Static HTML, one stylesheet, no third-party JS, no Amazon embeds (framing is prohibited anyway).",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "done"
+      }
+    ]
+  }
+}

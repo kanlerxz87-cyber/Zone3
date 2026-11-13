@@ -1,0 +1,242 @@
+{
+  "_meta": {
+    "title": "Niche & competition analysis",
+    "generated_utc": "2026-11-13T23:45:00Z",
+    "headline": "The scoring model and its data contract are defined and shipped; the inputs are not, so no niche is ranked and no competition score is published.",
+    "honesty_note": "All three fallback redirect targets happened to be air-fryer products in Home & Kitchen. That is NOT a niche signal: it is Amazon's personalised fallback recommendation for the fetching session, it differed per request, and it is unconnected to the submitted identifiers. Nothing was inferred from it.",
+    "score_definition": "niche_score = 0.25*commission_index + 0.20*demand_index + 0.20*review_motiveability + 0.15*content_gap + 0.10*price_band_fit + 0.10*(1 - competition_index). Each term is z-scored across the candidate set. Weights are this platform's choice, not an Amazon-supplied formula."
+  },
+  "scoring_inputs": {
+    "caption": "Niche model inputs — availability status",
+    "columns": [
+      {
+        "key": "input",
+        "label": "Input"
+      },
+      {
+        "key": "needs",
+        "label": "Data required"
+      },
+      {
+        "key": "official_source",
+        "label": "Official source for that data"
+      },
+      {
+        "key": "availability",
+        "label": "Availability"
+      }
+    ],
+    "rows": [
+      {
+        "input": "commission_index",
+        "needs": "Per-category commission rate for the niche's dominant category",
+        "official_source": "Standard Commission Income Statement, Table 1",
+        "availability": "AVAILABLE — published Table 1 rates; per-category index computed on the Commission page",
+        "sources": [
+          "SRC-18"
+        ],
+        "status": "verified",
+        "flags": []
+      },
+      {
+        "input": "demand_index",
+        "needs": "Search volume / category demand",
+        "official_source": "No public Amazon affiliate endpoint identified",
+        "availability": "Not available from an official source",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "no-official-source",
+        "flags": [
+          "FLG-016"
+        ]
+      },
+      {
+        "input": "review_motiveability",
+        "needs": "Review count distribution, average rating, review velocity",
+        "official_source": "Creators API GetItems aggregate fields",
+        "availability": "Requires valid ASINs + API credentials",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "blocked",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "input": "content_gap",
+        "needs": "Own-site content inventory vs. target keyword set",
+        "official_source": "Internal — this repository",
+        "availability": "Available; no live site content to measure yet",
+        "sources": [],
+        "status": "internal",
+        "flags": [],
+        "self_attested": "tools/niche_score.py"
+      },
+      {
+        "input": "price_band_fit",
+        "needs": "Median listing price in the niche",
+        "official_source": "Creators API GetItems OffersV2",
+        "availability": "Requires valid ASINs + API credentials",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "blocked",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "input": "competition_index",
+        "needs": "Result count for the seed keyword, plus SERP saturation",
+        "official_source": "SearchItems result metadata only; SERP saturation is not an Amazon-supplied metric",
+        "availability": "Partially available — would be labelled an estimate",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "partial",
+        "flags": [
+          "FLG-016"
+        ]
+      }
+    ]
+  },
+  "candidate_niches": {
+    "caption": "Ranked niches",
+    "empty": true,
+    "empty_text": "Zero niches ranked. Ranking requires a commission_index and a demand_index; both are unavailable from any official source in this run. Publishing a ranked table here would mean inventing the numbers, so the table is intentionally empty. The scoring code path is exercised in `tools/niche_score.py` against a synthetic fixture that is never published.",
+    "columns": [
+      {
+        "key": "rank",
+        "label": "Rank"
+      },
+      {
+        "key": "niche",
+        "label": "Niche"
+      },
+      {
+        "key": "score",
+        "label": "niche_score"
+      },
+      {
+        "key": "why",
+        "label": "Dominant driver"
+      },
+      {
+        "key": "risk",
+        "label": "Compliance risk"
+      }
+    ],
+    "rows": []
+  },
+  "category_rules": {
+    "caption": "Category-level facts that DO constrain niche choice",
+    "columns": [
+      {
+        "key": "fact",
+        "label": "Verified constraint"
+      },
+      {
+        "key": "cite",
+        "label": "Source"
+      },
+      {
+        "key": "impact",
+        "label": "Effect on niche selection"
+      }
+    ],
+    "rows": [
+      {
+        "fact": "Commission income for qualifying purchases and programs differs based on product category",
+        "cite": "Associates homepage FAQ",
+        "impact": "Niche choice is materially a category-rate choice; the rate spread is the single highest-leverage input, which is exactly the input that is not public.",
+        "sources": [
+          "SRC-11"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Products exclude services other than Amazon Home Services, and the Products Statement carves out Excluded Products (e.g. items sold on a site linked to from an Amazon Site)",
+        "cite": "Products Statement SS2, SS3",
+        "impact": "Any candidate niche must be checked against the Excluded Products list before content is written, or the work earns nothing.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Pre-release or pre-order products that are not available on a Product listing page are disqualified",
+        "cite": "CIS 2(k)",
+        "impact": "Early-access and launch-hype niches — normally the highest-traffic segment for affiliate content — are structurally unmonetisable.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Subscriptions are disqualified unless otherwise provided",
+        "cite": "CIS 2(j)",
+        "impact": "Subscription-box and recurring-product niches score zero on commission despite strong apparent LTV.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Digital products do not open the cart-based attribution window the way physical products do",
+        "cite": "CIS 1(b)",
+        "impact": "E-books, in-game content and streaming-adjacent offers convert on a much narrower path — deprioritise.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Sites directed toward children, or that knowingly collect personal information from children under 13, are unsuitable",
+        "cite": "Participation Requirements 1(f)",
+        "impact": "Toys and kids' entertainment are excluded as target niches regardless of demand.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Sites promoting sexually explicit, violent, deceptive or discriminatory content are unsuitable",
+        "cite": "Participation Requirements 1(a)-(d)",
+        "impact": "Screens out the highest-CPC 'grey hat' verticals that affiliate automation usually targets.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Your Site must contain original content; original content using third-party materials must add significant commentary, analysis or transformation",
+        "cite": "Participation Requirements 1",
+        "impact": "Sets the bar for AI-assisted publishing: bulk restating of Amazon copy is a rejection risk, so generated drafts must be materially additive.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Linking to pages with product lists (search results, events such as Prime Day, department homepages) requires additional original content relevant to the Special Link",
+        "cite": "Participation Requirements 2(b)",
+        "impact": "Category/roundup pages need editorial substance, not a bare scraped grid of results.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "fact": "Event links (e.g. Prime Day) are time-bound and the related promotion mentions must be removed as soon as the promotion ends",
+        "cite": "Participation Requirements 2(b)",
+        "impact": "Seasonal niches need scheduled decay built in, or they silently accumulate policy violations.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      }
+    ]
+  }
+}

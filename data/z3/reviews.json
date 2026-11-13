@@ -1,0 +1,240 @@
+{
+  "_meta": {
+    "title": "Review & sentiment analysis",
+    "generated_utc": "2026-11-13T23:42:00Z",
+    "headline": "Review data is the field most tightly restricted by the Program Policies — and it is entirely unavailable for the three submitted items.",
+    "method": "Reviews and star ratings may not be displayed at all unless obtained via Creators API or PA API. There is no operations list in the public Creators API documentation for retrieving individual review bodies (SRC-13 lists four operations)."
+  },
+  "review_rows": {
+    "caption": "Per-product review metrics",
+    "columns": [
+      {
+        "key": "ref",
+        "label": "Ref"
+      },
+      {
+        "key": "asin",
+        "label": "Identifier"
+      },
+      {
+        "key": "rating",
+        "label": "Star rating"
+      },
+      {
+        "key": "count",
+        "label": "Review count"
+      },
+      {
+        "key": "verified_only",
+        "label": "Verified-purchase share"
+      },
+      {
+        "key": "themes",
+        "label": "Recurring themes"
+      },
+      {
+        "key": "why_blank",
+        "label": "Why blank"
+      }
+    ],
+    "rows": [
+      {
+        "ref": "P-01",
+        "asin": "B04G1MEwY",
+        "rating": null,
+        "count": null,
+        "verified_only": null,
+        "themes": null,
+        "why_blank": "No resolvable listing; no API credentials. Refused to substitute the random product that the fallback redirect served.",
+        "sources": [
+          "SRC-01",
+          "SRC-04"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-007",
+          "FLG-008"
+        ]
+      },
+      {
+        "ref": "P-02",
+        "asin": "B02NbDxp3",
+        "rating": null,
+        "count": null,
+        "verified_only": null,
+        "themes": null,
+        "why_blank": "As above.",
+        "sources": [
+          "SRC-02",
+          "SRC-05"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-007",
+          "FLG-008"
+        ]
+      },
+      {
+        "ref": "P-03",
+        "asin": "B00hJ57DV",
+        "rating": null,
+        "count": null,
+        "verified_only": null,
+        "themes": null,
+        "why_blank": "As above.",
+        "sources": [
+          "SRC-03",
+          "SRC-06"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-007",
+          "FLG-008"
+        ]
+      }
+    ]
+  },
+  "integrity": {
+    "caption": "Review-integrity constraints (the ones AI content systems break first)",
+    "columns": [
+      {
+        "key": "constraint",
+        "label": "Constraint"
+      },
+      {
+        "key": "cite",
+        "label": "Source"
+      },
+      {
+        "key": "consequence",
+        "label": "If violated"
+      }
+    ],
+    "rows": [
+      {
+        "constraint": "Customer reviews created, edited or removed in exchange for compensation are prohibited — Amazon's Community Guidelines are incorporated into the Operating Agreement",
+        "cite": "Operating Agreement, preamble",
+        "consequence": "Breach of the Agreement; the compensation rule also covers incentivised review swapping, not just cash.",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "verified",
+        "flags": [
+          "FLG-023"
+        ]
+      },
+      {
+        "constraint": "Do not display or use Amazon customer reviews or star ratings in part or whole unless the link to that review/rating was obtained through Creators API or PA API under the License",
+        "cite": "Participation Requirements 5(t)",
+        "consequence": "Disqualified purchases and material-breach exposure. The site therefore stores no review bodies.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified",
+        "flags": [
+          "FLG-009"
+        ]
+      },
+      {
+        "constraint": "Do not post Special Links in any content placed on an Amazon Site, including a customer review, forum, Wish List or guide",
+        "cite": "Participation Requirements 5(p)",
+        "consequence": "Zero attributed revenue from that surface plus account risk. No Amazon-side publishing module exists.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "constraint": "No consideration, reward or incentive (money, rebate, discount, points, donation) for using Special Links",
+        "cite": "Participation Requirements 5(g)",
+        "consequence": "Disqualification. Rules out 'leave a review and get X' growth loops entirely.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "constraint": "Do not purchase products through your own Special Links, or ask/permit relatives, employees, contractors or business relations to",
+        "cite": "Participation Requirements 5(u)",
+        "consequence": "Treated as abuse; the affiliate also may not offer listed products for resale or commercial use.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "constraint": "FTC: endorsements must reflect the honest opinions of the endorser and each undisclosed endorsement could be deceptive",
+        "cite": "FTC Endorsement Guides guidance page",
+        "consequence": "Regulatory exposure independent of Amazon. This site publishes no testimonial content of any kind.",
+        "sources": [
+          "SRC-15"
+        ],
+        "status": "verified"
+      },
+      {
+        "constraint": "Do not misrepresent, embellish or imply Amazon endorsement of you or your site",
+        "cite": "Operating Agreement SS5",
+        "consequence": "Material breach. 'Amazon's #1 rated' style framing is banned in the copy linter.",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "verified"
+      }
+    ]
+  },
+  "sentiment_design": {
+    "caption": "Compliant sentiment-analysis design",
+    "columns": [
+      {
+        "key": "stage",
+        "label": "Stage"
+      },
+      {
+        "key": "does",
+        "label": "What it does"
+      },
+      {
+        "key": "stores",
+        "label": "What is persisted"
+      }
+    ],
+    "rows": [
+      {
+        "stage": "1. Acquire",
+        "does": "Read review aggregate fields returned by Creators API GetItems for the ASIN",
+        "stores": "Rating value, count, retrieval timestamp",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "verified"
+      },
+      {
+        "stage": "2. Signal",
+        "does": "Derive a review-velocity and rating-distribution signal for the ranking model",
+        "stores": "Derived numeric features only",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "verified"
+      },
+      {
+        "stage": "3. Guard",
+        "does": "Never persist or republish review bodies; never train a model on Program Content",
+        "stores": "Nothing textual",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "stage": "4. Present",
+        "does": "Show an aggregate score with an \"as of\" stamp and a link to the live listing, so the reader reads the reviews at source",
+        "stores": "Aggregate + timestamp + link",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      }
+    ]
+  }
+}
