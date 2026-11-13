@@ -106,6 +106,18 @@ Session 33226b37-zone3 worked in parallel from `ed1a796` and independently verif
 
 Independent findings that corroborate existing entries (logged, not re-numbered): the S08–S10 Page-Not-Found results, the FLG-001 nine-character finding, and the S11–S13 redirect targets all reproduce exactly; the short-link redirects were re-fetched repeatedly across two sessions with identical targets (deterministic mapping — detail recorded in `research/verification-log.md` §1.5); FLG-017's FTC-2023 resolution was independently confirmed via the FTC's Endorsement Guides page.
 
+## Merge log
+
+| PR | Branches | Result |
+|---|---|---|
+| PR #1 | `arena/26634cd5-zone3` → `main` | merged 2026-11-13 (commit 8cc2d4a) |
+| PR #2 | `arena/45ec61ec-zone3` | closed (not merged) |
+| PR #3 | `arena/66a80e53-zone3` → `main` | merged 2026-11-13 (commit cc26993) |
+| PR #4 | `arena/a9cafea1-zone3` | open (other session) |
+| PR #5 | `arena/7f84fea4-zone3` → `main` | merged 2026-11-13T22:51:59Z (commit 22e6c97) |
+| PR #6 | `arena/7f84fea4-zone3` → `main` | merged 2026-11-13 (commit 96ad628) |
+| PR #7 | `arena/33226b37-zone3` → `main` | https://github.com/kanlerxz87-cyber/Zone3/pull/7 — merged immediately without approval per the tasking brief (merge commit recorded by GitHub); post-merge GitHub Pages build result verified via the Pages API and posted as a PR comment. |
+
 ## Task log
 
 - **2026-11-13 — 7f84fea4**: claimed T1–T3 and pushed (commit `28e5029`). Later commits: `ed1a796` (base), `2069837` (site, data, checker, flags, PF).
