@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "source": "S7",
+    "source_url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+    "source_title": "Amazon Associates — Associates Program Standard Commission Income Statement",
+    "captured": "2026-11-13",
+    "marketplace": "amazon.com (US)",
+    "note": "Table 1 rows reproduced verbatim. 'All Other Categories' is the catch-all for any product not named in a specific row."
+  },
+  "table1_fixed_standard_commission_rates": [
+    { "product_category": "Luxury Beauty, Luxury Stores Beauty, Amazon Explore", "rate": 10.0 },
+    { "product_category": "Digital Music, Physical Music, Handmade, Digital Videos", "rate": 5.0 },
+    { "product_category": "Physical Books, Kitchen, Automotive", "rate": 4.5 },
+    { "product_category": "Amazon Fire Tablet Devices, Amazon Kindle Devices, Luxury Stores Fashion, Apparel, Amazon Cloud Cam Devices, Fire TV Edition Smart TVs, Amazon Fire TV Devices, Amazon Echo Devices, Ring Devices, Watches, Jewelry, Luggage, Shoes, and Handbags & Accessories", "rate": 4.0 },
+    { "product_category": "Toys, Furniture, Home, Home Improvement, Lawn & Garden, Pets Products, Headphones, Beauty, Musical Instruments, Business & Industrial Supplies, Outdoors, Tools, Sports, Baby Products, Amazon Coins", "rate": 3.0 },
+    { "product_category": "PC, PC Components, DVD & Blu-Ray", "rate": 2.5 },
+    { "product_category": "Televisions, Digital Video Games", "rate": 2.0 },
+    { "product_category": "Amazon Fresh, Physical Video Games & Video Game Consoles, Grocery, Health & Personal Care", "rate": 1.0 },
+    { "product_category": "Gift Cards; Wireless Service Plans; Alcoholic Beverages; Digital Kindle Products purchased as a subscription; Vehicles - Leasing and Sales; Pet Prescription Medications; Food prepared and delivered from a restaurant; Amazon Appstore, Prime Now, or Amazon Pay Places", "rate": 0.0 },
+    { "product_category": "Coach", "rate": 0.0 },
+    { "product_category": "All Other Categories", "rate": 4.0 }
+  ],
+  "bounty_events": [
+    { "program": "Prime Free Trial", "action": "Successful registration of a Free Trial", "rate_usd": 12.0, "homepage": "https://www.amazon.com/prime" },
+    { "program": "Prime Paid Membership", "action": "Successful purchase of a Membership", "rate_usd": 12.0, "homepage": "https://www.amazon.com/prime" },
+    { "program": "Prime for Young Adults Trial", "action": "Successful registration of a Trial", "rate_usd": 12.0, "homepage": "https://www.amazon.com/joinyoungadult" },
+    { "program": "Prime for Young Adults Paid Membership", "action": "Successful purchase of a Membership", "rate_usd": 12.0, "homepage": "https://www.amazon.com/joinyoungadult" },
+    { "program": "Prime Access Free Trial or Paid Membership", "action": "Successful registration of a Free Trial or purchase of a Membership", "rate_usd": 12.0, "homepage": "https://amazon.com/qualify" },
+    { "program": "Prime Sign Up at Checkout", "action": "Signs up for Prime, Prime for Young Adults, or Prime Access during checkout", "rate_usd": 12.0, "homepage": "n/a (link to eligible pages on Amazon)" },
+    { "program": "Prime Video Free Trial", "action": "Successful registration of a Free Trial", "rate_usd": 2.0, "homepage": "https://www.amazon.com/gp/video/primesignup" },
+    { "program": "Prime Video First Stream", "action": "Successful First Stream", "rate_usd": 5.0, "homepage": "n/a (link to eligible Prime Video pages on Amazon)" },
+    { "program": "Prime Video Stream", "action": "Successful Stream", "rate_usd": 0.25, "homepage": "n/a (link to eligible Prime Video pages on Amazon)" },
+    { "program": "Prime Video Add-on Subscriptions - Free Trial", "action": "Successful registration of a Free Trial", "rate_usd": 2.5, "homepage": "https://www.amazon.com/gp/video/storefront/subscription/default" },
+    { "program": "Prime Video Add-on Subscriptions - Paid", "action": "Successful purchase of a Subscription", "rate_usd": 3.0, "homepage": "https://www.amazon.com/gp/video/storefront/subscription/default" },
+    { "program": "Audible Standard Free Trial", "action": "Customer signs up for a free trial of the Audible Standard membership plan", "rate_usd": 20.0, "homepage": "https://www.amazon.com/hz/audible/arya/mlp" },
+    { "program": "Audible Premium Plus Free Trial", "action": "Successful registration of a Free Trial", "rate_usd": 5.0, "homepage": "https://www.amazon.com/hz/audible/mlp" },
+    { "program": "Audible Standard Monthly Membership", "action": "Successful purchase of a paid Audible Standard membership plan", "rate_usd": 20.0, "homepage": "https://www.amazon.com/hz/audible/arya/mlp" },
+    { "program": "Audible Premium Plus Annual Membership", "action": "Successful purchase of a Membership", "rate_usd": 25.0, "homepage": "https://www.amazon.com/hz/audible/mlp/membership/premiumplus/annual" },
+    { "program": "Audible Premium Plus Monthly Membership", "action": "Successful purchase of a Membership", "rate_usd": 10.0, "homepage": "https://www.amazon.com/hz/audible/mlp" },
+    { "program": "Audible Audiobook (cash purchase)", "action": "Successful cash purchase of an Audible audiobook", "rate_usd": 0.5, "homepage": "n/a (link to eligible audiobook pages on Amazon)" },
+    { "program": "Audible Gift Membership: 1-month plan", "action": "Successful purchase of a Gift Membership", "rate_usd": 5.0, "homepage": "https://www.amazon.com/hz/audible/gift-membership-detail" },
+    { "program": "Audible Gift Membership: 3-month plan", "action": "Successful purchase of a Gift Membership", "rate_usd": 8.0, "homepage": "https://www.amazon.com/hz/audible/gift-membership-detail" },
+    { "program": "Audible Gift Membership: 6-month plan", "action": "Successful purchase of a Gift Membership", "rate_usd": 8.0, "homepage": "https://www.amazon.com/hz/audible/gift-membership-detail" },
+    { "program": "Audible Gift Membership: 12-month plan", "action": "Successful purchase of a Gift Membership", "rate_usd": 10.0, "homepage": "https://www.amazon.com/hz/audible/gift-membership-detail" },
+    { "program": "Kindle Unlimited Free Trial", "action": "Successful registration of a Free Trial", "rate_usd": 3.0, "homepage": "https://www.amazon.com/kindleunlimited" },
+    { "program": "Kindle Unlimited Special Promos", "action": "Successful purchase of a Kindle Unlimited Special Promotion", "rate_usd": 3.0, "homepage": "https://www.amazon.com/kindleunlimited" },
+    { "program": "Kindle Unlimited Membership: 6-month plan", "action": "Successful purchase of a Membership", "rate_usd": 3.0, "homepage": "https://www.amazon.com/gp/kindle/ku/gift_landing" },
+    { "program": "Kindle Unlimited Membership: 12-month plan", "action": "Successful purchase of a Membership", "rate_usd": 5.0, "homepage": "https://www.amazon.com/gp/kindle/ku/gift_landing" },
+    { "program": "Kindle Unlimited Membership: 24-month plan", "action": "Successful purchase of a Membership", "rate_usd": 10.0, "homepage": "https://www.amazon.com/gp/kindle/ku/gift_landing" },
+    { "program": "Amazon Music Unlimited Free Trial", "action": "Successful registration of a Free Trial", "rate_usd": 3.0, "homepage": "https://www.amazon.com/music/unlimited" },
+    { "program": "Amazon Music Unlimited Paid Subscription", "action": "Successful purchase of a Subscription", "rate_usd": 3.0, "homepage": "https://www.amazon.com/music/unlimited" },
+    { "program": "Amazon Music Unlimited Special Promotions", "action": "Successful registration of a Free Trial", "rate_usd": 3.0, "homepage": "https://www.amazon.com/gp/dmusic/promotions/amazonmusicunlimited" },
+    { "program": "Prime Music Free Trial", "action": "Successful registration of a Free Trial", "rate_usd": 3.0, "homepage": "https://www.amazon.com/music/prime" },
+    { "program": "Amazon Baby Registry Create", "action": "Successful creation and addition of at least 1 item", "rate_usd": 3.0, "homepage": "https://www.amazon.com/baby-reg/homepage" },
+    { "program": "Amazon Wedding Registry Create", "action": "Successful creation and addition of at least 1 item", "rate_usd": 3.0, "homepage": "https://www.amazon.com/gp/wedding/homepage" },
+    { "program": "EBT Card Registration", "action": "Successful registration of EBT Card", "rate_usd": 2.0, "homepage": "https://www.amazon.com/snap" },
+    { "program": "Snap EBT Purchase", "action": "Successful purchase of SNAP/EBT eligible products", "rate_usd": 0.5, "homepage": "n/a (link to eligible SNAP/EBT eligible pages on Amazon)" }
+  ],
+  "qualifying_purchase_rules": {
+    "source": "S8",
+    "session_window": "Begins on Special Link click; ends at the earliest of (x) 24 hours elapse, (y) the customer places an order for a non-digital Product, or (z) the customer clicks through a Special Link that is not yours.",
+    "cart_window": "Add-to-cart orders must be completed no later than 89 days after the initial click-through of the Special Link.",
+    "fulfilment_window": "Within 180 days of purchase the Product must be shipped to, streamed or downloaded by, and paid for by the customer.",
+    "qualifying_revenue": "The amount Amazon actually receives from the Qualifying Purchase, less shipping charges, gift-wrapping fees, handling fees, taxes (e.g. sales tax and VAT), service charges, credits, rebates, credit card processing fees, and bad debt.",
+    "disqualified_examples": [
+      "Product purchased after termination of your Agreement",
+      "Order where a cancellation, return, or refund has been initiated",
+      "Product purchased by a customer referred through a Prohibited Paid Search Placement (bidding on keywords containing 'amazon', 'kindle', or any other Amazon Mark, or variations/misspellings)",
+      "Product purchased by a customer referred by a link generated or displayed on a Search Engine (e.g. Google, Yahoo, Bing) or any site in such a network",
+      "Product purchased via a Redirecting Link that sends users indirectly to an Amazon Site without an affirmative click",
+      "Purchase not correctly tracked because the links from your site are not properly formatted",
+      "Product purchased through a Special Link in a Mobile Application that was not an Approved Mobile Application (or not served by Creators API / PA API)",
+      "Product subject to a Bounty Event",
+      "Product purchased as a subscription unless otherwise provided in the Agreement",
+      "Pre-release or pre-order Product that is not available on a Product listing page"
+    ]
+  },
+  "per_asin_category_mapping": {
+    "status": "unverified",
+    "value": null,
+    "note": "Amazon does not publish which commission category an individual ASIN falls into. All three products on this site are in the 'Home & Kitchen' department, and the official rate table contains both a 'Kitchen' row (4.50%) and a 'Home' row (3.00%). The applicable rate per ASIN must be read from Associates Central reports after a tag is connected. No rate is asserted per product."
+  }
+}
