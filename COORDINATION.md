@@ -102,6 +102,7 @@ Session 33226b37-zone3 worked in parallel from `ed1a796` and independently verif
 - **`data/sources.json`** — S27 (control lookup of Amazon's documented example ASIN `B00005N5PF`: checkpoint interstitial, NOT the S08–S10 Page-Not-Found — validates that those 404s are meaningful), S28 (Account Dormancy help topic), S29 (application review help topic).
 - **`data/policy_facts.json`** — PF-40 (≥3 qualifying sales within first 180 days; personal orders excluded; ≈10 posts of robust original content), PF-41 (180-day dormancy gate), PF-42 (payout ≈60 days after month end), PF-43 (US payment minimums $10/$10/$100 + $15 check fee).
 - **`README.md`** — rows for `research/` and `docs/`, PF range corrected to 43.
+- **Conflict note:** PR #4 (`arena/a9cafea1-zone3`, merged while this PR was open) had created its own `docs/executive-summary.md`. Resolution: main's version stays canonical; session 33226b37-zone3's summary preserved as `docs/executive-summary-33226b37.md`. Nothing discarded.
 - No flags were changed; no product rows were changed.
 
 Independent findings that corroborate existing entries (logged, not re-numbered): the S08–S10 Page-Not-Found results, the FLG-001 nine-character finding, and the S11–S13 redirect targets all reproduce exactly; the short-link redirects were re-fetched repeatedly across two sessions with identical targets (deterministic mapping — detail recorded in `research/verification-log.md` §1.5); FLG-017's FTC-2023 resolution was independently confirmed via the FTC's Endorsement Guides page.
