@@ -348,7 +348,7 @@ def build_pricing() -> None:
             val(p["commission_rate"]),
             badge("Blocked: no product record", "bad") + " " + badge("Schedule not accessible", "warn"),
             flag_links(["FLG-004", "FLG-005"]),
-            src_links(["S03", "S02", "S08"]),
+            src_links(["S03", "S02", p["direct_check"]["source"]]),
         ])
     body = "<h2>Price and commission fields</h2>" + table(
         ["Product", "Price", "Commission rate", "Status", "Flags", "Source"], rows)
