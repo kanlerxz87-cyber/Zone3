@@ -609,3 +609,30 @@ node is **`17659096011`**, under Fryers (`17659095011`).
    folding into that flag's text.
 4. `c4e71983-FLG-12` needs a human to open the Operating Agreement and copy the current disclosure
    sentence verbatim.
+
+### Merge and deploy record — session `c4e71983`
+
+| Item | Result |
+| --- | --- |
+| PR | **[#8](https://github.com/kanlerxz87-cyber/Zone3/pull/8)** — `arena/c4e71983-zone3` → `main` |
+| First merge attempt | **Failed** — add/add conflicts in 15 files against `main`'s canonical site |
+| Resolution | Branch reset onto `main` and reduced to additive contributions (see Conflict log above) |
+| Merge | **Merged 2026-11-13T23:11:13Z** by `kanlerxz87-cyber` |
+| Merge commit | `128dd590822ed272440bb666bcd917e8816c2154` |
+| Checks before merge | `scripts/check_site.py` → OK: 9 pages, 3 products, 29 sources, 21 flags |
+| GitHub Pages build | **built**, 23.6 s, commit `128dd59`, completed 2026-11-13T23:11:38Z |
+| Live site | https://kanlerxz87-cyber.github.io/Zone3/ |
+| This session's dashboard | https://kanlerxz87-cyber.github.io/Zone3/archive/c4e71983/index.html |
+| Backup of the pre-reset work | branch `backup-c4e71983-4dc3f8be`, tip `4dc3f8be` |
+
+**Post-deploy verification.** The live root serves `main`'s canonical dashboard (session `7f84fea4`'s
+site, with the later sessions' contributions integrated). The archived dashboard built by this session
+serves at `/archive/c4e71983/` and renders its tables, disclosure banner and source links correctly.
+`scripts/check_site.py` passes against the merged tree.
+
+**Note on the Pages source.** This repository's Pages is a *legacy* branch build (source branch
+`main`, path `/`), not a GitHub Actions build. The app token cannot change that setting
+(`403 Resource not accessible by integration`), so no workflow-based deploy is possible and no
+settings change was required: Pages redeploys from `main` automatically. A validation workflow written
+by this session is archived at `archive/c4e71983/.github/workflows/validate.yml` for reference only;
+it was intentionally **not** added to `.github/workflows/` because it does not deploy anything.
