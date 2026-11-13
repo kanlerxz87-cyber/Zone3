@@ -26,7 +26,7 @@ publish any value that cannot be traced to an official source.
 | Products that passed intake verification | **0 of 3** |
 | Data cells left blank because no official source exists | **36** |
 | Official sources cited | 19 |
-| Open items published for review | 26 |
+| Open items published for review | 28 |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks |
 
 The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
@@ -58,7 +58,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 | Methodology | `/methodology/` | 8-stage pipeline, verification protocol, scalability, limits |
 | Requirements | `/requirements/` | All 30 brief clauses traced to status |
 | Sources | `/sources/` | Every official document cited, with what was observed |
-| Flagged | `/flagged/` | 26 open items with source links and resolutions |
+| Flagged | `/flagged/` | 28 open items with source links and resolutions |
 | Repo review | `/repo-review/` | Audit of the repository as found |
 
 ---
