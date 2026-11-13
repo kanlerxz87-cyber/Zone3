@@ -1,0 +1,286 @@
+{
+  "_meta": {
+    "title": "Campaign operations: link management, clicks & conversions",
+    "generated_utc": "2026-11-13T23:48:00Z",
+    "headline": "Instrumentation is shipped; the metrics ledger is intentionally empty.",
+    "why_empty": "Amazon is the system of record for clicks and Qualifying Purchases and reports them in-account only. Publishing fabricated traffic figures would defeat the verification rule, so every metric cell is blank and marked Unverified."
+  },
+  "ledger": {
+    "caption": "Campaign performance ledger",
+    "empty": true,
+    "empty_text": "0 rows. No campaign has been launched: there are no verified products to link to (all three were rejected at intake) and no Associates tag exists to attribute traffic. The schema below is live and accepts an Earnings Report export.",
+    "columns": [
+      {
+        "key": "date",
+        "label": "Date"
+      },
+      {
+        "key": "campaign",
+        "label": "Campaign"
+      },
+      {
+        "key": "page",
+        "label": "Page / slot"
+      },
+      {
+        "key": "subtag",
+        "label": "Static sub-tag"
+      },
+      {
+        "key": "clicks",
+        "label": "Clicks"
+      },
+      {
+        "key": "orders",
+        "label": "Orders"
+      },
+      {
+        "key": "cvr",
+        "label": "CVR"
+      },
+      {
+        "key": "revenue",
+        "label": "Qualifying revenue"
+      },
+      {
+        "key": "commission",
+        "label": "Commission"
+      }
+    ],
+    "rows": []
+  },
+  "schema": {
+    "caption": "Ledger schema (`data/campaign-metrics.json`) with provenance per field",
+    "columns": [
+      {
+        "key": "field",
+        "label": "Field"
+      },
+      {
+        "key": "type",
+        "label": "Type"
+      },
+      {
+        "key": "provenance",
+        "label": "Authoritative provenance"
+      },
+      {
+        "key": "rule",
+        "label": "Handling rule"
+      }
+    ],
+    "rows": [
+      {
+        "field": "link_clicks",
+        "type": "integer",
+        "provenance": "Own-site event log (first-party only). Amazon does not give associates a click count for qualifying purchases tracking.",
+        "rule": "Labelled as first-party estimate; never reconciled against Amazon's numbers in the same column.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "instrumented"
+      },
+      {
+        "field": "orders",
+        "type": "integer",
+        "provenance": "Associates Central Earnings Report",
+        "rule": "Imported figure; the only number presented as authoritative.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "requires-account"
+      },
+      {
+        "field": "items_sold",
+        "type": "integer",
+        "provenance": "Earnings Report",
+        "rule": "As orders.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "requires-account"
+      },
+      {
+        "field": "qualifying_revenue",
+        "type": "currency",
+        "provenance": "Earnings Report",
+        "rule": "Net of shipping, gift wrap, handling, taxes, service charges, credits, rebates, card fees and bad debt.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "requires-account"
+      },
+      {
+        "field": "commission_earned",
+        "type": "currency",
+        "provenance": "Earnings Report; paid ~60 days after month end",
+        "rule": "Report on a two-month lag; do not project from the current month.",
+        "sources": [
+          "SRC-10",
+          "SRC-11"
+        ],
+        "status": "requires-account"
+      },
+      {
+        "field": "conversion_rate",
+        "type": "percent",
+        "provenance": "Derived: orders / own-site clicks",
+        "rule": "Always rendered as 'derived', never as an Amazon-published figure. Amazon advertises \"competitive conversion rates\" but publishes no affiliate-facing conversion metric.",
+        "sources": [
+          "SRC-11"
+        ],
+        "status": "derived"
+      },
+      {
+        "field": "epc",
+        "type": "currency",
+        "provenance": "Derived: commission_earned / link_clicks",
+        "rule": "Primary optimiser objective, since per-category rates are not public.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "derived"
+      },
+      {
+        "field": "sub_tag",
+        "type": "string",
+        "provenance": "Amazon-issued additional sub-tag Associate IDs, on request and subject to approval",
+        "rule": "MUST be static and assigned at build time to a page or slot. Dynamically assigning sub-tags to users is expressly forbidden.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "instrumented",
+        "flags": [
+          "FLG-017"
+        ]
+      }
+    ]
+  },
+  "optimiser": {
+    "caption": "Optimisation loop — permitted vs. prohibited levers",
+    "columns": [
+      {
+        "key": "lever",
+        "label": "Lever"
+      },
+      {
+        "key": "verdict",
+        "label": "Verdict"
+      },
+      {
+        "key": "cite",
+        "label": "Basis"
+      }
+    ],
+    "rows": [
+      {
+        "lever": "Re-rank which product occupies the top slot on a page, by derived EPC",
+        "verdict": "Permitted",
+        "cite": "You may add or delete Products and related Special Links at any time without approval",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "lever": "Test copy, layout and CTA wording on your own pages",
+        "verdict": "Permitted",
+        "cite": "You are solely responsible for content, style and placement of links on your Site",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "lever": "Compare static sub-tags across pages/slots to see which placements earn",
+        "verdict": "Permitted",
+        "cite": "Additional sub-tag IDs exist precisely \"to monitor and optimize the performance of your Special Links\"",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "lever": "Attribute sessions per named visitor via dynamically assigned sub-tags",
+        "verdict": "Prohibited",
+        "cite": "\"Under no circumstances may you associate any sub-tag ... with a specific end user\"",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified-blocked"
+      },
+      {
+        "lever": "Auto-click own links (or run 'verification clicks') to test the funnel",
+        "verdict": "Prohibited",
+        "cite": "No artificially generating clicks/impressions or creating Sessions \"by way of a robot or software program or otherwise\"",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified-blocked"
+      },
+      {
+        "lever": "Self-purchase or have staff/friends buy through the links to seed data",
+        "verdict": "Prohibited",
+        "cite": "Participation Requirements 5(u)",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified-blocked"
+      },
+      {
+        "lever": "Bid on paid search containing \"amazon\"/\"kindle\" or any Amazon Mark",
+        "verdict": "Prohibited",
+        "cite": "Prohibited Paid Search Placement — those purchases are disqualified",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified-blocked"
+      },
+      {
+        "lever": "Send search-engine-result links straight to Amazon (no intermediate page)",
+        "verdict": "Prohibited",
+        "cite": "Purchases by a customer referred by a link generated or displayed on a Search Engine are disqualified",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified-blocked"
+      },
+      {
+        "lever": "Run an organic + paid search campaign that lands on your own page first",
+        "verdict": "Permitted",
+        "cite": "You may buy paid search and submit links to search engines provided results send users to your site, not directly or indirectly via a Redirecting Link to Amazon",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "lever": "Offer a giveaway/discount to readers who buy via your link",
+        "verdict": "Prohibited",
+        "cite": "No consideration, reward or incentive for using Special Links",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified-blocked"
+      },
+      {
+        "lever": "Prune products whose listings 404 or whose tags are malformed",
+        "verdict": "Permitted and required",
+        "cite": "Purchases not tracked because links are not properly formatted are disqualified (CIS 2(g))",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "lever": "Split-test Amazon's landing experience or intercept Amazon forms",
+        "verdict": "Prohibited",
+        "cite": "5(h) interception of material submitted to Amazon; 5(j) modifying any Amazon Site button, link or feature",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified-blocked"
+      }
+    ]
+  }
+}

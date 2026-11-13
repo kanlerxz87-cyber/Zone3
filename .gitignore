@@ -1,0 +1,11 @@
+# build scratch & local-only secrets
+__pycache__/
+*.pyc
+.pytest_cache/
+.preview/
+data/intake-cache.json
+data/niche-ranking.generated.json
+.env
+.env.*
+*.local.json
+.DS_Store

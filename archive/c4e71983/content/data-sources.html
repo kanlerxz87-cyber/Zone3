@@ -1,0 +1,86 @@
+<div class="panel">
+  <h2>Verification standard <small>what had to be true before a value reached a table</small></h2>
+  <div class="body">
+    <ol class="tight">
+      <li>The source had to be an official page &mdash; Amazon.com or Amazon Associates Central, or a government
+      regulator such as the FTC. Third-party blogs, affiliate guides and SEO tools were read for orientation but
+      <b>not</b> used as sources for any value on this site.</li>
+      <li>The page had to actually be retrieved in this session. Nothing is cited from memory.</li>
+      <li>If a value could not be read from an official page, the cell was left blank and flagged. Nothing was
+      inferred, estimated, interpolated or carried across from a similar product.</li>
+      <li>Every volatile value carries the timestamp of the page it came from. Prices and ratings were captured
+      from Amazon search-result pages whose Amazon request id (<span class="mono">qid</span>) decodes to the true
+      request time, so those timestamps are exact rather than approximate.</li>
+      <li>Every external link the site emits must appear in the allowlist. The build fails otherwise, so a stray
+      unverified URL cannot silently ship.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Individually retrieved sources <small>every one fetched in this session</small></h2>
+  <div class="body">
+    <p><input type="search" data-filter="#tbl-src" placeholder="Filter rows&hellip;"
+       style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;font-size:13px;margin-bottom:10px"></p>
+    {{TABLE_SOURCES}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Observed but not individually fetched <small>kept separate, on purpose</small></h2>
+  <div class="body">
+    <p>These URLs appear on the site but were not fetched themselves. Each was read off an official page that
+    <i>was</i> fetched. They live in a separate file from the table above so that the primary source list stays a
+    pure record of pages that were actually retrieved.</p>
+    {{TABLE_DERIVED_LINKS}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>What could not be retrieved <small>and what that cost us</small></h2>
+  <div class="body">
+    <div class="tw"><table>
+      <thead><tr><th>Attempt</th><th>Result</th><th>Consequence</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="mono">/dp/ASIN</td>
+          <td>Returned 200, but as a "shuffle" landing variant with no extractable product-detail block.</td>
+          <td>Lost Best Sellers Rank, wattage, model number and the full specification table. Titles and
+          departments still came through, because they appear in the page title.</td>
+        </tr>
+        <tr>
+          <td class="mono">/gp/aw/d/ASIN</td>
+          <td>Same shuffle landing, no detail block.</td>
+          <td>Secondary attempt; no additional data.</td>
+        </tr>
+        <tr>
+          <td class="mono">/product-reviews/ASIN</td>
+          <td>Redirected to the Amazon sign-in wall.</td>
+          <td>Lost exact rating counts. Amazon search results print rounded counts instead, which is why the
+          exact-count column is blank &mdash; <a href="flagged.html#FLAG-04">FLAG-04</a>.</td>
+        </tr>
+        <tr>
+          <td>Best Sellers list, positions 7+</td>
+          <td>Not enumerated.</td>
+          <td>No claim is made that any target product is absent from the full top-100 list.</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="note">Search-result pages and Best Sellers pages <i>were</i> retrievable and carried the
+    commercial data. That is how price, rating, rounded rating count, deal badge, velocity signal and the
+    competitor benchmark set were obtained.</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Machine-readable exports <small>shipped with the site</small></h2>
+  <div class="body">
+    <ul class="tight">
+      <li><a href="data/products.json">data/products.json</a></li>
+      <li><a href="data/competitors.json">data/competitors.json</a></li>
+      <li><a href="data/flags.json">data/flags.json</a></li>
+      <li><a href="data/sources.json">data/sources.json</a></li>
+      <li><a href="data/derived_links.json">data/derived_links.json</a></li>
+    </ul>
+  </div>
+</div>

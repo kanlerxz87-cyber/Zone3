@@ -1,0 +1,181 @@
+{
+  "_meta": {
+    "title": "Official source register",
+    "retrieved_utc": "2026-11-13T23:20:00Z",
+    "policy": "Only primary/official publishers are admitted: amazon.com, affiliate-program.amazon.com, sell.amazon.com, sellercentral.amazon.com, ftc.gov. Third-party blogs, aggregator sites and AI answers are not admitted as sources.",
+    "retrieval_method": "Direct HTTPS fetch of the live page; observed final URL and HTTP status recorded per source."
+  },
+  "sources": [
+    {
+      "id": "SRC-01",
+      "publisher": "Amazon.com",
+      "title": "Product detail page probe: /dp/B04G1MEwY",
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "observed": "Amazon 'Page Not Found' error page (logo + \"Sorry! We couldn't find that page.\").",
+      "status": "verified-negative",
+      "used_for": "Products: resolution status for P-01"
+    },
+    {
+      "id": "SRC-02",
+      "publisher": "Amazon.com",
+      "title": "Product detail page probe: /dp/B02NbDxp3",
+      "url": "https://www.amazon.com/dp/B02NbDxp3",
+      "observed": "Amazon 'Page Not Found' error page.",
+      "status": "verified-negative",
+      "used_for": "Products: resolution status for P-02"
+    },
+    {
+      "id": "SRC-03",
+      "publisher": "Amazon.com",
+      "title": "Product detail page probe: /dp/B00hJ57DV",
+      "url": "https://www.amazon.com/dp/B00hJ57DV",
+      "observed": "Amazon 'Page Not Found' error page.",
+      "status": "verified-negative",
+      "used_for": "Products: resolution status for P-03"
+    },
+    {
+      "id": "SRC-04",
+      "publisher": "Amazon.com",
+      "title": "Redirect trace: https://link.amazon/B04G1MEwY",
+      "url": "https://link.amazon/B04G1MEwY",
+      "observed": "Final URL https://www.amazon.com/dp/B0CDY277D3?...&channelId=704&plpRedirect=mhFallback — page title 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven'. Target carries plpRedirect=mhFallback (Amazon fallback route), not the submitted identifier.",
+      "status": "verified-negative",
+      "used_for": "Products: redirect trace P-01; Flag FLG-007"
+    },
+    {
+      "id": "SRC-05",
+      "publisher": "Amazon.com",
+      "title": "Redirect trace: https://link.amazon/B02NbDxp3",
+      "url": "https://link.amazon/B02NbDxp3",
+      "observed": "Final URL https://www.amazon.com/dp/B09B7SB46R?...&plpRedirect=mhFallback — page title 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven'.",
+      "status": "verified-negative",
+      "used_for": "Products: redirect trace P-02; Flag FLG-007"
+    },
+    {
+      "id": "SRC-06",
+      "publisher": "Amazon.com",
+      "title": "Redirect trace: https://link.amazon/B00hJ57DV",
+      "url": "https://link.amazon/B00hJ57DV",
+      "observed": "Final URL https://www.amazon.com/dp/B08DKYBTPH?...&plpRedirect=mhFallback — page title 'Chefman Air Fryer 8 Qt | TurboFry 4-in-1'.",
+      "status": "verified-negative",
+      "used_for": "Products: redirect trace P-03; Flag FLG-007"
+    },
+    {
+      "id": "SRC-07",
+      "publisher": "Amazon.com (control)",
+      "title": "Control probe: a 10-character ASIN that resolves",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "observed": "Serves a real product detail page. Confirms the probe method detects resolvable ASINs, so the 404s above are not a tooling artifact.",
+      "status": "verified-positive-control",
+      "used_for": "Methodology: probe validation"
+    },
+    {
+      "id": "SRC-08",
+      "publisher": "Amazon — Sell on Amazon (official)",
+      "title": "Understanding ASINs: Your guide to Amazon's product identification system",
+      "url": "https://sell.amazon.com/blog/what-is-an-asin",
+      "observed": "\"'ASIN' stands for 'Amazon Standard Identification Number.' It's a unique 10-character alphanumeric code assigned to every product listed in the Amazon store.\" Format 'typically starts with \"B0\"'. Published Jun 4, 2025.",
+      "status": "verified",
+      "used_for": "Products: ASIN length/format rule (FLG-004/005/006)"
+    },
+    {
+      "id": "SRC-09",
+      "publisher": "Amazon Associates Central",
+      "title": "Associates Program Operating Agreement — updated October 15, 2025",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "observed": "Sections 1-7 read in full for the cited clauses.",
+      "status": "verified",
+      "used_for": "Compliance: Sections 1, 2, 3, 5, 6, 7; Community Guidelines note"
+    },
+    {
+      "id": "SRC-10",
+      "publisher": "Amazon Associates Central",
+      "title": "Associates Program Policies — updated April 14, 2026",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "observed": "Commission Income Statement SS1-6 + Payment Minimum Chart; Participation Requirements SS1-5; Products Statement; IP License SS2(h)(i)(j)(k) and SS4 Agent Terms.",
+      "status": "verified",
+      "used_for": "Compliance, Pricing, Reviews, Campaigns, Agent Terms"
+    },
+    {
+      "id": "SRC-11",
+      "publisher": "Amazon Associates Central",
+      "title": "Associates Program homepage (public, unauthenticated)",
+      "url": "https://affiliate-program.amazon.com/",
+      "observed": "\"Earn up to 10% in associate commissions from qualifying purchases and programs.\" \"Commission income for qualifying purchases and programs differ based on product category.\" \"Commission income is paid approximately 60 days after the end of the month in which it was earned.\"",
+      "status": "verified",
+      "used_for": "Commission headline rate; payment timing"
+    },
+    {
+      "id": "SRC-12",
+      "publisher": "Amazon Associates Central",
+      "title": "Standard Commission Income rate card (Appendix)",
+      "url": "https://affiliate-program.amazon.com/help/operating/schedule",
+      "observed": "Observed on the request path: /help/operating/schedule redirects to Amazon sign-in (https://www.amazon.com/ap/signin?...openid.assoc_handle=amzn_associates_us...). CORRECTED 2026-11-14: that endpoint is not the only publication of the rate card — the same tables are published publicly at SRC-18 and SRC-19. An earlier draft of this project wrongly concluded no rate was public; see FLG-013.",
+      "status": "verified-inaccessible-endpoint",
+      "used_for": "Pricing/Commission: explains why the sign-in redirect does NOT imply rates are unavailable"
+    },
+    {
+      "id": "SRC-13",
+      "publisher": "Amazon Associates Central",
+      "title": "Welcome to Creators API — official documentation",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+      "observed": "Operations: SearchItems, GetItems, GetVariations, GetBrowseNodes. Prerequisites: enrolled in Associates for target marketplace; at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API; register through Associates Central; generate API credentials. SDKs: Node.js, Python, PHP, Java.",
+      "status": "verified",
+      "used_for": "Methodology: the only sanctioned product-data intake; gating threshold"
+    },
+    {
+      "id": "SRC-14",
+      "publisher": "Amazon Associates Central",
+      "title": "PA-API 5 Deprecation Notice",
+      "url": "https://webservices.amazon.com/paapi5/documentation/",
+      "observed": "Serves a notice: \"The Amazon Product Advertising API 5.0 (PA-API 5) has been deprecated and is being replaced by the Creators API.\" Callers still using PA-API 5 receive HTTP 403 Forbidden with __type com.amazon.paapi5#AccessDeniedException and Message \"Product Advertising API is deprecated. Please migrate to Creators API...\".",
+      "status": "verified",
+      "used_for": "Methodology: API architecture constraint; Flag FLG-014"
+    },
+    {
+      "id": "SRC-15",
+      "publisher": "U.S. Federal Trade Commission",
+      "title": "FTC's Endorsement Guides: What People Are Asking",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "observed": "Material-connection disclosure duty; \"if a disclosure is needed in one post for a brand, it's probably needed in all posts, because you can't assume that viewers will see multiple posts\"; \"Each new endorsement made without a disclosure could be deceptive\"; where audience awareness is hard to determine, \"we recommend disclosure\"; foreign publishers whose content is reasonably foreseeable to reach U.S. consumers are covered.",
+      "status": "verified",
+      "used_for": "Compliance: disclosure placement/frequency beyond Amazon's own rule"
+    },
+    {
+      "id": "SRC-16",
+      "publisher": "DNS (authoritative resolution, observed in sandbox)",
+      "title": "Host resolution check for the submitted link domain",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/docs/verification-log.md",
+      "observed": "link.amazon -> 18.172.170.20/.59/.77/.98 (AWS range, consistent with Amazon infrastructure). amzn.to -> 67.199.248.12/.13 (third-party URL-shortener range, not an Amazon address block). Record: link.amazon is a live Amazon-served host; the failure is in the identifier, not the domain.",
+      "status": "observed",
+      "used_for": "Flags FLG-001..003 (corrected), FLG-015"
+    },
+    {
+      "id": "SRC-17",
+      "publisher": "GitHub (this repository)",
+      "title": "Repository baseline and Pages configuration",
+      "url": "https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages",
+      "observed": "Baseline: single commit ed1a796 'Initial commit' containing only README.md (7 bytes). Pages: build_type=legacy, source={branch:main, path:/}, html_url=https://kanlerxz87-cyber.github.io/Zone3/, https_enforced=true.",
+      "status": "verified",
+      "used_for": "Repo review; Site publishing configuration"
+    },
+    {
+      "id": "SRC-18",
+      "publisher": "Amazon Associates Central (public help centre)",
+      "title": "Associates Program Standard Commission Income Statement — Table 1 (fixed rates) + Bounty Events",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "observed": "Read in full 2026-11-13. Table 1: Luxury Beauty/Luxury Stores Beauty/Amazon Explore 10.00%; Digital Music, Physical Music, Handmade, Digital Videos 5.00%; Physical Books, Kitchen, Automotive 4.50%; Amazon Fire Tablet/Kindle Devices, Luxury Stores Fashion, Apparel, Cloud Cam, Fire TV Edition Smart TVs, Fire TV, Echo, Ring, Watches, Jewelry, Luggage, Shoes, Handbags & Accessories 4.00%; Toys, Furniture, Home, Home Improvement, Lawn & Garden, Pets Products, Headphones, Beauty, Musical Instruments, Business & Industrial Supplies, Outdoors, Tools, Sports, Baby Products, Amazon Coins 3.00%; PC, PC Components, DVD & Blu-Ray 2.50%; Televisions, Digital Video Games 2.00%; Amazon Fresh, Physical Video Games & Consoles, Grocery, Health & Personal Care 1.00%; Gift Cards/Wireless/Alcohol/Digital Kindle subscription/Vehicles/Pet Rx/restaurant food/Appstore-PrimeNow-PayPlaces 0.00%; Coach 0.00%; All Other Categories 4.00%. Bounties: Prime trial & paid, Young Adults, Prime Access, Prime at checkout = $12.00; Prime Video free trial $2.00; First Stream $5.00; Stream $0.25.",
+      "status": "verified",
+      "used_for": "Commission page: all published rates"
+    },
+    {
+      "id": "SRC-19",
+      "publisher": "Amazon Associates Central (public help centre)",
+      "title": "Onsite Associates Program Commission Income Statement — Table A and Table B",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA",
+      "observed": "Read 2026-11-13. Onsite Commission Income applies only to a Direct Qualifying Purchase — a Qualifying Purchase of a Product of the same ASIN variant as the detail page linked to from the Onsite Content. Table A (excluding Creator Ads): Luxury Beauty/Luxury Stores Beauty 4.00%; Furniture, Home, Home Improvement, Lawn & Garden, Pets 3.00%; Amazon Coins 2.50%; Pantry, Beauty, Musical Instruments, Business & Industrial 2.00%; Tools 1.75%; Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive 1.25%; Headphones, Fashion Private Label, Apparel, Cloud Cam, Echo, Ring, Watches, Jewelry, Luggage, Shoes, Handbags 1.00%; Outdoors 0.75%; long 0.50% list; 0.00% list; All Other Categories 1.00%. Table B (Creator Ads) differs, e.g. Luxury Beauty 5.00%, Furniture/Home 4.00%, Kitchen/Automotive/Physical Books/Health & Personal Care/Sports/Baby 2.25%.",
+      "status": "verified",
+      "used_for": "Commission page: Onsite vs Standard rate comparison"
+    }
+  ]
+}

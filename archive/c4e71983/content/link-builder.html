@@ -1,0 +1,67 @@
+<script>
+  window.ZONE3_PRODUCTS = [
+    {"asin":"B0CDY277D3","title":"CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black"},
+    {"asin":"B09B7SB46R","title":"Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals."},
+    {"asin":"B08DKYBTPH","title":"Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel"}
+  ];
+</script>
+
+<div class="panel">
+  <h2>Special Link builder <small>runs in your browser &mdash; nothing is sent anywhere</small></h2>
+  <div class="body">
+    <p>Pick a product, paste your Associates tag, and the builder produces a tagged Amazon URL. The builder runs
+    entirely client-side: no request leaves your browser, and nothing you type is stored or transmitted.</p>
+
+    <form id="lb-form" autocomplete="off">
+      <div class="lb">
+        <div class="field">
+          <label for="lb-asin">Product (ASIN)</label>
+          <select id="lb-asin"></select>
+        </div>
+        <div class="field">
+          <label for="lb-tag">Your Associates tag</label>
+          <input id="lb-tag" type="text" placeholder="yourname-20" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="lb-extra">Extra parameters (optional)</label>
+          <input id="lb-extra" type="text" placeholder="linkCode=ogi&amp;language=en_US" spellcheck="false">
+        </div>
+      </div>
+      <div class="out" id="lb-out"></div>
+      <p id="lb-warn" style="font-size:12.5px;margin-top:10px"></p>
+      <button class="btn" type="button" data-copy="#lb-out">Copy link</button>
+    </form>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Rules this tool is designed to keep you inside</h2>
+  <div class="body">
+    <ul class="tight">
+      <li><b>The tag must be in the URL.</b> Amazon requires your Associates ID or tag, appearing as
+      <span class="mono">XXXXX-##</span>, as a parameter in every link to an Amazon site. The builder warns you
+      if you leave it out.</li>
+      <li><b>Links must be opened from your own site.</b> All Special Links must be accessed directly from your
+      site, and you must not encourage visitors to bookmark them.</li>
+      <li><b>Do not cloak.</b> The builder produces a plain, readable
+      <span class="mono">amazon.com/dp/ASIN?tag=...</span> URL with no redirect layer. Opaque shorteners give
+      visitors no way to see where a link goes.</li>
+      <li><b>Remove expired promotions.</b> If the page around the link mentions a discount, the mention has to
+      come down the moment the promotion ends.</li>
+      <li><b>Register every property.</b> Every site or channel carrying your links must be listed in your
+      Associates application.</li>
+    </ul>
+    <p><a href="compliance.html">Full compliance checklist &rarr;</a></p>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Why the tag is not pre-filled</h2>
+  <div class="body">
+    <p>A tag is issued per associate and is private to your account. This project has no way to know yours, and
+    guessing one would be worse than leaving it blank: a wrong tag sends commission to someone else's account.
+    Enter it here and copy the result.</p>
+    <p>Not an Amazon Associate yet? <a href="https://affiliate-program.amazon.com/welcome" target="_blank" rel="noopener">Join the program &#8599;</a>.
+    The three links in this project currently have no tag at all &mdash; <a href="flagged.html#FLAG-05">FLAG-05</a>.</p>
+  </div>
+</div>

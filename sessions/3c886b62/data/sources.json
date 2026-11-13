@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "note": "Every source is a first-party (official) page: an amazon.com product page, an affiliate-program.amazon.com policy page, or a U.S. federal (.gov) page. No third-party blog, price tracker, or aggregator is used as a source anywhere on this site.",
+    "checked": "2026-11-13"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Amazon product page — CHEFMAN 6 Quart Dual Basket Air Fryer Oven (B0CDY277D3)",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "publisher": "Amazon.com, Inc.",
+      "official": true,
+      "used_for": "P1 title, ASIN, brand, department, canonical URL"
+    },
+    {
+      "id": "S2",
+      "title": "Amazon search results for B0CDY277D3",
+      "url": "https://www.amazon.com/s?k=B0CDY277D3",
+      "publisher": "Amazon.com, Inc.",
+      "official": true,
+      "used_for": "P1 price, list price, unit price, deal badge, rating, ratings count, demand signal, other offers, listing URL"
+    },
+    {
+      "id": "S3",
+      "title": "Amazon product page — Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven (B09B7SB46R)",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "publisher": "Amazon.com, Inc.",
+      "official": true,
+      "used_for": "P2 title, ASIN, brand, department, canonical URL"
+    },
+    {
+      "id": "S4",
+      "title": "Amazon search results for B09B7SB46R",
+      "url": "https://www.amazon.com/s?k=B09B7SB46R",
+      "publisher": "Amazon.com, Inc.",
+      "official": true,
+      "used_for": "P2 feature line, price, list price, deal badge, rating, ratings count, demand signal, other offers, listing URL"
+    },
+    {
+      "id": "S5",
+      "title": "Amazon product page — Chefman Air Fryer 8 Qt TurboFry 4-in-1 (B08DKYBTPH)",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon.com, Inc.",
+      "official": true,
+      "used_for": "P3 title, ASIN, brand, department, canonical URL"
+    },
+    {
+      "id": "S6",
+      "title": "Amazon search results for B08DKYBTPH",
+      "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+      "publisher": "Amazon.com, Inc.",
+      "official": true,
+      "used_for": "P3 variants, price, list price, deal badge, rating, ratings count, demand signal, other offers, listing URL"
+    },
+    {
+      "id": "S7",
+      "title": "Amazon Associates — Associates Program Standard Commission Income Statement (Table 1)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "publisher": "Amazon.com, Inc. (Amazon Associates Central)",
+      "official": true,
+      "used_for": "Fixed standard commission income rates by product category; bounty event rates"
+    },
+    {
+      "id": "S8",
+      "title": "Amazon Associates — Program Policies (incl. Associates Program Commission Income Statement, sections 1-4)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon.com, Inc. (Amazon Associates Central)",
+      "official": true,
+      "last_updated": "April 14, 2026",
+      "used_for": "Qualifying Purchase definition, Session windows, Qualifying Revenue definition, disqualified purchases"
+    },
+    {
+      "id": "S9",
+      "title": "Amazon Associates — Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon.com, Inc. (Amazon Associates Central)",
+      "official": true,
+      "last_updated": "October 15, 2025",
+      "used_for": "Program terms, compliance and warranty obligations, incorporated Program Policies"
+    },
+    {
+      "id": "S10",
+      "title": "FTC — Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "publisher": "U.S. Federal Trade Commission",
+      "official": true,
+      "last_updated": "November 2019",
+      "used_for": "Disclosure of material connection; placement and wording of disclosures"
+    },
+    {
+      "id": "S11",
+      "title": "Amazon US trademark list (referenced by S8 section 2(c) on prohibited paid search placements)",
+      "url": "https://www.amazon.com/gp/help/customer/display.html/?nodeId=200738910/",
+      "publisher": "Amazon.com, Inc.",
+      "official": true,
+      "used_for": "Context for the prohibited-paid-search disqualification"
+    },
+    {
+      "id": "S12",
+      "title": "Short links supplied in the project brief (HTTP redirect resolved to S1 / S3 / S5)",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Supplied by project owner",
+      "official": false,
+      "used_for": "Entry point only. The redirect target (S1/S3/S5) is the verified source for all product data."
+    }
+  ]
+}

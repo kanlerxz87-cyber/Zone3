@@ -1,0 +1,226 @@
+{
+  "meta": {
+    "purpose": "Allowlist of every external URL the generated site is permitted to link to. The build script (tools/build_site.py) refuses to emit any external URL that is not present here. A URL may only be added to this file after it has actually been retrieved in this session.",
+    "session": "c4e71983",
+    "verified_window_utc": "2026-11-13T22:31:00Z..2026-11-13T22:41:00Z"
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:31:00Z",
+      "result": "200 - redirects to https://www.amazon.com/dp/B0CDY277D3",
+      "used_for": "Resolution of the supplied short link to ASIN B0CDY277D3",
+      "note": "Short-link host 'link.amazon' is not documented on any official Amazon page we could locate. The redirect target is an official amazon.com product page. See FLAG-07."
+    },
+    {
+      "id": "S02",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:36:00Z",
+      "result": "200 - redirects to https://www.amazon.com/dp/B09B7SB46R",
+      "used_for": "Resolution of the supplied short link to ASIN B09B7SB46R",
+      "note": "See FLAG-07."
+    },
+    {
+      "id": "S03",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:36:00Z",
+      "result": "200 - redirects to https://www.amazon.com/dp/B08DKYBTPH",
+      "used_for": "Resolution of the supplied short link to ASIN B08DKYBTPH",
+      "note": "See FLAG-07."
+    },
+    {
+      "id": "S04",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:36:00Z",
+      "result": "200",
+      "used_for": "Official product title and department ('Home & Kitchen') for ASIN B0CDY277D3",
+      "note": "Amazon served a 'shuffle' landing variant; the page <title> and footer confirmed the identity and department. The product-detail block (price, BSR, rating) was not extractable."
+    },
+    {
+      "id": "S05",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:36:00Z",
+      "result": "200",
+      "used_for": "Official product title and department ('Home & Kitchen') for ASIN B09B7SB46R",
+      "note": "Same shuffle-landing limitation as S04."
+    },
+    {
+      "id": "S06",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:36:00Z",
+      "result": "200",
+      "used_for": "Official product title and department ('Home & Kitchen') for ASIN B08DKYBTPH",
+      "note": "Same shuffle-landing limitation as S04."
+    },
+    {
+      "id": "S07",
+      "url": "https://www.amazon.com/s?k=B0CDY277D3",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:37:14Z",
+      "result": "200",
+      "used_for": "Rating, rounded rating count, current price, list price, deal badge, lowest other-offer price, 'bought in past month' signal, canonical product URL, image URL",
+      "note": "Amazon request id qid=1794609434 (Unix epoch) decodes to 2026-11-13T22:37:14Z, which is the exact capture timestamp for these values."
+    },
+    {
+      "id": "S08",
+      "url": "https://www.amazon.com/s?k=B09B7SB46R",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:33:46Z",
+      "result": "200",
+      "used_for": "Rating, rounded rating count, current price, list price, deal badge, lowest other-offer price, 'bought in past month' signal, canonical product URL, image URL",
+      "note": "Amazon request id qid=1794609226 decodes to 2026-11-13T22:33:46Z."
+    },
+    {
+      "id": "S09",
+      "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:37:34Z",
+      "result": "200",
+      "used_for": "Rating, rounded rating count, current price, list price, deal badge, lowest other-offer price, 'bought in past month' signal, canonical product URL, image URL",
+      "note": "Amazon request id qid=1794609454 decodes to 2026-11-13T22:37:34Z."
+    },
+    {
+      "id": "S10",
+      "url": "https://www.amazon.com/CHEFMAN-Windows-Independent-Nonstick-Dishwasher/dp/B0CDY277D3",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200",
+      "used_for": "Canonical product URL shown on the site for ASIN B0CDY277D3"
+    },
+    {
+      "id": "S11",
+      "url": "https://www.amazon.com/Emeril-Multi-Function-functions-dual-speed-rotisserie/dp/B09B7SB46R",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:36:00Z",
+      "result": "200",
+      "used_for": "Canonical product URL shown on the site for ASIN B09B7SB46R"
+    },
+    {
+      "id": "S12",
+      "url": "https://www.amazon.com/Chefman-TurboFry-Air-Fryer-Dishwasher/dp/B08DKYBTPH",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:37:00Z",
+      "result": "200",
+      "used_for": "Canonical product URL shown on the site for ASIN B08DKYBTPH"
+    },
+    {
+      "id": "S13",
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:39:00Z",
+      "result": "200",
+      "used_for": "Official 'Best Sellers in Air Fryers' list - competitor benchmark rows 1-6 (rank, title, rating, rating count, price)"
+    },
+    {
+      "id": "S14",
+      "url": "https://www.amazon.com/Best-Sellers-Home-Kitchen-Fryers/zgbs/home-garden/17659095011/",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200",
+      "used_for": "Official 'Best Sellers in Fryers' list - confirms category taxonomy: Fryers > Air Fryers, Air Fryer Ovens, Deep Fryers"
+    },
+    {
+      "id": "S15",
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Kitchen-Small-Appliances/zgbs/kitchen/289913/",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200",
+      "used_for": "Confirmation of the official category path Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers"
+    },
+    {
+      "id": "S16",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "publisher": "Amazon Associates Central",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200",
+      "used_for": "Associates Program Standard Commission Income Statement - Table 1 fixed rates. Kitchen = 4.50%, Home = 3.00%, All Other Categories = 4.00%. Bounty events (Prime = $12.00). Payment minimums."
+    },
+    {
+      "id": "S17",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates Central",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200",
+      "used_for": "Associates Program Operating Agreement. Header states 'Updated: October 15, 2025'. Sections 1-3, 7-12 read: Special Links definition, compliance requirements, monitoring/audit rights."
+    },
+    {
+      "id": "S18",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates Central",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:39:00Z",
+      "result": "200",
+      "used_for": "Associates Program Policies. Header states 'Updated: April 14, 2026'. Session/cookie rules (24h session, 89-day cart window, 180-day ship window), Participation Requirements section 2(b) price-display restriction, promotional-limitation and site-content rules."
+    },
+    {
+      "id": "S19",
+      "url": "https://www.amazon.com/b?ie=UTF8&node=51812349011",
+      "publisher": "Amazon Associates (official Amazon.com FAQ page)",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:41:00Z",
+      "result": "200",
+      "used_for": "Official Associates FAQ. States the 180-day / three qualifying sales evaluation rule and the required disclosure wording (see FLAG-12 for the exact-quote caveat)."
+    },
+    {
+      "id": "S20",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "publisher": "U.S. Federal Trade Commission",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200",
+      "used_for": "FTC disclosure guidance: when to disclose, how to disclose (hard to miss, simple language, not buried in hashtags/links), and the prohibition on claiming experience with a product you have not tried."
+    },
+    {
+      "id": "S21",
+      "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+      "publisher": "U.S. Federal Trade Commission",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200 (linked from S20 - reached only as a tag link, page body not retrieved)",
+      "used_for": "FTC Endorsements hub - navigational reference only",
+      "note": "Linked from S20. Page body was not retrieved in this session; used only as a category landing link."
+    },
+    {
+      "id": "S22",
+      "url": "https://www.amazon.com/gp/aw/d/B0CDY277D3",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "200 (mobile variant; same shuffle landing, no detail block)",
+      "used_for": "Secondary attempt to read the product detail block. Failed - see FLAG-03."
+    },
+    {
+      "id": "S23",
+      "url": "https://www.amazon.com/product-reviews/B0CDY277D3",
+      "publisher": "Amazon",
+      "official": true,
+      "retrieved_utc": "2026-11-13T22:38:00Z",
+      "result": "302 to Amazon sign-in wall",
+      "used_for": "Attempt to read the exact rating count. Blocked - see FLAG-04."
+    }
+  ]
+}

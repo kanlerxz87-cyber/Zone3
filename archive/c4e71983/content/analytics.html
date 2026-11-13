@@ -1,0 +1,68 @@
+<div class="panel">
+  <h2>Tracking surfaces <small>all empty, deliberately</small></h2>
+  <div class="body">
+    {{TABLE_ANALYTICS}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Why there are no numbers here</h2>
+  <div class="body">
+    <p>The brief asks the platform to track clicks and conversions and to optimise campaigns continuously. There
+    is no Associates account, no tag in any link, and no traffic. There is therefore no click data, no conversion
+    data and no earnings data.</p>
+    <p>The tempting move is to ship the dashboard with zeros, or with illustrative figures. Both are wrong:
+    a zero looks like a measurement, and an illustrative figure looks like a measurement too. Once a number sits
+    in a table with a metric name beside it, a reader cannot tell it apart from a real one. Every cell on this
+    page therefore reads <span class="blank">no data yet - pre-launch</span>.</p>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>What will populate it, and from where</h2>
+  <div class="body">
+    <p>The source of truth for clicks, conversions and earnings is <b>Associates Central</b>. Amazon's own
+    reporting is the record it pays against, so it is the only sensible input for financial metrics. A
+    self-hosted click logger is useful for on-page behaviour &mdash; which link on which page got clicked &mdash;
+    but it must never be treated as a substitute for Amazon's conversion numbers.</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Question</th><th>Data needed</th><th>Official source</th></tr></thead>
+      <tbody>
+        <tr><td>Did anyone click?</td><td>Clicks per Special Link</td>
+            <td>Associates Central reports</td></tr>
+        <tr><td>Did it convert?</td><td>Ordered items / clicks</td>
+            <td>Associates Central reports</td></tr>
+        <tr><td>Did it ship and get paid for?</td><td>Shipped items</td>
+            <td>Associates Central reports &mdash; the qualifying-purchase definition requires shipment and payment
+            within 180 days</td></tr>
+        <tr><td>What did it earn?</td><td>Standard commission income, bounty events</td>
+            <td>Associates Central reports</td></tr>
+        <tr><td>Which page placement works?</td><td>Sub-tag breakdown</td>
+            <td>Associates Central reports, using sub-tags per placement</td></tr>
+        <tr><td>Which product earns most per click?</td><td>Earnings per click by ASIN</td>
+            <td>Associates Central reports &mdash; currently projected at $3.60 to $6.75 per unit on the
+            <a href="commission-model.html">Commission Model</a> page, which is arithmetic and not a measurement</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Guardrails for when tracking is switched on</h2>
+  <div class="body">
+    <ul class="tight">
+      <li><b>Sub-tags, not user identifiers.</b> Amazon allows sub-tags to compare placements but forbids
+      associating any sub-tag with a specific end user of your site. Do not assign sub-tags dynamically per
+      visitor.</li>
+      <li><b>Consent comes first.</b> The Operating Agreement puts the burden on you to disclose your use of
+      cookies, pixels and similar technologies, and to satisfy GDPR and the ePrivacy Directive where they apply.
+      An EEA-facing site needs a consent layer before any analytics or tracking fires &mdash;
+      <a href="flagged.html#FLAG-06">FLAG-06</a>.</li>
+      <li><b>Never let automation touch your own links.</b> Bot or automated activity through your own Special
+      Links is a termination risk &mdash; <a href="flagged.html#FLAG-17">FLAG-17</a>.</li>
+      <li><b>Amazon may audit.</b> The Operating Agreement reserves the right to monitor, record and disclose
+      information about your site and to crawl it for compliance verification.</li>
+    </ul>
+  </div>
+</div>

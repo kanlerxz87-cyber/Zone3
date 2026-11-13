@@ -1,0 +1,443 @@
+{
+  "_meta": {
+    "title": "Requirements traceability",
+    "generated_utc": "2026-11-13T23:52:00Z",
+    "headline": "Every clause of the brief, and what happened to it.",
+    "statuses": {
+      "delivered": "Built and verified in this repository / on this site.",
+      "built-blocked": "Code and specification complete; the data it would present is blocked on an official input.",
+      "not-built-compliance": "Deliberately not built, because the Program Policies prohibit it."
+    }
+  },
+  "matrix": {
+    "caption": "Full requirements list from the brief",
+    "columns": [
+      {
+        "key": "id",
+        "label": "ID"
+      },
+      {
+        "key": "req",
+        "label": "Requirement (as briefed)"
+      },
+      {
+        "key": "status",
+        "label": "Status"
+      },
+      {
+        "key": "where",
+        "label": "Where it lives"
+      },
+      {
+        "key": "note",
+        "label": "Findings / caveat"
+      }
+    ],
+    "rows": [
+      {
+        "id": "R-01",
+        "req": "Automate product research",
+        "status": "built-blocked",
+        "where": "tools/amazon_intake.py; Products page",
+        "note": "Intake validates ASIN shape, probes /dp/, then calls Creators API GetItems. Blocked on invalid identifiers + no API credentials.",
+        "sources": [
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-004",
+          "FLG-020"
+        ]
+      },
+      {
+        "id": "R-02",
+        "req": "Identify trending products",
+        "status": "not-built-compliance",
+        "where": "Niches page, FLG-016",
+        "note": "Amazon publishes no trend-rank metric to affiliates; Creators API exposes only 4 operations. Any 'trending' number in this space comes from scraping or a model, so none is published here.",
+        "sources": [
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-016"
+        ]
+      },
+      {
+        "id": "R-03",
+        "req": "Identify high-converting products",
+        "status": "built-blocked",
+        "where": "Campaigns page (EPC derivation)",
+        "note": "Conversion can only be derived from your own click log against Amazon-reported orders. With 0 live campaigns there is no ranking to publish.",
+        "sources": [
+          "SRC-10",
+          "SRC-11"
+        ],
+        "flags": [
+          "FLG-012",
+          "FLG-016"
+        ]
+      },
+      {
+        "id": "R-04",
+        "req": "Analyse pricing",
+        "status": "built-blocked",
+        "where": "Pricing page",
+        "note": "Rules engine complete. Two popular features (price alerts, price history) are prohibited by Participation Requirements 5(y), so they are excluded by design, not by omission.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-018"
+        ]
+      },
+      {
+        "id": "R-05",
+        "req": "Analyse reviews",
+        "status": "built-blocked",
+        "where": "Reviews page",
+        "note": "Aggregate-only design: ratings/counts may be displayed only if API-sourced; review bodies are never stored or rendered.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "R-06",
+        "req": "Analyse competition",
+        "status": "built-blocked",
+        "where": "Niches page (competition_index)",
+        "note": "Only SearchItems result metadata is available; that would be labelled an estimate. No competitor-count figure is published.",
+        "sources": [
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-016"
+        ]
+      },
+      {
+        "id": "R-07",
+        "req": "Analyse commission potential",
+        "status": "built-blocked",
+        "where": "Compliance page, economics table",
+        "note": "Public facts: up to 10%; rates differ by category. The category rate card itself is behind sign-in, so per-product commission cells are blank.",
+        "sources": [
+          "SRC-11",
+          "SRC-12"
+        ],
+        "flags": [
+          "FLG-013"
+        ]
+      },
+      {
+        "id": "R-08",
+        "req": "Generate SEO-optimised product articles",
+        "status": "built-blocked",
+        "where": "Content page",
+        "note": "Generator + templates shipped; 0 articles produced because there are 0 verified product facts. On-page SEO mechanics ARE live on this site.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "R-09",
+        "req": "Generate comparisons",
+        "status": "built-blocked",
+        "where": "Content page, `comparison` template",
+        "note": "Renderer refuses to emit a comparison missing lowest-new or lowest-used pricing, which is exactly the state all three items are in.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "R-10",
+        "req": "Generate buying guides",
+        "status": "built-blocked",
+        "where": "Content page, `buying-guide` template",
+        "note": "Category unresolved for all items, so no guide scope can be defined.",
+        "sources": [
+          "SRC-13"
+        ],
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "R-11",
+        "req": "Identify profitable niches",
+        "status": "built-blocked",
+        "where": "Niches page",
+        "note": "Scoring function defined and unit-tested against a synthetic fixture; the published ranking table is empty by design. 10 verified category-level constraints that do shape niche choice are listed instead.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-013"
+        ]
+      },
+      {
+        "id": "R-12",
+        "req": "Create engaging marketing content",
+        "status": "built-blocked",
+        "where": "Content page",
+        "note": "Engagement copy is generated only over grounded claims; no marketing assertion about these three items was written.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "id": "R-13",
+        "req": "Publish and manage affiliate links",
+        "status": "built-blocked",
+        "where": "Campaigns page; Products page link table",
+        "note": "Link builder requires your Associates tag (never invented). Publishing is scoped to owned properties only — Amazon-site placement and pop-ups are prohibited.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-011",
+          "FLG-021"
+        ]
+      },
+      {
+        "id": "R-14",
+        "req": "Track clicks",
+        "status": "built-blocked",
+        "where": "Campaigns page, schema table",
+        "note": "First-party click counter only. Per-user attribution via dynamic sub-tags is expressly forbidden, so tracking is page/slot level with static sub-tags.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-017"
+        ]
+      },
+      {
+        "id": "R-15",
+        "req": "Track conversions",
+        "status": "built-blocked",
+        "where": "Campaigns page, ledger",
+        "note": "Source of truth is the Associates Central Earnings Report; the ledger ingests it. Zero rows today.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-012"
+        ]
+      },
+      {
+        "id": "R-16",
+        "req": "Continuously optimise campaigns",
+        "status": "built-blocked",
+        "where": "Campaigns page, optimiser table",
+        "note": "12 levers assessed: 5 permitted, 7 prohibited. The optimiser only ever touches permitted levers, which keeps 'automation' inside the Agreement.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": []
+      },
+      {
+        "id": "R-17",
+        "req": "Maximise affiliate revenue",
+        "status": "delivered",
+        "where": "Compliance page, economics table",
+        "note": "The revenue model is built on the published mechanics that actually govern earnings: 24h session, 89-day cart, whole-basket payout, net-of-fees Qualifying Revenue, 60-day payment lag.",
+        "sources": [
+          "SRC-10",
+          "SRC-11"
+        ],
+        "flags": []
+      },
+      {
+        "id": "R-18",
+        "req": "Prioritise automation",
+        "status": "delivered",
+        "where": "tools/ (intake, niche_score, build_site, verify_site)",
+        "note": "Automation is bounded, not unrestricted: the Agent Terms require self-identification and forbid CAPTCHA solving and human-mimicry, so the agent declares itself and stops rather than evading.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": [
+          "FLG-019"
+        ]
+      },
+      {
+        "id": "R-19",
+        "req": "Prioritise scalability",
+        "status": "delivered",
+        "where": "Methodology page",
+        "note": "Static-generation architecture: adding a product is one JSON row plus a build; no per-page code. Caching limits (24h) and 40KB payload limits are respected at that scale.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": []
+      },
+      {
+        "id": "R-20",
+        "req": "Data-driven decisions",
+        "status": "delivered",
+        "where": "Every table, via the Source column",
+        "note": "Enforced mechanically: the build fails if a row has neither a source reference nor an unverified flag. This is the central guarantee of the whole deliverable.",
+        "sources": [
+          "SRC-10"
+        ],
+        "flags": []
+      },
+      {
+        "id": "R-21",
+        "req": "Compliance with Amazon Associates policies",
+        "status": "delivered",
+        "where": "Compliance page (25 prohibitions) + Agent Terms page",
+        "note": "Mapped against the Oct 15 2025 Agreement and the Apr 14 2026 Program Policies, both fetched live.",
+        "sources": [
+          "SRC-09",
+          "SRC-10"
+        ],
+        "flags": []
+      },
+      {
+        "id": "R-22",
+        "req": "Compliance with disclosure requirements",
+        "status": "delivered",
+        "where": "Site-wide banner + footer; Compliance page required-blocks table",
+        "note": "Uses Amazon's exact required sentence verbatim, plus the content disclaimer and the FTC obligation. Missing SS5 is a material breach, so it is a build gate.",
+        "sources": [
+          "SRC-09",
+          "SRC-10",
+          "SRC-15"
+        ],
+        "flags": [
+          "FLG-024"
+        ]
+      },
+      {
+        "id": "R-23",
+        "req": "Marketing for the three listed products",
+        "status": "built-blocked",
+        "where": "Products page",
+        "note": "Cannot be executed as briefed: all three identifiers are invalid. Documented with reproducible evidence rather than substituted with guesses.",
+        "sources": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03"
+        ],
+        "flags": [
+          "FLG-004",
+          "FLG-005",
+          "FLG-006"
+        ]
+      },
+      {
+        "id": "R-24",
+        "req": "Executive summary of important details",
+        "status": "delivered",
+        "where": "/executive-summary/",
+        "note": "Also mirrored at docs/executive-summary.md for reading in-repo.",
+        "sources": [],
+        "flags": [],
+        "self_attested": "docs/executive-summary.md"
+      },
+      {
+        "id": "R-25",
+        "req": "GitHub Pages live site: clean landing page + subpages by category",
+        "status": "delivered",
+        "where": "This site, 15 pages",
+        "note": "Legacy Pages build from main / . .nojekyll committed so no Jekyll processing occurs.",
+        "sources": [
+          "SRC-17"
+        ],
+        "flags": [],
+        "self_attested": ".nojekyll"
+      },
+      {
+        "id": "R-26",
+        "req": "Clean, simple dashboard UI with all entries/findings in table form",
+        "status": "delivered",
+        "where": "assets/app.css, assets/app.js",
+        "note": "Every dataset rendered as a sortable, filterable table with per-row status pills, plus summary cards.",
+        "sources": [],
+        "flags": [],
+        "self_attested": "assets/app.js"
+      },
+      {
+        "id": "R-27",
+        "req": "Every table row carries an official source link; unconfirmable values blank + flagged; never infer",
+        "status": "delivered",
+        "where": "All tables; tools/verify_site.py",
+        "note": "Machine-checked at build time. Blank cells render as an explicit 'Unverified' pill, never as a guessed value.",
+        "sources": [],
+        "flags": [],
+        "self_attested": "tools/verify_site.py"
+      },
+      {
+        "id": "R-28",
+        "req": "COORDINATION.md board, claims, scopes, handoffs, conflict log",
+        "status": "delivered",
+        "where": "/COORDINATION.md",
+        "note": "Created (it did not exist), claims pushed as the first commit, sources and verification recorded per task.",
+        "sources": [],
+        "flags": [
+          "FLG-010"
+        ],
+        "self_attested": "COORDINATION.md"
+      },
+      {
+        "id": "R-29",
+        "req": "PR to main, merge without waiting, confirm Pages deploy, log result",
+        "status": "delivered",
+        "where": "GitHub PR + COORDINATION.md",
+        "note": "PR opened and merged by this session; Pages build confirmed after merge.",
+        "sources": [
+          "SRC-17"
+        ],
+        "flags": [],
+        "self_attested": "tools/build_site.py"
+      },
+      {
+        "id": "R-30",
+        "req": "Flagged irregularities published on a labelled review page, non-blocking",
+        "status": "delivered",
+        "where": "/flagged/",
+        "note": "24 open items, each with the official source link and what unblocks it.",
+        "sources": [],
+        "flags": [],
+        "self_attested": "data/z3/flags.json"
+      },
+      {
+        "id": "R-31",
+        "req": "Resolve merge conflicts without discarding another session's work",
+        "status": "delivered",
+        "where": "this merge; FLG-025, FLG-026",
+        "note": "Five add/add conflicts (COORDINATION.md, README.md, assets/app.js, docs/executive-summary.md, index.html). Resolved by keeping both sides: their file wins where they own it, mine is renamed and preserved, and the board is concatenated. Nothing from main was deleted.",
+        "sources": [
+          "SRC-17"
+        ],
+        "flags": [
+          "FLG-026"
+        ]
+      },
+      {
+        "id": "R-32",
+        "req": "Re-verify combined data line by line after integration",
+        "status": "delivered",
+        "where": "tools/verify_site.py (whole-tree walk)",
+        "note": "The audit was widened to every HTML file in the tree, not just this session's output, which is what surfaced the missing disclosure on an inherited page.",
+        "sources": [
+          "SRC-09"
+        ],
+        "flags": [
+          "FLG-025"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "title": "Commission structure — official fixed rates",
+    "generated_utc": "2026-11-14T00:10:00Z",
+    "provenance": "Both tables were fetched and read in full by session 3c6cba43 on 2026-11-13 from Amazon's public Associates help centre. No rate below is paraphrased; each is the literal value in the published table.",
+    "correction": "An earlier draft of this project stated the rate card was not publicly retrievable. That was true only of the /help/operating/schedule endpoint, which does redirect to sign-in. The same Standard Commission Income Statement IS published publicly at the help-node URL cited as SRC-18. See FLG-013, corrected.",
+    "applies_to": "Standard Commission Income on Qualifying Revenue for the listed category, US marketplace (amazon.com)."
+  },
+  "standard_table1": {
+    "caption": "Table 1 — Fixed Standard Commission Income Rates by Product Category (US)",
+    "columns": [
+      { "key": "rate", "label": "Rate" },
+      { "key": "categories", "label": "Product categories at that rate" },
+      { "key": "note", "label": "Read-out" }
+    ],
+    "rows": [
+      { "rate": "10.00%", "categories": "Luxury Beauty, Luxury Stores Beauty, Amazon Explore", "note": "The top band, and the only one matching the public 'up to 10 %' headline. Narrow category set — high rate, small catalogue.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "5.00%", "categories": "Digital Music, Physical Music, Handmade, Digital Videos", "note": "Handmade is the only broadly useful category in this band.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "4.50%", "categories": "Physical Books, Kitchen, Automotive", "note": "Kitchen sits here. Relevant to the redirect-observed landing pages, but NOT applied to any product row: the submitted identifiers have no verified category (FLG-008).", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "4.00%", "categories": "Amazon Fire Tablet Devices, Amazon Kindle Devices, Luxury Stores Fashion, Apparel, Amazon Cloud Cam Devices, Fire TV Edition Smart TVs, Amazon Fire TV Devices, Amazon Echo Devices, Ring Devices, Watches, Jewelry, Luggage, Shoes, and Handbags & Accessories", "note": "Amazon's own hardware earns the same 4.00 % as apparel.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "3.00%", "categories": "Toys, Furniture, Home, Home Improvement, Lawn & Garden, Pets Products, Headphones, Beauty, Musical Instruments, Business & Industrial Supplies, Outdoors, Tools, Sports, Baby Products, Amazon Coins", "note": "The widest band by catalogue size — and it excludes 'Kitchen'. A 4.50 % Kitchen item and a 3.00 % Home item can look identical on the shelf yet differ 1.5x in payout.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "2.50%", "categories": "PC, PC Components, DVD & Blu-Ray", "note": "Low rate on high ticket price: EPC can still be fine, but margin per dollar is thin.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "2.00%", "categories": "Televisions, Digital Video Games", "note": "", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "1.00%", "categories": "Amazon Fresh, Physical Video Games & Video Game Consoles, Grocery, Health & Personal Care", "note": "Grocery and Fresh at 1 % with low baskets: structurally weak for affiliate content.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "0.00%", "categories": "Gift Cards; Wireless Service Plans; Alcoholic Beverages; Digital Kindle Products purchased as a subscription; Vehicles – Leasing and Sales; Pet Prescription Medications; Food prepared and delivered from a restaurant; Amazon Appstore, Prime Now, or Amazon Pay Places", "note": "Zero. Any content strategy built on these earns nothing regardless of traffic.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "0.00%", "categories": "Coach", "note": "Named explicitly at zero — a single brand carve-out.", "sources": ["SRC-18"], "status": "verified" },
+      { "rate": "4.00%", "categories": "All Other Categories", "note": "The default. Anything not listed above pays 4.00 %, which is higher than the large 3.00 % band — so an unlisted niche is often the better bet.", "sources": ["SRC-18"], "status": "verified" }
+    ]
+  },
+  "onsite_tableA": {
+    "caption": "Table A — Onsite Commission Income (Direct Qualifying Purchases, excluding Creator Ads)",
+    "note": "Onsite Content is publisher or influencer content used by Amazon inside the Amazon Site. The same category earns materially less Onsite than Standard — Kitchen is 1.25 % here against 4.50 % in Table 1. Onsite income covers only a Direct Qualifying Purchase: the same ASIN variant the customer linked to, so the whole-basket effect of Standard commissions does not apply.",
+    "columns": [
+      { "key": "rate", "label": "Rate" },
+      { "key": "categories", "label": "Categories" }
+    ],
+    "rows": [
+      { "rate": "4.00%", "categories": "Luxury Beauty, Luxury Stores Beauty", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "3.00%", "categories": "Furniture, Home, Home Improvement, Lawn & Garden, Pets Products", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "2.50%", "categories": "Amazon Coins", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "2.00%", "categories": "Pantry, Beauty, Musical Instruments, Business & Industrial Supplies", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "1.75%", "categories": "Tools", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "1.25%", "categories": "Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "1.00%", "categories": "Headphones, Amazon Fashion Women's/Men's/Kids Private Label, Apparel, Amazon Cloud Cam Devices, Amazon Echo Devices, Ring Devices, Watches, Jewelry, Luggage, Shoes, and Handbags & Accessories", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "0.75%", "categories": "Outdoors", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "0.50%", "categories": "Physical Video Games & Video Game Consoles, Grocery, Baby Products, Physical Books, Amazon Fire Tablet Devices, Amazon Kindle Devices, Fire TV Edition Smart TVs, Amazon Fire TV Devices, Amazon Fresh, Toys, PC, PC Components, DVD & Blu-Ray, Televisions, Digital Video Games", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "0.00%", "categories": "Gift Cards; Wireless Service Plans; Alcoholic Beverages; Digital Kindle Products purchased as a subscription; Food prepared and delivered from a restaurant; Amazon Appstore, Prime Now, Amazon Pay Places, or Prime Wardrobe Purchases", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "1.00%", "categories": "All Other Categories", "sources": ["SRC-19"], "status": "verified" }
+    ]
+  },
+  "creators_ads_tableB": {
+    "caption": "Table B — Onsite rates where Creator Ads apply (selected rows)",
+    "note": "Shown because it is the highest-paying row set for several categories and is easy to miss. Values below are the published Table B rows.",
+    "columns": [
+      { "key": "rate", "label": "Rate" },
+      { "key": "categories", "label": "Categories" }
+    ],
+    "rows": [
+      { "rate": "5.00%", "categories": "Luxury Beauty, Luxury Stores Beauty, Amazon Coins", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "4.00%", "categories": "Furniture, Home, Home Improvement, Lawn & Garden, Pets Products, Pantry", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "3.00%", "categories": "Headphones, Beauty, Musical Instruments, Business & Industrial Supplies", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "2.75%", "categories": "Outdoors, Tools", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "2.50%", "categories": "Digital Music, Grocery, Physical Music, Handmade, Digital Videos", "sources": ["SRC-19"], "status": "verified" },
+      { "rate": "2.25%", "categories": "Physical Books, Health & Personal Care, Sports, Kitchen, Automotive, Baby Products", "sources": ["SRC-19"], "status": "verified" }
+    ]
+  },
+  "bounties": {
+    "caption": "Special Commission Income — Bounty Events (fixed per action, US)",
+    "note": "Bounties pay a flat amount per completed action, independent of basket value, and are a separate income line from Standard Commission. Purchases of the Bounty product itself are excluded from standard commission (CIS 2(i)).",
+    "columns": [
+      { "key": "program", "label": "Bounty-eligible program" },
+      { "key": "action", "label": "Bounty action" },
+      { "key": "rate", "label": "Bounty rate" }
+    ],
+    "rows": [
+      { "program": "Prime Free Trial", "action": "Successful registration of a Free Trial", "rate": "$12.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime Paid Membership", "action": "Successful purchase of a Membership", "rate": "$12.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime for Young Adults Trial", "action": "Successful registration of a Trial", "rate": "$12.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime for Young Adults Paid Membership", "action": "Successful purchase of a Membership", "rate": "$12.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime Access Free Trial or Paid Membership", "action": "Registration or purchase", "rate": "$12.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime Sign Up at Checkout", "action": "Sign-up for Prime / Young Adults / Prime Access during checkout", "rate": "$12.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime Video Free Trial", "action": "Successful registration of a Free Trial", "rate": "$2.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime Video First Stream", "action": "Successful First Stream", "rate": "$5.00", "sources": ["SRC-18"], "status": "verified" },
+      { "program": "Prime Video Stream", "action": "Successful Stream", "rate": "$0.25", "sources": ["SRC-18"], "status": "verified" }
+    ]
+  },
+  "analysis": {
+    "caption": "What the rate card actually implies for an AI-led content strategy",
+    "columns": [
+      { "key": "finding", "label": "Finding" },
+      { "key": "evidence", "label": "Evidence" },
+      { "key": "action", "label": "Strategy consequence" }
+    ],
+    "rows": [
+      { "finding": "The rate is set by category, not by price or by how well the item sells", "evidence": "Table 1 maps categories to fixed percentages of Qualifying Revenue", "action": "Niche selection should be solved as a category-rate problem first; product quality affects conversion, not rate.", "sources": ["SRC-18"], "status": "verified" },
+      { "finding": "The default band (4.00 %) beats four named bands", "evidence": "'All Other Categories | 4.00 %' vs Televisions 2.00 %, PC 2.50 %, Grocery/Health 1.00 %, the 3.00 % mega-band", "action": "Prefer niches that fall outside the named lists — the unlisted default is the second-highest broadly-available rate.", "sources": ["SRC-18"], "status": "verified" },
+      { "finding": "Adjacent categories can pay 1.5x apart", "evidence": "Kitchen 4.50 % vs Home 3.00 %; both are common 'appliance-adjacent' classifications", "action": "Do not assume a product's band from its topic. Resolve the browse node via GetBrowseNodes before writing.", "sources": ["SRC-18", "SRC-13"], "status": "verified" },
+      { "finding": "Onsite Content pays a fraction of the Standard rate", "evidence": "Kitchen 1.25 % (Table A) vs 4.50 % (Table 1); and Onsite covers only Direct Qualifying Purchases of the same ASIN variant", "evidence_2": "", "action": "Traffic driven from off-site to one's own pages and then to Amazon is the higher-value path; publishing on Amazon surfaces pays less and is separately restricted.", "sources": ["SRC-19", "SRC-18"], "status": "verified" },
+      { "finding": "Zero-rate categories are absolute, not relative", "evidence": "Gift cards, alcohol, wireless plans, restaurant delivery, Coach, vehicles — 0.00 %", "action": "The candidate generator excludes these categories at scoring time, so no content is ever drafted for them.", "sources": ["SRC-18"], "status": "verified" },
+      { "finding": "Bounties decouple income from basket size", "evidence": "$12.00 per Prime registration or purchase regardless of order value", "action": "A Prime-signup intent page can out-earn a product page per click; the optimiser scores EPC, which captures this automatically.", "sources": ["SRC-18"], "status": "verified" },
+      { "finding": "Rate cannot be attached to the three submitted products", "evidence": "Category/browse node unresolved because the identifiers do not resolve (FLG-004…008)", "action": "Per-product commission cells remain blank; the Kitchen figure is quoted as a category reference only.", "sources": ["SRC-18", "SRC-13"], "status": "verified" }
+    ]
+  }
+}

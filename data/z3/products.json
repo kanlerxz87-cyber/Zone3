@@ -1,0 +1,379 @@
+{
+  "_meta": {
+    "title": "Product intake & research register",
+    "pipeline_stage": "01-intake/02-verification",
+    "generated_utc": "2026-11-13T23:25:00Z",
+    "intake_rule": "A product row is admitted to the research pipeline only if its ASIN is 10 characters (SRC-08) AND https://www.amazon.com/dp/<ASIN> serves a product detail page. Both tests fail for all three submitted items.",
+    "blank_field_rule": "Any field with value null was NOT obtainable from an official source. It is left blank on the site and flagged. No value has been inferred, estimated, or filled from a third party."
+  },
+  "table": {
+    "caption": "Submitted products — verification outcome",
+    "columns": [
+      {
+        "key": "id",
+        "label": "Ref"
+      },
+      {
+        "key": "submitted",
+        "label": "Submitted link"
+      },
+      {
+        "key": "asin",
+        "label": "Identifier"
+      },
+      {
+        "key": "asin_len",
+        "label": "Chars"
+      },
+      {
+        "key": "asin_valid",
+        "label": "Format valid"
+      },
+      {
+        "key": "dp_probe",
+        "label": "/dp/ probe"
+      },
+      {
+        "key": "redirect",
+        "label": "Redirect landed on"
+      },
+      {
+        "key": "verdict",
+        "label": "Pipeline verdict"
+      }
+    ],
+    "rows": [
+      {
+        "id": "P-01",
+        "submitted": "https://link.amazon/B04G1MEwY",
+        "asin": "B04G1MEwY",
+        "asin_len": "9",
+        "asin_valid": "No",
+        "dp_probe": "404 Page Not Found",
+        "redirect": "B0CDY277D3 (CHEFMAN 6-Qt dual-basket air fryer) — plpRedirect=mhFallback",
+        "verdict": "Rejected at intake — unresolvable identifier",
+        "sources": [
+          "SRC-01",
+          "SRC-07",
+          "SRC-04",
+          "SRC-08"
+        ],
+        "status": "blocked",
+        "flags": [
+          "FLG-001",
+          "FLG-004",
+          "FLG-007",
+          "FLG-027"
+        ]
+      },
+      {
+        "id": "P-02",
+        "submitted": "https://link.amazon/B02NbDxp3",
+        "asin": "B02NbDxp3",
+        "asin_len": "9",
+        "asin_valid": "No",
+        "dp_probe": "404 Page Not Found",
+        "redirect": "B09B7SB46R (Emeril Lagasse 26QT air fryer toaster oven) — plpRedirect=mhFallback",
+        "verdict": "Rejected at intake — unresolvable identifier",
+        "sources": [
+          "SRC-02",
+          "SRC-07",
+          "SRC-05",
+          "SRC-08"
+        ],
+        "status": "blocked",
+        "flags": [
+          "FLG-002",
+          "FLG-005",
+          "FLG-007",
+          "FLG-027"
+        ]
+      },
+      {
+        "id": "P-03",
+        "submitted": "https://link.amazon/B00hJ57DV",
+        "asin": "B00hJ57DV",
+        "asin_len": "9",
+        "asin_valid": "No",
+        "dp_probe": "404 Page Not Found",
+        "redirect": "B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry) — plpRedirect=mhFallback",
+        "verdict": "Rejected at intake — unresolvable identifier",
+        "sources": [
+          "SRC-03",
+          "SRC-07",
+          "SRC-06",
+          "SRC-08"
+        ],
+        "status": "blocked",
+        "flags": [
+          "FLG-003",
+          "FLG-006",
+          "FLG-007",
+          "FLG-027"
+        ]
+      }
+    ]
+  },
+  "attributes_table": {
+    "caption": "Product attributes — every downstream research field, by product",
+    "note": "null = not obtainable from any official source. Populating these fields requires a valid 10-character ASIN plus Creators API GetItems access (SRC-13).",
+    "columns": [
+      {
+        "key": "field",
+        "label": "Field"
+      },
+      {
+        "key": "p01",
+        "label": "P-01 / B04G1MEwY"
+      },
+      {
+        "key": "p02",
+        "label": "P-02 / B02NbDxp3"
+      },
+      {
+        "key": "p03",
+        "label": "P-03 / B00hJ57DV"
+      },
+      {
+        "key": "intake",
+        "label": "Intended intake method"
+      }
+    ],
+    "rows": [
+      {
+        "field": "Product title",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "Creators API GetItems → ItemInfo.Title",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Brand",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "GetItems → ItemInfo.Brand",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Category / browse node",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "GetBrowseNodes (SRC-13)",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Price (USD)",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "GetItems → OffersV2; display only under IP License rules",
+        "sources": [
+          "SRC-10",
+          "SRC-13"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Lowest used price",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "Required in comparison layouts (SRC-10, Part. Req. 2(b))",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Star rating",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "GetItems → Details; display gated by Part. Req. 5(t)",
+        "sources": [
+          "SRC-10",
+          "SRC-13"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Review count",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "GetItems → CustomerReviews.Count",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Availability",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "GetItems → OffersV2; timestamp stamping required",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Variations",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "GetVariations (SRC-13)",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "field": "Per-category commission rate",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "In-account rate card — not public (SRC-12)",
+        "sources": [
+          "SRC-12"
+        ],
+        "status": "blocked-by-auth",
+        "flags": [
+          "FLG-013"
+        ]
+      },
+      {
+        "field": "Trend / demand signal",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "No official Amazon trend endpoint identified — deliberately left blank",
+        "sources": [],
+        "status": "no-official-source",
+        "flags": [
+          "FLG-008",
+          "FLG-016"
+        ]
+      },
+      {
+        "field": "Competition density",
+        "p01": null,
+        "p02": null,
+        "p03": null,
+        "intake": "No official Amazon endpoint identified — deliberately left blank",
+        "sources": [],
+        "status": "no-official-source",
+        "flags": [
+          "FLG-008",
+          "FLG-016"
+        ]
+      }
+    ]
+  },
+  "affiliate_link_table": {
+    "caption": "Special Link generation — blocked, with the reason",
+    "columns": [
+      {
+        "key": "step",
+        "label": "Link-pipeline step"
+      },
+      {
+        "key": "value",
+        "label": "Value"
+      },
+      {
+        "key": "rule",
+        "label": "Governing rule (official)"
+      }
+    ],
+    "rows": [
+      {
+        "step": "Associates tag (`XXXXX-##`)",
+        "value": null,
+        "rule": "Special Links must use the Associates ID assigned to you, as a URL parameter",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "missing-credential",
+        "flags": [
+          "FLG-011"
+        ]
+      },
+      {
+        "step": "Generated Special Link",
+        "value": "not generated",
+        "rule": "Links must use the special tagged formats Amazon provides (OA SS1)",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "blocked",
+        "flags": [
+          "FLG-008"
+        ]
+      },
+      {
+        "step": "Submitted link used instead",
+        "value": "link.amazon/<9-char-id>",
+        "rule": "Third-party link shorteners and links that obscure the destination are prohibited",
+        "sources": [
+          "SRC-10",
+          "SRC-16"
+        ],
+        "status": "non-compliant-format",
+        "flags": [
+          "FLG-015"
+        ]
+      },
+      {
+        "step": "Cloaked / redirecting variant",
+        "value": "never generated",
+        "rule": "Purchases via a Redirecting Link are disqualified (CIS SS2(e)); obscuring the URL is prohibited (Part. Req. 5(v))",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "prohibited-by-design",
+        "flags": []
+      }
+    ]
+  }
+}

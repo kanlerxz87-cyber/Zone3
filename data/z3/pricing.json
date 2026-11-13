@@ -1,0 +1,274 @@
+{
+  "_meta": {
+    "title": "Pricing & market analysis",
+    "generated_utc": "2026-11-13T23:40:00Z",
+    "headline": "No price for any submitted product could be verified, and two common affiliate pricing features are prohibited outright.",
+    "method": "Price/availability may only be shown if Amazon serves the link in which the data appears, or if it is obtained via Creators API / PA API under the IP License (SRC-10, Participation Requirements 2(b)). Both routes are unavailable here: the identifiers do not resolve and no API credentials were supplied."
+  },
+  "price_rows": {
+    "caption": "Per-product pricing sheet",
+    "columns": [
+      {
+        "key": "ref",
+        "label": "Ref"
+      },
+      {
+        "key": "asin",
+        "label": "Identifier"
+      },
+      {
+        "key": "list_price",
+        "label": "List price (USD)"
+      },
+      {
+        "key": "lowest_new",
+        "label": "Lowest new (USD)"
+      },
+      {
+        "key": "lowest_used",
+        "label": "Lowest used (USD)"
+      },
+      {
+        "key": "est_commission",
+        "label": "Est. commission per unit"
+      },
+      {
+        "key": "price_band",
+        "label": "Price band"
+      },
+      {
+        "key": "why_blank",
+        "label": "Why blank"
+      }
+    ],
+    "rows": [
+      {
+        "ref": "P-01",
+        "asin": "B04G1MEwY",
+        "list_price": null,
+        "lowest_new": null,
+        "lowest_used": null,
+        "est_commission": null,
+        "price_band": null,
+        "why_blank": "ASIN invalid (9 chars) and /dp/ probe 404s — no official record exists to read.",
+        "sources": [
+          "SRC-01",
+          "SRC-08"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-004",
+          "FLG-008"
+        ]
+      },
+      {
+        "ref": "P-02",
+        "asin": "B02NbDxp3",
+        "list_price": null,
+        "lowest_new": null,
+        "lowest_used": null,
+        "est_commission": null,
+        "price_band": null,
+        "why_blank": "As above.",
+        "sources": [
+          "SRC-02",
+          "SRC-08"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-005",
+          "FLG-008"
+        ]
+      },
+      {
+        "ref": "P-03",
+        "asin": "B00hJ57DV",
+        "list_price": null,
+        "lowest_new": null,
+        "lowest_used": null,
+        "est_commission": null,
+        "price_band": null,
+        "why_blank": "As above.",
+        "sources": [
+          "SRC-03",
+          "SRC-08"
+        ],
+        "status": "unverified",
+        "flags": [
+          "FLG-006",
+          "FLG-008"
+        ]
+      }
+    ]
+  },
+  "rules": {
+    "caption": "Pricing rules the analysis layer must obey",
+    "columns": [
+      {
+        "key": "rule",
+        "label": "Rule"
+      },
+      {
+        "key": "cite",
+        "label": "Source"
+      },
+      {
+        "key": "design",
+        "label": "Platform design consequence"
+      }
+    ],
+    "rows": [
+      {
+        "rule": "Prices and availability may be shown only if Amazon serves the link containing them, or they come from Creators API / PA API under the License",
+        "cite": "Participation Requirements 2(b)",
+        "design": "Two supply paths only; anything else (scraping, a third-party price API) is out of the build.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified",
+        "flags": [
+          "FLG-009"
+        ]
+      },
+      {
+        "rule": "In any comparison layout, show BOTH the lowest \"new\" price and, where provided, the lowest \"used\" price on the Amazon Site",
+        "cite": "Participation Requirements 2(b)",
+        "design": "The comparison template has mandatory `lowest_new` and `lowest_used` columns; a row missing them fails the render gate.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "Price tracking and/or price alerting functionality is prohibited unless otherwise agreed by Amazon",
+        "cite": "Participation Requirements 5(y)",
+        "design": "No watchlists, no drop alerts, no price-history chart. Internal analysis may still rank on price; it just may not be surfaced as a tracking feature.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "If pricing is refreshed less often than hourly, a date/time stamp must sit adjacent to the price",
+        "cite": "IP License 2(i)",
+        "design": "Renderer stamps every price cell at build time and refuses to print a price with no timestamp.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified",
+        "flags": [
+          "FLG-028"
+        ]
+      },
+      {
+        "rule": "Pricing/availability disclaimer must be adjacent or reachable via link, pop-up or similar",
+        "cite": "IP License 2(i)",
+        "design": "One canonical disclaimer partial, included by the price component itself — a page cannot render a price and skip it.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "Non-image Program Content may be cached for at most 24 hours, and must then be refreshed and re-displayed",
+        "cite": "IP License 2(h)",
+        "design": "Stale-while-revalidate capped at 24h; the publisher refuses to serve a price block older than 24h. ASINs are exempt and may be stored indefinitely.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "Client applications may not store or cache Program Advertising Content",
+        "cite": "IP License 2(h)",
+        "design": "No local persistence in any browser-side code; this site fetches nothing from Amazon at runtime.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "Expired promotions must be removed as soon as the promotion ends",
+        "cite": "Participation Requirements 2(b)",
+        "design": "`expires_at` is mandatory on any discount claim; the build skips expired claims and logs it.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "No inaccurate, overbroad, deceptive or misleading claims about products, prices, promotions or policies",
+        "cite": "Participation Requirements 2(b)",
+        "design": "Claim validator ties every price or spec assertion to a named API field; unsourced superlatives are rejected.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      }
+    ]
+  },
+  "gate": {
+    "caption": "What unblocks pricing analysis — in order",
+    "columns": [
+      {
+        "key": "n",
+        "label": "Step"
+      },
+      {
+        "key": "action",
+        "label": "Action"
+      },
+      {
+        "key": "status",
+        "label": "Status"
+      }
+    ],
+    "rows": [
+      {
+        "n": "1",
+        "action": "Obtain the correct 10-character ASIN for each product",
+        "status": "blocked — awaiting you",
+        "sources": [
+          "SRC-08"
+        ],
+        "status_flag": true
+      },
+      {
+        "n": "2",
+        "action": "Approved Amazon Associates account and Associates tag",
+        "status": "not supplied",
+        "sources": [
+          "SRC-10"
+        ],
+        "status_flag": true
+      },
+      {
+        "n": "3",
+        "action": "Creators API credentials (requires >=10 qualifying sales in the past 30 days)",
+        "status": "not supplied",
+        "sources": [
+          "SRC-13"
+        ],
+        "status_flag": true
+      },
+      {
+        "n": "4",
+        "action": "Run `python3 tools/amazon_intake.py --asin <ASIN>` to populate OffersV2",
+        "status": "ready — code shipped",
+        "sources": [
+          "SRC-13"
+        ],
+        "status_flag": false
+      },
+      {
+        "n": "5",
+        "action": "Re-run `python3 tools/build_site.py` to publish verified prices with timestamps",
+        "status": "ready — code shipped",
+        "sources": [
+          "SRC-10"
+        ],
+        "status_flag": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+<div class="panel">
+  <h2>What is actually built <small>and what is only designed</small></h2>
+  <div class="body">
+    <p>The brief asks for a great deal of automation. Some of it exists in this repository today; some of it
+    cannot exist until there is an Associates account, an API key, or both. This page separates the two. Nothing
+    below is listed as done unless it is committed and running.</p>
+
+    <div class="tw"><table>
+      <thead><tr><th>Capability from the brief</th><th>Status</th><th>What exists</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Resolve and verify product links</td>
+          <td><span class="tag t-ok">built</span></td>
+          <td>All three short links resolved to canonical ASINs, recorded in
+          <a href="data/products.json">data/products.json</a>. See <a href="link-resolution.html">Link Resolution</a>.</td>
+        </tr>
+        <tr>
+          <td>Collect pricing, ratings, review counts, promotion state</td>
+          <td><span class="tag t-ok">built</span> <span class="tag t-unv">one-shot</span></td>
+          <td>A snapshot exists for all three products with per-value timestamps. The collector is not scheduled
+          and there is no historical series, so no trend analysis is possible yet &mdash;
+          <a href="flagged.html#FLAG-18">FLAG-18</a>.</td>
+        </tr>
+        <tr>
+          <td>Identify the niche</td>
+          <td><span class="tag t-ok">built</span></td>
+          <td>Confirmed from Amazon's own category breadcrumb rather than inferred. See
+          <a href="niche-analysis.html">Niche &amp; Competition</a>.</td>
+        </tr>
+        <tr>
+          <td>Analyse competition</td>
+          <td><span class="tag t-ok">built</span></td>
+          <td>Official Best Sellers set, ranks 1&ndash;6, with the scope limit stated on the page.</td>
+        </tr>
+        <tr>
+          <td>Model commission potential</td>
+          <td><span class="tag t-ok">built</span></td>
+          <td><a href="commission-model.html">Commission Model</a>, with the category-rate ambiguity shown as two
+          cases rather than hidden &mdash; <a href="flagged.html#FLAG-09">FLAG-09</a>.</td>
+        </tr>
+        <tr>
+          <td>Publish and manage affiliate links</td>
+          <td><span class="tag t-round">tool built</span></td>
+          <td>The <a href="link-builder.html">Link Builder</a> produces compliant tagged Special Links in the
+          browser. Central link storage is not built; see the roadmap below.</td>
+        </tr>
+        <tr>
+          <td>Compliance with Associates policies and FTC disclosure</td>
+          <td><span class="tag t-ok">built</span></td>
+          <td>Disclosure banner on every page, plus a
+          <a href="compliance.html">checklist</a> mapping each rule to the official clause. Three violations are
+          open and flagged.</td>
+        </tr>
+        <tr>
+          <td>Track clicks and conversions</td>
+          <td><span class="tag t-unv">not built</span></td>
+          <td>No account, no tag, no traffic. See <a href="analytics.html">Tracking &amp; Analytics</a> and
+          <a href="flagged.html#FLAG-14">FLAG-14</a>.</td>
+        </tr>
+        <tr>
+          <td>Generate SEO articles, comparisons and buying guides</td>
+          <td><span class="tag t-unv">not built</span></td>
+          <td>No articles exist. Amazon requires original content before it will approve a site &mdash;
+          <a href="flagged.html#FLAG-13">FLAG-13</a>. Also constrained by
+          <a href="flagged.html#FLAG-16">FLAG-16</a>.</td>
+        </tr>
+        <tr>
+          <td>Continuously optimise campaigns</td>
+          <td><span class="tag t-unv">not built</span></td>
+          <td>Optimisation needs a conversion history. There is none.</td>
+        </tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>The constraint that shapes the AI layer</h2>
+  <div class="body">
+    <p>Associates Program Policies, Participation Requirements section 5, states:</p>
+    <p style="font-family:var(--mono);font-size:12.5px;background:#fdecea;border:1px solid #f3c4bf;color:#8a1e16;padding:10px 12px;border-radius:7px">
+      "You will not, without our express prior written approval, use, or allow any third party to use, any
+      Special Links or Program Content to develop machine learning models or related technology."
+    </p>
+    <p>The brief asks for an <i>AI-powered</i> platform. That is compatible with this rule, but only if the
+    architecture keeps the two activities separate. Using a general-purpose model to draft or edit copy is a
+    different thing from training or fine-tuning a model on Amazon-sourced product data, images, reviews or link
+    data. The second requires written approval first.</p>
+    <p>Two further restrictions apply to the automation layer. Section 5 of the Commission Income Statement says
+    Associates' tags should only be used to benefit from Amazon Associates commissions, and that Amazon may
+    withhold commissions or terminate participation if it detects an attempt to claim commissions from two
+    programs using the same traffic. The Bonus Event provisions separately disqualify activity generated by
+    "bots or automated software".</p>
+    <div class="note bad">Practical rule for this project: automation stays in the back office. It may read your
+    reports, update your pages and draft content for human review. It must never click, visit or transact through
+    your own Special Links, and it must never double-attribute the same traffic &mdash;
+    <a href="flagged.html#FLAG-17">FLAG-17</a>.</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Target architecture <small>designed, not yet built</small></h2>
+  <div class="body">
+    <div class="kv">
+      <div class="k">collector</div>
+      <div>Scheduled job that calls Creators API or PA API for each tracked ASIN and appends one immutable row per
+      run: ASIN, captured-at, price, list price, deal badge, star rating, rating count, Best Sellers Rank,
+      availability. Immutable append-only rows are what make a trend series possible. This is also the only
+      lawful way to display prices &mdash; <a href="flagged.html#FLAG-01">FLAG-01</a>.</div>
+
+      <div class="k">store</div>
+      <div>Append-only table keyed by (ASIN, captured_at), plus a current-state view. Reports read the view;
+      analysis reads the history.</div>
+
+      <div class="k">niche scanner</div>
+      <div>Scheduled capture of the Best Sellers list for the category and its siblings. Ranks over time are the
+      trend signal; a single capture is not &mdash; <a href="flagged.html#FLAG-18">FLAG-18</a>.</div>
+
+      <div class="k">link registry</div>
+      <div>One row per (page, ASIN, tag, sub-tag) with the generated Special Link, the date it was published and
+      the page it lives on. Sub-tags exist so placement can be compared. Note that sub-tags may not be
+      dynamically assigned per visitor.</div>
+
+      <div class="k">content pipeline</div>
+      <div>Draft generation for category hubs, comparisons and buying guides, with a mandatory human review gate
+      and an automated factual check against the store. Any claim about a product has to trace to a stored value
+      or it does not ship.</div>
+
+      <div class="k">reporting</div>
+      <div>Reads Associates Central export data as the source of truth for clicks, conversions and earnings. Do
+      not reimplement this from your own click logging &mdash; Amazon's numbers are the ones that get paid.</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Build order</h2>
+  <div class="body">
+    <ol class="tight">
+      <li>Associates account and tag &mdash; without it nothing downstream earns
+      (<a href="flagged.html#FLAG-05">FLAG-05</a>).</li>
+      <li>Creators API or PA API credentials &mdash; the prerequisite for lawful price display and for BSR
+      (<a href="flagged.html#FLAG-01">FLAG-01</a>, <a href="flagged.html#FLAG-03">FLAG-03</a>).</li>
+      <li>Collector plus store, running on a schedule. Nothing else is useful until a history accumulates.</li>
+      <li>Original content, human-reviewed. This is what Amazon's suitability review looks at
+      (<a href="flagged.html#FLAG-13">FLAG-13</a>).</li>
+      <li>Link registry, then reporting, then optimisation.</li>
+    </ol>
+  </div>
+</div>
