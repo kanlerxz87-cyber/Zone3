@@ -725,5 +725,10 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
 | Event | Result |
 |---|---|
 | PR | [#14 — Zone3: Amazon affiliate intelligence site](https://github.com/kanlerxz87-cyber/Zone3/pull/14) |
-| Merge | `gh pr merge 14 --merge` (recorded here immediately after the command succeeds) |
-| Pages | Source `main` `/` (root site) + `/docs/` sub-site coexist; post-merge live check recorded below |
+| Merge | **MERGED** 2026-11-13T23:25:26Z via `gh pr merge 14 --merge` → merge commit `a11ee089a2fdb225c98ee85546083c017ecca2d3` (state: MERGED, confirmed via `gh pr view`) |
+| Conflict history | First merge attempt failed (main advanced to `8763f86`, PRs #7/#8/#11/#12/#13); conflicts in `COORDINATION.md` (add/add) + `README.md` resolved additively. Second attempt failed (main advanced again to `383961b`, PRs #15/#16); `COORDINATION.md` conflict resolved additively. Third attempt succeeded. |
+| Pages build | `main` `/` source; build for `a11ee08` → **built** (created 2026-11-13T23:25:27Z, confirmed via Pages API) |
+| Live check — root site | https://kanlerxz87-cyber.github.io/Zone3/ serves the pre-existing root build (intact) |
+| Live check — `/docs/` landing | https://kanlerxz87-cyber.github.io/Zone3/docs/ — **live**, disclosure banner, KPI cards, portfolio table render |
+| Live check — `/docs/` products | https://kanlerxz87-cyber.github.io/Zone3/docs/products.html — **live**, full 16-field table with per-row source links renders |
+| Post-merge fix | Follow-up PR: stat-count correction on `docs/` pages (KPI cards said 27/2; ground truth 16 rows × 3 = 48 cells, 39 verified, 9 unverified) + this record |
