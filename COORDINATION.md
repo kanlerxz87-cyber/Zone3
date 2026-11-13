@@ -98,4 +98,6 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 - **2026-11-13 — 7f84fea4**: discovered that `main` had moved to 8cc2d4a (PR #1 merged). Logged the add/add conflicts above, resolved them on this branch, and archived the other session's files. No other branch was edited.
 - **2026-11-13 — 7f84fea4**: re-read the official pages listed above. Added PF-22–37, removed PF-14, updated PF-07, PF-08, PF-13, PF-18. Added FLG-015–020.
 - **2026-11-13 — 7f84fea4**: main moved to cc26993 (PR #3 merged). Integrated the same way (archive, this branch's shared files kept). Read Commission Tables 1 and A (S25, S26); added PF-38 and PF-39, FLG-021, and a reference-rate table on the Pricing page. Disclosure page is now a redirect to content.html.
-- **2026-11-13 — 7f84fea4**: T6 in progress: PR and merge follow this entry. PR link and merge result are recorded below once known.
+- **2026-11-13 — 7f84fea4**: PR #5 (`arena/7f84fea4-zone3` → `main`): https://github.com/kanlerxz87-cyber/Zone3/pull/5 — **merged** at 2026-11-13T22:51:59Z (merge commit 22e6c97). Pages build 1367507533 for 22e6c97: **built**. Live site checked with the fetch tool: dashboard and Pricing page render.
+- **2026-11-13 — 7f84fea4**: fix found on the live Pricing page: all three product rows cited S08 (product 1's page). Each row now cites its own `amazon.com/dp` check (S08, S09, S10). Shipped as a follow-up PR (see below).
+- **2026-11-13 — 7f84fea4**: T6 status: done once the follow-up PR merges and the Pages build for it reports `built`.
