@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Methodology &amp; automation architecture · Zone3 Affiliate Intelligence</title>
+<meta name="description" content="The eight-stage pipeline, the per-row verification protocol, the scalability properties of a static build, and an explicit list of what this analysis canno">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/" data-page="methodology">
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body>
+<div class="disclose" role="note">
+  <div class="wrap row">
+    <span><b>Disclosure:</b> As an Amazon Associate I earn from qualifying purchases.</span>
+    <span style="color:#8a7a55">Links to Amazon carry an Associates tag once one is configured. See the <a href="../compliance/" style="color:#7a5f22">compliance register</a>.</span>
+  </div>
+</div>
+<header class="topbar">
+  <div class="wrap row">
+    <a class="logo" href="../index.html"><span class="mark">Z3</span>Zone3<span class="sub">Affiliate Intelligence</span></a>
+    <nav aria-label="Sections"><a href="../index.html">Dashboard</a><a href="../executive-summary/">Executive summary</a><a href="../requirements/">Requirements</a><a href="../repo-review/">Repo review</a><a href="../products/">Products</a><a href="../niches/">Niches</a><a href="../pricing/">Pricing</a><a href="../commission/">Commission</a><a href="../reviews/">Reviews</a><a href="../content/">Content</a><a href="../campaigns/">Campaigns</a><a href="../compliance/">Compliance</a><a href="../agent-terms/">Agent terms</a><a href="../methodology/" class="on">Methodology</a><a href="../sources/">Sources</a><a href="../flagged/">Flagged for review</a></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <header class="pagehead">
+      <div class="crumbs"><a href="../index.html">Zone3</a> <span aria-hidden="true">/</span> <span>Methodology</span></div>
+      <h1>Methodology &amp; automation architecture</h1>
+      <p class="lead">The eight-stage pipeline, the per-row verification protocol, the scalability properties of a static build, and an explicit list of what this analysis cannot claim.</p>
+      
+      <div class="meta-line">
+        <span>Data as of: <strong>2026-11-13</strong></span>
+        <span>Verification: <strong>every row cites an official source or is flagged</strong></span>
+        <span><a href="../flagged/">26 open flags</a></span>
+      </div>
+    </header>
+    <section><div class="prose"><h2>Architecture</h2><p>Five stages, each with an explicit input contract and an explicit failure mode. A stage never substitutes a value it did not receive; it emits a blank and raises a flag.</p><div class="req">01 INTAKE      submitted link → extract id → length/format rule (SRC-08)
+02 VERIFICATION /dp/ probe + redirect trace + control probe  →  accept | reject+flag
+03 ENRICHMENT   Creators API GetItems/GetVariations/GetBrowseNodes  →  evidence pack
+04 ANALYSIS     niche_score, price & review features, ranking
+05 GENERATION   template + claim grounding (every sentence bound to a field)
+06 GATE         verify_site.py: disclosure? disclaimer? source per row? links?
+07 PUBLISH      static build → GitHub Pages   (24h cache ceiling respected)
+08 FEEDBACK     earnings report import → EPC re-rank (static sub-tags only)
+
+On any blocked input: field := null, flag := FLG-nnn, pipeline continues.</div><h3>Stage 01–02: intake and verification</h3><p>The identifier is validated before anything reads it, then probed directly at <code>/dp/&lt;id&gt;</code>, and a known-good ASIN is probed as a control in the same run so a tooling fault can never masquerade as a product finding. This is the stage that rejected all three submissions.</p><h3>Stage 03: enrichment</h3><p>Only Creators API (four operations) and Amazon-served links are admissible sources for product facts. No image storage; ≤24h cache for other Program Content; ASINs storable indefinitely. Rate limits and the 40KB payload ceiling are enforced client-side.</p><h3>Stage 04: analysis</h3><p>Niche scoring, price-band features and review aggregates. Weights are declared and version-controlled so a ranking change is auditable, and every derived metric is labelled as derived on the page that shows it.</p><h3>Stage 05–06: generation and gate</h3><p>Templates plus a per-claim evidence binding; then a hard gate. The gate checks that every table row cites a source or carries an unverified flag, that every source and flag id resolves, that both required disclaimers are present, and that no internal link 404s. <strong>The build in front of you passed that gate — the gate is the deliverable as much as the pages are.</strong></p><h3>Stage 07–08: publish and feedback</h3><p>Static output means no runtime dependency on Amazon, which keeps the site inside the caching rules by construction. The optimisation loop closes from the monthly Earnings Report, not from a scraping job — the only input that carries authoritative order and revenue numbers.</p></div>
+<div style="height:20px"></div>
+<div class="sec-h"><h2>Verification protocol applied to every row of this site</h2><div class="rule"></div></div>
+<div class="prose"><ol><li><strong>Primary source only.</strong> amazon.com, affiliate-program.amazon.com, sell.amazon.com and ftc.gov. Third-party blogs and search snippets were excluded even where they agreed with the primary text.</li><li><strong>Read, not recalled.</strong> Each clause was fetched from the live page in this session; the observed text is recorded in the source register so a reader can compare it.</li><li><strong>Negative results are results.</strong> A 404, a sign-in redirect and a deprecation notice are each recorded as findings with the URL that produced them.</li><li><strong>Blanks over guesses.</strong> 36 product cells and every per-category rate are blank because no official source exists for them here.</li><li><strong>Control test.</strong> Every probe is run against a known-good input in the same session, to prove the negative was real.</li><li><strong>Machine-checked.</strong> <code>verify_site.py</code> re-reads the emitted HTML and fails on a row with no source, a dangling flag, a missing disclosure, or a broken internal link.</li></ol></div>
+<div style="height:14px"></div>
+<div class="sec-h"><h2>Scalability properties</h2><div class="rule"></div></div>
+<div class="prose"><ul><li>Adding a product is one row in <code>data/products.json</code> — no page code changes, no new template.</li><li>Output is O(products × templates) static files; no server, no database, and no runtime call to Amazon.</li><li>The cache ceiling becomes a build cadence, not an invalidation system: rebuild within 24h or the price block is withheld.</li><li>The gate scales for free — 30 tables pass the same rule check as 3, because the rule is per-row in the renderer.</li><li>Multi-marketplace is a config change: marketplace id, TLD and locale per site, with the same four API operations.</li></ul></div>
+<div style="height:14px"></div>
+<div class="sec-h"><h2>Known limits of this analysis</h2><div class="rule"></div></div>
+<div class="prose"><ul><li>No product facts for the three submitted items — the site therefore demonstrates the <em>system</em>, not a market read.</li><li>Per-category commission rates were not retrievable without an authenticated account, so no revenue projection is offered.</li><li>No live campaign data exists, so EPC, CVR and click figures are unpopulated by definition.</li><li>Niche rankings are withheld rather than approximated; the fixture used to unit-test the scorer is never published.</li><li>Amazon's rules and API surface move without notice; this analysis is dated 2026-11-13 and is scheduled for quarterly re-verification.</li></ul></div></section>
+  </div>
+</main>
+<footer>
+  <div class="wrap row">
+    <div>
+      <p>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
+      <p>Zone3 is an independent affiliate-intelligence platform and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
+      <p style="color:#6e7a8b">Built statically by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>. Published via GitHub Pages from branch <code>main</code>.</p>
+      <p style="color:#6e7a8b">This repository also carries an earlier site generation from another session, kept intact.
+      Sibling pages: <a href="../products.html">products.html</a> ·
+      <a href="../pricing.html">pricing.html</a> ·
+      <a href="../sources.html">sources.html</a> ·
+      <a href="../flagged.html">flagged.html</a> ·
+      <a href="../landing-prior.html">previous landing page</a>. See <code>COORDINATION.md</code>.</p>
+    </div>
+    <div class="flinks">
+      <a href="../compliance/">Compliance</a>
+      <a href="../sources/">Sources</a>
+      <a href="../flagged/">Flagged</a>
+      <a href="../executive-summary/">Exec summary</a>
+      <a href="../index.html">Top</a>
+    </div>
+  </div>
+</footer>
+<script src="../assets/dashboard.js"></script>
+</body>
+</html>

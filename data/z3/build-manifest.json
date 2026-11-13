@@ -1,0 +1,37 @@
+{
+  "pages": 16,
+  "table_rows": 229,
+  "sources": 19,
+  "flags": 26,
+  "verification": {
+    "gates": [
+      "G1 row-has-source-or-flag",
+      "G2 no-blank-in-verified-row",
+      "G3 source-ids-resolve",
+      "G4 flag-ids-resolve",
+      "G7 no-placeholder-text",
+      "G8 flag-has-action"
+    ],
+    "result": "pass"
+  },
+  "files": {
+    "agent-terms": "256107bd5114",
+    "campaigns": "60e911e51f4b",
+    "commission": "362f05f7a76f",
+    "compliance": "159bf6470690",
+    "content": "0f816e41a5ad",
+    "executive-summary": "4737634c84c2",
+    "flagged": "afdc13726154",
+    "index": "4cad553a4cbe",
+    "methodology": "5a840a552983",
+    "niches": "0c24459b4d42",
+    "pricing": "d44668f8324c",
+    "products": "3285e2db40e2",
+    "repo-review": "dee5ebc34b14",
+    "requirements": "805699d4f167",
+    "reviews": "5b27e392208b",
+    "sources": "d868d0dacfe3"
+  },
+  "content_digest": "ae74eef66076ba8e",
+  "built_utc_note": "deliberately absent: no build timestamp is recorded, so that a no-op rebuild is byte-identical and the tree stays clean. Use the commit date of the file for 'when', and content_digest for 'what'."
+}

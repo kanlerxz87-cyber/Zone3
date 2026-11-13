@@ -1,0 +1,242 @@
+{
+  "_meta": {
+    "title": "AI agent governance under the Amazon Associates Agent Terms",
+    "generated_utc": "2026-11-13T23:55:00Z",
+    "headline": "The Program Policies now contain a dedicated Agent Terms section that directly regulates autonomous software interacting with Program Content. This platform is built to satisfy it.",
+    "definition": "\"Agent\" means any software or service that takes autonomous or semi-autonomous action on behalf of, or at the instruction of, any person or entity.",
+    "cite": "Associates Program Policies — Associates Program IP License and Usage Requirements, Section 4 (Agent Terms), updated April 14, 2026"
+  },
+  "table": {
+    "caption": "Agent Terms, clause by clause, against this platform",
+    "columns": [
+      {
+        "key": "clause",
+        "label": "Clause"
+      },
+      {
+        "key": "requirement",
+        "label": "What the Terms require (official)"
+      },
+      {
+        "key": "impl",
+        "label": "How Zone3 complies"
+      },
+      {
+        "key": "state",
+        "label": "State"
+      }
+    ],
+    "rows": [
+      {
+        "clause": "4(a) Transparency and Consent",
+        "requirement": "No Agent may access, use or interact with Program Content unless it identifies itself and operates in strict accordance with Section 3 of the Agent Terms; and not at all if Amazon has asked that Agent to refrain.",
+        "impl": "Every outbound request carries a named identity. The intake client reads a `refrain` list from config and hard-stops on a match before opening a socket.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "clause": "4(b) Limitation on Access",
+        "requirement": "Amazon may, at its sole discretion, limit whether and how any Agent accesses Program Content, including by technical measures.",
+        "impl": "Rate-limit and throttle handling is treated as authoritative: a 403/429 terminates the run with a recorded reason instead of a retry storm.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "clause": "4(c)(i) User-Agent declaration",
+        "requirement": "In all HTTP/HTTPS requests, identify that the request is from an Agent and disclose the Agent's name by including \"Agent/[agent name]\" in the User-Agent string (Amazon's example: Agent/AmazonAgent).",
+        "impl": "User-Agent is fixed to `Zone3AffiliatePlatform/1.0 (Agent/Zone3ProductResearch)` and asserted by a unit test; requests fail closed if the header is absent.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "clause": "4(c)(ii) No concealment",
+        "requirement": "Do not conceal or obfuscate that access/use/interaction is from an Agent — including by mimicking the speed or pattern of human keystrokes or page navigation, or by completing or circumventing CAPTCHAs or other human-verification measures.",
+        "impl": "No browser automation, no input humanisation, no CAPTCHA solver dependency in the lockfile. The agent only makes discrete API-style HTTP requests with a declared identity.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "clause": "4(c)(iii) Truthful attribution",
+        "requirement": "Respond truthfully to any question or prompt seeking to determine whether interactions are coming from a human or a computer.",
+        "impl": "The declared identity is the answer; there is no fallback UA pool and no residential-proxy layer that could imply a human.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "clause": "4(c)(iv) No circumvention",
+        "requirement": "Do not circumvent or otherwise avoid any measure intended to block, limit, modify or control whether and how Agents access or interact with Program Content.",
+        "impl": "A block is a result, not an obstacle. Detection of a block sets the field to blank + Unverified and raises a flag for human review — which is precisely how the 3 product rows ended up blank here.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "clause": "Section 3 cross-reference (IP License SS2(h)-(k))",
+        "requirement": "Caching, timestamping, payload-size and rate rules that apply to Program Content an Agent retrieves.",
+        "impl": "No image storage; 24h TTL on other content; 40960-byte request cap; ASINs exempt from the storage limit.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "clause": "Operating Agreement SS5 (as incorporated)",
+        "requirement": "Whatever the Agent publishes, the associate disclosure must remain clear and prominent.",
+        "impl": "Disclosure is injected by the renderer, not the model — a generated page cannot omit it. `verify_site.py` fails the build on any page missing it.",
+        "state": "Implemented",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "verified"
+      }
+    ]
+  },
+  "model_rules": {
+    "caption": "Rules governing the language model specifically",
+    "columns": [
+      {
+        "key": "rule",
+        "label": "Rule"
+      },
+      {
+        "key": "why",
+        "label": "Why"
+      }
+    ],
+    "rows": [
+      {
+        "rule": "The model may only restate content present in the retrieved evidence pack; any assertion outside it is dropped, not softened.",
+        "why": "Participation Requirements 2(b) bans inaccurate, overbroad or misleading claims about a Product; fluency is not a defence.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "The model never writes Amazon customer reviews, and never paraphrases one.",
+        "why": "Community Guidelines incorporated by the Agreement prohibit reviews created or edited in exchange for compensation; Part. Req. 5(t) also bars reuse of review content.",
+        "sources": [
+          "SRC-09",
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "The model may not invent a numeric value (price, rating, count, rate) when the field is missing; it must emit a blank and raise a flag.",
+        "why": "This is the operating rule that produced every blank cell on this site.",
+        "sources": [],
+        "status": "policy",
+        "self_attested": "tools/build_site.py"
+      },
+      {
+        "rule": "No distillation of Program Content into model weights; no reverse engineering of the API.",
+        "why": "IP License 2(g) forbids deriving underlying components such as a model, parameters or weights, and bypassing security.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "Agent actions on Program Content are logged with request identity, timestamp and outcome, retained for the compliance-certificate window.",
+        "why": "Amazon may request written certification of compliance on demand; IP License 2(h) also requires furnishing a copy of a client application within 3 business days of request.",
+        "sources": [
+          "SRC-10"
+        ],
+        "status": "verified"
+      },
+      {
+        "rule": "Autonomous publishing is capped: the agent drafts, the gate blocks, and only rows that pass grounding publish without a human.",
+        "why": "A material breach permanently forfeits commission income, so unreviewed autonomy over public claims is the largest single risk in the design.",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "verified"
+      }
+    ]
+  },
+  "api": {
+    "caption": "The sanctioned integration surface (Creators API)",
+    "columns": [
+      {
+        "key": "op",
+        "label": "Operation"
+      },
+      {
+        "key": "use",
+        "label": "Used by Zone3 for"
+      },
+      {
+        "key": "note",
+        "label": "Note"
+      }
+    ],
+    "rows": [
+      {
+        "op": "SearchItems",
+        "use": "Category discovery and candidate generation",
+        "note": "Search by keywords, filters and browse nodes.",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "verified"
+      },
+      {
+        "op": "GetItems",
+        "use": "Title, brand, features, rating, price, availability — the primary product record",
+        "note": "Retrieve detailed information for specific products by ASIN or other identifiers.",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "verified"
+      },
+      {
+        "op": "GetVariations",
+        "use": "Parent/child variants for comparison tables",
+        "note": "All variations of a parent product.",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "verified"
+      },
+      {
+        "op": "GetBrowseNodes",
+        "use": "Category taxonomy for buying-guide scoping",
+        "note": "Category information and browse node hierarchy.",
+        "sources": [
+          "SRC-13"
+        ],
+        "status": "verified"
+      },
+      {
+        "op": "PA-API 5.0 (legacy)",
+        "use": "Not used",
+        "note": "Deprecated; callers receive HTTP 403 Forbidden with com.amazon.paapi5#AccessDeniedException and are directed to migrate.",
+        "sources": [
+          "SRC-14"
+        ],
+        "status": "verified-dead",
+        "flags": [
+          "FLG-014"
+        ]
+      }
+    ]
+  }
+}
