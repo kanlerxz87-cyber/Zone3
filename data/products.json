@@ -1,0 +1,106 @@
+{
+  "site": {
+    "name": "Zone3 — Amazon Affiliate Marketing Platform",
+    "description": "AI-powered Amazon affiliate product research, analysis, and campaign management.",
+    "generated": "2026-11-13",
+    "disclaimer": "All product data below is verified only against official Amazon product pages. Values that could not be confirmed from an official source are left blank and flagged as unverified. No values were inferred or filled in."
+  },
+  "categories": [
+    {
+      "id": "air-fryers",
+      "name": "Air Fryers",
+      "description": "Countertop air fryers and air fryer ovens in the Home & Kitchen category."
+    }
+  ],
+  "products": [
+    {
+      "id": "P-001",
+      "asin": "B0CDY277D3",
+      "category": "air-fryers",
+      "categoryLabel": "Home & Kitchen",
+      "title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "brand": "CHEFMAN",
+      "affiliateLink": "https://link.amazon/B04G1MEwY",
+      "officialSource": "https://www.amazon.com/dp/B0CDY277D3",
+      "price": "",
+      "priceStatus": "unverified",
+      "rating": "",
+      "ratingStatus": "unverified",
+      "reviewCount": "",
+      "reviewCountStatus": "unverified",
+      "commissionRate": "",
+      "commissionStatus": "unverified",
+      "commissionNote": "Amazon Associates Standard Table 1: Kitchen 4.50% / Home 3.00%. Onsite Table A: Kitchen 1.25% / Home 3.00%. Applicable rate depends on Home vs Kitchen classification and Standard vs Onsite program — not confirmed from the product page.",
+      "analysis": "Dual-basket 6-quart air fryer oven with independent baskets and sync finish. High-converting small-appliance niche.",
+      "flags": ["price-unverified", "rating-unverified", "reviews-unverified", "commission-unverified"]
+    },
+    {
+      "id": "P-002",
+      "asin": "B09B7SB46R",
+      "category": "air-fryers",
+      "categoryLabel": "Home & Kitchen",
+      "title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals",
+      "brand": "Emeril Lagasse",
+      "affiliateLink": "https://link.amazon/B02NbDxp3",
+      "officialSource": "https://www.amazon.com/dp/B09B7SB46R",
+      "price": "",
+      "priceStatus": "unverified",
+      "rating": "",
+      "ratingStatus": "unverified",
+      "reviewCount": "",
+      "reviewCountStatus": "unverified",
+      "commissionRate": "",
+      "commissionStatus": "unverified",
+      "commissionNote": "Amazon Associates Standard Table 1: Kitchen 4.50% / Home 3.00%. Onsite Table A: Kitchen 1.25% / Home 3.00%. Applicable rate depends on Home vs Kitchen classification and Standard vs Onsite program — not confirmed from the product page.",
+      "analysis": "Large 26-quart French door multi-function toaster oven with rotisserie. Premium small-appliance niche with multiple cooking functions.",
+      "flags": ["price-unverified", "rating-unverified", "reviews-unverified", "commission-unverified"]
+    },
+    {
+      "id": "P-003",
+      "asin": "B08DKYBTPH",
+      "category": "air-fryers",
+      "categoryLabel": "Home & Kitchen",
+      "title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "brand": "Chefman",
+      "affiliateLink": "https://link.amazon/B00hJ57DV",
+      "officialSource": "https://www.amazon.com/dp/B08DKYBTPH",
+      "price": "",
+      "priceStatus": "unverified",
+      "rating": "",
+      "ratingStatus": "unverified",
+      "reviewCount": "",
+      "reviewCountStatus": "unverified",
+      "commissionRate": "",
+      "commissionStatus": "unverified",
+      "commissionNote": "Amazon Associates Standard Table 1: Kitchen 4.50% / Home 3.00%. Onsite Table A: Kitchen 1.25% / Home 3.00%. Applicable rate depends on Home vs Kitchen classification and Standard vs Onsite program — not confirmed from the product page.",
+      "analysis": "8-quart 4-in-1 TurboFry air fryer with Hi-Fry option. Mid-size capacity air fryer niche.",
+      "flags": ["price-unverified", "rating-unverified", "reviews-unverified", "commission-unverified", "source-checkpoint"]
+    }
+  ],
+  "flagged": [
+    {
+      "productId": "P-001",
+      "field": "price, rating, reviewCount, commissionRate",
+      "reason": "Amazon product page content blocked by scraping protection; not available from official source in fetched page. Left blank per verification policy.",
+      "action": "Manually open https://www.amazon.com/dp/B0CDY277D3 to confirm values."
+    },
+    {
+      "productId": "P-002",
+      "field": "price, rating, reviewCount, commissionRate",
+      "reason": "Amazon product page content blocked by scraping protection; not available from official source in fetched page. Left blank per verification policy.",
+      "action": "Manually open https://www.amazon.com/dp/B09B7SB46R to confirm values."
+    },
+    {
+      "productId": "P-003",
+      "field": "price, rating, reviewCount, commissionRate",
+      "reason": "Amazon product page content blocked by scraping protection; link.amazon resolution reached an Amazon checkpoint page. Title confirmed from link.amazon page title. Left blank per verification policy.",
+      "action": "Manually open https://www.amazon.com/dp/B08DKYBTPH to confirm values."
+    },
+    {
+      "productId": "P-001",
+      "field": "commissionRate",
+      "reason": "Amazon Associates pays different fixed rates by category (Kitchen vs Home) and program (Standard vs Onsite). The product page does not expose its category node or program, so the applicable rate cannot be confirmed.",
+      "action": "Confirm the product's Amazon category node and your Associates program type, then select the rate from the official tables linked on the Commission Rates page."
+    }
+  ]
+}
