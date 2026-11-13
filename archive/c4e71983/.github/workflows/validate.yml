@@ -1,0 +1,47 @@
+name: Validate the Zone3 site build
+
+# GitHub Pages for this repository is configured as a *legacy* branch build
+# (source: branch `main`, path `/`), so Pages serves the repository root and
+# redeploys automatically on every push to main. This workflow does not deploy.
+# It exists to make sure the build never breaks: build_site.py fails the job if
+# any external URL falls outside the verified allowlist, if any internal link is
+# broken, or if any page is missing the affiliate disclosure banner.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate the site build (no writes)
+        run: python3 tools/build_site.py --check
+
+      - name: Validate the JSON data files
+        run: |
+          for f in data/*.json; do
+            python3 -c "import json,sys;json.load(open(sys.argv[1]))" "$f" && echo "ok $f"
+          done
+
+      - name: Rebuild and confirm the committed output is current
+        run: |
+          python3 tools/build_site.py
+          git status --porcelain
+          if [ -n "$(git status --porcelain -- docs)" ]; then
+            echo "docs/ is out of date relative to data/ and content/."
+            echo "Run: python3 tools/build_site.py --publish-root"
+            exit 1
+          fi
+          echo "committed output is current"

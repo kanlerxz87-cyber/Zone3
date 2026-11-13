@@ -172,3 +172,33 @@ three identifiers are 9 characters, every `/dp/` probe returns Amazon's *Page No
 short link falls back to a different unrelated product. Reaching that from separately fetched evidence
 is what makes it a finding rather than a shared assumption. This session additionally published the
 rate tables (`/commission/`), which neither earlier record had located.
+
+---
+
+## Session `c4e71983` — additive contribution
+
+`main` already carried a canonical site and data schema from sessions `26634cd5`, `66a80e53`,
+`7f84fea4` and `33226b37`. This session worked in parallel from baseline `ed1a796` and, on finding
+the collision, reset onto `main` and contributed additively. **Nothing on `main` was overwritten.**
+
+| Path | Contents |
+| --- | --- |
+| `data/c4e71983-commercial-snapshot.json` | Prices, ratings, promotion badges and velocity signals, with exact capture timestamps decoded from Amazon's `qid` parameter |
+| `data/c4e71983-competitors.json` | Official Best Sellers in Air Fryers, ranks 1–6, with exact rating counts |
+| `data/c4e71983-sources.json` | Source register for this session, namespaced `C4E-Snn` |
+| `research/c4e71983-verification-log.md` | Line-by-line verification record, plus a mapping to `main`'s `S01–S29` / `FLG-001–021` |
+| `research/c4e71983-commercial-snapshot.md` | Commercial snapshot, capture method, and the volatility risk |
+| `research/c4e71983-niche-competition.md` | Niche, competition, pricing, and the clause that constrains the AI layer |
+| `docs/executive-summary-c4e71983.md` | This session's summary, kept under its own name |
+| `archive/c4e71983/` | This session's complete standalone 17-page dashboard, unchanged, browsable at `archive/c4e71983/index.html` |
+
+**Correction worth knowing:** Amazon browse node `289742` is *Coffee, Tea & Espresso Appliances*,
+**not** Air Fryers. It returns a valid, confidently-titled Best Sellers page, so a wrong guess looks
+right. The Air Fryers node is **`17659096011`**.
+
+**Caution on the commercial snapshot:** those prices were captured by hand. Program Policies
+§2(b) permits price display only if Amazon serves the link or the data came from Creators API or
+PA API. They are evidence for FLG-004, not figures to publish.
+
+See the session entry appended to `COORDINATION.md` for the full conflict log, flag list (`c4e71983-FLG-nn`)
+and ID mapping.

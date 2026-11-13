@@ -1,0 +1,113 @@
+{
+  "meta": {
+    "purpose": "URLs that appear on the site but were NOT individually fetched in this session. Each was read off an official Amazon page that WAS fetched (see observed_on). They are kept in a separate file from sources.json so that sources.json stays a pure record of individually-retrieved pages.",
+    "policy": "A URL may be emitted by the build only if it appears in sources.json or here. Anything else fails the build."
+  },
+  "links": [
+    {
+      "url": "https://m.media-amazon.com/images/I/81VavY-KG8L._AC_UL320_.jpg",
+      "observed_on": "S07",
+      "note": "Product image URL as served on the official Amazon search results page"
+    },
+    {
+      "url": "https://m.media-amazon.com/images/I/81AUxm--7pL._AC_UL320_.jpg",
+      "observed_on": "S08",
+      "note": "Product image URL as served on the official Amazon search results page"
+    },
+    {
+      "url": "https://m.media-amazon.com/images/I/71VzGtbzyFL._AC_UL320_.jpg",
+      "observed_on": "S09",
+      "note": "Product image URL as served on the official Amazon search results page"
+    },
+    {
+      "url": "https://www.amazon.com/Ninja-Capacity-Dehydrate-Technology-AF141/dp/B0CSZ7WBYW",
+      "observed_on": "S13",
+      "note": "Product URL as listed on the official Best Sellers page"
+    },
+    {
+      "url": "https://www.amazon.com/TurboBlaze-Premium-Ceramic-Coating-90%C2%B0-450%C2%B0F/dp/B0C33CHG99",
+      "observed_on": "S13",
+      "note": "Product URL as listed on the official Best Sellers page"
+    },
+    {
+      "url": "https://www.amazon.com/bella-Fits-anywhere-Non-Toxic-Coating-Oatmilk/dp/B0CYJDVT31",
+      "observed_on": "S13",
+      "note": "Product URL as listed on the official Best Sellers page"
+    },
+    {
+      "url": "https://www.amazon.com/Chefman-Air-Fryer-Technology-Touchscreen/dp/B0CNY1F31S",
+      "observed_on": "S13",
+      "note": "Product URL as listed on the official Best Sellers page"
+    },
+    {
+      "url": "https://www.amazon.com/Cuisinart-Fryer-Toaster-Countertop-TOA-55/dp/B0GVVJZDQV",
+      "observed_on": "S13",
+      "note": "Product URL as listed on the official Best Sellers page"
+    },
+    {
+      "url": "https://www.amazon.com/Chefman-Multifunctional-Touchscreen-Rotisserie-Dehydrator/dp/B0GTBN7CS2",
+      "observed_on": "S13",
+      "note": "Product URL as listed on the official Best Sellers page"
+    },
+    {
+      "url": "https://www.amazon.com/Best-Sellers/zgbs",
+      "observed_on": "S14",
+      "note": "Amazon Best Sellers root, linked from the official category breadcrumb"
+    },
+    {
+      "url": "https://www.amazon.com/Best-Sellers-Home-Kitchen/zgbs/home-garden",
+      "observed_on": "S15",
+      "note": "Home & Kitchen Best Sellers, linked from the official breadcrumb"
+    },
+    {
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining/zgbs/kitchen",
+      "observed_on": "S15",
+      "note": "Kitchen & Dining Best Sellers, linked from the official breadcrumb"
+    },
+    {
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryer-Ovens/zgbs/kitchen/224479505011",
+      "observed_on": "S14",
+      "note": "Air Fryer Ovens Best Sellers, linked from the official subcategory nav"
+    },
+    {
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Deep-Fryers/zgbs/kitchen/289918",
+      "observed_on": "S14",
+      "note": "Deep Fryers Best Sellers, linked from the official subcategory nav"
+    },
+    {
+      "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+      "observed_on": "S20",
+      "note": "FTC Endorsements hub, linked from the official FTC disclosure page"
+    },
+    {
+      "url": "https://www.ftc.gov/system/files/documents/plain-language/1001a-influencer-guide-508_1.pdf",
+      "observed_on": "S20",
+      "note": "FTC 'Disclosures 101' PDF, linked from the official FTC page"
+    },
+    {
+      "url": "https://affiliate-program.amazon.com/welcome",
+      "observed_on": "S17",
+      "note": "Associates sign-up page, linked from the official Operating Agreement header"
+    },
+    {
+      "url": "https://affiliate-program.amazon.com/help/node",
+      "observed_on": "S17",
+      "note": "Associates Program Help index, linked from the official header"
+    },
+    {
+      "url": "https://affiliate-program.amazon.com/contact",
+      "observed_on": "S17",
+      "note": "Associates contact page, linked from the official header"
+    },
+    {
+      "url": "https://affiliate-program.amazon.com/help/operating/compare",
+      "observed_on": "S17",
+      "note": "Associates 'what's changed' page, linked from the official Operating Agreement"
+    },
+    {
+      "url": "https://github.com/kanlerxz87-cyber/Zone3",
+      "observed_on": "repo",
+      "note": "This repository"
+    }
+  ]
+}
