@@ -2,71 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Zone3 — AI affiliate marketing intelligence · Zone3 Affiliate Intelligence</title>
-<meta name="description" content="Product research, niche and pricing analysis, grounded content generation, campaign tracking and compliance enforcement for Amazon Associates — built so th">
-<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/" data-page="index">
-<link rel="stylesheet" href="assets/app.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | Zone3 Amazon affiliate dashboard</title>
+<meta name="description" content="Zone3: verified Amazon affiliate product data, analysis and flags. Status as of 2026-11-13.">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="disclose" role="note">
-  <div class="wrap row">
-    <span><b>Disclosure:</b> As an Amazon Associate I earn from qualifying purchases.</span>
-    <span style="color:#8a7a55">Links to Amazon carry an Associates tag once one is configured. See the <a href="compliance/" style="color:#7a5f22">compliance register</a>.</span>
-  </div>
-</div>
 <header class="topbar">
-  <div class="wrap row">
-    <a class="logo" href="index.html"><span class="mark">Z3</span>Zone3<span class="sub">Affiliate Intelligence</span></a>
-    <nav aria-label="Sections"><a href="index.html" class="on">Dashboard</a><a href="executive-summary/">Executive summary</a><a href="requirements/">Requirements</a><a href="repo-review/">Repo review</a><a href="products/">Products</a><a href="niches/">Niches</a><a href="pricing/">Pricing</a><a href="commission/">Commission</a><a href="reviews/">Reviews</a><a href="content/">Content</a><a href="campaigns/">Campaigns</a><a href="compliance/">Compliance</a><a href="agent-terms/">Agent terms</a><a href="methodology/">Methodology</a><a href="sources/">Sources</a><a href="flagged/">Flagged for review</a></nav>
-  </div>
+  <div class="brand"><a href="index.html">Zone3</a><span>Amazon affiliate dashboard</span></div>
+  <nav><a href="index.html" class="active">Dashboard</a><a href="executive-summary.html">Executive summary</a><a href="products.html">Products</a><a href="pricing.html">Pricing &amp; commission</a><a href="reviews.html">Reviews &amp; competition</a><a href="content.html">Content &amp; compliance</a><a href="campaigns.html">Campaigns &amp; tracking</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a>
+      <a href="dashboard/index.html">Full audit (16 pages)</a></nav>
 </header>
 <main>
-  <div class="wrap">
-    <header class="pagehead">
-      <div class="crumbs"><span>Dashboard</span></div>
-      <h1>Zone3 — AI affiliate marketing intelligence</h1>
-      <p class="lead">Product research, niche and pricing analysis, grounded content generation, campaign tracking and compliance enforcement for Amazon Associates — built so that every published figure traces to an official source, and every figure that does not is shown blank and flagged.</p>
-      
-      <div class="meta-line">
-        <span>Data as of: <strong>2026-11-13</strong></span>
-        <span>Verification: <strong>every row cites an official source or is flagged</strong></span>
-        <span><a href="flagged/">26 open flags</a></span>
-      </div>
-    </header>
-    <section><div class="grid g4"><div class="card kpi "><div class="pad"><div class="lab">Products submitted</div><div class="num">3</div><div class="foot">All three intake-rejected at identifier validation</div></div></div><div class="card kpi bad"><div class="pad"><div class="lab">Products verified</div><div class="num">0</div><div class="foot">0 of 3 passed the 10-character ASIN test</div></div></div><div class="card kpi warn"><div class="pad"><div class="lab">Open flags</div><div class="num">26</div><div class="foot"><a href="flagged/">Review them</a></div></div></div><div class="card kpi ok"><div class="pad"><div class="lab">Official sources cited</div><div class="num">19</div><div class="foot">Amazon + FTC primary documents, fetched 2026-11-13</div></div></div></div>
-<div style="height:18px"></div>
-<div class="callout bad"><h4>Blocking finding — the three product links do not identify any product</h4><p>Each submitted link is a 9-character identifier. Amazon defines an ASIN as a <strong>10-character</strong> alphanumeric code, and <code>https://www.amazon.com/dp/&lt;id&gt;</code> returns a <em>Page Not Found</em> error page for all three. When followed, each link resolved to a <strong>different</strong> unrelated product (a CHEFMAN dual-basket fryer, an Emeril Lagasse toaster oven, and a Chefman 8-Qt fryer) carrying <code>plpRedirect=mhFallback</code> — Amazon's fallback route, not a product deep link.</p><p>Consequence: no product name, price, rating, review count, category or commission figure can be stated. Those cells are <strong>left blank</strong> across this site rather than estimated. See <a href="flagged/">Flagged for review</a> (FLG-004…FLG-008).</p></div>
-<div style="height:18px"></div>
-<div class="sec-h"><h2>Categories</h2><div class="rule"></div></div>
-<div class="grid g3"><a class="card" href="products/"><div class="pad"><h3>Products<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Intake and verification register for the three submitted links, plus the 12-field attribute sheet that is blocked.</p></div></a><a class="card" href="niches/"><div class="pad"><h3>Niches<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Niche scoring model, its six inputs, and ten verified category-level constraints on niche choice.</p></div></a><a class="card" href="pricing/"><div class="pad"><h3>Pricing<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Pricing rules engine, per-item price sheet, and the two prohibited price features.</p></div></a><a class="card" href="commission/"><div class="pad"><h3>Commission<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Amazon&#x27;s published rate tables (Standard, Onsite, Creator Ads) plus the Bounty schedule and what they imply.</p></div></a><a class="card" href="reviews/"><div class="pad"><h3>Reviews<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Review-integrity constraints and a compliant aggregate-only sentiment design.</p></div></a><a class="card" href="content/"><div class="pad"><h3>Content<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Article, comparison and buying-guide templates with claim-grounding gates and SEO mechanics.</p></div></a><a class="card" href="campaigns/"><div class="pad"><h3>Campaigns<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Link management, metrics schema and a permitted-vs-prohibited optimiser for 12 levers.</p></div></a><a class="card" href="compliance/"><div class="pad"><h3>Compliance<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">25 enforced prohibitions, the mandatory disclosure blocks, and programme economics.</p></div></a><a class="card" href="agent-terms/"><div class="pad"><h3>Agent terms<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">How this AI agent complies with the new Agent Terms and the Creators API surface.</p></div></a><a class="card" href="methodology/"><div class="pad"><h3>Methodology<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Architecture, data flow, the verification protocol, and reproducible checks.</p></div></a><a class="card" href="requirements/"><div class="pad"><h3>Requirements<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Traceability matrix: all 30 clauses of the brief and what happened to each.</p></div></a><a class="card" href="sources/"><div class="pad"><h3>Sources<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">Every official document cited, with what was read in it and when.</p></div></a><a class="card" href="flagged/"><div class="pad"><h3>Flagged for review<span class="arw">→</span></h3><p style="margin:0;font-size:13.4px;color:var(--ink-2)">All 26 open items with severity, verified finding and what unblocks each.</p></div></a></div>
-<div style="height:22px"></div>
-<div class="sec-h"><h2>Findings at a glance</h2><div class="rule"></div></div>
-<div class="prose"><p><strong>The automation brief is achievable; the product list is not.</strong> The research → analysis → content → publish → optimise loop is fully specified and implemented in <code>tools/</code>. What is missing is a valid product identifier and an Associates account, both of which only you can supply.</p><p><strong>Three requirements in the brief collide with Amazon's own rules.</strong> <em>Price analysis</em> as a user-facing price-alert feature is prohibited; <em>click tracking</em> per visitor via dynamic sub-tags is prohibited; <em>trending / high-converting detection</em> has no official Amazon data source at all. Those features are excluded by design and each is documented with the clause that excludes it.</p><p><strong>PA-API 5.0 is dead.</strong> Amazon's own documentation host now serves a deprecation notice returning <code>403 AccessDeniedException</code>, directing integrations to the <strong>Creators API</strong>. Any affiliate tooling built on PA-API 5 — which is most of it — needs migrating. FLG-014.</p><p><strong>API access is itself gated.</strong> Creators API requires at least <em>10 qualifying sales in the past 30 days</em>, so a brand-new affiliate account cannot automate product research at all. The platform queues research jobs until credentials exist. FLG-020.</p><p><strong>Amazon added explicit AI-agent rules, and this platform obeys them.</strong> The IP License now contains Agent Terms: an agent must declare itself as <code>Agent/&lt;name&gt;</code> in its User-Agent, must not mimic human keystroke patterns, must not solve CAPTCHAs, and must not circumvent access controls. Most tooling advertised as a fully autonomous Amazon bot cannot say that about themselves.</p></div></section>
-  </div>
+<h1>Dashboard</h1>
+<p class="lead">Status as of 2026-11-13. The site shows verified data only. Blank cells are unverified and listed on the Flagged for review page.</p>
+
+<div class="callout">
+  <p><strong>Headline:</strong> none of the three submitted Amazon links can be verified as a product listing.
+  The identifiers are nine characters long and the amazon.com product pages for them return &ldquo;Page Not Found&rdquo;.
+  The short links open three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven) that are not confirmed as the submitted products. Those values are left blank.</p>
+</div>
+<div class="grid"><div class="stat "><div class="n">3</div><div class="l">Product links submitted</div></div><div class="stat bad"><div class="n">0 of 3</div><div class="l">Product identifiers verified (ASIN)</div></div><div class="stat warn"><div class="n">0 of 3</div><div class="l">Prices verified</div></div><div class="stat warn"><div class="n">0 of 3</div><div class="l">Commission rates verified</div></div><div class="stat bad"><div class="n">2</div><div class="l">Critical flags open</div></div><div class="stat warn"><div class="n">21</div><div class="l">Total flags open</div></div></div>
+<h2>Sections</h2>
+<div class="tiles"><a class="tile" href="executive-summary.html"><b>Executive summary</b><span>Bottom line, findings, what was built, what is blocked.</span></a><a class="tile" href="products.html"><b>Products</b><span>The 3 submitted links, identifier checks, redirect results.</span></a><a class="tile" href="pricing.html"><b>Pricing &amp; commission</b><span>Price and commission fields, plus the verified commission rules.</span></a><a class="tile" href="reviews.html"><b>Reviews &amp; competition</b><span>Ratings and competitor fields, plus the verified review rules.</span></a><a class="tile" href="content.html"><b>Content &amp; compliance</b><span>Article status and the Associates and FTC checklist.</span></a><a class="tile" href="campaigns.html"><b>Campaigns &amp; tracking</b><span>Click and conversion ledger. Empty until data exists.</span></a><a class="tile" href="flagged.html"><b>Flagged for review</b><span>Every irregularity and unverified item, with its source links.</span></a><a class="tile" href="sources.html"><b>Sources</b><span>The official source registry with retrieval status.</span></a></div>
+
+<p style="margin-top:18px"><a href="dashboard/index.html">Full audit: 16-page verification dashboard, commission rate tables and flag register</a></p>
 </main>
 <footer>
-  <div class="wrap row">
-    <div>
-      <p>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
-      <p>Zone3 is an independent affiliate-intelligence platform and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
-      <p style="color:#6e7a8b">Built statically by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>. Published via GitHub Pages from branch <code>main</code>.</p>
-      <p style="color:#6e7a8b">This repository also carries an earlier site generation from another session, kept intact.
-      Sibling pages: <a href="products.html">products.html</a> ·
-      <a href="pricing.html">pricing.html</a> ·
-      <a href="sources.html">sources.html</a> ·
-      <a href="flagged.html">flagged.html</a> ·
-      <a href="landing-prior.html">previous landing page</a>. See <code>COORDINATION.md</code>.</p>
-    </div>
-    <div class="flinks">
-      <a href="compliance/">Compliance</a>
-      <a href="sources/">Sources</a>
-      <a href="flagged/">Flagged</a>
-      <a href="executive-summary/">Exec summary</a>
-      <a href="index.html">Top</a>
-    </div>
-  </div>
+  <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+  <p class="muted">Data verified as of 2026-11-13. A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+  <p class="small" style="margin-top:10px">This repository carries two site generations: the flat pages above (built by <code>scripts/build_site.py</code> from <code>data/*.json</code>) and a 16-page audit build at <a href="dashboard/index.html">/dashboard/</a> (built by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>). Neither overwrites the other; <code>COORDINATION.md</code> maps both.</p>
 </footer>
-<script src="assets/dashboard.js"></script>
 </body>
 </html>

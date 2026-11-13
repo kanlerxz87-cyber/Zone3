@@ -173,7 +173,7 @@ did not exist at branch creation and was created here as the first commit on the
 | 6 | Executive summary | **done** | `3c6cba43` | `/executive-summary/`, `docs/executive-summary.md` | Every figure in it cross-checks to a `SRC-*` id in `data/sources.json` |
 | 7 | Flagged-for-Review page | **done** | `3c6cba43` | `flagged/`, `data/flags.json` | 24 flags, each with severity, verified finding, official source and a resolution action (gate G8 requires the action) |
 | 8 | Methodology + requirements traceability + agent governance | **done** | `3c6cba43` | `methodology/`, `requirements/`, `agent-terms/`, `data/{requirements,agent_terms}.json` | 30 brief clauses traced; Agent Terms §4 mapped clause-by-clause; API claims verified against the live Creators API docs (C1–C8) |
-| 9 | Final integration: re-verify combined data, build, link-check | **done** | `3c6cba43` | whole tree | `build_site.py` gate PASS (exit 0) · `verify_site.py` V1–V7 PASS · `link_report.py --strict` PASS · 0 broken internal links |
+| 9 | Final integration: re-verify combined data, build, link-check | **done** | `3c6cba43` | whole tree (additive; see landing-page correction below) | `build_site.py` gate PASS (exit 0) · `verify_site.py` V1–V7 PASS · `link_report.py --strict` PASS · 0 broken internal links |
 | 10 | PR → `main`, merge, confirm Pages deploy | **done** | `3c6cba43` | git + `gh` only | result recorded immediately below |
 
 ### Publish result (task 10)
@@ -185,8 +185,9 @@ Recorded after the merge; see the commit that follows this section for the value
 | Pull request | `#1` — https://github.com/kanlerxz87-cyber/Zone3/pull/1 |
 | Merge method | `gh pr merge 1 --merge` (no approval waited for, per instruction) |
 | Pages build | confirmed `status=built` after merge, `https_enforced=true` |
-| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ |
+| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ · this build's landing: `/dashboard/` |
 | Broken links at publish | 0 |
+| Landing-page ownership | **Corrected in a follow-up.** The first integration put this session's dashboard at the root, which displaced session `33226b37`'s flat landing page. Root `index.html` was restored from `b2cc672` and this build's landing moved to `dashboard/index.html`; a nav link and a section card were added to their root page, and their generator's `NAV` list got the same entry so a rebuild keeps it. Neither builder can now overwrite the other's file. |
 | Site merged while flagged? | yes — flagged items and unverified fields are non-blocking and are published at `/flagged/` |
 
 ---

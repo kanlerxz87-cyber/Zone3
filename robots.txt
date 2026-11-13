@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-# Static affiliate-intelligence dashboard. No Amazon content fetched at runtime.
 Sitemap: https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml

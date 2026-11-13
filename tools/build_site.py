@@ -54,12 +54,22 @@ UNVERIFIED_STATES = {
 }
 
 # --------------------------------------------------------------------- link helpers
+_CUR = ""   # page currently being rendered, set by render_page
+
+
 def rel(cur_depth: int, target_depth: int, target_name: str) -> str:
-    """Relative href between pages. Landing page is depth 0; all others depth 1."""
-    up = "../" * cur_depth
-    if target_depth == 0:
-        return up + "index.html"
-    return f"{up}{target_name}/"
+    """Relative href between pages of THIS build.
+
+    Every page sits in its own directory one level below the site root (the dashboard
+    lives at dashboard/index.html), because the root index.html is owned by another
+    session's flat build. So the only shapes needed are "index.html" for a page linking
+    to itself and "../<dir>/" otherwise — which keeps this build from ever writing a
+    file another build also writes.
+    """
+    tgt = "dashboard" if target_name in ("index", "") else target_name
+    if _CUR == "index" and tgt == "dashboard":
+        return "index.html"
+    return f"../{tgt}/"
 
 
 def relf(cur_depth: int, filename: str) -> str:
@@ -260,19 +270,22 @@ def toc_html(cur, depth) -> str:
 
 # ------------------------------------------------------------------------ page shell
 def render_page(pname, title, lead, body, depth, badges=None, updated="2026-11-13"):
+    global _CUR
+    _CUR = pname
     if pname == "index":
-        href = "index.html"
+        href = "dashboard/index.html"
         crumb = '<span>Dashboard</span>'
     else:
         href = f"{pname}/index.html"
         crumb = (f'<a href="{rel(1,0,"index")}">Zone3</a> '
                  f'<span aria-hidden="true">/</span> <span>{esc(NAV_TITLES.get(pname,pname))}</span>')
+    cpath = "dashboard/" if pname == "index" else f"{pname}/"
     badges_html = ""
     if badges:
         badges_html = '<div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap">' + "".join(badges) + "</div>"
 
-    css = "assets/" if depth == 0 else "../assets/"
-    js = "assets/" if depth == 0 else "../assets/"   # dashboard.js: assets/app.js belongs to a prior session's pages
+    css = "../assets/"      # every page of this build is one directory deep
+    js = "../assets/"       # dashboard.js: assets/app.js belongs to a prior session's pages
     doc = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -280,7 +293,7 @@ def render_page(pname, title, lead, body, depth, badges=None, updated="2026-11-1
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} · Zone3 Affiliate Intelligence</title>
 <meta name="description" content="{esc(lead)[:155]}">
-<link rel="canonical" href="{SITE_ORIGIN}{SITE_BASE}/" data-page="{esc(pname)}">
+<link rel="canonical" href="{SITE_ORIGIN}{SITE_BASE}/{cpath}" data-page="{esc(pname)}">
 <link rel="stylesheet" href="{css}app.css">
 </head>
 <body>
@@ -1098,7 +1111,10 @@ PAGES = {
     "flagged": page_flags,
     "repo-review": page_repo_review,
 }
-DEPTH = {name: (0 if name == "index" else 1) for name in PAGES}
+# Every page of this build is emitted into its own directory, including the dashboard, so that
+# no file of another session's flat site is ever overwritten (root index.html belongs to
+# scripts/build_site.py). Depth 1 everywhere keeps the relative-link logic uniform.
+DEPTH = {name: 1 for name in PAGES}
 
 
 def all_tables():
@@ -1187,14 +1203,18 @@ def main():
     written = build(out)
     (out / ".nojekyll").write_text("", encoding="utf-8")
 
-    # sitemap + robots
-    urls = [f"{SITE_ORIGIN}{SITE_BASE}/" ] + [f"{SITE_ORIGIN}{SITE_BASE}/{n}/" for n in PAGES if n != "index"]
+    # sitemap + robots — paths taken from what was actually written, so the sitemap can
+    # never advertise a page the build did not emit
+    def _urlpath(v):
+        d = str(pathlib.PurePosixPath(v).parent)
+        return "" if d == "." else d + "/"
+    sm_paths = sorted({_urlpath(v) for v in written.values()})
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
-    (out / "robots.txt").write_text("User-agent: *\nAllow: /\n\n"
-                                     f"# Static affiliate-intelligence dashboard. No Amazon content fetched at runtime.\n"
-                                     f"Sitemap: {SITE_ORIGIN}{SITE_BASE}/sitemap.xml\n", encoding="utf-8")
+        + "".join(f'  <url><loc>{SITE_ORIGIN}{SITE_BASE}/{p}</loc></url>\n' for p in sm_paths)
+        + "</urlset>\n", encoding="utf-8")
+    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_ORIGIN}{SITE_BASE}/sitemap.xml\n",
+                                    encoding="utf-8")
 
     manifest = {
         "pages": len(written), "table_rows": nrows,

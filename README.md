@@ -5,7 +5,11 @@ verification, niche / pricing / review analysis, grounded SEO content generation
 campaign tracking, and compliance enforcement — with a build-time gate that refuses to
 publish any value that cannot be traced to an official source.
 
-**Live site:** https://kanlerxz87-cyber.github.io/Zone3/
+**Live site:** https://kanlerxz87-cyber.github.io/Zone3/ · **this build's dashboard:** `/dashboard/`
+
+> The repository root belongs to an earlier session's flat site. This build writes only inside its
+> own page directories (`dashboard/`, `products/`, `commission/`, …) and never overwrites a file
+> another build owns, so both halves are served side by side and cross-link to each other.
 
 > **Integration note.** This branch was merged into `main` alongside four earlier sessions' work rather
 > than over it: their flat pages (`products.html`, `pricing.html`, …), `scripts/`, `data/*.json` and
@@ -40,7 +44,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 
 | Category | Path | What it holds |
 | --- | --- | --- |
-| Dashboard | `/` | KPIs, findings, navigation |
+| Dashboard | `/dashboard/` | KPIs, findings, navigation |
 | Executive summary | `/executive-summary/` | The whole story in one read |
 | Products | `/products/` | Intake + verification register, 12-field attribute sheet, link pipeline |
 | Commission | `/commission/` | Amazon's published rate tables (Standard/Onsite/Creator Ads) + Bounty schedule |
@@ -62,7 +66,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 ## Layout
 
 ```
-index.html + 15 subpages   generated static site (committed, served by GitHub Pages)
+dashboard/ + 15 page dirs   generated static site (committed, served by GitHub Pages)
 assets/app.css, app.js     dashboard styling; sort/filter; no runtime fetching
 data/z3/*.json             single source of truth for every published cell in this build
 data/*.json                datasets owned by earlier sessions (kept, not overwritten)
@@ -143,9 +147,9 @@ follows.
 | --- | --- |
 | Was any other session's work deleted? | **No.** Conflicting files were kept on both sides. |
 | How were add/add conflicts resolved? | Theirs wins where they own the file (`assets/app.js`, `scripts/`, `data/*.json`, their flat pages); this session's files moved to non-colliding names (`assets/dashboard.js`, `data/z3/`, `landing-prior.html`, `docs/executive-summary-prior-sessions.md`). |
-| Whose page is the root landing? | This session's build (it is the one with per-row provenance gating and the corrected commission tables). The previous root page is preserved at `landing-prior.html` and still served. |
+| Root landing | Theirs (the flat-page dashboard), with a link added into `/dashboard/`. This session's landing is at `/dashboard/`, and `landing-prior.html` keeps the earlier root revision verbatim. |
 | Do both sites still work? | Yes — 32 HTML pages all serve; their `scripts/check_site.py` and this session's `tools/verify_site.py` both pass. |
-| **Do not run** `python3 scripts/build_site.py` | It regenerates the root `index.html` and its own flat pages, which would overwrite this session's landing page. To rebuild this site, run `python3 tools/build_site.py`. Both builders are independent and both pass their own checks. |
+| Root `index.html` | Owned by `scripts/build_site.py`. This build writes its landing to `dashboard/index.html` instead, so neither builder can clobber the other. |
 | Anything found in *their* work? | One compliance gap, fixed additively: `category/kitchen.html` was hand-authored and had no Associates disclosure (required by Operating Agreement §5). Their generated pages all had it. Recorded at `B:FLG-025` in `COORDINATION.md`. |
 | Anything this session corrected about *itself*? | Yes — it had concluded per-category commission rates were unobtainable because one endpoint redirects to sign-in. The statement is public; rates are now published. Recorded at `B:FLG-013`. |
 ---
@@ -160,7 +164,7 @@ Kept intact by this integration; documented so the merged tree is navigable.
 | `data/policy_facts.json` | Verbatim policy quotes PF-01…PF-43 (PF-14 withdrawn), each with source and section. |
 | `data/products.json`, `data/flags.json` | The earlier build's product dataset and flag register. Identical numbering to `data/z3/*` means different items. |
 | `research/` | Session `33226b37`'s independent line-by-line verification record and product dossiers, with the ID mapping to that data layer. |
-| `scripts/build_site.py`, `scripts/check_site.py` | The earlier build and its audit. **Do not run the builder** — it rewrites the root `index.html`. |
+| `scripts/build_site.py`, `scripts/check_site.py` | The earlier build and its audit. That builder owns the root `index.html`; this one never writes it, so running either one is safe for the other. |
 | `docs/executive-summary-33226b37.md` | Executive summary preserved from that session. |
 
 Two independent verification records now cover the same three links and agree on the substance: all

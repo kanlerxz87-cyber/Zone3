@@ -92,6 +92,10 @@ NAV = [
     ("campaigns.html", "Campaigns &amp; tracking"),
     ("flagged.html", "Flagged for review"),
     ("sources.html", "Sources"),
+    # Added by integration session 3c6cba43: the second site generation in this repo,
+    # rendered by tools/build_site.py from data/z3/*.json. Linked here so the two halves of
+    # the merged site are one navigable product instead of two disconnected trees.
+    ("dashboard/index.html", "Full audit (16 pages)"),
 ]
 
 
