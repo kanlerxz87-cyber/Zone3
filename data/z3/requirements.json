@@ -411,6 +411,32 @@
         "sources": [],
         "flags": [],
         "self_attested": "data/z3/flags.json"
+      },
+      {
+        "id": "R-31",
+        "req": "Resolve merge conflicts without discarding another session's work",
+        "status": "delivered",
+        "where": "this merge; FLG-025, FLG-026",
+        "note": "Five add/add conflicts (COORDINATION.md, README.md, assets/app.js, docs/executive-summary.md, index.html). Resolved by keeping both sides: their file wins where they own it, mine is renamed and preserved, and the board is concatenated. Nothing from main was deleted.",
+        "sources": [
+          "SRC-17"
+        ],
+        "flags": [
+          "FLG-026"
+        ]
+      },
+      {
+        "id": "R-32",
+        "req": "Re-verify combined data line by line after integration",
+        "status": "delivered",
+        "where": "tools/verify_site.py (whole-tree walk)",
+        "note": "The audit was widened to every HTML file in the tree, not just this session's output, which is what surfaced the missing disclosure on an inherited page.",
+        "sources": [
+          "SRC-09"
+        ],
+        "flags": [
+          "FLG-025"
+        ]
       }
     ]
   }

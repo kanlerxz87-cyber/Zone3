@@ -31,7 +31,7 @@
       <div class="meta-line">
         <span>Data as of: <strong>2026-11-13</strong></span>
         <span>Verification: <strong>every row cites an official source or is flagged</strong></span>
-        <span><a href="../flagged/">24 open flags</a></span>
+        <span><a href="../flagged/">26 open flags</a></span>
       </div>
     </header>
     <section><div class="prose"><h2>Baseline audit — commit by commit</h2><p><strong>Repository:</strong> <code>kanlerxz87-cyber/Zone3</code>. <strong>Base commit:</strong> <code>ed1a796dc01f52669864e98a72b9a521a3b7161b</code> ("Initial commit").</p><ul><li><strong>Contents:</strong> exactly one tracked file, <code>README.md</code>, 7 bytes, containing only <code># Zone3</code>. One commit on one branch; no tags; no releases; no other contributors.</li><li><strong>Absent:</strong> any application code, data, tests, CI workflow, LICENSE, .gitignore, package manifest, and <code>COORDINATION.md</code> (the brief assumes it may exist; it did not, so it was created).</li><li><strong>Pages:</strong> already configured — <code>build_type=legacy</code>, source <code>main</code> path <code>/</code>, <code>https_enforced=true</code>, at <code>kanlerxz87-cyber.github.io/Zone3/</code>. The <code>pages-build-deployment</code> workflow had run once, deploying an empty Jekyll build of the placeholder README.</li><li><strong>Working tree at branch creation:</strong> clean, so there was no uncommitted local work to preserve.</li></ul><p><strong>Irregularity (FLG-010):</strong> the repo is a scaffold, not an existing project. There was no prior code to review, no dataset to reconcile, and no convention to follow — which is why this session created the structure from scratch and recorded the baseline commit hash so the audit trail has a hard starting point.</p><p><strong>Licensing note.</strong> No LICENSE file exists. The content on this site is policy text quoted from Amazon's Program Documents under the terms those documents themselves grant for Program Content, and the code is original to this repository. If Zone3 is intended to be open source, a LICENSE should be added — flagged rather than assumed, since choosing a licence is not a mechanical call.</p><p><strong>Repository hygiene applied here:</strong> <code>.nojekyll</code> (prevents Jekyll from ignoring <code>_*</code> and from running an unnecessary Ruby build), <code>.gitignore</code> for build scratch, generated HTML committed because Pages deploys from branch root, and no secrets, tokens or credentials anywhere in the tree.</p></div>
@@ -45,7 +45,13 @@
     <div>
       <p>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
       <p>Zone3 is an independent affiliate-intelligence platform and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
-      <p style="color:#6e7a8b">Built statically by <code>tools/build_site.py</code> from <code>data/*.json</code>. Published via GitHub Pages from branch <code>main</code>.</p>
+      <p style="color:#6e7a8b">Built statically by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>. Published via GitHub Pages from branch <code>main</code>.</p>
+      <p style="color:#6e7a8b">This repository also carries an earlier site generation from another session, kept intact.
+      Sibling pages: <a href="../products.html">products.html</a> ·
+      <a href="../pricing.html">pricing.html</a> ·
+      <a href="../sources.html">sources.html</a> ·
+      <a href="../flagged.html">flagged.html</a> ·
+      <a href="../landing-prior.html">previous landing page</a>. See <code>COORDINATION.md</code>.</p>
     </div>
     <div class="flinks">
       <a href="../compliance/">Compliance</a>
@@ -56,6 +62,6 @@
     </div>
   </div>
 </footer>
-<script src="../assets/app.js"></script>
+<script src="../assets/dashboard.js"></script>
 </body>
 </html>

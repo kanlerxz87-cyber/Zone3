@@ -1,0 +1,310 @@
+{
+  "retrieved": "2026-11-13",
+  "note": "Every quote is copied verbatim from the official page named in 'source' and 'section'. Re-read on 2026-11-13 where marked. PF-14 was withdrawn on 2026-11-13: its text was not found in the sections read. Quotes are short; bracketed text is an editorial placeholder in the source. 'applies_to' is the project's reading and is not a quote.",
+  "facts": [
+    {
+      "id": "PF-01",
+      "topic": "Required disclosure wording",
+      "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: “As an Amazon Associate I earn from qualifying purchases.”",
+      "source": "S01",
+      "section": "Operating Agreement, Section 5",
+      "applies_to": "Shown on every page of this site (footer)."
+    },
+    {
+      "id": "PF-02",
+      "topic": "Breach of disclosure rule",
+      "quote": "For the avoidance of doubt and without limitation for purposes of the foregoing subsection (a) any violation of Section 5 and as specified in the Program Policies will be deemed a material breach of this Agreement.",
+      "source": "S01",
+      "section": "Operating Agreement, Section 6",
+      "applies_to": "Why the disclosure is treated as mandatory."
+    },
+    {
+      "id": "PF-03",
+      "topic": "Special Links must carry the Associates tag",
+      "quote": "For example, you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 2(b)",
+      "applies_to": "No tag has been supplied, so no Special Link has been created (FLG-010)."
+    },
+    {
+      "id": "PF-04",
+      "topic": "Prices and availability may be shown only through the link or the API",
+      "quote": "Product prices and availability may vary from time to time. ... your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 2(b)",
+      "applies_to": "Pricing cells are left blank. No price is typed in from a web page (FLG-004, FLG-006)."
+    },
+    {
+      "id": "PF-05",
+      "topic": "Customer reviews and star ratings",
+      "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 6(t)",
+      "applies_to": "Rating and review-count cells are left blank (FLG-004)."
+    },
+    {
+      "id": "PF-06",
+      "topic": "Link shorteners must not obscure the Amazon destination",
+      "quote": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 6(w)",
+      "applies_to": "Applies to the link.amazon short links (FLG-003)."
+    },
+    {
+      "id": "PF-07",
+      "topic": "Redirecting Links disqualify purchases",
+      "quote": "any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a “Redirecting Link”)",
+      "source": "S02",
+      "section": "Commission Income Statement, Section 2(e) (verbatim, re-read 2026-11-13)",
+      "applies_to": "If link.amazon redirects without a click, purchases from it may not count (FLG-003)."
+    },
+    {
+      "id": "PF-08",
+      "topic": "Cloaking and obscured destinations",
+      "quote": "You will not cloak, hide, spoof, or otherwise obscure the URL of your Site containing Special Links (including by use of Redirecting Links) or the user agent of the application in which Program Content is displayed or used such that we cannot reasonably determine the site or application from which a customer clicks through such Special Link to an Amazon Site.",
+      "source": "S02",
+      "section": "Program Policies, Associates Program Participation Requirements, Section 6(v)",
+      "applies_to": "Site must not hide its URL behind redirects."
+    },
+    {
+      "id": "PF-09",
+      "topic": "No offline or printed use of Special Links",
+      "quote": "You will not engage in any Promotional Activities in any offline manner, including by using any of our or our affiliates’ trademarks or logos (including any Amazon Mark), any Program Content, or any Special Link in connection with any printed material, ebook, mailing, or any oral solicitation.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 4",
+      "applies_to": "No printed, QR-code or ebook use of these links."
+    },
+    {
+      "id": "PF-10",
+      "topic": "Cookie-cutter or inaccurate product claims",
+      "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 2(b)",
+      "applies_to": "Content cannot state product facts that are not verified (FLG-012)."
+    },
+    {
+      "id": "PF-11",
+      "topic": "Comparison price display",
+      "quote": "if you choose to display prices for any Product on your Site in any “comparison” format (including through the use of any price-comparison tool or engine) together with prices for the same or similar products offered through any web site or other means other than an Amazon Site, you must display both the lowest “new” price and, if we provide it to you, the lowest “used” price at which the Product is available on the Amazon Site.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 2(b)",
+      "applies_to": "Any future comparison article must follow this rule."
+    },
+    {
+      "id": "PF-12",
+      "topic": "Commission window: 24-hour session and 89-day cart window",
+      "quote": "during a single session, which is measured as beginning when a customer clicks through that Special Link and ending upon the first to occur of the following: (x) 24 hours elapse from that click, ... (i) the customer purchases a Product by adding a Product to his or her shopping cart and completing the order for that Product no later than 89 days after their initial click-through of the Special Link",
+      "source": "S02",
+      "section": "Commission Income Statement, Section 1",
+      "applies_to": "Defines what a click-to-sale tracking record must record (campaigns page)."
+    },
+    {
+      "id": "PF-13",
+      "topic": "Cancelled, returned or refunded orders are disqualified",
+      "quote": "any Product order where a cancellation, return, or refund has been initiated,",
+      "source": "S02",
+      "section": "Commission Income Statement, Section 2(b)",
+      "applies_to": "Conversion counts must exclude these orders."
+    },
+    {
+      "id": "PF-15",
+      "topic": "Original content and third-party material",
+      "quote": "Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 1",
+      "applies_to": "Content pages must add analysis, not only copy product data."
+    },
+    {
+      "id": "PF-16",
+      "topic": "Creators API prerequisite",
+      "quote": "Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API",
+      "source": "S04",
+      "section": "Creators API introduction, Prerequisites item 2",
+      "applies_to": "Product, price and review data cannot be pulled automatically until this is met (FLG-006)."
+    },
+    {
+      "id": "PF-17",
+      "topic": "PA-API 5 is deprecated",
+      "quote": "The Amazon Product Advertising API 5.0 (PA-API 5) has been deprecated and is being replaced by the Creators API.",
+      "source": "S05",
+      "section": "PA-API 5 Deprecation Notice",
+      "applies_to": "The site cites the Creators API as the data source (FLG-007)."
+    },
+    {
+      "id": "PF-18",
+      "topic": "ASIN definition (identifier length)",
+      "quote": "ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
+      "source": "S06",
+      "section": "Creators API GetItems, ItemIdType Parameter (chunk 1 of 3)",
+      "applies_to": "The three submitted identifiers are 9 characters, not 10-character ASINs (FLG-001). Confirms the 10-character statement in the executive summary."
+    },
+    {
+      "id": "PF-19",
+      "topic": "FTC: disclose financial relationships",
+      "quote": "Disclose when you have any financial, employment, personal, or family relationship with a brand.",
+      "source": "S07",
+      "section": "When to Disclose",
+      "applies_to": "Disclosure is shown on every page and near the links (see PF-01)."
+    },
+    {
+      "id": "PF-20",
+      "topic": "FTC: disclosure must be hard to miss",
+      "quote": "Place it so it’s hard to miss.",
+      "source": "S07",
+      "section": "How to Disclose",
+      "applies_to": "Footer disclosure on each page; to be reviewed for placement (FLG-013)."
+    },
+    {
+      "id": "PF-21",
+      "topic": "FTC: no claims about products you have not tried",
+      "quote": "You can’t talk about your experience with a product you haven’t tried.",
+      "source": "S07",
+      "section": "What Else to Know",
+      "applies_to": "No first-hand product experience is claimed on this site."
+    },
+    {
+      "id": "PF-22",
+      "topic": "Creators API: no data mining, robots or scraping",
+      "quote": "This license does not include any downloading, copying or other use of Program Content for the benefit of any third party, or any use of data mining, robots, or similar data gathering and extraction tools.",
+      "source": "S02",
+      "section": "Associates Program IP License and Usage Requirements, Section 1 (re-read 2026-11-13)",
+      "applies_to": "Automated collection of Amazon product data outside the Creators API is not permitted under this license."
+    },
+    {
+      "id": "PF-23",
+      "topic": "Creators API: no AI analysis or aggregation without written approval",
+      "quote": "(e) You will not, without our express prior written approval, access or use Creators API, PA API or Data Feeds for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content or in connection with any software or other application intended for use by persons or entities that offer products on an Amazon Site, or in the direct training or fine-tuning of a machine learning and/or foundational model.",
+      "source": "S02",
+      "section": "IP License and Usage Requirements, Section 2(c)(e) (re-read 2026-11-13)",
+      "applies_to": "An AI analysis layer on top of Creators API data needs express prior written approval (FLG-016)."
+    },
+    {
+      "id": "PF-24",
+      "topic": "Creators API: no ML models or LLMs built from Program Content",
+      "quote": "will not allow any third party to, use Program Content to, directly or indirectly, develop or improve large language or multimodal models, machine learning models or related technology.",
+      "source": "S02",
+      "section": "IP License and Usage Requirements, Section 1 (re-read 2026-11-13)",
+      "applies_to": "The platform may not use Program Content to train or improve models (FLG-016)."
+    },
+    {
+      "id": "PF-25",
+      "topic": "Participation Requirements: no ML models from Special Links or Program Content",
+      "quote": "You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.",
+      "source": "S02",
+      "section": "Associates Program Participation Requirements, Section 5 (re-read 2026-11-13; source text reads 'without or express')",
+      "applies_to": "Same constraint as PF-23/24, from the Participation Requirements (FLG-016)."
+    },
+    {
+      "id": "PF-26",
+      "topic": "Creators API: caching limits",
+      "quote": "Unless otherwise notified by us, you may store individual Amazon Standard Identification Numbers (ASINs) for an indefinite period until the termination of this License. ... if your application includes a client application, the client application may not store or cache Product Advertising Content.",
+      "source": "S02",
+      "section": "IP License and Usage Requirements, Section 2(h) (re-read 2026-11-13)",
+      "applies_to": "Non-image data may be cached for only 24 hours and must then be refreshed (FLG-019)."
+    },
+    {
+      "id": "PF-27",
+      "topic": "Creators API: date stamp and disclaimer for price or availability",
+      "quote": "You will include a date/time stamp adjacent to your display of pricing or availability information on your application if you obtain Product Advertising Content from Data Feeds, or if you call Creators API, PA API or refresh the Product Advertising Content displayed on your application less frequently than hourly.",
+      "source": "S02",
+      "section": "IP License and Usage Requirements, Section 2(i) (re-read 2026-11-13)",
+      "applies_to": "Any price or availability shown must carry a date and time and the disclaimer in 2(i) (FLG-019)."
+    },
+    {
+      "id": "PF-28",
+      "topic": "Creators API: text disclaimer",
+      "quote": "CERTAIN CONTENT THAT APPEARS [IN THIS APPLICATION or ON THIS SITE, as applicable] COMES FROM AMAZON. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.",
+      "source": "S02",
+      "section": "IP License and Usage Requirements, Section 2(k) (re-read 2026-11-13)",
+      "applies_to": "Required plain-view disclaimer when Creators API text is displayed."
+    },
+    {
+      "id": "PF-29",
+      "topic": "Creators API: rate limits and file size",
+      "quote": "you will not send files to or from Creators API or PA API that are greater than 40KB without our prior written approval.",
+      "source": "S02",
+      "section": "IP License and Usage Requirements, Section 2(j) (re-read 2026-11-13)",
+      "applies_to": "Limit on API calls and file size (FLG-019)."
+    },
+    {
+      "id": "PF-30",
+      "topic": "Creators API: credentials and Associates tag",
+      "quote": "You must use both a unique public key/private key pair (each key pair, an “Account Identifier”) and an Associates tag parameter",
+      "source": "S02",
+      "section": "IP License and Usage Requirements, Section 2(b) (re-read 2026-11-13)",
+      "applies_to": "Each API call needs an Associates tag and the account's own key pair (FLG-010)."
+    },
+    {
+      "id": "PF-31",
+      "topic": "Agents must identify themselves",
+      "quote": "In all HTTP/HTTPS requests, identify that the request is from an Agent and disclose the name of the Agent by including the following in the request’s user agent string",
+      "source": "S02",
+      "section": "Creators API IP License, Section 4 (Agents), 4(c) (re-read 2026-11-13)",
+      "applies_to": "Any automated agent that accesses Program Content must identify itself (FLG-019)."
+    },
+    {
+      "id": "PF-32",
+      "topic": "Program Content only for Amazon products",
+      "quote": "You will not display on your Site, or otherwise use, any Program Content to advertise or promote any products that are offered on any site that is not an Amazon Site (e.g., products offered by other retailers).",
+      "source": "S02",
+      "section": "Participation Requirements, Section 6(z) (re-read 2026-11-13)",
+      "applies_to": "Price or review comparisons with other retailers may not use Program Content (FLG-019)."
+    },
+    {
+      "id": "PF-33",
+      "topic": "No artificial clicks or sessions",
+      "quote": "You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 6(s) (re-read 2026-11-13)",
+      "applies_to": "Automated click generation is prohibited; click tracking must count real visits only."
+    },
+    {
+      "id": "PF-34",
+      "topic": "No price tracking or alerting on the site",
+      "quote": "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
+      "source": "S02",
+      "section": "Participation Requirements, Section 6(y) (re-read 2026-11-13)",
+      "applies_to": "The platform may not offer price tracking or alerts without written agreement."
+    },
+    {
+      "id": "PF-35",
+      "topic": "Schedule 1: Amazon Site by location (United States only)",
+      "quote": "SCHEDULE 1: AMAZON ENTITY AND AMAZON SITE BY LOCATION — United States | Amazon.com Services LLC | amazon.com",
+      "source": "S01",
+      "section": "Operating Agreement, Schedule 1 (re-read 2026-11-13)",
+      "applies_to": "Schedule 1 lists only the United States site. Eligibility for an Oslo-based Associate is not stated in the text read (FLG-015)."
+    },
+    {
+      "id": "PF-36",
+      "topic": "Influencer Program example wording",
+      "quote": "(such as by using the text “#Ad” or “#Sponsored”)",
+      "source": "S02",
+      "section": "Amazon Influencer Program Policy, Section 3(c) (re-read 2026-11-13)",
+      "applies_to": "Applies to the Influencer Program. The text is an example of a disclosure, not a requirement for this site."
+    },
+    {
+      "id": "PF-37",
+      "topic": "FTC: current Endorsement Guides",
+      "quote": "revised in 2023",
+      "source": "S24",
+      "section": "FTC topic hub, Endorsements, Influencers, and Reviews (fetched 2026-11-13)",
+      "applies_to": "The 2019 brochure (PF-19 to PF-21) predates the 2023 revision. The current guides text was not read (FLG-017)."
+    },
+    {
+      "id": "PF-38",
+      "topic": "Category reference rate: Kitchen (Standard Commission)",
+      "quote": "Physical Books, Kitchen, Automotive | 4.50%",
+      "source": "S25",
+      "section": "Standard Commission Income Statement, Table 1 (re-read 2026-11-13)",
+      "applies_to": "Applies only if a listing is in the Kitchen category. The product categories of the three listings are not verified (FLG-021)."
+    },
+    {
+      "id": "PF-39",
+      "topic": "Onsite Commission rates are for Onsite Content",
+      "quote": "We will pay you commission income (“Onsite Commission Income”) for Qualifying Purchases, which in the case of Onsite Commission Income is limited to Direct Qualifying Purchases.",
+      "source": "S26",
+      "section": "Onsite Associates Program Commission Income Statement, opening section (re-read 2026-11-13)",
+      "applies_to": "The Onsite rate table (Kitchen 1.25%) is not the rate for links on this site (FLG-021)."
+    }
+  ]
+}

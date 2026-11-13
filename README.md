@@ -7,6 +7,11 @@ publish any value that cannot be traced to an official source.
 
 **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 
+> **Integration note.** This branch was merged into `main` alongside four earlier sessions' work rather
+> than over it: their flat pages (`products.html`, `pricing.html`, …), `scripts/`, `data/*.json` and
+> `assets/app.js` are intact, this session's datasets live under `data/z3/`, its landing page replaced the
+> root one, and their previous landing page is preserved at `landing-prior.html`. See FLG-026.
+
 ---
 
 ## Status at a glance
@@ -16,8 +21,8 @@ publish any value that cannot be traced to an official source.
 | Products submitted | 3 |
 | Products that passed intake verification | **0 of 3** |
 | Data cells left blank because no official source exists | **36** |
-| Official sources cited | 17 |
-| Open items published for review | 24 |
+| Official sources cited | 19 |
+| Open items published for review | 26 |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks |
 
 The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
@@ -38,6 +43,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 | Dashboard | `/` | KPIs, findings, navigation |
 | Executive summary | `/executive-summary/` | The whole story in one read |
 | Products | `/products/` | Intake + verification register, 12-field attribute sheet, link pipeline |
+| Commission | `/commission/` | Amazon's published rate tables (Standard/Onsite/Creator Ads) + Bounty schedule |
 | Niches | `/niches/` | Scoring model, input availability, 10 verified category constraints |
 | Pricing | `/pricing/` | Price sheet, pricing rules engine, unblock sequence |
 | Reviews | `/reviews/` | Review metrics, integrity constraints, compliant sentiment design |
@@ -48,7 +54,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 | Methodology | `/methodology/` | 8-stage pipeline, verification protocol, scalability, limits |
 | Requirements | `/requirements/` | All 30 brief clauses traced to status |
 | Sources | `/sources/` | Every official document cited, with what was observed |
-| Flagged | `/flagged/` | 24 open items with source links and resolutions |
+| Flagged | `/flagged/` | 26 open items with source links and resolutions |
 | Repo review | `/repo-review/` | Audit of the repository as found |
 
 ---
@@ -58,14 +64,16 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 ```
 index.html + 15 subpages   generated static site (committed, served by GitHub Pages)
 assets/app.css, app.js     dashboard styling; sort/filter; no runtime fetching
-data/*.json                single source of truth for every published cell
+data/z3/*.json             single source of truth for every published cell in this build
+data/*.json                datasets owned by earlier sessions (kept, not overwritten)
 config/platform.json       configuration; credentials committed as null on purpose
 tools/build_site.py        renders the site + enforces the provenance gate (G1–G8)
-tools/verify_site.py       audits the emitted HTML (V1–V7)
+tools/verify_site.py       audits every HTML file in the tree (V1–V7), inherited pages included
 tools/amazon_intake.py     ASIN validation → /dp/ probe → Creators API
 tools/niche_score.py       niche ranking; never imputes a missing input
 tools/link_report.py       provenance coverage report
 docs/                      executive summary, verification log, repo review, compliance
+landing-prior.html         previous root landing page, preserved verbatim
 COORDINATION.md            shared task board for parallel agent sessions
 ```
 
@@ -121,3 +129,22 @@ Zone3 is independent and is not affiliated with, endorsed or sponsored by Amazon
 Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.
 
 *No license file is present — see the flagged item in `docs/repo-review.md` §2.2.*
+
+---
+
+## Multi-session integration record
+
+Six sessions worked this repository concurrently (`26634cd5`, `66a80e53`, `45ec61ec`,
+`a9cafea1`, `7f84fea4`, `3c6cba43`). Sessions `7f84fea4`, `26634cd5`, `66a80e53` and `a9cafea1`
+published through PRs #1, #3, #5 and #6; this session's integration ran as the merge commit that
+follows.
+
+| Question | Answer |
+| --- | --- |
+| Was any other session's work deleted? | **No.** Conflicting files were kept on both sides. |
+| How were add/add conflicts resolved? | Theirs wins where they own the file (`assets/app.js`, `scripts/`, `data/*.json`, their flat pages); this session's files moved to non-colliding names (`assets/dashboard.js`, `data/z3/`, `landing-prior.html`, `docs/executive-summary-prior-sessions.md`). |
+| Whose page is the root landing? | This session's build (it is the one with per-row provenance gating and the corrected commission tables). The previous root page is preserved at `landing-prior.html` and still served. |
+| Do both sites still work? | Yes — 32 HTML pages all serve; their `scripts/check_site.py` and this session's `tools/verify_site.py` both pass. |
+| **Do not run** `python3 scripts/build_site.py` | It regenerates the root `index.html` and its own flat pages, which would overwrite this session's landing page. To rebuild this site, run `python3 tools/build_site.py`. Both builders are independent and both pass their own checks. |
+| Anything found in *their* work? | One compliance gap, fixed additively: `category/kitchen.html` was hand-authored and had no Associates disclosure (required by Operating Agreement §5). Their generated pages all had it. Recorded at `B:FLG-025` in `COORDINATION.md`. |
+| Anything this session corrected about *itself*? | Yes — it had concluded per-category commission rates were unobtainable because one endpoint redirects to sign-in. The statement is public; rates are now published. Recorded at `B:FLG-013`. |

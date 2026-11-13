@@ -289,6 +289,28 @@
         "sources": [
           "SRC-09"
         ]
+      },
+      {
+        "id": "FLG-025",
+        "sev": "High",
+        "item": "Inherited page shipped without the required Associates disclosure",
+        "finding": "Cross-session finding from integration. category/kitchen.html — authored by an earlier session and NOT produced by scripts/build_site.py — had no Associates disclosure anywhere on the page, while every page their generator emits does carry it (DISCLOSURE is defined at scripts/build_site.py line 24). So the gap was in a hand-authored file, which no generator-level check would ever catch. Operating Agreement SS5 requires the sentence wherever Program Content is displayed, and SS6 deems its omission a material breach, so this was not left as a note on a board.",
+        "action": "Fixed additively during integration: the disclosure bar was inserted into the shipped page, plus a sentence clarifying that the 4.50 % Kitchen figure is a category reference and not attributed to any product whose category is unverified. No other session content was altered. Recommend their check_site.py audit every *.html under the root rather than only generated pages — this site's verify_site.py already walks the whole tree, which is how the gap was found.",
+        "sources": [
+          "SRC-09"
+        ],
+        "status": "resolved-in-integration"
+      },
+      {
+        "id": "FLG-026",
+        "sev": "Medium",
+        "item": "Two site generations now coexist at the repository root",
+        "finding": "main carries an earlier flat-page site (index/products/pricing/reviews/content/campaigns/sources/flagged .html, built by scripts/build_site.py from data/*.json). This session renders 16 directory-style pages from data/z3/*.json via tools/build_site.py. The root landing page is now this session's build; the previous landing page is preserved verbatim at landing-prior.html, and this session's JS moved to assets/dashboard.js so assets/app.js stays owned by its original author.",
+        "action": "Decide one canonical generator and migrate, or keep both with the root pointing at one. Deliberately NOT resolved by deletion: removing another session's pages would destroy data that the shared board says belongs to them. Nothing here needs your input to stay live — both page sets are served and both pass their own checks.",
+        "sources": [
+          "SRC-17"
+        ],
+        "status": "open"
       }
     ]
   }

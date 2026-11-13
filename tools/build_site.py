@@ -62,6 +62,11 @@ def rel(cur_depth: int, target_depth: int, target_name: str) -> str:
     return f"{up}{target_name}/"
 
 
+def relf(cur_depth: int, filename: str) -> str:
+    """href to a root-level flat file (used for pages owned by other builds)."""
+    return ("../" * cur_depth) + filename
+
+
 # ------------------------------------------------------------------------- renderers
 def esc(v) -> str:
     if v is None:
@@ -107,7 +112,7 @@ def src_links(ids, anchor=None) -> str:
     if not out:
         return '<span class="none">no source cited</span>'
     if anchor:
-        out.append(f'<span class="tag" title="Also anchored to a repository file">{esc(anchor)}</span>')
+        out.append(f'<span class="tag" title="Also anchored to a repository file">repo:{esc(anchor)}</span>')
     return f'<div class="srcs">{"".join(out)}</div>'
 
 
@@ -267,7 +272,7 @@ def render_page(pname, title, lead, body, depth, badges=None, updated="2026-11-1
         badges_html = '<div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap">' + "".join(badges) + "</div>"
 
     css = "assets/" if depth == 0 else "../assets/"
-    js = css
+    js = "assets/" if depth == 0 else "../assets/"   # dashboard.js: assets/app.js belongs to a prior session's pages
     doc = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -312,7 +317,13 @@ def render_page(pname, title, lead, body, depth, badges=None, updated="2026-11-1
     <div>
       <p>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
       <p>Zone3 is an independent affiliate-intelligence platform and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
-      <p style="color:#6e7a8b">Built statically by <code>tools/build_site.py</code> from <code>data/*.json</code>. Published via GitHub Pages from branch <code>main</code>.</p>
+      <p style="color:#6e7a8b">Built statically by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>. Published via GitHub Pages from branch <code>main</code>.</p>
+      <p style="color:#6e7a8b">This repository also carries an earlier site generation from another session, kept intact.
+      Sibling pages: <a href="{relf(depth,'products.html')}">products.html</a> ·
+      <a href="{relf(depth,'pricing.html')}">pricing.html</a> ·
+      <a href="{relf(depth,'sources.html')}">sources.html</a> ·
+      <a href="{relf(depth,'flagged.html')}">flagged.html</a> ·
+      <a href="{relf(depth,'landing-prior.html')}">previous landing page</a>. See <code>COORDINATION.md</code>.</p>
     </div>
     <div class="flinks">
       <a href="{rel(depth,1,'compliance')}">Compliance</a>
@@ -323,7 +334,7 @@ def render_page(pname, title, lead, body, depth, badges=None, updated="2026-11-1
     </div>
   </div>
 </footer>
-<script src="{js}app.js"></script>
+<script src="{js}dashboard.js"></script>
 </body>
 </html>
 """
@@ -1006,7 +1017,7 @@ def page_flags(depth):
     b.append('<div style="height:22px"></div>')
     b.append(table(spec, depth, "open"))
     return render_page("flagged", "Flagged for review",
-        f"All {len(FLAGS)} irregularities and unverified items found while building this site, each with its official source "
+        f"All {len(FLAGS)} irregularities and unverified items found while building and integrating this site, each with its official source "
         "link and the specific action that would resolve it.",
         "\n".join(b), depth,
         badges=[pill(f"{sum(1 for f in FLAGS.values() if f['sev']=='Critical')} critical", "p-bad"),
