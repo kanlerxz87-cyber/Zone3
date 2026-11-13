@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "purpose": "Competitive benchmark set. Every row was copied from the official Amazon 'Best Sellers in Air Fryers' page. These are the products a buyer sees above the fold in the category the three target ASINs compete in.",
+    "source_url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
+    "source_title": "Amazon Best Sellers: Best Air Fryers",
+    "retrieved_utc": "2026-11-13T22:39:00Z",
+    "scope_note": "Positions 1-6 were captured in full. Position 7 was partially captured and is excluded. Positions 8-100 were not enumerated, so no claim is made that any target product is absent from the full list."
+  },
+  "category_path": [
+    {
+      "level": 1,
+      "name": "Home & Kitchen"
+    },
+    {
+      "level": 2,
+      "name": "Kitchen & Dining"
+    },
+    {
+      "level": 3,
+      "name": "Small Appliances"
+    },
+    {
+      "level": 4,
+      "name": "Fryers"
+    },
+    {
+      "level": 5,
+      "name": "Air Fryers"
+    }
+  ],
+  "bestsellers": [
+    {
+      "rank": 1,
+      "asin": "B0CSZ7WBYW",
+      "title": "Ninja Air Fryer Pro, 5 Qt, 4-in-1, Grey, AF141 | Air fry, roast, reheat, dehydrate, 1750W, 400F max, Fits 4 lbs fries, Nonstick basket, Dishwasher-safe",
+      "brand": "Ninja",
+      "capacity": "5 Qt",
+      "star_rating": "4.7 out of 5 stars",
+      "rating_count": "10,984",
+      "rating_count_exact": true,
+      "price": "$89.99",
+      "url": "https://www.amazon.com/Ninja-Capacity-Dehydrate-Technology-AF141/dp/B0CSZ7WBYW"
+    },
+    {
+      "rank": 2,
+      "asin": "B0C33CHG99",
+      "title": "Cosori TurboBlaze Air Fryer, 9-in-1, 6 Qt, PFAS-Free Ceramic Coating | 90-450F, 5 Fan Speeds, Air Fry, Roast, Broil, Frozen, Bake, Dry, Proof, 95% Less Oil, Safety Lock, Dishwasher-Safe, 1725W",
+      "brand": "Cosori",
+      "capacity": "6 Qt",
+      "star_rating": "4.8 out of 5 stars",
+      "rating_count": "22,768",
+      "rating_count_exact": true,
+      "price": "$99.99",
+      "url": "https://www.amazon.com/TurboBlaze-Premium-Ceramic-Coating-90%C2%B0-450%C2%B0F/dp/B0C33CHG99"
+    },
+    {
+      "rank": 3,
+      "asin": "B0CYJDVT31",
+      "title": "bella Fits-anywhere Slim 4qt Air Fryer, Non-Toxic Ceramic Coating, Oatmilk",
+      "brand": "bella",
+      "capacity": "4 Qt",
+      "star_rating": "4.5 out of 5 stars",
+      "rating_count": "4,015",
+      "rating_count_exact": true,
+      "price": "$39.99",
+      "url": "https://www.amazon.com/bella-Fits-anywhere-Non-Toxic-Coating-Oatmilk/dp/B0CYJDVT31"
+    },
+    {
+      "rank": 4,
+      "asin": "B0CNY1F31S",
+      "title": "Chefman Air Fryer - 4 QT Compact Airfryer for Quick & Easy Meals in Minutes, Features Hi-Fry Technology for Extra Crisp, Touchscreen Controls with 4 Presets, Nonstick & Dishwasher Safe Basket - Black",
+      "brand": "Chefman",
+      "capacity": "4 Qt",
+      "star_rating": "4.6 out of 5 stars",
+      "rating_count": "7,552",
+      "rating_count_exact": true,
+      "price": "$57.91",
+      "url": "https://www.amazon.com/Chefman-Air-Fryer-Technology-Touchscreen/dp/B0CNY1F31S"
+    },
+    {
+      "rank": 5,
+      "asin": "B0GVVJZDQV",
+      "title": "Cuisinart Air Fryer Toaster Oven Combo, Countertop, 7-in-1, 1800W, TOA-55 | Stainless steel, 0.6 cu. ft., convection capability, maximum temperature to 450F, removable crumb tray, fits a 12\" pizza",
+      "brand": "Cuisinart",
+      "capacity": "0.6 cu. ft.",
+      "star_rating": "4.5 out of 5 stars",
+      "rating_count": "126",
+      "rating_count_exact": true,
+      "price": "$129.95",
+      "url": "https://www.amazon.com/Cuisinart-Fryer-Toaster-Countertop-TOA-55/dp/B0GVVJZDQV"
+    },
+    {
+      "rank": 6,
+      "asin": "B0GTBN7CS2",
+      "title": "Chefman Air Fryer 6-in-1, XL 14-Quart Multifunctional Airfryer with Touchscreen Controls, Rotisserie, Food Dehydrator, Convection Oven, Bake, Broil, and Reheat Functions, Windowed Door - Black",
+      "brand": "Chefman",
+      "capacity": "14 Qt",
+      "star_rating": "4.3 out of 5 stars",
+      "rating_count": "52,301",
+      "rating_count_exact": true,
+      "price": "$99.95",
+      "url": "https://www.amazon.com/Chefman-Multifunctional-Touchscreen-Rotisserie-Dehydrator/dp/B0GTBN7CS2"
+    }
+  ],
+  "session": "c4e71983",
+  "schema": "c4e71983/competitors/v1",
+  "note": "Namespaced copy. Rating counts here are EXACT: Amazon's Best Sellers listing prints full counts, unlike Amazon search results which round them."
+}

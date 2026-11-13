@@ -1,0 +1,39 @@
+<div class="panel">
+  <h2>Supplied links &rarr; canonical products</h2>
+  <div class="body">
+    {{TABLE_LINK_RESOLUTION}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>How the resolution was done</h2>
+  <div class="body">
+    <p>Each short link was requested and the redirect followed. The target page came back as an official Amazon.com
+    product page, and the ASIN was read from the resolved URL
+    (<span class="mono">https://www.amazon.com/dp/ASIN</span>) and cross-checked against the page title. The
+    canonical slug URL shown in the table is the one Amazon itself links to in its search results.</p>
+
+    <p>The <span class="mono">/dp/ASIN</span> form and the canonical slug form reach the same product. The slug
+    form is preferable in published content because the destination is readable in the address bar, and because
+    Amazon's rules require Special Links to be accessed directly from your site &mdash; an opaque shortener gives
+    a visitor no way to see where they are going.</p>
+
+    <div class="note warn"><b>Provenance is not fully confirmed.</b> The redirects are real and the resolved
+    products are confirmed. What is <i>not</i> confirmed from any official Amazon document is that the
+    <span class="mono">link.amazon</span> host is an Amazon-owned shortener. Treat it as observed behaviour and
+    confirm where the links came from &mdash; <a href="flagged.html#FLAG-07">FLAG-07</a>.</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>None of these are affiliate links yet</h2>
+  <div class="body">
+    <p>Every link on this page, in every form, is a plain product link. There is no
+    <span class="mono">tag=</span> parameter in any of them. Amazon's Participation Requirements state that you
+    must include your Associates ID or tag as a parameter in the URL of each link you place on your site, so as
+    supplied these links cannot earn commission (<a href="flagged.html#FLAG-05">FLAG-05</a>).</p>
+
+    <p>Use the <a href="link-builder.html">Link Builder</a> to add your tag and produce a compliant Special Link.
+    The builder also warns you if the tag does not look like a real Associates ID.</p>
+  </div>
+</div>
