@@ -1,62 +1,150 @@
 {
   "retrieved": "2026-11-13",
-  "marketplace": "Amazon.com (United States)",
-  "category": { "slug": "home-kitchen-air-fryers", "name": "Home & Kitchen › Air Fryers & Multi-Cookers" },
-  "verificationNote": "Every destination URL was fetched from the amazon.com domain and returned an official Amazon product page. Short-link codes (B04G1MEwY, B02NbDxp3, B00hJ57DV) are not ASINs: they return 404 on direct /dp/ lookup on amazon.com, amazon.co.uk, amazon.de, amazon.ca, amazon.in and amazon.com.au. Each link.amazon short link resolves (redirect) to the destination ASIN shown below; the short code is not the product's ASIN. Price, rating, review count and availability could not be read — Amazon served a bot-protection checkpoint page instead of product details — so those fields are null and flagged (never inferred). Commission rate: the official Associates rate schedule page (S9) is login-gated and was not retrieved; the Commission Income Statement node page (S11) lists Kitchen at 4.50%, which is cited in the analysis pages but left null in this data file pending confirmation from the official schedule page (flag F5).",
+  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py).",
   "products": [
     {
       "id": "P1",
-      "short_link": "https://link.amazon/B04G1MEwY",
-      "product_url": "https://www.amazon.com/dp/B0CDY277D3",
-      "source_ids": ["S1", "S4"],
-      "title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
-      "brand": "CHEFMAN",
-      "capacity": "6 Quart",
-      "category": "Home & Kitchen",
-      "asin": "B0CDY277D3",
-      "listing_claims": ["Dual basket: 2 independent 3 Qt nonstick, dishwasher-safe frying baskets", "Easy View Windows", "Sync Finish", "Hi-Fry", "Auto Shutoff", "Digital display"],
-      "price": null, "rating": null, "review_count": null, "availability": null, "commission_rate": null,
-      "flags": ["F1", "F2", "F3", "F4", "F5"],
-      "clicks": 0,
-      "conversions": 0
+      "label": "Product link 1",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "link_id": "B04G1MEwY",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B04G1MEwY",
+        "result": "Page Not Found",
+        "source": "S08"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
+        "page_id": "B0CDY277D3",
+        "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+        "confirmed_as_submitted_product": false,
+        "source": "S11",
+        "title_source": "S14",
+        "brand": "CHEFMAN",
+        "capacity": "6 Quart",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link does not resolve to a product page under its own identifier",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004"
+      ],
+      "sources": [
+        "S08",
+        "S11",
+        "S14",
+        "S02"
+      ]
     },
     {
       "id": "P2",
-      "short_link": "https://link.amazon/B02NbDxp3",
-      "product_url": "https://www.amazon.com/dp/B09B7SB46R",
-      "source_ids": ["S2", "S5"],
-      "title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals.",
-      "brand": "Emeril Lagasse",
-      "capacity": "26QT",
-      "category": "Home & Kitchen",
-      "asin": "B09B7SB46R",
-      "listing_claims": ["French door design", "24 cooking functions", "Dual-speed fan", "Rotisserie"],
-      "price": null, "rating": null, "review_count": null, "availability": null, "commission_rate": null,
-      "flags": ["F1", "F2", "F3", "F4", "F5"],
-      "clicks": 0,
-      "conversions": 0
+      "label": "Product link 2",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "link_id": "B02NbDxp3",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B02NbDxp3",
+        "result": "Page Not Found",
+        "source": "S09"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
+        "page_id": "B09B7SB46R",
+        "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
+        "confirmed_as_submitted_product": false,
+        "source": "S12",
+        "title_source": "S15",
+        "brand": "Emeril Lagasse",
+        "capacity": "26QT",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link does not resolve to a product page under its own identifier",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004"
+      ],
+      "sources": [
+        "S09",
+        "S12",
+        "S15",
+        "S02"
+      ]
     },
     {
       "id": "P3",
-      "short_link": "https://link.amazon/B00hJ57DV",
-      "product_url": "https://www.amazon.com/dp/B08DKYBTPH",
-      "source_ids": ["S3", "S6"],
-      "title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
-      "brand": "Chefman",
-      "capacity": "8 Qt",
-      "category": "Home & Kitchen",
-      "asin": "B08DKYBTPH",
-      "listing_claims": ["4-in-1 (air fry, bake, dehydrate, frozen)", "450°F Hi-Fry option", "XL nonstick dishwasher-safe basket", "Stainless steel"],
-      "price": null, "rating": null, "review_count": null, "availability": null, "commission_rate": null,
-      "flags": ["F1", "F2", "F3", "F4", "F5", "F6"],
-      "clicks": 0,
-      "conversions": 0
+      "label": "Product link 3",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "link_id": "B00hJ57DV",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B00hJ57DV",
+        "result": "Page Not Found",
+        "source": "S10"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
+        "page_id": "B08DKYBTPH",
+        "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+        "confirmed_as_submitted_product": false,
+        "source": "S13",
+        "title_source": "S23",
+        "brand": "Chefman",
+        "capacity": "8 Qt",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link does not resolve to a product page under its own identifier",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004"
+      ],
+      "sources": [
+        "S10",
+        "S13",
+        "S16",
+        "S02"
+      ]
     }
-  ],
-  "sources": {
-    "associatesCommissionStatement": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
-    "associatesProgramPolicies": "https://affiliate-program.amazon.com/help/operating/policies",
-    "associatesOperatingAgreement": "https://affiliate-program.amazon.com/help/operating/agreement",
-    "ftcEndorsementGuidesReferencedByAmazon": "https://www.ftc.gov/legal-library/browse/guides-commission/guides-concerning-use-endorsements-testimonials-advertising"
-  }
+  ]
 }
