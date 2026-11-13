@@ -1,0 +1,205 @@
+{
+  "retrieved": "2026-11-13",
+  "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3)",
+  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (not a product fact); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact.",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Amazon Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'.",
+      "used_for": "Section 5 disclosure wording; Section 6 (Section 5 breach is material); Section 1 scope of Special Links."
+    },
+    {
+      "id": "S02",
+      "title": "Amazon Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: April 14, 2026'. Read in 11 chunks; the sections cited in policy_facts.json were read in full.",
+      "used_for": "Special Link and tag rules; price/review display rules; link shortener rule (section 6(w)); Redirecting Link disqualifier (Commission Income Statement section 2(e)); offline-use prohibition (section 4)."
+    },
+    {
+      "id": "S03",
+      "title": "Associates Program Commission Schedule (Appendix: Standard Commission Income)",
+      "url": "https://affiliate-program.amazon.com/help/operating/schedule",
+      "publisher": "Amazon Associates (official)",
+      "status": "not-accessible",
+      "status_note": "On 2026-11-13 this URL redirected to an Amazon sign-in page (ap/signin). No rate values were read, so no commission rate is stated anywhere on this site.",
+      "used_for": "Nothing. Commission rates are left blank and flagged (FLG-005)."
+    },
+    {
+      "id": "S04",
+      "title": "Creators API documentation: Welcome / Introduction (Prerequisites)",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Lists prerequisites: enrolment, 'at least 10 qualifying sales within the past 30 days', and API credentials.",
+      "used_for": "Data-access prerequisite for product, price and review data (FLG-006)."
+    },
+    {
+      "id": "S05",
+      "title": "PA-API 5 Deprecation Notice",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. States PA-API 5 'has been deprecated and is being replaced by the Creators API'.",
+      "used_for": "Data-source choice (Creators API, not PA-API 5). Contradicts a claim on another session branch (FLG-007)."
+    },
+    {
+      "id": "S06",
+      "title": "Creators API: GetItems operation",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. The itemIds parameter is documented as ASINs; the documented examples are 'B0199980K4' and 'B000HZD168' (10 characters each).",
+      "used_for": "Identifier format used to look up products (10-character ASIN examples)."
+    },
+    {
+      "id": "S07",
+      "title": "FTC: Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "publisher": "U.S. Federal Trade Commission (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Brochure dated November 2019 on the page.",
+      "used_for": "Disclosure placement and content honesty rules for the content section."
+    },
+    {
+      "id": "S08",
+      "title": "Amazon.com product page check: amazon.com/dp/B04G1MEwY",
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'; page text 'Sorry! We couldn't find that page.'",
+      "used_for": "Direct-identifier check for product link 1."
+    },
+    {
+      "id": "S09",
+      "title": "Amazon.com product page check: amazon.com/dp/B02NbDxp3",
+      "url": "https://www.amazon.com/dp/B02NbDxp3",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'.",
+      "used_for": "Direct-identifier check for product link 2."
+    },
+    {
+      "id": "S10",
+      "title": "Amazon.com product page check: amazon.com/dp/B00hJ57DV",
+      "url": "https://www.amazon.com/dp/B00hJ57DV",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'.",
+      "used_for": "Direct-identifier check for product link 3."
+    },
+    {
+      "id": "S11",
+      "title": "Submitted product link 1: link.amazon/B04G1MEwY (redirect result)",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched twice on 2026-11-13. Both fetches ended on https://www.amazon.com/dp/B0CDY277D3?... with parameters lv=shuf and plpRedirect=mhFallback.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002)."
+    },
+    {
+      "id": "S12",
+      "title": "Submitted product link 2: link.amazon/B02NbDxp3 (redirect result)",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched twice on 2026-11-13. Both fetches ended on https://www.amazon.com/dp/B09B7SB46R?... with parameters lv=shuf and plpRedirect=mhFallback.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002)."
+    },
+    {
+      "id": "S13",
+      "title": "Submitted product link 3: link.amazon/B00hJ57DV (redirect result)",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched twice on 2026-11-13. Both fetches ended on https://www.amazon.com/dp/B08DKYBTPH?... with parameters lv=shuf and plpRedirect=mhFallback.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002)."
+    },
+    {
+      "id": "S14",
+      "title": "Observed redirect target: amazon.com/dp/B0CDY277D3 (page title)",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Page title read 2026-11-13. Only the page title was readable; price, rating and availability were not in the text returned by the verification tool.",
+      "used_for": "Title only, shown in the Flagged for Review page."
+    },
+    {
+      "id": "S15",
+      "title": "Observed redirect target: amazon.com/dp/B09B7SB46R (page title)",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Page title read 2026-11-13. Price, rating and availability not readable with the verification tool.",
+      "used_for": "Title only, shown in the Flagged for Review page."
+    },
+    {
+      "id": "S16",
+      "title": "Observed redirect target: amazon.com/dp/B08DKYBTPH (page title)",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Page title read 2026-11-13. Price, rating and availability not readable with the verification tool.",
+      "used_for": "Title only, shown in the Flagged for Review page."
+    },
+    {
+      "id": "S17",
+      "title": "linktw.in: 'link.amazon vs LinkTwin' (third-party competitor article)",
+      "url": "https://linktw.in/link-amazon-vs-linktwin",
+      "publisher": "LinkTwin (commercial competitor; NOT an Amazon source)",
+      "status": "third-party",
+      "status_note": "Claims link.amazon forwards clicks to amzlinks.in (a domain it says is operated by a third party). Not verified against any Amazon page. Used only to raise FLG-003.",
+      "used_for": "Flag only (FLG-003). Not used as a fact."
+    },
+    {
+      "id": "S18",
+      "title": "Seller Central help: ASIN definition (G200481490)",
+      "url": "https://sellercentral.amazon.com/help/hub/reference/external/G200481490",
+      "publisher": "Amazon Seller Central (official)",
+      "status": "not-accessible",
+      "status_note": "Fetched 2026-11-13: returned 'There was an error displaying this topic.' No content read.",
+      "used_for": "Nothing. The 10-character ASIN point rests on S06 and on the three resolved product URLs (S14-S16)."
+    },
+    {
+      "id": "S19",
+      "title": "Amazon.com footer link 'Become an Affiliate'",
+      "url": "https://affiliate-program.amazon.com/",
+      "publisher": "Amazon.com (official)",
+      "status": "verified",
+      "status_note": "Link text found in the amazon.com footer on the product-page fetches (S11-S13), 2026-11-13. The Associates site itself was reached through S01, S02, S04 and S05.",
+      "used_for": "Confirms affiliate-program.amazon.com is Amazon's Associates site."
+    },
+    {
+      "id": "S20",
+      "title": "Repository commit ed1a796 (initial commit, main)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/commit/ed1a796dc01f52669864e98a72b9a521a3b7161b",
+      "publisher": "GitHub (repository host of record)",
+      "status": "observed",
+      "status_note": "Checked 2026-11-13 with git ls-remote origin: refs/heads/main points at this commit. Before this session, the commit contained only README.md ('# Zone3', 7 bytes).",
+      "used_for": "Repository baseline (FLG-009)."
+    },
+    {
+      "id": "S21",
+      "title": "Repository branches (remote refs)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/branches",
+      "publisher": "GitHub (repository host of record)",
+      "status": "observed",
+      "status_note": "Checked 2026-11-13 with git ls-remote and git fetch. Remote branches include arena/26634cd5-zone3, arena/3c6cba43-zone3, arena/a9cafea1-zone3 and arena/7f84fea4-zone3. Other branches were read only, never edited.",
+      "used_for": "Parallel-session overlap (FLG-008)."
+    },
+    {
+      "id": "S22",
+      "title": "GitHub Pages configuration (REST API)",
+      "url": "https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages",
+      "publisher": "GitHub REST API (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-13 with gh api: status 'built', build_type 'legacy', source branch 'main' path '/', public true.",
+      "used_for": "Pages is enabled on main at / (no build step). Site files are at the repo root."
+    }
+  ]
+}

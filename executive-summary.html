@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary | Zone3 Amazon affiliate dashboard</title>
+<meta name="description" content="Zone3: verified Amazon affiliate product data, analysis and flags. Status as of 2026-11-13.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="index.html">Zone3</a><span>Amazon affiliate dashboard</span></div>
+  <nav><a href="index.html">Dashboard</a><a href="executive-summary.html" class="active">Executive summary</a><a href="products.html">Products</a><a href="pricing.html">Pricing &amp; commission</a><a href="reviews.html">Reviews &amp; competition</a><a href="content.html">Content &amp; compliance</a><a href="campaigns.html">Campaigns &amp; tracking</a><a href="flagged.html">Flagged for review</a><a href="sources.html">Sources</a></nav>
+</header>
+<main>
+<h1>Executive summary</h1>
+<p class="lead">A plain-language summary of what can and cannot be verified today. Each finding links to its official source.</p>
+
+<section class="card">
+  <h2>Bottom line</h2>
+  <p>The three Amazon links in the brief cannot be verified as product listings. Their identifiers are nine characters long.
+  Amazon&rsquo;s official Creators API documentation shows ASIN values of ten characters <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation">S06</a>.
+  The amazon.com product page for each identifier returns &ldquo;Page Not Found&rdquo; <a href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener noreferrer" title="Amazon.com product page check: amazon.com/dp/B04G1MEwY">S08</a> &middot; <a href="https://www.amazon.com/dp/B02NbDxp3" target="_blank" rel="noopener noreferrer" title="Amazon.com product page check: amazon.com/dp/B02NbDxp3">S09</a> &middot; <a href="https://www.amazon.com/dp/B00hJ57DV" target="_blank" rel="noopener noreferrer" title="Amazon.com product page check: amazon.com/dp/B00hJ57DV">S10</a>.
+  The short links open Amazon product pages, but for three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven), which are not confirmed as the submitted products <a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener noreferrer" title="Submitted product link 1: link.amazon/B04G1MEwY (redirect result)">S11</a> &middot; <a href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener noreferrer" title="Submitted product link 2: link.amazon/B02NbDxp3 (redirect result)">S12</a> &middot; <a href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener noreferrer" title="Submitted product link 3: link.amazon/B00hJ57DV (redirect result)">S13</a> &middot; <a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="Observed redirect target: amazon.com/dp/B0CDY277D3 (page title)">S14</a> &middot; <a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer" title="Observed redirect target: amazon.com/dp/B09B7SB46R (page title)">S15</a> &middot; <a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer" title="Observed redirect target: amazon.com/dp/B08DKYBTPH (page title)">S16</a>.</p>
+  <p>As the brief requires, every product name, price, rating, review count, commission rate, niche score and click or conversion figure is left blank and marked <span class="badge unv">Unverified</span>. No value was inferred.</p>
+</section>
+
+<section class="card">
+  <h2>Key findings</h2>
+  <ul class="findings">
+    <li><strong>0 of 3 product identifiers are confirmed.</strong> The identifiers are nine characters, and the amazon.com pages for them do not exist <a class="flagid" href="flagged.html#FLG-001">FLG-001</a> <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation">S06</a> &middot; <a href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener noreferrer" title="Amazon.com product page check: amazon.com/dp/B04G1MEwY">S08</a> &middot; <a href="https://www.amazon.com/dp/B02NbDxp3" target="_blank" rel="noopener noreferrer" title="Amazon.com product page check: amazon.com/dp/B02NbDxp3">S09</a> &middot; <a href="https://www.amazon.com/dp/B00hJ57DV" target="_blank" rel="noopener noreferrer" title="Amazon.com product page check: amazon.com/dp/B00hJ57DV">S10</a>.</li>
+    <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches. These are recorded as observed only <a class="flagid" href="flagged.html#FLG-002">FLG-002</a> <a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener noreferrer" title="Submitted product link 1: link.amazon/B04G1MEwY (redirect result)">S11</a> &middot; <a href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener noreferrer" title="Submitted product link 2: link.amazon/B02NbDxp3 (redirect result)">S12</a> &middot; <a href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener noreferrer" title="Submitted product link 3: link.amazon/B00hJ57DV (redirect result)">S13</a>.</li>
+    <li><strong>Associates compliance of link.amazon is unconfirmed.</strong> The policies say a shortener must not make the Amazon destination unclear <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Amazon Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement)">S02</a> (PF-06), and purchases from a Redirecting Link are disqualified (PF-07). Whether link.amazon redirects without a click has to be tested in a logged-in Associates account <a class="flagid" href="flagged.html#FLG-003">FLG-003</a>.</li>
+    <li><strong>Commission rates cannot be verified.</strong> The rate schedule redirected to a sign-in page on 2026-11-13 <a href="https://affiliate-program.amazon.com/help/operating/schedule" target="_blank" rel="noopener noreferrer" title="Associates Program Commission Schedule (Appendix: Standard Commission Income)">S03</a> <a class="flagid" href="flagged.html#FLG-005">FLG-005</a>.</li>
+    <li><strong>Automated product data needs Creators API access.</strong> The official prerequisite is &ldquo;at least 10 qualifying sales within the past 30 days&rdquo; <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API documentation: Welcome / Introduction (Prerequisites)">S04</a>. Prices and reviews may be shown only through a Special Link or the API <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Amazon Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement)">S02</a> (PF-04, PF-05) <a class="flagid" href="flagged.html#FLG-006">FLG-006</a>.</li>
+    <li><strong>PA-API 5 is deprecated.</strong> The official notice says it is being replaced by the Creators API <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation" target="_blank" rel="noopener noreferrer" title="PA-API 5 Deprecation Notice">S05</a> (PF-17). Another session branch cites PA-API 5 as the sanctioned source <a class="flagid" href="flagged.html#FLG-007">FLG-007</a>.</li>
+    <li><strong>Disclosure is on every page.</strong> The required wording is quoted from the Operating Agreement, Section 5 <a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Amazon Associates Program Operating Agreement">S01</a> (PF-01). Placement for FTC purposes still needs owner review <a class="flagid" href="flagged.html#FLG-013">FLG-013</a>.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>What was built</h2>
+  <ul class="findings">
+    <li>A GitHub Pages site (this site) with a landing dashboard and category pages: Products, Pricing &amp; commission, Reviews &amp; competition, Content &amp; compliance, Campaigns &amp; tracking.</li>
+    <li>A Flagged for review page with 14 items, each with its evidence sources and the action needed.</li>
+    <li>A Sources page that lists each official page used, its retrieval status, and what it supports.</li>
+    <li>A data layer (<code>data/*.json</code>) with a generator (<code>scripts/build_site.py</code>) and a checker (<code>scripts/check_site.py</code>). The checker fails if a table row has no official source link, or if a value appears without a source.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>What is not done, and why</h2>
+  <ul class="findings">
+    <li><strong>Product research, niche identification, competition and commission-potential analysis.</strong> These need product data, which needs verified identifiers (FLG-001) and Creators API access (FLG-006). Nothing was estimated.</li>
+    <li><strong>SEO articles, comparisons and buying guides.</strong> Product claims must be accurate (PF-10), and the first-hand experience the FTC describes (PF-21) has not happened. These are blocked (FLG-012).</li>
+    <li><strong>Click and conversion tracking.</strong> Figures come from the owner&rsquo;s Associates reports. No tag has been supplied (FLG-010), and no reports were available (FLG-011).</li>
+    <li><strong>Automated optimisation.</strong> There is no data to optimise. The generator can rebuild the site once verified data is added.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>Owner items (flagged; they do not block the merge)</h2>
+  <ul class="findings">
+    <li>Give the intended product URL or 10-character ASIN for each of the three products (FLG-001).</li>
+    <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
+    <li>Export the commission rate card for the product category from Associates Central (FLG-005).</li>
+    <li>Confirm Associates enrolment and supply the Associates tag, not a password or token (FLG-010).</li>
+  </ul>
+</section>
+
+</main>
+<footer>
+  <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+  <p class="muted">Data verified as of 2026-11-13. A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+</footer>
+</body>
+</html>
