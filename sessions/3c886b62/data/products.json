@@ -1,0 +1,415 @@
+{
+  "meta": {
+    "generated": "2026-11-13",
+    "captured": "2026-11-13",
+    "marketplace": "amazon.com (US)",
+    "currency": "USD",
+    "rule": "Every value below is either read verbatim from an official Amazon page (status=verified) or left null (status=unverified). Nothing is inferred, interpolated, or taken from third-party sources.",
+    "source_registry": "data/sources.json",
+    "source_ids": {
+      "S1": "Amazon product page B0CDY277D3",
+      "S2": "Amazon search results for B0CDY277D3",
+      "S3": "Amazon product page B09B7SB46R",
+      "S4": "Amazon search results for B09B7SB46R",
+      "S5": "Amazon product page B08DKYBTPH",
+      "S6": "Amazon search results for B08DKYBTPH",
+      "S7": "Amazon Associates Standard Commission Income Statement",
+      "S8": "Amazon Associates Program Policies",
+      "S9": "Amazon Associates Operating Agreement",
+      "S10": "FTC Disclosures 101 for Social Media Influencers",
+      "S11": "Amazon US trademark list",
+      "S12": "link.amazon short links supplied in the brief"
+    }
+  },
+  "products": [
+    {
+      "id": "P1",
+      "slug": "chefman-6qt-dual-basket-air-fryer",
+      "short_link": "https://link.amazon/B04G1MEwY",
+      "fields": {
+        "short_link_code": {
+          "value": "B04G1MEwY",
+          "status": "verified",
+          "source": "S12",
+          "note": "Opaque short-link slug, NOT an ASIN (9 characters; ASINs are 10)."
+        },
+        "asin": {
+          "value": "B0CDY277D3",
+          "status": "verified",
+          "source": "S1",
+          "note": "Resolved by following the HTTP redirect from the short link to /dp/B0CDY277D3."
+        },
+        "title": {
+          "value": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+          "status": "verified",
+          "source": "S1",
+          "note": "Read from the amazon.com page <title>."
+        },
+        "brand_from_title": {
+          "value": "CHEFMAN",
+          "status": "verified",
+          "source": "S1",
+          "note": "Brand token as it appears in the official product title."
+        },
+        "department": {
+          "value": "Home & Kitchen",
+          "status": "verified",
+          "source": "S1",
+          "note": "Trailing department segment of the amazon.com page <title> after the colon."
+        },
+        "canonical_url": {
+          "value": "https://www.amazon.com/dp/B0CDY277D3",
+          "status": "verified",
+          "source": "S1"
+        },
+        "amazon_listing_url": {
+          "value": "https://www.amazon.com/CHEFMAN-Windows-Independent-Nonstick-Dishwasher/dp/B0CDY277D3",
+          "status": "verified",
+          "source": "S2"
+        },
+        "current_price": {
+          "value": 79.93,
+          "status": "verified",
+          "source": "S2",
+          "note": "Shown as $79.93 on Amazon's search-results rendering of this ASIN."
+        },
+        "list_price": {
+          "value": 99.99,
+          "status": "verified",
+          "source": "S2",
+          "note": "Shown as 'List: $99.99'."
+        },
+        "unit_price": {
+          "value": 39.97,
+          "status": "verified",
+          "source": "S2",
+          "note": "Shown as '($39.97/count)'."
+        },
+        "deal_badge": {
+          "value": "Limited time deal",
+          "status": "verified",
+          "source": "S2"
+        },
+        "other_offers_low": {
+          "value": 57.45,
+          "status": "verified",
+          "source": "S2",
+          "note": "Lowest 'More Buying Choices' price shown; '(2+ used & new offers)'."
+        },
+        "rating": {
+          "value": 4.2,
+          "status": "verified",
+          "source": "S2",
+          "note": "Shown as '4.2 out of 5 stars'."
+        },
+        "ratings_count_display": {
+          "value": "4.8K",
+          "status": "verified",
+          "source": "S2",
+          "note": "Amazon's rounded display value, not an exact count."
+        },
+        "demand_signal": {
+          "value": "1K+ bought in past month",
+          "status": "verified",
+          "source": "S2"
+        },
+        "best_sellers_rank": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon serves BSR via JavaScript on the detail page; not readable from an official static render. Left blank by rule."
+        },
+        "associates_commission_category": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon does not publish the commission category for an individual ASIN. Candidates on the official rate table (S7) are 'Kitchen' 4.50% and 'Home' 3.00%."
+        },
+        "review_sentiment_breakdown": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon's star histogram and review text are served via JavaScript / behind sign-in. Left blank by rule."
+        },
+        "clicks": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Associates account is connected; Amazon reports clicks only inside Associates Central."
+        },
+        "conversions": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Associates account is connected; Amazon reports conversions only inside Associates Central."
+        },
+        "associates_tag": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Amazon Associates tag exists in this repository. Links are untagged."
+        }
+      }
+    },
+    {
+      "id": "P2",
+      "slug": "emeril-lagasse-26qt-french-door-air-fryer-oven",
+      "short_link": "https://link.amazon/B02NbDxp3",
+      "fields": {
+        "short_link_code": {
+          "value": "B02NbDxp3",
+          "status": "verified",
+          "source": "S12",
+          "note": "Opaque short-link slug, NOT an ASIN (9 characters; ASINs are 10)."
+        },
+        "asin": {
+          "value": "B09B7SB46R",
+          "status": "verified",
+          "source": "S3",
+          "note": "Resolved by following the HTTP redirect from the short link to /dp/B09B7SB46R."
+        },
+        "title": {
+          "value": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+          "status": "verified",
+          "source": "S3",
+          "note": "Read from the amazon.com page <title>."
+        },
+        "title_feature_line": {
+          "value": "26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals.",
+          "status": "verified",
+          "source": "S4",
+          "note": "Feature line rendered by Amazon on the search-results listing for this ASIN."
+        },
+        "brand_from_title": {
+          "value": "Emeril Lagasse",
+          "status": "verified",
+          "source": "S3"
+        },
+        "department": {
+          "value": "Home & Kitchen",
+          "status": "verified",
+          "source": "S3"
+        },
+        "canonical_url": {
+          "value": "https://www.amazon.com/dp/B09B7SB46R",
+          "status": "verified",
+          "source": "S3"
+        },
+        "amazon_listing_url": {
+          "value": "https://www.amazon.com/Emeril-Multi-Function-functions-dual-speed-rotisserie/dp/B09B7SB46R",
+          "status": "verified",
+          "source": "S4"
+        },
+        "current_price": {
+          "value": 149.99,
+          "status": "verified",
+          "source": "S4"
+        },
+        "list_price": {
+          "value": 209.99,
+          "status": "verified",
+          "source": "S4",
+          "note": "Shown as 'List: $209.99'."
+        },
+        "unit_price": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No per-count unit price was displayed for this ASIN."
+        },
+        "deal_badge": {
+          "value": "Early Black Friday Deal",
+          "status": "verified",
+          "source": "S4"
+        },
+        "other_offers_low": {
+          "value": 92.99,
+          "status": "verified",
+          "source": "S4",
+          "note": "Lowest 'More Buying Choices' price shown; '(2+ used & new offers)'."
+        },
+        "rating": {
+          "value": 4.3,
+          "status": "verified",
+          "source": "S4"
+        },
+        "ratings_count_display": {
+          "value": "18.3K",
+          "status": "verified",
+          "source": "S4",
+          "note": "Amazon's rounded display value, not an exact count."
+        },
+        "demand_signal": {
+          "value": "4K+ bought in past month",
+          "status": "verified",
+          "source": "S4"
+        },
+        "best_sellers_rank": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon serves BSR via JavaScript on the detail page; not readable from an official static render. Left blank by rule."
+        },
+        "associates_commission_category": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon does not publish the commission category for an individual ASIN. Candidates on the official rate table (S7) are 'Kitchen' 4.50% and 'Home' 3.00%."
+        },
+        "review_sentiment_breakdown": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon's star histogram and review text are served via JavaScript / behind sign-in. Left blank by rule."
+        },
+        "clicks": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Associates account is connected; Amazon reports clicks only inside Associates Central."
+        },
+        "conversions": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Associates account is connected; Amazon reports conversions only inside Associates Central."
+        },
+        "associates_tag": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Amazon Associates tag exists in this repository. Links are untagged."
+        }
+      }
+    },
+    {
+      "id": "P3",
+      "slug": "chefman-8qt-turbofry-air-fryer",
+      "short_link": "https://link.amazon/B00hJ57DV",
+      "fields": {
+        "short_link_code": {
+          "value": "B00hJ57DV",
+          "status": "verified",
+          "source": "S12",
+          "note": "Opaque short-link slug, NOT an ASIN (9 characters; ASINs are 10)."
+        },
+        "asin": {
+          "value": "B08DKYBTPH",
+          "status": "verified",
+          "source": "S5",
+          "note": "Resolved by following the HTTP redirect from the short link to /dp/B08DKYBTPH."
+        },
+        "title": {
+          "value": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+          "status": "verified",
+          "source": "S5"
+        },
+        "variants": {
+          "value": "+1 other color/pattern",
+          "status": "verified",
+          "source": "S6"
+        },
+        "brand_from_title": {
+          "value": "Chefman",
+          "status": "verified",
+          "source": "S5"
+        },
+        "department": {
+          "value": "Home & Kitchen",
+          "status": "verified",
+          "source": "S5"
+        },
+        "canonical_url": {
+          "value": "https://www.amazon.com/dp/B08DKYBTPH",
+          "status": "verified",
+          "source": "S5"
+        },
+        "amazon_listing_url": {
+          "value": "https://www.amazon.com/Chefman-TurboFry-Air-Fryer-Dishwasher/dp/B08DKYBTPH",
+          "status": "verified",
+          "source": "S6"
+        },
+        "current_price": {
+          "value": 79.91,
+          "status": "verified",
+          "source": "S6"
+        },
+        "list_price": {
+          "value": 119.99,
+          "status": "verified",
+          "source": "S6",
+          "note": "Shown as 'List: $119.99'."
+        },
+        "unit_price": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No per-count unit price was displayed for this ASIN."
+        },
+        "deal_badge": {
+          "value": "Limited time deal",
+          "status": "verified",
+          "source": "S6"
+        },
+        "other_offers_low": {
+          "value": 49.54,
+          "status": "verified",
+          "source": "S6",
+          "note": "Lowest 'More Buying Choices' price shown; '(3+ used & new offers)'."
+        },
+        "rating": {
+          "value": 4.4,
+          "status": "verified",
+          "source": "S6"
+        },
+        "ratings_count_display": {
+          "value": "16.8K",
+          "status": "verified",
+          "source": "S6",
+          "note": "Amazon's rounded display value, not an exact count."
+        },
+        "demand_signal": {
+          "value": "3K+ bought in past month",
+          "status": "verified",
+          "source": "S6"
+        },
+        "best_sellers_rank": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon serves BSR via JavaScript on the detail page; not readable from an official static render. Left blank by rule."
+        },
+        "associates_commission_category": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon does not publish the commission category for an individual ASIN. Candidates on the official rate table (S7) are 'Kitchen' 4.50% and 'Home' 3.00%."
+        },
+        "review_sentiment_breakdown": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "Amazon's star histogram and review text are served via JavaScript / behind sign-in. Left blank by rule."
+        },
+        "clicks": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Associates account is connected; Amazon reports clicks only inside Associates Central."
+        },
+        "conversions": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Associates account is connected; Amazon reports conversions only inside Associates Central."
+        },
+        "associates_tag": {
+          "value": null,
+          "status": "unverified",
+          "source": null,
+          "note": "No Amazon Associates tag exists in this repository. Links are untagged."
+        }
+      }
+    }
+  ]
+}
