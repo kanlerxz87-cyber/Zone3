@@ -1,0 +1,95 @@
+<div class="panel">
+  <h2>Disclosure <small>what you must show, and where</small></h2>
+  <div class="body">
+    <p>Two separate obligations apply, from two separate authorities, and they are frequently collapsed into one
+    sentence. They are not the same thing.</p>
+
+    <h3 style="font-size:13px;margin:14px 0 6px">1. What Amazon requires</h3>
+    <p>The Amazon Associates Operating Agreement requires a statement identifying you as an Amazon Associate to
+    appear <b>clearly and conspicuously</b> on your site. The Associates FAQ gives the operative wording as:</p>
+    <p style="font-family:var(--mono);font-size:12.5px;background:#f6f8fa;border:1px solid var(--line);padding:10px 12px;border-radius:7px">
+      "As an Amazon Associate I earn from qualifying purchases."
+    </p>
+    <p>This site renders a disclosure banner at the top of every single page, before any product data, because
+    that is what "clearly and conspicuously" means in practice.</p>
+
+    <h3 style="font-size:13px;margin:14px 0 6px">2. What the FTC requires</h3>
+    <p>The FTC requires you to disclose any material connection &mdash; a financial, employment, personal or
+    family relationship &mdash; with a brand. Its guidance is specific about placement: the disclosure must be
+    hard to miss, placed with the endorsement itself, in simple language, and not buried at the end of a post, on
+    an About page, behind a "more" link, or mixed into a group of hashtags.</p>
+    <p>The FTC also prohibits talking about your experience with a product you have not tried, and prohibits
+    claims a product's maker could not substantiate.</p>
+
+    <div class="note warn"><b>FLAG-12:</b> the exact Amazon wording above was read from the official Associates
+    FAQ page. The Operating Agreement sections retrieved in full during this session did not contain the
+    sentence. Copy the current wording straight out of the Operating Agreement before you publish &mdash;
+    <a href="flagged.html#FLAG-12">FLAG-12</a>.</div>
+
+    <p>Official sources:
+    <a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener">Operating Agreement &#8599;</a> &middot;
+    <a href="https://www.amazon.com/b?ie=UTF8&node=51812349011" target="_blank" rel="noopener">Associates FAQ &#8599;</a> &middot;
+    <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener">FTC Disclosures 101 &#8599;</a> &middot;
+    <a href="https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews" target="_blank" rel="noopener">FTC Endorsement Guides hub &#8599;</a></p>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Compliance checklist <small>every row links to the official document it came from</small></h2>
+  <div class="body">
+    {{TABLE_COMPLIANCE}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>The three that block revenue</h2>
+  <div class="body">
+    <p>Two of these are policy violations, not polish. Both are cheap to fix and neither can be automated away.</p>
+    <ol class="tight">
+      <li><a href="flagged.html#FLAG-01"><b>FLAG-01 &mdash; hand-captured prices.</b></a> Amazon permits a site to
+      display prices only if Amazon serves the link showing them, or if the price came from Creators API or
+      PA API. Every price in this project was read by hand. Either move to an API-fed or Amazon-served price, or
+      remove the price columns before the site goes live.</li>
+      <li><a href="flagged.html#FLAG-05"><b>FLAG-05 &mdash; no Associates tag.</b></a> Without a tag parameter in
+      the URL there is no Special Link and no commission, full stop.</li>
+      <li><a href="flagged.html#FLAG-02"><b>FLAG-02 &mdash; live promotion badges.</b></a> All three products
+      carried a live promotion at capture. Once the promotion ends, the reference must come down. On a static
+      page you cannot guarantee that, so the safe default is to drop the badge column.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Jurisdiction <small>the operator is in the EEA</small></h2>
+  <div class="body">
+    <p>The Associates country selector lists the United States, United Kingdom, Germany, France, Japan, Canada,
+    Italy, Spain, India, Brazil, Mexico, Australia, UAE, Singapore, Netherlands, Saudi Arabia, Sweden, Poland,
+    Belgium, Ireland, Turkey and Egypt. <b>Norway is not on it.</b> All product data in this project is from
+    Amazon.com (US).</p>
+    <p>Separately, the Operating Agreement puts the burden on you to satisfy GDPR (EU) 2016/679 and the ePrivacy
+    Directive 2002/58/EC where they apply, including disclosing your use of cookies, pixels and similar
+    technology through a privacy policy. A site that targets EEA visitors needs a consent layer. This project has
+    no privacy page yet and sets no tracking cookies.</p>
+    <p><a href="flagged.html#FLAG-06">See FLAG-06 &rarr;</a></p>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Documents in force</h2>
+  <div class="body">
+    <div class="kv">
+      <div class="k">Operating Agreement</div><div>Updated October 15, 2025 (as stated on the official page)</div>
+      <div class="k">Program Policies</div><div>Updated April 14, 2026 (as stated on the official page)</div>
+      <div class="k">Commission Statement</div><div>Table 1 fixed rates, retrieved 2026-11-13</div>
+    </div>
+    <p style="margin-top:12px">Both documents say on their face that Amazon may modify them. The links below go
+    straight to the official pages &mdash; check the "Updated" line each time you visit.</p>
+    <p>
+      <a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener">Operating Agreement &#8599;</a> &middot;
+      <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">Program Policies &#8599;</a> &middot;
+      <a href="https://affiliate-program.amazon.com/help/operating/compare" target="_blank" rel="noopener">What's changed &#8599;</a> &middot;
+      <a href="https://affiliate-program.amazon.com/help/node" target="_blank" rel="noopener">Program Help &#8599;</a> &middot;
+      <a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ" target="_blank" rel="noopener">Commission Income Statement &#8599;</a>
+    </p>
+  </div>
+</div>

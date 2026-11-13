@@ -1,0 +1,76 @@
+<div class="legend">
+  <span><span class="swatch" style="background:#0f7a45"></span> verified on an official page</span>
+  <span><span class="swatch" style="background:#1f4fd8"></span> verified but rounded by Amazon</span>
+  <span><span class="swatch" style="background:#5a6472"></span> unverified &mdash; left blank</span>
+  <span><span class="swatch" style="background:#a3231b"></span> absent / fails a rule</span>
+</div>
+
+<div class="panel">
+  <h2>Identity and classification <small>stable fields</small></h2>
+  <div class="body">
+    {{TABLE_IDENTITY}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Commercials <small>volatile fields &mdash; each row carries its capture time</small></h2>
+  <div class="body">
+    <p><input type="search" data-filter="#tbl-com" placeholder="Filter rows&hellip;"
+       style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;font-size:13px;margin-bottom:10px"></p>
+    {{TABLE_COMMERCIALS}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Field-by-field verification <small>what was checked, and where</small></h2>
+  <div class="body">
+    <p>Every field in this dataset carries a recorded status. A field is only marked
+    <span class="tag t-ok">verified</span> when the value was read off the official page named in its source.
+    Where Amazon itself rounded a number, the status is
+    <span class="tag t-round">verified (rounded)</span> and the exact value is left blank. Where no official page
+    would give up the value, the status is <span class="tag t-unv">unverified</span> and the cell is blank.</p>
+
+    <h3 style="font-size:13px;margin:14px 0 6px">Fields that could not be populated</h3>
+    <div class="tw"><table>
+      <thead><tr><th>Field</th><th>Status</th><th>Why it is blank</th><th>Flag</th></tr></thead>
+      <tbody>
+        <tr><td>Exact rating count</td><td><span class="tag t-unv">unverified</span></td>
+            <td>Amazon prints rounded counts in search results and puts the exact count behind a sign-in wall on the review pages.</td>
+            <td><a href="flagged.html#FLAG-04">FLAG-04</a></td></tr>
+        <tr><td>Best Sellers Rank</td><td><span class="tag t-unv">unverified</span></td>
+            <td>Published only on the product detail page. Amazon served a "shuffle" landing variant with no extractable detail block to this session's fetches.</td>
+            <td><a href="flagged.html#FLAG-03">FLAG-03</a></td></tr>
+        <tr><td>Wattage</td><td><span class="tag t-unv">unverified</span></td>
+            <td>Not exposed on any official page reachable without authentication.</td>
+            <td><a href="flagged.html#FLAG-10">FLAG-10</a></td></tr>
+        <tr><td>Model number</td><td><span class="tag t-unv">unverified</span></td>
+            <td>Not exposed on any official page reachable without authentication.</td>
+            <td><a href="flagged.html#FLAG-10">FLAG-10</a></td></tr>
+        <tr><td>Dimensions / weight</td><td><span class="tag t-unv">unverified</span></td>
+            <td>Not exposed on any official page reachable without authentication.</td>
+            <td><a href="flagged.html#FLAG-10">FLAG-10</a></td></tr>
+        <tr><td>Warranty</td><td><span class="tag t-unv">unverified</span></td>
+            <td>Not exposed on any official page reachable without authentication.</td>
+            <td><a href="flagged.html#FLAG-10">FLAG-10</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="note"><b>No value on this page is inferred.</b> Where Amazon did not publish a number, the cell
+    is empty. That is deliberate: a plausible-looking estimate in a table is indistinguishable from a measured
+    value once it leaves this page.</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Raw data <small>machine-readable export</small></h2>
+  <div class="body">
+    <p>The complete dataset, including the per-field verification record, is committed alongside this site:</p>
+    <ul class="tight">
+      <li><a href="data/products.json">data/products.json</a> &mdash; products, values, statuses, per-field sources</li>
+      <li><a href="data/competitors.json">data/competitors.json</a> &mdash; official best-seller benchmark set</li>
+      <li><a href="data/flags.json">data/flags.json</a> &mdash; every flag, with its sources</li>
+      <li><a href="data/sources.json">data/sources.json</a> &mdash; every URL retrieved, and what it was used for</li>
+      <li><a href="data/derived_links.json">data/derived_links.json</a> &mdash; URLs observed on retrieved pages but not fetched individually</li>
+    </ul>
+  </div>
+</div>

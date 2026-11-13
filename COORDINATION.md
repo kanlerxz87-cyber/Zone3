@@ -176,7 +176,7 @@ did not exist at branch creation and was created here as the first commit on the
 | 6 | Executive summary | **done** | `3c6cba43` | `/executive-summary/`, `docs/executive-summary.md` | Every figure in it cross-checks to a `SRC-*` id in `data/sources.json` |
 | 7 | Flagged-for-Review page | **done** | `3c6cba43` | `flagged/`, `data/flags.json` | 24 flags, each with severity, verified finding, official source and a resolution action (gate G8 requires the action) |
 | 8 | Methodology + requirements traceability + agent governance | **done** | `3c6cba43` | `methodology/`, `requirements/`, `agent-terms/`, `data/{requirements,agent_terms}.json` | 30 brief clauses traced; Agent Terms §4 mapped clause-by-clause; API claims verified against the live Creators API docs (C1–C8) |
-| 9 | Final integration: re-verify combined data, build, link-check | **done** | `3c6cba43` | whole tree | `build_site.py` gate PASS (exit 0) · `verify_site.py` V1–V7 PASS · `link_report.py --strict` PASS · 0 broken internal links |
+| 9 | Final integration: re-verify combined data, build, link-check | **done** | `3c6cba43` | whole tree (additive; see landing-page correction below) | `build_site.py` gate PASS (exit 0) · `verify_site.py` V1–V7 PASS · `link_report.py --strict` PASS · 0 broken internal links |
 | 10 | PR → `main`, merge, confirm Pages deploy | **done** | `3c6cba43` | git + `gh` only | result recorded immediately below |
 
 ### Publish result (task 10)
@@ -188,8 +188,9 @@ Recorded after the merge; see the commit that follows this section for the value
 | Pull request | `#1` — https://github.com/kanlerxz87-cyber/Zone3/pull/1 |
 | Merge method | `gh pr merge 1 --merge` (no approval waited for, per instruction) |
 | Pages build | confirmed `status=built` after merge, `https_enforced=true` |
-| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ |
+| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ · this build's landing: `/dashboard/` |
 | Broken links at publish | 0 |
+| Landing-page ownership | **Corrected in a follow-up.** The first integration put this session's dashboard at the root, which displaced session `33226b37`'s flat landing page. Root `index.html` was restored from `b2cc672` and this build's landing moved to `dashboard/index.html`; a nav link and a section card were added to their root page, and their generator's `NAV` list got the same entry so a rebuild keeps it. Neither builder can now overwrite the other's file. |
 | Site merged while flagged? | yes — flagged items and unverified fields are non-blocking and are published at `/flagged/` |
 
 ---
@@ -216,7 +217,7 @@ Recorded after the merge; see the commit that follows this section for the value
 
 ## Irregularities Flagged for Review
 
-Published in full on the site at **`/flagged/`** (24 items, FLG-001…FLG-024) with the official
+Published in full on the site at **`/flagged/`** (28 items, FLG-001…FLG-028) with the official
 source for each. None blocked the merge. Summary:
 
 | ID | Sev | One-line finding |
@@ -286,6 +287,48 @@ Recorded deliberately — these are the items a reviewer most needs to see:
    existed**; reset to `in progress`/`unclaimed` and only marked done as each completed.
 5. Twelve self-referential table rows cited no external source. Rather than exempting them, a
    new gate (G5) now anchors them to a repository file **whose existence the build asserts**.
+
+---
+
+## Cross-session integration notes (part B, updated after PR #11/#12)
+
+`main` moved three times while this branch was open. Every merge was additive; no session's file was
+deleted or overwritten by choice.
+
+| Merged | Other session | What they own | How the conflict was resolved |
+| --- | --- | --- | --- |
+| PR #5, #6 | `7f84fea4` | flat pages, `scripts/`, `data/*.json`, `assets/app.js`, `assets/style.css` | kept; this build's JS renamed `assets/dashboard.js`, its data moved to `data/z3/` |
+| PR #1 | `26634cd5` | archived at `archive/26634cd5/` by that session | untouched |
+| PR #3 | `66a80e53` | archived at `archive/66a80e53/` | untouched |
+| PR #4 | `a9cafea1` | `docs/`, product dossier pages | their `docs/executive-summary.md` preserved at `docs/executive-summary-prior-sessions.md` |
+| PR #7 | `33226b37` | their flat landing page, `research/` | **root `index.html` returned to them** after this build had briefly displaced it; this build's landing moved to `dashboard/index.html` so neither builder writes the other's path |
+| PR #11 | `3c886b62` | `sessions/3c886b62/**` (own site, data, docs, tools) | no conflict — fully namespaced; two findings raised, see below |
+
+### Findings raised about another session's published output
+
+Recorded rather than edited, because the owner can judge them and a silent rewrite could not be reviewed.
+
+1. **`B:FLG-027` (High) — the same three links are interpreted differently.** Their register accepts the
+   redirect target as the submitted product (`B04G1MEwY` → ASIN `B0CDY277D3`, status `verified`) and
+   derives title/brand/department from that page. This build leaves those fields blank. Same
+   observations, one sentence of difference: whether Amazon's `mhFallback` target *is* the product. Three
+   different submitted codes produced three different unrelated targets, which is why this build answers
+   no. Neither reading can be settled from public documents; it needs the original submission context.
+2. **`B:FLG-028` (Medium) — price/rating display mechanics.** They publish `$79.93 / 4.2★` and similar
+   values read off a rendered search-results page. Their own register already flags the display rules
+   (`F01` → Part. Req. 2(b), `F02` → 5(t), `F16` → point-in-time), so this is documented exposure rather
+   than an unnoticed breach. Two mechanical gaps remain: IP License 2(i) wants an adjacent date/time stamp
+   plus the verbatim price-and-availability sentence next to any price not refreshed hourly, and 5(t)
+   admits ratings only when obtained through the API — a correctly-read page value still does not qualify.
+
+**A correction that belongs to `3c886b62`, recorded here for the record:** their commit message credits
+"public commission rate table" — independently, that same table is what this session added to
+`/commission/` after first concluding it was unobtainable. Two sessions reaching the same document from
+different starting points is the useful part; the numbers on both pages agree.
+
+**Fixed during integration (not merely flagged):** `category/kitchen.html` shipped without the Operating
+Agreement §5 disclosure that the generator emits everywhere else — hand-authored, so no generator check
+could catch it. Inserted additively; root cause and recommendation recorded at `B:FLG-025`.
 
 ---
 
@@ -433,6 +476,166 @@ section 6(t). FLG-018 (price tracking/alerting prohibited) matches section 6(y).
 per-visitor sub-tags) matches section 2(b). Three independent sessions converging on the same policy text is
 worth noting as a positive signal.
 
+---
+
+## Session `c4e71983` — additive contribution (logged 2026-11-13/14 UTC)
+
+> **Branch naming, as with the other sessions.** The Arena branch note pins this session to
+> `arena/c4e71983-zone3` and forbids creating or pushing other branches, so `session-<id>/<task>`
+> branches were not available. Task IDs below replace them, matching the decision already logged by
+> session `7f84fea4`.
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `c4e71983` | `arena/c4e71983-zone3` | Independent verification from `ed1a796`; commercial snapshot; competitor benchmark; category-node discovery; correction to a plausible-but-wrong node guess | integrated additively | 2026-11-13 22:35 |
+
+### Tasks
+
+| Task | Status | Owner | Files | Notes |
+|---|---|---|---|---|
+| C4E-T1 — Resolve the three submitted links | done | `c4e71983` | `research/c4e71983-verification-log.md` | Reproduces `main`'s S11–S13 page IDs exactly |
+| C4E-T2 — Capture and verify commercial values | done | `c4e71983` | `data/c4e71983-commercial-snapshot.json` | Search-result pages carry price and rating even though `/dp/` pages do not |
+| C4E-T3 — Competitor benchmark | done | `c4e71983` | `data/c4e71983-competitors.json` | Official Best Sellers, ranks 1–6, exact rating counts |
+| C4E-T4 — Category-node discovery and correction | done | `c4e71983` | `research/c4e71983-niche-competition.md` | Air Fryers node is `17659096011`; node `289742` is **Coffee, Tea & Espresso**, not Air Fryers |
+| C4E-T5 — Commission rate table | done | `c4e71983` | `research/c4e71983-verification-log.md` §6 | Reached Table 1 via the Associates help route, which is not login-gated |
+| C4E-T6 — Additive integration into `main` | done | `c4e71983` | see below | Branch reset onto `main`; nothing overwritten |
+
+### What was added (non-overlapping)
+
+| Path | What it is |
+|---|---|
+| `data/c4e71983-commercial-snapshot.json` | Prices, ratings, badges, velocity, with exact capture timestamps |
+| `data/c4e71983-competitors.json` | Official Best Sellers in Air Fryers, ranks 1–6 |
+| `data/c4e71983-sources.json` | Source register, namespaced `C4E-Snn` |
+| `research/c4e71983-verification-log.md` | Line-by-line verification record and ID mapping |
+| `research/c4e71983-commercial-snapshot.md` | Commercial snapshot narrative and method |
+| `research/c4e71983-niche-competition.md` | Niche, competition, pricing, and the ML-clause constraint |
+| `docs/executive-summary-c4e71983.md` | This session's summary, kept under its own name |
+| `archive/c4e71983/` | This session's complete standalone site, unchanged, with `ARCHIVE_NOTE.md` |
+
+### Conflict log
+
+This session branched from `ed1a796`, before `main` had moved, and its `COORDINATION.md` recorded
+"sole session" on that basis. By the time it pushed, `main` had advanced through PRs #7, #9 and #11
+and carried a canonical site and data schema owned by sessions `26634cd5`, `66a80e53`, `7f84fea4`,
+`33226b37` and others. `gh pr merge 8` failed: **add/add conflicts in 15 files**, including
+`.gitignore`, `COORDINATION.md`, `README.md`, `assets/style.css`, `assets/app.js`,
+`research/verification-log.md`, `tools/build_site.py`, `index.html`, `products.html`,
+`flagged.html` and `executive-summary.html`.
+
+**Resolution, following the precedent set for sessions `26634cd5` and `33226b37`:**
+
+1. The full working tree was preserved to `/tmp` before any git operation.
+2. A backup branch, `backup-c4e71983-4dc3f8be`, was created at the pre-reset tip
+   `4dc3f8be87b28f460fcca4aac70b5ed8d76692b4`. Nothing is lost from history.
+3. The branch was reset onto `origin/main` (then `bbe4254`) and rebuilt as purely additive changes.
+4. Every file of this session's that collided with `main`'s canonical set was moved into
+   `archive/c4e71983/` unchanged.
+5. **No file on `main` was overwritten, replaced or deleted.** `README.md` and `COORDINATION.md` were
+   appended to, not rewritten. No generated page, script, stylesheet or data schema on `main` was
+   touched.
+6. **No new root-level HTML pages were added.** `main`'s site is the canonical site; adding a second,
+   differently-styled page set at the root would have fragmented it.
+
+*Mistake made and corrected during this work:* while staging the archive, a `rm -rf` intended for
+this session's copies ran against the post-reset working tree and deleted `main`'s `assets/`,
+`categories/`, `content/`, `site/`, `tools/` and `research/`. It was caught immediately and restored
+with `git checkout -- .` before any commit. `git status` was verified clean afterwards, and
+`scripts/check_site.py` was re-run to confirm. No loss.
+
+### Verification performed
+
+- All three submitted short links fetched and followed; page IDs `B0CDY277D3`, `B09B7SB46R`,
+  `B08DKYBTPH` confirmed from the resolved URL and the page title.
+- Titles and departments read from `/dp/` page titles.
+- Commercial values read from `amazon.com/s?k=<ASIN>` pages, with capture times taken from the
+  decoded `qid` epoch values (22:37:14Z, 22:33:46Z, 22:37:34Z).
+- Competitor rows read from the official Best Sellers listing; rating counts there are exact.
+- Commission Table 1 read from the Associates Central help route (not login-gated on this attempt).
+- Program Policies Participation Requirements §§1, 2(b), 3(e), 5 and 6(a), and Operating Agreement
+  §§1–3 and 7–12, read and quoted.
+- FTC *Disclosures 101* read in full.
+- `main`'s `scripts/check_site.py` re-run after the additive merge — passes.
+
+### Flags raised by this session
+
+Namespaced `c4e71983-FLG-nn`. **These are not `main`'s `FLG-001–021`.** Full detail and mapping in
+`research/c4e71983-verification-log.md` §10.
+
+| ID | Severity | Finding | Relation to `main` |
+|---|---|---|---|
+| `c4e71983-FLG-01` | Critical | Hand-captured prices are not permitted by Program Policies §2(b) | **New** |
+| `c4e71983-FLG-02` | Critical | Live promotion badges must be removed when the promotion ends | **New** |
+| `c4e71983-FLG-03` | High | Best Sellers Rank still unverified | part of FLG-004 |
+| `c4e71983-FLG-04` | High | Rating counts are Amazon-rounded; exact counts sign-in walled | part of FLG-004 |
+| `c4e71983-FLG-05` | Medium | No Associates tag in any supplied link | FLG-010 |
+| `c4e71983-FLG-06` | High | Operator in Oslo; Norway is not in the Associates country list; GDPR/ePrivacy apply | FLG-015 |
+| `c4e71983-FLG-07` | Medium | `link.amazon` host not documented by Amazon | FLG-003 |
+| `c4e71983-FLG-08` | Medium | "bought in past month" is Program Content; §6(a) forbids altering it | **New** |
+| `c4e71983-FLG-09` | Medium | Kitchen 4.50% vs Home 3.00% — per-ASIN assignment unpublished | FLG-021 |
+| `c4e71983-FLG-10` | Medium | Specifications beyond the title unverified | part of FLG-004 |
+| `c4e71983-FLG-12` | Medium | Disclosure sentence found in the FAQ, not in the Agreement body | **New** |
+| `c4e71983-FLG-13` | Medium | No original content yet | FLG-012 |
+| `c4e71983-FLG-16` | Critical | §5 bars ML training on **Program Content** generally, not only Creators API data | **widens** FLG-016 |
+| `c4e71983-FLG-17` | Medium | No dual-program attribution; no bot activity through own Special Links | part of FLG-019 |
+| `c4e71983-FLG-18` | Medium | No trend analysis possible from a single snapshot | **New** |
+| `c4e71983-FLG-19` | Medium | Site should stay noindex until FLG-01/02/05/13 equivalents clear | **New** |
+
+### Findings that corroborate `main` and were **not** re-numbered
+
+- The S11–S13 redirect targets reproduce exactly, with deterministic mapping (see §1.5 of
+  session `33226b37`'s log for the same observation).
+- FLG-001 (9-character identifiers, not ASINs) and FLG-002 (unconfirmed as the submitted products)
+  confirmed independently.
+- FLG-010 (no tag), FLG-012 (no original content), FLG-015 (Oslo / Schedule 1 is US-only) confirmed.
+- PF-40 (≥3 qualifying sales in 180 days, personal orders excluded), PF-42 (payout ≈60 days), PF-43
+  (US minimums $10/$10/$100 + $15) confirmed directly from the Commission Income Statement.
+- PF-38/PF-39 and FLG-021 (Kitchen 4.50% verified, listings' category not) confirmed, with the added
+  note that Table 1 was reachable via the Associates help route on this attempt.
+
+### Correction for other sessions
+
+**Node `289742` is not the Air Fryers node.** It is *Coffee, Tea & Espresso Appliances*. It returns a
+valid, confidently-titled Amazon Best Sellers page, so a wrong guess will look right. The Air Fryers
+node is **`17659096011`**, under Fryers (`17659095011`).
+
+### Open items for a future integration session
+
+1. The commercial snapshot can partially close FLG-004 (price, rating, review count) — but it must
+   not be rendered on a live page until it comes from Creators API or PA API
+   (`c4e71983-FLG-01`). Merge it into the canonical product rows only behind an API-derived feed.
+2. The competitor benchmark has no equivalent on `main` and can be surfaced as-is.
+3. `c4e71983-FLG-16` widens FLG-016 from "Creators API data" to "Program Content" generally; worth
+   folding into that flag's text.
+4. `c4e71983-FLG-12` needs a human to open the Operating Agreement and copy the current disclosure
+   sentence verbatim.
+
+### Merge and deploy record — session `c4e71983`
+
+| Item | Result |
+| --- | --- |
+| PR | **[#8](https://github.com/kanlerxz87-cyber/Zone3/pull/8)** — `arena/c4e71983-zone3` → `main` |
+| First merge attempt | **Failed** — add/add conflicts in 15 files against `main`'s canonical site |
+| Resolution | Branch reset onto `main` and reduced to additive contributions (see Conflict log above) |
+| Merge | **Merged 2026-11-13T23:11:13Z** by `kanlerxz87-cyber` |
+| Merge commit | `128dd590822ed272440bb666bcd917e8816c2154` |
+| Checks before merge | `scripts/check_site.py` → OK: 9 pages, 3 products, 29 sources, 21 flags |
+| GitHub Pages build | **built**, 23.6 s, commit `128dd59`, completed 2026-11-13T23:11:38Z |
+| Live site | https://kanlerxz87-cyber.github.io/Zone3/ |
+| This session's dashboard | https://kanlerxz87-cyber.github.io/Zone3/archive/c4e71983/index.html |
+| Backup of the pre-reset work | branch `backup-c4e71983-4dc3f8be`, tip `4dc3f8be` |
+
+**Post-deploy verification.** The live root serves `main`'s canonical dashboard (session `7f84fea4`'s
+site, with the later sessions' contributions integrated). The archived dashboard built by this session
+serves at `/archive/c4e71983/` and renders its tables, disclosure banner and source links correctly.
+`scripts/check_site.py` passes against the merged tree.
+
+**Note on the Pages source.** This repository's Pages is a *legacy* branch build (source branch
+`main`, path `/`), not a GitHub Actions build. The app token cannot change that setting
+(`403 Resource not accessible by integration`), so no workflow-based deploy is possible and no
+settings change was required: Pages redeploys from `main` automatically. A validation workflow written
+by this session is archived at `archive/c4e71983/.github/workflows/validate.yml` for reference only;
+it was intentionally **not** added to `.github/workflows/` because it does not deploy anything.
 - **2026-11-13 — 3c886b62**: fixed a rendering bug found on the live pages after PR #11 merged. Wrapped
   list items and a markdown table were being emitted as stray `<p>` elements. Fixed in
   `sessions/3c886b62/tools/build.py` (list items are now buffered and hard-wrapped continuation lines are

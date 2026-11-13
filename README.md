@@ -5,7 +5,11 @@ verification, niche / pricing / review analysis, grounded SEO content generation
 campaign tracking, and compliance enforcement — with a build-time gate that refuses to
 publish any value that cannot be traced to an official source.
 
-**Live site:** https://kanlerxz87-cyber.github.io/Zone3/
+**Live site:** https://kanlerxz87-cyber.github.io/Zone3/ · **this build's dashboard:** `/dashboard/`
+
+> The repository root belongs to an earlier session's flat site. This build writes only inside its
+> own page directories (`dashboard/`, `products/`, `commission/`, …) and never overwrites a file
+> another build owns, so both halves are served side by side and cross-link to each other.
 
 > **Integration note.** This branch was merged into `main` alongside four earlier sessions' work rather
 > than over it: their flat pages (`products.html`, `pricing.html`, …), `scripts/`, `data/*.json` and
@@ -22,7 +26,7 @@ publish any value that cannot be traced to an official source.
 | Products that passed intake verification | **0 of 3** |
 | Data cells left blank because no official source exists | **36** |
 | Official sources cited | 19 |
-| Open items published for review | 26 |
+| Open items published for review | 28 |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks |
 
 The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
@@ -40,7 +44,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 
 | Category | Path | What it holds |
 | --- | --- | --- |
-| Dashboard | `/` | KPIs, findings, navigation |
+| Dashboard | `/dashboard/` | KPIs, findings, navigation |
 | Executive summary | `/executive-summary/` | The whole story in one read |
 | Products | `/products/` | Intake + verification register, 12-field attribute sheet, link pipeline |
 | Commission | `/commission/` | Amazon's published rate tables (Standard/Onsite/Creator Ads) + Bounty schedule |
@@ -54,7 +58,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 | Methodology | `/methodology/` | 8-stage pipeline, verification protocol, scalability, limits |
 | Requirements | `/requirements/` | All 30 brief clauses traced to status |
 | Sources | `/sources/` | Every official document cited, with what was observed |
-| Flagged | `/flagged/` | 26 open items with source links and resolutions |
+| Flagged | `/flagged/` | 28 open items with source links and resolutions |
 | Repo review | `/repo-review/` | Audit of the repository as found |
 
 ---
@@ -62,7 +66,7 @@ Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 ## Layout
 
 ```
-index.html + 15 subpages   generated static site (committed, served by GitHub Pages)
+dashboard/ + 15 page dirs   generated static site (committed, served by GitHub Pages)
 assets/app.css, app.js     dashboard styling; sort/filter; no runtime fetching
 data/z3/*.json             single source of truth for every published cell in this build
 data/*.json                datasets owned by earlier sessions (kept, not overwritten)
@@ -143,9 +147,9 @@ follows.
 | --- | --- |
 | Was any other session's work deleted? | **No.** Conflicting files were kept on both sides. |
 | How were add/add conflicts resolved? | Theirs wins where they own the file (`assets/app.js`, `scripts/`, `data/*.json`, their flat pages); this session's files moved to non-colliding names (`assets/dashboard.js`, `data/z3/`, `landing-prior.html`, `docs/executive-summary-prior-sessions.md`). |
-| Whose page is the root landing? | This session's build (it is the one with per-row provenance gating and the corrected commission tables). The previous root page is preserved at `landing-prior.html` and still served. |
+| Root landing | Theirs (the flat-page dashboard), with a link added into `/dashboard/`. This session's landing is at `/dashboard/`, and `landing-prior.html` keeps the earlier root revision verbatim. |
 | Do both sites still work? | Yes — 32 HTML pages all serve; their `scripts/check_site.py` and this session's `tools/verify_site.py` both pass. |
-| **Do not run** `python3 scripts/build_site.py` | It regenerates the root `index.html` and its own flat pages, which would overwrite this session's landing page. To rebuild this site, run `python3 tools/build_site.py`. Both builders are independent and both pass their own checks. |
+| Root `index.html` | Owned by `scripts/build_site.py`. This build writes its landing to `dashboard/index.html` instead, so neither builder can clobber the other. |
 | Anything found in *their* work? | One compliance gap, fixed additively: `category/kitchen.html` was hand-authored and had no Associates disclosure (required by Operating Agreement §5). Their generated pages all had it. Recorded at `B:FLG-025` in `COORDINATION.md`. |
 | Anything this session corrected about *itself*? | Yes — it had concluded per-category commission rates were unobtainable because one endpoint redirects to sign-in. The statement is public; rates are now published. Recorded at `B:FLG-013`. |
 ---
@@ -160,7 +164,7 @@ Kept intact by this integration; documented so the merged tree is navigable.
 | `data/policy_facts.json` | Verbatim policy quotes PF-01…PF-43 (PF-14 withdrawn), each with source and section. |
 | `data/products.json`, `data/flags.json` | The earlier build's product dataset and flag register. Identical numbering to `data/z3/*` means different items. |
 | `research/` | Session `33226b37`'s independent line-by-line verification record and product dossiers, with the ID mapping to that data layer. |
-| `scripts/build_site.py`, `scripts/check_site.py` | The earlier build and its audit. **Do not run the builder** — it rewrites the root `index.html`. |
+| `scripts/build_site.py`, `scripts/check_site.py` | The earlier build and its audit. That builder owns the root `index.html`; this one never writes it, so running either one is safe for the other. |
 | `docs/executive-summary-33226b37.md` | Executive summary preserved from that session. |
 
 Two independent verification records now cover the same three links and agree on the substance: all
@@ -168,3 +172,33 @@ three identifiers are 9 characters, every `/dp/` probe returns Amazon's *Page No
 short link falls back to a different unrelated product. Reaching that from separately fetched evidence
 is what makes it a finding rather than a shared assumption. This session additionally published the
 rate tables (`/commission/`), which neither earlier record had located.
+
+---
+
+## Session `c4e71983` — additive contribution
+
+`main` already carried a canonical site and data schema from sessions `26634cd5`, `66a80e53`,
+`7f84fea4` and `33226b37`. This session worked in parallel from baseline `ed1a796` and, on finding
+the collision, reset onto `main` and contributed additively. **Nothing on `main` was overwritten.**
+
+| Path | Contents |
+| --- | --- |
+| `data/c4e71983-commercial-snapshot.json` | Prices, ratings, promotion badges and velocity signals, with exact capture timestamps decoded from Amazon's `qid` parameter |
+| `data/c4e71983-competitors.json` | Official Best Sellers in Air Fryers, ranks 1–6, with exact rating counts |
+| `data/c4e71983-sources.json` | Source register for this session, namespaced `C4E-Snn` |
+| `research/c4e71983-verification-log.md` | Line-by-line verification record, plus a mapping to `main`'s `S01–S29` / `FLG-001–021` |
+| `research/c4e71983-commercial-snapshot.md` | Commercial snapshot, capture method, and the volatility risk |
+| `research/c4e71983-niche-competition.md` | Niche, competition, pricing, and the clause that constrains the AI layer |
+| `docs/executive-summary-c4e71983.md` | This session's summary, kept under its own name |
+| `archive/c4e71983/` | This session's complete standalone 17-page dashboard, unchanged, browsable at `archive/c4e71983/index.html` |
+
+**Correction worth knowing:** Amazon browse node `289742` is *Coffee, Tea & Espresso Appliances*,
+**not** Air Fryers. It returns a valid, confidently-titled Best Sellers page, so a wrong guess looks
+right. The Air Fryers node is **`17659096011`**.
+
+**Caution on the commercial snapshot:** those prices were captured by hand. Program Policies
+§2(b) permits price display only if Amazon serves the link or the data came from Creators API or
+PA API. They are evidence for FLG-004, not figures to publish.
+
+See the session entry appended to `COORDINATION.md` for the full conflict log, flag list (`c4e71983-FLG-nn`)
+and ID mapping.

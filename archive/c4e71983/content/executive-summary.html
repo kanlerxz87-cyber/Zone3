@@ -1,0 +1,108 @@
+<div class="panel">
+  <h2>Executive summary <small>the whole project in one page</small></h2>
+  <div class="body">
+    <p><b>Objective.</b> Build an AI-assisted Amazon affiliate operation around three supplied product links:
+    automate product research, identify and analyse the niche, model commission economics, generate SEO content,
+    manage affiliate links, and track performance &mdash; while staying inside the Amazon Associates Operating
+    Agreement and FTC disclosure rules.</p>
+
+    <p><b>What the links turned out to be.</b> All three short links were fetched and followed. Each returns an
+    official Amazon.com product page. All three products are air fryers, in the same Amazon department
+    (<i>Home &amp; Kitchen</i>) and the same browse path
+    (<i>Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers</i>).</p>
+
+    <p><b>What that means.</b> The niche found you. Three products, one category, three different price and
+    capacity tiers within it. That is a coherent starting catalogue rather than three unrelated items, and it
+    supports a tight content plan: one category hub, one page per sub-category, comparison articles across the
+    three tiers, and buying guides per use case.</p>
+
+    <div class="note"><b>Strategic read.</b> The three products sit at roughly $80, $80 and $150, against a
+    category whose official best-seller list is led by products at $89.99, $99.99 and $39.99. Two of the three
+    are mid-market; the Emeril Lagasse unit is the premium anchor. A single-category site with a good, a better
+    and a best tier is the classic structure that converts, and the data supports that structure here.</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>The catalogue <small>as captured from official Amazon pages</small></h2>
+  <div class="body">
+    {{TABLE_IDENTITY}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Commercials <small>snapshot at 2026-11-13 22:33&ndash;22:37 UTC</small></h2>
+  <div class="body">
+    {{TABLE_COMMERCIALS}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Commission economics <small>published rate &times; captured price</small></h2>
+  <div class="body">
+    {{TABLE_COMMISSION}}
+    <p>The published standard rate for the <b>Kitchen</b> category is <b>4.50%</b>. Amazon lists <b>Home</b>
+    separately at <b>3.00%</b>, and does not publish which category it assigns to a given ASIN, so both cases are
+    shown. At the Kitchen rate a qualifying sale of the Emeril Lagasse unit is worth about <b>$6.75</b>; the two
+    Chefman units are worth about <b>$3.60</b> each. That spread is the single most important commercial fact in
+    this summary: the premium unit is worth nearly twice as much per conversion, so it deserves the most
+    prominent placement even though the cheaper units will convert more often.</p>
+    <p>Prime bounty events pay <b>$12.00</b> per successful free-trial or paid membership sign-up. On a
+    $79.93 air fryer at 4.50%, a Prime sign-up is worth more than three air fryer sales. Any content plan that
+    ignores Prime is leaving money on the table.</p>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Competition <small>official Amazon Best Sellers in Air Fryers, positions 1&ndash;6</small></h2>
+  <div class="body">
+    {{TABLE_COMPETITORS}}
+    <p>Two observations matter. First, the category leader on review volume is a Chefman 14-quart unit with
+    <b>52,301</b> ratings at $99.95 &mdash; the brand you are promoting already owns the top of this category,
+    which helps credibility. Second, the #2 product has <b>22,768</b> ratings at a 4.8 rating, while all three of
+    your products sit at 4.2&ndash;4.4. Review quality is the competitive gap, not price.</p>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Risks and blockers <small>three of these stop revenue, not just polish</small></h2>
+  <div class="body">
+    {{TABLE_FLAGS}}
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Recommended sequence <small>what to do, in order</small></h2>
+  <div class="body">
+    <ol class="tight">
+      <li><b>Decide the marketplace.</b> All data here is from Amazon.com, but the operator is in Norway and
+      Norway is not in the Associates country list. Pick US or a European store before doing anything else,
+      because it determines the commission schedule and the tax schedule (<a href="flagged.html#FLAG-06">FLAG-06</a>).</li>
+      <li><b>Join Amazon Associates and get a tag.</b> Without a tag in the URL, nothing earns
+      (<a href="flagged.html#FLAG-05">FLAG-05</a>). Then use the <a href="link-builder.html">Link Builder</a>
+      to produce compliant Special Links.</li>
+      <li><b>Write the original content.</b> Amazon rejects sites without it
+      (<a href="flagged.html#FLAG-13">FLAG-13</a>). A data table is not original content in Amazon's sense.</li>
+      <li><b>Fix the price display.</b> Replace hand-captured prices with an Amazon-served widget or a
+      Creators API / PA API feed, or delete the price columns
+      (<a href="flagged.html#FLAG-01">FLAG-01</a>).</li>
+      <li><b>Add a privacy and cookie page.</b> Required by the Operating Agreement and by GDPR / ePrivacy for an
+      EEA-targeting site (<a href="flagged.html#FLAG-06">FLAG-06</a>).</li>
+      <li><b>Get three qualifying sales inside 180 days</b> or the application is withdrawn
+      (<a href="flagged.html#FLAG-12">FLAG-12</a>).</li>
+      <li><b>Only then automate.</b> Build the collector, the content pipeline and the reporting layer described on
+      the <a href="platform.html">Automation Architecture</a> page.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Bottom line</h2>
+  <div class="body">
+    <p>The product research is done and verified, and the niche is confirmed and coherent. The economics are thin
+    per unit &mdash; $3.60 to $6.75 at the published Kitchen rate &mdash; so this only works with volume, with
+    Prime bounties, or by moving traffic toward the $149.99 unit. Nothing can earn yet: there is no Associates
+    tag, no original content, and the price display as it stands breaks the Program Policies. Those three items
+    are cheap to fix and are the whole gap between this repository and a monetised site.</p>
+  </div>
+</div>

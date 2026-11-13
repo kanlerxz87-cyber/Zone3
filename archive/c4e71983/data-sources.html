@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Sources &middot; Zone3 Amazon Affiliate Platform</title>
+<meta name="description" content="Sources used, and how each was verified">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <aside class="side">
+    <a class="brand" href="index.html">
+      <b>Zone3</b>
+      <span>Amazon affiliate research</span>
+    </a>
+    <nav aria-label="Site navigation">
+<div class="grp">Overview</div>
+<a class="nav" href="index.html">Dashboard</a>
+<a class="nav" href="executive-summary.html">Executive Summary</a>
+<div class="grp">Products</div>
+<a class="nav" href="products.html">Master Data Table</a>
+<a class="nav" href="comparison.html">Comparison</a>
+<a class="nav" href="link-resolution.html">Link Resolution</a>
+<div class="grp">Categories</div>
+<a class="nav" href="categories/air-fryers.html">Air Fryers</a>
+<a class="nav" href="categories/dual-basket.html">Dual Basket</a>
+<a class="nav" href="categories/air-fryer-toaster-ovens.html">Toaster Ovens</a>
+<a class="nav" href="categories/large-capacity.html">Large Capacity</a>
+<div class="grp">Marketing</div>
+<a class="nav" href="niche-analysis.html">Niche &amp; Competition</a>
+<a class="nav" href="commission-model.html">Commission Model</a>
+<a class="nav" href="link-builder.html">Link Builder</a>
+<div class="grp">Governance</div>
+<a class="nav" href="compliance.html">Compliance</a>
+<a class="nav on" href="data-sources.html">Data Sources</a>
+<a class="nav" href="flagged.html">Flagged for Review</a>
+<div class="grp">Platform</div>
+<a class="nav" href="platform.html">Automation Architecture</a>
+<a class="nav" href="analytics.html">Tracking &amp; Analytics</a>
+</nav>
+    <div class="foot">
+      Snapshot 2026-11-13T22:39:51Z<br>
+      Session c4e71983<br>
+      Data: official Amazon pages only
+    </div>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <h1>Data Sources</h1>
+      <p>Every URL used, and how it was verified</p>
+    </div>
+    <div class="content">
+      <p class="disclose">
+        <b>Disclosure:</b> as an Amazon Associate this site would earn from qualifying purchases.
+        This disclosure is rendered on every page because both the Amazon Operating Agreement and the
+        FTC endorsement rules require it to be hard to miss &mdash;
+        <a href="compliance.html">see Compliance</a>. Exact current wording:
+        <a href="flagged.html#FLAG-12">FLAG-12</a>.
+      </p>
+      <div class="panel">
+  <h2>Verification standard <small>what had to be true before a value reached a table</small></h2>
+  <div class="body">
+    <ol class="tight">
+      <li>The source had to be an official page &mdash; Amazon.com or Amazon Associates Central, or a government
+      regulator such as the FTC. Third-party blogs, affiliate guides and SEO tools were read for orientation but
+      <b>not</b> used as sources for any value on this site.</li>
+      <li>The page had to actually be retrieved in this session. Nothing is cited from memory.</li>
+      <li>If a value could not be read from an official page, the cell was left blank and flagged. Nothing was
+      inferred, estimated, interpolated or carried across from a similar product.</li>
+      <li>Every volatile value carries the timestamp of the page it came from. Prices and ratings were captured
+      from Amazon search-result pages whose Amazon request id (<span class="mono">qid</span>) decodes to the true
+      request time, so those timestamps are exact rather than approximate.</li>
+      <li>Every external link the site emits must appear in the allowlist. The build fails otherwise, so a stray
+      unverified URL cannot silently ship.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Individually retrieved sources <small>every one fetched in this session</small></h2>
+  <div class="body">
+    <p><input type="search" data-filter="#tbl-src" placeholder="Filter rows&hellip;"
+       style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;font-size:13px;margin-bottom:10px"></p>
+    <div class="tw"><table>
+<thead><tr><th>ID</th><th>Publisher</th><th>URL</th><th>Retrieval result</th><th>Retrieved (UTC)</th><th>Used for</th><th>Notes</th></tr></thead>
+<tbody><tr>
+  <td class="mono">S01</td>
+  <td>Amazon</td>
+  <td><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener">https://link.amazon/B04G1MEwY</a></td>
+  <td class="mono">200 - redirects to https://www.amazon.com/dp/B0CDY277D3</td>
+  <td><span class="ts">2026-11-13T22:31:00Z</span></td>
+  <td>Resolution of the supplied short link to ASIN B0CDY277D3</td>
+  <td>Short-link host &#x27;link.amazon&#x27; is not documented on any official Amazon page we could locate. The redirect target is an official amazon.com product page. See FLAG-07.</td>
+</tr>
+<tr>
+  <td class="mono">S02</td>
+  <td>Amazon</td>
+  <td><a href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener">https://link.amazon/B02NbDxp3</a></td>
+  <td class="mono">200 - redirects to https://www.amazon.com/dp/B09B7SB46R</td>
+  <td><span class="ts">2026-11-13T22:36:00Z</span></td>
+  <td>Resolution of the supplied short link to ASIN B09B7SB46R</td>
+  <td>See FLAG-07.</td>
+</tr>
+<tr>
+  <td class="mono">S03</td>
+  <td>Amazon</td>
+  <td><a href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener">https://link.amazon/B00hJ57DV</a></td>
+  <td class="mono">200 - redirects to https://www.amazon.com/dp/B08DKYBTPH</td>
+  <td><span class="ts">2026-11-13T22:36:00Z</span></td>
+  <td>Resolution of the supplied short link to ASIN B08DKYBTPH</td>
+  <td>See FLAG-07.</td>
+</tr>
+<tr>
+  <td class="mono">S04</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener">https://www.amazon.com/dp/B0CDY277D3</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:36:00Z</span></td>
+  <td>Official product title and department (&#x27;Home &amp; Kitchen&#x27;) for ASIN B0CDY277D3</td>
+  <td>Amazon served a &#x27;shuffle&#x27; landing variant; the page &lt;title&gt; and footer confirmed the identity and department. The product-detail block (price, BSR, rating) was not extractable.</td>
+</tr>
+<tr>
+  <td class="mono">S05</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener">https://www.amazon.com/dp/B09B7SB46R</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:36:00Z</span></td>
+  <td>Official product title and department (&#x27;Home &amp; Kitchen&#x27;) for ASIN B09B7SB46R</td>
+  <td>Same shuffle-landing limitation as S04.</td>
+</tr>
+<tr>
+  <td class="mono">S06</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener">https://www.amazon.com/dp/B08DKYBTPH</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:36:00Z</span></td>
+  <td>Official product title and department (&#x27;Home &amp; Kitchen&#x27;) for ASIN B08DKYBTPH</td>
+  <td>Same shuffle-landing limitation as S04.</td>
+</tr>
+<tr>
+  <td class="mono">S07</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/s?k=B0CDY277D3" target="_blank" rel="noopener">https://www.amazon.com/s?k=B0CDY277D3</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:37:14Z</span></td>
+  <td>Rating, rounded rating count, current price, list price, deal badge, lowest other-offer price, &#x27;bought in past month&#x27; signal, canonical product URL, image URL</td>
+  <td>Amazon request id qid=1794609434 (Unix epoch) decodes to 2026-11-13T22:37:14Z, which is the exact capture timestamp for these values.</td>
+</tr>
+<tr>
+  <td class="mono">S08</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/s?k=B09B7SB46R" target="_blank" rel="noopener">https://www.amazon.com/s?k=B09B7SB46R</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:33:46Z</span></td>
+  <td>Rating, rounded rating count, current price, list price, deal badge, lowest other-offer price, &#x27;bought in past month&#x27; signal, canonical product URL, image URL</td>
+  <td>Amazon request id qid=1794609226 decodes to 2026-11-13T22:33:46Z.</td>
+</tr>
+<tr>
+  <td class="mono">S09</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/s?k=B08DKYBTPH" target="_blank" rel="noopener">https://www.amazon.com/s?k=B08DKYBTPH</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:37:34Z</span></td>
+  <td>Rating, rounded rating count, current price, list price, deal badge, lowest other-offer price, &#x27;bought in past month&#x27; signal, canonical product URL, image URL</td>
+  <td>Amazon request id qid=1794609454 decodes to 2026-11-13T22:37:34Z.</td>
+</tr>
+<tr>
+  <td class="mono">S10</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/CHEFMAN-Windows-Independent-Nonstick-Dishwasher/dp/B0CDY277D3" target="_blank" rel="noopener">https://www.amazon.com/CHEFMAN-Windows-Independent-Nonstick-Dishwasher/dp/B0CDY277D3</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>Canonical product URL shown on the site for ASIN B0CDY277D3</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S11</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/Emeril-Multi-Function-functions-dual-speed-rotisserie/dp/B09B7SB46R" target="_blank" rel="noopener">https://www.amazon.com/Emeril-Multi-Function-functions-dual-speed-rotisserie/dp/B09B7SB46R</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:36:00Z</span></td>
+  <td>Canonical product URL shown on the site for ASIN B09B7SB46R</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S12</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/Chefman-TurboFry-Air-Fryer-Dishwasher/dp/B08DKYBTPH" target="_blank" rel="noopener">https://www.amazon.com/Chefman-TurboFry-Air-Fryer-Dishwasher/dp/B08DKYBTPH</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:37:00Z</span></td>
+  <td>Canonical product URL shown on the site for ASIN B08DKYBTPH</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S13</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/" target="_blank" rel="noopener">https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:39:00Z</span></td>
+  <td>Official &#x27;Best Sellers in Air Fryers&#x27; list - competitor benchmark rows 1-6 (rank, title, rating, rating count, price)</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S14</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/Best-Sellers-Home-Kitchen-Fryers/zgbs/home-garden/17659095011/" target="_blank" rel="noopener">https://www.amazon.com/Best-Sellers-Home-Kitchen-Fryers/zgbs/home-garden/17659095011/</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>Official &#x27;Best Sellers in Fryers&#x27; list - confirms category taxonomy: Fryers &gt; Air Fryers, Air Fryer Ovens, Deep Fryers</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S15</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/Best-Sellers-Kitchen-Dining-Kitchen-Small-Appliances/zgbs/kitchen/289913/" target="_blank" rel="noopener">https://www.amazon.com/Best-Sellers-Kitchen-Dining-Kitchen-Small-Appliances/zgbs/kitchen/289913/</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>Confirmation of the official category path Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S16</td>
+  <td>Amazon Associates Central</td>
+  <td><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ" target="_blank" rel="noopener">https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>Associates Program Standard Commission Income Statement - Table 1 fixed rates. Kitchen = 4.50%, Home = 3.00%, All Other Categories = 4.00%. Bounty events (Prime = $12.00). Payment minimums.</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S17</td>
+  <td>Amazon Associates Central</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener">https://affiliate-program.amazon.com/help/operating/agreement</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>Associates Program Operating Agreement. Header states &#x27;Updated: October 15, 2025&#x27;. Sections 1-3, 7-12 read: Special Links definition, compliance requirements, monitoring/audit rights.</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S18</td>
+  <td>Amazon Associates Central</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">https://affiliate-program.amazon.com/help/operating/policies</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:39:00Z</span></td>
+  <td>Associates Program Policies. Header states &#x27;Updated: April 14, 2026&#x27;. Session/cookie rules (24h session, 89-day cart window, 180-day ship window), Participation Requirements section 2(b) price-display restriction, promotional-limitation and site-content rules.</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S19</td>
+  <td>Amazon Associates (official Amazon.com FAQ page)</td>
+  <td><a href="https://www.amazon.com/b?ie=UTF8&amp;node=51812349011" target="_blank" rel="noopener">https://www.amazon.com/b?ie=UTF8&amp;node=51812349011</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:41:00Z</span></td>
+  <td>Official Associates FAQ. States the 180-day / three qualifying sales evaluation rule and the required disclosure wording (see FLAG-12 for the exact-quote caveat).</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S20</td>
+  <td>U.S. Federal Trade Commission</td>
+  <td><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener">https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers</a></td>
+  <td class="mono">200</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>FTC disclosure guidance: when to disclose, how to disclose (hard to miss, simple language, not buried in hashtags/links), and the prohibition on claiming experience with a product you have not tried.</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S21</td>
+  <td>U.S. Federal Trade Commission</td>
+  <td><a href="https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews" target="_blank" rel="noopener">https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews</a></td>
+  <td class="mono">200 (linked from S20 - reached only as a tag link, page body not retrieved)</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>FTC Endorsements hub - navigational reference only</td>
+  <td>Linked from S20. Page body was not retrieved in this session; used only as a category landing link.</td>
+</tr>
+<tr>
+  <td class="mono">S22</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/gp/aw/d/B0CDY277D3" target="_blank" rel="noopener">https://www.amazon.com/gp/aw/d/B0CDY277D3</a></td>
+  <td class="mono">200 (mobile variant; same shuffle landing, no detail block)</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>Secondary attempt to read the product detail block. Failed - see FLAG-03.</td>
+  <td></td>
+</tr>
+<tr>
+  <td class="mono">S23</td>
+  <td>Amazon</td>
+  <td><a href="https://www.amazon.com/product-reviews/B0CDY277D3" target="_blank" rel="noopener">https://www.amazon.com/product-reviews/B0CDY277D3</a></td>
+  <td class="mono">302 to Amazon sign-in wall</td>
+  <td><span class="ts">2026-11-13T22:38:00Z</span></td>
+  <td>Attempt to read the exact rating count. Blocked - see FLAG-04.</td>
+  <td></td>
+</tr>
+</tbody></table></div>
+
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Observed but not individually fetched <small>kept separate, on purpose</small></h2>
+  <div class="body">
+    <p>These URLs appear on the site but were not fetched themselves. Each was read off an official page that
+    <i>was</i> fetched. They live in a separate file from the table above so that the primary source list stays a
+    pure record of pages that were actually retrieved.</p>
+    <div class="tw"><table>
+<thead><tr><th>Observed on</th><th>URL</th><th>How it was obtained</th></tr></thead>
+<tbody><tr><td class="mono">S07</td><td class="mono">https://m.media-amazon.com/images/I/81VavY-KG8L._AC_UL320_.jpg</td><td>Product image URL as served on the official Amazon search results page</td></tr><tr><td class="mono">S08</td><td class="mono">https://m.media-amazon.com/images/I/81AUxm--7pL._AC_UL320_.jpg</td><td>Product image URL as served on the official Amazon search results page</td></tr><tr><td class="mono">S09</td><td class="mono">https://m.media-amazon.com/images/I/71VzGtbzyFL._AC_UL320_.jpg</td><td>Product image URL as served on the official Amazon search results page</td></tr><tr><td class="mono">S13</td><td class="mono">https://www.amazon.com/Ninja-Capacity-Dehydrate-Technology-AF141/dp/B0CSZ7WBYW</td><td>Product URL as listed on the official Best Sellers page</td></tr><tr><td class="mono">S13</td><td class="mono">https://www.amazon.com/TurboBlaze-Premium-Ceramic-Coating-90%C2%B0-450%C2%B0F/dp/B0C33CHG99</td><td>Product URL as listed on the official Best Sellers page</td></tr><tr><td class="mono">S13</td><td class="mono">https://www.amazon.com/bella-Fits-anywhere-Non-Toxic-Coating-Oatmilk/dp/B0CYJDVT31</td><td>Product URL as listed on the official Best Sellers page</td></tr><tr><td class="mono">S13</td><td class="mono">https://www.amazon.com/Chefman-Air-Fryer-Technology-Touchscreen/dp/B0CNY1F31S</td><td>Product URL as listed on the official Best Sellers page</td></tr><tr><td class="mono">S13</td><td class="mono">https://www.amazon.com/Cuisinart-Fryer-Toaster-Countertop-TOA-55/dp/B0GVVJZDQV</td><td>Product URL as listed on the official Best Sellers page</td></tr><tr><td class="mono">S13</td><td class="mono">https://www.amazon.com/Chefman-Multifunctional-Touchscreen-Rotisserie-Dehydrator/dp/B0GTBN7CS2</td><td>Product URL as listed on the official Best Sellers page</td></tr><tr><td class="mono">S14</td><td class="mono">https://www.amazon.com/Best-Sellers/zgbs</td><td>Amazon Best Sellers root, linked from the official category breadcrumb</td></tr><tr><td class="mono">S15</td><td class="mono">https://www.amazon.com/Best-Sellers-Home-Kitchen/zgbs/home-garden</td><td>Home &amp; Kitchen Best Sellers, linked from the official breadcrumb</td></tr><tr><td class="mono">S15</td><td class="mono">https://www.amazon.com/Best-Sellers-Kitchen-Dining/zgbs/kitchen</td><td>Kitchen &amp; Dining Best Sellers, linked from the official breadcrumb</td></tr><tr><td class="mono">S14</td><td class="mono">https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryer-Ovens/zgbs/kitchen/224479505011</td><td>Air Fryer Ovens Best Sellers, linked from the official subcategory nav</td></tr><tr><td class="mono">S14</td><td class="mono">https://www.amazon.com/Best-Sellers-Kitchen-Dining-Deep-Fryers/zgbs/kitchen/289918</td><td>Deep Fryers Best Sellers, linked from the official subcategory nav</td></tr><tr><td class="mono">S20</td><td class="mono">https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews</td><td>FTC Endorsements hub, linked from the official FTC disclosure page</td></tr><tr><td class="mono">S20</td><td class="mono">https://www.ftc.gov/system/files/documents/plain-language/1001a-influencer-guide-508_1.pdf</td><td>FTC &#x27;Disclosures 101&#x27; PDF, linked from the official FTC page</td></tr><tr><td class="mono">S17</td><td class="mono">https://affiliate-program.amazon.com/welcome</td><td>Associates sign-up page, linked from the official Operating Agreement header</td></tr><tr><td class="mono">S17</td><td class="mono">https://affiliate-program.amazon.com/help/node</td><td>Associates Program Help index, linked from the official header</td></tr><tr><td class="mono">S17</td><td class="mono">https://affiliate-program.amazon.com/contact</td><td>Associates contact page, linked from the official header</td></tr><tr><td class="mono">S17</td><td class="mono">https://affiliate-program.amazon.com/help/operating/compare</td><td>Associates &#x27;what&#x27;s changed&#x27; page, linked from the official Operating Agreement</td></tr><tr><td class="mono">repo</td><td class="mono">https://github.com/kanlerxz87-cyber/Zone3</td><td>This repository</td></tr>
+</tbody></table></div>
+
+  </div>
+</div>
+
+<div class="panel">
+  <h2>What could not be retrieved <small>and what that cost us</small></h2>
+  <div class="body">
+    <div class="tw"><table>
+      <thead><tr><th>Attempt</th><th>Result</th><th>Consequence</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="mono">/dp/ASIN</td>
+          <td>Returned 200, but as a "shuffle" landing variant with no extractable product-detail block.</td>
+          <td>Lost Best Sellers Rank, wattage, model number and the full specification table. Titles and
+          departments still came through, because they appear in the page title.</td>
+        </tr>
+        <tr>
+          <td class="mono">/gp/aw/d/ASIN</td>
+          <td>Same shuffle landing, no detail block.</td>
+          <td>Secondary attempt; no additional data.</td>
+        </tr>
+        <tr>
+          <td class="mono">/product-reviews/ASIN</td>
+          <td>Redirected to the Amazon sign-in wall.</td>
+          <td>Lost exact rating counts. Amazon search results print rounded counts instead, which is why the
+          exact-count column is blank &mdash; <a href="flagged.html#FLAG-04">FLAG-04</a>.</td>
+        </tr>
+        <tr>
+          <td>Best Sellers list, positions 7+</td>
+          <td>Not enumerated.</td>
+          <td>No claim is made that any target product is absent from the full top-100 list.</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <div class="note">Search-result pages and Best Sellers pages <i>were</i> retrievable and carried the
+    commercial data. That is how price, rating, rounded rating count, deal badge, velocity signal and the
+    competitor benchmark set were obtained.</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Machine-readable exports <small>shipped with the site</small></h2>
+  <div class="body">
+    <ul class="tight">
+      <li><a href="data/products.json">data/products.json</a></li>
+      <li><a href="data/competitors.json">data/competitors.json</a></li>
+      <li><a href="data/flags.json">data/flags.json</a></li>
+      <li><a href="data/sources.json">data/sources.json</a></li>
+      <li><a href="data/derived_links.json">data/derived_links.json</a></li>
+    </ul>
+  </div>
+</div>
+
+    </div>
+    <div class="footer">
+      <p>Zone3 is an internal research dashboard. All product data was read from official Amazon pages
+      on 2026-11-13 and is reproduced for review. Prices and ratings change continuously &mdash;
+      re-check the linked source before acting on any figure.</p>
+      <p>Amazon, the Amazon logo and all product names are trademarks of Amazon.com, Inc. or its
+      affiliates. This project is not endorsed by or affiliated with Amazon. &middot;
+      <a href="flagged.html">Flagged for Review</a> &middot;
+      <a href="data-sources.html">Data Sources</a></p>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>

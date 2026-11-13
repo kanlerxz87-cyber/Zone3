@@ -49,7 +49,7 @@
 | `tools/link_report.py` | provenance coverage report across all tables |
 | `assets/app.css`, `assets/app.js` | dashboard UI; sort/filter only, **no runtime fetching** |
 | `config/platform.json` | configuration with credentials explicitly `null` |
-| `index.html` + 15 subpages | generated |
+| `dashboard/` + 15 page directories | generated |
 | `docs/` | this review, `verification-log.md`, `executive-summary.md`, `compliance.md` |
 | `README.md` | rewritten from the 7-byte stub |
 
