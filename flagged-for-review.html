@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for Review — Zone3 Amazon Affiliate Platform</title>
+<meta name="description" content="Flagged irregularities and unverified items for the Zone3 Amazon affiliate platform, with source links. Nothing was inferred or filled in.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header top">
+  <div class="wrap topbar">
+    <div class="brand"><a href="index.html"><span class="mark">Z3</span>Zone3</a><span>Amazon affiliate dashboard</span></div>
+    <nav class="navLinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="category/kitchen.html">Categories</a>
+      <a href="categories/home-kitchen-air-fryers.html">Air Fryers table</a>
+      <a href="analysis.html">Analysis</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="disclosure.html">Affiliate Disclosure</a>
+      <a href="flagged-for-review.html" class="active">Flagged for Review</a>
+      <a href="sources.html">Sources</a>
+      <a href="flagged.html" class="btn small">Session archive: flagged.html</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" style="max-width:1200px;margin:0 auto;padding:24px 20px;">
+
+  <nav class="crumbs"><a href="index.html">Home</a> › Flagged for Review</nav>
+  <h1>Flagged for Review</h1>
+  <p class="lede">Unverified items and irregularities, published for owner review before the site goes live. None of these block publication. Nothing here was inferred or invented.</p>
+
+  <section class="card">
+    <h3 style="margin:0 0 10px 0;font-size:1.05rem;">Irregularities found during this session</h3>
+    <ul style="margin:0 0 12px 0;padding-left:18px;">
+      <li><strong>Short-link ASINs do not resolve directly.</strong> B04G1MEwY, B02NbDxp3 and B00hJ57DV return 404 on direct <code>/dp/</code> lookup on amazon.com, amazon.co.uk, amazon.de, amazon.ca, amazon.in and amazon.com.au. Only the <code>link.amazon</code> short links resolve, redirecting to destination ASINs B0CDY277D3, B09B7SB46R, B08DKYBTPH respectively.</li>
+      <li><strong>Short-link code ≠ destination ASIN.</strong> The code embedded in each short link is not the ASIN of the product it redirects to. Product tables use the destination ASIN (verified page) as the product identity.</li>
+      <li><strong>Product detail content blocked.</strong> Amazon's bot-protection checkpoint prevented reading price, star rating, review count and availability from the official pages.</li>
+      <li><strong>Repo was near-empty at session start.</strong> Only README.md existed; no code, configuration or data.</li>
+    </ul>
+  </section>
+
+  <section class="card" style="margin-top:20px;">
+    <h3 style="margin:0 0 10px 0;font-size:1.05rem;">Flagged items F1–F8 (companion session)</h3>
+    <p style="margin:0 0 10px 0;">From the companion session's review board (data/flags.json), reproduced here for completeness:</p>
+    <div class="tablewrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th style="width:6%">ID</th>
+            <th style="width:14%">Type</th>
+            <th>Item</th>
+            <th style="width:30%">Detail</th>
+            <th style="width:20%">Source(s)</th>
+            <th style="width:20%">Requested action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="F1">
+            <td><strong>F1</strong></td>
+            <td><span class="badge warn">Irregularity</span></td>
+            <td>Short-link codes do not match the ASIN</td>
+            <td>Each link.amazon code (B04G1MEwY, B02NbDxp3, B00hJ57DV) resolves to a different product ID (B0CDY277D3, B09B7SB46R, B08DKYBTPH). The short code is not an ASIN. Verified by following the redirects.</td>
+            <td class="small"><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="nofollow noopener">S1 ↗</a> · <a href="https://link.amazon/B02NbDxp3" target="_blank" rel="nofollow noopener">S2 ↗</a> · <a href="https://link.amazon/B00hJ57DV" target="_blank" rel="nofollow noopener">S3 ↗</a></td>
+            <td>Confirm each short link is the intended product.</td>
+          </tr>
+          <tr id="F2">
+            <td><strong>F2</strong></td>
+            <td><span class="badge warn">Irregularity</span></td>
+            <td>No Associate tag visible in the resolved links</td>
+            <td>The resolved Amazon URLs contain tracking parameters (lv, btn_ref, channelId, plpRedirect) but no tag= parameter that identifies an Associates ID. No Associate ID was supplied, so none was added or invented. Commission on these links cannot be attributed to an account until a tagged link is generated.</td>
+            <td class="small"><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="nofollow noopener">S1 ↗</a> · <a href="https://link.amazon/B02NbDxp3" target="_blank" rel="nofollow noopener">S2 ↗</a> · <a href="https://link.amazon/B00hJ57DV" target="_blank" rel="nofollow noopener">S3 ↗</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">S8 ↗</a></td>
+            <td>Owner: generate tagged links from your Associates account and replace the short links here.</td>
+          </tr>
+          <tr id="F3">
+            <td><strong>F3</strong></td>
+            <td><span class="badge warn">Irregularity</span></td>
+            <td>Marketplace and eligibility not confirmed</td>
+            <td>All three links resolve to amazon.com (United States). The site owner's location is Oslo, Norway. Whether the owner's Associates account and country match these US listings was not verified.</td>
+            <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener">S7 ↗</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">S8 ↗</a></td>
+            <td>Confirm the Associates account country and whether US-marketplace links are appropriate for your audience.</td>
+          </tr>
+          <tr id="F4">
+            <td><strong>F4</strong></td>
+            <td><span class="badge unv">Unverified</span></td>
+            <td>Price, rating, review count, availability — all three products</td>
+            <td>Amazon product pages returned only footer/navigation boilerplate, or a 'Continue shopping' interstitial, to automated retrieval. These values are left blank in the table. They change over time and must be checked on the live listing.</td>
+            <td class="small"><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="nofollow noopener">S4 ↗</a> · <a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="nofollow noopener">S5 ↗</a> · <a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="nofollow noopener">S6 ↗</a></td>
+            <td>Manually record price/rating/reviews with date and source screenshot.</td>
+          </tr>
+          <tr id="F5">
+            <td><strong>F5</strong></td>
+            <td><span class="badge unv">Unverified</span></td>
+            <td>Commission rate for Kitchen-category products</td>
+            <td>VERIFIED in this merged session: Kitchen = 4.50% from the official Associates Program Standard Commission Income Statement (https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ). The schedule page (S9) is login-gated, but the Commission Income Statement node page was read successfully.</td>
+            <td class="small"><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ" target="_blank" rel="noopener">Commission statement ↗</a> · <a href="https://affiliate-program.amazon.com/help/operating/schedule" target="_blank" rel="noopener">S9 ↗</a></td>
+            <td>Re-check after logging into Associates Central; keep the 4.50% figure while it remains on the official statement page.</td>
+          </tr>
+          <tr id="F6">
+            <td><strong>F6</strong></td>
+            <td><span class="badge unv">Unverified</span></td>
+            <td>Product 3 direct page not verified</td>
+            <td>Fetching dp/B08DKYBTPH directly returned a 'Continue shopping' interstitial. Its title and brand were taken only from the redirect of link.amazon/B00hJ57DV.</td>
+            <td class="small"><a href="https://link.amazon/B00hJ57DV" target="_blank" rel="nofollow noopener">S3 ↗</a> · <a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="nofollow noopener">S6 ↗</a></td>
+            <td>Open the listing in a browser and confirm the title.</td>
+          </tr>
+          <tr id="F7">
+            <td><strong>F7</strong></td>
+            <td><span class="badge warn">Scope gap</span></td>
+            <td>Platform automation not built</td>
+            <td>The brief describes an AI platform with automated product discovery, live pricing/review analysis, content generation, click and conversion tracking, and campaign optimisation. The repository contains a verified static dashboard for the three supplied products plus a client-side click/conversion dashboard. No data feeds or content automation were implemented.</td>
+            <td class="small">—</td>
+            <td>Decide whether to commission the automation layer in a follow-up task.</td>
+          </tr>
+          <tr id="F8">
+            <td><strong>F8</strong></td>
+            <td><span class="badge unv">Compliance note</span></td>
+            <td>FTC guidance dated 2019</td>
+            <td>The FTC Disclosures 101 guide was fetched; its page is dated November 2019. Newer FTC Endorsement Guide revisions reported by secondary sources were not verified on ftc.gov in this session.</td>
+            <td class="small"><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener">S10 ↗</a></td>
+            <td>Check the current FTC Endorsement Guides before publishing marketing copy.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:20px;">
+    <h3 style="margin:0 0 10px 0;font-size:1.05rem;">Verified items (for contrast)</h3>
+    <ul style="margin:0;padding-left:18px;">
+      <li>All three link.amazon short links resolve to real Amazon.com product pages.</li>
+      <li>Product titles, brands, capacities and ASINs confirmed from the official pages.</li>
+      <li>Commission category Kitchen → 4.50% (official Commission Income Statement).</li>
+      <li>Disclosure requirement: Operating Agreement §5, "As an Amazon Associate I earn from qualifying purchases" (official).</li>
+    </ul>
+  </section>
+
+  <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap;">
+    <a href="products.html" class="btn">Back to products</a>
+    <a href="sources.html" class="btn outline">Sources S1–S10</a>
+    <a href="index.html" class="btn outline">Home</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footerRow">
+    <div class="footerCol">
+      <div style="font-weight:700;color:var(--text);font-size:0.95rem;">Zone3</div>
+      <div style="font-size:0.8rem;color:var(--muted);">Flagged items page — for manual review.</div>
+    </div>
+    <div class="footerCol">
+      <h4>Official sources</h4>
+      <ul>
+        <li><a href="https://www.amazon.com" target="_blank" rel="noopener">Amazon.com</a></li>
+        <li><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ" target="_blank" rel="noopener">Associates Commission Income Statement</a></li>
+        <li><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener">Associates Operating Agreement</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--line);margin-top:22px;padding-top:14px;font-size:0.78rem;color:var(--muted);">
+    Zone3 · No values inferred or filled in. Published via GitHub Pages.
+  </div>
+<div style="border-top:1px solid var(--line);margin-top:22px;padding-top:14px;font-size:0.78rem;color:var(--muted);"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. All values verified against official Amazon sources where accessible; unverified values left blank and flagged.</div>
+</footer>
+
+<script src="assets/script.js"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>
