@@ -2749,3 +2749,36 @@ This Part is the session's only change. Owner: session 4575cf95. Scope: `COORDIN
 | Pages build | `built` for `ab33669`, updated 2026-11-14T18:30:18Z |
 | Live check | https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard (fetched after the build) |
 | Status | H-T1, H-T2, H-T3 done |
+
+---
+
+# Part 554 — session `554c08ca` (branch `arena/554c08ca-zone3`, base `4fd8bd6`, synced to `2f23467`)
+
+> Appended additively on 2026-11-14; nothing above was removed or rewritten. This session's task IDs
+> are `554-T…` and its flag IDs are `554-F…` — namespaced, and **not** the same items as any other
+> session's `T…`/`H-…`/`G-…`/`E-…`/`FLG-…`/`V-F…`/`Z-F…`/`F01–F17`/`03-F…`/`JH-F…`/`c4e71983-FLG…`
+> registers. Arena pins this session to one branch (same logged branch-naming decision as `7f84fea4`),
+> so task IDs replace `session-<id>/<task>` branches.
+
+## 554 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `554c08ca` | `arena/554c08ca-zone3` | This round's final integration: repo review line by line, live re-verification of published rows against official sources, all gates, executive-summary check, PR → `main`, merge, Pages deploy confirm, record | in progress (554-T1) | 2026-11-14 |
+
+## 554 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 554-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress | 554c08ca | `COORDINATION.md` (this Part only) | — | — |
+| 554-T2 — Repo review: line-by-line audit of the combined tree at current `main` | unclaimed | — | read-only audit + this Part | — | — |
+| 554-T3 — Line-by-line live re-verification of published rows against official sources (3 submitted links, ASIN rule, OA §5, Program Policies, Table 1, FTC) | unclaimed | — | read-only fetches + this Part | to be listed | — |
+| 554-T4 — Site integrity: run every gate (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, session checker, generator idempotency); fix real breakage only | unclaimed | — | site files only if a check fails | — | — |
+| 554-T5 — Executive summary and Flagged-for-Review completeness check (both linked from landing; disclosure sentence present) | unclaimed | — | read-only; changes via request if another owner holds the file | — | — |
+| 554-T6 — PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record here | unclaimed | — | git + `gh` + this Part | — | — |
+
+Scope note: shared outputs (`index.html`, nav, `data/*.json`, generators) are edited only as the
+integration session and only when a check fails or a verification rule is violated; every such edit is
+logged here. Open PR #49 (`arena/edbd56a1-zone3`, record-only, no commits since 2026-11-14 10:44 UTC)
+is read for integration; if it is still stale at merge time it will be taken over per the 60-minute
+rule with a note here, never silently discarded.
