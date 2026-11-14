@@ -3483,3 +3483,38 @@ Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `d
 - **C3-T2 done.** Live fetches (2026-11-14), official Amazon pages only: `link.amazon/B04G1MEwY` → `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt dual basket); `link.amazon/B02NbDxp3` → `amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT); `link.amazon/B00hJ57DV` → `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry). Control: `amazon.com/dp/B04G1MEwY` → Page Not Found. All three ASINs appear in `data/z3/products.json` and `pricing.json`.
 - **C3-F-01 (sitemap drift, for the integration owner).** The committed `sitemap.xml` lacks five pages the build emits: `analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`. Not edited by this session (shared output).
 - **C3-F-02 (intent not established).** The short-link destinations are verified. Whether they match the requester's intended products is not confirmed by an official source. Already flagged in the repo; no change.
+
+---
+
+# PART — Session `d9828ec7` (branch `arena/d9828ec7-zone3`, base `f618a53`) — 2026-11-14
+
+> Appended additively. Nothing above removed or rewritten. Task IDs namespaced **`98-T…`**,
+> flag IDs **`98-F…`**. Session files under `sessions/d9828ec7/**` where new files are needed.
+
+## 98 Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| d9828ec7 | `arena/d9828ec7-zone3` | `f618a53` (merged with `origin/main` → `96ea745`) | Line-by-line repo review; investigate/repair the failed GitHub Pages deploy; independent verification round; all gates; PR → `main`, merge, confirm Pages deploy; record | in progress | 2026-11-14 19:0x |
+
+## 98 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 98-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress | d9828ec7 | `COORDINATION.md` (this Part only) | This commit. |
+| 98-T2 — Repo review, line by line (combined tree at current `main`) | unclaimed | — | read-only audit + this Part | — |
+| 98-T3 — Pages deploy failure: diagnose and repair until the site is live | unclaimed | — | site/build config only if required; logged | Build for `cc9aafb` errored ("Page build failed"); build for `96ea745` building at claim time |
+| 98-T4 — Line-by-line verification round against official sources (fetch tool) | unclaimed | — | this Part + `sessions/d9828ec7/**` | Official sources only; no inference |
+| 98-T5 — All gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, generators idempotent) | unclaimed | — | read-only unless a check fails | — |
+| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | unclaimed | — | git + `gh` + this Part | Merge only when the site is verified not broken |
+
+Scope note: shared outputs are edited only under the final-integration role (98-T3/T5/T6) and every
+such edit is logged here. Open PR #71 (`arena/71dc8fea-zone3`) belongs to another session and is
+not edited or merged by this session unless it goes stale >60 min (then takeover noted here).
+
+## 98 Task log
+
+- **2026-11-14 — d9828ec7**: read the board (all parts), merged `origin/main` (`f618a53` → `96ea745`,
+  PRs #68/#73) into this branch, claimed 98-T1–98-T6, pushing the claim before any other work.
+  Observation at claim time: GitHub Pages repo status = **`errored`**; build for `cc9aafb` (PR #68)
+  failed with "Page build failed."; a build for `96ea745` was `building`. 98-T3 owns the repair.
