@@ -43,7 +43,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-51 official sources · 55 policy facts · 69 flags · 13 root pages, a 16-page audit build, a `/docs/`
+51 official sources · 55 policy facts · 72 flags · 13 root pages, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -137,8 +137,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-69 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 13 high, 20 medium, 21 low, 12 informational (informational entries record a correction
+72 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 13 high, 20 medium, 21 low, 15 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
@@ -180,8 +180,8 @@ changes are auditable rather than silent):
 * Commission tables (S25, S26), the Creators API pages (S04–S06), the FTC pages (S07, S24, S44), the
   enrolment pages (S28, S29) and the Amazon bestseller page (S43) re-read; the Operating Agreement
   and Program Policies were read section by section across all 4 and 11 chunks respectively.
-* Build gates, all green: `scripts/check_site.py` (13 pages, 3 products, 51 sources, 69 flags),
-  `tools/verify_site.py` (71 pages, 1,266 rows, 1,065 with an official source link, 404 flagged, 82
+* Build gates, all green: `scripts/check_site.py` (13 pages, 3 products, 51 sources, 72 flags),
+  `tools/verify_site.py` (71 pages, 1,269 rows, 1,068 with an official source link, 405 flagged, 82
   anchored to the repo), `tools/link_report.py` (no dangling refs), `scripts/check_all_links.py`
   (117 pages, 105 external URLs, 0 errors), `scripts/build_sitemap.py` (66 pages covered), and both
   site generators rebuild to a stable fixpoint.
@@ -243,6 +243,14 @@ in a logged-in Associates account (FLG-003).
 ---
 
 ## 9. Final integration pass — session `3d359c23` (2026-11-14)
+**Merge note.** While this branch was open, `main` merged session `f2102efa's` three additional
+flags (`F2-F-01`…`F2-F-03`), so the flag register now holds **72** entries: this session's three
+(`3D-F-01`…`3D-F-03`) and `f2102efa's` three are both published, and the generated pages were
+rebuilt from the merged register. `main` also carried a stray `>>>>>>>` conflict-marker line in
+`COORDINATION.md` (line 3554, committed by that session and left unbalanced); this integration
+removed the marker line and kept every word of the board. The resolution is scripted in
+`scripts/resolve_rebase.py` so it is repeatable and auditable rather than a one-off manual edit.
+
 
 **One published statement contradicted the site's own output, and it is fixed.** The *Content &
 compliance* page said *"No article, comparison or buying guide has been written yet"*, and its
@@ -288,7 +296,7 @@ the page it cites; nothing was found false and nothing was filled in. The record
 [`research/3d359c23-verification-log.md`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/3d359c23-verification-log.md);
 the line-by-line repository review is
 [`research/3d359c23-repo-review.md`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/3d359c23-repo-review.md).
-Gates on the merged tree: `check_site` OK (13 pages / 3 products / 51 sources / 69 flags) ·
-`verify_site` PASS (71 pages / 1,266 rows / 1,065 with an official source link / 0 advisories) ·
+Gates on the merged tree: `check_site` OK (13 pages / 3 products / 51 sources / 72 flags) ·
+`verify_site` PASS (71 pages / 1,269 rows / 1,068 with an official source link / 0 advisories) ·
 `link_report --strict` exit 0 · `check_all_links` 117 pages, 105 external URLs, 0 errors ·
 `sessions/3c886b62` checker OK · sitemap covers 66 pages · all generators idempotent.

@@ -3725,7 +3725,7 @@ S44, S05. **Deliberately not attempted**: prices/ratings/review counts as produc
 | `data/topics.json` | **New.** 12 editorial topics: working title, angle, intent, funnel stage, products, the verified fact each is built on, its sources, the page that already carries it, what it may not state + the rule, status, flags. Plus the 4-step derivation method and 4 "topics deliberately not planned" entries. | absent → present |
 | `scripts/build_site.py` | `build_topics()` → `content-topics.html`; NAV entry; dashboard tile; site-map entry; `build_content()` rewritten. | 1 055 lines → 1 196 lines |
 | `scripts/check_site.py` | `content-topics.html` added to `PAGES` and `TABLE_PAGES`, so the new page is held to the same row-provenance rule as every other data page. | 12 pages → 13 pages checked |
-| `data/flags.json` | **FLG-012 corrected** (item, detail, action + a dated addendum keeping the earlier wording); **3D-F-01, 3D-F-02, 3D-F-03 added**; the register `note` updated. | 66 flags → 69 flags |
+| `data/flags.json` | **FLG-012 corrected** (item, detail, action + a dated addendum keeping the earlier wording); **3D-F-01, 3D-F-02, 3D-F-03 added**; the register `note` updated. | 66 flags → 72 flags (this session's 3 plus session f2102efa's 3, unioned, not overwritten) |
 | `content-topics.html` | **New** (generated). | absent → present |
 | `content.html` | Lead sentence and status table rewritten to show what is published; planned topics column added; correction note added. | "Not written" → published + linked |
 | `index.html` | New tile and site-map entry. | 12 tiles → 13 tiles |
@@ -3734,6 +3734,7 @@ S44, S05. **Deliberately not attempted**: prices/ratings/review counts as produc
 | `EXECUTIVE-SUMMARY.md` | Counts refreshed; §4 row for the content capability rewritten; §9 added for this pass. | — |
 | `README.md` | Source and open-item counts refreshed; the new page listed. | — |
 | `research/3d359c23-verification-log.md`, `research/3d359c23-repo-review.md` | **New.** | absent → present |
+| `scripts/resolve_rebase.py` | **New.** Scripted, repeatable conflict resolution for the two files that keep colliding — `COORDINATION.md` (append-only board) and `data/flags.json` (union of both registers) — with a line-start-anchored marker check. | absent → present |
 
 **Not touched, deliberately:** `/docs/**`, `/dashboard/**`, `/sessions/**`, `/archive/**`,
 `data/products.json`, `data/marketing.json`, `data/policy_facts.json`, `data/sources.json`,
@@ -3753,9 +3754,9 @@ collide with another session's register; its identifiers are namespaced `3D-T…
 | Gate | Result |
 |---|---|
 | `python3 scripts/build_site.py` | exit 0; **zero working-tree diff** (idempotent) |
-| `python3 scripts/check_site.py` | **OK: 13 pages, 3 products, 51 sources, 69 flags. All checks passed.** |
+| `python3 scripts/check_site.py` | **OK: 13 pages, 3 products, 51 sources, 72 flags. All checks passed.** |
 | `python3 tools/build_site.py` | exit 0 |
-| `python3 tools/verify_site.py` | **VERIFY PASS · 71 pages · 1 266 table rows · 1 065 with official source · 404 with flag · 82 repo anchor** · 0 advisories |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 71 pages · 1 269 table rows · 1 068 with official source · 405 with flag · 82 repo anchor** · 0 advisories |
 | `python3 tools/link_report.py --strict` | exit 0 (no dangling source or flag refs) |
 | `python3 scripts/check_all_links.py` | **117 HTML pages, 105 distinct external URLs, 0 errors** |
 | `python3 sessions/3c886b62/tools/check_links.py` | **OK** — no broken internal links, every data row has a source cell |
@@ -3767,6 +3768,8 @@ collide with another session's register; its identifiers are namespaced `3D-T…
 | When | What happened | Resolution |
 |---|---|---|
 | 2026-11-14 ~20:20 UTC | `git pull --rebase origin main`: `main` had moved through PRs #73–#77 (sessions `c3dbcc40`, `3ead7ac8`, `554c08ca`). Conflicts in `COORDINATION.md` and `EXECUTIVE-SUMMARY.md`. | **Both sides kept in full.** `COORDINATION.md` was rebuilt as `origin/main`'s entire board (3 526 lines) plus this Part appended, with a line-start marker check before staging. `EXECUTIVE-SUMMARY.md` kept main's §8 (session `3ead7ac8`) and its §2 wording, merged both session attributions in the header, and took the newer counts (69 flags, 13 root pages) plus a pointer to this session's record. |
+| 2026-11-14 ~20:30 UTC | `main` moved again: PR #80 merged session `f2102efa`, which added three flags (`F2-F-01`…`F2-F-03`) to `data/flags.json` and 94 lines to this board. Conflicts in `COORDINATION.md` and `flagged.html`. | **The two flag registers were unioned, not overwritten.** `data/flags.json` now holds 72 flags: `f2102efa's` three and this session's three are all published. `flagged.html` is generated, so it was rebuilt from the merged register rather than hand-merged. |
+| 2026-11-14 ~20:35 UTC | **`main` itself carried a stray conflict-marker line**: `>>>>>>> d99981f (COORDINATION: register session f2102efa, claim F2-T1..F2-T5)` at `COORDINATION.md:3554`, committed by that session, with no matching `<<<<<<<` and no `=======`. | **Removed, and the surrounding board kept verbatim.** The line was a leftover from that session's own resolution and carries no content. Recorded here rather than silently dropped, because it is a real defect in a file that `main` publishes. The resolution is scripted in `scripts/resolve_rebase.py` so it is repeatable and auditable. |
 | 2026-11-14 ~20:25 UTC | **A mistake of this session's, caught and fixed.** The first rebase attempt committed a `COORDINATION.md` that still carried git's conflict markers, because the guard in the resolution script tested for the substring `<<<<<<<` anywhere in the file — and the board's own prose mentions the marker string, so the guard aborted and the conflicted file was staged as-is. | Detected immediately by `git grep`, before anything was pushed. The branch history was rebuilt (`git reset --soft` to `origin/main`, then two clean commits: claim, then work). The intermediate commit no longer exists on the branch, and the final tree is marker-free. Recorded here rather than quietly fixed, because the board's rule is that a conflict is logged, not hidden. |
 
 ## 3D Sources used (all official; fetched 2026-11-14)
