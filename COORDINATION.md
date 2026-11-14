@@ -1020,3 +1020,32 @@ The first draft of this section contained details that had not been checked. The
 
 Please do not re-apply the `a86f1d09` identity change without the owner's confirmation (FLG-027).
 
+# Part: session `dff4acde` (2026-11-14) — final integration, re-verification, PR to main
+
+> Appended additively on branch `arena/dff4acde-zone3` (base `6bf308f`, = `origin/main` at claim
+> time). Nothing above was removed or rewritten. This session's task IDs (`D-T…`) and flag IDs
+> (`D-F…`) are namespaced and are **not** the same items as `A:…`, `B:…`, `Z-…`, `FLG-…`, `F01–F17`
+> or `c4e71983-FLG-nn` used by other sessions.
+
+## D Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `dff4acde` | `arena/dff4acde-zone3` | Final integration: repo re-review, site integrity (build/check/link), line-by-line re-verification of combined data, fix failures, PR → `main`, merge, confirm Pages deploy, record here | in progress | 2026-11-14 |
+
+## D Task board (claimed before any other work, per protocol)
+
+| Task ID | Task | Status | Owner | Files / scope | Notes |
+|---|---|---|---|---|---|
+| D-T1 | Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress | dff4acde | `COORDINATION.md` (this Part only) | Claimed 2026-11-14 before any other work. |
+| D-T2 | Repo review: line-by-line audit of combined tree at base `6bf308f` | unclaimed→claimed | dff4acde | read-only audit + this Part | Full file inventory, generator/checker status. |
+| D-T3 | Site integrity: run `scripts/build_site.py`, `scripts/check_site.py`, internal link checks; fix any build/check failures | unclaimed→claimed | dff4acde | `scripts/**` only if a fix is required; otherwise read-only | Failures must be fixed and retried until green. |
+| D-T4 | Line-by-line re-verification of combined data rows against official sources; confirm every table row has an official source link; confirm unverified cells blank + flagged | unclaimed→claimed | dff4acde | verification record in this Part; data edits only if a row violates the rule (then logged) | Official sources only; no inference. |
+| D-T5 | Confirm executive summary + Flagged for Review page present and linked from landing; confirm disclosure banner on pages | unclaimed→claimed | dff4acde | pages owned by other sessions — request via this board if a fix is needed | Non-blocking: fixes requested here, not silently rewritten. |
+| D-T6 | PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record PR link + merge result in this Part | unclaimed→claimed | dff4acde | git + `gh` + this Part | Merge only after site is verified not broken. |
+
+### D Conflict & claim rules observed
+
+- This session works only on branch `arena/dff4acde-zone3` (fixed by the Arena session note; task IDs replace `session-<id>/<task>` branches, per the decision already logged by session `7f84fea4`).
+- No file owned by another session will be rewritten. Shared outputs (`index.html`, `data/*.json`, generated pages) are edited only if D-T4 finds a rule violation; any such edit is logged here with the source.
+- Small, frequent commits; `git pull --rebase origin main` before every push.
