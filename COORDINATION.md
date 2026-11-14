@@ -1161,3 +1161,37 @@ S01–S03, S19, S25, S26, S28, S29 as listed in `data/sources.json` (same URLs);
 | Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**, findings + per-claim source links render |
 | Site merged while flagged? | yes — D-F-01…05 and all prior FLG/V/Z/F flags are non-blocking and published on the Flagged for review pages, as the brief requires |
 | Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
+
+---
+
+# Part E — session `03bbd050` (2026-11-14) — independent re-verification + integration clean-up
+
+> Appended additively on branch `arena/03bbd050-zone3` (base `8043815acee6aa6f139fc49d066259d13faa7b06`, = `origin/main` at claim
+> time). Nothing above this line was removed or rewritten. This session's IDs are namespaced `E-T…` (tasks) and
+> `E-F-nn` (flags); they are **not** the same items as `A:…`, `B:…`, `C…`, `D…`, `V…`, `Z…`, `S…`, `FLG-…` or `F01–F17`.
+
+## E Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `03bbd050` | `arena/03bbd050-zone3` | Final integration pass: independent line-by-line re-verification of load-bearing claims against live official sources; repo review of the merged tree; resolve the open cross-session disagreement on submitted-link product identity; consolidate navigation/category subpages; refresh executive summary; PR → `main`, merge, confirm Pages | in progress | 2026-11-14 |
+
+## E Task board (claimed before any other work, per protocol)
+
+| Task ID | Task | Status | Owner | Files / scope | Notes |
+|---|---|---|---|---|---|
+| E-T1 | Read board, register session, claim tasks, push claim immediately | done | 03bbd050 | `COORDINATION.md` (this Part only) | This commit. |
+| E-T2 | Repo review, line by line, of the merged tree at base `8043815` — inventory, generators, data files, all four checkers, whole-tree link audit, secrets scan | in progress | 03bbd050 | read-only audit + findings in this Part | No file rewritten under this task. |
+| E-T3 | Independent re-verification of every load-bearing claim against live official Amazon / FTC / GitHub sources; re-test the three submitted links and their `/dp/` direct form | unclaimed→in progress | 03bbd050 | read-only + record in this Part; data edits only where a published value violates the blank-and-flag rule | Official sources only, no inference, no reuse of a prior session's snippet as evidence. |
+| E-T4 | Resolve the identity disagreement (Part C conflict log, `FLG-027`) with evidence and make the published wording consistent across root pages | in progress | 03bbd050 | `data/*.json`, `scripts/build_site.py`, generated root pages | Shared outputs; edited only because all other sessions are merged and this is the integration pass. |
+| E-T5 | Site UX: one clean landing/dashboard, subpages organised by category, every table row with an official source link | in progress | 03bbd050 | `index.html` + category pages **via the generator only**, `assets/style.css` if needed | Never hand-edit generated HTML (lesson D-F-04). |
+| E-T6 | Executive summary refresh (`EXECUTIVE-SUMMARY.md`, `executive-summary.html` via data) + disclosure present on every page | unclaimed | 03bbd050 | `EXECUTIVE-SUMMARY.md`, `data/*` | |
+| E-T7 | Housekeeping flags: `uncited sources=[SRC-07]`, `unreferenced flags=[FLG-001,002,003,007,027]`, stale generator text | unclaimed | 03bbd050 | `data/*.json` | Logged, fixed if it is within the generator's reach. |
+| E-T8 | PR → `main`, merge without waiting, confirm Pages build + live page checks, record here | unclaimed | 03bbd050 | git + `gh` + this Part | Only after all gates green. |
+
+## E Rules observed
+
+- Work only on `arena/03bbd050-zone3` (Arena fixes the session branch; per-task `session-<id>/<task>` branches are not available — decision already logged by session `7f84fea4`).
+- `git pull --rebase origin main` before every push; `COORDINATION.md` conflicts resolved by keeping both sides in full.
+- No hand-edits to generated HTML: change the generator or `data/*.json`, then rebuild and diff.
+- Every published value carries an official-source link or is left blank and flagged. Unverified ≠ estimated.
