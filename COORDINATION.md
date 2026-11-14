@@ -2975,3 +2975,79 @@ A reproducible inconsistency was found between the latest product register (`dat
 ### I-T5 scope addendum — summary and provenance count reconciliation
 
 The T4 correction exposed two additional stale quantitative claims: the executable provenance report still labels all 36 product-attribute cells as identity blanks, although listing title/brand/category are sourced for the observed destinations (the remaining 9 fields × 3 destinations = 27 blank cells); and the standalone README/executive summary still say no product identity can be verified. I-T5 owns reconciling those summaries and the report to the current evidence, while retaining uncertainty about the requester's intended products. Scope: `README.md`, `EXECUTIVE-SUMMARY.md`, `tools/link_report.py`, `tools/build_site.py`, `data/z3/products.json`, `data/z3/flags.json`, plus regenerated `/executive-summary/`, `/flagged/`, `/dashboard/` and report outputs. Do not erase session history or fill dynamic price/review/performance fields.
+---
+
+# Part: session `21acd3c0` (2026-11-14) — line-by-line repo review, independent re-verification, final integration
+
+## 21 Session registry — session `21acd3c0` (branch `arena/21acd3c0-zone3`, base `e8e3e9d`)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 21acd3c0 | `arena/21acd3c0-zone3` | Line-by-line repo review; independent re-verification of the published registers against official sources (live where reachable, recorded evidence otherwise); site gates; PR to `main`, merge, Pages deploy record | in progress (21-T1–21-T6) | 2026-11-14 |
+
+## 21 Task board — claimed 2026-11-14 before any other work (this claim commit)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 21-T1 — Claim + register (pushed before any other work) | done | 21acd3c0 | `COORDINATION.md` 21 Part only | — | — |
+| 21-T2 — Repo review, line by line (whole-tree audit at `e8e3e9d`) | done | 21acd3c0 | `research/21acd3c0-repo-review.md` (new file) | — | to be listed in 21 Part |
+| 21-T3 — Line-by-line re-verification of published product/policy data vs official sources | done | 21acd3c0 | `research/21acd3c0-verification-log.md` (new file) | to be listed in 21 Part | to be listed in 21 Part |
+| 21-T4 — Site integrity gates (build, checkers, link audit, live site) | done (all green) | 21acd3c0 | none (read-only; fixes only if a gate is red, logged) | — | — |
+| 21-T5 — Executive-summary check + flagged items for review | done | 21acd3c0 | `COORDINATION.md` 21 Part; exec-summary checked read-only | — | — |
+| 21-T6 — PR to `main`, merge without approval, Pages deploy verification, publish record | in progress | 21acd3c0 | `COORDINATION.md` 21 Part only | — | — |
+
+### 21 Claim rules observed
+
+- Claim written and pushed before any other work (protocol).
+- Scope is non-overlapping: only new files `research/21acd3c0-*.md` plus this 21 Part of `COORDINATION.md`. No existing page, data register, script, or another session's file is edited by this session, except under the final-integration role if a gate goes red (any such edit will be logged here with before/after).
+- Open PR #55 (`arena/7b70cfb0-zone3`, session 7b70cfb0, "final integration") was observed at claim time. It is not this session's work; if it merges while this branch is open, conflicts will be resolved by keeping both sessions' text and logging it below, without discarding either session's work.
+- The brief's `session-<id>/<task>` branch naming is not usable in this environment: the session branch note fixes this session to the single branch `arena/21acd3c0-zone3` and forbids creating other branches. Task IDs `21-T1…21-T6` replace per-task branches (same decision as session 7f84fea4, Part A).
+
+## 21 Task log
+
+- **2026-11-14 — 21acd3c0**: claim pushed (this commit). Next: 21-T2/21-T3/21-T4.
+
+## 21-T2 record — repo review (done). Full report: [`research/21acd3c0-repo-review.md`](research/21acd3c0-repo-review.md)
+
+Whole-tree audit at `e8e3e9d` + claim commit: 258 files enumerated by directory and file class; canonical registers (`data/products.json`, `data/sources.json`, `data/flags.json`) read field-by-field; generator/gate scripts reviewed. Findings: no inferred values anywhere in the product register (P1–P3 fact fields all `null`); sources are all official hosts (S17 explicitly marked third-party and not used as a fact); marketing section grep-verified free of price/rating values. Five info/low irregularities (21-F-01…05) listed below and on the report; none blocks publishing.
+
+## 21-T3 record — line-by-line re-verification (done). Full record: [`research/21acd3c0-verification-log.md`](research/21acd3c0-verification-log.md)
+
+This session fetched each source itself on 2026-11-14 (page-fetch tool; the session shell has no general egress — recorded honestly in the log):
+
+| # | Checked live by 21acd3c0 | Result | Source |
+|---|---|---|---|
+| A1 | `https://link.amazon/B04G1MEwY` | resolves to `amazon.com/dp/B0CDY277D3`, title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven … : Home & Kitchen" — matches S11/S14 exactly | https://link.amazon/B04G1MEwY |
+| A2 | `https://link.amazon/B02NbDxp3` | resolves to `amazon.com/dp/B09B7SB46R`, title "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven … : Home & Kitchen" — matches S12/S15 exactly | https://link.amazon/B02NbDxp3 |
+| A3 | `https://link.amazon/B00hJ57DV` | resolves to `amazon.com/dp/B08DKYBTPH`, title "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 … : Home & Kitchen" — matches S13/S16/S23/S32 exactly | https://link.amazon/B00hJ57DV |
+| A4 | `https://www.amazon.com/dp/B04G1MEwY` | Amazon "Page Not Found" error page — matches S08; supports FLG-001/FLG-035 | https://www.amazon.com/dp/B04G1MEwY |
+| A5 | ASIN definition | Amazon Selling Partner Blog (Jun 4 2025): "a unique 10-character alphanumeric code assigned to every product listed in the Amazon store" — matches S45; the three submitted codes are 9 characters and therefore not ASINs | https://sell.amazon.com/blog/what-is-an-asin |
+
+This is the fourth independent observation round of the redirect mapping (after 7f84fea4, b90c5685, 4575cf95) with identical results. Policy facts (PF-*), commission tables and volatile price/rating snapshots were **not** re-fetched by this session and are listed in the log §C as prior recorded evidence with manual-review links — not upgraded to "verified by 21acd3c0".
+
+## 21-T4 record — site gates (done; all green at `e8e3e9d` + claim commit)
+
+| Gate | Result |
+|---|---|
+| `python3 tools/verify_site.py` | VERIFY PASS · 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 with repo anchor · V1–V7 pass |
+| `python3 tools/link_report.py --strict` | exit 0 |
+| `python3 scripts/check_all_links.py` | 115 HTML pages · 104 external URLs · 0 errors |
+| `python3 scripts/check_site.py` | OK · 12 pages · 3 products · 48 sources · 49 flags |
+
+Re-run on the rebased tree (`main` @ `cb2dc1d` + this session's commits, after PRs #55–#61 merged): all four gates still green — `verify_site.py` VERIFY PASS · 69 pages · **1172** table rows · **970** with official source · **348** with flag · 82 with repo anchor; `link_report.py --strict` exit 0; `check_all_links.py` 115 pages · 104 external URLs · 0 errors; `check_site.py` OK · 48 sources · **51** flags. The sitemap quirks 21-F-02/03/04 re-reproduce exactly at this commit. Session c79eb5d9's "price/rating display fix, site map, orphan-page gate" (PR #61) did not contradict any finding in this record.
+
+No gate was red; no file outside this session's scope was edited.
+
+## 21-T5 record — executive summary check + flags (done)
+
+`EXECUTIVE-SUMMARY.md` / `executive-summary.html` were checked against this session's live fetches: the three-link table (§1), the "Page Not Found" result, the 9-character finding, the two ASIN-definition quotes (including the sell.amazon.com quote, read verbatim by this session) and the redirect destinations all match. No correction needed. Flags raised by this session (non-blocking; published here and in the repo review):
+
+| ID | Sev | Finding | Source for review |
+|---|---|---|---|
+| 21-F-01 | Info | `COORDINATION.md` duplicates several Parts verbatim (merge artifacts from earlier add/add resolutions); board state is hard to read as one view (corroborates H-F-02). Not edited — no-clobber rule | https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md |
+| 21-F-02 | Info | `sitemap.xml` lists both root `''` and `index.html` (same page twice) | https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml |
+| 21-F-03 | Info | Redirect stub `categories/home-kitchen-air-fryers.html` not in sitemap (arguably correct) | https://github.com/kanlerxz87-cyber/Zone3/blob/main/categories/home-kitchen-air-fryers.html |
+| 21-F-04 | Info | Session workspaces (`sessions/3c886b62/*`, `sessions/03bbd050/`) are publicly listed in the sitemap | https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml |
+| 21-F-05 | Low | Live widget price for `dp/B0CDY277D3` ($69.97) differs from the register's same-day snapshot ($79.93) — corroborates the volatile-price policy (FLG-004/022/038); no price is published as fact anywhere | https://www.amazon.com/dp/B0CDY277D3 |
+
+## 21-T6 — PR, merge, Pages (record appended after deploy; see 21 publish record below)
