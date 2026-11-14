@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45.",
   "flags": [
     {
       "id": "FLG-001",
@@ -16,7 +16,8 @@
         "S10",
         "S14",
         "S15",
-        "S16"
+        "S16",
+        "S45"
       ]
     },
     {
@@ -206,7 +207,7 @@
       "severity": "High",
       "category": "AI and data use",
       "item": "The AI analysis layer cannot use Creators API data without written approval",
-      "detail": "Creators API terms bar aggregating, analysing or repurposing Product Advertising Content without express prior written approval, and bar using Program Content to develop or train machine learning or language models (PF-23, PF-24, PF-25). The brief asks for an AI-powered platform. Any AI analysis of Amazon data is therefore blocked until approval is obtained. No AI analysis of Amazon data has been built.",
+      "detail": "Creators API terms bar aggregating, analysing or repurposing Product Advertising Content without express prior written approval, and bar using Program Content to develop or train machine learning or language models (PF-23, PF-24, PF-25). The brief asks for an AI-powered platform. Any AI analysis of Amazon data is therefore blocked until approval is obtained. No AI analysis of Amazon data has been built. Widened 2026-11-14 (session ecbfe91b, adopting c4e71983-FLG-16): the bar is not limited to Creators API data. Program Policies, Participation Requirements section 5, reads verbatim: “You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.” (S02; re-read live 2026-11-14; the odd wording ‘without or express’ is Amazon’s own text, reproduced verbatim.) Any machine-learning use of Special Links or Program Content needs Amazon’s express prior written approval — not only Creators API data.",
       "sources": [
         "S02"
       ],
