@@ -1,0 +1,246 @@
+{
+  "_meta": {
+    "title": "Independent re-verification, session c79eb5d9",
+    "session": "c79eb5d9",
+    "branch": "arena/c79eb5d9-zone3",
+    "base_commit": "ab336696223165ff6da620ccff8e05d257e0a8a4",
+    "fetched_utc": "2026-11-14",
+    "method": "Every row below was read live from the official URL named in the row, with the fetch tool, on 2026-11-14. Nothing was carried over from another session's notes and nothing was inferred. Where a value could not be confirmed, the cell is null and the row says so.",
+    "scope": "The three submitted links, their destinations, the identifier-length rule, the Associates policy clauses the site quotes, the public commission tables, and the FTC affiliate-disclosure answers.",
+    "not_in_scope": "Prices, star ratings and review counts as product facts. No officially permitted data path exists for this project (no Associates tag, no Creators API credentials), so none are asserted. See I-F-01."
+  },
+  "submitted_links": [
+    {
+      "n": 1,
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "code": "B04G1MEwY",
+      "code_length": 9,
+      "final_url_observed": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-704dc575b940a94c&channelId=704&plpRedirect=mhFallback",
+      "destination_page_id": "B0CDY277D3",
+      "destination_title_verbatim": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "breadcrumb_observed": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "associates_tag_in_url": null,
+      "direct_dp_probe": {
+        "url": "https://www.amazon.com/dp/B04G1MEwY",
+        "result": "Page Not Found"
+      },
+      "confirmed_as_submitted_product": false,
+      "note": "The link opens a live listing. No official source states that this listing is the one the owner intended, so identity is recorded as an observation only."
+    },
+    {
+      "n": 2,
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "code": "B02NbDxp3",
+      "code_length": 9,
+      "final_url_observed": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-76d4981d5f44181b&channelId=704&plpRedirect=mhFallback",
+      "destination_page_id": "B09B7SB46R",
+      "destination_title_verbatim": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
+      "breadcrumb_observed": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "associates_tag_in_url": null,
+      "direct_dp_probe": {
+        "url": "https://www.amazon.com/dp/B02NbDxp3",
+        "result": "Page Not Found"
+      },
+      "confirmed_as_submitted_product": false,
+      "note": "Same treatment as product 1."
+    },
+    {
+      "n": 3,
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "code": "B00hJ57DV",
+      "code_length": 9,
+      "final_url_observed": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-016f4a534eed3621&channelId=704&plpRedirect=mhFallback",
+      "destination_page_id": "B08DKYBTPH",
+      "destination_title_verbatim": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "breadcrumb_observed": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "associates_tag_in_url": null,
+      "direct_dp_probe": {
+        "url": "https://www.amazon.com/dp/B00hJ57DV",
+        "result": "Page Not Found"
+      },
+      "confirmed_as_submitted_product": false,
+      "note": "Same treatment as product 1."
+    }
+  ],
+  "policy_clauses_reverified": [
+    {
+      "id": "I-PF-01",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "page_header_observed": "Updated: October 15, 2025",
+      "section": "Section 5, Identifying Yourself as an Associate",
+      "quote_observed_verbatim": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: \u201cAs an Amazon Associate I earn from qualifying purchases.\u201d",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-01"
+    },
+    {
+      "id": "I-PF-02",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "section": "Section 6, Term and Termination",
+      "quote_observed_verbatim": "For the avoidance of doubt and without limitation for purposes of the foregoing subsection (a) any violation of Section 5 and as specified in the Program Policies will be deemed a material breach of this Agreement.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-02"
+    },
+    {
+      "id": "I-PF-03",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "page_header_observed": "Updated: April 14, 2026",
+      "section": "Participation Requirements 2(b), General Requirements Applicable to All Special Links",
+      "quote_observed_verbatim": "For example, you must include your Associates ID or \u201ctag\u201d (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-03"
+    },
+    {
+      "id": "I-PF-04",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "Participation Requirements 2(b)",
+      "quote_observed_verbatim": "Product prices and availability may vary from time to time. Because prices for and availability of Products that you have listed on your Site may change, your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-04 / PF-44",
+      "bearing": "This is the clause that governs whether a price may appear on the site at all. See I-F-01."
+    },
+    {
+      "id": "I-PF-05",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "Participation Requirements 6(t)",
+      "quote_observed_verbatim": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-05 / PF-45",
+      "bearing": "This is the clause that governs whether a star rating may appear on the site at all. See I-F-01."
+    },
+    {
+      "id": "I-PF-06",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "Participation Requirements 6(w)",
+      "quote_observed_verbatim": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-06 / PF-46"
+    },
+    {
+      "id": "I-PF-07",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "Commission Income Statement 2(e), Disqualified Purchases",
+      "quote_observed_verbatim": "(e) any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \u201cRedirecting Link\u201d),",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-07 / PF-48"
+    },
+    {
+      "id": "I-PF-08",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "Participation Requirements 6(y)",
+      "quote_observed_verbatim": "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-34 / PF-47"
+    },
+    {
+      "id": "I-PF-09",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "Participation Requirements 1, Enrollment and Eligibility",
+      "quote_observed_verbatim": "Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-15"
+    },
+    {
+      "id": "I-PF-10",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "IP License and Usage Requirements 2(e)",
+      "quote_observed_verbatim": "You will not, without our express prior written approval, access or use Creators API, PA API or Data Feeds for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content or in connection with any software or other application intended for use by persons or entities that offer products on an Amazon Site, or in the direct training or fine-tuning of a machine learning and/or foundational model.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-23",
+      "bearing": "Constrains what the platform's own analysis step may do with Amazon data. Recorded as a design constraint, not as an entitlement."
+    },
+    {
+      "id": "I-PF-11",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "IP License and Usage Requirements 2(h)",
+      "quote_observed_verbatim": "Unless otherwise notified by us, you may store individual Amazon Standard Identification Numbers (ASINs) for an indefinite period until the termination of this License.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-26"
+    },
+    {
+      "id": "I-PF-12",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "IP License and Usage Requirements 2(i)",
+      "quote_observed_verbatim": "You will include a date/time stamp adjacent to your display of pricing or availability information on your application if you obtain Product Advertising Content from Data Feeds, or if you call Creators API, PA API or refresh the Product Advertising Content displayed on your application less frequently than hourly.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-27",
+      "bearing": "Applies only if a price is displayed lawfully in the first place. It cannot be used to make an otherwise prohibited display compliant."
+    },
+    {
+      "id": "I-PF-13",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "section": "Commission Income Statement 6, Commission Income Reporting and Payment (Payment Minimum Chart)",
+      "quote_observed_verbatim": "Option 1 (Deposit) 10 USD ... Option 2 (Gift Card) 10 USD 2000 USD ... Option 3 (Check) 100 USD ... Check Processing Fee 15 USD",
+      "result": "confirmed (chart values)",
+      "register_equivalent": "PF-43"
+    },
+    {
+      "id": "I-PF-14",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "section": "Associates Program Standard Commission Income Statement, Table 1",
+      "quote_observed_verbatim": "Physical Books, Kitchen, Automotive | 4.50%",
+      "result": "confirmed; the table renders publicly without a sign-in",
+      "register_equivalent": "PF-38 / S25",
+      "bearing": "A category rate card, not a per-product rate. The listing's rate-card category is not confirmed, so no rate is attached to any product row."
+    },
+    {
+      "id": "I-PF-15",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA",
+      "section": "Onsite Associates Program Commission Income Statement, Table A",
+      "quote_observed_verbatim": "Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive | 1.25%",
+      "result": "confirmed; the Onsite table renders publicly without a sign-in",
+      "register_equivalent": "S26",
+      "bearing": "Onsite Content rates apply to content Amazon hosts, not to an external site. Recorded for completeness only; it is not this site's rate."
+    },
+    {
+      "id": "I-PF-16",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+      "section": "Prerequisites, item 2",
+      "quote_observed_verbatim": "Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-16 / PF-49",
+      "bearing": "Explains why no product, price or rating data can be pulled from Amazon by this project today."
+    },
+    {
+      "id": "I-PF-17",
+      "url": "https://sell.amazon.com/blog/what-is-an-asin",
+      "section": "\u201cWhat does \u2018ASIN\u2019 mean?\u201d, article dated Jun 4, 2025",
+      "quote_observed_verbatim": "\u201cASIN\u201d stands for \u201cAmazon Standard Identification Number.\u201d It\u2019s a unique 10-character alphanumeric code assigned to every product listed in the Amazon store.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-52 / S45",
+      "bearing": "Second official Amazon statement of the 10-character rule. The three submitted codes are 9 characters, so they cannot be ASINs."
+    },
+    {
+      "id": "I-PF-18",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "section": "What About Affiliate or Network Marketing? \u2014 first question",
+      "quote_observed_verbatim": "You should disclose your relationship to the retailer clearly and conspicuously on your site, so readers can decide how much weight to give your endorsement. ... The closer the disclosure is to your recommendation, the better.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-50 / S44"
+    },
+    {
+      "id": "I-PF-19",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "section": "What About Affiliate or Network Marketing? \u2014 second question",
+      "quote_observed_verbatim": "Consumers might not understand that \u201caffiliate link\u201d means that the person placing the link is getting paid for purchases made through the link. Similarly, a \u201cbuy now\u201d button would not be adequate.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-51"
+    },
+    {
+      "id": "I-PF-20",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "section": "Other Things for Endorsers and Advertisers to Know",
+      "quote_observed_verbatim": "You can\u2019t talk about your experience with a product if you haven\u2019t tried it.",
+      "result": "confirmed verbatim",
+      "register_equivalent": "PF-21",
+      "bearing": "Binding on the marketing copy: the site must not imply first-hand use of a product it has not tested."
+    }
+  ],
+  "gates_run_on_base": {
+    "commit": "ab336696223165ff6da620ccff8e05d257e0a8a4",
+    "scripts/check_site.py": "OK: 12 pages, 3 products, 48 sources, 49 flags",
+    "tools/verify_site.py": "VERIFY PASS \u00b7 69 pages \u00b7 1169 table rows \u00b7 967 with official source \u00b7 346 with flag \u00b7 0 blocking advisories",
+    "tools/link_report.py --strict": "exit 0",
+    "scripts/check_all_links.py": "115 HTML pages, 104 distinct external URLs, 0 errors",
+    "scripts/build_site.py": "re-ran: tree clean afterwards (generator faithful to data/*.json)"
+  }
+}

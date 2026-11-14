@@ -32,12 +32,13 @@ TABLES = [
 
 # Field families the brief asked for that have no official source at all.
 UNRESOLVABLE = {
-    "product identity": "3 SKUs × 12 attribute fields = 36 cells",
-    "per-category commission": "category rate card (Table 1) is public at the Associates help node (re-verified 2026-11-14); what is unresolvable is each listing's category, so no rate attaches to a product row (FLG-021)",
-    "trend / demand rank": "no official Amazon endpoint for affiliates",
-    "conversion rate": "not published to affiliates; derivable only from own logs",
-    "competition density": "no official Amazon endpoint for affiliates",
-    "clicks / orders / revenue": "no campaign live; Amazon reports in-account only",
+    "intended product match": "the observed destination listings are sourced; no official source confirms whether they match the requester's intent (FLG-027)",
+    "product price / ratings / reviews": "values remain blank unless acquired through the permitted Amazon link/API path (Program Policies 2(b), 6(t); FLG-022)",
+    "per-product commission": "public category tables exist; product-level category-to-rate and account context are not established here (FLG-013)",
+    "trend / demand rank": "no official Amazon affiliate trend endpoint identified",
+    "conversion rate": "derivable only from the publisher's own eligible campaign logs and Amazon reports",
+    "competition density": "no official Amazon affiliate competitor-count endpoint identified",
+    "clicks / orders / revenue": "no live campaign or account report is configured",
 }
 
 
@@ -127,7 +128,7 @@ def main():
               f"dangling flag refs={i['dangling_flag_refs'] or 'none'}")
         print(f"           uncited sources={i['uncited_sources'] or 'none'}  "
               f"unreferenced flags={i['unreferenced_flags'] or 'none'}")
-        print("\nUNRESOLVABLE FROM ANY OFFICIAL SOURCE (left blank, never estimated):")
+        print("\nUNRESOLVED OR NOT PUBLISHED IN THIS BUILD (left blank; reason stated):")
         for k, v in UNRESOLVABLE.items():
             print(f"  - {k:<26} {v}")
 

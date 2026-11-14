@@ -92,7 +92,7 @@
   },
   "attributes_table": {
     "caption": "Product attributes — every downstream research field, by product",
-    "note": "null = not obtainable from any official source. Populating these fields requires a valid 10-character ASIN plus Creators API GetItems access (SRC-13).",
+    "note": "null = not populated in this build because an approved/current data path is unavailable or the field cannot be confirmed. The observed destination listings' titles, brands, and category breadcrumbs are recorded with Amazon listing sources; dynamic commercial, review, and performance fields remain blank.",
     "columns": [
       {
         "key": "field",
