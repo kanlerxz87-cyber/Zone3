@@ -22,6 +22,7 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (listed on th
 | 33226b37, c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 | 3c886b62 | `arena/3c886b62-zone3` | Verified price/rating capture via `amazon.com/s?k=<ASIN>`; the public commission rate table; Participation Requirements 2(b)/6(t)/2(e). Own scope only: `sessions/3c886b62/`. | in progress (T7) | 2026-11-13 22:5x |
 | f2d2c167 | `arena/f2d2c167-zone3` | Final integration: re-verify, PR to `main`, merge, Pages deploy | done (T6) | 2026-11-14 |
+| 7b70cfb0 | `arena/7b70cfb0-zone3` | Final integration session: independent line-by-line live re-verification of all load-bearing claims, integrity gates, PR to `main`, merge, Pages deploy confirmation. | in progress (T6/T8) | 2026-11-14 |
 
 ### Branch naming decision (logged 2026-11-13, session 7f84fea4)
 
@@ -37,6 +38,9 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 | T4 — Integration with session 26634cd5 (PR #1) | done | 7f84fea4 | all (integration only) | S07 mapped to S10 and others (see below) | FLG-015–020 |
 | T5 — Campaign and tracking ledger | done (empty by design) | 7f84fea4 | `campaigns.html` | — | FLG-010, FLG-011 |
 | T6 — Re-verify, PR, merge, Pages deploy | done | f2d2c167 | this branch only | S01–S55 | FLG-001–038 (published on Flagged for review) |
+| T6 — Re-verify, PR, merge, Pages deploy | in progress | f2d2c167 | this branch only | — | — |
+| T6 — Re-verify, PR, merge, Pages deploy | done | 7f84fea4 | this branch only | — | — (merged via PR #50, see G-T5 record) |
+| T8 — Final integration re-verification and merge (session 7b70cfb0) | in progress | 7b70cfb0 | `sessions/7b70cfb0/**`, `COORDINATION.md` (H Part only) | live re-checks 7b70-V01–V07 | none — all claims confirmed verbatim |
 | T7 — Price/rating capture, public commission rate table, 2(b)/6(t)/2(e) policy review | in progress | 3c886b62 | `sessions/3c886b62/**` only (no root files) | S1–S12 in `sessions/3c886b62/data/sources.json` | F01–F17 in `sessions/3c886b62/docs/FLAGGED.md` |
 
 ## Integration with session 66a80e53 (PR #3, merged after this branch was first pushed)
@@ -2766,3 +2770,54 @@ This Part is the session's only change. Owner: session 4575cf95. Scope: `COORDIN
 | Site merged while flagged? | yes — all 49 flags are non-blocking and published on the Flagged for review page, as the brief requires |
 | Flagged irregularities | 49 flags: 2 critical, 11 high, 16 medium, 15 low, 5 info. Key: FLG-001 (9-char codes not ASINs), FLG-002 (redirect targets not confirmed), FLG-003 (link.amazon not in policies), FLG-004 (product attributes unverified), FLG-010 (no Associates tag), FLG-015 (US-only Schedule 1), FLG-016 (AI analysis needs written approval), FLG-022 (price/rating display restricted), FLG-035 (identity rests on observed redirects), FLG-038 (PR #26 destination values kept blank) |
 | Sources | S01–S55: Amazon Associates Operating Agreement, Program Policies, Creators API docs, PA-API 5 deprecation, FTC Disclosures 101, FTC Endorsement Guides topic hub, Standard Commission Table 1 (S25), Onsite Table A (S26), Amazon product pages (S08–S16, S46–S48), Amazon Best Sellers (S43), Sell on Amazon ASIN blog (S45), short links as submitted (S11–S13, S52–S55) |
+---
+
+## H Part — session 7b70cfb0: final integration re-verification (2026-11-14)
+
+This session opened on a clean tree at `4fd8bd6` (the merge of PR #52, which itself carried the
+G-Part merge of PR #50). Acting as the final integration session for this branch, it re-ran every
+integrity gate on the merged tree and independently re-fetched each load-bearing claim against its
+official source, live, before merging. No files outside `sessions/7b70cfb0/**` and this Part were
+touched; no other session's scope was edited.
+
+### H-T1 record — independent line-by-line live re-verification
+
+| ID | Claim | Official source | Result |
+|---|---|---|---|
+| 7b70-V01 | `link.amazon/B04G1MEwY` opens a live listing: CHEFMAN 6 Quart Dual Basket Air Fryer, destination ASIN `B0CDY277D3` (Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers) | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | **Confirmed** — final URL `amazon.com/dp/B0CDY277D3…plpRedirect=mhFallback`, full title read |
+| 7b70-V02 | `link.amazon/B02NbDxp3` opens a live listing: Emeril Lagasse 26QT French Door air fryer oven, destination ASIN `B09B7SB46R` | [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | **Confirmed** — final URL `amazon.com/dp/B09B7SB46R…plpRedirect=mhFallback`, full title read |
+| 7b70-V03 | `link.amazon/B00hJ57DV` opens a live listing: Chefman 8 Qt TurboFry 4-in-1, destination ASIN `B08DKYBTPH` | [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | **Confirmed** — final URL `amazon.com/dp/B08DKYBTPH…plpRedirect=mhFallback`, full title read |
+| 7b70-V04 | All three submitted identifiers are 9 characters and `amazon.com/dp/<code>` returns Amazon's *Page Not Found* page | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) | **Confirmed** — "Page Not Found" (Dogs of Amazon) served for the 9-char code |
+| 7b70-V05 | ASIN = "10-Character alphanumeric unique identifier assigned by Amazon" | [Creators API, GetItems — ItemIdType](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter) | **Confirmed verbatim** |
+| 7b70-V06 | Standard Commission Table 1: Physical Books, Kitchen, Automotive at **4.50%**; All Other Categories 4.00%; Bounty schedule present | [Associates Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed verbatim** |
+| 7b70-V07 | FTC disclosure rules: disclose any financial/employment/personal/family relationship; placement "hard to miss"; no experience with untried products; guide dated November 2019 | [FTC Disclosures 101 for Social Media Influencers](https://ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | **Confirmed verbatim** |
+
+Each of the three short links was re-fetched this session and fell back to the **same three**
+unrelated air fryer listings the earlier records observed — independently re-confirming FLG-035's
+substance (identity rests on observed short-link redirects; the intended products remain
+unconfirmed). `plpRedirect=mhFallback` appears on valid-ASIN destinations too, so it is **not**
+evidence of a failed lookup (readme correction, session 588693c9, re-confirmed here).
+
+### H-T2 record — integrity gates on the merged tree (2026-11-14)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK** — 12 pages, 3 products, 48 sources, 49 flags |
+| `python3 tools/verify_site.py` | **VERIFY PASS** — 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 with repo anchor · 0 blocking advisories |
+| `python3 tools/link_report.py --strict` | **exit 0** — dangling source refs: none; dangling flag refs: none (SRC-07 uncited and FLG-001/002/003/007/027 unreferenced-by-row are non-blocking advisories, previously logged) |
+| `python3 scripts/check_all_links.py` | **115 HTML pages, 104 distinct external URLs, 0 errors** |
+| `python3 sessions/3c886b62/tools/check_links.py` | **OK** — no broken internal links, every data row has a source cell |
+| `scripts/build_site.py` re-run | **idempotent** — zero diff |
+| `git grep -Il "^<<<<<<< "` | 0 hits — no conflict markers anywhere in the tree |
+
+### H-T3 record — irregularities found by this session
+
+**None.** Every load-bearing claim re-fetched this session matched its official source. The
+pre-existing flag set (49 flags, including FLG-035 identity, FLG-021 unresolvable listing
+category, and the 36 blank identity cells) remains non-blocking and is published on the Flagged
+for review page with source links, per the brief.
+
+### H-T4 record — PR, merge and Pages deploy
+
+See the merged PR section appended below after merge (the record cannot be written to `main`
+before the merge it records).
