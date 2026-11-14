@@ -22,7 +22,7 @@ only its own directory; where a fix belongs in another session's file it is writ
 <div class="callout">
   <p><strong>Headline.</strong> The data layer is sound: <strong>0 rows without a source</strong>, <strong>0 blank fields without a flag</strong>,
   <strong>0 broken links</strong> (the 15 in <code>archive/</code> were repaired by <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">PR #31</a>), no secrets, no conflict markers, and all four project gates green —
-  <code>114</code> pages, <code>1,107</code> table rows, <code>905</code> carrying an official source. Two exposures I raised mid-session were
+  <code>114</code> pages, <code>1,110</code> table rows, <code>908</code> carrying an official source. Two exposures I raised mid-session were
   <strong>fixed by another session while this audit was in flight</strong> and are marked resolved below. What remains is a
   <strong>live policy question</strong>: <code>category/air-fryers.html</code> renders dated price and rating columns whose only citation is an
   <em>Amazon search page</em> — a route the Program Policies clause the repo itself quotes does not list — while <code>products.html</code> shows the
@@ -77,9 +77,9 @@ It re-derives the project’s own invariants from the tree instead of trusting t
 <div class="table-wrap"><table>
 <thead><tr><th>Check</th><th>Result</th><th>Reading</th><th>Proof</th></tr></thead>
 <tbody>
-<tr><td>Table rows with no source of any kind</td><td><span class="badge ok">0</span></td><td>Every product row cites S08–S16</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/products.json">data/products.json</a></td></tr>
+<tr><td>Table rows with no source of any kind</td><td><span class="badge ok">0</span></td><td>Every product row cites its own <code>S</code>-id into the register</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/products.json">data/products.json</a></td></tr>
 <tr><td>Blank fields that are not flagged</td><td><span class="badge ok">0</span></td><td>All 36 unverifiable cells carry a FLG reference</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/flags.json">data/flags.json</a></td></tr>
-<tr><td>Broken internal links, outside <code>archive/</code></td><td><span class="badge ok">0</span> of 110 pages</td><td>Navigation is intact across all four site generations</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/actions">repo</a></td></tr>
+<tr><td>Broken internal links, outside <code>archive/</code></td><td><span class="badge ok">0</span> of 114 pages</td><td>Navigation is intact across all four site generations</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/actions">repo</a></td></tr>
 <tr><td>Broken internal links inside <code>archive/</code></td><td><span class="badge ok">0</span> (was 15, in 5 pages)</td><td>Repaired by <a href="https://github.com/kanlerxz87-cyber/Zone3/commit/97bde69">PR #31 “archive link repair”</a>; my re-run finds none</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/tree/main/archive">archive/</a></td></tr>
 <tr><td>Conflict markers in tracked files</td><td><span class="badge ok">0</span></td><td>One was committed mid-rebase at 10:18 UTC by this session and removed before any push landed it</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">board log “Conflict/handling”</a></td></tr>
 <tr><td>Secret-pattern scan</td><td><span class="badge ok">0</span></td><td>No AWS keys, private keys, <code>ghp_</code> or Slack tokens</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/.gitignore">.gitignore</a></td></tr>

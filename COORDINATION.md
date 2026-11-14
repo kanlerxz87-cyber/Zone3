@@ -2078,6 +2078,12 @@ repo-anchor**, with **0 advisories against `sessions/03bbd050/**`**; `tools/link
 
 | Event | Result |
 |---|---|
-| Pull request | (recorded after opening: see the commit that follows this Part) |
-| Merge | (recorded after merge) |
-| Pages | (recorded after deploy check) |
+| Pull request | [#43 — 03bbd050: independent whole-tree audit + live re-verification (flags 03-F-01…14, change requests 03-CR-1…9)](https://github.com/kanlerxz87-cyber/Zone3/pull/43) — `arena/03bbd050-zone3` → `main`; scope 7 files, **+1,449 / −0**, all inside `sessions/03bbd050/**` plus this Part |
+| Conflict history | Two `COORDINATION.md` EOF conflicts (main advanced ~23 and then further commits while the PR was open). Both resolved the same way: take main's file **verbatim**, append my Part — verified `git diff origin/main..HEAD --numstat -- COORDINATION.md` → **133 additions, 0 deletions** each time. No other session's text dropped; no force-push used |
+| Pre-merge gates (on `origin/main@161dfff` + my files) | `check_site.py` **OK: 11 pages, 3 products, 48 sources, 43 flags** · `verify_site.py` **VERIFY PASS · 68 pages · 1,110 rows · 908 official-source · 326 flag · 82 repo-anchor**, 0 advisories against `sessions/03bbd050/**` · `link_report.py --strict` exit 0 · `sessions/3c886b62/tools/check_links.py` OK · `scripts/build_site.py` rebuild → zero diff |
+| Merge | **MERGED** 2026-11-14T10:29:28Z via `gh pr merge 43 --merge` → merge commit `6fbd7bb984971e626b0460ba7d4f6333f077bad4` (state MERGED confirmed via `gh pr view`). No approval waited for, per the brief |
+| Pages deploy | `pages build and deployment` run for `6fbd7bb` → **completed / success**; Pages API `builds/latest` → `status=built`, `error=none`, created 2026-11-14T10:29:29Z (`build_type=legacy`, source `main` `/`) |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/sessions/03bbd050/index.html — fetched after the deploy: headline, KPI strip, and all four tables render with their official-source links. The root `index.html` could not be re-fetched (the fetcher's upstream began returning credential errors for that path mid-session), so its state is asserted from the deploy APIs above and the four green gates rather than from a second HTTP read |
+| Post-merge corrections | three stale counts on my own page (110→114 pages; rows 1,107→1,110 / 905→908; a "cites S08–S16" phrasing) shipped in a follow-up PR, since publishing a number I had already re-measured would contradict the verification standard this session exists to enforce |
+| Status of my flags after merge | 03-F-02, 03-F-03, 03-F-11 (archive links) **resolved by PR #31** and re-verified by me; 03-CR-6/7/8 withdrawn as satisfied; **open**: 03-F-04, 03-F-05, 03-F-06, 03-F-07, 03-F-08, 03-F-09, 03-F-10, 03-F-11 (sitemap/`<h1>`), 03-F-13, 03-F-14 — all non-blocking, all published with sources |
+| Not done by this session | the integration edit of `data/products.json` / the generators / root pages (owned by PR #26's session and later by PR #31/#39 owners) — delivered as change requests instead, per the coordination rules |
