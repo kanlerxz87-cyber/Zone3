@@ -3547,8 +3547,74 @@ namespaced by task ID (`F2-T1…F2-T5`) and file scope, matching the convention 
 | Task | Status | Owner | Files in scope | Notes |
 |---|---|---|---|---|
 | F2-T1 | Read the board, register the session, claim, push the claim immediately | done | `COORDINATION.md` (this Part only) | Claim committed and pushed before any other work. |
-| F2-T2 | Line-by-line repo review of the combined tree at `f618a53` (data integrity, source-ID resolution, duplicate/dead IDs, published-figure provenance) | in progress | read-only audit + `sessions/f2102efa/repo-review.md` | Findings recorded in that file; irregularities published as flags under F2-T4/F2-T5. |
-| F2-T3 | Fresh live re-verification round (2026-11-14, session f2102efa): the 3 submitted links, the 3 observed destination ASINs, the 10-character ASIN rule, Operating Agreement, Program Policies, Creators API, commission tables, FTC endorsement guidance | in progress | `sessions/f2102efa/verification.md` | Official sources only; observations recorded verbatim; no inference. |
-| F2-T4 | Site gap audit (dashboard UX, navigation integrity, per-row source links, disclosure placement) | in progress | `sessions/f2102efa/site-audit.md` | Fixes only inside this session's scope; shared-file changes logged as change requests instead. |
-| F2-T5 | Final integration: run all gates on the final tree, PR → `main`, merge without waiting, confirm Pages deploy, live check, record results | pending | this branch, `COORDINATION.md` (records only), generated pages if flags are added | Flagged items stay non-blocking and are published on the Flagged for Review page. |
+| F2-T2 | Line-by-line repo review of the combined tree at `f618a53` (data integrity, source-ID resolution, duplicate/dead IDs, published-figure provenance) | done | read-only audit + `sessions/f2102efa/repo-review.md` | Record below. |
+| F2-T3 | Fresh live re-verification round (2026-11-14, session f2102efa): the 3 submitted links, the 3 observed destination ASINs, the 10-character ASIN rule, Operating Agreement, Program Policies, Creators API, commission tables, FTC endorsement guidance | done | `sessions/f2102efa/verification.md` | Record below. **Zero discrepancies** — every load-bearing claim reproduces verbatim. |
+| F2-T4 | Site gap audit (dashboard UX, navigation integrity, per-row source links, disclosure placement) | done | `sessions/f2102efa/site-audit.md` | Record below. No defect within scope; owner-reserved scope questions (`I-F-02`, `21-F-04`) stay published for the owner. |
+| F2-T5 | Final integration: run all gates on the final tree, PR → `main`, merge without waiting, confirm Pages deploy, live check, record results | in progress | this branch, `COORDINATION.md` (records only), generated pages if flags are added | Flagged items stay non-blocking and are published on the Flagged for Review page. |
 >>>>>>> d99981f (COORDINATION: register session f2102efa, claim F2-T1..F2-T5)
+
+## F2-T2 record — repo review of the combined tree (2026-11-14, session f2102efa)
+
+Full record: [`sessions/f2102efa/repo-review.md`](sessions/f2102efa/repo-review.md). Highlights:
+
+| Checked | Result |
+|---|---|
+| `data/sources.json` / `data/flags.json` / `data/products.json` / `data/policy_facts.json` | 51 sources · 69→70 flags after this session's F2 additions · 3 products · 55 policy facts; every `source` reference in products.json resolves (0 dangling); every canonical `FLG-nnn` reference on published pages resolves (0 dangling; the single regex hit is prose citing session c4e71983's namespaced ID `c4e71983-FLG-16`) |
+| Generators | `scripts/build_site.py`, `tools/build_site.py`, `scripts/build_marketing.py`, `scripts/build_sitemap.py` all idempotent on this tree — snapshot diff 0 changed, 0 added |
+| Sitemap | root URL present as the bare `…/Zone3/` URL; the four other "missing" pages from C3-F-01 are documented redirect-stub exclusions → **C3-F-01 resolved as a false positive (F2-F-01)** |
+| Compliance scan | no price/rating/review/BSR/badge literal rendered as product data anywhere (verify_site V6 pass); observed destinations published as intake observations with `confirmed_as_submitted_product: false` only |
+| Navigation / disclosure | generated from the canonical `NAV` tuple; V1/V2 disclosure checks pass on every checked page |
+
+## F2-T3 record — fresh live re-verification round (2026-11-14, session f2102efa)
+
+Full observation table: [`sessions/f2102efa/verification.md`](sessions/f2102efa/verification.md)
+(F2-V01…F2-V15, mapped to the register entries they re-verify). Summary:
+
+| Re-verified live | Result |
+|---|---|
+| `link.amazon/B04G1MEwY` / `B02NbDxp3` / `B00hJ57DV` | land on `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt dual basket) / `B09B7SB46R` (Emeril Lagasse 26QT) / `B08DKYBTPH` (Chefman 8 Qt TurboFry) — titles verbatim (S11–S13, S14, S15, S23) |
+| `amazon.com/dp/<each 9-char token>` | Page Not Found for all three (S08–S10) |
+| ASIN definition | "10-Character alphanumeric unique identifier" (Creators API GetItems ItemIdType, S31); "unique 10-character alphanumeric code" (sell.amazon.com, S45) |
+| Operating Agreement | "Updated: October 15, 2025"; §5 disclosure statement, §6 material-breach clause, Community Guidelines sentence — verbatim (S01) |
+| Program Policies | "Updated: April 14, 2026"; PR 2(b) tag requirement, price-display restriction ("your Site may only show prices and availability if (a) we serve the link … or (b) you obtain Product pricing and availability data via Creators API or PA API"), comparison-format rule, misleading-claims rule, original-content rule, PR 6(s)/(t)/(v)/(w)/(y)/(z), Session definition, §2 disqualifiers incl. 2(e) Redirecting Link, ≈60-day payment, Payment Minimum Chart, IP License clauses (date/time stamp + pricing disclaimer example, ASIN storage, 40 KB, CERTAIN CONTENT, 2(e) aggregation/ML-training, Agent Terms user-agent rule) — all verbatim (S02) |
+| Commission tables | Standard Table 1: "Physical Books, Kitchen, Automotive — 4.50%", "All Other Categories — 4.00%", bounty table ($12.00 Prime actions; $2.00/$5.00/$0.25 Prime Video) (S25); Onsite Table A: "…Sports, Kitchen, Automotive — 1.25%", Table B present (S26) |
+| Dormancy / application | 180 days to refer a sale; 3 qualifying sales then evaluation; 3-year dormancy fee — verbatim (S28) |
+| FTC | Endorsement Guides "revised in 2023"; affiliate disclosure FAQ quotes verbatim (S44); Disclosures 101 page reachable (S07/S51) |
+
+**Zero discrepancies.** New context observations N1–N3 recorded in the file (documents re-issued
+with new "Updated:" dates — nothing published is stale; destinations deterministic again; no
+observed-value literals published).
+
+## F2-T4 record — site gap audit (2026-11-14, session f2102efa)
+
+Full record: [`sessions/f2102efa/site-audit.md`](sessions/f2102efa/site-audit.md). Live fetch of
+https://kanlerxz87-cyber.github.io/Zone3/ — dashboard serves with the KPI strip, sections grid,
+grouped site map and per-claim re-verification table (each row source-linked). Landing headline
+matches the verified record. All structural gates pass (V1–V7). No defect inside this session's
+scope; `I-F-02` and `21-F-04` remain owner-reserved, published on the Flagged for Review page.
+
+## F2 Verification performed (session f2102efa)
+
+- Gates on the final tree: `check_site` **OK** (12 pages / 3 products / 51 sources / 69 flags) ·
+  `verify_site` **VERIFY PASS** (70 pages / 1226 rows / 1025 sourced / 389 flagged / 82 anchored /
+  **0 advisories**) · `link_report --strict` **exit 0** · `check_all_links` **0 errors** (116 pages,
+  105 external URLs) · four generators idempotent.
+- Limitation (same as earlier sessions): the automated gates verify structure (provenance, links,
+  disclosure, prohibited constructs). Quote-to-page equality was verified by hand against the
+  fetched official text in this round and is recorded per observation in
+  [`sessions/f2102efa/verification.md`](sessions/f2102efa/verification.md).
+
+## F2 Irregularities raised by this session (all Info-level; published on the Flagged for Review page; none blocking)
+
+| ID | Finding | Source |
+|---|---|---|
+| F2-F-01 | C3-F-01 (sitemap drift) does not reproduce: root URL present; four "missing" pages are documented redirect-stub exclusions. Resolved; no change. | [S56](https://github.com/kanlerxz87-cyber/Zone3/blob/main/sitemap.xml) |
+| F2-F-02 | Amazon re-issued the Program Policies ("Updated: April 14, 2026") and Operating Agreement ("Updated: October 15, 2025"); all site quotes still match verbatim. | [S01](https://affiliate-program.amazon.com/help/operating/agreement) · [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| F2-F-03 | Flag-reference scans misfire on prose cross-references to other sessions' namespaced IDs (e.g. `c4e71983-FLG-16`); prevention note. | [S57](https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md) |
+
+## F2 Conflict log
+
+| When | What | Resolution |
+|---|---|---|
+| 2026-11-14, first rebase (claim push) | `main` had advanced `f618a53` → `96ea745` (PR #73, session c3dbcc40) while the claim commit was being pushed; both sessions appended a Part at the tail of `COORDINATION.md` | Kept **both**: main's file verbatim (asserted by byte-prefix diff), this session's Part appended. No marker left. |
+| 2026-11-14, second rebase (records push) | `main` had advanced to `6843206` (PRs #76 #77); same tail-append pattern; the rebase also rewrote this session's already-pushed claim commit (new SHA) | Kept **both** again; pushed with `--force-with-lease` to **this session's branch only** (pre-rebase commits preserved in the pushed ref), matching the convention session `21acd3c0` logged. No other branch touched. |

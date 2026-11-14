@@ -895,5 +895,43 @@
       ],
       "repo_evidence": "category/air-fryers.html, 'Niche assessment' section."
     }
+,
+{
+    "id": "F2-F-01",
+    "severity": "Info",
+    "category": "Site",
+    "item": "C3-F-01 (sitemap drift) does not reproduce — audited and resolved",
+    "detail": "Session c3dbcc40 flagged that sitemap.xml lacks five pages the build emits: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Session f2102efa audited each: the root URL IS in the sitemap (as the bare https://kanlerxz87-cyber.github.io/Zone3/ URL — the conventional form for a site root), and the other four are meta-refresh redirect stubs that scripts/build_sitemap.py excludes by documented design (REDIRECT_STUBS set and is_redirect_stub() detection; see flags V-F4/V-F5 for why redirect stubs are delisted).",
+    "action": "No change to sitemap.xml or the generator. python3 scripts/build_sitemap.py reproduces the committed file byte-for-byte. Resolution published for the owner's review.",
+    "sources": [
+      "S56"
+    ],
+    "repo_evidence": "sitemap.xml; scripts/build_sitemap.py (REDIRECT_STUBS, is_redirect_stub)."
+  },
+{
+    "id": "F2-F-02",
+    "severity": "Info",
+    "category": "Accuracy",
+    "item": "Amazon re-issued the Program Policies (Updated: April 14, 2026) and Operating Agreement (Updated: October 15, 2025); all site quotes still match verbatim",
+    "detail": "Fresh fetches on 2026-11-14 (session f2102efa) show both documents carry new 'Updated:' header dates. The site does not publish either date, so nothing displayed is stale. Every quote the site publishes was re-checked verbatim against the re-issued documents this round: OA §5 disclosure statement, §6 material-breach clause, Community Guidelines sentence; PR 2(b) tag requirement, price-display restriction, comparison-format rule, misleading-claims rule, original-content rule, PR 6(s)/(t)/(v)/(w)/(y)/(z); Commission Income Statement Session, disqualifiers incl. 2(e) Redirecting Link, ≈60-day payment, Payment Minimum Chart; IP License clauses incl. date/time stamp + pricing disclaimer, ASIN storage, 40 KB, CERTAIN CONTENT, 2(e) aggregation/ML-training, Agent Terms user-agent rule. Full table: sessions/f2102efa/verification.md.",
+    "action": "No change needed. Recorded so future sessions know the documents were re-issued and re-check affected wording after any future re-issue.",
+    "sources": [
+      "S01",
+      "S02"
+    ],
+    "repo_evidence": "sessions/f2102efa/verification.md (F2-V09, F2-V10)."
+  },
+{
+    "id": "F2-F-03",
+    "severity": "Info",
+    "category": "Register",
+    "item": "Flag-reference scans misfire on prose cross-references to other sessions' namespaced flag IDs",
+    "detail": "A scripted scan of all published pages for FLG-nnn references reports one hit outside the canonical register: flagged.html contains 'c4e71983-FLG-16' inside a flag description, cross-referencing session c4e71983's own namespaced flag ID, not the canonical FLG-016 (which exists). The reference is correct as prose; the scan regex is what over-matches.",
+    "action": "No change to the page. Prevention note for future sessions: treat session-prefixed IDs (e.g. c4e71983-FLG-16) as external names when scanning for dangling references.",
+    "sources": [
+      "S57"
+    ],
+    "repo_evidence": "data/flags.json (FLG-016); flagged.html; sessions/f2102efa/repo-review.md §1."
+  }
   ]
 }
