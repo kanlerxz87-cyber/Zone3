@@ -9,7 +9,7 @@ is written as a change request (`03-CR-n`), per the coordination rules in `COORD
 
 ---
 
-## 03-F-02 · High · A live sub-site publishes price cells with no Associates disclosure
+## 03-F-02 · High → **RESOLVED on main by PR #31** · A live sub-site published price cells with no Associates disclosure
 
 `sessions/3c886b62/` is served at `https://kanlerxz87-cyber.github.io/Zone3/sessions/3c886b62/` (16 pages). **10 of
 those pages render a `$` amount in a table cell** for the three listings (`analysis.html`, `comparison.html`,
@@ -34,7 +34,7 @@ connection to be "hard to miss" and placed "with the endorsement message itself"
 [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers)
 *Owner:* session `3c886b62` scope (`sessions/3c886b62/**`), merged via PR #15/#16 → change request 03-CR-6.
 
-## 03-F-03 · High · The `/docs/` sub-site repeats the pattern with a pronoun variant
+## 03-F-03 · High → **RESOLVED on main by PR #31** · The `/docs/` sub-site repeated the pattern with a pronoun variant
 
 `docs/` (8 pages, `…/Zone3/docs/`) carries **"As an Amazon Associate *we* earn from qualifying purchases."** —
 plural, on every page. The prescribed sentence is singular and first-person ("I"), and the root build renders it
@@ -147,3 +147,43 @@ integrity.
 | 03-CR-7 | `docs/**` owner (`79f85104`) | Change "**we** earn" to "**I** earn" to match the Operating Agreement wording, or state on the page why the plural is used for this entity. Basis: 03-F-03, `D-F-01`. |
 | 03-CR-8 | `sessions/3c886b62/**` owner | Namespace that register's ids (`S1` → `3c6-S1`) so they cannot be confused with root `S01…`. Basis: 03-F-10. |
 | 03-CR-9 | `tools/link_report.py` owner | Drop the stale "rate card is behind Associates sign-in" line for per-category commission; Table 1 is public and cited. Basis: 03-F-09, Part C gap 5. |
+
+
+---
+
+## Status at merge time — re-run on the merged tree (`161dfff` + this session's files)
+
+The tree moved under this audit: sessions `a53a7e52` (PR #31) and `252122ff` (PR #39) merged while I was writing.
+Everything above was therefore re-checked; the numbers here — not the ones raised at 10:2x UTC — are the current truth.
+
+| Flag | Status now | Re-check I ran |
+|---|---|---|
+| 03-F-02 | **Resolved** | `grep -c 'As an Amazon Associate I earn from qualifying purchases' sessions/3c886b62/*.html` → ≥1 on every page (was 0 on 15 of 16). Program-content pages missing the sentence: **0 of 21**. Fixed by commit `97bde69` — "T-INT4: disclosure fixes + row-level provenance on inherited pages; archive link repair". |
+| 03-F-03 | **Resolved** | `docs/index.html` and `docs/products.html` now read "**I** earn from qualifying purchases." — the plural variant is gone. |
+| 03-F-11 (archive links) | **Resolved** | broken internal links, tree-wide: **0** (was 15 across 5 archive pages). |
+| 03-F-11 (sitemap, `<h1>`) | **Partly** | sitemap now lists 35 URLs (was 16); still unlisted: `dashboard/index.html`, `marketing/index.html`, `marketing/briefs.html`. 33 pages still have zero or multiple `<h1>` (17 archive, 13 sub-site, 3 root stubs incl. `404.html`). |
+| 03-F-08 | **Worsened** | duplicate URLs under different ids: **10 groups** (was 2) — `S01`/`S49`, `S02`/`S30`/`S50`, `S07`/`S51`, `S11`/`S52`/`S55`, `S12`/`S53`, `S13`/`S54`, `S16`/`S32`, `S40`/`S46`, `S41`/`S47`, `S42`/`S48`. |
+| 03-F-04 | **Live, mitigated, still open** | `data/products.json` keeps `price`/`rating`/`review_count` = `null` ✓, but `category/air-fryers.html` renders `USD 79.93 (observed 2026-11-14; list USD 99.99)`-style columns and `sources.html` quotes prices in status notes, cited to `S46–S48` = `https://www.amazon.com/s?k=<ASIN>` search pages. Dated, labelled, disclosed — still not the licensed route. |
+
+### 03-F-13 · Medium · The register has holes exactly where the category page cites into it
+
+`data/sources.json` holds 48 ids and **skips `S33`–`S39`**, yet `category/air-fryers.html` renders `S33`, `S34`, … as
+citation labels. The inline `href` still works, so no reader hits a dead link — but the register cannot answer "what
+does this row rest on?", which is the whole purpose of the id. Reproduce:
+
+```
+python3 -c "import json;i=[int(s['id'][1:]) for s in json.load(open('data/sources.json'))['sources']];\
+print([n for n in range(1,max(i)+1) if n not in i])"   # -> [33, 34, 35, 36, 37, 38, 39]
+```
+
+Fix: fill the gaps or renumber, and make `tools/link_report.py` fail on a cited-but-unregistered id (it currently
+reports "dangling source refs=none" because it only walks `data/products.json`).
+
+### 03-F-14 · Medium · Two pages of one build disagree about the same product
+
+For the identical three listings, `products.html` renders the price and rating cells **blank** ("unverified") while
+`category/air-fryers.html` renders dated values from the side block `observed_2026_11_14`, and `flagged/index.html`
+describes the sub-site's figures as "displays prices ($79.93, $149.99, $79.91)". A visitor cannot tell which page is
+the site's position; against the brief's rule ("if a value can't be confirmed from an official source, leave it blank
+and flag it"), one of the two is wrong by construction. This is a single generator-level decision, not a per-page edit
+→ folded into 03-CR-1 and 03-CR-2.

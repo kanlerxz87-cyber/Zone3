@@ -1,7 +1,7 @@
 # Executive summary — independent verification pass (session `03bbd050`, 2026-11-14)
 
 **Repo:** [`kanlerxz87-cyber/Zone3`](https://github.com/kanlerxz87-cyber/Zone3) ·
-**Live site:** <https://kanlerxz87-cyber.github.io/Zone3/> · **Audited at:** `main@58d2744` ·
+**Live site:** <https://kanlerxz87-cyber.github.io/Zone3/> · **Audited at:** `main@58d2744`, re-run on `main@161dfff` after two further merges ·
 **This pass:** [`sessions/03bbd050/index.html`](https://kanlerxz87-cyber.github.io/Zone3/sessions/03bbd050/index.html)
 · full record: [`verification.md`](verification.md), [`findings.md`](findings.md),
 [`audit/audit-report.json`](audit/audit-report.json)
@@ -29,10 +29,12 @@
    source**, **0 blank fields with no flag**, **0 broken links outside `archive/`**, no secrets, no conflict
    markers, and all four project gates green (`check_site`, `verify_site`, `link_report --strict`, sub-site
    checker) — and `scripts/build_site.py` now rebuilds with **zero diff**.
-5. The real exposure is not the data, it is **two older published sub-sites**: 10 pages under
-   `/sessions/3c886b62/` display hard-coded prices while **15 of that directory's 16 pages carry no Associates
-   disclosure sentence**, and `/docs/` shows prices behind a plural **"we earn"** variant — 15 live pages in total
-   pair a price with a missing or non-conforming disclosure.
+5. The two exposures I found first — 15 disclosure-less price pages under `/sessions/3c886b62/`, and a plural
+   **"we earn"** variant under `/docs/` — were **fixed by PR #31 while this audit was in flight**, and my re-run
+   confirms it (0 of 21 price-bearing pages now lack the sentence; 0 broken links tree-wide). What remains is
+   narrower but real: `category/air-fryers.html` publishes dated price/rating columns cited only to Amazon **search**
+   pages while `products.html` leaves the same cells blank — one build, two positions (03-F-04, 03-F-14) — and the
+   source register holds 10 duplicated URLs plus an `S33–S39` hole it cites into (03-F-08, 03-F-13).
 
 ## 2. What is verified, and by whom
 
@@ -75,9 +77,11 @@ link cloaking, no price-tracking, and no stored Program Content images — each 
 
 | ID | Sev | One-line finding |
 |---|---|---|
-| 03-F-02 | High | 10 live price pages in `/sessions/3c886b62/`; 15 of 16 pages there lack the §5 sentence |
-| 03-F-03 | High | `/docs/` uses "we earn" instead of "I earn" and shows prices on 6 of 8 pages |
-| 03-F-04 | Med | Captured prices are not a permitted display route; API route unavailable (10 sales/30 days; PA-API 5 deprecated) |
+| 03-F-02 | **Resolved** | was: 10 price pages in `/sessions/3c886b62/`, 15 of 16 without the §5 sentence — fixed by PR #31 (`97bde69`), re-verified by my own grep |
+| 03-F-03 | **Resolved** | was: `/docs/` "we earn" — now "I earn" on every page, verified |
+| 03-F-04 | Med · open | Captured prices are not a permitted display route; the API route needs 10 sales/30 days and PA-API 5 is deprecated — yet dated price strings now render on `category/air-fryers.html` and `sources.html`, cited to Amazon search pages |
+| 03-F-13 | Med | Register skips `S33–S39` while `category/air-fryers.html` cites those ids — the citation cannot be resolved from the register |
+| 03-F-14 | Med | `products.html` blank vs `category/air-fryers.html` populated for the same three products — one build, two positions |
 | 03-F-05 | Med | Tokenised `final_url` citations are unreproducible (3 different `srctok` values in 4 fetches) |
 | 03-F-06 | Med | Category ⇒ rate stays unresolved (4.50 % vs 3.00 %); blank is correct |
 | 03-F-07 | Med | Hop link ≠ monetisation link; Redirecting-Link risk; no tag configured |

@@ -1915,6 +1915,29 @@ Everything that belongs to another scope is a **change request** (03-CR-1…9), 
 | `python3 sessions/3c886b62/tools/check_links.py` | `OK — no broken internal links, every data row has a source cell` |
 | `python3 sessions/03bbd050/audit/audit.py` | findings above; JSON in-repo |
 
+## 03 Re-check on the merged tree (this session's second run, `origin/main@161dfff`)
+
+`a53a7e52` (PR #31) and `252122ff` (PR #39) landed while this audit was being written, so every flag above was
+re-run rather than republished from my 10:2x snapshot:
+
+| Flag | Status | Evidence from my re-run |
+|---|---|---|
+| 03-F-02 (10 price pages / 15 of 16 without disclosure, `/sessions/3c886b62/`) | **resolved — not by me** | commit `97bde69` "T-INT4: disclosure fixes + row-level provenance on inherited pages; archive link repair"; my program-content check now reports **0 of 21** price-bearing pages missing the exact sentence |
+| 03-F-03 (`/docs/` "we earn") | **resolved** | `grep -o 'As an Amazon Associate[^<]{0,50}' docs/index.html docs/products.html` → "I earn from qualifying purchases." |
+| 03-F-11 archive links (15 broken) | **resolved** | broken internal links tree-wide: **0** |
+| 03-F-11 sitemap / `<h1>` | **partly** | sitemap 16 → 35 URLs; still 3 unlisted (`dashboard/index.html`, `marketing/index.html`, `marketing/briefs.html`); 33 pages with zero or multiple `<h1>` |
+| 03-F-08 duplicate source URLs | **worsened: 2 → 10 groups** | `S01/S49`, `S02/S30/S50`, `S07/S51`, `S11/S52/S55`, `S12/S53`, `S13/S54`, `S16/S32`, `S40/S46`, `S41/S47`, `S42/S48` |
+| 03-F-04 price display route | **live, mitigated, open** | `data/products.json` still `price: null` ✓, but `category/air-fryers.html` renders "USD 79.93 (observed 2026-11-14; list USD 99.99)" columns cited to `S46–S48` = `amazon.com/s?k=<ASIN>` search pages; `sources.html` quotes prices in status notes |
+| 03-F-13 **(new)** | Medium | register holds 48 ids but **skips `S33`–`S39`**, and `category/air-fryers.html` cites those labels — the register cannot answer "what does this row rest on?"; `link_report.py` prints "dangling source refs=none" only because it walks `data/products.json` |
+| 03-F-14 **(new)** | Medium | one build, two positions: `products.html` renders price/rating **blank** for the same three listings that `category/air-fryers.html` renders with dated values. Needs one generator-level rule, not per-page edits |
+| 03-CR-6, 03-CR-7 | **satisfied by another session** | withdrawn as requests; recorded here so the board does not show a stale open item |
+| 03-CR-1, 03-CR-2, 03-CR-3, 03-CR-9 | **still open**, and now better evidenced | the price-route question is on `main`, not merely proposed in PR #26 |
+
+Gates on the merged tree, re-run by this session: `scripts/check_site.py` → **OK: 11 pages, 3 products, 48 sources,
+43 flags**; `tools/verify_site.py` → **VERIFY PASS · 68 pages · 1,110 rows · 908 official-source · 326 flag · 82
+repo-anchor**, with **0 advisories against `sessions/03bbd050/**`**; `tools/link_report.py --strict` → exit 0;
+`sessions/3c886b62/tools/check_links.py` → OK; `scripts/build_site.py` rebuild → **zero diff**.
+
 ## 03 PR record
 
 | Event | Result |
