@@ -1,6 +1,6 @@
 # Executive summary — Zone3 AI-powered Amazon affiliate platform
 
-**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8`
+**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Final integration, compliance fix and re-verification:** session `3ead7ac8`
 **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 **Verification log:** https://kanlerxz87-cyber.github.io/Zone3/verification.html
 **Flagged for review:** https://kanlerxz87-cyber.github.io/Zone3/flagged.html
@@ -42,9 +42,12 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-48 official sources · 51 policy facts · 51 flags · 12 root pages, a 16-page audit build and a
-marketing section. All 51 facts and all three submitted links were re-read on 2026-11-14; the
-row-by-row record is the [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html).
+51 official sources · 55 policy facts · 66 flags · 12 root pages, a 16-page audit build, a `/docs/`
+reference set, a marketing section and three retained session sub-sites. Every fact and all three
+submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
+[Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html) and
+[session 3ead7ac8's record](https://kanlerxz87-cyber.github.io/Zone3/sessions/3ead7ac8/),
+which re-reads 30 load-bearing claims and links each one to the page it came from.
 
 | Area | What the official documents say | Source |
 |---|---|---|
@@ -179,3 +182,53 @@ changes are auditable rather than silent):
   through a fetch tool rather than an automated HTTP client, and the `--online` link check was not
   run. Whether `link.amazon` redirects without an affirmative click has not been tested in a
   logged-in Associates account (FLG-003).
+
+---
+
+## 8. Final integration pass — session `3ead7ac8` (2026-11-14)
+
+**A live compliance defect was found and fixed.** Two page sets were publishing observed prices
+(USD 79.93 / 149.99 / 79.91), star ratings (4.2 / 4.3 / 4.4 out of 5) and review counts
+(4.8K / 18.3K / 16.8K) as product facts. Associates Program **Participation Requirements 2(b)** and
+**6(t)**, re-read verbatim that day, allow those displays only where Amazon serves the link or the
+data comes from Creators API / PA API — neither is true for this project, which has no Associates tag
+and no API credentials.
+
+| Page set | Action |
+|---|---|
+| `category/air-fryers.html` | Columns removed and replaced with a 2(b)/6(t) explanation carrying the S46–S48 and S02 links. Session `554c08ca` (PR #66) found the same file independently and raised `I-F-01`; **their fix is the one kept**, and `3E-F-01` cross-references it |
+| `/docs/` (six pages) | 81 cells withheld, replaced with the `Withheld` badge plus FLG-022 / FLG-023 links |
+| `sessions/3c886b62/**` and `sessions/03bbd050/` | Dated compliance notice added to 12 pages; their data cells were **not** rewritten, because those files belong to other sessions. Change request `3E-CR-01` is logged in `COORDINATION.md` |
+| `category/air-fryers.html`, *Niche assessment* | Amazon's "bought in past month" badges (`1K+`, `4K+`, `3K+`) were published in prose on a page that withholds prices for exactly that reason. Withheld, and raised as `3E-F-10` |
+
+**One stale claim was corrected.** `/docs/` and the category page said the commission rate schedule is
+sign-in-only. It is not: the Standard Commission Income Statement
+[Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) and the Onsite
+[Table A](https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA) both render
+publicly — Table 1 was re-read row for row (Kitchen 4.50%, All Other Categories 4.00%). Only the
+per-account `/help/operating/schedule` card is gated. Rate cells stay blank because what is
+unresolvable is each listing's **category** (FLG-021), not the rate card.
+
+**Two register errors were repaired.**
+[`PF-53`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json) reinstates the
+compensated-review clause whose withdrawal note ("its text was not found in any section read") was
+wrong — the wording is in the Operating Agreement's opening paragraph.
+[`PF-55`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json) completes
+`PF-23`, which stopped mid-sentence and omitted *"or in the direct training or fine-tuning of a
+machine learning and/or foundational model"* — the clause that matters most for an AI-driven platform.
+
+**Verification.** 13 official pages fetched and read; 30 load-bearing claims re-checked. **All
+matched.** No third-party page was used as evidence. Gates on the merged tree:
+`check_site` OK (12 pages / 3 products / 51 sources / 66 flags) · `verify_site` PASS (70 pages /
+1,223 rows / 1,022 with an official source link / 0 advisories) · `link_report --strict` exit 0 ·
+`check_all_links` 116 pages, 0 errors · all five generators idempotent.
+
+**Merged and deployed.** [PR #70](https://github.com/kanlerxz87-cyber/Zone3/pull/70) → merge commit
+`f79b85e`; follow-up [PR #72](https://github.com/kanlerxz87-cyber/Zone3/pull/72) → merge commit
+`f618a53`, both merged without waiting for approval. The Pages build for `f618a53` reports
+**`built`** and the corrected pages were confirmed on the live site.
+
+**Limits carried forward.** The sandbox reaches only github.com, npm and PyPI directly, so official
+pages were read through a fetch tool rather than an automated HTTP client. Program Policies chunk 10
+of 11 was not read. Whether `link.amazon` redirects without an affirmative click has not been tested
+in a logged-in Associates account (FLG-003).
