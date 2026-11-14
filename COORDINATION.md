@@ -1357,6 +1357,160 @@ reading formally withdrawn (their FLG-026, matching this session's control obser
 presented as verified product identity. Only the owner's submission context can settle which
 product was meant — flagged for review, non-blocking.
 
+---
+
+## F Part — session `588693c9` (branch `arena/588693c9-zone3`, base `8cfe91f`) — final integration
+
+> **CLAIM WRITTEN FIRST, BEFORE ANY EDIT OTHER THAN THIS FILE** (protocol requirement). Read this file plus the open-PR list before claiming. PR #26 (`arena/9fef7647-zone3`) is open, `mergeable=CONFLICTING`; this session does not force-merge it (see F decision on PR #26).
+
+### F Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `588693c9` | `arena/588693c9-zone3` | Final integration: reconcile the two site generations' contradictory headline, publish verified product-identity + marketing pages (3 SEO briefs, comparison, buying guide), re-verify line by line, PR + merge + Pages deploy | in progress (F-T1) | 2026-11-14T10:10Z |
+
+### F Task board (claimed scope)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| F-T1 — Claim + board record | done | 588693c9 | `COORDINATION.md` (F Part only) | This section. Pushed as its own commit before any other file was touched. |
+| F-T2 — Live re-verification of the 3 resolved ASINs (identity, title, brand, category breadcrumb) | in progress | 588693c9 | `sessions/588693c9/**` | Only official amazon.com pages. No price/rating inference. |
+| F-T3 — Reconcile contradictory headlines between the two site generations | done | 588693c9 | `README.md`, `EXECUTIVE-SUMMARY.md` (+ generator nav only) | Resolved in favour of the evidence. `index.html`'s headline ("short links resolve to live listings; 9-char tokens are not ASINs") was already accurate, so it was left alone. The false inference was in `README.md` ("the `plpRedirect=mhFallback` route … confirms the identifiers select nothing") and is corrected there with the control from 588-V08. `EXECUTIVE-SUMMARY.md` gained a dated addendum with the current state. |
+| F-T4 — Marketing pages: 3 product briefs, comparison, buying guide (facts-only, sourced, compliant) | done | 588693c9 | `marketing/**` (7 pages, new), `data/marketing.json` (new), `scripts/build_marketing.py` (new) | Every factual sentence carries an official source URL; the generator refuses to build if a claim dangles, a row lacks a source, a banned field holds a value, or a page lacks the disclosure. |
+| F-T5 — Line-by-line verification + publish new flags | done (needs review, non-blocking) | 588693c9 | `data/flags.json`, `flagged.html` | FLG-028…FLG-034 added, each with official source links; rendered on `flagged.html`. |
+| F-T6 — PR to `main`, merge, confirm Pages deploy | **done** | 588693c9 | this branch | PR #34 merged `58d2744`; follow-up PR #35 merged `bb81417`; Pages **built** for both; live pages verified. |
+
+**Scope boundary:** this session edits only the files listed above. It does **not** edit `archive/**`, `docs/**`, `sessions/3c886b62/**`, `sessions/f1b7da46/**`, `tools/**`, `data/z3/**`, or the 16 directory builds (`dashboard/`, `products/`, …), which belong to earlier sessions and stay as they are.
+
+### F decision on PR #26 (`arena/9fef7647-zone3`)
+
+PR #26 is `CONFLICTING` against `main` and carries 23 changed files, most of them shared root pages this session must also touch. Force-merging it would produce a combined tree that neither session verified. Decision: **left open and unmerged**; its branch is preserved, so nothing is lost. Its *verified* findings (short-link → ASIN identity) are independently re-checked in F-T2 and cited to the same official pages, so the substance is carried forward even if the branch is never merged.
+
+### F-T2 record (session 588693c9, 2026-11-14) — independent live re-verification
+
+Full machine-readable record: `sessions/588693c9/verification-2026-11-14.json` (observations 588-V01…V12).
+
+| ID | Claim re-checked | Result | Official source |
+|---|---|---|---|
+| 588-V01 | ASIN is a 10-character alphanumeric identifier | **Verified, quoted verbatim** | [Creators API GetItems — ItemIdType](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter) |
+| 588-V02–04 | All three raw codes are 9 chars; `dp/<code>` returns *Page Not Found* | **Verified, reproduced 3/3** | [/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) · [/dp/B02NbDxp3](https://www.amazon.com/dp/B02NbDxp3) · [/dp/B00hJ57DV](https://www.amazon.com/dp/B00hJ57DV) |
+| 588-V05–07 | Short links resolve to three live air-fryer listings (B0CDY277D3 / B09B7SB46R / B08DKYBTPH), all in the same 5-level Air Fryers breadcrumb | **Verified, reproduced** | [link 1](https://link.amazon/B04G1MEwY) · [link 2](https://link.amazon/B02NbDxp3) · [link 3](https://link.amazon/B00hJ57DV) |
+| 588-V08 | **CONTROL:** `plpRedirect=mhFallback` also appears on direct fetches of *valid* ASINs, so it is **not** failure evidence | **Verified — correction** | [/dp/B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) · [/dp/B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) · [/dp/B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) |
+| 588-V09 | Standard Commission Table 1 in full (11 rows; Kitchen 4.50 %, All Other 4.00 %), no sign-in | **Verified verbatim** | [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| 588-V10 | OA §5 disclosure sentence, and the "substantially similar statement" allowance | **Verified verbatim** | [Operating Agreement §5](https://affiliate-program.amazon.com/help/operating/agreement) |
+| 588-V11 | 6(t): star ratings / reviews only via Creators API or PA API | **Verified verbatim** | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
+| 588-V12 | 6(v) cloaking · 6(w) link shorteners · 6(y) price tracking · 6(z) non-Amazon products | **Verified verbatim** | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
+
+**Consequence of 588-V08 for the site:** `README.md` states the `plpRedirect=mhFallback` route "confirms the identifiers select nothing", and `dashboard/index.html` calls the parameter "Amazon's fallback route, not a product deep link". Both overstate what the parameter shows. Corrected on the flat site in F-T3; the `/dashboard/` build is generated by `tools/build_site.py`, which this session does not own, so the correction is **requested** below rather than edited.
+
+**Request logged for the owner of `tools/build_site.py` / `data/z3/**`** (cross-scope, not edited here): replace the phrase "Amazon's fallback route, not a product deep link" on the generated `/dashboard/` callout with wording that does not treat `plpRedirect=mhFallback` as failure evidence, citing control 588-V08. Nothing else in that build is affected.
+
+### F-T4 record — the marketing section (session 588693c9, 2026-11-14)
+
+The brief asks for marketing for the three supplied products. Built as a **data-driven section**, not
+hand-written HTML: `data/marketing.json` holds 13 claims and 3 product records, and
+`scripts/build_marketing.py` renders 7 pages from them and then audits its own output.
+
+| Page | What it is |
+|---|---|
+| `marketing/index.html` | Section home: the three products, the sourcing table, the rule the copy follows |
+| `marketing/product-1-chefman-6-quart-dual-basket.html` | Product-1 brief (CHEFMAN 6 Quart Dual Basket, `B0CDY277D3`) |
+| `marketing/product-2-emeril-lagasse-26qt-french-door.html` | Product-2 brief (Emeril Lagasse 26QT, `B09B7SB46R`) |
+| `marketing/product-3-chefman-8-quart-turbofry.html` | Product-3 brief (Chefman 8 Qt TurboFry, `B08DKYBTPH`) |
+| `marketing/comparison.html` | Side-by-side matrix; blank cells labelled with the clause that forces them blank |
+| `marketing/buying-guide.html` | How to choose between the three, and what the guide will not claim |
+
+**The build gate** (`scripts/build_marketing.py`) fails closed — exit 2 before writing anything — if a
+claim references an unknown source ID or has no URL, if a product record holds a price/rating/rank
+value, or if a buying-guide row references an unknown claim. After writing, `check_pages()` fails with
+exit 3 if any page lacks the exact disclosure sentence, has more than one `<h1>`, contains a currency
+figure, has a table row whose cell count differs from its header, or has a broken local link.
+
+**What the copy deliberately omits, and the clause that forces it:**
+
+| Omitted | Clause / reason | Source |
+|---|---|---|
+| Prices, list prices, discounts | 6(y) bars price tracking and alerting; the only figures in the fetched text belonged to carousel items for other ASINs | S02 |
+| Star ratings, review counts | 6(t): only via Creators API or PA API; no credentials in this build | S02 |
+| Per-product commission rate | Table 1 rates are per commission category; no official source states these ASINs' category | S25 |
+| First-hand use or "best" claims | FTC: cannot describe experience with a product not tried | S07 |
+| Search volume, keyword difficulty, trend, conversion rate | no official Amazon affiliate endpoint publishes them; no live campaign | FLG-033 |
+
+**Verified rather than assumed, for the copy:** Table 1 was re-read in full (11 rows, Kitchen 4.50 %,
+All Other 4.00 %) and is shown only as a category reference, never multiplied into an estimate.
+
+### F-T5 record — items published for review (non-blocking)
+
+| ID | Sev | Item |
+|---|---|---|
+| FLG-028 | Info | Correction: `plpRedirect=mhFallback` is not failure evidence (control 588-V08); `README.md` fixed, wording request logged for the `/dashboard/` build |
+| FLG-029 | High | No price/rating/review count on any marketing page, by policy (6(t), 6(y)) — not an omission |
+| FLG-030 | Medium | Whether each resolved listing is the intended product remains unconfirmed |
+| FLG-031 | Medium | No per-product commission rate derivable; Air Fryers browse node ≠ published "Kitchen" row |
+| FLG-032 | Low | D-F-01 closed: OA §5 expressly allows a "substantially similar statement", so the "we earn" variant is not a breach |
+| FLG-033 | Low | SEO inputs in the brief (search volume, trend, conversion) have no official Amazon source |
+| FLG-034 | Low | `sitemap.xml` cannot list the marketing pages: `tools/verify_site.py` V5 requires sitemap URLs to be pages from `tools/build_site.py`. Edit reverted to keep the site green; request logged below |
+
+### F Requests logged (cross-scope — not edited by this session)
+
+1. **Owner of `tools/build_site.py` / `data/z3/**`:** the `/dashboard/` callout still calls
+   `plpRedirect=mhFallback` "Amazon's fallback route, not a product deep link". Control 588-V08 shows the
+   parameter also appears on valid ASINs. Reword so the two halves of the site agree. Evidence:
+   `sessions/588693c9/verification-2026-11-14.json`, observation 588-V08.
+2. **Owner of `tools/build_site.py` + `tools/verify_site.py`:** let `marketing/` into `sitemap.xml`
+   (FLG-034) — either a second sitemap owned by `scripts/build_marketing.py`, or widen V5 to accept
+   pages produced by the marketing generator.
+3. **Owner of `archive/c4e71983/**`:** 15 broken relative links inside `archive/c4e71983/content/*.html`
+   (already recorded as D-F-02). Confirmed again this session by a whole-tree crawl: the archive is not
+   reachable from `index.html`, so no reader is affected. Left untouched as a preserved snapshot.
+
+### F Verification performed (this session)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/build_marketing.py` | **7 pages built**; gate passed; `0 prices, 0 ratings, 0 ranks stated` |
+| `python3 scripts/build_site.py` | exit 0 |
+| `python3 scripts/check_site.py` | **OK: 10 pages, 3 products, 37 sources, 39 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 64 pages · 1017 table rows · 745 with official source · 170 with flag** |
+| `python3 tools/link_report.py --strict` | **PASS**, exit 0 |
+| Whole-tree local-link crawl | 110 HTML pages; **0 broken links outside `archive/`**; 15 inside the unreachable archive snapshot (D-F-02) |
+| Reachability crawl from `index.html` | 18 pages reachable, incl. **all 6 marketing children**; 0 archive pages reachable |
+| Idempotency | re-running both generators leaves the working tree clean |
+| Live re-verification | 12 observations, `sessions/588693c9/verification-2026-11-14.json` |
+
+### F PR & deploy record (session 588693c9) — DONE
+
+| Event | Result |
+|---|---|
+| Pull request | [#34 — Final integration (588693c9): marketing section for the 3 products, mhFallback correction, line-by-line re-verification](https://github.com/kanlerxz87-cyber/Zone3/pull/34) — `arena/588693c9-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`, after rebasing onto `main` `dc88e53` (which had advanced past this branch) |
+| Merge | **MERGED** 2026-11-14T10:12:59Z via `gh pr merge 34 --merge` (no approval waited, per brief) → merge commit `58d27447e91509c7e25789d409f30c612255eae4` |
+| Follow-up PR | [#35 — comparison page: explain the blank commission column](https://github.com/kanlerxz87-cyber/Zone3/pull/35) — the commission column rendered as a silent empty cell; fixed. **MERGED** 2026-11-14T10:13:55Z → `bb8141714bacf007857162d27f062cdaa3591710` |
+| Pages build (both) | `status=built`, `error=null`, build commit equal to each merge commit (checked via the Pages API `builds/latest`) |
+| Live check — marketing home | https://kanlerxz87-cyber.github.io/Zone3/marketing/ — **live**, product table + sourcing table render, each row carrying its source ID |
+| Live check — comparison | https://kanlerxz87-cyber.github.io/Zone3/marketing/comparison.html — **live**; all three blank columns now state the clause that blanks them |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**, register renders |
+| Site merged while flagged? | yes — FLG-028…034 and all prior flags are non-blocking and published, as the brief requires |
+
+**Caching note.** The first live fetch of `comparison.html` after the #35 merge still showed the old
+empty cell. `git show origin/main:marketing/comparison.html` proved the fix was on `main`, and a
+cache-busted fetch (`?v=2`) served the fixed page. Recorded so a later session does not misread this as
+a deploy failure.
+
+**One defect found in this session's own work and fixed before merge:** the generator's `raw_table`
+helper wrapped each pre-rendered row in a single `<td>`, and `base.table` iterated a row *string*
+character-by-character, producing a 71 KB block of one-character cells on `marketing/index.html`. Both
+were caught by a structural audit added to the generator (`check_pages()`), which now fails the build
+(exit 3) on a cell-count mismatch, a duplicate `<h1>`, a missing disclosure, a currency figure, or a
+broken local link.
+
+### F Conflict log
+
+| Time (UTC) | What happened | Resolution |
+|---|---|---|
+| 2026-11-14 | `git pull --rebase origin main` before the PR: `main` had advanced `8cfe91f` → `dc88e53` (PRs #32–#33 from session `ecbfe91b`). Content conflict in `COORDINATION.md`: both sides appended a Part at the same location. | Resolved by **keeping both sides in full** — `ecbfe91b`'s Part first, then this F Part, separated by a rule. Verified no marker remains at line start and that both Parts are present before `git add`. Nothing from any session discarded. |
+| 2026-11-14 | Second conflict, in `flagged.html` (generated output). | Not hand-merged. Resolved by **regenerating** from the merged `data/flags.json` + `data/sources.json`, so the register is internally consistent (39 flags, 38 sources). Hand-resolving generated HTML could have dropped the other session's flags. |
+
 # PART — Session 9fef7647 (branch `arena/9fef7647-zone3`) — claimed 2026-11-14
 
 Repo: `kanlerxz87-cyber/Zone3` · Live site (GitHub Pages, source `main` `/`): https://kanlerxz87-cyber.github.io/Zone3/
