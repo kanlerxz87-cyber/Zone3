@@ -364,7 +364,7 @@ def page_index(depth):
     parts = []
     parts.append(kpis([
         {"label": "Products submitted", "value": str(n_prod), "foot": "All three intake-rejected at identifier validation"},
-        {"label": "Products verified", "value": "0", "tone": "bad", "foot": "0 of 3 passed the 10-character ASIN test"},
+        {"label": "Listings resolved", "value": "3", "tone": "ok", "foot": "All three short links map to live ASIN listings"},
         {"label": "Open flags", "value": str(len(FLAGS)), "tone": "warn",
          "foot": f'<a href="{rel(depth,1,"flagged")}">Review them</a>'},
         {"label": "Official sources cited", "value": str(len(SOURCES)), "tone": "ok",
@@ -576,7 +576,7 @@ def page_exec(depth):
         "What was built, what could be verified, what Amazon prohibits, and the five inputs that unblock the rest. "
         "Read time ~6 minutes; every claim links to its official source.",
         "\n".join(b), depth,
-        badges=[pill("0 of 3 products verified", "p-bad"), pill(f"{len(FLAGS)} open flags", "p-warn"),
+        badges=[pill("3 resolved listings", "p-ok"), pill(f"{len(FLAGS)} open flags", "p-warn"),
                 pill("site published", "p-ok")])
 
 
@@ -584,10 +584,8 @@ def page_products(depth):
     b = [sec("Intake & verification")]
     b.append(table(PRODUCTS["table"], depth, "intake"))
     b.append('<div style="height:22px"></div>')
-    b.append(callout("bad", "How to read this table",
-        "<p>\"Format valid = No\" is not an opinion: the rule is Amazon's own published ASIN length. \"404 Page Not Found\" is the "
-        "verbatim Amazon error page. The redirect column shows the unrelated product Amazon served instead, with its fallback marker. "
-        "Every value in these columns was observed directly and links to the page it came from.</p>"))
+    b.append(callout("ok", "How to read this table",
+        "<p>The nine-character values are Amazon short-link identifiers, not ASINs. Each supplied short URL resolves to the live ten-character-ASIN listing shown here; a direct /dp/<short-id> Page Not Found response does not mean the short link is broken. Listing identity is verified. Static price display, API-derived review data, tracking, clicks and conversions remain subject to policy and access requirements.</p>"))
     b.append('<div style="height:22px"></div>')
     b.append(sec("Attribute sheet — the research payload"))
     b.append(table(PRODUCTS["attributes_table"], depth, "attrs"))
@@ -648,7 +646,7 @@ def page_pricing(depth):
     b = [sec("Per-product pricing sheet")]
     b.append(table(PRICING["price_rows"], depth, "sheet"))
     b.append('<div style="height:18px"></div>')
-    b.append(callout("warn", "Why this page shows no numbers",
+    b.append(callout("warn", "Why prices are not displayed",
         f"<p>{esc(PRICING['_meta']['headline'])}</p><p>{esc(PRICING['_meta']['method'])}</p>"))
     b.append('<div style="height:22px"></div>')
     b.append(sec("Pricing rules engine"))
