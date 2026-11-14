@@ -12,30 +12,38 @@
 >
 > | Submitted link | Opens (stable ×4 over 2 days) | Observed 2026-11-14 (source) |
 > | --- | --- | --- |
-> | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt Dual Basket Air Fryer | $79.93 (list $99.99), 4.2★, ~4.8K reviews ([S30](https://link.amazon/B04G1MEwY), [S33](https://www.amazon.com/s?k=B0CDY277D3)) |
-> | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 (list $209.99), 4.3★, ~18.3K reviews ([S31](https://link.amazon/B02NbDxp3), [S34](https://www.amazon.com/s?k=B09B7SB46R)) |
-> | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry | $79.91 (list $119.99), 4.4★, ~16.8K reviews ([S32](https://link.amazon/B00hJ57DV), [S35](https://www.amazon.com/s?k=B08DKYBTPH)) |
+> | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt Dual Basket Air Fryer | $79.93 (list $99.99), 4.2★, ~4.8K reviews ([S45](https://link.amazon/B04G1MEwY), [S48](https://www.amazon.com/s?k=B0CDY277D3)) |
+> | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 (list $209.99), 4.3★, ~18.3K reviews ([S46](https://link.amazon/B02NbDxp3), [S49](https://www.amazon.com/s?k=B09B7SB46R)) |
+> | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry | $79.91 (list $119.99), 4.4★, ~16.8K reviews ([S47](https://link.amazon/B00hJ57DV), [S50](https://www.amazon.com/s?k=B08DKYBTPH)) |
 >
 > **What still stands from below:** the codes are 9 characters and are **not ASINs**
 > ([Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/items/items-api-getitems));
-> `amazon.com/dp/<code>` returns Page-Not-Found for each; commission rates remain login-gated
-> ([rate schedule](https://affiliate-program.amazon.com/help/operating/schedule)); no Associates tag
-> exists; click/conversion data does not exist.
+> `amazon.com/dp/<code>` returns Page-Not-Found for each; per-product commission rates cannot be
+> assigned (category rates are public: Kitchen 4.50% in [Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ),
+> but the listings' rate category is unconfirmed); no Associates tag exists; click/conversion data
+> does not exist.
 >
 > **What is corrected:** (a) "the links carry no product identity" — withdrawn. The mapping is
 > registry-based and stable (control evidence: unregistered codes of the same length are rejected
 > 403/404; a real ASIN is not a valid short code — recorded as Z-V10–Z-V14 in `COORDINATION.md`
 > and reproduced on 2026-11-14). (b) "one character dropped per identifier while copying" —
 > speculation with no source; withdrawn per the no-inference rule. (c) `plpRedirect=mhFallback`
-> as a failure marker — withdrawn; it also appears on ordinary direct product fetches (Z-V13).
-> The residual open question is only **owner intent** (are these the intended products?), flagged
-> as FLG-022, not link behaviour.
+> as a failure marker — withdrawn; it also appears on ordinary direct product fetches (Z-V13,
+> main register FLG-026).
 >
-> **Current verdict:** the three products are identified and analysed on the live site
-> (Products, Category: air fryers, Pricing, Reviews, Marketing content pages). Launch is gated on:
-> an Associates tag (FLG-010), the commission rate card (FLG-005), owner confirmation of intent
-> (FLG-022), and removal or API re-sourcing of observed prices/ratings before commercial use
-> (FLG-023). Verification details: `docs/repo-review-9fef7647.md`; flags: [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html).
+> **How the identity question is handled on the live site (register FLG-027):** the identity fields
+> (asin, product_name, brand) stay **blank** in `data/products.json` until the owner confirms intent;
+> everything observed at each link target is published separately as dated, per-field-sourced
+> `observed_at_link_target` data, shown on the Products, Pricing, Reviews, Category and Marketing
+> pages framed as "the listing the submitted link opens". Dated price/rating snapshots are analysis-
+> only under the display-rule caveat (register FLG-022).
+>
+> **Current verdict:** the listings the three links open are identified and analysed on the live
+> site (Products, Category: Air Fryers, Pricing, Reviews, Marketing content pages). Launch is
+> gated on: an Associates tag (FLG-010), the per-product commission rate (FLG-005/FLG-021),
+> owner confirmation of intent (FLG-027), and a keep-or-remove decision on the observed
+> price/rating snapshots (FLG-022). Verification details: `docs/repo-review-9fef7647.md`;
+> flags: [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html).
 
 ---
 
