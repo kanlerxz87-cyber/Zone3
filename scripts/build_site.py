@@ -18,6 +18,7 @@ import json
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+REPO = "https://github.com/kanlerxz87-cyber/Zone3"
 DATA = ROOT / "data"
 ASSETS = ROOT / "assets"
 BUILT = "2026-11-13"
@@ -520,7 +521,8 @@ def build_flagged() -> None:
             e(f["item"]),
             e(f["detail"]),
             e(f["action"]),
-            src_links(f["sources"]) if f["sources"] else '<span class="muted">internal (repo)</span>',
+            src_links(f["sources"]) if f["sources"] else
+            f'<a href="{REPO}" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">(observed in this repository; no external source exists, so none is cited)</span>',
         ])
     body = (
         '<div class="callout"><p><strong>Flagged for review.</strong> These items do not block the merge. '
@@ -541,7 +543,9 @@ def build_flagged() -> None:
     body += "<h2>Observed redirect targets (full titles as read, not confirmed)</h2>" + table(
         ["Product link", "Page ID", "Page title as read", "Confirmed?", "Source"], obs)
     page("flagged.html", "Flagged for review", body,
-         lead=f"{len(FLAGS)} flags: {sev_count('Critical')} critical, {sev_count('High')} high, {sev_count('Medium')} medium, {sev_count('Low')} low.")
+         lead=(f"{len(FLAGS)} entries: {sev_count('Critical')} critical, {sev_count('High')} high, "
+               f"{sev_count('Medium')} medium, {sev_count('Low')} low, {sev_count('Info')} info "
+               "(info entries record a correction made to this site, not a problem with a product)."))
 
 
 # ------------------------------------------------------------- Sources

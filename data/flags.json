@@ -294,6 +294,26 @@
         "S02",
         "S30"
       ]
+    },
+    {
+      "id": "V-F3",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "/docs/ page set is live but has no inbound link from either dashboard",
+      "detail": "The repository serves four independent page sets: the flat pages at the root (scripts/build_site.py), the 16-page audit at /dashboard/ (tools/build_site.py), the session-scoped pages at /sessions/3c886b62/, and /docs/ (session arena-79f85104, PR #14). /docs/ returns HTTP 200 and passes the link checker, but no page in the root build, the audit build or the audit nav links to it, so a visitor browsing the site cannot reach it. Nothing is broken; it is simply orphaned from navigation.",
+      "action": "Owner to decide: add one link to /docs/ in the root dashboard nav (a one-line change in scripts/build_site.py NAV), or retire the page set. Left unchanged here because the root nav is shared output.",
+      "sources": [],
+      "repo_evidence": "No inbound <a href> to /docs/ from any page outside /docs/, verified by scanning every checked-in HTML file; /docs/index.html returns HTTP 200 locally. Nothing external to cite."
+    },
+    {
+      "id": "V-F4",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "sitemap.xml lists only the audit-build URLs, not the root pages",
+      "detail": "sitemap.xml contains the 16 /dashboard/-generation URLs. The root flat pages (/, /products.html, /pricing.html, /reviews.html, /content.html, /campaigns.html, /flagged.html, /sources.html, /executive-summary.html) and /docs/ are absent, so search engines are given a partial map of the site. robots.txt points at the sitemap and Pages serves it at the expected path.",
+      "action": "Owner to decide the canonical URL set (the two generations publish overlapping material). Regenerate the sitemap once that is settled; not done here because it encodes an editorial decision about which generation is canonical.",
+      "sources": [],
+      "repo_evidence": "sitemap.xml contains 16 <loc> entries, all of the /dashboard/ generation; the nine root flat pages and /docs/ are absent. Verified by comparing sitemap.xml against the checked-in HTML files."
     }
   ]
 }
