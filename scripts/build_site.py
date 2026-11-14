@@ -524,7 +524,7 @@ def build_flagged() -> None:
             e(f["detail"]),
             e(f["action"]),
             src_links(f["sources"]) if f.get("sources") else
-            f'<a href="{REPO}" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">(observed in this repository; no external source exists, so none is cited)</span>',
+            f'<a href="{REPO}" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">&mdash; observed in this repository, so no external source is cited</span>',
         ])
     body = (
         '<div class="callout"><p><strong>Flagged for review.</strong> These items do not block the merge. '
