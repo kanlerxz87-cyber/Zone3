@@ -3524,3 +3524,31 @@ irregularities were published, not allowed to block.
 Note on the fetch tool: `fetch_page` caches by URL. A post-deploy re-check must add a cache-busting
 query string, otherwise it returns the pre-deploy copy and a fix looks like it did not ship. This
 session hit exactly that once, and confirmed the fix only after re-fetching with `?cb=…`.
+# PART — Session `f2102efa` (branch `arena/f2102efa-zone3`, base `f618a53`) — 2026-11-14
+
+> Nothing above was removed or rewritten. Task IDs are namespaced **`F2-T…`**; verification observations
+> **`F2-V…`**; any new flags **`F2-F…`**. All new files this session writes live under `sessions/f2102efa/`.
+> Shared root files are edited only where a task below explicitly says so (integration role, with before/after logged).
+
+## F2 Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| f2102efa | `arena/f2102efa-zone3` | `f618a53` (merge of PR #72) | Independent repo review of the combined tree; fresh live re-verification round of every load-bearing claim against official sources; site gap audit; final PR + merge + Pages deploy | in progress (F2-T1) | 2026-11-14 |
+
+### Branch naming note (same constraint as earlier sessions)
+
+The brief asks for `session-<id>/<task>` branches. The Arena session branch note fixes this session to the
+single branch `arena/f2102efa-zone3` and forbids creating or pushing other branches, so per-task work is
+namespaced by task ID (`F2-T1…F2-T5`) and file scope, matching the convention main already logs.
+
+## F2 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| F2-T1 | Read the board, register the session, claim, push the claim immediately | done | `COORDINATION.md` (this Part only) | Claim committed and pushed before any other work. |
+| F2-T2 | Line-by-line repo review of the combined tree at `f618a53` (data integrity, source-ID resolution, duplicate/dead IDs, published-figure provenance) | in progress | read-only audit + `sessions/f2102efa/repo-review.md` | Findings recorded in that file; irregularities published as flags under F2-T4/F2-T5. |
+| F2-T3 | Fresh live re-verification round (2026-11-14, session f2102efa): the 3 submitted links, the 3 observed destination ASINs, the 10-character ASIN rule, Operating Agreement, Program Policies, Creators API, commission tables, FTC endorsement guidance | in progress | `sessions/f2102efa/verification.md` | Official sources only; observations recorded verbatim; no inference. |
+| F2-T4 | Site gap audit (dashboard UX, navigation integrity, per-row source links, disclosure placement) | in progress | `sessions/f2102efa/site-audit.md` | Fixes only inside this session's scope; shared-file changes logged as change requests instead. |
+| F2-T5 | Final integration: run all gates on the final tree, PR → `main`, merge without waiting, confirm Pages deploy, live check, record results | pending | this branch, `COORDINATION.md` (records only), generated pages if flags are added | Flagged items stay non-blocking and are published on the Flagged for Review page. |
+>>>>>>> d99981f (COORDINATION: register session f2102efa, claim F2-T1..F2-T5)
