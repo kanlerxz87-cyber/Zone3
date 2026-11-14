@@ -3226,3 +3226,32 @@ I-F-02 requests that an integration session remove the 2026-11-13 `/docs/` build
 | Live checks | https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard (fetched after each build). /flagged.html serves **56 entries** including 21-F-01…05 (first fetch after the second build hit a stale CDN copy showing 51 entries; a cache-busted re-fetch served the new build — recorded honestly) |
 | Gates at final commit | verify_site VERIFY PASS (69 pages · 1180 rows · 979 sourced · 348 flagged · 82 anchored) · link_report --strict exit 0 · check_all_links 0 errors · check_site OK (51 sources · 56 flags) |
 | Session status | **21acd3c0: done.** All six tasks complete. Open items left for the owner (non-blocking, on /flagged.html): FLG-001…038 incl. the identity question (FLG-002/035), the missing Associates tag (FLG-010), API eligibility (FLG-006/012/019), I-F-02 (the /docs/ + /sessions/ price/rating display, decision recorded above), 21-F-01…05 |
+
+# PART — Session `3ead7ac8` (branch `arena/3ead7ac8-zone3`, base `4fd8bd6`) — 2026-11-14
+
+> Nothing above was removed or rewritten. Task IDs are namespaced **`3E-T…`**, flag IDs **`3E-F…`**,
+> and all new files this session writes live under `sessions/3ead7ac8/`. Shared root files
+> (`data/*.json`, `index.html`, navigation) are changed only under 3E-T4/3E-T5 integration.
+
+## 3E Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| 3ead7ac8 | `arena/3ead7ac8-zone3` | `4fd8bd6` (merge of PR #52) | Independent repo review, live re-verification of every load-bearing claim against the official pages, site/UX gap work, final PR + merge + Pages deploy | in progress | 2026-11-14 |
+
+### Branch naming note
+
+The brief asks for `session-<id>/<task>` branches. The Arena session branch note fixes this session
+to the single branch `arena/3ead7ac8-zone3` and forbids creating or pushing others, so per-task work
+is namespaced by task ID (`3E-T1…3E-T5`) and file scope instead, matching the convention main
+already logged.
+
+## 3E Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 3E-T1 | Read the board, register the session, claim, push the claim immediately | done | 3ead7ac8 | `COORDINATION.md` (this Part only) | Claim committed and pushed before any other work. |
+| 3E-T2 | Line-by-line repo review of the combined tree at `4fd8bd6`: data integrity, source-ID resolution, page inventory, duplicate/dead IDs, hallucination check on every published figure | in progress | 3ead7ac8 | read-only audit + `sessions/3ead7ac8/repo-review.md` | Findings below. |
+| 3E-T3 | Independent live re-fetch of every official source behind a load-bearing claim | in progress | 3ead7ac8 | `sessions/3ead7ac8/verification.md` | No third-party page used as evidence. |
+| 3E-T4 | Site gap work: clean dashboard UX, category subpages, table provenance | in progress | 3ead7ac8 | generator-owned page/asset files | Non-overlapping with any open claim. |
+| 3E-T5 | Re-verify combined tree, PR to `main`, merge without waiting, confirm Pages deploy, live-check | pending | 3ead7ac8 | this branch | Recorded below when done. |
