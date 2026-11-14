@@ -1,7 +1,7 @@
 {
  "checks": {
   "data_model": {
-   "cited_from_pages_and_data": 63,
+   "cited_from_pages_and_data": 64,
    "cited_ids_not_registered": [
     "S1",
     "S2",
@@ -12,6 +12,7 @@
     "S36",
     "S37",
     "S38",
+    "S39",
     "S4",
     "S5",
     "S6",
@@ -29,6 +30,7 @@
     "S36",
     "S37",
     "S38",
+    "S39",
     "S4",
     "S5",
     "S6",
@@ -266,8 +268,7 @@
    "count": 21,
    "definition": "live page (not archive/) that renders a $ amount inside a table cell AND names one of the three listings",
    "missing_capture_date_stamp": [
-    "dashboard.html",
-    "sessions/03bbd050/index.html"
+    "dashboard.html"
    ],
    "missing_exact_disclosure_sentence": [],
    "pages": [
