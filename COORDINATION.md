@@ -3422,6 +3422,8 @@ descriptions on `flagged.html` and `flagged/index.html`, source-register descrip
 `sources.html` and `docs/sources.html`, and the 12 retained session pages that carry the
 `3E-F-03` compliance notice. No new product-fact display was introduced by the merge.
 
+**554-T6 follow-up (final):** the record above shipped as **[PR #68](https://github.com/kanlerxz87-cyber/Zone3/pull/68)** — **MERGED** 2026-11-14T19:02:06Z via `gh pr merge 68 --merge` → merge commit `cc9aafbecc9d057b0f27bc124ec450b8192fb4c6` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`). Two `COORDINATION.md` conflicts against PRs #69/#70 were resolved in place (both sides kept; 0 markers asserted). Gates re-run on the merged tree before merging: `check_site` OK (12 pages / 3 products / 51 sources / 65 flags), `verify_site` VERIFY PASS (70 pages / 1222 rows / 1021 with official source), `link_report --strict` 0, `check_all_links` 116 pages / 0 errors, session checker OK. GitHub Pages: build for the merge and for the tip that immediately followed (`96ea745`) → **built** (19:02:34Z, `error=null`). Live checks after deploy: `/` dashboard, `/flagged.html` and `/executive-summary.html` all render with source-linked rows. Session `554c08ca`: **complete**.
+
 ## 3E-T5 record — PR, merge and Pages deploy (2026-11-14)
 
 | Event | Result |
