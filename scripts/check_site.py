@@ -38,6 +38,9 @@ TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html
                "campaigns.html", "flagged.html", "sources.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
+    # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);
+    # added 2026-11-14 by integration session ecbfe91b so S31 (the ASIN rule page) can be cited.
+    "sell.amazon.com",
     "www.ftc.gov", "github.com", "api.github.com",
 }
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."

@@ -1,0 +1,147 @@
+{
+  "session": "588693c9",
+  "branch": "arena/588693c9-zone3",
+  "checked_on": "2026-11-14",
+  "method": "Each URL below was fetched directly in this session. Quoted text is copied from the page as returned. Nothing in this file is inferred, averaged, or carried over from another session's record: values marked 'carried' were re-fetched here.",
+  "observations": [
+    {
+      "id": "588-V01",
+      "claim": "An Amazon ASIN is a 10-character alphanumeric identifier.",
+      "result": "verified_verbatim",
+      "quote": "ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter",
+      "source_id": "S31"
+    },
+    {
+      "id": "588-V02",
+      "claim": "Submitted code 1 (B04G1MEwY) is 9 characters, so it is not a valid ASIN, and amazon.com/dp/B04G1MEwY serves Amazon's error page.",
+      "result": "verified_reproduced",
+      "observed": "len=9. Page <title> returned: 'Page Not Found'. Body: \"Sorry! We couldn't find that page.\"",
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "source_id": "S08"
+    },
+    {
+      "id": "588-V03",
+      "claim": "Submitted code 2 (B02NbDxp3) is 9 characters and amazon.com/dp/B02NbDxp3 serves Amazon's error page.",
+      "result": "verified_reproduced",
+      "observed": "len=9. Page <title> returned: 'Page Not Found'.",
+      "url": "https://www.amazon.com/dp/B02NbDxp3",
+      "source_id": "S09"
+    },
+    {
+      "id": "588-V04",
+      "claim": "Submitted code 3 (B00hJ57DV) is 9 characters and amazon.com/dp/B00hJ57DV serves Amazon's error page.",
+      "result": "verified_reproduced",
+      "observed": "len=9. Page <title> returned: 'Page Not Found'.",
+      "url": "https://www.amazon.com/dp/B00hJ57DV",
+      "source_id": "S10"
+    },
+    {
+      "id": "588-V05",
+      "claim": "Short link 1 resolves to a live listing for ASIN B0CDY277D3.",
+      "result": "verified_reproduced",
+      "observed": "Final URL https://www.amazon.com/dp/B0CDY277D3?...&plpRedirect=mhFallback. Title: 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen'. Breadcrumb: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers.",
+      "url": "https://link.amazon/B04G1MEwY",
+      "source_id": "S11",
+      "landing_page_source_id": "S14"
+    },
+    {
+      "id": "588-V06",
+      "claim": "Short link 2 resolves to a live listing for ASIN B09B7SB46R.",
+      "result": "verified_reproduced",
+      "observed": "Final URL https://www.amazon.com/dp/B09B7SB46R?...&plpRedirect=mhFallback. Title: 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen'. Breadcrumb: identical five-level Air Fryers chain.",
+      "url": "https://link.amazon/B02NbDxp3",
+      "source_id": "S12",
+      "landing_page_source_id": "S15"
+    },
+    {
+      "id": "588-V07",
+      "claim": "Short link 3 resolves to a live listing for ASIN B08DKYBTPH.",
+      "result": "verified_reproduced",
+      "observed": "Final URL https://www.amazon.com/dp/B08DKYBTPH?...&plpRedirect=mhFallback. Title: 'Chefman Air Fryer 8 Qt | TurboFry(R) 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen'. Breadcrumb: identical five-level Air Fryers chain.",
+      "url": "https://link.amazon/B00hJ57DV",
+      "source_id": "S13",
+      "landing_page_source_id": "S16"
+    },
+    {
+      "id": "588-V08",
+      "claim": "CONTROL. The query parameter plpRedirect=mhFallback is NOT evidence that a product lookup failed.",
+      "result": "verified_correction",
+      "observed": "A direct GET of three known-valid ASINs with no short link in the path -- /dp/B0CDY277D3, /dp/B09B7SB46R and /dp/B08DKYBTPH -- each ended on a URL carrying 'plpRedirect=mhFallback' (and 'lv=shuf') while serving the correct product page. The parameter therefore appears on ordinary product fetches for this client and says nothing about whether an identifier selected a product.",
+      "urls": [
+        "https://www.amazon.com/dp/B0CDY277D3",
+        "https://www.amazon.com/dp/B09B7SB46R",
+        "https://www.amazon.com/dp/B08DKYBTPH"
+      ],
+      "source_ids": ["S14", "S15", "S16"],
+      "affects": "README.md line asserting the mhFallback route 'confirms the identifiers select nothing'; dashboard/index.html callout calling mhFallback 'Amazon's fallback route, not a product deep link'. Both overstate what the parameter shows."
+    },
+    {
+      "id": "588-V09",
+      "claim": "Standard Commission Income Table 1 publishes fixed rates by product category; Kitchen is 4.50% and 'All Other Categories' is 4.00%.",
+      "result": "verified_verbatim",
+      "observed": "Table 1 has 11 rows: Luxury Beauty/Luxury Stores Beauty/Amazon Explore 10.00%; Digital Music/Physical Music/Handmade/Digital Videos 5.00%; Physical Books, Kitchen, Automotive 4.50%; Amazon Fire Tablet Devices ... Handbags & Accessories 4.00%; Toys ... Amazon Coins 3.00%; PC, PC Components, DVD & Blu-Ray 2.50%; Televisions, Digital Video Games 2.00%; Amazon Fresh ... Health & Personal Care 1.00%; Gift Cards ... 0.00%; Coach 0.00%; All Other Categories 4.00%. Rendered without a sign-in.",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_id": "S25",
+      "note": "Table 1 gives a category rate. It does not state which category these three ASINs are in, so no per-product rate is derived. The Air Fryers breadcrumb is a browse node, not a commission category."
+    },
+    {
+      "id": "588-V10",
+      "claim": "Operating Agreement section 5 prescribes the disclosure sentence and allows a substantially similar statement.",
+      "result": "verified_verbatim",
+      "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: \"As an Amazon Associate I earn from qualifying purchases.\"",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "source_id": "S01",
+      "note": "The 'or any substantially similar statement previously allowed' clause means the 'we earn' variant used on some inherited pages is not a verbatim-only failure. Recorded so flag D-F-01 can be closed as not-a-violation rather than left ambiguous."
+    },
+    {
+      "id": "588-V11",
+      "claim": "Star ratings and customer reviews may be shown only if obtained through Creators API or PA API.",
+      "result": "verified_verbatim",
+      "quote": "(t) You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "source_id": "S02"
+    },
+    {
+      "id": "588-V12",
+      "claim": "Price tracking/alerting is prohibited, link shortening that obscures an Amazon destination is prohibited, cloaking is prohibited, and non-Amazon products may not be promoted with Program Content.",
+      "result": "verified_verbatim",
+      "quotes": [
+        "(v) You will not cloak, hide, spoof, or otherwise obscure the URL of your Site containing Special Links (including by use of Redirecting Links) ...",
+        "(w) You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+        "(y) Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
+        "(z) You will not display on your Site, or otherwise use, any Program Content to advertise or promote any products that are offered on any site that is not an Amazon Site (e.g., products offered by other retailers)."
+      ],
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "source_id": "S02"
+    }
+  ],
+  "not_verified_and_therefore_left_blank": [
+    {
+      "field": "price / list price",
+      "why": "Prices are served dynamically per session and were not obtainable as a stable, attributable value. The price figures that appear in the fetched page text are attached to 'Customers who viewed this item also viewed' carousel items, which are other ASINs, and must not be attributed to the listed product. Participation Requirement 6(y) also bars price tracking, and section 6(t)/Products Statement limit how price and rating data may be shown."
+    },
+    {
+      "field": "star rating / review count",
+      "why": "Participation Requirement 6(t) permits star ratings and customer reviews only when obtained through Creators API or PA API. This session has no API credentials, so any number read off the rendered page would violate 6(t) if published. Left blank and flagged."
+    },
+    {
+      "field": "commission rate per product",
+      "why": "Table 1 gives rates by category. No official source states the commission category of these three ASINs, and whether an Air Fryers browse node maps to the 'Kitchen' rate is not stated anywhere official. Not derived."
+    },
+    {
+      "field": "whether the three resolved listings are the products that were intended to be submitted",
+      "why": "The submitted tokens are 9-character short-link codes, not ASINs. No official Amazon document describes how link.amazon codes map to targets, and the submitter supplied no product names. This cannot be settled from any official source; it needs the submitter's confirmation. Flagged, not guessed."
+    },
+    {
+      "field": "best-seller rank, competitor count, clicks, conversions, Associates tag",
+      "why": "No official Amazon endpoint publishes these to affiliates without account access; the platform has no live campaign or tag. Left blank by design."
+    }
+  ],
+  "irregularities": [
+    "The three submitted tokens are 9 characters; an ASIN is 10. The tokens are short-link codes, not ASINs.",
+    "plpRedirect=mhFallback appears on direct fetches of valid ASINs too (588-V08), so it is not failure evidence. Earlier text on this site said it was.",
+    "The three short links resolve to three different air fryers from three brands. Whether that is the intended set is unconfirmed.",
+    "Rendered prices in the fetched page text belong to carousel items for other ASINs, not to the listed product."
+  ]
+}
