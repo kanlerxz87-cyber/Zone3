@@ -38,8 +38,8 @@
       "publisher": "Amazon.com",
       "title": "Redirect trace: https://link.amazon/B04G1MEwY",
       "url": "https://link.amazon/B04G1MEwY",
-      "observed": "Final URL https://www.amazon.com/dp/B0CDY277D3?...&channelId=704&plpRedirect=mhFallback — page title 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven'. Target carries plpRedirect=mhFallback (Amazon fallback route), not the submitted identifier.",
-      "status": "verified-negative",
+      "observed": "Observed final URL on 2026-11-14: https://www.amazon.com/dp/B0CDY277D3 with page title 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven'. This is the destination reached by the submitted short link; the query parameter is recorded without interpreting it as failure evidence.",
+      "status": "verified",
       "used_for": "Products: redirect trace P-01; Flag FLG-007"
     },
     {
@@ -47,8 +47,8 @@
       "publisher": "Amazon.com",
       "title": "Redirect trace: https://link.amazon/B02NbDxp3",
       "url": "https://link.amazon/B02NbDxp3",
-      "observed": "Final URL https://www.amazon.com/dp/B09B7SB46R?...&plpRedirect=mhFallback — page title 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven'.",
-      "status": "verified-negative",
+      "observed": "Observed final URL on 2026-11-14: https://www.amazon.com/dp/B09B7SB46R with page title 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven'. This records the short-link destination, not the requester's intent.",
+      "status": "verified",
       "used_for": "Products: redirect trace P-02; Flag FLG-007"
     },
     {
@@ -56,8 +56,8 @@
       "publisher": "Amazon.com",
       "title": "Redirect trace: https://link.amazon/B00hJ57DV",
       "url": "https://link.amazon/B00hJ57DV",
-      "observed": "Final URL https://www.amazon.com/dp/B08DKYBTPH?...&plpRedirect=mhFallback — page title 'Chefman Air Fryer 8 Qt | TurboFry 4-in-1'.",
-      "status": "verified-negative",
+      "observed": "Observed final URL on 2026-11-14: https://www.amazon.com/dp/B08DKYBTPH with page title 'Chefman Air Fryer 8 Qt | TurboFry 4-in-1'. This records the short-link destination, not the requester's intent.",
+      "status": "verified",
       "used_for": "Products: redirect trace P-03; Flag FLG-007"
     },
     {

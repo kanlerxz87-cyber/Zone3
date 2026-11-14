@@ -2911,6 +2911,7 @@ Sources used this record: `https://link.amazon/B04G1MEwY` · `https://link.amazo
 # PART I — Session c79eb5d9 (branch `arena/c79eb5d9-zone3`, base `ab33669`)
 
 Claimed before any content work, per protocol. This Part records the claim, the work, its sources and its irregularities.
+# I Part — session `043344f8` (2026-11-14) — independent site and source audit
 
 ## I Session registry
 
@@ -2955,3 +2956,22 @@ Scope note: this session does **not** rewrite the shared flat pages, the `/dashb
 | I-F-04 | Low | The site's own `verification.html` "one row per published claim" page is an older build that does not cover this session's 20 re-reads | **open** — this session's rows are instead in `sessions/c79eb5d9/data/reverification-2026-11-14.json`; consolidating them into `verification.html` belongs to the next integration session |
 
 Owner actions that would unblock the blocked items in the requirements matrix (none of them are content defects): supply the Associates tag, supply a valid 10-character ASIN for each product, and confirm account eligibility for the marketplace in question.
+| 043344f8 | `arena/043344f8-zone3` | Independent final validation of the latest integrated site, current data/source gates, and published Pages state; document findings | in progress (I-T1–I-T3) | 2026-11-14 |
+
+## I Task board (claimed before work)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| I-T1 — Run all local integrity, provenance, and link gates on the supplied base | in progress | 043344f8 | read-only | current repository + registered official URLs | — |
+| I-T2 — Review the requested landing, product marketing, executive summary, and policy boundaries against the user's brief | in progress | 043344f8 | read-only | official URLs already registered in `data/z3/sources.json` | — |
+| I-T3 — Record results and any findings in this Part; do not overwrite prior session-owned outputs | in progress | 043344f8 | `COORDINATION.md` I Part only | to be recorded | — |
+
+Scope note: this session is on the Arena-fixed branch `arena/043344f8-zone3`; it will not create or switch branches. Root and generated content are read-only unless an independently confirmed defect is found and ownership permits a non-overlapping fix.
+
+### I-T4 scope addendum — stale interpretation correction
+
+A reproducible inconsistency was found between the latest product register (`data/z3/products.json`, which records the three observed short-link destinations as verified listings) and the generated audit dashboard / legacy shared flag text (which still called those targets unrelated/random and treated `plpRedirect=mhFallback` as proof of a failed deep link). This matches the wording request already logged by session `588693c9` in Part E; that session did not own the generator. All earlier sessions are complete and the current session is the integration pass, so I-T4 now owns the additive correction only in `tools/build_site.py`, `data/z3/flags.json`, `data/z3/sources.json`, `data/z3/commission.json`, `data/z3/niches.json`, `data/z3/requirements.json`, and generated `dashboard/**`. The correction will preserve the distinction between verified redirect destinations and unverified user intent; it will not claim that the destination is the user's intended product unless that is independently known.
+
+### I-T5 scope addendum — summary and provenance count reconciliation
+
+The T4 correction exposed two additional stale quantitative claims: the executable provenance report still labels all 36 product-attribute cells as identity blanks, although listing title/brand/category are sourced for the observed destinations (the remaining 9 fields × 3 destinations = 27 blank cells); and the standalone README/executive summary still say no product identity can be verified. I-T5 owns reconciling those summaries and the report to the current evidence, while retaining uncertainty about the requester's intended products. Scope: `README.md`, `EXECUTIVE-SUMMARY.md`, `tools/link_report.py`, `tools/build_site.py`, `data/z3/products.json`, `data/z3/flags.json`, plus regenerated `/executive-summary/`, `/flagged/`, `/dashboard/` and report outputs. Do not erase session history or fill dynamic price/review/performance fields.

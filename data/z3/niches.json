@@ -3,7 +3,7 @@
     "title": "Niche & competition analysis",
     "generated_utc": "2026-11-13T23:45:00Z",
     "headline": "The scoring model and its data contract are defined and shipped; the inputs are not, so no niche is ranked and no competition score is published.",
-    "honesty_note": "All three fallback redirect targets happened to be air-fryer products in Home & Kitchen. That is NOT a niche signal: it is Amazon's personalised fallback recommendation for the fetching session, it differed per request, and it is unconnected to the submitted identifiers. Nothing was inferred from it.",
+    "honesty_note": "The three supplied short links were observed to land on Air Fryer listings in Amazon’s Home & Kitchen hierarchy. This is evidence about those three destinations only, not evidence of market-wide demand, trend, conversion, or competition. No niche score is inferred from this selected sample.",
     "score_definition": "niche_score = 0.25*commission_index + 0.20*demand_index + 0.20*review_motiveability + 0.15*content_gap + 0.10*price_band_fit + 0.10*(1 - competition_index). Each term is z-scored across the candidate set. Weights are this platform's choice, not an Amazon-supplied formula."
   },
   "scoring_inputs": {

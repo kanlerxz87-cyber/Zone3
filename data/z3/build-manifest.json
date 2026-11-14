@@ -17,21 +17,21 @@
   "files": {
     "agent-terms": "94cb0fee17a9",
     "campaigns": "a10d623ef096",
-    "commission": "aecaf7debcda",
+    "commission": "20be3704ace7",
     "compliance": "3f81af965f25",
-    "content": "f50bd2e74b87",
-    "executive-summary": "75040ec8fec6",
-    "flagged": "895f51e2a3e1",
-    "index": "bae90c47c554",
-    "methodology": "e8088528c210",
-    "niches": "3a6d8d0cdb3c",
+    "content": "1a5f0f5b0199",
+    "executive-summary": "2fb9558c9fe7",
+    "flagged": "0cdbfb7c3339",
+    "index": "4e1e5d971bf6",
+    "methodology": "5bf3ccee36f3",
+    "niches": "f551917e6deb",
     "pricing": "f505f45be5ca",
-    "products": "30188b02dfcd",
+    "products": "a6f30f61ed38",
     "repo-review": "d7682ef2e868",
-    "requirements": "3daa02cdc7b6",
+    "requirements": "eb26b38be5b7",
     "reviews": "e287786124f3",
-    "sources": "efb90e347a7b"
+    "sources": "0db2f47d32d2"
   },
-  "content_digest": "92cf53b5dff7e7c9",
+  "content_digest": "84c87cd00954160f",
   "built_utc_note": "deliberately absent: no build timestamp is recorded, so that a no-op rebuild is byte-identical and the tree stays clean. Use the commit date of the file for 'when', and content_digest for 'what'."
 }

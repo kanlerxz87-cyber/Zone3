@@ -69,56 +69,67 @@
       {
         "id": "FLG-004",
         "sev": "Critical",
-        "item": "Identifier `B04G1MEwY`",
-        "finding": "9 characters. Amazon states an ASIN is \"a unique 10-character alphanumeric code\". `https://www.amazon.com/dp/B04G1MEwY` returns the Amazon 'Page Not Found' error page.",
-        "action": "Provide the full 10-character ASIN. Likely one character was dropped when the link was copied.",
+        "item": "Submitted short-link token `B04G1MEwY` (not an ASIN)",
+        "finding": "`B04G1MEwY` is 9 characters, while Amazon’s official Creators API reference defines an ASIN as a 10-character alphanumeric identifier. The direct `https://www.amazon.com/dp/B04G1MEwY` page returns Page Not Found. The submitted short link was separately observed to redirect to a live listing; see its redirect-trace source. The raw token and the redirect destination are distinct identifiers.",
+        "action": "The observed destination listing is recorded separately. Confirm whether that destination is the intended product; otherwise provide the intended product page or ASIN. Do not treat the short-link token itself as an ASIN.",
         "sources": [
           "SRC-01",
-          "SRC-08"
+          "SRC-08",
+          "SRC-04"
         ]
       },
       {
         "id": "FLG-005",
         "sev": "Critical",
-        "item": "Identifier `B02NbDxp3`",
-        "finding": "9 characters; same rule; /dp/ probe returns 'Page Not Found'.",
-        "action": "Provide the full 10-character ASIN.",
+        "item": "Submitted short-link token `B02NbDxp3` (not an ASIN)",
+        "finding": "`B02NbDxp3` is 9 characters, while Amazon’s official Creators API reference defines an ASIN as a 10-character alphanumeric identifier. The direct `https://www.amazon.com/dp/B02NbDxp3` page returns Page Not Found. The submitted short link was separately observed to redirect to a live listing; see its redirect-trace source. The raw token and the redirect destination are distinct identifiers.",
+        "action": "The observed destination listing is recorded separately. Confirm whether that destination is the intended product; otherwise provide the intended product page or ASIN. Do not treat the short-link token itself as an ASIN.",
         "sources": [
           "SRC-02",
-          "SRC-08"
+          "SRC-08",
+          "SRC-05"
         ]
       },
       {
         "id": "FLG-006",
         "sev": "Critical",
-        "item": "Identifier `B00hJ57DV`",
-        "finding": "9 characters; same rule; /dp/ probe returns 'Page Not Found'.",
-        "action": "Provide the full 10-character ASIN. Note this one begins `B00`, the prefix pattern Amazon documents for older ASINs, so a dropped trailing character is plausible.",
+        "item": "Submitted short-link token `B00hJ57DV` (not an ASIN)",
+        "finding": "`B00hJ57DV` is 9 characters, while Amazon’s official Creators API reference defines an ASIN as a 10-character alphanumeric identifier. The direct `https://www.amazon.com/dp/B00hJ57DV` page returns Page Not Found. The submitted short link was separately observed to redirect to a live listing; see its redirect-trace source. The raw token and the redirect destination are distinct identifiers.",
+        "action": "The observed destination listing is recorded separately. Confirm whether that destination is the intended product; otherwise provide the intended product page or ASIN. Do not treat the short-link token itself as an ASIN.",
         "sources": [
           "SRC-03",
-          "SRC-08"
+          "SRC-08",
+          "SRC-06"
         ]
       },
       {
         "id": "FLG-007",
         "sev": "High",
-        "item": "Redirect targets differ per request — decisive evidence the IDs are meaningless",
-        "finding": "The three submitted links resolved to three DIFFERENT, unrelated products: B0CDY277D3 (CHEFMAN 6-Qt dual-basket air fryer), B09B7SB46R (Emeril Lagasse 26QT air fryer toaster oven) and B08DKYBTPH (Chefman Air Fryer 8 Qt). Every final URL carries `channelId=704&plpRedirect=mhFallback` — Amazon's fallback route, not a product deep link.",
-        "action": "Do not treat any of those three landing pages as product data. They are Amazon's own recommendations, served at random. None of them is recorded anywhere in this dataset.",
+        "item": "Observed short-link destinations; intended product identity is not confirmed",
+        "finding": "On the recorded checks, the three submitted short links landed on live listings with ASINs B0CDY277D3 (CHEFMAN 6 Quart Dual Basket), B09B7SB46R (Emeril Lagasse 26QT French Door), and B08DKYBTPH (Chefman Air Fryer 8 Qt). These are verified observations of the destinations, not proof that the requester intended those exact products. The `plpRedirect=mhFallback` query parameter is not treated as failure evidence; the same parameter appeared on a direct valid-ASIN control fetch.",
+        "action": "Keep the observed destination titles/ASINs clearly labeled as redirect observations. Ask for confirmation only if the intended products differ. Do not infer that the query parameter means random or unrelated recommendations.",
         "sources": [
           "SRC-04",
           "SRC-05",
-          "SRC-06"
+          "SRC-06",
+          "SRC-07",
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ]
       },
       {
         "id": "FLG-008",
         "sev": "High",
-        "item": "12 product attribute fields x 3 SKUs = 36 cells",
-        "finding": "Title, brand, category, price, used price, rating, review count, availability, variations, per-category commission, trend signal and competition density are all blank. No official source exists for any of them while the identifier is invalid.",
-        "action": "Valid ASIN + approved Creators API credentials. Until then these cells stay blank by design rather than being estimated.",
+        "item": "9 commercial/analytics fields × 3 observed listings = 27 cells blank",
+        "finding": "The observed destination listings’ title, brand and category breadcrumb are documented from Amazon. Nine other product attribute fields remain blank for each of the three destinations (price, lowest used price, rating, review count, availability, variations, per-product commission, trend/demand and competition density), totalling 27 cells. Campaign metrics are also blank because no live campaign/account data was supplied.",
+        "action": "Keep all 27 cells blank and labeled unverified until each has an approved, current official data path. Do not treat the raw short-link token as the destination ASIN; the product register labels the redirect target separately.",
         "sources": [
-          "SRC-13"
+          "SRC-10",
+          "SRC-13",
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ]
       },
       {
@@ -168,7 +179,7 @@
         "sev": "Resolved",
         "item": "Per-category commission rates — CORRECTED after further verification",
         "finding": "An earlier draft recorded these as unavailable because /help/operating/schedule redirects to sign-in. That was wrong: the Standard Commission Income Statement (Table 1) is published publicly at the Associates help centre, as is the Onsite statement. All 11 rate bands plus the Bounty rates are now on the Commission page with those citations.",
-        "action": "Resolved for category rates. What remains blank is only the per-product commission for P-01/P-02/P-03, because their category is unresolved while the identifiers are invalid — a category cannot be assigned to an unresolvable listing.",
+        "action": "The public category-level commission table is cited separately. Per-product commission remains blank until the category mapping used for rate assignment and the relevant Associates account context are verified from an approved source.",
         "sources": [
           "SRC-18",
           "SRC-19",
@@ -295,7 +306,7 @@
         "sev": "High",
         "item": "Inherited page shipped without the required Associates disclosure",
         "finding": "Cross-session finding from integration. category/kitchen.html — authored by an earlier session and NOT produced by scripts/build_site.py — had no Associates disclosure anywhere on the page, while every page their generator emits does carry it (DISCLOSURE is defined at scripts/build_site.py line 24). So the gap was in a hand-authored file, which no generator-level check would ever catch. Operating Agreement SS5 requires the sentence wherever Program Content is displayed, and SS6 deems its omission a material breach, so this was not left as a note on a board.",
-        "action": "Fixed additively during integration: the disclosure bar was inserted into the shipped page, plus a sentence clarifying that the 4.50 % Kitchen figure is a category reference and not attributed to any product whose category is unverified. No other session content was altered. Recommend their check_site.py audit every *.html under the root rather than only generated pages — this site's verify_site.py already walks the whole tree, which is how the gap was found.",
+        "action": "Fixed additively during integration: the disclosure bar was inserted into the shipped page, plus a sentence clarifying that the 4.50 % Kitchen figure is a category reference and not assigned as a per-product commission without verified category-to-rate and account context. No other session content was altered. Recommend their check_site.py audit every *.html under the root rather than only generated pages — this site's verify_site.py already walks the whole tree, which is how the gap was found.",
         "sources": [
           "SRC-09"
         ],
@@ -315,15 +326,20 @@
       {
         "id": "FLG-027",
         "sev": "High",
-        "item": "Two sessions resolved the same three links differently",
-        "finding": "Session 3c886b62 (published under `sessions/3c886b62/`) treats the target of each `link.amazon` redirect as the submitted product: it records ASIN B0CDY277D3 for `B04G1MEwY` with status `verified` and derives title, brand and department from that page. This build treats the submission as unresolved and leaves every dependent cell blank. Both readings rest on the same observations — the submitted code is 9 characters, `/dp/<code>` returns Page Not Found, and the short link lands on another product through `plpRedirect=mhFallback`. The divergence is one sentence of interpretation: whether Amazon's fallback target *is* the product. Three different submitted codes produced three different targets, which is the evidence this build relied on to answer no.",
-        "action": "Not resolvable from public documents; it needs the original submission context. Ask whoever supplied the links for the ten characters, or for the pages they were copied from. Until then the two tables should not be presented as interchangeable, and this site does not merge their product values into its own rows.",
+        "item": "Observed redirect destinations and requester intent are separate facts",
+        "finding": "The recorded short links resolve to destination listings documented in the product register (ASINs B0CDY277D3, B09B7SB46R and B08DKYBTPH). The raw nine-character tokens are not ASINs and their direct `/dp/<token>` pages return Page Not Found. These observations establish the current URL destinations, but not whether those destinations are the products the requester intended. The `plpRedirect=mhFallback` query string alone does not resolve intent or prove failure.",
+        "action": "Keep destination listings labeled as observed redirect targets. The requester needs to confirm intent only if these are not the desired products; otherwise future content must still use approved data paths for price, reviews and other restricted fields.",
         "sources": [
+          "SRC-01",
+          "SRC-02",
+          "SRC-03",
           "SRC-04",
           "SRC-05",
           "SRC-06",
-          "SRC-01",
-          "SRC-08"
+          "SRC-07",
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
         "status": "open"
       },
@@ -332,7 +348,7 @@
         "sev": "Medium",
         "item": "Published prices and ratings need the IP License timestamp treatment",
         "finding": "`sessions/3c886b62/data/products.json` displays prices ($79.93, $149.99, $79.91) and star ratings (4.2, 4.3, 4.4) marked `verified`, read from Amazon search-results renderings. That session's own register already flags the display rules around this (F01 for Part. Req. 2(b), F02 for 5(t), F16 for point-in-time capture), so the exposure is documented rather than unnoticed. Two mechanical gaps remain for the published pages: IP License 2(i) requires prices not refreshed hourly to carry an adjacent date/time stamp plus the verbatim price-and-availability sentence, and 5(t) admits ratings only when obtained through Creators/PA API — a value read off a rendered page does not qualify even though the number is correct on the day it was read.",
-        "action": "Two ways to close it, both cheap: put the timestamp and the verbatim 2(i) disclaimer next to each price on the page, and label the rating cells as page-rendered rather than API-sourced; or move both into a table titled as an observation of the fallback page with the date it was read. Do not relabel them as API data — that is the one change that would turn a dated observation into a false claim.",
+        "action": "Remove price and rating snapshots from public product pages. Restore prices only through an approved Amazon-served/API path with the required adjacent timestamp and disclosure; display ratings/review counts only when obtained through the approved API. Do not relabel page-rendered observations as API data.",
         "sources": [
           "SRC-10",
           "SRC-09"
@@ -342,10 +358,10 @@
       {
         "_order": 10.5,
         "id": "I-F-01",
-        "sev": "Critical",
+        "sev": "Info",
         "item": "Published price and star-rating cells have no permitted data path",
-        "finding": "Pages on this site displayed Amazon price ($79.93 / $149.99 / $79.91, list $99.99 / $209.99 / $119.99) and star ratings (4.2 / 4.3 / 4.4 out of 5) transcribed from rendered Amazon pages: /docs/ (the 2026-11-13 'Affiliate Intelligence' build) and the Air Fryers category page. Participation Requirements 2(b) permits prices and availability only where Amazon serves the link that displays them or where the data comes from Creators API / PA API under the License, and 6(t) permits star ratings and customer reviews only when they were obtained through Creators API or PA API. No Associates tag has been supplied and no Creators API credentials exist for this project, so neither condition is met. The IP License date-stamp duty in 2(i) cannot cure this: it applies only where a price may lawfully be displayed. Read live 2026-11-14. The e-commerce pages that were built by other sessions before this one (/dashboard/, /marketing/, the flat pages) already withheld these cells, and the site's own flag register already records the exposure (FLG-022, FLG-004/005, G-F / FLG-028); the 2026-11-13 /docs/ build did not.",
-        "action": "Fixed for the Air Fryers category page on this branch: the price, rating and review columns were removed and replaced by a sourced statement of why they are withheld (I-F-01 on the Flagged for review page). Still open, outside this session's scope: the /docs/ page set and /sessions/3c886b62/ archive pages. Those are another session's owned files, so the fix requested here is to delete or noindex /docs/ and /sessions/ (or add them to .gitignore) before the next publish, and to have the owner confirm an Associates tag so an approved data path can be opened.",
+        "finding": "Pages on this site displayed Amazon price ($79.93 / $149.99 / $79.91, list $99.99 / $209.99 / $119.99) and star ratings (4.2 / 4.3 / 4.4 out of 5) transcribed from rendered Amazon pages: /docs/ (the 2026-11-13 'Affiliate Intelligence' build) and the Air Fryers category page. Participation Requirements 2(b) permits prices and availability only where Amazon serves the link that displays them or where the data comes from Creators API / PA API under the License, and 6(t) permits star ratings and customer reviews only when they were obtained through Creators API or PA API. No Associates tag has been supplied and no Creators API credentials exist for this project, so neither condition is met. The IP License date-stamp duty in 2(i) cannot cure this: it applies only where a price may lawfully be displayed. Read live 2026-11-14. The site's own flag register already records the exposure (FLG-022, FLG-004/005, G-F / FLG-028); the 2026-11-13 /docs/ build did not.",
+        "action": "Informational correction record: the Air Fryers category page has removed the price, rating and review columns and now states why they are withheld. The /docs/ and /sessions/ archives are outside the current claim scope; their status should be reviewed by their owners before any future publish.",
         "sources": [
           "SRC-10",
           "SRC-18",
