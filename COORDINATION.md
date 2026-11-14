@@ -910,18 +910,19 @@ Unverified: Associates tag, live clicks/conversions, API credentials, actual lin
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `55d2c808` | `arena/55d2c808-zone3` | Final integration: re-verify the supplied Amazon links, reconcile root and full-audit product records, update the site and validate GitHub Pages | in progress | 2026-11-14 |
+| `55d2c808` | `arena/55d2c808-zone3` | Full-audit dashboard integration: re-verify Amazon destinations, correct product records, and log requests for pages owned by other sessions | in progress | 2026-11-14 |
 
 ## Task board
 
 | Task ID | Task | Status | Owner | Files in scope | Sources / notes |
 |---|---|---|---|---|---|
-| C-T1 | Fresh official-source re-verification; resolve the code-vs-destination-ASIN discrepancy; align the canonical root site, `/dashboard/`, and `/docs/`; correct the category subpage; run build, provenance, and link checks; prepare PR and Pages verification | in progress | `55d2c808` | `data/{products,sources,flags}.json`; `scripts/{build_site,check_site}.py`; root generated pages `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html`; `category/kitchen.html`; `categories/home-kitchen-air-fryers.html`; `data/z3/{products,sources,flags,content,pricing,reviews,niches,commission}.json`; `tools/{build_site,verify_site,link_report}.py`; generated `dashboard/**`; `docs/**` static site and verification record; `research/verification-log.md`; `README.md`; this file | Official Amazon and FTC pages re-fetched 2026-11-14. No volatile prices, ratings, or product commission values will be published unless both officially verified and policy-compliant. |
+| C-T1 | Re-verify product destinations; distinguish the short-link token from its Amazon ASIN; correct the full-audit dashboard tables, content, flags and summary; run build, provenance, and link checks; publish a verification record | in progress | `55d2c808` | `data/z3/{products,sources,flags,content,pricing,reviews,niches,commission}.json`; `tools/{build_site,verify_site,link_report}.py`; generated `dashboard/**`; new `sessions/55d2c808/**` verification record; this session's appended part of `COORDINATION.md` | Official Amazon and FTC pages re-fetched 2026-11-14. No volatile prices, ratings, or product commission values will be published unless both officially verified and policy-compliant. Flat root pages, `category/kitchen.html`, and `/docs/**` are out of scope under the active/merged owners' scopes; see Change Requests. |
 
 ## Handoff and scope
 
-- **Stale-task handoff:** the final-integration follow-up T6 listed under session `7f84fea4` is more than 60 minutes old (last dated 2026-11-13). Session `55d2c808` takes over only the fresh verification, root/full-audit reconciliation, and publish checks listed in C-T1; all earlier deliverables and archives remain unchanged.
-- The outstanding `3c886b62` research scope remains isolated at `sessions/3c886b62/**`; this session does not edit those files. Any relevant claim used in the site will be rechecked against the official source directly.
+- **Handoff clarification:** during the mandatory `git pull --rebase origin main`, `main` advanced to `4b79797` (PR #18, session `b8beb448`) and `COORDINATION.md` conflicted because both sessions had appended their own section. Resolution preserved the entire `b8beb448` section and this session's claim additively; no other session's work was discarded. That recently merged session owns the flat root pages and generator, so C-T1 does not edit them. The older T6 note under `7f84fea4` is historical, not a live ownership claim for these files.
+- The outstanding `3c886b62` research scope remains isolated at `sessions/3c886b62/**`; this session does not edit those files. Any relevant claim used in the dashboard will be rechecked against the official source directly.
+- Cross-scope concerns about the root pages, category page, and `/docs/` are logged in the Change Requests table below rather than edited in this session.
 - This session uses only the fixed Arena branch `arena/55d2c808-zone3`; no other branch will be created or pushed.
 
 ## Initial verification plan
@@ -929,3 +930,17 @@ Unverified: Associates tag, live clicks/conversions, API credentials, actual lin
 - Re-fetch all three user-provided links, their Amazon destination pages, and the relevant Amazon Associates / FTC policy pages.
 - Distinguish each 9-character submitted short-link token from the 10-character ASIN of its observed Amazon destination. Do not infer the owner's intended product beyond the URL's current destination.
 - Keep dynamic or account-only values blank, and preserve a source link on every data row.
+
+## Change Requests (cross-scope; no files edited)
+
+| Requested by | Target file / owner | Request | Evidence / status |
+|---|---|---|---|
+| `55d2c808` | `scripts/build_site.py` and generated flat root pages; recent integration owner `b8beb448` | Rephrase the claim that the links do not identify any product: distinguish (a) the 9-character short-link token, (b) the current Amazon destination ASIN/title, and (c) the unverified owner's intent and Associates attribution. `plpRedirect=mhFallback` is not proof of an unrelated/random destination because the same parameter appeared on direct `/dp/<destination-ASIN>` fetches. | Re-fetched supplied links and direct destination pages 2026-11-14; request pending, no root files changed. |
+| `55d2c808` | `docs/**` pages; prior owner `arena-79f85104` (merged) | Remove or clearly quarantine static prices, discounts, star ratings, review counts, and monthly-purchase signals from the live marketing pages unless a current, policy-compliant data path and adjacent required notices are present; the current pages contain dated values from 2026-11-13. | Amazon Program Policies, Participation Requirements §2(b), §5(t), and IP License §2(i), fetched 2026-11-14; request pending, no `/docs/**` files changed. |
+| `55d2c808` | `category/kitchen.html`; prior category-page contributor (no active claim identified) | Remove the per-product `4.50%` cells or label the public Kitchen rate as a category reference only; do not map an `Air Fryers` breadcrumb to a commission category without an official mapping. | Public Standard Commission Table 1 and Amazon listing breadcrumbs fetched 2026-11-14; request pending, no category page changed. |
+
+## Conflict log
+
+| Date | Files | Other session | Resolution |
+|---|---|---|---|
+| 2026-11-14 | `COORDINATION.md` during `git pull --rebase origin main` after main advanced to `4b79797` (PR #18) | `b8beb448` | Kept the complete newly merged Part B entry byte-for-byte, appended this session's Part C claim, and recorded these cross-scope requests. No other session's files or content were discarded. |
