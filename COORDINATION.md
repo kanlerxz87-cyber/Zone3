@@ -834,3 +834,29 @@ changes to `scripts/build_site.py` and the pages it owns.
 | V-F4 | Low | `sitemap.xml` covers only the 16 `/dashboard/`-generation pages; the root flat pages and `/docs/` are missing. |
 
 ### V-T5 — Build, PR, merge, Pages (see merge record below)
+
+### V-T5 — Build, PR, merge, Pages
+
+Pre-merge gates, all green on the final commit of this branch:
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/build_site.py` | built; `git status` clean afterwards, i.e. the checked-in pages are exactly what the generator produces (this was **not** true before this session — see R1) |
+| `python3 scripts/check_site.py` | `OK: 9 pages, 3 products, 31 sources, 25 flags. All checks passed.` |
+| `python3 tools/build_site.py` | built; no file outside its own scope touched |
+| `python3 tools/verify_site.py` | `VERIFY PASS · 57 pages · 899 table rows · 673 with official source · 156 with flag · 15 with repo anchor` (223 advisories, all on inherited pages) |
+| Internal links, all 57 pages | 0 broken outside `archive/`. The 15 in `archive/c4e71983/` are pre-existing and stay inside a verbatim archive that this board's rule says not to edit; flagged as V-F5 rather than silently rewritten. |
+| Secrets scan | none: no keys, tokens or Associates tags in any tracked file |
+
+Merge record: see the row appended below once the PR is merged.
+
+| Item | Value |
+|---|---|
+| Branch | `arena/b8beb448-zone3` |
+| Task IDs | V-T1 … V-T5 (namespaced; not `A:`/`B:`/`Z:`/`T1–T7`) |
+| Flag IDs added | `V-F1`, `V-F2` (Info, corrections) · `V-F3`, `V-F4`, `V-F5` (Low, site structure) |
+| Sources added | `S30` (CIS §2(e)), `S31` (ASIN = 10 characters) |
+| Sources re-read | S01, S02, S03, S04, S05, S06, S07, S08, S09, S10, S11, S12, S13, S24, S25, S26 — all on 2026-11-14 |
+| Corrections made to earlier sessions' published text | 3 (FLG-005, FLG-003 wording, executive-summary "commission rates cannot be verified") — each published as a V-F* entry with the earlier wording quoted, so nothing changed silently |
+| Files owned by other sessions edited? | No. `dashboard/**`, `docs/**`, `sessions/**`, `archive/**`, `data/z3/**`, `tools/**` untouched. |
+| Shared outputs edited | Yes, as the acting integration session: `index.html` and the eight other flat pages **via their generator**, `assets/style.css` untouched, `sitemap.xml` untouched (V-F4 flagged instead of re-deciding the canonical URL set) |

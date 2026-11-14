@@ -107,8 +107,8 @@ and the site says so instead of filling the gap.
 
 ## 6. Irregularities published for your review
 
-Full detail, each with its source link, on the live **Flagged for review** page: 25 entries —
-2 critical, 5 high, 10 medium, 6 low, and 2 informational. The ones worth your attention first:
+Full detail, each with its source link, on the live **Flagged for review** page: 26 entries —
+2 critical, 5 high, 10 medium, 7 low, and 2 informational. The ones worth your attention first:
 
 | ID | Sev | What it means for you |
 |---|---|---|
@@ -119,7 +119,7 @@ Full detail, each with its source link, on the live **Flagged for review** page:
 | FLG-016 | High | Automated *analysis* of Amazon product data needs Amazon's prior written approval. This constrains the "AI-powered analysis" part of the brief directly — it is a permission problem, not a technical one. |
 | V-F1 | Info | **Correction:** the commission tables are public. The earlier "rates are unavailable" statement was wrong. |
 | V-F2 | Info | **Correction:** no policy names `link.amazon`; FLG-003's claim was narrowed to the clauses that actually apply. |
-| V-F3 / V-F4 | Low | `/docs/` is live but unreachable by browsing; `sitemap.xml` covers only one of the four page sets. Owner decision, not a defect. |
+| V-F3 / V-F4 / V-F5 | Low | `/docs/` is live but unreachable by browsing; `sitemap.xml` covers only one of the four page sets. Owner decision, not a defect. |
 
 ---
 

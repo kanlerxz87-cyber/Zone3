@@ -523,7 +523,7 @@ def build_flagged() -> None:
             e(f["item"]),
             e(f["detail"]),
             e(f["action"]),
-            src_links(f["sources"]) if f["sources"] else
+            src_links(f["sources"]) if f.get("sources") else
             f'<a href="{REPO}" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">(observed in this repository; no external source exists, so none is cited)</span>',
         ])
     body = (

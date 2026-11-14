@@ -314,6 +314,15 @@
       "action": "Owner to decide the canonical URL set (the two generations publish overlapping material). Regenerate the sitemap once that is settled; not done here because it encodes an editorial decision about which generation is canonical.",
       "sources": [],
       "repo_evidence": "sitemap.xml contains 16 <loc> entries, all of the /dashboard/ generation; the nine root flat pages and /docs/ are absent. Verified by comparing sitemap.xml against the checked-in HTML files."
+    },
+    {
+      "id": "V-F5",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "15 broken internal links inside archive/c4e71983/ (pre-existing, inside a verbatim archive)",
+      "detail": "A full-tree scan of every checked-in HTML file finds 15 relative links that do not resolve to a file: for example archive/c4e71983/content/category-air-fryers.html links dual-basket.html, air-fryer-toaster-ovens.html and large-capacity.html, and archive/c4e71983/content/data-sources.html links data/products.json. All 15 are inside archive/c4e71983/, which is a byte-for-byte copy of another session's site kept for the record. Every page outside archive/ resolves: 0 broken links across the 57 live pages.",
+      "action": "None required for the live site. If the archive is meant to be browsable, its owner should regenerate it; rewriting archived files would falsify the record this board is built on.",
+      "repo_evidence": "Full-tree scan of all 74 checked-in HTML files: 15 unresolved relative href, all under archive/c4e71983/; 0 outside it. Reproduce with a scan of every href that is not http/mailto/#."
     }
   ]
 }
