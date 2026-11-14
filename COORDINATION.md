@@ -1161,3 +1161,20 @@ S01–S03, S19, S25, S26, S28, S29 as listed in `data/sources.json` (same URLs);
 | Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**, findings + per-claim source links render |
 | Site merged while flagged? | yes — D-F-01…05 and all prior FLG/V/Z/F flags are non-blocking and published on the Flagged for review pages, as the brief requires |
 | Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
+
+## E Part — session `f1b7da46` (branch `arena/f1b7da46-zone3`, base `8043815`)
+
+Read this file and the open-PR list before claiming. PR #26 (`arena/9fef7647-zone3`) is open and is the other session's integration candidate; this session does not edit or merge it.
+
+### E Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `f1b7da46` | `arena/f1b7da46-zone3` | Independent identity verification of the three submitted short links (link.amazon → ASIN → product title) against amazon.com; records the result under its own scope; PR + merge of that scope | in progress (E-T1) | 2026-11-14 |
+
+### E Task board
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| E-T1 — Independent re-check of short-link → ASIN identity (3 links) and raw 9-char code check | in progress | f1b7da46 | `sessions/f1b7da46/**` and this Part only | Claim written after read-only checks of the links (fetch on the 3 short links, the 3 raw codes, and the 3 resolved ASIN pages). Nothing else edited. |
+| E-T2 — Requests for the integration session (PR #26 owner) | needs review | f1b7da46 | none (log only) | See E Requests below. |
