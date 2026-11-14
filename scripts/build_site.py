@@ -367,8 +367,10 @@ def build_index() -> None:
          "Product briefs, comparison and buying guide. No prices or ratings are published."),
         ("verification.html", "Verification log",
          "One row per published claim, with the wording its official page carries."),
-        ("docs/index.html", "Reference (/docs/)",
-         "The older /docs/ page set, kept and now linked from the dashboard."),
+        ("docs/index.html", "Archived 2026-11-13 build (/docs/) — flagged",
+         "An earlier build, kept for provenance. It still displays price and star-rating cells that "
+         "this site's rule and Amazon's policy prohibit; see I-F-02 on the Flagged for review page. "
+         "Do not treat its figures as current."),
     ]
     tile_html = "".join(
         f'<a class="tile" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in tiles
