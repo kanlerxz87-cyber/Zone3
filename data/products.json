@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-13",
-  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py).",
+  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038).",
   "products": [
     {
       "id": "P1",
@@ -23,7 +23,9 @@
         "title_source": "S14",
         "brand": "CHEFMAN",
         "capacity": "6 Quart",
-        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
       },
       "product_name": null,
       "brand": null,
@@ -41,14 +43,53 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-004"
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
       ],
       "sources": [
+        "S02",
         "S08",
         "S11",
         "S14",
-        "S02"
-      ]
+        "S46",
+        "S52",
+        "S55"
+      ],
+      "observed_2026_11_14": {
+        "date": "2026-11-14",
+        "price": "USD 79.93 (deal shown; List: USD 99.99)",
+        "other_offers": "More Buying Choices from USD 57.45 (2+ used & new offers)",
+        "rating": "4.2 out of 5 stars",
+        "review_count": "(4.8K) as displayed by Amazon",
+        "sales_note": "1K+ bought in past month, as displayed",
+        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+        "sources": [
+          "S30",
+          "S33",
+          "S14"
+        ],
+        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029)."
+      },
+      "value_sources_2026_11_14": {
+        "product_name": [
+          "S52",
+          "S46",
+          "S14"
+        ],
+        "brand": [
+          "S14"
+        ],
+        "price": [
+          "S46"
+        ],
+        "rating": [
+          "S46"
+        ],
+        "review_count": [
+          "S46"
+        ]
+      }
     },
     {
       "id": "P2",
@@ -71,7 +112,9 @@
         "title_source": "S15",
         "brand": "Emeril Lagasse",
         "capacity": "26QT",
-        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
       },
       "product_name": null,
       "brand": null,
@@ -89,14 +132,53 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-004"
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
       ],
       "sources": [
+        "S02",
         "S09",
         "S12",
         "S15",
-        "S02"
-      ]
+        "S47",
+        "S53",
+        "S55"
+      ],
+      "observed_2026_11_14": {
+        "date": "2026-11-14",
+        "price": "USD 149.99 (deal labelled Early Black Friday Deal; List: USD 209.99)",
+        "other_offers": "More Buying Choices from USD 92.99 (2+ used & new offers)",
+        "rating": "4.3 out of 5 stars",
+        "review_count": "(18.3K) as displayed by Amazon",
+        "sales_note": "4K+ bought in past month, as displayed",
+        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+        "sources": [
+          "S31",
+          "S34",
+          "S15"
+        ],
+        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029)."
+      },
+      "value_sources_2026_11_14": {
+        "product_name": [
+          "S53",
+          "S47",
+          "S15"
+        ],
+        "brand": [
+          "S15"
+        ],
+        "price": [
+          "S47"
+        ],
+        "rating": [
+          "S47"
+        ],
+        "review_count": [
+          "S47"
+        ]
+      }
     },
     {
       "id": "P3",
@@ -119,7 +201,9 @@
         "title_source": "S23",
         "brand": "Chefman",
         "capacity": "8 Qt",
-        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
       },
       "product_name": null,
       "brand": null,
@@ -137,14 +221,53 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-004"
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
       ],
       "sources": [
+        "S02",
         "S10",
         "S13",
         "S16",
-        "S02"
-      ]
+        "S48",
+        "S54",
+        "S55"
+      ],
+      "observed_2026_11_14": {
+        "date": "2026-11-14",
+        "price": "USD 79.91 (deal shown; List: USD 119.99)",
+        "other_offers": "More Buying Choices from USD 49.54 (3+ used & new offers)",
+        "rating": "4.4 out of 5 stars",
+        "review_count": "(16.8K) as displayed by Amazon",
+        "sales_note": "3K+ bought in past month, as displayed",
+        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+        "sources": [
+          "S32",
+          "S35",
+          "S23"
+        ],
+        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029)."
+      },
+      "value_sources_2026_11_14": {
+        "product_name": [
+          "S54",
+          "S48",
+          "S23"
+        ],
+        "brand": [
+          "S23"
+        ],
+        "price": [
+          "S48"
+        ],
+        "rating": [
+          "S48"
+        ],
+        "review_count": [
+          "S48"
+        ]
+      }
     }
   ]
 }

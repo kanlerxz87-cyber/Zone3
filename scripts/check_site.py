@@ -33,6 +33,9 @@ DATA = ROOT / "data"
 PAGES = [
     "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
     "content.html", "campaigns.html", "flagged.html", "sources.html", "air-fryers.html",
+    # Added on integration 2026-11-14 (session b90c5685): PR #26's facts-only marketing page,
+    # reconciled with main's marketing/ section and re-homed under it.
+    "marketing/briefs.html",
 ]
 TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
                "campaigns.html", "flagged.html", "sources.html"}
@@ -255,12 +258,18 @@ def check_html(data: dict) -> None:
             parts = urlparse(href)
             if parts.scheme or parts.netloc:
                 continue
+            # Resolve relative to the page's own directory, as a browser does. Without this, a
+            # subdirectory page's link that happens to exist at the repo root passes here but
+            # 404s in the browser (kept from PR #26, session 9fef7647; rule applied here on
+            # integration by session b90c5685).
+            base = (ROOT / name).parent
             target_file = parts.path or name
-            target = ROOT / target_file
+            target = (base / target_file).resolve()
             if not target.exists():
                 fail(f"{name}: broken internal link to {href}")
                 continue
             if parts.fragment:
+                target_file = str(target.relative_to(ROOT.resolve()))
                 tp = parsed.get(target_file)
                 if tp is None:
                     tp = PageParser()
