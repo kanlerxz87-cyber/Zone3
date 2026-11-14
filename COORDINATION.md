@@ -1660,3 +1660,39 @@ S52–S54 (PR #26's repeat observations of the same links) and **S55** (this ses
 | Pages build | recorded below from the GitHub Pages API |
 | Live checks | landing, products, marketing, flagged and sources pages fetched from the live site after the build |
 | Flagged items merged? | yes — every `FLG-`, `V-F`, `JH-F` and prior `F-`/`Z-`/`D-F` item is non-blocking and published on the Flagged for review page, per the brief |
+
+# Part E — Session `edbd56a1` (2026-11-14) — final integration, line-by-line re-verification, PR to main
+
+> **Role.** Final integration session named in the brief. Branch `arena/edbd56a1-zone3` (base `8043815` = `origin/main` at claim time).
+> The branch name is fixed by the Arena session note, so the `session-<id>/<task>` pattern is not used; task IDs `E-T1…E-T9` replace it.
+> **Namespace.** This session's new IDs, if any, are `E-F-01…` (flags). Existing `S`/`PF`/`FLG`/`V-F` IDs are reused, never renumbered.
+
+## E Session registry
+
+| Session ID | Branch | Role | Status | Claimed (UTC) |
+|---|---|---|---|---|
+| `edbd56a1` | `arena/edbd56a1-zone3` | Final integration: repo review, live re-verification of every published row, site build + link audit, executive summary, PR → `main`, merge, Pages deploy | in progress | 2026-11-14 10:05 |
+
+## E Task board (claimed before any other work, per protocol)
+
+| Task | Status | Files in scope | Notes |
+|---|---|---|---|
+| E-T1 — Claim scope, read board, note open PRs | done | `COORDINATION.md` | Open PR #26 (`arena/9fef7647-zone3`) overlaps shared root files; not touched by this session. Logged, not merged here. |
+| E-T2 — Repo review, line by line | in progress | all checked-in files | audit of the combined tree |
+| E-T3 — Live re-verification of every product row + cited policy clause | in progress | `data/products.json`, `data/sources.json`, `data/policy_facts.json`, `data/flags.json` | official sources only |
+| E-T4 — Executive summary | pending | `EXECUTIVE-SUMMARY.md`, `executive-summary.html` | |
+| E-T5 — Site build, checkers, link audit | pending | `scripts/build_site.py`, `scripts/check_site.py`, `tools/*.py`, generated HTML | |
+| E-T6 — Flagged for Review page completeness | pending | `flagged.html` | |
+| E-T7 — PR to `main`, merge, Pages deploy | pending | git + `gh` | |
+| E-T8 — Record sources, verification, irregularities here | pending | `COORDINATION.md` | |
+| E-T9 — Executive summary page live on the site | pending | `executive-summary.html` | |
+
+## E Cross-session note (open PR #26)
+
+`gh pr list` at claim time shows **PR #26 (`arena/9fef7647-zone3`) OPEN**, created 2026-11-14T10:01:25Z, last head commit 10:01:00Z,
+touching 23 shared root files (`index.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`,
+`flagged.html`, `sources.html`, `executive-summary.html`, `data/products.json`, `data/sources.json`, `data/flags.json`,
+`scripts/build_site.py`, `scripts/check_site.py`, `sitemap.xml`, `marketing.html`, `category/air-fryers.html`, …).
+Per the no-clobber rule this session **does not** merge, close or edit that PR. If it lands on `main` first, this branch rebases onto it
+and both sessions' work is kept. If it is still open when this session merges, the merge is done by rebasing/keeping both sides in full.
+>>>>>>> e5ac9d9 (coordination(edbd56a1): claim final-integration scope (E-T1..E-T9), note open PR #26)
