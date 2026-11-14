@@ -43,6 +43,9 @@ BANNED = {
     "star_rating": "S02 6(t)",
     "review_count": "S02 6(t)",
     "best_seller_rank": "no official affiliate source",
+    # added 2026-11-14: the comparison rendered this column as an empty cell,
+    # which reads as an oversight rather than a deliberate, sourced blank.
+    "commission_rate": "S25 rate is per commission category; the category of these ASINs is not stated officially",
 }
 TAX = "Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates."
 
