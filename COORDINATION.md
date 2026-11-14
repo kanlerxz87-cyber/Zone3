@@ -3070,12 +3070,12 @@ No gate was red; no file outside this session's scope was edited.
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| 554-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress | 554c08ca | `COORDINATION.md` (this Part only) | — | — |
-| 554-T2 — Repo review: line-by-line audit of the combined tree at current `main` | unclaimed | — | read-only audit + this Part | — | — |
-| 554-T3 — Line-by-line live re-verification of published rows against official sources (3 submitted links, ASIN rule, OA §5, Program Policies, Table 1, FTC) | unclaimed | — | read-only fetches + this Part | to be listed | — |
-| 554-T4 — Site integrity: run every gate (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, session checker, generator idempotency); fix real breakage only | unclaimed | — | site files only if a check fails | — | — |
-| 554-T5 — Executive summary and Flagged-for-Review completeness check (both linked from landing; disclosure sentence present) | unclaimed | — | read-only; changes via request if another owner holds the file | — | — |
-| 554-T6 — PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record here | unclaimed | — | git + `gh` + this Part | — | — |
+| 554-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | done | 554c08ca | `COORDINATION.md` (this Part only) | — | — |
+| 554-T2 — Repo review: line-by-line audit of the combined tree at current `main` | done | 554c08ca | read-only audit + this Part | — | 554-F-01 |
+| 554-T3 — Line-by-line live re-verification of published rows against official sources (3 submitted links, ASIN rule, OA §5, Program Policies, Table 1, FTC) | done (V1–V12) | 554c08ca | read-only fetches + this Part | 7 official pages (see 554-T3 record) | — |
+| 554-T4 — Site integrity: run every gate (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, session checker, generator idempotency); fix real breakage only | done (all green; 1 drift fix: `flagged.html`) | 554c08ca | `flagged.html` regenerated | — | — |
+| 554-T5 — Executive summary and Flagged-for-Review completeness check (both linked from landing; disclosure sentence present) | done (no change required) | 554c08ca | read-only | — | — |
+| 554-T6 — PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record here | done (PR #66 merged `fa0996c`; Pages `built`; record below) | 554c08ca | git + `gh` + this Part | — | — |
 
 Scope note: shared outputs (`index.html`, nav, `data/*.json`, generators) are edited only as the
 integration session and only when a check fails or a verification rule is violated; every such edit is
@@ -3184,6 +3184,26 @@ count, best-seller rank and commission rate stay blank by design.
 | 554-F-02 | Info | Arena checkouts of this repo are shallow: `git merge-base`/`git merge` fail with "unrelated histories" until `git fetch --deepen` connects the tip commits. | this session's git log, 2026-11-14 |
 | 554-F-03 | Info | PR #49 (record-only, session `edbd56a1`) was stale >60 min at claim time; taken over per the takeover rule with its content preserved verbatim above. | https://github.com/kanlerxz87-cyber/Zone3/pull/49 |
 | 554-F-04 | Info | No new product-data finding: all three submitted identifiers remain unverifiable as ASINs (V4/V5); product cells stay blank and flagged, per the brief's no-inference rule. | https://www.amazon.com/dp/B04G1MEwY (Page Not Found) |
+
+## 554-T6 publish record — PR #66, merge, Pages deploy (2026-11-14, session 554c08ca)
+
+| Event | Result |
+|---|---|
+| Pull request | [#66 — Zone3: final integration round (session 554c08ca) — line-by-line live re-verification, gates, flagged.html drift fix, PR #49 takeover record](https://github.com/kanlerxz87-cyber/Zone3/pull/66) — `arena/554c08ca-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all gates green on the final tree: `check_site` OK (12 pages / 3 products / 48 sources / 51 flags), `verify_site` VERIFY PASS (69 pages / 1172 rows / 971 with official source), `link_report --strict` exit 0, `check_all_links` 115 pages / 0 errors, session checker OK, all four generators idempotent |
+| Merge | **MERGED 2026-11-14T18:49:54Z** via `gh pr merge 66 --merge` (no approval waited, per the brief) → merge commit `fa0996ca10ff01aeaaeaa8ffca571e95e92eabc7` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Conflict history this session | two `COORDINATION.md` content conflicts during `git merge origin/main` (PRs #55–#58 and #59–#65 landed while this session worked); both resolved by the board's convention — `main`'s file verbatim + this Part appended, asserted marker-free and prefix-preserving before commit; no other session's text discarded |
+| Pages build | legacy `main` `/` source; build for `fa0996c` → **status `built`**, `error=null`, created 18:49:55Z, updated **18:50:17Z** (Pages API `builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — **live**: headline, KPI cards (3 links, 0/3 confirmed ASIN, 3 critical, 51 total flags), 13 section tiles + full audit link, site map, and the 2026-11-14 re-verification table all render with per-claim source links |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**: 51 entries render; every row carries official source links; the regenerated **FLG-027** detail (the `mhFallback`/S30-S31 correction) confirmed present on the live page after deploy |
+| Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — linked from landing and nav; `EXECUTIVE-SUMMARY.md` current (48 sources / 51 flags after the merge) |
+| Broken links at publish | 0 (`check_all_links` 115 pages / 104 external URLs / 0 errors; `verify_site` V5) |
+| Site merged while flagged? | yes — 554-F-01…04 and all prior `FLG`/`I-F`/`V-F`/`E-F`/`JH-F`/`D-F`/`Z-F`/`H-F`/`G-F` items are non-blocking and published on the Flagged-for-Review page, per the brief |
+| Stale PR #49 | closed with a supersession comment after this merge; its content preserved verbatim in this Part (takeover section) — https://github.com/kanlerxz87-cyber/Zone3/pull/49 |
+| Post-merge record | this section + task-board status updates, pushed as a follow-up PR from the same branch (the record cannot be written to `main` before the merge it documents) |
+
+## 21-T6 — PR, merge, Pages (publish record; final close-out recorded in the follow-up PR below)
+
 ## 21-T6 — PR, merge, Pages (publish record)
 
 - **PR #64** — https://github.com/kanlerxz87-cyber/Zone3/pull/64 (`arena/21acd3c0-zone3` → `main`) — **MERGED** 2026-11-14T18:45Z via `gh pr merge 64 --merge` (no approval waited, per the brief) → merge commit `d5a878dbfa1db7fba0322e4dc3cd0f9b7205d921`.
