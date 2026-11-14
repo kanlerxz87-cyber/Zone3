@@ -732,3 +732,19 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
 | Live check — `/docs/` landing | https://kanlerxz87-cyber.github.io/Zone3/docs/ — **live**, disclosure banner, KPI cards, portfolio table render |
 | Live check — `/docs/` products | https://kanlerxz87-cyber.github.io/Zone3/docs/products.html — **live**, full 16-field table with per-row source links renders |
 | Post-merge fix | Follow-up PR: stat-count correction on `docs/` pages (KPI cards said 27/2; ground truth 16 rows × 3 = 48 cells, 39 verified, 9 unverified) + this record |
+
+---
+
+# Session `0f1ac4cb` — final integration post-merge audit (2026-11-14)
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `0f1ac4cb` | `arena/0f1ac4cb-zone3` | Final combined-site audit, provenance hardening, non-blocking review flags, PR and Pages confirmation | in progress | 2026-11-14 |
+
+## Task board
+
+| Task | Status | Owner | Files in scope | Sources / verification |
+|---|---|---|---|---|
+| `0F-T1` — Final integration audit and provenance hardening | in progress | `0f1ac4cb` | `COORDINATION.md`; `data/z3/{products.json,sources.json,flags.json}`; `tools/final_audit_0f1ac4cb.py`; `research/0f1ac4cb-final-audit.md`; generated output only if the canonical builder changes it | Final static audit of the merged Pages tree; official-source IDs are drawn from the existing verified register. No edits planned to `docs/` or `sessions/3c886b62/` pages; cross-scope requests will be logged here. |
