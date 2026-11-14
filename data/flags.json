@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten.",
   "flags": [
     {
       "id": "FLG-001",
@@ -758,6 +758,127 @@
       "sources": [
         "S14"
       ]
+    },
+    {
+      "id": "3E-F-01",
+      "severity": "High",
+      "category": "Compliance",
+      "item": "category/air-fryers.html published observed price, star rating and review count as product data",
+      "detail": "The hand-maintained category page rendered three columns - \"Price (observed 2026-11-14)\" (USD 79.93 / USD 149.99 / USD 79.91), \"Rating (observed)\" (4.2 / 4.3 / 4.4 out of 5) and \"Reviews (observed)\" (4.8K / 18.3K / 16.8K) - as product facts for the three listings. Associates Program Participation Requirements 2(b) and 6(t) were re-read verbatim on 2026-11-14 by this session: 2(b) allows price and availability display only where Amazon serves the link or the data comes from Creators API or PA API; 6(t) allows star-rating or review display only where the data is obtained through Creators API or PA API. Neither applies to this site, so publishing them is a program-policy breach, and it contradicted this repository's own standing rule (FLG-022, FLG-023, FLG-029) and the note in data/products.json that the observations are NOT displayed as price, rating or review facts on any page.",
+      "action": "Fixed, in two steps by two sessions that found it independently. Session 554c08ca (PR #66, now on main) removed the three columns and replaced them with a full-width explanatory row citing 2(b)/6(t) and its own flag I-F-01. That version is the one kept after integration, because dropping the columns is cleaner than blanking them. This session's own pass, made before main was fetched, withheld the nine cells and renamed the headers; the wording it added was dropped in favour of main's, and its stale-navigation finding is kept as 3E-F-08.",
+      "sources": [
+        "S02",
+        "S46",
+        "S47",
+        "S48",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "repo_evidence": "category/air-fryers.html before and after; scripts/build_site.py build_category() docstring, which states the same rule and already omits these fields from the generated air-fryers.html."
+    },
+    {
+      "id": "3E-F-02",
+      "severity": "Medium",
+      "category": "Compliance",
+      "item": "/docs/ page set published the same observed price, rating and review values as product facts",
+      "detail": "docs/analysis.html, docs/content.html, docs/executive-summary.html, docs/flagged.html, docs/index.html and docs/products.html presented the dated observations (price, list price, discount, lowest other offer, star rating, review count, bought-in-past-month) as verified fields. /docs/ is reachable from the dashboard navigation tile Reference (/docs/) and from sitemap.xml, so the values were live on the published site. Same 2(b) / 6(t) issue as 3E-F-01.",
+      "action": "Fixed in this session: 81 cells across the six pages were replaced with the Withheld badge and FLG-022 / FLG-023 links by sessions/3ead7ac8/tools/withhold_observed.py. Prose that quotes an observation inside a flag description or a source-register description was deliberately left intact.",
+      "sources": [
+        "S02",
+        "S46",
+        "S47",
+        "S48"
+      ],
+      "repo_evidence": "docs/*.html; grep of the three price literals and the three rating literals before and after the fix."
+    },
+    {
+      "id": "3E-F-03",
+      "severity": "Medium",
+      "category": "Compliance",
+      "item": "Retained session sub-sites still render observed price, rating and review values as product facts",
+      "detail": "sessions/3c886b62/ (analysis, categories, category-home-kitchen, commission, comparison, index, the three product pages, products, verification) and sessions/03bbd050/index.html carry the same observed values in product tables; sessions/3c886b62/products.html has Price, List, Discount, Rating, Ratings and Demand columns. They are not in the dashboard navigation but are listed in sitemap.xml and are publicly reachable. Under the coordination convention these files belong to session 3c886b62 and session 03bbd050, so this session does not rewrite their data cells.",
+      "action": "Mitigated, not fully fixed. A dated compliance notice was added to the top of each of the 12 affected pages stating that the values are research observations, are not a compliant product display, and linking 2(b)/6(t), this flag and the canonical blank-field pages. A change request asking the owning sessions, or a later integration session, to withhold the cells is logged in COORDINATION.md (Part 3ead7ac8). Needs owner review.",
+      "sources": [
+        "S02"
+      ],
+      "repo_evidence": "sessions/3ead7ac8/tools/withhold_observed.py BANNER_FILES; sitemap.xml entries for sessions/3c886b62/*."
+    },
+    {
+      "id": "3E-F-04",
+      "severity": "Medium",
+      "category": "Accuracy",
+      "item": "/docs/ still states that the Associates commission rate schedule is sign-in-only and therefore unverifiable",
+      "detail": "docs/analysis.html, docs/executive-summary.html, docs/flagged.html (flag F3), docs/index.html, docs/products.html and docs/sources.html assert that the only official source for category rates is the sign-in rate schedule, so per-product commission is left blank. That is no longer accurate: the Standard Commission Income Statement Table 1 and the Onsite statement Table A both render without a sign-in. This session re-read Table 1 on 2026-11-14 and it matches the published category rows, including Physical Books, Kitchen, Automotive at 4.50% and All Other Categories at 4.00%. Only the per-account /help/operating/schedule rate card is gated (S03). The main site pages were corrected earlier (V-F1); /docs/ was not updated.",
+      "action": "Correction notice added to all six /docs/ pages, with links to the two public tables and to this flag. The cells themselves stay blank, because what is genuinely unresolvable is which rate category each listing falls in (FLG-021), not the rate card itself.",
+      "sources": [
+        "S25",
+        "S26",
+        "S03"
+      ],
+      "repo_evidence": "docs/*.html; scripts/build_site.py build_pricing() rows that already cite S25 and S26."
+    },
+    {
+      "id": "3E-F-05",
+      "severity": "Low",
+      "category": "Source register",
+      "item": "Duplicate URLs in the canonical source register",
+      "detail": "data/sources.json registers the same URL under two IDs: S16 and S32 both point to https://www.amazon.com/dp/B08DKYBTPH; S40 and S46 both point to https://www.amazon.com/s?k=B0CDY277D3; S41 and S47 both point to https://www.amazon.com/s?k=B09B7SB46R; S42 and S48 both point to https://www.amazon.com/s?k=B08DKYBTPH. This is residue of the PR #26 renumbering that G-F-01 partly fixed. No wrong label-to-URL binding results from it, but two IDs for one page makes citation counts ambiguous.",
+      "action": "Left as-is and published for review: the IDs are already cited from committed pages, and merging them would change those pages. Recommend the register note that S32, S40, S41 and S42 are aliases of S16, S46, S47 and S48.",
+      "sources": [
+        "S16",
+        "S32",
+        "S46",
+        "S47",
+        "S48"
+      ],
+      "repo_evidence": "data/sources.json; duplicate-URL scan over the register."
+    },
+    {
+      "id": "3E-F-06",
+      "severity": "Low",
+      "category": "Source register",
+      "item": "PF-14 was withdrawn for a reason that no longer holds",
+      "detail": "The verification note in COORDINATION.md records: \"Withdrawn: PF-14 (reviews for compensation). Its text was not found in any section read.\" The wording is in fact present, verbatim, in the opening paragraph of the Operating Agreement (S01), re-read by this session on 2026-11-14: \"Content you post on the Amazon.com website must abide by Amazon's Community Guidelines, including the prohibition of customer reviews that are created, edited, or removed in exchange for compensation.\" The fact was withdrawn in good faith but on an incorrect premise.",
+      "action": "Not reinstated under the old ID, to avoid rewriting another session's record. Added as PF-53 with the verbatim quote and its section, so the fact is on the register again with a checked source. Needs owner review of the withdrawal note.",
+      "sources": [
+        "S01"
+      ],
+      "repo_evidence": "data/policy_facts.json (PF-53); the Operating Agreement opening paragraph, fetched 2026-11-14."
+    },
+    {
+      "id": "3E-F-07",
+      "severity": "Low",
+      "category": "Source register",
+      "item": "PF-23 quote is truncated and omits a material clause",
+      "detail": "PF-23 records IP License 2(e) as ending \"...intended for use by persons or \". The live text, re-read on 2026-11-14, continues \"...entities that offer products on an Amazon Site, or in the direct training or fine-tuning of a machine learning and/or foundational model.\" The omitted clause is the one that matters most for an AI-driven affiliate platform.",
+      "action": "Added as PF-55 with the complete verbatim sentence. PF-23 itself is left untouched because it is another session's record; the truncation is published here instead.",
+      "sources": [
+        "S02"
+      ],
+      "repo_evidence": "data/policy_facts.json (PF-55); Program Policies, Associates Program IP License and Usage Requirements, section 2(e)."
+    },
+    {
+      "id": "3E-F-08",
+      "severity": "Info",
+      "category": "Site",
+      "item": "category/air-fryers.html navigation was stale",
+      "detail": "The page's nav bar was missing Verification log, Reference (/docs/), Marketing and Marketing briefs, which the rest of the site carries, so a visitor on that page could not reach four sections. Session 554c08ca fixed the same file's data columns on main but not its navigation, so this finding is still open on the merged tree and is fixed here.",
+      "action": "Fixed: the nav now matches the current site nav and the page is marked active in it.",
+      "sources": [],
+      "repo_evidence": "category/air-fryers.html before and after; the NAV tuple in scripts/build_site.py."
+    },
+    {
+      "id": "3E-F-09",
+      "severity": "Info",
+      "category": "Site",
+      "item": "Two different Air Fryers category pages exist and diverge",
+      "detail": "air-fryers.html (root, generated by scripts/build_site.py build_category(), compliant, already withholds price, rating and review) and category/air-fryers.html (hand-maintained, was non-compliant, now fixed) cover the same browse node with different content. Two surfaces for one category is a maintenance risk: a fix applied to one is easy to miss on the other, which is how 3E-F-01 arose.",
+      "action": "Left both, because category/air-fryers.html is in sitemap.xml and is linked from sessions/03bbd050/index.html. Recommend consolidating onto the generated page, or making category/air-fryers.html a redirect. Needs owner review.",
+      "sources": [
+        "S43"
+      ],
+      "repo_evidence": "air-fryers.html; category/air-fryers.html; sitemap.xml."
     }
   ]
 }

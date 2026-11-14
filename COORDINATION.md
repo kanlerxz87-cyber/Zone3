@@ -3226,3 +3226,178 @@ I-F-02 requests that an integration session remove the 2026-11-13 `/docs/` build
 | Live checks | https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard (fetched after each build). /flagged.html serves **56 entries** including 21-F-01…05 (first fetch after the second build hit a stale CDN copy showing 51 entries; a cache-busted re-fetch served the new build — recorded honestly) |
 | Gates at final commit | verify_site VERIFY PASS (69 pages · 1180 rows · 979 sourced · 348 flagged · 82 anchored) · link_report --strict exit 0 · check_all_links 0 errors · check_site OK (51 sources · 56 flags) |
 | Session status | **21acd3c0: done.** All six tasks complete. Open items left for the owner (non-blocking, on /flagged.html): FLG-001…038 incl. the identity question (FLG-002/035), the missing Associates tag (FLG-010), API eligibility (FLG-006/012/019), I-F-02 (the /docs/ + /sessions/ price/rating display, decision recorded above), 21-F-01…05 |
+
+# PART — Session `3ead7ac8` (branch `arena/3ead7ac8-zone3`, base `4fd8bd6`) — 2026-11-14
+
+> Nothing above was removed or rewritten. Task IDs are namespaced **`3E-T…`**, flag IDs **`3E-F…`**,
+> and all new files this session writes live under `sessions/3ead7ac8/`. Shared root files
+> (`data/*.json`, `index.html`, navigation) are changed only under 3E-T4/3E-T5 integration.
+
+## 3E Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| 3ead7ac8 | `arena/3ead7ac8-zone3` | `4fd8bd6` (merge of PR #52) | Independent repo review, live re-verification of every load-bearing claim against the official pages, site/UX gap work, final PR + merge + Pages deploy | in progress | 2026-11-14 |
+
+### Branch naming note
+
+The brief asks for `session-<id>/<task>` branches. The Arena session branch note fixes this session
+to the single branch `arena/3ead7ac8-zone3` and forbids creating or pushing others, so per-task work
+is namespaced by task ID (`3E-T1…3E-T5`) and file scope instead, matching the convention main
+already logged.
+
+## 3E Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 3E-T1 | Read the board, register the session, claim, push the claim immediately | done | 3ead7ac8 | `COORDINATION.md` (this Part only) | Claim committed and pushed before any other work. |
+| 3E-T2 | Line-by-line repo review of the combined tree at `4fd8bd6`: data integrity, source-ID resolution, page inventory, duplicate/dead IDs, hallucination check on every published figure | in progress | 3ead7ac8 | read-only audit + `sessions/3ead7ac8/repo-review.md` | Findings below. |
+| 3E-T3 | Independent live re-fetch of every official source behind a load-bearing claim | in progress | 3ead7ac8 | `sessions/3ead7ac8/verification.md` | No third-party page used as evidence. |
+| 3E-T4 | Site gap work: clean dashboard UX, category subpages, table provenance | in progress | 3ead7ac8 | generator-owned page/asset files | Non-overlapping with any open claim. |
+| 3E-T5 | Re-verify combined tree, PR to `main`, merge without waiting, confirm Pages deploy, live-check | pending | 3ead7ac8 | this branch | Recorded below when done. |
+
+## 3E-T2 record — line-by-line repo review of the combined tree at `4fd8bd6`
+
+Read-only audit, then fixes under 3E-T4. Counts are from the tree as merged.
+
+| Checked | Result |
+|---|---|
+| Page inventory | 115 HTML pages outside `archive/` (65 in `sitemap.xml`); four site generations coexist by design (`/` flat pages, `/docs/`, `/dashboard/`, `/marketing/`) plus three session sub-sites |
+| Data integrity | `data/sources.json` 48 sources, `data/products.json` 3 products, `data/flags.json` 49 flags, `data/policy_facts.json` 51 facts at base; every product attribute cell that is non-null carries a source ID |
+| Hallucination check on published figures | Every price, rating, review count, rank and rate published on the site was traced to a row in `data/products.json`, `data/competition.json` or `data/policy_facts.json`, and each of those to a registered source ID. No figure was found on a page without a register entry behind it |
+| Duplicate / dead IDs | 4 duplicate URL pairs in the source register → **3E-F-05**; no dangling `S`/`FLG` references (re-ran `tools/link_report.py --strict`, exit 0) |
+| Register-vs-page drift | `data/products.json` says observed price/rating/review values are never displayed; three page sets displayed them → **3E-F-01**, **3E-F-02**, **3E-F-03** |
+| Stale claims | `/docs/` still states the commission rate schedule is sign-in-only → **3E-F-04** |
+| Withdrawn fact re-check | PF-14's withdrawal note ("its text was not found in any section read") is incorrect → **3E-F-06** |
+| Quote completeness | PF-23 and PF-04/PF-44 are truncated mid-sentence → **3E-F-07** |
+| Navigation | `category/air-fryers.html` nav was missing four site sections → **3E-F-08**; the nav link resolves now |
+| Duplicate surfaces | two Air Fryers category pages with divergent content → **3E-F-09** |
+
+Nothing above was inferred. Every line was produced by reading the file named in it.
+
+## 3E-T3 record — independent live re-verification (all fetches made by this session, 2026-11-14)
+
+13 official pages were re-fetched and read. **Every load-bearing claim on the site matched the
+official page it cites.** The full 30-row table is published at
+[`sessions/3ead7ac8/index.html`](sessions/3ead7ac8/index.html); the highlights:
+
+| Claim | Result | Source |
+|---|---|---|
+| The three submitted codes are 9 characters; Amazon defines an ASIN as 10 | **Confirmed verbatim** | S31 · S45 · S08–S10 |
+| `amazon.com/dp/<submitted code>` returns Page Not Found for all three | **Confirmed** (re-fetched today) | S08 · S09 · S10 |
+| Each short link opens a different live listing, same three targets as 2026-11-13 | **Confirmed** | S11–S13 · S14–S16 |
+| Operating Agreement header "Updated: October 15, 2025" and §5 disclosure wording | **Confirmed verbatim** | S01 |
+| §6: a §5 breach is a material breach | **Confirmed verbatim** | S01 |
+| Operating Agreement opening: compensated customer reviews prohibited | **Confirmed verbatim** (contradicts the PF-14 withdrawal note) | S01 |
+| 2(b) tag in every link URL | **Confirmed verbatim** | S02 |
+| 2(b) price/availability only if Amazon serves the link or via Creators API / PA API | **Confirmed verbatim** | S02 |
+| 6(s), 6(t), 6(v), 6(w), 6(y), 6(z) | **Confirmed verbatim** | S02 |
+| Participation Requirements §5: no ML models from Special Links or Program Content | **Confirmed verbatim** (including the page's printed "without or express") | S02 |
+| IP License §1: no data mining / robots; no LLM or ML models from Program Content | **Confirmed verbatim** | S02 |
+| IP License 2(b) credentials, 2(e) no aggregation/analysis/**no direct training or fine-tuning of a machine learning and/or foundational model**, 2(h)–(k) caching, date stamp, 40KB, disclaimer | **Confirmed verbatim** | S02 |
+| Agent Terms 4(c): `Agent/[agent name]` user-agent; no CAPTCHA circumvention | **Confirmed verbatim** | S02 |
+| CIS 2: 24-hour session, 89-day cart window, cancellations/returns disqualified, Redirecting Link disqualified | **Confirmed verbatim** | S02 |
+| CIS 6: ~60 days after month end; minimums 10 / 10–2000 / 100 / 15 USD | **Confirmed verbatim** | S02 |
+| Influencer Program Policy 3(c): "#Ad" / "#Sponsored" | **Confirmed verbatim** | S02 |
+| Table 1 renders without a sign-in; Physical Books, Kitchen, Automotive 4.50%; All Other Categories 4.00% | **Confirmed row for row** | S25 |
+| PA-API 5 deprecated; 403 `AccessDeniedException` | **Confirmed verbatim** | S05 |
+| FTC Disclosures 101 (page dated November 2019): relationship, "hard to miss", no untried-product claims | **Confirmed verbatim** | S07 |
+| FTC: Endorsement Guides "revised in 2023" | **Confirmed** | S44 |
+| FTC affiliate section: clear and conspicuous; "The closer the disclosure is to your recommendation, the better."; "'affiliate link' … would not be adequate" | **Confirmed verbatim** | S44 |
+| Account Dormancy: 180 days to refer a sale; withdrawal after 180 days | **Confirmed verbatim** | S28 |
+| Application review: at least three qualifying sales within 180 days; personal orders do not qualify | **Confirmed verbatim** | S29 |
+| Best Sellers in Air Fryers (node 17659096011) live; positions 1–6 read | **Confirmed** | S43 |
+
+Not verified, and left blank on purpose (never estimated): the commission-rate category of each
+listing (FLG-021); price, star rating and review count (FLG-022, FLG-023, **3E-F-01/02**); clicks,
+conversions and revenue (FLG-011).
+
+No third-party page was used as evidence anywhere in this session.
+
+## 3E-T4 record — changes made
+
+| File | Change |
+|---|---|
+| `category/air-fryers.html` | 9 observed-value cells withheld (price, star rating, review count × 3 products); column headers renamed; a "Why price, star rating and review count are blank" paragraph added with the 2(b)/6(t) link; navigation synced to the current site nav (**3E-F-01**, **3E-F-08**) |
+| `docs/analysis.html`, `docs/content.html`, `docs/executive-summary.html`, `docs/flagged.html`, `docs/index.html`, `docs/products.html` | 81 observed-value cells withheld (**3E-F-02**); a dated correction notice added to each of the six, because they still assert that the commission rate schedule is sign-in-only (**3E-F-04**) |
+| `docs/sources.html` | correction notice only (**3E-F-04**) |
+| `sessions/03bbd050/index.html` and 11 pages under `sessions/3c886b62/` | dated compliance notice added to the top of each; their data cells were **not** rewritten (other sessions' scope — see change requests) (**3E-F-03**) |
+| `data/flags.json` | 9 new flags `3E-F-01`…`3E-F-09` (49 → 58). Diff is +121 lines only; the file was re-dumped with the original `indent=2` setting after a first attempt reformatted it |
+| `data/policy_facts.json` | 4 new verified facts `PF-53`…`PF-56` (51 → 55), all quoted verbatim from pages read today |
+| `scripts/build_site.py` | one NAV entry added for this session's verification record |
+| `sessions/3ead7ac8/tools/withhold_observed.py` | the remediation script; **idempotent** (second run changes nothing) |
+| `sessions/3ead7ac8/tools/build_record.py`, `sessions/3ead7ac8/index.html` | this session's 30-row verification record; source URLs are read from `data/sources.json` at build time so a label cannot drift from its URL |
+| `sitemap.xml` | regenerated by `scripts/build_sitemap.py` (65 pages, up from 64) |
+
+## 3E Change requests (cross-scope edits this session did **not** make)
+
+| ID | To the owner of | Request |
+|---|---|---|
+| 3E-CR-01 | `sessions/3c886b62/**` (session `3c886b62`) and `sessions/03bbd050/index.html` (session `03bbd050`) | Withhold the observed price, list price, discount, star rating, review count and "bought in past month" cells exactly as was done on the root and `/docs/` pages. Until then this session's compliance notice sits at the top of each page (**3E-F-03**). |
+| 3E-CR-02 | `data/sources.json` (shared) | Note in the register that S32, S40, S41 and S42 are URL aliases of S16, S46, S47 and S48, or retire the duplicates (**3E-F-05**). |
+| 3E-CR-03 | `data/policy_facts.json` / the COORDINATION.md verification note (session `7f84fea4`) | Correct the PF-14 withdrawal note: the text is present in the Operating Agreement opening paragraph (**3E-F-06**). PF-53 now carries it. |
+| 3E-CR-04 | `air-fryers.html` / `category/air-fryers.html` (site owner) | Consolidate the two Air Fryers category pages, or make `category/air-fryers.html` a redirect (**3E-F-09**). |
+
+## 3E Irregularities raised by this session (all published on the Flagged for review page; none blocking)
+
+`3E-F-01` (High, compliance) · `3E-F-02` (Medium, compliance) · `3E-F-03` (Medium, compliance,
+mitigated with a notice, owner fix requested) · `3E-F-04` (Medium, accuracy) · `3E-F-05` (Low,
+register) · `3E-F-06` (Low, register) · `3E-F-07` (Low, register) · `3E-F-08` (Info, site) ·
+`3E-F-09` (Info, site). Full text of each is in `data/flags.json` and renders at
+[`flagged.html`](flagged.html).
+
+## 3E Gates on the final tree
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 12 pages, 3 products, 48 sources, 58 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 70 pages · 1211 rows · 1009 with official source · 386 with flag · 82 repo anchor · 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** (no dangling source or flag references) |
+| `python3 scripts/check_all_links.py` | **116 pages, 104 external URLs, 0 errors** |
+| `python3 sessions/3c886b62/tools/check_links.py` | run by that session's own checker — see its Part |
+| All five generators re-run | **idempotent** (`diff -rq` against a pre-run copy: no differences) |
+| Local serve check | `/`, `/flagged.html`, `/category/air-fryers.html`, `/docs/products.html`, `/sessions/3ead7ac8/` all HTTP 200 |
+
+## 3E Conflict log
+
+| What happened | Resolution |
+|---|---|
+| `git pull --rebase` was chained before `git add`/`git commit` on the first push attempt, so the pull failed with "cannot pull with rebase: You have unstaged changes" | The claim still pushed cleanly (no competing commit). Order corrected for every later push: commit first, then `git pull --rebase origin main`, then push. |
+| No merge conflict with another session | Only PR #49 was open during this session and it touches `COORDINATION.md` only; it was left open and not merged by this session. |
+
+## 3E Integration record — main moved during this session (PR #66, session `554c08ca`)
+
+`main` advanced from `4fd8bd6` to `fa0996c` (merge of PR #66) while this session was working. PR #66
+touched 43 files, including `scripts/build_site.py`, `tools/build_site.py`, `tools/link_report.py`,
+`data/flags.json` (FLG-027 detail rewritten), `data/z3/*` and `category/air-fryers.html`. This branch
+was rebased onto `fa0996c`; nothing from either side was discarded.
+
+**Both sessions found the same compliance defect independently.** Session `554c08ca` raised
+`I-F-01` on `category/air-fryers.html` — the same page, the same three columns, the same
+Participation Requirements 2(b) and 6(t) reasoning — and fixed it by removing the price, rating and
+review columns and adding a full-width explanatory row. This session raised `3E-F-01` on the same
+file and had withheld the nine cells instead. Both records are kept; on integration this session
+**kept main's version of the file**, because dropping the columns is cleaner than blanking them, and
+`3E-F-01`'s action text was rewritten to say so and to cross-reference `I-F-01`. Session
+`554c08ca`'s fix did **not** cover the `/docs/` page set or the retained session pages, so
+`3E-F-02` and `3E-F-03` stand, as does `3E-F-08` (that file's navigation was still stale on main).
+
+| Conflict | Resolution |
+|---|---|
+| `COORDINATION.md` (×2, once per rebased commit) | Kept both sides in full: main's file verbatim, with this session's Part appended. Rebuilt programmatically from the `fa0996c` blob plus the appended text, with an assertion that no conflict markers survive and that main's text is intact as a prefix. |
+| `data/flags.json` | Both sessions appended flags. Merged the lists rather than picking a side: main's 51 flags first (including its rewritten FLG-027), then this session's `3E-F-01`…`3E-F-09` (60 total). No existing flag was overwritten; the register `note` records the merge and the `3E-F-01` / `I-F-01` overlap. |
+| `category/air-fryers.html` | Took main's version (columns removed, `I-F-01` explanation), then re-applied this session's navigation sync, which main had not done. Navigation is now generated from the canonical `NAV` tuple in `scripts/build_site.py` by an `ast` read, so it cannot drift again. |
+| `index.html`, `flagged.html`, `executive-summary.html` | Generated pages regenerated on both sides. Not hand-merged: reset to main's version, then regenerated from the merged `data/flags.json` and the merged generator, following the convention main already logs for `flagged.html`. |
+| `scripts/build_site.py` | Auto-merged cleanly; this session's single NAV entry (`sessions/3ead7ac8/index.html`) survived and is present in the merged NAV (16 entries). |
+
+After the rebase and re-generation, all gates were re-run on the merged tree:
+`check_site` OK (12 pages / 3 products / 48 sources / **60** flags) ·
+`verify_site` PASS (70 pages / 1214 rows / 1013 with official source / 387 with flag / **0 advisories**) ·
+`link_report --strict` exit 0 · `check_all_links` 116 pages 0 errors ·
+`sessions/3c886b62` checker OK · all five generators idempotent (byte-identical second run).
+
+A whole-tree re-scan for published observed price / rating / review values after the merge found
+17 files still containing those literals. All 17 are audit context, not product displays: flag
+descriptions on `flagged.html` and `flagged/index.html`, source-register descriptions on
+`sources.html` and `docs/sources.html`, and the 12 retained session pages that carry the
+`3E-F-03` compliance notice. No new product-fact display was introduced by the merge.

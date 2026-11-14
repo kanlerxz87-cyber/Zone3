@@ -99,6 +99,9 @@ NAV = [
     # Added by integration session edbd56a1 (2026-11-14): one row per published claim,
     # each linked to the official page it was read from.
     ("verification.html", "Verification log"),
+    # Added by integration session 3ead7ac8 (2026-11-14): this session's line-by-line record.
+    # Every row links the official page it was read from; source URLs come from data/sources.json.
+    ("sessions/3ead7ac8/index.html", "Verification (3ead7ac8)"),
     # Added by integration session edbd56a1 (2026-11-14): /docs/ returned HTTP 200 but had
     # no inbound link from any dashboard, so a browsing visitor could not reach it (flag V-F3).
     ("docs/index.html", "Reference (/docs/)"),
