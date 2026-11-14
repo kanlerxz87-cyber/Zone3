@@ -3814,6 +3814,112 @@ Flagged for review page rather than blocking anything:
 `https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`.
 **No third-party page was used as evidence.** No source ID was added to `data/sources.json`.
 
+# PART — Session `d9828ec7` (branch `arena/d9828ec7-zone3`, base `f618a53`) — 2026-11-14
+
+> Appended additively. Nothing above removed or rewritten. Task IDs namespaced **`98-T…`**,
+> flag IDs **`98-F…`**. Session files under `sessions/d9828ec7/**` where new files are needed.
+
+## 98 Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| d9828ec7 | `arena/d9828ec7-zone3` | `f618a53` (merged with `origin/main` → `96ea745`) | Line-by-line repo review; investigate/repair the failed GitHub Pages deploy; independent verification round; all gates; PR → `main`, merge, confirm Pages deploy; record | in progress | 2026-11-14 19:0x |
+
+## 98 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 98-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | done | d9828ec7 | `COORDINATION.md` (this Part only) | Claim pushed as commit `253adb6` before any other work. |
+| 98-T2 — Repo review, line by line (combined tree at current `main`) | done | d9828ec7 | read-only audit + this Part | Record below; 0 new irregularities beyond those already registered. |
+| 98-T3 — Pages deploy failure: diagnose and repair until the site is live | done (transient; no repair needed) | d9828ec7 | none (diagnosis only) | `cc9aafb` error was a build race; every build since → `built`. Record below. |
+| 98-T4 — Line-by-line verification round against official sources (fetch tool) | done (13/13 confirmed) | d9828ec7 | this Part only | Official sources only; no inference. Record below. |
+| 98-T5 — All gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, generators idempotent, sitemap) | done (all green) | d9828ec7 | read-only + sitemap fix under integration role | Record below; sitemap drift C3-F-01 fixed. |
+| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | in progress | d9828ec7 | git + `gh` + this Part | Merge only when the site is verified not broken. |
+
+Scope note: shared outputs are edited only under the final-integration role (98-T3/T5/T6) and every
+such edit is logged here. Open PR #71 (`arena/71dc8fea-zone3`) belongs to another session and is
+not edited or merged by this session unless it goes stale >60 min (then takeover noted here).
+
+## 98 Task log
+
+- **2026-11-14 — d9828ec7**: read the board (all parts), merged `origin/main` (`f618a53` → `96ea745`,
+  PRs #68/#73) into this branch, claimed 98-T1–98-T6, pushing the claim before any other work.
+  Observation at claim time: GitHub Pages repo status = **`errored`**; build for `cc9aafb` (PR #68)
+  failed with "Page build failed."; a build for `96ea745` was `building`. 98-T3 owns the repair.
+
+
+### 98-T2 record — repo review, line by line (2026-11-14, session d9828ec7)
+
+Audited the combined tree after merging `origin/main` (`f618a53` → `a73fab6`, PRs #68/#73/#74/#77–#82).
+
+| # | Area | State found | Verdict |
+|---|---|---|---|
+| R1 | Page inventory | 117 HTML pages; four site generations coexist by design (`/` flat pages, `/docs/`, `/dashboard/`, `/marketing/`) plus session sub-sites and archives | intact; nav and site map cover the current sets |
+| R2 | Registers | `data/sources.json` 51 sources · `data/flags.json` 72 flags · `data/products.json` 3 products · `data/policy_facts.json` 55 facts | consistent; `link_report --strict` finds no dangling refs |
+| R3 | Product cells | canonical `asin`/`product_name` fields are `null` for all three products; dated observations quarantined in `observed_2026_11_14` (price, rating, review_count, …) with per-field `sources` | correct under Participation Requirements 2(b)/6(t); no inferred values |
+| R4 | Disclosure | exact OA §5 sentence present on all 12 root/marketing pages checked (checker-enforced site-wide via verify V1) | pass |
+| R5 | Conflict markers / secrets | `grep` for line-start `<<<<<<< ` across tracked files → 0; secret-pattern scan → 0 hits | pass |
+| R6 | Duplicate source URLs | 10 URL pairs/groups appear twice+ (e.g. `s?k=` aliases, short-link entries) | already registered as **3E-F-05**; non-blocking; not re-edited here |
+| R7 | Sitemap | committed `sitemap.xml` lacked the five root pages `tools/build_site.py` emits (C3-F-01) | **fixed this session** (commit `9df39cd`): regenerated → 71 `<loc>` entries; `build_sitemap.py --check` exit 0 |
+| R8 | Open PRs at review time | #71 (`71dc8fea`), #75 (`3ead7ac8`) — both active (updated within minutes); not stale, not touched | respected per protocol |
+
+### 98-T3 record — Pages deploy diagnosis (2026-11-14)
+
+| Observation | Evidence | Conclusion |
+|---|---|---|
+| At claim time repo Pages status was `errored` | Pages API: build for `cc9aafb` (PR #68 merge) `status=errored`, error "Page build failed." | transient failure, not a repository defect |
+| A build for `96ea745` was started 3 s later and succeeded | Pages API builds list: `96ea745` → `built` (19:02:11 → 19:02:34) | the two near-simultaneous pushes raced; the later build won |
+| Every build since has succeeded | `9024b99` → `built`; `a73fab6` → `built` (19:1x); repo status `built` at review time | **no repair required**; site live |
+| No build-breaking content found | no symlinks; no file >50 MB; `.nojekyll` present; no conflict markers; `check_all_links` 0 errors | confirmed the error was infrastructure-side, not content-side |
+
+No file was changed under 98-T3. If the error recurs after this session's merge, the next session should
+re-run this diagnosis (build list + tree scan) before assuming a content cause.
+
+### 98-T4 record — line-by-line verification round (all fetched live 2026-11-14 by session d9828ec7)
+
+Every row was read from the official page itself this session; no search result or aggregator was used.
+
+| ID | Claim on the site | Official source re-fetched | Result |
+|---|---|---|---|
+| 98-V01 | OA header "Updated: October 15, 2025"; §5 disclosure sentence verbatim: "As an Amazon Associate I earn from qualifying purchases." | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) (chunks 0–1) | **Confirmed verbatim** |
+| 98-V02 | OA §6: any §5 violation is a material breach | same | **Confirmed verbatim** — "any violation of Section 5 … will be deemed a material breach of this Agreement" |
+| 98-V03 | Standard Commission Table 1 renders without sign-in; 11 rows; "Physical Books, Kitchen, Automotive 4.50%"; "All Other Categories 4.00%"; Luxury Beauty 10.00% | [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) (chunk 0) | **Confirmed row for row** |
+| 98-V04 | `link.amazon/B04G1MEwY` opens `amazon.com/dp/B0CDY277D3` — title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows…" | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | **Confirmed**; breadcrumb Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers (node 17659096011) |
+| 98-V05 | `link.amazon/B02NbDxp3` opens `dp/B09B7SB46R` — "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven…" | [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | **Confirmed**; same Air Fryers breadcrumb |
+| 98-V06 | `link.amazon/B00hJ57DV` opens `dp/B08DKYBTPH` — "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1…" | [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | **Confirmed**; same Air Fryers breadcrumb |
+| 98-V07 | `amazon.com/dp/B04G1MEwY` (9-char code) returns Amazon's *Page Not Found* page | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) | **Confirmed** — title element "Page Not Found" |
+| 98-V08 | ASIN = "Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon" | [Creators API GetItems — ItemIdType Parameter](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) (chunk 1) | **Confirmed verbatim** |
+| 98-V09 | Program Policies §2(b): tag `XXXXX-##` as URL parameter; no dynamic per-visitor sub-tags; prices/availability only if Amazon serves the link or via Creators/PA API; no inaccurate claims; remove ended-promotion mentions | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (chunk 3) | **Confirmed verbatim** |
+| 98-V10 | §6(s) no artificial clicks · §6(t) reviews/star ratings only via Creators/PA API · §6(v) no cloaking · §6(w) shorteners must not obscure the Amazon destination · §6(y) no price tracking/alerting | same (chunk 5) | **Confirmed verbatim** |
+| 98-V11 | FTC Disclosures 101: "financial, employment, personal, or family relationship"; "Place it so it's hard to miss"; "You can't talk about your experience with a product you haven't tried"; page dated November 2019 | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | **Confirmed verbatim** |
+| 98-V12 | Live site serves the dashboard with the re-verification table and per-claim source links | [kanlerxz87-cyber.github.io/Zone3/](https://kanlerxz87-cyber.github.io/Zone3/) | **Confirmed** — headline, KPIs, 12 section tiles, site map, verification table all render |
+| 98-V13 | Sitemap covers every published page | `scripts/build_sitemap.py --check` after regeneration | **Confirmed** — exit 0; 66 live pages checked, 71 `<loc>` entries (5 extra are the root stubs the other generator sweeps in — by design per the script's comment) |
+
+**Not re-verified, and why:** any price, star rating, review count or promotion badge as a *product fact* —
+Program Policies 2(b)/6(t) permit those only when Amazon serves them through the link or they come from
+Creators/PA API; no such path is configured here. They remain blank on product rows and quarantined in
+`observed_*` fields (FLG-022/038). This is a deliberate refusal, not a gap. No value was inferred or filled.
+
+### 98-T5 record — gates on the merged tree (2026-11-14, after merging `origin/main` @ `a73fab6`)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 13 pages, 3 products, 51 sources, 72 flags. All checks passed.** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 71 pages · 1269 table rows · 1068 with official source · 405 with flag · 82 with repo anchor** (V1–V7) |
+| `python3 tools/link_report.py --strict` | **exit 0** (no dangling source/flag refs) |
+| `python3 scripts/check_all_links.py` | **117 HTML pages, 105 distinct external URLs, 0 errors** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0** — covers every live page (after the C3-F-01 fix) |
+| `scripts/build_site.py` · `tools/build_site.py` · `scripts/build_marketing.py` | all **exit 0**, idempotent (second run = zero diff beyond the sitemap fix already committed) |
+| Conflict-marker / secrets sweep | 0 / 0 |
+| Disclosure sweep (12 root/marketing pages) | exact OA §5 sentence present on all |
+
+## 98 Conflict log
+
+| When | What | Resolution |
+|---|---|---|
+| 2026-11-14 | First `git merge origin/main`: content conflict in `COORDINATION.md` (both sides appended at the same anchor — this session's claim vs session `c3dbcc40`'s C3-T3 record) | Kept **both sides in full**: main's text first, then this session's 98 Part. A first scripted attempt failed on an over-strict assertion (the file's prose legitimately *mentions* `<<<<<<<`) and briefly left line-start markers in an **unpushed** merge commit; caught before any push, the file was rebuilt with a line-start-only marker check and the commit amended. Remote never contained markers. |
+| 2026-11-14 | Second merge (main moved `96ea745` → `a73fab6`, PRs #74/#77–#82) | Same conflict class; same keep-both resolution (assertions: no line-start markers, all session parts present). |
+| Push policy | `git pull --rebase` conflicts on a merge commit are avoided by merging `origin/main` into this branch instead (convention already logged by sessions `ecbfe91b`, `3c886b62`); nothing from any session discarded |
 
 # PART 54C — Session `54ce6a2b` (branch `arena/54ce6a2b-zone3`, base `f618a53`) — 2026-11-14
 
@@ -3964,3 +4070,21 @@ Every fetch below was made by this session on 2026-11-14. No source ID was added
 `https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items`.
 
 No third-party page was used as evidence.
+
+
+## 54C Conflict log — round 3 (2026-11-14, after PR #85 was opened)
+
+`main` advanced `a73fab6` → `057a5de` (PR #84, session `d9828ec7`, Part 98) after this session's
+pull request was open, so GitHub reported `mergeable=CONFLICTING`. Resolved the same way as round 2:
+`git merge origin/main`, then the board rebuilt as **main's file verbatim + this session's Part 54C
+re-appended** (main's copy did not contain Part 54C — asserted before writing). Zero line-leading
+markers after the resolution, and `git grep -Il "^<<<<<<< " -- . ':!archive'` returns 0 files.
+
+| Conflict | Resolution |
+|---|---|
+| `COORDINATION.md` (EOF append conflict with session `d9828ec7`'s Part 98) | Kept both sides in full: Part 98 (main's) first, then Part 54C. Nothing from either session discarded. |
+
+All nine gates were re-run on the re-merged tree and are green; see the 54C gates table above
+(`check_site` OK 13/3/51/**78** · `verify_site` PASS · `link_report --strict` 0 ·
+`check_all_links` 117 pages 0 errors · `build_sitemap --check` 0 · `3c886b62` checker OK ·
+generators idempotent · 0 conflict markers · 0 pages with a duplicated nav destination).
