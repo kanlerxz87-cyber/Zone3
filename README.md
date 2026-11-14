@@ -72,7 +72,7 @@ The pipeline records the observed destination listings separately from the 9-cha
 | Methodology | `/methodology/` | 8-stage pipeline, verification protocol, scalability, limits |
 | Requirements | `/requirements/` | All 30 brief clauses traced to status |
 | Sources | `/sources/` | Every official document cited, with what was observed |
-| Flagged | `/flagged/` | 28 open items with source links and resolutions |
+| Flagged | `/flagged/` | 29 open items with source links and resolutions |
 | Repo review | `/repo-review/` | Audit of the repository as found |
 | **This pass (2026-11-14)** | `/` (root dashboard) | Independent re-verification of every load-bearing claim against its official source, with a per-claim result table; corrections V-F1/V-F2 published at `/flagged.html`; repo review at `COORDINATION.md` § *Part: session b8beb448* |
 | **Executive summary (document)** | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | The standalone executive summary: verified facts, deliberately blank fields, capability status, and the three items that unblock the build |

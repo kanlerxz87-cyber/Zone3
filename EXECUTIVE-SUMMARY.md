@@ -42,7 +42,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-48 official sources · 51 policy facts · 49 flags · 12 root pages, a 16-page audit build and a
+48 official sources · 51 policy facts · 51 flags · 12 root pages, a 16-page audit build and a
 marketing section. All 51 facts and all three submitted links were re-read on 2026-11-14; the
 row-by-row record is the [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html).
 
@@ -131,8 +131,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-49 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-2 critical, 11 high, 16 medium, 15 low, 5 informational (informational entries record a correction
+51 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 12 high, 16 medium, 15 low, 5 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
@@ -140,13 +140,13 @@ evidence source links and the action needed.
 
 | ID | Severity | What it means for you |
 |---|---|---|
-| [FLG-001](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-001) | Critical | The three codes are not ASINs and their `/dp/` pages do not exist. Anything built on them would be fiction. |
+| [FLG-001](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-001) | Critical | The 9-character tokens are not ASINs, but their short links were observed to open live listings. The destination listings are documented; whether they match intent remains open. |
 | [FLG-003](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-003) | Critical | `link.amazon` is Amazon-served but not documented in the policies. Whether its redirect counts as a Redirecting Link (disqualified under CIS 2(e)) has to be tested in a logged-in Associates account. Publish canonical `/dp/ASIN` URLs with your tag instead. |
 | [FLG-010](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-010) | High | No Associates tag in any supplied link → nothing is trackable yet. |
 | [FLG-015](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-015) | High | Schedule 1 lists the **United States / amazon.com** only. A non-US operator's eligibility for the US programme is not established by the text read. |
 | [FLG-016](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-016) | High | Automated *analysis* of Amazon product data needs Amazon's prior written approval. This constrains the "AI-powered analysis" part of the brief directly — it is a permission problem, not a technical one. |
 | [FLG-022](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-022) | High | Prices, ratings and review counts cannot be displayed without an approved data path, so they are blank by policy, not by omission. |
-| [FLG-027](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-027) | High | Cross-session disagreement: one session set the redirect targets as the submitted products; the integration session declined to adopt that. Needs your confirmation. |
+| [FLG-027](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-027) | High | Submitted tokens and observed redirect destinations are recorded separately; observed destinations do not prove requester intent. The fallback query parameter is not treated as failure evidence. |
 
 **Corrections and fixes made in this session** (also on the Flagged page as `E-F-01`…`E-F-07`, so the
 changes are auditable rather than silent):
@@ -171,8 +171,8 @@ changes are auditable rather than silent):
 * Commission tables (S25, S26), the Creators API pages (S04–S06), the FTC pages (S07, S24, S44), the
   enrolment pages (S28, S29) and the Amazon bestseller page (S43) re-read; the Operating Agreement
   and Program Policies were read section by section across all 4 and 11 chunks respectively.
-* Build gates, all green: `scripts/check_site.py` (12 pages, 3 products, 48 sources, 49 flags),
-  `tools/verify_site.py` (68 pages, 1,117 rows, 841 with an official source link, 217 flagged, the
+* Build gates, all green: `scripts/check_site.py` (12 pages, 3 products, 48 sources, 51 flags),
+  `tools/verify_site.py` (69 pages, 1,172 rows, 971 with an official source link, 347 flagged, the
   rest anchored to the repo), `tools/link_report.py` (no dangling refs), `scripts/build_sitemap.py`
   (63 pages covered), and both site generators rebuild to a stable fixpoint.
 * **Limits:** the sandbox reaches only github.com, npm and PyPI directly, so official pages were read
