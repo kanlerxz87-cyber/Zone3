@@ -732,3 +732,99 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
 | Live check — `/docs/` landing | https://kanlerxz87-cyber.github.io/Zone3/docs/ — **live**, disclosure banner, KPI cards, portfolio table render |
 | Live check — `/docs/` products | https://kanlerxz87-cyber.github.io/Zone3/docs/products.html — **live**, full 16-field table with per-row source links renders |
 | Post-merge fix | Follow-up PR: stat-count correction on `docs/` pages (KPI cards said 27/2; ground truth 16 rows × 3 = 48 cells, 39 verified, 9 unverified) + this record |
+
+---
+
+# Part C — Session `51fcb80d` (final integration, 2026-11-14)
+
+> **Role.** This is the **final integration session** named in the brief: it re-verifies the combined data
+> line by line, rebuilds and link-checks the whole site, then opens the PR to `main`, merges it and confirms
+> the GitHub Pages deploy. It is the only session permitted to change the shared outputs at the repository root
+> (`index.html`, the category pages, `data/*.json`, `scripts/*`, `assets/*`).
+>
+> **Branch naming.** The Arena session note pins this session to `arena/51fcb80d-zone3` and forbids creating
+> or pushing other branches, so the `session-<id>/<task>` branch pattern in the brief is not available here.
+> Task IDs below (`C-T1…C-T8`) replace it, following the precedent logged by session `7f84fea4`.
+>
+> **Register namespacing.** This session adds **C-S** source IDs (S30+ are used in the canonical root
+> `data/sources.json`), **C-PF** policy-fact IDs (PF-44+), and **C-FLG** flag IDs (FLG-022+). They are not the
+> same items as `A:S01…S29`, `A:PF-01…43`, `A:FLG-nnn`, `B:SRC-01…19`, `B:FLG-001…028`, `c4e71983-FLG-nn`
+> or `Z-F1…Z-F6` used by other sessions.
+
+## C Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `51fcb80d` | `arena/51fcb80d-zone3` | Final integration: line-by-line re-verification, category subpages, whole-tree link check, PR → `main` → merge → Pages deploy | in progress (C-T1) | 2026-11-14 |
+
+## C Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| C-T1 — Claim, read the board, verify the three submitted links against official Amazon pages | done | `51fcb80d` | `COORDINATION.md`, `data/z3-51fcb80d-snapshot.json` | S08–S16, S30–S33 | C-FLG-001 (9-char code is not an ASIN) |
+| C-T2 — Re-verify the policy corpus line by line (Operating Agreement, Program Policies, Commission Income Statement, Creators API, FTC) | done | `51fcb80d` | `data/policy_facts.json`, `data/sources.json` | S01, S02, S04, S25, S39 | C-FLG-002, C-FLG-003, C-FLG-004 |
+| C-T3 — Category model and category subpages generated from verified browse nodes | done | `51fcb80d` | `data/categories.json`, `categories/**`, `scripts/build_site.py` | S14–S16, S30–S33, S34–S38 | C-FLG-005 |
+| C-T4 — Update the canonical product rows to the verified position (resolved ASIN, title, brand, category, dated price/rating snapshot) | done | `51fcb80d` | `data/products.json` | S14–S16, S30–S32 | C-FLG-001, C-FLG-002 |
+| C-T5 — Pricing and review analysis with per-row official sources, plus the competition benchmark | done | `51fcb80d` | `data/competition.json`, `pricing.html`, `reviews.html`, `analysis.html` | S25, S30–S33 | C-FLG-002, C-FLG-006 |
+| C-T6 — Flags: update the stale entries and add the new ones; publish them on the Flagged for Review page | done | `51fcb80d` | `data/flags.json`, `flagged.html`, `flagged-for-review.html` | S02, S25, S39 | C-FLG-001…C-FLG-008 |
+| C-T7 — Whole-tree link check and build gate | done | `51fcb80d` | `scripts/check_site.py`, `scripts/check_links.py` | — | — |
+| C-T8 — PR → `main`, merge, confirm the Pages deploy, record the result | in progress | `51fcb80d` | git + `gh` only | — | — |
+
+## C Verification performed (session `51fcb80d`)
+
+Every check below was run in this session on 2026-11-14. The evidence is in
+`docs/verification-log-51fcb80d.md`; the machine-readable capture is in `data/z3-51fcb80d-snapshot.json`.
+
+| ID | Check | Result | Official source |
+|---|---|---|---|
+| C-V01 | `https://link.amazon/B04G1MEwY` | Resolves to `amazon.com/dp/B0CDY277D3` — *CHEFMAN 6 Quart Dual Basket Air Fryer Oven …* | S11, S14 |
+| C-V02 | `https://link.amazon/B02NbDxp3` | Resolves to `amazon.com/dp/B09B7SB46R` — *Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven …* | S12, S15 |
+| C-V03 | `https://link.amazon/B00hJ57DV` | Resolves to `amazon.com/dp/B08DKYBTPH` — *Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 …* | S13, S16 |
+| C-V04 | `https://www.amazon.com/dp/B04G1MEwY` | **Page Not Found** | S08 |
+| C-V05 | `https://www.amazon.com/dp/B02NbDxp3` | **Page Not Found** | S09 |
+| C-V06 | `https://www.amazon.com/dp/B00hJ57DV` | **Page Not Found** | S10 |
+| C-V07 | Category path of all three resolved listings | Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › **Air Fryers** (node `17659096011`), read from the breadcrumb of each product page | S14, S15, S16 |
+| C-V08 | Price / list price / star rating / rating count / demand signal | Captured from Amazon's own results page for each ASIN, 2026-11-14 09:45 UTC; identical to the independent capture of 2026-11-13 recorded in `data/c4e71983-commercial-snapshot.json` | S30, S31, S32 |
+| C-V09 | Competition benchmark | Official *Best Sellers in Air Fryers* (node `17659096011`), ranks 1–6 read 2026-11-14 | S33 |
+| C-V10 | Rank volatility | The same official page returned a different #2/#3 order on 2026-11-13 (`data/c4e71983-competitors.json`) and on 2026-11-14 — rank is a dated snapshot, never a standing fact | S33 |
+| C-V11 | Commission rates | *Associates Program Standard Commission Income Statement*, Table 1: **Physical Books, Kitchen, Automotive — 4.50 %**; All Other Categories — 4.00 %; Home — 3.00 % | S25 |
+| C-V12 | Disclosure wording | Operating Agreement §5: *“As an Amazon Associate I earn from qualifying purchases.”* | S01 |
+| C-V13 | Commission Income Statement §2(e) | A purchase referred through a *Redirecting Link* is disqualified | S02 |
+| C-V14 | Participation Requirement 2(b) | Prices and availability may be shown only if Amazon serves the link that displays them, or the data comes from Creators API / PA API | S02 |
+| C-V15 | Participation Requirement 6(t) | Customer reviews and star ratings may be shown only if obtained through Creators API / PA API | S02 |
+| C-V16 | Participation Requirement 6(w) | A link shortening service must not make it unclear that you are linking to an Amazon Site | S02 |
+| C-V17 | Participation Requirement 6(y) | The Site must not have price tracking and/or price alerting functionality | S02 |
+| C-V18 | Creators API | 4 operations; prerequisite *“at least 10 qualifying sales within the past 30 days”* | S04 |
+| C-V19 | FTC affiliate guidance | *“You should disclose your relationship to the retailer clearly and conspicuously on your site …”*; *“affiliate link”* or a *“buy now”* button alone is not adequate; the disclosure should sit next to the recommendation | S39 |
+| C-V20 | Commission Income Statement windows | Session 24 h · cart completion ≤ 89 days · ship/pay ≤ 180 days | S02 |
+
+## C Sources added by this session (canonical root register)
+
+| ID | URL | Publisher | Status |
+|---|---|---|---|
+| S30 | https://www.amazon.com/s?k=B0CDY277D3 | Amazon.com | observed (2026-11-14) |
+| S31 | https://www.amazon.com/s?k=B09B7SB46R | Amazon.com | observed (2026-11-14) |
+| S32 | https://www.amazon.com/s?k=B08DKYBTPH | Amazon.com | observed (2026-11-14) |
+| S33 | https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/ | Amazon.com | observed (2026-11-14) |
+| S34 | https://www.amazon.com/Air-Fryers/b?node=17659096011 | Amazon.com | observed (navigation link on the product pages) |
+| S35 | https://www.amazon.com/Fryers/b?node=17659095011 | Amazon.com | observed (navigation link on the product pages) |
+| S36 | https://www.amazon.com/kitchen-small-appliances/b?node=289913 | Amazon.com | observed (navigation link on the product pages) |
+| S37 | https://www.amazon.com/kitchen-dining/b?node=284507 | Amazon.com | observed (navigation link on the product pages) |
+| S38 | https://www.amazon.com/home-garden-kitchen-furniture-bedding/b?node=1055398 | Amazon.com | observed (navigation link on the product pages) |
+| S39 | https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking | U.S. FTC | verified (2026-11-14) |
+
+## C Conflict and position log
+
+The repository carries two incompatible readings of the three submitted links. This session resolved it on
+evidence, not preference, and published both facts where they are true:
+
+| Position | Sessions | Evidence | How this integration treats it |
+|---|---|---|---|
+| *The submitted 9-character codes are not ASINs; the redirect targets are unrelated products; every product field stays blank.* | `3c6cba43` (B), `7f84fea4` (A) | `amazon.com/dp/<9-char code>` returns **Page Not Found** for all three (C-V04…C-V06) | **Kept.** Still true, still published, still flagged (FLG-001). |
+| *The short links resolve deterministically to three real listings, so the product data is verifiable.* | `3c886b62`, `c4e71983`, `79f85104` (Z) | Redirect targets re-fetched in this session (C-V01…C-V03) reproduce the same three ASINs; the target pages carry a real title, brand and category path (C-V07) | **Kept, with the caveat preserved.** The resolved listing is published as the *verified destination*, while the identity of the *submitted* item stays an owner question (FLG-002). |
+| *The destination product **is** the submitted product.* | implied by `79f85104` | No public document states this; it is a judgement about the submitter's intent | **Not adopted.** Recorded as C-FLG-002 for the owner to confirm. |
+
+The `plpRedirect=mhFallback` parameter that the earlier sessions treated as evidence of a failed lookup was
+**re-tested in this session**: a plain `https://www.amazon.com/dp/B0CDY277D3` fetch returns the same
+parameter while serving the correct product. It is a parameter of ordinary product fetches, not a failure
+signal (control CTRL-01 in `data/z3-51fcb80d-snapshot.json`).
