@@ -1,0 +1,231 @@
+{
+  "retrieved": "2026-11-14",
+  "session": "588693c9",
+  "rules": {
+    "statement": "Every factual sentence on these pages is traceable to an entry in the 'claims' array. A claim carries the official URL it was read from. A statement that cannot be supported is not written; the field is left blank and flagged instead.",
+    "forbidden_in_marketing_copy": [
+      "prices, list prices or discounts (6(y) bars price tracking/alerting; prices are served dynamically and were not obtainable as a stable attributable value)",
+      "star ratings or review counts (6(t): only via Creators API or PA API, which this build has no credentials for)",
+      "best-seller rank presented as fact about a product",
+      "first-hand use, testing or ownership claims (FTC: cannot describe an experience with a product you have not tried)",
+      "performance or earnings promises",
+      "comparisons to non-Amazon retailers (6(z))"
+    ]
+  },
+  "claims": [
+    {
+      "id": "MK-C01",
+      "text": "Amazon defines an ASIN as a 10-character alphanumeric identifier assigned by Amazon.",
+      "quote": "ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter",
+      "source_id": "S31"
+    },
+    {
+      "id": "MK-C02",
+      "text": "The three identifiers supplied for this project are 9 characters long, so they are not ASINs.",
+      "observed": "B04G1MEwY=9, B02NbDxp3=9, B00hJ57DV=9",
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "source_id": "S08"
+    },
+    {
+      "id": "MK-C03",
+      "text": "Requesting amazon.com/dp/ with any of the three supplied identifiers returns Amazon's Page Not Found response.",
+      "observed": "All three fetched 2026-11-14; <title> on each was 'Page Not Found'.",
+      "url": "https://www.amazon.com/dp/B02NbDxp3",
+      "source_id": "S09"
+    },
+    {
+      "id": "MK-C04",
+      "text": "Each supplied short link opens a live Amazon listing for a different air fryer.",
+      "observed": "link 1 -> dp/B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven); link 2 -> dp/B09B7SB46R (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven); link 3 -> dp/B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry).",
+      "url": "https://link.amazon/B04G1MEwY",
+      "source_ids": ["S11", "S12", "S13"]
+    },
+    {
+      "id": "MK-C05",
+      "text": "All three destination listings sit under the same five-level Amazon browse path: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers.",
+      "observed": "Breadcrumb read on each of the three destination pages.",
+      "url": "https://www.amazon.com/Air-Fryers/b/ref=dp_bc_5?ie=UTF8&node=17659096011",
+      "source_ids": ["S14", "S15", "S16"]
+    },
+    {
+      "id": "MK-C06",
+      "text": "Amazon's Standard Commission Income Statement publishes a fixed rate by product category; the row that names Kitchen is 4.50%.",
+      "quote": "Physical Books, Kitchen, Automotive | 4.50%",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_id": "S25"
+    },
+    {
+      "id": "MK-C07",
+      "text": "The same table gives 4.00% to the row 'All Other Categories'.",
+      "quote": "All Other Categories | 4.00%",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "source_id": "S25"
+    },
+    {
+      "id": "MK-C08",
+      "text": "Amazon requires the statement \"As an Amazon Associate I earn from qualifying purchases.\" to be clear and prominent wherever Program Content appears.",
+      "quote": "You must clearly and prominently state the following ... on your Site or any other location where Amazon may authorize your display or other use of Program Content: \"As an Amazon Associate I earn from qualifying purchases.\"",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "source_id": "S01"
+    },
+    {
+      "id": "MK-C09",
+      "text": "Amazon prohibits describing a product's price history or operating a price alerting feature unless separately agreed.",
+      "quote": "(y) Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "source_id": "S02"
+    },
+    {
+      "id": "MK-C10",
+      "text": "Amazon permits star ratings and customer reviews on an affiliate site only when they were obtained through the Creators API or PA API.",
+      "quote": "(t) You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API ...",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "source_id": "S02"
+    },
+    {
+      "id": "MK-C11",
+      "text": "A link may not be presented in a way that makes it unclear that it leads to an Amazon site.",
+      "quote": "(w) You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "source_id": "S02"
+    },
+    {
+      "id": "MK-C12",
+      "text": "Affiliate content may not promote products offered by retailers other than Amazon.",
+      "quote": "(z) You will not display on your Site, or otherwise use, any Program Content to advertise or promote any products that are offered on any site that is not an Amazon Site ...",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "source_id": "S02"
+    },
+    {
+      "id": "MK-C13",
+      "text": "The FTC says a disclosure must be hard to miss and that an endorser cannot talk about experience with a product they have not tried.",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "source_id": "S07"
+    }
+  ],
+  "products": [
+    {
+      "id": "MK-P1",
+      "slug": "product-1-chefman-6-quart-dual-basket",
+      "label": "Product link 1",
+      "submitted_link": "https://link.amazon/B04G1MEwY",
+      "submitted_code": "B04G1MEwY",
+      "resolved_asin": "B0CDY277D3",
+      "listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "title_as_listed": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "brand_as_listed": "CHEFMAN",
+      "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "claim_ids": ["MK-C02", "MK-C03", "MK-C04", "MK-C05"],
+      "verified_specs": [
+        {"attribute": "Capacity, as stated in the listing title", "value": "6 Quart", "claim": "MK-C04"},
+        {"attribute": "Basket configuration, as stated in the listing title", "value": "2 independent 3 Qt baskets", "claim": "MK-C04"}
+      ],
+      "blank_fields": ["price", "list_price", "star_rating", "review_count", "best_seller_rank", "commission_rate", "availability"],
+      "identity_status": "The short link opens this listing. Whether this listing is the product you meant to submit is unconfirmed (no official source can settle it); flagged as FLG-001 / FLG-002.",
+      "article_angle": "A dual-basket air fryer that lets two foods cook at once with a sync-finish control, for households cooking a main and a side together."
+    },
+    {
+      "id": "MK-P2",
+      "slug": "product-2-emeril-lagasse-26qt-french-door",
+      "label": "Product link 2",
+      "submitted_link": "https://link.amazon/B02NbDxp3",
+      "submitted_code": "B02NbDxp3",
+      "resolved_asin": "B09B7SB46R",
+      "listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "title_as_listed": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals.",
+      "brand_as_listed": "Emeril Lagasse",
+      "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "claim_ids": ["MK-C02", "MK-C03", "MK-C04", "MK-C05"],
+      "verified_specs": [
+        {"attribute": "Capacity, as stated in the listing title", "value": "26 QT", "claim": "MK-C04"},
+        {"attribute": "Cooking functions, as stated in the listing title", "value": "24", "claim": "MK-C04"},
+        {"attribute": "Door style, as stated in the listing title", "value": "French door", "claim": "MK-C04"}
+      ],
+      "blank_fields": ["price", "list_price", "star_rating", "review_count", "best_seller_rank", "commission_rate", "availability"],
+      "identity_status": "The short link opens this listing. Whether this listing is the product you meant to submit is unconfirmed; flagged as FLG-001 / FLG-002.",
+      "article_angle": "A large-capacity French-door toaster-oven style air fryer aimed at families, where the swing-open doors and rotisserie are the differentiators to explain."
+    },
+    {
+      "id": "MK-P3",
+      "slug": "product-3-chefman-8-quart-turbofry",
+      "label": "Product link 3",
+      "submitted_link": "https://link.amazon/B00hJ57DV",
+      "submitted_code": "B00hJ57DV",
+      "resolved_asin": "B08DKYBTPH",
+      "listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "title_as_listed": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "brand_as_listed": "Chefman",
+      "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "claim_ids": ["MK-C02", "MK-C03", "MK-C04", "MK-C05"],
+      "verified_specs": [
+        {"attribute": "Capacity, as stated in the listing title", "value": "8 Qt", "claim": "MK-C04"},
+        {"attribute": "Functions, as stated in the listing title", "value": "4-in-1: bake, dehydrate, frozen", "claim": "MK-C04"},
+        {"attribute": "Basket material, as stated in the listing title", "value": "Nonstick, dishwasher-safe stainless steel basket", "claim": "MK-C04"}
+      ],
+      "blank_fields": ["price", "list_price", "star_rating", "review_count", "best_seller_rank", "commission_rate", "availability"],
+      "identity_status": "The short link opens this listing. Whether this listing is the product you meant to submit is unconfirmed; flagged as FLG-001 / FLG-002.",
+      "article_angle": "A single-basket XL air fryer for batch cooking, where capacity and the dehydrate/bake modes are the story."
+    }
+  ],
+  "buying_guide": {
+    "title": "How to choose between these three air fryers",
+    "intro": "This guide helps a reader pick among the three listings linked from this project. It uses only attributes printed in the listing titles, plus Amazon's own rules about what a compliant affiliate page may claim. No price, rating or rank is stated, because none could be verified from an official source in a form this site is allowed to publish.",
+    "decision_rows": [
+      {
+        "if_the_reader_wants": "To cook two different foods at the same time",
+        "consider": "Product link 1 — CHEFMAN 6 Quart Dual Basket",
+        "because": "The listing title describes two independent 3 Qt baskets with a sync-finish control.",
+        "claim": "MK-C04",
+        "listing_url": "https://www.amazon.com/dp/B0CDY277D3"
+      },
+      {
+        "if_the_reader_wants": "The largest cooking chamber of the three",
+        "consider": "Product link 2 — Emeril Lagasse 26QT French Door",
+        "because": "The listing title states 26 QT, the largest capacity stated across the three titles. French doors and a rotisserie suit larger items.",
+        "claim": "MK-C04",
+        "listing_url": "https://www.amazon.com/dp/B09B7SB46R"
+      },
+      {
+        "if_the_reader_wants": "One large basket and simple batch cooking",
+        "consider": "Product link 3 — Chefman Air Fryer 8 Qt TurboFry",
+        "because": "The listing title describes a single 8 Qt nonstick dishwasher-safe basket with bake, dehydrate and frozen modes.",
+        "claim": "MK-C04",
+        "listing_url": "https://www.amazon.com/dp/B08DKYBTPH"
+      }
+    ],
+    "questions_to_ask_before_buying": [
+      {"question": "How much counter space can I give it?", "why": "The three listings differ in stated capacity from 6 QT to 26 QT; a larger chamber generally occupies more counter depth.", "claim": "MK-C04"},
+      {"question": "Will I mostly cook one dish or two at once?", "why": "Only the dual-basket listing describes two independently controlled baskets.", "claim": "MK-C04"},
+      {"question": "Do I need a rotisserie or dehydrate mode?", "why": "These functions appear in the listing titles of some of the three and not others.", "claim": "MK-C04"}
+    ],
+    "what_this_guide_will_not_tell_you": [
+      {"item": "The current price of any of the three", "reason": "Participation Requirement 6(y) bars price tracking and alerting, and no stable attributable price was obtainable at verification time.", "source_id": "S02"},
+      {"item": "A star rating or review count", "reason": "Participation Requirement 6(t) permits star ratings and reviews only when sourced via Creators API or PA API, which this build has no credentials for.", "source_id": "S02"},
+      {"item": "Whether a given air fryer is 'the best'", "reason": "That would be an experience claim. The FTC holds that an endorser cannot describe experience with a product they have not tried.", "source_id": "S07"}
+    ]
+  },
+  "comparison": {
+    "title": "Side-by-side comparison",
+    "note": "Blank means the value was not verifiable from an official source and is deliberately not inferred. See the Flagged for review page.",
+    "columns": [
+      {"key": "brand_as_listed", "label": "Brand, as listed"},
+      {"key": "resolved_asin", "label": "ASIN"},
+      {"key": "capacity", "label": "Stated capacity"},
+      {"key": "distinguishing_feature", "label": "Distinguishing feature, as listed"},
+      {"key": "category_path", "label": "Amazon browse path"},
+      {"key": "price", "label": "Price"},
+      {"key": "star_rating", "label": "Star rating"},
+      {"key": "commission_rate", "label": "Commission rate"}
+    ]
+  },
+  "seo": {
+    "note": "Titles and descriptions are written from verified attributes only. No keyword is seeded from a claim about demand or search volume, because no official Amazon source publishes that to affiliates.",
+    "unavailable_inputs": [
+      "search volume and keyword difficulty (no official Amazon affiliate endpoint publishes these)",
+      "conversion rate (only observable from the account's own reports once a tag and sales exist)",
+      "competition metrics for the specific ASINs (no official affiliate endpoint)",
+      "trend direction (no official affiliate endpoint)"
+    ]
+  }
+}
