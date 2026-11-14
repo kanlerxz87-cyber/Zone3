@@ -450,6 +450,33 @@
       "status": "observed",
       "status_note": "Fetched 2026-11-14 by session b90c5685. link.amazon/B04G1MEwY -> amazon.com/dp/B0CDY277D3 (title: 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven ... - Black'); link.amazon/B02NbDxp3 -> amazon.com/dp/B09B7SB46R (title: 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven ...'); link.amazon/B00hJ57DV -> amazon.com/dp/B08DKYBTPH (title: 'Chefman Air Fryer 8 Qt | TurboFry 4-in-1 ...'). A direct GET of amazon.com/dp/B04G1MEwY returned Amazon's 'Page Not Found' page. The direct GETs of /dp/B0CDY277D3 and /dp/B08DKYBTPH both carried lv=shuf and plpRedirect=mhFallback with no short link involved, which corroborates FLG-026.",
       "used_for": "Corroborates S11-S16 and S52-S54 on where each submitted link opens; confirms FLG-026 control observation. Not used as product identity."
+    },
+    {
+      "id": "S56",
+      "title": "This repository's published sitemap.xml (main branch)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/sitemap.xml",
+      "publisher": "This repository (GitHub)",
+      "status": "verified",
+      "status_note": "Read in the working tree at e8e3e9d and again at cb2dc1d/62c5c6a by session 21acd3c0 on 2026-11-14; entries compared against the page file set.",
+      "used_for": "21-F-02, 21-F-03, 21-F-04"
+    },
+    {
+      "id": "S57",
+      "title": "This repository's COORDINATION.md task board (main branch)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md",
+      "publisher": "This repository (GitHub)",
+      "status": "verified",
+      "status_note": "Read line-by-line by session 21acd3c0 on 2026-11-14; duplicated Parts observed at the file tail (see 21-F-01).",
+      "used_for": "21-F-01"
+    },
+    {
+      "id": "S58",
+      "title": "Redirect stub categories/home-kitchen-air-fryers.html (main branch)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/categories/home-kitchen-air-fryers.html",
+      "publisher": "This repository (GitHub)",
+      "status": "verified",
+      "status_note": "File exists in the tree (redirect stub) but has no sitemap entry; observed by session 21acd3c0 on 2026-11-14.",
+      "used_for": "21-F-03"
     }
   ]
 }
