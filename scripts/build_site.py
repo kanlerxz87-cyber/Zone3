@@ -107,6 +107,9 @@ NAV = [
     # Added by integration session 3ead7ac8 (2026-11-14): this session's line-by-line record.
     # Every row links the official page it was read from; source URLs come from data/sources.json.
     ("sessions/3ead7ac8/index.html", "Verification (3ead7ac8)"),
+    # Added by session 25513d33 (2026-11-14): this session's independent record. Every row
+    # was produced by a fetch performed by this session; labels read from data/sources.json.
+    ("sessions/25513d33/index.html", "Verification (25513d33)"),
     # Added by integration session edbd56a1 (2026-11-14): /docs/ returned HTTP 200 but had
     # no inbound link from any dashboard, so a browsing visitor could not reach it (flag V-F3).
     ("docs/index.html", "Reference (/docs/)"),
@@ -318,6 +321,8 @@ SITEMAP_GROUPS = [
         ("verification.html", "Verification log"),
         # Added by integration session 3ead7ac8 (2026-11-14) alongside the dashboard tile.
         ("sessions/3ead7ac8/index.html", "Verification (session 3ead7ac8)"),
+        # Added by session 25513d33 (2026-11-14) alongside the dashboard tile.
+        ("sessions/25513d33/index.html", "Verification (session 25513d33)"),
         ("requirements/index.html", "Requirements traceability"),
         ("repo-review/index.html", "Repository review"),
         ("compliance/index.html", "Compliance register"),
@@ -386,6 +391,11 @@ def build_index() -> None:
         ("sessions/3ead7ac8/index.html", "Verification (session 3ead7ac8)",
          "30 load-bearing claims re-read from the official pages on 2026-11-14, each linked to "
          "the page it came from, plus the fields deliberately left blank and why."),
+        # Added by session 25513d33 (2026-11-14): same reason as the tile above. This record
+        # re-fetches and re-reads every load-bearing claim independently of the one above.
+        ("sessions/25513d33/index.html", "Verification (session 25513d33)",
+         "Independent re-fetch of all three submitted links and 12 policy and disclosure "
+         "statements, re-read verbatim on 2026-11-14, each row linked to the page it came from."),
         ("docs/index.html", "Archived 2026-11-13 build (/docs/) — flagged",
          "An earlier build, kept for provenance. It still displays price and star-rating cells that "
          "this site's rule and Amazon's policy prohibit; see I-F-02 on the Flagged for review page. "
