@@ -137,3 +137,65 @@ for a in B04G1MEwY B02NbDxp3 B00hJ57DV; do printf "%s = %s chars\n" "$a" "${#a}"
 
 Any figure in this document that you cannot reproduce from those sources should be treated as an error and
 reported — that is the standard the site is held to.
+
+---
+
+# Addendum — session `588693c9`, 2026-11-14 (final integration)
+
+This addendum is written last and is the current state. It supersedes nothing above; it adds the
+marketing deliverable, corrects one inference, and records what was verified live today.
+
+## A1. What this session changed
+
+| # | Change | Where |
+|---|---|---|
+| 1 | **Marketing section built** — 3 product pages, a side-by-side comparison and a buying guide, generated from a sourced-claims file with a build-time gate. Every factual sentence links the official page it came from. | `marketing/` (7 pages), `data/marketing.json`, `scripts/build_marketing.py` |
+| 2 | **One inference corrected.** `README.md` claimed `plpRedirect=mhFallback` "confirms the identifiers select nothing". A control fetch shows the parameter also appears on *valid* ASINs. Corrected. | `README.md`, FLG-028 |
+| 3 | **Six items published for review** — FLG-028…FLG-033, each with official source links. | `flagged.html`, `data/flags.json` |
+| 4 | **Independent live re-verification** of the identity chain, the ASIN rule, Table 1, OA §5 and 6(t)/(v)/(w)/(y)/(z). | `sessions/588693c9/verification-2026-11-14.json` |
+
+## A2. The three products, as verified live on 2026-11-14
+
+| Submitted code | Length | `dp/<code>` | Short link opens | Brand, as listed | Stated capacity |
+|---|---|---|---|---|---|
+| `B04G1MEwY` | 9 | *Page Not Found* | [`B0CDY277D3`](https://www.amazon.com/dp/B0CDY277D3) | CHEFMAN | 6 Quart |
+| `B02NbDxp3` | 9 | *Page Not Found* | [`B09B7SB46R`](https://www.amazon.com/dp/B09B7SB46R) | Emeril Lagasse | 26 QT |
+| `B00hJ57DV` | 9 | *Page Not Found* | [`B08DKYBTPH`](https://www.amazon.com/dp/B08DKYBTPH) | Chefman | 8 Qt |
+
+All three destination listings sit under the same path — Home & Kitchen › Kitchen & Dining ›
+Small Appliances › Fryers › Air Fryers — read from the breadcrumb on each page.
+
+## A3. What the marketing pages deliberately do not say, and why
+
+| Not stated | Reason | Official source |
+|---|---|---|
+| Any price, list price or discount | 6(y) bars price tracking/alerting; the only figures in the fetched page text belonged to carousel items for *other* ASINs | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
+| Any star rating or review count | 6(t) permits these only when obtained via Creators API or PA API; this build has no credentials | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
+| Any per-product commission rate | Table 1 rates are **per commission category**; no official source states these ASINs' commission category, and an Air Fryers browse node is not shown to equal the "Kitchen" row | [Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| Any first-hand use, testing or ownership claim | FTC: cannot describe experience with a product not tried | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
+| Search volume, keyword difficulty, trend, conversion rate | No official Amazon affiliate endpoint publishes them; no live campaign exists | — (flagged FLG-033) |
+
+The table rates that *are* verified: Kitchen **4.50 %**, All Other Categories **4.00 %**, Luxury
+Beauty **10.00 %**, Home **3.00 %** — quoted from Table 1, shown only as a category reference.
+
+## A4. The one thing that unblocks everything
+
+**Three product names, or three correct ASINs.** That single line lets `data/marketing.json` fill the
+identity fields and regenerates all 7 marketing pages, the comparison and the buying guide with no
+further work. Second and third: an Associates tag, and Creators API eligibility (≥10 qualifying sales
+in 30 days) — which is what makes verified prices and ratings publishable at all.
+
+## A5. Reproduce every claim in this addendum
+
+```bash
+python3 scripts/build_marketing.py   # 7 pages; exits 3 if a row lacks a source or a price appears
+python3 scripts/build_site.py        # flat site from data/*.json
+python3 scripts/check_site.py        # must print OK
+python3 tools/verify_site.py         # must print VERIFY PASS
+python3 tools/link_report.py --strict # must exit 0
+
+# the correction in A1 item 2, reproducible in one command each:
+curl -sI https://www.amazon.com/dp/B0CDY277D3 | grep -io 'mhFallback' || echo "no param"
+# a VALID ASIN carries the same parameter -- so it proves nothing about the short link
+for a in B04G1MEwY B02NbDxp3 B00hJ57DV; do printf "%s = %s chars\n" "$a" "${#a}"; done
+```
