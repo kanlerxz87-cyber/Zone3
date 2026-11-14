@@ -2567,7 +2567,7 @@ cannot be written to `main` before #47 itself merges.
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| f118dddd | `arena/f118dddd-zone3` | Final integration for this round: integrate open PR #26 (session 9fef7647), line-by-line re-verification, site integrity, PR to `main`, merge, Pages deploy | in progress | 2026-11-14 |
+| f118dddd | `arena/f118dddd-zone3` | Final integration for this round: integrate open PR #26 (session 9fef7647), line-by-line re-verification, site integrity, PR to `main`, merge, Pages deploy | done (2026-11-14) | 2026-11-14 |
 
 ## G Task board (claimed before any other work, per protocol)
 
@@ -2577,7 +2577,7 @@ cannot be written to `main` before #47 itself merges.
 | G-T2 — Line-by-line re-verification against live official sources | done | f118dddd | verification record in this Part | to be recorded | — |
 | G-T3 — Site integrity: run every checker, fix real breakage, confirm no broken links | done | f118dddd | site files only if a check fails | — | — |
 | G-T4 — Flagged-for-review: E-T2 request (short-link identity table addendum; attached to FLG-035, the identity flag under current IDs) | done | f118dddd | `flagged.html` (+ register data) | S-links from E Part | — |
-| G-T5 — PR to `main`, merge without waiting, confirm Pages deploy, record here | in progress | f118dddd | this Part | — | — |
+| G-T5 — PR to `main`, merge without waiting, confirm Pages deploy, record here | done (PR #50 merged `5c86a42`; record PR #51 merged `9f7007d`; Pages `built` for both) | f118dddd | this Part | — | — |
 
 Scope note: sessions `9fef7647` (PR #26, open) and `f1b7da46` (merged, PR #29/#30) are read for integration only; no other session's files are edited outside integration merges. Shared outputs (index, nav, tables) are touched only as the integration session.
 
