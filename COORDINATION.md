@@ -4148,3 +4148,91 @@ Each row was read on 2026-11-14 from the official page, by this session.
 | Prime bounty rates ($12.00 Prime trials/memberships, $2.00 Prime Video Free Trial, $5.00 First Stream, $0.25 Stream) | **Confirmed row for row** | Bounty-Eligible Program table as served | [S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
 
 **Conclusion carried forward unchanged:** the repository's decision to leave price, star-rating and review-count cells blank is correct and is directly required by the two clauses above. This session independently reaches the same conclusion from the official text.
+
+## 25-T1 to 25-T6 records — completion (2026-11-14, session 25513d33)
+
+**25-T1 done — submitted links.** See the 25-T1 table above. All three re-fetched independently by
+this session; destinations identical to the stored record. Control: all three raw 9-character codes
+return Amazon's "Page Not Found" page when used as an ASIN (`amazon.com/dp/B04G1MEwY`,
+`amazon.com/dp/B02NbDxp3`, `amazon.com/dp/B00hJ57DV`), while the same fetch returns a full product
+page for each destination ASIN. Positive control passes, so the negative result is meaningful.
+
+**25-T2 done — policy facts.** See the 25-T2 table above. Twelve claims re-read verbatim from
+`affiliate-program.amazon.com` and `ftc.gov`. All matched the stored wording in
+`data/policy_facts.json`. Two claims were checked that the register did not previously carry as
+separate rows and both matched: the US Payment Minimum Chart (10 / 10–2000 / 100 / 15 USD) and the
+Onsite Table A band containing Kitchen (1.25%) together with its "Onsite Content" definition.
+
+**25-T3 done — repo review.** Line by line, with the checks in the table below. No unverified value
+was found published as a fact anywhere in the live tree; the two items below are the only findings,
+and neither is a data defect.
+
+| Check | Command / method | Result |
+|---|---|---|
+| Internal link integrity (files and anchors) | full crawl of the live tree, excluding `archive/` | **71 pages, 2,379 internal references, 0 broken** |
+| Orphan pages | reverse link graph | **2** — `404.html` (Pages custom error page) and `marketing.html` (meta-refresh stub). Both correct |
+| Sitemap coverage | `python3 scripts/build_sitemap.py --check` | **exit 0** — 66 live pages covered, 0 missing, 0 extra |
+| Prohibited constructs | `tools/verify_site.py` V6 | 0 |
+
+**25-T4 done — gates on the rebased tree** (`8d38af4` → `2e60e7a`, rebased twice as `main` moved):
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 12 pages, 3 products, 51 sources, 66 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 71 pages · 1,249 rows · 1,044 with official source · 388 with flag · 86 with repo anchor · 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** — no dangling source or flag references |
+| `python3 scripts/build_sitemap.py --check` | **exit 0** — 66 pages |
+| All five generators re-run | **idempotent** (byte-identical second run; `diff -rq` against a pre-run copy shows no differences) |
+| Internal-link crawl | **0 problems across 71 pages / 2,379 references** |
+
+**25-T5 done — C3-F-01 resolved as a false positive; no change to `sitemap.xml` was needed.** The
+five pages named in C3-F-01 are `analysis.html`, `disclosure.html`, `flagged-for-review.html`,
+`marketing.html` and `index.html`. The first four are meta-refresh redirect stubs, which
+`scripts/build_sitemap.py` excludes on purpose (documented in its module docstring), and
+`index.html` is emitted as the site root URL `https://kanlerxz87-cyber.github.io/Zone3/`. A naive
+filename-to-filename comparison reports them as missing; the generator's own `--check` mode, which
+compares page URL sets rather than filenames, exits 0. **`sitemap.xml` was therefore not edited on
+account of C3-F-01.** It *was* regenerated once, because this session added a 66th live page
+(`sessions/25513d33/index.html`) that has to be listed.
+
+**25-T6 done — executive summary.** Two stale figure sets in `EXECUTIVE-SUMMARY.md` were corrected
+against `data/flags.json` and the gates above (see `25-F-03`), and a section 9 was added recording
+this session's independent re-verification. `executive-summary.html` is generated from
+`data/*.json`, not from the Markdown file, and was checked separately: it carries no flag-count
+claim, so there is no drift between the two.
+
+## 25 Change requests (cross-scope edits this session did **not** make)
+
+| ID | To the owner of | Request |
+|---|---|---|
+| 25-CR-01 | `data/products.json` (shared) | Record the Air Fryers browse breadcrumb (node `17659096011`) for products 2 and 3 as well as product 1. This session observed it on all three destination pages but does not edit the shared product register. No published cell changes either way (**25-F-01**). |
+| 25-CR-02 | `tools/link_report.py` (shared) | Its "UNRESOLVED OR NOT PUBLISHED" block still prints "product price / ratings / reviews values remain blank unless acquired through the permitted Amazon link/API path". That is correct and should be kept. No action; noted only so a later session does not read the line as a defect. |
+
+## 25 Irregularities raised by this session (informational; neither blocks the merge)
+
+| ID | Severity | Summary |
+|---|---|---|
+| **25-F-01** | Info | All three destination listings carry the same Air Fryers browse breadcrumb (node `17659096011`); the register records it for product 1 only. No published cell changes — see 25-CR-01. |
+| **25-F-02** | Info | C3-F-01 (sitemap drift, session `c3dbcc40`) is a false positive. The five named pages are excluded redirect stubs or the site root. `scripts/build_sitemap.py --check` exits 0. No file change needed; logged so the integration owner can close the item. |
+| **25-F-03** | Info (corrected here) | `EXECUTIVE-SUMMARY.md` §6 said "51 entries — 3 critical, 12 high, 16 medium, 15 low, 5 informational" and §7 said "48 sources, 51 flags". The register holds **66** (3 / 13 / 19 / 20 / 11) and **51 sources**. Both corrected in `EXECUTIVE-SUMMARY.md`; the 66 IDs were confirmed to render on `flagged.html`. `executive-summary.html` was checked and carries no such claim. |
+
+## 25 Files changed by this session
+
+| File | Change |
+|---|---|
+| `sessions/25513d33/build_record.py` | New. This session's record generator; reads source URLs from `data/sources.json` at build time; **idempotent** |
+| `sessions/25513d33/index.html` | New. The record page: 3 link rows, 3 control rows, 12 policy rows, 4 repo-integrity rows, 2 irregularities, limits. Carries the §5 disclosure; single `h1`; every table row carries an official source link or a `repo:` anchor |
+| `scripts/build_site.py` | **One** NAV entry added: `('sessions/25513d33/index.html', 'Verification (25513d33)')`. Nothing else in the file changed. The 12 root pages were then regenerated, so each carries the new nav link |
+| `sitemap.xml` | Regenerated by `scripts/build_sitemap.py` — 65 → 66 pages, to list the new page |
+| `EXECUTIVE-SUMMARY.md` | §6 and §7 stale counts corrected; §9 added (this session's record). Repo document, not a generated page |
+| `COORDINATION.md` | This Part only (appended; no earlier Part edited) |
+
+## 25 Conflict log
+
+| What happened | Resolution |
+|---|---|
+| The clone was **shallow (depth 1)** at session start, so `git merge-base origin/main HEAD` returned no merge base and `origin/main...HEAD` failed with "no merge base" | `git fetch --unshallow origin` restored full history. Merge base found (`f79b85e`); branch rebased onto `main` |
+| `git pull --rebase` was run while the claim commit was staged but uncommitted on the first push attempt | Order corrected: commit first, then `git pull --rebase origin main`, then push. Used for every later push |
+| `main` moved twice during this session (`8d38af4` → `2e60e7a`) | Rebased onto `origin/main` before each push. No conflict: the incoming commits touch `EXECUTIVE-SUMMARY.md`, `sessions/3ead7ac8/**`, `COORDINATION.md` and generated pages; this session's appends to `COORDINATION.md` sat at end-of-file and rebased cleanly |
+| `tools/verify_site.py` V5 reported 9 broken internal links on the new page | **Real bug, found by the gate.** The page is two directories deep, so `../index.html` resolved to `sessions/index.html`. Fixed to `../../` throughout and re-verified: 0 broken links |
+| `tools/verify_site.py` V4 advisory on 4 repo-integrity rows (no source, flag or anchor) | Added `repo:<path>` anchors to those rows, which is the mechanism the checker provides for repository-state claims. Advisories went 4 → 0 without weakening the rule |

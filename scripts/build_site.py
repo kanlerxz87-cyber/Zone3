@@ -107,6 +107,9 @@ NAV = [
     # Added by integration session 3ead7ac8 (2026-11-14): this session's line-by-line record.
     # Every row links the official page it was read from; source URLs come from data/sources.json.
     ("sessions/3ead7ac8/index.html", "Verification (3ead7ac8)"),
+    # Added by session 25513d33 (2026-11-14): this session's independent record. Every row
+    # was produced by a fetch performed by this session; labels read from data/sources.json.
+    ("sessions/25513d33/index.html", "Verification (25513d33)"),
     # Added by integration session edbd56a1 (2026-11-14): /docs/ returned HTTP 200 but had
     # no inbound link from any dashboard, so a browsing visitor could not reach it (flag V-F3).
     ("docs/index.html", "Reference (/docs/)"),
