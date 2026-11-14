@@ -1864,9 +1864,21 @@ Adopted-tree policy check: canonical product cells are blank/null with dated obs
 | `python3 sessions/3c886b62/tools/check_links.py` | **OK** — no broken internal links, every data row has a source cell |
 | `python3 scripts/build_site.py` rebuild | **zero diff** (idempotent; sitemap valid under V5 as amended by b90c5685) |
 
-### G-T5 — Publish record
+### G-T5 — Publish record (session 06ca46bf)
 
-(Populated at PR/merge time by the same session — see follow-on commit; this branch's PR is the close-out of session 06ca46bf's final-integration claim: board record + restored 9F part + verification; tree otherwise identical to main, so the merge carries no functional site change.)
+| Event | Result |
+|---|---|
+| Pull request | [#41 — Session 06ca46bf close-out: final-integration record for PR #26 + restored 9fef7647 board part (no site changes)](https://github.com/kanlerxz87-cyber/Zone3/pull/41) — `arena/06ca46bf-zone3` → `main`; tree diff vs main: `COORDINATION.md` only |
+| PR #26 | **MERGED** into `main` as `1cc2fbd` (by session `252122ff`, PR #39/#40) before this close-out; verified state via `gh pr view 26` — `state=MERGED` at 2026-11-14 |
+| Merge of #41 | **MERGED** 2026-11-14T10:27:03Z via `gh pr merge 41 --merge` → `db0763dc83499d5a31504c8226ccfc40fe9f0f88` (no approval waited, per brief) |
+| Conflict history | Four `COORDINATION.md` append conflicts during this session (vs PRs #29/#30, #31–#36, #37/#38, #39/#40); every one resolved additively — all parts kept verbatim, this session's section twice re-lettered (E→F→G) to avoid ID collisions with `f1b7da46`/`588693c9`/`252122ff`; nothing discarded |
+| Pages | legacy `main` `/` build — `built` for `db0763dc` (created 2026-11-14T10:27:04Z, confirmed via Pages API `builds/latest`) |
+| Live checks (post-merge fetches) | `/` — dashboard renders headline, stats (0/3 ASIN-confirmed, 43 flags), re-verification table, section tiles ✓ · `/flagged.html` — 43-entry register incl. FLG-035/036/037/038 anchors with official source links per row ✓ · `/executive-summary.html`, `/products.html`, `/marketing/` (hub + 7 subpages) ✓ disclosed, no prices/ratings stated ✓ · marketing hub product table matches this session's live fetch titles verbatim for all three listings ✓ |
+| 5th-round live verification | this Part, G-T3 table — short-link identities, Page-Not-Found class, Air Fryers breadcrumb (node 17659096011), OA §5 verbatim, Table 1 Kitchen 4.50% — all Confirmed (fetched 2026-11-14 10:2x–10:4x UTC) |
+| Flagged for review | all 43 items published incl. this session's none-new (no new irregularities beyond those already logged); non-blocking by design |
+| Follow-up record | this G-T5 text lands via the G-T6 close-out PR (a record cannot precede the merge it documents) |
+
+### G-T6 — Close-out: this follow-up PR records the merge of #41 and the Pages build; no further tasks open in this session. Session `06ca46bf` status: done.
 
 
 ---
