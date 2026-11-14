@@ -1515,3 +1515,36 @@ All Other 4.00 %) and is shown only as a category reference, never multiplied in
   every such change is logged here with its source.
 - Small, frequent commits; `git pull --rebase origin main` before every push.
 - Nothing is marked verified without a source link to an official page that was fetched this session.
+
+
+<!-- INTEGRATION 2026-11-14 (session b90c5685): text below came from the other side of the
+     rebase conflict with origin/main. Both sides kept in full; nothing discarded. -->
+
+# PART — Session 9fef7647 (branch `arena/9fef7647-zone3`) — claimed 2026-11-14
+
+Repo: `kanlerxz87-cyber/Zone3` · Live site (GitHub Pages, source `main` `/`): https://kanlerxz87-cyber.github.io/Zone3/
+Base: `6bf308f` (main, after PR #17). Arena fixes this session to branch `arena/9fef7647-zone3`
+(per the session branch note; same branch-naming decision as session 7f84fea4 above).
+
+## 9F Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 9fef7647 | `arena/9fef7647-zone3` | Live re-verification round (2026-11-14), link audit + fixes, executive-summary refresh, integration PR, Pages deploy | in progress | 2026-11-14 |
+
+## 9F Task board (claimed before any other work; scope non-overlapping)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 9F-T1 — Live re-verification of the 3 product short links and key official policy sources | in progress | 9fef7647 | `data/sources.json`, `data/products.json`, `data/flags.json`, `data/policy_facts.json` | Re-fetch each source with the live fetch tool on 2026-11-14; record only what the pages show. |
+| 9F-T2 — Broken-link audit of all published pages; fixes (takeover of stale PR #10 concern) | in progress | 9fef7647 | root `*.html` via `scripts/build_site.py`, `disclosure.html` | PR #10 (session 66a80e53, open >60 min with no commits) is superseded; takeover noted per the >60-min rule. |
+| 9F-T3 — Executive summary + repo review record refresh | in progress | 9fef7647 | `docs/executive-summary.md`, `docs/repo-review-9fef7647.md` | Additive; other sessions' docs preserved. |
+| 9F-T4 — Integration: PR → `main`, merge, Pages deploy verification, record here | in progress | 9fef7647 | this file | Final integration session for this round (all other board tasks done). |
+
+**Scope note (9fef7647):** `dashboard/**` (3c6cba43 build) and `docs/*.html` (79f85104 build) are other
+sessions' outputs and will not be rewritten; only additive files under `docs/` and shared `data/`
++ root generator output change. Any needed change to another scope will be logged here instead.
+
+## 9F Task log
+
+- **2026-11-14 — 9fef7647**: read this board first (per brief), claimed 9F-T1–9F-T4, pushed the claim before any other work.
