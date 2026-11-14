@@ -1730,3 +1730,42 @@ PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8b
 - `COORDINATION.md` — merged additively: main's sections retained, this session's Part C appended.
 - Post-merge fix: reverify-table row "Each link.amazon short link opens a different real listing" gained official Amazon product-page source links (S14–S16) in `scripts/build_site.py` (the row's S11–S13 links are `link.amazon` URLs, which the V4 checker does not credit as official sources).
 - Rebuilt and re-ran all gates on the merged tree: `check_site.py` OK (10 pages, 3 products, 37 sources, 32 flags); `verify_site.py` VERIFY PASS · 58 pages · 922 table rows · 745 with official source · 270 with flag · 82 with repo anchor · 0 advisories; `link_report.py --strict` clean; internal-link scan 0 broken / 2487 links / 103 files.
+
+---
+
+# Part E — session `252122ff` (2026-11-14) — independent re-verification, repo review, integration
+
+> Appended additively on branch `arena/252122ff-zone3` (base `8043815`, = `origin/main` at claim
+> time, merge of PR #28). Nothing above is removed or rewritten. This session's task IDs (`E-T…`)
+> and flag IDs (`E-F…`) are namespaced and are **not** the same items as `A:…`, `B:…`, `Z-…`,
+> `C-…`, `D-…`, `FLG-…`, `F01–F17` or other sessions' registers.
+>
+> **ID-collision note (2026-11-14):** sessions `f1b7da46` and `ecbfe91b` also used the labels
+> "Part E" and `E-T…`, and a further session (`a53a7e52`, PR #31 open at claim time) uses its own
+> register. Read task IDs together with their Part/owner. This Part's `E-T1–E-T6` are only those
+> defined in the E Task board below (owner `252122ff`).
+
+## E Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `252122ff` | `arena/252122ff-zone3` | Independent live re-verification (5th observation round), line-by-line repo review, integration of open PR #26 (session `9fef7647`) as far as protocol allows, final PR → `main`, merge, Pages confirm, record | in progress | 2026-11-14 |
+
+## E Task board (claimed before any other work, per protocol; claim commit `921a811`)
+
+| Task ID | Task | Status | Owner | Files / scope | Notes |
+|---|---|---|---|---|---|
+| E-T1 | Read COORDINATION.md, register session, claim tasks, push claim immediately | done | 252122ff | `COORDINATION.md` (this Part only) | Claim pushed before any other work. |
+| E-T2 | Repo review: line-by-line audit of combined tree at base `8043815` | in progress | 252122ff | read-only audit + `research/252122ff-repo-review.md` | With source links for manual review. |
+| E-T3 | Independent live re-verification: 3 submitted links, their redirect targets, dated offer snapshots, spot policy checks — fetched live this session | in progress | 252122ff | `research/252122ff-verification-log.md` | Official sources only; compared against `data/*.json`; no inference. |
+| E-T4 | Site integrity on base and combined tree: `scripts/check_site.py`, `tools/verify_site.py`, `tools/link_report.py`, `sessions/3c886b62/tools/check_links.py`, whole-tree link audit | in progress | 252122ff | read-only (fixes only logged; see rules) | Failures must be fixed and retried until green before merge. |
+| E-T5 | Integration of PR #26 (`arena/9fef7647-zone3`, session `9fef7647`, opened 2026-11-14T10:01:25Z, open at claim time): line-by-line verification of its diff; merge of its branch into the shared main line only if (a) no other session has merged it first and (b) its claim is stale (>60 min with no commits) or its owner has clearly finished (PR body says complete) | in progress | 252122ff | `COORDINATION.md` (this Part); git + `gh` | The tasking brief assigns branch-merging to the integration session; the 60-minute staleness rule governs takeover. No file of its scope is rewritten; its data is re-verified, not replaced. If another session merges it first, this task collapses to re-verify-only. |
+| E-T6 | PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record PR link + merge result in this Part | pending | 252122ff | git + `gh` + this Part | Merge only after the site is verified not broken. |
+
+### E Conflict & claim rules observed
+
+- This session works only on branch `arena/252122ff-zone3` (fixed by the Arena session note; task IDs replace `session-<id>/<task>` branches, per the decision already logged by session `7f84fea4`).
+- Files outside this Part's scope are **read-only** unless a verification rule is violated (blank/flag rules, broken link, no source). Any such edit is logged here with its source. Sessions' namespace files (`sessions/`, `archive/`, other sessions' `research/` and `docs/` records) are never rewritten.
+- Small, frequent commits; `git pull --rebase origin main` before every push.
+- Open claims respected: PR #26's file scope (root pages, `data/*.json`, `scripts/*`, `marketing.html`, `category/air-fryers.html`, `docs/executive-summary.md`, `docs/repo-review-9fef7647.md`, `sitemap.xml`) is not edited by this session while its session may still be active. PR #31 (`arena/a53a7e52-zone3`, open at claim time) is likewise left to its owner. Integration happens by merging branches, not by copying or rewriting other sessions' work.
+- Rebase conflict resolution convention (as logged by `dff4acde` and `ecbfe91b`): keep both sides in full — main's Parts first, then this Part; assert all Parts present and no `<<<<<<<` markers before `git add`.
