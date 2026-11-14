@@ -2975,3 +2975,34 @@ A reproducible inconsistency was found between the latest product register (`dat
 ### I-T5 scope addendum — summary and provenance count reconciliation
 
 The T4 correction exposed two additional stale quantitative claims: the executable provenance report still labels all 36 product-attribute cells as identity blanks, although listing title/brand/category are sourced for the observed destinations (the remaining 9 fields × 3 destinations = 27 blank cells); and the standalone README/executive summary still say no product identity can be verified. I-T5 owns reconciling those summaries and the report to the current evidence, while retaining uncertainty about the requester's intended products. Scope: `README.md`, `EXECUTIVE-SUMMARY.md`, `tools/link_report.py`, `tools/build_site.py`, `data/z3/products.json`, `data/z3/flags.json`, plus regenerated `/executive-summary/`, `/flagged/`, `/dashboard/` and report outputs. Do not erase session history or fill dynamic price/review/performance fields.
+---
+
+# Part: session `21acd3c0` (2026-11-14) — line-by-line repo review, independent re-verification, final integration
+
+## 21 Session registry — session `21acd3c0` (branch `arena/21acd3c0-zone3`, base `e8e3e9d`)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 21acd3c0 | `arena/21acd3c0-zone3` | Line-by-line repo review; independent re-verification of the published registers against official sources (live where reachable, recorded evidence otherwise); site gates; PR to `main`, merge, Pages deploy record | in progress (21-T1–21-T6) | 2026-11-14 |
+
+## 21 Task board — claimed 2026-11-14 before any other work (this claim commit)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 21-T1 — Claim + register (pushed before any other work) | done | 21acd3c0 | `COORDINATION.md` 21 Part only | — | — |
+| 21-T2 — Repo review, line by line (whole-tree audit at `e8e3e9d`) | in progress | 21acd3c0 | `research/21acd3c0-repo-review.md` (new file) | — | to be listed in 21 Part |
+| 21-T3 — Line-by-line re-verification of published product/policy data vs official sources | in progress | 21acd3c0 | `research/21acd3c0-verification-log.md` (new file) | to be listed in 21 Part | to be listed in 21 Part |
+| 21-T4 — Site integrity gates (build, checkers, link audit, live site) | in progress | 21acd3c0 | none (read-only; fixes only if a gate is red, logged) | — | — |
+| 21-T5 — Executive-summary check + flagged items for review | in progress | 21acd3c0 | `COORDINATION.md` 21 Part; exec-summary checked read-only | — | — |
+| 21-T6 — PR to `main`, merge without approval, Pages deploy verification, publish record | in progress | 21acd3c0 | `COORDINATION.md` 21 Part only | — | — |
+
+### 21 Claim rules observed
+
+- Claim written and pushed before any other work (protocol).
+- Scope is non-overlapping: only new files `research/21acd3c0-*.md` plus this 21 Part of `COORDINATION.md`. No existing page, data register, script, or another session's file is edited by this session, except under the final-integration role if a gate goes red (any such edit will be logged here with before/after).
+- Open PR #55 (`arena/7b70cfb0-zone3`, session 7b70cfb0, "final integration") was observed at claim time. It is not this session's work; if it merges while this branch is open, conflicts will be resolved by keeping both sessions' text and logging it below, without discarding either session's work.
+- The brief's `session-<id>/<task>` branch naming is not usable in this environment: the session branch note fixes this session to the single branch `arena/21acd3c0-zone3` and forbids creating other branches. Task IDs `21-T1…21-T6` replace per-task branches (same decision as session 7f84fea4, Part A).
+
+## 21 Task log
+
+- **2026-11-14 — 21acd3c0**: claim pushed (this commit). Next: 21-T2/21-T3/21-T4.
