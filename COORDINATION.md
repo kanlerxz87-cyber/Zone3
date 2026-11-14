@@ -3527,7 +3527,7 @@ session hit exactly that once, and confirmed the fix only after re-fetching with
 
 # Part 71 — session `71dc8fea` (2026-11-14) — independent final audit
 
-> Branch `arena/71dc8fea-zone3`, initially based on `4fd8bd6`; rebased and re-audited against `main` at `f79b85e` after concurrent merges. This session edited only this coordination Part and `sessions/71dc8fea/**`.
+> Branch `arena/71dc8fea-zone3`, initially based on `4fd8bd6`; rebased and re-audited against `main` at `9024b99` after concurrent merges. This session edited only this coordination Part and `sessions/71dc8fea/**`.
 
 ## 71 Session registry
 
@@ -3543,17 +3543,17 @@ session hit exactly that once, and confirmed the fix only after re-fetching with
 
 The report is [`sessions/71dc8fea/verification-2026-11-14.md`](sessions/71dc8fea/verification-2026-11-14.md). It includes the rebase status, local gate results, live Pages/source observations, the audit limits, and follow-up requests. Session 21's completed line-by-line review is referenced rather than duplicated; session 71 adds the generated-page-manifest/provenance-gate review and a fresh live archive check. Shared pages, data, scripts, and tools were not edited.
 
-## 71-T1 record — repository gates (2026-11-14, `main` at `f79b85e`)
+## 71-T1 record — repository gates (2026-11-14, `main` at `9024b99`)
 
 | Check | Result |
 |---|---|
-| `python3 scripts/check_site.py` | **OK** — 12 pages, 3 products, 51 sources, 65 flags |
-| `python3 tools/verify_site.py` | **VERIFY PASS** — 70 pages, 1,222 rows, 1,021 counted as sourced, 388 with flag, 82 with repo anchor |
+| `python3 scripts/check_site.py` | **OK** — 12 pages, 3 products, 51 sources, 66 flags |
+| `python3 tools/verify_site.py` | **VERIFY PASS** — 70 pages, 1,223 rows, 1,022 counted as sourced, 388 with flag, 82 with repo anchor |
 | `python3 tools/link_report.py --strict` | **Exit 0** — 232 rows, 945 cells, 55 blank-by-design; no dangling refs or uncited sources; unreferenced flags: `FLG-001/002/003/007/027`, `I-F-01` |
 | `python3 scripts/check_all_links.py` | **116 HTML pages, 105 external URL strings, 0 internal-link errors**; external links are not fetched by this script |
 | `python3 scripts/build_sitemap.py --check` | **Pass** — 65 pages covered, 0 extra entries; `/docs/` and `/sessions/` remain listed |
 | `python3 sessions/3c886b62/tools/check_links.py` | **Pass** — 16 pages, 285 rows, 18 internal targets, no broken links, every row has a source cell |
-| Direct Amazon/FTC row scan | **964/1,222** verifier-equivalent data rows contain a direct Amazon/FTC URL in-row; 258 do not. This is a literal host scan, not claim validation. |
+| Direct Amazon/FTC row scan | **965/1,223** verifier-equivalent data rows contain a direct Amazon/FTC URL in-row; 258 do not. This is a literal host scan, not claim validation. |
 | Fresh `tools/build_site.py --out <empty dir>` | **Failed** with `FileNotFoundError` for `<out>/data/z3/build-manifest.json`; reproduces because the output parent is not created |
 | Git hygiene | **Pass** — `git diff --check`, no line-start conflict markers outside `archive/` |
 
@@ -3563,8 +3563,8 @@ The report is [`sessions/71dc8fea/verification-2026-11-14.md`](sessions/71dc8fea
 
 - Fresh official fetches: [Creators API GetItems / ItemIdType](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter) (ASIN = 10-character alphanumeric identifier); [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (updated 2026-04-14; Participation Requirements 2(b), 6(t), 6(w), Commission Income Statement 2(e), IP License model-use restrictions); [Standard Commission Income Statement Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ); and [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers).
 - Fresh short-link fetches on 2026-11-14: the submitted links led to destination listings `B0CDY277D3`, `B09B7SB46R`, and `B08DKYBTPH`, with the titles recorded in the report. These are observed current redirects, not proof of requester intent. No price or rating value is asserted.
-- Pages API: public legacy Pages source `main` `/`, HTTPS enforced; latest build for `f79b85e` reported **`built`** (build ID `1369814166`, updated 2026-11-14T18:56:41Z). Ordinary and cache-busted landing-page fetches show 65. Cache-busted flat Flagged fetch shows 65, including PR #67 and PR #70 additions, while an ordinary unparameterized fetch still shows 51. The stale-edge/page-cache split is now isolated to `/flagged.html` (71-F-06); the repository and cache-busted output agree at 65.
-- The public `/docs/` and `/sessions/3c886b62/` archives remain in the sitemap. PR #70 added correction/compliance notices and withheld some `/docs/` table cells, but numeric ratings and summary price/rating/review/demand figures remain on `/docs/index.html`; the session archive still renders historical price/rating/review fields alongside a notice that the display is noncompliant. Disclosures do not cure restricted displays. I-F-02, 21-F-04 and 3E-F-02/03 remain relevant.
+- Pages API: public legacy Pages source `main` `/`, HTTPS enforced; latest build for `9024b99` reported **`built`** (build ID `1369828086`, updated 2026-11-14T19:03:15Z). Ordinary `/` shows 65 and cache-busted `/` 66; ordinary `/flagged.html` shows 51 and cache-busted `/flagged.html` 66. The repository and cache-busted responses agree at 66; stale-edge/page-cache discrepancy remains active on both URLs (71-F-06).
+- The public `/docs/` and `/sessions/3c886b62/` archives remain in the sitemap. PR #70 added notices and withheld some `/docs/` table cells, but numeric ratings and summary price/rating/review/demand figures remain on `/docs/index.html`; the session archive still renders historical price/rating/review fields alongside a notice that the display is noncompliant. PR #73 corrected the category page but not these archives. Disclosures do not cure restricted displays. I-F-02, 21-F-04 and 3E-F-02/03 remain relevant.
 - Source trail includes [`research/21acd3c0-verification-log.md`](research/21acd3c0-verification-log.md), [`research/21acd3c0-repo-review.md`](research/21acd3c0-repo-review.md), `data/sources.json` (51 records, IDs S01–S58 with gaps), and `data/z3/sources.json` (SRC-01–SRC-22). Session 71 did not re-fetch every claim in the entire flat register.
 
 ## 71 Irregularities and cross-scope requests
@@ -3574,12 +3574,12 @@ All are logged only; no shared site/data/tool was edited. Existing published fla
 | ID | Severity | Finding | Follow-up request |
 |---|---|---|---|
 | 71-F-01 | High | Generated-page manifest contains digests where the verifier expects paths; 0/16 generated pages are recognized. A fresh `--out` also fails before the manifest can be written. | Add explicit output paths to the manifest, make `generated_set()` consume them, add a failure regression test, and create the output parent directory. Scope: `tools/build_site.py`, `tools/verify_site.py`. |
-| 71-F-02 | High | Row provenance gate does not enforce a relevant Amazon/FTC source link for every nonblank product/policy fact; GitHub/repo anchors and flags can satisfy current checks. The updated gate counted 1,021 sourced rows, not a line-by-line support audit. | Type factual, repository-state, and unverified rows separately; require official Amazon/FTC links for factual product/policy rows, explicit flags for unknowns, and repo anchors only for repository-state rows. |
+| 71-F-02 | High | Row provenance gate does not enforce a relevant Amazon/FTC source link for every nonblank product/policy fact; GitHub/repo anchors and flags can satisfy current checks. The updated gate counted 1,022 sourced rows, not a line-by-line support audit. | Type factual, repository-state, and unverified rows separately; require official Amazon/FTC links for factual product/policy rows, explicit flags for unknowns, and repo anchors only for repository-state rows. |
 | 71-F-03 | Medium | Redirect destination vs user-intent wording remains inconsistent. Root data, R-23, and FLG-007/027 separate them; parallel `data/z3/flags.json` FLG-001–003 and generated `/flagged/` still say the short-link path failed to select the intended product. | Reword the parallel flags/page as “observed destination; intended match unconfirmed.” Ask for a replacement only if the observed target is not what the user intended. |
 | 71-F-04 | High | `/docs/` and `/sessions/3c886b62/` remain public in the sitemap with some historical price/rating/review values. PR #70 added notices and withheld some `/docs/` price/review table cells, but numeric ratings and narrative aggregates remain on `/docs/index.html`; the session archive retains historical table values alongside a noncompliance notice. | Remove restricted values from public output or exclude the snapshots from public Pages/sitemap. Keep I-F-02 and 21-F-04/3E-F-02/03 open; a warning alone does not cure the restricted display. Official basis: [Amazon Program Policies](https://affiliate-program.amazon.com/help/operating/policies). |
 | 71-F-05 | Medium | The repository is a static research prototype, not an operating AI/affiliate service. `config/platform.json` disables Creators API and has null tag/account/keys; campaign metrics are null; no hosted backend or model-provider client was found. A CLI API client exists but has no enabled credentials. `assets/script.js` uses localStorage and is not referenced by published HTML. | Keep click/conversion/revenue blank and describe features as prototype/design until a compliant runtime, data access, and required approval are configured. Official policy: [Amazon Program Policies, IP License 1/2(e)](https://affiliate-program.amazon.com/help/operating/policies). |
-| 71-F-06 | Low (active recurrence) | After the `f79b85e` Pages build, ordinary and cache-busted `/` showed 65, but ordinary `/flagged.html` returned 51 while its cache-busted response returned 65, matching the repository. | Do not change the register based on the stale response. Compare the build and cache-busted output; monitor the edge/cache split and investigate if it persists or the cache-busted page diverges. |
+| 71-F-06 | Low (active recurrence) | After the `9024b99` Pages build, ordinary `/` showed 65 vs cache-busted 66; ordinary `/flagged.html` showed 51 vs cache-busted 66, matching the repository. | Do not change the register based on stale responses. Compare build ID and cache-busted outputs; monitor the edge/cache split and investigate if it persists or either cache-busted page diverges from the register. |
 
 ## 71 Publish record — PR #71 open
 
-PR #71 is open from `arena/71dc8fea-zone3` against `main`, rebased onto `f79b85e` after PR #70 merged. The latest checked Pages build is `built` for `f79b85e` (ID `1369814166`); ordinary `/flagged.html` still returns the stale 51-entry response while its cache-busted counterpart shows 65. Append merge and post-merge Pages details here after integration.
+PR #71 is open from `arena/71dc8fea-zone3` against `main`, rebased onto `9024b99` after PRs #70, #73 and #74 merged. The latest checked Pages build is `built` for `9024b99` (ID `1369828086`); ordinary `/` shows 65 and ordinary `/flagged.html` 51, while cache-busted responses show the current 66. Append merge and post-merge Pages details here after integration.
