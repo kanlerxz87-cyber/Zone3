@@ -1,7 +1,7 @@
 {
   "retrieved": "2026-11-14",
-  "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration. Integrated with session 9fef7647 (PR #26) by session b90c5685 on 2026-11-14; see the renumbering note.",
-  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. RENUMBERING (2026-11-14, session b90c5685): PR #26 and main had independently assigned the same IDs to different pages. Main's meanings were kept as-is; PR #26's unique sources are kept under fresh IDs: S46-S48 (its S33-S35, results pages), S49-S51 (its S36-S38, re-checks of S01/S02/S07), S52-S54 (its S30-S32, repeat observations of S11-S13). No page was dropped.",
+  "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration. Integrated with session 9fef7647 (PR #26) by session b90c5685 on 2026-11-14.",
+  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45). RENUMBERING (2026-11-14, session b90c5685): PR #26's unique sources are kept as S46-S54 and this session's re-fetch as S55, because PR #26 had used S30-S32 and S33-S38 for pages main already assigns other IDs to.",
   "sources": [
     {
       "id": "S01",
@@ -9,7 +9,7 @@
       "url": "https://affiliate-program.amazon.com/help/operating/agreement",
       "publisher": "Amazon Associates (official)",
       "status": "verified",
-      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'.",
+      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'. Re-verified 2026-11-14 (session ecbfe91b): Section 5 wording re-read verbatim in the Agreement body (disclosure sentence present).",
       "used_for": "Section 5 disclosure wording; Section 6 (breach of Section 5 is material); Section 1 Special Links; Schedule 1 lists only the United States Amazon Site (amazon.com) (see FLG-015).",
       "alias_of_26634cd5": "S7"
     },
@@ -66,7 +66,7 @@
       "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
       "publisher": "U.S. Federal Trade Commission (official)",
       "status": "verified",
-      "status_note": "Fetched 2026-11-13. Brochure dated November 2019 on the page.",
+      "status_note": "Fetched 2026-11-13. Brochure dated November 2019 on the page. Re-verified 2026-11-14 (session ecbfe91b): page re-read; still dated November 2019 on the page.",
       "used_for": "Disclosure placement and content honesty rules for the content section.",
       "alias_of_26634cd5": "S10"
     },
@@ -76,7 +76,7 @@
       "url": "https://www.amazon.com/dp/B04G1MEwY",
       "publisher": "Amazon.com (official retailer)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-13: title 'Page Not Found'; page text 'Sorry! We couldn't find that page.'",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'; page text 'Sorry! We couldn't find that page.' Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
       "used_for": "Direct-identifier check for product link 1."
     },
     {
@@ -85,7 +85,7 @@
       "url": "https://www.amazon.com/dp/B02NbDxp3",
       "publisher": "Amazon.com (official retailer)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-13: title 'Page Not Found'.",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'. Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
       "used_for": "Direct-identifier check for product link 2."
     },
     {
@@ -94,7 +94,7 @@
       "url": "https://www.amazon.com/dp/B00hJ57DV",
       "publisher": "Amazon.com (official retailer)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-13: title 'Page Not Found'.",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'. Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
       "used_for": "Direct-identifier check for product link 3."
     },
     {
@@ -103,7 +103,7 @@
       "url": "https://link.amazon/B04G1MEwY",
       "publisher": "Link as submitted by the owner",
       "status": "observed",
-      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Price, rating and availability not in the text returned. Short link re-followed 2026-11-14 (session ecbfe91b): same target B0CDY277D3 as on 2026-11-13 — mapping stable across days and sessions.",
       "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
       "alias_of_26634cd5": "S1"
     },
@@ -133,7 +133,7 @@
       "url": "https://www.amazon.com/dp/B0CDY277D3",
       "publisher": "Amazon.com (official retailer)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B0CDY277D3 (no parameters). Page title read: CHEFMAN 6 Quart. Price, rating and availability not in the text returned.",
+      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B0CDY277D3 (no parameters). Page title read: CHEFMAN 6 Quart. Price, rating and availability not in the text returned. Control product page re-checked 2026-11-14 (session ecbfe91b): still resolves with the same page title.",
       "used_for": "Title only, shown in the Flagged for Review page.",
       "alias_of_26634cd5": "S4"
     },
@@ -236,7 +236,7 @@
       "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
       "publisher": "Amazon Associates Central (official)",
       "status": "verified",
-      "status_note": "Read 2026-11-13. Table 1 row: 'Physical Books, Kitchen, Automotive | 4.50%'. Also 'All Other Categories | 4.00%' and 'Toys, Furniture, Home, ... | 3.00%'. The page does not show a revision date in the text read. The rate applies to Qualifying Revenue for the listed category.",
+      "status_note": "Read 2026-11-13. Table 1 row: 'Physical Books, Kitchen, Automotive | 4.50%'. Also 'All Other Categories | 4.00%' and 'Toys, Furniture, Home, ... | 3.00%'. The page does not show a revision date in the text read. The rate applies to Qualifying Revenue for the listed category. Table 1 re-read 2026-11-14 (session ecbfe91b): rates unchanged (Kitchen 4.50%; Home 3.00%; All Other 4.00%); page publicly readable without sign-in.",
       "used_for": "Category reference rate for Kitchen (PF-38). Not a product value: whether the listings are in the Kitchen category is not verified (FLG-021).",
       "alias_of_26634cd5": "S11 (66a80e53 session)"
     },
@@ -351,6 +351,15 @@
       "status": "verified",
       "status_note": "Read 2026-11-14 (chunks 0, 8, 9, 10 of 12). The section 'What About Affiliate or Network Marketing?' was read in full. It says the disclosure must be 'clear and conspicuous', that the closer to the recommendation the better, and that 'affiliate link' or a 'buy now' button alone is not adequate.",
       "used_for": "Affiliate disclosure wording and placement guidance; review-integrity constraints."
+    },
+    {
+      "id": "S45",
+      "title": "Sell on Amazon: Understanding ASIN numbers (official Amazon seller education)",
+      "url": "https://sell.amazon.com/blog/what-is-an-asin",
+      "publisher": "Amazon.com (official; Sell on Amazon blog)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14 (session ecbfe91b). States an ASIN is “a unique 10-character alphanumeric code assigned to every product listed in the Amazon store” and that a typical ASIN looks like “B07FZ8S74R”.",
+      "used_for": "The identifier-length rule behind FLG-001 (the three submitted codes are 9 characters, not 10). (Added as S45 on merge: main's S30/S31 were already taken.)"
     },
     {
       "id": "S46",

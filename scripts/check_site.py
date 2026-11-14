@@ -31,14 +31,19 @@ from urllib.parse import urlparse
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 PAGES = [
-    "index.html", "executive-summary.html", "products.html", "category/air-fryers.html",
-    "pricing.html", "reviews.html", "marketing.html",
-    "content.html", "campaigns.html", "flagged.html", "sources.html",
+    "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
+    "content.html", "campaigns.html", "flagged.html", "sources.html", "air-fryers.html",
+    # Added on integration 2026-11-14 (session b90c5685): PR #26's facts-only marketing page,
+    # reconciled with main's marketing/ section and re-homed under it.
+    "marketing/briefs.html",
 ]
-TABLE_PAGES = {"products.html", "category/air-fryers.html", "pricing.html", "reviews.html",
-               "marketing.html", "content.html", "campaigns.html", "flagged.html", "sources.html"}
+TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
+               "campaigns.html", "flagged.html", "sources.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
+    # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);
+    # added 2026-11-14 by integration session ecbfe91b so S31 (the ASIN rule page) can be cited.
+    "sell.amazon.com",
     "www.ftc.gov", "github.com", "api.github.com",
 }
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
@@ -106,9 +111,12 @@ def check_data() -> dict:
         if not f["quote"].strip():
             fail(f"policy fact {f['id']} has an empty quote")
 
+    # A flag about the repository's own structure (a page set with no inbound link, a
+    # sitemap covering only half the site) has no external document to cite: the evidence
+    # is the repo itself. Those carry an explicit repo_evidence key instead of a fake URL.
     for f in flags:
-        if not f.get("sources"):
-            fail(f"flag {f['id']} has no source")
+        if not f.get("sources") and not f.get("repo_evidence"):
+            fail(f"flag {f['id']} has no source and no repo_evidence")
         for sid in f.get("sources", []):
             if sid not in sources:
                 fail(f"flag {f['id']} cites unknown source {sid}")
@@ -250,7 +258,10 @@ def check_html(data: dict) -> None:
             parts = urlparse(href)
             if parts.scheme or parts.netloc:
                 continue
-            # resolve relative to the page's own directory, as a browser does
+            # Resolve relative to the page's own directory, as a browser does. Without this, a
+            # subdirectory page's link that happens to exist at the repo root passes here but
+            # 404s in the browser (kept from PR #26, session 9fef7647; rule applied here on
+            # integration by session b90c5685).
             base = (ROOT / name).parent
             target_file = parts.path or name
             target = (base / target_file).resolve()
@@ -258,8 +269,8 @@ def check_html(data: dict) -> None:
                 fail(f"{name}: broken internal link to {href}")
                 continue
             if parts.fragment:
-                rel_target = target.relative_to(ROOT.resolve())
-                tp = parsed.get(str(rel_target))
+                target_file = str(target.relative_to(ROOT.resolve()))
+                tp = parsed.get(target_file)
                 if tp is None:
                     tp = PageParser()
                     tp.feed(target.read_text(encoding="utf-8"))
