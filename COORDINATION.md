@@ -900,3 +900,32 @@ Unverified: Associates tag, live clicks/conversions, API credentials, actual lin
 | GitHub Pages | Pages build for `37591402f039b45767e5706ef53973bfbf8f4f90` status **built** at 2026-11-14 09:54:12 UTC. Workflow run `43582692936` succeeded. Cache-busted fetch of `/Zone3/?v=6030a96` displayed corrected headline and 3/3 resolved target listings. Plain URL returned a cached stale copy at verification time; the cache-busted deployed page is current. |
 | Final gates | `scripts/check_site.py` PASS; `tools/build_site.py` PASS; `tools/verify_site.py` PASS (57 pages; inherited advisory-only findings documented by verifier). |
 
+---
+
+---
+
+# PART C — Session `55d2c808` (2026-11-14)
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `55d2c808` | `arena/55d2c808-zone3` | Final integration: re-verify the supplied Amazon links, reconcile root and full-audit product records, update the site and validate GitHub Pages | in progress | 2026-11-14 |
+
+## Task board
+
+| Task ID | Task | Status | Owner | Files in scope | Sources / notes |
+|---|---|---|---|---|---|
+| C-T1 | Fresh official-source re-verification; resolve the code-vs-destination-ASIN discrepancy; align the canonical root site and `/dashboard/`; run build, provenance, and link checks; prepare PR and Pages verification | in progress | `55d2c808` | `data/{products,sources,flags}.json`; `scripts/{build_site,check_site}.py`; root generated pages `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html`; `data/z3/{products,sources,flags,content}.json`; `tools/{build_site,verify_site,link_report}.py`; generated `dashboard/**`; `research/verification-log.md`; `docs/verification-log.md`; `README.md`; this file | Official Amazon and FTC pages to be logged by URL and retrieval date after checks. No prices, ratings, or commission estimates will be published unless both officially verified and policy-compliant. |
+
+## Handoff and scope
+
+- **Stale-task handoff:** the final-integration follow-up T6 listed under session `7f84fea4` is more than 60 minutes old (last dated 2026-11-13). Session `55d2c808` takes over only the fresh verification, root/full-audit reconciliation, and publish checks listed in C-T1; all earlier deliverables and archives remain unchanged.
+- The outstanding `3c886b62` research scope remains isolated at `sessions/3c886b62/**`; this session does not edit those files. Any relevant claim used in the site will be rechecked against the official source directly.
+- This session uses only the fixed Arena branch `arena/55d2c808-zone3`; no other branch will be created or pushed.
+
+## Initial verification plan
+
+- Re-fetch all three user-provided links, their Amazon destination pages, and the relevant Amazon Associates / FTC policy pages.
+- Distinguish each 9-character submitted short-link token from the 10-character ASIN of its observed Amazon destination. Do not infer the owner's intended product beyond the URL's current destination.
+- Keep dynamic or account-only values blank, and preserve a source link on every data row.
