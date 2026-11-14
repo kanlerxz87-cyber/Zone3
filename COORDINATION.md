@@ -1760,7 +1760,7 @@ PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8b
 | E-T3 | Independent live re-verification: 3 submitted links, their redirect targets, dated offer snapshots, spot policy checks — fetched live this session | done (16 policy facts + all 3 links + all 3 snapshots re-verified; 0 contradictions) | 252122ff | `research/252122ff-verification-log.md` | Official sources only; compared against `data/*.json`; no inference. Not-re-fetched items listed as carried with links. |
 | E-T4 | Site integrity on base and combined tree: `scripts/check_site.py`, `tools/verify_site.py`, `tools/link_report.py`, `sessions/3c886b62/tools/check_links.py`, whole-tree link audit | done (all green; 15 inert archive links flagged E-F-01) | 252122ff | read-only (fixes only logged; see rules) | Results table in `research/252122ff-repo-review.md` §2. |
 | E-T5 | Integration of PR #26 (`arena/9fef7647-zone3`, session `9fef7647`): **revised 2026-11-14T10:17Z — no takeover.** Its session is active (commit `d9aafec` pushed 10:12Z merging `main`), well inside the 60-minute staleness window, and is performing its own integration. This task collapsed to re-verify + request: its identity/snapshot claims were independently reproduced (verification log §1–3), and a source-ID collision (E-F-02) was logged as a request to its owner below | done (no takeover; request logged) | 252122ff | `COORDINATION.md` (this Part); git + `gh` (read-only) | If its session later goes stale >60 min with the PR unmerged, any session may take over per protocol. PR #31 (`arena/a53a7e52-zone3`) likewise left to its active owner. |
-| E-T6 | PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record PR link + merge result in this Part | in progress | 252122ff | git + `gh` + this Part | Merge only after the site is verified not broken. |
+| E-T6 | PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record PR link + merge result in this Part | done (PR #39 merged 10:23:40Z; Pages `built` for `161dfff`; live checks passed — record below) | 252122ff | git + `gh` + this Part | Merged only after the site was verified not broken. |
 
 ### E Conflict & claim rules observed
 
@@ -1804,7 +1804,15 @@ PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8b
 
 | Event | Result |
 |---|---|
-| Pull request | (to be recorded after the merge it describes — see follow-up commit, same convention as sessions `dff4acde` and `ecbfe91b`) |
+| Pull request | [#39 — Session 252122ff: independent 5th-round live re-verification, line-by-line repo review, cross-session collision resolution record](https://github.com/kanlerxz87-cyber/Zone3/pull/39) — `arena/252122ff-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all checkers green on the merged tree (`scripts/check_site.py` OK 11 pages/3 products/48 sources/43 flags; `tools/verify_site.py` VERIFY PASS; `tools/link_report.py --strict` PASS; whole-tree sweep: only the 15 inert `archive/c4e71983/content/` links) |
+| Merge | **MERGED** 2026-11-14T10:23:40Z via `gh pr merge 39 --merge` (no approval waited, per the brief) → merge commit `161dfff40fa7701b276db1808e16505359c7bd1b` (state/mergeCommit confirmed via `gh pr view`) |
+| Conflict history | Three `git pull --rebase` conflicts in `COORDINATION.md` against concurrent sessions' appended Parts (PRs #29–#38 era). Each resolved by keeping **both sides in full** (main's Parts first, then this Part); markers asserted absent before `git add`. Nothing from any session discarded |
+| Pages build | legacy `main` `/` source; build for `161dfff` → **built** (created 2026-11-14T10:23:41Z, updated 10:24:03Z, confirmed via Pages API `builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — **live**; dashboard headline, KPI cards (3 links, 0/3 confirmed ASINs, 43 flags), section tiles and the re-verification table all render with source links |
+| Live check — marketing | https://kanlerxz87-cyber.github.io/Zone3/marketing/ — **live**; product pages, comparison, buying guide and the per-claim Sourcing table render (brief item "build marketing for the products" satisfied on `main`) |
+| Site merged while flagged? | yes — `E-F-01`…`E-F-04` and every prior `FLG-`/`V-F`/`JH-F`/`D-F`/`Z-` item are non-blocking and published on the Flagged for review pages, per the brief |
+| Post-merge record | this fill of the record table is pushed as the follow-up PR from the same branch (a merge cannot be recorded in `main` before it happens — convention of sessions `dff4acde`, `ecbfe91b`, `b90c5685`) |
 
 ### E Addendum (2026-11-14) — post-integration re-check at `main` = `ee7d1d1`
 
@@ -1829,7 +1837,7 @@ This session performed a full independent integration of PR #26 before discoveri
 
 While the merge commit was being prepared, session `b90c5685` merged PR #26 into `main` (their PRs #37/#38, commits `5cba3ca`, `1336828`, `ee7d1d1`) with an equivalent registry renumbering (their S45-S55 / FLG-035-037, plus their own FLG-038) and a **stricter product-cell policy** (canonical cells blank; observed snapshots quarantined in `observed_2026_11_14` / `value_sources_2026_11_14` fields, matching `f1b7da46`'s pre-merge request). Per the board rule that shared outputs are owned by one integration, this session **adopted `b90c5685`'s tree verbatim** (this merge; zero file-level divergence from `origin/main` other than this Part + the restored 9F part) and retained only its verification role.
 
-**Restored here:** the 9F board part of session `9fef7647` (its 5 commits entered `main` through `b90c5685`'s integration, but its COORDINATION.md section was not carried over; the protocol requires each session's record to persist). Its text is reproduced verbatim below.
+**Restored here:** the verbatim 9F board part of session `9fef7647`. Sequence finalized during this PR: `b90c5685` (PR #37) integrated PR #26's content into `main`; `252122ff` (PR #40, after also merging PR #26 directly in `1cc2fbd`) carried a rewritten 9F summary. The verbatim original part below is preserved alongside that summary per the protocol that each session's record persists.
 
 ### G-T3 — Independent live re-verification on the adopted tree (session 06ca46bf, 2026-11-14 10:2x–10:4x UTC, 5th observation round)
 
@@ -1905,3 +1913,24 @@ sessions' outputs and will not be rewritten; only additive files under `docs/` a
 - **9F-T4 — in progress.** PR to `main` opened next; merge + Pages deploy result to be appended here (follow-up commit if the merge happens first).
 
 > (Part 9F above: session `9fef7647`'s own record, restored verbatim by the final-integration session `06ca46bf` after `b90c5685`'s merge carried the data but not this section. Its 9F-T4 completed via `b90c5685`'s PR #37 integration; the PR itself resolves as merged once this branch lands.)
+---
+
+## 9F record — PR #26, task completion (2026-11-14, session 9fef7647)
+
+- **PR #26** (https://github.com/kanlerxz87-cyber/Zone3/pull/26, `arena/9fef7647-zone3` → `main`):
+  while it was open, the integration session `b90c5685` merged its content into `main` via **PR #37**
+  (commit `5cba3ca` "Integrate PR #26 into the latest main: renumber colliding S/FLG IDs, keep blank
+  product cells, keep both marketing sections, fix two gate defects"). This branch was then
+  reconciled with `main` as it advanced (PRs #18–#25, #27–#33, #34–#36, #31/#38 and this final
+  reconciliation), taking `main`'s integrated versions everywhere. **Merge result:** the work is on
+  `main` since PR #37; PR #26 merges as the session record. Live site verified after deploy (the
+  marketing section, blank identity fields with observed link-target data, the shared flag register,
+  and `/docs/`) — see the PR timeline for the final checks.
+- **Tasks 9F-T1..T4: done.** T1 product research (link-target analysis + FLG-027 stability evidence),
+  T2 line-by-line review (`docs/repo-review-9fef7647.md`), T3 analysis + marketing content,
+  T4 PR/deploy/record (this entry). This branch's sources were S45–S54 before the integration
+  renumbering; flag findings live in the shared register (addenda on FLG-022/025/026/027; main's
+  FLG-028–036 kept).
+- **PR #10** (session 66a80e53, stale): closed as superseded — its disclosure / executive-summary
+  link fixes are contained in the generated pages on `main`, which pass the whole-repo link audit
+  with 0 errors.
