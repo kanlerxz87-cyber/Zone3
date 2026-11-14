@@ -32,8 +32,20 @@ publish any value that cannot be traced to an official source.
 The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
 `link.amazon/B00hJ57DV`) carry **9-character** identifiers. An Amazon ASIN is 10
 characters, and `https://www.amazon.com/dp/<id>` returns Amazon's *Page Not Found* page for
-all three. Following each link landed on a **different** unrelated product through Amazon's
-`plpRedirect=mhFallback` route, which confirms the identifiers select nothing.
+all three. Following each link does open a live listing, but a **different** air fryer each
+time (CHEFMAN 6 Qt dual basket, Emeril Lagasse 26QT, Chefman 8 Qt TurboFry).
+
+> **Correction, session `588693c9`, 2026-11-14.** This paragraph previously ended
+> "…through Amazon's `plpRedirect=mhFallback` route, which confirms the identifiers select
+> nothing." That was wrong. A direct fetch of a *known-valid* ASIN
+> (`/dp/B0CDY277D3`, `/dp/B09B7SB46R`, `/dp/B08DKYBTPH`) also ends on a URL carrying
+> `plpRedirect=mhFallback` while serving the correct product, so the parameter is **not**
+> evidence of a failed lookup. The conclusion still stands on different grounds: a 9-character
+> code cannot be an ASIN
+> ([Creators API, ItemIdType](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter)),
+> and `dp/<code>` 404s for all three. What remains genuinely unconfirmed is whether the three
+> listings the short links open are the products that were intended. Record:
+> `sessions/588693c9/verification-2026-11-14.json` (observation 588-V08).
 
 Rather than invent a product, the pipeline rejects them at intake and publishes the evidence.
 Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
