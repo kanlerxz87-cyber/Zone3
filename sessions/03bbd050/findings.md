@@ -187,3 +187,27 @@ describes the sub-site's figures as "displays prices ($79.93, $149.99, $79.91)".
 the site's position; against the brief's rule ("if a value can't be confirmed from an official source, leave it blank
 and flag it"), one of the two is wrong by construction. This is a single generator-level decision, not a per-page edit
 → folded into 03-CR-1 and 03-CR-2.
+
+### 03-F-14 addendum · the landing page's own sentence is now contradicted by a page of the same build
+
+Live at https://kanlerxz87-cyber.github.io/Zone3/ (read 2026-11-14 after the deploy of `6fbd7bb`), the landing
+headline asserts:
+
+> Static price offers and unverified analytics are not published.
+
+and the KPI strip says **0 of 3 — Prices verified**. Both are true of `data/products.json` (`price: null`) and of
+`products.html` / `pricing.html` / `reviews.html`. They are **not** true of `category/air-fryers.html`, which renders a
+"Price (observed 2026-11-14)" and a "Rating (observed)" column for all three listings, nor of `sources.html`, whose
+status notes quote `USD 79.93 (deal; List: USD 99.99)` and friends.
+
+Requested of the page owner (03-CR-1/03-CR-4 family), pick one and make the generator enforce it:
+
+- **(a)** keep the rule — move the observed figures out of rendered columns into the dated research record, or render
+  them only where the sentence also says they are not offers and cites the display clause (PF-04) next to them; or
+- **(b)** accept dated observations — then soften the landing sentence to something the tree can support, e.g.
+  "no price is presented as current; dated observations are labelled as observations", and update the KPI label from
+  "Prices verified" to "Prices published as current".
+
+Either way the fix is one generator rule applied to every page, not a per-page edit — the failure mode this session
+keeps finding on this repo is *correct wording in one place, contradicting data in another*, which is what
+03-CR-2 proposes to make un-buildable.
