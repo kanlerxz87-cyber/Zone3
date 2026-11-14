@@ -2516,3 +2516,43 @@ session `9fef7647`'s board records an "E-F-01" about the `archive/c4e71983/` lin
 Those are **not** this Part's flags. The `E-F-01…E-F-07` referred to here are the six entries in
 `data/flags.json` (`E-F-01`, `02`, `04`, `05`, `06`, `07`; `E-F-03` was not raised because `main`
 had already fixed it). There is no collision inside the flag register — only in board prose.
+
+### E-T7 — PR, merge and Pages deploy (done)
+
+| Event | Result |
+|---|---|
+| Pull request | [#47 — Zone3: final integration (session edbd56a1)](https://github.com/kanlerxz87-cyber/Zone3/pull/47), `arena/edbd56a1-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all gates green on the merged tree (12 pages / 3 products / 48 sources / 49 flags; 69 pages / 1,169 rows / 967 sourced; link_report exit 0; sitemap coverage 64 pages; 0 broken internal links outside `archive/`) |
+| Merge | **MERGED** 2026-11-14T10:38:55Z via `gh pr merge 47 --merge` (no approval waited, per the brief) → merge commit `c6cf5ecdaba78ef9687931ce4ec87777d20e0693` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages build | build for `c6cf5ec` → **built** (created 2026-11-14T10:38:57Z, updated 10:39:19Z, confirmed via `repos/…/pages/builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — serves the dashboard; nav present with all 15 entries; flag counters render (2 critical / 49 total) |
+| Live check — verification log | https://kanlerxz87-cyber.github.io/Zone3/verification.html — **live**, all 53 rows render, every row carries its official source link |
+| Live check — ASIN row fix | the dashboard's "ASIN is a 10-character identifier" row now cites `S31 · S45 · S08`, i.e. the seller-blog page it always referred to (E-F-01) |
+| Site merged while flagged? | yes — all 49 flags, including `E-F-05` and `E-F-06` (owner decisions), are non-blocking and published on the Flagged for review page, as the brief requires |
+
+### E-T8 — Sources, verification and irregularities
+
+Recorded in E-T2, E-T3 and the flag register (`E-F-01`, `E-F-02`, `E-F-04`, `E-F-05`, `E-F-06`, `E-F-07`).
+Sources used, all official and all fetched 2026-11-14: S01–S10, S11–S16, S23, S25, S26, S28, S29,
+S31, S43, S44, S45, S07, S24, S04, S05, S06, S02, S03. No third-party page was used as evidence —
+S17 is the only third-party entry in the register and it is used only to raise a flag.
+
+### E-T9 — Dashboard tiles (follow-up, done)
+
+After the merge, the dashboard tiles still listed only the original 8 sections while the navigation
+had 15, so a visitor could not see the Category, Marketing, Verification log or Reference pages from
+the landing page. Added the 4 missing tiles. Shipped as a follow-up PR, since the record of PR #47
+cannot be written to `main` before #47 itself merges.
+
+### E Cross-session notes
+
+* Sessions `9fef7647` (PR #26), `b90c5685`, `588693c9`, `06ca46bf`, `03bbd050`, `252122ff`, `a53a7e52`
+  and others all merged into `main` while this session worked. This branch merged `origin/main` twice
+  rather than rebasing, so no session's work is discarded; `COORDINATION.md` was each time rebuilt as
+  **`main`'s full board plus this session's Part E**, so the diff against `main` is additions only.
+* Two of the fixes this session planned were already done on `main` by other sessions before the
+  merge (`tools/link_report.py` — E-F-03; `tools/verify_site.py` V5 and part of the sitemap union
+  — session `b90c5685`). Neither was re-applied; both are noted above.
+* `S45` (`sell.amazon.com/blog/what-is-an-asin`) had already been registered on `main` when this
+  session merged. This session had independently reached the same page and the same conclusion; it
+  reused `S45` rather than adding a duplicate source ID.

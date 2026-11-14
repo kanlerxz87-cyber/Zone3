@@ -293,6 +293,17 @@ def build_index() -> None:
         ("campaigns.html", "Campaigns &amp; tracking", "Click and conversion ledger. Empty until data exists."),
         ("flagged.html", "Flagged for review", "Every irregularity and unverified item, with its source links."),
         ("sources.html", "Sources", "The official source registry with retrieval status."),
+        # Added by integration session edbd56a1 (2026-11-14): these sections were in the
+        # navigation but missing from the dashboard tiles, so a visitor landing on the
+        # dashboard could not see them.
+        ("air-fryers.html", "Category: Air Fryers",
+         "The one verified category: browse path and a six-position bestseller benchmark."),
+        ("marketing/index.html", "Marketing",
+         "Product briefs, comparison and buying guide. No prices or ratings are published."),
+        ("verification.html", "Verification log",
+         "One row per published claim, with the wording its official page carries."),
+        ("docs/index.html", "Reference (/docs/)",
+         "The older /docs/ page set, kept and now linked from the dashboard."),
     ]
     tile_html = "".join(
         f'<a class="tile" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in tiles
