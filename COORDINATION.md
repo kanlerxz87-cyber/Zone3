@@ -21,6 +21,7 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (listed on th
 | c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 | 33226b37, c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 | 3c886b62 | `arena/3c886b62-zone3` | Verified price/rating capture via `amazon.com/s?k=<ASIN>`; the public commission rate table; Participation Requirements 2(b)/6(t)/2(e). Own scope only: `sessions/3c886b62/`. | in progress (T7) | 2026-11-13 22:5x |
+| f2d2c167 | `arena/f2d2c167-zone3` | Final integration: re-verify, PR to `main`, merge, Pages deploy | in progress (T6) | 2026-11-14 |
 
 ### Branch naming decision (logged 2026-11-13, session 7f84fea4)
 
@@ -35,7 +36,7 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 | T3 — Line-by-line verification and flags | needs review | 7f84fea4 | `scripts/check_site.py`, `data/flags.json` | — | FLG-001–020 (published on Flagged for review) |
 | T4 — Integration with session 26634cd5 (PR #1) | done | 7f84fea4 | all (integration only) | S07 mapped to S10 and others (see below) | FLG-015–020 |
 | T5 — Campaign and tracking ledger | done (empty by design) | 7f84fea4 | `campaigns.html` | — | FLG-010, FLG-011 |
-| T6 — Re-verify, PR, merge, Pages deploy | in progress | 7f84fea4 | this branch only | — | — |
+| T6 — Re-verify, PR, merge, Pages deploy | in progress | f2d2c167 | this branch only | — | — |
 | T7 — Price/rating capture, public commission rate table, 2(b)/6(t)/2(e) policy review | in progress | 3c886b62 | `sessions/3c886b62/**` only (no root files) | S1–S12 in `sessions/3c886b62/data/sources.json` | F01–F17 in `sessions/3c886b62/docs/FLAGGED.md` |
 
 ## Integration with session 66a80e53 (PR #3, merged after this branch was first pushed)
