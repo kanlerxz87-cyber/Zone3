@@ -102,8 +102,25 @@ def raw_table(headers, rows, cls: str = "") -> str:
 
 def page(name: str, title: str, body: str, lead: str = "", active: str = "") -> None:
     """Same document shape as scripts/build_site.py, one directory down."""
+    # NAV ENTRIES — one link per destination, in order.
+    #
+    # INTEGRATION 2026-11-14 (session 54ce6a2b): this used to be
+    # `base.NAV + [("marketing/index.html", "Marketing")]`. `base.NAV` (owned by
+    # scripts/build_site.py) already gained that entry when the marketing section was
+    # integrated, so every page this module emits carried "Marketing" twice in the
+    # top bar — and on the hub page both copies carried class="active". Appending an
+    # entry that may already exist is what breaks; the fix is to append only when the
+    # destination is missing, then de-duplicate by href so the nav cannot depend on
+    # whether base.NAV happens to list this page.
+    entries = list(base.NAV)
+    if not any(href == "marketing/index.html" for href, _ in entries):
+        entries.append(("marketing/index.html", "Marketing"))
+    seen: set[str] = set()
     links = []
-    for href, label in base.NAV + [("marketing/index.html", "Marketing")]:
+    for href, label in entries:
+        if href in seen:
+            continue
+        seen.add(href)
         cls = ' class="active"' if href == active else ""
         links.append(f'<a href="../{href}"{cls}>{label}</a>')
     nav = "".join(links)

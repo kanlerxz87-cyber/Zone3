@@ -1,6 +1,6 @@
 # Executive summary — Zone3 AI-powered Amazon affiliate platform
 
-**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8`
+**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Count correction:** session `54ce6a2b`
 **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 **Verification log:** https://kanlerxz87-cyber.github.io/Zone3/verification.html
 **Flagged for review:** https://kanlerxz87-cyber.github.io/Zone3/flagged.html
@@ -8,6 +8,18 @@
 > The source-linked findings below include the original 2026-11-14 verification record and the
 > independent correction pass in this session. Redirect targets are treated as observed destinations,
 > not as proof of requester intent. Unavailable or policy-restricted values remain blank and flagged.
+
+> **Count correction, 2026-11-14, session `54ce6a2b` (branch `arena/54ce6a2b-zone3`).** Two counts in
+> this document had gone stale as other sessions appended to the shared registers: §2 opened with
+> "48 official sources · 51 policy facts · 51 flags" and §7 repeated "All 51 policy facts" and the
+> gate figures from an earlier run. The registers now hold **51 sources, 55 policy facts and 66
+> flags**. The three numbers in §2 and §7 have been replaced with the current values, read from
+> `data/sources.json`, `data/policy_facts.json` and `data/flags.json`, and re-checked by re-running
+> the gates. No other text was changed. Hard-coded counts drift again the next time a session appends
+> to a register, so the durable fix is to generate this line from the JSON; that is logged as
+> `54C-F-02` on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page
+> rather than done here, because `EXECUTIVE-SUMMARY.md` is a hand-written document outside this
+> session's claimed scope.
 
 ---
 
@@ -42,7 +54,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-48 official sources · 51 policy facts · 51 flags · 12 root pages, a 16-page audit build and a
+51 official sources · 55 policy facts · 66 flags · 12 root pages, a 16-page audit build and a
 marketing section. All 51 facts and all three submitted links were re-read on 2026-11-14; the
 row-by-row record is the [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html).
 
@@ -167,14 +179,15 @@ changes are auditable rather than silent):
 
 * All three submitted short links re-fetched on 2026-11-14; all three direct `/dp/<code>` checks
   re-run. Results identical to 2026-11-13.
-* All 51 policy facts in `data/policy_facts.json` re-checked against their source page.
+* All 55 policy facts in `data/policy_facts.json` re-checked against their source page.
 * Commission tables (S25, S26), the Creators API pages (S04–S06), the FTC pages (S07, S24, S44), the
   enrolment pages (S28, S29) and the Amazon bestseller page (S43) re-read; the Operating Agreement
   and Program Policies were read section by section across all 4 and 11 chunks respectively.
-* Build gates, all green: `scripts/check_site.py` (12 pages, 3 products, 48 sources, 51 flags),
-  `tools/verify_site.py` (69 pages, 1,172 rows, 971 with an official source link, 347 flagged, the
-  rest anchored to the repo), `tools/link_report.py` (no dangling refs), `scripts/build_sitemap.py`
-  (63 pages covered), and both site generators rebuild to a stable fixpoint.
+* Build gates, all green as re-run on 2026-11-14 by session `54ce6a2b`: `scripts/check_site.py`
+  (12 pages, 3 products, 51 sources, 66 flags), `tools/verify_site.py` (70 pages, 1,223 rows, 1,022
+  with an official source link, 388 flagged, 82 anchored to the repo), `tools/link_report.py`
+  (no dangling refs), `scripts/build_sitemap.py --check` (65 pages covered, 0 extra entries), and
+  both site generators rebuild to a stable fixpoint.
 * **Limits:** the sandbox reaches only github.com, npm and PyPI directly, so official pages were read
   through a fetch tool rather than an automated HTTP client, and the `--online` link check was not
   run. Whether `link.amazon` redirects without an affirmative click has not been tested in a
