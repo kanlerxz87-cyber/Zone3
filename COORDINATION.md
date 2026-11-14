@@ -3524,3 +3524,21 @@ irregularities were published, not allowed to block.
 Note on the fetch tool: `fetch_page` caches by URL. A post-deploy re-check must add a cache-busting
 query string, otherwise it returns the pre-deploy copy and a fix looks like it did not ship. This
 session hit exactly that once, and confirmed the fix only after re-fetching with `?cb=…`.
+
+# Part 71 — session `71dc8fea` (2026-11-14) — independent final audit
+
+> Branch `arena/71dc8fea-zone3`, based on `4fd8bd6` (current `main` at session start).
+
+## 71 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 71dc8fea | `arena/71dc8fea-zone3` | Independent audit of the existing Amazon affiliate research site, repository checks, and GitHub Pages/PR state; no parallel branch or duplicate build | in progress (71-T1) | 2026-11-14 |
+
+## 71 Task board (claim before audit)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 71-T1 — Independently verify the current shipped site, repo integrity gates, official-source evidence coverage, and Pages status; record evidence and any scope requests | in progress | 71dc8fea | `COORDINATION.md`; `sessions/71dc8fea/**` (audit report only) | pending audit | pending audit |
+
+This is a read-only audit of the already-integrated site, not a second implementation of the product/data registers. Shared site, navigation, and data files remain outside scope; if a discrepancy requires one of those edits, it will be logged here rather than edited by this task.
