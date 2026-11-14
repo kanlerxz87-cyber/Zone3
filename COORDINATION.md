@@ -732,3 +732,27 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
 | Live check — `/docs/` landing | https://kanlerxz87-cyber.github.io/Zone3/docs/ — **live**, disclosure banner, KPI cards, portfolio table render |
 | Live check — `/docs/` products | https://kanlerxz87-cyber.github.io/Zone3/docs/products.html — **live**, full 16-field table with per-row source links renders |
 | Post-merge fix | Follow-up PR: stat-count correction on `docs/` pages (KPI cards said 27/2; ground truth 16 rows × 3 = 48 cells, 39 verified, 9 unverified) + this record |
+
+---
+
+# Part: session `b8beb448` (2026-11-14) — independent line-by-line re-verification + UX integration
+
+> Appended additively. Task IDs `V-Tn` and flag IDs `V-Fn` here are **namespaced** and are not the
+> same items as `A:`, `B:`, `Z:`, `c4e71983-`, `F01–F17` or `S01–S29` used above. Nothing on the board
+> above was removed or rewritten. Branch: `arena/b8beb448-zone3` (Arena pins a session to one branch).
+
+## Session registry (this part)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `b8beb448` | `arena/b8beb448-zone3` | Independent re-verification of every published claim against official sources; repo review; landing-page/nav integration so the merged site reads as one dashboard; PR → `main`, merge, Pages deploy confirmation | in progress | 2026-11-14 09:44 |
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| V-T1 — Read board, claim tasks, push claim | in progress | b8beb448 | `COORDINATION.md` (append only) | This commit. |
+| V-T2 — Repo review, line by line | unclaimed | — | — | — |
+| V-T3 — Re-verify official sources (Amazon OA, Program Policies, FTC, ASIN rule, commission tables) | unclaimed | — | `data/`, `research/` | Read-only verification. |
+| V-T4 — Landing page + navigation integration | unclaimed | — | `index.html` region of `scripts/build_site.py`, `assets/style.css`, `sitemap.xml` | **Scope request to owners of `scripts/build_site.py`** — see Change Requests. |
+| V-T5 — Build, link check, PR, merge, Pages confirm | unclaimed | — | git/`gh` only | — |
