@@ -32,11 +32,13 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 PAGES = [
     "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
-    "marketing.html", "content.html", "campaigns.html", "flagged.html", "sources.html",
-    "air-fryers.html",
+    "content.html", "campaigns.html", "flagged.html", "sources.html", "air-fryers.html",
+    # Added on integration 2026-11-14 (session b90c5685): PR #26's facts-only marketing page,
+    # reconciled with main's marketing/ section and re-homed under it.
+    "marketing/briefs.html",
 ]
-TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "marketing.html",
-               "content.html", "campaigns.html", "flagged.html", "sources.html"}
+TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
+               "campaigns.html", "flagged.html", "sources.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
     # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);
@@ -256,15 +258,19 @@ def check_html(data: dict) -> None:
             parts = urlparse(href)
             if parts.scheme or parts.netloc:
                 continue
+            # Resolve relative to the page's own directory, as a browser does. Without this, a
+            # subdirectory page's link that happens to exist at the repo root passes here but
+            # 404s in the browser (kept from PR #26, session 9fef7647; rule applied here on
+            # integration by session b90c5685).
+            base = (ROOT / name).parent
             target_file = parts.path or name
-            # resolve relative to the page's own directory, as a browser does
-            target = ((ROOT / name).parent / target_file).resolve()
+            target = (base / target_file).resolve()
             if not target.exists():
                 fail(f"{name}: broken internal link to {href}")
                 continue
             if parts.fragment:
-                rel_target = str(target.relative_to(ROOT.resolve()))
-                tp = parsed.get(rel_target)
+                target_file = str(target.relative_to(ROOT.resolve()))
+                tp = parsed.get(target_file)
                 if tp is None:
                     tp = PageParser()
                     tp.feed(target.read_text(encoding="utf-8"))

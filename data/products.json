@@ -1,282 +1,273 @@
 {
- "retrieved": "2026-11-13; link targets re-verified 2026-11-14",
- "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. Identity fields (asin, product_name, brand) describe the submitted product and stay blank until the owner confirms which product each link means (FLG-027). Observations of the listing each submitted link opens are recorded in observed_at_link_target with sources.",
- "products": [
-  {
-   "id": "P1",
-   "label": "Product link 1",
-   "submitted_url": "https://link.amazon/B04G1MEwY",
-   "link_id": "B04G1MEwY",
-   "link_id_length": 9,
-   "asin": null,
-   "direct_check": {
-    "url": "https://www.amazon.com/dp/B04G1MEwY",
-    "result": "Page Not Found",
-    "source": "S08"
-   },
-   "redirect_observed": {
-    "final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
-    "page_id": "B0CDY277D3",
-    "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
-    "confirmed_as_submitted_product": false,
-    "source": "S11",
-    "title_source": "S14",
-    "brand": "CHEFMAN",
-    "capacity": "6 Quart",
-    "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-    "reverified": "2026-11-14 (same destination with a fresh redirect token; see S30-S32)",
-    "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-022, FLG-024)."
-   },
-   "product_name": null,
-   "brand": null,
-   "price": null,
-   "rating": null,
-   "review_count": null,
-   "competitor_count": null,
-   "best_seller_rank": null,
-   "commission_rate": null,
-   "availability": null,
-   "clicks": null,
-   "conversions": null,
-   "associates_tag": null,
-   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B0CDY277D3 on every observation (2026-11-13 and 2026-11-14; S46-S48 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
-   "flags": [
-    "FLG-001",
-    "FLG-002",
-    "FLG-004",
-    "FLG-022",
-    "FLG-025",
-    "FLG-027"
-   ],
-   "sources": [
-    "S08",
-    "S11",
-    "S14",
-    "S02",
-    "S46",
-    "S49"
-   ],
-   "value_sources": {
-    "product_name": [
-     "S46",
-     "S49",
-     "S14"
-    ],
-    "brand": [
-     "S14"
-    ],
-    "price": [
-     "S49"
-    ],
-    "rating": [
-     "S49"
-    ],
-    "review_count": [
-     "S49"
-    ]
-   },
-   "observed_at_link_target": {
-    "observed": "2026-11-14",
-    "note": "Everything in this block is an observation of the Amazon listing the submitted link opens. It is NOT an assertion that this listing is the product the owner meant (FLG-027). Identity fields above stay blank until the owner confirms. Values are volatile snapshots (FLG-022, FLG-025).",
-    "page_id": "B0CDY277D3",
-    "product_name_as_listed": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
-    "brand_as_read": "CHEFMAN",
-    "price_as_displayed": "USD 79.93 (deal shown; List: USD 99.99)",
-    "other_offers": "More Buying Choices from USD 57.45 (2+ used & new offers)",
-    "rating_as_displayed": "4.2 out of 5 stars",
-    "review_count_as_displayed": "(4.8K) as displayed by Amazon",
-    "sales_note": "1K+ bought in past month, as displayed",
-    "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
-    "sources": [
-     "S46",
-     "S49",
-     "S14"
-    ]
-   }
-  },
-  {
-   "id": "P2",
-   "label": "Product link 2",
-   "submitted_url": "https://link.amazon/B02NbDxp3",
-   "link_id": "B02NbDxp3",
-   "link_id_length": 9,
-   "asin": null,
-   "direct_check": {
-    "url": "https://www.amazon.com/dp/B02NbDxp3",
-    "result": "Page Not Found",
-    "source": "S09"
-   },
-   "redirect_observed": {
-    "final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
-    "page_id": "B09B7SB46R",
-    "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
-    "confirmed_as_submitted_product": false,
-    "source": "S12",
-    "title_source": "S15",
-    "brand": "Emeril Lagasse",
-    "capacity": "26QT",
-    "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-    "reverified": "2026-11-14 (same destination with a fresh redirect token; see S30-S32)",
-    "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-022, FLG-024)."
-   },
-   "product_name": null,
-   "brand": null,
-   "price": null,
-   "rating": null,
-   "review_count": null,
-   "competitor_count": null,
-   "best_seller_rank": null,
-   "commission_rate": null,
-   "availability": null,
-   "clicks": null,
-   "conversions": null,
-   "associates_tag": null,
-   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B09B7SB46R on every observation (2026-11-13 and 2026-11-14; S46-S48 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
-   "flags": [
-    "FLG-001",
-    "FLG-002",
-    "FLG-004",
-    "FLG-022",
-    "FLG-025",
-    "FLG-027"
-   ],
-   "sources": [
-    "S09",
-    "S12",
-    "S15",
-    "S02",
-    "S47",
-    "S50"
-   ],
-   "value_sources": {
-    "product_name": [
-     "S47",
-     "S50",
-     "S15"
-    ],
-    "brand": [
-     "S15"
-    ],
-    "price": [
-     "S50"
-    ],
-    "rating": [
-     "S50"
-    ],
-    "review_count": [
-     "S50"
-    ]
-   },
-   "observed_at_link_target": {
-    "observed": "2026-11-14",
-    "note": "Everything in this block is an observation of the Amazon listing the submitted link opens. It is NOT an assertion that this listing is the product the owner meant (FLG-027). Identity fields above stay blank until the owner confirms. Values are volatile snapshots (FLG-022, FLG-025).",
-    "page_id": "B09B7SB46R",
-    "product_name_as_listed": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals.",
-    "brand_as_read": "Emeril Lagasse",
-    "price_as_displayed": "USD 149.99 (deal labelled Early Black Friday Deal; List: USD 209.99)",
-    "other_offers": "More Buying Choices from USD 92.99 (2+ used & new offers)",
-    "rating_as_displayed": "4.3 out of 5 stars",
-    "review_count_as_displayed": "(18.3K) as displayed by Amazon",
-    "sales_note": "4K+ bought in past month, as displayed",
-    "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
-    "sources": [
-     "S47",
-     "S50",
-     "S15"
-    ]
-   }
-  },
-  {
-   "id": "P3",
-   "label": "Product link 3",
-   "submitted_url": "https://link.amazon/B00hJ57DV",
-   "link_id": "B00hJ57DV",
-   "link_id_length": 9,
-   "asin": null,
-   "direct_check": {
-    "url": "https://www.amazon.com/dp/B00hJ57DV",
-    "result": "Page Not Found",
-    "source": "S10"
-   },
-   "redirect_observed": {
-    "final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
-    "page_id": "B08DKYBTPH",
-    "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
-    "confirmed_as_submitted_product": false,
-    "source": "S13",
-    "title_source": "S23",
-    "brand": "Chefman",
-    "capacity": "8 Qt",
-    "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-    "reverified": "2026-11-14 (same destination with a fresh redirect token; see S30-S32)",
-    "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-022, FLG-024)."
-   },
-   "product_name": null,
-   "brand": null,
-   "price": null,
-   "rating": null,
-   "review_count": null,
-   "competitor_count": null,
-   "best_seller_rank": null,
-   "commission_rate": null,
-   "availability": null,
-   "clicks": null,
-   "conversions": null,
-   "associates_tag": null,
-   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B08DKYBTPH on every observation (2026-11-13 and 2026-11-14; S46-S48 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
-   "flags": [
-    "FLG-001",
-    "FLG-002",
-    "FLG-004",
-    "FLG-022",
-    "FLG-025",
-    "FLG-027"
-   ],
-   "sources": [
-    "S10",
-    "S13",
-    "S16",
-    "S02",
-    "S48",
-    "S51"
-   ],
-   "value_sources": {
-    "product_name": [
-     "S48",
-     "S51",
-     "S23"
-    ],
-    "brand": [
-     "S23"
-    ],
-    "price": [
-     "S51"
-    ],
-    "rating": [
-     "S51"
-    ],
-    "review_count": [
-     "S51"
-    ]
-   },
-   "observed_at_link_target": {
-    "observed": "2026-11-14",
-    "note": "Everything in this block is an observation of the Amazon listing the submitted link opens. It is NOT an assertion that this listing is the product the owner meant (FLG-027). Identity fields above stay blank until the owner confirms. Values are volatile snapshots (FLG-022, FLG-025).",
-    "page_id": "B08DKYBTPH",
-    "product_name_as_listed": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
-    "brand_as_read": "Chefman",
-    "price_as_displayed": "USD 79.91 (deal shown; List: USD 119.99)",
-    "other_offers": "More Buying Choices from USD 49.54 (3+ used & new offers)",
-    "rating_as_displayed": "4.4 out of 5 stars",
-    "review_count_as_displayed": "(16.8K) as displayed by Amazon",
-    "sales_note": "3K+ bought in past month, as displayed",
-    "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
-    "sources": [
-     "S48",
-     "S51",
-     "S23"
-    ]
-   }
-  }
- ]
+  "retrieved": "2026-11-13",
+  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038).",
+  "products": [
+    {
+      "id": "P1",
+      "label": "Product link 1",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "link_id": "B04G1MEwY",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B04G1MEwY",
+        "result": "Page Not Found",
+        "source": "S08"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
+        "page_id": "B0CDY277D3",
+        "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+        "confirmed_as_submitted_product": false,
+        "source": "S11",
+        "title_source": "S14",
+        "brand": "CHEFMAN",
+        "capacity": "6 Quart",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link does not resolve to a product page under its own identifier",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
+      ],
+      "sources": [
+        "S02",
+        "S08",
+        "S11",
+        "S14",
+        "S46",
+        "S52",
+        "S55"
+      ],
+      "observed_2026_11_14": {
+        "date": "2026-11-14",
+        "price": "USD 79.93 (deal shown; List: USD 99.99)",
+        "other_offers": "More Buying Choices from USD 57.45 (2+ used & new offers)",
+        "rating": "4.2 out of 5 stars",
+        "review_count": "(4.8K) as displayed by Amazon",
+        "sales_note": "1K+ bought in past month, as displayed",
+        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+        "sources": [
+          "S30",
+          "S33",
+          "S14"
+        ],
+        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029)."
+      },
+      "value_sources_2026_11_14": {
+        "product_name": [
+          "S52",
+          "S46",
+          "S14"
+        ],
+        "brand": [
+          "S14"
+        ],
+        "price": [
+          "S46"
+        ],
+        "rating": [
+          "S46"
+        ],
+        "review_count": [
+          "S46"
+        ]
+      }
+    },
+    {
+      "id": "P2",
+      "label": "Product link 2",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "link_id": "B02NbDxp3",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B02NbDxp3",
+        "result": "Page Not Found",
+        "source": "S09"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
+        "page_id": "B09B7SB46R",
+        "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
+        "confirmed_as_submitted_product": false,
+        "source": "S12",
+        "title_source": "S15",
+        "brand": "Emeril Lagasse",
+        "capacity": "26QT",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link does not resolve to a product page under its own identifier",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
+      ],
+      "sources": [
+        "S02",
+        "S09",
+        "S12",
+        "S15",
+        "S47",
+        "S53",
+        "S55"
+      ],
+      "observed_2026_11_14": {
+        "date": "2026-11-14",
+        "price": "USD 149.99 (deal labelled Early Black Friday Deal; List: USD 209.99)",
+        "other_offers": "More Buying Choices from USD 92.99 (2+ used & new offers)",
+        "rating": "4.3 out of 5 stars",
+        "review_count": "(18.3K) as displayed by Amazon",
+        "sales_note": "4K+ bought in past month, as displayed",
+        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+        "sources": [
+          "S31",
+          "S34",
+          "S15"
+        ],
+        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029)."
+      },
+      "value_sources_2026_11_14": {
+        "product_name": [
+          "S53",
+          "S47",
+          "S15"
+        ],
+        "brand": [
+          "S15"
+        ],
+        "price": [
+          "S47"
+        ],
+        "rating": [
+          "S47"
+        ],
+        "review_count": [
+          "S47"
+        ]
+      }
+    },
+    {
+      "id": "P3",
+      "label": "Product link 3",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "link_id": "B00hJ57DV",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B00hJ57DV",
+        "result": "Page Not Found",
+        "source": "S10"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
+        "page_id": "B08DKYBTPH",
+        "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+        "confirmed_as_submitted_product": false,
+        "source": "S13",
+        "title_source": "S23",
+        "brand": "Chefman",
+        "capacity": "8 Qt",
+        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link does not resolve to a product page under its own identifier",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
+      ],
+      "sources": [
+        "S02",
+        "S10",
+        "S13",
+        "S16",
+        "S48",
+        "S54",
+        "S55"
+      ],
+      "observed_2026_11_14": {
+        "date": "2026-11-14",
+        "price": "USD 79.91 (deal shown; List: USD 119.99)",
+        "other_offers": "More Buying Choices from USD 49.54 (3+ used & new offers)",
+        "rating": "4.4 out of 5 stars",
+        "review_count": "(16.8K) as displayed by Amazon",
+        "sales_note": "3K+ bought in past month, as displayed",
+        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+        "sources": [
+          "S32",
+          "S35",
+          "S23"
+        ],
+        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029)."
+      },
+      "value_sources_2026_11_14": {
+        "product_name": [
+          "S54",
+          "S48",
+          "S23"
+        ],
+        "brand": [
+          "S23"
+        ],
+        "price": [
+          "S48"
+        ],
+        "rating": [
+          "S48"
+        ],
+        "review_count": [
+          "S48"
+        ]
+      }
+    }
+  ]
 }
