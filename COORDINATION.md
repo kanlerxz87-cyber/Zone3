@@ -1235,7 +1235,7 @@ Irregularities: the three codes are 9 characters, not ASINs (raw `dp` lookup fai
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `ecbfe91b` | `arena/ecbfe91b-zone3` | Live re-verification of official sources (2026-11-14); takeover of stale PR #10 task; repo line-by-line review; closure of c4e71983 handoff items; final integration, PR → `main`, Pages deploy | in progress | 2026-11-14 |
+| `ecbfe91b` | `arena/ecbfe91b-zone3` | Live re-verification of official sources (2026-11-14); takeover of stale PR #10 task; repo line-by-line review; closure of c4e71983 handoff items; final integration, PR → `main`, Pages deploy | done | 2026-11-14 |
 
 **Branch note (same logged decision as `7f84fea4`).** The brief asks for `session-<id>/<task>`
 branches. Arena's session branch note fixes this session to one branch, `arena/ecbfe91b-zone3`, and
@@ -1245,13 +1245,13 @@ forbids creating or pushing other branches. Task IDs (E-T1–E-T7) replace per-t
 
 | Task | Status | Owner | Files in scope | Notes |
 |---|---|---|---|---|
-| E-T1 — Coordination claim, protocol, push | in progress | `ecbfe91b` | `COORDINATION.md` (append-only) | This commit, pushed before any other work. |
-| E-T2 — Takeover: broken-links fix task behind stale PR #10 | claimed | `ecbfe91b` | `disclosure.html`, `executive-summary.html` (via their generators where applicable) | Handoff per the 60-minute takeover rule — see E Handoff log. |
-| E-T3 — Repo line-by-line review + tool verification (`scripts/check_site.py`, `tools/build_site.py`, `tools/verify_site.py`, `tools/link_report.py`) | claimed | `ecbfe91b` | whole tree (read); fixes only inside this session's scope | |
-| E-T4 — Live re-verification of official sources, dated 2026-11-14 | claimed | `ecbfe91b` | `research/ecbfe91b-reverification-2026-11-14.md` (new, namespaced) | fetch tool evidence only. |
-| E-T5 — Close c4e71983 open items: surface competitor benchmark as-is; widen FLG-016 text per `c4e71983-FLG-16`; log decision on commercial snapshot | claimed | `ecbfe91b` | `data/*.json`, `scripts/build_site.py` (generator), regenerated root pages | This session acts as the integration session for shared outputs for this pass. |
-| E-T6 — Live-site QA after deploy | claimed | `ecbfe91b` | — | |
-| E-T7 — PR → `main`, merge, Pages deploy confirm, record | claimed | `ecbfe91b` | git + `gh` only, this file | |
+| E-T1 — Coordination claim, protocol, push | done | `ecbfe91b` | `COORDINATION.md` (append-only) | This commit, pushed before any other work. |
+| E-T2 — Takeover: broken-links fix task behind stale PR #10 | done | `ecbfe91b` | `disclosure.html`, `executive-summary.html` (via their generators where applicable) | Handoff per the 60-minute takeover rule — see E Handoff log. |
+| E-T3 — Repo line-by-line review + tool verification (`scripts/check_site.py`, `tools/build_site.py`, `tools/verify_site.py`, `tools/link_report.py`) | done | `ecbfe91b` | whole tree (read); fixes only inside this session's scope | |
+| E-T4 — Live re-verification of official sources, dated 2026-11-14 | done | `ecbfe91b` | `research/ecbfe91b-reverification-2026-11-14.md` (new, namespaced) | fetch tool evidence only. |
+| E-T5 — Close c4e71983 open items: surface competitor benchmark as-is; widen FLG-016 text per `c4e71983-FLG-16`; log decision on commercial snapshot | done | `ecbfe91b` | `data/*.json`, `scripts/build_site.py` (generator), regenerated root pages | This session acts as the integration session for shared outputs for this pass. |
+| E-T6 — Live-site QA after deploy | done | `ecbfe91b` | — | |
+| E-T7 — PR → `main`, merge, Pages deploy confirm, record | done | `ecbfe91b` | git + `gh` only, this file | |
 
 ## E Handoff log
 
@@ -1330,3 +1330,29 @@ the task log below.
 
 - **2026-11-14 — `ecbfe91b`**: merge of `origin/main` (PRs #18–#25) resolved as above; conflict
   resolutions logged before continuing. E-T5 rebased onto main's newer data (S43/FLG-022/FLG-025).
+
+## E Publish record (PR #32 and follow-up)
+
+| Item | Value |
+|---|---|
+| Pull request | **#32** — https://github.com/kanlerxz87-cyber/Zone3/pull/32 (branch `arena/ecbfe91b-zone3` → `main`) |
+| Merge method | `gh pr merge 32 --merge` (no approval waited for, per the tasking brief) |
+| Merge commit | `dbabe7822b29bfefc8aad164536cc69ae530386f` (state MERGED, confirmed via `gh pr view`) |
+| Pages build | `dbabe78` → **built** (confirmed via the GitHub Pages API; source `main` `/`, `https_enforced=true`) |
+| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ |
+| Live QA (E-T6) | Landing dashboard renders (KPIs, re-verification table, sections). `reviews.html`: per-row sources now S08/S09/S10 (E-F1 fix live); competition benchmark renders from shared `data/competition.json` with per-row official links and withheld price/rating cells. `air-fryers.html`: category path + benchmark + submitted-links table render with S43/FLG-022/FLG-025. `flagged.html`: FLG-016 widening text live verbatim; V-F1 rate-card correction live. All fetched live 2026-11-14 after the deploy. |
+| Broken links at publish | 0 (`tools/verify_site.py` V5 over 58 pages; `scripts/check_site.py` link checks) |
+| Site merged while flagged? | yes — flagged items and unverified fields are non-blocking and published at `/flagged/`, per the owner instruction |
+| Follow-up | this record ships as a follow-up PR from the same branch (see Merge log); its merge and Pages result are appended below after the merge |
+
+### Interpretation note for the owner (not a defect)
+
+Two readings of the submitted links are now published side by side, as earlier board entries
+prescribed (Z-F6, B:FLG-027): the flat build's data layer keeps the three products' identity
+fields **blank** ("not confirmed as the submitted products", FLG-001/FLG-002), while the
+2026-11-14 narrative (session `51fcb80d`) records that the nine-character tokens behave as
+registered short-link IDs whose destinations are live listings, with the `mhFallback`-implies-failure
+reading formally withdrawn (their FLG-026, matching this session's control observation in
+`research/ecbfe91b-reverification-2026-11-14.md` §A). Both positions are sourced; neither is
+presented as verified product identity. Only the owner's submission context can settle which
+product was meant — flagged for review, non-blocking.
