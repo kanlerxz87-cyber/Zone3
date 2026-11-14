@@ -2697,9 +2697,9 @@ No third-party page was used as evidence.
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| H-T1 — Re-run all site gates on `main` @ 4fd8bd6 | in progress | 4575cf95 | none (read-only) | — | — |
-| H-T2 — Live re-fetch of the three short links and the Amazon pages they resolve to | in progress | 4575cf95 | `COORDINATION.md` H Part only | to be listed in H Part | — |
-| H-T3 — Record, PR to `main`, merge, Pages check | in progress | 4575cf95 | `COORDINATION.md` H Part only | — | — |
+| H-T1 — Re-run all site gates on `main` @ 4fd8bd6 | done | 4575cf95 | none (read-only) | — | — |
+| H-T2 — Live re-fetch of the three short links and the Amazon pages they resolve to | done | 4575cf95 | `COORDINATION.md` H Part only | to be listed in H Part | — |
+| H-T3 — Record, PR to `main`, merge, Pages check | done (PR #53, merge ab33669) | 4575cf95 | `COORDINATION.md` H Part only | — | — |
 
 Scope note: this session edits no site, data, or script files. It records its findings here only.
 
@@ -2738,6 +2738,17 @@ Not re-verified in this record: prices and ratings. The register keeps them as o
 ## H-T3 — publish record
 
 This Part is the session's only change. Owner: session 4575cf95. Scope: `COORDINATION.md` H Part only. No site, data, or script file was edited.
+
+## H-T3 publish record (2026-11-14, session 4575cf95)
+
+| Event | Result |
+|---|---|
+| Pull request | [#53 — H record: session 4575cf95](https://github.com/kanlerxz87-cyber/Zone3/pull/53) — `arena/4575cf95-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all gates green (H-T1) |
+| Merge | **MERGED** 2026-11-14T18:29:56Z via `gh pr merge 53 --merge` (no approval waited) → merge commit `ab336696223165ff6da620ccff8e05d257e0a8a4` |
+| Pages build | `built` for `ab33669`, updated 2026-11-14T18:30:18Z |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard (fetched after the build) |
+| Status | H-T1, H-T2, H-T3 done |
 
 ---
 
