@@ -3184,7 +3184,7 @@ count, best-seller rank and commission rate stay blank by design.
 | 554-F-02 | Info | Arena checkouts of this repo are shallow: `git merge-base`/`git merge` fail with "unrelated histories" until `git fetch --deepen` connects the tip commits. | this session's git log, 2026-11-14 |
 | 554-F-03 | Info | PR #49 (record-only, session `edbd56a1`) was stale >60 min at claim time; taken over per the takeover rule with its content preserved verbatim above. | https://github.com/kanlerxz87-cyber/Zone3/pull/49 |
 | 554-F-04 | Info | No new product-data finding: all three submitted identifiers remain unverifiable as ASINs (V4/V5); product cells stay blank and flagged, per the brief's no-inference rule. | https://www.amazon.com/dp/B04G1MEwY (Page Not Found) |
-## 21-T6 — PR, merge, Pages (publish record; final close-out recorded in the follow-up PR below)
+## 21-T6 — PR, merge, Pages (publish record)
 
 - **PR #64** — https://github.com/kanlerxz87-cyber/Zone3/pull/64 (`arena/21acd3c0-zone3` → `main`) — **MERGED** 2026-11-14T18:45Z via `gh pr merge 64 --merge` (no approval waited, per the brief) → merge commit `d5a878dbfa1db7fba0322e4dc3cd0f9b7205d921`.
 - **Pages build** for `d5a878d`: **`built`** at 2026-11-14T18:45:36Z (no error). Live check via the fetch tool: https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard with the sections, site map and re-verification table intact.
@@ -3214,3 +3214,15 @@ Gates re-run after the edits, all green: `verify_site.py` VERIFY PASS (69 pages 
 I-F-02 requests that an integration session remove the 2026-11-13 `/docs/` build and `sessions/3c886b62/` from the published tree (they still display price and star-rating cells with no permitted data path under Participation Requirements 2(b)/6(t)), and says "Do not merge a publish that leaves them live."
 
 **Decision: not executed in this session.** Rationale: (1) the owner's brief states flagged irregularities "do not block the merge" and are published on the Flagged for Review page "so I can review them after the site is live and request changes" — the change decision is explicitly reserved for the owner; (2) deleting other sessions' files violates the coordination rules' no-clobber rule ("resolve conflicts without discarding the other session's work"); (3) I-F-02 itself is published on https://kanlerxz87-cyber.github.io/Zone3/flagged.html with source links, and the landing page labels the `/docs/` link "flagged … Do not treat its figures as current". The request therefore stays open for the owner, together with 21-F-04, which records the same scope question for `/sessions/`. If the owner requests the removal, it is a one-commit change (delete the HTML sets and the "Reference (/docs/)" link, re-run the gates).
+
+
+## 21 Publish record — close-out (21acd3c0, 2026-11-14)
+
+| Event | Result |
+|---|---|
+| PR #64 | https://github.com/kanlerxz87-cyber/Zone3/pull/64 (`arena/21acd3c0-zone3` → `main`) — **MERGED** via `gh pr merge 64 --merge` → merge commit `d5a878dbfa1db7fba0322e4dc3cd0f9b7205d921` |
+| PR #67 | https://github.com/kanlerxz87-cyber/Zone3/pull/67 — **MERGED** via `gh pr merge 67 --merge` → merge commit `ad105b4f60fc7098a04a3d80656ae7b0e3485928` (flags 21-F-01…05 published to the Flagged for Review page) |
+| Pages builds | `built` for `d5a878d` at 2026-11-14T18:45:36Z; `built` for `ad105b4f` at 2026-11-14T18:53:30Z (Pages API, no error) |
+| Live checks | https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard (fetched after each build). /flagged.html serves **56 entries** including 21-F-01…05 (first fetch after the second build hit a stale CDN copy showing 51 entries; a cache-busted re-fetch served the new build — recorded honestly) |
+| Gates at final commit | verify_site VERIFY PASS (69 pages · 1180 rows · 979 sourced · 348 flagged · 82 anchored) · link_report --strict exit 0 · check_all_links 0 errors · check_site OK (51 sources · 56 flags) |
+| Session status | **21acd3c0: done.** All six tasks complete. Open items left for the owner (non-blocking, on /flagged.html): FLG-001…038 incl. the identity question (FLG-002/035), the missing Associates tag (FLG-010), API eligibility (FLG-006/012/019), I-F-02 (the /docs/ + /sessions/ price/rating display, decision recorded above), 21-F-01…05 |
