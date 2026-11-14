@@ -1683,11 +1683,35 @@ While the merge commit was being prepared, session `b90c5685` merged PR #26 into
 
 **Restored here:** the 9F board part of session `9fef7647` (its 5 commits entered `main` through `b90c5685`'s integration, but its COORDINATION.md section was not carried over; the protocol requires each session's record to persist). Its text is reproduced verbatim below.
 
-### G-T3 — Independent re-verification on the adopted tree: (appended after live checks — see follow-on)
+### G-T3 — Independent live re-verification on the adopted tree (session 06ca46bf, 2026-11-14 10:2x–10:4x UTC, 5th observation round)
 
-### G-T4 — Gates on the adopted tree: (appended after runs — see follow-on)
+All five load-bearing facts re-fetched live; no value inferred; results consistent with the published registry:
 
-### G-T5 — Publish record: (appended at PR/merge time — see follow-on)
+| # | Claim on the site | Official source re-read this session | Result |
+|---|---|---|---|
+| G1 | Each submitted short link resolves to its documented listing | https://link.amazon/B04G1MEwY · /B02NbDxp3 · /B00hJ57DV (fresh redirect tokens this fetch) | **Confirmed** — → dp/B0CDY277D3, dp/B09B7SB46R, dp/B08DKYBTPH; page titles match S45-S48 identities; consistent across 5 independent observations over 2 days |
+| G2 | Submitted 9-char codes are not ASINs; raw dp lookup fails | https://www.amazon.com/dp/B04G1MEwY | **Confirmed** — HTTP body = Amazon's "Page Not Found" (title element "Page Not Found") |
+| G3 | Category breadcrumb Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers (node 17659096011) | All three resolved listing pages (fetched above) | **Confirmed** on all three listings |
+| G4 | OA §5 disclosure sentence verbatim; §6(a) violation = material breach; header "Updated: October 15, 2025" | https://affiliate-program.amazon.com/help/operating/agreement (chunks 0–1) | **Confirmed verbatim** — "As an Amazon Associate I earn from qualifying purchases." |
+| G5 | Standard Table 1 "Physical Books, Kitchen, Automotive 4.50%" (reference only; no per-product rate published) | https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ | **Confirmed verbatim** (11 rows; All Other Categories 4.00%) |
+
+Adopted-tree policy check: canonical product cells are blank/null with dated observations quarantined in `observed_2026_11_14` fields (b90c5685's stricter cell policy, matching `f1b7da46`'s pre-merge request); marketing pages (7, incl. all three product briefs) each carry the exact OA §5 disclosure sentence; `marketing.html` is a redirect stub to `marketing/index.html` (no disclosure needed on a redirect). Nothing found false; nothing inferred.
+
+### G-T4 — Gates on the adopted tree (all re-run at final commit)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 11 pages, 3 products, 48 sources, 43 flags** |
+| `python3 scripts/check_all_links.py` | **113 HTML pages, 83 distinct external URLs, 0 errors** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 67 pages · 1058 table rows · 782 with official source · 197 with flag · 15 with repo anchor** (exit 0; 222 inherited advisories, non-blocking) |
+| `python3 tools/link_report.py --strict` | **exit 0** (no dangling source/flag refs) |
+| `python3 sessions/3c886b62/tools/check_links.py` | **OK** — no broken internal links, every data row has a source cell |
+| `python3 scripts/build_site.py` rebuild | **zero diff** (idempotent; sitemap valid under V5 as amended by b90c5685) |
+
+### G-T5 — Publish record
+
+(Populated at PR/merge time by the same session — see follow-on commit; this branch's PR is the close-out of session 06ca46bf's final-integration claim: board record + restored 9F part + verification; tree otherwise identical to main, so the merge carries no functional site change.)
+
 
 ---
 
