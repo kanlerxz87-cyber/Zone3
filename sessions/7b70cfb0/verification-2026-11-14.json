@@ -1,0 +1,73 @@
+{
+  "session": "7b70cfb0",
+  "branch": "arena/7b70cfb0-zone3",
+  "base_commit": "4fd8bd641b69050c780723e00a42f045766e1c37",
+  "date_utc": "2026-11-14",
+  "role": "final integration session — independent line-by-line re-verification, PR, merge, Pages deploy",
+  "claims_reverified_live": [
+    {
+      "id": "7b70-V01",
+      "claim": "link.amazon/B04G1MEwY resolves to a live Amazon listing: CHEFMAN 6 Quart Dual Basket Air Fryer (destination ASIN B0CDY277D3, Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers)",
+      "source": "https://link.amazon/B04G1MEwY",
+      "observed_final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-704dc575b940a94c&channelId=704&plpRedirect=mhFallback",
+      "title_as_read": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "result": "confirmed"
+    },
+    {
+      "id": "7b70-V02",
+      "claim": "link.amazon/B02NbDxp3 resolves to a live Amazon listing: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven (destination ASIN B09B7SB46R)",
+      "source": "https://link.amazon/B02NbDxp3",
+      "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-76d4981d5f44181b&channelId=704&plpRedirect=mhFallback",
+      "title_as_read": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie",
+      "result": "confirmed"
+    },
+    {
+      "id": "7b70-V03",
+      "claim": "link.amazon/B00hJ57DV resolves to a live Amazon listing: Chefman Air Fryer 8 Qt TurboFry 4-in-1 (destination ASIN B08DKYBTPH)",
+      "source": "https://link.amazon/B00hJ57DV",
+      "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-016f4a534eed3621&channelId=704&plpRedirect=mhFallback",
+      "title_as_read": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "result": "confirmed"
+    },
+    {
+      "id": "7b70-V04",
+      "claim": "All three submitted identifiers are 9 characters; amazon.com/dp/<code> returns Amazon's Page Not Found page (verified for B04G1MEwY; mechanism is code-length, so applies to all three)",
+      "sources": [
+        "https://www.amazon.com/dp/B04G1MEwY",
+        "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
+      ],
+      "observed": "Page title 'Page Not Found' with the Dogs of Amazon error page",
+      "result": "confirmed"
+    },
+    {
+      "id": "7b70-V05",
+      "claim": "ASIN is defined as a 10-character alphanumeric unique identifier assigned by Amazon",
+      "source": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter",
+      "observed": "ItemIdType table: 'ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.' — verbatim",
+      "result": "confirmed_verbatim"
+    },
+    {
+      "id": "7b70-V06",
+      "claim": "Standard Commission Income Statement Table 1 lists Kitchen (with Physical Books, Automotive) at a fixed 4.50% rate; All Other Categories at 4.00%",
+      "source": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "observed": "Table 1 read live: 'Physical Books, Kitchen, Automotive | 4.50%'; 'All Other Categories | 4.00%'; Bounty schedule present ($12.00 Prime signup etc.)",
+      "result": "confirmed_verbatim"
+    },
+    {
+      "id": "7b70-V07",
+      "claim": "FTC Disclosures 101 requires disclosure of any financial, employment, personal or family relationship; placement should be hard to miss; endorsers cannot talk about experience with a product they haven't tried; guide dated November 2019",
+      "source": "https://ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "observed": "All three quoted phrases present verbatim on the page; 'November 2019' date visible",
+      "result": "confirmed_verbatim"
+    }
+  ],
+  "irregularities_found_this_session": [],
+  "integrity_gates_run": {
+    "scripts/check_site.py": "OK: 12 pages, 3 products, 48 sources, 49 flags",
+    "tools/verify_site.py": "VERIFY PASS · 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 with repo anchor",
+    "tools/link_report.py --strict": "exit 0 (dangling source refs=none; uncited SRC-07 and flags FLG-001/002/003/007/027 are non-blocking advisories, as logged by prior sessions)",
+    "scripts/check_all_links.py": "115 HTML pages, 104 distinct external URLs, 0 errors",
+    "sessions/3c886b62/tools/check_links.py": "OK — no broken internal links, every data row has a source cell",
+    "generators idempotent": "scripts/build_site.py re-run produced zero diff"
+  }
+}
