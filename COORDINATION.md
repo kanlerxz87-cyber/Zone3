@@ -2967,3 +2967,7 @@ Owner actions that would unblock the blocked items in the requirements matrix (n
 | I-T3 — Record results and any findings in this Part; do not overwrite prior session-owned outputs | in progress | 043344f8 | `COORDINATION.md` I Part only | to be recorded | — |
 
 Scope note: this session is on the Arena-fixed branch `arena/043344f8-zone3`; it will not create or switch branches. Root and generated content are read-only unless an independently confirmed defect is found and ownership permits a non-overlapping fix.
+
+### I-T4 scope addendum — stale interpretation correction
+
+A reproducible inconsistency was found between the latest product register (`data/z3/products.json`, which records the three observed short-link destinations as verified listings) and the generated audit dashboard / legacy shared flag text (which still called those targets unrelated/random and treated `plpRedirect=mhFallback` as proof of a failed deep link). This matches the wording request already logged by session `588693c9` in Part E; that session did not own the generator. All earlier sessions are complete and the current session is the integration pass, so I-T4 now owns the additive correction only in `tools/build_site.py`, `data/z3/flags.json`, `data/z3/sources.json`, and generated `dashboard/**`. The correction will preserve the distinction between verified redirect destinations and unverified user intent; it will not claim that the destination is the user's intended product unless that is independently known.
