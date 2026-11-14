@@ -3034,6 +3034,8 @@ This is the fourth independent observation round of the redirect mapping (after 
 | `python3 scripts/check_all_links.py` | 115 HTML pages · 104 external URLs · 0 errors |
 | `python3 scripts/check_site.py` | OK · 12 pages · 3 products · 48 sources · 49 flags |
 
+Re-run on the rebased tree (`main` @ `cb2dc1d` + this session's commits, after PRs #55–#61 merged): all four gates still green — `verify_site.py` VERIFY PASS · 69 pages · **1172** table rows · **970** with official source · **348** with flag · 82 with repo anchor; `link_report.py --strict` exit 0; `check_all_links.py` 115 pages · 104 external URLs · 0 errors; `check_site.py` OK · 48 sources · **51** flags. The sitemap quirks 21-F-02/03/04 re-reproduce exactly at this commit. Session c79eb5d9's "price/rating display fix, site map, orphan-page gate" (PR #61) did not contradict any finding in this record.
+
 No gate was red; no file outside this session's scope was edited.
 
 ## 21-T5 record — executive summary check + flags (done)

@@ -72,6 +72,9 @@ them to "verified by 21acd3c0". They are not blanked either, because the registe
   between `data/*.json`, the generated pages, the marketing section, and the live web.
 - 0 unprovenanced table rows (1169/1169 pass V4). 0 broken links. 0 leaked unverified values in
   marketing copy. All product fact fields blank-by-rule.
+- Re-run after rebasing onto `main` @ `cb2dc1d` (PRs #55–#61 merged): all gates still green —
+  69 pages · 1172 rows · 970 sourced · 348 flagged · 82 anchored (V1–V7 pass), 0 broken links,
+  51 flags. Findings unchanged; sitemap quirks 21-F-02/03/04 re-reproduce exactly.
 - Unresolved (non-blocking, published on [flagged.html](https://kanlerxz87-cyber.github.io/Zone3/flagged.html)):
   the identity question behind FLG-002/FLG-035 (whether the owner *intended* the destination
   products), the missing Associates tag (FLG-010), and the API-eligibility gate for automation
