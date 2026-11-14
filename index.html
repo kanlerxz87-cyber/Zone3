@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard | Zone3 Amazon affiliate dashboard</title>
-<meta name="description" content="Zone3: verified Amazon affiliate product data, analysis and flags. Status as of 2026-11-13.">
+<meta name="description" content="Zone3: verified Amazon affiliate product data, analysis and flags. Status as of 2026-11-14.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -14,14 +14,12 @@
 </header>
 <main>
 <h1>Dashboard</h1>
-<p class="lead">Status as of 2026-11-13. The site shows verified data only. Blank cells are unverified and listed on the Flagged for review page.</p>
+<p class="lead">Status as of 2026-11-14. The site shows verified data only. Blank cells are unverified and listed on the Flagged for review page.</p>
 
 <div class="callout">
-  <p><strong>Headline:</strong> none of the three submitted Amazon links can be verified as a product listing.
-  The identifiers are nine characters long and the amazon.com product pages for them return &ldquo;Page Not Found&rdquo;.
-  The short links open three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven) that are not confirmed as the submitted products. Those values are left blank.</p>
+  <p><strong>Headline:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
 </div>
-<div class="grid"><div class="stat "><div class="n">3</div><div class="l">Product links submitted</div></div><div class="stat bad"><div class="n">3 of 3</div><div class="l">Product identifiers verified (ASIN)</div></div><div class="stat warn"><div class="n">0 of 3</div><div class="l">Prices verified</div></div><div class="stat warn"><div class="n">0 of 3</div><div class="l">Commission rates verified</div></div><div class="stat bad"><div class="n">2</div><div class="l">Critical flags open</div></div><div class="stat warn"><div class="n">26</div><div class="l">Total flags open</div></div></div>
+<div class="grid"><div class="stat "><div class="n">3</div><div class="l">Product links submitted</div></div><div class="stat ok"><div class="n">3 of 3</div><div class="l">Resolved target ASIN listings</div></div><div class="stat warn"><div class="n">0 of 3</div><div class="l">Prices verified</div></div><div class="stat warn"><div class="n">0 of 3</div><div class="l">Commission rates verified</div></div><div class="stat bad"><div class="n">2</div><div class="l">Critical flags open</div></div><div class="stat warn"><div class="n">26</div><div class="l">Total flags open</div></div></div>
 <h2>Sections</h2>
 <div class="tiles"><a class="tile" href="executive-summary.html"><b>Executive summary</b><span>Bottom line, findings, what was built, what is blocked.</span></a><a class="tile" href="products.html"><b>Products</b><span>The 3 submitted links, identifier checks, redirect results.</span></a><a class="tile" href="pricing.html"><b>Pricing &amp; commission</b><span>Price and commission fields, plus the verified commission rules.</span></a><a class="tile" href="reviews.html"><b>Reviews &amp; competition</b><span>Ratings and competitor fields, plus the verified review rules.</span></a><a class="tile" href="content.html"><b>Content &amp; compliance</b><span>Article status and the Associates and FTC checklist.</span></a><a class="tile" href="campaigns.html"><b>Campaigns &amp; tracking</b><span>Click and conversion ledger. Empty until data exists.</span></a><a class="tile" href="flagged.html"><b>Flagged for review</b><span>Every irregularity and unverified item, with its source links.</span></a><a class="tile" href="sources.html"><b>Sources</b><span>The official source registry with retrieval status.</span></a></div>
 
@@ -38,7 +36,7 @@ been rewritten in the same commit that added the row. Corrections are listed on 
 </main>
 <footer>
   <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
-  <p class="muted">Data verified as of 2026-11-13 (re-verified 2026-11-14). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+  <p class="muted">Data verified as of 2026-11-14 (re-verified 2026-11-14). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
   <p class="small" style="margin-top:10px">This repository carries two site generations: the flat pages above (built by <code>scripts/build_site.py</code> from <code>data/*.json</code>) and a 16-page audit build at <a href="dashboard/index.html">/dashboard/</a> (built by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>). Neither overwrites the other; <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">COORDINATION.md</a> maps both.</p>
   <p class="small" style="margin-top:6px"><a href="landing-prior.html">Previous landing page</a> (kept intact) · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md#part-session-b8beb448-2026-11-14--independent-line-by-line-re-verification--ux-integration">Verification record for this build</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
 </footer>
