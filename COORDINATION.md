@@ -3483,3 +3483,14 @@ Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `d
 - **C3-T2 done.** Live fetches (2026-11-14), official Amazon pages only: `link.amazon/B04G1MEwY` → `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt dual basket); `link.amazon/B02NbDxp3` → `amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT); `link.amazon/B00hJ57DV` → `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry). Control: `amazon.com/dp/B04G1MEwY` → Page Not Found. All three ASINs appear in `data/z3/products.json` and `pricing.json`.
 - **C3-F-01 (sitemap drift, for the integration owner).** The committed `sitemap.xml` lacks five pages the build emits: `analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`. Not edited by this session (shared output).
 - **C3-F-02 (intent not established).** The short-link destinations are verified. Whether they match the requester's intended products is not confirmed by an official source. Already flagged in the repo; no change.
+
+## C3-T3 record — PR, merge and Pages deploy (2026-11-14, session c3dbcc40)
+
+| Event | Result |
+|---|---|
+| Pull request | [#73 — c3dbcc40: gate re-run, live re-verification of submitted links, sitemap drift log](https://github.com/kanlerxz87-cyber/Zone3/pull/73), `arena/c3dbcc40-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on `f618a53` (see C3-T1). |
+| Merge | **MERGED** 2026-11-14T19:02:10Z via `gh pr merge 73 --merge` (no approval waited). Merge commit `96ea74547cebb155075fcbdd6db8e3a8740623aa`. |
+| Pages | build for `96ea745` → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`). |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/flagged-for-review.html serves the Flagged for review page (66 entries). |
+| Irregularities | C3-F-01 (sitemap drift, integration owner) and C3-F-02 (short-link intent unconfirmed) logged above. |
