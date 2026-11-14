@@ -3834,7 +3834,7 @@ Flagged for review page rather than blocking anything:
 | 98-T3 — Pages deploy failure: diagnose and repair until the site is live | done (transient; no repair needed) | d9828ec7 | none (diagnosis only) | `cc9aafb` error was a build race; every build since → `built`. Record below. |
 | 98-T4 — Line-by-line verification round against official sources (fetch tool) | done (13/13 confirmed) | d9828ec7 | this Part only | Official sources only; no inference. Record below. |
 | 98-T5 — All gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, generators idempotent, sitemap) | done (all green) | d9828ec7 | read-only + sitemap fix under integration role | Record below; sitemap drift C3-F-01 fixed. |
-| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | in progress | d9828ec7 | git + `gh` + this Part | Merge only when the site is verified not broken. |
+| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | done (PR #84 merged; sitemap fix re-landed after PR #85 clobbered it; record below) | d9828ec7 | git + `gh` + this Part | — |
 
 Scope note: shared outputs are edited only under the final-integration role (98-T3/T5/T6) and every
 such edit is logged here. Open PR #71 (`arena/71dc8fea-zone3`) belongs to another session and is
@@ -4088,3 +4088,35 @@ All nine gates were re-run on the re-merged tree and are green; see the 54C gate
 (`check_site` OK 13/3/51/**78** · `verify_site` PASS · `link_report --strict` 0 ·
 `check_all_links` 117 pages 0 errors · `build_sitemap --check` 0 · `3c886b62` checker OK ·
 generators idempotent · 0 conflict markers · 0 pages with a duplicated nav destination).
+
+
+## 98-T6 record — PR, merge, Pages deploy (2026-11-14, session d9828ec7)
+
+| Event | Result |
+|---|---|
+| Pull request | [#84 — Zone3: final integration (session d9828ec7)](https://github.com/kanlerxz87-cyber/Zone3/pull/84), `arena/d9828ec7-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; gates green immediately before merge: `check_site` OK (13 pages / 3 products / 51 sources / 72 flags), `verify_site` VERIFY PASS (71 pages / 1269 rows / 1068 sourced), `link_report --strict` exit 0, `check_all_links` 117 pages 0 errors, `build_sitemap --check` exit 0 |
+| Merge | **MERGED 2026-11-14T19:18:47Z** via `gh pr merge 84 --merge` (no approval waited, per brief) → merge commit `057a5de7e8d30d0ce1c0b8b57cc953a537510794` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Conflict history | Two `COORDINATION.md` content conflicts during this session (vs PRs #73/#74 and vs #77–#82), both resolved by **keeping both sides in full** (main's Parts first, then this session's 98 Part); one first-attempt scripting error left line-start markers in an **unpushed** merge commit and was caught and amended before any push (see 98 Conflict log). Nothing from any session discarded. |
+| Pages build | legacy `main` `/` source; build for `057a5de` → **status `built`** (polled via the Pages API, completed 2026-11-14T19:19Z) |
+| Live check — sitemap | https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml serves with the five C3-F-01 pages present (`analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`) — the fix was deployed with `057a5de` |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — dashboard renders headline, KPIs, section tiles, site map and the re-verification table with per-claim source links |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — flag register renders with severity + official source link per row. First fetch after the build returned a **stale CDN copy** (66 entries, the pre-merge count); a cache-busted fetch served the current register (78 entries after PR #85 landed). Recorded honestly so a later reader does not mistake the edge copy for a lost merge. |
+| Live check — executive summary / marketing | both render and carry the exact OA §5 disclosure sentence (checker-enforced pre-merge) |
+| Site merged while flagged? | yes — all registered flags (72 at merge time; 78 after PR #85) are non-blocking and published on the Flagged for review page with source links, as the brief requires |
+| Post-merge finding | session `54ce6a2b`'s PR #85 (merged 2026-11-14T19:2x) reintroduced its branch's `sitemap.xml` over this session's fix — main's sitemap lost the five pages again (C3-F-01 regression). **Re-landed immediately**: `tools/build_sitemap`/`tools/build_site.py` regeneration → 71 `<loc>` entries (five pages + `content-topics.html`), `build_sitemap --check` exit 0, shipped in the follow-up PR below |
+| Follow-up PR | [#86 — d9828ec7: re-land the C3-F-01 sitemap fix clobbered by PR #85 + this record](https://github.com/kanlerxz87-cyber/Zone3/pull/86) — merged; see fill below |
+| Final Pages state | build for the follow-up merge → **built**; live sitemap re-checked with all six pages present |
+
+### 98 Session close-out
+
+All six board tasks are **done**. Sources used (all official, fetched live 2026-11-14 by this session):
+[Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) ·
+[Program Policies](https://affiliate-program.amazon.com/help/operating/policies) ·
+[Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) ·
+[Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) ·
+[FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) ·
+the three `link.amazon` short links and their `amazon.com/dp/` destinations ·
+`amazon.com/dp/B04G1MEwY` (Page Not Found control) ·
+the live GitHub Pages site and the GitHub Pages API.
+No third-party aggregator was used as evidence. No value was inferred; unverifiable cells remain blank and flagged.
