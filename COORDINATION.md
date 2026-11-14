@@ -1082,7 +1082,7 @@ Audit checks: no credentials/secrets in the tree (`.gitignore` covers `.env*`, `
 
 Build quirk found and neutralised: re-running `scripts/build_site.py` regenerates the 9 root pages but drops two hand-added paragraphs on `index.html` (the full-audit pointer and the two-generations footer note) because the generator does not emit them. The regeneration was **reverted** (`git checkout --`) so no other session's edits were lost; drift logged as D-F-04.
 
-### D-T4 — Line-by-line re-verification against live official sources (2026-01-14 → 2026-11-14, all fetched this session)
+### D-T4 — Line-by-line re-verification against live official sources (all fetched 2026-11-14)
 
 All **42/42** policy facts in `data/policy_facts.json` were re-read against the live official page named by their source ID. Exact-quote matches (spot list; full set = every PF id):
 
