@@ -1,9 +1,9 @@
 {
   "_meta": {
     "title": "Review & sentiment analysis",
-    "generated_utc": "2026-11-13T23:42:00Z",
-    "headline": "Review data is the field most tightly restricted by the Program Policies — and it is entirely unavailable for the three submitted items.",
-    "method": "Reviews and star ratings may not be displayed at all unless obtained via Creators API or PA API. There is no operations list in the public Creators API documentation for retrieving individual review bodies (SRC-13 lists four operations)."
+    "generated_utc": "2026-11-14",
+    "headline": "Review metrics are not displayed as product-page data; API permission and compliant acquisition have not been established.",
+    "method": "Resolved listing identity is verified, but no Creators/PA API data access was used. Review observations are recorded in research log and not presented as live/API review data. Do not infer trends or conversions."
   },
   "review_rows": {
     "caption": "Per-product review metrics",
@@ -40,57 +40,48 @@
     "rows": [
       {
         "ref": "P-01",
-        "asin": "B04G1MEwY",
+        "asin": "B0CDY277D3",
         "rating": null,
         "count": null,
         "verified_only": null,
         "themes": null,
-        "why_blank": "No resolvable listing; no API credentials. Refused to substitute the random product that the fallback redirect served.",
+        "why_blank": "Not displayed as platform review analysis: compliant API acquisition not established; dated research details in verification log.",
         "sources": [
-          "SRC-01",
-          "SRC-04"
+          "SRC-10",
+          "SRC-20"
         ],
-        "status": "unverified",
-        "flags": [
-          "FLG-007",
-          "FLG-008"
-        ]
+        "status": "unverified for compliant API use",
+        "flags": []
       },
       {
         "ref": "P-02",
-        "asin": "B02NbDxp3",
+        "asin": "B09B7SB46R",
         "rating": null,
         "count": null,
         "verified_only": null,
         "themes": null,
-        "why_blank": "As above.",
+        "why_blank": "Not displayed as platform review analysis: compliant API acquisition not established; dated research details in verification log.",
         "sources": [
-          "SRC-02",
-          "SRC-05"
+          "SRC-10",
+          "SRC-21"
         ],
-        "status": "unverified",
-        "flags": [
-          "FLG-007",
-          "FLG-008"
-        ]
+        "status": "unverified for compliant API use",
+        "flags": []
       },
       {
         "ref": "P-03",
-        "asin": "B00hJ57DV",
+        "asin": "B08DKYBTPH",
         "rating": null,
         "count": null,
         "verified_only": null,
         "themes": null,
-        "why_blank": "As above.",
+        "why_blank": "Not displayed as platform review analysis: compliant API acquisition not established; dated research details in verification log.",
         "sources": [
-          "SRC-03",
-          "SRC-06"
+          "SRC-10",
+          "SRC-22"
         ],
-        "status": "unverified",
-        "flags": [
-          "FLG-007",
-          "FLG-008"
-        ]
+        "status": "unverified for compliant API use",
+        "flags": []
       }
     ]
   },

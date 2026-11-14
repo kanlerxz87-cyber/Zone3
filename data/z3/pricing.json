@@ -1,9 +1,9 @@
 {
   "_meta": {
     "title": "Pricing & market analysis",
-    "generated_utc": "2026-11-13T23:40:00Z",
-    "headline": "No price for any submitted product could be verified, and two common affiliate pricing features are prohibited outright.",
-    "method": "Price/availability may only be shown if Amazon serves the link in which the data appears, or if it is obtained via Creators API / PA API under the IP License (SRC-10, Participation Requirements 2(b)). Both routes are unavailable here: the identifiers do not resolve and no API credentials were supplied."
+    "generated_utc": "2026-11-14",
+    "headline": "No static product prices are published. Dated listing observations are research-only; onsite price display is subject to Amazon Program Policies.",
+    "method": "The three short links resolve to live listings. Prices observed 2026-11-14 are retained in the session verification log only and are not rendered as site offers. Use Amazon-served Special Links or authorized Creators/PA API routes, with required timestamp and disclaimers. See SRC-10 and PF-04/PF-11/PF-27."
   },
   "price_rows": {
     "caption": "Per-product pricing sheet",
@@ -44,60 +44,51 @@
     "rows": [
       {
         "ref": "P-01",
-        "asin": "B04G1MEwY",
+        "asin": "B0CDY277D3",
         "list_price": null,
         "lowest_new": null,
         "lowest_used": null,
         "est_commission": null,
         "price_band": null,
-        "why_blank": "ASIN invalid (9 chars) and /dp/ probe 404s — no official record exists to read.",
+        "why_blank": "Static site price intentionally omitted under Amazon price-display rules; dated research observation is in research/a86f1d09-verification-log.md.",
         "sources": [
-          "SRC-01",
-          "SRC-08"
+          "SRC-10",
+          "SRC-20"
         ],
-        "status": "unverified",
-        "flags": [
-          "FLG-004",
-          "FLG-008"
-        ]
+        "status": "not displayed; policy restricted",
+        "flags": []
       },
       {
         "ref": "P-02",
-        "asin": "B02NbDxp3",
+        "asin": "B09B7SB46R",
         "list_price": null,
         "lowest_new": null,
         "lowest_used": null,
         "est_commission": null,
         "price_band": null,
-        "why_blank": "As above.",
+        "why_blank": "Static site price intentionally omitted under Amazon price-display rules; dated research observation is in research/a86f1d09-verification-log.md.",
         "sources": [
-          "SRC-02",
-          "SRC-08"
+          "SRC-10",
+          "SRC-21"
         ],
-        "status": "unverified",
-        "flags": [
-          "FLG-005",
-          "FLG-008"
-        ]
+        "status": "not displayed; policy restricted",
+        "flags": []
       },
       {
         "ref": "P-03",
-        "asin": "B00hJ57DV",
+        "asin": "B08DKYBTPH",
         "list_price": null,
         "lowest_new": null,
         "lowest_used": null,
         "est_commission": null,
         "price_band": null,
-        "why_blank": "As above.",
+        "why_blank": "Static site price intentionally omitted under Amazon price-display rules; dated research observation is in research/a86f1d09-verification-log.md.",
         "sources": [
-          "SRC-03",
-          "SRC-08"
+          "SRC-10",
+          "SRC-22"
         ],
-        "status": "unverified",
-        "flags": [
-          "FLG-006",
-          "FLG-008"
-        ]
+        "status": "not displayed; policy restricted",
+        "flags": []
       }
     ]
   },

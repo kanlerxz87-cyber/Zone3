@@ -1,6 +1,6 @@
 {
-  "retrieved": "2026-11-13",
-  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py).",
+  "retrieved": "2026-11-14",
+  "note": "Null means unverified or intentionally withheld. Submitted nine-character tokens are short-link identifiers, not ASINs. Static prices are not displayed; see research/a86f1d09-verification-log.md for dated observations.",
   "products": [
     {
       "id": "P1",
@@ -8,25 +8,25 @@
       "submitted_url": "https://link.amazon/B04G1MEwY",
       "link_id": "B04G1MEwY",
       "link_id_length": 9,
-      "asin": null,
+      "asin": "B0CDY277D3",
       "direct_check": {
         "url": "https://www.amazon.com/dp/B04G1MEwY",
-        "result": "Page Not Found",
+        "result": "Page Not Found for short token; expected because short token is not an ASIN",
         "source": "S08"
       },
       "redirect_observed": {
         "final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
         "page_id": "B0CDY277D3",
         "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S11",
+        "confirmed_as_submitted_product": true,
+        "source": "S30",
         "title_source": "S14",
         "brand": "CHEFMAN",
         "capacity": "6 Quart",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
       },
-      "product_name": null,
-      "brand": null,
+      "product_name": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+      "brand": "Chefman",
       "price": null,
       "rating": null,
       "review_count": null,
@@ -37,7 +37,7 @@
       "clicks": null,
       "conversions": null,
       "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
+      "status": "Short link resolves to live listing; data fields subject to compliance/access restrictions",
       "flags": [
         "FLG-001",
         "FLG-002",
@@ -47,7 +47,8 @@
         "S08",
         "S11",
         "S14",
-        "S02"
+        "S02",
+        "S30"
       ]
     },
     {
@@ -56,25 +57,25 @@
       "submitted_url": "https://link.amazon/B02NbDxp3",
       "link_id": "B02NbDxp3",
       "link_id_length": 9,
-      "asin": null,
+      "asin": "B09B7SB46R",
       "direct_check": {
         "url": "https://www.amazon.com/dp/B02NbDxp3",
-        "result": "Page Not Found",
+        "result": "Page Not Found for short token; expected because short token is not an ASIN",
         "source": "S09"
       },
       "redirect_observed": {
         "final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
         "page_id": "B09B7SB46R",
         "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S12",
+        "confirmed_as_submitted_product": true,
+        "source": "S31",
         "title_source": "S15",
         "brand": "Emeril Lagasse",
         "capacity": "26QT",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
       },
-      "product_name": null,
-      "brand": null,
+      "product_name": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+      "brand": "Emeril Lagasse",
       "price": null,
       "rating": null,
       "review_count": null,
@@ -85,7 +86,7 @@
       "clicks": null,
       "conversions": null,
       "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
+      "status": "Short link resolves to live listing; data fields subject to compliance/access restrictions",
       "flags": [
         "FLG-001",
         "FLG-002",
@@ -95,7 +96,8 @@
         "S09",
         "S12",
         "S15",
-        "S02"
+        "S02",
+        "S31"
       ]
     },
     {
@@ -104,25 +106,25 @@
       "submitted_url": "https://link.amazon/B00hJ57DV",
       "link_id": "B00hJ57DV",
       "link_id_length": 9,
-      "asin": null,
+      "asin": "B08DKYBTPH",
       "direct_check": {
         "url": "https://www.amazon.com/dp/B00hJ57DV",
-        "result": "Page Not Found",
+        "result": "Page Not Found for short token; expected because short token is not an ASIN",
         "source": "S10"
       },
       "redirect_observed": {
         "final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
         "page_id": "B08DKYBTPH",
         "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S13",
+        "confirmed_as_submitted_product": true,
+        "source": "S32",
         "title_source": "S23",
         "brand": "Chefman",
         "capacity": "8 Qt",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002)."
       },
-      "product_name": null,
-      "brand": null,
+      "product_name": "Chefman Air Fryer 8 Qt TurboFry 4-in-1",
+      "brand": "Chefman",
       "price": null,
       "rating": null,
       "review_count": null,
@@ -133,7 +135,7 @@
       "clicks": null,
       "conversions": null,
       "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
+      "status": "Short link resolves to live listing; data fields subject to compliance/access restrictions",
       "flags": [
         "FLG-001",
         "FLG-002",
@@ -143,7 +145,8 @@
         "S10",
         "S13",
         "S16",
-        "S02"
+        "S02",
+        "S32"
       ]
     }
   ]
