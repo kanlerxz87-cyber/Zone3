@@ -3484,6 +3484,7 @@ Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `d
 - **C3-F-01 (sitemap drift, for the integration owner).** The committed `sitemap.xml` lacks five pages the build emits: `analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`. Not edited by this session (shared output).
 - **C3-F-02 (intent not established).** The short-link destinations are verified. Whether they match the requester's intended products is not confirmed by an official source. Already flagged in the repo; no change.
 
+<<<<<<< HEAD
 ## C3-T3 record — PR, merge and Pages deploy (2026-11-14, session c3dbcc40)
 
 | Event | Result |
@@ -3494,3 +3495,37 @@ Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `d
 | Pages | build for `96ea745` → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`). |
 | Live check | https://kanlerxz87-cyber.github.io/Zone3/flagged-for-review.html serves the Flagged for review page (66 entries). |
 | Irregularities | C3-F-01 (sitemap drift, integration owner) and C3-F-02 (short-link intent unconfirmed) logged above. |
+=======
+
+# PART 54C — Session `54ce6a2b` (branch `arena/54ce6a2b-zone3`, base `f618a53`) — 2026-11-14
+
+## 54C Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 54ce6a2b | `arena/54ce6a2b-zone3` | Independent line-by-line repo review; live re-verification of the three submitted links and of the load-bearing policy text; site defect fixes inside this session's claimed scope only; PR to `main`, merge, Pages deploy. | in progress (T-54C-1 claimed) | 2026-11-14 |
+
+Branch naming: the brief asks for `session-<id>/<task>` branches. The Arena branch note for this
+session fixes it to one branch, `arena/54ce6a2b-zone3`, and forbids creating or pushing any other
+branch. Task IDs below replace per-task branches, following the decision already logged by session
+`7f84fea4` on this board.
+
+## 54C Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| T-54C-1 — Claim scope, sync to `main` | in progress | 54ce6a2b | `COORDINATION.md` (this Part only) | — | — |
+| T-54C-2 — Independent live re-fetch of the three submitted links and of the direct `/dp/` checks | unclaimed | 54ce6a2b | `sessions/54ce6a2b/**`, `research/54ce6a2b-verification-log.md` | to be recorded | to be recorded |
+| T-54C-3 — Line-by-line repo review of the combined tree | unclaimed | 54ce6a2b | `research/54ce6a2b-repo-review.md`, `sessions/54ce6a2b/**` | — | to be recorded |
+| T-54C-4 — Site defects found and fixed inside this session's claimed scope | unclaimed | 54ce6a2b | `scripts/build_marketing.py` + the files it generates (`marketing/*.html`), `sessions/54ce6a2b/**` | — | to be recorded |
+| T-54C-5 — Gates, PR to `main`, merge, Pages deploy, record appended here | unclaimed | 54ce6a2b | this branch only | — | — |
+
+### 54C Scope note (non-overlapping)
+
+This session edits only: this Part of `COORDINATION.md`, new files under `sessions/54ce6a2b/`,
+`research/54ce6a2b-*.md`, and `scripts/build_marketing.py` with the `marketing/*.html` files it
+generates. Shared outputs (`data/sources.json`, `data/flags.json`, `data/products.json`,
+`scripts/build_site.py`, `tools/*`, the flat root pages and the site index/navigation) are **not**
+edited by this session except by an explicit request logged on this board. Where a defect is found in
+a file owned by another session, it is logged as a change request below rather than edited.
+>>>>>>> 5a28d9f (54ce6a2b: claim scope on the shared task board (T-54C-1..T-54C-5))
