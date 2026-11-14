@@ -33,6 +33,7 @@ SOURCES = {s["id"]: s for s in SRC["sources"]}
 PRODUCTS = load("products.json")["products"]
 FACTS = {f["id"]: f for f in load("policy_facts.json")["facts"]}
 FLAGS = load("flags.json")["flags"]
+COMMISSION = load("commission.json")
 
 
 def e(value) -> str:
@@ -262,7 +263,7 @@ def build_exec() -> None:
     <li><strong>0 of {N} product identifiers are confirmed.</strong> The identifiers are nine characters, and the amazon.com pages for them do not exist {flag_links(['FLG-001'])} {src_links(['S06', 'S08', 'S09', 'S10'])}.</li>
     <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
     <li><strong>Associates compliance of link.amazon is unconfirmed.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), and purchases from a Redirecting Link are disqualified (PF-07). Whether link.amazon redirects without a click has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
-    <li><strong>Commission rates cannot be verified.</strong> The rate schedule redirected to a sign-in page on 2026-11-13 {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
+    <li><strong>The commission rate table is public; per-product rates are not assignable.</strong> The Commission Schedule link in the Program Policies (S03) redirects to a sign-in page, but the same Standard Commission Income Statement is published publicly at the Associates help node (S25): Table 1 (11 category rows, 0.00%&ndash;10.00%) was read in full on 2026-11-14 and is reproduced on the <a href="pricing.html">Pricing</a> page as a category reference. No per-product rate is stated, because each listing&rsquo;s commission category is not verified (FLG-021, FLG-005).</li>
     <li><strong>Automated product data needs Creators API access.</strong> The official prerequisite is &ldquo;at least 10 qualifying sales within the past 30 days&rdquo; {src_links(['S04'])}. Prices and reviews may be shown only through a Special Link or the API {src_links(['S02'])} (PF-04, PF-05) {flag_links(['FLG-006'])}.</li>
     <li><strong>The AI layer needs written approval from Amazon.</strong> The Creators API terms bar analysing, aggregating or repurposing its data, and bar using Program Content to develop or train machine learning or language models, without express prior written approval {src_links(['S02'])} (PF-23, PF-24, PF-25) {flag_links(['FLG-016'])}.</li>
     <li><strong>Eligibility for a Norway-based owner is not stated.</strong> Schedule 1 of the Operating Agreement lists only the United States site, amazon.com {src_links(['S01'])} (PF-35) {flag_links(['FLG-015'])}.</li>
@@ -297,7 +298,7 @@ def build_exec() -> None:
   <ul class="findings">
     <li>Give the intended product URL or 10-character ASIN for each of the three products (FLG-001).</li>
     <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
-    <li>Export the commission rate card for the product category from Associates Central (FLG-005).</li>
+    <li>Confirm each listing&rsquo;s commission category in Associates Central, then the matching Table 1 rate (already published on the Pricing page) can be applied to each product row (FLG-005, FLG-021).</li>
     <li>Confirm Associates enrolment and supply the Associates tag, not a password or token (FLG-010).</li>
   </ul>
 </section>
@@ -350,7 +351,7 @@ def build_pricing() -> None:
             e(p["label"]),
             val(p["price"]),
             val(p["commission_rate"]),
-            badge("Blocked: no product record", "bad") + " " + badge("Schedule not accessible", "warn"),
+            badge("Blocked: no product record", "bad") + " " + badge("Category not verified", "warn"),
             flag_links(["FLG-004", "FLG-005"]),
             src_links(["S03", "S02", p["direct_check"]["source"]]),
         ])
@@ -371,8 +372,17 @@ def build_pricing() -> None:
         ["Kitchen (Onsite Commission, Table A)", "1.25%", "Not a rate for links on this site. It applies to Onsite Content used by Amazon within the Amazon Site.", FACTS["PF-39"]["quote"], src_links(["S26"]) + " " + flag_links(["FLG-021"])],
     ]
     body += "<h2>Category reference rates (not product values)</h2>" + table(["Category and table", "Rate", "What it means here", "Verified wording (quoted)", "Source"], ref_rows)
+    t1_rows = [
+        [e(c["category"]), e(c["rate"]), "Category reference from Table 1. Not applied to any product row: the listings' commission category is not verified (FLG-021).", src_links(COMMISSION["sources"])]
+        for c in COMMISSION["table"]
+    ]
+    body += (
+        "<h2>Table 1 in full &mdash; Fixed Standard Commission Income Rates (read 2026-11-14, public help node)</h2>"
+        '<p class="muted">Read in full without login from the Associates help node S25 on 2026-11-14. The wording and rates below are the literal values in the published table. This table is a category reference, not a per-product rate.</p>'
+        + table(["Product categories (as published)", "Fixed Standard Commission Income Rate", "Applies here", "Source"], t1_rows)
+    )
     page("pricing.html", "Pricing &amp; commission", body,
-         lead="Price and commission fields are blank because the source needed to fill them (the commission rate schedule, and the Creators API) is not available to this session. The rules below are verified.")
+         lead="Price and per-product commission fields are blank: prices may be shown only via a served Special Link or the Creators API (PF-04), and each listing's commission category is not verified (FLG-021). The commission rules below and the full published Table 1 are verified.")
 
 
 # ------------------------------------------------------------- Reviews

@@ -29,8 +29,8 @@
       "url": "https://affiliate-program.amazon.com/help/operating/schedule",
       "publisher": "Amazon Associates (official)",
       "status": "not-accessible",
-      "status_note": "On 2026-11-13 this URL redirected to an Amazon sign-in page (ap/signin). No rate values were read, so no commission rate is stated anywhere on this site.",
-      "used_for": "Nothing. Commission rates are left blank and flagged (FLG-005).",
+      "status_note": "On 2026-11-13 and again on 2026-11-14 this URL redirected to an Amazon sign-in page (ap/signin). No rate values were read here. Correction recorded 2026-11-14: the same Standard Commission Income Statement is publicly readable without login at the help node cited as S25; Table 1 was read in full from S25 on 2026-11-14.",
+      "used_for": "Documenting that this schedule URL is sign-in-gated. Rates are cited from S25 (public help node) on the Pricing page as category references; per-product rates remain blank (FLG-005, FLG-021).",
       "alias_of_26634cd5": "S9"
     },
     {

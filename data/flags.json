@@ -70,12 +70,14 @@
       "id": "FLG-005",
       "severity": "High",
       "category": "Commission rates",
-      "item": "Commission rates are unverified; the official rate schedule is not accessible",
-      "detail": "The Commission Schedule link in the Program Policies (S03) redirected to an Amazon sign-in page on 2026-11-13. No rate was read, so no commission rate, commission-income estimate or payout figure is stated on this site.",
-      "action": "Sign in to Associates Central and export the rate card for the product category; send the file or the values so they can be added with a source.",
+      "item": "Per-product commission rates are unverified; the rate table itself is public",
+      "detail": "Corrected 2026-11-14 by the integration session. The Commission Schedule URL in the Program Policies (S03, /help/operating/schedule) does redirect to an Amazon sign-in page. However, the same Standard Commission Income Statement is published publicly without login at the Associates help node (S25, /help/node/topic/GRXPHT8U84RAYDXZ): Table 1 was read in full on 2026-11-14 (11 category rows, 0.00%-10.00%; Physical Books, Kitchen, Automotive 4.50%; All Other Categories 4.00%), together with the bounty table. No per-product commission rate is stated on this site: which Table 1 row applies depends on each listing's commission category, which is not verified (FLG-021), and no Associates account or tag has been supplied (FLG-010, FLG-011). The full Table 1 is published on the Pricing page as a category reference, not as a product value.",
+      "action": "Owner: confirm each listing's commission category in Associates Central (or via the Creators API, once approved), then apply the matching Table 1 rate to the product row with S25 as its source.",
       "sources": [
         "S02",
-        "S03"
+        "S03",
+        "S25",
+        "S26"
       ]
     },
     {
