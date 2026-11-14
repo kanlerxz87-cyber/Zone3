@@ -412,6 +412,85 @@
         "S09",
         "S10"
       ]
+    },
+    {
+      "id": "FLG-028",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "README stated that plpRedirect=mhFallback 'confirms the identifiers select nothing'",
+      "detail": "README.md said each short link landed on a different product 'through Amazon's plpRedirect=mhFallback route, which confirms the identifiers select nothing'. That inference is not supported. 588-V08: a direct fetch of three known-valid ASINs (/dp/B0CDY277D3, /dp/B09B7SB46R, /dp/B08DKYBTPH) with no short link in the path also ended on URLs carrying plpRedirect=mhFallback and lv=shuf, while serving the correct product page. The parameter therefore appears on ordinary product fetches for this client and shows nothing about a failed lookup. The 9-character / 10-character ASIN argument (FLG-001) is unaffected and remains the basis for rejecting the codes. Corrected in README.md in this session; a wording request is logged in COORDINATION.md for the owner of the /dashboard/ build, which this session does not edit.",
+      "action": "No action for the reader. The owner of tools/build_site.py should drop 'Amazon's fallback route, not a product deep link' from the generated dashboard callout so the two halves of the site agree.",
+      "sources": [
+        "S02",
+        "S14",
+        "S15",
+        "S16",
+        "S31"
+      ]
+    },
+    {
+      "id": "FLG-029",
+      "severity": "High",
+      "category": "Marketing content",
+      "item": "Prices, star ratings and review counts are absent from every marketing page by design, not by omission",
+      "detail": "The brief asks for marketing copy for the three products. This build publishes 7 marketing pages, and none states a price, list price, discount, star rating or review count. Two independent policy reasons, both re-read verbatim on 2026-11-14: Participation Requirement 6(t) permits star ratings and customer reviews on an affiliate site only if obtained through Creators API or PA API, and this build holds no API credentials; 6(y) bars price tracking and price alerting unless separately agreed. Separately, the price figures present in the fetched page text belong to 'Customers who viewed this item also viewed' carousel items for OTHER ASINs and must not be attributed to the listed product. Publishing them would have been both inaccurate and a policy breach.",
+      "action": "Supply Associates credentials and a tag, and reach the Creators API threshold (>=10 qualifying sales in 30 days), after which ratings and prices can be sourced legitimately. Until then the marketing pages stay attribute-only.",
+      "sources": [
+        "S02",
+        "S04",
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-030",
+      "severity": "Medium",
+      "category": "Marketing content",
+      "item": "Whether each resolved listing is the product the submitter intended remains unconfirmed",
+      "detail": "Marketing copy is written against three listings that the submitted short links currently open: B0CDY277D3 (CHEFMAN 6 Quart Dual Basket), B09B7SB46R (Emeril Lagasse 26QT French Door) and B08DKYBTPH (Chefman 8 Qt TurboFry). All three sit under the same five-level browse path (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers) and the mapping was stable across 2026-11-13 and 2026-11-14. No official Amazon document describes how a 9-character link.amazon code maps to a destination, so identity rests on observation only. Every marketing page carries an 'unconfirmed' notice.",
+      "action": "Confirm the three product names or supply the correct ASINs. One line is enough; all 7 marketing pages regenerate from data/marketing.json without further input.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "FLG-031",
+      "severity": "Medium",
+      "category": "Commission",
+      "item": "No per-product commission rate can be derived: the rate card is per category, and the commission category of these ASINs is not stated anywhere official",
+      "detail": "Standard Commission Income Table 1 (S25) was re-read in full on 2026-11-14 and gives a fixed rate by PRODUCT CATEGORY: Luxury Beauty 10.00%, Physical Books/Kitchen/Automotive 4.50%, Home 3.00%, All Other Categories 4.00%, and so on across 11 rows. The Air Fryers breadcrumb seen on all three listings is an Amazon BROWSE NODE, not a commission category. No official source states that a listing under the Air Fryers browse node earns the 'Kitchen' 4.50% row, and Air Fryers is a small kitchen appliance, so the mapping is plausible but not published. Deriving 4.50% would be an inference, so the marketing and comparison pages leave the commission column blank.",
+      "action": "Confirm the mapping from an Associates account commission report once a sale exists, or ask Associates support in writing. Do not publish a derived rate before then.",
+      "sources": [
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "FLG-032",
+      "severity": "Low",
+      "category": "Correction",
+      "item": "Flag D-F-01 ('we earn' vs 'I earn' disclosure wording) is closed as not a breach",
+      "detail": "D-F-01 recorded that some /docs/ pages display 'As an Amazon Associate we earn from qualifying purchases.' rather than the singular form. Operating Agreement section 5 was re-read verbatim on 2026-11-14: 'You must clearly and prominently state the following, OR ANY SUBSTANTIALLY SIMILAR STATEMENT PREVIOUSLY ALLOWED UNDER THIS AGREEMENT, on your Site ...'. The singular sentence is the prescribed model, and a substantially similar statement is expressly allowed. The root flat pages and all 7 marketing pages use the exact singular sentence anyway, so the canonical form on this site is the exact one.",
+      "action": "No action required. Recorded so the item is not re-raised as an open compliance risk.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "FLG-033",
+      "severity": "Low",
+      "category": "Marketing content",
+      "item": "SEO inputs the brief asks for (search volume, keyword difficulty, trend, conversion rate) have no official Amazon source and are left blank",
+      "detail": "The marketing pages are generated with titles and descriptions built from verified listing attributes only. They do not claim search volume, keyword difficulty, trend direction or conversion rate for any product. No official Amazon affiliate endpoint publishes those figures to affiliates, and this project has no live campaign that could produce them. A keyword strategy built on invented volume numbers would be speculation presented as data.",
+      "action": "Once a campaign is live, conversion rate comes from the account's own reports. Search volume for non-Amazon demand requires a third-party keyword tool, which this build deliberately does not cite as an official source. Owner decision needed.",
+      "sources": [
+        "S02",
+        "S19"
+      ]
     }
   ]
 }
