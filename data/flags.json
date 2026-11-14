@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge).",
   "flags": [
     {
       "id": "FLG-001",
@@ -937,44 +937,124 @@
       "action": "Fixed: the topic plan is listed as a dashboard tile and in the site map on the landing page.",
       "sources": [],
       "repo_evidence": "index.html; scripts/build_site.py (tiles and SITEMAP_GROUPS)."
+    },
+    {
+      "id": "F2-F-01",
+      "severity": "Info",
+      "category": "Site",
+      "item": "C3-F-01 (sitemap drift) does not reproduce — audited and resolved",
+      "detail": "Session c3dbcc40 flagged that sitemap.xml lacks five pages the build emits: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Session f2102efa audited each: the root URL IS in the sitemap (as the bare https://kanlerxz87-cyber.github.io/Zone3/ URL — the conventional form for a site root), and the other four are meta-refresh redirect stubs that scripts/build_sitemap.py excludes by documented design (REDIRECT_STUBS set and is_redirect_stub() detection; see flags V-F4/V-F5 for why redirect stubs are delisted).",
+      "action": "No change to sitemap.xml or the generator. python3 scripts/build_sitemap.py reproduces the committed file byte-for-byte. Resolution published for the owner's review.",
+      "sources": [
+        "S56"
+      ],
+      "repo_evidence": "sitemap.xml; scripts/build_sitemap.py (REDIRECT_STUBS, is_redirect_stub)."
+    },
+    {
+      "id": "F2-F-02",
+      "severity": "Info",
+      "category": "Accuracy",
+      "item": "Amazon re-issued the Program Policies (Updated: April 14, 2026) and Operating Agreement (Updated: October 15, 2025); all site quotes still match verbatim",
+      "detail": "Fresh fetches on 2026-11-14 (session f2102efa) show both documents carry new 'Updated:' header dates. The site does not publish either date, so nothing displayed is stale. Every quote the site publishes was re-checked verbatim against the re-issued documents this round: OA §5 disclosure statement, §6 material-breach clause, Community Guidelines sentence; PR 2(b) tag requirement, price-display restriction, comparison-format rule, misleading-claims rule, original-content rule, PR 6(s)/(t)/(v)/(w)/(y)/(z); Commission Income Statement Session, disqualifiers incl. 2(e) Redirecting Link, ≈60-day payment, Payment Minimum Chart; IP License clauses incl. date/time stamp + pricing disclaimer, ASIN storage, 40 KB, CERTAIN CONTENT, 2(e) aggregation/ML-training, Agent Terms user-agent rule. Full table: sessions/f2102efa/verification.md.",
+      "action": "No change needed. Recorded so future sessions know the documents were re-issued and re-check affected wording after any future re-issue.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "repo_evidence": "sessions/f2102efa/verification.md (F2-V09, F2-V10)."
+    },
+    {
+      "id": "F2-F-03",
+      "severity": "Info",
+      "category": "Register",
+      "item": "Flag-reference scans misfire on prose cross-references to other sessions' namespaced flag IDs",
+      "detail": "A scripted scan of all published pages for FLG-nnn references reports one hit outside the canonical register: flagged.html contains 'c4e71983-FLG-16' inside a flag description, cross-referencing session c4e71983's own namespaced flag ID, not the canonical FLG-016 (which exists). The reference is correct as prose; the scan regex is what over-matches.",
+      "action": "No change to the page. Prevention note for future sessions: treat session-prefixed IDs (e.g. c4e71983-FLG-16) as external names when scanning for dangling references.",
+      "sources": [
+        "S57"
+      ],
+      "repo_evidence": "data/flags.json (FLG-016); flagged.html; sessions/f2102efa/repo-review.md §1."
+    },
+    {
+      "id": "54C-F-01",
+      "severity": "Info",
+      "category": "Accuracy (resolved upstream)",
+      "item": "EXECUTIVE-SUMMARY.md carried stale register counts (48 sources / 51 policy facts / 51 flags)",
+      "detail": "Read line by line on 2026-11-14 (session 54ce6a2b), EXECUTIVE-SUMMARY.md section 2 opened with '48 official sources · 51 policy facts · 51 flags' and section 7 repeated 'All 51 policy facts' plus gate figures from an earlier run. The registers at that moment held 51 sources, 55 policy facts and 66 flags. Independently, main had already been corrected by PR #75 (session 3ead7ac8) to 51/55/72/13, which is correct for the current tree. On merge this session kept main's version and dropped its own edit.",
+      "action": "None needed. Recorded because the correction was made twice by two sessions working in parallel; the durable fix is 54C-F-02.",
+      "sources": [
+        "S20"
+      ],
+      "session": "54ce6a2b",
+      "date": "2026-11-14"
+    },
+    {
+      "id": "54C-F-02",
+      "severity": "Low",
+      "category": "Register",
+      "item": "The source / policy-fact / flag counts in EXECUTIVE-SUMMARY.md are hand-written and drift on every append",
+      "detail": "The counts appear as literal text in section 2 and section 7. They were wrong once already (54C-F-01) and will be wrong again the next time a session appends a source, a policy fact or a flag, because nothing regenerates them. Two sessions independently corrected the same numbers within hours, which is the symptom.",
+      "action": "Generate the sentence from data/sources.json, data/policy_facts.json and data/flags.json, or add a gate that fails when the literal counts disagree with the registers. Logged as change request 54C-CR-01; not edited by this session because EXECUTIVE-SUMMARY.md is outside its claimed scope.",
+      "sources": [
+        "S20"
+      ],
+      "session": "54ce6a2b",
+      "date": "2026-11-14"
+    },
+    {
+      "id": "54C-F-03",
+      "severity": "Low",
+      "category": "Site",
+      "item": "Duplicate 'Marketing' navigation entry on the six pages emitted by scripts/build_marketing.py",
+      "detail": "scripts/build_marketing.py built its nav as base.NAV + [('marketing/index.html','Marketing')]. base.NAV, owned by scripts/build_site.py, already contained that entry after the marketing section was integrated, so every page rendered the link twice — and on marketing/index.html both copies carried class='active'. Found by counting nav hrefs per page: 6 pages affected.",
+      "action": "FIXED in place by session 54ce6a2b on 2026-11-14. The generator now appends the entry only when the destination is absent and de-duplicates by href, so the nav no longer depends on whether base.NAV happens to list this page. 6 files regenerated, one line each; generator re-run and confirmed idempotent; re-scan shows 0 pages with a duplicated nav destination.",
+      "sources": [],
+      "session": "54ce6a2b",
+      "date": "2026-11-14",
+      "status": "fixed",
+      "repo_evidence": "Reproduced in the repository: before the fix, `grep -c 'marketing/index.html' marketing/{index,briefs,buying-guide,comparison,product-1,product-2,product-3}.html` returned 2 for the six pages emitted by scripts/build_marketing.py. After the fix and a generator re-run the whole-tree nav de-duplication scan returns 0 pages with a duplicated nav destination. No external URL states this, so no source ID is cited."
+    },
+    {
+      "id": "54C-F-04",
+      "severity": "Info",
+      "category": "Corroboration",
+      "item": "C3-F-01 (sitemap drift) does not reproduce — independently re-checked",
+      "detail": "Session c3dbcc40 reported that sitemap.xml lacks five pages: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Checked against scripts/build_sitemap.py, which owns the file: analysis.html, disclosure.html and flagged-for-review.html are excluded by its REDIRECT_STUBS set on purpose; marketing.html is also a meta-refresh stub and is caught by its dynamic is_redirect_stub() test; index.html is mapped to the site root, present as the bare …/Zone3/ URL; and marketing/index.html is mapped to the directory URL …/Zone3/marketing/, which is present. 'python3 scripts/build_sitemap.py --check' returns exit 0 ('65 pages checked, 0 extra entries'). Session f2102efa reached the same conclusion and logged it as F2-F-01; this session's check is independent and agrees.",
+      "action": "None. C3-F-01 should be treated as withdrawn. Recorded so the agreement of two independent checks is visible on the board.",
+      "sources": [
+        "S56"
+      ],
+      "session": "54ce6a2b",
+      "date": "2026-11-14"
+    },
+    {
+      "id": "54C-F-05",
+      "severity": "Low",
+      "category": "Register",
+      "item": "Ten groups of source IDs in data/sources.json point at the same URL",
+      "detail": "S01=S49, S02=S30=S50, S07=S51, S11=S52=S55, S12=S53, S13=S54, S16=S32, S40=S46, S41=S47, S42=S48. The register holds 51 IDs over 39 distinct URLs. Each entry is a real fetch by a different session, so no fact is wrong; the cost is that '51 sources' overstates distinct sources and a reader cannot tell that S46 and S40 are the same page. Session 3ead7ac8 raised part of this as 3E-CR-02 (S32, S40, S41, S42); the S49–S55 block was added later.",
+      "action": "Note the alias in each duplicate entry's note field, or retire the later ID and repoint its citations. Logged as change request 54C-CR-02; not edited by this session because data/sources.json is a shared register.",
+      "sources": [
+        "S20"
+      ],
+      "session": "54ce6a2b",
+      "date": "2026-11-14"
+    },
+    {
+      "id": "54C-F-06",
+      "severity": "Medium",
+      "category": "Compliance",
+      "item": "sources.html renders observed star-rating, review-count and price literals inside table cells for S46–S48",
+      "detail": "A scan for price and star-rating literals inside <td> cells across the published tree returns 20 files. Most are unambiguously audit context: commission/index.html carries bounty figures copied from the official Standard Commission Income Statement Table 1; flagged.html and flagged/index.html quote the values they are flagging; compliance/index.html has a worked disclosure example with a 2008-vintage sample price; sessions/3c886b62/* is a retained archive carrying its own 3E-F-03 notice; docs/* is the archived 2026-11-13 build. One case is not clear-cut: the 'Note' column of the source register on sources.html publishes, for S46, S47 and S48, the exact star rating, review count and price that the product tables withhold — e.g. 'Result 1 for B0CDY277D3 as displayed: 4.2 out of 5 stars, (4.8K) reviews, 1K+ bought in past month, price USD 79.93'. Participation Requirement 6(t) bars displaying customer reviews or star ratings 'in part or in whole' unless obtained through the Creators API or PA API, without an exception for provenance. The counter-argument, accepted by earlier sessions, is that this is a note about what a fetch returned rather than a product display.",
+      "action": "OWNER DECISION. Not changed by this session: data/sources.json is a shared register and the wording belongs to sessions 9fef7647 and b90c5685. If the owner reads 6(t) strictly, replace the literals in the S46–S48 notes with a description that names the fields observed without printing their values. Logged as change request 54C-CR-03.",
+      "sources": [
+        "S02",
+        "S46",
+        "S47",
+        "S48"
+      ],
+      "session": "54ce6a2b",
+      "date": "2026-11-14"
     }
-,
-{
-    "id": "F2-F-01",
-    "severity": "Info",
-    "category": "Site",
-    "item": "C3-F-01 (sitemap drift) does not reproduce — audited and resolved",
-    "detail": "Session c3dbcc40 flagged that sitemap.xml lacks five pages the build emits: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Session f2102efa audited each: the root URL IS in the sitemap (as the bare https://kanlerxz87-cyber.github.io/Zone3/ URL — the conventional form for a site root), and the other four are meta-refresh redirect stubs that scripts/build_sitemap.py excludes by documented design (REDIRECT_STUBS set and is_redirect_stub() detection; see flags V-F4/V-F5 for why redirect stubs are delisted).",
-    "action": "No change to sitemap.xml or the generator. python3 scripts/build_sitemap.py reproduces the committed file byte-for-byte. Resolution published for the owner's review.",
-    "sources": [
-      "S56"
-    ],
-    "repo_evidence": "sitemap.xml; scripts/build_sitemap.py (REDIRECT_STUBS, is_redirect_stub)."
-  },
-{
-    "id": "F2-F-02",
-    "severity": "Info",
-    "category": "Accuracy",
-    "item": "Amazon re-issued the Program Policies (Updated: April 14, 2026) and Operating Agreement (Updated: October 15, 2025); all site quotes still match verbatim",
-    "detail": "Fresh fetches on 2026-11-14 (session f2102efa) show both documents carry new 'Updated:' header dates. The site does not publish either date, so nothing displayed is stale. Every quote the site publishes was re-checked verbatim against the re-issued documents this round: OA §5 disclosure statement, §6 material-breach clause, Community Guidelines sentence; PR 2(b) tag requirement, price-display restriction, comparison-format rule, misleading-claims rule, original-content rule, PR 6(s)/(t)/(v)/(w)/(y)/(z); Commission Income Statement Session, disqualifiers incl. 2(e) Redirecting Link, ≈60-day payment, Payment Minimum Chart; IP License clauses incl. date/time stamp + pricing disclaimer, ASIN storage, 40 KB, CERTAIN CONTENT, 2(e) aggregation/ML-training, Agent Terms user-agent rule. Full table: sessions/f2102efa/verification.md.",
-    "action": "No change needed. Recorded so future sessions know the documents were re-issued and re-check affected wording after any future re-issue.",
-    "sources": [
-      "S01",
-      "S02"
-    ],
-    "repo_evidence": "sessions/f2102efa/verification.md (F2-V09, F2-V10)."
-  },
-{
-    "id": "F2-F-03",
-    "severity": "Info",
-    "category": "Register",
-    "item": "Flag-reference scans misfire on prose cross-references to other sessions' namespaced flag IDs",
-    "detail": "A scripted scan of all published pages for FLG-nnn references reports one hit outside the canonical register: flagged.html contains 'c4e71983-FLG-16' inside a flag description, cross-referencing session c4e71983's own namespaced flag ID, not the canonical FLG-016 (which exists). The reference is correct as prose; the scan regex is what over-matches.",
-    "action": "No change to the page. Prevention note for future sessions: treat session-prefixed IDs (e.g. c4e71983-FLG-16) as external names when scanning for dangling references.",
-    "sources": [
-      "S57"
-    ],
-    "repo_evidence": "data/flags.json (FLG-016); flagged.html; sessions/f2102efa/repo-review.md §1."
-  }
   ]
 }
