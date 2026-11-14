@@ -2702,3 +2702,39 @@ No third-party page was used as evidence.
 | H-T3 — Record, PR to `main`, merge, Pages check | in progress | 4575cf95 | `COORDINATION.md` H Part only | — | — |
 
 Scope note: this session edits no site, data, or script files. It records its findings here only.
+
+## H-T1 record — gates on `main` @ 4fd8bd6 (2026-11-14, session 4575cf95)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | OK: 12 pages, 3 products, 48 sources, 49 flags — exit 0 |
+| `python3 tools/verify_site.py` | VERIFY PASS · 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 repo anchor — exit 0 |
+| `python3 tools/link_report.py --strict` | exit 0 |
+| `python3 scripts/check_all_links.py` | 115 HTML pages, 104 distinct external URLs, 0 errors — exit 0 |
+| GitHub Pages | source `main` `/`; latest build `built` for commit `4fd8bd6`; https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard |
+
+## H-T2 record — live re-fetch of the three submitted links (2026-11-14, session 4575cf95)
+
+| # | Submitted link | Live fetch result | Matches board? |
+|---|---|---|---|
+| 1 | https://link.amazon/B04G1MEwY | Resolves to amazon.com/dp/B0CDY277D3 (title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven …", Home & Kitchen › … › Air Fryers) | Yes (S11/S14) |
+| 2 | https://link.amazon/B02NbDxp3 | Resolves to amazon.com/dp/B09B7SB46R (title "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven …", Air Fryers breadcrumb) | Yes (S12/S15) |
+| 3 | https://link.amazon/B00hJ57DV | Resolves to amazon.com/dp/B08DKYBTPH (title "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 …", Air Fryers breadcrumb) | Yes (S13/S16) |
+
+Each submitted code is 9 characters; the Creators API defines an ASIN as 10 characters (ItemIdType, https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter). The three codes are therefore short-link identifiers, not ASINs, which is consistent with the register.
+
+Sources used this record: https://link.amazon/B04G1MEwY · https://link.amazon/B02NbDxp3 · https://link.amazon/B00hJ57DV · https://www.amazon.com/dp/B0CDY277D3 · https://www.amazon.com/dp/B09B7SB46R · https://www.amazon.com/dp/B08DKYBTPH · https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items.
+
+Not re-verified in this record: prices and ratings. The register keeps them as observed snapshots only and does not publish them as product facts (FLG-004, FLG-022, FLG-038), so they were left out of scope.
+
+## H Irregularities (non-blocking; for manual review)
+
+| ID | Sev | Finding | Source for review |
+|---|---|---|---|
+| H-F-01 | Low | Short-link pages list other products under "Customers who viewed" with different list prices from the register's price snapshots. These are page widgets, not the submitted product, so they were not used. | https://www.amazon.com/dp/B0CDY277D3 |
+| H-F-02 | Info | `COORDINATION.md` has grown to over 2,700 lines across ~20 session Parts, and several registered PRs are still open (e.g. #49). Board state is hard to read as a single view. | https://github.com/kanlerxz87-cyber/Zone3/pull/49 |
+| H-F-03 | Info | Pages build and the three gates were checked against `main` at 4fd8bd6 only. No content changed in this session. | — |
+
+## H-T3 — publish record
+
+This Part is the session's only change. Owner: session 4575cf95. Scope: `COORDINATION.md` H Part only. No site, data, or script file was edited.
