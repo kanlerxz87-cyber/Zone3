@@ -918,7 +918,7 @@ Unverified: Associates tag, live clicks/conversions, API credentials, actual lin
 
 | Session ID | Branch | Role | Status | Claimed (UTC) |
 |---|---|---|---|---|
-| `51fcb80d` | `arena/51fcb80d-zone3` | Final integration: re-verification of the cited claims, category subpage, flags, check, PR → `main`, merge, Pages | in progress (C-T8) | 2026-11-14 |
+| `51fcb80d` | `arena/51fcb80d-zone3` | Final integration: re-verification of the cited claims, category subpage, flags, check, PR → `main`, merge, Pages | done (C-T8) | 2026-11-14 |
 
 ## C Task board
 
@@ -931,7 +931,7 @@ Unverified: Associates tag, live clicks/conversions, API credentials, actual lin
 | C-T5 — Pricing, reviews, competition | done | `pricing.html`, `reviews.html`, `air-fryers.html`, `data/competition.json` | Prices, ratings and review counts are **not shown** on any page (FLG-022). The six-position benchmark shows rank, ASIN, title and link only. |
 | C-T6 — Flags | done | `data/flags.json`, `flagged.html`, `flagged-for-review.html` | FLG-005, FLG-017, FLG-021 revised. FLG-022–026 added. The duplicate `flagged-for-review.html` is now a redirect to `flagged.html`. |
 | C-T7 — Build and check | done | `scripts/check_site.py`, `scripts/build_site.py` | `python3 scripts/build_site.py && python3 scripts/check_site.py` → **OK: 10 pages, 3 products, 34 sources, 26 flags. All checks passed.** The `--online` mode was **not** run, because the sandbox only allows github.com, npm, and PyPI. |
-| C-T8 — PR, merge, Pages | in progress | git + `gh` | Record filled in after the merge. |
+| C-T8 — PR, merge, Pages | done | git + `gh` | PR #23 merged (`d40432f`), Pages built, live check passed (see the PR & deploy record below). |
 
 ## C Verification performed (session `51fcb80d`, 2026-11-14)
 
@@ -1001,9 +1001,13 @@ The first draft of this section contained details that had not been checked. The
 
 | Event | Result |
 |---|---|
-| PR | Opened from `arena/51fcb80d-zone3` to `main` after this record was committed. Number and link recorded below once created. |
-| Merge | Pending. |
-| Pages | Pending. |
+| PR | [#23 — Final integration (51fcb80d)](https://github.com/kanlerxz87-cyber/Zone3/pull/23), `arena/51fcb80d-zone3` → `main` |
+| Merge | **MERGED** 2026-11-14T09:56:15Z via `gh pr merge 23 --merge`, merge commit `d40432f42131e666368ca521d5e87dc504954ab5`. No approval was waited for. |
+| Conflicts | Two rebases and one merge were needed because `main` moved three times during the session (PRs #18–#22 and #24). `COORDINATION.md` was resolved by keeping upstream's full text and appending Part C once. `data/sources.json` and `data/flags.json` were merged by ID. `scripts/build_site.py` kept the verified-destination wording and dropped the “identities verified” wording. The duplicate `S30`/`S31` IDs and the identity change are logged in FLG-027 and the cross-session log. |
+| Gates before merge | `scripts/build_site.py` + `scripts/check_site.py` → OK (10 pages, 3 products, 37 sources, 32 flags). `tools/build_site.py` → exit 0. `tools/verify_site.py` → VERIFY PASS (58 pages, 922 rows, 0 broken internal links). `tools/link_report.py` → exit 0. |
+| Pages | Build for `d40432f` → **built** (polled via the Pages API, 09:56:16Z → 09:56:35Z). |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/air-fryers.html serves the category page (S43 links, no prices). https://kanlerxz87-cyber.github.io/Zone3/flagged.html serves the 32-entry register with FLG-022 to FLG-027. The first fetch returned a stale 26-entry copy from the CDN; a cache-busting request showed the new build. |
+| Not done | `--online` link check (sandbox allowlist). The full policy corpus was not re-read. |
 
 ## C Cross-session conflict log (added during the rebase onto main `6030a96`)
 
