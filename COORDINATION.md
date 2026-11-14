@@ -2556,3 +2556,33 @@ cannot be written to `main` before #47 itself merges.
 * `S45` (`sell.amazon.com/blog/what-is-an-asin`) had already been registered on `main` when this
   session merged. This session had independently reached the same page and the same conclusion; it
   reused `S45` rather than adding a duplicate source ID.
+
+### E-T7 (continued) — second PR and final deploy
+
+| Event | Result |
+|---|---|
+| Pull request | [#48 — Dashboard tiles for the 4 sections missing from the landing page + Part E merge record](https://github.com/kanlerxz87-cyber/Zone3/pull/48), `arena/edbd56a1-zone3` → `main` |
+| Merge | **MERGED** 2026-11-14T10:43:02Z via `gh pr merge 48 --merge` → merge commit `b3fe376505abe11470fb408568d8ce624c7dd9c4` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages build | build for `b3fe376` → **built** (updated 2026-11-14T10:43:23Z) |
+| Live check — landing | all 12 dashboard tiles render, including the 4 added in #48; flag counters read 2 critical / 49 total |
+| Live check — flagged | flag register renders; every row carries its official source links |
+| Live check — verification log | 53 rows, all with source links |
+
+### E Close-out
+
+| Task | Status |
+|---|---|
+| E-T1 claim scope, read board, note open PRs | done |
+| E-T2 repo review, line by line | done |
+| E-T3 live re-verification of every published claim | done — 53 rows on `verification.html`; no fact found false |
+| E-T4 executive summary | done — `EXECUTIVE-SUMMARY.md` rewritten against the current register |
+| E-T5 build, checkers, link audit | done — all gates green, 0 broken internal links outside `archive/` |
+| E-T6 Flagged for Review completeness | done — 49 flags, each with sources and the action needed |
+| E-T7 PR, merge, Pages | done — PR #47 (`c6cf5ec`) and PR #48 (`b3fe376`), both merged, both Pages builds `built` |
+| E-T8 sources, verification, irregularities | done — recorded above |
+| E-T9 dashboard tiles | done — PR #48 |
+
+**Unblock items for the owner** (unchanged, all on the Flagged page): a valid 10-character ASIN for each
+of the three products (FLG-001), the Associates tag (FLG-010), and confirmation of enrolment and
+Creators API eligibility (FLG-006). Until item 1 arrives, product name, brand, price, rating, review
+count, best-seller rank and commission rate stay blank by design.
