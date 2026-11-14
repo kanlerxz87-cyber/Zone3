@@ -2670,3 +2670,19 @@ No third-party page was used as evidence.
 | `marketing/**` regeneration conflicted with hand patches (G-F-02) | Generator fixed to reproduce the committed facts (flag cells, Source column) instead of reverting the pages; stray invalid anchors removed. |
 | `flagged.html` conflicted during rebase (both sides regenerated from different flag sets) | Not hand-merged: regenerated from the merged `data/flags.json` (49 flags) + merged generator, per the convention main already logged. |
 | PR #26 merged to `main` by its owner mid-session | No action needed — content identical to this branch's merge; both records (`9F` and this `G` Part) kept. |
+
+## G-T5 record — PR, merge and Pages deploy (2026-11-14)
+
+| Event | Result |
+|---|---|
+| Pull request | [#50 — Zone3: final integration (session f118dddd) — PR #26 integrated, line-by-line live re-verification, integrity fixes, E-T2 identity addendum](https://github.com/kanlerxz87-cyber/Zone3/pull/50) — `arena/f118dddd-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all gates green immediately before merge: `check_site` OK (12 pages / 3 products / 48 sources / 49 flags), `verify_site` PASS (69 pages / 1169 rows / 967 sourced / 346 flagged), `link_report --strict` 0, `check_all_links` 115 pages 0 errors, `sessions/3c886b62` check OK, all three generators idempotent |
+| Merge | **MERGED** 2026-11-14T11:01:01Z via `gh pr merge 50 --merge` (no approval waited, per brief) → merge commit `5c86a425416e83b722b98eac7761332edd59e5cb` (confirmed `state=MERGED` via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Conflict history this session | 4× `COORDINATION.md` EOF conflicts during rebases (kept both sides in full; Part renamed F→G after `588693c9` took the F namespace); 1× `flagged.html` (regenerated from merged data, not hand-merged); 1× `marketing/**` drift (fixed in the generator, G-F-02). One self-inflicted truncated `COORDINATION.md` was rebuilt from the authoritative main blob before any push contained it (see G Conflict log). |
+| Pages build | legacy `main` `/` source; build for `5c86a42` → **status `built`** (created 2026-11-14T11:01:02Z, updated 11:01:23Z, via Pages API `builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — serves the dashboard: headline, re-verification table with per-claim source links, 12 section tiles |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **49 flags render with source links; E-T2 identity table live** ("Submitted link (observed)" column, both sources per row, FLG-035 addendum paragraph) |
+| Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**, headline + key findings + per-claim official source links |
+| Live check — category | https://kanlerxz87-cyber.github.io/Zone3/category/air-fryers.html — **live**, corrected labels `S46–S48`/`S52–S54` visible in Source cells (G-F-01 fix deployed) |
+| Site merged while flagged? | yes — G-F-01…04 and all prior flags are non-blocking and published on the Flagged for review page, as the brief requires |
+| Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
