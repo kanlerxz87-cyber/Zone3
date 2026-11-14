@@ -3763,6 +3763,35 @@ collide with another session's register; its identifiers are namespaced `3D-T…
 | `python3 scripts/build_sitemap.py --check` | sitemap covers every live page (66 pages) |
 | `git grep -Il '^<<<<<<< '` | 0 files |
 
+## 3D Merge and deploy record (session `3d359c23`)
+
+| Item | Result |
+|---|---|
+| PR | **#79** — https://github.com/kanlerxz87-cyber/Zone3/pull/79 |
+| PR merged | **yes**, 2026-11-14T19:11:07Z, merge commit **`dd73234`** (`--merge`, not squashed, not auto) |
+| Follow-up PR | **#82** — https://github.com/kanlerxz87-cyber/Zone3/pull/82, merged 2026-11-14T19:12:16Z, merge commit **`a73fab6`**. It carries one fix: the Content topics method steps rendered as `1. 1. Read the destination listing…` because the step text began with its own number inside an `<ol>`. The numbers now come from the list alone. |
+| Pages build | **`built`** for `dd73234`, then **`built`** for `a73fab6` (checked via the Pages REST API, `pages/builds/latest`) |
+| Live checks | `/`, `/content-topics.html`, `/content.html`, `/flagged.html`, `/marketing/buying-guide.html` and `/sitemap.xml` all fetch and show the new content; the sitemap lists `/content-topics.html`; the dashboard shows the new tile and **72** flags; `content.html` shows "Published" with links instead of "Not written" |
+| Rebases performed | four, each onto a `main` that had moved (PRs #76/#77/#78/#80/#81 merged in the meantime). Every one resolved additively; no other session's work was dropped. |
+| Live check method | the sandbox reaches only `github.com`, npm and PyPI directly, so `kanlerxz87-cyber.github.io` is not reachable from `urllib` (TLS EOF on every request). The live routes were checked with the platform's fetch tool instead, against the deployed commit. |
+
+**What is still open for the owner after this merge** — unchanged in kind, and published on the
+Flagged for review page rather than blocking anything:
+
+1. **Confirm the three destination listings** (`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`) are the
+   products that were meant (FLG-002, FLG-027, FLG-035). Six of the twelve planned topics are
+   blocked on this.
+2. **Supply the Associates tag** (`xxxxx-20`) and confirm the account is active (FLG-010). Without
+   it no link on the site is a trackable Special Link and no click or conversion figure can exist.
+3. **Creators API access** — enrolment, registration and credentials, with the documented
+   prerequisite of at least 10 qualifying sales in 30 days (FLG-006, FLG-023). Prices and star
+   ratings stay blank until then, under 2(b) and 6(t).
+4. **Disclosure placement** — the §5 statement is in the footer of every page; the FTC wants it
+   placed where it is hard to miss. FLG-013 is open for that decision.
+5. **The legacy `/docs/` and `/sessions/**` page sets** are still published with observed
+   price/rating cells and a dated compliance notice (I-F-02, 3E-F-03). They belong to other
+   sessions, so they were not rewritten here.
+
 ## 3D Conflict log
 
 | When | What happened | Resolution |
