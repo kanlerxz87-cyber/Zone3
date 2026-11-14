@@ -886,9 +886,19 @@ This active branch verified that the supplied short-link IDs resolve to live tar
 | C-T5 correct datasets and site claims | done | Root and z3 data/generators corrected; static prices withheld under PF-04. |
 | C-T6 rebuild/check | done | Root check passed: 9 pages, 3 products, 32 sources, 26 flags. Dashboard verifier passed: 57 pages; 223 inherited non-blocking advisories remain. |
 | C-T7 summary/flagged/review | done | Executive summary and flagged-review routes rebuilt; unresolved credentials/analytics and policy limitations remain flagged. |
-| C-T8 PR/merge/Pages | in progress | Build gates passed; PR and Pages deployment confirmation pending. |
+| C-T8 PR/merge/Pages | done | PR #20 merged (initial integration); follow-up PR #22 merged to remove stale landing-summary copy. Pages build for commit `37591402f039b45767e5706ef53973bfbf8f4f90` succeeded; cache-busted live check confirms corrected landing. |
 
 Unverified: Associates tag, live clicks/conversions, API credentials, actual link model and individual program rate applicability. Static prices and review metrics are not exposed; their dated research observations are documented above. Historical archived site generations remain unchanged for provenance.
+
+
+### C-T8 final merge and deploy record
+
+| Event | Result |
+|---|---|
+| Initial integration PR | [#20](https://github.com/kanlerxz87-cyber/Zone3/pull/20), merged 2026-11-14 09:51:59 UTC; merge commit `5e923710e566b95a41d43f0ae51611d8477999d6`. |
+| Live-review follow-up | [#22](https://github.com/kanlerxz87-cyber/Zone3/pull/22), merged 2026-11-14 09:53:50 UTC; merge commit `37591402f039b45767e5706ef53973bfbf8f4f90`. It corrected the landing headline and removed stale rejection language from the executive summary. |
+| GitHub Pages | Pages build for `37591402f039b45767e5706ef53973bfbf8f4f90` status **built** at 2026-11-14 09:54:12 UTC. Workflow run `43582692936` succeeded. Cache-busted fetch of `/Zone3/?v=6030a96` displayed corrected headline and 3/3 resolved target listings. Plain URL returned a cached stale copy at verification time; the cache-busted deployed page is current. |
+| Final gates | `scripts/check_site.py` PASS; `tools/build_site.py` PASS; `tools/verify_site.py` PASS (57 pages; inherited advisory-only findings documented by verifier). |
 
 ---
 
