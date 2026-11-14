@@ -2686,3 +2686,19 @@ No third-party page was used as evidence.
 | Live check — category | https://kanlerxz87-cyber.github.io/Zone3/category/air-fryers.html — **live**, corrected labels `S46–S48`/`S52–S54` visible in Source cells (G-F-01 fix deployed) |
 | Site merged while flagged? | yes — G-F-01…04 and all prior flags are non-blocking and published on the Flagged for review page, as the brief requires |
 | Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
+
+## H Session registry — session `4575cf95` (branch `arena/4575cf95-zone3`, base `4fd8bd6`)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 4575cf95 | `arena/4575cf95-zone3` | Independent live re-verification of the three submitted links and the gates on current `main`; executive-summary check; record and PR | in progress (H-T1–H-T3) | 2026-11-14 |
+
+## H Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| H-T1 — Re-run all site gates on `main` @ 4fd8bd6 | in progress | 4575cf95 | none (read-only) | — | — |
+| H-T2 — Live re-fetch of the three short links and the Amazon pages they resolve to | in progress | 4575cf95 | `COORDINATION.md` H Part only | to be listed in H Part | — |
+| H-T3 — Record, PR to `main`, merge, Pages check | in progress | 4575cf95 | `COORDINATION.md` H Part only | — | — |
+
+Scope note: this session edits no site, data, or script files. It records its findings here only.
