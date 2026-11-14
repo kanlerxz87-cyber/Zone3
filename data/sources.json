@@ -297,6 +297,15 @@
       "status": "verified",
       "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.'",
       "used_for": "The 10-character ASIN rule used in the intake gate (FLG-001). Independent of S06/S08."
+    },
+    {
+      "id": "S32",
+      "title": "Amazon product detail: Chefman 8 Qt TurboFry",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon.com",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14; resolved short-link target and listing details.",
+      "used_for": "Resolved listing identity; dated research only."
     }
   ]
 }

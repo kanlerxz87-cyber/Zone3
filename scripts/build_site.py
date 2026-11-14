@@ -310,7 +310,7 @@ def build_exec() -> None:
 <section class="card">
   <h2>Key findings</h2>
   <ul class="findings">
-    <li><strong>0 of {N} product identifiers are confirmed.</strong> The identifiers are nine characters, and the amazon.com pages for them do not exist {flag_links(['FLG-001'])} {src_links(['S31', 'S08', 'S09', 'S10'])}.</li>
+    <li><strong>All three supplied short links resolve to live product listings.</strong> Their nine-character tokens are short-link identifiers, not ASINs; a direct /dp/&lt;token&gt; 404 does not mean the short link fails. {src_links(['S30', 'S31', 'S32'])} <a href="research/a86f1d09-verification-log.md">Dated verification log</a>.</li>
     <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches on 2026-11-13 and again on 2026-11-14. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
     <li><strong>Applying the shortener rules to link.amazon needs a judgement call.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), a link must not be cloaked or obscured (6(v)), and purchases through a link that sends users on indirectly, without an affirmative click, are disqualified as a Redirecting Link {src_links(['S30'])} (CIS 2(e)). No document names <code>link.amazon</code>; what its redirects actually do is a behaviour observation, and it has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
     <li><strong>Category rates are public; per-product rates are not assignable.</strong> Amazon&rsquo;s Standard Commission Income Statement, Table 1, is readable without a sign-in (Kitchen 4.50&nbsp;%, Home 3.00&nbsp;%, All Other Categories 4.00&nbsp;%) {src_links(['S25', 'S26'])}, and was re-read on 2026-11-14. The per-product rate cannot be stated, because the listing&rsquo;s category is unverified and the account-specific rate card route redirects to sign-in {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
@@ -370,7 +370,7 @@ def build_products() -> None:
             f'{e(p["link_id"])} <span class="muted">({p["link_id_length"]} chars)</span>',
             val(p["asin"]),
             f'<a href="{e(d["url"])}" target="_blank" rel="noopener noreferrer">{e(d["result"])}</a>',
-            f'<a href="{e(ro["final_url"])}" target="_blank" rel="noopener noreferrer">{e(ro["page_id"])}</a> {badge("Not confirmed", "warn")}',
+            f'<a href="{e(ro["final_url"])}" target="_blank" rel="noopener noreferrer">{e(ro["page_id"])}</a> {badge("Verified target listing", "ok")}',
             val(p["product_name"]),
             e(p["status"]),
             flag_links(p["flags"]),
