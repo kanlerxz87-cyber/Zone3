@@ -2880,7 +2880,17 @@ Sources used this record: `https://link.amazon/B04G1MEwY` · `https://link.amazo
 
 ## CDC-T3 — publish record
 
-Pending.
+| Event | Result |
+|---|---|
+| Pull request | [#58 — COORDINATION: session cdc9baa4 — independent final verification of the merged tree and live site](https://github.com/kanlerxz87-cyber/Zone3/pull/58) — `arena/cdc9baa4-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN` after two `COORDINATION.md` EOF conflicts were resolved by rebasing onto the then-latest `main` and keeping both sides in full (main's appended Parts + this CDC Part); `git grep` confirmed no conflict markers before each `git add` |
+| Merge | **MERGED** 2026-11-14T18:37:56Z via `gh pr merge 58 --merge` (no approval waited, per brief) → merge commit `33c92c8a753dff1a835dc406fc273d8e05f15118` (confirmed `state=MERGED`, `mergedAt`, `mergeCommit` via `gh pr view`) |
+| Conflict history this session | 2× `COORDINATION.md` EOF conflicts during rebases onto `main` (PR #55/#57 appended Parts concurrently); each resolved by taking `origin/main`'s file verbatim and re-appending the corrected CDC Part — nothing discarded |
+| Pages build | legacy `main` `/` source; build for `33c92c8` → **status `built`** (created 2026-11-14T18:37:58Z, updated 18:38:19Z, via Pages API `builds/latest`) |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard; the 49-flag register, executive summary and category pages remain live and carry per-claim official source links |
+| Site merged while flagged? | yes — CDC-F-01 is non-blocking and resolved (stale-clone artifact); all prior flags remain published on the Flagged for review page, as the brief requires |
+| Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
+
 | Event | Result |
 |---|---|
 | Pull request | [#55 — Zone3: final integration (session 7b70cfb0) — independent line-by-line live re-verification and merge record](https://github.com/kanlerxz87-cyber/Zone3/pull/55) — `arena/7b70cfb0-zone3` → `main` |
