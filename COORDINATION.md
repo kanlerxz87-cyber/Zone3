@@ -860,3 +860,20 @@ Merge record: see the row appended below once the PR is merged.
 | Corrections made to earlier sessions' published text | 3 (FLG-005, FLG-003 wording, executive-summary "commission rates cannot be verified") — each published as a V-F* entry with the earlier wording quoted, so nothing changed silently |
 | Files owned by other sessions edited? | No. `dashboard/**`, `docs/**`, `sessions/**`, `archive/**`, `data/z3/**`, `tools/**` untouched. |
 | Shared outputs edited | Yes, as the acting integration session: `index.html` and the eight other flat pages **via their generator**, `assets/style.css` untouched, `sitemap.xml` untouched (V-F4 flagged instead of re-deciding the canonical URL set) |
+
+## Part: session `a86f1d09-zone3` — verification and integration update (2026-11-14)
+
+This active branch verified that the supplied short-link IDs resolve to live target listings, correcting the earlier rejected-intake finding. Sources and dated observations are in `research/a86f1d09-verification-log.md`; the repository review is `research/a86f1d09-repo-review.md`. Dataset and both generators were corrected; static prices/reviews remain omitted where compliant API access is not established. Public commission sources are SRC-18 and SRC-19 in `data/z3/sources.json`.
+
+| Task | Status | Scope / result |
+|---|---|---|
+| C-T1 board and claim | done | Initial claim committed and pushed before data edits. |
+| C-T2 repository review | done | `research/a86f1d09-repo-review.md` |
+| C-T3 product-link verification | done | `research/a86f1d09-verification-log.md`; links resolve to B0CDY277D3, B09B7SB46R, B08DKYBTPH. |
+| C-T4 policy/commission recheck | done | Public standard Kitchen 4.50%; Onsite 1.25%; Creator Ads 2.25%. See official sources SRC-18/19 and policies SRC-10. |
+| C-T5 correct datasets and site claims | done | Root and z3 data/generators corrected; static prices withheld under PF-04. |
+| C-T6 rebuild/check | in progress | Root check passed: 9 pages, 3 products, 32 sources, 21 flags. Dashboard verifier passed: 57 pages; 223 inherited non-blocking advisories remain. |
+| C-T7 summary/flagged/review | in progress | Current pages regenerated; review reconciliation and final summary validation remain. |
+| C-T8 PR/merge/Pages | pending | Awaiting integration and deploy confirmation. |
+
+Unverified: Associates tag, live clicks/conversions, API credentials, actual link model and individual program rate applicability. Static prices and review metrics are not exposed; their dated research observations are documented above. Historical archived site generations remain unchanged for provenance.
