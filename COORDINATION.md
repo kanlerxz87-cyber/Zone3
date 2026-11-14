@@ -1031,18 +1031,18 @@ Please do not re-apply the `a86f1d09` identity change without the owner's confir
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `dff4acde` | `arena/dff4acde-zone3` | Final integration: repo re-review, site integrity (build/check/link), line-by-line re-verification of combined data, fix failures, PR → `main`, merge, confirm Pages deploy, record here | in progress | 2026-11-14 |
+| `dff4acde` | `arena/dff4acde-zone3` | Final integration: repo re-review, site integrity (build/check/link), line-by-line re-verification of combined data, fix failures, PR → `main`, merge, confirm Pages deploy, record here | complete | 2026-11-14 |
 
 ## D Task board (claimed before any other work, per protocol)
 
 | Task ID | Task | Status | Owner | Files / scope | Notes |
 |---|---|---|---|---|---|
-| D-T1 | Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress | dff4acde | `COORDINATION.md` (this Part only) | Claimed 2026-11-14 before any other work. |
-| D-T2 | Repo review: line-by-line audit of combined tree at base `6bf308f` | unclaimed→claimed | dff4acde | read-only audit + this Part | Full file inventory, generator/checker status. |
-| D-T3 | Site integrity: run `scripts/build_site.py`, `scripts/check_site.py`, internal link checks; fix any build/check failures | unclaimed→claimed | dff4acde | `scripts/**` only if a fix is required; otherwise read-only | Failures must be fixed and retried until green. |
-| D-T4 | Line-by-line re-verification of combined data rows against official sources; confirm every table row has an official source link; confirm unverified cells blank + flagged | unclaimed→claimed | dff4acde | verification record in this Part; data edits only if a row violates the rule (then logged) | Official sources only; no inference. |
-| D-T5 | Confirm executive summary + Flagged for Review page present and linked from landing; confirm disclosure banner on pages | unclaimed→claimed | dff4acde | pages owned by other sessions — request via this board if a fix is needed | Non-blocking: fixes requested here, not silently rewritten. |
-| D-T6 | PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record PR link + merge result in this Part | unclaimed→claimed | dff4acde | git + `gh` + this Part | Merge only after site is verified not broken. |
+| D-T1 | Read COORDINATION.md, register session, claim tasks, push claim immediately | done | dff4acde | `COORDINATION.md` (this Part only) | Claimed 2026-11-14 before any other work. |
+| D-T2 | Repo review: line-by-line audit of combined tree at base `6bf308f` | done | dff4acde | read-only audit + this Part | Full file inventory, generator/checker status. |
+| D-T3 | Site integrity: run `scripts/build_site.py`, `scripts/check_site.py`, internal link checks; fix any build/check failures | done (all green; no fix needed) | dff4acde | `scripts/**` only if a fix is required; otherwise read-only | Failures must be fixed and retried until green. |
+| D-T4 | Line-by-line re-verification of combined data rows against official sources; confirm every table row has an official source link; confirm unverified cells blank + flagged | done (42/42 facts re-verified) | dff4acde | verification record in this Part; data edits only if a row violates the rule (then logged) | Official sources only; no inference. |
+| D-T5 | Confirm executive summary + Flagged for Review page present and linked from landing; confirm disclosure banner on pages | done | dff4acde | pages owned by other sessions — request via this board if a fix is needed | Non-blocking: fixes requested here, not silently rewritten. |
+| D-T6 | PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record PR link + merge result in this Part | done (see D PR & deploy record) | dff4acde | git + `gh` + this Part | Merge only after site is verified not broken. |
 
 ### D Conflict & claim rules observed
 
@@ -1146,3 +1146,18 @@ S01–S03, S19, S25, S26, S28, S29 as listed in `data/sources.json` (same URLs);
 | `python3 tools/link_report.py --strict` | **PASS** (no dangling refs) |
 | `python3 sessions/3c886b62/tools/check_links.py` | **OK — no broken internal links, every data row has a source cell** |
 | `python3 scripts/build_site.py` rebuild idempotency | exit 0, **zero working-tree diff** |
+
+### D PR & deploy record (D-T6)
+
+| Event | Result |
+|---|---|
+| Pull request | [#27 — Zone3: final integration — line-by-line re-verification, integrity audit, flags D-F-01..05 (session dff4acde)](https://github.com/kanlerxz87-cyber/Zone3/pull/27) — `arena/dff4acde-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all four site checkers green on the merged tree (10 pages / 37 sources / 32 flags; 58 pages / 922 rows / 700 sourced; link_report PASS; sessions check OK; rebuild idempotent) |
+| Merge | **MERGED** 2026-11-14T10:01:57Z via `gh pr merge 27 --merge` (no approval waited, per brief) → merge commit `0b41ab6256de22ec86ec6686514636b087b3edce` (state: MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Conflict history | One rebase conflict in `COORDINATION.md` vs PRs #21–#25 (see D Conflict log) — resolved by keeping both sides in full; no other session's work discarded |
+| Pages build | legacy `main` `/` source; build for `0b41ab6` → **built** (created 2026-11-14T10:01:59Z, updated 10:02:19Z, confirmed via Pages API `builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — serves the dashboard (fetched earlier this session, post-merge build covers it) |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**, flag register renders, every row carries official source links |
+| Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**, findings + per-claim source links render |
+| Site merged while flagged? | yes — D-F-01…05 and all prior FLG/V/Z/F flags are non-blocking and published on the Flagged for review pages, as the brief requires |
+| Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
