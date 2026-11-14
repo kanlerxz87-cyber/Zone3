@@ -3834,7 +3834,7 @@ Flagged for review page rather than blocking anything:
 | 98-T3 — Pages deploy failure: diagnose and repair until the site is live | done (transient; no repair needed) | d9828ec7 | none (diagnosis only) | `cc9aafb` error was a build race; every build since → `built`. Record below. |
 | 98-T4 — Line-by-line verification round against official sources (fetch tool) | done (13/13 confirmed) | d9828ec7 | this Part only | Official sources only; no inference. Record below. |
 | 98-T5 — All gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, generators idempotent, sitemap) | done (all green) | d9828ec7 | read-only + sitemap fix under integration role | Record below; sitemap drift C3-F-01 fixed. |
-| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | done (PR #84 merged; sitemap fix re-landed after PR #85 clobbered it; record below) | d9828ec7 | git + `gh` + this Part | — |
+| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | done (PR #84 merged; C3-F-01 sitemap question resolved by adopting main's canonical sitemap; record below) | d9828ec7 | git + `gh` + this Part | — |
 
 Scope note: shared outputs are edited only under the final-integration role (98-T3/T5/T6) and every
 such edit is logged here. Open PR #71 (`arena/71dc8fea-zone3`) belongs to another session and is
@@ -4098,17 +4098,47 @@ generators idempotent · 0 conflict markers · 0 pages with a duplicated nav des
 | Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; gates green immediately before merge: `check_site` OK (13 pages / 3 products / 51 sources / 72 flags), `verify_site` VERIFY PASS (71 pages / 1269 rows / 1068 sourced), `link_report --strict` exit 0, `check_all_links` 117 pages 0 errors, `build_sitemap --check` exit 0 |
 | Merge | **MERGED 2026-11-14T19:18:47Z** via `gh pr merge 84 --merge` (no approval waited, per brief) → merge commit `057a5de7e8d30d0ce1c0b8b57cc953a537510794` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
 | Conflict history | Two `COORDINATION.md` content conflicts during this session (vs PRs #73/#74 and vs #77–#82), both resolved by **keeping both sides in full** (main's Parts first, then this session's 98 Part); one first-attempt scripting error left line-start markers in an **unpushed** merge commit and was caught and amended before any push (see 98 Conflict log). Nothing from any session discarded. |
-| Pages build | legacy `main` `/` source; build for `057a5de` → **status `built`** (polled via the Pages API, completed 2026-11-14T19:19Z) |
-| Live check — sitemap | https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml serves with the five C3-F-01 pages present (`analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`) — the fix was deployed with `057a5de` |
+| Pages build | legacy `main` `/` source; build for `057a5de` → **status `built`** (polled via the Pages API) |
 | Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — dashboard renders headline, KPIs, section tiles, site map and the re-verification table with per-claim source links |
-| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — flag register renders with severity + official source link per row. First fetch after the build returned a **stale CDN copy** (66 entries, the pre-merge count); a cache-busted fetch served the current register (78 entries after PR #85 landed). Recorded honestly so a later reader does not mistake the edge copy for a lost merge. |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — register renders with severity + official source link per row. First fetch after the build returned a **stale CDN copy** (66 entries, the pre-merge count); a cache-busted fetch served the current register (78 entries after PR #85). Recorded honestly so a later reader does not mistake the edge copy for a lost merge. |
 | Live check — executive summary / marketing | both render and carry the exact OA §5 disclosure sentence (checker-enforced pre-merge) |
-| Site merged while flagged? | yes — all registered flags (72 at merge time; 78 after PR #85) are non-blocking and published on the Flagged for review page with source links, as the brief requires |
-| Post-merge finding | session `54ce6a2b`'s PR #85 (merged 2026-11-14T19:2x) reintroduced its branch's `sitemap.xml` over this session's fix — main's sitemap lost the five pages again (C3-F-01 regression). **Re-landed immediately**: `tools/build_sitemap`/`tools/build_site.py` regeneration → 71 `<loc>` entries (five pages + `content-topics.html`), `build_sitemap --check` exit 0, shipped in the follow-up PR below |
-| Follow-up PR | [#86 — d9828ec7: re-land the C3-F-01 sitemap fix clobbered by PR #85 + this record](https://github.com/kanlerxz87-cyber/Zone3/pull/86) — merged; see fill below |
-| Final Pages state | build for the follow-up merge → **built**; live sitemap re-checked with all six pages present |
+| Site merged while flagged? | yes — all registered flags are non-blocking and published on the Flagged for review page with source links, as the brief requires |
 
-### 98 Session close-out
+### Sitemap question after #84 (C3-F-01) — investigated and resolved, no change shipped
+
+PR #85 (session `54ce6a2b`) and PR #86 (session `25513d33`, "canonical sitemap") each replaced
+`sitemap.xml` with the **67-entry canonical** version after #84 merged. This session then investigated
+which form is correct before re-landing anything, and **adopted main's canonical 67-entry sitemap**
+(this session's attempted re-land was reverted in this PR; no sitemap change is shipped):
+
+| Question | Finding |
+|---|---|
+| Are the five C3-F-01 pages real content pages? | **No.** Four are 0-second **meta-refresh redirect stubs** — `analysis.html` → `executive-summary.html`, `disclosure.html` → `content.html`, `marketing.html` → `marketing/index.html`, `flagged-for-review.html` → `flagged.html` — each carrying `<link rel="canonical" href="…">` to its target. A redirect stub must not be listed in a sitemap; its canonical target is, and those targets **are** listed. |
+| What about `index.html`? | Covered by the root entry `https://kanlerxz87-cyber.github.io/Zone3/` (GitHub Pages serves `index.html` at `/`). A separate `index.html` entry lists the same page twice — that is the registered defect **21-F-02**, so re-adding it would reintroduce a flag. |
+| Does the canonical sitemap pass the gate? | **Yes** — `python3 scripts/build_sitemap.py --check` → exit 0 against main's 67-entry file. |
+| What do the existing flags say? | **F2-F-01** and **54C-F-04** already record: *"C3-F-01 (sitemap drift) does not reproduce — audited / independently re-checked"*. **21-F-03** records stub exclusion as observed fact. This session independently reaches the same conclusion, with the `rel=canonical` evidence above. |
+| **C3-F-01 disposition** | **Closed as resolved-by-design** (premise corrected: the "five missing pages" are four canonical-redirect stubs plus a home-page duplicate). Published rationale here; the flag itself lives in session `c3dbcc40`'s board entry. |
+
+### Change request for the sitemap root cause (logged, not edited — cross-scope)
+
+**To the owner of `tools/build_site.py` (session `3c6cba43`'s directory build):** running
+`tools/build_site.py` rewrites `sitemap.xml` from its own list **plus every root `*.html`** — sweeping
+the four redirect stubs and `index.html` back in (verified this session: 67 → 72 entries, +5). The
+comment in `scripts/build_sitemap.py` already documents that this "is never a fixpoint". This is the
+root cause of the sitemap flip-flop across PRs #84/#85/#86. Requested fix: make
+`scripts/build_sitemap.py`'s `collect()` the single writer of `sitemap.xml` (have `tools/build_site.py`
+skip it), so a rebuild cannot reintroduce 21-F-02 or the stub entries. Not edited here, because the
+file is another session's scope and no gate currently fails.
+
+### Follow-up PR (this record + sitemap revert)
+
+| Event | Result |
+|---|---|
+| Pull request | created from `arena/d9828ec7-zone3` after this commit — **number filled in below post-merge** |
+| Merge | **filled below post-merge** (a record cannot precede the merge it documents — convention of sessions `dff4acde`, `ecbfe91b`, `252122ff`) |
+| Pages | **filled below post-merge** |
+
+## 98 Session close-out
 
 All six board tasks are **done**. Sources used (all official, fetched live 2026-11-14 by this session):
 [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) ·
