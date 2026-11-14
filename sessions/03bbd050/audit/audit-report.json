@@ -1,0 +1,380 @@
+{
+ "checks": {
+  "data_model": {
+   "cited_from_pages_and_data": 64,
+   "cited_ids_not_registered": [
+    "S1",
+    "S2",
+    "S3",
+    "S33",
+    "S34",
+    "S35",
+    "S36",
+    "S37",
+    "S38",
+    "S39",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9"
+   ],
+   "dangling_source_refs": [
+    "S1",
+    "S2",
+    "S3",
+    "S33",
+    "S34",
+    "S35",
+    "S36",
+    "S37",
+    "S38",
+    "S39",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9"
+   ],
+   "flags": 43,
+   "null_fields_without_flag_ref": [],
+   "product_price_values": [],
+   "products": 3,
+   "rows_without_any_source": [],
+   "source_ids": 48,
+   "uncited_source_ids": [],
+   "unreferenced_flag_ids": []
+  },
+  "pages": {
+   "broken_archive_pages": [],
+   "broken_internal_links_in_archive": 0,
+   "broken_internal_links_outside_archive": [],
+   "conflict_markers": [],
+   "h1_issue_by_area": {
+    "archive": 17,
+    "root": 3,
+    "sessions": 13
+   },
+   "missing_disclosure_by_area": {
+    "archive": 33
+   },
+   "pages_h1_not_exactly_one": [
+    {
+     "h1": 0,
+     "page": "404.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/analytics.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/category-air-fryers.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/category-dual-basket.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/category-large-capacity.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/category-toaster-ovens.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/commission-model.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/comparison.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/compliance.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/data-sources.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/executive-summary.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/flagged.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/index.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/link-builder.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/link-resolution.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/niche-analysis.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/platform.html"
+    },
+    {
+     "h1": 0,
+     "page": "archive/c4e71983/content/products.html"
+    },
+    {
+     "h1": 0,
+     "page": "category/kitchen.html"
+    },
+    {
+     "h1": 0,
+     "page": "dashboard.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/analysis.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/categories.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/category-home-kitchen.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/commission.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/comparison.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/compliance.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/executive-summary.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/flagged.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/index.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/products.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/requirements.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/sources.html"
+    },
+    {
+     "h1": 0,
+     "page": "sessions/3c886b62/verification.html"
+    }
+   ],
+   "pages_missing_disclosure": [
+    "archive/66a80e53/disclosure.html",
+    "archive/66a80e53/executive-summary.html",
+    "archive/c4e71983/analytics.html",
+    "archive/c4e71983/categories/air-fryer-toaster-ovens.html",
+    "archive/c4e71983/categories/air-fryers.html",
+    "archive/c4e71983/categories/dual-basket.html",
+    "archive/c4e71983/categories/large-capacity.html",
+    "archive/c4e71983/commission-model.html",
+    "archive/c4e71983/comparison.html",
+    "archive/c4e71983/content/analytics.html",
+    "archive/c4e71983/content/category-air-fryers.html",
+    "archive/c4e71983/content/category-dual-basket.html",
+    "archive/c4e71983/content/category-large-capacity.html",
+    "archive/c4e71983/content/category-toaster-ovens.html",
+    "archive/c4e71983/content/commission-model.html",
+    "archive/c4e71983/content/comparison.html",
+    "archive/c4e71983/content/data-sources.html",
+    "archive/c4e71983/content/executive-summary.html",
+    "archive/c4e71983/content/flagged.html",
+    "archive/c4e71983/content/index.html",
+    "archive/c4e71983/content/link-builder.html",
+    "archive/c4e71983/content/link-resolution.html",
+    "archive/c4e71983/content/niche-analysis.html",
+    "archive/c4e71983/content/platform.html",
+    "archive/c4e71983/content/products.html",
+    "archive/c4e71983/data-sources.html",
+    "archive/c4e71983/executive-summary.html",
+    "archive/c4e71983/index.html",
+    "archive/c4e71983/link-builder.html",
+    "archive/c4e71983/link-resolution.html",
+    "archive/c4e71983/niche-analysis.html",
+    "archive/c4e71983/platform.html",
+    "archive/c4e71983/products.html"
+   ],
+   "pages_scanned": 114,
+   "placeholder_hits": [
+    {
+     "page": "archive/c4e71983/analytics.html",
+     "token": "Placeholder"
+    },
+    {
+     "page": "archive/c4e71983/flagged.html",
+     "token": "placeholder"
+    },
+    {
+     "page": "repo-review/index.html",
+     "token": "placeholder"
+    }
+   ],
+   "redirect_stubs": 5,
+   "secret_lookalikes": []
+  },
+  "policy_gates": {
+   "note": "Price display is licence-gated (Program Policies -> PF-04 in data/policy_facts.json): only Amazon-served links or Creators-API data may show prices.",
+   "pages_rendering_a_dollar_amount_for_the_three_listings": [
+    "category/air-fryers.html",
+    "dashboard.html",
+    "docs/analysis.html",
+    "docs/content.html",
+    "docs/executive-summary.html",
+    "docs/flagged.html",
+    "docs/index.html",
+    "docs/products.html",
+    "docs/sources.html",
+    "flagged/index.html",
+    "sources.html",
+    "sources/index.html"
+   ]
+  },
+  "program_content_pages": {
+   "count": 21,
+   "definition": "live page (not archive/) that renders a $ amount inside a table cell AND names one of the three listings",
+   "missing_capture_date_stamp": [
+    "dashboard.html"
+   ],
+   "missing_exact_disclosure_sentence": [],
+   "pages": [
+    "category/air-fryers.html",
+    "dashboard.html",
+    "docs/analysis.html",
+    "docs/content.html",
+    "docs/executive-summary.html",
+    "docs/flagged.html",
+    "docs/index.html",
+    "docs/products.html",
+    "sessions/03bbd050/index.html",
+    "sessions/3c886b62/analysis.html",
+    "sessions/3c886b62/categories.html",
+    "sessions/3c886b62/category-home-kitchen.html",
+    "sessions/3c886b62/commission.html",
+    "sessions/3c886b62/comparison.html",
+    "sessions/3c886b62/compliance.html",
+    "sessions/3c886b62/index.html",
+    "sessions/3c886b62/product-chefman-6qt-dual-basket-air-fryer.html",
+    "sessions/3c886b62/product-chefman-8qt-turbofry-air-fryer.html",
+    "sessions/3c886b62/product-emeril-lagasse-26qt-french-door-air-fryer-oven.html",
+    "sessions/3c886b62/products.html",
+    "sessions/3c886b62/verification.html"
+   ]
+  },
+  "sitemap": {
+   "listed_but_missing": [],
+   "nav_reachable_not_listed": [
+    "dashboard/index.html",
+    "marketing/briefs.html",
+    "marketing/index.html"
+   ],
+   "urls_listed": 35
+  },
+  "source_register": {
+   "duplicate_urls": {
+    "https://affiliate-program.amazon.com/help/operating/agreement": [
+     "S01",
+     "S49"
+    ],
+    "https://affiliate-program.amazon.com/help/operating/policies": [
+     "S02",
+     "S30",
+     "S50"
+    ],
+    "https://link.amazon/B00hJ57DV": [
+     "S13",
+     "S54"
+    ],
+    "https://link.amazon/B02NbDxp3": [
+     "S12",
+     "S53"
+    ],
+    "https://link.amazon/B04G1MEwY": [
+     "S11",
+     "S52",
+     "S55"
+    ],
+    "https://www.amazon.com/dp/B08DKYBTPH": [
+     "S16",
+     "S32"
+    ],
+    "https://www.amazon.com/s?k=B08DKYBTPH": [
+     "S42",
+     "S48"
+    ],
+    "https://www.amazon.com/s?k=B09B7SB46R": [
+     "S41",
+     "S47"
+    ],
+    "https://www.amazon.com/s?k=B0CDY277D3": [
+     "S40",
+     "S46"
+    ],
+    "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers": [
+     "S07",
+     "S51"
+    ]
+   },
+   "non_official_hosts": [
+    {
+     "host": "linktw.in",
+     "id": "S17",
+     "url": "https://linktw.in/link-amazon-vs-linktwin"
+    }
+   ],
+   "sources_missing_status": []
+  }
+ },
+ "inventory": {
+  "by_ext": {
+   "css": 8,
+   "gitignore": 1,
+   "html": 114,
+   "js": 9,
+   "json": 45,
+   "md": 55,
+   "nojekyll": 2,
+   "py": 19,
+   "txt": 1,
+   "xml": 1,
+   "yml": 1
+  },
+  "files": 256,
+  "html_pages": 114
+ },
+ "root": "/home/user/Zone3"
+}

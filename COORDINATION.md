@@ -1948,3 +1948,136 @@ sessions' outputs and will not be rewritten; only additive files under `docs/` a
   with 0 errors.
 
 - **Final sweep correction (2026-11-14T10:26Z, after PR #31's archive repair merged as `01232dc`):** the whole-tree link audit run on the final deployed tree reports **113 pages / 2 779 relative refs / 0 broken links**. E-F-01 is **resolved upstream** by session `a53a7e52`'s repair; the 15-link residue this Part recorded earlier was the pre-repair state.
+
+---
+
+# Part 03 — session `03bbd050` (2026-11-14) — independent audit, live re-verification, flags `03-F-01…12`
+
+> Appended additively; nothing above was removed or rewritten. My IDs are `03-T…` (tasks), `03-V…` / §A–§D of
+> `sessions/03bbd050/verification.md` (live checks), `03-F-nn` (flags), `03-CR-n` (change requests). Not to be
+> confused with other sessions' `A:`/`B:`/`C`/`D`/`E`/`F`/`V`/`Z` namespaces — four sessions independently reused
+> the `E-`/`F-` prefix on 2026-11-14, which is itself logged as flag 03-F-01. This Part supersedes my own first
+> draft (branch commits `7beca2b` → `b1b4867`, which listed flags `03-F-01…08` under different meanings); the
+> numbering below is the one used by the published pages, so the earlier mapping should not be quoted.
+
+## 03 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `03bbd050` | `arena/03bbd050-zone3` | Independent whole-tree audit + live re-verification of the submitted links and governing Amazon/FTC sources + flags + change requests to the sessions that own the shared files. **Not** an integration session. | done (audit published; PR open) | 2026-11-14 10:05, re-scoped 10:20 |
+
+## 03 Scope decision (conflict avoidance, per the coordination rules)
+
+At first claim `origin/main` was `a659b9e` with **PR #26 (`9fef7647`) in flight** (9F-T1–T4 over `data/*.json`,
+`scripts/build_site.py`, `scripts/check_site.py`, every root `*.html`, `marketing.html`, `category/air-fryers.html`,
+`sitemap.xml`), and PRs #32/#34 (`ecbfe91b`, `588693c9`) landing on `main` during the same minutes. Those claims were
+under 60 minutes old, so this session **withdrew its broad scope** rather than take over, and confined itself to:
+
+- `sessions/03bbd050/**` — audit script, JSON report, `verification.md`, `findings.md`, `EXECUTIVE-SUMMARY.md`, `index.html`;
+- `COORDINATION.md` — this Part only.
+
+Everything that belongs to another scope is a **change request** (03-CR-1…9), not an edit.
+
+## 03 Task board — final
+
+| Task ID | Task | Status | Result |
+|---|---|---|---|
+| 03-T1 | Read board + open PRs, register, claim, push before work | done | claim pushed at 10:05; re-scoped and pushed 10:20 |
+| 03-T2 | Whole-tree audit: inventory, data-model invariants, source register, link/asset resolution, hygiene | done | 110 HTML pages / 243 files; **0** unsourced rows, **0** unflagged blanks, **0** broken links outside `archive/` (15 inside it), 2 duplicate source URLs, 0 secrets, 0 conflict markers — `audit/audit-report.json` |
+| 03-T3 | Live re-verification of the three submitted links + commission/disclosure/FTC sources + Pages state | done | `verification.md` §A–§C (12 checks); items the fetcher would not return today are recorded as **not verified** in §D rather than carried forward |
+| 03-T4 | Flags with evidence + change requests to file owners | done | `03-F-01…12`, `03-CR-1…9` |
+| 03-T5 | Publish the audit as a self-contained page | done | `sessions/03bbd050/index.html` — passes `verify_site.py` with **0** advisories on itself |
+| 03-T6 | PR → `main`, merge, confirm Pages, record | in progress | see 03 PR record |
+
+## 03 What was verified live today (abridged — full table in `sessions/03bbd050/verification.md`)
+
+| Check | Result | Official source |
+|---|---|---|
+| Three 9-character codes vs Amazon's ASIN definition ("unique **10-character** alphanumeric code") | codes cannot be ASINs | https://sell.amazon.com/blog/what-is-an-asin |
+| `amazon.com/dp/B04G1MEwY` | Amazon "Page Not Found" page | https://www.amazon.com/dp/B04G1MEwY |
+| `link.amazon/B04G1MEwY` / `B02NbDxp3` / `B00hJ57DV` | → `dp/B0CDY277D3` / `dp/B09B7SB46R` / `dp/B08DKYBTPH`, titles as recorded on the site since 2026-11-13 | the three links |
+| Buy boxes today | $79.93 / $149.99 / $79.91, all "In Stock", Ships from + Sold by Amazon.com | https://www.amazon.com/dp/B0CDY277D3 et al. |
+| Breadcrumb / browse node | Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers **17659096011** | the listing page |
+| Table 1 (public, no sign-in) | Luxury Beauty 10.00 % · **Kitchen 4.50 %** · Home 3.00 % · All Other 4.00 % · Gift Cards etc. 0.00 % | https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ |
+| Operating Agreement header | "Updated: October 15, 2025"; §1 tagged Special Links; §2 cease-payment remedy | https://affiliate-program.amazon.com/help/operating/agreement |
+| FTC Disclosures 101 (Nov 2019) | material relationship; "hard to miss"; not buried in hashtags; no experience you didn't have | https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers |
+| GitHub Pages | legacy build, source `main` `/`, https enforced; build recorded via API | https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest |
+
+## 03 Flags raised (published on the audit page; all non-blocking)
+
+| ID | Sev | Finding (evidence in `sessions/03bbd050/findings.md`) |
+|---|---|---|
+| 03-F-02 | High | **10 live pages in `/sessions/3c886b62/` render hard-coded prices and 15 of its 16 pages carry no Associates disclosure sentence**; that sub-site's own `compliance.html` states the rule its price pages break |
+| 03-F-03 | High | `/docs/` renders "As an Amazon Associate **we** earn…" (the prescribed sentence is "I") and shows price cells on 6 of 8 pages |
+| 03-F-04 | Med | Displaying a captured price is outside the licensed routes (Amazon-served link, or Creators/PA API), and the API route is unavailable (10 qualifying sales / 30 days; PA-API 5 deprecated) — root `price: null` is therefore correct |
+| 03-F-05 | Med | `redirect_observed.final_url` pins a `btn_ref=srctok-…` token that changed on every fetch (3 distinct tokens / 4 fetches, one also gained `&th=1`): unreproducible citations |
+| 03-F-06 | Med | Browse node ≠ rate-card category: Kitchen 4.50 % vs Home 3.00 % cannot be resolved from public pages; per-listing commission stays blank |
+| 03-F-07 | Med | The submitted `link.amazon/<code>` hop is a display link, not a monetisation link (Redirecting-Link rule); no Associates tag exists yet |
+| 03-F-08 | Low | Two source URLs are registered twice: `S02`/`S30`, `S16`/`S32` (PR #26 adds four more) |
+| 03-F-09 | Low | `tools/link_report.py` still prints "rate card is behind Associates sign-in" for per-category commission, though Table 1 is public |
+| 03-F-10 | Low | Two source registers collide on ID names (`S1…S12` in the sub-site vs `S01…S45` at root); my audit sees `S1…S9` as dangling refs |
+| 03-F-11 | Low | `sitemap.xml` lists 16 URLs while 13 nav-reachable pages are unlisted; `404.html` has no `<h1>` |
+| 03-F-12 | Info | Clean negatives, recorded on purpose: 0 unsourced rows, 0 unflagged blanks, 0 broken links outside `archive/`, 0 secrets, 0 markers, `marketing/` (PR #34) compliant, `S17` third-party correctly quarantined |
+| 03-F-01 | Info | Process: four sessions reused `E-`/`F-` task-ID prefixes on the shared board on 2026-11-14, so an ID alone no longer identifies a claim |
+
+## 03 Change requests to owners of shared files (this session edited none of them)
+
+`03-CR-1` keep `price`/`rating`/`review_count` out of rendered tables (`data/products.json` owner) ·
+`03-CR-2` build-time rule that a `$`/star cell must cite the API route + `observed <date>` (`scripts/build_site.py`) ·
+`03-CR-3` deduplicate source URLs (`data/sources.json`) ·
+`03-CR-4` cite the 10-character ASIN definition in the landing page's "not ASINs" sentence (`index.html`) ·
+`03-CR-5` give `sessions/03bbd050/index.html` one nav slot beside "Full audit" ·
+`03-CR-6` add the §5 sentence to all 16 pages of `sessions/3c886b62/**` or drop its price cells ·
+`03-CR-7` `docs/**`: "we earn" → "I earn" ·
+`03-CR-8` namespace the sub-site's source IDs (`S1` → `3c6-S1`) ·
+`03-CR-9` drop the stale rate-card line in `tools/link_report.py`.
+
+## 03 Conflict log (honest record)
+
+| Time (UTC) | Event | Resolution |
+|---|---|---|
+| ~10:18 | `git pull --rebase origin main` stopped on a `COORDINATION.md` EOF conflict (both sides appended a Part). A scripted edit run while the rebase was stopped committed a tree that **still contained conflict markers**. Caught before publication: `origin/arena/03bbd050-zone3` was checked to still point at the clean commit `7beca2b`, and `git grep -Il "^<<<<<<< "` returns 0 hits on every merged tree since. | `git rebase --abort`, then a **merge** of `origin/main` with the board rebuilt as *main's file verbatim + my Part appended*: `git diff origin/main..HEAD -- COORDINATION.md` → **0 deletions**, additions only. No session's text dropped; no force-push (my claim commit stays an ancestor). |
+| ~10:20 | My initial claim (`E-T1…T8`) covered `data/*.json` + generator + root pages, which PR #26's owner had claimed at 09:46. | Scope **withdrawn and narrowed** to `sessions/03bbd050/**`; the shared-file work became change requests. |
+| ~10:35 | `verify_site.py` V5 flagged **7 broken internal links on my own page**: I had used `../index.html` from `sessions/03bbd050/`, which resolves to `sessions/index.html`. Real bug, correctly caught by the project's own gate. | Rewrote to `../../`, re-ran: **0 advisories on my page**; links re-checked by an independent existence test. Recorded because a gate that only fires on other people's pages is worth little. |
+
+## 03 Gates on the merged tree (this session's run, at `58d2744` + my files)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/build_site.py` → `git status --porcelain` | rebuild idempotent (only my untracked dir) |
+| `python3 scripts/check_site.py` | `OK: 10 pages, 3 products, 38 sources, 39 flags. All checks passed.` |
+| `python3 tools/verify_site.py` | `VERIFY PASS · 65 pages · 1073 table rows · 801 with official source · 178 with flag · 15 with repo anchor` |
+| `python3 tools/link_report.py --strict` | exit 0; residuals = 03-F-08/09 |
+| `python3 sessions/3c886b62/tools/check_links.py` | `OK — no broken internal links, every data row has a source cell` |
+| `python3 sessions/03bbd050/audit/audit.py` | findings above; JSON in-repo |
+
+## 03 Re-check on the merged tree (this session's second run, `origin/main@161dfff`)
+
+`a53a7e52` (PR #31) and `252122ff` (PR #39) landed while this audit was being written, so every flag above was
+re-run rather than republished from my 10:2x snapshot:
+
+| Flag | Status | Evidence from my re-run |
+|---|---|---|
+| 03-F-02 (10 price pages / 15 of 16 without disclosure, `/sessions/3c886b62/`) | **resolved — not by me** | commit `97bde69` "T-INT4: disclosure fixes + row-level provenance on inherited pages; archive link repair"; my program-content check now reports **0 of 21** price-bearing pages missing the exact sentence |
+| 03-F-03 (`/docs/` "we earn") | **resolved** | `grep -o 'As an Amazon Associate[^<]{0,50}' docs/index.html docs/products.html` → "I earn from qualifying purchases." |
+| 03-F-11 archive links (15 broken) | **resolved** | broken internal links tree-wide: **0** |
+| 03-F-11 sitemap / `<h1>` | **partly** | sitemap 16 → 35 URLs; still 3 unlisted (`dashboard/index.html`, `marketing/index.html`, `marketing/briefs.html`); 33 pages with zero or multiple `<h1>` |
+| 03-F-08 duplicate source URLs | **worsened: 2 → 10 groups** | `S01/S49`, `S02/S30/S50`, `S07/S51`, `S11/S52/S55`, `S12/S53`, `S13/S54`, `S16/S32`, `S40/S46`, `S41/S47`, `S42/S48` |
+| 03-F-04 price display route | **live, mitigated, open** | `data/products.json` still `price: null` ✓, but `category/air-fryers.html` renders "USD 79.93 (observed 2026-11-14; list USD 99.99)" columns cited to `S46–S48` = `amazon.com/s?k=<ASIN>` search pages; `sources.html` quotes prices in status notes |
+| 03-F-13 **(new)** | Medium | register holds 48 ids but **skips `S33`–`S39`**, and `category/air-fryers.html` cites those labels — the register cannot answer "what does this row rest on?"; `link_report.py` prints "dangling source refs=none" only because it walks `data/products.json` |
+| 03-F-14 **(new)** | Medium | one build, two positions: `products.html` renders price/rating **blank** for the same three listings that `category/air-fryers.html` renders with dated values. Needs one generator-level rule, not per-page edits |
+| 03-CR-6, 03-CR-7 | **satisfied by another session** | withdrawn as requests; recorded here so the board does not show a stale open item |
+| 03-CR-1, 03-CR-2, 03-CR-3, 03-CR-9 | **still open**, and now better evidenced | the price-route question is on `main`, not merely proposed in PR #26 |
+
+Gates on the merged tree, re-run by this session: `scripts/check_site.py` → **OK: 11 pages, 3 products, 48 sources,
+43 flags**; `tools/verify_site.py` → **VERIFY PASS · 68 pages · 1,110 rows · 908 official-source · 326 flag · 82
+repo-anchor**, with **0 advisories against `sessions/03bbd050/**`**; `tools/link_report.py --strict` → exit 0;
+`sessions/3c886b62/tools/check_links.py` → OK; `scripts/build_site.py` rebuild → **zero diff**.
+
+## 03 PR record
+
+| Event | Result |
+|---|---|
+| Pull request | (recorded after opening: see the commit that follows this Part) |
+| Merge | (recorded after merge) |
+| Pages | (recorded after deploy check) |
