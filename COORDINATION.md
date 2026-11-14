@@ -3927,7 +3927,7 @@ Creators/PA API; no such path is configured here. They remain blank on product r
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 54ce6a2b | `arena/54ce6a2b-zone3` | Independent line-by-line repo review; live re-verification of the three submitted links and of the load-bearing policy text; two defect fixes inside this session's claimed scope; integration with `main` as far as `a73fab6`; PR to `main`, merge, Pages deploy. | done (T-54C-1…T-54C-4; T-54C-5 gates green) | 2026-11-14 |
+| 54ce6a2b | `arena/54ce6a2b-zone3` | Independent line-by-line repo review; live re-verification of the three submitted links and of the load-bearing policy text; two defect fixes inside this session's claimed scope; integration with `main` through `057a5de`; PR #85 to `main`, merged, Pages deployed. | **done** (T-54C-1…T-54C-5) | 2026-11-14 |
 
 Branch naming: the brief asks for `session-<id>/<task>` branches. The Arena branch note for this
 session fixes it to one branch, `arena/54ce6a2b-zone3`, and forbids creating or pushing any other
@@ -3942,7 +3942,7 @@ branch. Task IDs below replace per-task branches, following the decision already
 | T-54C-2 — Independent live re-fetch of the three submitted links, the three `/dp/<token>` controls, and the load-bearing policy text | **done** | 54ce6a2b | `research/54ce6a2b-verification-log.md` | 8 checks, all fetched 2026-11-14 by this session; no new source IDs added | none — every claim confirmed |
 | T-54C-3 — Line-by-line repo review of the combined tree | **done** | 54ce6a2b | `research/54ce6a2b-repo-review.md` | — | 54C-F-01, 02, 05, 06 |
 | T-54C-4 — Site defects found and fixed inside this session's claimed scope | **done** | 54ce6a2b | `scripts/build_marketing.py` and the 6 pages it emits | — | 54C-F-03 (fixed) |
-| T-54C-5 — Integration with `main`, gates, PR, merge, Pages deploy | **in progress** (gates green; PR next) | 54ce6a2b | merge resolution only (see 54C conflict log) | — | — |
+| T-54C-5 — Integration with `main`, gates, PR, merge, Pages deploy | **done** | 54ce6a2b | merge resolution only (see 54C conflict log) | — | — |
 
 ### 54C Scope note (non-overlapping)
 
@@ -4088,3 +4088,25 @@ All nine gates were re-run on the re-merged tree and are green; see the 54C gate
 (`check_site` OK 13/3/51/**78** · `verify_site` PASS · `link_report --strict` 0 ·
 `check_all_links` 117 pages 0 errors · `build_sitemap --check` 0 · `3c886b62` checker OK ·
 generators idempotent · 0 conflict markers · 0 pages with a duplicated nav destination).
+
+
+## 54C-T5 record — PR, merge and Pages deploy (2026-11-14)
+
+| Event | Result |
+|---|---|
+| Pull request | [#85 — Zone3 (session 54ce6a2b): independent live re-verification, repo review, duplicate-nav fix, 6 review flags](https://github.com/kanlerxz87-cyber/Zone3/pull/85) — `arena/54ce6a2b-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`, +655 / −55 across 15 files. Gates green immediately before the merge: `check_site` OK (13 pages / 3 products / 51 sources / **78** flags), `verify_site` PASS (71 pages / 1,275 rows / 1,074 sourced / 405 flagged / **0 advisories**), `link_report --strict` 0, `check_all_links` 117 pages 0 errors, `build_sitemap --check` 0, `sessions/3c886b62` checker OK, all four generators idempotent, 0 conflict markers, 0 pages with a duplicated nav destination |
+| Merge | **MERGED** 2026-11-14T19:21:06Z via `gh pr merge 85 --merge` (no approval waited, per the brief) → merge commit `bfc46eefc56517d300764316daf60a3dbc027598`; confirmed `state=MERGED` via `gh pr view --json state,mergedAt,mergeCommit` |
+| Pages build | source `main` `/`; build for `bfc46ee` → **status `built`** (created 2026-11-14T19:21:08Z, completed 19:21:34Z, via the Pages API `builds/latest`) |
+| Live check — marketing hub | https://kanlerxz87-cyber.github.io/Zone3/marketing/index.html serves the regenerated hub; the duplicate "Marketing" nav entry is gone |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html publishes `54C-F-01`…`54C-F-06` with their official source links (`54C-F-06` verified on the deployed page, citing S02 and S46–S48) |
+| Site merged while flagged? | Yes. All six `54C-F` items are non-blocking and published on the **Flagged for review** page with their source links, as the brief requires |
+| Post-merge follow-up | This record — shipped as a second pull request, because a record cannot be written to `main` before the merge it records |
+
+### Note on the sandbox network
+
+This sandbox's outbound access is limited to `github.com`, `codeload.github.com`, `api.github.com`,
+`registry.npmjs.org`, `pypi.org` and `files.pythonhosted.org`, so `curl` cannot reach
+`*.github.io`. Live checks after the deploy were therefore made with the session's fetch tool
+rather than `curl`, and the local serve check (10/10 pages HTTP 200) was made with
+`python3 -m http.server` before the merge. Both are recorded above.
