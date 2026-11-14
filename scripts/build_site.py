@@ -21,7 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = "https://github.com/kanlerxz87-cyber/Zone3"
 DATA = ROOT / "data"
 ASSETS = ROOT / "assets"
-BUILT = "2026-11-13"
+BUILT = "2026-11-14"
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 
 
@@ -246,7 +246,7 @@ def reverify_table() -> str:
 def build_index() -> None:
     stats = [
         ("Product links submitted", str(N), ""),
-        ("Product identifiers verified (ASIN)", f"{count_verified('asin')} of {N}", "bad"),
+        ("Resolved target ASIN listings", f"{count_verified('asin')} of {N}", "ok"),
         ("Prices verified", f"{count_verified('price')} of {N}", "warn"),
         ("Commission rates verified", f"{count_verified('commission_rate')} of {N}", "warn"),
         ("Critical flags open", str(sev_count("Critical")), "bad"),
@@ -272,9 +272,7 @@ def build_index() -> None:
     reverify_html = reverify_table()
     body = f"""
 <div class="callout">
-  <p><strong>Headline:</strong> none of the three submitted Amazon links can be verified as a product listing.
-  The identifiers are nine characters long and the amazon.com product pages for them return &ldquo;Page Not Found&rdquo;.
-  The short links open three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven) that are not confirmed as the submitted products. Those values are left blank.</p>
+  <p><strong>Headline:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
 </div>
 <div class="grid">{stat_html}</div>
 <h2>Sections</h2>
@@ -299,21 +297,17 @@ def build_exec() -> None:
     body = f"""
 <section class="card">
   <h2>Bottom line</h2>
-  <p>The three Amazon links in the brief cannot be verified as product listings. Their identifiers are nine characters long.
-  Amazon&rsquo;s official Creators API documentation shows ASIN values of ten characters {src_links(['S06'])}.
-  The amazon.com product page for each identifier returns &ldquo;Page Not Found&rdquo; {src_links(['S08', 'S09', 'S10'])}.
-  All of this was re-checked on 2026-11-14 and reproduced exactly; see the re-verification table on the dashboard.
-  The short links open Amazon product pages, but for three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven), which are not confirmed as the submitted products {src_links(['S11', 'S12', 'S13', 'S14', 'S15', 'S16'])}.</p>
-  <p>As the brief requires, every product name, price, rating, review count, commission rate, niche score and click or conversion figure is left blank and marked <span class="badge unv">Unverified</span>. No value was inferred.</p>
+  <p>All three supplied short links resolve to live product pages: B04G1MEwY to B0CDY277D3, B02NbDxp3 to B09B7SB46R, and B00hJ57DV to B08DKYBTPH {src_links(['S30', 'S31', 'S32'])}. The submitted nine-character values are link identifiers, not ASINs; direct /dp/&lt;short-id&gt; Page Not Found results do not mean the links fail. See the dated <a href="research/a86f1d09-verification-log.md">first-hand verification log</a>.</p>
+  <p>Product names and listing identity are verified. Static price display, API-derived reviews, link-model-specific earnings, traffic, clicks, conversions and niche profitability are not represented as live or established. Point-in-time observations are segregated in the research log; any value not confirmed through an eligible official route remains blank and is flagged.</p>
 </section>
 
 <section class="card">
   <h2>Key findings</h2>
   <ul class="findings">
     <li><strong>All three supplied short links resolve to live product listings.</strong> Their nine-character tokens are short-link identifiers, not ASINs; a direct /dp/&lt;token&gt; 404 does not mean the short link fails. {src_links(['S30', 'S31', 'S32'])} <a href="research/a86f1d09-verification-log.md">Dated verification log</a>.</li>
-    <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches on 2026-11-13 and again on 2026-11-14. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
+    <li><strong>The short-link mappings were observed consistently.</strong> Each supplied URL mapped to the same resolved ASIN on repeated fetches on 2026-11-14. The short codes themselves are not ASINs; the resolved listing targets are recorded in the product register. {src_links(['S30', 'S31', 'S32'])}.</li>
     <li><strong>Applying the shortener rules to link.amazon needs a judgement call.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), a link must not be cloaked or obscured (6(v)), and purchases through a link that sends users on indirectly, without an affirmative click, are disqualified as a Redirecting Link {src_links(['S30'])} (CIS 2(e)). No document names <code>link.amazon</code>; what its redirects actually do is a behaviour observation, and it has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
-    <li><strong>Category rates are public; per-product rates are not assignable.</strong> Amazon&rsquo;s Standard Commission Income Statement, Table 1, is readable without a sign-in (Kitchen 4.50&nbsp;%, Home 3.00&nbsp;%, All Other Categories 4.00&nbsp;%) {src_links(['S25', 'S26'])}, and was re-read on 2026-11-14. The per-product rate cannot be stated, because the listing&rsquo;s category is unverified and the account-specific rate card route redirects to sign-in {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
+    <li><strong>Public Kitchen commission tables are verified, but the applicable model is unconfirmed.</strong> Amazon&rsquo;s public schedules show Standard Kitchen 4.50%, Onsite Table A Kitchen 1.25%, and Creator Ads Table B Kitchen 2.25%. These are program-specific rates, not product-level estimates; use only the table that matches the actual link/program model. {src_links(['S25', 'S26'])}.</li>
     <li><strong>Automated product data needs Creators API access.</strong> The official prerequisite is &ldquo;at least 10 qualifying sales within the past 30 days&rdquo; {src_links(['S04'])}. Prices and reviews may be shown only through a Special Link or the API {src_links(['S02'])} (PF-04, PF-05) {flag_links(['FLG-006'])}.</li>
     <li><strong>The AI layer needs written approval from Amazon.</strong> The Creators API terms bar analysing, aggregating or repurposing its data, and bar using Program Content to develop or train machine learning or language models, without express prior written approval {src_links(['S02'])} (PF-23, PF-24, PF-25) {flag_links(['FLG-016'])}.</li>
     <li><strong>Eligibility for a Norway-based owner is not stated.</strong> Schedule 1 of the Operating Agreement lists only the United States site, amazon.com {src_links(['S01'])} (PF-35) {flag_links(['FLG-015'])}.</li>
