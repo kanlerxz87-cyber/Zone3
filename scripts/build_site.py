@@ -34,6 +34,7 @@ SOURCES = {s["id"]: s for s in SRC["sources"]}
 PRODUCTS = load("products.json")["products"]
 FACTS = {f["id"]: f for f in load("policy_facts.json")["facts"]}
 FLAGS = load("flags.json")["flags"]
+TOPICS = load("topics.json")
 
 
 def e(value) -> str:
@@ -93,6 +94,10 @@ NAV = [
     ("pricing.html", "Pricing &amp; commission"),
     ("reviews.html", "Reviews &amp; competition"),
     ("content.html", "Content &amp; compliance"),
+    # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan the brief
+    # asks for ("catchy trendy articles and topics"). Every topic row carries the official
+    # source of the fact it rests on; no trend or volume claim is made.
+    ("content-topics.html", "Content topics"),
     ("campaigns.html", "Campaigns &amp; tracking"),
     ("flagged.html", "Flagged for review"),
     ("sources.html", "Sources"),
@@ -301,6 +306,7 @@ SITEMAP_GROUPS = [
         ("marketing/product-1-chefman-6-quart-dual-basket.html", "Product brief 1"),
         ("marketing/product-2-emeril-lagasse-26qt-french-door.html", "Product brief 2"),
         ("marketing/product-3-chefman-8-quart-turbofry.html", "Product brief 3"),
+        ("content-topics.html", "Content topics"),
         ("content.html", "Content &amp; compliance"),
         ("campaigns.html", "Campaigns &amp; tracking"),
         ("content/index.html", "Audit build: Content"),
@@ -360,6 +366,9 @@ def build_index() -> None:
         ("pricing.html", "Pricing &amp; commission", "Price and commission fields, plus the verified commission rules."),
         ("reviews.html", "Reviews &amp; competition", "Ratings and competitor fields, a dated category benchmark, plus the verified review rules."),
         ("content.html", "Content &amp; compliance", "Article status and the Associates and FTC checklist."),
+        # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan.
+        ("content-topics.html", "Content topics",
+         "The planned article topics, the verified fact each one is built on, and what it may not state."),
         ("campaigns.html", "Campaigns &amp; tracking", "Click and conversion ledger. Empty until data exists."),
         ("flagged.html", "Flagged for review", "Every irregularity and unverified item, with its source links."),
         ("sources.html", "Sources", "The official source registry with retrieval status."),
@@ -622,17 +631,32 @@ def build_benchmark() -> str:
 def build_content() -> None:
     rows = []
     for p in PRODUCTS:
+        pid = p["id"]
         rows.append([
             e(p["label"]),
-            badge("Not written", "bad"),
-            badge("Not written", "bad"),
-            badge("Not written", "bad"),
-            "Product facts are unverified (FLG-001, FLG-004). Writing now would present an unconfirmed product as the one in the brief. PF-10 forbids misleading product claims.",
-            flag_links(["FLG-012"]),
+            badge("Published", "ok") + ' <a href="marketing/briefs.html">brief</a>',
+            badge("Published", "ok") + ' <a href="marketing/comparison.html">comparison</a>',
+            badge("Published", "ok") + ' <a href="marketing/buying-guide.html">buying guide</a>',
+            "The copy describes the listing this link currently opens, not a product the submitted "
+            "code is documented to identify. Product name, price, rating and review count stay "
+            "blank (FLG-001, FLG-002, FLG-004).",
+            "Planned topics for this product: " + ", ".join(
+                t["id"] for t in TOPICS["topics"] if pid in t["products"]) or "&mdash;",
+            flag_links(["FLG-002", "FLG-029", "FLG-030"]),
             src_links(["S02", "S07"]),
         ])
     body = "<h2>Content status</h2>" + table(
-        ["Product", "SEO product article", "Comparison", "Buying guide", "Why it is blocked", "Flags", "Source"], rows)
+        ["Product", "SEO product brief", "Comparison", "Buying guide", "What the copy does and does not say",
+         "Planned topics", "Flags", "Source"], rows)
+    body += (
+        '<p class="small"><strong>Correction (session 3d359c23, 2026-11-14).</strong> This table '
+        'previously showed &ldquo;Not written&rdquo; for every product. That was true when it was '
+        'written and stopped being true when the <code>/marketing/</code> section was published: '
+        'three product briefs, a comparison and a buying guide are live and linked from the '
+        'navigation. The table now shows what is published. The editorial plan for the remaining '
+        'articles is on the <a href="content-topics.html">Content topics</a> page. Recorded as '
+        '<a class="flagid" href="flagged.html#3D-F-01">3D-F-01</a>.</p>'
+    )
 
     checklist = [
         ["Disclosure wording", FACTS["PF-01"]["quote"], badge("On every page (footer)", "ok"), src_links(["S01"])],
@@ -645,7 +669,109 @@ def build_content() -> None:
     body += "<h2>Associates and FTC checklist</h2>" + table(
         ["Requirement", "Verified wording (quoted)", "Status on this site", "Source"], checklist)
     page("content.html", "Content &amp; compliance", body,
-         lead="No article, comparison or buying guide has been written yet. The checklist below records what any content must meet before it is published.")
+         lead="Three product briefs, a comparison and a buying guide are published under /marketing/, "
+              "and the editorial plan for the rest is on the Content topics page. The checklist below "
+              "records what any content must meet before it is published.")
+
+
+# ------------------------------------------------------------- Content topics
+def build_topics() -> None:
+    """The editorial topic plan (session 3d359c23).
+
+    Every row carries the official source of the fact it rests on. Nothing here is
+    described as trending, popular or high-converting: no official Amazon endpoint
+    publishes those figures to affiliates (FLG-033), so no such claim is made.
+    """
+    rows = []
+    for t in TOPICS["topics"]:
+        ready = t["status"] == "ready"
+        rows.append([
+            e(t["id"]),
+            f'<strong>{e(t["title"])}</strong>',
+            e(t["intent"]),
+            e(t["stage"]),
+            e(", ".join(t["products"]) if t["products"] else "Category-wide"),
+            e(t["facts"]),
+            badge("Ready to draft" if ready else "Blocked: identity unconfirmed",
+                  "ok" if ready else "warn"),
+            flag_links(t["flags"]) if t["flags"] else "&mdash;",
+            src_links(t["sources"]),
+        ])
+    body = (
+        '<div class="callout"><p><strong>What this page is.</strong> The article topics this site '
+        'should publish for the three submitted Amazon links, and the reason each one is worth '
+        'writing. Every topic is built only on facts printed on an Amazon listing or published in '
+        'Amazon&rsquo;s own programme documents, and every row links the page the fact was read from. '
+        'The titles below are working SEO titles, not published articles.</p></div>'
+        + "<h2>How each topic was derived</h2>"
+        + "<ol class=\"findings\">"
+        + "".join(f"<li>{e(step)}</li>" for step in TOPICS["method"])
+        + "</ol>"
+        + "<h2>Editorial topic plan</h2>" + table(
+            ["ID", "Working title", "Intent", "Funnel stage", "Products", "Verified facts it is built on",
+             "Status", "Flags", "Source"], rows)
+        + '<p class="small"><strong>Ready to draft</strong> &mdash; '
+        + e(TOPICS["statuses"]["ready"])
+        + ' <strong>Blocked: identity unconfirmed</strong> &mdash; '
+        + e(TOPICS["statuses"]["blocked"]) + "</p>"
+    )
+
+    rules = []
+    for t in TOPICS["topics"]:
+        for m in t["must_not_state"]:
+            rules.append([
+                e(t["id"]),
+                e(t["title"]),
+                e(m["text"]),
+                e(m["rule"]),
+                src_links([m["source"]]),
+            ])
+    body += "<h2>What each topic may not state</h2>" + table(
+        ["ID", "Topic", "Must not state", "Rule", "Source"], rules)
+
+    pub = []
+    for t in TOPICS["topics"]:
+        pub.append([
+            e(t["id"]),
+            f'<a href="{e(t["published"])}">{e(t["published"])}</a>',
+            e(t["facts"]),
+            src_links(t["sources"]),
+        ])
+    body += "<h2>Where these facts are already published</h2>" + table(
+        ["ID", "Page", "Verified facts the page already carries", "Source"], pub)
+
+    np_rows = []
+    for item in TOPICS["not_planned"]:
+        np_rows.append([
+            e(item["item"]),
+            e(item["why"]),
+            src_links([item["source"]]),
+        ])
+    body += "<h2>Topics deliberately not planned</h2>" + table(
+        ["Not planned", "Why", "Source"], np_rows)
+
+    body += f"""
+<section class="card">
+  <h2>Why no topic is called trending</h2>
+  <ul class="findings">
+    <li>The brief asks for &ldquo;catchy trending articles and topics&rdquo;. Amazon publishes no
+      endpoint that gives an affiliate search volume, keyword difficulty, trend direction or
+      conversion rate {src_links(['S02'])}; the only official popularity surface is the category
+      Best Sellers page, which is point-in-time and moves between captures
+      {src_links(['S43'])} (FLG-025, FLG-033).</li>
+    <li>So every topic above is anchored to a fact that is printed on the listing itself, and the
+      plan says which fact. A topic that cannot be anchored is not written down as if it could.</li>
+    <li>Nothing here states a price, a star rating or a review count: Participation Requirements
+      2(b) and 6(t) allow those on a site only when Amazon serves the link or they come from the
+      Creators API or PA API {src_links(['S02'])} (FLG-022).</li>
+    <li>No topic describes the site&rsquo;s own experience of the products: the FTC states you cannot
+      talk about your experience with a product you have not tried {src_links(['S07'])}.</li>
+  </ul>
+</section>
+"""
+    page("content-topics.html", "Content topics", body,
+         lead="The planned article topics for the three submitted links, each anchored to the verified "
+              "Amazon fact it is built on, with the rule that governs what it may not say.")
 
 
 # ------------------------------------------------------------- Campaigns
@@ -1189,6 +1315,7 @@ def main() -> None:
     build_reviews()
     build_marketing()
     build_content()
+    build_topics()
     build_campaigns()
     build_flagged()
     build_category()

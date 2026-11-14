@@ -26,8 +26,8 @@ publish any value that cannot be traced to an official source.
 | Submitted tokens that are ASINs | **0 of 3** (they are short-link tokens) |
 | Observed redirect destination listings | **3 of 3** |
 | Product-attribute cells blank in the audit sheet | **27** (9 unavailable fields × 3 observed listings) |
-| Official sources cited | 22 in `data/z3/`; 48 in the flat-site register |
-| Open items published for review | 28 |
+| Official sources cited | 22 in `data/z3/`; 51 in the flat-site register |
+| Open items published for review | 69 (flat-site register) · 29 (audit build) |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks |
 
 The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
@@ -75,6 +75,7 @@ The pipeline records the observed destination listings separately from the 9-cha
 | Flagged | `/flagged/` | 29 open items with source links and resolutions |
 | Repo review | `/repo-review/` | Audit of the repository as found |
 | **This pass (2026-11-14)** | `/` (root dashboard) | Independent re-verification of every load-bearing claim against its official source, with a per-claim result table; corrections V-F1/V-F2 published at `/flagged.html`; repo review at `COORDINATION.md` § *Part: session b8beb448* |
+| **Final integration pass (2026-11-14)** | `/content-topics.html` | The editorial topic plan the brief asks for: 12 working article titles, the verified Amazon fact each is built on, the page that already carries it, and the rule that governs what it may not state. Every row carries an official source link |
 | **Executive summary (document)** | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | The standalone executive summary: verified facts, deliberately blank fields, capability status, and the three items that unblock the build |
 
 ---

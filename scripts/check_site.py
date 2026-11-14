@@ -33,6 +33,9 @@ DATA = ROOT / "data"
 PAGES = [
     "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
     "content.html", "campaigns.html", "flagged.html", "sources.html", "air-fryers.html",
+    # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan. Every
+    # topic row must carry a source link to an official page, like every other data table.
+    "content-topics.html",
     # Added on integration 2026-11-14 (session b90c5685): PR #26's facts-only marketing page,
     # reconciled with main's marketing/ section and re-homed under it.
     "marketing/briefs.html",
@@ -40,7 +43,8 @@ PAGES = [
     "verification.html",
 ]
 TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
-               "campaigns.html", "flagged.html", "sources.html", "verification.html"}
+               "campaigns.html", "flagged.html", "sources.html", "verification.html",
+               "content-topics.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
     # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);
