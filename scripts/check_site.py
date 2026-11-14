@@ -31,11 +31,12 @@ from urllib.parse import urlparse
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 PAGES = [
-    "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
+    "index.html", "executive-summary.html", "products.html", "category/air-fryers.html",
+    "pricing.html", "reviews.html", "marketing.html",
     "content.html", "campaigns.html", "flagged.html", "sources.html",
 ]
-TABLE_PAGES = {"products.html", "pricing.html", "reviews.html", "content.html",
-               "campaigns.html", "flagged.html", "sources.html"}
+TABLE_PAGES = {"products.html", "category/air-fryers.html", "pricing.html", "reviews.html",
+               "marketing.html", "content.html", "campaigns.html", "flagged.html", "sources.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
     "www.ftc.gov", "github.com", "api.github.com",
