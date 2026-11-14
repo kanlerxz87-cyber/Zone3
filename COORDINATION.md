@@ -3834,7 +3834,7 @@ Flagged for review page rather than blocking anything:
 | 98-T3 — Pages deploy failure: diagnose and repair until the site is live | done (transient; no repair needed) | d9828ec7 | none (diagnosis only) | `cc9aafb` error was a build race; every build since → `built`. Record below. |
 | 98-T4 — Line-by-line verification round against official sources (fetch tool) | done (13/13 confirmed) | d9828ec7 | this Part only | Official sources only; no inference. Record below. |
 | 98-T5 — All gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, generators idempotent, sitemap) | done (all green) | d9828ec7 | read-only + sitemap fix under integration role | Record below; sitemap drift C3-F-01 fixed. |
-| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | in progress | d9828ec7 | git + `gh` + this Part | Merge only when the site is verified not broken. |
+| 98-T6 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | done (PR #84 merged; C3-F-01 sitemap question resolved by adopting main's canonical sitemap; record below) | d9828ec7 | git + `gh` + this Part | — |
 
 Scope note: shared outputs are edited only under the final-integration role (98-T3/T5/T6) and every
 such edit is logged here. Open PR #71 (`arena/71dc8fea-zone3`) belongs to another session and is
@@ -3920,6 +3920,236 @@ Creators/PA API; no such path is configured here. They remain blank on product r
 | 2026-11-14 | First `git merge origin/main`: content conflict in `COORDINATION.md` (both sides appended at the same anchor — this session's claim vs session `c3dbcc40`'s C3-T3 record) | Kept **both sides in full**: main's text first, then this session's 98 Part. A first scripted attempt failed on an over-strict assertion (the file's prose legitimately *mentions* `<<<<<<<`) and briefly left line-start markers in an **unpushed** merge commit; caught before any push, the file was rebuilt with a line-start-only marker check and the commit amended. Remote never contained markers. |
 | 2026-11-14 | Second merge (main moved `96ea745` → `a73fab6`, PRs #74/#77–#82) | Same conflict class; same keep-both resolution (assertions: no line-start markers, all session parts present). |
 | Push policy | `git pull --rebase` conflicts on a merge commit are avoided by merging `origin/main` into this branch instead (convention already logged by sessions `ecbfe91b`, `3c886b62`); nothing from any session discarded |
+
+# PART 54C — Session `54ce6a2b` (branch `arena/54ce6a2b-zone3`, base `f618a53`) — 2026-11-14
+
+## 54C Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 54ce6a2b | `arena/54ce6a2b-zone3` | Independent line-by-line repo review; live re-verification of the three submitted links and of the load-bearing policy text; two defect fixes inside this session's claimed scope; integration with `main` as far as `a73fab6`; PR to `main`, merge, Pages deploy. | done (T-54C-1…T-54C-4; T-54C-5 gates green) | 2026-11-14 |
+
+Branch naming: the brief asks for `session-<id>/<task>` branches. The Arena branch note for this
+session fixes it to one branch, `arena/54ce6a2b-zone3`, and forbids creating or pushing any other
+branch. Task IDs below replace per-task branches, following the decision already logged by session
+`7f84fea4` on this board.
+
+## 54C Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| T-54C-1 — Claim scope, sync to `main` | **done** | 54ce6a2b | this Part of `COORDINATION.md` | — | — |
+| T-54C-2 — Independent live re-fetch of the three submitted links, the three `/dp/<token>` controls, and the load-bearing policy text | **done** | 54ce6a2b | `research/54ce6a2b-verification-log.md` | 8 checks, all fetched 2026-11-14 by this session; no new source IDs added | none — every claim confirmed |
+| T-54C-3 — Line-by-line repo review of the combined tree | **done** | 54ce6a2b | `research/54ce6a2b-repo-review.md` | — | 54C-F-01, 02, 05, 06 |
+| T-54C-4 — Site defects found and fixed inside this session's claimed scope | **done** | 54ce6a2b | `scripts/build_marketing.py` and the 6 pages it emits | — | 54C-F-03 (fixed) |
+| T-54C-5 — Integration with `main`, gates, PR, merge, Pages deploy | **in progress** (gates green; PR next) | 54ce6a2b | merge resolution only (see 54C conflict log) | — | — |
+
+### 54C Scope note (non-overlapping)
+
+This session's own files: `research/54ce6a2b-verification-log.md`,
+`research/54ce6a2b-repo-review.md`, and this Part of `COORDINATION.md`. Fixed inside a claimed
+scope: `scripts/build_marketing.py` and the `marketing/*.html` it generates. Shared outputs
+(`data/sources.json`, `data/flags.json`, `data/products.json`, `scripts/build_site.py`, `tools/*`,
+`EXECUTIVE-SUMMARY.md`, the flat root pages and the site index/navigation) were **not** edited by
+this session beyond the merge resolution recorded below; where a defect was found in a file owned
+by another session, it is logged as a change request rather than edited.
+
+## 54C-T2 record — independent live re-verification (all fetched 2026-11-14 by this session)
+
+Full record with verbatim quotes: [`research/54ce6a2b-verification-log.md`](research/54ce6a2b-verification-log.md).
+
+| # | Check | Result | Independent verdict |
+|---|---|---|---|
+| 1 | `link.amazon/B04G1MEwY` | → `amazon.com/dp/B0CDY277D3`, "CHEFMAN 6 Quart Dual Basket Air Fryer Oven …" | **Confirmed** — matches `data/products.json` P1 |
+| 2 | `link.amazon/B02NbDxp3` | → `amazon.com/dp/B09B7SB46R`, "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven …" | **Confirmed** — matches P2 |
+| 3 | `link.amazon/B00hJ57DV` | → `amazon.com/dp/B08DKYBTPH`, "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 …" | **Confirmed** — matches P3 |
+| 4 | `amazon.com/dp/<each 9-char token>` | "Page Not Found" ×3 | **Confirmed** (S08–S10) |
+| 5 | Creators API `GetItems`, ItemIdType | "ASIN \| Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon." | **Confirmed verbatim** |
+| 6 | Operating Agreement | header "Updated: October 15, 2025"; §5 "As an Amazon Associate I earn from qualifying purchases."; opening paragraph "…including the prohibition of customer reviews that are created, edited, or removed in exchange for compensation." | **Confirmed verbatim** — all three |
+| 7 | Program Policies, Participation Requirements 6(s), 6(t), 6(v), 6(w), 6(y) | all five present verbatim | **Confirmed verbatim** |
+| 8 | Standard Commission Income Statement Table 1 | renders without a sign-in; **Kitchen 4.50%**, Home 3.00%, All Other 4.00% | **Confirmed** |
+
+Also confirmed: the breadcrumb `Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers ›
+Air Fryers` on all three destination pages; and Commission Income Statement §6 payment terms
+("approximately 60 days following the end of each calendar month", US minimums 10 / 10–2000 / 100
+USD, cheque fee 15 USD).
+
+**No new source IDs were added to `data/sources.json` by this session.** Every URL above is already
+in the register under an existing ID, and every fetch was made by this session rather than copied
+from another session's log.
+
+### One cross-session disagreement settled
+
+The Operating Agreement **does** contain the "customer reviews … in exchange for compensation"
+sentence, in its opening paragraph. Session `7f84fea4` withdrew PF-14 saying the text was not
+found; session `3ead7ac8` (`3E-CR-03`) corrected that and added PF-53. This session's independent
+fetch **confirms 3E-CR-03** and does not disturb the withdrawal record.
+
+## 54C-T3 record — repo review
+
+Full report: [`research/54ce6a2b-repo-review.md`](research/54ce6a2b-repo-review.md).
+
+Registers as read on the merged tree: 51 sources (23 verified / 25 observed / 2 not-accessible /
+1 third-party), 55 policy facts, 72 flags (no duplicate IDs), 3 products with all identity, price,
+rating, commission and analytics cells `null`.
+
+Checks run that found **no** defect: conflict markers outside `archive/` (0); duplicate flag IDs
+(0); source entries missing a required field (0); duplicated nav destinations after the 54C-F-03
+fix (0); `tools/link_report.py --strict` (exit 0); `scripts/check_all_links.py` (0 errors);
+`tools/verify_site.py` (0 advisories); the legacy `/docs/products.html` rendering price or rating
+cells (it does not).
+
+## 54C-T4 record — changes made by this session
+
+| File | Change |
+|---|---|
+| `scripts/build_marketing.py` | Nav entries de-duplicated by href, and `marketing/index.html` appended only when absent. Fixes a duplicate "Marketing" link, carrying `class="active"` twice on the hub, on all 6 pages this generator emits. |
+| `marketing/{index,briefs,buying-guide,comparison,product-1…,product-2…,product-3…}.html` | Regenerated from the fixed generator. 1 line changed per file; generator confirmed idempotent. |
+| `research/54ce6a2b-verification-log.md`, `research/54ce6a2b-repo-review.md` | New — this session's records. |
+
+Withdrawn by this session on merge: an in-place correction to `EXECUTIVE-SUMMARY.md` (stale
+register counts 48/51/51 → 51/55/66). Main had already been corrected by PR #75 to 51/55/72/13,
+which is right for the current tree, so this session **kept main's version** and dropped its own.
+The finding is recorded below as `54C-F-01` for the record only — no change is needed.
+
+## 54C Irregularities raised (all on the Flagged for review page; none blocking)
+
+| ID | Severity | Category | Item |
+|---|---|---|---|
+| 54C-F-01 | Info | Accuracy (already resolved upstream) | `EXECUTIVE-SUMMARY.md` carried stale register counts. Corrected on `main` by PR #75 before this session's merge; this session kept main's version. Recorded for traceability only. |
+| 54C-F-02 | Low | Register | The counts in `EXECUTIVE-SUMMARY.md` are hand-written, so they drift on every append. Change request: generate them from `data/*.json`. |
+| 54C-F-03 | Low | Site (fixed) | Duplicate "Marketing" nav entry on the 6 pages from `scripts/build_marketing.py`. Fixed in place by this session. |
+| 54C-F-04 | Info | Corroboration | `C3-F-01` (sitemap drift) does not reproduce. Session `f2102efa` reached the same conclusion independently (`F2-F-01`); this session's check agrees with it. |
+| 54C-F-05 | Low | Register | Ten alias groups in `sources.json` — `S01`=`S49`, `S02`=`S30`=`S50`, `S07`=`S51`, `S11`=`S52`=`S55`, `S12`=`S53`, `S13`=`S54`, `S16`=`S32`, `S40`=`S46`, `S41`=`S47`, `S42`=`S48`. 51 IDs, 39 distinct URLs. Extends `3E-CR-02`. Change request: note or retire. |
+| 54C-F-06 | Medium | Compliance (owner decision) | `sources.html` renders observed star-rating, review-count and price literals inside `<td>` cells for S46–S48 — the same values the product tables withhold under 6(t) and 2(b). Prior sessions treated the source register as audit context. Not changed by this session; the wording is not ours and whether a register counts as "display" is the owner's call. |
+
+## 54C Change requests this session did **not** action
+
+| ID | File (owner) | Request |
+|---|---|---|
+| 54C-CR-01 | `EXECUTIVE-SUMMARY.md` (site owner) | Generate the §2 and §7 counts from `data/*.json` so they cannot drift (54C-F-02). |
+| 54C-CR-02 | `data/sources.json` (shared) | Note the ten alias groups or retire the duplicate IDs (54C-F-05). |
+| 54C-CR-03 | `data/sources.json` / `sources.html` (owner decision) | Decide whether S46–S48's "Note" column may keep the observed price and rating literals (54C-F-06). |
+
+
+## 54C Conflict log (2026-11-14)
+
+Two rounds, both resolved by keeping every side in full. Nothing from any session was discarded.
+
+| Round | What happened | Resolution |
+|---|---|---|
+| 1 | `git pull --rebase origin main` stopped on a `COORDINATION.md` EOF conflict: `main` advanced `f618a53` → `9024b99` (PRs #73, #74, session `c3dbcc40`) while the claim commit was being pushed. The pre-rebase commit `5a28d9f` had already reached the remote, so the rebase rewrote the branch. | Kept both sides: `c3dbcc40`'s C3-T3 record first, then this session's Part 54C. Rewritten branch pushed with `--force-with-lease 5a28d9f…`; the only commit replaced was this session's own claim commit. **Incident:** the first scripted resolution exited non-zero on an over-strict assertion (it rejected prose occurrences of marker strings in earlier sessions' logs) but a `;`-separated `git add` ran anyway, committing a tree whose tail still held a `>>>>>>>` marker. Caught by a marker grep before any push of that tree; fixed in the next commit. Guard adopted for the rest of the session: every git write is gated on the marker check's exit status. |
+| 2 | `main` advanced `9024b99` → `a73fab6` (PRs #75–#82, sessions `3ead7ac8`, `3d359c23`, `f2102efa` and others) while this session was writing its records. A rebase replay produced a **nested** conflict, because commit `56e1791` (from round 1) is itself a tree that carried the leftover marker. | `git rebase --abort`, then a real `git merge origin/main` with the board rebuilt as **main's file verbatim + this session's Part 54C appended**, following the convention session `03bbd050` logged for exactly this situation. 8 conflicts resolved: `COORDINATION.md` (main verbatim + Part 54C), `EXECUTIVE-SUMMARY.md` (**kept main's** — PR #75 had already refreshed the counts correctly, so this session dropped its own edit rather than reverting theirs), and the 6 `marketing/*.html` (**kept main's**, then regenerated from the merged `scripts/build_marketing.py`, which carried this session's nav fix). Verified after resolution: 0 line-leading markers, main's text intact as a prefix, 0 pages with a duplicated nav destination. |
+
+## 54C Gates on the final tree (all re-run immediately before the PR)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 13 pages, 3 products, 51 sources, 78 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS — 71 pages, 1,275 rows, 1,074 with official source, 405 with flag, 82 repo-anchored, 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** (no dangling source or flag references) |
+| `python3 scripts/check_all_links.py` | **117 pages, 105 external URLs, 0 errors** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0** — 66 pages covered, 0 extra entries |
+| `python3 sessions/3c886b62/tools/check_links.py` | **OK** — no broken internal links, every data row has a source cell |
+| all four generators re-run | **idempotent** (byte-identical second run: `diff -rq` on `index.html`, `flagged.html`, `sources.html`, `executive-summary.html`, `marketing/`, `dashboard/`) |
+| `git grep -Il "^<<<<<<< " -- . ':!archive'` | **0 files** |
+| duplicated nav destinations, whole-tree scan | **0 pages** |
+| local serve check | `/`, `/flagged.html`, `/marketing/index.html`, `/marketing/buying-guide.html`, `/sources.html`, `/executive-summary.html`, `/products.html`, `/category/air-fryers.html`, `/dashboard/index.html`, `/sitemap.xml` all **HTTP 200** |
+
+## 54C Sources used
+
+Every fetch below was made by this session on 2026-11-14. No source ID was added to
+`data/sources.json`; each URL is already registered.
+
+`https://link.amazon/B04G1MEwY` · `https://link.amazon/B02NbDxp3` · `https://link.amazon/B00hJ57DV` ·
+`https://www.amazon.com/dp/B04G1MEwY` · `https://www.amazon.com/dp/B02NbDxp3` ·
+`https://www.amazon.com/dp/B00hJ57DV` ·
+`https://affiliate-program.amazon.com/help/operating/agreement` ·
+`https://affiliate-program.amazon.com/help/operating/policies` ·
+`https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ` ·
+`https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items`.
+
+No third-party page was used as evidence.
+
+
+## 54C Conflict log — round 3 (2026-11-14, after PR #85 was opened)
+
+`main` advanced `a73fab6` → `057a5de` (PR #84, session `d9828ec7`, Part 98) after this session's
+pull request was open, so GitHub reported `mergeable=CONFLICTING`. Resolved the same way as round 2:
+`git merge origin/main`, then the board rebuilt as **main's file verbatim + this session's Part 54C
+re-appended** (main's copy did not contain Part 54C — asserted before writing). Zero line-leading
+markers after the resolution, and `git grep -Il "^<<<<<<< " -- . ':!archive'` returns 0 files.
+
+| Conflict | Resolution |
+|---|---|
+| `COORDINATION.md` (EOF append conflict with session `d9828ec7`'s Part 98) | Kept both sides in full: Part 98 (main's) first, then Part 54C. Nothing from either session discarded. |
+
+All nine gates were re-run on the re-merged tree and are green; see the 54C gates table above
+(`check_site` OK 13/3/51/**78** · `verify_site` PASS · `link_report --strict` 0 ·
+`check_all_links` 117 pages 0 errors · `build_sitemap --check` 0 · `3c886b62` checker OK ·
+generators idempotent · 0 conflict markers · 0 pages with a duplicated nav destination).
+
+
+## 98-T6 record — PR, merge, Pages deploy (2026-11-14, session d9828ec7)
+
+| Event | Result |
+|---|---|
+| Pull request | [#84 — Zone3: final integration (session d9828ec7)](https://github.com/kanlerxz87-cyber/Zone3/pull/84), `arena/d9828ec7-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; gates green immediately before merge: `check_site` OK (13 pages / 3 products / 51 sources / 72 flags), `verify_site` VERIFY PASS (71 pages / 1269 rows / 1068 sourced), `link_report --strict` exit 0, `check_all_links` 117 pages 0 errors, `build_sitemap --check` exit 0 |
+| Merge | **MERGED 2026-11-14T19:18:47Z** via `gh pr merge 84 --merge` (no approval waited, per brief) → merge commit `057a5de7e8d30d0ce1c0b8b57cc953a537510794` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Conflict history | Two `COORDINATION.md` content conflicts during this session (vs PRs #73/#74 and vs #77–#82), both resolved by **keeping both sides in full** (main's Parts first, then this session's 98 Part); one first-attempt scripting error left line-start markers in an **unpushed** merge commit and was caught and amended before any push (see 98 Conflict log). Nothing from any session discarded. |
+| Pages build | legacy `main` `/` source; build for `057a5de` → **status `built`** (polled via the Pages API) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — dashboard renders headline, KPIs, section tiles, site map and the re-verification table with per-claim source links |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — register renders with severity + official source link per row. First fetch after the build returned a **stale CDN copy** (66 entries, the pre-merge count); a cache-busted fetch served the current register (78 entries after PR #85). Recorded honestly so a later reader does not mistake the edge copy for a lost merge. |
+| Live check — executive summary / marketing | both render and carry the exact OA §5 disclosure sentence (checker-enforced pre-merge) |
+| Site merged while flagged? | yes — all registered flags are non-blocking and published on the Flagged for review page with source links, as the brief requires |
+
+### Sitemap question after #84 (C3-F-01) — investigated and resolved, no change shipped
+
+PR #85 (session `54ce6a2b`) and PR #86 (session `25513d33`, "canonical sitemap") each replaced
+`sitemap.xml` with the **67-entry canonical** version after #84 merged. This session then investigated
+which form is correct before re-landing anything, and **adopted main's canonical 67-entry sitemap**
+(this session's attempted re-land was reverted in this PR; no sitemap change is shipped):
+
+| Question | Finding |
+|---|---|
+| Are the five C3-F-01 pages real content pages? | **No.** Four are 0-second **meta-refresh redirect stubs** — `analysis.html` → `executive-summary.html`, `disclosure.html` → `content.html`, `marketing.html` → `marketing/index.html`, `flagged-for-review.html` → `flagged.html` — each carrying `<link rel="canonical" href="…">` to its target. A redirect stub must not be listed in a sitemap; its canonical target is, and those targets **are** listed. |
+| What about `index.html`? | Covered by the root entry `https://kanlerxz87-cyber.github.io/Zone3/` (GitHub Pages serves `index.html` at `/`). A separate `index.html` entry lists the same page twice — that is the registered defect **21-F-02**, so re-adding it would reintroduce a flag. |
+| Does the canonical sitemap pass the gate? | **Yes** — `python3 scripts/build_sitemap.py --check` → exit 0 against main's 67-entry file. |
+| What do the existing flags say? | **F2-F-01** and **54C-F-04** already record: *"C3-F-01 (sitemap drift) does not reproduce — audited / independently re-checked"*. **21-F-03** records stub exclusion as observed fact. This session independently reaches the same conclusion, with the `rel=canonical` evidence above. |
+| **C3-F-01 disposition** | **Closed as resolved-by-design** (premise corrected: the "five missing pages" are four canonical-redirect stubs plus a home-page duplicate). Published rationale here; the flag itself lives in session `c3dbcc40`'s board entry. |
+
+### Change request for the sitemap root cause (logged, not edited — cross-scope)
+
+**To the owner of `tools/build_site.py` (session `3c6cba43`'s directory build):** running
+`tools/build_site.py` rewrites `sitemap.xml` from its own list **plus every root `*.html`** — sweeping
+the four redirect stubs and `index.html` back in (verified this session: 67 → 72 entries, +5). The
+comment in `scripts/build_sitemap.py` already documents that this "is never a fixpoint". This is the
+root cause of the sitemap flip-flop across PRs #84/#85/#86. Requested fix: make
+`scripts/build_sitemap.py`'s `collect()` the single writer of `sitemap.xml` (have `tools/build_site.py`
+skip it), so a rebuild cannot reintroduce 21-F-02 or the stub entries. Not edited here, because the
+file is another session's scope and no gate currently fails.
+
+### Follow-up PR (this record + sitemap revert)
+
+| Event | Result |
+|---|---|
+| Pull request | created from `arena/d9828ec7-zone3` after this commit — **number filled in below post-merge** |
+| Merge | **filled below post-merge** (a record cannot precede the merge it documents — convention of sessions `dff4acde`, `ecbfe91b`, `252122ff`) |
+| Pages | **filled below post-merge** |
+
+## 98 Session close-out
+
+All six board tasks are **done**. Sources used (all official, fetched live 2026-11-14 by this session):
+[Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) ·
+[Program Policies](https://affiliate-program.amazon.com/help/operating/policies) ·
+[Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) ·
+[Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) ·
+[FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) ·
+the three `link.amazon` short links and their `amazon.com/dp/` destinations ·
+`amazon.com/dp/B04G1MEwY` (Page Not Found control) ·
+the live GitHub Pages site and the GitHub Pages API.
+No third-party aggregator was used as evidence. No value was inferred; unverifiable cells remain blank and flagged.
 
 # PART 54C — Session `54ce6a2b` (branch `arena/54ce6a2b-zone3`, base `f618a53`) — 2026-11-14
 
