@@ -2821,3 +2821,63 @@ for review page with source links, per the brief.
 
 See the merged PR section appended below after merge (the record cannot be written to `main`
 before the merge it records).
+
+## CDC Session registry — session `cdc9baa4` (branch `arena/cdc9baa4-zone3`, base `ab33669`)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| cdc9baa4 | `arena/cdc9baa4-zone3` | Independent line-by-line final verification of the merged tree and the live GitHub Pages site; record and PR | in progress (CDC-T1–CDC-T3) | 2026-11-14 |
+
+## CDC Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| CDC-T1 — Re-run all site gates on the merged `main` tree | done | cdc9baa4 | none (read-only) | — | — |
+| CDC-T2 — Live re-fetch of the three submitted links and their destination pages; live-site checks | done | cdc9baa4 | `COORDINATION.md` CDC Part only | listed below | CDC-F-01 |
+| CDC-T3 — Record, PR to `main`, merge, Pages check | in progress | cdc9baa4 | `COORDINATION.md` CDC Part only | — | — |
+
+Scope note: this session edits no site, data, or script file. It records its findings here only.
+The tree was already at the `main` tip at session start (`ab33669`, PR #53 merged 2026-11-14T18:29:56Z);
+no content change was required, so this session performs independent verification and publishes the record.
+
+## CDC-T1 record — gates on the merged tree (2026-11-14, session cdc9baa4)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | OK: 12 pages, 3 products, 48 sources, 49 flags — exit 0 |
+| `python3 tools/verify_site.py` | VERIFY PASS · 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 with repo anchor — exit 0 |
+| `python3 tools/link_report.py --strict` | exit 0 (dangling source refs=none; dangling flag refs=none; advisory: `SRC-07` uncited and flags `FLG-001/002/003/007/027` unreferenced by any row — non-blocking) |
+| `python3 scripts/check_all_links.py` | 115 HTML pages, 104 distinct external URLs, 0 errors — exit 0 |
+
+## CDC-T2 record — live re-fetch (2026-11-14, session cdc9baa4)
+
+| # | Submitted link | Live fetch result | Matches register? |
+|---|---|---|---|
+| 1 | https://link.amazon/B04G1MEwY | Resolves to `amazon.com/dp/B0CDY277D3` — title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black"; breadcrumb Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers | Yes (S11/S14) |
+| 2 | https://link.amazon/B02NbDxp3 | Resolves to `amazon.com/dp/B09B7SB46R` — "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven …"; Air Fryers breadcrumb | Yes (S12/S15) |
+| 3 | https://link.amazon/B00hJ57DV | Resolves to `amazon.com/dp/B08DKYBTPH` — "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 with 450°F Hi-Fry Option …"; Air Fryers breadcrumb | Yes (S13/S16) |
+
+Direct destination probes (official): `amazon.com/dp/B0CDY277D3`, `/dp/B09B7SB46R`, `/dp/B08DKYBTPH`
+each serve the same titles above — identity confirmed end-to-end. The three submitted tokens are
+9 characters each (B04G1MEwY=9, B02NbDxp3=9, B00hJ57DV=9); the Creators API defines an ASIN as a
+10-character identifier (S31), so they are short-link IDs, not ASINs — consistent with the register.
+
+Live-site checks (2026-11-14): the dashboard (`/`), `flagged.html` and `executive-summary.html` all
+serve; the dashboard re-verification table, the 49-flag register and the executive summary are live
+and carry per-claim official source links.
+
+Sources used this record: `https://link.amazon/B04G1MEwY` · `https://link.amazon/B02NbDxp3` ·
+`https://link.amazon/B00hJ57DV` · `https://www.amazon.com/dp/B0CDY277D3` ·
+`https://www.amazon.com/dp/B09B7SB46R` · `https://www.amazon.com/dp/B08DKYBTPH` ·
+`https://kanlerxz87-cyber.github.io/Zone3/` · `.../flagged.html` · `.../executive-summary.html` ·
+`https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter`.
+
+## CDC Irregularities (non-blocking; for manual review)
+
+| ID | Sev | Finding | Source for review |
+|---|---|---|---|
+| CDC-F-01 | Info (resolved) | At first check the GitHub Pages "latest build" reported commit `2f23467d407789b3fe98179ccfc57741c7609c25`, which was not present in this session's clone (the clone sat at `ab33669`). After `git fetch`, `2f23467` is the merge commit of PR #54 (the session-4575cf95 H publish-record follow-up) and is part of `main`. The build-reference discrepancy was a stale-clone artifact, not a content problem; resolved — no action needed. | https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest |
+
+## CDC-T3 — publish record
+
+Pending.
