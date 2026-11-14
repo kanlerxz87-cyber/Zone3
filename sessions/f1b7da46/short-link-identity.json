@@ -1,0 +1,55 @@
+{
+  "session": "f1b7da46",
+  "branch": "arena/f1b7da46-zone3",
+  "checked_on": "2026-11-14",
+  "method": "Fetched each submitted link.amazon short link, the raw 9-character code on amazon.com/dp/, and the ASIN page the short link resolved to. Recorded the page <title> and the canonical /dp/ ASIN from the resolved URL. Prices and ratings were NOT verified in this record and are left blank.",
+  "rows": [
+    {
+      "submitted_link": "https://link.amazon/B04G1MEwY",
+      "raw_code_as_dp": {
+        "url": "https://www.amazon.com/dp/B04G1MEwY",
+        "result": "Page Not Found (title: Page Not Found)"
+      },
+      "resolved_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "resolved_asin": "B0CDY277D3",
+      "resolved_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "breadcrumb_seen": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+      "identity_status": "verified (short link -> ASIN page title)",
+      "price_status": "not verified in this session",
+      "source_link": "https://www.amazon.com/dp/B0CDY277D3"
+    },
+    {
+      "submitted_link": "https://link.amazon/B02NbDxp3",
+      "raw_code_as_dp": {
+        "url": "https://www.amazon.com/dp/B02NbDxp3",
+        "result": "Page Not Found (title: Page Not Found)"
+      },
+      "resolved_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "resolved_asin": "B09B7SB46R",
+      "resolved_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
+      "breadcrumb_seen": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers (listed as the category of the Emeril page in the fetched chunk)",
+      "identity_status": "verified (short link -> ASIN page title)",
+      "price_status": "not verified in this session",
+      "source_link": "https://www.amazon.com/dp/B09B7SB46R"
+    },
+    {
+      "submitted_link": "https://link.amazon/B00hJ57DV",
+      "raw_code_as_dp": {
+        "url": "https://www.amazon.com/dp/B00hJ57DV",
+        "result": "Page Not Found (title: Page Not Found)"
+      },
+      "resolved_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "resolved_asin": "B08DKYBTPH",
+      "resolved_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "breadcrumb_seen": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+      "identity_status": "verified (short link -> ASIN page title)",
+      "price_status": "not verified in this session",
+      "source_link": "https://www.amazon.com/dp/B08DKYBTPH"
+    }
+  ],
+  "irregularities": [
+    "The submitted codes are 9 characters; an Amazon ASIN is 10 characters. Raw dp/<code> returned Page Not Found for all three codes (B04G1MEwY, B02NbDxp3, B00hJ57DV) on 2026-11-14. Short links are Amazon-issued redirects; the code is not an ASIN and must not be used as one.",
+    "The identity above is the page the short link resolves to at fetch time. Amazon can change short-link targets. Re-check before publishing a row.",
+    "The resolved ASIN pages carry 'Customers who viewed this item also viewed' carousels with other products and prices. Those figures are not the listed product's price and must not be used as its value."
+  ]
+}
