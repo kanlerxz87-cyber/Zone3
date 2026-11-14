@@ -22,7 +22,7 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (listed on th
 | 33226b37, c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 | 3c886b62 | `arena/3c886b62-zone3` | Verified price/rating capture via `amazon.com/s?k=<ASIN>`; the public commission rate table; Participation Requirements 2(b)/6(t)/2(e). Own scope only: `sessions/3c886b62/`. | in progress (T7) | 2026-11-13 22:5x |
 | f2d2c167 | `arena/f2d2c167-zone3` | Final integration: re-verify, PR to `main`, merge, Pages deploy | done (T6) | 2026-11-14 |
-| 7b70cfb0 | `arena/7b70cfb0-zone3` | Final integration session: independent line-by-line live re-verification of all load-bearing claims, integrity gates, PR to `main`, merge, Pages deploy confirmation. | in progress (T6/T8) | 2026-11-14 |
+| 7b70cfb0 | `arena/7b70cfb0-zone3` | Final integration session: independent line-by-line live re-verification of all load-bearing claims, integrity gates, PR to `main`, merge, Pages deploy confirmation. | done (T8, PR #55) | 2026-11-14 |
 
 ### Branch naming decision (logged 2026-11-13, session 7f84fea4)
 
@@ -40,7 +40,7 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 | T6 — Re-verify, PR, merge, Pages deploy | done | f2d2c167 | this branch only | S01–S55 | FLG-001–038 (published on Flagged for review) |
 | T6 — Re-verify, PR, merge, Pages deploy | in progress | f2d2c167 | this branch only | — | — |
 | T6 — Re-verify, PR, merge, Pages deploy | done | 7f84fea4 | this branch only | — | — (merged via PR #50, see G-T5 record) |
-| T8 — Final integration re-verification and merge (session 7b70cfb0) | in progress | 7b70cfb0 | `sessions/7b70cfb0/**`, `COORDINATION.md` (H Part only) | live re-checks 7b70-V01–V07 | none — all claims confirmed verbatim |
+| T8 — Final integration re-verification and merge (session 7b70cfb0) | done | 7b70cfb0 | `sessions/7b70cfb0/**`, `COORDINATION.md` (H Part only) | live re-checks 7b70-V01–V07 | none — all claims confirmed verbatim |
 | T7 — Price/rating capture, public commission rate table, 2(b)/6(t)/2(e) policy review | in progress | 3c886b62 | `sessions/3c886b62/**` only (no root files) | S1–S12 in `sessions/3c886b62/data/sources.json` | F01–F17 in `sessions/3c886b62/docs/FLAGGED.md` |
 
 ## Integration with session 66a80e53 (PR #3, merged after this branch was first pushed)
@@ -2817,7 +2817,7 @@ pre-existing flag set (49 flags, including FLG-035 identity, FLG-021 unresolvabl
 category, and the 36 blank identity cells) remains non-blocking and is published on the Flagged
 for review page with source links, per the brief.
 
-### H-T4 record — PR, merge and Pages deploy
+### H-T4 record — PR, merge and Pages deploy (2026-11-14)
 
 See the merged PR section appended below after merge (the record cannot be written to `main`
 before the merge it records).
@@ -2881,3 +2881,15 @@ Sources used this record: `https://link.amazon/B04G1MEwY` · `https://link.amazo
 ## CDC-T3 — publish record
 
 Pending.
+| Event | Result |
+|---|---|
+| Pull request | [#55 — Zone3: final integration (session 7b70cfb0) — independent line-by-line live re-verification and merge record](https://github.com/kanlerxz87-cyber/Zone3/pull/55) — `arena/7b70cfb0-zone3` → `main` |
+| Rebase history | `main` moved three times while the PR was open (PRs #53, #56, #57 from sessions `4575cf95` and `f2d2c167`). Rebased onto `main` each time and resolved `COORDINATION.md` conflicts by **keeping both sides in full** — the other sessions' registry rows, task-board rows and record Parts were preserved verbatim next to this session's, per the board convention. No other session's work was discarded. |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN` immediately before merge: all gates green (H-T2) |
+| Merge | **MERGED** 2026-11-14T18:36:32Z via `gh pr merge 55 --merge` (no approval waited, per brief) → merge commit `a64347495ba14956c1856b2c48acc1856c1e436b` (confirmed `state=MERGED` via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages build | source `main` `/`; build for `a643474` → **status `built`** (created 2026-11-14T18:36:33Z, updated 18:36:55Z, via Pages API `builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — **live**: headline, KPIs, full per-claim re-verification table with official source links, 12 section tiles |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**: 49 flags render with source links (FLG-001 9-char codes not ASINs, FLG-002 redirect targets not confirmed, FLG-003 link.amazon undocumented, …) |
+| Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**: headline + key findings + per-claim official source links |
+| Site merged while flagged? | yes — all flags are non-blocking and published on the Flagged for review page with source links, as the brief requires |
+| Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
