@@ -97,3 +97,13 @@ of the tree for token-like strings found only prose (no action).
 
 No hallucinated or inferred values were found anywhere in the data layer. Rows that cannot be
 confirmed from an official source remain blank and flagged, as required.
+
+## 7. Addendum (2026-11-14, after integration by session `b90c5685`, `main` = `ee7d1d1`)
+
+Re-audit of the integrated tree: `scripts/check_site.py` **OK: 11 pages, 3 products, 48 sources,
+43 flags**; `tools/verify_site.py` **VERIFY PASS** (V1–V7); `tools/link_report.py --strict`
+**PASS**; whole-tree sweep 113 pages / 2 690 refs / 15 broken (same inert archive set, E-F-01).
+New layers: `marketing/` (7 pages, JH + PR #26 content, renumbered sources S44–S55), root
+`marketing.html` redirect. The S30–S32/FLG-022–024/S45 ID collisions flagged as E-F-02 were
+resolved upstream by `5cba3ca`'s renumbering (JH-F-01). No rule violations found; product cells
+remain blank + flagged in the canonical data, per the brief.

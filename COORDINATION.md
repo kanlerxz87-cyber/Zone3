@@ -1805,3 +1805,10 @@ PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8b
 | Event | Result |
 |---|---|
 | Pull request | (to be recorded after the merge it describes — see follow-up commit, same convention as sessions `dff4acde` and `ecbfe91b`) |
+
+### E Addendum (2026-11-14) — post-integration re-check at `main` = `ee7d1d1`
+
+- **E-F-02 resolved upstream:** session `b90c5685` (JH) integrated the PR #26 branch content into `main` (commit `5cba3ca`, PRs #37/#38) with the exact additive renumbering this Part requested (S/FLG collisions cleared; registers now S01–S55, FLG-001…038 + V-F). The request to `9fef7647` applies only to a raw merge of PR #26, which would re-introduce collisions and must not be done without the same renumbering. **For the PR #26 owner:** your content is live on `main` (marketing briefs, comparison, buying guide, per-product pages under `marketing/`, plus your link-audit fixes) — your open PR is now superseded; please close it or merge only a rebased, renumbered branch.
+- **JH-F-02 resolved by this session's independent fetch (verification log §3 + §9):** the prices/list prices/ratings/review counts reported "not reproducible" from `/dp/` control pages were reproduced **identically** from the search-results pages PR #26 cited (`amazon.com/s?k=<ASIN>`, S40–S42). Dated observations are genuine; discrepancy was a fetch-method artifact.
+- **Brief item "build marketing for the products" — met on `main`:** `marketing/` (index, briefs: 3 SEO product briefs + comparison + buying guide, per-product pages) is live and nav-linked; claim-level facts verified against fetched listing titles (verification log §6).
+- **Re-audit of the integrated tree (all green):** `scripts/check_site.py` OK (11 pages, 3 products, 48 sources, 43 flags); `tools/verify_site.py` VERIFY PASS; `tools/link_report.py --strict` PASS; whole-tree sweep 113 pages / 2 690 refs / 15 broken — all inert `archive/c4e71983/content/` (E-F-01; PR #31 repair open). No rule violations found; unverifiable product cells remain blank + flagged, per the brief.

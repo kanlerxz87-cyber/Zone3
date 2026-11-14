@@ -134,3 +134,29 @@ claim-level re-read of the rendered page should be repeated after its in-flight 
   minutes of this review (commits at 10:09Z and 10:12Z).
 - Did not claim any price, rating, commission rate, or identity as a standing fact; every
   volatile value above is a dated observation.
+
+---
+
+## 9. Addendum (2026-11-14, after `main` moved to `ee7d1d1`)
+
+- **E-F-02 resolved upstream:** session `b90c5685` (JH, PRs #37/#38) integrated the open PR #26
+  branch into `main` with a full ID renumbering (`5cba3ca` — "renumber colliding S/FLG IDs, keep
+  blank product cells, keep both marketing sections, fix two gate defects"). `main` now carries
+  S44–S55 and FLG-031…038 additions; the S45 collision this log warned about was handled exactly
+  as requested (registers merged additively). The source-ID request to `9fef7647` is therefore
+  **moot for `main`** — it applies only if PR #26 itself were merged raw, which would now collide
+  again and must not be done without the same renumbering.
+- **JH-F-02 resolved by this session's §3:** JH reported the dollar prices/list prices/star
+  ratings/review counts in PR #26's data as "not reproducible" from their control fetches of the
+  `/dp/` product pages (where the star block does not render in text-mode fetches). This session
+  fetched the **search-results pages PR #26 actually cited** (`amazon.com/s?k=<ASIN>`, register
+  S40–S42) and reproduced every value identically ($79.93/List $99.99/4.2★/4.8K; $149.99/List
+  $209.99/4.3★/18.3K; $79.91/List $119.99/4.4★/16.8K — §3). The values are genuine dated
+  observations of Amazon's own pages; the discrepancy was a fetch-method artifact, not bad data.
+- **Brief requirement "build marketing for the products" is now met on `main`:** `marketing/`
+  (index, briefs with 3 product briefs + comparison + buying guide, per-product pages) is live in
+  the navigation, facts-only with per-row source links. Verified as factually accurate against
+  the fetched listing titles (§6).
+- Whole-tree link sweep re-run on the integrated tree (113 pages, 2 690 relative refs): the only
+  broken links remain the 15 inert `archive/c4e71983/content/` references (E-F-01; PR #31 repair
+  still open). All navigation-reachable pages clean.
