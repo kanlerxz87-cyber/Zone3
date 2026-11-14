@@ -1,6 +1,6 @@
 {
-  "retrieved": "2026-11-13",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). FLG-022 added 2026-11-14 by session ecbfe91b (competitor display restriction, see COORDINATION.md Part E).",
+  "retrieved": "2026-11-14",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45.",
   "flags": [
     {
       "id": "FLG-001",
@@ -17,7 +17,7 @@
         "S14",
         "S15",
         "S16",
-        "S31"
+        "S45"
       ]
     },
     {
@@ -69,14 +69,15 @@
     },
     {
       "id": "FLG-005",
-      "severity": "High",
+      "severity": "Medium",
       "category": "Commission rates",
-      "item": "Commission rates are unverified; the official rate schedule is not accessible",
-      "detail": "The Commission Schedule link in the Program Policies (S03) redirected to an Amazon sign-in page on 2026-11-13. No rate was read, so no commission rate, commission-income estimate or payout figure is stated on this site.",
-      "action": "Sign in to Associates Central and export the rate card for the product category; send the file or the values so they can be added with a source.",
+      "item": "Per-product commission rate cannot be assigned; the public Table 1 category rates can be stated",
+      "detail": "FLG-005 as originally written said 'the official rate schedule is not accessible' and implied commission rates are unavailable. That is only half true and is corrected here after re-verification on 2026-11-14: (1) affiliate-program.amazon.com/help/operating/schedule DOES redirect to sign-in (re-confirmed 2026-11-14; S03) — but its return_to is /home/account/payment/customratecard, i.e. an account-specific custom rate card; (2) Amazon's Standard Commission Income Statement Table 1 IS public without a sign-in at S25 and was read in full on 2026-11-13 and again 2026-11-14 (Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%, Luxury Beauty 10.00%, ... 11 rows). What remains unverified is the per-ASIN category assignment and any custom rate, so the per-product commission rate cells stay blank.",
+      "action": "Read the public Table 1 (S25) as a category reference — already done, see pricing and commission pages. Leave the per-product commission rate and commission-income estimate blank until the listing's category and a custom rate card (sign-in) are available.",
       "sources": [
-        "S02",
-        "S03"
+        "S03",
+        "S25",
+        "S26"
       ]
     },
     {
@@ -169,11 +170,12 @@
       "severity": "Low",
       "category": "Disclosure placement",
       "item": "Disclosure is in the footer; placement needs owner review",
-      "detail": "The required statement (PF-01) is on every page. The FTC asks that a disclosure be hard to miss and placed with the endorsement (PF-20). The footer may not meet that standard for a product recommendation. Account enrolment could not be checked from this session.",
+      "detail": "The required statement (PF-01) is on every page. The FTC asks that a disclosure be hard to miss and placed with the endorsement (PF-20). The footer may not meet that standard for a product recommendation. Account enrolment could not be checked from this session. Re-verified 2026-11-14: the FTC Endorsement Guides were revised in 2023 (S24) and the FTC's current plain-language brochure is 'Disclosures 101 for Social Media Influencers' (S07). FTC guidance is that a disclosure must be hard to miss and placed near the endorsement (PF-19, PF-20); a footer-only statement is the weakest compliant position.",
       "action": "Owner: review the placement and confirm the Associates account is active.",
       "sources": [
         "S01",
-        "S07"
+        "S07",
+        "S24"
       ]
     },
     {
@@ -215,13 +217,14 @@
       "id": "FLG-017",
       "severity": "Medium",
       "category": "Compliance note",
-      "item": "The FTC guidance used is from 2019; the Endorsement Guides were revised in 2023",
-      "detail": "The FTC brochure in S07 is dated November 2019. The FTC topic page (S24) states that the Endorsement Guides were 'revised in 2023'. The current guides were not read. The disclosure text used on the site is the Associates wording (PF-01), which is verified; the FTC points are not used as a finding.",
+      "item": "FTC guidance: the 2023 Endorsement Guides revision is identified; the affiliate passage was read on 2026-11-14",
+      "detail": "The 2019 FTC brochure (S07) is out of date. The current FTC FAQ (S44) states that the Guides were revised in 2023. In the affiliate section of that FAQ (read 2026-11-14), the FTC says the disclosure must be 'clear and conspicuous', that the closer it is to the recommendation the better, and that 'affiliate link' or a 'buy now' button alone is not adequate. The site's disclosure follows the Associates wording (PF-01, S01 section 5). The full text of the 2023 Guides itself was not read.",
       "sources": [
         "S07",
-        "S24"
+        "S24",
+        "S44"
       ],
-      "action": "Read the 2023 Endorsement Guides on ftc.gov before publishing marketing copy."
+      "action": "Read the 2023 Guides text on ftc.gov before publishing marketing copy. Check the disclosure placement on each published page."
     },
     {
       "id": "FLG-018",
@@ -262,24 +265,153 @@
       "severity": "Medium",
       "category": "Commission rate",
       "item": "Kitchen reference rate 4.50% is verified, but the listings' category is not",
-      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). The Onsite Table A lists 'Kitchen' at 1.25% for Onsite Content only (S26; PF-39). Neither is a product rate. To know which row applies, the category of each listing is needed. The product category is not stated in the text of the listings read (they show 'Home & Kitchen' as the department). The rate is therefore shown as a reference only and not on any product row. Raised by session 66a80e53 (PR #3).",
+      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). On 2026-11-14 the three destination listings were read to show the category path Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (S14-S16; browse node 17659096011, S43). No source read so far states that Amazon's rate-card category 'Kitchen' includes this browse path. The Onsite Table A rate (S26; PF-39) is for Onsite Content only. The 4.50% figure is therefore a reference only and is not on any product row. Raised by session 66a80e53 (PR #3).",
+      "sources": [
+        "S14",
+        "S15",
+        "S16",
+        "S25",
+        "S26",
+        "S43"
+      ],
+      "action": "Owner: confirm in Associates Central which rate-card category applies to each of the three listings. Until then, no rate is applied."
+    },
+    {
+      "id": "V-F1",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "Board statements that the commission rate card is unavailable are superseded by the public Table 1 (S25)",
+      "detail": "FLG-005 and FLG-013 in data/flags.json, and the earlier note 'Rates are not stated anywhere on the site' in COORDINATION.md, treat the rate card as sign-in-only. Re-verified 2026-11-14: only the /help/operating/schedule route is gated (and it returns an account customratecard); the Standard and Onsite Income Statement help node pages (S25, S26) render the full tables to anonymous users. Both were read again in this session. The published tables match what two other sessions recorded. No per-product rate is claimed from them.",
+      "action": "No action required on the tables themselves. Read FLG-005 (rewritten) and FLG-013 (scope narrowed) for what is still unverified.",
       "sources": [
         "S25",
-        "S26"
-      ],
-      "action": "Owner: confirm each listing's category in Associates Central (or via the Creators API, once approved) before using any rate."
+        "S26",
+        "S03"
+      ]
+    },
+    {
+      "id": "V-F2",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "FLG-003's wording overstates what the policies say about link.amazon",
+      "detail": "FLG-003 says the links 'may not be trackable'. What the documents actually support, re-read verbatim on 2026-11-14, is narrower: Participation Requirements 6(w) prohibits a link shortener used in a way that makes it unclear you are linking to an Amazon Site (S02); Commission Income Statement 2(e) disqualifies purchases made through a 'Redirecting Link' (S30); 6(v) prohibits cloaking or obscuring the URL (S02). Whether link.amazon is itself such a link is a judgement on its behaviour, which was observed but is not addressed by name in any document read.",
+      "action": "Read as: do not publish link.amazon short links; publish canonical /dp/<ASIN> URLs with the Associates tag once a tag exists. Confirm with Amazon before using link.amazon at all.",
+      "sources": [
+        "S02",
+        "S30"
+      ]
+    },
+    {
+      "id": "V-F3",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "/docs/ page set is live but has no inbound link from either dashboard",
+      "detail": "The repository serves four independent page sets: the flat pages at the root (scripts/build_site.py), the 16-page audit at /dashboard/ (tools/build_site.py), the session-scoped pages at /sessions/3c886b62/, and /docs/ (session arena-79f85104, PR #14). /docs/ returns HTTP 200 and passes the link checker, but no page in the root build, the audit build or the audit nav links to it, so a visitor browsing the site cannot reach it. Nothing is broken; it is simply orphaned from navigation.",
+      "action": "Owner to decide: add one link to /docs/ in the root dashboard nav (a one-line change in scripts/build_site.py NAV), or retire the page set. Left unchanged here because the root nav is shared output.",
+      "sources": [],
+      "repo_evidence": "No inbound <a href> to /docs/ from any page outside /docs/, verified by scanning every checked-in HTML file; /docs/index.html returns HTTP 200 locally. Nothing external to cite."
+    },
+    {
+      "id": "V-F4",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "sitemap.xml lists only the audit-build URLs, not the root pages",
+      "detail": "sitemap.xml contains the 16 /dashboard/-generation URLs. The root flat pages (/, /products.html, /pricing.html, /reviews.html, /content.html, /campaigns.html, /flagged.html, /sources.html, /executive-summary.html) and /docs/ are absent, so search engines are given a partial map of the site. robots.txt points at the sitemap and Pages serves it at the expected path.",
+      "action": "Owner to decide the canonical URL set (the two generations publish overlapping material). Regenerate the sitemap once that is settled; not done here because it encodes an editorial decision about which generation is canonical.",
+      "sources": [],
+      "repo_evidence": "sitemap.xml contains 16 <loc> entries, all of the /dashboard/ generation; the nine root flat pages and /docs/ are absent. Verified by comparing sitemap.xml against the checked-in HTML files."
+    },
+    {
+      "id": "V-F5",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "15 broken internal links inside archive/c4e71983/ (pre-existing, inside a verbatim archive)",
+      "detail": "A full-tree scan of every checked-in HTML file finds 15 relative links that do not resolve to a file: for example archive/c4e71983/content/category-air-fryers.html links dual-basket.html, air-fryer-toaster-ovens.html and large-capacity.html, and archive/c4e71983/content/data-sources.html links data/products.json. All 15 are inside archive/c4e71983/, which is a byte-for-byte copy of another session's site kept for the record. Every page outside archive/ resolves: 0 broken links across the 57 live pages.",
+      "action": "None required for the live site. If the archive is meant to be browsable, its owner should regenerate it; rewriting archived files would falsify the record this board is built on.",
+      "repo_evidence": "Full-tree scan of all 74 checked-in HTML files: 15 unresolved relative href, all under archive/c4e71983/; 0 outside it. Reproduce with a scan of every href that is not http/mailto/#."
     },
     {
       "id": "FLG-022",
-      "severity": "Medium",
-      "category": "Display restriction",
-      "item": "Competitor prices and star ratings are captured but deliberately not displayed",
-      "detail": "The competition benchmark on Reviews & competition comes from Amazon’s official Best Sellers page for Air Fryers (S30; capture file data/c4e71983-competitors.json, captured 2026-11-13 by session c4e71983). The capture includes prices, star ratings and rating counts. Program Policies, Participation Requirements 2(b), allow a site to show prices and availability only when Amazon serves the link or the data comes from Creators API or PA API (S02; PF-04), and ratings and review counts have the same restriction (PF-05). Those cells are therefore blank on the published table; the captured values stay in the data file for internal analysis only. Ranks are point-in-time: positions 2 and 3 swapped between the 2026-11-13 capture and a 2026-11-14 re-check of the same page.",
+      "severity": "High",
+      "category": "Display rules (price, rating, reviews)",
+      "item": "Prices, availability, star ratings and review counts may not be displayed without an approved data path",
+      "detail": "Program Policies, Participation Requirement 2(b): a site may show prices and availability only if Amazon serves the link that displays them, or the data comes from Creators API or PA API. Requirement 6(t): customer reviews and star ratings may be shown only if obtained through Creators API or PA API. The Amazon results and bestseller captures of 2026-11-14 (S40-S43) are therefore research evidence only. They are kept in data/z3-51fcb80d-snapshot.json and are not displayed on any page of this site. The price, rating and review-count columns stay blank (see FLG-004).",
+      "action": "Owner: decide whether to apply for Creators API access (FLG-023). Until an approved data path exists, the site keeps these fields blank.",
       "sources": [
-        "S30",
-        "S02"
-      ],
-      "action": "Owner: to display prices or ratings legally, obtain Creators API access (FLG-006) and re-source those values through it. Treat benchmark ranks as a dated snapshot, never as live data."
+        "S02",
+        "S40",
+        "S41",
+        "S42",
+        "S43"
+      ]
+    },
+    {
+      "id": "FLG-023",
+      "severity": "High",
+      "category": "Data access",
+      "item": "Creators API access requires enrolment, registration, credentials and at least 10 qualifying sales in the last 30 days",
+      "detail": "The Creators API introduction lists four prerequisites: be enrolled in the Associates program for the target marketplace; have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API; register for API access in Associates Central; and generate API credentials. The Creators API offers SearchItems, GetItems, GetVariations and GetBrowseNodes. No qualifying-sales figure for this Associates account was provided, so API access is not assumed.",
+      "action": "Owner: confirm the Associates account's qualifying-sales count for the last 30 days, and register for the Creators API if eligible.",
+      "sources": [
+        "S04"
+      ]
+    },
+    {
+      "id": "FLG-024",
+      "severity": "Medium",
+      "category": "Link format and tracking",
+      "item": "Link-shortening, redirecting links and price tracking are restricted",
+      "detail": "Participation Requirement 6(w): a link shortening service must not make it unclear that the link goes to an Amazon Site. Requirement 6(y): the site must not have price tracking or price-alert functionality. Commission Income Statement 2(e): a purchase referred by a 'Redirecting Link' (one that sends users indirectly through an intermediate site without a click on that site) is disqualified. The submitted links are short links that land on other product pages (S11-S13). Their use on this site has not been checked against 2(e).",
+      "action": "Owner: use direct Special Links generated in Associates Central for each product. Do not add price-alert functionality.",
+      "sources": [
+        "S02",
+        "S11",
+        "S12",
+        "S13"
+      ]
+    },
+    {
+      "id": "FLG-025",
+      "severity": "Medium",
+      "category": "Data drift",
+      "item": "Bestseller positions and rating counts changed between the 2026-11-13 and 2026-11-14 captures",
+      "detail": "The 2026-11-13 capture (data/c4e71983-competitors.json) listed #2 Cosori B0C33CHG99 and #3 bella B0CYJDVT31. The 2026-11-14 read (S43) listed #2 bella and #3 Cosori. The rating counts also differ slightly: #1 Ninja 10,984 vs 10,986; #3 bella 4,015 vs 4,016; #6 Chefman 52,301 vs 52,306. Rank and counts are dated observations, not standing facts. Positions 7 and below were not captured in full, so no claim is made that any product is missing from the list.",
+      "action": "Re-read the bestseller page on each publication date and record the date with each figure.",
+      "sources": [
+        "S43"
+      ]
+    },
+    {
+      "id": "FLG-026",
+      "severity": "Medium",
+      "category": "Withdrawn claim (correction)",
+      "item": "Correction: 'plpRedirect=mhFallback' does not show that a short link failed",
+      "detail": "Earlier sessions treated the URL parameters plpRedirect=mhFallback and lv=shuf as evidence that a short link had selected nothing. On 2026-11-14 a direct GET of https://www.amazon.com/dp/B0CDY277D3 with no short link also carried both parameters and served the correct product (control CTRL-01 in data/z3-51fcb80d-snapshot.json). The parameters therefore show nothing about a failed lookup. The redirect targets remain 'not confirmed as the submitted product' (FLG-002).",
+      "action": "No action needed for the parameters. FLG-002 remains open.",
+      "sources": [
+        "S11",
+        "S14"
+      ]
+    },
+    {
+      "id": "FLG-027",
+      "severity": "High",
+      "category": "Cross-session conflict",
+      "item": "Two sessions disagree on whether the redirect destinations are the submitted products",
+      "detail": "Session a86f1d09 (merged to main before this PR) set the ASIN, product name and brand of each submitted link to the destination's values, marked confirmed_as_submitted_product as true, and changed scripts/check_site.py to require that value. Session 51fcb80d does not adopt this. The brief says a redirect target must never be treated as a confirmed submitted product, and each short link's identity is still unknown. The destinations are verified as live pages (S11-S16); the submitted identity is not. Separately, upstream cites S30 and S31 in the executive summary for the link-resolution claim, but S30 and S31 are already used for different sources (the Program Policies page and the Creators API GetItems reference). Those IDs are now collided and the citation is wrong.",
+      "action": "Owner: decide whether each submitted link is the destination product. Until the owner confirms it, the ASIN, name and brand stay blank. The duplicate S30/S31 meaning needs one owner to renumber the capture sources.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S06",
+        "S08",
+        "S09",
+        "S10"
+      ]
     }
   ]
 }

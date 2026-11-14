@@ -18,9 +18,10 @@ import json
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+REPO = "https://github.com/kanlerxz87-cyber/Zone3"
 DATA = ROOT / "data"
 ASSETS = ROOT / "assets"
-BUILT = "2026-11-13"
+BUILT = "2026-11-14"
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 
 
@@ -69,7 +70,9 @@ def badge(text: str, kind: str) -> str:
 
 
 def sev(text: str) -> str:
-    kind = {"Critical": "bad", "High": "warn", "Medium": "info", "Low": "muted"}[text]
+    # "Info" is used for correction/annotation entries (V-F1, V-F2 added 2026-11-14).
+    kind = {"Critical": "bad", "High": "warn", "Medium": "info", "Low": "muted",
+            "Info": "muted"}[text]
     return badge(text, kind)
 
 
@@ -86,6 +89,7 @@ NAV = [
     ("index.html", "Dashboard"),
     ("executive-summary.html", "Executive summary"),
     ("products.html", "Products"),
+    ("air-fryers.html", "Category: Air Fryers"),
     ("pricing.html", "Pricing &amp; commission"),
     ("reviews.html", "Reviews &amp; competition"),
     ("content.html", "Content &amp; compliance"),
@@ -127,7 +131,9 @@ def page(filename: str, title: str, body: str, lead: str = "") -> None:
 </main>
 <footer>
   <p class="disclosure"><strong>Disclosure:</strong> {e(DISCLOSURE)}</p>
-  <p class="muted">Data verified as of {BUILT}. A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+  <p class="muted">Data verified as of {BUILT} (re-verified 2026-11-14). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+  <p class="small" style="margin-top:10px">This repository carries two site generations: the flat pages above (built by <code>scripts/build_site.py</code> from <code>data/*.json</code>) and a 16-page audit build at <a href="dashboard/index.html">/dashboard/</a> (built by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>). Neither overwrites the other; <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">COORDINATION.md</a> maps both.</p>
+  <p class="small" style="margin-top:6px"><a href="landing-prior.html">Previous landing page</a> (kept intact) · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md#part-session-b8beb448-2026-11-14--independent-line-by-line-re-verification--ux-integration">Verification record for this build</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
 </footer>
 </body>
 </html>
@@ -204,10 +210,44 @@ N = len(PRODUCTS)
 
 
 # ---------------------------------------------------------------- Dashboard
+
+def reverify_table() -> str:
+    """Rows re-checked on 2026-11-14. Source ids resolve through sources.json."""
+    rows = [
+        ("The three submitted identifiers are 9 characters, not 10", "Confirmed",
+         "Each id counted: B04G1MEwY=9, B02NbDxp3=9, B00hJ57DV=9. Amazon defines an ASIN as a 10-character alphanumeric id.", ["S31", "S08"]),
+        ("amazon.com/dp/&lt;id&gt; returns Page Not Found for all three", "Confirmed",
+         "All three fetched 2026-11-14; each returned Amazon&rsquo;s &ldquo;Page Not Found&rdquo; page.", ["S08", "S09", "S10"]),
+        ("Each link.amazon short link opens a different real listing", "Confirmed",
+         "B04G1MEwY&rarr;B0CDY277D3 (CHEFMAN 6 Qt dual basket), B02NbDxp3&rarr;B09B7SB46R (Emeril Lagasse 26QT), B00hJ57DV&rarr;B08DKYBTPH (Chefman TurboFry 8 Qt). Same three targets as 2026-11-13.", ["S11", "S12", "S13"]),
+        ("Operating Agreement &sect;5 disclosure wording", "Confirmed verbatim",
+         "&ldquo;As an Amazon Associate I earn from qualifying purchases.&rdquo; Header still reads Updated: October 15, 2025. Schedule 1 still lists the United States / amazon.com only.", ["S01"]),
+        ("Participation Requirements 6(t), 6(w), 6(y), 2(b) and CIS 2(e)", "Confirmed verbatim",
+         "Star-rating and review display limited to API-sourced data; link shorteners must not obscure an Amazon destination; no price tracking or alerting; prices/availability only if Amazon serves them or via the API; purchases via a Redirecting Link are disqualified.", ["S02", "S30"]),
+        ("PA-API 5 is deprecated; Creators API is the successor", "Confirmed",
+         "Deprecation notice re-read: PA-API 5 calls return HTTP 403 AccessDeniedException. Creators API prerequisites include at least 10 qualifying sales in the past 30 days.", ["S05", "S04"]),
+        ("IP License: no ML training on Program Content; API use needs prior written approval for analysis", "Confirmed verbatim",
+         "&sect;1 bars using Program Content to develop or improve LLMs or ML models; &sect;2(e) bars aggregating, analyzing, extracting or repurposing Product Advertising Content without express prior written approval; Agent Terms &sect;4 require an &ldquo;Agent/[name]&rdquo; user agent.", ["S02"]),
+        ("Commission Table 1 (Standard) and Table A (Onsite) are readable without a sign-in", "Corrected",
+         "The earlier site text implied all rate data was sign-in gated. Only /help/operating/schedule is gated (and it returns a per-account custom rate card). Table 1 and Table A render publicly. See V-F1; per-product rates remain blank.", ["S25", "S26", "S03"]),
+        ("ASIN is a 10-character identifier", "Confirmed",
+         "Creators API GetItems, ItemIdType parameter, quoted verbatim; independently stated on Amazon&rsquo;s seller blog.", ["S31", "S08"]),
+        ("FTC disclosure standard", "Confirmed, source updated",
+         "The 2019 brochure is still live but the Endorsement Guides were revised in 2023; the current FTC topic hub is cited alongside it.", ["S07", "S24"]),
+    ]
+    out = []
+    for claim, verdict, note, srcs in rows:
+        cls = "bad" if verdict.startswith("Corrected") else "ok"
+        out.append([claim, badge(verdict, cls), note, src_links(srcs)])
+    return table(["Claim re-checked", "Result", "What was observed on 2026-11-14", "Source"],
+                 out, "reverify")
+
+
+
 def build_index() -> None:
     stats = [
         ("Product links submitted", str(N), ""),
-        ("Product identifiers verified (ASIN)", f"{count_verified('asin')} of {N}", "bad"),
+        ("Submitted links with a confirmed ASIN", f"{count_verified('asin')} of {N}", "bad"),
         ("Prices verified", f"{count_verified('price')} of {N}", "warn"),
         ("Commission rates verified", f"{count_verified('commission_rate')} of {N}", "warn"),
         ("Critical flags open", str(sev_count("Critical")), "bad"),
@@ -230,15 +270,24 @@ def build_index() -> None:
     tile_html = "".join(
         f'<a class="tile" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in tiles
     )
+    reverify_html = reverify_table()
     body = f"""
 <div class="callout">
-  <p><strong>Headline:</strong> none of the three submitted Amazon links can be verified as a product listing.
-  The identifiers are nine characters long and the amazon.com product pages for them return &ldquo;Page Not Found&rdquo;.
-  The short links open three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven) that are not confirmed as the submitted products. Those values are left blank.</p>
+  <p><strong>Headline:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
 </div>
 <div class="grid">{stat_html}</div>
 <h2>Sections</h2>
 <div class="tiles">{tile_html}</div>
+
+<p style="margin-top:18px"><a href="dashboard/index.html">Full audit: 16-page verification dashboard, commission rate tables and flag register</a></p>
+
+<h2>Re-verification performed 2026-11-14</h2>
+<p>Every load-bearing claim on the flat pages was checked again against the official page it cites. The
+result, per claim, is below. Nothing in this table was inferred; each row links the page that was read.</p>
+{reverify_html}
+<p class="small">Where a row says <em>corrected</em>, the earlier text on this site was wrong or overstated and has
+been rewritten in the same commit that added the row. Corrections are listed on the
+<a href="flagged.html">Flagged for review</a> page as V-F1 and V-F2, so the change is auditable rather than silent.</p>
 """
     page("index.html", "Dashboard", body,
          lead=f"Status as of {BUILT}. The site shows verified data only. Blank cells are unverified and listed on the Flagged for review page.")
@@ -249,24 +298,22 @@ def build_exec() -> None:
     body = f"""
 <section class="card">
   <h2>Bottom line</h2>
-  <p>The three Amazon links in the brief cannot be verified as product listings. Their identifiers are nine characters long.
-  Amazon&rsquo;s official Creators API documentation shows ASIN values of ten characters {src_links(['S06'])}.
-  The amazon.com product page for each identifier returns &ldquo;Page Not Found&rdquo; {src_links(['S08', 'S09', 'S10'])}.
-  The short links open Amazon product pages, but for three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven), which are not confirmed as the submitted products {src_links(['S11', 'S12', 'S13', 'S14', 'S15', 'S16'])}.</p>
-  <p>As the brief requires, every product name, price, rating, review count, commission rate, niche score and click or conversion figure is left blank and marked <span class="badge unv">Unverified</span>. No value was inferred.</p>
+  <p><strong>Headline:</strong> the three submitted short links each open a live Amazon product page. Their nine-character codes are not ASINs, and the destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}. Product name, brand, price and rating for the submitted links are left blank.</p>
+  <p>Price display, API-derived reviews, link-model-specific earnings, traffic, clicks, conversions and niche profitability are not represented as live or established. Point-in-time observations are kept in the research log. Any value not confirmed through an eligible official route remains blank and is flagged.</p>
 </section>
 
 <section class="card">
   <h2>Key findings</h2>
   <ul class="findings">
-    <li><strong>0 of {N} product identifiers are confirmed.</strong> The identifiers are nine characters, and the amazon.com pages for them do not exist {flag_links(['FLG-001'])} {src_links(['S06', 'S08', 'S09', 'S10'])}.</li>
-    <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
-    <li><strong>Associates compliance of link.amazon is unconfirmed.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), and purchases from a Redirecting Link are disqualified (PF-07). Whether link.amazon redirects without a click has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
-    <li><strong>Commission rates cannot be verified.</strong> The rate schedule redirected to a sign-in page on 2026-11-13 {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
-    <li><strong>Automated product data needs Creators API access.</strong> The official prerequisite is &ldquo;at least 10 qualifying sales within the past 30 days&rdquo; {src_links(['S04'])}. Prices and reviews may be shown only through a Special Link or the API {src_links(['S02'])} (PF-04, PF-05) {flag_links(['FLG-006'])}.</li>
+    <li><strong>The three short links each open a live Amazon product page.</strong> The destinations were read on 2026-11-13 and 2026-11-14 {src_links(['S11', 'S12', 'S13', 'S14', 'S15', 'S16'])}. The nine-character codes are not in the 10-character ASIN form {src_links(['S06'])}, and the direct amazon.com/dp pages for them return Page Not Found {src_links(['S08', 'S09', 'S10'])}. The destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}.</li>
+    <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches on 2026-11-13 and again on 2026-11-14. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
+    <li><strong>Applying the shortener rules to link.amazon needs a judgement call.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), a link must not be cloaked or obscured (6(v)), and purchases through a link that sends users on indirectly, without an affirmative click, are disqualified as a Redirecting Link {src_links(['S30'])} (CIS 2(e)). No document names <code>link.amazon</code>; what its redirects actually do is a behaviour observation, and it has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
+    <li><strong>Category rates are public; per-product rates are not assignable.</strong> Amazon&rsquo;s Standard Commission Income Statement, Table 1, is readable without a sign-in (Kitchen 4.50&nbsp;%, Home 3.00&nbsp;%, All Other Categories 4.00&nbsp;%) {src_links(['S25', 'S26'])}, and was re-read on 2026-11-14. The per-product rate cannot be stated, because the listing&rsquo;s category is unverified and the account-specific rate card route redirects to sign-in {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
+    <li><strong>A category page now exists.</strong> <a href="air-fryers.html">Air Fryers</a> shows the verified category path and a six-position bestseller benchmark, each row linked to its official page {src_links(['S43'])}. Prices and ratings are withheld under the display rules {flag_links(['FLG-022', 'FLG-025'])}.</li>
+    <li><strong>Automated product data needs Creators API access.</strong> The official prerequisite is &ldquo;at least 10 qualifying sales within the past 30 days&rdquo; {src_links(['S04'])}. Prices and reviews may be shown only through a Special Link or the API {src_links(['S02'])} (PF-04, PF-05, PF-44, PF-45) {flag_links(['FLG-006', 'FLG-022', 'FLG-023'])}.</li>
     <li><strong>The AI layer needs written approval from Amazon.</strong> The Creators API terms bar analysing, aggregating or repurposing its data, and bar using Program Content to develop or train machine learning or language models, without express prior written approval {src_links(['S02'])} (PF-23, PF-24, PF-25) {flag_links(['FLG-016'])}.</li>
     <li><strong>Eligibility for a Norway-based owner is not stated.</strong> Schedule 1 of the Operating Agreement lists only the United States site, amazon.com {src_links(['S01'])} (PF-35) {flag_links(['FLG-015'])}.</li>
-    <li><strong>PA-API 5 is deprecated.</strong> The official notice says it is being replaced by the Creators API {src_links(['S05'])} (PF-17). Another session branch cites PA-API 5 as the sanctioned source {flag_links(['FLG-007'])}.</li>
+    <li><strong>PA-API 5 is deprecated.</strong> The official notice says it is being replaced by the Creators API and that calls now return HTTP 403 <code>AccessDeniedException</code> {src_links(['S05'])} (PF-17), re-read on 2026-11-14. Another session branch cites PA-API 5 as the sanctioned source {flag_links(['FLG-007'])}.</li>
     <li><strong>Disclosure is on every page.</strong> The required wording is quoted from the Operating Agreement, Section 5 {src_links(['S01'])} (PF-01). Placement for FTC purposes still needs owner review {flag_links(['FLG-013'])}.</li>
   </ul>
 </section>
@@ -279,6 +326,7 @@ def build_exec() -> None:
     <li>The earlier session&rsquo;s site from PR #1 is merged in. Its scripts, data and HTML are archived under <code>archive/26634cd5/</code>, and its old <code>analysis.html</code> and category URLs redirect to the pages that replace them.</li>
     <li>A Sources page that lists each official page used, its retrieval status, and what it supports.</li>
     <li>A data layer (<code>data/*.json</code>) with a generator (<code>scripts/build_site.py</code>) and a checker (<code>scripts/check_site.py</code>). The checker fails if a table row has no official source link, or if a value appears without a source.</li>
+    <li><strong>An independent re-verification pass on 2026-11-14</strong> (this session): {len(SRC['sources'])} official sources, every load-bearing claim re-fetched and compared. Two earlier statements were found overstated and corrected rather than quietly dropped &mdash; see V-F1 and V-F2 on the Flagged for review page.</li>
   </ul>
 </section>
 
@@ -297,7 +345,7 @@ def build_exec() -> None:
   <ul class="findings">
     <li>Give the intended product URL or 10-character ASIN for each of the three products (FLG-001).</li>
     <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
-    <li>Export the commission rate card for the product category from Associates Central (FLG-005).</li>
+    <li>Confirm which Amazon product category each of the three listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021). The category rates themselves are already published and verified.</li>
     <li>Confirm Associates enrolment and supply the Associates tag, not a password or token (FLG-010).</li>
   </ul>
 </section>
@@ -318,7 +366,7 @@ def build_products() -> None:
             f'{e(p["link_id"])} <span class="muted">({p["link_id_length"]} chars)</span>',
             val(p["asin"]),
             f'<a href="{e(d["url"])}" target="_blank" rel="noopener noreferrer">{e(d["result"])}</a>',
-            f'<a href="{e(ro["final_url"])}" target="_blank" rel="noopener noreferrer">{e(ro["page_id"])}</a> {badge("Not confirmed", "warn")}',
+            f'<a href="{e(ro["final_url"])}" target="_blank" rel="noopener noreferrer">{e(ro["page_id"])}</a> {badge("Not confirmed as submitted", "warn")}',
             val(p["product_name"]),
             e(p["status"]),
             flag_links(p["flags"]),
@@ -350,9 +398,9 @@ def build_pricing() -> None:
             e(p["label"]),
             val(p["price"]),
             val(p["commission_rate"]),
-            badge("Blocked: no product record", "bad") + " " + badge("Schedule not accessible", "warn"),
-            flag_links(["FLG-004", "FLG-005"]),
-            src_links(["S03", "S02", p["direct_check"]["source"]]),
+            badge("Blocked: no product record", "bad") + " " + badge("Listing category not confirmed", "warn"),
+            flag_links(["FLG-004", "FLG-005", "FLG-021", "FLG-022"]),
+            src_links(["S25", "S02", p["direct_check"]["source"]]),
         ])
     body = "<h2>Price and commission fields</h2>" + table(
         ["Product", "Price", "Commission rate", "Status", "Flags", "Source"], rows)
@@ -372,7 +420,7 @@ def build_pricing() -> None:
     ]
     body += "<h2>Category reference rates (not product values)</h2>" + table(["Category and table", "Rate", "What it means here", "Verified wording (quoted)", "Source"], ref_rows)
     page("pricing.html", "Pricing &amp; commission", body,
-         lead="Price and commission fields are blank because the source needed to fill them (the commission rate schedule, and the Creators API) is not available to this session. The rules below are verified.")
+         lead="Price and commission fields are blank. A price can be shown only through an Amazon-served link or the Creators API (FLG-022, FLG-023). The commission rate for a listing is blank until its rate-card category is confirmed (FLG-021). The rules below are verified.")
 
 
 # ------------------------------------------------------------- Reviews
@@ -404,44 +452,46 @@ def build_reviews() -> None:
 
 # ------------------------------------------------------------- Competition benchmark
 def build_benchmark() -> str:
-    """Competition benchmark surfaced as-is (integration session ecbfe91b, E-T5).
+    """Competition benchmark on the Reviews page (integration session ecbfe91b, E-T5).
 
-    Rows come from data/c4e71983-competitors.json: session c4e71983's capture of Amazon's
-    official Best Sellers page for Air Fryers (2026-11-13), re-checked live 2026-11-14 by
-    session ecbfe91b. Identity and rank fields are shown with their official source links.
-    Price, star rating and review count are blanked on purpose (Program Policies 2(b) and
-    the ratings rule PF-05) and published as a flag instead of a value (FLG-022).
+    Rendered from data/competition.json — the same file as the Air Fryers category page
+    (air-fryers.html, session 51fcb80d) so the two views can never drift apart. The data is
+    Amazon's official Best Sellers page for Air Fryers (S43), read 2026-11-14; an earlier
+    2026-11-13 capture (data/c4e71983-competitors.json) ordered positions 2-3 differently
+    (FLG-025), so every rank is a dated observation. Price, star rating and review count are
+    withheld by policy (Program Policies 2(b), PF-04/PF-05) and published as flags instead of
+    values (FLG-022).
     """
-    comp = load("c4e71983-competitors.json")
+    comp = load("competition.json")
     rows = []
-    for b in comp["bestsellers"]:
+    for b in comp["rows"]:
         rows.append([
             e(b["rank"]),
             f'<a href="{e(b["url"])}" target="_blank" rel="noopener noreferrer" '
             f'title="Official Amazon product page">{e(b["asin"])}</a>',
             e(b["title"]),
-            e(b["brand"]),
-            e(b["capacity"]),
             badge("Not displayed (policy)", "warn"),
             badge("Not displayed (policy)", "warn"),
             badge("Not displayed (policy)", "warn"),
-            flag_links(["FLG-022"]),
-            src_links(["S30"]),
+            flag_links(["FLG-022", "FLG-025"]),
+            src_links(["S43"]),
         ])
     intro = (
         '<div class="callout"><p><strong>How to read this table.</strong> '
-        "Captured 2026-11-13 from Amazon&rsquo;s official Best Sellers page for Air Fryers "
-        f'{src_links(["S30"])} and re-checked live 2026-11-14. This is the category of the three '
-        "<em>observed redirect targets</em>, which are not confirmed as the submitted products "
+        "Same data as the <a href=\"air-fryers.html\">Air Fryers category page</a>, read "
+        f'2026-11-14 from Amazon&rsquo;s official Best Sellers page {src_links(["S43"])}; an earlier '
+        "2026-11-13 capture ordered positions 2&ndash;3 differently, so ranks are dated observations "
+        f'({flag_links(["FLG-025"])}). This is the category of the three <em>observed redirect targets</em>, '
+        "which are not confirmed as the submitted products "
         f'{flag_links(["FLG-002"])} &middot; {src_links(["S11"])}&ndash;{src_links(["S13"])}. '
-        "Ranks are a dated snapshot: positions 2 and 3 swapped between the capture and the re-check, "
-        "so no rank here is a live value. Prices, star ratings and review counts are withheld by policy "
-        f'(Program Policies 2(b) and PF-05) {src_links(["S02"])} {flag_links(["FLG-022"])}; the captured '
-        "values stay in <code>data/c4e71983-competitors.json</code> for internal analysis only. "
-        "Every row links to its official Amazon product page and to the capture source.</p></div>"
+        "Prices, star ratings and review counts are withheld by policy (Program Policies 2(b) and PF-05) "
+        f'{src_links(["S02"])} {flag_links(["FLG-022"])}; the captured values stay in '
+        "<code>data/c4e71983-competitors.json</code> and <code>data/z3-51fcb80d-snapshot.json</code> "
+        "for internal analysis only. Every row links to its official Amazon product page and to the "
+        "capture source.</p></div>"
     )
     return intro + "<h2>Competition benchmark &mdash; Air Fryers best sellers (dated snapshot)</h2>" + table(
-        ["Rank (2026-11-13)", "ASIN", "Product", "Brand", "Capacity", "Price", "Rating", "Review count", "Flags", "Source"],
+        ["Rank (2026-11-14)", "ASIN", "Product", "Price", "Rating", "Review count", "Flags", "Source"],
         rows)
 
 
@@ -515,7 +565,8 @@ def build_flagged() -> None:
             e(f["item"]),
             e(f["detail"]),
             e(f["action"]),
-            src_links(f["sources"]) if f["sources"] else '<span class="muted">internal (repo)</span>',
+            src_links(f["sources"]) if f.get("sources") else
+            f'<a href="{REPO}" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">&mdash; observed in this repository, so no external source is cited</span>',
         ])
     body = (
         '<div class="callout"><p><strong>Flagged for review.</strong> These items do not block the merge. '
@@ -536,7 +587,9 @@ def build_flagged() -> None:
     body += "<h2>Observed redirect targets (full titles as read, not confirmed)</h2>" + table(
         ["Product link", "Page ID", "Page title as read", "Confirmed?", "Source"], obs)
     page("flagged.html", "Flagged for review", body,
-         lead=f"{len(FLAGS)} flags: {sev_count('Critical')} critical, {sev_count('High')} high, {sev_count('Medium')} medium, {sev_count('Low')} low.")
+         lead=(f"{len(FLAGS)} entries: {sev_count('Critical')} critical, {sev_count('High')} high, "
+               f"{sev_count('Medium')} medium, {sev_count('Low')} low, {sev_count('Info')} info "
+               "(info entries record a correction made to this site, not a problem with a product)."))
 
 
 # ------------------------------------------------------------- Sources
@@ -566,6 +619,69 @@ def build_sources() -> None:
          lead="Every official page used to verify this site, with the status it had when read.")
 
 
+# ------------------------------------------------------------- Category
+COMP = load("competition.json")
+
+
+def build_category() -> None:
+    """Category subpage: Air Fryers (Amazon browse node 17659096011).
+
+    Only verified fields are shown. Prices, ratings and review counts are NOT shown
+    (Participation Requirements 2(b) and 6(t); see FLG-022)."""
+    path_rows = []
+    nodes = ["1055398", "284507", "289913", "17659095011", "17659096011"]
+    for i, (name, node) in enumerate(zip(COMP["category_path"], nodes), start=1):
+        path_rows.append([str(i), e(name), e(node),
+                          src_links(["S14", "S15", "S16"]) + (" &middot; " + src_links(["S43"]) if i == 5 else "")])
+    body = "<h2>Verified category path</h2>" + table(
+        ["Level", "Category", "Browse node", "Source"], path_rows)
+
+    sub_rows = []
+    for p in PRODUCTS:
+        ro = p["redirect_observed"]
+        sub_rows.append([
+            e(p["label"]),
+            f'<a href="{e(p["submitted_url"])}" target="_blank" rel="noopener noreferrer">{e(p["link_id"])}</a>',
+            f'<a href="{e(ro["final_url"])}" target="_blank" rel="noopener noreferrer">{e(ro["page_id"])}</a> {badge("Not confirmed as submitted", "warn")}',
+            e(ro["page_title"]),
+            flag_links(p["flags"]),
+            src_links([ro["title_source"], ro["source"]]),
+        ])
+    body += "<h2>Submitted links in this category</h2>" + table(
+        ["Product", "Submitted link", "Observed destination", "Destination page title (as read)", "Flags", "Source"], sub_rows)
+
+    bs_rows = []
+    for r in COMP["rows"]:
+        bs_rows.append([
+            f'<strong>#{r["rank"]}</strong>',
+            f'<a href="{e(r["url"])}" target="_blank" rel="noopener noreferrer">{e(r["asin"])}</a>',
+            e(r["title"]),
+            src_links([COMP["source"]]) + " " + flag_links(["FLG-022", "FLG-025"]),
+        ])
+    body += ("<h2>Competition benchmark: Best Sellers in Air Fryers (positions 1&ndash;6)</h2>"
+             f'<p class="muted">Read {e(COMP["read_on"])}. Positions 7 and below are not used. Rank changes between captures (FLG-025).</p>'
+             + table(["Rank", "ASIN (link)", "Title as shown on the official page", "Source"], bs_rows))
+
+    body += "<h2>Commission reference (not applied)</h2>" + table(
+        ["Rate-card category", "Standard rate", "Status", "Source"],
+        [["Kitchen (Standard Commission, Table 1)", "4.50%",
+          "Reference only. Whether it applies to these listings is not confirmed (FLG-021).",
+          src_links(["S25"]) + " " + flag_links(["FLG-021"])]])
+    body += """
+<section class="card">
+  <h2>What this page does and does not show</h2>
+  <ul class="findings">
+    <li>The category path and the six bestseller positions were read from official Amazon pages on 2026-11-14.</li>
+    <li>The submitted identifiers do not resolve to a product page under their own code (see <a href="products.html">Products</a>, FLG-001). The observed destinations are not treated as the submitted products (FLG-002).</li>
+    <li>Prices, ratings and review counts are blank here. They can be shown only through an approved Amazon data path (FLG-022, FLG-023).</li>
+    <li>No claim is made about competitors beyond position 6, because that part of the list was not read.</li>
+  </ul>
+</section>
+"""
+    page("air-fryers.html", "Category: Air Fryers", body,
+         lead="Amazon browse node 17659096011. The category path, the submitted links that fall in it, and a six-position bestseller benchmark, each linked to its official page.")
+
+
 def build_assets() -> None:
     ASSETS.mkdir(exist_ok=True)
     (ASSETS / "style.css").write_text(css(), encoding="utf-8")
@@ -578,6 +694,7 @@ def build_legacy_stubs() -> None:
         "analysis.html": "executive-summary.html",
         "disclosure.html": "content.html",
         "categories/home-kitchen-air-fryers.html": "products.html",
+        "flagged-for-review.html": "flagged.html",
     }
     for name, target in stubs.items():
         path = ROOT / name
@@ -603,6 +720,7 @@ def main() -> None:
     build_content()
     build_campaigns()
     build_flagged()
+    build_category()
     build_sources()
     build_legacy_stubs()
     print("built site in", ROOT)

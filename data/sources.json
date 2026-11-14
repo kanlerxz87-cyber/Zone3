@@ -1,7 +1,7 @@
 {
-  "retrieved": "2026-11-13",
+  "retrieved": "2026-11-14",
   "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration.",
-  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S30-S31 added and dated re-verifications appended 2026-11-14 by session ecbfe91b (see COORDINATION.md Part E).",
+  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45).",
   "sources": [
     {
       "id": "S01",
@@ -9,7 +9,7 @@
       "url": "https://affiliate-program.amazon.com/help/operating/agreement",
       "publisher": "Amazon Associates (official)",
       "status": "verified",
-      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'. Re-verified 2026-11-14 (session ecbfe91b): Section 5 wording re-read verbatim in the Agreement body (“As an Amazon Associate I earn from qualifying purchases.”).",
+      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'. Re-verified 2026-11-14 (session ecbfe91b): Section 5 wording re-read verbatim in the Agreement body (disclosure sentence present).",
       "used_for": "Section 5 disclosure wording; Section 6 (breach of Section 5 is material); Section 1 Special Links; Schedule 1 lists only the United States Amazon Site (amazon.com) (see FLG-015).",
       "alias_of_26634cd5": "S7"
     },
@@ -29,8 +29,8 @@
       "url": "https://affiliate-program.amazon.com/help/operating/schedule",
       "publisher": "Amazon Associates (official)",
       "status": "not-accessible",
-      "status_note": "On 2026-11-13 this URL redirected to an Amazon sign-in page (ap/signin). No rate values were read, so no commission rate is stated anywhere on this site.",
-      "used_for": "Nothing. Commission rates are left blank and flagged (FLG-005).",
+      "status_note": "On 2026-11-13 AND again on 2026-11-14 this URL redirected to an Amazon sign-in page (ap/signin), return_to=.../home/account/payment/customratecard. That is a per-Account custom rate card, not the public table. No rate value was read from it. The public Standard Commission Income Statement IS readable without a sign-in at S25 (re-verified 2026-11-14); rates on the site come from S25/S26, never from this URL.",
+      "used_for": "Negative evidence only: confirms the customratecard route is sign-in gated (FLG-005, V-F1). Not used for any value.",
       "alias_of_26634cd5": "S9"
     },
     {
@@ -103,7 +103,7 @@
       "url": "https://link.amazon/B04G1MEwY",
       "publisher": "Link as submitted by the owner",
       "status": "observed",
-      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Price, rating and availability not in the text returned. Short link re-followed 2026-11-14 (session ecbfe91b): resolves to the same target page id B0CDY277D3 as on 2026-11-13 — mapping stable across days and sessions.",
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Price, rating and availability not in the text returned. Short link re-followed 2026-11-14 (session ecbfe91b): same target B0CDY277D3 as on 2026-11-13 — mapping stable across days and sessions.",
       "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
       "alias_of_26634cd5": "S1"
     },
@@ -236,7 +236,7 @@
       "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
       "publisher": "Amazon Associates Central (official)",
       "status": "verified",
-      "status_note": "Read 2026-11-13. Table 1 row: 'Physical Books, Kitchen, Automotive | 4.50%'. Also 'All Other Categories | 4.00%' and 'Toys, Furniture, Home, ... | 3.00%'. The page does not show a revision date in the text read. The rate applies to Qualifying Revenue for the listed category. Table 1 re-read 2026-11-14 (session ecbfe91b): rates unchanged (Kitchen 4.50%; Home row 3.00%; All Other Categories 4.00%); page publicly readable without sign-in.",
+      "status_note": "Read 2026-11-13. Table 1 row: 'Physical Books, Kitchen, Automotive | 4.50%'. Also 'All Other Categories | 4.00%' and 'Toys, Furniture, Home, ... | 3.00%'. The page does not show a revision date in the text read. The rate applies to Qualifying Revenue for the listed category. Table 1 re-read 2026-11-14 (session ecbfe91b): rates unchanged (Kitchen 4.50%; Home 3.00%; All Other 4.00%); page publicly readable without sign-in.",
       "used_for": "Category reference rate for Kitchen (PF-38). Not a product value: whether the listings are in the Kitchen category is not verified (FLG-021).",
       "alias_of_26634cd5": "S11 (66a80e53 session)"
     },
@@ -282,21 +282,84 @@
     },
     {
       "id": "S30",
-      "title": "Amazon Best Sellers: Best Air Fryers (official category best-seller listing, node 17659096011)",
-      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
-      "publisher": "Amazon.com (official)",
-      "status": "observed",
-      "status_note": "Captured 2026-11-13 by session c4e71983 (positions 1-6 in full; position 7 partial and excluded; 8-100 not enumerated, so no absence claim is made). Page re-checked live 2026-11-14 by session ecbfe91b: it is live and shows the same category path (Kitchen & Dining > Small Appliances > Fryers > Air Fryers); positions 2 and 3 had swapped versus the capture, confirming ranks are point-in-time.",
-      "used_for": "Competition benchmark table on reviews.html. Rank, ASIN, title, brand and capacity only; prices and ratings blanked by policy (FLG-022)."
+      "title": "Associates Program: Commission Income Statement 2(e) — Redirecting Link definition",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \"Redirecting Link\")'.",
+      "used_for": "Why a link.amazon/<code> short link must not be published as the Special Link (see commission/index.html and FLG-003)."
     },
     {
       "id": "S31",
+      "title": "Creators API: GetItems — ItemIdType parameter (ASIN definition)",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.'",
+      "used_for": "The 10-character ASIN rule used in the intake gate (FLG-001). Independent of S06/S08."
+    },
+    {
+      "id": "S32",
+      "title": "Amazon product detail: Chefman 8 Qt TurboFry",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon.com",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14; resolved short-link target and listing details.",
+      "used_for": "Resolved listing identity; dated research only."
+    },
+    {
+      "id": "S40",
+      "title": "Amazon.com results page for ASIN B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven)",
+      "url": "https://www.amazon.com/s?k=B0CDY277D3",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:06Z (qid 1794649506, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 1."
+    },
+    {
+      "id": "S41",
+      "title": "Amazon.com results page for ASIN B09B7SB46R (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven)",
+      "url": "https://www.amazon.com/s?k=B09B7SB46R",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:12Z (qid 1794649512, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 2."
+    },
+    {
+      "id": "S42",
+      "title": "Amazon.com results page for ASIN B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry 4-in-1)",
+      "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:17Z (qid 1794649517). The exact ASIN is the first result. Price, list price, rating, rating count and 'other offers' figures were read from this page.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 3."
+    },
+    {
+      "id": "S43",
+      "title": "Amazon Best Sellers: Best Air Fryers (browse node 17659096011)",
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14. Ranks 1-6 were read in full. The page header reads: 'Our most popular products based on sales. Updated frequently.' The page lists its breadcrumb nodes (Kitchen & Dining, Small Appliances, Fryers, Air Fryers). Positions 7+ were not used for any claim.",
+      "used_for": "Category competition benchmark: what a buyer sees above the fold in the verified category, with star ratings, exact rating counts and prices."
+    },
+    {
+      "id": "S44",
+      "title": "FTC's Endorsement Guides: What People Are Asking (includes the affiliate-marketing section)",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "publisher": "U.S. Federal Trade Commission",
+      "status": "verified",
+      "status_note": "Read 2026-11-14 (chunks 0, 8, 9, 10 of 12). The section 'What About Affiliate or Network Marketing?' was read in full. It says the disclosure must be 'clear and conspicuous', that the closer to the recommendation the better, and that 'affiliate link' or a 'buy now' button alone is not adequate.",
+      "used_for": "Affiliate disclosure wording and placement guidance; review-integrity constraints."
+    },
+    {
+      "id": "S45",
       "title": "Sell on Amazon: Understanding ASIN numbers (official Amazon seller education)",
       "url": "https://sell.amazon.com/blog/what-is-an-asin",
       "publisher": "Amazon.com (official; Sell on Amazon blog)",
       "status": "verified",
       "status_note": "Fetched 2026-11-14 (session ecbfe91b). States an ASIN is “a unique 10-character alphanumeric code assigned to every product listed in the Amazon store” and that a typical ASIN looks like “B07FZ8S74R”.",
-      "used_for": "The identifier-length rule behind FLG-001 (the three submitted codes are 9 characters, not 10)."
+      "used_for": "The identifier-length rule behind FLG-001 (the three submitted codes are 9 characters, not 10). (Added as S45 on merge: main's S30/S31 were already taken.)"
     }
   ]
 }

@@ -176,6 +176,34 @@
       "observed": "Read 2026-11-13. Onsite Commission Income applies only to a Direct Qualifying Purchase — a Qualifying Purchase of a Product of the same ASIN variant as the detail page linked to from the Onsite Content. Table A (excluding Creator Ads): Luxury Beauty/Luxury Stores Beauty 4.00%; Furniture, Home, Home Improvement, Lawn & Garden, Pets 3.00%; Amazon Coins 2.50%; Pantry, Beauty, Musical Instruments, Business & Industrial 2.00%; Tools 1.75%; Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive 1.25%; Headphones, Fashion Private Label, Apparel, Cloud Cam, Echo, Ring, Watches, Jewelry, Luggage, Shoes, Handbags 1.00%; Outdoors 0.75%; long 0.50% list; 0.00% list; All Other Categories 1.00%. Table B (Creator Ads) differs, e.g. Luxury Beauty 5.00%, Furniture/Home 4.00%, Kitchen/Automotive/Physical Books/Health & Personal Care/Sports/Baby 2.25%.",
       "status": "verified",
       "used_for": "Commission page: Onsite vs Standard rate comparison"
+    },
+    {
+      "id": "SRC-20",
+      "publisher": "Amazon.com",
+      "title": "Verified target listing: CHEFMAN 6 Quart Dual Basket",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "observed": "Fetched live product page 2026-11-14; short link target confirmed.",
+      "status": "verified",
+      "used_for": "Resolved listing identity and product-page observations; not static price display."
+    },
+    {
+      "id": "SRC-21",
+      "publisher": "Amazon.com",
+      "title": "Verified target listing: Emeril Lagasse 26QT",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "observed": "Fetched live product page 2026-11-14; short link target confirmed.",
+      "status": "verified",
+      "used_for": "Resolved listing identity and product-page observations; not static price display."
+    },
+    {
+      "id": "SRC-22",
+      "publisher": "Amazon.com",
+      "title": "Verified target listing: Chefman 8 Qt TurboFry",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "observed": "Fetched live product page 2026-11-14; short link target confirmed.",
+      "status": "verified",
+      "used_for": "Resolved listing identity and product-page observations; not static price display."
     }
-  ]
+  ],
+  "retrieved_utc": "2026-11-14"
 }

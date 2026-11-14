@@ -245,16 +245,20 @@ Everything official was re-checked live on 2026-11-14; full evidence table in
 - **FLG-016 widened:** the machine-learning bar covers *Special Links or Program Content*
   generally, not only Creators API data (Program Policies §5, verbatim quote in the flag).
   ([policies](https://affiliate-program.amazon.com/help/operating/policies))
-- **Competition benchmark published** on `/products/`-adjacent Reviews page of the flat build
-  (`reviews.html`): dated 2026-11-13 snapshot of the official
+- **Competition benchmark published** on the flat build's `reviews.html` and the
+  `air-fryers.html` category page: the official
   [Best Sellers in Air Fryers](https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/)
-  page, re-checked 2026-11-14 (ranks 2 and 3 swapped — ranks are point-in-time). Prices and
-  star ratings are withheld by policy (FLG-022) and live only in the internal capture file.
+  page read 2026-11-14 (an earlier 2026-11-13 capture ordered ranks 2–3 differently — ranks are
+  point-in-time, FLG-025). Both views render the same `data/competition.json` rows. Prices and
+  star ratings are withheld by policy (FLG-022) and live only in internal capture files.
 - **Two defects fixed:** `reviews.html` cited product 1's source (S08) for all three product
   rows (now S08/S09/S10 per row); `tools/link_report.py` repeated the outdated claim that the
   rate card is sign-in-gated.
 - **PR #10** (stale >60 min, conflicting) was taken over and closed as superseded — its
   broken-link target pages no longer exist in that form; the current tree reports 0 broken
   links across 57 pages. Handoff logged in `COORDINATION.md`.
-- New flags/sources: FLG-022 (display restriction for captured values); S30 (Best Sellers
-  page), S31 (ASIN rule page). Re-verification dates appended to S01, S07–S11, S14, S25.
+- New source S45 (ASIN rule page); the Best Sellers page was already S43 in main's registry.
+  The proposed duplicate FLG-022 was dropped in favour of main's FLG-022 (same rule). Main also
+  gained FLG-023–027 from parallel sessions (including the `plpRedirect=mhFallback` correction,
+  which matches this session's control observation). Re-verification dates appended to
+  S01, S07–S11, S14, S25. Full merge log: `COORDINATION.md` Part E.

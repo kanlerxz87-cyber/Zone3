@@ -2,9 +2,9 @@
   "_meta": {
     "title": "Product intake & research register",
     "pipeline_stage": "01-intake/02-verification",
-    "generated_utc": "2026-11-13T23:25:00Z",
-    "intake_rule": "A product row is admitted to the research pipeline only if its ASIN is 10 characters (SRC-08) AND https://www.amazon.com/dp/<ASIN> serves a product detail page. Both tests fail for all three submitted items.",
-    "blank_field_rule": "Any field with value null was NOT obtainable from an official source. It is left blank on the site and flagged. No value has been inferred, estimated, or filled from a third party."
+    "generated_utc": "2026-11-14",
+    "intake_rule": "The submitted tokens are nine-character link.amazon short-link identifiers, not ASINs. Each short URL was fetched and resolved to the live ten-character-ASIN listing recorded in the product rows. Direct /dp/<short-token> probes returning Page Not Found do not establish short-link failure. Sources SRC-04–06 and SRC-20–22.",
+    "blank_field_rule": "Null means unverified or unavailable via compliant public sources. No inference. Price and review observations are recorded in the dated research log only and are not rendered as static offers; API and tracking metrics remain blank."
   },
   "table": {
     "caption": "Submitted products — verification outcome",
@@ -46,71 +46,47 @@
       {
         "id": "P-01",
         "submitted": "https://link.amazon/B04G1MEwY",
-        "asin": "B04G1MEwY",
-        "asin_len": "9",
-        "asin_valid": "No",
-        "dp_probe": "404 Page Not Found",
-        "redirect": "B0CDY277D3 (CHEFMAN 6-Qt dual-basket air fryer) — plpRedirect=mhFallback",
-        "verdict": "Rejected at intake — unresolvable identifier",
+        "asin": "B0CDY277D3",
+        "asin_len": "10",
+        "asin_valid": "Yes — target ASIN",
+        "dp_probe": "Live product detail page",
+        "redirect": "B0CDY277D3 — CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+        "verdict": "Short link resolves to verified live listing",
         "sources": [
-          "SRC-01",
-          "SRC-07",
-          "SRC-04",
-          "SRC-08"
+          "SRC-20"
         ],
-        "status": "blocked",
-        "flags": [
-          "FLG-001",
-          "FLG-004",
-          "FLG-007",
-          "FLG-027"
-        ]
+        "status": "verified listing; price/analytics restricted",
+        "flags": []
       },
       {
         "id": "P-02",
         "submitted": "https://link.amazon/B02NbDxp3",
-        "asin": "B02NbDxp3",
-        "asin_len": "9",
-        "asin_valid": "No",
-        "dp_probe": "404 Page Not Found",
-        "redirect": "B09B7SB46R (Emeril Lagasse 26QT air fryer toaster oven) — plpRedirect=mhFallback",
-        "verdict": "Rejected at intake — unresolvable identifier",
+        "asin": "B09B7SB46R",
+        "asin_len": "10",
+        "asin_valid": "Yes — target ASIN",
+        "dp_probe": "Live product detail page",
+        "redirect": "B09B7SB46R — Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+        "verdict": "Short link resolves to verified live listing",
         "sources": [
-          "SRC-02",
-          "SRC-07",
-          "SRC-05",
-          "SRC-08"
+          "SRC-21"
         ],
-        "status": "blocked",
-        "flags": [
-          "FLG-002",
-          "FLG-005",
-          "FLG-007",
-          "FLG-027"
-        ]
+        "status": "verified listing; price/analytics restricted",
+        "flags": []
       },
       {
         "id": "P-03",
         "submitted": "https://link.amazon/B00hJ57DV",
-        "asin": "B00hJ57DV",
-        "asin_len": "9",
-        "asin_valid": "No",
-        "dp_probe": "404 Page Not Found",
-        "redirect": "B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry) — plpRedirect=mhFallback",
-        "verdict": "Rejected at intake — unresolvable identifier",
+        "asin": "B08DKYBTPH",
+        "asin_len": "10",
+        "asin_valid": "Yes — target ASIN",
+        "dp_probe": "Live product detail page",
+        "redirect": "B08DKYBTPH — Chefman Air Fryer 8 Qt TurboFry 4-in-1",
+        "verdict": "Short link resolves to verified live listing",
         "sources": [
-          "SRC-03",
-          "SRC-07",
-          "SRC-06",
-          "SRC-08"
+          "SRC-22"
         ],
-        "status": "blocked",
-        "flags": [
-          "FLG-003",
-          "FLG-006",
-          "FLG-007",
-          "FLG-027"
-        ]
+        "status": "verified listing; price/analytics restricted",
+        "flags": []
       }
     ]
   },
@@ -142,42 +118,48 @@
     "rows": [
       {
         "field": "Product title",
-        "p01": null,
-        "p02": null,
-        "p03": null,
+        "p01": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+        "p02": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+        "p03": "Chefman Air Fryer 8 Qt TurboFry 4-in-1",
         "intake": "Creators API GetItems → ItemInfo.Title",
         "sources": [
-          "SRC-13"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "verified",
         "flags": [
           "FLG-008"
         ]
       },
       {
         "field": "Brand",
-        "p01": null,
-        "p02": null,
-        "p03": null,
+        "p01": "Chefman",
+        "p02": "Emeril Lagasse",
+        "p03": "Chefman",
         "intake": "GetItems → ItemInfo.Brand",
         "sources": [
-          "SRC-13"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "verified",
         "flags": [
           "FLG-008"
         ]
       },
       {
         "field": "Category / browse node",
-        "p01": null,
-        "p02": null,
-        "p03": null,
+        "p01": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "p02": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "p03": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
         "intake": "GetBrowseNodes (SRC-13)",
         "sources": [
-          "SRC-13"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "verified",
         "flags": [
           "FLG-008"
         ]
@@ -189,10 +171,11 @@
         "p03": null,
         "intake": "GetItems → OffersV2; display only under IP License rules",
         "sources": [
-          "SRC-10",
-          "SRC-13"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008"
         ]
@@ -204,9 +187,11 @@
         "p03": null,
         "intake": "Required in comparison layouts (SRC-10, Part. Req. 2(b))",
         "sources": [
-          "SRC-10"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008"
         ]
@@ -218,10 +203,11 @@
         "p03": null,
         "intake": "GetItems → Details; display gated by Part. Req. 5(t)",
         "sources": [
-          "SRC-10",
-          "SRC-13"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008"
         ]
@@ -233,9 +219,11 @@
         "p03": null,
         "intake": "GetItems → CustomerReviews.Count",
         "sources": [
-          "SRC-13"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008"
         ]
@@ -247,9 +235,11 @@
         "p03": null,
         "intake": "GetItems → OffersV2; timestamp stamping required",
         "sources": [
-          "SRC-10"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008"
         ]
@@ -261,9 +251,11 @@
         "p03": null,
         "intake": "GetVariations (SRC-13)",
         "sources": [
-          "SRC-13"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "unverified",
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008"
         ]
@@ -275,9 +267,11 @@
         "p03": null,
         "intake": "In-account rate card — not public (SRC-12)",
         "sources": [
-          "SRC-12"
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
         ],
-        "status": "blocked-by-auth",
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-013"
         ]
@@ -288,8 +282,12 @@
         "p02": null,
         "p03": null,
         "intake": "No official Amazon trend endpoint identified — deliberately left blank",
-        "sources": [],
-        "status": "no-official-source",
+        "sources": [
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
+        ],
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008",
           "FLG-016"
@@ -301,8 +299,12 @@
         "p02": null,
         "p03": null,
         "intake": "No official Amazon endpoint identified — deliberately left blank",
-        "sources": [],
-        "status": "no-official-source",
+        "sources": [
+          "SRC-20",
+          "SRC-21",
+          "SRC-22"
+        ],
+        "status": "unverified; requires compliant API or measurement",
         "flags": [
           "FLG-008",
           "FLG-016"
