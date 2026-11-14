@@ -2912,3 +2912,105 @@ integration session and only when a check fails or a verification rule is violat
 logged here. Open PR #49 (`arena/edbd56a1-zone3`, record-only, no commits since 2026-11-14 10:44 UTC)
 is read for integration; if it is still stale at merge time it will be taken over per the 60-minute
 rule with a note here, never silently discarded.
+
+## 554-T2 record — repo review, line by line (2026-11-14, session 554c08ca)
+
+Tree audited at `origin/main` `33c92c8` (after merging PRs #52–#58 into this branch).
+
+| # | Area | State found | Verdict |
+|---|---|---|---|
+| R1 | HTML pages | 115 `.html` files: 12 root flat pages (generator `scripts/build_site.py`), directory builds (`dashboard/`, `docs/`, `marketing/`, `category/`, `sessions/`, `commission/`, …), archives | intact; every nav target resolves (see 554-T4) |
+| R2 | Scripts | 20 `.py` files under `scripts/`, `tools/`, `sessions/*/tools/` | all gates run green (554-T4) |
+| R3 | Data registers | `data/*.json`: `sources.json` (48), `flags.json` (49), `policy_facts.json`, `products.json` (3), `commission.json` (Table 1), `competition.json`, `marketing.json` | no dangling IDs (`link_report --strict` exit 0) |
+| R4 | Conflict markers | `grep` for `^<<<<<<< `/`^>>>>>>> ` across tracked files | **0** |
+| R5 | Secrets | pattern scan for AWS keys / api_key / secret assignments | **0 hits**; `.gitignore` covers `.env*` |
+| R6 | GitHub Pages hygiene | `.nojekyll` present; `robots.txt` points at `sitemap.xml`; Pages = legacy build, source `main` `/`, https enforced | correct |
+| R7 | `COORDINATION.md` | 2,900+ lines, ~25 session Parts; Part letters E, F, G, H and task prefixes T/V/D/C/9F/03/JH reused by different sessions | **554-F-01** (documented; not changed) |
+| R8 | Arena sandbox | clone is shallow; `git merge-base` fails ("unrelated histories") until `git fetch --deepen` connects the tip commits | **554-F-02** (process note for future sessions) |
+
+## 554-T3 record — line-by-line live re-verification (all fetched 2026-11-14, session 554c08ca)
+
+Every row was read from the official page itself this session. No search-result or aggregator text was used as evidence.
+
+| # | Claim on the site | Official source re-fetched | Result |
+|---|---|---|---|
+| V1 | `link.amazon/B04G1MEwY` lands on `amazon.com/dp/B0CDY277D3` — title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows…" | https://link.amazon/B04G1MEwY | **Confirmed** (S11/S14) |
+| V2 | `link.amazon/B02NbDxp3` lands on `dp/B09B7SB46R` — "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven…" | https://link.amazon/B02NbDxp3 | **Confirmed** (S12/S15) |
+| V3 | `link.amazon/B00hJ57DV` lands on `dp/B08DKYBTPH` — "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1…" | https://link.amazon/B00hJ57DV | **Confirmed** (S13/S16/S23) |
+| V4 | The three submitted codes are 9 characters; ASIN = "10-Character alphanumeric unique identifier assigned by Amazon" | https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items (ItemIdType Parameter, chunk 1) | **Confirmed verbatim** |
+| V5 | `amazon.com/dp/<code>` → "Page Not Found" for all three | https://www.amazon.com/dp/B04G1MEwY · /dp/B02NbDxp3 · /dp/B00hJ57DV | **Confirmed** — all three titles = "Page Not Found" (S08–S10) |
+| V6 | Breadcrumb on all three destinations: Home & Kitchen 1055398 › Kitchen & Dining 284507 › Small Appliances 289913 › Fryers 17659095011 › Air Fryers 17659096011 | the three resolved listing pages | **Confirmed** on all three |
+| V7 | OA header "Updated: October 15, 2025"; §5 disclosure sentence verbatim: "As an Amazon Associate I earn from qualifying purchases."; §6: any §5 violation is a material breach | https://affiliate-program.amazon.com/help/operating/agreement (chunks 0–1) | **Confirmed verbatim** |
+| V8 | Program Policies §2(b): tag (`XXXXX-##`) must be a URL parameter; no dynamic per-visitor sub-tags; prices/availability only if Amazon serves the link or via Creators/PA API | https://affiliate-program.amazon.com/help/operating/policies (chunk 3) | **Confirmed verbatim** |
+| V9 | Program Policies §6(s) artificial clicks · §6(t) reviews/star ratings only via Creators/PA API · §6(v) cloaking/Redirecting Links · §6(w) link shorteners must not obscure the Amazon destination · §6(y) no price tracking/alerting | same, chunk 5 | **Confirmed verbatim** |
+| V10 | Standard Commission Table 1: 11 rows, "Physical Books, Kitchen, Automotive 4.50%", "All Other Categories 4.00%", Luxury Beauty 10.00%, Toys/Furniture/Home … 3.00% | https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ | **Confirmed** — full table read, no sign-in |
+| V11 | FTC Disclosures 101: "financial, employment, personal, or family relationship"; "Place it so it's hard to miss"; "You can't talk about your experience with a product you haven't tried"; dated November 2019 | https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers | **Confirmed verbatim** |
+| V12 | No Associates tag in any supplied link | the three redirect URLs above (`lv`, `btn_type`, `btn_ref`, `channelId`, `plpRedirect` only — no `tag=`) | **Confirmed** (FLG-010 stands) |
+
+Not re-fetched this session (carried, unchanged): prices/ratings snapshots — deliberately not re-published as product facts (Program Policies 2(b)/6(t); FLG-022/038). Nothing was inferred or filled; no fact was found false.
+
+## 554-T4 record — site integrity (2026-11-14, merged tree `f7110df`)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 12 pages, 3 products, 48 sources, 49 flags** — exit 0 |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 with repo anchor** — exit 0 |
+| `python3 tools/link_report.py --strict` | exit 0 (no dangling source/flag refs) |
+| `python3 scripts/check_all_links.py` | 115 HTML pages, 104 distinct external URLs, **0 errors** |
+| `python3 sessions/3c886b62/tools/check_links.py` | OK — no broken internal links, every data row has a source cell |
+| Generators `scripts/build_site.py` · `tools/build_site.py` · `scripts/build_marketing.py` · `scripts/build_sitemap.py --check` | all exit 0; rebuild → **zero working-tree diff** (idempotent) |
+| Conflict-marker / secrets sweep | 0 / 0 |
+
+## 554-T5 record — executive summary and Flagged-for-Review completeness (2026-11-14)
+
+- `executive-summary.html` exists with `<h1>Executive summary</h1>`, linked from the landing page nav and tiles; markdown source `EXECUTIVE-SUMMARY.md` is current (session `edbd56a1`, 2026-11-14; counts 48 sources / 49 flags match `check_site.py`).
+- `flagged.html` exists with `<h1>Flagged for review</h1>`, linked from the landing page; 49 entries, each with severity, detail and official source links (checker-enforced row provenance).
+- Exact OA §5 disclosure sentence present on `index.html`, `executive-summary.html`, `flagged.html`, `products.html` (and enforced site-wide by verify V1).
+- No change required; nothing another session owns was edited.
+
+## 554 takeover of stale PR #49 (session `edbd56a1`, record-only)
+
+PR #49 (https://github.com/kanlerxz87-cyber/Zone3/pull/49) has been open with one commit and no
+activity since 2026-11-14 10:44 UTC — far beyond the 60-minute rule. It contains only this session's
+close-out record for COORDINATION.md. Rather than merge a branch that has fallen behind nine later
+merges, its content is **preserved verbatim below** and PR #49 will be closed with a supersession
+note after this PR lands. Nothing from `edbd56a1` is discarded.
+
+### E-T7 (continued) — second PR and final deploy (verbatim from PR #49)
+
+| Event | Result |
+|---|---|
+| Pull request | [#48 — Dashboard tiles for the 4 sections missing from the landing page + Part E merge record](https://github.com/kanlerxz87-cyber/Zone3/pull/48), `arena/edbd56a1-zone3` → `main` |
+| Merge | **MERGED** 2026-11-14T10:43:02Z via `gh pr merge 48 --merge` → merge commit `b3fe376505abe11470fb408568d8ce624c7dd9c4` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages build | build for `b3fe376` → **built** (updated 2026-11-14T10:43:23Z) |
+| Live check — landing | all 12 dashboard tiles render, including the 4 added in #48; flag counters read 2 critical / 49 total |
+| Live check — flagged | flag register renders; every row carries its official source links |
+| Live check — verification log | 53 rows, all with source links |
+
+### E Close-out (verbatim from PR #49)
+
+| Task | Status |
+|---|---|
+| E-T1 claim scope, read board, note open PRs | done |
+| E-T2 repo review, line by line | done |
+| E-T3 live re-verification of every published claim | done — 53 rows on `verification.html`; no fact found false |
+| E-T4 executive summary | done — `EXECUTIVE-SUMMARY.md` rewritten against the current register |
+| E-T5 build, checkers, link audit | done — all gates green, 0 broken internal links outside `archive/` |
+| E-T6 Flagged for Review completeness | done — 49 flags, each with sources and the action needed |
+| E-T7 PR, merge, Pages | done — PR #47 (`c6cf5ec`) and PR #48 (`b3fe376`), both merged, both Pages builds `built` |
+| E-T8 sources, verification, irregularities | done — recorded above |
+| E-T9 dashboard tiles | done — PR #48 |
+
+**Unblock items for the owner** (unchanged, all on the Flagged page): a valid 10-character ASIN for each
+of the three products (FLG-001), the Associates tag (FLG-010), and confirmation of enrolment and
+Creators API eligibility (FLG-006). Until item 1 arrives, product name, brand, price, rating, review
+count, best-seller rank and commission rate stay blank by design.
+
+## 554 irregularities raised (non-blocking, published for manual review)
+
+| ID | Sev | Finding | Source for review |
+|---|---|---|---|
+| 554-F-01 | Low | `COORDINATION.md` exceeds 2,900 lines across ~25 Parts; Part letters and task prefixes are reused by different sessions (two "Part E", two "Part C", F/G/H collisions), so an ID alone no longer identifies a claim. Recommend a reserved numeric block per session. | https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md |
+| 554-F-02 | Info | Arena checkouts of this repo are shallow: `git merge-base`/`git merge` fail with "unrelated histories" until `git fetch --deepen` connects the tip commits. | this session's git log, 2026-11-14 |
+| 554-F-03 | Info | PR #49 (record-only, session `edbd56a1`) was stale >60 min at claim time; taken over per the takeover rule with its content preserved verbatim above. | https://github.com/kanlerxz87-cyber/Zone3/pull/49 |
+| 554-F-04 | Info | No new product-data finding: all three submitted identifiers remain unverifiable as ASINs (V4/V5); product cells stay blank and flagged, per the brief's no-inference rule. | https://www.amazon.com/dp/B04G1MEwY (Page Not Found) |
