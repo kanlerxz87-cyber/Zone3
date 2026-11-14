@@ -3438,3 +3438,21 @@ scan finds them too, but only once you know to look for the demand badges in pro
 guard against this class of drift, the check to add is a whole-tree scan for the six observed-value
 literals outside the flag and source-register prose — `sessions/3ead7ac8/tools/withhold_observed.py`
 already contains the pattern list and can be run with a `--check` flag added.
+
+## c3dbcc40 Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| c3dbcc40 | `arena/c3dbcc40-zone3` | `f618a53` (merge of PR #72) | Gate re-run on the current tree; live re-fetch of the three submitted short links (official Amazon pages only); sitemap drift check; PR to `main`, merge, Pages deploy | in progress | 2026-11-14 |
+
+Branch note: this session is fixed to `arena/c3dbcc40-zone3` by the Arena session branch note, so per-task work is namespaced `C3-T1…C3-T3` instead of `session-<id>/<task>` branches.
+
+## C3 Task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| C3-T1 — Gate re-run on `f618a53` and sitemap drift check | in progress | c3dbcc40 | read-only, plus `sessions/c3dbcc40/` |
+| C3-T2 — Live re-fetch of the three submitted links and their landing listings (official Amazon pages only) | in progress | c3dbcc40 | `sessions/c3dbcc40/verification.md` |
+| C3-T3 — Record, PR to `main`, merge, Pages deploy | pending | c3dbcc40 | `COORDINATION.md` (C3 Part only), `sessions/c3dbcc40/**` |
+
+Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `data/flags.json`) are not edited by this session. Drift is logged below for the integration owner.
