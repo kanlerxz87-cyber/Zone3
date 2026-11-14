@@ -1206,12 +1206,13 @@ def main():
     def _urlpath(v):
         d = str(pathlib.PurePosixPath(v).parent)
         return "" if d == "." else d + "/"
-    sm_paths = {_urlpath(v) for v in written.values()}
-    # union with the other generator's root flat pages so a rebuild never drops them
-    # (integration 2026-11-14 by session 06ca46bf; keeps the sitemap complete either way)
-    for _flat in sorted(out.glob("*.html")):
-        sm_paths.add(_flat.name)
-    sm_paths = sorted(sm_paths)
+    # INTEGRATION 2026-11-14 (session b90c5685): the sitemap is shared with the flat generator
+    # (scripts/build_site.py). Listing only this build's pages made every rebuild dirty and deleted
+    # the flat pages' entries. Both generations are listed, so the sitemap is a fixpoint.
+    flat = sorted({p.name for p in out.glob("*.html")})
+    if (out / "category").is_dir():
+        flat += sorted(p.relative_to(out).as_posix() for p in (out / "category").glob("*.html"))
+    sm_paths = sorted({_urlpath(v) for v in written.values()} | set(flat))
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f'  <url><loc>{SITE_ORIGIN}{SITE_BASE}/{p}</loc></url>\n' for p in sm_paths)

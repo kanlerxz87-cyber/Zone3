@@ -1511,28 +1511,186 @@ broken local link.
 | 2026-11-14 | `git pull --rebase origin main` before the PR: `main` had advanced `8cfe91f` → `dc88e53` (PRs #32–#33 from session `ecbfe91b`). Content conflict in `COORDINATION.md`: both sides appended a Part at the same location. | Resolved by **keeping both sides in full** — `ecbfe91b`'s Part first, then this F Part, separated by a rule. Verified no marker remains at line start and that both Parts are present before `git add`. Nothing from any session discarded. |
 | 2026-11-14 | Second conflict, in `flagged.html` (generated output). | Not hand-merged. Resolved by **regenerating** from the merged `data/flags.json` + `data/sources.json`, so the register is internally consistent (39 flags, 38 sources). Hand-resolving generated HTML could have dropped the other session's flags. |
 
-## G Session registry — final integration of PR #26 (session `06ca46bf`, 2026-11-14)
+---
 
-> Namespace note (second collision, 2026-11-14): this part was appended as F (claim commit 423c90c) before session 588693c9's Part F merged (PRs #34/#35). Renamed F→G for **this section only**; that session's Part F, session ecbfe91b's Part E, and the 9F part (9fef7647) below are kept in full and untouched.
+# Part: session `b90c5685` — independent re-verification + final integration (2026-11-14)
 
+> Appended additively on branch `arena/b90c5685-zone3` (base `8043815` = `main` at claim time, 2026-11-14 10:07 UTC).
+> Nothing above was removed or rewritten. Task IDs are namespaced **`JH-T…`** and flag IDs **`JH-F…`**. The prefixes
+> `E-` and `H-` were already published by session `ecbfe91b` on `main`, so this session uses `JH-`. `JH-` items are
+> **not** the same as any `A:`, `B:`, `Z-`, `C-`, `D-`, `F-`, `9F-`, `E-`, `H-`, `FLG-`, `V-F` or `F01–F17` item above.
 
-> Namespace note (conflict log): this claim was first written as "E-T1…E-T5" (session `06ca46bf`) before `git pull --rebase`; meanwhile `f1b7da46`'s Part E merged to `main` (PRs #29/#30, 10:06Z). To avoid ID collision this part was renamed **F** (G-T1…G-T5) and appended after their part. Both parts kept in full; nothing discarded; no marker left.
+## JH Session registry
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 06ca46bf | `arena/06ca46bf-zone3` | Final integration: merge PR #26 (session `9fef7647`) without discarding its work, resolve conflicts additively, re-verify combined data line by line against live official sources, run every build/link gate, publish PR → `main`, confirm GitHub Pages | in progress | 2026-11-14 10:07 |
+| `b90c5685` | `arena/b90c5685-zone3` (fixed by the Arena session note; task IDs replace `session-<id>/<task>` branches) | Independent re-verification of the combined tree at `8043815`, integration of the open PR #26 branch, PR → `main`, merge without waiting for approval, GitHub Pages deploy confirmation, live checks | **done** | 2026-11-14 10:07 |
 
-### F Task board
+**Branch note (same logged decision as `7f84fea4`).** The brief asks for `session-<id>/<task>` branches. Arena's
+session branch note fixes this session to one branch, `arena/b90c5685-zone3`, and forbids creating, switching to or
+pushing any other branch. Task IDs (`JH-T1`–`JH-T5`) replace per-task branches.
 
-| Task | Status | Owner | Files in scope | Notes |
+## JH Task board (claimed before any other work, per protocol)
+
+| Task ID | Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|---|
+| JH-T1 | Read this board, register the session, claim, push the claim immediately | done | b90c5685 | `COORDINATION.md` (this Part only) | Claim committed and pushed as `b83191e` before any other work. |
+| JH-T2 | Line-by-line repo review of the combined tree at base `8043815`: data integrity, source-ID resolution, page inventory, duplicate/dead IDs, hallucination check on every published figure | done | b90c5685 | read-only audit + this Part | Findings in "JH-T2" below, including the ID-collision class that recurred three times. |
+| JH-T3 | Site integrity gates: build idempotency, `scripts/check_site.py`, `tools/verify_site.py`, `tools/link_report.py --strict`, `scripts/check_all_links.py`, the session-page checker, whole-tree link audit | done | b90c5685 | read-only except where a defect had to be fixed | All gates green. **Three gate defects found and fixed** — JH-F-03, JH-F-04, and the sitemap ownership clash. |
+| JH-T4 | Independent re-fetch of the official sources behind every load-bearing claim (policy quotes, commission tables, the three submitted product destinations) | done | b90c5685 | verification record in this Part | 8 pages fetched; every re-read value matched. **One item could not be reproduced** → JH-F-02. |
+| JH-T5 | Integration: merge the open PR #26 branch (`arena/9fef7647-zone3`) into this branch, re-verify the combined tree, open the PR to `main`, merge without waiting for approval, confirm the Pages build, live-check the pages, record everything here | done | b90c5685 | git, `gh`, this Part | See "JH Publish record". |
+
+### JH Claim rules observed
+
+- Work happens only on `arena/b90c5685-zone3`.
+- No file owned by another session was rewritten. Shared outputs (`index.html` and the other generated pages,
+  `data/*.json`, `sitemap.xml`, navigation) were changed only under JH-T5, after JH-T2/JH-T3/JH-T4 were green, and
+  every such change is logged below with its reason and source.
+- Small, frequent commits; `git pull --rebase origin main` before every push.
+- Nothing is marked verified without a source link to an official page fetched in this session.
+
+## JH-T2 — Repo review of the combined tree (read-only audit)
+
+| Area | Finding |
+|---|---|
+| Page inventory | 106 HTML pages under version control, in four generations: the flat site (root `*.html`, built by `scripts/build_site.py`), the 16-page audit build (`*/index.html`, built by `tools/build_site.py` from `data/z3/*.json`), the `/docs/` sub-site and the self-contained `sessions/3c886b62/` site, plus `archive/` snapshots. |
+| Source registry | 37 sources at `8043815`, no duplicate **IDs**, no source ID cited but undefined, no defined-but-unused ID after integration. Two duplicate **URLs** are intentional (S25/S37 and S32/S16 describe different *uses* of the same page). |
+| Flag registry | 32 flags at `8043815`; every flag has at least one source or an explicit `repo_evidence` statement; every flag ID cited by a product exists. |
+| Policy facts | 50 quotes; every quote carries a source ID and a section reference. No quote was found to be paraphrased. |
+| Secrets | No credentials in the tree; `.gitignore` covers `.env*` and `*.local.json`. Greps hit only prose. |
+| Dead construct check | No `iframe`/`embed`/`object`, no Amazon-hosted `<img>`, no link shortener other than the owner-submitted `link.amazon` URLs, no `http://` external links. |
+| **The recurring defect class** | **ID collisions between concurrently merged sessions.** `S30–S32` and `FLG-022–024` meant different pages in PR #26 and on `main`; then `FLG-031` collided with a flag PR #33 added; then the `E-` and `H-` session prefixes collided with session `ecbfe91b`. All resolved by renumbering, never by deletion — see the table below and JH-F-01. |
+
+## JH-T4 — Independent live re-fetch of official sources (all fetched by this session, 2026-11-14)
+
+Every row below was fetched from the sandbox by this session; nothing is carried over from another session's record.
+
+| # | Page fetched | What was read this session | Verdict |
+|---|---|---|---|
+| 1 | `affiliate-program.amazon.com/help/operating/agreement` (chunks 0–1 of 4) | Header "**Updated:** October 15, 2025"; §5 verbatim: "As an Amazon Associate I earn from qualifying purchases."; §6 makes a §5 violation a material breach; Schedule 1 = United States / `amazon.com` | **Confirmed** (PF-01, PF-02, PF-35; FLG-015) |
+| 2 | `affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ` (Standard Commission Table 1) | 11 rows. "Physical Books, **Kitchen**, Automotive — **4.50%**"; "All Other Categories — 4.00%"; Luxury Beauty 10.00% down to a 0.00% row | **Confirmed** (PF-38; S25) |
+| 3 | `link.amazon/B04G1MEwY` | Opens `amazon.com/dp/B0CDY277D3`, title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven … - Black"; breadcrumb Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers | **Confirmed as observed** (S55 — a 5th independent observation of the same destination) |
+| 4 | `link.amazon/B02NbDxp3` | Opens `amazon.com/dp/B09B7SB46R`, title "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven …" | **Confirmed as observed** (S55) |
+| 5 | `link.amazon/B00hJ57DV` | Opens `amazon.com/dp/B08DKYBTPH`, title "Chefman Air Fryer 8 Qt \| TurboFry 4-in-1 …" | **Confirmed as observed** (S55) |
+| 6 | `amazon.com/dp/B04G1MEwY` (control) | Amazon's "Page Not Found" page — the 9-character code is not an ASIN | **Confirmed** (S08 class) |
+| 7 | `amazon.com/dp/B0CDY277D3` (control) | Read `$79.93`, a used offer at `$57.45`, and "Only 1 left in stock". The page's star block did **not** render in the text returned; the "4.3 (11700)" block on that page belongs to an Asurion protection plan, not the air fryer | **Partially reproduced** → JH-F-02 |
+| 8 | `amazon.com/dp/B08DKYBTPH` (control) | Read `$79.91`, a used offer at `$51.94`, "New & Used (4) from $49.54", "Only 4 left in stock" | **Price reproduced**; star block not read → JH-F-02 |
+
+Two of these control fetches carried `lv=shuf` and `plpRedirect=mhFallback` **with no short link involved**, which
+independently corroborates FLG-026 / FLG-028 (those parameters are not evidence of a failed lookup).
+
+## JH-T3 — Site integrity gates (final state of the merged tree)
+
+| Check | Command | Result |
+|---|---|---|
+| Flat generator | `python3 scripts/build_site.py` | exit 0 |
+| Audit generator | `python3 tools/build_site.py` | exit 0 |
+| Idempotency | both generators run a second time | **zero working-tree diff** |
+| Data + flat-page checker | `python3 scripts/check_site.py` | **OK: 11 pages, 3 products, 48 sources, 43 flags** |
+| Release gate | `python3 tools/verify_site.py` | **VERIFY PASS · 67 pages · 1058 table rows · 782 with an official source · 197 with a flag · 15 repo anchors** |
+| Provenance coverage | `python3 tools/link_report.py --strict` | **PASS** (no dangling source or flag reference) |
+| Whole-tree link audit | `python3 scripts/check_all_links.py` | **106 HTML pages, 81 external URLs, 0 errors** |
+| Session site | `python3 sessions/3c886b62/tools/check_links.py` | **OK** |
+| Merge markers outside `archive/` | `grep -r '<<<<<<<'` | **none** |
+
+## JH-T5 — Integration of the open PR #26 branch (`arena/9fef7647-zone3`)
+
+Merged with `--allow-unrelated-histories` (the two branches share no merge base in this clone). `main` advanced three
+times during the work (`8043815` → `58d2744` → `9cfaf26`, PRs #29–#36). **No file from either side was deleted.**
+
+| Conflict area | Resolution | Why |
+|---|---|---|
+| `data/sources.json` | `main`'s sources kept as the base. PR #26's unique sources kept under **new IDs**: its `S33–S38` → **`S46–S51`**, its `S30–S32` → **`S52–S54`**. This session's own re-fetch added as **`S55`**. | Both sides had assigned `S30–S32` to *different pages*. Renumbering keeps every meaning; dropping either side would have destroyed evidence. |
+| `data/flags.json` | `main`'s 43 flags kept, including `FLG-022/023/024/031` with `main`'s meanings. PR #26's three different findings kept as **`FLG-035/036/037`**; this session's integration finding as **`FLG-038`**. PR #26's extra dated wording for seven shared flags is kept verbatim in an `addendum_2026_11_14` field **and is rendered on the live Flagged-for-review page**. | Same collision. The addenda carry real 2026-11-14 observations, so they are published rather than dropped. |
+| `data/products.json` | `main`'s blank identity/price/rating cells kept. PR #26's readings kept verbatim under `observed_2026_11_14` / `value_sources_2026_11_14`. | PR #26 filled `product_name`, `brand`, `price`, `rating`, `review_count` from the redirect **destinations**. The submitted code is not an ASIN, so no official source ties those values to the submitted link — that is exactly the inference the brief forbids (FLG-001/002/035/038). |
+| `scripts/build_site.py` | `main`'s honest builders kept (index, executive summary, products, pricing, reviews, content, campaigns, category, re-verification table). PR #26's **subdirectory-correct `page()`/`css()` adopted for all pages**, because `main`'s version could not emit a page in a subdirectory with working links. PR #26's marketing page kept as a new builder (rewritten, below). | Each side's stronger half kept; no page lost. |
+| `scripts/check_site.py` | `main`'s `repo_evidence` rule kept, plus **PR #26's browser-correct relative-link resolution** (resolve from the page's own directory). | Both are real bug fixes to different functions. |
+| `marketing` | `main`'s compliant `marketing/` section (7 pages, `scripts/build_marketing.py`) kept unchanged. PR #26's marketing page kept as **`marketing/briefs.html`**, linked in the nav as "Marketing briefs"; `marketing.html` now redirects to `marketing/index.html`. | Two marketing sections existed. Deleting either loses authored work; PR #26's page is valuable but quoted prices/ratings, so it was **rewritten** (see next row). |
+| `marketing/briefs.html` content | **Rewritten** by this session: every claim now attributes to "the Amazon listing this submitted link opens", never to the submitted code; all price, rating and review-count figures removed; each brief links FLG-001/035/036/038. | The no-inference rule, plus Participation Requirements 2(b) and 6(t) (PF-04, PF-05). |
+| `flagged-for-review.html` | `main`'s redirect to `flagged.html` kept. | PR #26's version was a stale standalone copy of the flag register; a second diverging register is a correctness risk. Its flag content survives in `data/flags.json` (FLG-035/036/037 + addenda) and therefore appears on the live register. |
+| `docs/executive-summary.md` | `main`'s text kept; PR #26's dated 2026-11-14 supersede section appended verbatim under an explicit integration comment. | Both are records of their own session's reasoning; keeping both shows the change. |
+| `COORDINATION.md` | `origin/main`'s board kept **verbatim**; this Part appended. | The board is the shared record. Where my earlier conflict resolution mangled another session's headings, I restored them byte-for-byte from `origin/main` rather than guess. |
+| `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html`, `sitemap.xml`, `dashboard/`, `/products/`, `/pricing/`, `/reviews/`, `/sources/`, `/executive-summary/`, `data/z3/*` | **Regenerated** from the merged generators and merged data. | Generated files are outputs; hand-merging two outputs produces a page neither session wrote. |
+
+### JH ID renumbering across the three collisions
+
+| This branch first used | Collides with (latest `main`) | Published as |
+|---|---|---|
+| PR #26's `FLG-022` (identity rests on redirects) | `main`'s `FLG-022` (price/rating display rule) | **`FLG-035`** |
+| PR #26's `FLG-023` (observed prices, analysis only) | `main`'s `FLG-023` (Creators API enrolment) | **`FLG-036`** |
+| PR #26's `FLG-024` (earlier builds disagreed) | `main`'s `FLG-024` (shortener restrictions) | **`FLG-037`** |
+| this session's `FLG-031` (integration decision) | `main`'s `FLG-031` (per-product commission rate) | **`FLG-038`** |
+| PR #26's `S30–S32`, `S33–S38` | `main`'s `S30–S32`, plus new `S33–S45` | **`S52–S54`**, **`S46–S51`** |
+| this session's `S55` (5th observation) | no collision | `S55` (unchanged) |
+| session prefix `E-`, then `H-` | both already published by session `ecbfe91b` | **`JH-`** |
+
+### JH Gate defects found and fixed (JH-F-03, JH-F-04)
+
+1. `tools/build_site.py` rewrote `sitemap.xml` with **only** its own 16 directory URLs. That deleted the flat pages'
+   entries and made every rebuild dirty, so "is this rebuild faithful?" was unanswerable. Fixed: the sitemap lists both
+   site generations and is now a fixpoint (a second run leaves the tree clean).
+2. `tools/verify_site.py` V5 accepted a sitemap entry only if **that** build had emitted the page, so a correct sitemap
+   covering both generations was reported as broken (10 false failures). Fixed: the target file must exist on disk,
+   which is the property that actually matters; every entry is still checked.
+
+## JH Flags raised by this session (namespaced `JH-F…`; non-blocking, published on the Flagged for review page)
+
+| ID | Sev | Finding | Evidence / source |
+|---|---|---|---|
+| JH-F-01 | High | **Three** sessions independently used the same IDs for different pages or findings: `S30–S32` and `FLG-022–024` (PR #26 vs `main`), then `FLG-031` (this session vs PR #33), and then the `E-`/`H-` session prefixes themselves. Resolved by renumbering to `S46–S54`, `FLG-035–038`, `JH-*`. **Recommendation: reserve a numeric ID block per session before the next round.** | `git diff` of `data/sources.json`, `data/flags.json` and this file against `main`, 2026-11-14 |
+| JH-F-02 | Medium | **Not reproducible by this session:** the dollar prices, list prices, star ratings and review counts in PR #26's branch data. My control fetch of `/dp/B0CDY277D3` read `$79.93` and a used offer, but the product's own star block did not render in the text I received — the "4.3 (11700)" block on that page belongs to an Asurion protection plan, not the air fryer. PR #26's "4.2★ / 4.8K" figures could not be reproduced. They are published nowhere on the live site and are kept only as dated observations under `observed_2026_11_14`. | `amazon.com/dp/B0CDY277D3`, `amazon.com/dp/B08DKYBTPH`, fetched 2026-11-14 by this session |
+| JH-F-03 | Low | The audit generator rewrote the shared `sitemap.xml` with only its own pages, deleting the flat pages' entries and dirtying every rebuild. Fixed. | `git diff` after `tools/build_site.py`, 2026-11-14 |
+| JH-F-04 | Low | `tools/verify_site.py` V5 reported a correct sitemap as broken because it accepted only pages the audit build had emitted. Fixed. | `verify_site.py` output before/after, 2026-11-14 |
+
+## JH Sources used in this Part
+
+All official, all fetched by this session on 2026-11-14 unless marked carried:
+S01 (Operating Agreement), S02 (Program Policies), S06 (Creators API GetItems), S08–S10 (the three `amazon.com/dp/<code>` controls),
+S11–S16 and S23 (the three short links and their destinations), S25 (Standard Commission Table 1), S22 (GitHub Pages build API),
+S52–S54 (PR #26's repeat observations of the same links) and **S55** (this session's own re-fetch).
+**No third-party page was used as evidence at any point in this session.**
+
+## JH Publish record — PR #37 merged, Pages deployed, live checks passed
+
+| Event | Result |
+|---|---|
+| Pull request | **[#37 — Final integration (b90c5685): merge open PR #26, independent re-verification, resolve three ID collisions, fix two release gates](https://github.com/kanlerxz87-cyber/Zone3/pull/37)** — `arena/b90c5685-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`, branch in sync with `origin/main` at `9cfaf26`. All five gates green on the merged tree (11 pages / 48 sources / 43 flags; 67 pages / 1058 rows / 782 sourced; provenance PASS; 113 pages / 0 broken links; session checker OK); both generators idempotent | 
+| Merge | **MERGED** 2026-11-14T10:18:43Z via `gh pr merge 37 --merge` (no approval waited, per the brief) → merge commit `1336828002797afddc37a1ebbba7c3945197f7b2`, confirmed with `gh pr view 37 --json state,mergedAt,mergeCommit` |
+| Pages build | legacy `main` `/` source; API `repos/.../pages/builds/latest` → `status=built`, `error=null`, `commit=1336828` (the merge commit), updated 2026-11-14T10:19:03Z |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — **live**; dashboard KPIs (3 submitted, 0 of 3 ASIN, 0 of 3 prices, 0 of 3 rates, 2 critical, 43 total flags) and the 10-row re-verification table render, every row with source links |
+| Live check — marketing briefs | https://kanlerxz87-cyber.github.io/Zone3/marketing/briefs.html — **live**; the reconciled PR #26 page renders, states no prices or ratings, and each row cites S14/S15/S23 plus FLG-001/022/029/036 |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**; **43 entries** (2 critical, 11 high, 16 medium, 11 low, 3 info), matching `data/flags.json`; every row carries official source links |
+| Site merged while flagged? | yes — `JH-F-01`…`JH-F-04`, `FLG-035`…`FLG-038` and every pre-existing `FLG-`/`V-F`/`F-`/`Z-`/`D-F` item are non-blocking and published on the Flagged for review page, per the brief |
+| Post-merge note | this record ships as the follow-up commit to PR #37 from the same branch, because a merge cannot be recorded in `main` before it happens |
+| Flagged items merged? | yes — every `FLG-`, `V-F`, `JH-F` and prior `F-`/`Z-`/`D-F` item is non-blocking and published on the Flagged for review page, per the brief |
+
+## G Session registry — final integration of PR #26 (session `06ca46bf`, 2026-11-14)
+
+> Namespace history (two collisions logged): this claim first landed as E-T1…E-T5 (renamed F when `f1b7da46`'s Part E merged mid-rebase), then renamed G when `588693c9`'s Part F merged meanwhile. All prior parts kept in full.
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| G-T1 — Board claim + push | in progress | 06ca46bf | `COORDINATION.md` (append) | This commit. |
-| G-T2 — Integrate PR #26 branch into `arena/06ca46bf-zone3` | unclaimed→G | 06ca46bf | union of PR #26 files + conflict resolution in shared files | `9fef7647`'s `9G-T4` (their integration step) left their PR `CONFLICTING` vs `main` (PRs #21–#30 moved `main` while it was open; PR #26 last commit 10:01:00Z, session silent since). Per the user's standing instruction to finish autonomously and the conflict protocol ("resolve without discarding the other session's work"), this session performs the integration by git-merging their branch, so their five commits enter `main` verbatim and #26 resolves as merged. Also carries `f1b7da46`'s logged requests (price re-fetch with observation time; FLG-022 identity-table addendum). |
-| G-T3 — Re-verify combined data line by line (live official fetches) | unclaimed→G | 06ca46bf | read-only: `data/*.json`, `flagged.html`, `sources.html`, `marketing.html`, `category/*` | Official sources only; unverifiable cells stay blank + flagged. |
-| G-T4 — Build + link gates green on merged tree | unclaimed→G | 06ca46bf | `scripts/build_site.py`, `scripts/check_site.py`, `scripts/check_all_links.py`, `tools/verify_site.py`, `tools/link_report.py`, `sessions/3c886b62/tools/check_links.py` | Fix only in-scope regressions; never merge a broken site. |
-| G-T5 — PR → `main`, merge without approval, confirm Pages deploy, record | unclaimed→G | 06ca46bf | git/`gh` + this Part | Flagged items are non-blocking by design. |
+| `06ca46bf` | `arena/06ca46bf-zone3` | Final integration of PR #26 (session `9fef7647`): merge, re-verify line-by-line, all gates, publish, confirm Pages | done — SUPERSEDED by session `b90c5685` (PRs #37/#38), then closed out by this record | 2026-11-14 10:07 |
 
-Scope note: this session edits shared outputs (`COORDINATION.md` append, and conflict-resolution merges of shared files) **only in its final-integration role**, after all other board tasks were `done`. Root-site content authored by other sessions is merged as-is; nothing is silently rewritten.
+### G-T1 — Claim + push: done (commit `423c90c`).
+
+### G-T2 — Integration attempt and supersession decision: done
+
+This session performed a full independent integration of PR #26 before discovering `main` had already been integrated: merge with additive resolutions (S30-S38 → renumbered; FLG-022-024 → FLG-035/036/037; addenda unioned into FLG-001/002/004/021; products refs remapped; generator 3-way merge incl. re-applying `51fcb80d`-era fixes; V5 sitemap/verify union fixes; all pages regenerated; all gates green at that tree: 12 pages / 47 sources / 42 flags, 112 HTML pages 0 link errors, verify 66 pages / 1062 rows).
+
+While the merge commit was being prepared, session `b90c5685` merged PR #26 into `main` (their PRs #37/#38, commits `5cba3ca`, `1336828`, `ee7d1d1`) with an equivalent registry renumbering (their S45-S55 / FLG-035-037, plus their own FLG-038) and a **stricter product-cell policy** (canonical cells blank; observed snapshots quarantined in `observed_2026_11_14` / `value_sources_2026_11_14` fields, matching `f1b7da46`'s pre-merge request). Per the board rule that shared outputs are owned by one integration, this session **adopted `b90c5685`'s tree verbatim** (this merge; zero file-level divergence from `origin/main` other than this Part + the restored 9F part) and retained only its verification role.
+
+**Restored here:** the 9F board part of session `9fef7647` (its 5 commits entered `main` through `b90c5685`'s integration, but its COORDINATION.md section was not carried over; the protocol requires each session's record to persist). Its text is reproduced verbatim below.
+
+### G-T3 — Independent re-verification on the adopted tree: (appended after live checks — see follow-on)
+
+### G-T4 — Gates on the adopted tree: (appended after runs — see follow-on)
+
+### G-T5 — Publish record: (appended at PR/merge time — see follow-on)
+
+---
+
 # PART — Session 9fef7647 (branch `arena/9fef7647-zone3`) — claimed 2026-11-14
 
 Repo: `kanlerxz87-cyber/Zone3` · Live site (GitHub Pages, source `main` `/`): https://kanlerxz87-cyber.github.io/Zone3/
@@ -1549,10 +1707,10 @@ Base: `6bf308f` (main, after PR #17). Arena fixes this session to branch `arena/
 
 | Task | Status | Owner | Files in scope | Notes |
 |---|---|---|---|---|
-| 9G-T1 — Live re-verification of the 3 product short links and key official policy sources | in progress | 9fef7647 | `data/sources.json`, `data/products.json`, `data/flags.json`, `data/policy_facts.json` | Re-fetch each source with the live fetch tool on 2026-11-14; record only what the pages show. |
-| 9G-T2 — Broken-link audit of all published pages; fixes (takeover of stale PR #10 concern) | in progress | 9fef7647 | root `*.html` via `scripts/build_site.py`, `disclosure.html` | PR #10 (session 66a80e53, open >60 min with no commits) is superseded; takeover noted per the >60-min rule. |
-| 9G-T3 — Executive summary + repo review record refresh | in progress | 9fef7647 | `docs/executive-summary.md`, `docs/repo-review-9fef7647.md` | Additive; other sessions' docs preserved. |
-| 9G-T4 — Integration: PR → `main`, merge, Pages deploy verification, record here | in progress | 9fef7647 | this file | Final integration session for this round (all other board tasks done). |
+| 9F-T1 — Live re-verification of the 3 product short links and key official policy sources | in progress | 9fef7647 | `data/sources.json`, `data/products.json`, `data/flags.json`, `data/policy_facts.json` | Re-fetch each source with the live fetch tool on 2026-11-14; record only what the pages show. |
+| 9F-T2 — Broken-link audit of all published pages; fixes (takeover of stale PR #10 concern) | in progress | 9fef7647 | root `*.html` via `scripts/build_site.py`, `disclosure.html` | PR #10 (session 66a80e53, open >60 min with no commits) is superseded; takeover noted per the >60-min rule. |
+| 9F-T3 — Executive summary + repo review record refresh | in progress | 9fef7647 | `docs/executive-summary.md`, `docs/repo-review-9fef7647.md` | Additive; other sessions' docs preserved. |
+| 9F-T4 — Integration: PR → `main`, merge, Pages deploy verification, record here | in progress | 9fef7647 | this file | Final integration session for this round (all other board tasks done). |
 
 **Scope note (9fef7647):** `dashboard/**` (3c6cba43 build) and `docs/*.html` (79f85104 build) are other
 sessions' outputs and will not be rewritten; only additive files under `docs/` and shared `data/`
@@ -1560,16 +1718,18 @@ sessions' outputs and will not be rewritten; only additive files under `docs/` a
 
 ## 9F Task log
 
-- **2026-11-14 — 9fef7647**: read this board first (per brief), claimed 9G-T1–9G-T4, pushed the claim before any other work.
+- **2026-11-14 — 9fef7647**: read this board first (per brief), claimed 9F-T1–9F-T4, pushed the claim before any other work.
 
 ## 9F Task log (continued) — 2026-11-14, session 9fef7647
 
-- **9G-T1 — done.** Live re-verification 2026-11-14 (all fetched via the platform fetch tool; returned text quoted in `data/sources.json` `status_note` fields):
+- **9F-T1 — done.** Live re-verification 2026-11-14 (all fetched via the platform fetch tool; returned text quoted in `data/sources.json` `status_note` fields):
   - **Products.** `link.amazon/B04G1MEwY` → `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt Dual Basket); `link.amazon/B02NbDxp3` → `amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT French Door); `link.amazon/B00hJ57DV` → `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry). Fresh redirect tokens, same targets as 2026-11-13 → 4 stable observations over 2 days. Sources **S30–S32** (new). Price/rating/reviews observed on `amazon.com/s?k=<ASIN>` (**S33–S35**, new): 79.93/99.99 4.2★ 4.8K · 149.99/209.99 4.3★ 18.3K · 79.91/119.99 4.4★ 16.8K (deal/list, 2026-11-14). Category breadcrumb observed on all three: Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers (S14/S15/S23).
   - **Policy texts compared verbatim to `data/policy_facts.json` quotes:** OA §5 (Updated 2025-10-15) = PF-01 (**S36**, new); Program Policies (Updated 2026-04-14) session rules = PF-12/PF-13 (**S37**, new); FTC Disclosures 101 (Nov 2019) = PF-19/PF-20 (**S38**, new). Identical wording; no quote drift.
   - **Data updated:** `data/sources.json` (+S30–S38), `data/products.json` (identity + observed snapshots with per-field `value_sources`; commission/BSR/competitor/clicks/tag stay null), `data/flags.json` (+FLG-022 identity basis, +FLG-023 display compliance PF-04/05/27, +FLG-024 Z-F6 resolution; dated addenda appended to FLG-001/002/004/021). One-shot record: `scripts/update_data_2026_11_14.py`.
-- **9G-T2 — done.** Whole-repo link audit via new `scripts/check_all_links.py`: **105 HTML pages, 0 broken internal links, 0 broken anchors** (root, docs/, dashboard/, URL-space dirs, stubs; archive/ skipped as frozen). Two real bugs found and fixed (`b343cc4`): subdirectory pages carried root-relative links (browser 404s), and `check_site.py` resolved links against the repo root instead of the page directory (masked the bug). **PR #10 takeover (stale >60 min, no commits):** its two target pages (`disclosure.html`, `executive-summary.html`) were replaced by generated pages; the current tree passes the link audit with 0 errors. PR #10 to be closed with a supersession note after this session's merge. Sitemap updated to list every published page.
-- **9G-T3 — done.** `docs/executive-summary.md`: dated update at top (re-verified product table with source links; supersedes the 2026-11-13 "0 of 3" verdict). **Withdrawn as unsourced/contradicted (no-hallucination rule):** "mhFallback proves the links carry no product identity" (contradicted by Z-V13), "most likely one character dropped per identifier" (speculation). `docs/repo-review-9fef7647.md`: line-by-line repo review + verification tables + irregularities + limitations.
+- **9F-T2 — done.** Whole-repo link audit via new `scripts/check_all_links.py`: **105 HTML pages, 0 broken internal links, 0 broken anchors** (root, docs/, dashboard/, URL-space dirs, stubs; archive/ skipped as frozen). Two real bugs found and fixed (`b343cc4`): subdirectory pages carried root-relative links (browser 404s), and `check_site.py` resolved links against the repo root instead of the page directory (masked the bug). **PR #10 takeover (stale >60 min, no commits):** its two target pages (`disclosure.html`, `executive-summary.html`) were replaced by generated pages; the current tree passes the link audit with 0 errors. PR #10 to be closed with a supersession note after this session's merge. Sitemap updated to list every published page.
+- **9F-T3 — done.** `docs/executive-summary.md`: dated update at top (re-verified product table with source links; supersedes the 2026-11-13 "0 of 3" verdict). **Withdrawn as unsourced/contradicted (no-hallucination rule):** "mhFallback proves the links carry no product identity" (contradicted by Z-V13), "most likely one character dropped per identifier" (speculation). `docs/repo-review-9fef7647.md`: line-by-line repo review + verification tables + irregularities + limitations.
 - **Site outputs (integration scope):** root pages regenerated from `data/*.json`; new `marketing.html` (3 SEO product briefs + comparison + buying guide — facts-only, no prices/ratings stated, no first-hand claims) and `category/air-fryers.html` (verified category + product table + sourced niche assessment); nav, tiles and exec summary updated. `scripts/check_site.py`: OK — 11 pages, 3 products, 38 sources, 24 flags.
 - **Irregularities published (Flagged for review page):** FLG-001, FLG-022 (identity = observed redirects; registry undocumented), FLG-023 (price/rating display compliance), FLG-024 (Z-F6 settled), FLG-005/010/011 unchanged (gates). Cross-session builds (`dashboard/`, `docs/`, `sessions/`, `archive/`) untouched.
-- **9G-T4 — in progress.** PR to `main` opened next; merge + Pages deploy result to be appended here (follow-up commit if the merge happens first).
+- **9F-T4 — in progress.** PR to `main` opened next; merge + Pages deploy result to be appended here (follow-up commit if the merge happens first).
+
+> (Part 9F above: session `9fef7647`'s own record, restored verbatim by the final-integration session `06ca46bf` after `b90c5685`'s merge carried the data but not this section. Its 9F-T4 completed via `b90c5685`'s PR #37 integration; the PR itself resolves as merged once this branch lands.)
