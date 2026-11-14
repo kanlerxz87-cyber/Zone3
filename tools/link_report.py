@@ -33,7 +33,7 @@ TABLES = [
 # Field families the brief asked for that have no official source at all.
 UNRESOLVABLE = {
     "product identity": "3 SKUs × 12 attribute fields = 36 cells",
-    "per-category commission": "rate card is behind Associates sign-in",
+    "per-category commission": "category rate card (Table 1) is public at the Associates help node (re-verified 2026-11-14); what is unresolvable is each listing's category, so no rate attaches to a product row (FLG-021)",
     "trend / demand rank": "no official Amazon endpoint for affiliates",
     "conversion rate": "not published to affiliates; derivable only from own logs",
     "competition density": "no official Amazon endpoint for affiliates",

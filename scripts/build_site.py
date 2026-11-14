@@ -264,7 +264,7 @@ def build_index() -> None:
         ("products.html", "Products", "The 3 submitted links, identifier checks, redirect results, observed link-target data."),
         ("air-fryers.html", "Category: Air Fryers", "Verified category path, bestseller benchmark, commission reference."),
         ("pricing.html", "Pricing &amp; commission", "Price observations, commission fields, and the verified commission rules."),
-        ("reviews.html", "Reviews &amp; competition", "Observed ratings, competitor fields, and the verified review rules."),
+        ("reviews.html", "Reviews &amp; competition", "Observed ratings, competitor fields, a dated category benchmark, plus the verified review rules."),
         ("marketing.html", "Marketing content", "SEO product briefs, comparison and buying guide built from verified listing facts."),
         ("content.html", "Content &amp; compliance", "Article status and the Associates and FTC checklist."),
         ("campaigns.html", "Campaigns &amp; tracking", "Click and conversion ledger. Empty until data exists."),
@@ -333,7 +333,7 @@ def build_exec() -> None:
     <li>A data layer (<code>data/*.json</code>) with a generator (<code>scripts/build_site.py</code>) and a checker (<code>scripts/check_site.py</code>). The checker fails if a table row has no official source link, or if a value appears without a source.</li>
     <li><strong>An independent re-verification pass on 2026-11-14</strong> (this session): {len(SRC['sources'])} official sources, every load-bearing claim re-fetched and compared. Two earlier statements were found overstated and corrected rather than quietly dropped &mdash; see V-F1 and V-F2 on the Flagged for review page.</li>
     <li><strong>Marketing content is published, facts-only.</strong> <a href="marketing.html">Marketing content</a> carries three SEO product briefs, a comparison and a buying guide for the listings the submitted links open. Claims are limited to what the official listings state, each with its source link; no prices or ratings are quoted and no first-hand experience is claimed {src_links(['S02', 'S07'])} (PF-10, PF-21) {flag_links(['FLG-012'])}.</li>
-    <li><strong>Dated observations of the link targets are published for analysis.</strong> Price, rating and review-count snapshots read on 2026-11-14 (S48&ndash;S50) appear on the Products, Pricing and Reviews pages with the observation date and the display-rule caveat attached; identity fields stay blank pending owner confirmation {flag_links(['FLG-022', 'FLG-027'])} {src_links(['S48', 'S49', 'S50'])}.</li>
+    <li><strong>Dated observations of the link targets are published for analysis.</strong> Price, rating and review-count snapshots read on 2026-11-14 (S49&ndash;S51) appear on the Products, Pricing and Reviews pages with the observation date and the display-rule caveat attached; identity fields stay blank pending owner confirmation {flag_links(['FLG-022', 'FLG-027'])} {src_links(['S49', 'S50', 'S51'])}.</li>
   </ul>
 </section>
 
@@ -351,8 +351,8 @@ def build_exec() -> None:
   <h2>Owner items (flagged; they do not block the merge)</h2>
   <ul class="findings">
     <li>Give the intended product URL or 10-character ASIN for each of the three products (FLG-001).</li>
-    <li>Confirm that the listings the three links open (B0CDY277D3, B09B7SB46R, B08DKYBTPH) are the intended products, or ask for the link-target observations to be removed (FLG-027) {src_links(['S45', 'S46', 'S47'])}.</li>
-    <li>Review the dated price/rating snapshots published under the display-rule caveat, and say whether to keep or remove them (FLG-022) {src_links(['S48', 'S49', 'S50'])}.</li>
+    <li>Confirm that the listings the three links open (B0CDY277D3, B09B7SB46R, B08DKYBTPH) are the intended products, or ask for the link-target observations to be removed (FLG-027) {src_links(['S46', 'S47', 'S48'])}.</li>
+    <li>Review the dated price/rating snapshots published under the display-rule caveat, and say whether to keep or remove them (FLG-022) {src_links(['S49', 'S50', 'S51'])}.</li>
     <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
     <li>Confirm which Amazon product category each of the three listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021). The category rates themselves are already published and verified.</li>
     <li>Confirm Associates enrolment and supply the Associates tag, not a password or token (FLG-010).</li>
@@ -395,8 +395,8 @@ def build_products() -> None:
   <h2>How to read this table</h2>
   <ul class="findings">
     <li>Each row is one product link from the brief. An identifier is counted only when a product page under that identifier exists and matches it.</li>
-    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened &mdash; the same destination on every fetch across 2026-11-13 and 2026-11-14 (S45&ndash;S47). It is not treated as the submitted product, because the identity question is with the owner (FLG-027) {src_links(['S45', 'S46', 'S47'])}.</li>
-    <li>&ldquo;Product name&rdquo; (the submitted product) is blank because the owner has not confirmed which product each code means. The columns labelled &ldquo;at the link target&rdquo; are dated observations of the listing the link opens, read from Amazon's own pages {src_links(['S48', 'S49', 'S50'])} {flag_links(['FLG-022', 'FLG-027'])}.</li>
+    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened &mdash; the same destination on every fetch across 2026-11-13 and 2026-11-14 (S46&ndash;S48). It is not treated as the submitted product, because the identity question is with the owner (FLG-027) {src_links(['S46', 'S47', 'S48'])}.</li>
+    <li>&ldquo;Product name&rdquo; (the submitted product) is blank because the owner has not confirmed which product each code means. The columns labelled &ldquo;at the link target&rdquo; are dated observations of the listing the link opens, read from Amazon's own pages {src_links(['S49', 'S50', 'S51'])} {flag_links(['FLG-022', 'FLG-027'])}.</li>
     <li>Commission rate, best-seller rank, competitor count and availability are blank because no official source confirms them {flag_links(['FLG-004'])} {flag_links(['FLG-005'])}.</li>
   </ul>
 </section>
@@ -431,7 +431,7 @@ def build_pricing() -> None:
         ["Commission window (session)", FACTS["PF-12"]["quote"], "A click-to-sale record needs the click time, a 24-hour session, and the 89-day cart window.", src_links(["S02"])],
         ["Cancelled, returned or refunded orders", FACTS["PF-13"]["quote"], "Conversion counts must exclude these orders.", src_links(["S02"])],
         ["Redirecting Links disqualify purchases", FACTS["PF-07"]["quote"], "Relevant to the link.amazon question (FLG-003).", src_links(["S02"])],
-        ["Prices shown only via link or API", FACTS["PF-04"]["quote"], "The observed column is a dated analysis snapshot under FLG-022; a live price display needs Special Links or the API.", src_links(["S02", "S52"])],
+        ["Prices shown only via link or API", FACTS["PF-04"]["quote"], "The observed column is a dated analysis snapshot under FLG-022; a live price display needs Special Links or the API.", src_links(["S02", "S53"])],
         ["Comparison-price display", FACTS["PF-11"]["quote"], "Any comparison format must show Amazon's lowest new and used prices; the marketing comparison on this site therefore shows no prices.", src_links(["S02"])],
         ["Date/time stamp on price or availability", FACTS["PF-27"]["quote"], "Every observed price on this site carries its observation date for this reason.", src_links(["S02"])],
     ]
@@ -460,7 +460,7 @@ def build_reviews() -> None:
             val(p["competitor_count"]),
             val(p["best_seller_rank"]),
             flag_links(["FLG-004", "FLG-006", "FLG-022", "FLG-025"]),
-            src_links(["S02", "S04", "S08"] + b["sources"]),
+            src_links(["S02", "S04", p["direct_check"]["source"]] + b["sources"]),
         ])
     body = ('<div class="callout"><p><strong>Display rules and dating.</strong> Participation Requirements '
             '6(t) bar displaying customer reviews or star ratings on a live Associates site unless obtained '
@@ -470,16 +470,59 @@ def build_reviews() -> None:
     body += "<h2>Rating, review and competition fields</h2>" + table(
         ["Product", "Rating (submitted product)", "Review count (submitted product)", "Rating observed at the link target (dated)", "Review count observed at the link target", "Competing listings", "Best-seller rank", "Flags", "Source"], rows)
     rules = [
-        ["Reviews and star ratings", FACTS["PF-05"]["quote"], "The observed columns are dated analysis snapshots under FLG-022; a live display needs the API or a qualifying link.", src_links(["S02", "S52"])],
+        ["Reviews and star ratings", FACTS["PF-05"]["quote"], "The observed columns are dated analysis snapshots under FLG-022; a live display needs the API or a qualifying link.", src_links(["S02", "S53"])],
         ["No inaccurate or misleading product claims", FACTS["PF-10"]["quote"], "Competition statements on this site are limited to what the official pages show (see the Air Fryers category page).", src_links(["S02"])],
         ["Original content and third-party material", FACTS["PF-15"]["quote"], "Pages must add analysis to any product data they use.", src_links(["S02"])],
     ]
     body += "<h2>Verified review and content rules</h2>" + table(
         ["Rule", "Verified wording (quoted)", "What it means here", "Source"], rules)
+    body += build_benchmark()
     page("reviews.html", "Reviews &amp; competition", body,
-         lead="The submitted-product rating fields are blank (FLG-004). Dated observed snapshots from the link targets are shown for analysis with the display-rule caveat (FLG-022). Competitor counts and best-seller ranks stay blank; competition findings are on the category page.")
+         lead="The submitted-product rating fields are blank (FLG-004). Dated observed snapshots from the link targets are shown for analysis with the display-rule caveat (FLG-022). A dated category benchmark is published below from the official Best Sellers page, with prices and ratings withheld by policy.")
 
+# ------------------------------------------------------------- Competition benchmark
+def build_benchmark() -> str:
+    """Competition benchmark on the Reviews page (integration session ecbfe91b, E-T5).
 
+    Rendered from data/competition.json — the same file as the Air Fryers category page
+    (air-fryers.html, session 51fcb80d) so the two views can never drift apart. The data is
+    Amazon's official Best Sellers page for Air Fryers (S43), read 2026-11-14; an earlier
+    2026-11-13 capture (data/c4e71983-competitors.json) ordered positions 2-3 differently
+    (FLG-025), so every rank is a dated observation. Price, star rating and review count are
+    withheld by policy (Program Policies 2(b), PF-04/PF-05) and published as flags instead of
+    values (FLG-022).
+    """
+    comp = load("competition.json")
+    rows = []
+    for b in comp["rows"]:
+        rows.append([
+            e(b["rank"]),
+            f'<a href="{e(b["url"])}" target="_blank" rel="noopener noreferrer" '
+            f'title="Official Amazon product page">{e(b["asin"])}</a>',
+            e(b["title"]),
+            badge("Not displayed (policy)", "warn"),
+            badge("Not displayed (policy)", "warn"),
+            badge("Not displayed (policy)", "warn"),
+            flag_links(["FLG-022", "FLG-025"]),
+            src_links(["S43"]),
+        ])
+    intro = (
+        '<div class="callout"><p><strong>How to read this table.</strong> '
+        "Same data as the <a href=\"air-fryers.html\">Air Fryers category page</a>, read "
+        f'2026-11-14 from Amazon&rsquo;s official Best Sellers page {src_links(["S43"])}; an earlier '
+        "2026-11-13 capture ordered positions 2&ndash;3 differently, so ranks are dated observations "
+        f'({flag_links(["FLG-025"])}). This is the category of the three <em>observed redirect targets</em>, '
+        "which are not confirmed as the submitted products "
+        f'{flag_links(["FLG-002"])} &middot; {src_links(["S11"])}&ndash;{src_links(["S13"])}. '
+        "Prices, star ratings and review counts are withheld by policy (Program Policies 2(b) and PF-05) "
+        f'{src_links(["S02"])} {flag_links(["FLG-022"])}; the captured values stay in '
+        "<code>data/c4e71983-competitors.json</code> and <code>data/z3-51fcb80d-snapshot.json</code> "
+        "for internal analysis only. Every row links to its official Amazon product page and to the "
+        "capture source.</p></div>"
+    )
+    return intro + "<h2>Competition benchmark &mdash; Air Fryers best sellers (dated snapshot)</h2>" + table(
+        ["Rank (2026-11-14)", "ASIN", "Product", "Price", "Rating", "Review count", "Flags", "Source"],
+        rows)
 # ------------------------------------------------------------- Marketing
 def build_marketing() -> None:
     """Facts-only marketing content. Every claim is read from the official Amazon
@@ -567,7 +610,7 @@ def build_marketing() -> None:
     {src_links(['S02'])}. Dated observations for analysis are on the <a href="pricing.html">Pricing</a> and
     <a href="reviews.html">Reviews</a> pages.</li>
     <li><strong>Check the return policy and warranty on the listing before you buy.</strong> Terms are set by
-    Amazon and change over time {src_links(['S45', 'S46', 'S47'])}.</li>
+    Amazon and change over time {src_links(['S46', 'S47', 'S48'])}.</li>
   </ul>
 </section>
 <section class="card">
@@ -608,7 +651,7 @@ def build_content() -> None:
             badge("Published (shared guide)", "ok"),
             "Marketing content states only attributes read from the official listing the submitted link opens, with a source link per claim. No price, rating or first-hand experience is claimed (PF-10, PF-21). Identity fields remain unconfirmed (FLG-027).",
             flag_links(["FLG-012"]),
-            src_links(["S02", "S07", "S45", "S46", "S47"]),
+            src_links(["S02", "S07", "S46", "S47", "S48"]),
         ])
     body = "<h2>Content status</h2>" + table(
         ["Product", "SEO product article", "Comparison", "Buying guide", "How compliance is met", "Flags", "Source"], rows)
@@ -714,7 +757,7 @@ def build_sources() -> None:
             e(s["used_for"]),
         ])
     body = (
-        f'<p class="muted">Retrieved {e(SRC["retrieved"])}. Official = Amazon Associates, Amazon.com, Amazon Seller Central, or the U.S. FTC. '
+        f'<p class="muted">Retrieved {e(SRC["retrieved"])}. Official = Amazon Associates, Amazon.com (including Sell on Amazon), Amazon Seller Central, or the U.S. FTC. '
         "Third-party sources appear only to raise flags.</p>"
         + table(["ID", "Source", "Link", "Status", "Note", "Used for"], rows)
     )

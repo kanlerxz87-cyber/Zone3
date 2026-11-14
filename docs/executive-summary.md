@@ -12,9 +12,9 @@
 >
 > | Submitted link | Opens (stable ×4 over 2 days) | Observed 2026-11-14 (source) |
 > | --- | --- | --- |
-> | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt Dual Basket Air Fryer | $79.93 (list $99.99), 4.2★, ~4.8K reviews ([S45](https://link.amazon/B04G1MEwY), [S48](https://www.amazon.com/s?k=B0CDY277D3)) |
-> | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 (list $209.99), 4.3★, ~18.3K reviews ([S46](https://link.amazon/B02NbDxp3), [S49](https://www.amazon.com/s?k=B09B7SB46R)) |
-> | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry | $79.91 (list $119.99), 4.4★, ~16.8K reviews ([S47](https://link.amazon/B00hJ57DV), [S50](https://www.amazon.com/s?k=B08DKYBTPH)) |
+> | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt Dual Basket Air Fryer | $79.93 (list $99.99), 4.2★, ~4.8K reviews ([S46](https://link.amazon/B04G1MEwY), [S49](https://www.amazon.com/s?k=B0CDY277D3)) |
+> | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 (list $209.99), 4.3★, ~18.3K reviews ([S47](https://link.amazon/B02NbDxp3), [S50](https://www.amazon.com/s?k=B09B7SB46R)) |
+> | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry | $79.91 (list $119.99), 4.4★, ~16.8K reviews ([S48](https://link.amazon/B00hJ57DV), [S51](https://www.amazon.com/s?k=B08DKYBTPH)) |
 >
 > **What still stands from below:** the codes are 9 characters and are **not ASINs**
 > ([Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/items/items-api-getitems));
@@ -260,3 +260,46 @@ published for post-launch review at `/flagged/`.
 | Open items | `/flagged/` |
 | Repo audit | `/repo-review/` |
 | Coordination & claims | `COORDINATION.md` |
+
+---
+
+## 10. Status update — 2026-11-14 (session `ecbfe91b`)
+
+Everything official was re-checked live on 2026-11-14; full evidence table in
+[`research/ecbfe91b-reverification-2026-11-14.md`](../research/ecbfe91b-reverification-2026-11-14.md).
+
+- **Nothing about the three submitted links changed.** `amazon.com/dp/` still returns
+  *Page Not Found* for all nine-character identifiers; a real-ASIN control still resolves;
+  `link.amazon/B04G1MEwY` still lands on `B0CDY277D3`. Product values remain blank by design —
+  no value was inferred. ([S08](https://www.amazon.com/dp/B04G1MEwY) ·
+  [S09](https://www.amazon.com/dp/B02NbDxp3) ·
+  [S10](https://www.amazon.com/dp/B00hJ57DV) ·
+  [control](https://www.amazon.com/dp/B0CDY277D3) ·
+  [ASIN rule](https://sell.amazon.com/blog/what-is-an-asin))
+- **The commission rate card is public.** Table 1 (Kitchen 4.50%, Home 3.00%, All Other
+  Categories 4.00%, bounty schedule) re-read without sign-in at the
+  [help node](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ). Per-product
+  rates still cannot be assigned because each listing's category is unverified (FLG-021).
+- **The disclosure sentence is in the Operating Agreement body** (§5, re-read verbatim) — this
+  resolves `c4e71983-FLG-12`.
+  ([agreement](https://affiliate-program.amazon.com/help/operating/agreement))
+- **FLG-016 widened:** the machine-learning bar covers *Special Links or Program Content*
+  generally, not only Creators API data (Program Policies §5, verbatim quote in the flag).
+  ([policies](https://affiliate-program.amazon.com/help/operating/policies))
+- **Competition benchmark published** on the flat build's `reviews.html` and the
+  `air-fryers.html` category page: the official
+  [Best Sellers in Air Fryers](https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/)
+  page read 2026-11-14 (an earlier 2026-11-13 capture ordered ranks 2–3 differently — ranks are
+  point-in-time, FLG-025). Both views render the same `data/competition.json` rows. Prices and
+  star ratings are withheld by policy (FLG-022) and live only in internal capture files.
+- **Two defects fixed:** `reviews.html` cited product 1's source (S08) for all three product
+  rows (now S08/S09/S10 per row); `tools/link_report.py` repeated the outdated claim that the
+  rate card is sign-in-gated.
+- **PR #10** (stale >60 min, conflicting) was taken over and closed as superseded — its
+  broken-link target pages no longer exist in that form; the current tree reports 0 broken
+  links across 57 pages. Handoff logged in `COORDINATION.md`.
+- New source S46 (ASIN rule page); the Best Sellers page was already S43 in main's registry.
+  The proposed duplicate FLG-022 was dropped in favour of main's FLG-022 (same rule). Main also
+  gained FLG-023–027 from parallel sessions (including the `plpRedirect=mhFallback` correction,
+  which matches this session's control observation). Re-verification dates appended to
+  S01, S07–S11, S14, S25. Full merge log: `COORDINATION.md` Part E.

@@ -39,7 +39,7 @@
    "clicks": null,
    "conversions": null,
    "associates_tag": null,
-   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B0CDY277D3 on every observation (2026-11-13 and 2026-11-14; S45-S47 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
+   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B0CDY277D3 on every observation (2026-11-13 and 2026-11-14; S46-S48 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
    "flags": [
     "FLG-001",
     "FLG-002",
@@ -53,26 +53,26 @@
     "S11",
     "S14",
     "S02",
-    "S45",
-    "S48"
+    "S46",
+    "S49"
    ],
    "value_sources": {
     "product_name": [
-     "S45",
-     "S48",
+     "S46",
+     "S49",
      "S14"
     ],
     "brand": [
      "S14"
     ],
     "price": [
-     "S48"
+     "S49"
     ],
     "rating": [
-     "S48"
+     "S49"
     ],
     "review_count": [
-     "S48"
+     "S49"
     ]
    },
    "observed_at_link_target": {
@@ -88,8 +88,8 @@
     "sales_note": "1K+ bought in past month, as displayed",
     "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
     "sources": [
-     "S45",
-     "S48",
+     "S46",
+     "S49",
      "S14"
     ]
    }
@@ -131,7 +131,7 @@
    "clicks": null,
    "conversions": null,
    "associates_tag": null,
-   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B09B7SB46R on every observation (2026-11-13 and 2026-11-14; S45-S47 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
+   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B09B7SB46R on every observation (2026-11-13 and 2026-11-14; S46-S48 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
    "flags": [
     "FLG-001",
     "FLG-002",
@@ -145,26 +145,26 @@
     "S12",
     "S15",
     "S02",
-    "S46",
-    "S49"
+    "S47",
+    "S50"
    ],
    "value_sources": {
     "product_name": [
-     "S46",
-     "S49",
+     "S47",
+     "S50",
      "S15"
     ],
     "brand": [
      "S15"
     ],
     "price": [
-     "S49"
+     "S50"
     ],
     "rating": [
-     "S49"
+     "S50"
     ],
     "review_count": [
-     "S49"
+     "S50"
     ]
    },
    "observed_at_link_target": {
@@ -180,8 +180,8 @@
     "sales_note": "4K+ bought in past month, as displayed",
     "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
     "sources": [
-     "S46",
-     "S49",
+     "S47",
+     "S50",
      "S15"
     ]
    }
@@ -223,7 +223,7 @@
    "clicks": null,
    "conversions": null,
    "associates_tag": null,
-   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B08DKYBTPH on every observation (2026-11-13 and 2026-11-14; S45-S47 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
+   "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link opens the Amazon listing B08DKYBTPH on every observation (2026-11-13 and 2026-11-14; S46-S48 equivalents in observed_at_link_target). Identity fields are blank pending owner confirmation (FLG-027); values observed at the link target are in observed_at_link_target (FLG-022). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004).",
    "flags": [
     "FLG-001",
     "FLG-002",
@@ -237,26 +237,26 @@
     "S13",
     "S16",
     "S02",
-    "S47",
-    "S50"
+    "S48",
+    "S51"
    ],
    "value_sources": {
     "product_name": [
-     "S47",
-     "S50",
+     "S48",
+     "S51",
      "S23"
     ],
     "brand": [
      "S23"
     ],
     "price": [
-     "S50"
+     "S51"
     ],
     "rating": [
-     "S50"
+     "S51"
     ],
     "review_count": [
-     "S50"
+     "S51"
     ]
    },
    "observed_at_link_target": {
@@ -272,8 +272,8 @@
     "sales_note": "3K+ bought in past month, as displayed",
     "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
     "sources": [
-     "S47",
-     "S50",
+     "S48",
+     "S51",
      "S23"
     ]
    }
