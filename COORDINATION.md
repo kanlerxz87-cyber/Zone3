@@ -3823,7 +3823,7 @@ Flagged for review page rather than blocking anything:
 
 | Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|---|
-| d9828ec7 | `arena/d9828ec7-zone3` | `f618a53` (merged with `origin/main` → `96ea745`) | Line-by-line repo review; investigate/repair the failed GitHub Pages deploy; independent verification round; all gates; PR → `main`, merge, confirm Pages deploy; record | in progress | 2026-11-14 19:0x |
+| d9828ec7 | `arena/d9828ec7-zone3` | `f618a53` (merged with `origin/main` through `914347d`) | Line-by-line repo review; Pages deploy diagnosis; independent verification round; all gates; PR #84 + #90 merged; Pages deploy confirmed; record | **done** | 2026-11-14 19:0x |
 
 ## 98 Task board (claimed before any other work, per protocol)
 
@@ -4134,9 +4134,10 @@ file is another session's scope and no gate currently fails.
 
 | Event | Result |
 |---|---|
-| Pull request | created from `arena/d9828ec7-zone3` after this commit — **number filled in below post-merge** |
-| Merge | **filled below post-merge** (a record cannot precede the merge it documents — convention of sessions `dff4acde`, `ecbfe91b`, `252122ff`) |
-| Pages | **filled below post-merge** |
+| Pull request | [#90 — Zone3: session d9828ec7 close-out](https://github.com/kanlerxz87-cyber/Zone3/pull/90), `arena/d9828ec7-zone3` → `main` |
+| Merge | **MERGED 2026-11-14T19:33:59Z** via `gh pr merge 90 --merge` (no approval waited, per brief) → merge commit `914347d97cd6610224dc134f1e67ed0f77f94798` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages | build for `914347d` → **status `built`** (polled via the Pages API; repo status `built`) |
+| Live check after #90 | landing serves with KPI "78 total flags open" and all section tiles; live `sitemap.xml` = canonical 67 entries (redirect stubs absent, root `/` present); `flagged.html` register renders with per-row source links |
 
 ## 98 Session close-out
 
