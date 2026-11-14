@@ -409,6 +409,34 @@
       "source": "S45",
       "section": "Sell on Amazon blog, section 'What does “ASIN” mean?', article dated Jun 4, 2025 (read verbatim 2026-11-14)",
       "applies_to": "Corroborates PF-18 (Creators API GetItems, ItemIdType). Both official Amazon sources state 10 characters; the three submitted identifiers are 9 characters (FLG-001)."
+    },
+    {
+      "id": "PF-53",
+      "section": "Operating Agreement, opening paragraph (reinstated 2026-11-14 by session 3ead7ac8; see flag 3E-F-06)",
+      "topic": "Compensated customer reviews are prohibited",
+      "quote": "Content you post on the Amazon.com website must abide by Amazon's Community Guidelines, including the prohibition of customer reviews that are created, edited, or removed in exchange for compensation.",
+      "source": "S01"
+    },
+    {
+      "id": "PF-54",
+      "section": "Associates Program Participation Requirements, Section 2(b) (read verbatim 2026-11-14 by session 3ead7ac8)",
+      "topic": "Complete price and availability display rule",
+      "quote": "Product prices and availability may vary from time to time. Because prices for and availability of Products that you have listed on your Site may change, your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+      "source": "S02"
+    },
+    {
+      "id": "PF-55",
+      "section": "Associates Program IP License and Usage Requirements, Section 2(e) (complete sentence, read verbatim 2026-11-14 by session 3ead7ac8; see flag 3E-F-07)",
+      "topic": "No aggregation, analysis or model training on Product Advertising Content without written approval",
+      "quote": "You will not, without our express prior written approval, access or use Creators API, PA API or Data Feeds for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content or in connection with any software or other application intended for use by persons or entities that offer products on an Amazon Site, or in the direct training or fine-tuning of a machine learning and/or foundational model.",
+      "source": "S02"
+    },
+    {
+      "id": "PF-56",
+      "section": "Associates Program Standard Commission Income Statement, Table 1 (re-read 2026-11-14 by session 3ead7ac8)",
+      "topic": "Default category rate for anything not named in Table 1",
+      "quote": "All Other Categories | 4.00%",
+      "source": "S25"
     }
   ]
 }
