@@ -187,7 +187,7 @@
     "rows": [
       {
         "claim_type": "Spec / attribute",
-        "allowed_evidence": "Named Creators API field, echoed verbatim",
+        "allowed_evidence": "Official Amazon product listing title for basic identity; approved Creators API fields for detailed specifications and claims",
         "rejected": "Model background knowledge about 'this kind of product'",
         "sources": [
           "SRC-13"
@@ -303,7 +303,7 @@
       {
         "item": "Structured data (Product / Review schema)",
         "state": "Deliberately omitted",
-        "note": "Product and Review schema requires name, offers, aggregateRating — all unverified here. Emitting schema with fabricated values would create rich-result misinformation, so it is not emitted until data exists.",
+        "note": "The observed listing title is available, but offers and aggregate ratings are not approved/current data in this build. Structured data is omitted until all required fields can be populated from compliant sources.",
         "sources": [
           "SRC-08"
         ],

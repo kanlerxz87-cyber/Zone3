@@ -363,7 +363,7 @@ def page_index(depth):
     n_prod = len(PRODUCTS["table"]["rows"])
     parts = []
     parts.append(kpis([
-        {"label": "Products submitted", "value": str(n_prod), "foot": "All three intake-rejected at identifier validation"},
+        {"label": "Products submitted", "value": str(n_prod), "foot": "Submitted tokens are short-link IDs; each observed destination is listed below"},
         {"label": "Listings resolved", "value": "3", "tone": "ok", "foot": "All three short links map to live ASIN listings"},
         {"label": "Open flags", "value": str(len(FLAGS)), "tone": "warn",
          "foot": f'<a href="{rel(depth,1,"flagged")}">Review them</a>'},
@@ -371,15 +371,10 @@ def page_index(depth):
          "foot": f'Amazon + FTC primary documents, fetched {load("sources.json")["_meta"]["retrieved_utc"][:10]}'},
     ]))
     parts.append('<div style="height:18px"></div>')
-    parts.append(callout("bad", "Blocking finding — the three product links do not identify any product",
-        "<p>Each submitted link is a 9-character identifier. Amazon defines an ASIN as a <strong>10-character</strong> "
-        "alphanumeric code, and <code>https://www.amazon.com/dp/&lt;id&gt;</code> returns a <em>Page Not Found</em> "
-        "error page for all three. When followed, each link resolved to a <strong>different</strong> unrelated product "
-        "(a CHEFMAN dual-basket fryer, an Emeril Lagasse toaster oven, and a Chefman 8-Qt fryer) carrying "
-        "<code>plpRedirect=mhFallback</code> — Amazon's fallback route, not a product deep link.</p>"
-        "<p>Consequence: no product name, price, rating, review count, category or commission figure can be stated. "
-        "Those cells are <strong>left blank</strong> across this site rather than estimated. "
-        f'See <a href="{rel(depth,1,"flagged")}">Flagged for review</a> (FLG-004…FLG-008).</p>'))
+    parts.append(callout("warn", "Observed Amazon destinations are verified; intended product identity remains unconfirmed",
+        "<p>The submitted values are 9-character <em>short-link tokens</em>, not ASINs; direct <code>/dp/&lt;token&gt;</code> checks return Amazon's Page Not Found page. Following each submitted short link has been observed to land on a live product listing with a 10-character ASIN. These destinations and their listing titles are recorded in the Products table.</p>"
+        "<p>The short-link destinations are evidence of what these URLs currently open, not proof that they match the products the requester intended. The <code>plpRedirect=mhFallback</code> query parameter also appears on a direct valid-ASIN control fetch, so it is not treated as failure evidence. Price, rating, review, and campaign-performance values remain blank unless obtained through an approved, current data path. "
+        f'See <a href="{rel(depth,1,"flagged")}">Flagged for review</a> (FLG-004…FLG-008, FLG-027).</p>'))
     parts.append('<div style="height:18px"></div>')
     parts.append(sec("Categories"))
     cards = []
@@ -450,9 +445,9 @@ def page_exec(depth):
         ("p", "That is exactly what this repository now implements as a <strong>policy-bounded pipeline</strong>: "
               "<code>tools/amazon_intake.py</code> (validate + fetch), <code>tools/niche_score.py</code> (rank), the content "
               "templates and grounding contract (generate), <code>tools/build_site.py</code> (publish) and "
-              "<code>tools/verify_site.py</code> (gate). The one thing it does not have is a product to talk about."),
-        ("p", "<strong>Nothing about the three named products could be verified, so nothing about them is asserted.</strong> "
-              "That is the single most important sentence in this summary, and every blank cell on the site follows from it."),
+              "<code>tools/verify_site.py</code> (gate). The three short-link destinations and their listing titles are observed; confirmation that these are the intended products, and approved access to dynamic commercial data, remain open."),
+        ("p", "<strong>The destination listings are documented from Amazon; the user's intended product identity is not independently confirmed.</strong> "
+              "Listing titles are not used to infer prices, ratings, reviews, demand, conversions, or commission. Those values remain blank unless verified through an approved data source."),
     ]))
     b.append('<div style="height:6px"></div>')
     b.append(prose("2. The product-list problem, with proof", [
@@ -464,14 +459,9 @@ def page_exec(depth):
             "\"Sorry! We couldn't find that page\" error page for each of the three.",
             "<strong>Control.</strong> The same probe against a real 10-character ASIN (B0CDY277D3) serves a normal "
             "product page — so the 404s are a property of the identifiers, not of the checking tool.",
-            "<strong>Redirect trace.</strong> Following each submitted link landed on a <em>different</em> product each "
-            "time (B0CDY277D3, B09B7SB46R, B08DKYBTPH), every URL tagged <code>channelId=704&amp;plpRedirect=mhFallback</code>.",
+            "<strong>Redirect trace.</strong> Each submitted short link was observed to land on a distinct live ASIN listing (B0CDY277D3, B09B7SB46R, B08DKYBTPH). This records the current destination; it does not establish whether the destination is what the requester intended. The <code>plpRedirect=mhFallback</code> parameter is not used as evidence of failure because it also appears on a direct valid-ASIN control fetch.",
         ]),
-        ("p", "Read together these are conclusive: the links carry no product identity, and Amazon is serving its "
-              "fallback recommendation instead. The most likely cause is one dropped character per identifier when the "
-              "links were copied. A naive affiliate bot would have silently recorded \"CHEFMAN air fryer\" as product 1, "
-              "\"Emeril Lagasse toaster oven\" as product 2 and written three fluent, entirely fabricated buying guides. "
-              "That failure mode is why the intake stage gates on identifier validity before anything is generated."),
+        ("p", "These checks establish that the nine-character submitted tokens are not ASINs, while the short links have observed destinations with valid ASINs. They do not establish the original intended product or why the short tokens were supplied, so the site does not guess at the requester's intent. The destination listings are preserved in the product register; price, rating, review and performance claims remain withheld without an approved data path."),
     ]))
     b.append('<div style="height:6px"></div>')
     b.append(prose("3. What the brief asks for that Amazon forbids", [
@@ -601,8 +591,7 @@ def page_products(depth):
                 '    | head -1\ndone\n'
                 '# control (should serve a real page):\n'
                 'curl -sSI -A "Agent/Zone3ProductResearch" https://www.amazon.com/dp/B0CDY277D3 | head -1</div>'),
-        ("p", "A 9-character identifier fails the format rule before the probe even matters; the 404 is the second, independent "
-              "confirmation. Both are recorded per row because either alone could be an artefact."),
+        ("p", "The submitted short-link token is not itself a 10-character ASIN, so the direct <code>/dp/&lt;token&gt;</code> probe is expected to fail. This is not evidence that the short link is broken: each supplied short link was separately observed to land on a live listing. Both observations are recorded separately."),
     ]))
     return render_page("products", "Products — intake & verification register",
         "Three submitted product links, four verification checks each, and the full downstream attribute sheet. "
@@ -695,16 +684,10 @@ def page_commission(depth):
     b.append(table(COMMISSION["analysis"], depth, "analysis"))
     b.append('<div style="height:22px"></div>')
     b.append(prose("Why no rate appears next to P-01, P-02 or P-03", [
-        ("p", "Applying 4.50 % to these items would require knowing that they <em>are</em> Kitchen products. That fact comes from the "
-              "listing's browse node, and there is no listing: the identifiers do not resolve. The 4.50 % figure would have to be attached "
-              "to a category inferred from whatever page the short link happened to fall back to, which is Amazon's own recommendation "
-              "engine rather than the submitted product."),
+        ("p", "The public rate table provides category-level rates, but this site does not attach a per-product rate without a compliant, traceable category mapping and an eligible account context. The observed listing breadcrumbs are recorded as destination observations, not silently converted into an earnings estimate. The 4.50 % Kitchen rate remains a category reference, not an asserted per-product commission."),
         ("p", "So the reference tables are published in full, and the three product rows stay blank. That is the difference between a rate "
               "card and a guess dressed as one."),
-        ("p", "<strong>Worked example of the trap.</strong> An agent that accepted the fallback would write: 'this air fryer earns 4.50 % — "
-              "a strong kitchen category'. Every number in that sentence is individually sourced and the claim is still wrong, because it "
-              "describes a product nobody submitted. Per-row sourcing alone does not make a derived claim true; the join between the two has "
-              "to hold as well."),
+        ("p", "<strong>Worked example of the trap.</strong> A public rate and a listing title do not automatically prove a per-product earning. A rate estimate needs a verified category-to-rate mapping and the applicable Associates programme context; this dashboard leaves that derived value blank until those inputs are confirmed."),
     ]))
     return render_page("commission", "Commission structure & rate analysis",
         "Amazon's published fixed commission tables — Standard, Onsite and Creator Ads — with the Bounty schedule, and what the "
@@ -944,7 +927,7 @@ def page_methodology(depth):
     b.append(sec("Known limits of this analysis"))
     b.append(prose("", [
         ("ul", [
-            "No product facts for the three submitted items — the site therefore demonstrates the <em>system</em>, not a market read.",
+            "Observed destination titles are documented, but no approved price/review feed or campaign outcomes are available; the site demonstrates the <em>system</em>, not a market-performance conclusion.",
             "Per-category commission rates were not retrievable without an authenticated account, so no revenue projection is offered.",
             "No live campaign data exists, so EPC, CVR and click figures are unpopulated by definition.",
             "Niche rankings are withheld rather than approximated; the fixture used to unit-test the scorer is never published.",
@@ -1001,7 +984,7 @@ def page_sources(depth):
               "fetch it. Web-search results were used only to <em>locate</em> candidate official pages; the substance of every row "
               "above comes from the fetched primary document, and the search snippets were not treated as evidence."),
         ("p", "Two entries are recorded as deliberately negative: SRC-12 (the rate card, which redirects to sign-in) and "
-              "SRC-01…03/04…06 (the 404s and fallback redirects). A negative retrieval is exactly what makes the corresponding "
+              "SRC-01…03/04…06 (the direct probes and observed short-link destinations). A retrieval observation is exactly what makes the corresponding "
               "blanks on the site defensible rather than merely empty."),
         ("p", "SRC-07 is a control. Without it, nine failed probes could be explained by the checking tool failing; with it, "
               "that explanation is closed off."),

@@ -39,7 +39,7 @@
         "req": "Automate product research",
         "status": "built-blocked",
         "where": "tools/amazon_intake.py; Products page",
-        "note": "Intake validates ASIN shape, probes /dp/, then calls Creators API GetItems. Blocked on invalid identifiers + no API credentials.",
+        "note": "The raw 9-character tokens are not ASINs; the supplied short links were separately observed to land on three live 10-character-ASIN listings. The register records both facts. Creators API enrichment remains gated on valid target ASINs, credentials and programme access.",
         "sources": [
           "SRC-13"
         ],
@@ -134,7 +134,7 @@
         "req": "Generate SEO-optimised product articles",
         "status": "built-blocked",
         "where": "Content page",
-        "note": "Generator + templates shipped; 0 articles produced because there are 0 verified product facts. On-page SEO mechanics ARE live on this site.",
+        "note": "Generator + templates shipped; no long-form product article was published because detailed product claims need approved, current product data and editorial grounding. Observed listing titles are documented but are not expanded into unsourced recommendations.",
         "sources": [
           "SRC-10"
         ],
@@ -147,7 +147,7 @@
         "req": "Generate comparisons",
         "status": "built-blocked",
         "where": "Content page, `comparison` template",
-        "note": "Renderer refuses to emit a comparison missing lowest-new or lowest-used pricing, which is exactly the state all three items are in.",
+        "note": "Comparison template is shipped; comparison publication is blocked on compliant, current new/used price inputs and a decision that the observed destination listings are the intended products.",
         "sources": [
           "SRC-10"
         ],
@@ -160,7 +160,7 @@
         "req": "Generate buying guides",
         "status": "built-blocked",
         "where": "Content page, `buying-guide` template",
-        "note": "Category unresolved for all items, so no guide scope can be defined.",
+        "note": "Observed destination pages show an Air Fryer category breadcrumb. Product-specific guide recommendations still require approved product data; the selected three-link sample is not used as a market-wide niche signal.",
         "sources": [
           "SRC-13"
         ],
@@ -186,7 +186,7 @@
         "req": "Create engaging marketing content",
         "status": "built-blocked",
         "where": "Content page",
-        "note": "Engagement copy is generated only over grounded claims; no marketing assertion about these three items was written.",
+        "note": "No unsupported product recommendation or performance claim is published. The verified destination listing titles are available for reference; any expanded marketing copy must be grounded in permitted current sources.",
         "sources": [
           "SRC-10"
         ],
@@ -324,7 +324,7 @@
         "req": "Marketing for the three listed products",
         "status": "built-blocked",
         "where": "Products page",
-        "note": "Cannot be executed as briefed: all three identifiers are invalid. Documented with reproducible evidence rather than substituted with guesses.",
+        "note": "The raw tokens are short-link identifiers, not ASINs, but the URLs were observed to resolve to live listings. Their destination identities are documented; user intent and compliant dynamic data access remain unconfirmed, so no detailed sales content is generated.",
         "sources": [
           "SRC-01",
           "SRC-02",
