@@ -250,13 +250,16 @@ def check_html(data: dict) -> None:
             parts = urlparse(href)
             if parts.scheme or parts.netloc:
                 continue
+            # resolve relative to the page's own directory, as a browser does
+            base = (ROOT / name).parent
             target_file = parts.path or name
-            target = ROOT / target_file
+            target = (base / target_file).resolve()
             if not target.exists():
                 fail(f"{name}: broken internal link to {href}")
                 continue
             if parts.fragment:
-                tp = parsed.get(target_file)
+                rel_target = target.relative_to(ROOT.resolve())
+                tp = parsed.get(str(rel_target))
                 if tp is None:
                     tp = PageParser()
                     tp.feed(target.read_text(encoding="utf-8"))

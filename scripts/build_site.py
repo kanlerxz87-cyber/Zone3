@@ -134,6 +134,19 @@ def page(filename: str, title: str, body: str, lead: str = "") -> None:
 </body>
 </html>
 """
+    if "/" in filename:
+        # This page lives in a subdirectory; prefix relative links so they
+        # resolve from there (nav, stylesheet, footer and body links alike).
+        import re
+
+        def _up(m):
+            attr, value = m.group(1), m.group(2)
+            if value.startswith(("#", "http://", "https://", "mailto:", "tel:", "/")):
+                return m.group(0)
+            return f'{attr}../{value}"'
+
+        doc = re.sub(r'(href=")([^"]+)"', _up, doc)
+        doc = re.sub(r'(src=")([^"]+)"', _up, doc)
     (ROOT / filename).write_text(doc, encoding="utf-8")
 
 
