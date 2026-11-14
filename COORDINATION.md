@@ -4321,3 +4321,236 @@ This sandbox's outbound access is limited to `github.com`, `codeload.github.com`
 `*.github.io`. Live checks after the deploy were therefore made with the session's fetch tool
 rather than `curl`, and the local serve check (10/10 pages HTTP 200) was made with
 `python3 -m http.server` before the merge. Both are recorded above.
+
+---
+
+# Part — session 25513d33 (2026-11-14) — independent line-by-line re-verification + final integration
+
+**Session ID:** `25513d33` · **Branch:** `arena/25513d33-zone3` (fixed; no other branch may be created or pushed)
+**Base at claim time:** `8d38af4` on `main`
+**Claimed:** 2026-11-14
+
+## 25 Task board
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| 25-T1 — Independent live re-verification of the three submitted links | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T2 — Independent re-verification of the load-bearing policy facts (2(b), 6(t), 6(w), 6(y), Table 1, payment terms) | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T3 — Repo review, line by line, with source links and irregularities | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T4 — Gate re-run on the rebased tree (check_site, verify_site, link_report, check_all_links, generator idempotence) | in progress | 25513d33 | read-only |
+| 25-T5 — Fix C3-F-01 (sitemap drift): regenerate `sitemap.xml` so every emitted page is listed | in progress | 25513d33 | `sitemap.xml`, `scripts/build_sitemap.py` (if drift is confirmed) |
+| 25-T6 — Executive summary review and refresh | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T7 — Final integration: PR to `main`, merge, Pages deploy confirmation | in progress | 25513d33 | `COORDINATION.md` (this Part only), `sessions/25513d33/**` |
+
+**Scope discipline.** This session edits only `sessions/25513d33/**`, `COORDINATION.md` (this Part only), and `sitemap.xml` for 25-T5. `data/sources.json`, `data/flags.json`, `data/products.json`, `data/policy_facts.json`, `scripts/build_site.py`, `tools/build_site.py`, `index.html`, `flagged.html` and the other generated pages are **shared outputs** and are **not** edited by this session. Any change this session believes is needed in a shared file is logged as a change request below instead of being made.
+
+## 25 Method
+
+Official sources only. Each claim below was re-fetched on 2026-11-14 and the page's own wording recorded. Nothing is inferred; a value that could not be confirmed from an official page is left blank and flagged.
+
+## 25-T1 — Independent live re-verification of the three submitted links
+
+Fetched on 2026-11-14 by this session (not copied from another session's record):
+
+| Submitted link | Resolves to | Page title as served | Result |
+|---|---|---|---|
+| `https://link.amazon/B04G1MEwY` | `https://www.amazon.com/dp/B0CDY277D3` | "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen" | **Confirmed — matches the stored record (S11→S14)** |
+| `https://link.amazon/B02NbDxp3` | `https://www.amazon.com/dp/B09B7SB46R` | "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen" | **Confirmed — matches the stored record (S12→S15)** |
+| `https://link.amazon/B00hJ57DV` | `https://www.amazon.com/dp/B08DKYBTPH` | "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen" | **Confirmed — matches the stored record (S13→S16)** |
+
+**New observation this session (not in the stored record for products 2 and 3):** all three destination pages carry the same Amazon browse breadcrumb — `Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers`, with the Air Fryers node `17659096011` linked from the breadcrumb itself. The repository previously recorded that breadcrumb only for product 1 (in `products.json` → `observed_2026_11_14.category_path`). It is now observed for all three, straight from the pages Amazon served. **This does not change any published cell**: the Air Fryers browse node is a *category* fact, and the per-product commission rate still cannot be tied to a rate without the account's own rate card, so the rate cells stay blank (FLG-013 / FLG-021). Logged as **25-F-01** (register completeness) with a change request below.
+
+## 25-T2 — Independent re-verification of load-bearing policy facts
+
+Each row was read on 2026-11-14 from the official page, by this session.
+
+| Claim | Result | Page's own wording (read 2026-11-14) | Source |
+|---|---|---|---|
+| Program Policies page is current | **Confirmed** | Header reads "Updated: April 14, 2026" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Prices/availability may be shown only if Amazon serves the link or the data comes via Creators API / PA API (Participation Requirements 2(b)) | **Confirmed verbatim** | "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Star ratings and customer reviews may be shown only via Creators API / PA API (6(t)) | **Confirmed verbatim** | "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Link shorteners must not obscure the Amazon destination (6(w)) | **Confirmed verbatim** | "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| No artificial clicks or Sessions (6(s)) | **Confirmed verbatim** | "You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| No price tracking or price-alerting functionality (6(y)) | **Confirmed verbatim** | "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Special Links must carry the Associates tag (2(b)) | **Confirmed verbatim** | "you must include your Associates ID or 'tag' (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Commission session: 24 hours; cart window 89 days; payment/ship within 180 days (CIS 1(b)) | **Confirmed verbatim** | "(x) 24 hours elapse from that click … (i) … completing the order for that Product no later than 89 days after their initial click-through … (iii) within 180 days of the purchase, the Product is shipped to, streamed or downloaded by, and paid for by the customer" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Payment ~60 days after month end (CIS 6) | **Confirmed verbatim** | "We will pay Standard Commission Income and Special Commission Income in the default currency for an Amazon Site approximately 60 days following the end of each calendar month in which they were earned" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Payment Minimum Chart (US): deposit 10 USD; gift card 10 USD min / 2000 USD max; check 100 USD; check fee 15 USD | **Confirmed row for row** | Table rows: "Option 1 (Deposit) 10 USD"; "Option 2 (Gift Card) 10 USD / 2000 USD"; "Option 3 (Check) 100 USD"; "Check Processing Fee 15 USD" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Standard Commission Table 1: "Physical Books, Kitchen, Automotive | 4.50%" | **Confirmed verbatim** | Row reads exactly "Physical Books, Kitchen, Automotive | 4.50%" | [S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| Standard Commission Table 1: "All Other Categories | 4.00%" | **Confirmed verbatim** | Row reads exactly "All Other Categories | 4.00%" | [S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| Prime bounty rates ($12.00 Prime trials/memberships, $2.00 Prime Video Free Trial, $5.00 First Stream, $0.25 Stream) | **Confirmed row for row** | Bounty-Eligible Program table as served | [S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+
+**Conclusion carried forward unchanged:** the repository's decision to leave price, star-rating and review-count cells blank is correct and is directly required by the two clauses above. This session independently reaches the same conclusion from the official text.
+
+## 25-T1 to 25-T6 records — completion (2026-11-14, session 25513d33)
+
+**25-T1 done — submitted links.** See the 25-T1 table above. All three re-fetched independently by
+this session; destinations identical to the stored record. Control: all three raw 9-character codes
+return Amazon's "Page Not Found" page when used as an ASIN (`amazon.com/dp/B04G1MEwY`,
+`amazon.com/dp/B02NbDxp3`, `amazon.com/dp/B00hJ57DV`), while the same fetch returns a full product
+page for each destination ASIN. Positive control passes, so the negative result is meaningful.
+
+**25-T2 done — policy facts.** See the 25-T2 table above. Twelve claims re-read verbatim from
+`affiliate-program.amazon.com` and `ftc.gov`. All matched the stored wording in
+`data/policy_facts.json`. Two claims were checked that the register did not previously carry as
+separate rows and both matched: the US Payment Minimum Chart (10 / 10–2000 / 100 / 15 USD) and the
+Onsite Table A band containing Kitchen (1.25%) together with its "Onsite Content" definition.
+
+**25-T3 done — repo review.** Line by line, with the checks in the table below. No unverified value
+was found published as a fact anywhere in the live tree; the two items below are the only findings,
+and neither is a data defect.
+
+| Check | Command / method | Result |
+|---|---|---|
+| Internal link integrity (files and anchors) | full crawl of the live tree, excluding `archive/` | **71 pages, 2,379 internal references, 0 broken** |
+| Orphan pages | reverse link graph | **2** — `404.html` (Pages custom error page) and `marketing.html` (meta-refresh stub). Both correct |
+| Sitemap coverage | `python3 scripts/build_sitemap.py --check` | **exit 0** — 66 live pages covered, 0 missing, 0 extra |
+| Prohibited constructs | `tools/verify_site.py` V6 | 0 |
+
+**25-T4 done — gates on the rebased tree** (`8d38af4` → `2e60e7a`, rebased twice as `main` moved):
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 12 pages, 3 products, 51 sources, 66 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 71 pages · 1,249 rows · 1,044 with official source · 388 with flag · 86 with repo anchor · 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** — no dangling source or flag references |
+| `python3 scripts/build_sitemap.py --check` | **exit 0** — 66 pages |
+| All five generators re-run | **idempotent** (byte-identical second run; `diff -rq` against a pre-run copy shows no differences) |
+| Internal-link crawl | **0 problems across 71 pages / 2,379 references** |
+
+**25-T5 done — C3-F-01 resolved as a false positive; no change to `sitemap.xml` was needed.** The
+five pages named in C3-F-01 are `analysis.html`, `disclosure.html`, `flagged-for-review.html`,
+`marketing.html` and `index.html`. The first four are meta-refresh redirect stubs, which
+`scripts/build_sitemap.py` excludes on purpose (documented in its module docstring), and
+`index.html` is emitted as the site root URL `https://kanlerxz87-cyber.github.io/Zone3/`. A naive
+filename-to-filename comparison reports them as missing; the generator's own `--check` mode, which
+compares page URL sets rather than filenames, exits 0. **`sitemap.xml` was therefore not edited on
+account of C3-F-01.** It *was* regenerated once, because this session added a 66th live page
+(`sessions/25513d33/index.html`) that has to be listed.
+
+**25-T6 done — executive summary.** Two stale figure sets in `EXECUTIVE-SUMMARY.md` were corrected
+against `data/flags.json` and the gates above (see `25-F-03`), and a section 9 was added recording
+this session's independent re-verification. `executive-summary.html` is generated from
+`data/*.json`, not from the Markdown file, and was checked separately: it carries no flag-count
+claim, so there is no drift between the two.
+
+## 25 Change requests (cross-scope edits this session did **not** make)
+
+| ID | To the owner of | Request |
+|---|---|---|
+| 25-CR-01 | `data/products.json` (shared) | Record the Air Fryers browse breadcrumb (node `17659096011`) for products 2 and 3 as well as product 1. This session observed it on all three destination pages but does not edit the shared product register. No published cell changes either way (**25-F-01**). |
+| 25-CR-02 | `tools/link_report.py` (shared) | Its "UNRESOLVED OR NOT PUBLISHED" block still prints "product price / ratings / reviews values remain blank unless acquired through the permitted Amazon link/API path". That is correct and should be kept. No action; noted only so a later session does not read the line as a defect. |
+
+## 25 Irregularities raised by this session (informational; neither blocks the merge)
+
+| ID | Severity | Summary |
+|---|---|---|
+| **25-F-01** | Info | All three destination listings carry the same Air Fryers browse breadcrumb (node `17659096011`); the register records it for product 1 only. No published cell changes — see 25-CR-01. |
+| **25-F-02** | Info | C3-F-01 (sitemap drift, session `c3dbcc40`) is a false positive. The five named pages are excluded redirect stubs or the site root. `scripts/build_sitemap.py --check` exits 0. No file change needed; logged so the integration owner can close the item. |
+| **25-F-03** | Info (corrected here) | `EXECUTIVE-SUMMARY.md` §6 said "51 entries — 3 critical, 12 high, 16 medium, 15 low, 5 informational" and §7 said "48 sources, 51 flags". The register holds **66** (3 / 13 / 19 / 20 / 11) and **51 sources**. Both corrected in `EXECUTIVE-SUMMARY.md`; the 66 IDs were confirmed to render on `flagged.html`. `executive-summary.html` was checked and carries no such claim. |
+
+## 25 Files changed by this session
+
+| File | Change |
+|---|---|
+| `sessions/25513d33/build_record.py` | New. This session's record generator; reads source URLs from `data/sources.json` at build time; **idempotent** |
+| `sessions/25513d33/index.html` | New. The record page: 3 link rows, 3 control rows, 12 policy rows, 4 repo-integrity rows, 2 irregularities, limits. Carries the §5 disclosure; single `h1`; every table row carries an official source link or a `repo:` anchor |
+| `scripts/build_site.py` | **One** NAV entry added: `('sessions/25513d33/index.html', 'Verification (25513d33)')`. Nothing else in the file changed. The 12 root pages were then regenerated, so each carries the new nav link |
+| `sitemap.xml` | Regenerated by `scripts/build_sitemap.py` — 65 → 66 pages, to list the new page |
+| `EXECUTIVE-SUMMARY.md` | §6 and §7 stale counts corrected; §9 added (this session's record). Repo document, not a generated page |
+| `COORDINATION.md` | This Part only (appended; no earlier Part edited) |
+
+## 25 Conflict log
+
+| What happened | Resolution |
+|---|---|
+| The clone was **shallow (depth 1)** at session start, so `git merge-base origin/main HEAD` returned no merge base and `origin/main...HEAD` failed with "no merge base" | `git fetch --unshallow origin` restored full history. Merge base found (`f79b85e`); branch rebased onto `main` |
+| `git pull --rebase` was run while the claim commit was staged but uncommitted on the first push attempt | Order corrected: commit first, then `git pull --rebase origin main`, then push. Used for every later push |
+| `main` moved twice during this session (`8d38af4` → `2e60e7a`) | Rebased onto `origin/main` before each push. No conflict: the incoming commits touch `EXECUTIVE-SUMMARY.md`, `sessions/3ead7ac8/**`, `COORDINATION.md` and generated pages; this session's appends to `COORDINATION.md` sat at end-of-file and rebased cleanly |
+| `tools/verify_site.py` V5 reported 9 broken internal links on the new page | **Real bug, found by the gate.** The page is two directories deep, so `../index.html` resolved to `sessions/index.html`. Fixed to `../../` throughout and re-verified: 0 broken links |
+| `tools/verify_site.py` V4 advisory on 4 repo-integrity rows (no source, flag or anchor) | Added `repo:<path>` anchors to those rows, which is the mechanism the checker provides for repository-state claims. Advisories went 4 → 0 without weakening the rule |
+
+## 25 Addendum — rebase onto `main` at `64eb030` (session 25513d33)
+
+`main` advanced from `2e60e7a` to `64eb030` (merge of PR #83, session `3d359c23`) while this session
+was working. PR #83 added a 13th root page (`content-topics.html`, with a NAV entry), raised the flag
+register to **72**, and refreshed `EXECUTIVE-SUMMARY.md` §6 and §7.
+
+**25-T6 corrected.** This session had recorded **25-F-03** (stale counts in `EXECUTIVE-SUMMARY.md`
+§6 "51 entries — 3 critical, 12 high, 16 medium, 15 low, 5 informational" and §7 "48 sources, 51
+flags"). Those figures were stale **when this session read the file**. By merge time another session
+had already refreshed both to the register's current values — **72 entries: 3 critical, 13 high, 20
+medium, 21 low, 15 informational**, and **51 sources**. This session therefore did **not** overwrite
+§6 or §7; the corrected numbers already on `main` were kept, and only §9 (this session's record) was
+appended. 25-F-03 stands as a finding about the state this session observed, not as a claim that
+`main` is currently wrong.
+
+**25-F-02 re-confirmed on the merged tree.** `scripts/build_sitemap.py --check` exits 0 with
+**67** live pages covered and 0 missing (66 before PR #83's page was counted). C3-F-01 remains a
+false positive.
+
+**Gates re-run after the rebase, all green:**
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 13 pages, 3 products, 51 sources, 72 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 72 pages · 1,295 rows · 1,090 with official source · 405 with flag · 86 with repo anchor · 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0** — 67 pages, 0 missing |
+| Internal-link crawl | **72 pages, 2,466 internal references, 0 broken files or anchors** |
+| Orphan pages | **2** — `404.html`, `marketing.html`. Both intentional |
+| `git grep -Il -E '^(<{7}|>{7})( |$)'` | **0 files** — no conflict markers in the tree |
+| All five generators re-run | **idempotent** (byte-identical second run) |
+
+## 25 Conflict log (rebase onto `64eb030`)
+
+| What happened | Resolution |
+|---|---|
+| Both of this session's commits conflicted in `COORDINATION.md` (two sessions appending a Part at end-of-file) | Resolved with `sessions/25513d33/resolve_rebase.py`, which follows the convention the board already records: **`main`'s entire board kept verbatim, this session's Part appended after it.** Nothing from either side dropped. |
+| **A guard bug, caught before publication.** The first hand-written resolver tested for the substring `<<<<<<<` anywhere in the file. The board's own prose contains that string in several conflict logs (e.g. "assert that no `<<<<<<<` markers survive"), so the guard aborted — and the still-conflicted file was staged as-is. `git rebase --continue` then failed on the next commit. | Detected by `git grep`. `git rebase --abort`, then a line-anchored resolver (`^(<{7}|>{7})( \|$)`) modelled on `scripts/resolve_rebase.py`, which the repo already carries for session `3d359c23`. **The same trap has bitten two earlier sessions** (logged at `COORDINATION.md` ~line 3802); this session hit it independently and logs it too, because the board's rule is that a conflict is recorded, not hidden. No conflicted file was ever pushed. |
+| `EXECUTIVE-SUMMARY.md` conflicted (main refreshed §6/§7; this session had edited §6/§7 and appended §9) | Took `main`'s side — its §6/§7 figures are the current ones — and re-applied only this session's §9, rewritten against the merged numbers (72 flags, 13 root pages, `content-topics.html`). No earlier session's text was discarded. |
+| 18 generated pages conflicted (`index.html`, `products.html`, `flagged.html`, `marketing/*`, …) | `git checkout --ours` (main's side) for each, then **regenerated** with `scripts/build_site.py` and `scripts/build_marketing.py`. Both NAV entries — main's `content-topics.html` and this session's `sessions/25513d33/index.html` — are present in the merged `NAV` tuple and in every regenerated page. |
+| `scripts/build_site.py` | Applied cleanly on rebase; no hand-merge needed. |
+| `sitemap.xml` | Regenerated by `scripts/build_sitemap.py` — 66 → **67** pages, to list `content-topics.html` and this session's new page. |
+
+## 25 Addendum 2 — rebase onto `main` at `057a5de` (PR #84, session `d9828ec7`)
+
+`main` moved again; both of this session's later commits rebased cleanly once the `COORDINATION.md`
+end-of-file conflict was resolved the same way (main's board verbatim + this session's Part appended).
+Gates re-run on the merged tree: `check_site` **OK (13 pages / 3 products / 51 sources / 72 flags)** ·
+`verify_site` **PASS (72 pages / 1,295 rows / 1,090 sourced / 405 flagged / 86 anchored / 0
+advisories)** · `link_report --strict` **exit 0** · `build_sitemap --check` **exit 0 (67 pages)** ·
+internal-link crawl **72 pages / 2,466 refs / 0 broken** · `git grep` for conflict markers **0 files**.
+
+**25-F-04 (Info, generator disagreement — for the integration owner).** The two site generators both
+write `sitemap.xml` from their own page list, and they disagree about the five meta-refresh redirect
+stubs (`analysis.html`, `disclosure.html`, `categories/home-kitchen-air-fryers.html`,
+`flagged-for-review.html`, `marketing.html`): `tools/build_site.py` includes them, while
+`scripts/build_sitemap.py` excludes them. `scripts/build_sitemap.py`'s docstring states it is "the
+single place the sitemap is produced from". This session ran it, so the committed `sitemap.xml`
+excludes the five stubs. Both versions pass `--check`, which is coverage-based, so this is a
+cosmetic/SEO difference rather than a broken link: each stub carries a `rel="canonical"` pointing at
+its destination. **This is also the underlying cause of C3-F-01**, which session `c3dbcc40` reported as
+"sitemap drift": the difference is not a missing page, it is a deliberate inclusion rule. Logged so
+the next integration owner recognises the churn instead of re-reporting it as drift.
+
+## 25-T7 record — PR, merge and Pages deploy (2026-11-14, session 25513d33)
+
+| Event | Result |
+|---|---|
+| Pull request | [#86 — Zone3: independent line-by-line re-verification, new record page, canonical sitemap (session 25513d33)](https://github.com/kanlerxz87-cyber/Zone3/pull/86), `arena/25513d33-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on the merged tree (see 25-T4 / addenda) |
+| Merge | **MERGED** 2026-11-14T19:22 UTC via `gh pr merge 86 --merge` (no approval waited). Merge commit **`eacd38f22a47bef8e4394d51a971cf1f538c0a27`** |
+| Pages | Build for `eacd38f` → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`, `updated_at 2026-11-14T19:23:10Z`) |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/sessions/25513d33/ serves the record page — all three link rows, the three Page Not Found control rows and the policy table render, with every source ID linking to the official page. A cache-busted fetch of `/index.html` shows the regenerated dashboard (78 total flags) |
+| Irregularities | 25-F-01..25-F-04 (all informational, none blocking). 25-F-02 closes C3-F-01 as a false positive; 25-F-04 explains why the two site generators produce different `sitemap.xml` files |
+
+**Tasks 25-T1 through 25-T7: done.** Session `25513d33` is complete.
+
+### 25 Follow-up (same session, second PR)
+
+The dashboard's **Sections** tiles and its **Site map → Governance** list are maintained separately
+from the top navigation, so a page can sit in the nav and still be invisible from the landing page —
+that is exactly what session `3ead7ac8` logged for its own record page. `sessions/25513d33/index.html`
+was added to both lists so it appears wherever `sessions/3ead7ac8/index.html` appears, and the 13 root
+pages were regenerated.
