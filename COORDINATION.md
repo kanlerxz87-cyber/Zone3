@@ -917,3 +917,38 @@ The Part A row `T6` still says `in progress` under session `7f84fea4`, although 
 current base commit show that site's changes have already reached `main`. This pass is scoped as a new,
 additive final verification task; it does not edit that session's files or revise its historical log. The
 Part B / Z-site status and its unresolved product-link interpretation are included in this audit.
+
+## `71-T1` — final-integration scope update (2026-11-14)
+
+This is the final integration pass after the existing site/data sessions have merged. Scope is expanded, additively,
+to the following files because the current official-source recheck found that the live pages repeat superseded
+claims and the site contains a second, stale product-price snapshot:
+
+- Canonical datasets and generated pages: `data/products.json`, `data/flags.json`, `data/sources.json`,
+  `data/policy_facts.json`, `data/z3/{products,flags,sources,pricing,reviews,content,niches}.json`,
+  `scripts/{build_site,check_site}.py`, `tools/{build_site,verify_site}.py`, `index.html`, the nine flat pages,
+  the 16 directory-style pages, and build metadata/sitemaps.
+- Retiring superseded public copies without deleting their records: `docs/**` and
+  `sessions/3c886b62/**/*.html` will become clearly signposted redirects; original materials will be copied to
+  `archive/79f85104/` and `archive/3c886b62/` with a historical-use notice. Existing `archive/**` is not edited.
+- This session's evidence and logs: `sessions/71ab8e06/**`, `README.md`, and this file.
+
+**Fresh primary-source checks (2026-11-14):** all three user-supplied `https://link.amazon/<code>` URLs were
+fetched twice. Each fetch reached the same Amazon product detail page for that link: `B04G1MEwY` →
+`B0CDY277D3` (CHEFMAN 6 Quart Dual Basket Air Fryer Oven), `B02NbDxp3` → `B09B7SB46R` (Emeril Lagasse
+26QT French Door Multi-Function Air Fryer Toaster Oven), and `B00hJ57DV` → `B08DKYBTPH` (Chefman Air Fryer
+8 Qt / TurboFry). The official pages show the Air Fryers breadcrumb. The short tokens themselves are 9 chars,
+but are link paths, not ASINs; checking `/dp/<token>` is not a valid test of the short link. The earlier
+"0 of 3 products" conclusion and the claim that the redirects pass through `amzlinks.in` are superseded.
+
+**Policy checks (2026-11-14):** Amazon's Operating Agreement §5 and Schedule 1; all 11 chunks of Program
+Policies (updated April 14, 2026), including Participation Requirements 2(b), 5(t), Commission Income
+Statement 2(e), IP License 2(h)–(k) and Agent Terms; the public Standard Commission Income Table 1; the
+Creators API introduction/GetItems pages; and the FTC disclosure guidance were reread. The public Table 1
+is available; per-product commission assignment remains blank. No price or rating values will be published:
+no API credentials or approved API response were supplied, and Program Policies restrict those fields.
+The Associate tag/account is not supplied, so no Special Link or revenue attribution is claimed.
+
+| Change request | Target | Owner | Resolution |
+|---|---|---|---|
+| Final integration of stale and duplicate live pages after source recheck | Root/dashboard datasets, generated pages, `docs/**`, `sessions/3c886b62/**/*.html` | `71ab8e06` (final integration; prior site tasks are merged) | Accepted in this session; historical files retained under `archive/` and current routes redirected to the canonical site. |
