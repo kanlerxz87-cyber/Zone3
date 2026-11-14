@@ -1356,3 +1356,32 @@ reading formally withdrawn (their FLG-026, matching this session's control obser
 `research/ecbfe91b-reverification-2026-11-14.md` §A). Both positions are sourced; neither is
 presented as verified product identity. Only the owner's submission context can settle which
 product was meant — flagged for review, non-blocking.
+
+---
+
+## F Part — session `588693c9` (branch `arena/588693c9-zone3`, base `8cfe91f`) — final integration
+
+> **CLAIM WRITTEN FIRST, BEFORE ANY EDIT OTHER THAN THIS FILE** (protocol requirement). Read this file plus the open-PR list before claiming. PR #26 (`arena/9fef7647-zone3`) is open, `mergeable=CONFLICTING`; this session does not force-merge it (see F decision on PR #26).
+
+### F Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `588693c9` | `arena/588693c9-zone3` | Final integration: reconcile the two site generations' contradictory headline, publish verified product-identity + marketing pages (3 SEO briefs, comparison, buying guide), re-verify line by line, PR + merge + Pages deploy | in progress (F-T1) | 2026-11-14T10:10Z |
+
+### F Task board (claimed scope)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| F-T1 — Claim + board record | done | 588693c9 | `COORDINATION.md` (F Part only) | This section. Pushed as its own commit before any other file was touched. |
+| F-T2 — Live re-verification of the 3 resolved ASINs (identity, title, brand, category breadcrumb) | in progress | 588693c9 | `sessions/588693c9/**` | Only official amazon.com pages. No price/rating inference. |
+| F-T3 — Reconcile contradictory headlines between the two site generations | unclaimed | — | `index.html`, `executive-summary.html`, `README.md`, `EXECUTIVE-SUMMARY.md` | `index.html` says the links "resolve to live product listings"; `README.md` says "0 of 3 passed intake". Both are partly right; the reader is told two different things. |
+| F-T4 — Marketing pages: 3 product briefs, comparison, buying guide (facts-only, sourced, compliant) | unclaimed | — | `marketing/**`, `data/marketing.json` (new) | Requested by the brief ("Build marketing for the following products"). |
+| F-T5 — Line-by-line verification + publish new flags | unclaimed | — | `data/flags.json`, `flagged.html` | Every new row cites an official source or is blank + flagged. |
+| F-T6 — PR to `main`, merge, confirm Pages deploy | unclaimed | — | this branch | Recorded in the F PR section. |
+
+**Scope boundary:** this session edits only the files listed above. It does **not** edit `archive/**`, `docs/**`, `sessions/3c886b62/**`, `sessions/f1b7da46/**`, `tools/**`, `data/z3/**`, or the 16 directory builds (`dashboard/`, `products/`, …), which belong to earlier sessions and stay as they are.
+
+### F decision on PR #26 (`arena/9fef7647-zone3`)
+
+PR #26 is `CONFLICTING` against `main` and carries 23 changed files, most of them shared root pages this session must also touch. Force-merging it would produce a combined tree that neither session verified. Decision: **left open and unmerged**; its branch is preserved, so nothing is lost. Its *verified* findings (short-link → ASIN identity) are independently re-checked in F-T2 and cited to the same official pages, so the substance is carried forward even if the branch is never merged.
