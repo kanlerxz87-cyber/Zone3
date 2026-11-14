@@ -3533,12 +3533,46 @@ session hit exactly that once, and confirmed the fix only after re-fetching with
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 71dc8fea | `arena/71dc8fea-zone3` | Independent audit of the existing Amazon affiliate research site, repository checks, and GitHub Pages/PR state; no parallel branch or duplicate build | in progress (71-T1) | 2026-11-14 |
+| 71dc8fea | `arena/71dc8fea-zone3` | Independent repository/site audit; read-only against shared outputs; report and scope requests | done (71-T1) | 2026-11-14 |
 
 ## 71 Task board (claim before audit)
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| 71-T1 — Independently verify the current shipped site, repo integrity gates, official-source evidence coverage, and Pages status; record evidence and any scope requests | in progress | 71dc8fea | `COORDINATION.md`; `sessions/71dc8fea/**` (audit report only) | pending audit | pending audit |
+| 71-T1 — Independently verify the current shipped site, repo integrity gates, official-source evidence coverage, and Pages status; record evidence and any scope requests | done | 71dc8fea | `COORDINATION.md`; `sessions/71dc8fea/**` (audit report only) | root S01–S55, parallel SRC-01–SRC-22, latest merged live-fetch records and GitHub Pages API | 71-F-01…05; cross-scope requests logged below |
 
-This is a read-only audit of the already-integrated site, not a second implementation of the product/data registers. Shared site, navigation, and data files remain outside scope; if a discrepancy requires one of those edits, it will be logged here rather than edited by this task.
+This session completed a repository/site audit only. Shared site, navigation, data, and generator files remain outside scope and were not edited. The full audit, verification limits, findings, official manual-review links, and requested follow-up are in [`sessions/71dc8fea/verification-2026-11-14.md`](sessions/71dc8fea/verification-2026-11-14.md). Source observations from Amazon/FTC are attributed to the prior merged live-fetch records; this session did not claim a fresh fetch.
+
+## 71-T1 record — local verification and repository audit (2026-11-14)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK** — 12 pages, 3 products, 48 sources, 49 flags |
+| `python3 tools/verify_site.py` | **VERIFY PASS** — 69 pages, 1,169 rows, 967 counted with official-source URL, 346 with flag, 82 with repository anchor |
+| `python3 tools/link_report.py --strict` | **Exit 0** — no dangling source/flag references; advisory: uncited `SRC-07` and row-unreferenced `FLG-001/002/003/007/027` |
+| `python3 scripts/check_all_links.py` | **115 HTML pages, 104 distinct external URL strings, 0 internal-link errors**; the script does not fetch external links |
+| `python3 scripts/build_sitemap.py --check` | **64 pages covered, 5 extra URLs**; `/docs/` and `/sessions/` paths remain in the sitemap |
+| Literal row-source scan | **946/1,169** non-archive table rows have a direct Amazon/FTC URL in-row; **223** do not. The latter include blank/flagged fields and repository-status rows, so this is a coverage warning, not a claim that all 223 are unsupported product facts. |
+| GitHub Pages API | Site is public, legacy source `main` `/`, HTTPS enforced. Build status is asynchronous; latest verified build is recorded after this PR merges. |
+
+These checks are local to the repository. The live source observations are in `COORDINATION.md` H-T1/H-T2 (session `7b70cfb0`) and CDC-T2 (session `cdc9baa4`), plus their registered official source URLs; they were not re-fetched by this read-only audit.
+
+## 71 Irregularities found (non-blocking; scope requests, no shared edits)
+
+| ID | Severity | Finding | Manual source / repository location |
+|---|---|---|---|
+| 71-F-01 | High | `tools/build_site.py` writes manifest `files` values as SHA digests, while `tools/verify_site.py` treats those values as paths; zero generated page paths match. V2/V3 and V4 are therefore not hard failures for the owned pages. `--out` also fails on a fresh directory unless `data/z3/` is pre-created. | [`tools/build_site.py`](tools/build_site.py), [`tools/verify_site.py`](tools/verify_site.py) |
+| 71-F-02 | High | Current provenance checks accept GitHub links, flags, or repo anchors instead of requiring direct official-source links for all factual product/policy rows. This is weaker than the brief's stated rule; blank values still need flags and implementation-status rows need an explicit repo-evidence type. | [`tools/verify_site.py`](tools/verify_site.py), [`scripts/check_site.py`](scripts/check_site.py) |
+| 71-F-03 | Medium | Parallel `data/z3/flags.json` FLG-001…008/R-23 overstates the evidence in places: FLG-001…006 discuss failure to select the *intended* product, while FLG-007 calls the distinct destinations “random” and “meaningless.” The short links were observed resolving; intended product identity remains unconfirmed. Existing `FLG-026/027` partly surfaces the two-build/interpretation issue on `/flagged/`. | [Amazon short link 1](https://link.amazon/B04G1MEwY), [short link 2](https://link.amazon/B02NbDxp3), [short link 3](https://link.amazon/B00hJ57DV), [Creators API ASIN definition](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter) |
+| 71-F-04 | Medium | Root `EXECUTIVE-SUMMARY.md` says no price/rating/review figures are rendered anywhere, but the `/docs/` and `/sessions/3c886b62/` HTML sets are listed in `sitemap.xml` and contain historical price/rating tables. Existing `FLG-026/028` partly records the parallel builds and old snapshots; the summary and public-page treatment need reconciliation. | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies), [`/docs/analysis.html`](https://kanlerxz87-cyber.github.io/Zone3/docs/analysis.html), [`/sessions/3c886b62/`](https://kanlerxz87-cyber.github.io/Zone3/sessions/3c886b62/) |
+| 71-F-05 | Medium | The deployed site is a static dashboard/prototype. No connected model service, database, Associates tag, API credentials, or conversion feed was found; campaign metrics remain null. This must not be described as an operational revenue-producing AI platform. Existing credentials/tracking flags partly cover the limitation. | [`config/platform.json`](config/platform.json), [`data/z3/campaign-metrics.json`](data/z3/campaign-metrics.json), [Amazon Associates policies](https://affiliate-program.amazon.com/help/operating/policies) |
+
+### 71 Cross-scope requests
+
+Per the coordination rules, these are logged for the next final integration owner rather than applied here:
+
+1. Fix 71-F-01 with an explicit generated-path list in the build manifest and a regression test proving an invalid generated page fails the gate; create the output manifest parent for `--out`.
+2. Tighten 71-F-02 so nonblank product/policy facts require official Amazon/FTC links; allow explicit flags for unknown values and repo anchors only for repository-state claims.
+3. Reconcile 71-F-03 in the parallel `data/z3/` register and generated `/flagged/` and `/requirements/` pages using the current distinction between observed target and intended product.
+4. Reconcile 71-F-04 across the executive summary, sitemap, and legacy public pages while preserving prior-session artifacts; publish the final status on the Flagged for Review page with official links.
+5. Keep 71-F-05 explicit in the executive summary and requirements page until a compliant account/tag/API and runtime actually exist.
