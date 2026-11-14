@@ -732,3 +732,39 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
 | Live check — `/docs/` landing | https://kanlerxz87-cyber.github.io/Zone3/docs/ — **live**, disclosure banner, KPI cards, portfolio table render |
 | Live check — `/docs/` products | https://kanlerxz87-cyber.github.io/Zone3/docs/products.html — **live**, full 16-field table with per-row source links renders |
 | Post-merge fix | Follow-up PR: stat-count correction on `docs/` pages (KPI cards said 27/2; ground truth 16 rows × 3 = 48 cells, 39 verified, 9 unverified) + this record |
+
+---
+
+# Part: session `ecbfe91b` (2026-11-14) — live re-verification, stale-claim takeover, final integration
+
+> Appended additively on branch `arena/ecbfe91b-zone3`. Nothing in the board above is removed or
+> rewritten. Task IDs (`E-T…`) and flag IDs (`E-F…`) are namespaced and are **not** the same items as
+> `A:…`, `B:…`, `FLG-…`, `F01–F17`, `c4e71983-FLG-…`, `Z-F…` or `Z-T…` used by other sessions.
+
+## E Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `ecbfe91b` | `arena/ecbfe91b-zone3` | Live re-verification of official sources (2026-11-14); takeover of stale PR #10 task; repo line-by-line review; closure of c4e71983 handoff items; final integration, PR → `main`, Pages deploy | in progress | 2026-11-14 |
+
+**Branch note (same logged decision as `7f84fea4`).** The brief asks for `session-<id>/<task>`
+branches. Arena's session branch note fixes this session to one branch, `arena/ecbfe91b-zone3`, and
+forbids creating or pushing other branches. Task IDs (E-T1–E-T7) replace per-task branches.
+
+## E Task board — claimed 2026-11-14 before any other work
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| E-T1 — Coordination claim, protocol, push | in progress | `ecbfe91b` | `COORDINATION.md` (append-only) | This commit, pushed before any other work. |
+| E-T2 — Takeover: broken-links fix task behind stale PR #10 | claimed | `ecbfe91b` | `disclosure.html`, `executive-summary.html` (via their generators where applicable) | Handoff per the 60-minute takeover rule — see E Handoff log. |
+| E-T3 — Repo line-by-line review + tool verification (`scripts/check_site.py`, `tools/build_site.py`, `tools/verify_site.py`, `tools/link_report.py`) | claimed | `ecbfe91b` | whole tree (read); fixes only inside this session's scope | |
+| E-T4 — Live re-verification of official sources, dated 2026-11-14 | claimed | `ecbfe91b` | `research/ecbfe91b-reverification-2026-11-14.md` (new, namespaced) | fetch tool evidence only. |
+| E-T5 — Close c4e71983 open items: surface competitor benchmark as-is; widen FLG-016 text per `c4e71983-FLG-16`; log decision on commercial snapshot | claimed | `ecbfe91b` | `data/*.json`, `scripts/build_site.py` (generator), regenerated root pages | This session acts as the integration session for shared outputs for this pass. |
+| E-T6 — Live-site QA after deploy | claimed | `ecbfe91b` | — | |
+| E-T7 — PR → `main`, merge, Pages deploy confirm, record | claimed | `ecbfe91b` | git + `gh` only, this file | |
+
+## E Handoff log
+
+| Time (UTC) | From | To | Task | Reason |
+|---|---|---|---|---|
+| 2026-11-14 | `66a80e53` (session-zone3-001) | `ecbfe91b` | PR #10 task "Fix broken links on disclosure and executive summary pages" | PR #10 has been open since 2026-11-13 23:02 UTC; its last commit `bdb5330` was 2026-11-13 23:11 UTC — far more than 60 minutes with no commits. GitHub reports `mergeable: CONFLICTING` against current `main`, and both target files have since been rewritten on `main` (`disclosure.html` is now a redirect to `content.html`; `executive-summary.html` is generator output owned by `scripts/build_site.py`). Takeover per the 60-minute rule; the fix will be re-verified against the current tree and PR #10 closed with a supersession note. |
