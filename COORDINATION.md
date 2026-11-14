@@ -889,3 +889,31 @@ This active branch verified that the supplied short-link IDs resolve to live tar
 | C-T8 PR/merge/Pages | in progress | Build gates passed; PR and Pages deployment confirmation pending. |
 
 Unverified: Associates tag, live clicks/conversions, API credentials, actual link model and individual program rate applicability. Static prices and review metrics are not exposed; their dated research observations are documented above. Historical archived site generations remain unchanged for provenance.
+
+---
+
+# Part C — Session `71ab8e06` (2026-11-14) — final verification pass
+
+> This session is fixed to `arena/71ab8e06-zone3` at the provided Arena branch note. The existing
+> repository already contains several merged site generations; this task audits the deployed,
+> integrated site rather than creating a competing root/site tree. Shared site/data outputs remain
+> untouched until the source review establishes a necessary, scoped integration fix.
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `71ab8e06` | `arena/71ab8e06-zone3` | Final integration audit: inspect existing GitHub Pages site, independently re-check disputed product-link findings, run build/link checks, publish verification and deployment record | in progress | 2026-11-14 |
+
+## Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| `71-T1` — Final site, data and deployment verification | in progress | `71ab8e06` | `COORDINATION.md`, `sessions/71ab8e06/**`; any shared-output change will be logged here first and made only as final integration | To be recorded in the verification report | Cross-session disagreement Z-F6 / B:FLG-027; existing site snapshots dated 2026-11-13 |
+
+## Handoff note
+
+The Part A row `T6` still says `in progress` under session `7f84fea4`, although later merge records and the
+current base commit show that site's changes have already reached `main`. This pass is scoped as a new,
+additive final verification task; it does not edit that session's files or revise its historical log. The
+Part B / Z-site status and its unresolved product-link interpretation are included in this audit.
