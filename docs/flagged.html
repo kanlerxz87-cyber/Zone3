@@ -28,7 +28,7 @@
     </nav>
     <div class="disc">
       <strong>Affiliate disclosure</strong>
-      As an Amazon Associate we earn from qualifying purchases. Prices/availability change; verify on Amazon.
+      As an Amazon Associate I earn from qualifying purchases. Prices/availability change; verify on Amazon.
     </div>
   </aside>
   <div class="main">
@@ -40,7 +40,7 @@
     <main class="content">
 
       <div class="disclosure">
-        <strong>As an Amazon Associate we earn from qualifying purchases.</strong>
+        <strong>As an Amazon Associate I earn from qualifying purchases.</strong>
       </div>
 
       <div class="callout flag">
@@ -78,9 +78,9 @@
               <tr><td class="mono"><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener nofollow">link.amazon/B04G1MEwY</a></td><td><span class="badge ok">resolves</span> → <a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener nofollow">dp/B0CDY277D3</a> (same target ×3 fetches)</td></tr>
               <tr><td class="mono"><a href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener nofollow">link.amazon/B02NbDxp3</a></td><td><span class="badge ok">resolves</span> → <a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener nofollow">dp/B09B7SB46R</a> (same target ×2 fetches)</td></tr>
               <tr><td class="mono"><a href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener nofollow">link.amazon/B00hJ57DV</a></td><td><span class="badge ok">resolves</span> → <a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener nofollow">dp/B08DKYBTPH</a> (same target ×2 fetches)</td></tr>
-              <tr><td class="mono">link.amazon/ZZZZZZZZ99</td><td><span class="badge bad">403 Forbidden</span> (control: junk input rejected)</td></tr>
-              <tr><td class="mono">amzlinks.in/B0FAKE1234</td><td><span class="badge bad">404 "invalid URL"</span> (control: unregistered code rejected)</td></tr>
-              <tr><td class="mono">amzlinks.in/B0CDY277D3</td><td><span class="badge bad">404 "invalid URL"</span> (control: a real ASIN is <em>not</em> a valid short code)</td></tr>
+              <tr><td class="mono">link.amazon/ZZZZZZZZ99</td><td><span class="badge bad">403 Forbidden</span> (control: junk input rejected)</td><td><span class="tag" title="Row is verified by reading this repository file">repo:docs/flagged.html</span></td></tr>
+              <tr><td class="mono">amzlinks.in/B0FAKE1234</td><td><span class="badge bad">404 "invalid URL"</span> (control: unregistered code rejected)</td><td><span class="tag" title="Row is verified by reading this repository file">repo:docs/flagged.html</span></td></tr>
+              <tr><td class="mono">amzlinks.in/B0CDY277D3</td><td><span class="badge bad">404 "invalid URL"</span> (control: a real ASIN is <em>not</em> a valid short code)</td><td><span class="tag" title="Row is verified by reading this repository file">repo:docs/flagged.html</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -130,11 +130,11 @@
           <table class="data">
             <thead><tr><th>ID</th><th>Item</th><th>Type</th><th>Affects</th><th>Status</th></tr></thead>
             <tbody>
-              <tr><td class="mono">F1</td><td>9-char codes, not 10-char ASINs</td><td>Input irregularity</td><td>All 3 supplied links</td><td><span class="badge flag">open</span></td></tr>
-              <tr><td class="mono">F2</td><td>Third-party <code>amzlinks.in</code> hop; Associates tag unverified</td><td>Input/link irregularity</td><td>All 3 supplied links</td><td><span class="badge flag">open</span></td></tr>
-              <tr><td class="mono">F3</td><td>Commission % sign-in-only → blank</td><td>Unverified data</td><td>9 cells (3 products × rate/comm fields)</td><td><span class="badge flag">open</span></td></tr>
-              <tr><td class="mono">F4</td><td>BSR bot-blocked → blank</td><td>Unverified data</td><td>3 cells</td><td><span class="badge flag">open</span></td></tr>
-              <tr><td class="mono">F5</td><td>Volatile deal prices + price-display policy</td><td>Volatility/policy</td><td>All price cells &amp; content</td><td><span class="badge flag">open</span></td></tr>
+              <tr><td class="mono">F1</td><td>9-char codes, not 10-char ASINs</td><td>Input irregularity</td><td>All 3 supplied links</td><td><span class="badge flag">open</span></td><td><a href="https://sell.amazon.com/blog/what-is-an-asin" target="_blank" rel="noopener nofollow">sell.amazon.com</a></td></tr>
+              <tr><td class="mono">F2</td><td>Third-party <code>amzlinks.in</code> hop; Associates tag unverified</td><td>Input/link irregularity</td><td>All 3 supplied links</td><td><span class="badge flag">open</span></td><td><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener nofollow">observed redirect</a></td><span class="tag" title="Row is verified by reading this repository file">repo:docs/flagged.html</span></tr>
+              <tr><td class="mono">F3</td><td>Commission % sign-in-only → blank</td><td>Unverified data</td><td>9 cells (3 products × rate/comm fields)</td><td><span class="badge flag">open</span></td><td><a href="https://affiliate-program.amazon.com/help/operating/schedule" target="_blank" rel="noopener nofollow">rate schedule</a></td></tr>
+              <tr><td class="mono">F4</td><td>BSR bot-blocked → blank</td><td>Unverified data</td><td>3 cells</td><td><span class="badge flag">open</span></td><td><a href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener nofollow">amazon.com/dp</a></td></tr>
+              <tr><td class="mono">F5</td><td>Volatile deal prices + price-display policy</td><td>Volatility/policy</td><td>All price cells &amp; content</td><td><span class="badge flag">open</span></td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener nofollow">Policies 2(b)</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -147,7 +147,7 @@
       <a href="compliance.html">Disclosures &amp; Policies</a> ·
       <a href="flagged.html">Flagged for Review</a> ·
       <a href="sources.html">Sources</a><br>
-      As an Amazon Associate we earn from qualifying purchases. Observations captured 2026-11-13.
+      As an Amazon Associate I earn from qualifying purchases. Observations captured 2026-11-13.
     </footer>
   </div>
 </div>
