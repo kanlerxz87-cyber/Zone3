@@ -1,0 +1,157 @@
+{
+  "note": "Independent re-verification by session 51fcb80d on 2026-11-14 (UTC). Every value below was read directly from an official Amazon page fetched during this session. Nothing is inferred. Prices and star ratings are point-in-time observations from Amazon's own results page for the ASIN; Program Policies Participation Requirement 2(b) restricts publishing prices/availability to Amazon-served links or Creators API / PA API data, and 6(t) restricts customer reviews and star ratings to API-sourced links. See FLG-022 in data/flags.json.",
+  "session": "51fcb80d",
+  "verified_on": "2026-11-14",
+  "method": "HTTP GET of the official Amazon URL through the session's fetch tool; redirect chain followed; document title and result block read from the returned page.",
+  "products": [
+    {
+      "submitted_link": "https://link.amazon/B04G1MEwY",
+      "submitted_code": "B04G1MEwY",
+      "code_length": 9,
+      "direct_dp_probe": {
+        "url": "https://www.amazon.com/dp/B04G1MEwY",
+        "result": "Page Not Found",
+        "page_title": "Page Not Found"
+      },
+      "short_link_result": {
+        "url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1e229870efde5acf&channelId=704&plpRedirect=mhFallback",
+        "resolved_asin": "B0CDY277D3",
+        "asin_length": 10,
+        "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+        "brand": "CHEFMAN",
+        "product_name": "6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+        "browse_path": [
+          "Home & Kitchen",
+          "Kitchen & Dining",
+          "Small Appliances",
+          "Fryers",
+          "Air Fryers"
+        ],
+        "browse_node_ids": {
+          "Home & Kitchen": "1055398",
+          "Kitchen & Dining": "284507",
+          "Small Appliances": "289913",
+          "Fryers": "17659095011",
+          "Air Fryers": "17659096011"
+        },
+        "results_page": {
+          "url": "https://www.amazon.com/s?k=B0CDY277D3",
+          "result_count": "1 result for B0CDY277D3",
+          "price": "$79.93",
+          "list_price": "$99.99",
+          "unit_price": "$39.97/count",
+          "promotion": "Deal with a countdown timer (\"Ends in 22:14:50\") on the page at capture time",
+          "star_rating": "4.2 out of 5 stars",
+          "rating_count_displayed": "(4.8K)",
+          "bought_in_past_month": "1K+ bought in past month",
+          "other_offers_price": "$57.45",
+          "other_offers_note": "(2+ used & new offers)",
+          "capture_qid_epoch": 1794649506,
+          "capture_utc": "2026-11-14T09:45:06Z"
+        }
+      }
+    },
+    {
+      "submitted_link": "https://link.amazon/B02NbDxp3",
+      "submitted_code": "B02NbDxp3",
+      "code_length": 9,
+      "direct_dp_probe": {
+        "url": "https://www.amazon.com/dp/B02NbDxp3",
+        "result": "Page Not Found",
+        "page_title": "Page Not Found"
+      },
+      "short_link_result": {
+        "url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-534f5e7952f396b2&channelId=704&plpRedirect=mhFallback",
+        "resolved_asin": "B09B7SB46R",
+        "asin_length": 10,
+        "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
+        "brand": "Emeril Lagasse",
+        "product_name": "26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals.",
+        "browse_path": [
+          "Home & Kitchen",
+          "Kitchen & Dining",
+          "Small Appliances",
+          "Fryers",
+          "Air Fryers"
+        ],
+        "browse_node_ids": {
+          "Home & Kitchen": "1055398",
+          "Kitchen & Dining": "284507",
+          "Small Appliances": "289913",
+          "Fryers": "17659095011",
+          "Air Fryers": "17659096011"
+        },
+        "results_page": {
+          "url": "https://www.amazon.com/s?k=B09B7SB46R",
+          "result_count": "1 result for B09B7SB46R",
+          "price": "$149.99",
+          "list_price": "$209.99",
+          "unit_price": "",
+          "promotion": "\"Early Black Friday Deal\" badge on the page at capture time",
+          "star_rating": "4.3 out of 5 stars",
+          "rating_count_displayed": "(18.3K)",
+          "bought_in_past_month": "4K+ bought in past month",
+          "other_offers_price": "$92.99",
+          "other_offers_note": "(2+ used & new offers)",
+          "capture_qid_epoch": 1794649512,
+          "capture_utc": "2026-11-14T09:45:12Z"
+        }
+      }
+    },
+    {
+      "submitted_link": "https://link.amazon/B00hJ57DV",
+      "submitted_code": "B00hJ57DV",
+      "code_length": 9,
+      "direct_dp_probe": {
+        "url": "https://www.amazon.com/dp/B00hJ57DV",
+        "result": "Page Not Found",
+        "page_title": "Page Not Found"
+      },
+      "short_link_result": {
+        "url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-76c3adaeb8708b44&channelId=704&plpRedirect=mhFallback&th=1",
+        "resolved_asin": "B08DKYBTPH",
+        "asin_length": 10,
+        "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+        "brand": "Chefman",
+        "product_name": "Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+        "browse_path": [
+          "Home & Kitchen",
+          "Kitchen & Dining",
+          "Small Appliances",
+          "Fryers",
+          "Air Fryers"
+        ],
+        "browse_node_ids": {
+          "Home & Kitchen": "1055398",
+          "Kitchen & Dining": "284507",
+          "Small Appliances": "289913",
+          "Fryers": "17659095011",
+          "Air Fryers": "17659096011"
+        },
+        "results_page": {
+          "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+          "result_count": "11 results for B08DKYBTPH (first result is the exact ASIN)",
+          "price": "$79.91",
+          "list_price": "$119.99",
+          "unit_price": "",
+          "promotion": "Deal with a countdown timer (\"Ends in 22:09:41\") on the page at capture time",
+          "star_rating": "4.4 out of 5 stars",
+          "rating_count_displayed": "(16.8K)",
+          "bought_in_past_month": "3K+ bought in past month",
+          "other_offers_price": "$49.54",
+          "other_offers_note": "(3+ used & new offers)",
+          "capture_qid_epoch": 1794649517,
+          "capture_utc": "2026-11-14T09:45:17Z"
+        }
+      }
+    }
+  ],
+  "controls": [
+    {
+      "id": "CTRL-01",
+      "description": "A direct GET of https://www.amazon.com/dp/B0CDY277D3 (no short link involved) also returned the URL parameters lv=shuf and plpRedirect=mhFallback while serving the correct product.",
+      "conclusion": "The plpRedirect=mhFallback parameter is not evidence that a short link selected nothing; it appears on ordinary product fetches.",
+      "source": "https://www.amazon.com/dp/B0CDY277D3"
+    }
+  ]
+}

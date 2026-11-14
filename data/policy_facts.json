@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-13",
+  "retrieved": "2026-11-14",
   "note": "Every quote is copied verbatim from the official page named in 'source' and 'section'. Re-read on 2026-11-13 where marked. PF-14 was withdrawn on 2026-11-13: its text was not found in the sections read. Quotes are short; bracketed text is an editorial placeholder in the source. 'applies_to' is the project's reading and is not a quote.",
   "facts": [
     {
@@ -337,6 +337,70 @@
       "source": "S02",
       "section": "Associates Program Commission Income Statement, Section 6, Payment Minimum Chart (read 2026-11-13)",
       "applies_to": "Payout-method planning. Added by session 33226b37-zone3."
+    },
+    {
+      "id": "PF-44",
+      "topic": "Prices and availability may be shown only if Amazon serves the link, or the data comes from Creators API / PA API",
+      "quote": "Product prices and availability may vary from time to time. ... your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API ...",
+      "source": "S02",
+      "section": "Associates Program Participation Requirements, Section 2(b) (read 2026-11-14)",
+      "applies_to": "Price and availability display. See FLG-022."
+    },
+    {
+      "id": "PF-45",
+      "topic": "Customer reviews and star ratings may be shown only if obtained through Creators API or PA API",
+      "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API ...",
+      "source": "S02",
+      "section": "Associates Program Participation Requirements, Section 6(t) (read 2026-11-14)",
+      "applies_to": "Rating and review display. See FLG-022."
+    },
+    {
+      "id": "PF-46",
+      "topic": "Link shortening must not obscure the Amazon destination",
+      "quote": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+      "source": "S02",
+      "section": "Associates Program Participation Requirements, Section 6(w) (read 2026-11-14)",
+      "applies_to": "Short links and link labels. See FLG-024."
+    },
+    {
+      "id": "PF-47",
+      "topic": "No price tracking or price-alert functionality",
+      "quote": "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
+      "source": "S02",
+      "section": "Associates Program Participation Requirements, Section 6(y) (read 2026-11-14)",
+      "applies_to": "Feature scope. See FLG-024."
+    },
+    {
+      "id": "PF-48",
+      "topic": "Redirecting-link purchases are disqualified",
+      "quote": "(e) any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \"Redirecting Link\"),",
+      "source": "S02",
+      "section": "Associates Program Commission Income Statement, Section 2(e) (read 2026-11-14)",
+      "applies_to": "Link design. See FLG-024."
+    },
+    {
+      "id": "PF-49",
+      "topic": "Creators API prerequisite: at least 10 qualifying sales in the past 30 days",
+      "quote": "Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API",
+      "source": "S04",
+      "section": "Creators API documentation, Introduction, Prerequisites item 2 (read 2026-11-14)",
+      "applies_to": "API access planning. See FLG-023."
+    },
+    {
+      "id": "PF-50",
+      "topic": "Affiliate disclosure must be clear and conspicuous, placed close to the recommendation",
+      "quote": "You should disclose your relationship to the retailer clearly and conspicuously on your site, so readers can decide how much weight to give your endorsement. ... The closer the disclosure is to your recommendation, the better.",
+      "source": "S44",
+      "section": "FTC Endorsement Guides FAQ, section 'What About Affiliate or Network Marketing?' (read 2026-11-14)",
+      "applies_to": "Disclosure placement. See FLG-017."
+    },
+    {
+      "id": "PF-51",
+      "topic": "'Affiliate link' or a 'buy now' button alone is not an adequate disclosure",
+      "quote": "Consumers might not understand that 'affiliate link' means that the person placing the link is getting paid for purchases made through the link. Similarly, a 'buy now' button would not be adequate.",
+      "source": "S44",
+      "section": "FTC Endorsement Guides FAQ, section 'What About Affiliate or Network Marketing?' (read 2026-11-14)",
+      "applies_to": "Disclosure wording."
     }
   ]
 }
