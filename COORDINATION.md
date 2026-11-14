@@ -872,8 +872,8 @@ This active branch verified that the supplied short-link IDs resolve to live tar
 | C-T3 product-link verification | done | `research/a86f1d09-verification-log.md`; links resolve to B0CDY277D3, B09B7SB46R, B08DKYBTPH. |
 | C-T4 policy/commission recheck | done | Public standard Kitchen 4.50%; Onsite 1.25%; Creator Ads 2.25%. See official sources SRC-18/19 and policies SRC-10. |
 | C-T5 correct datasets and site claims | done | Root and z3 data/generators corrected; static prices withheld under PF-04. |
-| C-T6 rebuild/check | in progress | Root check passed: 9 pages, 3 products, 32 sources, 21 flags. Dashboard verifier passed: 57 pages; 223 inherited non-blocking advisories remain. |
-| C-T7 summary/flagged/review | in progress | Current pages regenerated; review reconciliation and final summary validation remain. |
-| C-T8 PR/merge/Pages | pending | Awaiting integration and deploy confirmation. |
+| C-T6 rebuild/check | done | Root check passed: 9 pages, 3 products, 32 sources, 26 flags. Dashboard verifier passed: 57 pages; 223 inherited non-blocking advisories remain. |
+| C-T7 summary/flagged/review | done | Executive summary and flagged-review routes rebuilt; unresolved credentials/analytics and policy limitations remain flagged. |
+| C-T8 PR/merge/Pages | in progress | Build gates passed; PR and Pages deployment confirmation pending. |
 
 Unverified: Associates tag, live clicks/conversions, API credentials, actual link model and individual program rate applicability. Static prices and review metrics are not exposed; their dated research observations are documented above. Historical archived site generations remain unchanged for provenance.
