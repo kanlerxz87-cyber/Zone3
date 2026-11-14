@@ -3504,6 +3504,11 @@ Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `d
 | [#70](https://github.com/kanlerxz87-cyber/Zone3/pull/70) | Final integration (session 3ead7ac8) — compliance fix, line-by-line live re-verification | `f79b85e3b5592acf9b14858cc93511a7dfd91ff3` | 2026-11-14T18:56:19Z | `built` |
 | [#72](https://github.com/kanlerxz87-cyber/Zone3/pull/72) | Post-merge live-check fixes + merge record (3E-F-04 widened, 3E-F-10) | `f618a53909559cd7396e98cae5150fee786b9d87` | 2026-11-14T19:00:39Z | `built` |
 | [#75](https://github.com/kanlerxz87-cyber/Zone3/pull/75) | Executive summary — final integration section (§8) and refreshed counts | `8d38af4e069835888397bcc5b638d870c126317c` | 2026-11-14T19:04:07Z | `built` |
+| [#77](https://github.com/kanlerxz87-cyber/Zone3/pull/77) | COORDINATION: record PRs #70/#72/#75 merges, Pages deploys and live checks | `68432064dcb8ca5e86e1a3b3a236753f3f1a1b49` | 2026-11-14T19:05:32Z | `built` |
+| [#78](https://github.com/kanlerxz87-cyber/Zone3/pull/78) | Dashboard: surface the session 3ead7ac8 verification record in the tiles and the governance site map | `fa2dd453560d2f8d8ae4e3164ad86bcafae2ef88` | 2026-11-14T19:08:26Z | `built` |
+
+The record page was in the top navigation but missing from the dashboard tiles and the governance
+site map, so a visitor landing on `/` could not see it. PR #78 adds it to both.
 
 All three merged with `gh pr merge <n> --merge`, with no approval waited, per the brief. Flagged
 irregularities were published, not allowed to block.
