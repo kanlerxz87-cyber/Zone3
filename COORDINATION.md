@@ -4236,3 +4236,46 @@ claim, so there is no drift between the two.
 | `main` moved twice during this session (`8d38af4` → `2e60e7a`) | Rebased onto `origin/main` before each push. No conflict: the incoming commits touch `EXECUTIVE-SUMMARY.md`, `sessions/3ead7ac8/**`, `COORDINATION.md` and generated pages; this session's appends to `COORDINATION.md` sat at end-of-file and rebased cleanly |
 | `tools/verify_site.py` V5 reported 9 broken internal links on the new page | **Real bug, found by the gate.** The page is two directories deep, so `../index.html` resolved to `sessions/index.html`. Fixed to `../../` throughout and re-verified: 0 broken links |
 | `tools/verify_site.py` V4 advisory on 4 repo-integrity rows (no source, flag or anchor) | Added `repo:<path>` anchors to those rows, which is the mechanism the checker provides for repository-state claims. Advisories went 4 → 0 without weakening the rule |
+
+## 25 Addendum — rebase onto `main` at `64eb030` (session 25513d33)
+
+`main` advanced from `2e60e7a` to `64eb030` (merge of PR #83, session `3d359c23`) while this session
+was working. PR #83 added a 13th root page (`content-topics.html`, with a NAV entry), raised the flag
+register to **72**, and refreshed `EXECUTIVE-SUMMARY.md` §6 and §7.
+
+**25-T6 corrected.** This session had recorded **25-F-03** (stale counts in `EXECUTIVE-SUMMARY.md`
+§6 "51 entries — 3 critical, 12 high, 16 medium, 15 low, 5 informational" and §7 "48 sources, 51
+flags"). Those figures were stale **when this session read the file**. By merge time another session
+had already refreshed both to the register's current values — **72 entries: 3 critical, 13 high, 20
+medium, 21 low, 15 informational**, and **51 sources**. This session therefore did **not** overwrite
+§6 or §7; the corrected numbers already on `main` were kept, and only §9 (this session's record) was
+appended. 25-F-03 stands as a finding about the state this session observed, not as a claim that
+`main` is currently wrong.
+
+**25-F-02 re-confirmed on the merged tree.** `scripts/build_sitemap.py --check` exits 0 with
+**67** live pages covered and 0 missing (66 before PR #83's page was counted). C3-F-01 remains a
+false positive.
+
+**Gates re-run after the rebase, all green:**
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 13 pages, 3 products, 51 sources, 72 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 72 pages · 1,295 rows · 1,090 with official source · 405 with flag · 86 with repo anchor · 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0** — 67 pages, 0 missing |
+| Internal-link crawl | **72 pages, 2,466 internal references, 0 broken files or anchors** |
+| Orphan pages | **2** — `404.html`, `marketing.html`. Both intentional |
+| `git grep -Il -E '^(<{7}|>{7})( |$)'` | **0 files** — no conflict markers in the tree |
+| All five generators re-run | **idempotent** (byte-identical second run) |
+
+## 25 Conflict log (rebase onto `64eb030`)
+
+| What happened | Resolution |
+|---|---|
+| Both of this session's commits conflicted in `COORDINATION.md` (two sessions appending a Part at end-of-file) | Resolved with `sessions/25513d33/resolve_rebase.py`, which follows the convention the board already records: **`main`'s entire board kept verbatim, this session's Part appended after it.** Nothing from either side dropped. |
+| **A guard bug, caught before publication.** The first hand-written resolver tested for the substring `<<<<<<<` anywhere in the file. The board's own prose contains that string in several conflict logs (e.g. "assert that no `<<<<<<<` markers survive"), so the guard aborted — and the still-conflicted file was staged as-is. `git rebase --continue` then failed on the next commit. | Detected by `git grep`. `git rebase --abort`, then a line-anchored resolver (`^(<{7}|>{7})( \|$)`) modelled on `scripts/resolve_rebase.py`, which the repo already carries for session `3d359c23`. **The same trap has bitten two earlier sessions** (logged at `COORDINATION.md` ~line 3802); this session hit it independently and logs it too, because the board's rule is that a conflict is recorded, not hidden. No conflicted file was ever pushed. |
+| `EXECUTIVE-SUMMARY.md` conflicted (main refreshed §6/§7; this session had edited §6/§7 and appended §9) | Took `main`'s side — its §6/§7 figures are the current ones — and re-applied only this session's §9, rewritten against the merged numbers (72 flags, 13 root pages, `content-topics.html`). No earlier session's text was discarded. |
+| 18 generated pages conflicted (`index.html`, `products.html`, `flagged.html`, `marketing/*`, …) | `git checkout --ours` (main's side) for each, then **regenerated** with `scripts/build_site.py` and `scripts/build_marketing.py`. Both NAV entries — main's `content-topics.html` and this session's `sessions/25513d33/index.html` — are present in the merged `NAV` tuple and in every regenerated page. |
+| `scripts/build_site.py` | Applied cleanly on rebase; no hand-merge needed. |
+| `sitemap.xml` | Regenerated by `scripts/build_sitemap.py` — 66 → **67** pages, to list `content-topics.html` and this session's new page. |
