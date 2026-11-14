@@ -1695,4 +1695,3 @@ touching 23 shared root files (`index.html`, `products.html`, `pricing.html`, `r
 `scripts/build_site.py`, `scripts/check_site.py`, `sitemap.xml`, `marketing.html`, `category/air-fryers.html`, …).
 Per the no-clobber rule this session **does not** merge, close or edit that PR. If it lands on `main` first, this branch rebases onto it
 and both sessions' work is kept. If it is still open when this session merges, the merge is done by rebasing/keeping both sides in full.
->>>>>>> e5ac9d9 (coordination(edbd56a1): claim final-integration scope (E-T1..E-T9), note open PR #26)
