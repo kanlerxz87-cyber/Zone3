@@ -338,6 +338,19 @@
           "SRC-09"
         ],
         "status": "open"
+      },
+      {
+        "_order": 10.5,
+        "id": "I-F-01",
+        "sev": "Critical",
+        "item": "Published price and star-rating cells have no permitted data path",
+        "finding": "Pages on this site displayed Amazon price ($79.93 / $149.99 / $79.91, list $99.99 / $209.99 / $119.99) and star ratings (4.2 / 4.3 / 4.4 out of 5) transcribed from rendered Amazon pages: /docs/ (the 2026-11-13 'Affiliate Intelligence' build) and the Air Fryers category page. Participation Requirements 2(b) permits prices and availability only where Amazon serves the link that displays them or where the data comes from Creators API / PA API under the License, and 6(t) permits star ratings and customer reviews only when they were obtained through Creators API or PA API. No Associates tag has been supplied and no Creators API credentials exist for this project, so neither condition is met. The IP License date-stamp duty in 2(i) cannot cure this: it applies only where a price may lawfully be displayed. Read live 2026-11-14. The e-commerce pages that were built by other sessions before this one (/dashboard/, /marketing/, the flat pages) already withheld these cells, and the site's own flag register already records the exposure (FLG-022, FLG-004/005, G-F / FLG-028); the 2026-11-13 /docs/ build did not.",
+        "action": "Fixed for the Air Fryers category page on this branch: the price, rating and review columns were removed and replaced by a sourced statement of why they are withheld (I-F-01 on the Flagged for review page). Still open, outside this session's scope: the /docs/ page set and /sessions/3c886b62/ archive pages. Those are another session's owned files, so the fix requested here is to delete or noindex /docs/ and /sessions/ (or add them to .gitignore) before the next publish, and to have the owner confirm an Associates tag so an approved data path can be opened.",
+        "sources": [
+          "SRC-10",
+          "SRC-18",
+          "SRC-13"
+        ]
       }
     ]
   }

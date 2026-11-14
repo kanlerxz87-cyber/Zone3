@@ -165,6 +165,7 @@ def page(filename: str, title: str, body: str, lead: str = "") -> None:
 
         doc = _re.sub(r'(href=")([^"]+)"', _up, doc)
         doc = _re.sub(r'(src=")([^"]+)"', _up, doc)
+
     (ROOT / filename).write_text(doc, encoding="utf-8")
 
 
@@ -271,6 +272,70 @@ def reverify_table() -> str:
 
 
 
+SITEMAP_GROUPS = [
+    ("Overview", [
+        ("executive-summary.html", "Executive summary"),
+        ("dashboard/index.html", "Full audit dashboard (16 pages)"),
+        ("executive-summary/index.html", "Audit build: Executive summary"),
+    ]),
+    ("Research", [
+        ("products.html", "Products"),
+        ("air-fryers.html", "Category: Air Fryers"),
+        ("category/air-fryers.html", "Category mirror: Air Fryers"),
+        ("pricing.html", "Pricing &amp; commission"),
+        ("reviews.html", "Reviews &amp; competition"),
+        ("products/index.html", "Audit build: Products"),
+        ("niches/index.html", "Audit build: Niches"),
+        ("pricing/index.html", "Audit build: Pricing"),
+        ("commission/index.html", "Audit build: Commission"),
+        ("reviews/index.html", "Audit build: Reviews"),
+    ]),
+    ("Marketing output", [
+        ("marketing/index.html", "Marketing hub"),
+        ("marketing/briefs.html", "Marketing briefs"),
+        ("marketing/comparison.html", "Comparison article"),
+        ("marketing/buying-guide.html", "Buying guide"),
+        ("marketing/product-1-chefman-6-quart-dual-basket.html", "Product brief 1"),
+        ("marketing/product-2-emeril-lagasse-26qt-french-door.html", "Product brief 2"),
+        ("marketing/product-3-chefman-8-quart-turbofry.html", "Product brief 3"),
+        ("content.html", "Content &amp; compliance"),
+        ("campaigns.html", "Campaigns &amp; tracking"),
+        ("content/index.html", "Audit build: Content"),
+        ("campaigns/index.html", "Audit build: Campaigns"),
+    ]),
+    ("Governance", [
+        ("sources.html", "Sources"),
+        ("sources/index.html", "Audit build: Sources"),
+        ("verification.html", "Verification log"),
+        ("requirements/index.html", "Requirements traceability"),
+        ("repo-review/index.html", "Repository review"),
+        ("compliance/index.html", "Compliance register"),
+        ("agent-terms/index.html", "Agent terms"),
+        ("methodology/index.html", "Methodology"),
+    ]),
+    ("Open items", [
+        ("flagged.html", "Flagged for review (flat pages)"),
+        ("flagged/index.html", "Flagged for review (audit build)"),
+    ]),
+    ("Kept for provenance (not current)", [
+        ("docs/index.html", "2026-11-13 /docs/ build"),
+        ("sessions/3c886b62/index.html", "Session 3c886b62 archive"),
+        ("sessions/03bbd050/index.html", "Session 03bbd050 archive"),
+    ]),
+]
+
+
+def build_sitemap_html() -> str:
+    # Rendered as link lists, not a table: this site's rule is that every *table* row carries a
+    # source link or a flag, and a navigation entry has neither. Keeping it out of a table keeps
+    # the row-provenance check honest instead of teaching it to ignore rows.
+    out = []
+    for group, items in SITEMAP_GROUPS:
+        links = "".join(f'<li><a href="{h}">{t}</a></li>' for h, t in items)
+        out.append(f'<h3>{group}</h3><ul class="sitemap">{links}</ul>')
+    return "".join(out)
+
+
 def build_index() -> None:
     stats = [
         ("Product links submitted", str(N), ""),
@@ -309,6 +374,7 @@ def build_index() -> None:
         f'<a class="tile" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in tiles
     )
     reverify_html = reverify_table()
+    sitemap_html = build_sitemap_html()
     body = f"""
 <div class="callout">
   <p><strong>Headline:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
@@ -318,6 +384,13 @@ def build_index() -> None:
 <div class="tiles">{tile_html}</div>
 
 <p style="margin-top:18px"><a href="dashboard/index.html">Full audit: 16-page verification dashboard, commission rate tables and flag register</a></p>
+
+<h2>Site map</h2>
+<p>Every page that is published from this repository, so nothing here is reachable only by guessing a URL.
+Pages kept for provenance are listed separately and are marked as such; the <code>/docs/</code> set and the
+<code>/sessions/</code> archives are published because they are committed, not because they are current, and
+they are <a href="flagged.html#I-F-02">flagged for review</a>.</p>
+{sitemap_html}
 
 <h2>Re-verification performed 2026-11-14</h2>
 <p>Every load-bearing claim on the flat pages was checked again against the official page it cites. The
@@ -809,7 +882,16 @@ def build_category() -> None:
     body = "<h2>Verified category path</h2>" + table(
         ["Level", "Category", "Browse node", "Source"], path_rows)
 
-    sub_rows = []
+    sub_rows = [
+        ['<td colspan="6" style="background:#fff8e6"><strong>Price, star rating and review count are not '
+         'shown in this table.</strong> Participation Requirements 2(b) and 6(t) permit prices, availability, '
+         'star ratings and customer reviews only where Amazon serves the link that displays them, or where the '
+         'data is obtained through Creators API or PA API and used under the License. This project has no '
+         'Associates tag and no Creators API credentials, so no permitted path exists: the values are withheld '
+         'rather than transcribed from a rendered page. The observation notes are kept for context with their '
+         'own source links: ' + src_links(["S46", "S47", "S48"]) + '. Regulation: ' + src_links(["S02"]) +
+         '. Flagged as <a class="flagid" href="flagged.html#I-F-01">I-F-01</a>.</td>']
+    ]
     for p in PRODUCTS:
         ro = p["redirect_observed"]
         sub_rows.append([
