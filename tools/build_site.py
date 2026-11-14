@@ -433,7 +433,7 @@ def page_exec(depth):
     b.append('<div class="grid g4">' + "".join([
         f'<div class="card"><div class="pad"><div class="lab">Verdict</div><div class="num" style="font-size:19px">Not launchable</div><div class="foot">Blocked on inputs only you can supply</div></div></div>',
         f'<div class="card"><div class="pad"><div class="lab">Delivered</div><div class="num" style="font-size:19px">Platform + evidence</div><div class="foot">15 pages, 11 datasets, 4 tools</div></div></div>',
-        f'<div class="card"><div class="pad"><div class="lab">Blanks kept</div><div class="num" style="font-size:19px">36 cells</div><div class="foot">12 fields × 3 SKUs, no guesses</div></div></div>',
+        f'<div class="card"><div class="pad"><div class="lab">Blanks kept</div><div class="num" style="font-size:19px">27 cells</div><div class="foot">9 unavailable fields × 3 observed listings</div></div></div>',
         f'<div class="card"><div class="pad"><div class="lab">Compliance rules</div><div class="num" style="font-size:19px">25</div><div class="foot">enforced prohibitions</div></div></div>',
     ]) + "</div>")
     b.append('<div style="height:22px"></div>')
@@ -904,8 +904,7 @@ def page_methodology(depth):
             "recorded in the source register so a reader can compare it.",
             "<strong>Negative results are results.</strong> A 404, a sign-in redirect and a deprecation notice are each recorded as "
             "findings with the URL that produced them.",
-            "<strong>Blanks over guesses.</strong> 36 product cells and every per-category rate are blank because no official source "
-            "exists for them here.",
+            "<strong>Blanks over guesses.</strong> 27 commercial/analytics attribute cells remain blank because this build lacks an approved, current data path; per-product commission remains blank until its category-to-rate and account context are verified.",
             "<strong>Control test.</strong> Every probe is run against a known-good input in the same session, to prove the "
             "negative was real.",
             "<strong>Machine-checked.</strong> <code>verify_site.py</code> re-reads the emitted HTML and fails on a row with no "

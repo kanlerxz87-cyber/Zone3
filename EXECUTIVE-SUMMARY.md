@@ -1,21 +1,19 @@
 # Executive summary — Zone3 AI-powered Amazon affiliate platform
 
-**Prepared:** 2026-11-14 · **Session:** `edbd56a1` (final integration) · **Branch:** `arena/edbd56a1-zone3`
+**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8`
 **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 **Verification log:** https://kanlerxz87-cyber.github.io/Zone3/verification.html
 **Flagged for review:** https://kanlerxz87-cyber.github.io/Zone3/flagged.html
 
-> Every claim below was read from the official page it cites **on 2026-11-14** by this session,
-> independently of the sessions that first recorded it. Nothing is inferred. A value that could not
-> be confirmed from an official source is left blank and listed on the Flagged for review page.
+> The source-linked findings below include the original 2026-11-14 verification record and the
+> independent correction pass in this session. Redirect targets are treated as observed destinations,
+> not as proof of requester intent. Unavailable or policy-restricted values remain blank and flagged.
 
 ---
 
 ## 1. The bottom line
 
-**The three product links you supplied cannot be tied to a product.** Each contains a **9-character**
-code, not a 10-character ASIN, and `https://www.amazon.com/dp/<code>` returns Amazon's *Page Not
-Found* page for all three — reproduced again on 2026-11-14:
+**The three submitted short links were observed to open real Amazon listings; the requester's intended product match remains unconfirmed.** Each submitted token is **9 characters**, not a 10-character ASIN, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page for the raw token — reproduced again on 2026-11-14:
 
 | Submitted link | Code (length) | `amazon.com/dp/<code>` | Where the short link actually lands | Source |
 |---|---|---|---|---|
@@ -29,16 +27,16 @@ Two official Amazon sources define the identifier as 10 characters: the
 [selling blog](https://sell.amazon.com/blog/what-is-an-asin) ("*a unique 10-character alphanumeric
 code assigned to every product listed in the Amazon store*", article dated Jun 4 2025).
 
-**The short links do open real listings — but three different ones, and there is no evidence they are
-the products you meant.** The mapping was identical on 2026-11-13 and again on 2026-11-14, so it is
-deterministic rather than random. It is still not identification: three arbitrary codes each returning
-a coherent product is also what a generic fallback looks like. So the product name, brand, price,
-rating, review count, best-seller rank and commission rate for **all three rows stay blank**, and the
-site says so instead of filling the gap. That is a policy requirement as well as an instruction — see
-§3.
+**The short links have three observed destinations, but the redirect alone does not establish whether
+they match the requester's intent.** Each target listing's title, ASIN and category breadcrumb are
+documented with Amazon links. The dashboard does not infer that `plpRedirect=mhFallback` indicates a
+failed lookup; a direct valid-ASIN control also carried that parameter. Price, review, availability,
+rank, commission and performance values remain blank unless obtained through an approved, current data
+path — see §3 and FLG-022/027.
 
-**The platform itself is built, published and passing every check.** What is missing is the *input*:
-a valid ASIN, an Associates tag, and API eligibility. Those are the three items in §5.
+**The platform itself is built, published and passing its current checks.** The unresolved operating
+inputs are an Associates tag, eligible API access, and confirmation only if the observed destination
+listings are not the intended products. These conditions are listed in §5.
 
 ---
 
@@ -80,16 +78,17 @@ filling them would breach the programme:
 
 | Blank field | Why it cannot be filled |
 |---|---|
-| Product name, brand, model, capacity, price, rating, review count, best-seller rank (3 products × 12 fields) | The identifiers do not resolve, so no product record exists to read. Substituting the redirect target would be an inference. |
+| 9 product-attribute fields for each of 3 observed destination listings (27 cells total) | Dynamic commercial/review/availability/variation/commission/trend/competition values have no approved current source in this build. Destination title, target ASIN and category breadcrumb are separately documented; whether they match requester intent remains open. |
 | Star ratings and review text | 6(t) — displayable only when obtained through Creators API or PA API. Copying them off a rendered page breaches the policy even if the number is read correctly. |
 | Live prices and availability | 2(b) — same rule. Amazon must serve the price in the link, or it must come from the API. |
-| Per-product commission rate and commission income | Table 1 gives the *category* rate, but the listing's category is unverified (FLG-021), and the account-specific rate card route is sign-in gated (S03). |
+| Per-product commission rate and commission income | Public category tables are cited. No product-specific category-to-rate assignment or account context is published in the product row; see FLG-013. |
 | Clicks, orders, conversion rate, revenue | Amazon is the system of record and reports only inside a logged-in account. No tag, no campaign. |
 | "Trending" and "high-converting" scores | No official Amazon endpoint for affiliates exposes trend or conversion data. Any number would be invented. |
 
-There are **no prices, star ratings or review counts rendered anywhere on the site**, including the
-marketing section. This was checked mechanically: zero currency amounts and zero rating strings across
-every page.
+The current `/dashboard/` and `/marketing/` builds withhold prices, star ratings and review counts. A
+legacy category/reference page still contains dated price/rating snapshots; those are not compliant live
+product offers and remain flagged for removal or approved re-sourcing under FLG-028. Do not use them as
+current marketing claims.
 
 ---
 
@@ -97,7 +96,7 @@ every page.
 
 | Capability in the brief | State |
 |---|---|
-| Product research and intake with an automated gate | **Built.** Intake refuses any item whose identifier is not a 10-character ASIN or whose `/dp/` page does not serve a product. All three submitted items are refused, with the evidence recorded. |
+| Product research and intake with an automated gate | **Built.** The 9-character submitted tokens are not ASINs, but the short links were observed to land on three live listings with target ASINs. The observed targets are recorded separately; whether they match the requester's intent remains unconfirmed. |
 | Trending / high-converting product identification | **Blocked** on official data — no legitimate source for those scores. |
 | Price, review and competition analysis | **Rules built and enforced; data withheld** under 2(b) / 6(t) (FLG-022). A six-position bestseller benchmark is published with rank, ASIN, title and link only. |
 | Commission potential modelling | **Partly built.** The public rate tables plus the verified working rules (24 h session, 89-day cart, 180-day ship/pay, disqualified-purchase list, payment timing) are published; the per-product rate input is missing. |
@@ -108,20 +107,18 @@ every page.
 | Associates and FTC compliance | **Built and enforced at build time.** The generator refuses to emit a page without the §5 disclosure; the checker fails the build on an unsourced table row. |
 | Automation and scalability | **Built.** Static generation from JSON, no runtime dependency, no secrets in the repo, deterministic rebuild (verified to a stable fixpoint). |
 
-**Site structure:** a dashboard landing page (https://kanlerxz87-cyber.github.io/Zone3/) with
-sub-pages by category — Products, Pricing & commission, Reviews & competition,
-Content & compliance, Campaigns & tracking, Category: Air Fryers, Marketing — plus an Executive
-summary, a **Verification log**, a **Flagged for review** register and a **Sources** registry, and a
-16-page audit build at `/dashboard/`. Every table row carries a link to the official page behind it.
-The Marketing section (product briefs, comparison and buying guide) publishes **no prices, star
-ratings or review counts**, so the 2(b)/6(t) display rules hold everywhere.
+**Site structure:** the landing dashboard links to Products, Pricing & commission, Reviews & competition,
+Content & compliance, Campaigns & tracking, Category: Air Fryers, Marketing, the Executive summary,
+Verification log, Flagged for review and Sources. The 16-page `/dashboard/` build supplies the full
+research and governance tables. Every current generated data row carries an official source, a flag or an
+explicitly documented blank. The legacy snapshot exposure is flagged separately (FLG-028).
 
 ---
 
 ## 5. Three items that unblock everything
 
-1. **A valid ASIN for each product** — the 10-character identifier from the address bar of the real
-   product page, or the product page URL itself. Everything in the blank column of §3 depends on this.
+1. **Confirm the observed destinations only if they are not the intended products.** The live target
+   ASINs are already recorded in the product table; no replacement input is needed if those are intended.
 2. **Your Associates tag** (the `xxxxx-20` parameter — not a password or API secret), plus
    confirmation that the account is active. Without it no link on the site can earn.
 3. **Enrolment status and API access.** Creators API needs ≥10 qualifying sales in 30 days; until

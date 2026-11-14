@@ -23,17 +23,20 @@ publish any value that cannot be traced to an official source.
 | | |
 | --- | --- |
 | Products submitted | 3 |
-| Products that passed intake verification | **0 of 3** |
-| Data cells left blank because no official source exists | **36** |
-| Official sources cited | 19 |
+| Submitted tokens that are ASINs | **0 of 3** (they are short-link tokens) |
+| Observed redirect destination listings | **3 of 3** |
+| Product-attribute cells blank in the audit sheet | **27** (9 unavailable fields × 3 observed listings) |
+| Official sources cited | 22 in `data/z3/`; 48 in the flat-site register |
 | Open items published for review | 28 |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks |
 
 The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
-`link.amazon/B00hJ57DV`) carry **9-character** identifiers. An Amazon ASIN is 10
-characters, and `https://www.amazon.com/dp/<id>` returns Amazon's *Page Not Found* page for
-all three. Following each link does open a live listing, but a **different** air fryer each
-time (CHEFMAN 6 Qt dual basket, Emeril Lagasse 26QT, Chefman 8 Qt TurboFry).
+`link.amazon/B00hJ57DV`) carry **9-character short-link tokens**, not ASINs. Amazon defines an
+ASIN as 10 characters, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page
+for all three tokens. Following each short link was observed to land on a live listing: CHEFMAN
+6 Qt dual basket (B0CDY277D3), Emeril Lagasse 26QT (B09B7SB46R), and Chefman 8 Qt TurboFry
+(B08DKYBTPH). These observed destinations are documented; whether they match the requester's intent
+is not established by an official source.
 
 > **Correction, session `588693c9`, 2026-11-14.** This paragraph previously ended
 > "…through Amazon's `plpRedirect=mhFallback` route, which confirms the identifiers select
@@ -47,8 +50,7 @@ time (CHEFMAN 6 Qt dual basket, Emeril Lagasse 26QT, Chefman 8 Qt TurboFry).
 > listings the short links open are the products that were intended. Record:
 > `sessions/588693c9/verification-2026-11-14.json` (observation 588-V08).
 
-Rather than invent a product, the pipeline rejects them at intake and publishes the evidence.
-Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
+The pipeline records the observed destination listings separately from the 9-character short-link tokens, and does not infer user intent from the redirects. Dynamic price, review, and performance values remain blank unless they can be supplied through the approved data path. Full audit trail: [`docs/verification-log.md`](docs/verification-log.md).
 
 ---
 
@@ -183,7 +185,7 @@ Kept intact by this integration; documented so the merged tree is navigable.
 
 Two independent verification records now cover the same three links and agree on the substance: all
 three identifiers are 9 characters, every `/dp/` probe returns Amazon's *Page Not Found* page, and each
-short link falls back to a different unrelated product. Reaching that from separately fetched evidence
+short link was observed to resolve to a live listing; the destination is documented without inferring user intent. Reaching that from separately fetched evidence
 is what makes it a finding rather than a shared assumption. This session additionally published the
 rate tables (`/commission/`), which neither earlier record had located.
 
@@ -240,12 +242,10 @@ log. It is served at `/docs/` alongside the root site and cross-references this 
 (amazon.com, affiliate-program.amazon.com, ftc.gov); values that cannot be confirmed from an
 official source are left blank and flagged — never inferred. Data captured 2026-11-13.
 
-> **Cross-session discrepancy (needs review).** This sub-site's controls found that the three
-> supplied 9-character codes are *registered* short links that resolve stably to three real
-> Amazon listings (all air fryers), while the root build's intake rejected them as non-ASINs
-> ("0 of 3"). Both positions and the control evidence are published for review in
-> [`COORDINATION.md`](COORDINATION.md) (session `arena-79f85104` section) and
-> [`docs/flagged.html`](docs/flagged.html). Neither blocks publication.
+> **Resolved distinction.** The submitted 9-character values are short-link tokens, not ASINs; the
+> short links were separately observed to open three Amazon listings. The sites now distinguish
+> the observed destination from whether it was the product the requester intended; see FLG-027
+> on the Flagged for review page and the session record in [`COORDINATION.md`](COORDINATION.md).
 
 ## Coordination
 

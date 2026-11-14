@@ -121,9 +121,9 @@
       {
         "id": "FLG-008",
         "sev": "High",
-        "item": "12 product attribute fields x 3 SKUs = 36 cells",
-        "finding": "Product-title and category observations for the three redirect destinations are documented with Amazon listing sources. Price, used price, star rating, review count, availability, variations, per-product commission, trend signal, competition density, and campaign metrics remain blank because no approved/current source or account data is available for those fields; intended-product confirmation remains a separate open question.",
-        "action": "Keep unavailable fields blank and labeled unverified. Use the observed destination listings only as redirect observations; populate dynamic commercial or review fields only through an approved Amazon data path and current credentials.",
+        "item": "9 commercial/analytics fields × 3 observed listings = 27 cells blank",
+        "finding": "The observed destination listings’ title, brand and category breadcrumb are documented from Amazon. Nine other product attribute fields remain blank for each of the three destinations (price, lowest used price, rating, review count, availability, variations, per-product commission, trend/demand and competition density), totalling 27 cells. Campaign metrics are also blank because no live campaign/account data was supplied.",
+        "action": "Keep all 27 cells blank and labeled unverified until each has an approved, current official data path. Do not treat the raw short-link token as the destination ASIN; the product register labels the redirect target separately.",
         "sources": [
           "SRC-10",
           "SRC-13",
