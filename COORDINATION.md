@@ -4554,3 +4554,25 @@ from the top navigation, so a page can sit in the nav and still be invisible fro
 that is exactly what session `3ead7ac8` logged for its own record page. `sessions/25513d33/index.html`
 was added to both lists so it appears wherever `sessions/3ead7ac8/index.html` appears, and the 13 root
 pages were regenerated.
+
+## 25-T7 follow-up record — PR #88 (session 25513d33)
+
+| Event | Result |
+|---|---|
+| Pull request | [#88 — publish record for PR #86 + surface session 25513d33 record on the dashboard](https://github.com/kanlerxz87-cyber/Zone3/pull/88), `arena/25513d33-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on the merged tree |
+| Merge | **MERGED** 2026-11-14T19:26 UTC via `gh pr merge 88 --merge`. Merge commit **`6961bb0338fff12a616a2011f5fe30cb19fa20d9`** |
+| Pages | Build for `6961bb0` → **status `built`** (`updated_at 2026-11-14T19:26:38Z`) |
+| Live check | A cache-busted fetch of `https://kanlerxz87-cyber.github.io/Zone3/index.html` shows the **Verification (session 25513d33)** tile under *Sections* and the matching entry under *Site map → Governance*, alongside session `3ead7ac8`'s. The record page itself serves at `https://kanlerxz87-cyber.github.io/Zone3/sessions/25513d33/` |
+
+**Change in PR #88.** The dashboard's *Sections* tiles and its *Site map → Governance* list are
+maintained separately from the top navigation, so a page can sit in the nav and still be invisible
+from the landing page — the same gap session `3ead7ac8` logged for its own record page.
+`sessions/25513d33/index.html` was added to both lists; the 13 root pages were regenerated.
+
+**Why two PRs instead of one.** PR #86 carried the verification work. By the time it merged,
+`main` had advanced again, and the follow-up needed its own rebase cycle. Both are merged and both
+Pages builds report `built`.
+
+**Session `25513d33` is complete.** Tasks 25-T1 … 25-T7 done. Irregularities 25-F-01 … 25-F-04
+(all informational, none blocking, all published on the Flagged for review page or recorded above).
