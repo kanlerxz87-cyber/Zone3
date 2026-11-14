@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independent audit &amp; live verification | Zone3</title>
+<meta name="description" content="Session 03bbd050: whole-tree audit of the Zone3 affiliate site, live re-verification of the three submitted Amazon links against official sources, and the irregularities flagged for review. All checks run 2026-11-14.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="../../index.html">Zone3</a><span>Independent audit — session 03bbd050</span></div>
+  <nav><a href="../../index.html">Dashboard</a><a href="../../products.html">Products</a><a href="../../flagged.html">Flagged for review</a><a href="../../executive-summary.html">Executive summary</a><a href="../../sources.html">Sources</a><a href="index.html" class="active">This audit</a><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">Coordination board</a></nav>
+</header>
+<main>
+<h1>Independent audit &amp; live verification</h1>
+<p class="lead">Run 2026-11-14 against <code>main</code> at <a href="https://github.com/kanlerxz87-cyber/Zone3/tree/161dfff">commit <code>161dfff</code></a> and re-run after each merge.
+Twelve policy facts were re-read from the official pages rather than trusted from earlier sessions, the whole tree was
+re-scanned with a purpose-built checker, and each finding below links the page that proves it. This session edits
+only its own directory; where a fix belongs in another session's file it is written as a change request.</p>
+
+<div class="callout">
+  <p><strong>Headline.</strong> The data layer is sound: <strong>0 rows without a source</strong>, <strong>0 blank fields without a flag</strong>,
+  <strong>0 broken links</strong> (the 15 in <code>archive/</code> were repaired by <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">PR #31</a>), no secrets, no conflict markers, and all four project gates green —
+  <code>114</code> pages, <code>1,110</code> table rows, <code>908</code> carrying an official source. Two exposures I raised mid-session were
+  <strong>fixed by another session while this audit was in flight</strong> and are marked resolved below. What remains is a
+  <strong>live policy question</strong>: <code>category/air-fryers.html</code> renders dated price and rating columns whose only citation is an
+  <em>Amazon search page</em> — a route the Program Policies clause the repo itself quotes does not list — while <code>products.html</code> shows the
+  same three products with those cells <strong>blank</strong>. Two pages, one build, two pictures.</p>
+</div>
+
+<div class="grid">
+  <div class="stat"><div class="n">114</div><div class="l">HTML pages scanned</div></div>
+  <div class="stat"><div class="n">48</div><div class="l">Registered official sources</div></div>
+  <div class="stat ok"><div class="n">0</div><div class="l">Rows missing a source</div></div>
+  <div class="stat ok"><div class="n">0</div><div class="l">Broken links, tree-wide</div></div>
+  <div class="stat ok"><div class="n">0</div><div class="l">Price pages lacking disclosure</div></div>
+  <div class="stat warn"><div class="n">10</div><div class="l">Duplicate source URLs</div></div>
+</div>
+
+<h2>1. Live re-verification of the three submitted links</h2>
+<p>Each row was fetched today; nothing in this table is carried over from another session's record. Ratings,
+review counts and commission rates are <span class="badge unv">unverified</span> here because the fetcher's upstream
+errors prevented a second read today — they are listed as open in section 5 rather than copied forward.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Submitted link</th><th>Code length</th><th>Direct <code>/dp/</code> lookup</th><th>Where the link actually goes</th><th>Price on the listing today</th><th>Official source</th></tr></thead>
+<tbody>
+<tr><td><code>link.amazon/B04G1MEwY</code></td><td>9 chars — not an ASIN</td><td>Page Not Found</td><td><code>dp/B0CDY277D3</code> — CHEFMAN 6 Quart Dual Basket Air Fryer</td><td>$79.93 · In Stock · “$39.97 per count”</td><td><a href="https://link.amazon/B04G1MEwY">short link</a> · <a href="https://www.amazon.com/dp/B0CDY277D3">listing</a> · <a href="https://www.amazon.com/dp/B04G1MEwY">/dp/ check</a></td></tr>
+<tr><td><code>link.amazon/B02NbDxp3</code></td><td>9 chars — not an ASIN</td><td>not re-read today</td><td><code>dp/B09B7SB46R</code> — Emeril Lagasse 26QT French Door Air Fryer Oven</td><td>$149.99 · In Stock · free delivery Thu 19 Nov</td><td><a href="https://link.amazon/B02NbDxp3">short link</a> · <a href="https://www.amazon.com/dp/B09B7SB46R">listing</a></td></tr>
+<tr><td><code>link.amazon/B00hJ57DV</code></td><td>9 chars — not an ASIN</td><td>not re-read today</td><td><code>dp/B08DKYBTPH</code> — Chefman Air Fryer 8 Qt TurboFry 4-in-1</td><td>$79.91 · In Stock</td><td><a href="https://link.amazon/B00hJ57DV">short link</a> · <a href="https://www.amazon.com/dp/B08DKYBTPH">listing</a></td></tr>
+<tr><td colspan="6">Why 9 characters fails: Amazon defines an ASIN as “a unique <strong>10-character</strong> alphanumeric code assigned to every product listed in the Amazon store”. The redirect target is <em>stable</em> (same three ASINs on every fetch since 2026-11-13) but the <code>btn_ref=srctok-…</code> token is <strong>not</strong> — three different tokens in four fetches, so tokenised URLs must not be used as citations (flag <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">03-F-05</a>). Source: <a href="https://sell.amazon.com/blog/what-is-an-asin">Sell on Amazon — What is an ASIN</a>.</td></tr>
+</tbody>
+</table></div>
+<p class="muted small">The dollar figures above are <strong>dated observations captured for verification</strong> (2026-11-14), not offers and not a
+price feed — the same distinction the site applies to <code>category/air-fryers.html</code>, and the reason 03-F-04 asks the owner to rule on
+whether a dated snapshot may appear in a rendered table column at all. Amazon&rsquo;s own wording is
+&ldquo;Product prices and availability may vary from time to time&rdquo;
+(<a href="https://affiliate-program.amazon.com/help/operating/policies">Program Policies</a>).</p>
+
+<h2>2. Policy and commission facts, re-read today</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Point the site relies on</th><th>What the official page said on 2026-11-14</th><th>Consequence</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Standard rates are public, and “Kitchen” is 4.50 %</td><td>Table 1 rendered without sign-in: Luxury Beauty 10.00 %; <strong>Physical Books, Kitchen, Automotive 4.50 %</strong>; Toys, Furniture, Home … 3.00 %; All Other Categories 4.00 %; Gift Cards / Alcoholic Beverages … 0.00 %</td><td>Category rates are publishable; a per-listing rate is not</td><td><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ">Standard Commission Income Statement</a></td></tr>
+<tr><td>Which category applies to these listings</td><td>Breadcrumb: Home &amp; Kitchen › Kitchen &amp; Dining › Small Appliances › Fryers › Air Fryers (node 17659096011). Table 1 maps <em>categories</em>, never browse nodes</td><td>4.50 % vs 3.00 % cannot be chosen without guessing — commission stays blank (<a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/flags.json">FLG-021</a>)</td><td><a href="https://www.amazon.com/dp/B0CDY277D3">the listing</a> · <a href="https://affiliate-program.amazon.com/help/operating/schedule">account rate card (sign-in)</a></td></tr>
+<tr><td>The disclosure sentence is mandatory</td><td>Operating Agreement header “<strong>Updated:</strong> October 15, 2025”; §1 requires “tagged” Special Links; §2 reserves the right to “permanently … cease payment of … any and all commission income … without notice”</td><td>Omission is an account-level risk, not a style choice</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement</a></td></tr>
+<tr><td>Where a disclosure has to sit</td><td>FTC: “Place it so it’s <strong>hard to miss</strong>”; “likely to be missed if they appear … at the end of posts or videos, or anywhere that requires a person to click MORE”; “Don’t mix your disclosure into a group of hashtags or links”; “You can’t talk about your experience with a product you haven’t tried”</td><td>A footer or a separate compliance page is not enough — see flag 03-F-02</td><td><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers">FTC Disclosures 101 (Nov 2019)</a></td></tr>
+<tr><td>How a price may be shown</td><td>Program Policies, as captured in the repo’s own register: a Site “may only show prices and availability if (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API …”</td><td>A scraped snapshot in a JSON file is neither route; root pages correctly keep price blank</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Program Policies</a></td></tr>
+<tr><td>Whether route (b) is even open</td><td>Creators API needs “at least 10 qualifying sales within the past 30 days”; PA-API 5 “has been deprecated and is being replaced by the Creators API”</td><td>No compliant automatic price feed for this account yet — flag 03-F-04</td><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction">Creators API intro</a> · <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation">PA-API 5 deprecation</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>3. Whole-tree audit</h2>
+<p>Generated by <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/audit/audit.py"><code>sessions/03bbd050/audit/audit.py</code></a>
+(read-only; report <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/audit/audit-report.json"><code>audit-report.json</code></a>).
+It re-derives the project’s own invariants from the tree instead of trusting the site’s checkers.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Check</th><th>Result</th><th>Reading</th><th>Proof</th></tr></thead>
+<tbody>
+<tr><td>Table rows with no source of any kind</td><td><span class="badge ok">0</span></td><td>Every product row cites its own <code>S</code>-id into the register</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/products.json">data/products.json</a></td></tr>
+<tr><td>Blank fields that are not flagged</td><td><span class="badge ok">0</span></td><td>All 36 unverifiable cells carry a FLG reference</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/flags.json">data/flags.json</a></td></tr>
+<tr><td>Broken internal links, outside <code>archive/</code></td><td><span class="badge ok">0</span> of 114 pages</td><td>Navigation is intact across all four site generations</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/actions">repo</a></td></tr>
+<tr><td>Broken internal links inside <code>archive/</code></td><td><span class="badge ok">0</span> (was 15, in 5 pages)</td><td>Repaired by <a href="https://github.com/kanlerxz87-cyber/Zone3/commit/97bde69">PR #31 “archive link repair”</a>; my re-run finds none</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/tree/main/archive">archive/</a></td></tr>
+<tr><td>Conflict markers in tracked files</td><td><span class="badge ok">0</span></td><td>One was committed mid-rebase at 10:18 UTC by this session and removed before any push landed it</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">board log “Conflict/handling”</a></td></tr>
+<tr><td>Secret-pattern scan</td><td><span class="badge ok">0</span></td><td>No AWS keys, private keys, <code>ghp_</code> or Slack tokens</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/.gitignore">.gitignore</a></td></tr>
+<tr><td>Duplicate URLs under different source IDs</td><td><span class="badge warn">10 groups</span> (was 2)</td><td>e.g. <code>S11</code>/<code>S52</code>/<code>S55</code> for the same short link, <code>S02</code>/<code>S30</code>/<code>S50</code> for Program Policies (flag 03-F-08)</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/sources.json">data/sources.json</a></td></tr>
+<tr><td>Re-registered source pointing at a third-party site</td><td><span class="badge ok">1, correctly labelled</span></td><td><code>S17</code> = <em>linktw.in</em>, “NOT an Amazon source … Not used as a fact” — the exclusion works</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/sources.json">data/sources.json</a></td></tr>
+<tr><td>Pages with a <code>$</code> table cell that also name one of the three listings</td><td><span class="badge bad">17</span></td><td>10 under <code>/sessions/3c886b62/</code>, 6 under <code>/docs/</code>, plus <code>dashboard.html</code> (an explicit “$0.00 · price unverified” KPI — benign). 15 of the 17 lack the disclosure sentence.</td><td>flags <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">03-F-02 / 03-F-03</a></td></tr>
+<tr><td>Root flat build: prices in rendered tables</td><td><span class="badge warn">split</span></td><td><code>data/products.json</code> keeps <code>price</code>/<code>rating</code>/<code>review_count</code> = <code>null</code>, and <code>products.html</code>, <code>pricing.html</code>, <code>reviews.html</code>, <code>index.html</code> publish none — but <code>category/air-fryers.html</code> renders “USD 79.93 (observed 2026-11-14; list USD 99.99)” style columns from the side block <code>observed_2026_11_14</code> (flag 03-F-14)</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/category/air-fryers.html">category/air-fryers.html</a></td></tr>
+<tr><td>New <code>marketing/</code> section (7 SEO pages, PR #34)</td><td><span class="badge ok">clean</span></td><td>Disclosure on every page, no prices, no ratings, 0 broken links</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/tree/main/marketing">marketing/</a></td></tr>
+<tr><td><code>sitemap.xml</code> coverage</td><td><span class="badge warn">35 listed / 3 unlisted</span></td><td>Improved from 16/13; still missing <code>dashboard/index.html</code>, <code>marketing/index.html</code>, <code>marketing/briefs.html</code> (open item <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">D-F-05</a>)</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sitemap.xml">sitemap.xml</a></td></tr>
+<tr><td>Generator idempotency</td><td><span class="badge ok">no diff on rebuild</span></td><td><code>scripts/build_site.py</code> then <code>git status</code> stays clean — the earlier drift finding stays closed</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py">scripts/build_site.py</a></td></tr>
+<tr><td>Site checkers</td><td><span class="badge ok">all four green</span></td><td><code>check_site.py</code> OK · <code>verify_site.py</code> VERIFY PASS · <code>link_report.py --strict</code> PASS · <code>sessions/3c886b62/tools/check_links.py</code> OK</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/check_site.py">scripts/check_site.py</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>4. Flags raised by this session</h2>
+<p>Full text with reproduction commands: <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/findings.md"><code>findings.md</code></a>.
+All are non-blocking; they are published so they can be reviewed after the site is live.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Sev</th><th>Finding</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>03-F-02</td><td><span class="badge ok">Resolved</span> <span class="badge bad">was High</span></td><td>Raised against <code>58d2744</code>: 10 pages there rendered price cells with no disclosure sentence on 15 of 16 pages. <strong>Fixed while this audit was in flight</strong> by <a href="https://github.com/kanlerxz87-cyber/Zone3/commit/97bde69">PR #31</a>; my re-run finds 0 of 21 price-bearing pages without the exact sentence</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">OA</a> · <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers">FTC</a></td></tr>
+<tr><td>03-F-03</td><td><span class="badge ok">Resolved</span> <span class="badge bad">was High</span></td><td>Raised against <code>58d2744</code>: <code>/docs/</code> used “As an Amazon Associate <strong>we</strong> earn…”. <strong>Fixed by PR #31</strong> — <code>docs/index.html</code> and <code>docs/products.html</code> now read “<strong>I</strong> earn from qualifying purchases.”, confirmed by grep</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement</a></td></tr>
+<tr><td>03-F-04</td><td><span class="badge warn">Medium</span></td><td>A captured price is not a permitted display route (Amazon-served link or Creators API), and the API route needs 10 sales/30 days while PA-API 5 is deprecated. <code>data/products.json</code> correctly keeps <code>price: null</code> — but <code>category/air-fryers.html</code> and <code>sources.html</code> now render dated price strings cited to <code>S46–S48</code>, which are <em>Amazon search pages</em>. Owner decision needed (with 03-F-14)</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Program Policies</a></td></tr>
+<tr><td>03-F-05</td><td><span class="badge warn">Medium</span></td><td>Cited <code>final_url</code> values pin a <code>btn_ref=srctok-…</code> token that changes on every fetch, so those citations cannot be re-opened and matched</td><td><a href="https://www.amazon.com/dp/B0CDY277D3">observed target</a> · <a href="https://link.amazon/B04G1MEwY">short link</a></td></tr>
+<tr><td>03-F-06</td><td><span class="badge warn">Medium</span></td><td>Browse node ≠ rate-card category: Kitchen 4.50 % vs Home 3.00 % is unresolvable from public pages, so per-listing commission stays blank</td><td><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ">Table 1</a></td></tr>
+<tr><td>03-F-07</td><td><span class="badge warn">Medium</span></td><td>The submitted <code>link.amazon/&lt;code&gt;</code> hop is a display link, not a monetisation link; a Redirecting Link can earn nothing, and no Special Link with the owner’s tag exists yet</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Program Policies / CIS</a></td></tr>
+<tr><td>03-F-08</td><td><span class="badge">Low</span></td><td>Two source IDs per URL (<code>S02</code>/<code>S30</code>, <code>S16</code>/<code>S32</code>) count one document as two sources</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/sources.json">data/sources.json</a></td></tr>
+<tr><td>03-F-09</td><td><span class="badge">Low</span></td><td><code>tools/link_report.py</code> still prints “rate card is behind Associates sign-in” although Table 1 is public</td><td><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ">Table 1</a></td></tr>
+<tr><td>03-F-10</td><td><span class="badge">Low</span></td><td>Two source registers on one site use colliding IDs (<code>S1…S12</code> in the sub-site vs <code>S01…S45</code> at root)</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/3c886b62/data/sources.json">sessions/3c886b62/data/sources.json</a></td></tr>
+<tr><td>03-F-11</td><td><span class="badge">Low</span></td><td><code>sitemap.xml</code> lists 16 of 29 nav-reachable pages; <code>404.html</code> has no <code>&lt;h1&gt;</code></td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sitemap.xml">sitemap.xml</a></td></tr>
+<tr><td>03-F-12</td><td><span class="badge ok">Info</span></td><td>Probes that came back clean (no secrets, no markers, 0 unsourced rows, 0 unflagged blanks, <code>marketing/</code> compliant) — recorded so the audit shows its negatives</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/audit/audit-report.json">audit-report.json</a></td></tr>
+<tr><td>03-F-13</td><td><span class="badge warn">Medium</span></td><td>The source register has holes where the pages cite: <code>S33–S39</code> are referenced from <code>category/air-fryers.html</code> and rendered as link labels, but are absent from <code>data/sources.json</code> (48 ids, jumping <code>S32 → S40</code>), so the register cannot confirm what those rows rest on</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/sources.json">data/sources.json</a></td></tr>
+<tr><td>03-F-14</td><td><span class="badge warn">Medium</span></td><td>One build, two pictures: for the same three products <code>products.html</code> shows price/rating <strong>blank</strong> while <code>category/air-fryers.html</code> shows dated values from the side block <code>observed_2026_11_14</code> — a reader cannot tell which is the site&rsquo;s position</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/products.json">data/products.json</a></td></tr>
+<tr><td>03-F-11</td><td><span class="badge ok">partly resolved</span></td><td>Archive link repair and sitemap growth landed (0 broken, 35 listed); still open: 3 unlisted nav pages and <code>404.html</code> without an <code>&lt;h1&gt;</code> — 33 pages tree-wide have zero or multiple <code>&lt;h1&gt;</code> (17 archive, 13 in the sub-site, 3 root stubs)</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/404.html">404.html</a></td></tr>
+<tr><td>03-F-01</td><td><span class="badge ok">Info</span></td><td>Process: four sessions on 2026-11-14 independently reused the <code>E-</code>/<code>F-</code> task-ID prefixes on the shared board, so an ID alone no longer identifies a claim</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">COORDINATION.md</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>5. Open because it could not be confirmed today</h2>
+<p>Recorded as gaps rather than as verified facts. Each was read by another session on 2026-11-14 and is linked so it can be
+re-checked by hand.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Status for this audit</th><th>Where to check it</th></tr></thead>
+<tbody>
+<tr><td>Operating Agreement §5 verbatim disclosure sentence</td><td><span class="badge unv">not re-read today</span> (fetcher upstream error on the second chunk)</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">affiliate-program.amazon.com/help/operating/agreement</a></td></tr>
+<tr><td>Program Policies body clauses (price display, 24-hour cache, 6(t) reviews, 6(w) shorteners, 6(y) price tracking)</td><td><span class="badge unv">not re-read today</span> — only the repo’s captured quote was used</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">affiliate-program.amazon.com/help/operating/policies</a></td></tr>
+<tr><td>Star ratings and review counts for the three listings</td><td><span class="badge unv">not re-read today</span>; not published on root pages either</td><td><a href="https://www.amazon.com/dp/B09B7SB46R">listing 2</a> · <a href="https://www.amazon.com/dp/B08DKYBTPH">listing 3</a></td></tr>
+<tr><td>Per-account commission rate card (the only authoritative category mapping)</td><td><span class="badge unv">behind sign-in</span>; owner must read it in-account</td><td><a href="https://affiliate-program.amazon.com/help/operating/schedule">affiliate-program.amazon.com/help/operating/schedule</a></td></tr>
+<tr><td>Clicks, conversions, revenue</td><td><span class="badge unv">no live campaign</span>; the ledger is empty by design</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/z3/campaign-metrics.json">data/z3/campaign-metrics.json</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>6. Change requests (files owned by other sessions)</h2>
+<p>Written to the board rather than applied: <code>data/products.json</code>, the generators, the root pages, <code>docs/**</code>
+and <code>sessions/3c886b62/**</code> belong to sessions in flight (PR #26) or already merged by other owners.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Owner</th><th>Request</th><th>Basis</th></tr></thead>
+<tbody>
+<tr><td>03-CR-1</td><td><code>data/products.json</code></td><td>Keep price / rating / review-count out of rendered tables, or populate from a live Creators API response with an adjacent date/time stamp</td><td>03-F-04 · <a href="https://affiliate-program.amazon.com/help/operating/policies">Policies</a></td></tr>
+<tr><td>03-CR-2</td><td><code>scripts/build_site.py</code></td><td>Fail the build when a cell holds a <code>$</code> amount or star rating without a Creators-API/Amazon-served citation plus <code>observed &lt;date&gt;</code></td><td>03-F-04 · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py">generator</a></td></tr>
+<tr><td>03-CR-3</td><td><code>data/sources.json</code></td><td>Deduplicate by URL or record <code>same_page_as</code> so one document is not counted twice</td><td>03-F-08 · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/sources.json">register</a></td></tr>
+<tr><td>03-CR-4</td><td><code>index.html</code></td><td>Cite the 10-character ASIN definition beside the landing page’s “short-link IDs, not ASINs” sentence</td><td>03-V §A · <a href="https://sell.amazon.com/blog/what-is-an-asin">Sell on Amazon</a></td></tr>
+<tr><td>03-CR-5</td><td>integration session</td><td>Give this audit one nav slot beside “Full audit (16 pages)”</td><td>reachability · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/index.html">index.html</a></td></tr>
+<tr><td>03-CR-6</td><td><code>sessions/3c886b62/**</code></td><td>Add the exact disclosure sentence to all 16 pages, or drop price cells from the 11 that show them</td><td>03-F-02 · <a href="https://affiliate-program.amazon.com/help/operating/agreement">OA §5</a></td></tr>
+<tr><td>03-CR-7</td><td><code>docs/**</code></td><td>“we earn” → “I earn”, or state why the plural is used</td><td>03-F-03 · <a href="https://affiliate-program.amazon.com/help/operating/agreement">OA §5</a></td></tr>
+<tr><td>03-CR-8</td><td><code>sessions/3c886b62/**</code></td><td>Namespace that register’s IDs (<code>S1</code> → <code>3c6-S1</code>) to end the collision</td><td>03-F-10 · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/3c886b62/data/sources.json">register</a></td></tr>
+<tr><td>03-CR-9</td><td><code>tools/link_report.py</code></td><td>Remove the stale “rate card is behind sign-in” line for per-category commission</td><td>03-F-09 · <a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ">Table 1</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>7. How to reproduce this audit</h2>
+<pre><code>git clone https://github.com/kanlerxz87-cyber/Zone3 &amp;&amp; cd Zone3
+python3 sessions/03bbd050/audit/audit.py --root . --out /tmp/audit.json
+python3 scripts/build_site.py &amp;&amp; git status --porcelain   # expect: no diff
+python3 scripts/check_site.py
+python3 tools/verify_site.py
+python3 tools/link_report.py --strict
+for f in sessions/3c886b62/*.html; do printf "%s %s\n" "$f" "$(grep -c 'As an Amazon Associate I earn' $f)"; done
+grep -rL 'As an Amazon Associate I earn' docs/*.html</code></pre>
+
+<div class="card">
+  <p><strong>What this session changed:</strong> only <code>sessions/03bbd050/**</code> and its own part of <code>COORDINATION.md</code>.
+  No value on any published table was filled in, estimated, or inherited from a search snippet; anything that could not be
+  confirmed from an official source today is blank and listed in section 5. Full record:
+  <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/verification.md">verification.md</a> ·
+  <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/findings.md">findings.md</a> ·
+  <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">board Part 03</a>.</p>
+</div>
+
+</main>
+<footer>
+  <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+  <p class="muted">CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.
+  Audit run 2026-11-14 against <code>main@58d2744</code>. Tooling: <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/audit/audit.py">audit.py</a> ·
+  <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions/03bbd050/audit/audit-report.json">audit-report.json</a>.</p>
+</footer>
+</body>
+</html>
