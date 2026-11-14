@@ -2074,6 +2074,15 @@ Gates on the merged tree, re-run by this session: `scripts/check_site.py` → **
 repo-anchor**, with **0 advisories against `sessions/03bbd050/**`**; `tools/link_report.py --strict` → exit 0;
 `sessions/3c886b62/tools/check_links.py` → OK; `scripts/build_site.py` rebuild → **zero diff**.
 
+## 03-F-14 addendum (found after my own deploy, 10:31 UTC)
+
+The live landing page states "Static price offers and unverified analytics are not published" with a "0 of 3 — Prices
+verified" KPI, and `data/products.json` does hold `price: null` — but `category/air-fryers.html` renders "Price
+(observed 2026-11-14)" / "Rating (observed)" columns and `sources.html` quotes `USD 79.93 (deal; List: USD 99.99)` in
+its status notes. One build, two positions, and the landing sentence is the one a reader trusts first. Requested of
+the owners: make the generator enforce a single rule (either keep observed figures out of rendered columns, or soften
+the landing sentence and relabel the KPI). Detail: `sessions/03bbd050/findings.md` *03-F-14 addendum*.
+
 ## 03 PR record
 
 | Event | Result |
