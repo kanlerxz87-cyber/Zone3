@@ -848,7 +848,19 @@ Pre-merge gates, all green on the final commit of this branch:
 | Internal links, all 57 pages | 0 broken outside `archive/`. The 15 in `archive/c4e71983/` are pre-existing and stay inside a verbatim archive that this board's rule says not to edit; flagged as V-F5 rather than silently rewritten. |
 | Secrets scan | none: no keys, tokens or Associates tags in any tracked file |
 
-Merge record: see the row appended below once the PR is merged.
+### V-T5 — merge record and Pages deploy (done)
+
+| Item | Value |
+|---|---|
+| Pull request | **[#18](https://github.com/kanlerxz87-cyber/Zone3/pull/18)** — `arena/b8beb448-zone3` → `main` |
+| Merge | **MERGED 2026-11-14T09:50:10Z** via `gh pr merge 18 --merge`, no approval waited for, per the brief |
+| Merge commit | `4b7979790da97c990253baf39033a9321e403a21` |
+| Checks before merge | PR `MERGEABLE` / `CLEAN`; both generators clean-rebuild; `check_site.py` OK; `verify_site.py` PASS |
+| GitHub Pages | build for `4b79797` → **built** (polled via the Pages API) |
+| Live verification | `index.html` serves the new *Re-verification performed 2026-11-14* table (10 rows, each source-linked); `flagged.html` serves V-F1…V-F5; the flag counter reads 26 |
+| Follow-up | **[#19](https://github.com/kanlerxz87-cyber/Zone3/pull/19)** — **MERGED 2026-11-14T09:51:13Z**, merge commit `ed6e33bd643713f98a756a7136fd45c8f547f196`. Fixes a spacing defect found *on the live page after #18*: source-less flags rendered as `repo(observed…`. Pages build → **built**; re-checked live, now `repo — observed in this repository, so no external source is cited`. |
+
+Both merges are additive; no session's file was removed. The live site is https://kanlerxz87-cyber.github.io/Zone3/.
 
 | Item | Value |
 |---|---|
