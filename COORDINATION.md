@@ -1695,3 +1695,93 @@ touching 23 shared root files (`index.html`, `products.html`, `pricing.html`, `r
 `scripts/build_site.py`, `scripts/check_site.py`, `sitemap.xml`, `marketing.html`, `category/air-fryers.html`, …).
 Per the no-clobber rule this session **does not** merge, close or edit that PR. If it lands on `main` first, this branch rebases onto it
 and both sessions' work is kept. If it is still open when this session merges, the merge is done by rebasing/keeping both sides in full.
+
+### E-T2 — Repo review, line by line (done)
+
+Scope: the whole checked-in tree at base `8043815`, re-checked after the rebase onto `1336828`
+(PRs #28–#37, including PR #26 from session `9fef7647` and the `marketing/` section).
+
+| Check | Result |
+|---|---|
+| Merge markers outside `archive/` | none (one leftover `>>>>>>>` line from the rebase was removed in this session) |
+| Broken internal links outside `archive/` | **0** (scanned every `href`/`src` in every checked-in HTML file) |
+| Prices, star ratings or review counts rendered on any page | **0** — including the new `marketing/` section, which was checked mechanically for `$` amounts and rating strings. FLG-022 holds everywhere. |
+| `data/products.json` identity fields | `asin`, `product_name`, `brand`, `price`, `rating`, `review_count` all `null`; `confirmed_as_submitted_product: false` on all three. The `a86f1d09` identity change was **not** re-applied (FLG-027). |
+| Duplicate source IDs | `S30` has the same URL as `S02`; `S31` is `S06` plus an `#itemidtype-parameter` anchor. Pre-existing, already recorded in FLG-027. Not renumbered here — renumbering would change every citation on the site. |
+
+### E-T3 — Live re-verification against official sources (done; all fetched 2026-11-14)
+
+Every row of the [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html) was read
+from the page it cites on 2026-11-14. Summary of the pass:
+
+| ID | Source | Result |
+|---|---|---|
+| S08, S09, S10 | `amazon.com/dp/<9-char code>` | **HTTP body = "Page Not Found"** for all three. No change from 2026-11-13. |
+| S11, S12, S13 | `link.amazon/…` | redirect re-traced: → `B0CDY277D3` (CHEFMAN 6 Qt dual basket), → `B09B7SB46R` (Emeril Lagasse 26QT), → `B08DKYBTPH` (Chefman TurboFry 8 Qt). Identical to 2026-11-13. |
+| S14, S15, S16 | destination pages | breadcrumb re-read: Home & Kitchen `1055398` › Kitchen & Dining `284507` › Small Appliances `289913` › Fryers `17659095011` › Air Fryers `17659096011` |
+| S01 | Operating Agreement | chunks 0–3 of 4. §5 disclosure sentence **verbatim**; §6 material-breach clause verbatim; Schedule 1 = US / amazon.com only |
+| S02 | Program Policies | chunks 0–10 of 11. Verified verbatim: PR 2(b) tag + price/availability + misleading-claims + comparison-price rules; §4 offline ban; §5 ML-models ban; §1 original content; 6(s), 6(t), 6(v), 6(w), 6(y), 6(z); CIS §1 (24 h session, 89-day cart, 180-day ship/pay); CIS 2(b); CIS 2(e) Redirecting Link; CIS §6 (~60 days; Payment Minimum Chart 10/10–2000/100/15 USD); IP License §1 (data mining + LLM/ML ban), 2(b), 2(e), 2(h), 2(i), 2(j), 2(k); Agent Terms 4(c); Influencer §3(c). Header reads "Updated: April 14, 2026". |
+| S25 | Standard Commission Table 1 | **Physical Books, Kitchen, Automotive | 4.50 %**; Luxury Beauty 10.00 %; Toys/Home/Pets 3.00 %; All Other 4.00 %. Public, no sign-in. |
+| S26 | Onsite Table A | Kitchen **1.25 %** |
+| S03 | `/help/operating/schedule` | still redirects to Amazon sign-in (per-account custom rate card) — negative evidence only |
+| S04 | Creators API introduction | 4 operations; "at least 10 qualifying sales within the past 30 days" |
+| S05 | PA-API 5 deprecation | deprecated, replaced by Creators API; HTTP 403 `AccessDeniedException` |
+| S06 | Creators API GetItems | "ASIN \| Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon." |
+| S45 | Sell on Amazon, ASIN article | "a unique 10-character alphanumeric code assigned to every product listed in the Amazon store" (dated Jun 4, 2025). Registered on `main` before this session merged; reused rather than duplicated. |
+| S28 | Account dormancy | "180 days to refer a sale"; withdrawal after 180 days without qualifying sales |
+| S29 | Application review | "at least three within the first 180 days"; "personal orders do not qualify"; ~10 posts |
+| S43 | Best Sellers in Air Fryers | #1 Ninja `B0CSZ7WBYW`, #2 bella `B0CYJDVT31`, #3 Cosori `B0C33CHG99`, #4 Chefman `B0CNY1F31S`, #5 Cuisinart `B0GVVJZDQV`, #6 Chefman `B0GTBN7CS2` — identical to session `51fcb80d`'s capture |
+| S44 | FTC Endorsement Guides FAQ | "revised in 2023"; affiliate section: disclosure "clearly and conspicuously", "the closer … the better", "'affiliate link'" and "'buy now'" alone are not adequate |
+| S07, S24 | FTC Disclosures 101 / topic hub | "Place it so it's hard to miss."; "You can't talk about your experience with a product you haven't tried."; 2023 revision |
+
+**Result: no fact was found false; no value was inferred or filled. Unverifiable cells remain blank and flagged.**
+
+Corrections made (each published as a flag so the change is auditable):
+
+| Flag | Correction |
+|---|---|
+| E-F-01 | The dashboard row "ASIN is a 10-character identifier" claimed a second official source without citing it. It now cites S45 and the quote is stored as PF-52. |
+| E-F-02 | Root `EXECUTIVE-SUMMARY.md` was stale (another session's branch header, stale counts) and repeated FLG-003's overstated wording which V-F2 had already corrected. Rewritten against the current register. |
+| E-F-04 | V-F3 (`/docs/` orphaned) and V-F4 (sitemap partial) closed: nav entry added; `scripts/build_sitemap.py` now produces the sitemap from the tree (63 pages); `tools/build_site.py` made a fixpoint so it no longer de-lists pages it does not own. |
+| E-F-05, E-F-06 | Wording/data inconsistencies left for the owner (not changed: the data layer is correct). |
+| E-F-07 | PR #26 overlap recorded; it merged on `main` first and this branch rebased onto it. |
+
+Not raised: **E-F-03** — `tools/link_report.py`'s "rate card is behind Associates sign-in" line had
+already been corrected on `main` by another session before this branch merged.
+
+### E-T4 — Executive summary (done)
+
+`EXECUTIVE-SUMMARY.md` rewritten as this session's deliverable against the current register
+(48 sources, 51 policy facts, 49 flags). Key findings are also rendered, with per-claim source links,
+on `executive-summary.html`.
+
+### E-T5 — Build, checkers, link audit (done, all green on the merged tree)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 12 pages, 3 products, 48 sources, 49 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 68 pages · 1,117 table rows · 841 with official source · 217 with flag · 15 repo anchor** |
+| `python3 tools/link_report.py --strict` | exit 0, no dangling refs |
+| `python3 scripts/build_sitemap.py --check` | covers all 63 live pages |
+| `python3 scripts/build_site.py` then `python3 tools/build_site.py` then `python3 scripts/build_site.py` | stable fixpoint; `sitemap.xml` coverage check passes after each |
+| Broken internal links, whole tree outside `archive/` | **0** |
+
+`verification.html` was added to `check_site.py`'s `PAGES`/`TABLE_PAGES`, so its rows are gated by the
+"last cell must link to an official source" rule like every other table on the site.
+
+### E-T6 — Flagged for Review page (done)
+
+`flagged.html` renders all 49 flags with severity, detail, the action needed and a source link per row.
+The six `E-F-…` entries added by this session are on it. `_E-F-05_` and `_E-F-06_` are owner decisions
+and were deliberately **not** changed, because the underlying data is correct.
+
+### E-T7/E-T8/E-T9 — PR, merge, Pages
+
+Recorded below after the merge (the PR link cannot be written before the PR exists).
+
+### E Conflict log
+
+| Time (UTC) | What happened | Resolution |
+|---|---|---|
+| 2026-11-14 10:2x | `git pull --rebase origin main`: `main` advanced `8043815` → `1336828` (PRs #29–#37, incl. PR #26 from `9fef7647`). Content conflict in `COORDINATION.md` (two sessions appended a Part at the same place). | Resolved by keeping **both sides in full**, upstream first. One leftover `>>>>>>>` marker line was removed in a follow-up commit. Nothing from any session discarded. |
+| 2026-11-14 10:2x | `git stash pop` after the rebase: 19 files conflicted, because `main` had moved under almost every file this session touched. | Rather than hand-merge 19 files (risking a silent loss of another session's edits), the stash was left in place and the work was **re-applied from scratch on top of current `main`**, re-checked line by line. Two items became unnecessary because `main` had already fixed them (`tools/link_report.py` E-F-03; `tools/verify_site.py` V5, fixed by session `b90c5685`). `S45` already existed on `main` with the same URL this session had independently registered, so it was reused instead of duplicated. |

@@ -36,9 +36,11 @@ PAGES = [
     # Added on integration 2026-11-14 (session b90c5685): PR #26's facts-only marketing page,
     # reconciled with main's marketing/ section and re-homed under it.
     "marketing/briefs.html",
+    # Added by integration session edbd56a1 (2026-11-14): line-by-line verification log.
+    "verification.html",
 ]
 TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
-               "campaigns.html", "flagged.html", "sources.html"}
+               "campaigns.html", "flagged.html", "sources.html", "verification.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
     # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);

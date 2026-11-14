@@ -1212,7 +1212,16 @@ def main():
     flat = sorted({p.name for p in out.glob("*.html")})
     if (out / "category").is_dir():
         flat += sorted(p.relative_to(out).as_posix() for p in (out / "category").glob("*.html"))
-    sm_paths = sorted({_urlpath(v) for v in written.values()} | set(flat))
+    sm_paths = {_urlpath(v) for v in written.values()} | set(flat)
+    # INTEGRATION 2026-11-14 (session edbd56a1): /docs/, /sessions/ and /marketing/ are not
+    # covered by either generator's own list, so paths already in the sitemap are kept too.
+    # Without this the file shrinks on every rebuild; with it the sitemap is a fixpoint.
+    _prev = out / "sitemap.xml"
+    if _prev.exists():
+        for _m in re.finditer(r"<loc>https?://[^/]*/Zone3/([^<]*)</loc>",
+                              _prev.read_text(encoding="utf-8")):
+            sm_paths.add(_m.group(1))
+    sm_paths = sorted(sm_paths)
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f'  <url><loc>{SITE_ORIGIN}{SITE_BASE}/{p}</loc></url>\n' for p in sm_paths)
