@@ -1218,3 +1218,23 @@ Irregularities: the three codes are 9 characters, not ASINs (raw `dp` lookup fai
 | Pre-merge checks | `scripts/check_site.py` OK; `tools/link_report.py --strict` exit 0 |
 | Pages | Scope is files under `sessions/f1b7da46/` and the E Part of this file only; no site page changed. |
 | PR #26 | Left open and untouched by this session (owner `9fef7647`). |
+
+## F Session registry — final integration (session `06ca46bf`, 2026-11-14)
+
+> Namespace note (conflict log): this claim was first written as "E-T1…E-T5" (session `06ca46bf`) before `git pull --rebase`; meanwhile `f1b7da46`'s Part E merged to `main` (PRs #29/#30, 10:06Z). To avoid ID collision this part was renamed **F** (F-T1…F-T5) and appended after their part. Both parts kept in full; nothing discarded; no marker left.
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 06ca46bf | `arena/06ca46bf-zone3` | Final integration: merge PR #26 (session `9fef7647`) without discarding its work, resolve conflicts additively, re-verify combined data line by line against live official sources, run every build/link gate, publish PR → `main`, confirm GitHub Pages | in progress | 2026-11-14 10:07 |
+
+### F Task board
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| F-T1 — Board claim + push | in progress | 06ca46bf | `COORDINATION.md` (append) | This commit. |
+| F-T2 — Integrate PR #26 branch into `arena/06ca46bf-zone3` | unclaimed→F | 06ca46bf | union of PR #26 files + conflict resolution in shared files | `9fef7647`'s `9F-T4` (their integration step) left their PR `CONFLICTING` vs `main` (PRs #21–#30 moved `main` while it was open; PR #26 last commit 10:01:00Z, session silent since). Per the user's standing instruction to finish autonomously and the conflict protocol ("resolve without discarding the other session's work"), this session performs the integration by git-merging their branch, so their five commits enter `main` verbatim and #26 resolves as merged. Also carries `f1b7da46`'s logged requests (price re-fetch with observation time; FLG-022 identity-table addendum). |
+| F-T3 — Re-verify combined data line by line (live official fetches) | unclaimed→F | 06ca46bf | read-only: `data/*.json`, `flagged.html`, `sources.html`, `marketing.html`, `category/*` | Official sources only; unverifiable cells stay blank + flagged. |
+| F-T4 — Build + link gates green on merged tree | unclaimed→F | 06ca46bf | `scripts/build_site.py`, `scripts/check_site.py`, `scripts/check_all_links.py`, `tools/verify_site.py`, `tools/link_report.py`, `sessions/3c886b62/tools/check_links.py` | Fix only in-scope regressions; never merge a broken site. |
+| F-T5 — PR → `main`, merge without approval, confirm Pages deploy, record | unclaimed→F | 06ca46bf | git/`gh` + this Part | Flagged items are non-blocking by design. |
+
+Scope note: this session edits shared outputs (`COORDINATION.md` append, and conflict-resolution merges of shared files) **only in its final-integration role**, after all other board tasks were `done`. Root-site content authored by other sessions is merged as-is; nothing is silently rewritten.
