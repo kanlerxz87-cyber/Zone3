@@ -1129,3 +1129,20 @@ Not re-fetched this session (status carried from prior sessions' records, unchan
 ### D Sources used for this record (all official, fetched 2026-11-14 unless noted)
 
 S01–S03, S19, S25, S26, S28, S29 as listed in `data/sources.json` (same URLs); S04–S06 Creators API docs; S07, S24 ftc.gov; S08 + S11 amazon.com/link.amazon live responses; S22 GitHub Pages API (via `gh`, 2026-11-14). No third-party aggregator was used as evidence.
+
+### D Conflict log (protocol: resolve without discarding the other session's work)
+
+| Time (UTC) | What happened | Resolution |
+|---|---|---|
+| 2026-11-14 | `git pull --rebase origin main` before the PR: `main` had advanced `6bf308f` → `cfec2b3` (PRs #21–#25 from sessions incl. `b8beb448`, `a86f1d09`, `51fcb80d`). Content conflict in `COORDINATION.md` (both sides appended a Part at the same location). | Resolved by keeping **both sides in full**: main's Parts (incl. `b8beb448`, Part C `51fcb80d`) first, then this session's D Part. No marker left; `grep` for `<<<<<<<`/`>>>>>>>` clean; both parts asserted present by script before `git add`. Rebase then completed 3/3. Nothing from any session discarded. |
+| 2026-11-14 | Post-rebase re-check: `main`'s new commits had changed `scripts/build_site.py`, `scripts/check_site.py`, `tools/build_site.py` and root pages (register now 10 pages / 37 sources / 32 flags). | All checkers re-run on the merged tree — **all green** (see below). D-F-04 no longer reproduces: `python3 scripts/build_site.py` now rebuilds with **zero diff**, and `index.html` keeps both hand-added paragraphs — fixed on `main` by another session's generator update. Flag D-F-04 recorded as **resolved on main**. |
+
+### D Post-rebase integrity re-check (2026-11-14, merged tree)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 10 pages, 3 products, 37 sources, 32 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 58 pages · 922 table rows · 700 with official source · 163 with flag · 15 repo-anchor** |
+| `python3 tools/link_report.py --strict` | **PASS** (no dangling refs) |
+| `python3 sessions/3c886b62/tools/check_links.py` | **OK — no broken internal links, every data row has a source cell** |
+| `python3 scripts/build_site.py` rebuild idempotency | exit 0, **zero working-tree diff** |
