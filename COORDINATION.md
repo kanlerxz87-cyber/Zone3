@@ -3484,6 +3484,17 @@ Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `d
 - **C3-F-01 (sitemap drift, for the integration owner).** The committed `sitemap.xml` lacks five pages the build emits: `analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`. Not edited by this session (shared output).
 - **C3-F-02 (intent not established).** The short-link destinations are verified. Whether they match the requester's intended products is not confirmed by an official source. Already flagged in the repo; no change.
 
+## C3-T3 record — PR, merge and Pages deploy (2026-11-14, session c3dbcc40)
+
+| Event | Result |
+|---|---|
+| Pull request | [#73 — c3dbcc40: gate re-run, live re-verification of submitted links, sitemap drift log](https://github.com/kanlerxz87-cyber/Zone3/pull/73), `arena/c3dbcc40-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on `f618a53` (see C3-T1). |
+| Merge | **MERGED** 2026-11-14T19:02:10Z via `gh pr merge 73 --merge` (no approval waited). Merge commit `96ea74547cebb155075fcbdd6db8e3a8740623aa`. |
+| Pages | build for `96ea745` → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`). |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/flagged-for-review.html serves the Flagged for review page (66 entries). |
+| Irregularities | C3-F-01 (sitemap drift, integration owner) and C3-F-02 (short-link intent unconfirmed) logged above. |
+
 ---
 
 # PART — Session `d9828ec7` (branch `arena/d9828ec7-zone3`, base `f618a53`) — 2026-11-14
