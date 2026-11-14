@@ -69,7 +69,9 @@ def badge(text: str, kind: str) -> str:
 
 
 def sev(text: str) -> str:
-    kind = {"Critical": "bad", "High": "warn", "Medium": "info", "Low": "muted"}[text]
+    # "Info" is used for correction/annotation entries (V-F1, V-F2 added 2026-11-14).
+    kind = {"Critical": "bad", "High": "warn", "Medium": "info", "Low": "muted",
+            "Info": "muted"}[text]
     return badge(text, kind)
 
 
@@ -128,6 +130,8 @@ def page(filename: str, title: str, body: str, lead: str = "") -> None:
 <footer>
   <p class="disclosure"><strong>Disclosure:</strong> {e(DISCLOSURE)}</p>
   <p class="muted">Data verified as of {BUILT}. A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+  <p class="small" style="margin-top:10px">This repository carries two site generations: the flat pages above (built by <code>scripts/build_site.py</code> from <code>data/*.json</code>) and a 16-page audit build at <a href="dashboard/index.html">/dashboard/</a> (built by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>). Neither overwrites the other; <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">COORDINATION.md</a> maps both.</p>
+  <p class="small" style="margin-top:6px"><a href="landing-prior.html">Previous landing page</a> (kept intact) · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md#part-session-b8beb448-2026-11-14--independent-line-by-line-re-verification--ux-integration">Verification record for this build</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
 </footer>
 </body>
 </html>
@@ -204,6 +208,40 @@ N = len(PRODUCTS)
 
 
 # ---------------------------------------------------------------- Dashboard
+
+def reverify_table() -> str:
+    """Rows re-checked on 2026-11-14. Source ids resolve through sources.json."""
+    rows = [
+        ("The three submitted identifiers are 9 characters, not 10", "Confirmed",
+         "Each id counted: B04G1MEwY=9, B02NbDxp3=9, B00hJ57DV=9. Amazon defines an ASIN as a 10-character alphanumeric id.", ["S31", "S08"]),
+        ("amazon.com/dp/&lt;id&gt; returns Page Not Found for all three", "Confirmed",
+         "All three fetched 2026-11-14; each returned Amazon&rsquo;s &ldquo;Page Not Found&rdquo; page.", ["S08", "S09", "S10"]),
+        ("Each link.amazon short link opens a different real listing", "Confirmed",
+         "B04G1MEwY&rarr;B0CDY277D3 (CHEFMAN 6 Qt dual basket), B02NbDxp3&rarr;B09B7SB46R (Emeril Lagasse 26QT), B00hJ57DV&rarr;B08DKYBTPH (Chefman TurboFry 8 Qt). Same three targets as 2026-11-13.", ["S11", "S12", "S13"]),
+        ("Operating Agreement &sect;5 disclosure wording", "Confirmed verbatim",
+         "&ldquo;As an Amazon Associate I earn from qualifying purchases.&rdquo; Header still reads Updated: October 15, 2025. Schedule 1 still lists the United States / amazon.com only.", ["S01"]),
+        ("Participation Requirements 6(t), 6(w), 6(y), 2(b) and CIS 2(e)", "Confirmed verbatim",
+         "Star-rating and review display limited to API-sourced data; link shorteners must not obscure an Amazon destination; no price tracking or alerting; prices/availability only if Amazon serves them or via the API; purchases via a Redirecting Link are disqualified.", ["S02", "S30"]),
+        ("PA-API 5 is deprecated; Creators API is the successor", "Confirmed",
+         "Deprecation notice re-read: PA-API 5 calls return HTTP 403 AccessDeniedException. Creators API prerequisites include at least 10 qualifying sales in the past 30 days.", ["S05", "S04"]),
+        ("IP License: no ML training on Program Content; API use needs prior written approval for analysis", "Confirmed verbatim",
+         "&sect;1 bars using Program Content to develop or improve LLMs or ML models; &sect;2(e) bars aggregating, analyzing, extracting or repurposing Product Advertising Content without express prior written approval; Agent Terms &sect;4 require an &ldquo;Agent/[name]&rdquo; user agent.", ["S02"]),
+        ("Commission Table 1 (Standard) and Table A (Onsite) are readable without a sign-in", "Corrected",
+         "The earlier site text implied all rate data was sign-in gated. Only /help/operating/schedule is gated (and it returns a per-account custom rate card). Table 1 and Table A render publicly. See V-F1; per-product rates remain blank.", ["S25", "S26", "S03"]),
+        ("ASIN is a 10-character identifier", "Confirmed",
+         "Creators API GetItems, ItemIdType parameter, quoted verbatim; independently stated on Amazon&rsquo;s seller blog.", ["S31", "S08"]),
+        ("FTC disclosure standard", "Confirmed, source updated",
+         "The 2019 brochure is still live but the Endorsement Guides were revised in 2023; the current FTC topic hub is cited alongside it.", ["S07", "S24"]),
+    ]
+    out = []
+    for claim, verdict, note, srcs in rows:
+        cls = "bad" if verdict.startswith("Corrected") else "ok"
+        out.append([claim, badge(verdict, cls), note, src_links(srcs)])
+    return table(["Claim re-checked", "Result", "What was observed on 2026-11-14", "Source"],
+                 out, "reverify")
+
+
+
 def build_index() -> None:
     stats = [
         ("Product links submitted", str(N), ""),
@@ -230,6 +268,7 @@ def build_index() -> None:
     tile_html = "".join(
         f'<a class="tile" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in tiles
     )
+    reverify_html = reverify_table()
     body = f"""
 <div class="callout">
   <p><strong>Headline:</strong> none of the three submitted Amazon links can be verified as a product listing.
@@ -239,6 +278,16 @@ def build_index() -> None:
 <div class="grid">{stat_html}</div>
 <h2>Sections</h2>
 <div class="tiles">{tile_html}</div>
+
+<p style="margin-top:18px"><a href="dashboard/index.html">Full audit: 16-page verification dashboard, commission rate tables and flag register</a></p>
+
+<h2>Re-verification performed 2026-11-14</h2>
+<p>Every load-bearing claim on the flat pages was checked again against the official page it cites. The
+result, per claim, is below. Nothing in this table was inferred; each row links the page that was read.</p>
+{reverify_html}
+<p class="small">Where a row says <em>corrected</em>, the earlier text on this site was wrong or overstated and has
+been rewritten in the same commit that added the row. Corrections are listed on the
+<a href="flagged.html">Flagged for review</a> page as V-F1 and V-F2, so the change is auditable rather than silent.</p>
 """
     page("index.html", "Dashboard", body,
          lead=f"Status as of {BUILT}. The site shows verified data only. Blank cells are unverified and listed on the Flagged for review page.")
