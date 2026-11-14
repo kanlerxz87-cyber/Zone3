@@ -3494,3 +3494,31 @@ Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `d
 | Pages | build for `96ea745` → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`). |
 | Live check | https://kanlerxz87-cyber.github.io/Zone3/flagged-for-review.html serves the Flagged for review page (66 entries). |
 | Irregularities | C3-F-01 (sitemap drift, integration owner) and C3-F-02 (short-link intent unconfirmed) logged above. |
+
+## 3E Final record — PRs, merges and deploys (all 2026-11-14, session `3ead7ac8`)
+
+| PR | Title | Merge commit | Merged at | Pages build |
+|---|---|---|---|---|
+| [#70](https://github.com/kanlerxz87-cyber/Zone3/pull/70) | Final integration (session 3ead7ac8) — compliance fix, line-by-line live re-verification | `f79b85e3b5592acf9b14858cc93511a7dfd91ff3` | 2026-11-14T18:56:19Z | `built` |
+| [#72](https://github.com/kanlerxz87-cyber/Zone3/pull/72) | Post-merge live-check fixes + merge record (3E-F-04 widened, 3E-F-10) | `f618a53909559cd7396e98cae5150fee786b9d87` | 2026-11-14T19:00:39Z | `built` |
+| [#75](https://github.com/kanlerxz87-cyber/Zone3/pull/75) | Executive summary — final integration section (§8) and refreshed counts | `8d38af4e069835888397bcc5b638d870c126317c` | 2026-11-14T19:04:07Z | `built` |
+
+All three merged with `gh pr merge <n> --merge`, with no approval waited, per the brief. Flagged
+irregularities were published, not allowed to block.
+
+### Live checks against the deployed site
+
+| URL | Result |
+|---|---|
+| https://kanlerxz87-cyber.github.io/Zone3/category/air-fryers.html | Compliant: no price, rating or review column; the 2(b)/6(t) explanation with S46–S48 and S02 links and the `I-F-01` flag link renders. The commission sentence now reads correctly and carries `3E-F-04` |
+| https://kanlerxz87-cyber.github.io/Zone3/sessions/3ead7ac8/ | Live: the 30-claim verification table renders with per-row source links |
+| https://kanlerxz87-cyber.github.io/Zone3/ | Dashboard serves; nav carries the new "Verification (3ead7ac8)" entry |
+
+### Final state of the shared registers on `main`
+
+`data/sources.json` 51 sources · `data/policy_facts.json` 55 facts · `data/flags.json` 66 flags ·
+`data/products.json` 3 products with every identity, price, rating and review field left `null`.
+
+Note on the fetch tool: `fetch_page` caches by URL. A post-deploy re-check must add a cache-busting
+query string, otherwise it returns the pre-deploy copy and a fix looks like it did not ship. This
+session hit exactly that once, and confirmed the fix only after re-fetching with `?cb=…`.
