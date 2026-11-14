@@ -1,7 +1,7 @@
 {
   "retrieved": "2026-11-14",
   "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration.",
-  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page.",
+  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. | Integration 2026-11-14 (session 06ca46bf): S45-S53 preserved verbatim from session 9fef7647 (PR #26), then numbered S30-S38; refs remapped S30->S45, S31->S46, S32->S47, S33->S48, S34->S49, S35->S50, S36->S51, S37->S52, S38->S53. No entry rewritten or deleted.",
   "sources": [
     {
       "id": "S01",
@@ -351,6 +351,87 @@
       "status": "verified",
       "status_note": "Read 2026-11-14 (chunks 0, 8, 9, 10 of 12). The section 'What About Affiliate or Network Marketing?' was read in full. It says the disclosure must be 'clear and conspicuous', that the closer to the recommendation the better, and that 'affiliate link' or a 'buy now' button alone is not adequate.",
       "used_for": "Affiliate disclosure wording and placement guidance; review-integrity constraints."
+    },
+    {
+      "id": "S45",
+      "title": "Re-check 2026-11-14: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-1e229870efde5acf). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1e229870efde5acf&channelId=704&plpRedirect=mhFallback . Title of the destination page as served: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Same destination as S11 (2026-11-13). [Integrated 2026-11-14 by session 06ca46bf: was S30 in session 9fef7647's registry (PR #26); renumbered to S45 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Product 1 identity: the listing this submitted link opens (FLG-028)."
+    },
+    {
+      "id": "S46",
+      "title": "Re-check 2026-11-14: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-534f5e7952f396b2). Final URL: https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-534f5e7952f396b2&channelId=704&plpRedirect=mhFallback . Title of the destination page as served: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen\". Same destination as S12 (2026-11-13). [Integrated 2026-11-14 by session 06ca46bf: was S31 in session 9fef7647's registry (PR #26); renumbered to S46 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Product 2 identity: the listing this submitted link opens (FLG-028)."
+    },
+    {
+      "id": "S47",
+      "title": "Re-check 2026-11-14: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-76c3adaeb8708b44). Final URL: https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-76c3adaeb8708b44&channelId=704&plpRedirect=mhFallback&th=1 . Title of the destination page as served: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Same destination as S13/S23 (2026-11-13). [Integrated 2026-11-14 by session 06ca46bf: was S32 in session 9fef7647's registry (PR #26); renumbered to S47 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Product 3 identity: the listing this submitted link opens (FLG-028)."
+    },
+    {
+      "id": "S48",
+      "title": "Amazon.com search results for B0CDY277D3 (price, rating, review count observed 2026-11-14)",
+      "url": "https://www.amazon.com/s?k=B0CDY277D3",
+      "publisher": "Amazon.com",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14. Result 1 for B0CDY277D3 as displayed: 4.2 out of 5 stars, (4.8K) reviews, 1K+ bought in past month, price USD 79.93 (deal; List: USD 99.99), More Buying Choices from USD 57.45. Values are a volatile snapshot (FLG-029). [Integrated 2026-11-14 by session 06ca46bf: was S33 in session 9fef7647's registry (PR #26); renumbered to S48 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Product 1 observed price, rating, review count, sales note."
+    },
+    {
+      "id": "S49",
+      "title": "Amazon.com search results for B09B7SB46R (price, rating, review count observed 2026-11-14)",
+      "url": "https://www.amazon.com/s?k=B09B7SB46R",
+      "publisher": "Amazon.com",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14. Result 1 for B09B7SB46R as displayed: 4.3 out of 5 stars, (18.3K) reviews, 4K+ bought in past month, price USD 149.99 (deal labelled Early Black Friday Deal; List: USD 209.99), More Buying Choices from USD 92.99. Values are a volatile snapshot (FLG-029). [Integrated 2026-11-14 by session 06ca46bf: was S34 in session 9fef7647's registry (PR #26); renumbered to S49 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Product 2 observed price, rating, review count, sales note."
+    },
+    {
+      "id": "S50",
+      "title": "Amazon.com search results for B08DKYBTPH (price, rating, review count observed 2026-11-14)",
+      "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+      "publisher": "Amazon.com",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14. Result 1 for B08DKYBTPH as displayed: 4.4 out of 5 stars, (16.8K) reviews, 3K+ bought in past month, price USD 79.91 (deal; List: USD 119.99), More Buying Choices from USD 49.54, +1 other color/pattern. Values are a volatile snapshot (FLG-029). [Integrated 2026-11-14 by session 06ca46bf: was S35 in session 9fef7647's registry (PR #26); renumbered to S50 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Product 3 observed price, rating, review count, sales note."
+    },
+    {
+      "id": "S51",
+      "title": "Re-check 2026-11-14: Associates Program Operating Agreement (Section 5 disclosure wording)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14. Page states: Updated October 15, 2025. Section 5 read in full and compared to the PF-01 quote in data/policy_facts.json: identical wording (\"As an Amazon Associate I earn from qualifying purchases.\"). [Integrated 2026-11-14 by session 06ca46bf: was S36 in session 9fef7647's registry (PR #26); renumbered to S51 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Re-verification of PF-01, PF-02, PF-35 wording."
+    },
+    {
+      "id": "S52",
+      "title": "Re-check 2026-11-14: Associates Program Policies",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14. Page states: Updated April 14, 2026. Commission Income Statement Section 1 read and compared to PF-12/PF-13: identical (24-hour session; 89-day cart completion; 180-day ship/pay). [Integrated 2026-11-14 by session 06ca46bf: was S37 in session 9fef7647's registry (PR #26); renumbered to S52 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Re-verification of PF-03 to PF-15 session and price/rating display rules."
+    },
+    {
+      "id": "S53",
+      "title": "Re-check 2026-11-14: FTC Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "publisher": "U.S. Federal Trade Commission",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14. Page dated November 2019. \"When to Disclose\" and \"How to Disclose\" sections compared to PF-19/PF-20: identical wording. [Integrated 2026-11-14 by session 06ca46bf: was S38 in session 9fef7647's registry (PR #26); renumbered to S53 to avoid collision with main's entries of the same former IDs.]",
+      "used_for": "Re-verification of PF-19, PF-20, PF-21 wording."
     }
   ]
 }

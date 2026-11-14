@@ -1206,7 +1206,12 @@ def main():
     def _urlpath(v):
         d = str(pathlib.PurePosixPath(v).parent)
         return "" if d == "." else d + "/"
-    sm_paths = sorted({_urlpath(v) for v in written.values()})
+    sm_paths = {_urlpath(v) for v in written.values()}
+    # union with the other generator's root flat pages so a rebuild never drops them
+    # (integration 2026-11-14 by session 06ca46bf; keeps the sitemap complete either way)
+    for _flat in sorted(out.glob("*.html")):
+        sm_paths.add(_flat.name)
+    sm_paths = sorted(sm_paths)
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f'  <url><loc>{SITE_ORIGIN}{SITE_BASE}/{p}</loc></url>\n' for p in sm_paths)

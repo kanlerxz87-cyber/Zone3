@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. | Integration 2026-11-14 (session 06ca46bf): FLG-028/029/030 preserved from session 9fef7647 (PR #26), originally FLG-022/023/024 — renumbered past main's FLG-022-027 (session 51fcb80d). PR #26's dated addenda were unioned into FLG-001/002/004/021.",
   "flags": [
     {
       "id": "FLG-001",
@@ -8,7 +8,7 @@
       "category": "Product identifiers",
       "item": "The three submitted identifiers are not 10-character ASINs",
       "detail": "The identifiers in the submitted links are B04G1MEwY, B02NbDxp3 and B00hJ57DV. Each is 9 characters long. The official Creators API documentation shows ASIN examples of 10 characters (S06), and all three redirect targets use 10-character IDs (S14-S16). Typing amazon.com/dp/<each ID> returns 'Page Not Found' (S08-S10). No product name, brand, price, rating or commission can be tied to these identifiers. Confirmed by the GetItems reference (S06, chunk 1 of 3): an ASIN is a 10-character identifier.",
-      "action": "Provide the intended product page URL or 10-character ASIN for each product (the owner's input is needed; this session cannot infer it).",
+      "action": "Provide the intended product page URL or 10-character ASIN for each product (the owner's input is needed; this session cannot infer it).\n\nUpdate 2026-11-14: the listing each link opens is now recorded (FLG-028); the request for owner confirmation of intent stands.",
       "sources": [
         "S06",
         "S08",
@@ -24,7 +24,7 @@
       "severity": "High",
       "category": "Redirect behaviour",
       "item": "Short links redirect to three different products, not confirmed as the submitted products",
-      "detail": "Each short link ended on a different amazon.com product page (S11-S13), and the mapping was the same on two fetches each. The final URLs carry the parameters lv=shuf and plpRedirect=mhFallback. The page titles identify two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven (S14-S16). What these parameters mean is not documented in any official source reviewed, so they are recorded as observed only and never used as product data. The direct amazon.com/dp/B08DKYBTPH request returns a 'Continue shopping' interstitial (S16), so product 3's title is only readable through the short link (S23).",
+      "detail": "Each short link ended on a different amazon.com product page (S11-S13), and the mapping was the same on two fetches each. The final URLs carry the parameters lv=shuf and plpRedirect=mhFallback. The page titles identify two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven (S14-S16). What these parameters mean is not documented in any official source reviewed, so they are recorded as observed only and never used as product data. The direct amazon.com/dp/B08DKYBTPH request returns a 'Continue shopping' interstitial (S16), so product 3's title is only readable through the short link (S23).\n\nUpdate 2026-11-14 (session 9fef7647): all three links were re-fetched with fresh redirect tokens and each resolved to the same listing as on 2026-11-13 (S45-S47). The 'not confirmed' wording now refers only to the owner's intent (which product was meant by the code), not to the stability of the mapping, which has been observed 4 times over 2 days (FLG-028, FLG-030).",
       "action": "Open each submitted link in a normal browser and confirm where it lands. Confirm which product was intended.",
       "sources": [
         "S11",
@@ -56,7 +56,7 @@
       "severity": "High",
       "category": "Unverified values",
       "item": "Product name, brand, price, rating, review count, competitor count, best-seller rank and availability are unverified for all 3 products",
-      "detail": "The identifiers do not resolve (FLG-001), so no official product record exists to read these values from. The fetch tool returned only the page title and the URL for the redirect targets (S14-S16); prices and ratings were not in its text. These cells are left blank on purpose.",
+      "detail": "The identifiers do not resolve (FLG-001), so no official product record exists to read these values from. The fetch tool returned only the page title and the URL for the redirect targets (S14-S16); prices and ratings were not in its text. These cells are left blank on purpose.\n\nUpdate 2026-11-14 (session 9fef7647): price, rating and review count are now shown as dated snapshots observed on Amazon's own search pages (S48-S50). They are volatile deal prices and their display on a live Associates site is restricted by Participation Requirements 2(b) and 6(t) (PF-04, PF-05) - see FLG-029. Competitor count, best-seller rank, availability, clicks and conversions remain unverified and blank.",
       "action": "After FLG-001 is fixed, read the values from the Creators API (see FLG-006) or the live product page, then add them to data/products.json with a source ID.",
       "sources": [
         "S02",
@@ -264,7 +264,7 @@
       "severity": "Medium",
       "category": "Commission rate",
       "item": "Kitchen reference rate 4.50% is verified, but the listings' category is not",
-      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). On 2026-11-14 the three destination listings were read to show the category path Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (S14-S16; browse node 17659096011, S43). No source read so far states that Amazon's rate-card category 'Kitchen' includes this browse path. The Onsite Table A rate (S26; PF-39) is for Onsite Content only. The 4.50% figure is therefore a reference only and is not on any product row. Raised by session 66a80e53 (PR #3).",
+      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). On 2026-11-14 the three destination listings were read to show the category path Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (S14-S16; browse node 17659096011, S43). No source read so far states that Amazon's rate-card category 'Kitchen' includes this browse path. The Onsite Table A rate (S26; PF-39) is for Onsite Content only. The 4.50% figure is therefore a reference only and is not on any product row. Raised by session 66a80e53 (PR #3).\n\nUpdate 2026-11-14: the category breadcrumb is now observed on each product page (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers; S45-S47). Whether the commission schedule's 'Kitchen' category maps to this node is still not documented in any public source, so the reference rate stays a reference only.",
       "sources": [
         "S14",
         "S15",
@@ -274,60 +274,6 @@
         "S43"
       ],
       "action": "Owner: confirm in Associates Central which rate-card category applies to each of the three listings. Until then, no rate is applied."
-    },
-    {
-      "id": "V-F1",
-      "severity": "Info",
-      "category": "Correction",
-      "item": "Board statements that the commission rate card is unavailable are superseded by the public Table 1 (S25)",
-      "detail": "FLG-005 and FLG-013 in data/flags.json, and the earlier note 'Rates are not stated anywhere on the site' in COORDINATION.md, treat the rate card as sign-in-only. Re-verified 2026-11-14: only the /help/operating/schedule route is gated (and it returns an account customratecard); the Standard and Onsite Income Statement help node pages (S25, S26) render the full tables to anonymous users. Both were read again in this session. The published tables match what two other sessions recorded. No per-product rate is claimed from them.",
-      "action": "No action required on the tables themselves. Read FLG-005 (rewritten) and FLG-013 (scope narrowed) for what is still unverified.",
-      "sources": [
-        "S25",
-        "S26",
-        "S03"
-      ]
-    },
-    {
-      "id": "V-F2",
-      "severity": "Info",
-      "category": "Correction",
-      "item": "FLG-003's wording overstates what the policies say about link.amazon",
-      "detail": "FLG-003 says the links 'may not be trackable'. What the documents actually support, re-read verbatim on 2026-11-14, is narrower: Participation Requirements 6(w) prohibits a link shortener used in a way that makes it unclear you are linking to an Amazon Site (S02); Commission Income Statement 2(e) disqualifies purchases made through a 'Redirecting Link' (S30); 6(v) prohibits cloaking or obscuring the URL (S02). Whether link.amazon is itself such a link is a judgement on its behaviour, which was observed but is not addressed by name in any document read.",
-      "action": "Read as: do not publish link.amazon short links; publish canonical /dp/<ASIN> URLs with the Associates tag once a tag exists. Confirm with Amazon before using link.amazon at all.",
-      "sources": [
-        "S02",
-        "S30"
-      ]
-    },
-    {
-      "id": "V-F3",
-      "severity": "Low",
-      "category": "Site structure",
-      "item": "/docs/ page set is live but has no inbound link from either dashboard",
-      "detail": "The repository serves four independent page sets: the flat pages at the root (scripts/build_site.py), the 16-page audit at /dashboard/ (tools/build_site.py), the session-scoped pages at /sessions/3c886b62/, and /docs/ (session arena-79f85104, PR #14). /docs/ returns HTTP 200 and passes the link checker, but no page in the root build, the audit build or the audit nav links to it, so a visitor browsing the site cannot reach it. Nothing is broken; it is simply orphaned from navigation.",
-      "action": "Owner to decide: add one link to /docs/ in the root dashboard nav (a one-line change in scripts/build_site.py NAV), or retire the page set. Left unchanged here because the root nav is shared output.",
-      "sources": [],
-      "repo_evidence": "No inbound <a href> to /docs/ from any page outside /docs/, verified by scanning every checked-in HTML file; /docs/index.html returns HTTP 200 locally. Nothing external to cite."
-    },
-    {
-      "id": "V-F4",
-      "severity": "Low",
-      "category": "Site structure",
-      "item": "sitemap.xml lists only the audit-build URLs, not the root pages",
-      "detail": "sitemap.xml contains the 16 /dashboard/-generation URLs. The root flat pages (/, /products.html, /pricing.html, /reviews.html, /content.html, /campaigns.html, /flagged.html, /sources.html, /executive-summary.html) and /docs/ are absent, so search engines are given a partial map of the site. robots.txt points at the sitemap and Pages serves it at the expected path.",
-      "action": "Owner to decide the canonical URL set (the two generations publish overlapping material). Regenerate the sitemap once that is settled; not done here because it encodes an editorial decision about which generation is canonical.",
-      "sources": [],
-      "repo_evidence": "sitemap.xml contains 16 <loc> entries, all of the /dashboard/ generation; the nine root flat pages and /docs/ are absent. Verified by comparing sitemap.xml against the checked-in HTML files."
-    },
-    {
-      "id": "V-F5",
-      "severity": "Low",
-      "category": "Site structure",
-      "item": "15 broken internal links inside archive/c4e71983/ (pre-existing, inside a verbatim archive)",
-      "detail": "A full-tree scan of every checked-in HTML file finds 15 relative links that do not resolve to a file: for example archive/c4e71983/content/category-air-fryers.html links dual-basket.html, air-fryer-toaster-ovens.html and large-capacity.html, and archive/c4e71983/content/data-sources.html links data/products.json. All 15 are inside archive/c4e71983/, which is a byte-for-byte copy of another session's site kept for the record. Every page outside archive/ resolves: 0 broken links across the 57 live pages.",
-      "action": "None required for the live site. If the archive is meant to be browsable, its owner should regenerate it; rewriting archived files would falsify the record this board is built on.",
-      "repo_evidence": "Full-tree scan of all 74 checked-in HTML files: 15 unresolved relative href, all under archive/c4e71983/; 0 outside it. Reproduce with a scan of every href that is not http/mailto/#."
     },
     {
       "id": "FLG-022",
@@ -411,6 +357,109 @@
         "S09",
         "S10"
       ]
+    },
+    {
+      "id": "FLG-028",
+      "severity": "High",
+      "category": "Product identity",
+      "item": "Product identity rests on observed short-link redirects, not on documented identifiers",
+      "detail": "The three submitted codes are 9 characters and are not ASINs (FLG-001). Each submitted link resolves to exactly one Amazon listing, and the mapping was identical across 4 observations on 2026-11-13 and 2026-11-14 (S11-S13, S45-S47). Control tests on the shortener (recorded in COORDINATION.md, Z-V10 to Z-V14) show the codes are registered short codes: junk codes of the same length are rejected with 403/404. No official Amazon source documents the code-to-listing registry, so the association is recorded as observed, and this site treats each listing as the product its submitted link opens. If the owner intended different products, the tables must be re-pointed. [Integrated 2026-11-14 by session 06ca46bf: was FLG-022 in session 9fef7647's registry (PR #26); renumbered to FLG-028 because main already carries a different FLG-022 from session 51fcb80d.]",
+      "action": "Owner: confirm that the three listings recorded here are the intended products.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S45",
+        "S46",
+        "S47",
+        "S14",
+        "S15",
+        "S23"
+      ]
+    },
+    {
+      "id": "FLG-029",
+      "severity": "Medium",
+      "category": "Display compliance",
+      "item": "Observed prices and star ratings are shown for analysis only; display on a live Associates site is restricted",
+      "detail": "Participation Requirements 2(b) (PF-04) allow a site to show prices and availability only when Amazon serves the link or through the Product Advertising API, and 6(t) (PF-05) bars displaying customer reviews or star ratings unless obtained through the API or a qualifying link. The prices and ratings on this site are dated observations (2026-11-14, S48-S50) kept for analysis, with a date stamp adjacent per PF-27. Before this site is used commercially, remove these values or re-source them via Special Links or the Creators API. Prices are also volatile deal prices (Z-F5 in COORDINATION.md). [Integrated 2026-11-14 by session 06ca46bf: was FLG-023 in session 9fef7647's registry (PR #26); renumbered to FLG-029 because main already carries a different FLG-023 from session 51fcb80d.]",
+      "action": "Remove or re-source observed prices/ratings via API or Special Links before commercial use.",
+      "sources": [
+        "S02",
+        "S48",
+        "S49",
+        "S50"
+      ]
+    },
+    {
+      "id": "FLG-030",
+      "severity": "Low",
+      "category": "Cross-session record",
+      "item": "Earlier builds disagreed on whether the links resolve; re-verification 2026-11-14 settles the factual part",
+      "detail": "The root build (sessions 7f84fea4/33226b37) recorded that the submitted identifiers select no product page; the /docs/ build (session 79f85104, Z-F6) recorded that all three short links resolve to real listings, with control evidence Z-V10 to Z-V14. Session 9fef7647 re-fetched all three links on 2026-11-14 and reproduced the /docs/ result exactly (S45-S47). Both earlier statements are true of different things: the codes are not ASINs (they select nothing at amazon.com/dp/), and the links resolve stably to three listings. This site now states both. [Integrated 2026-11-14 by session 06ca46bf: was FLG-024 in session 9fef7647's registry (PR #26); renumbered to FLG-030 because main already carries a different FLG-024 from session 51fcb80d.]",
+      "action": "No action needed unless the owner disputes the resolved products (FLG-028).",
+      "sources": [
+        "S08",
+        "S09",
+        "S10",
+        "S45",
+        "S46",
+        "S47"
+      ]
+    },
+    {
+      "id": "V-F1",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "Board statements that the commission rate card is unavailable are superseded by the public Table 1 (S25)",
+      "detail": "FLG-005 and FLG-013 in data/flags.json, and the earlier note 'Rates are not stated anywhere on the site' in COORDINATION.md, treat the rate card as sign-in-only. Re-verified 2026-11-14: only the /help/operating/schedule route is gated (and it returns an account customratecard); the Standard and Onsite Income Statement help node pages (S25, S26) render the full tables to anonymous users. Both were read again in this session. The published tables match what two other sessions recorded. No per-product rate is claimed from them.",
+      "action": "No action required on the tables themselves. Read FLG-005 (rewritten) and FLG-013 (scope narrowed) for what is still unverified.",
+      "sources": [
+        "S25",
+        "S26",
+        "S03"
+      ]
+    },
+    {
+      "id": "V-F2",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "FLG-003's wording overstates what the policies say about link.amazon",
+      "detail": "FLG-003 says the links 'may not be trackable'. What the documents actually support, re-read verbatim on 2026-11-14, is narrower: Participation Requirements 6(w) prohibits a link shortener used in a way that makes it unclear you are linking to an Amazon Site (S02); Commission Income Statement 2(e) disqualifies purchases made through a 'Redirecting Link' (S30); 6(v) prohibits cloaking or obscuring the URL (S02). Whether link.amazon is itself such a link is a judgement on its behaviour, which was observed but is not addressed by name in any document read.",
+      "action": "Read as: do not publish link.amazon short links; publish canonical /dp/<ASIN> URLs with the Associates tag once a tag exists. Confirm with Amazon before using link.amazon at all.",
+      "sources": [
+        "S02",
+        "S45"
+      ]
+    },
+    {
+      "id": "V-F3",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "/docs/ page set is live but has no inbound link from either dashboard",
+      "detail": "The repository serves four independent page sets: the flat pages at the root (scripts/build_site.py), the 16-page audit at /dashboard/ (tools/build_site.py), the session-scoped pages at /sessions/3c886b62/, and /docs/ (session arena-79f85104, PR #14). /docs/ returns HTTP 200 and passes the link checker, but no page in the root build, the audit build or the audit nav links to it, so a visitor browsing the site cannot reach it. Nothing is broken; it is simply orphaned from navigation.",
+      "action": "Owner to decide: add one link to /docs/ in the root dashboard nav (a one-line change in scripts/build_site.py NAV), or retire the page set. Left unchanged here because the root nav is shared output.",
+      "sources": [],
+      "repo_evidence": "No inbound <a href> to /docs/ from any page outside /docs/, verified by scanning every checked-in HTML file; /docs/index.html returns HTTP 200 locally. Nothing external to cite."
+    },
+    {
+      "id": "V-F4",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "sitemap.xml lists only the audit-build URLs, not the root pages",
+      "detail": "sitemap.xml contains the 16 /dashboard/-generation URLs. The root flat pages (/, /products.html, /pricing.html, /reviews.html, /content.html, /campaigns.html, /flagged.html, /sources.html, /executive-summary.html) and /docs/ are absent, so search engines are given a partial map of the site. robots.txt points at the sitemap and Pages serves it at the expected path.",
+      "action": "Owner to decide the canonical URL set (the two generations publish overlapping material). Regenerate the sitemap once that is settled; not done here because it encodes an editorial decision about which generation is canonical.",
+      "sources": [],
+      "repo_evidence": "sitemap.xml contains 16 <loc> entries, all of the /dashboard/ generation; the nine root flat pages and /docs/ are absent. Verified by comparing sitemap.xml against the checked-in HTML files."
+    },
+    {
+      "id": "V-F5",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "15 broken internal links inside archive/c4e71983/ (pre-existing, inside a verbatim archive)",
+      "detail": "A full-tree scan of every checked-in HTML file finds 15 relative links that do not resolve to a file: for example archive/c4e71983/content/category-air-fryers.html links dual-basket.html, air-fryer-toaster-ovens.html and large-capacity.html, and archive/c4e71983/content/data-sources.html links data/products.json. All 15 are inside archive/c4e71983/, which is a byte-for-byte copy of another session's site kept for the record. Every page outside archive/ resolves: 0 broken links across the 57 live pages.",
+      "action": "None required for the live site. If the archive is meant to be browsable, its owner should regenerate it; rewriting archived files would falsify the record this board is built on.",
+      "repo_evidence": "Full-tree scan of all 74 checked-in HTML files: 15 unresolved relative href, all under archive/c4e71983/; 0 outside it. Reproduce with a scan of every href that is not http/mailto/#."
     }
   ]
 }

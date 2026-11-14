@@ -176,7 +176,10 @@ def check(root: pathlib.Path):
             path = urlparse(loc).path.rstrip("/")
             seg = path.split("/Zone3")[-1].lstrip("/")
             want = f"{seg}/index.html" if seg else "index.html"
-            if want not in generated:
+            # a sitemap URL is valid if this build generated it, or if it is a flat
+            # page that exists at the repo root (the scripts/ generator owns those;
+            # integration fix 2026-11-14 by session 06ca46bf for the union sitemap)
+            if want not in generated and not (seg and (root / seg).is_file()):
                 errs.append(f"V5 sitemap.xml: URL not built -> {loc}")
     else:
         errs.append("V5 sitemap.xml missing")

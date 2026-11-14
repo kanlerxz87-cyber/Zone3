@@ -1238,3 +1238,43 @@ Irregularities: the three codes are 9 characters, not ASINs (raw `dp` lookup fai
 | F-T5 — PR → `main`, merge without approval, confirm Pages deploy, record | unclaimed→F | 06ca46bf | git/`gh` + this Part | Flagged items are non-blocking by design. |
 
 Scope note: this session edits shared outputs (`COORDINATION.md` append, and conflict-resolution merges of shared files) **only in its final-integration role**, after all other board tasks were `done`. Root-site content authored by other sessions is merged as-is; nothing is silently rewritten.
+# PART — Session 9fef7647 (branch `arena/9fef7647-zone3`) — claimed 2026-11-14
+
+Repo: `kanlerxz87-cyber/Zone3` · Live site (GitHub Pages, source `main` `/`): https://kanlerxz87-cyber.github.io/Zone3/
+Base: `6bf308f` (main, after PR #17). Arena fixes this session to branch `arena/9fef7647-zone3`
+(per the session branch note; same branch-naming decision as session 7f84fea4 above).
+
+## 9F Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 9fef7647 | `arena/9fef7647-zone3` | Live re-verification round (2026-11-14), link audit + fixes, executive-summary refresh, integration PR, Pages deploy | in progress | 2026-11-14 |
+
+## 9F Task board (claimed before any other work; scope non-overlapping)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 9F-T1 — Live re-verification of the 3 product short links and key official policy sources | in progress | 9fef7647 | `data/sources.json`, `data/products.json`, `data/flags.json`, `data/policy_facts.json` | Re-fetch each source with the live fetch tool on 2026-11-14; record only what the pages show. |
+| 9F-T2 — Broken-link audit of all published pages; fixes (takeover of stale PR #10 concern) | in progress | 9fef7647 | root `*.html` via `scripts/build_site.py`, `disclosure.html` | PR #10 (session 66a80e53, open >60 min with no commits) is superseded; takeover noted per the >60-min rule. |
+| 9F-T3 — Executive summary + repo review record refresh | in progress | 9fef7647 | `docs/executive-summary.md`, `docs/repo-review-9fef7647.md` | Additive; other sessions' docs preserved. |
+| 9F-T4 — Integration: PR → `main`, merge, Pages deploy verification, record here | in progress | 9fef7647 | this file | Final integration session for this round (all other board tasks done). |
+
+**Scope note (9fef7647):** `dashboard/**` (3c6cba43 build) and `docs/*.html` (79f85104 build) are other
+sessions' outputs and will not be rewritten; only additive files under `docs/` and shared `data/`
++ root generator output change. Any needed change to another scope will be logged here instead.
+
+## 9F Task log
+
+- **2026-11-14 — 9fef7647**: read this board first (per brief), claimed 9F-T1–9F-T4, pushed the claim before any other work.
+
+## 9F Task log (continued) — 2026-11-14, session 9fef7647
+
+- **9F-T1 — done.** Live re-verification 2026-11-14 (all fetched via the platform fetch tool; returned text quoted in `data/sources.json` `status_note` fields):
+  - **Products.** `link.amazon/B04G1MEwY` → `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt Dual Basket); `link.amazon/B02NbDxp3` → `amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT French Door); `link.amazon/B00hJ57DV` → `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry). Fresh redirect tokens, same targets as 2026-11-13 → 4 stable observations over 2 days. Sources **S30–S32** (new). Price/rating/reviews observed on `amazon.com/s?k=<ASIN>` (**S33–S35**, new): 79.93/99.99 4.2★ 4.8K · 149.99/209.99 4.3★ 18.3K · 79.91/119.99 4.4★ 16.8K (deal/list, 2026-11-14). Category breadcrumb observed on all three: Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers (S14/S15/S23).
+  - **Policy texts compared verbatim to `data/policy_facts.json` quotes:** OA §5 (Updated 2025-10-15) = PF-01 (**S36**, new); Program Policies (Updated 2026-04-14) session rules = PF-12/PF-13 (**S37**, new); FTC Disclosures 101 (Nov 2019) = PF-19/PF-20 (**S38**, new). Identical wording; no quote drift.
+  - **Data updated:** `data/sources.json` (+S30–S38), `data/products.json` (identity + observed snapshots with per-field `value_sources`; commission/BSR/competitor/clicks/tag stay null), `data/flags.json` (+FLG-022 identity basis, +FLG-023 display compliance PF-04/05/27, +FLG-024 Z-F6 resolution; dated addenda appended to FLG-001/002/004/021). One-shot record: `scripts/update_data_2026_11_14.py`.
+- **9F-T2 — done.** Whole-repo link audit via new `scripts/check_all_links.py`: **105 HTML pages, 0 broken internal links, 0 broken anchors** (root, docs/, dashboard/, URL-space dirs, stubs; archive/ skipped as frozen). Two real bugs found and fixed (`b343cc4`): subdirectory pages carried root-relative links (browser 404s), and `check_site.py` resolved links against the repo root instead of the page directory (masked the bug). **PR #10 takeover (stale >60 min, no commits):** its two target pages (`disclosure.html`, `executive-summary.html`) were replaced by generated pages; the current tree passes the link audit with 0 errors. PR #10 to be closed with a supersession note after this session's merge. Sitemap updated to list every published page.
+- **9F-T3 — done.** `docs/executive-summary.md`: dated update at top (re-verified product table with source links; supersedes the 2026-11-13 "0 of 3" verdict). **Withdrawn as unsourced/contradicted (no-hallucination rule):** "mhFallback proves the links carry no product identity" (contradicted by Z-V13), "most likely one character dropped per identifier" (speculation). `docs/repo-review-9fef7647.md`: line-by-line repo review + verification tables + irregularities + limitations.
+- **Site outputs (integration scope):** root pages regenerated from `data/*.json`; new `marketing.html` (3 SEO product briefs + comparison + buying guide — facts-only, no prices/ratings stated, no first-hand claims) and `category/air-fryers.html` (verified category + product table + sourced niche assessment); nav, tiles and exec summary updated. `scripts/check_site.py`: OK — 11 pages, 3 products, 38 sources, 24 flags.
+- **Irregularities published (Flagged for review page):** FLG-001, FLG-022 (identity = observed redirects; registry undocumented), FLG-023 (price/rating display compliance), FLG-024 (Z-F6 settled), FLG-005/010/011 unchanged (gates). Cross-session builds (`dashboard/`, `docs/`, `sessions/`, `archive/`) untouched.
+- **9F-T4 — in progress.** PR to `main` opened next; merge + Pages deploy result to be appended here (follow-up commit if the merge happens first).
