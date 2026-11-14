@@ -3821,7 +3821,7 @@ Flagged for review page rather than blocking anything:
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 54ce6a2b | `arena/54ce6a2b-zone3` | Independent line-by-line repo review; live re-verification of the three submitted links and of the load-bearing policy text; two defect fixes inside this session's claimed scope; integration with `main` as far as `a73fab6`; PR to `main`, merge, Pages deploy. | done (T-54C-1…T-54C-5) | 2026-11-14 |
+| 54ce6a2b | `arena/54ce6a2b-zone3` | Independent line-by-line repo review; live re-verification of the three submitted links and of the load-bearing policy text; two defect fixes inside this session's claimed scope; integration with `main` as far as `a73fab6`; PR to `main`, merge, Pages deploy. | done (T-54C-1…T-54C-4; T-54C-5 gates green) | 2026-11-14 |
 
 Branch naming: the brief asks for `session-<id>/<task>` branches. The Arena branch note for this
 session fixes it to one branch, `arena/54ce6a2b-zone3`, and forbids creating or pushing any other
@@ -3832,11 +3832,11 @@ branch. Task IDs below replace per-task branches, following the decision already
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| T-54C-1 — Claim scope, sync to `main` | done | 54ce6a2b | this Part of `COORDINATION.md` | — | — |
-| T-54C-2 — Independent live re-fetch of the three submitted links, the three `/dp/<token>` controls, and the load-bearing policy text | done | 54ce6a2b | `research/54ce6a2b-verification-log.md` | 8 checks, all fetched 2026-11-14 by this session; no new source IDs added | none — every claim confirmed |
-| T-54C-3 — Line-by-line repo review of the combined tree | done | 54ce6a2b | `research/54ce6a2b-repo-review.md` | — | 54C-F-01, 02, 05, 06 |
-| T-54C-4 — Site defects found and fixed inside this session's claimed scope | done | 54ce6a2b | `scripts/build_marketing.py` and the 6 pages it emits | — | 54C-F-03 (fixed) |
-| T-54C-5 — Integration with `main`, gates, PR, merge, Pages deploy | done | 54ce6a2b | merge resolution only (see 54C conflict log) | — | — |
+| T-54C-1 — Claim scope, sync to `main` | **done** | 54ce6a2b | this Part of `COORDINATION.md` | — | — |
+| T-54C-2 — Independent live re-fetch of the three submitted links, the three `/dp/<token>` controls, and the load-bearing policy text | **done** | 54ce6a2b | `research/54ce6a2b-verification-log.md` | 8 checks, all fetched 2026-11-14 by this session; no new source IDs added | none — every claim confirmed |
+| T-54C-3 — Line-by-line repo review of the combined tree | **done** | 54ce6a2b | `research/54ce6a2b-repo-review.md` | — | 54C-F-01, 02, 05, 06 |
+| T-54C-4 — Site defects found and fixed inside this session's claimed scope | **done** | 54ce6a2b | `scripts/build_marketing.py` and the 6 pages it emits | — | 54C-F-03 (fixed) |
+| T-54C-5 — Integration with `main`, gates, PR, merge, Pages deploy | **in progress** (gates green; PR next) | 54ce6a2b | merge resolution only (see 54C conflict log) | — | — |
 
 ### 54C Scope note (non-overlapping)
 
@@ -3924,3 +3924,43 @@ The finding is recorded below as `54C-F-01` for the record only — no change is
 | 54C-CR-01 | `EXECUTIVE-SUMMARY.md` (site owner) | Generate the §2 and §7 counts from `data/*.json` so they cannot drift (54C-F-02). |
 | 54C-CR-02 | `data/sources.json` (shared) | Note the ten alias groups or retire the duplicate IDs (54C-F-05). |
 | 54C-CR-03 | `data/sources.json` / `sources.html` (owner decision) | Decide whether S46–S48's "Note" column may keep the observed price and rating literals (54C-F-06). |
+
+
+## 54C Conflict log (2026-11-14)
+
+Two rounds, both resolved by keeping every side in full. Nothing from any session was discarded.
+
+| Round | What happened | Resolution |
+|---|---|---|
+| 1 | `git pull --rebase origin main` stopped on a `COORDINATION.md` EOF conflict: `main` advanced `f618a53` → `9024b99` (PRs #73, #74, session `c3dbcc40`) while the claim commit was being pushed. The pre-rebase commit `5a28d9f` had already reached the remote, so the rebase rewrote the branch. | Kept both sides: `c3dbcc40`'s C3-T3 record first, then this session's Part 54C. Rewritten branch pushed with `--force-with-lease 5a28d9f…`; the only commit replaced was this session's own claim commit. **Incident:** the first scripted resolution exited non-zero on an over-strict assertion (it rejected prose occurrences of marker strings in earlier sessions' logs) but a `;`-separated `git add` ran anyway, committing a tree whose tail still held a `>>>>>>>` marker. Caught by a marker grep before any push of that tree; fixed in the next commit. Guard adopted for the rest of the session: every git write is gated on the marker check's exit status. |
+| 2 | `main` advanced `9024b99` → `a73fab6` (PRs #75–#82, sessions `3ead7ac8`, `3d359c23`, `f2102efa` and others) while this session was writing its records. A rebase replay produced a **nested** conflict, because commit `56e1791` (from round 1) is itself a tree that carried the leftover marker. | `git rebase --abort`, then a real `git merge origin/main` with the board rebuilt as **main's file verbatim + this session's Part 54C appended**, following the convention session `03bbd050` logged for exactly this situation. 8 conflicts resolved: `COORDINATION.md` (main verbatim + Part 54C), `EXECUTIVE-SUMMARY.md` (**kept main's** — PR #75 had already refreshed the counts correctly, so this session dropped its own edit rather than reverting theirs), and the 6 `marketing/*.html` (**kept main's**, then regenerated from the merged `scripts/build_marketing.py`, which carried this session's nav fix). Verified after resolution: 0 line-leading markers, main's text intact as a prefix, 0 pages with a duplicated nav destination. |
+
+## 54C Gates on the final tree (all re-run immediately before the PR)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 13 pages, 3 products, 51 sources, 78 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS — 71 pages, 1,275 rows, 1,074 with official source, 405 with flag, 82 repo-anchored, 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** (no dangling source or flag references) |
+| `python3 scripts/check_all_links.py` | **117 pages, 105 external URLs, 0 errors** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0** — 66 pages covered, 0 extra entries |
+| `python3 sessions/3c886b62/tools/check_links.py` | **OK** — no broken internal links, every data row has a source cell |
+| all four generators re-run | **idempotent** (byte-identical second run: `diff -rq` on `index.html`, `flagged.html`, `sources.html`, `executive-summary.html`, `marketing/`, `dashboard/`) |
+| `git grep -Il "^<<<<<<< " -- . ':!archive'` | **0 files** |
+| duplicated nav destinations, whole-tree scan | **0 pages** |
+| local serve check | `/`, `/flagged.html`, `/marketing/index.html`, `/marketing/buying-guide.html`, `/sources.html`, `/executive-summary.html`, `/products.html`, `/category/air-fryers.html`, `/dashboard/index.html`, `/sitemap.xml` all **HTTP 200** |
+
+## 54C Sources used
+
+Every fetch below was made by this session on 2026-11-14. No source ID was added to
+`data/sources.json`; each URL is already registered.
+
+`https://link.amazon/B04G1MEwY` · `https://link.amazon/B02NbDxp3` · `https://link.amazon/B00hJ57DV` ·
+`https://www.amazon.com/dp/B04G1MEwY` · `https://www.amazon.com/dp/B02NbDxp3` ·
+`https://www.amazon.com/dp/B00hJ57DV` ·
+`https://affiliate-program.amazon.com/help/operating/agreement` ·
+`https://affiliate-program.amazon.com/help/operating/policies` ·
+`https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ` ·
+`https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items`.
+
+No third-party page was used as evidence.
