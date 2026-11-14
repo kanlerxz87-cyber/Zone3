@@ -306,6 +306,51 @@
       "status": "verified",
       "status_note": "Fetched 2026-11-14; resolved short-link target and listing details.",
       "used_for": "Resolved listing identity; dated research only."
+    },
+    {
+      "id": "S40",
+      "title": "Amazon.com results page for ASIN B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven)",
+      "url": "https://www.amazon.com/s?k=B0CDY277D3",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:06Z (qid 1794649506, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 1."
+    },
+    {
+      "id": "S41",
+      "title": "Amazon.com results page for ASIN B09B7SB46R (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven)",
+      "url": "https://www.amazon.com/s?k=B09B7SB46R",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:12Z (qid 1794649512, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 2."
+    },
+    {
+      "id": "S42",
+      "title": "Amazon.com results page for ASIN B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry 4-in-1)",
+      "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:17Z (qid 1794649517). The exact ASIN is the first result. Price, list price, rating, rating count and 'other offers' figures were read from this page.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 3."
+    },
+    {
+      "id": "S43",
+      "title": "Amazon Best Sellers: Best Air Fryers (browse node 17659096011)",
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14. Ranks 1-6 were read in full. The page header reads: 'Our most popular products based on sales. Updated frequently.' The page lists its breadcrumb nodes (Kitchen & Dining, Small Appliances, Fryers, Air Fryers). Positions 7+ were not used for any claim.",
+      "used_for": "Category competition benchmark: what a buyer sees above the fold in the verified category, with star ratings, exact rating counts and prices."
+    },
+    {
+      "id": "S44",
+      "title": "FTC's Endorsement Guides: What People Are Asking (includes the affiliate-marketing section)",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "publisher": "U.S. Federal Trade Commission",
+      "status": "verified",
+      "status_note": "Read 2026-11-14 (chunks 0, 8, 9, 10 of 12). The section 'What About Affiliate or Network Marketing?' was read in full. It says the disclosure must be 'clear and conspicuous', that the closer to the recommendation the better, and that 'affiliate link' or a 'buy now' button alone is not adequate.",
+      "used_for": "Affiliate disclosure wording and placement guidance; review-integrity constraints."
     }
   ]
 }

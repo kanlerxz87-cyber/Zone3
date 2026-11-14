@@ -900,3 +900,119 @@ Unverified: Associates tag, live clicks/conversions, API credentials, actual lin
 | GitHub Pages | Pages build for `37591402f039b45767e5706ef53973bfbf8f4f90` status **built** at 2026-11-14 09:54:12 UTC. Workflow run `43582692936` succeeded. Cache-busted fetch of `/Zone3/?v=6030a96` displayed corrected headline and 3/3 resolved target listings. Plain URL returned a cached stale copy at verification time; the cache-busted deployed page is current. |
 | Final gates | `scripts/check_site.py` PASS; `tools/build_site.py` PASS; `tools/verify_site.py` PASS (57 pages; inherited advisory-only findings documented by verifier). |
 
+---
+
+# Part C — Session `51fcb80d` (final integration, 2026-11-14)
+
+> **Role.** Final integration session named in the brief. It re-verified the claims it touched against official
+> pages, rebuilt the flat site, checked it, and is opening the PR to `main`. It changed the shared root outputs
+> (`index.html`, `*.html` pages, `data/*.json`, `scripts/*`) because this is the integration session.
+>
+> **Branch.** The Arena session is pinned to `arena/51fcb80d-zone3`, so the `session-<id>/<task>` pattern is not used.
+> Task IDs `C-T1…C-T8` replace it.
+>
+> **Namespaces.** This session's IDs: sources `S40–S44`, policy facts `PF-44–PF-51`, flags `FLG-022–FLG-026`. Upstream already uses `S30`/`S31` for other sources, so this session's first-draft `S30–S33` and `S39` were renumbered to `S40–S44` during the rebase onto `b8beb448`.
+> These are in the canonical root registers. They are not the same items as other sessions' `S/PF/FLG` numbers.
+
+## C Session registry
+
+| Session ID | Branch | Role | Status | Claimed (UTC) |
+|---|---|---|---|---|
+| `51fcb80d` | `arena/51fcb80d-zone3` | Final integration: re-verification of the cited claims, category subpage, flags, check, PR → `main`, merge, Pages | in progress (C-T8) | 2026-11-14 |
+
+## C Task board
+
+| Task | Status | Files | What was actually done |
+|---|---|---|---|
+| C-T1 — Re-verify the three submitted links | done | `data/z3-51fcb80d-snapshot.json`, `data/products.json` (reviewed, unchanged) | Short links re-fetched; direct `/dp/<9-char>` pages checked. Identifiers still do not resolve (FLG-001). |
+| C-T2 — Policy clauses cited by the site | done, **scoped** to the clauses listed in the verification table below | `data/policy_facts.json` (PF-44–PF-51), `data/sources.json` | The other policy clauses were **not** re-read in this session. Their earlier readings stand as recorded by earlier sessions. |
+| C-T3 — Category subpage(s) | done for the only verified category | `air-fryers.html`, `scripts/build_site.py` | One category exists (Air Fryers, node `17659096011`). No other category was created. |
+| C-T4 — Product rows | **no change** | `data/products.json` | Reviewed. Null commercial fields kept. Redirect targets remain “not confirmed as submitted”. |
+| C-T5 — Pricing, reviews, competition | done | `pricing.html`, `reviews.html`, `air-fryers.html`, `data/competition.json` | Prices, ratings and review counts are **not shown** on any page (FLG-022). The six-position benchmark shows rank, ASIN, title and link only. |
+| C-T6 — Flags | done | `data/flags.json`, `flagged.html`, `flagged-for-review.html` | FLG-005, FLG-017, FLG-021 revised. FLG-022–026 added. The duplicate `flagged-for-review.html` is now a redirect to `flagged.html`. |
+| C-T7 — Build and check | done | `scripts/check_site.py`, `scripts/build_site.py` | `python3 scripts/build_site.py && python3 scripts/check_site.py` → **OK: 10 pages, 3 products, 34 sources, 26 flags. All checks passed.** The `--online` mode was **not** run, because the sandbox only allows github.com, npm, and PyPI. |
+| C-T8 — PR, merge, Pages | in progress | git + `gh` | Record filled in after the merge. |
+
+## C Verification performed (session `51fcb80d`, 2026-11-14)
+
+Each row was checked against the page text read in this session. "Read" means fetched through the fetch tool.
+
+| ID | Claim | Result | Source |
+|---|---|---|---|
+| C-V01 | `https://link.amazon/B04G1MEwY` lands on `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Quart Dual Basket Air Fryer Oven) | Read | S11, S14 |
+| C-V02 | `https://link.amazon/B02NbDxp3` lands on `amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven) | Read | S12, S15 |
+| C-V03 | `https://link.amazon/B00hJ57DV` lands on `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry 4-in-1 …) | Read | S13, S16 |
+| C-V04 | `amazon.com/dp/B04G1MEwY` → "Page Not Found" | Read | S08 |
+| C-V05 | `amazon.com/dp/B02NbDxp3` → "Page Not Found" | Read | S09 |
+| C-V06 | `amazon.com/dp/B00hJ57DV` → "Page Not Found" | Read | S10 |
+| C-V07 | Category path: Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers (nodes 1055398, 284507, 289913, 17659095011, 17659096011) | Path read in the destination records (snapshot `browse_path`); the same five-level path is shown in the breadcrumb of the official bestseller page | S14–S16; S43 |
+| C-V08 | Prices, ratings and counts for the three destinations (2026-11-14 09:45 UTC) | Read. **Research evidence only; not displayed** (FLG-022). | S40, S41, S42 |
+| C-V09 | Bestseller positions 1–6 (2026-11-14) | Read again in this session: #1 Ninja `B0CSZ7WBYW`; #2 bella `B0CYJDVT31`; #3 Cosori `B0C33CHG99`; #4 Chefman `B0CNY1F31S`; #5 Cuisinart `B0GVVJZDQV`; #6 Chefman `B0GTBN7CS2` | S43 |
+| C-V10 | Bestseller values change between captures | **Confirmed.** The 2026-11-13 capture (`c4e71983-competitors.json`) has #2 Cosori and #3 bella; the 2026-11-14 read has #2 bella and #3 Cosori. Rating counts also differ slightly (FLG-025). | S43; `data/c4e71983-competitors.json` |
+| C-V11 | Commission Table 1 | **Read again 2026-11-14**: Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%, and further rows. The per-listing category is not confirmed (FLG-021). | S25 |
+| C-V12 | Operating Agreement §5: “As an Amazon Associate I earn from qualifying purchases.” | **Read** (exact text) | S01 |
+| C-V13 | Commission Income Statement §2(e): purchases from a Redirecting Link are disqualified | **Read** | S02 |
+| C-V14 | Participation Requirements §2(b): prices and availability only via Amazon-served link or Creators/PA API | **Read** | S02 |
+| C-V15 | Participation Requirements §6(t): reviews and star ratings only via Creators/PA API | **Read** | S02 |
+| C-V16 | Participation Requirements §6(w): link shortener must not make the Amazon destination unclear | **Read** | S02 |
+| C-V17 | Participation Requirements §6(y): no price tracking or price-alert functionality | **Read** | S02 |
+| C-V18 | Creators API: four operations; prerequisite “at least 10 qualifying sales within the past 30 days” | **Read** | S04 |
+| C-V19 | FTC FAQ, affiliate section: disclosure “clearly and conspicuously”; “closer … the better”; “affiliate link” or a “buy now” button alone is not adequate | **Read** | S44 |
+| C-V20 | Commission Income Statement, Alexa Shopping Action clause: the order must be completed “no later than 89 days after their initial engagement” | **Read**. This is the Alexa clause only; no general session window is claimed here. | S02 |
+| C-V21 | Snapshot control CTRL-01: a direct `/dp/B0CDY277D3` fetch also carries `lv=shuf` and `plpRedirect=mhFallback` while serving the correct product | Read in this session. The parameter does not show a failed lookup (FLG-026). | S14 |
+
+## C Sources added (canonical root register)
+
+| ID | URL | Status | Note |
+|---|---|---|---|
+| S40 | https://www.amazon.com/s?k=B0CDY277D3 | observed | Read 2026-11-14 09:45:06 UTC |
+| S41 | https://www.amazon.com/s?k=B09B7SB46R | observed | Read 2026-11-14 09:45:12 UTC |
+| S42 | https://www.amazon.com/s?k=B08DKYBTPH | observed | Read 2026-11-14 09:45:17 UTC |
+| S43 | https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/ | observed | Ranks 1–6 read in full; positions 7+ not used |
+| S44 | https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking | verified | Affiliate section read; the 2023 revision is stated on the same page |
+
+S34–S38 were **removed**. Their URLs were built by hand and were never fetched.
+
+## C Corrections made in this session
+
+The first draft of this section contained details that had not been checked. They were removed or corrected before the PR:
+
+| Item | Problem | Fix |
+|---|---|---|
+| Commission rates “All Other 4.00 %, Home 3.00 %” | Removed in the first draft because they were not read in this session | **Re-read 2026-11-14 at S25 and confirmed**; restored to the record. Table 1 rows are in C-V11. |
+| “Session 24 h” and “ship/pay 180 days” windows | Not read in this session | Removed. Only the 89-day Alexa clause is cited (C-V20). |
+| Policy section numbers and quotes (§2(b), §6(t), §6(w), §6(y), §2(e), §5) | Written from memory in the first draft | Each one re-read this session; C-V12–C-V17 are the checked quotes. |
+| `docs/verification-log-51fcb80d.md` | Cited but never created | Reference removed. The evidence is in `data/z3-51fcb80d-snapshot.json` and in the table above. |
+| `scripts/check_links.py` | Cited but never created | Reference removed. `check_site.py` covers the internal links. |
+| Bestseller “rank 7 partially read” and the “11 results” note on S42 | Not checked | Removed from S42/S43 notes. |
+| Snapshot cross-reference `FLG-026` | Pointed to the wrong flag | Changed to `FLG-022`. |
+| Snapshot file location | Written to a stray path inside the repo (`home/user/Zone3/data/`) | Moved to `data/`, and the stray tree was removed. |
+| `flagged-for-review.html` | A second flag page could drift from the generated `flagged.html` | Now a redirect stub. The generator writes it. |
+
+## C Known gaps (not blocking; logged for review)
+
+1. The policy corpus was **not** re-read in full in this session. Only the clauses in the verification table were checked.
+2. Whether `link.amazon` redirects without a click (Redirecting Link, §2(e)) has not been tested in a logged-in Associates account (FLG-003, unchanged).
+3. The `--online` link check was not run (sandbox allowlist). Internal links were checked offline.
+4. No commission estimate, price, rating or review count is published on any page (FLG-022).
+5. `tools/link_report.py` (session `b8beb448`'s gate, unchanged here) still prints “rate card is behind Associates sign-in”. That is out of date: S25 (Table 1) is public, as b8beb448's FLG-005 says. The line belongs to that session's scope, so it is logged here as a change request, not edited.
+
+## C PR and deploy record
+
+| Event | Result |
+|---|---|
+| PR | Opened from `arena/51fcb80d-zone3` to `main` after this record was committed. Number and link recorded below once created. |
+| Merge | Pending. |
+| Pages | Pending. |
+
+## C Cross-session conflict log (added during the rebase onto main `6030a96`)
+
+| Item | Detail | Resolution in this PR |
+|---|---|---|
+| Two final-integration claims | `a86f1d09` also records a **C-T8** final-integration claim (its part reads “PR/merge/Pages in progress”). The brief allows one integration session. | Both sessions' work is kept. This session's PR is the one that merges to `main`. `a86f1d09`'s verified research and its data corrections are kept. Its submitted-product identity claim is **not** adopted (next row). |
+| Submitted-product identity | `a86f1d09` set `asin`, `product_name` and `brand` for each submitted link to the redirect target's values, and set `confirmed_as_submitted_product: true`. It also required that value in `scripts/check_site.py`. | **Not adopted.** The brief forbids treating a redirect target as the submitted product. The values stay blank and `check_site.py` requires `false`. Logged as **FLG-027** for the owner. |
+| Duplicate source IDs | `S30` and `S31` mean different things on main. `b8beb448` uses them for the Program Policies page and the Creators API GetItems reference. `a86f1d09`'s executive-summary bullet cites them for the link-resolution claim. | The bullet now cites the verified destination pages S11–S16 and S06. Logged in FLG-027 for renumbering. |
+| `products.json` status text | `a86f1d09` changed the status text to “Short link resolves to live listing”. | Kept as the blank-field version. Status text on this site now describes the destination only. |
+
+Please do not re-apply the `a86f1d09` identity change without the owner's confirmation (FLG-027).
+

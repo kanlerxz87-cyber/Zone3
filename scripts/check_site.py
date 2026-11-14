@@ -32,9 +32,9 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 PAGES = [
     "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
-    "content.html", "campaigns.html", "flagged.html", "sources.html",
+    "content.html", "campaigns.html", "flagged.html", "sources.html", "air-fryers.html",
 ]
-TABLE_PAGES = {"products.html", "pricing.html", "reviews.html", "content.html",
+TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
                "campaigns.html", "flagged.html", "sources.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
@@ -92,8 +92,8 @@ def check_data() -> dict:
         ro = p["redirect_observed"]
         if ro["source"] not in sources:
             fail(f"product {p['id']} redirect cites unknown source {ro['source']}")
-        if ro.get("confirmed_as_submitted_product") is not True:
-            fail(f"product {p['id']} resolved target listing must be confirmed")
+        if ro.get("confirmed_as_submitted_product") is not False:
+            fail(f"product {p['id']} redirect target must not be marked confirmed")
         if p.get("asin") is None and "Unverified" not in p.get("status", "") and p["link_id_length"] == 9:
             pass  # status text is free-form; blank ASIN is the rendered Unverified state
         if len(p["link_id"]) != p["link_id_length"]:
