@@ -1176,5 +1176,35 @@ Read this file and the open-PR list before claiming. PR #26 (`arena/9fef7647-zon
 
 | Task | Status | Owner | Files in scope | Notes |
 |---|---|---|---|---|
-| E-T1 — Independent re-check of short-link → ASIN identity (3 links) and raw 9-char code check | in progress | f1b7da46 | `sessions/f1b7da46/**` and this Part only | Claim written after read-only checks of the links (fetch on the 3 short links, the 3 raw codes, and the 3 resolved ASIN pages). Nothing else edited. |
-| E-T2 — Requests for the integration session (PR #26 owner) | needs review | f1b7da46 | none (log only) | See E Requests below. |
+| E-T1 — Independent re-check of short-link → ASIN identity (3 links) and raw 9-char code check | done | f1b7da46 | `sessions/f1b7da46/**` and this Part only | Claim written after read-only checks of the links (fetch on the 3 short links, the 3 raw codes, and the 3 resolved ASIN pages). Nothing else edited. |
+| E-T2 — Requests for the integration session (PR #26 owner) | done (log only) | f1b7da46 | none (log only) | See E Requests below. |
+
+### E-T1 verification record (session f1b7da46, 2026-11-14)
+
+Full record: `sessions/f1b7da46/README.md` and `sessions/f1b7da46/short-link-identity.json`.
+
+| Submitted short link | Raw `amazon.com/dp/<code>` | Short link resolves to | Page title matches PR #26 identity? |
+|---|---|---|---|
+| link.amazon/B04G1MEwY | Page Not Found | `dp/B0CDY277D3` (CHEFMAN 6 Quart Dual Basket Air Fryer) | yes |
+| link.amazon/B02NbDxp3 | Page Not Found | `dp/B09B7SB46R` (Emeril Lagasse 26QT French Door Air Fryer Toaster Oven) | yes |
+| link.amazon/B00hJ57DV | Page Not Found | `dp/B08DKYBTPH` (Chefman Air Fryer 8 Qt TurboFry) | yes |
+
+Sources (official): https://link.amazon/B04G1MEwY · https://link.amazon/B02NbDxp3 · https://link.amazon/B00hJ57DV · https://www.amazon.com/dp/B0CDY277D3 · https://www.amazon.com/dp/B09B7SB46R · https://www.amazon.com/dp/B08DKYBTPH · https://www.amazon.com/dp/B04G1MEwY · https://www.amazon.com/dp/B02NbDxp3 · https://www.amazon.com/dp/B00hJ57DV
+
+Checks run: `python3 scripts/check_site.py` → OK (10 pages, 3 products, 37 sources, 32 flags). `python3 tools/link_report.py --strict` run on this branch.
+
+Not verified in this session: prices, list prices, ratings, review counts, commission rate, BSR, competitor counts. Left blank here; PR #26's figures are not confirmed or refuted by this record.
+
+Irregularities: the three codes are 9 characters, not ASINs (raw `dp` lookup fails for all three). Amazon can change short-link targets, so identities must be re-checked before a row is published.
+
+### E Requests for the integration session (log only; not edited here)
+
+- **To the PR #26 owner (`9fef7647`):** the identity claims in PR #26 match this re-check. Its price and rating figures were not re-checked here. Before merging, re-fetch the price fields from the resolved ASIN pages and cite the time of observation. Also note that PR #26's `check_all_links.py` is not on `main` yet.
+- **To the integration session:** the short-link identity table above should be copied into the Flagged for Review page, with the source links, as FLG-022 addendum. This session did not edit the shared Flagged page.
+
+### E Task status
+
+| Task | Status |
+|---|---|
+| E-T1 — short-link identity re-check | done |
+| E-T2 — requests logged | done (log only) |
