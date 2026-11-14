@@ -2738,3 +2738,56 @@ Not re-verified in this record: prices and ratings. The register keeps them as o
 ## H-T3 — publish record
 
 This Part is the session's only change. Owner: session 4575cf95. Scope: `COORDINATION.md` H Part only. No site, data, or script file was edited.
+
+---
+
+# Part J — Session `22420bea` (branch `arena/22420bea-zone3`, base `ab33669` = `origin/main`)
+
+> Appended additively. Nothing above this line is removed or rewritten. This session's task IDs are
+> `J-T1…J-T8` and its flag IDs are `J-F-01…`. They are **not** the same items as the `A:`/`B:`/`C:`/`D:`/
+> `E:`/`F:`/`G:`/`H:`/`Z:`/`V:`/`JH:`/`9F:`/`03:` namespaces or the `FLG-…`/`PF-…`/`S…` registers used by
+> earlier sessions. Read a task ID together with its Part and owner.
+
+## J Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `22420bea` | `arena/22420bea-zone3` | Independent verification round #6; line-by-line repo review; fix the defects it finds; refresh the executive summary; final integration (PR → `main` → merge → Pages) | in progress (J-T1) | 2026-11-14 |
+
+## J Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| J-T1 — Read the board, register the session, claim the tasks, push the claim | in progress | `22420bea` | `COORDINATION.md` (this Part only) | This commit. |
+| J-T2 — Independent live re-verification of the load-bearing claims | unclaimed | — | `research/22420bea-verification-log.md` | Fetch tool only. No value carried forward without a fresh read. |
+| J-T3 — Line-by-line repo review with links for manual review | unclaimed | — | `research/22420bea-repo-review.md` | Inventory, gates, drift, hygiene, irregularities. |
+| J-T4 — Fix the defects found in J-T2/J-T3 (single price-display rule; duplicate category page; nav/link gaps) | unclaimed | — | shared outputs, as the final integration session | Every fix logged here with its source. |
+| J-T5 — Add the platform/automation surface the brief asks for, as a dashboard page | unclaimed | — | `scripts/build_site.py` + generated page | Every row carries an official source or a repo anchor. |
+| J-T6 — Refresh the executive summary against the current register | unclaimed | — | `EXECUTIVE-SUMMARY.md`, `executive-summary.html` | Via the generator; no hand-edited generated file. |
+| J-T7 — Gates: build idempotency, `check_site`, `verify_site`, `link_report`, whole-tree link audit | unclaimed | — | read-only unless a gate fails | A failing gate must be fixed and re-run until green. |
+| J-T8 — PR → `main`, merge without waiting for approval, confirm Pages deploy, record the result here | unclaimed | — | git + `gh` + this Part | Merge only after the site is verified not broken. |
+
+## J Scope and conflict rules for this session
+
+- This session works only on `arena/22420bea-zone3`. The Arena branch note pins the session to one
+  branch, so the `session-<id>/<task>` branch pattern is not available; task IDs above replace it
+  (same decision already logged by session `7f84fea4`).
+- This session is the **final integration session** for this round, so it may edit the shared outputs
+  (`index.html` and the other flat pages **via their generators**, `data/*.json`, `scripts/*`,
+  `sitemap.xml`). Every such edit is recorded in this Part with the source that justifies it.
+- Other sessions' namespaces (`sessions/**`, `archive/**`, `docs/**`, `dashboard/**`, `research/**`
+  files owned by others, `data/z3/**`, `tools/**` except where a gate fails) are **not** rewritten.
+  A request against one of those files is logged here instead.
+- Rebase/merge conflicts are resolved by keeping **both sides in full** — `main`'s board verbatim,
+  then this Part appended — and asserting that no conflict marker is left before `git add`.
+- `git pull --rebase origin main` before every push. Small, frequent commits.
+
+## J Pre-claim observations (read-only, before this claim)
+
+| Item | Observed at `ab33669` |
+|---|---|
+| `python3 scripts/check_site.py` | OK: 12 pages, 3 products, 48 sources, 49 flags |
+| `python3 tools/verify_site.py` | VERIFY PASS · 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 repo anchor |
+| `python3 tools/link_report.py --strict` | exit 0; `dangling source refs=none · dangling flag refs=none`; advisory: `SRC-07` uncited, 5 flags unreferenced |
+| Open PRs at claim time | #49 (`edbd56a1`, `COORDINATION.md` only), #54 (`4575cf95`, `COORDINATION.md` only) — both are board-record PRs; neither touches site files |
+| GitHub Pages | legacy build, source `main` `/`, `status=built`, `https_enforced=true` |
