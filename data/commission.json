@@ -1,0 +1,18 @@
+{
+  "retrieved": "2026-11-14",
+  "note": "Associates Program Standard Commission Income Statement, Table 1 - Fixed Standard Commission Income Rates for Specific Product Categories, read in full from the public Associates help node (S25) without login on 2026-11-14. Each row is the literal category wording and rate as published. This is a category reference table, NOT a per-product rate: which row applies to a listing depends on its commission category, which is not verified for the three submitted links (FLG-021).",
+  "table": [
+    { "category": "Luxury Beauty, Luxury Stores Beauty, Amazon Explore", "rate": "10.00%" },
+    { "category": "Digital Music, Physical Music, Handmade, Digital Videos", "rate": "5.00%" },
+    { "category": "Physical Books, Kitchen, Automotive", "rate": "4.50%" },
+    { "category": "Amazon Fire Tablet Devices, Amazon Kindle Devices, Luxury Stores Fashion, Apparel, Amazon Cloud Cam Devices, Fire TV Edition Smart TVs, Amazon Fire TV Devices, Amazon Echo Devices, Ring Devices, Watches, Jewelry, Luggage, Shoes, and Handbags & Accessories", "rate": "4.00%" },
+    { "category": "Toys, Furniture, Home, Home Improvement, Lawn & Garden, Pets Products, Headphones, Beauty, Musical Instruments, Business & Industrial Supplies, Outdoors, Tools, Sports, Baby Products, Amazon Coins", "rate": "3.00%" },
+    { "category": "PC, PC Components, DVD & Blu-Ray", "rate": "2.50%" },
+    { "category": "Televisions, Digital Video Games", "rate": "2.00%" },
+    { "category": "Amazon Fresh, Physical Video Games & Video Game Consoles, Grocery, Health & Personal Care", "rate": "1.00%" },
+    { "category": "Gift Cards; Wireless Service Plans; Alcoholic Beverages; Digital Kindle Products purchased as a subscription; Vehicles - Leasing and Sales; Pet Prescription Medications; Food prepared and delivered from a restaurant; Amazon Appstore, Prime Now, or Amazon Pay Places", "rate": "0.00%" },
+    { "category": "Coach", "rate": "0.00%" },
+    { "category": "All Other Categories", "rate": "4.00%" }
+  ],
+  "sources": ["S25"]
+}
