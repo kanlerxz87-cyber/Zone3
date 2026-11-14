@@ -21,7 +21,7 @@ Statuses: `unclaimed` · `in progress` · `done` · `needs review` (listed on th
 | c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 | 33226b37, c4e71983 | (branch only; no PR seen) | Not read in this session. | unknown | — |
 | 3c886b62 | `arena/3c886b62-zone3` | Verified price/rating capture via `amazon.com/s?k=<ASIN>`; the public commission rate table; Participation Requirements 2(b)/6(t)/2(e). Own scope only: `sessions/3c886b62/`. | in progress (T7) | 2026-11-13 22:5x |
-| f2d2c167 | `arena/f2d2c167-zone3` | Final integration: re-verify, PR to `main`, merge, Pages deploy | in progress (T6) | 2026-11-14 |
+| f2d2c167 | `arena/f2d2c167-zone3` | Final integration: re-verify, PR to `main`, merge, Pages deploy | done (T6) | 2026-11-14 |
 
 ### Branch naming decision (logged 2026-11-13, session 7f84fea4)
 
@@ -36,7 +36,7 @@ The brief asks for `session-<id>/<task>` branches. Arena's session branch note f
 | T3 — Line-by-line verification and flags | needs review | 7f84fea4 | `scripts/check_site.py`, `data/flags.json` | — | FLG-001–020 (published on Flagged for review) |
 | T4 — Integration with session 26634cd5 (PR #1) | done | 7f84fea4 | all (integration only) | S07 mapped to S10 and others (see below) | FLG-015–020 |
 | T5 — Campaign and tracking ledger | done (empty by design) | 7f84fea4 | `campaigns.html` | — | FLG-010, FLG-011 |
-| T6 — Re-verify, PR, merge, Pages deploy | in progress | f2d2c167 | this branch only | — | — |
+| T6 — Re-verify, PR, merge, Pages deploy | done | f2d2c167 | this branch only | S01–S55 | FLG-001–038 (published on Flagged for review) |
 | T7 — Price/rating capture, public commission rate table, 2(b)/6(t)/2(e) policy review | in progress | 3c886b62 | `sessions/3c886b62/**` only (no root files) | S1–S12 in `sessions/3c886b62/data/sources.json` | F01–F17 in `sessions/3c886b62/docs/FLAGGED.md` |
 
 ## Integration with session 66a80e53 (PR #3, merged after this branch was first pushed)
@@ -2750,3 +2750,19 @@ This Part is the session's only change. Owner: session 4575cf95. Scope: `COORDIN
 | Pages build | `built` for `ab33669`, updated 2026-11-14T18:30:18Z |
 | Live check | https://kanlerxz87-cyber.github.io/Zone3/ serves the dashboard (fetched after the build) |
 | Status | H-T1, H-T2, H-T3 done |
+
+## T6 record — session f2d2c167 — PR #56, merge and Pages deploy (2026-11-14)
+
+| Event | Result |
+|---|---|
+| Pull request | [#56 — Zone3: final integration (session f2d2c167) — re-verify, PR, merge, Pages deploy](https://github.com/kanlerxz87-cyber/Zone3/pull/56) — `arena/f2d2c167-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all gates green immediately before merge: `check_site` OK (12 pages / 3 products / 48 sources / 49 flags), `verify_site` VERIFY PASS (69 pages / 1169 rows / 967 sourced / 346 flagged), `link_report --strict` exit 0, `check_all_links` 115 pages 0 errors |
+| Merge | **MERGED** 2026-11-14T18:33:14Z via `gh pr merge 56 --merge` (no approval waited, per brief) → merge commit `e8e3e9d29c902880cc1113d8fa79bab141da6fc1` (confirmed `state=MERGED` via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages build | legacy `main` `/` source; build for `e8e3e9d` → **status `built`** (via Pages API) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — serves the dashboard: headline, re-verification table with per-claim source links, 12 section tiles |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — 49 flags render with source links |
+| Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**, headline + key findings + per-claim official source links |
+| Live check — products | https://kanlerxz87-cyber.github.io/Zone3/products.html — **live**, 3 product rows with source links on every row |
+| Site merged while flagged? | yes — all 49 flags are non-blocking and published on the Flagged for review page, as the brief requires |
+| Flagged irregularities | 49 flags: 2 critical, 11 high, 16 medium, 15 low, 5 info. Key: FLG-001 (9-char codes not ASINs), FLG-002 (redirect targets not confirmed), FLG-003 (link.amazon not in policies), FLG-004 (product attributes unverified), FLG-010 (no Associates tag), FLG-015 (US-only Schedule 1), FLG-016 (AI analysis needs written approval), FLG-022 (price/rating display restricted), FLG-035 (identity rests on observed redirects), FLG-038 (PR #26 destination values kept blank) |
+| Sources | S01–S55: Amazon Associates Operating Agreement, Program Policies, Creators API docs, PA-API 5 deprecation, FTC Disclosures 101, FTC Endorsement Guides topic hub, Standard Commission Table 1 (S25), Onsite Table A (S26), Amazon product pages (S08–S16, S46–S48), Amazon Best Sellers (S43), Sell on Amazon ASIN blog (S45), short links as submitted (S11–S13, S52–S55) |
