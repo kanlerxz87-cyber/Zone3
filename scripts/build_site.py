@@ -100,6 +100,9 @@ NAV = [
     # scripts/build_marketing.py from data/marketing.json. Linked from the flat
     # site nav so product pages, comparison and buying guide are reachable.
     ("marketing/index.html", "Marketing"),
+    # Added on integration 2026-11-14 (session b90c5685): product briefs page kept from PR #26
+    # (session 9fef7647), rewritten to the no-inference/no-price rules and re-homed under marketing/.
+    ("marketing/briefs.html", "Marketing briefs"),
     # Added by integration session 3c6cba43: the second site generation in this repo,
     # rendered by tools/build_site.py from data/z3/*.json. Linked here so the two halves of
     # the merged site are one navigable product instead of two disconnected trees.
@@ -142,6 +145,20 @@ def page(filename: str, title: str, body: str, lead: str = "") -> None:
 </body>
 </html>
 """
+    if "/" in filename:
+        # Page lives in a subdirectory: prefix every relative href/src so nav, stylesheet and
+        # footer links resolve from there. Kept from PR #26 (session 9fef7647); without it a
+        # subdirectory page's links 404 in the browser although they exist at the repo root.
+        import re as _re
+
+        def _up(m):
+            attr, value = m.group(1), m.group(2)
+            if value.startswith(("#", "http://", "https://", "mailto:", "tel:", "/", "\${", "data:")):
+                return m.group(0)
+            return f'{attr}../{value}"'
+
+        doc = _re.sub(r'(href=")([^"]+)"', _up, doc)
+        doc = _re.sub(r'(src=")([^"]+)"', _up, doc)
     (ROOT / filename).write_text(doc, encoding="utf-8")
 
 
@@ -223,7 +240,7 @@ def reverify_table() -> str:
         ("amazon.com/dp/&lt;id&gt; returns Page Not Found for all three", "Confirmed",
          "All three fetched 2026-11-14; each returned Amazon&rsquo;s &ldquo;Page Not Found&rdquo; page.", ["S08", "S09", "S10"]),
         ("Each link.amazon short link opens a different real listing", "Confirmed",
-         "B04G1MEwY&rarr;B0CDY277D3 (CHEFMAN 6 Qt dual basket), B02NbDxp3&rarr;B09B7SB46R (Emeril Lagasse 26QT), B00hJ57DV&rarr;B08DKYBTPH (Chefman TurboFry 8 Qt). Same three targets as 2026-11-13.", ["S11", "S12", "S13"]),
+         "B04G1MEwY&rarr;B0CDY277D3 (CHEFMAN 6 Qt dual basket), B02NbDxp3&rarr;B09B7SB46R (Emeril Lagasse 26QT), B00hJ57DV&rarr;B08DKYBTPH (Chefman TurboFry 8 Qt). Same three targets as 2026-11-13.", ["S11", "S12", "S13", "S14", "S15", "S16"]),
         ("Operating Agreement &sect;5 disclosure wording", "Confirmed verbatim",
          "&ldquo;As an Amazon Associate I earn from qualifying purchases.&rdquo; Header still reads Updated: October 15, 2025. Schedule 1 still lists the United States / amazon.com only.", ["S01"]),
         ("Participation Requirements 6(t), 6(w), 6(y), 2(b) and CIS 2(e)", "Confirmed verbatim",
@@ -627,6 +644,133 @@ def build_sources() -> None:
 COMP = load("competition.json")
 
 
+def build_marketing() -> None:
+    """Marketing content page.
+
+    INTEGRATION NOTE (session b90c5685, 2026-11-14). PR #26 (session 9fef7647) wrote this page
+    from product_name/brand/price/rating fields that it had filled with values read off each
+    short link's redirect destination. Those fields are blank on main by design: the submitted
+    code is not an ASIN, so no official source ties the destination's attributes to the
+    submitted link (FLG-001, FLG-002, FLG-035, FLG-038). The page is kept, but every product
+    claim is now attributed to the listing the link opens, never to the submitted link, and no
+    price, star rating or review count is printed (PF-04, PF-05; FLG-022, FLG-029).
+    The listing titles/feature summaries below are the destination page titles, which main
+    already records verbatim in products.json -> redirect_observed.page_title (S14/S15/S23).
+    """
+    briefs = [
+        ("P1", "Two-basket cooking for families who cook two foods at once",
+         ["Two independent 3-quart baskets with Sync Finish, as stated in the listing title",
+          "Easy-view windows and a digital touchscreen, as stated in the listing title",
+          "Hi-Fry option and auto shutoff, as stated in the listing title"],
+         "https://link.amazon/B04G1MEwY", "S14"),
+        ("P2", "An all-in-one oven replacement",
+         ["26-quart air-fryer toaster oven with French doors, as stated in the listing title",
+          "24 cooking functions, a dual-speed fan and a rotisserie, as stated in the listing title",
+          "Family-size capacity, as stated in the listing title"],
+         "https://link.amazon/B02NbDxp3", "S15"),
+        ("P3", "A large single-basket air fryer",
+         ["8-quart XL nonstick, dishwasher-safe basket, as stated in the listing title",
+          "TurboFry 4-in-1: bake, dehydrate and cook from frozen, as stated in the listing title",
+          "450-degree Hi-Fry option, as stated in the listing title"],
+         "https://link.amazon/B00hJ57DV", "S23"),
+    ]
+    parts = []
+    for pid, angle, bullets, url, title_src in briefs:
+        p = next(x for x in PRODUCTS if x["id"] == pid)
+        ro = p["redirect_observed"]
+        li = "".join(f"<li>{e(b)}</li>" for b in bullets)
+        facts = table(
+            ["Attribute (of the listing the link opens)", "As stated on the Amazon listing", "Source"],
+            [
+                ["Listing title, as read", e(ro["page_title"]), src_links([title_src])],
+                ["Listing ID (ASIN of the destination page)", e(ro["page_id"]), src_links([title_src])],
+                ["Submitted code", f'{e(p["link_id"])} <span class="muted">({p["link_id_length"]} characters: not an ASIN)</span>',
+                 src_links(["S06"]) + " " + flag_links(["FLG-001"])],
+                ["Price, rating and review count", unv() + " " + badge("Not shown: display rule", "info"),
+                 src_links(["S02"]) + " " + flag_links(["FLG-022", "FLG-029", "FLG-036"])],
+            ],
+        )
+        parts.append(f"""
+<section class="card">
+  <h2>{e(p["label"])}: {e(angle)}</h2>
+  <p>Every claim below describes <strong>the Amazon listing that this submitted link currently opens</strong>,
+  not a product the submitted code is documented to identify. Nothing here is based on hands-on testing:
+  nobody on this project has used these products.</p>
+  <ul class="findings">{li}</ul>
+  <p><a href="{e(url)}" target="_blank" rel="noopener noreferrer">Open the submitted link on Amazon</a>
+  &mdash; check the current price and availability there. This page states none, because a price or rating
+  may only be displayed when Amazon serves the link that shows it, or when it comes from the Creators API.</p>
+  {facts}
+</section>""")
+
+    comp_rows = [
+        ["Listing the link opens", e(PRODUCTS[0]["redirect_observed"]["page_id"]),
+         e(PRODUCTS[1]["redirect_observed"]["page_id"]), e(PRODUCTS[2]["redirect_observed"]["page_id"]),
+         src_links(["S14", "S15", "S23"])],
+        ["Form factor (from the listing title)", "Dual-basket air fryer oven", "French-door air fryer toaster oven",
+         "Single XL-basket air fryer", src_links(["S14", "S15", "S23"])],
+        ["Capacity (from the listing title)", "6 quart (2 &times; 3 qt)", "26 quart", "8 quart",
+         src_links(["S14", "S15", "S23"])],
+        ["Standout listed features", "Sync Finish, Hi-Fry, easy-view windows", "24 functions, rotisserie, dual-speed fan",
+         "450F Hi-Fry, bake, dehydrate, frozen", src_links(["S14", "S15", "S23"])],
+        ["Price and rating", badge("Not stated (PF-04, PF-05)", "info"), badge("Not stated (PF-04, PF-05)", "info"),
+         badge("Not stated (PF-04, PF-05)", "info"), src_links(["S02"])],
+    ]
+    comp = table(["Attribute", "Submitted link 1", "Submitted link 2", "Submitted link 3", "Source"], comp_rows)
+
+    guide = f"""
+<section class="card">
+  <h2>Buying guide: choosing between the three listings</h2>
+  <p>Amazon shows all three destinations in the same breadcrumb
+  Home &amp; Kitchen &rsaquo; Kitchen &amp; Dining &rsaquo; Small Appliances &rsaquo; Fryers &rsaquo; Air Fryers
+  {src_links(['S14', 'S15', 'S23'])} but their listing titles describe different jobs. Every product fact
+  below is read from the listing title and linked.</p>
+  <ul class="findings">
+    <li><strong>Do you cook two foods at once?</strong> Only the first listing states two independent baskets with
+    a synchronised finish {src_links(["S14"])}. The other two titles describe single-chamber designs
+    {src_links(["S15", "S23"])}.</li>
+    <li><strong>Are you replacing a countertop oven?</strong> The second listing states French doors, 24 cooking
+    functions, a rotisserie and a 26-quart cavity {src_links(["S15"])}.</li>
+    <li><strong>Is easy cleanup the priority?</strong> The first and third listings both state nonstick,
+    dishwasher-safe baskets {src_links(["S14", "S23"])}.</li>
+    <li><strong>Do you want high-temperature crisping?</strong> The first and third listings both state a Hi-Fry
+    option (the third states 450 degrees) {src_links(["S14", "S23"])}.</li>
+    <li><strong>Compare current prices yourself.</strong> This guide states no prices or ratings: they are volatile
+    and their display is restricted for Associates sites {src_links(["S02"])} {flag_links(["FLG-022", "FLG-029", "FLG-036"])}.</li>
+    <li><strong>Read the return policy and warranty on the listing before buying.</strong> Terms are set by Amazon
+    and can change {src_links(["S01"])}.</li>
+  </ul>
+</section>
+<section class="card">
+  <h2>How this content meets the rules</h2>
+  <ul class="findings">
+    <li>Every product claim is attributed to the listing it was read from and carries a source link
+    (Participation Requirements 2(b): no inaccurate or misleading claims) {src_links(["S02"])}.</li>
+    <li>No first-hand experience is claimed; nobody on this project has tested these products
+    (FTC Disclosures 101) {src_links(["S07"])}.</li>
+    <li>The affiliate relationship is disclosed on every page, with the exact wording required by
+    Operating Agreement Section 5 {src_links(["S01"])}.</li>
+    <li>No prices, star ratings or review counts appear in this content {src_links(["S02"])}
+    {flag_links(["FLG-022", "FLG-029", "FLG-036"])}.</li>
+    <li>The outbound links are the owner-submitted short links. Whether they carry an Associates tag is
+    unverified, and short-link compliance is open {flag_links(["FLG-003", "FLG-010"])}.</li>
+    <li>Which product each submitted code was meant to identify is still unconfirmed, so no page here calls
+    the destination "the submitted product" {flag_links(["FLG-002", "FLG-035", "FLG-038"])}.</li>
+  </ul>
+</section>"""
+
+    body = ('<div class="callout ok"><p><strong>Facts-only marketing content.</strong> Three SEO product briefs, '
+            "one comparison and one buying guide, written from what each Amazon listing states, with a source link "
+            "for every claim. No prices or ratings are quoted and no first-hand experience is claimed.</p></div>"
+            + "".join(parts)
+            + "<h2>Comparison: the three listings side by side</h2>"
+            + comp
+            + guide)
+    page("marketing/briefs.html", "Marketing content: product briefs", body,
+         lead="SEO product briefs, a comparison and a buying guide for the three listings the submitted links open. Written from verified listing facts only.")
+
+
+
 def build_category() -> None:
     """Category subpage: Air Fryers (Amazon browse node 17659096011).
 
@@ -699,6 +843,7 @@ def build_legacy_stubs() -> None:
         "disclosure.html": "content.html",
         "categories/home-kitchen-air-fryers.html": "products.html",
         "flagged-for-review.html": "flagged.html",
+        "marketing.html": "marketing/index.html",
     }
     for name, target in stubs.items():
         path = ROOT / name
@@ -721,6 +866,7 @@ def main() -> None:
     build_products()
     build_pricing()
     build_reviews()
+    build_marketing()
     build_content()
     build_campaigns()
     build_flagged()

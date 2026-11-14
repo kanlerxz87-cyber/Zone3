@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01).",
   "flags": [
     {
       "id": "FLG-001",
@@ -18,7 +18,11 @@
         "S15",
         "S16",
         "S45"
-      ]
+      ],
+      "addendum_2026_11_14": {
+        "note": "Added on integration (session b90c5685) from PR #26 (session 9fef7647). Text is that session's wording, with source IDs renumbered to the merged register. Nothing from main's wording was removed.",
+        "action": "Provide the intended product page URL or 10-character ASIN for each product (the owner's input is needed; this session cannot infer it). Update 2026-11-14: the listing each link opens is now recorded (FLG-035); the request for owner confirmation of intent stands."
+      }
     },
     {
       "id": "FLG-002",
@@ -35,7 +39,11 @@
         "S15",
         "S16",
         "S23"
-      ]
+      ],
+      "addendum_2026_11_14": {
+        "note": "Added on integration (session b90c5685) from PR #26 (session 9fef7647). Text is that session's wording, with source IDs renumbered to the merged register. Nothing from main's wording was removed.",
+        "detail": "Each short link ended on a different amazon.com product page (S11-S13), and the mapping was the same on two fetches each. The final URLs carry the parameters lv=shuf and plpRedirect=mhFallback. The page titles identify two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven (S14-S16). What these parameters mean is not documented in any official source reviewed, so they are recorded as observed only and never used as product data. The direct amazon.com/dp/B08DKYBTPH request returns a 'Continue shopping' interstitial (S16), so product 3's title is only readable through the short link (S23). Update 2026-11-14 (session 9fef7647): all three links were re-fetched with fresh redirect tokens and each resolved to the same listing as on 2026-11-13 (S52-S54). The 'not confirmed' wording now refers only to the owner's intent (which product was meant by the code), not to the stability of the mapping, which has been observed 4 times over 2 days (FLG-035, FLG-037)."
+      }
     },
     {
       "id": "FLG-003",
@@ -65,7 +73,11 @@
         "S14",
         "S15",
         "S16"
-      ]
+      ],
+      "addendum_2026_11_14": {
+        "note": "Added on integration (session b90c5685) from PR #26 (session 9fef7647). Text is that session's wording, with source IDs renumbered to the merged register. Nothing from main's wording was removed.",
+        "detail": "The identifiers do not resolve (FLG-001), so no official product record exists to read these values from. The fetch tool returned only the page title and the URL for the redirect targets (S14-S16); prices and ratings were not in its text. These cells are left blank on purpose. Update 2026-11-14 (session 9fef7647): price, rating and review count are now shown as dated snapshots observed on Amazon's own search pages (S46-S48). They are volatile deal prices and their display on a live Associates site is restricted by Participation Requirements 2(b) and 6(t) (PF-04, PF-05) - see FLG-036. Competitor count, best-seller rank, availability, clicks and conversions remain unverified and blank."
+      }
     },
     {
       "id": "FLG-005",
@@ -78,7 +90,15 @@
         "S03",
         "S25",
         "S26"
-      ]
+      ],
+      "addendum_2026_11_14": {
+        "note": "Added on integration (session b90c5685) from PR #26 (session 9fef7647). Text is that session's wording, with source IDs renumbered to the merged register. Nothing from main's wording was removed.",
+        "detail": "The Commission Schedule link in the Program Policies (S03) redirected to an Amazon sign-in page on 2026-11-13. No rate was read, so no commission rate, commission-income estimate or payout figure is stated on this site.",
+        "action": "Sign in to Associates Central and export the rate card for the product category; send the file or the values so they can be added with a source.",
+        "sources": [
+          "S02"
+        ]
+      }
     },
     {
       "id": "FLG-006",
@@ -176,7 +196,11 @@
         "S01",
         "S07",
         "S24"
-      ]
+      ],
+      "addendum_2026_11_14": {
+        "note": "Added on integration (session b90c5685) from PR #26 (session 9fef7647). Text is that session's wording, with source IDs renumbered to the merged register. Nothing from main's wording was removed.",
+        "detail": "The required statement (PF-01) is on every page. The FTC asks that a disclosure be hard to miss and placed with the endorsement (PF-20). The footer may not meet that standard for a product recommendation. Account enrolment could not be checked from this session."
+      }
     },
     {
       "id": "FLG-014",
@@ -224,7 +248,12 @@
         "S24",
         "S44"
       ],
-      "action": "Read the 2023 Guides text on ftc.gov before publishing marketing copy. Check the disclosure placement on each published page."
+      "action": "Read the 2023 Guides text on ftc.gov before publishing marketing copy. Check the disclosure placement on each published page.",
+      "addendum_2026_11_14": {
+        "note": "Added on integration (session b90c5685) from PR #26 (session 9fef7647). Text is that session's wording, with source IDs renumbered to the merged register. Nothing from main's wording was removed.",
+        "detail": "The FTC brochure in S07 is dated November 2019. The FTC topic page (S24) states that the Endorsement Guides were 'revised in 2023'. The current guides were not read. The disclosure text used on the site is the Associates wording (PF-01), which is verified; the FTC points are not used as a finding.",
+        "action": "Read the 2023 Endorsement Guides on ftc.gov before publishing marketing copy."
+      }
     },
     {
       "id": "FLG-018",
@@ -274,7 +303,12 @@
         "S26",
         "S43"
       ],
-      "action": "Owner: confirm in Associates Central which rate-card category applies to each of the three listings. Until then, no rate is applied."
+      "action": "Owner: confirm in Associates Central which rate-card category applies to each of the three listings. Until then, no rate is applied.",
+      "addendum_2026_11_14": {
+        "note": "Added on integration (session b90c5685) from PR #26 (session 9fef7647). Text is that session's wording, with source IDs renumbered to the merged register. Nothing from main's wording was removed.",
+        "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). The Onsite Table A lists 'Kitchen' at 1.25% for Onsite Content only (S26; PF-39). Neither is a product rate. To know which row applies, the category of each listing is needed. The product category is not stated in the text of the listings read (they show 'Home & Kitchen' as the department). The rate is therefore shown as a reference only and not on any product row. Raised by session 66a80e53 (PR #3). Update 2026-11-14: the category breadcrumb is now observed on each product page (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers; S52-S54). Whether the commission schedule's 'Kitchen' category maps to this node is still not documented in any public source, so the reference rate stays a reference only.",
+        "action": "Owner: confirm each listing's category in Associates Central (or via the Creators API, once approved) before using any rate."
+      }
     },
     {
       "id": "V-F1",
@@ -501,6 +535,71 @@
       "action": "Owner of tools/: either let scripts/build_marketing.py own a second sitemap, or widen verify_site.py's V5 check to accept pages produced by scripts/build_marketing.py. Not edited here: tools/ is outside this session's claimed scope.",
       "sources": [
         "S22"
+      ]
+    },
+    {
+      "id": "FLG-035",
+      "severity": "High",
+      "category": "Product identity",
+      "item": "Product identity rests on observed short-link redirects, not on documented identifiers",
+      "detail": "The three submitted codes are 9 characters and are not ASINs (FLG-001). Each submitted link resolves to exactly one Amazon listing, and the mapping was identical across 4 observations on 2026-11-13 and 2026-11-14 (S11-S13, S52-S54). Control tests on the shortener (recorded in COORDINATION.md, Z-V10 to Z-V14) show the codes are registered short codes: junk codes of the same length are rejected with 403/404. No official Amazon source documents the code-to-listing registry, so the association is recorded as observed, and this site treats each listing as the product its submitted link opens. If the owner intended different products, the tables must be re-pointed. [Kept from PR #26 (session 9fef7647), renumbered from FLG-022 by session b90c5685: on main that ID already names a different finding. Both findings are kept.] [Renumbered from FLG-028 to FLG-035 on integration 2026-11-14 (session b90c5685) because FLG-028 was assigned to a different finding on main while PR #26 was open. Both findings are published.]",
+      "action": "Owner: confirm that the three listings recorded here are the intended products.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S52",
+        "S53",
+        "S54",
+        "S14",
+        "S15",
+        "S23"
+      ]
+    },
+    {
+      "id": "FLG-036",
+      "severity": "Medium",
+      "category": "Display compliance",
+      "item": "Observed prices and star ratings are shown for analysis only; display on a live Associates site is restricted",
+      "detail": "Participation Requirements 2(b) (PF-04) allow a site to show prices and availability only when Amazon serves the link or through the Product Advertising API, and 6(t) (PF-05) bars displaying customer reviews or star ratings unless obtained through the API or a qualifying link. The prices and ratings on this site are dated observations (2026-11-14, S46-S48) kept for analysis, with a date stamp adjacent per PF-27. Before this site is used commercially, remove these values or re-source them via Special Links or the Creators API. Prices are also volatile deal prices (Z-F5 in COORDINATION.md). [Kept from PR #26 (session 9fef7647), renumbered from FLG-023 by session b90c5685: on main that ID already names a different finding. Both findings are kept.] [Renumbered from FLG-029 to FLG-036 on integration 2026-11-14 (session b90c5685) because FLG-029 was assigned to a different finding on main while PR #26 was open. Both findings are published.]",
+      "action": "Remove or re-source observed prices/ratings via API or Special Links before commercial use.",
+      "sources": [
+        "S02",
+        "S46",
+        "S47",
+        "S48"
+      ]
+    },
+    {
+      "id": "FLG-037",
+      "severity": "Low",
+      "category": "Cross-session record",
+      "item": "Earlier builds disagreed on whether the links resolve; re-verification 2026-11-14 settles the factual part",
+      "detail": "The root build (sessions 7f84fea4/33226b37) recorded that the submitted identifiers select no product page; the /docs/ build (session 79f85104, Z-F6) recorded that all three short links resolve to real listings, with control evidence Z-V10 to Z-V14. Session 9fef7647 re-fetched all three links on 2026-11-14 and reproduced the /docs/ result exactly (S52-S54). Both earlier statements are true of different things: the codes are not ASINs (they select nothing at amazon.com/dp/), and the links resolve stably to three listings. This site now states both. [Kept from PR #26 (session 9fef7647), renumbered from FLG-024 by session b90c5685: on main that ID already names a different finding. Both findings are kept.] [Renumbered from FLG-030 to FLG-037 on integration 2026-11-14 (session b90c5685) because FLG-030 was assigned to a different finding on main while PR #26 was open. Both findings are published.]",
+      "action": "No action needed unless the owner disputes the resolved products (FLG-035).",
+      "sources": [
+        "S08",
+        "S09",
+        "S10",
+        "S52",
+        "S53",
+        "S54"
+      ]
+    },
+    {
+      "id": "FLG-038",
+      "severity": "High",
+      "category": "Integration decision (cross-session)",
+      "item": "PR #26 filled product name/brand/price/rating from the redirect destinations; this integration keeps those cells blank",
+      "detail": "Session 9fef7647 (PR #26, branch arena/9fef7647-zone3) treated each short link's destination as the submitted product and filled product_name, brand, price, rating and review_count, and built a marketing page that quotes those prices and ratings as 'as listed' facts. Session b90c5685 re-fetched all three links on 2026-11-14 and reproduced the destinations exactly (S55), but no official source read states which product the owner intended, and the submitted codes are 9 characters, not ASINs (S06, S08-S10, FLG-001). A destination value is therefore an observation about a different page, not a verified attribute of the submitted link (FLG-002, FLG-035). It is also a display-policy issue: prices and star ratings may not be shown without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-036). PR #26's readings are preserved verbatim in data/products.json under observed_2026_11_14 and value_sources_2026_11_14; they are not rendered as product facts. [Renumbered from FLG-031 to FLG-038 on integration 2026-11-14 (session b90c5685) because FLG-031 was assigned to a different finding on main while PR #26 was open. Both findings are published.]",
+      "action": "Owner: confirm which product each submitted link was meant to point to. If the destinations are correct, say so and the identity cells can be filled from the documented listing (ASIN, brand, name) with the listing URL as the source; price and rating still require an Amazon-served link or API data before display.",
+      "sources": [
+        "S55",
+        "S06",
+        "S08",
+        "S11",
+        "S14",
+        "S02"
       ]
     }
   ]
