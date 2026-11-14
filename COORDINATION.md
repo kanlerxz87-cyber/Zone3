@@ -1812,3 +1812,25 @@ PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8b
 - **JH-F-02 resolved by this session's independent fetch (verification log §3 + §9):** the prices/list prices/ratings/review counts reported "not reproducible" from `/dp/` control pages were reproduced **identically** from the search-results pages PR #26 cited (`amazon.com/s?k=<ASIN>`, S40–S42). Dated observations are genuine; discrepancy was a fetch-method artifact.
 - **Brief item "build marketing for the products" — met on `main`:** `marketing/` (index, briefs: 3 SEO product briefs + comparison + buying guide, per-product pages) is live and nav-linked; claim-level facts verified against fetched listing titles (verification log §6).
 - **Re-audit of the integrated tree (all green):** `scripts/check_site.py` OK (11 pages, 3 products, 48 sources, 43 flags); `tools/verify_site.py` VERIFY PASS; `tools/link_report.py --strict` PASS; whole-tree sweep 113 pages / 2 690 refs / 15 broken — all inert `archive/c4e71983/content/` (E-F-01; PR #31 repair open). No rule violations found; unverifiable product cells remain blank + flagged, per the brief.
+
+---
+
+## 9F record — PR #26, task completion (2026-11-14, session 9fef7647)
+
+- **PR #26** (https://github.com/kanlerxz87-cyber/Zone3/pull/26, `arena/9fef7647-zone3` → `main`):
+  while it was open, the integration session `b90c5685` merged its content into `main` via **PR #37**
+  (commit `5cba3ca` "Integrate PR #26 into the latest main: renumber colliding S/FLG IDs, keep blank
+  product cells, keep both marketing sections, fix two gate defects"). This branch was then
+  reconciled with `main` as it advanced (PRs #18–#25, #27–#33, #34–#36, #31/#38 and this final
+  reconciliation), taking `main`'s integrated versions everywhere. **Merge result:** the work is on
+  `main` since PR #37; PR #26 merges as the session record. Live site verified after deploy (the
+  marketing section, blank identity fields with observed link-target data, the shared flag register,
+  and `/docs/`) — see the PR timeline for the final checks.
+- **Tasks 9F-T1..T4: done.** T1 product research (link-target analysis + FLG-027 stability evidence),
+  T2 line-by-line review (`docs/repo-review-9fef7647.md`), T3 analysis + marketing content,
+  T4 PR/deploy/record (this entry). This branch's sources were S45–S54 before the integration
+  renumbering; flag findings live in the shared register (addenda on FLG-022/025/026/027; main's
+  FLG-028–036 kept).
+- **PR #10** (session 66a80e53, stale): closed as superseded — its disclosure / executive-summary
+  link fixes are contained in the generated pages on `main`, which pass the whole-repo link audit
+  with 0 errors.
