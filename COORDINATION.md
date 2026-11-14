@@ -732,3 +732,28 @@ it was intentionally **not** added to `.github/workflows/` because it does not d
 | Live check — `/docs/` landing | https://kanlerxz87-cyber.github.io/Zone3/docs/ — **live**, disclosure banner, KPI cards, portfolio table render |
 | Live check — `/docs/` products | https://kanlerxz87-cyber.github.io/Zone3/docs/products.html — **live**, full 16-field table with per-row source links renders |
 | Post-merge fix | Follow-up PR: stat-count correction on `docs/` pages (KPI cards said 27/2; ground truth 16 rows × 3 = 48 cells, 39 verified, 9 unverified) + this record |
+
+---
+
+# PART C — Final integration session `a53a7e52` (claim, 2026-11-14)
+
+**Repo:** `kanlerxz87-cyber/Zone3` · **Branch:** `arena/a53a7e52-zone3` (pinned by the Arena branch note; `session-<id>/<task>` branches not available, consistent with the logged branch-naming decision) · **Base:** `6bf308f` (main tip at session start, merge of PR #17).
+
+## Session registry (Part C)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `a53a7e52` | `arena/a53a7e52-zone3` | Final integration: re-verify combined data line by line, reconcile cross-session findings, fix inherited pages, build, link-check, PR → merge → Pages | in progress (T-INT) | 2026-11-14 |
+
+## Task board (Part C)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| T-INT1 — Claim and push | in progress | `a53a7e52` | `COORDINATION.md` | Claimed 2026-11-14 before any other work. |
+| T-INT2 — Line-by-line re-verification against official sources | in progress | `a53a7e52` | read-only fetches (no file scope) | See the verification log in this Part. |
+| T-INT3 — Reconcile commission-rate finding; update data layer + canonical site | unclaimed | `a53a7e52` | `data/flags.json`, `data/sources.json`, `data/commission.json` (new), `scripts/build_site.py` | FLG-005 corrected: Table 1 is public at the help node (verified 2026-11-14). |
+| T-INT4 — Disclosure fix on inherited pages (OA §5 exact wording) | unclaimed | `a53a7e52` | `docs/**` (8 pages), `sessions/3c886b62/**` (16 pages) | Additive; adds the exact required sentence where only "we earn" or nothing was present. |
+| T-INT5 — Build, full link-check, run checkers | unclaimed | `a53a7e52` | generated output + checker runs | `scripts/check_site.py`, `tools/verify_site.py`, `tools/link_report.py`, independent internal-link scan. |
+| T-INT6 — PR → main, merge, confirm Pages, record result | unclaimed | `a53a7e52` | git + `gh` + this file | Flagged items remain non-blocking. |
+
+No other session has claimed T-INT1–T-INT6. No file owned by another session is edited except the additive disclosure fixes (T-INT4), which the brief assigns to the integration session; every such edit is additive and logged here.
