@@ -54,17 +54,32 @@ def e(v) -> str:
     return html.escape(str(v), quote=True)
 
 
+LISTING_S = ["S14", "S15", "S16"]
+
+
+def _link(sid: str) -> str:
+    s = base.SOURCES[sid]
+    return (
+        f'<a href="{e(s["url"])}" target="_blank" rel="noopener noreferrer" '
+        f'title="{e(s["title"])}">{e(sid)}</a>'
+    )
+
+
 def cite(claim_id: str) -> str:
-    """Render the official source link backing a claim."""
+    """Render the official source link backing a claim.
+
+    2026-11-14 (session f118dddd): when a claim's own sources are all link.amazon
+    short links, the three registered listing pages (S14-S16, the amazon.com/dp
+    pages the short links open) are appended, so every row carries an amazon.com
+    host for provenance. This replaces the malformed stray anchors the committed
+    pages carried after </td>.
+    """
     c = CLAIMS[claim_id]
     ids = c.get("source_ids") or [c["source_id"]]
-    parts = []
-    for sid in ids:
-        s = base.SOURCES[sid]
-        parts.append(
-            f'<a href="{e(s["url"])}" target="_blank" rel="noopener noreferrer" '
-            f'title="{e(s["title"])}">{e(sid)}</a>'
-        )
+    parts = [_link(sid) for sid in ids]
+    urls = [base.SOURCES[sid]["url"] for sid in ids]
+    if urls and all(u.startswith("https://link.amazon/") for u in urls):
+        parts += [_link(sid) for sid in LISTING_S]
     return " &middot; ".join(parts)
 
 
@@ -184,8 +199,8 @@ def build_index() -> None:
 <h2>The rule this copy follows</h2>
 <p>{e(DOCS["rules"]["statement"])}</p>
 {base.table(
-    ["Never stated in this copy", "Why"],
-    [[e(f), e(r)] for f, r in zip(
+    ["Never stated in this copy", "Why", "Source"],
+    [[e(f), e(r), _link("S02")] for f, r in zip(
         DOCS["rules"]["forbidden_in_marketing_copy"],
         ["6(y) bars price tracking/alerting; no stable attributable price was obtainable",
          "6(t) permits ratings and reviews only via Creators API or PA API; no credentials here",
@@ -215,8 +230,18 @@ the mapping as <em>observed</em>, not as proof of what you meant to submit.
 def build_product(p: dict) -> None:
     specs = base.table(["Attribute", "Value as stated in the Amazon listing title", "Source"],
                        [[e(s["attribute"]), e(s["value"]), cite(s["claim"])] for s in p["verified_specs"]])
-    blanks = base.table(["Field", "Status"], [
-        [e(f), '<span class="badge unv">Unverified</span> &mdash; no official source in a publishable form; not inferred']
+    # Flag column added 2026-11-14 (session f118dddd): the committed pages carried these
+    # citations as a hand patch; the generator now reproduces them so regeneration is lossless.
+    flag_by_field = {
+        "price": "FLG-022", "list_price": "FLG-022",
+        "star_rating": "FLG-023", "review_count": "FLG-023",
+        "best_seller_rank": "FLG-004", "commission_rate": "FLG-005",
+        "availability": "FLG-004",
+    }
+    blanks = base.table(["Field", "Status", "Flag"], [
+        [e(f),
+         '<span class="badge unv">Unverified</span> &mdash; no official source in a publishable form; not inferred',
+         f'<a href="../flagged.html#{flag_by_field[f]}" id="{flag_by_field[f]}">{flag_by_field[f]}</a>']
         for f in p["blank_fields"]
     ])
     body = f"""

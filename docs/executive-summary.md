@@ -12,9 +12,9 @@
 >
 > | Submitted link | Opens (stable ×4 over 2 days) | Observed 2026-11-14 (source) |
 > | --- | --- | --- |
-> | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt Dual Basket Air Fryer | $79.93 (list $99.99), 4.2★, ~4.8K reviews ([S30](https://link.amazon/B04G1MEwY), [S33](https://www.amazon.com/s?k=B0CDY277D3)) |
-> | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 (list $209.99), 4.3★, ~18.3K reviews ([S31](https://link.amazon/B02NbDxp3), [S34](https://www.amazon.com/s?k=B09B7SB46R)) |
-> | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry | $79.91 (list $119.99), 4.4★, ~16.8K reviews ([S32](https://link.amazon/B00hJ57DV), [S35](https://www.amazon.com/s?k=B08DKYBTPH)) |
+> | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt Dual Basket Air Fryer | $79.93 (list $99.99), 4.2★, ~4.8K reviews ([S52](https://link.amazon/B04G1MEwY), [S46](https://www.amazon.com/s?k=B0CDY277D3)) |
+> | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 (list $209.99), 4.3★, ~18.3K reviews ([S53](https://link.amazon/B02NbDxp3), [S47](https://www.amazon.com/s?k=B09B7SB46R)) |
+> | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry | $79.91 (list $119.99), 4.4★, ~16.8K reviews ([S54](https://link.amazon/B00hJ57DV), [S48](https://www.amazon.com/s?k=B08DKYBTPH)) |
 >
 > **What still stands from below:** the codes are 9 characters and are **not ASINs**
 > ([Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/items/items-api-getitems));

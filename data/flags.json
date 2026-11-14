@@ -554,7 +554,10 @@
         "S14",
         "S15",
         "S23"
-      ]
+      ],
+      "addendum_2026_11_14": {
+        "note": "E-T2 request (session f1b7da46) fulfilled 2026-11-14 by session f118dddd: the short-link identity table (submitted link -> observed page id, full title, source links) is published in the 'Observed redirect targets' section of flagged.html, carrying both the short-link observation source and the destination title source. Re-checked live 2026-11-14: all three short links still open the same three pages (S52-S55); the three raw dp/<submitted-code> URLs still return Page Not Found (S08-S10)."
+      }
     },
     {
       "id": "FLG-036",

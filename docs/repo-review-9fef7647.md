@@ -8,6 +8,15 @@ data value re-checked against the official page it cites, fetched live on 2026-1
 This file is additive. Prior review records (`docs/repo-review.md`, `research/verification-log.md`,
 the per-session `COORDINATION.md` parts) are left intact.
 
+> **ID note (2026-11-14, session `f118dddd`):** this record uses this session's original source IDs
+> (`S30`–`S38` = the three short links, three search pages, and three re-checks). On integration
+> into `main` (PR #37) those were renumbered to `S46`–`S55` to avoid collisions with IDs already in
+> the canonical register, which now holds `S01`–`S55` (with gaps). The URLs cited below are
+> unchanged and were re-verified live on 2026-11-14; only the labels differ from the current
+> register. Mapping: `S30`–`S32` → `S52`–`S54` (short links), `S33`–`S35` → `S46`–`S48`
+> (search pages), `S36`–`S38` → `S49`–`S51` (re-checks). Not a factual correction — logged so the
+> two numbering schemes are never read as the same IDs.
+
 ---
 
 ## 1. What was reviewed (repo inventory, line by line)
