@@ -616,14 +616,22 @@ def build_flagged() -> None:
     for p in PRODUCTS:
         ro = p["redirect_observed"]
         obs.append([
-            e(p["label"]),
+            f'<a href="{e(p["submitted_url"])}" target="_blank" rel="noopener noreferrer">{e(p["label"])} ({e(p["link_id"])})</a>',
             f'<a href="{e(ro["final_url"])}" target="_blank" rel="noopener noreferrer">{e(ro["page_id"])}</a>',
             e(ro["page_title"]),
             badge("No: not the submitted product", "warn"),
-            src_links([ro["title_source"]]),
+            src_links([ro["source"], ro["title_source"]]),
         ])
-    body += "<h2>Observed redirect targets (full titles as read, not confirmed)</h2>" + table(
-        ["Product link", "Page ID", "Page title as read", "Confirmed?", "Source"], obs)
+    body += (
+        "<h2>Observed redirect targets (full titles as read, not confirmed)</h2>"
+        "<p class=\"muted\">Identity table published as the E-T2 addendum for FLG-035 "
+        "(session f1b7da46's request, session f118dddd, 2026-11-14): each submitted short link "
+        "with the page it currently opens. The short-link column is the observation source; the "
+        "page title is read from the destination. Whether a destination is the product the "
+        "submitter meant is not documented by any official source (FLG-002, FLG-035).</p>"
+        + table(
+            ["Submitted link (observed)", "Page ID", "Page title as read", "Confirmed?", "Source"], obs)
+    )
     page("flagged.html", "Flagged for review", body,
          lead=(f"{len(FLAGS)} entries: {sev_count('Critical')} critical, {sev_count('High')} high, "
                f"{sev_count('Medium')} medium, {sev_count('Low')} low, {sev_count('Info')} info "
