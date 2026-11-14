@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-13; re-verified 2026-11-14",
-  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). Values filled on 2026-11-14 describe the Amazon listing each submitted link opens (observed live on 2026-11-13 and again on 2026-11-14); the 9-character submitted codes are short-link codes, not ASINs (FLG-001, FLG-022). | Integration 2026-11-14 (session 06ca46bf): source/flag refs remapped per the registry renumbering (S30-S38 -> S45-S53; FLG-022-024 -> FLG-028-030).",
+  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). Values filled on 2026-11-14 describe the Amazon listing each submitted link opens (observed live on 2026-11-13 and again on 2026-11-14); the 9-character submitted codes are short-link codes, not ASINs (FLG-001, FLG-035). | Integration 2026-11-14 (session 06ca46bf): source/flag refs remapped (S30-S38 -> S33-S39/S46-S47; FLG-022-024 -> FLG-035-037).",
   "products": [
     {
       "id": "P1",
@@ -24,8 +24,8 @@
         "brand": "CHEFMAN",
         "capacity": "6 Quart",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-        "reverified": "2026-11-14 (same destination with a fresh redirect token; see S30-S32)",
-        "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-022, FLG-024)."
+        "reverified": "2026-11-14 (same destination with a fresh redirect token; see S33-S35)",
+        "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-035, FLG-037)."
       },
       "product_name": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
       "brand": "CHEFMAN",
@@ -39,21 +39,21 @@
       "clicks": null,
       "conversions": null,
       "associates_tag": null,
-      "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link resolves, stably across 2026-11-13 and 2026-11-14, to the Amazon listing B0CDY277D3; the values in this row describe that listing as observed on 2026-11-14 (FLG-028). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004, FLG-005, FLG-010, FLG-011).",
+      "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link resolves, stably across 2026-11-13 and 2026-11-14, to the Amazon listing B0CDY277D3; the values in this row describe that listing as observed on 2026-11-14 (FLG-035). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004, FLG-005, FLG-010, FLG-011).",
       "flags": [
         "FLG-001",
         "FLG-002",
         "FLG-004",
-        "FLG-028",
-        "FLG-029"
+        "FLG-035",
+        "FLG-036"
       ],
       "sources": [
         "S08",
         "S11",
         "S14",
         "S02",
-        "S45",
-        "S48"
+        "S33",
+        "S36"
       ],
       "observed": {
         "date": "2026-11-14",
@@ -64,28 +64,28 @@
         "sales_note": "1K+ bought in past month, as displayed",
         "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
         "sources": [
-          "S45",
-          "S48",
+          "S33",
+          "S36",
           "S14"
         ]
       },
       "value_sources": {
         "product_name": [
-          "S45",
-          "S48",
+          "S33",
+          "S36",
           "S14"
         ],
         "brand": [
           "S14"
         ],
         "price": [
-          "S48"
+          "S36"
         ],
         "rating": [
-          "S48"
+          "S36"
         ],
         "review_count": [
-          "S48"
+          "S36"
         ]
       }
     },
@@ -111,8 +111,8 @@
         "brand": "Emeril Lagasse",
         "capacity": "26QT",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-        "reverified": "2026-11-14 (same destination with a fresh redirect token; see S30-S32)",
-        "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-022, FLG-024)."
+        "reverified": "2026-11-14 (same destination with a fresh redirect token; see S33-S35)",
+        "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-035, FLG-037)."
       },
       "product_name": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals.",
       "brand": "Emeril Lagasse",
@@ -126,21 +126,21 @@
       "clicks": null,
       "conversions": null,
       "associates_tag": null,
-      "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link resolves, stably across 2026-11-13 and 2026-11-14, to the Amazon listing B09B7SB46R; the values in this row describe that listing as observed on 2026-11-14 (FLG-028). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004, FLG-005, FLG-010, FLG-011).",
+      "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link resolves, stably across 2026-11-13 and 2026-11-14, to the Amazon listing B09B7SB46R; the values in this row describe that listing as observed on 2026-11-14 (FLG-035). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004, FLG-005, FLG-010, FLG-011).",
       "flags": [
         "FLG-001",
         "FLG-002",
         "FLG-004",
-        "FLG-028",
-        "FLG-029"
+        "FLG-035",
+        "FLG-036"
       ],
       "sources": [
         "S09",
         "S12",
         "S15",
         "S02",
-        "S46",
-        "S49"
+        "S34",
+        "S37"
       ],
       "observed": {
         "date": "2026-11-14",
@@ -151,28 +151,28 @@
         "sales_note": "4K+ bought in past month, as displayed",
         "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
         "sources": [
-          "S46",
-          "S49",
+          "S34",
+          "S37",
           "S15"
         ]
       },
       "value_sources": {
         "product_name": [
-          "S46",
-          "S49",
+          "S34",
+          "S37",
           "S15"
         ],
         "brand": [
           "S15"
         ],
         "price": [
-          "S49"
+          "S37"
         ],
         "rating": [
-          "S49"
+          "S37"
         ],
         "review_count": [
-          "S49"
+          "S37"
         ]
       }
     },
@@ -198,8 +198,8 @@
         "brand": "Chefman",
         "capacity": "8 Qt",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-        "reverified": "2026-11-14 (same destination with a fresh redirect token; see S30-S32)",
-        "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-022, FLG-024)."
+        "reverified": "2026-11-14 (same destination with a fresh redirect token; see S33-S35)",
+        "confirmed_as_submitted_product_note": "false means: no official source states what the owner intended by the code. The redirect itself is stable (4 observations over 2026-11-13 and 2026-11-14), so this listing is used as the product the submitted link opens (FLG-035, FLG-037)."
       },
       "product_name": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
       "brand": "Chefman",
@@ -213,21 +213,21 @@
       "clicks": null,
       "conversions": null,
       "associates_tag": null,
-      "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link resolves, stably across 2026-11-13 and 2026-11-14, to the Amazon listing B08DKYBTPH; the values in this row describe that listing as observed on 2026-11-14 (FLG-028). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004, FLG-005, FLG-010, FLG-011).",
+      "status": "The submitted code is a 9-character short-link code, not an ASIN (FLG-001). The link resolves, stably across 2026-11-13 and 2026-11-14, to the Amazon listing B08DKYBTPH; the values in this row describe that listing as observed on 2026-11-14 (FLG-035). Commission rate, best-seller rank, competitor count, clicks and conversions remain unverified and blank (FLG-004, FLG-005, FLG-010, FLG-011).",
       "flags": [
         "FLG-001",
         "FLG-002",
         "FLG-004",
-        "FLG-028",
-        "FLG-029"
+        "FLG-035",
+        "FLG-036"
       ],
       "sources": [
         "S10",
         "S13",
         "S16",
         "S02",
-        "S47",
-        "S50"
+        "S35",
+        "S38"
       ],
       "observed": {
         "date": "2026-11-14",
@@ -238,28 +238,28 @@
         "sales_note": "3K+ bought in past month, as displayed",
         "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
         "sources": [
-          "S47",
-          "S50",
+          "S35",
+          "S38",
           "S23"
         ]
       },
       "value_sources": {
         "product_name": [
-          "S47",
-          "S50",
+          "S35",
+          "S38",
           "S23"
         ],
         "brand": [
           "S23"
         ],
         "price": [
-          "S50"
+          "S38"
         ],
         "rating": [
-          "S50"
+          "S38"
         ],
         "review_count": [
-          "S50"
+          "S38"
         ]
       }
     }

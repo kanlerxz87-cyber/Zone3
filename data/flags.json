@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. | Integration 2026-11-14 (session 06ca46bf): FLG-028/029/030 preserved from session 9fef7647 (PR #26), originally FLG-022/023/024 — renumbered past main's FLG-022-027 (session 51fcb80d). PR #26's dated addenda were unioned into FLG-001/002/004/021.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. | Integration 2026-11-14 (session 06ca46bf): FLG-035/036/037 preserved from session 9fef7647 (PR #26), originally FLG-022/023/024; that session's dated addenda unioned into FLG-001/002/004/021.",
   "flags": [
     {
       "id": "FLG-001",
@@ -8,7 +8,7 @@
       "category": "Product identifiers",
       "item": "The three submitted identifiers are not 10-character ASINs",
       "detail": "The identifiers in the submitted links are B04G1MEwY, B02NbDxp3 and B00hJ57DV. Each is 9 characters long. The official Creators API documentation shows ASIN examples of 10 characters (S06), and all three redirect targets use 10-character IDs (S14-S16). Typing amazon.com/dp/<each ID> returns 'Page Not Found' (S08-S10). No product name, brand, price, rating or commission can be tied to these identifiers. Confirmed by the GetItems reference (S06, chunk 1 of 3): an ASIN is a 10-character identifier.",
-      "action": "Provide the intended product page URL or 10-character ASIN for each product (the owner's input is needed; this session cannot infer it).\n\nUpdate 2026-11-14: the listing each link opens is now recorded (FLG-028); the request for owner confirmation of intent stands.",
+      "action": "Provide the intended product page URL or 10-character ASIN for each product (the owner's input is needed; this session cannot infer it).\n\nUpdate 2026-11-14: the listing each link opens is now recorded (FLG-035); the request for owner confirmation of intent stands.",
       "sources": [
         "S06",
         "S08",
@@ -16,7 +16,8 @@
         "S10",
         "S14",
         "S15",
-        "S16"
+        "S16",
+        "S45"
       ]
     },
     {
@@ -24,7 +25,7 @@
       "severity": "High",
       "category": "Redirect behaviour",
       "item": "Short links redirect to three different products, not confirmed as the submitted products",
-      "detail": "Each short link ended on a different amazon.com product page (S11-S13), and the mapping was the same on two fetches each. The final URLs carry the parameters lv=shuf and plpRedirect=mhFallback. The page titles identify two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven (S14-S16). What these parameters mean is not documented in any official source reviewed, so they are recorded as observed only and never used as product data. The direct amazon.com/dp/B08DKYBTPH request returns a 'Continue shopping' interstitial (S16), so product 3's title is only readable through the short link (S23).\n\nUpdate 2026-11-14 (session 9fef7647): all three links were re-fetched with fresh redirect tokens and each resolved to the same listing as on 2026-11-13 (S45-S47). The 'not confirmed' wording now refers only to the owner's intent (which product was meant by the code), not to the stability of the mapping, which has been observed 4 times over 2 days (FLG-028, FLG-030).",
+      "detail": "Each short link ended on a different amazon.com product page (S11-S13), and the mapping was the same on two fetches each. The final URLs carry the parameters lv=shuf and plpRedirect=mhFallback. The page titles identify two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven (S14-S16). What these parameters mean is not documented in any official source reviewed, so they are recorded as observed only and never used as product data. The direct amazon.com/dp/B08DKYBTPH request returns a 'Continue shopping' interstitial (S16), so product 3's title is only readable through the short link (S23).\n\nUpdate 2026-11-14 (session 9fef7647): all three links were re-fetched with fresh redirect tokens and each resolved to the same listing as on 2026-11-13 (S33-S35). The 'not confirmed' wording now refers only to the owner's intent (which product was meant by the code), not to the stability of the mapping, which has been observed 4 times over 2 days (FLG-035, FLG-037).",
       "action": "Open each submitted link in a normal browser and confirm where it lands. Confirm which product was intended.",
       "sources": [
         "S11",
@@ -56,7 +57,7 @@
       "severity": "High",
       "category": "Unverified values",
       "item": "Product name, brand, price, rating, review count, competitor count, best-seller rank and availability are unverified for all 3 products",
-      "detail": "The identifiers do not resolve (FLG-001), so no official product record exists to read these values from. The fetch tool returned only the page title and the URL for the redirect targets (S14-S16); prices and ratings were not in its text. These cells are left blank on purpose.\n\nUpdate 2026-11-14 (session 9fef7647): price, rating and review count are now shown as dated snapshots observed on Amazon's own search pages (S48-S50). They are volatile deal prices and their display on a live Associates site is restricted by Participation Requirements 2(b) and 6(t) (PF-04, PF-05) - see FLG-029. Competitor count, best-seller rank, availability, clicks and conversions remain unverified and blank.",
+      "detail": "The identifiers do not resolve (FLG-001), so no official product record exists to read these values from. The fetch tool returned only the page title and the URL for the redirect targets (S14-S16); prices and ratings were not in its text. These cells are left blank on purpose.\n\nUpdate 2026-11-14 (session 9fef7647): price, rating and review count are now shown as dated snapshots observed on Amazon's own search pages (S36-S38). They are volatile deal prices and their display on a live Associates site is restricted by Participation Requirements 2(b) and 6(t) (PF-04, PF-05) - see FLG-036. Competitor count, best-seller rank, availability, clicks and conversions remain unverified and blank.",
       "action": "After FLG-001 is fixed, read the values from the Creators API (see FLG-006) or the live product page, then add them to data/products.json with a source ID.",
       "sources": [
         "S02",
@@ -206,7 +207,7 @@
       "severity": "High",
       "category": "AI and data use",
       "item": "The AI analysis layer cannot use Creators API data without written approval",
-      "detail": "Creators API terms bar aggregating, analysing or repurposing Product Advertising Content without express prior written approval, and bar using Program Content to develop or train machine learning or language models (PF-23, PF-24, PF-25). The brief asks for an AI-powered platform. Any AI analysis of Amazon data is therefore blocked until approval is obtained. No AI analysis of Amazon data has been built.",
+      "detail": "Creators API terms bar aggregating, analysing or repurposing Product Advertising Content without express prior written approval, and bar using Program Content to develop or train machine learning or language models (PF-23, PF-24, PF-25). The brief asks for an AI-powered platform. Any AI analysis of Amazon data is therefore blocked until approval is obtained. No AI analysis of Amazon data has been built. Widened 2026-11-14 (session ecbfe91b, adopting c4e71983-FLG-16): the bar is not limited to Creators API data. Program Policies, Participation Requirements section 5, reads verbatim: “You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.” (S02; re-read live 2026-11-14; the odd wording ‘without or express’ is Amazon’s own text, reproduced verbatim.) Any machine-learning use of Special Links or Program Content needs Amazon’s express prior written approval — not only Creators API data.",
       "sources": [
         "S02"
       ],
@@ -264,7 +265,7 @@
       "severity": "Medium",
       "category": "Commission rate",
       "item": "Kitchen reference rate 4.50% is verified, but the listings' category is not",
-      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). On 2026-11-14 the three destination listings were read to show the category path Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (S14-S16; browse node 17659096011, S43). No source read so far states that Amazon's rate-card category 'Kitchen' includes this browse path. The Onsite Table A rate (S26; PF-39) is for Onsite Content only. The 4.50% figure is therefore a reference only and is not on any product row. Raised by session 66a80e53 (PR #3).\n\nUpdate 2026-11-14: the category breadcrumb is now observed on each product page (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers; S45-S47). Whether the commission schedule's 'Kitchen' category maps to this node is still not documented in any public source, so the reference rate stays a reference only.",
+      "detail": "Amazon's Standard Commission Table 1 lists 'Kitchen' at 4.50% (S25; PF-38). On 2026-11-14 the three destination listings were read to show the category path Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (S14-S16; browse node 17659096011, S43). No source read so far states that Amazon's rate-card category 'Kitchen' includes this browse path. The Onsite Table A rate (S26; PF-39) is for Onsite Content only. The 4.50% figure is therefore a reference only and is not on any product row. Raised by session 66a80e53 (PR #3).\n\nUpdate 2026-11-14: the category breadcrumb is now observed on each product page (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers; S33-S35). Whether the commission schedule's 'Kitchen' category maps to this node is still not documented in any public source, so the reference rate stays a reference only.",
       "sources": [
         "S14",
         "S15",
@@ -360,51 +361,141 @@
     },
     {
       "id": "FLG-028",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "README stated that plpRedirect=mhFallback 'confirms the identifiers select nothing'",
+      "detail": "README.md said each short link landed on a different product 'through Amazon's plpRedirect=mhFallback route, which confirms the identifiers select nothing'. That inference is not supported. 588-V08: a direct fetch of three known-valid ASINs (/dp/B0CDY277D3, /dp/B09B7SB46R, /dp/B08DKYBTPH) with no short link in the path also ended on URLs carrying plpRedirect=mhFallback and lv=shuf, while serving the correct product page. The parameter therefore appears on ordinary product fetches for this client and shows nothing about a failed lookup. The 9-character / 10-character ASIN argument (FLG-001) is unaffected and remains the basis for rejecting the codes. Corrected in README.md in this session; a wording request is logged in COORDINATION.md for the owner of the /dashboard/ build, which this session does not edit.",
+      "action": "No action for the reader. The owner of tools/build_site.py should drop 'Amazon's fallback route, not a product deep link' from the generated dashboard callout so the two halves of the site agree.",
+      "sources": [
+        "S02",
+        "S14",
+        "S15",
+        "S16",
+        "S31"
+      ]
+    },
+    {
+      "id": "FLG-029",
+      "severity": "High",
+      "category": "Marketing content",
+      "item": "Prices, star ratings and review counts are absent from every marketing page by design, not by omission",
+      "detail": "The brief asks for marketing copy for the three products. This build publishes 7 marketing pages, and none states a price, list price, discount, star rating or review count. Two independent policy reasons, both re-read verbatim on 2026-11-14: Participation Requirement 6(t) permits star ratings and customer reviews on an affiliate site only if obtained through Creators API or PA API, and this build holds no API credentials; 6(y) bars price tracking and price alerting unless separately agreed. Separately, the price figures present in the fetched page text belong to 'Customers who viewed this item also viewed' carousel items for OTHER ASINs and must not be attributed to the listed product. Publishing them would have been both inaccurate and a policy breach.",
+      "action": "Supply Associates credentials and a tag, and reach the Creators API threshold (>=10 qualifying sales in 30 days), after which ratings and prices can be sourced legitimately. Until then the marketing pages stay attribute-only.",
+      "sources": [
+        "S02",
+        "S04",
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-030",
+      "severity": "Medium",
+      "category": "Marketing content",
+      "item": "Whether each resolved listing is the product the submitter intended remains unconfirmed",
+      "detail": "Marketing copy is written against three listings that the submitted short links currently open: B0CDY277D3 (CHEFMAN 6 Quart Dual Basket), B09B7SB46R (Emeril Lagasse 26QT French Door) and B08DKYBTPH (Chefman 8 Qt TurboFry). All three sit under the same five-level browse path (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers) and the mapping was stable across 2026-11-13 and 2026-11-14. No official Amazon document describes how a 9-character link.amazon code maps to a destination, so identity rests on observation only. Every marketing page carries an 'unconfirmed' notice.",
+      "action": "Confirm the three product names or supply the correct ASINs. One line is enough; all 7 marketing pages regenerate from data/marketing.json without further input.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "FLG-031",
+      "severity": "Medium",
+      "category": "Commission",
+      "item": "No per-product commission rate can be derived: the rate card is per category, and the commission category of these ASINs is not stated anywhere official",
+      "detail": "Standard Commission Income Table 1 (S25) was re-read in full on 2026-11-14 and gives a fixed rate by PRODUCT CATEGORY: Luxury Beauty 10.00%, Physical Books/Kitchen/Automotive 4.50%, Home 3.00%, All Other Categories 4.00%, and so on across 11 rows. The Air Fryers breadcrumb seen on all three listings is an Amazon BROWSE NODE, not a commission category. No official source states that a listing under the Air Fryers browse node earns the 'Kitchen' 4.50% row, and Air Fryers is a small kitchen appliance, so the mapping is plausible but not published. Deriving 4.50% would be an inference, so the marketing and comparison pages leave the commission column blank.",
+      "action": "Confirm the mapping from an Associates account commission report once a sale exists, or ask Associates support in writing. Do not publish a derived rate before then.",
+      "sources": [
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "FLG-032",
+      "severity": "Low",
+      "category": "Correction",
+      "item": "Flag D-F-01 ('we earn' vs 'I earn' disclosure wording) is closed as not a breach",
+      "detail": "D-F-01 recorded that some /docs/ pages display 'As an Amazon Associate we earn from qualifying purchases.' rather than the singular form. Operating Agreement section 5 was re-read verbatim on 2026-11-14: 'You must clearly and prominently state the following, OR ANY SUBSTANTIALLY SIMILAR STATEMENT PREVIOUSLY ALLOWED UNDER THIS AGREEMENT, on your Site ...'. The singular sentence is the prescribed model, and a substantially similar statement is expressly allowed. The root flat pages and all 7 marketing pages use the exact singular sentence anyway, so the canonical form on this site is the exact one.",
+      "action": "No action required. Recorded so the item is not re-raised as an open compliance risk.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "FLG-033",
+      "severity": "Low",
+      "category": "Marketing content",
+      "item": "SEO inputs the brief asks for (search volume, keyword difficulty, trend, conversion rate) have no official Amazon source and are left blank",
+      "detail": "The marketing pages are generated with titles and descriptions built from verified listing attributes only. They do not claim search volume, keyword difficulty, trend direction or conversion rate for any product. No official Amazon affiliate endpoint publishes those figures to affiliates, and this project has no live campaign that could produce them. A keyword strategy built on invented volume numbers would be speculation presented as data.",
+      "action": "Once a campaign is live, conversion rate comes from the account's own reports. Search volume for non-Amazon demand requires a third-party keyword tool, which this build deliberately does not cite as an official source. Owner decision needed.",
+      "sources": [
+        "S02",
+        "S19"
+      ]
+    },
+    {
+      "id": "FLG-034",
+      "severity": "Low",
+      "category": "SEO plumbing",
+      "item": "sitemap.xml does not list the marketing pages, because verify_site.py requires every sitemap URL to be a page generated by tools/build_site.py",
+      "detail": "The 7 marketing pages were reachable from the site navigation in a whole-tree crawl from index.html (marketing/index.html plus 5 children), so no reader hits a dead end. Adding them to sitemap.xml first made tools/verify_site.py fail its V5 check with 'URL not built', because the sitemap is owned by tools/build_site.py and only that build's own pages may appear in it. The sitemap edit was reverted so the site stays green, and the request is logged in COORDINATION.md for the owner of tools/build_site.py and tools/verify_site.py. This is an indexing gap only; nothing is broken or unreachable.",
+      "action": "Owner of tools/: either let scripts/build_marketing.py own a second sitemap, or widen verify_site.py's V5 check to accept pages produced by scripts/build_marketing.py. Not edited here: tools/ is outside this session's claimed scope.",
+      "sources": [
+        "S22"
+      ]
+    },
+    {
+      "id": "FLG-035",
       "severity": "High",
       "category": "Product identity",
       "item": "Product identity rests on observed short-link redirects, not on documented identifiers",
-      "detail": "The three submitted codes are 9 characters and are not ASINs (FLG-001). Each submitted link resolves to exactly one Amazon listing, and the mapping was identical across 4 observations on 2026-11-13 and 2026-11-14 (S11-S13, S45-S47). Control tests on the shortener (recorded in COORDINATION.md, Z-V10 to Z-V14) show the codes are registered short codes: junk codes of the same length are rejected with 403/404. No official Amazon source documents the code-to-listing registry, so the association is recorded as observed, and this site treats each listing as the product its submitted link opens. If the owner intended different products, the tables must be re-pointed. [Integrated 2026-11-14 by session 06ca46bf: was FLG-022 in session 9fef7647's registry (PR #26); renumbered to FLG-028 because main already carries a different FLG-022 from session 51fcb80d.]",
+      "detail": "The three submitted codes are 9 characters and are not ASINs (FLG-001). Each submitted link resolves to exactly one Amazon listing, and the mapping was identical across 4 observations on 2026-11-13 and 2026-11-14 (S11-S13, S33-S35). Control tests on the shortener (recorded in COORDINATION.md, Z-V10 to Z-V14) show the codes are registered short codes: junk codes of the same length are rejected with 403/404. No official Amazon source documents the code-to-listing registry, so the association is recorded as observed, and this site treats each listing as the product its submitted link opens. If the owner intended different products, the tables must be re-pointed. [Integrated 2026-11-14 by session 06ca46bf: was FLG-022 in session 9fef7647's registry (PR #26); renumbered FLG-035 because main's FLG-028-034 (session 588693c9) had consumed the neighbouring ids.]",
       "action": "Owner: confirm that the three listings recorded here are the intended products.",
       "sources": [
         "S11",
         "S12",
         "S13",
-        "S45",
-        "S46",
-        "S47",
+        "S33",
+        "S34",
+        "S35",
         "S14",
         "S15",
         "S23"
       ]
     },
     {
-      "id": "FLG-029",
+      "id": "FLG-036",
       "severity": "Medium",
       "category": "Display compliance",
       "item": "Observed prices and star ratings are shown for analysis only; display on a live Associates site is restricted",
-      "detail": "Participation Requirements 2(b) (PF-04) allow a site to show prices and availability only when Amazon serves the link or through the Product Advertising API, and 6(t) (PF-05) bars displaying customer reviews or star ratings unless obtained through the API or a qualifying link. The prices and ratings on this site are dated observations (2026-11-14, S48-S50) kept for analysis, with a date stamp adjacent per PF-27. Before this site is used commercially, remove these values or re-source them via Special Links or the Creators API. Prices are also volatile deal prices (Z-F5 in COORDINATION.md). [Integrated 2026-11-14 by session 06ca46bf: was FLG-023 in session 9fef7647's registry (PR #26); renumbered to FLG-029 because main already carries a different FLG-023 from session 51fcb80d.]",
+      "detail": "Participation Requirements 2(b) (PF-04) allow a site to show prices and availability only when Amazon serves the link or through the Product Advertising API, and 6(t) (PF-05) bars displaying customer reviews or star ratings unless obtained through the API or a qualifying link. The prices and ratings on this site are dated observations (2026-11-14, S36-S38) kept for analysis, with a date stamp adjacent per PF-27. Before this site is used commercially, remove these values or re-source them via Special Links or the Creators API. Prices are also volatile deal prices (Z-F5 in COORDINATION.md). [Integrated 2026-11-14 by session 06ca46bf: was FLG-023 in session 9fef7647's registry (PR #26); renumbered FLG-036 because main's FLG-028-034 (session 588693c9) had consumed the neighbouring ids.]",
       "action": "Remove or re-source observed prices/ratings via API or Special Links before commercial use.",
       "sources": [
         "S02",
-        "S48",
-        "S49",
-        "S50"
+        "S36",
+        "S37",
+        "S38"
       ]
     },
     {
-      "id": "FLG-030",
+      "id": "FLG-037",
       "severity": "Low",
       "category": "Cross-session record",
       "item": "Earlier builds disagreed on whether the links resolve; re-verification 2026-11-14 settles the factual part",
-      "detail": "The root build (sessions 7f84fea4/33226b37) recorded that the submitted identifiers select no product page; the /docs/ build (session 79f85104, Z-F6) recorded that all three short links resolve to real listings, with control evidence Z-V10 to Z-V14. Session 9fef7647 re-fetched all three links on 2026-11-14 and reproduced the /docs/ result exactly (S45-S47). Both earlier statements are true of different things: the codes are not ASINs (they select nothing at amazon.com/dp/), and the links resolve stably to three listings. This site now states both. [Integrated 2026-11-14 by session 06ca46bf: was FLG-024 in session 9fef7647's registry (PR #26); renumbered to FLG-030 because main already carries a different FLG-024 from session 51fcb80d.]",
-      "action": "No action needed unless the owner disputes the resolved products (FLG-028).",
+      "detail": "The root build (sessions 7f84fea4/33226b37) recorded that the submitted identifiers select no product page; the /docs/ build (session 79f85104, Z-F6) recorded that all three short links resolve to real listings, with control evidence Z-V10 to Z-V14. Session 9fef7647 re-fetched all three links on 2026-11-14 and reproduced the /docs/ result exactly (S33-S35). Both earlier statements are true of different things: the codes are not ASINs (they select nothing at amazon.com/dp/), and the links resolve stably to three listings. This site now states both. [Integrated 2026-11-14 by session 06ca46bf: was FLG-024 in session 9fef7647's registry (PR #26); renumbered FLG-037 because main's FLG-028-034 (session 588693c9) had consumed the neighbouring ids.]",
+      "action": "No action needed unless the owner disputes the resolved products (FLG-035).",
       "sources": [
         "S08",
         "S09",
         "S10",
-        "S45",
-        "S46",
-        "S47"
+        "S33",
+        "S34",
+        "S35"
       ]
     },
     {
@@ -429,7 +520,7 @@
       "action": "Read as: do not publish link.amazon short links; publish canonical /dp/<ASIN> URLs with the Associates tag once a tag exists. Confirm with Amazon before using link.amazon at all.",
       "sources": [
         "S02",
-        "S45"
+        "S30"
       ]
     },
     {
