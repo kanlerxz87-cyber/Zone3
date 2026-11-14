@@ -310,6 +310,8 @@ SITEMAP_GROUPS = [
         ("sources.html", "Sources"),
         ("sources/index.html", "Audit build: Sources"),
         ("verification.html", "Verification log"),
+        # Added by integration session 3ead7ac8 (2026-11-14) alongside the dashboard tile.
+        ("sessions/3ead7ac8/index.html", "Verification (session 3ead7ac8)"),
         ("requirements/index.html", "Requirements traceability"),
         ("repo-review/index.html", "Repository review"),
         ("compliance/index.html", "Compliance register"),
@@ -370,6 +372,11 @@ def build_index() -> None:
          "Product briefs, comparison and buying guide. No prices or ratings are published."),
         ("verification.html", "Verification log",
          "One row per published claim, with the wording its official page carries."),
+        # Added by integration session 3ead7ac8 (2026-11-14): the page was in the top
+        # navigation but not in the dashboard tiles, so it was invisible from the landing page.
+        ("sessions/3ead7ac8/index.html", "Verification (session 3ead7ac8)",
+         "30 load-bearing claims re-read from the official pages on 2026-11-14, each linked to "
+         "the page it came from, plus the fields deliberately left blank and why."),
         ("docs/index.html", "Archived 2026-11-13 build (/docs/) — flagged",
          "An earlier build, kept for provenance. It still displays price and star-rating cells that "
          "this site's rule and Amazon's policy prohibit; see I-F-02 on the Flagged for review page. "
