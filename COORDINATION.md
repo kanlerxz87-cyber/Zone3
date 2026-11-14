@@ -3423,3 +3423,76 @@ descriptions on `flagged.html` and `flagged/index.html`, source-register descrip
 `3E-F-03` compliance notice. No new product-fact display was introduced by the merge.
 
 **554-T6 follow-up (final):** the record above shipped as **[PR #68](https://github.com/kanlerxz87-cyber/Zone3/pull/68)** — **MERGED** 2026-11-14T19:02:06Z via `gh pr merge 68 --merge` → merge commit `cc9aafbecc9d057b0f27bc124ec450b8192fb4c6` (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`). Two `COORDINATION.md` conflicts against PRs #69/#70 were resolved in place (both sides kept; 0 markers asserted). Gates re-run on the merged tree before merging: `check_site` OK (12 pages / 3 products / 51 sources / 65 flags), `verify_site` VERIFY PASS (70 pages / 1222 rows / 1021 with official source), `link_report --strict` 0, `check_all_links` 116 pages / 0 errors, session checker OK. GitHub Pages: build for the merge and for the tip that immediately followed (`96ea745`) → **built** (19:02:34Z, `error=null`). Live checks after deploy: `/` dashboard, `/flagged.html` and `/executive-summary.html` all render with source-linked rows. Session `554c08ca`: **complete**.
+
+## 3E-T5 record — PR, merge and Pages deploy (2026-11-14)
+
+| Event | Result |
+|---|---|
+| Pull request | [#70 — Zone3: final integration (session 3ead7ac8) — compliance fix, line-by-line live re-verification](https://github.com/kanlerxz87-cyber/Zone3/pull/70) — `arena/3ead7ac8-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`, +1372 / −85 across 46 files. Gates green immediately before the merge: `check_site` OK (12 pages / 3 products / 51 sources / **65** flags), `verify_site` PASS (70 pages / 1222 rows / 1021 sourced / 388 flagged / **0 advisories**), `link_report --strict` 0, `check_all_links` 116 pages 0 errors, `sessions/3c886b62` checker OK, all five generators idempotent |
+| Merge | **MERGED** 2026-11-14T18:56:19Z via `gh pr merge 70 --merge` (no approval waited, per the brief) → merge commit `f79b85e3b5592acf9b14858cc93511a7dfd91ff3`; confirmed `state=MERGED` via `gh pr view --json state,mergedAt,mergeCommit` |
+| Pages build | source `main` `/`; build for `f79b85e` → **status `built`** (created and completed 2026-11-14T18:56:20Z, via the Pages API `builds/latest`) |
+| Live check — category | https://kanlerxz87-cyber.github.io/Zone3/category/air-fryers.html — **live and compliant**: the price, star-rating and review-count columns are gone, replaced by the 2(b)/6(t) explanation with S46–S48 and S02 links and the `I-F-01` flag link. No price, rating or review figure is rendered |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — dashboard serves with the new nav entry |
+| Site merged while flagged? | Yes. All nine `3E-F` items and `3E-F-10` are non-blocking and published on the **Flagged for review** page with their source links, as the brief requires |
+| Post-merge follow-up | two residual items found during the live check (below), plus this record — shipped as a follow-up pull request, because a record cannot be written to `main` before the merge it records |
+
+### Post-merge live-check findings (2 items, both fixed in the follow-up PR)
+
+1. **`3E-F-04` extended.** The live category page still said *"The commission rate schedule is
+   login-gated (FLG-005)"*. Same inaccuracy as `/docs/`: Table 1 and Table A are public, only the
+   per-account `/help/operating/schedule` card is gated. The sentence was rewritten in place, marked
+   with the correcting session and date, and `3E-F-04` was widened to name the file.
+2. **`3E-F-10` (Low, compliance), new.** The same page's *Niche assessment* published Amazon's
+   "bought in past month" badges — `1K+`, `4K+`, `3K+` — in prose, while the table directly above it
+   withholds price, rating and review count for exactly the reason that those values were read from a
+   rendered Amazon page. The bullet now records that the badge values are withheld and why, with no
+   figures.
+
+Gates after the follow-up: `check_site` OK (12 / 3 / 51 / **66** flags) · `verify_site` PASS
+(70 pages / 1223 rows / 1022 sourced / **0 advisories**) · `link_report --strict` 0 ·
+`check_all_links` 116 pages 0 errors · generators idempotent.
+
+### Note for the owner
+
+The two items above were found by reading the **deployed** page, not the repository. A repository
+scan finds them too, but only once you know to look for the demand badges in prose. If you want a
+guard against this class of drift, the check to add is a whole-tree scan for the six observed-value
+literals outside the flag and source-register prose — `sessions/3ead7ac8/tools/withhold_observed.py`
+already contains the pattern list and can be run with a `--check` flag added.
+
+## c3dbcc40 Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| c3dbcc40 | `arena/c3dbcc40-zone3` | `f618a53` (merge of PR #72) | Gate re-run on the current tree; live re-fetch of the three submitted short links (official Amazon pages only); sitemap drift check; PR to `main`, merge, Pages deploy | in progress | 2026-11-14 |
+
+Branch note: this session is fixed to `arena/c3dbcc40-zone3` by the Arena session branch note, so per-task work is namespaced `C3-T1…C3-T3` instead of `session-<id>/<task>` branches.
+
+## C3 Task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| C3-T1 — Gate re-run on `f618a53` and sitemap drift check | done | c3dbcc40 | read-only, plus `sessions/c3dbcc40/` |
+| C3-T2 — Live re-fetch of the three submitted links and their landing listings (official Amazon pages only) | done | c3dbcc40 | `sessions/c3dbcc40/verification.md` |
+| C3-T3 — Record, PR to `main`, merge, Pages deploy | pending | c3dbcc40 | `COORDINATION.md` (C3 Part only), `sessions/c3dbcc40/**` |
+
+Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `data/flags.json`) are not edited by this session. Drift is logged below for the integration owner.
+
+## C3 records (2026-11-14, session c3dbcc40)
+
+- **C3-T1 done.** Gates on `f618a53`: `check_site` exit 0 (12 pages / 3 products / 51 sources / 66 flags); `build_site` exit 0; `verify_site` PASS (70 pages / 1223 rows / 1022 sourced / 388 flagged / 0 advisories); `link_report --strict` exit 0; `check_all_links` 116 pages, 0 errors. Full record: [`sessions/c3dbcc40/verification.md`](sessions/c3dbcc40/verification.md).
+- **C3-T2 done.** Live fetches (2026-11-14), official Amazon pages only: `link.amazon/B04G1MEwY` → `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt dual basket); `link.amazon/B02NbDxp3` → `amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT); `link.amazon/B00hJ57DV` → `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry). Control: `amazon.com/dp/B04G1MEwY` → Page Not Found. All three ASINs appear in `data/z3/products.json` and `pricing.json`.
+- **C3-F-01 (sitemap drift, for the integration owner).** The committed `sitemap.xml` lacks five pages the build emits: `analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`. Not edited by this session (shared output).
+- **C3-F-02 (intent not established).** The short-link destinations are verified. Whether they match the requester's intended products is not confirmed by an official source. Already flagged in the repo; no change.
+
+## C3-T3 record — PR, merge and Pages deploy (2026-11-14, session c3dbcc40)
+
+| Event | Result |
+|---|---|
+| Pull request | [#73 — c3dbcc40: gate re-run, live re-verification of submitted links, sitemap drift log](https://github.com/kanlerxz87-cyber/Zone3/pull/73), `arena/c3dbcc40-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on `f618a53` (see C3-T1). |
+| Merge | **MERGED** 2026-11-14T19:02:10Z via `gh pr merge 73 --merge` (no approval waited). Merge commit `96ea74547cebb155075fcbdd6db8e3a8740623aa`. |
+| Pages | build for `96ea745` → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`). |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/flagged-for-review.html serves the Flagged for review page (66 entries). |
+| Irregularities | C3-F-01 (sitemap drift, integration owner) and C3-F-02 (short-link intent unconfirmed) logged above. |

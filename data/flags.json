@@ -808,9 +808,9 @@
       "id": "3E-F-04",
       "severity": "Medium",
       "category": "Accuracy",
-      "item": "/docs/ still states that the Associates commission rate schedule is sign-in-only and therefore unverifiable",
-      "detail": "docs/analysis.html, docs/executive-summary.html, docs/flagged.html (flag F3), docs/index.html, docs/products.html and docs/sources.html assert that the only official source for category rates is the sign-in rate schedule, so per-product commission is left blank. That is no longer accurate: the Standard Commission Income Statement Table 1 and the Onsite statement Table A both render without a sign-in. This session re-read Table 1 on 2026-11-14 and it matches the published category rows, including Physical Books, Kitchen, Automotive at 4.50% and All Other Categories at 4.00%. Only the per-account /help/operating/schedule rate card is gated (S03). The main site pages were corrected earlier (V-F1); /docs/ was not updated.",
-      "action": "Correction notice added to all six /docs/ pages, with links to the two public tables and to this flag. The cells themselves stay blank, because what is genuinely unresolvable is which rate category each listing falls in (FLG-021), not the rate card itself.",
+      "item": "/docs/ and category/air-fryers.html still state that the Associates commission rate schedule is sign-in-only and therefore unverifiable",
+      "detail": "docs/analysis.html, docs/executive-summary.html, docs/flagged.html (flag F3), docs/index.html, docs/products.html and docs/sources.html assert that the only official source for category rates is the sign-in rate schedule, so per-product commission is left blank. That is no longer accurate: the Standard Commission Income Statement Table 1 and the Onsite statement Table A both render without a sign-in. This session re-read Table 1 on 2026-11-14 and it matches the published category rows, including Physical Books, Kitchen, Automotive at 4.50% and All Other Categories at 4.00%. Only the per-account /help/operating/schedule rate card is gated (S03). The main site pages were corrected earlier (V-F1); /docs/ was not updated. The same claim also appears on category/air-fryers.html (\"The commission rate schedule is login-gated\"). Corrected there in place on 2026-11-14.",
+      "action": "Correction notice added to all six /docs/ pages; the sentence on category/air-fryers.html was rewritten in place and marked with the correcting session and date. The cells themselves stay blank, because what is genuinely unresolvable is which rate category each listing falls in (FLG-021), not the rate card itself.",
       "sources": [
         "S25",
         "S26",
@@ -879,6 +879,21 @@
         "S43"
       ],
       "repo_evidence": "air-fryers.html; category/air-fryers.html; sitemap.xml."
+    },
+    {
+      "id": "3E-F-10",
+      "severity": "Low",
+      "category": "Compliance",
+      "item": "category/air-fryers.html published Amazon's \"bought in past month\" demand badges in prose while withholding prices on the same page",
+      "detail": "The niche-assessment bullet stated \"Amazon displayed purchase badges on all three listings on 2026-11-14 (1K+, 4K+ and 3K+ bought in past month, as displayed)\". The product table on the same page withholds price, rating and review count precisely because those values were transcribed from a rendered Amazon page, and the project has no Associates tag and no Creators API credentials. Publishing the demand badge from the same rendered page is inconsistent with that rule. Found on 2026-11-14 by session 3ead7ac8 during the post-merge live check.",
+      "action": "Fixed: the bullet now records that the badge values are withheld and why, with no figures. Applied by a targeted edit on 2026-11-14 and shipped in the follow-up pull request.",
+      "sources": [
+        "S46",
+        "S47",
+        "S48",
+        "S02"
+      ],
+      "repo_evidence": "category/air-fryers.html, 'Niche assessment' section."
     }
   ]
 }
