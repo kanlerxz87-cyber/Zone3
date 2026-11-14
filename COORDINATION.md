@@ -2929,3 +2929,29 @@ Claimed before any content work, per protocol. This Part records the claim, the 
 | I-T5 — Record, PR to `main`, merge, Pages deploy check | in progress | c79eb5d9 | `COORDINATION.md` I Part, `sessions/c79eb5d9/**` | — | — |
 
 Scope note: this session does **not** rewrite the shared flat pages, the `/dashboard/` build, `data/*.json` or `scripts/*`. Where a defect is found outside its scope it is logged here as `I-F-nnn` and, if it can be fixed additively without touching another session's owned file, fixed in `sessions/c79eb5d9/**` only.
+
+## I-T5 — publish record (2026-11-14, session c79eb5d9)
+
+| Event | Result |
+|---|---|
+| Pull request | [#61 — Zone3: independent live re-verification + price/rating display fix + orphan-page gate](https://github.com/kanlerxz87-cyber/Zone3/pull/61) — `arena/c79eb5d9-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; gates green immediately before merge: `check_site` OK (12 pages / 3 products / 48 sources / 51 flags), `tools/build_site.py` gate PASS (16 pages / 232 rows), `verify_site` PASS (69 pages / 1172 rows / 0 advisories), `link_report --strict` 0, `check_all_links` 115 pages 0 errors, `sessions/c79eb5d9/check_routes.py` PASS |
+| Merge | **MERGED** 2026-11-14T18:40:35Z via `gh pr merge 61 --merge` (no approval waited, per brief) → merge commit `8927a11431ef9f3da21f85f735b9e3f604356eaf` (`state=MERGED` confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages build | `main` `/` legacy source; build for `8927a11` → **`built`**; a later merge (#60, session `cdc9baa4`) produced build for `cb2dc1d` → **`built`** at 2026-11-14T18:41:25Z. This session's changes are in both (verified in the `origin/main` blobs *and* on the live pages, see below) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — dashboard renders with **3 critical / 51 total flags** and the new **Site map** section listing every published page (verified by fetching `index.html` after the build) |
+| Live check — the I-F-01 fix | https://kanlerxz87-cyber.github.io/Zone3/category/air-fryers.html — the product table now has **6 columns and no price, rating or review cell**; a sourced row explains why they are withheld and links `I-F-01` |
+| Live check — flags | both Flagged pages carry `I-F-01` and `I-F-02`; `data/flags.json` has 51 entries, `data/z3/flags.json` 29 |
+| Site merged while flagged? | yes — I-F-02 and all inherited flags are non-blocking, as the brief requires |
+| Conflict | `main` moved `ab33669` → `553301a` during this session; `COORDINATION.md` conflicted at EOF; resolved by keeping **both sides in full** (main's parts verbatim, then this Part). No other session's text was removed or reworded |
+| Homepage-cache observation | the first fetch of `/` right after the merge returned a pre-merge render (49 flags, no Site map) while the build was still `building`; a refetch after `status=built` showed the new build. Recorded so a later reader does not mistake a stale edge copy for a lost merge |
+
+### I irregularities — final list (all non-blocking, published)
+
+| ID | Sev | Finding | Status |
+|---|---|---|---|
+| I-F-01 | Critical | Price, star rating and review-count cells were published with no permitted data path (Participation Requirements 2(b) and 6(t); no tag, no API credentials) | **fixed** on the category page + generator; published on both Flagged pages |
+| I-F-02 | High | `/docs/` (2026-11-13 build) and `/sessions/3c886b62/` still publish those same cells, marked "verified", and are live on Pages | **open** — other sessions' owned files; request logged: delete or noindex `/docs/` and `/sessions/`, drop the "Reference (/docs/)" link |
+| I-F-03 | Medium | 26 of 69 published pages had no inbound link (the `/dashboard/` build, the marketing sub-pages, `category/air-fryers.html`) | **fixed** — Site map on the dashboard + `check_routes.py` gate |
+| I-F-04 | Low | The site's own `verification.html` "one row per published claim" page is an older build that does not cover this session's 20 re-reads | **open** — this session's rows are instead in `sessions/c79eb5d9/data/reverification-2026-11-14.json`; consolidating them into `verification.html` belongs to the next integration session |
+
+Owner actions that would unblock the blocked items in the requirements matrix (none of them are content defects): supply the Associates tag, supply a valid 10-character ASIN for each product, and confirm account eligibility for the marketplace in question.

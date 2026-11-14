@@ -160,3 +160,15 @@ obtained yet; "excluded" means Amazon's own rules forbid it.
 | Generator idempotence | re-running `scripts/build_site.py` and `tools/build_site.py` leaves the tree clean |
 
 (PR link, merge commit and Pages build result are appended after the merge.)
+
+### 4.3 Publish result
+
+| Item | Value |
+|---|---|
+| Pull request | [#61](https://github.com/kanlerxz87-cyber/Zone3/pull/61) — `arena/c79eb5d9-zone3` → `main` |
+| Merge | **MERGED** 2026-11-14T18:40:35Z, `gh pr merge 61 --merge`, no approval waited |
+| Merge commit | `8927a11431ef9f3da21f85f735b9e3f604356eaf` |
+| Pages build | `built` for `8927a11`; a later merge (#60) produced `built` for `cb2dc1d` at 18:41:25Z, and this session's changes are present in both |
+| Live landing | renders the Site map and 51 flags |
+| Live category page | 6 columns, no price/rating/review cell, `I-F-01` link present |
+| Broken links at publish | 0 |
