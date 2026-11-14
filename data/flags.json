@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01).",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner.",
   "flags": [
     {
       "id": "FLG-001",
@@ -601,6 +601,77 @@
         "S14",
         "S02"
       ]
+    },
+    {
+      "id": "E-F-01",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "The dashboard asserted a second official source for the 10-character ASIN rule without listing it",
+      "detail": "scripts/build_site.py's re-verification row 'ASIN is a 10-character identifier' said the rule is 'independently stated on Amazon's seller blog' while its Source cell cited only S31 and S08. The blog page was not in data/sources.json at the time, so the claim was published without its evidence. Re-read 2026-11-14: https://sell.amazon.com/blog/what-is-an-asin (dated Jun 4, 2025) states 'a unique 10-character alphanumeric code assigned to every product listed in the Amazon store'. By the time this session merged, main had registered that URL as S45, so the fix cites S45 rather than adding a duplicate.",
+      "action": "None required. The row now cites S45 and the quote is stored as PF-52. Left on this page so the change is auditable rather than silent.",
+      "sources": [
+        "S45",
+        "S31"
+      ],
+      "repo_evidence": "scripts/build_site.py reverify_table(), row 'ASIN is a 10-character identifier' (pre-fix sources ['S31','S08'])."
+    },
+    {
+      "id": "E-F-02",
+      "severity": "Low",
+      "category": "Correction",
+      "item": "Root EXECUTIVE-SUMMARY.md was stale and repeated a claim another session had already corrected",
+      "detail": "The file carried the header 'Branch: arena/b8beb448-zone3' and the record 'COORDINATION.md section: Part: session b8beb448, table A1-A15'. It also restated FLG-003 as 'link.amazon is exactly what 6(w)/6(v)/CIS 2(e) prohibit', which flag V-F2 (session b8beb448, 2026-11-14) had already recorded as overstating what the policy documents say.",
+      "action": "None required after this session: the file was rewritten as this session's deliverable against the current register. Any later edit should re-check the counts against data/flags.json and data/sources.json.",
+      "sources": [],
+      "repo_evidence": "EXECUTIVE-SUMMARY.md as of git commit 8043815 (pre-fix); flag V-F2 in data/flags.json."
+    },
+    {
+      "id": "E-F-04",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "V-F3 (/docs/ orphaned from navigation) and V-F4 (sitemap covers only part of the site) — fixed by the integration session",
+      "detail": "Both were raised by session b8beb448 on 2026-11-14 and left for the owner because they touch shared output. This session is the final integration session named in the brief, so both were closed. V-F3: a 'Reference (/docs/)' entry was added to the root navigation in scripts/build_site.py. V-F4: sitemap.xml is now produced by scripts/build_sitemap.py, which walks the checked-in tree, so it lists all 63 live pages rather than one generator's subset; tools/build_site.py was made a fixpoint so it no longer de-lists pages it does not own (session b90c5685 had already added the root flat pages, and tools/verify_site.py's V5 check had already been relaxed from 'emitted by this build' to 'exists on disk'). The 15 broken relative links inside archive/c4e71983/ (V-F5) were deliberately NOT rewritten, because that directory is a preserved byte-for-byte snapshot.",
+      "action": "None required. If /docs/ is later retired rather than kept, remove its nav entry in scripts/build_site.py NAV, delete docs/ and re-run scripts/build_sitemap.py.",
+      "sources": [],
+      "repo_evidence": "scripts/build_site.py NAV; scripts/build_sitemap.py; tools/verify_site.py V5; sitemap.xml; flags V-F3, V-F4, V-F5."
+    },
+    {
+      "id": "E-F-05",
+      "severity": "Low",
+      "category": "Wording",
+      "item": "The dashboard headline says product identities are 'documented', which reads against FLG-002 and FLG-027",
+      "detail": "index.html opens: 'all three supplied Amazon short links resolve to live product listings. … Product identities are documented with official listing links.' 'Resolve to live product listings' is accurate and is what was observed (S11-S13). 'Product identities are documented' is the wording another session added and which session 51fcb80d declined to adopt as data (FLG-027): the redirect targets are NOT confirmed as the submitted products, and data/products.json keeps confirmed_as_submitted_product=false with asin, product_name and brand null.",
+      "action": "Owner decision. Left unchanged because it is editorial, not data: the data layer is correct and every product row still reads 'Not confirmed as submitted'. If you want it tighter, change 'Product identities are documented with official listing links' to name the three destinations as observed, not identified.",
+      "sources": [
+        "S14",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "repo_evidence": "index.html callout (git commit 8043815); data/products.json redirect_observed.confirmed_as_submitted_product=false; flags FLG-002 and FLG-027."
+    },
+    {
+      "id": "E-F-06",
+      "severity": "Low",
+      "category": "Data",
+      "item": "S43's 'used_for' says the benchmark carries star ratings, rating counts and prices; the rendered benchmark carries none of them",
+      "detail": "data/sources.json S43 reads: 'Category competition benchmark: what a buyer sees above the fold in the verified category, with star ratings, exact rating counts and prices.' The published benchmark on air-fryers.html shows rank, ASIN, title and link only — which is correct, because FLG-022 and Participation Requirements 2(b)/6(t) bar displaying those values without an approved data path. The source note therefore describes the Amazon page, not what this site uses from it.",
+      "action": "Owner decision. Either narrow the S43 'used_for' text to the four fields actually published, or keep it as a description of the source page. Not changed here because data/sources.json is shared output and the rendered tables are already compliant.",
+      "sources": [
+        "S43",
+        "S02"
+      ],
+      "repo_evidence": "data/sources.json S43 used_for; air-fryers.html competition benchmark table (rank, ASIN, title, source only); flag FLG-022."
+    },
+    {
+      "id": "E-F-07",
+      "severity": "Info",
+      "category": "Coordination",
+      "item": "PR #26 (session 9fef7647) overlapped this session's scope and has since merged",
+      "detail": "At claim time (2026-11-14 10:05 UTC) PR #26 was open, created 10:01:25Z, touching 23 shared root files (index.html, products.html, pricing.html, reviews.html, content.html, campaigns.html, flagged.html, sources.html, executive-summary.html, data/products.json, data/sources.json, data/flags.json, scripts/build_site.py, scripts/check_site.py, sitemap.xml, marketing.html and others). Per the no-clobber rule this session did not merge, close or edit it. It merged into main before this session's PR, and this branch was rebased onto the result; the marketing/ section it introduced is kept and is linked from the navigation.",
+      "action": "None. Recorded so a later difference in wording is not mistaken for a lost edit.",
+      "sources": [],
+      "repo_evidence": "gh pr view 26 --json state,createdAt,commits,files (2026-11-14 10:05 UTC); COORDINATION.md Part E cross-session note."
     }
   ]
 }
