@@ -1,25 +1,14 @@
 # Executive summary — Zone3 AI-powered Amazon affiliate platform
 
-**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Count correction:** session `54ce6a2b`
+**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Final integration, compliance fix and re-verification:** session `3ead7ac8` · **Editorial topic plan and content-status correction:** session `3d359c23`
 **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 **Verification log:** https://kanlerxz87-cyber.github.io/Zone3/verification.html
 **Flagged for review:** https://kanlerxz87-cyber.github.io/Zone3/flagged.html
 
-> The source-linked findings below include the original 2026-11-14 verification record and the
-> independent correction pass in this session. Redirect targets are treated as observed destinations,
-> not as proof of requester intent. Unavailable or policy-restricted values remain blank and flagged.
-
-> **Count correction, 2026-11-14, session `54ce6a2b` (branch `arena/54ce6a2b-zone3`).** Two counts in
-> this document had gone stale as other sessions appended to the shared registers: §2 opened with
-> "48 official sources · 51 policy facts · 51 flags" and §7 repeated "All 51 policy facts" and the
-> gate figures from an earlier run. The registers now hold **51 sources, 55 policy facts and 66
-> flags**. The three numbers in §2 and §7 have been replaced with the current values, read from
-> `data/sources.json`, `data/policy_facts.json` and `data/flags.json`, and re-checked by re-running
-> the gates. No other text was changed. Hard-coded counts drift again the next time a session appends
-> to a register, so the durable fix is to generate this line from the JSON; that is logged as
-> `54C-F-02` on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page
-> rather than done here, because `EXECUTIVE-SUMMARY.md` is a hand-written document outside this
-> session's claimed scope.
+> The source-linked findings below include the original 2026-11-14 verification record, the
+> independent correction pass and the 2026-11-14 final integration pass. Redirect targets are treated as
+> observed destinations, not as proof of requester intent. Unavailable or policy-restricted values remain
+> blank and flagged.
 
 ---
 
@@ -54,9 +43,14 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-51 official sources · 55 policy facts · 66 flags · 12 root pages, a 16-page audit build and a
-marketing section. All 51 facts and all three submitted links were re-read on 2026-11-14; the
-row-by-row record is the [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html).
+51 official sources · 55 policy facts · 72 flags · 13 root pages, a 16-page audit build, a `/docs/`
+reference set, a marketing section and three retained session sub-sites. Every fact and all three
+submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
+[Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
+[session 3ead7ac8's record](https://kanlerxz87-cyber.github.io/Zone3/sessions/3ead7ac8/),
+which re-reads 30 load-bearing claims and links each one to the page it came from, and
+[session 3d359c23's record](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/3d359c23-verification-log.md),
+which re-reads 26 load-bearing claims a third time and records what was and was not re-read.
 
 | Area | What the official documents say | Source |
 |---|---|---|
@@ -112,7 +106,7 @@ current marketing claims.
 | Trending / high-converting product identification | **Blocked** on official data — no legitimate source for those scores. |
 | Price, review and competition analysis | **Rules built and enforced; data withheld** under 2(b) / 6(t) (FLG-022). A six-position bestseller benchmark is published with rank, ASIN, title and link only. |
 | Commission potential modelling | **Partly built.** The public rate tables plus the verified working rules (24 h session, 89-day cart, 180-day ship/pay, disqualified-purchase list, payment timing) are published; the per-product rate input is missing. |
-| SEO articles, comparisons, buying guides | **Structure, briefs, comparison and buying guide pages built; no unsourced product claims.** Every product claim must be accurate (PF-10), and the first-hand experience the FTC describes (PF-21) has not happened. |
+| SEO articles, comparisons, buying guides | **Briefs, a comparison and a buying guide are published, and the editorial plan for the long-form articles is published too.** The plan ([Content topics](https://kanlerxz87-cyber.github.io/Zone3/content-topics.html)) lists 12 working titles, the Amazon fact each one is built on and the rule that governs what it may not state. Every product claim must be accurate (PF-10), and the first-hand experience the FTC describes (PF-21) has not happened. |
 | Publish and manage affiliate links | **Link pipeline built; publishing intentionally off.** No Associates tag, so nothing is a trackable Special Link (FLG-010). |
 | Track clicks and conversions | **Ledger schema built, empty by design** (FLG-011). |
 | Continuous optimisation | **Boundary defined; no data to optimise.** Rebuilding from verified data is one command. |
@@ -120,8 +114,8 @@ current marketing claims.
 | Automation and scalability | **Built.** Static generation from JSON, no runtime dependency, no secrets in the repo, deterministic rebuild (verified to a stable fixpoint). |
 
 **Site structure:** the landing dashboard links to Products, Pricing & commission, Reviews & competition,
-Content & compliance, Campaigns & tracking, Category: Air Fryers, Marketing, the Executive summary,
-Verification log, Flagged for review and Sources. The 16-page `/dashboard/` build supplies the full
+Content & compliance, Content topics, Campaigns & tracking, Category: Air Fryers, Marketing, the Executive
+summary, Verification log, Flagged for review and Sources. The 16-page `/dashboard/` build supplies the full
 research and governance tables. Every current generated data row carries an official source, a flag or an
 explicitly documented blank. The legacy snapshot exposure is flagged separately (FLG-028).
 
@@ -143,8 +137,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-51 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 12 high, 16 medium, 15 low, 5 informational (informational entries record a correction
+72 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 13 high, 20 medium, 21 low, 15 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
@@ -172,6 +166,9 @@ changes are auditable rather than silent):
 | E-F-05 | The dashboard headline says product identities are "documented", which reads against FLG-002/FLG-027. **Left for your decision** — the data layer is correct, so this is editorial. |
 | E-F-06 | One source note says the competition benchmark carries ratings and prices; the published benchmark shows only rank, ASIN, title and link (correctly). **Left for your decision.** |
 | E-F-07 | PR #26 (another session) overlapped this session's scope, touching 23 shared root files. It was not merged, closed or edited here; it landed on `main` first and this branch was rebased onto it. |
+| 3D-F-01 | The **Content & compliance** page said *"No article, comparison or buying guide has been written yet"* and its table marked all three products "Not written" — while seven marketing pages were live and nav-linked. Corrected: the table now shows what is published, and the editorial plan for the rest is published at `/content-topics.html`. |
+| 3D-F-02 | Re-observed independently: the "Customers who viewed" carousel on a destination page shows a price and a star rating that belong to a **different ASIN**. The published data was never affected (no price or rating is shown anywhere); recorded so any future automated capture binds each value to the page's own ASIN. |
+| 3D-F-03 | The dashboard had no tile for the new topic plan. Fixed — it is listed as a tile and in the site map. |
 
 ---
 
@@ -183,12 +180,123 @@ changes are auditable rather than silent):
 * Commission tables (S25, S26), the Creators API pages (S04–S06), the FTC pages (S07, S24, S44), the
   enrolment pages (S28, S29) and the Amazon bestseller page (S43) re-read; the Operating Agreement
   and Program Policies were read section by section across all 4 and 11 chunks respectively.
-* Build gates, all green as re-run on 2026-11-14 by session `54ce6a2b`: `scripts/check_site.py`
-  (12 pages, 3 products, 51 sources, 66 flags), `tools/verify_site.py` (70 pages, 1,223 rows, 1,022
-  with an official source link, 388 flagged, 82 anchored to the repo), `tools/link_report.py`
-  (no dangling refs), `scripts/build_sitemap.py --check` (65 pages covered, 0 extra entries), and
-  both site generators rebuild to a stable fixpoint.
+* Build gates, all green: `scripts/check_site.py` (13 pages, 3 products, 51 sources, 72 flags),
+  `tools/verify_site.py` (71 pages, 1,269 rows, 1,068 with an official source link, 405 flagged, 82
+  anchored to the repo), `tools/link_report.py` (no dangling refs), `scripts/check_all_links.py`
+  (117 pages, 105 external URLs, 0 errors), `scripts/build_sitemap.py` (66 pages covered), and both
+  site generators rebuild to a stable fixpoint.
 * **Limits:** the sandbox reaches only github.com, npm and PyPI directly, so official pages were read
   through a fetch tool rather than an automated HTTP client, and the `--online` link check was not
   run. Whether `link.amazon` redirects without an affirmative click has not been tested in a
   logged-in Associates account (FLG-003).
+
+---
+
+## 8. Final integration pass — session `3ead7ac8` (2026-11-14)
+
+**A live compliance defect was found and fixed.** Two page sets were publishing observed prices
+(USD 79.93 / 149.99 / 79.91), star ratings (4.2 / 4.3 / 4.4 out of 5) and review counts
+(4.8K / 18.3K / 16.8K) as product facts. Associates Program **Participation Requirements 2(b)** and
+**6(t)**, re-read verbatim that day, allow those displays only where Amazon serves the link or the
+data comes from Creators API / PA API — neither is true for this project, which has no Associates tag
+and no API credentials.
+
+| Page set | Action |
+|---|---|
+| `category/air-fryers.html` | Columns removed and replaced with a 2(b)/6(t) explanation carrying the S46–S48 and S02 links. Session `554c08ca` (PR #66) found the same file independently and raised `I-F-01`; **their fix is the one kept**, and `3E-F-01` cross-references it |
+| `/docs/` (six pages) | 81 cells withheld, replaced with the `Withheld` badge plus FLG-022 / FLG-023 links |
+| `sessions/3c886b62/**` and `sessions/03bbd050/` | Dated compliance notice added to 12 pages; their data cells were **not** rewritten, because those files belong to other sessions. Change request `3E-CR-01` is logged in `COORDINATION.md` |
+| `category/air-fryers.html`, *Niche assessment* | Amazon's "bought in past month" badges (`1K+`, `4K+`, `3K+`) were published in prose on a page that withholds prices for exactly that reason. Withheld, and raised as `3E-F-10` |
+
+**One stale claim was corrected.** `/docs/` and the category page said the commission rate schedule is
+sign-in-only. It is not: the Standard Commission Income Statement
+[Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) and the Onsite
+[Table A](https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA) both render
+publicly — Table 1 was re-read row for row (Kitchen 4.50%, All Other Categories 4.00%). Only the
+per-account `/help/operating/schedule` card is gated. Rate cells stay blank because what is
+unresolvable is each listing's **category** (FLG-021), not the rate card.
+
+**Two register errors were repaired.**
+[`PF-53`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json) reinstates the
+compensated-review clause whose withdrawal note ("its text was not found in any section read") was
+wrong — the wording is in the Operating Agreement's opening paragraph.
+[`PF-55`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json) completes
+`PF-23`, which stopped mid-sentence and omitted *"or in the direct training or fine-tuning of a
+machine learning and/or foundational model"* — the clause that matters most for an AI-driven platform.
+
+**Verification.** 13 official pages fetched and read; 30 load-bearing claims re-checked. **All
+matched.** No third-party page was used as evidence. Gates on the merged tree:
+`check_site` OK (12 pages / 3 products / 51 sources / 66 flags) · `verify_site` PASS (70 pages /
+1,223 rows / 1,022 with an official source link / 0 advisories) · `link_report --strict` exit 0 ·
+`check_all_links` 116 pages, 0 errors · all five generators idempotent.
+
+**Merged and deployed.** [PR #70](https://github.com/kanlerxz87-cyber/Zone3/pull/70) → merge commit
+`f79b85e`; follow-up [PR #72](https://github.com/kanlerxz87-cyber/Zone3/pull/72) → merge commit
+`f618a53`, both merged without waiting for approval. The Pages build for `f618a53` reports
+**`built`** and the corrected pages were confirmed on the live site.
+
+**Limits carried forward.** The sandbox reaches only github.com, npm and PyPI directly, so official
+pages were read through a fetch tool rather than an automated HTTP client. Program Policies chunk 10
+of 11 was not read. Whether `link.amazon` redirects without an affirmative click has not been tested
+in a logged-in Associates account (FLG-003).
+
+---
+
+## 9. Final integration pass — session `3d359c23` (2026-11-14)
+**Merge note.** While this branch was open, `main` merged session `f2102efa's` three additional
+flags (`F2-F-01`…`F2-F-03`), so the flag register now holds **72** entries: this session's three
+(`3D-F-01`…`3D-F-03`) and `f2102efa's` three are both published, and the generated pages were
+rebuilt from the merged register. `main` also carried a stray `>>>>>>>` conflict-marker line in
+`COORDINATION.md` (line 3554, committed by that session and left unbalanced); this integration
+removed the marker line and kept every word of the board. The resolution is scripted in
+`scripts/resolve_rebase.py` so it is repeatable and auditable rather than a one-off manual edit.
+
+
+**One published statement contradicted the site's own output, and it is fixed.** The *Content &
+compliance* page said *"No article, comparison or buying guide has been written yet"*, and its
+status table marked all three products **"Not written"** — while seven marketing pages were live
+and linked from the navigation: three product briefs, a comparison, a buying guide and one page per
+product. The flag register carried the same stale claim as **FLG-012**. Both are corrected in this
+pass; FLG-012's earlier wording is kept in the register so the change stays auditable, and the
+correction is published as **3D-F-01**.
+
+**The brief's "catchy trendy articles and topics" is now a published plan.** The site had briefs, a
+comparison and a buying guide but nothing that planned the articles themselves. The new
+[Content topics](https://kanlerxz87-cyber.github.io/Zone3/content-topics.html) page carries **12
+working titles**, each with:
+
+* the verified Amazon fact it is built on (read from the listing title or from Amazon's own
+  programme documents) and the official source of that fact;
+* the page that already publishes those facts;
+* the rule that governs what it **may not state**, with the clause — for example, no price, no
+  discount and no best-seller position for a specific product (Participation Requirements 2(b) and
+  6(t)), and no comparison with a non-Amazon retailer's product (6(z));
+* its status: **Ready to draft** (6 topics) or **Blocked: identity unconfirmed** (6 topics, because
+  FLG-002/FLG-035 are still open).
+
+**No topic is described as trending, popular or high-converting**, because no official Amazon
+endpoint publishes search volume, keyword difficulty, trend direction or conversion rate to
+affiliates (FLG-033). The one official popularity surface — the category Best Sellers page — is used
+in a single topic and is labelled point-in-time, because the positions move between captures
+(FLG-025). A "Topics deliberately not planned" table states the four things that are *not* being
+claimed and why.
+
+**A second observation was recorded.** Re-fetching the destination page for product 1 showed the
+"Customers who viewed this item also viewed" carousel rendering a 4.4-star, 392-review, $69.97
+entry whose own link points at a **different** ASIN (`dp/B0B7C327LK`), while the link it renders
+under is the destination ASIN (`dp/B0CDY277D3`). The published data was never affected — no price,
+rating or review count appears anywhere on the site (FLG-022, FLG-029) — but any future automated
+capture must bind each value to the page's own ASIN. Recorded as **3D-F-02**; the missing dashboard
+tile is **3D-F-03**.
+
+**Verification.** 13 official pages fetched and read live by this session (the three short links,
+the three destination pages, one Page-Not-Found control, the Operating Agreement, the Program
+Policies, Table 1, the Creators API reference and the FTC guide). Every load-bearing claim matched
+the page it cites; nothing was found false and nothing was filled in. The record is
+[`research/3d359c23-verification-log.md`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/3d359c23-verification-log.md);
+the line-by-line repository review is
+[`research/3d359c23-repo-review.md`](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/3d359c23-repo-review.md).
+Gates on the merged tree: `check_site` OK (13 pages / 3 products / 51 sources / 72 flags) ·
+`verify_site` PASS (71 pages / 1,269 rows / 1,068 with an official source link / 0 advisories) ·
+`link_report --strict` exit 0 · `check_all_links` 117 pages, 105 external URLs, 0 errors ·
+`sessions/3c886b62` checker OK · sitemap covers 66 pages · all generators idempotent.
