@@ -1208,3 +1208,13 @@ Irregularities: the three codes are 9 characters, not ASINs (raw `dp` lookup fai
 |---|---|
 | E-T1 — short-link identity re-check | done |
 | E-T2 — requests logged | done (log only) |
+
+### E PR & merge record (session f1b7da46)
+
+| Event | Result |
+|---|---|
+| Pull request | [#29 — f1b7da46: independent short-link identity re-check (E-T1) + board record](https://github.com/kanlerxz87-cyber/Zone3/pull/29) — `arena/f1b7da46-zone3` → `main` |
+| Merge | **MERGED** 2026-11-14T10:06:17Z via `gh pr merge 29 --merge` → merge commit `a659b9eeb2de7aa8e6ecfc03aa1d09c3e3a04687` (confirmed via `gh pr view`) |
+| Pre-merge checks | `scripts/check_site.py` OK; `tools/link_report.py --strict` exit 0 |
+| Pages | Scope is files under `sessions/f1b7da46/` and the E Part of this file only; no site page changed. |
+| PR #26 | Left open and untouched by this session (owner `9fef7647`). |
