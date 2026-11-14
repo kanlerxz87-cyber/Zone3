@@ -1650,13 +1650,17 @@ S11–S16 and S23 (the three short links and their destinations), S25 (Standard 
 S52–S54 (PR #26's repeat observations of the same links) and **S55** (this session's own re-fetch).
 **No third-party page was used as evidence at any point in this session.**
 
-## JH Publish record
+## JH Publish record — PR #37 merged, Pages deployed, live checks passed
 
 | Event | Result |
 |---|---|
-| Pull request | see the PR number appended below once opened — `arena/b90c5685-zone3` → `main` |
-| Pre-merge state | all five gates green on the merged tree (11 pages / 48 sources / 43 flags; 67 pages / 1058 rows / 782 sourced; provenance PASS; 106 pages / 0 broken links; session checker OK); both generators idempotent |
-| Merge | recorded below after the merge command returns |
-| Pages build | recorded below from the GitHub Pages API |
-| Live checks | landing, products, marketing, flagged and sources pages fetched from the live site after the build |
+| Pull request | **[#37 — Final integration (b90c5685): merge open PR #26, independent re-verification, resolve three ID collisions, fix two release gates](https://github.com/kanlerxz87-cyber/Zone3/pull/37)** — `arena/b90c5685-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`, branch in sync with `origin/main` at `9cfaf26`. All five gates green on the merged tree (11 pages / 48 sources / 43 flags; 67 pages / 1058 rows / 782 sourced; provenance PASS; 113 pages / 0 broken links; session checker OK); both generators idempotent | 
+| Merge | **MERGED** 2026-11-14T10:18:43Z via `gh pr merge 37 --merge` (no approval waited, per the brief) → merge commit `1336828002797afddc37a1ebbba7c3945197f7b2`, confirmed with `gh pr view 37 --json state,mergedAt,mergeCommit` |
+| Pages build | legacy `main` `/` source; API `repos/.../pages/builds/latest` → `status=built`, `error=null`, `commit=1336828` (the merge commit), updated 2026-11-14T10:19:03Z |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — **live**; dashboard KPIs (3 submitted, 0 of 3 ASIN, 0 of 3 prices, 0 of 3 rates, 2 critical, 43 total flags) and the 10-row re-verification table render, every row with source links |
+| Live check — marketing briefs | https://kanlerxz87-cyber.github.io/Zone3/marketing/briefs.html — **live**; the reconciled PR #26 page renders, states no prices or ratings, and each row cites S14/S15/S23 plus FLG-001/022/029/036 |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**; **43 entries** (2 critical, 11 high, 16 medium, 11 low, 3 info), matching `data/flags.json`; every row carries official source links |
+| Site merged while flagged? | yes — `JH-F-01`…`JH-F-04`, `FLG-035`…`FLG-038` and every pre-existing `FLG-`/`V-F`/`F-`/`Z-`/`D-F` item are non-blocking and published on the Flagged for review page, per the brief |
+| Post-merge note | this record ships as the follow-up commit to PR #37 from the same branch, because a merge cannot be recorded in `main` before it happens |
 | Flagged items merged? | yes — every `FLG-`, `V-F`, `JH-F` and prior `F-`/`Z-`/`D-F` item is non-blocking and published on the Flagged for review page, per the brief |
