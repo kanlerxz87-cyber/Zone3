@@ -702,6 +702,62 @@
         "S04"
       ],
       "repo_evidence": "docs/products.html rows 'Price (observed)', 'List price', 'Rating', 'Review count'; sessions/3c886b62/*.html; index.html footer link"
+    },
+    {
+      "id": "21-F-01",
+      "severity": "Info",
+      "category": "Coordination",
+      "item": "COORDINATION.md duplicates several Parts verbatim (merge artifacts from earlier add/add resolutions)",
+      "detail": "Session 21acd3c0's line-by-line review found whole Parts repeated at the file tail: the 'PART C — a53a7e52', 'Part E — 252122ff' and 'G Session registry' blocks each appear twice, the results of earlier conflict resolutions that concatenated both sides. The records are not wrong; the board state is just hard to read as a single view (corroborates H-F-02).",
+      "action": "Owner may request a dedicated cleanup pass that deduplicates the board while preserving every record. Sessions cannot rewrite each other's Parts under the no-clobber rule.",
+      "sources": [
+        "S57"
+      ]
+    },
+    {
+      "id": "21-F-02",
+      "severity": "Info",
+      "category": "Site map",
+      "item": "sitemap.xml lists both the root URL and index.html — the same page twice",
+      "detail": "The sitemap contains an empty-path entry (the dashboard root) and a separate 'index.html' entry. Both resolve to the same page on GitHub Pages. Observed by session 21acd3c0 on 2026-11-14 at main@cb2dc1d and re-reproduced at main@62c5c6a.",
+      "action": "Optional: drop the 'index.html' entry from scripts/build_sitemap.py so crawlers see one canonical URL. Not blocking.",
+      "sources": [
+        "S56"
+      ]
+    },
+    {
+      "id": "21-F-03",
+      "severity": "Info",
+      "category": "Site map",
+      "item": "Redirect stub categories/home-kitchen-air-fryers.html is not listed in sitemap.xml",
+      "detail": "The stub exists (it redirects old URLs to products.html) but has no sitemap entry. Omitting a redirect stub is arguably correct SEO practice; it is recorded so the gap is a decision, not an accident. Observed by session 21acd3c0 on 2026-11-14.",
+      "action": "None required. If full coverage is wanted, add the stub to the sitemap with a note that it is a redirect.",
+      "sources": [
+        "S56",
+        "S58"
+      ]
+    },
+    {
+      "id": "21-F-04",
+      "severity": "Info",
+      "category": "Publish scope",
+      "item": "Session workspaces (sessions/3c886b62/, sessions/03bbd050/) are publicly listed in the sitemap",
+      "detail": "GitHub Pages serves the repository root, so other sessions' archive sub-sites are public and the sitemap lists 17 entries under sessions/. They are labelled 'kept for provenance' on the landing page. Related to I-F-02 (which flags the price/rating cells still shown in sessions/3c886b62/ and /docs/). Observed by session 21acd3c0 on 2026-11-14.",
+      "action": "Owner decision: keep archives public (with the provenance warnings already in place) or remove them from the published tree. Left in place per the brief's rule that flagged items are reviewed by the owner after the site is live.",
+      "sources": [
+        "S56"
+      ]
+    },
+    {
+      "id": "21-F-05",
+      "severity": "Low",
+      "category": "Unverified values",
+      "item": "Live page price for dp/B0CDY277D3 ($69.97) differs from the register's same-day snapshot ($79.93) — prices are volatile and none is published as fact",
+      "detail": "During session 21acd3c0's live fetch of link.amazon/B04G1MEwY (2026-11-14) the destination page's widget showed USD 69.97 for dp/B0CDY277D3, while data/products.json's observed_2026_11_14 snapshot for P1 records USD 79.93 (deal) the same day. Two different figures within one day from the same listing. This corroborates the standing policy (FLG-004, FLG-022, FLG-038) and Amazon's Participation Requirements 2(b): no price is published as a product fact anywhere on the canonical site.",
+      "action": "None. When an Associates tag and Creators API access exist (FLG-006, FLG-010), fetch prices through the API and timestamp them.",
+      "sources": [
+        "S14"
+      ]
     }
   ]
 }
