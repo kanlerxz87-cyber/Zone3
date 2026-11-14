@@ -1273,3 +1273,14 @@ No other session has claimed T-INT1–T-INT6. No file owned by another session i
 - `scripts/check_site.py` → `OK: 9 pages, 3 products, 29 sources, 21 flags. All checks passed.`
 - `tools/link_report.py --strict` → `dangling source refs=none · dangling flag refs=none · uncited sources=none · unreferenced flags=none`, exit 0.
 - Independent internal-link scan → **0 broken / 2443 links / 102 files**.
+
+## T-INT6 merge-conflict resolution (2026-11-14)
+
+PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8beb448` and `51fcb80d`/`f1b7da46` (PRs #29, #30), which had independently made the same commission-rate correction (FLG-005 rewritten, Table 1 public at S25) plus more extensive work (re-verification table, FLG-022–FLG-027, air-fryers page, `flagged-for-review.html` → redirect stub, 37 sources, 32 flags).
+
+**Resolution (additive; no other session's work discarded):**
+- `data/flags.json`, `data/sources.json`, `scripts/build_site.py`, and the root flat pages (`index.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html`, `executive-summary.html`, `flagged-for-review.html`) — taken from `origin/main` (the newer, equivalent corrections supersede the branch's parallel edits).
+- This session's additive provenance work (`docs/**`, `sessions/3c886b62/**`, `archive/c4e71983/content/*.html`, `data/commission.json`) — no conflicts, fully preserved.
+- `COORDINATION.md` — merged additively: main's sections retained, this session's Part C appended.
+- Post-merge fix: reverify-table row "Each link.amazon short link opens a different real listing" gained official Amazon product-page source links (S14–S16) in `scripts/build_site.py` (the row's S11–S13 links are `link.amazon` URLs, which the V4 checker does not credit as official sources).
+- Rebuilt and re-ran all gates on the merged tree: `check_site.py` OK (10 pages, 3 products, 37 sources, 32 flags); `verify_site.py` VERIFY PASS · 58 pages · 922 table rows · 745 with official source · 270 with flag · 82 with repo anchor · 0 advisories; `link_report.py --strict` clean; internal-link scan 0 broken / 2487 links / 103 files.
