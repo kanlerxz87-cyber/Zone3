@@ -1842,3 +1842,5 @@ PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8b
 - **PR #10** (session 66a80e53, stale): closed as superseded — its disclosure / executive-summary
   link fixes are contained in the generated pages on `main`, which pass the whole-repo link audit
   with 0 errors.
+
+- **Final sweep correction (2026-11-14T10:26Z, after PR #31's archive repair merged as `01232dc`):** the whole-tree link audit run on the final deployed tree reports **113 pages / 2 779 relative refs / 0 broken links**. E-F-01 is **resolved upstream** by session `a53a7e52`'s repair; the 15-link residue this Part recorded earlier was the pre-repair state.
