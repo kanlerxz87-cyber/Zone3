@@ -299,7 +299,8 @@ def main(root: str, out_path: str) -> int:
         if rel.startswith("archive/"):
             continue  # preserved snapshots, documented as such (D-F-02)
         raw = open(os.path.join(root, rel), encoding="utf-8", errors="replace").read()
-        has_money = bool(re.search(r">\s*\$\s?\d{1,3}(?:,\d{3})*(?:\.\d\d)?\s*<", raw))
+        has_money = bool(re.search(
+            r">\s*(?:USD\s?|\$)\s?\d{1,3}(?:,\d{3})*(?:\.\d\d)?(?:\s*\([^)]{0,40}\))?[^<]{0,40}<", raw))
         names_listing = any(t in raw for t in LISTING_TOKENS)
         if not (has_money and names_listing):
             continue
