@@ -1020,6 +1020,205 @@ The first draft of this section contained details that had not been checked. The
 
 Please do not re-apply the `a86f1d09` identity change without the owner's confirmation (FLG-027).
 
+# Part: session `dff4acde` (2026-11-14) — final integration, re-verification, PR to main
+
+> Appended additively on branch `arena/dff4acde-zone3` (base `6bf308f`, = `origin/main` at claim
+> time). Nothing above was removed or rewritten. This session's task IDs (`D-T…`) and flag IDs
+> (`D-F…`) are namespaced and are **not** the same items as `A:…`, `B:…`, `Z-…`, `FLG-…`, `F01–F17`
+> or `c4e71983-FLG-nn` used by other sessions.
+
+## D Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `dff4acde` | `arena/dff4acde-zone3` | Final integration: repo re-review, site integrity (build/check/link), line-by-line re-verification of combined data, fix failures, PR → `main`, merge, confirm Pages deploy, record here | complete | 2026-11-14 |
+
+## D Task board (claimed before any other work, per protocol)
+
+| Task ID | Task | Status | Owner | Files / scope | Notes |
+|---|---|---|---|---|---|
+| D-T1 | Read COORDINATION.md, register session, claim tasks, push claim immediately | done | dff4acde | `COORDINATION.md` (this Part only) | Claimed 2026-11-14 before any other work. |
+| D-T2 | Repo review: line-by-line audit of combined tree at base `6bf308f` | done | dff4acde | read-only audit + this Part | Full file inventory, generator/checker status. |
+| D-T3 | Site integrity: run `scripts/build_site.py`, `scripts/check_site.py`, internal link checks; fix any build/check failures | done (all green; no fix needed) | dff4acde | `scripts/**` only if a fix is required; otherwise read-only | Failures must be fixed and retried until green. |
+| D-T4 | Line-by-line re-verification of combined data rows against official sources; confirm every table row has an official source link; confirm unverified cells blank + flagged | done (42/42 facts re-verified) | dff4acde | verification record in this Part; data edits only if a row violates the rule (then logged) | Official sources only; no inference. |
+| D-T5 | Confirm executive summary + Flagged for Review page present and linked from landing; confirm disclosure banner on pages | done | dff4acde | pages owned by other sessions — request via this board if a fix is needed | Non-blocking: fixes requested here, not silently rewritten. |
+| D-T6 | PR → `main`, merge without waiting for approval, confirm GitHub Pages deploy + live checks, record PR link + merge result in this Part | done (see D PR & deploy record) | dff4acde | git + `gh` + this Part | Merge only after site is verified not broken. |
+
+### D Conflict & claim rules observed
+
+- This session works only on branch `arena/dff4acde-zone3` (fixed by the Arena session note; task IDs replace `session-<id>/<task>` branches, per the decision already logged by session `7f84fea4`).
+- No file owned by another session will be rewritten. Shared outputs (`index.html`, `data/*.json`, generated pages) are edited only if D-T4 finds a rule violation; any such edit is logged here with the source.
+- Small, frequent commits; `git pull --rebase origin main` before every push.
+
+## D Session record — repo review, integrity, line-by-line verification (2026-11-14)
+
+### D-T2 — Repo review (line-by-line audit of the combined tree at base `6bf308f`)
+
+Inventory (103 HTML pages total, all under version control; working tree clean at claim time):
+
+| Layer | Owner session | Contents | State |
+|---|---|---|---|
+| Root flat site | 7f84fea4 (+ integrations) | `index.html`, `executive-summary.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html`, redirects (`analysis.html`, `disclosure.html`), `assets/`, `scripts/` | intact; `scripts/check_site.py` OK |
+| Directory site | 3c6cba43 | `dashboard/`, `products/`, `pricing/`, `commission/`, `reviews/`, `niches/`, `content/`, `campaigns/`, `compliance/`, `agent-terms/`, `methodology/`, `requirements/`, `repo-review/`, `flagged/`, `executive-summary/`, `sources/`, `tools/`, `data/z3/` | intact; gates G1–G8 pass |
+| `/docs/` sub-site | 79f85104 | `docs/` (8 pages) | intact |
+| Session site | 3c886b62 | `sessions/3c886b62/` (16 pages, self-contained) | intact; `check_links.py` OK |
+| Verification record | 33226b37, c4e71983, 79f85104 | `research/`, `docs/*.md` | intact |
+| Archives | 26634cd5, 66a80e53, c4e71983 | `archive/` | intact (see D-F-02) |
+| Shared data | cumulative | `data/*.json` (sources 29, policy facts 42, flags 21, products 3) | consistent; no dangling IDs (link_report: `dangling source refs=none`) |
+
+Audit checks: no credentials/secrets in the tree (`.gitignore` covers `.env*`, `*.local.json`; greps hit only prose). `.nojekyll` present at root and re-emitted by both generators. `robots.txt` points at `sitemap.xml`. GitHub Pages is a legacy `main` `/` build (S22 API: `status=built`).
+
+### D-T3 — Site integrity (all green; nothing broken at merge time)
+
+| Check | Command | Result |
+|---|---|---|
+| Root generator gate | `python3 scripts/build_site.py` | exit 0 — "built site in …" |
+| Root checker | `python3 scripts/check_site.py` | **OK: 9 pages, 3 products, 29 sources, 21 flags** |
+| Directory gate + verifier | `python3 tools/verify_site.py` | **VERIFY PASS · 57 pages · 883 table rows · 658 official-source · 152 flag · 15 repo-anchor** (V1–V7; 223 non-blocking advisories on inherited pages, see D-F-03) |
+| Provenance coverage | `python3 tools/link_report.py --strict` | **PASS** — 231 rows / 940 cells, 100 % row coverage, no dangling source or flag refs |
+| Session site | `python3 sessions/3c886b62/tools/check_links.py` | **OK** — 16 pages, 285 sourced rows, no broken internal links |
+| Whole-tree link audit (this session, custom) | 103 pages, 3 918 href/src attributes | **15 broken — all inside `archive/c4e71983/content/` fragments, unreachable from navigation → D-F-02**; every nav-reachable page clean |
+| Root-row provenance (this session) | 9 root flat pages | **84/84 data rows carry an official-source or flag reference** |
+
+Build quirk found and neutralised: re-running `scripts/build_site.py` regenerates the 9 root pages but drops two hand-added paragraphs on `index.html` (the full-audit pointer and the two-generations footer note) because the generator does not emit them. The regeneration was **reverted** (`git checkout --`) so no other session's edits were lost; drift logged as D-F-04.
+
+### D-T4 — Line-by-line re-verification against live official sources (all fetched 2026-11-14)
+
+All **42/42** policy facts in `data/policy_facts.json` were re-read against the live official page named by their source ID. Exact-quote matches (spot list; full set = every PF id):
+
+| Source | URL re-fetched | Facts verified | Key confirmations |
+|---|---|---|---|
+| S01 | affiliate-program.amazon.com/help/operating/agreement (chunks 0,1,3) | PF-01, PF-02, PF-35 | Header "Updated: October 15, 2025" · §5 disclosure sentence verbatim · §6 material-breach clause verbatim · Schedule 1 = United States / Amazon.com Services LLC / amazon.com only |
+| S02 | affiliate-program.amazon.com/help/operating/policies (chunks 0–9 of 11) | PF-03…13, 15, 22…34, 36, 42, 43 (28 facts) | Header "Updated: April 14, 2026" · CIS §1 24 h / 89 d / 180 d windows · CIS §2(b) cancellation-return-refund disqualification · CIS §2(e) Redirecting Link definition · CIS §6 ≈60 days + Payment Minimum Chart $10/$10/$100 + $15 fee · PR §1 original content · PR §2(b) tag-in-URL, no dynamic sub-tags, price-display rule, comparison-price rule, inaccurate-claims ban · PR §4 offline ban · PR §5 no ML without approval · PR §6(s) artificial clicks, 6(t) reviews/ratings via API, 6(v) cloak, 6(w) shorteners, 6(y) price tracking ban, 6(z) non-Amazon products · IP L. §1 data-mining ban + LLM/ML ban · §2(e) aggregation/training approval · §2(h) 24 h cache · §2(i) date stamp + disclaimer · §2(j) 40 KB · §2(k) text disclaimer · §2(b) key pair + tag · §4(c) Agent user-agent `Agent/[agent name]` + no CAPTCHA solving · Influencer §3(c) `#Ad`/`#Sponsored` |
+| S04 | …/creatorsapi/docs/en-us/introduction | PF-16 | "at least 10 qualifying sales within the past 30 days"; 4 operations listed |
+| S05 | …/creatorsapi/docs/en-us/paapiv5-deprecation | PF-17 | PA-API 5 "has been deprecated and is being replaced by the Creators API"; 403 `AccessDeniedException` body shown |
+| S06 | …/api-reference/operations/get-items | PF-18 | ASIN = "10-Character alphanumeric unique identifier assigned by Amazon" |
+| S07 | ftc.gov/…/disclosures-101-social-media-influencers | PF-19, PF-20, PF-21 | "financial, employment, personal, or family relationship" · "hard to miss" · "can't talk about your experience with a product you haven't tried" · dated November 2019 |
+| S19 | affiliate-program.amazon.com/ | (corroborates PF-42) | "Earn up to 10%…" · "paid approximately 60 days after the end of the month" · category-dependent rates |
+| S24 | ftc.gov/…/endorsements-influencers-reviews | PF-37 | "Endorsement Guides), revised in 2023" |
+| S25 | affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ | PF-38 | Table 1 in full: 11 rows, 0.00 %–10.00 %; **Physical Books, Kitchen, Automotive 4.50 %**; All Other Categories 4.00 % |
+| S26 | …/help/node/topic/G4ARBJC7Z2NK48CA | PF-39 | Onsite opening sentence verbatim; Table A Kitchen 1.25 % |
+| S28 | …/help/node/topic/G7MJTPEP9NC3YKMG | PF-41 | "you have 180 days to refer a sale" · withdrawal after 180 days without sales |
+| S29 | …/help/node/topic/G8TW5AE9XL2VX9VM | PF-40 | "at least three within the first 180 days" · "personal orders do not qualify" · "at least 10 posts" |
+| S03 | …/help/operating/schedule | status re-confirmed | still redirects to `amazon.com/ap/signin` (return_to customratecard) — "not-accessible" status accurate |
+| S08 | amazon.com/dp/B04G1MEwY | status re-confirmed | **HTTP body = "Page Not Found"** (2026-11-14) — the 0-of-3 intake headline still holds |
+| S11 | link.amazon/B04G1MEwY | redirect re-traced | → `amazon.com/dp/B0CDY277D3` (title: CHEFMAN 6 Quart Dual Basket Air Fryer …); breadcrumb node `17659096011` Air Fryers |
+| S22 | api.github.com/repos/…/pages + /pages/builds/latest | status re-confirmed | `status=built`, source `main` `/`, latest build commit `6bf308f` (2026-11-13T23:29:42Z) |
+
+Not re-fetched this session (status carried from prior sessions' records, unchanged on the board): S09, S10 (same 404 class as S08, one of three re-confirmed), S12, S13 (short links; one of three re-traced), S14–S16, S23, S27 (product/control pages, "observed"), S17 (third-party, excluded as evidence), S18 (not accessible), S20, S21 (repo metadata).
+
+**Result: no fact was found false; no value was inferred or filled. Unverifiable cells remain blank and flagged, per the brief.**
+
+### D-T5 — Executive summary, Flagged for Review, disclosure
+
+- `executive-summary.html` exists, `<h1>Executive summary</h1>`, linked from the landing tile and the nav. Markdown variants exist under `docs/`.
+- Flagged-for-Review page: root `flagged.html` carries **FLG-001…021** with official source links per row (nav label "Flagged for review"); directory build `flagged/` carries its own 28-item register; `docs/flagged.html` carries Z-F1…F6. All published; non-blocking.
+- Disclosure: every root flat page footer carries the exact OA §5 sentence (checker-enforced); directory pages carry the top disclosure banner; `/docs/` pages carry a **"we earn"** variant → D-F-01.
+- Landing `index.html` links all 8 section tiles + the full-audit dashboard; every nav target resolves (link audit).
+
+### D Flags raised by this session (namespaced `D-F…`; non-blocking, published for review)
+
+| ID | Sev | Finding | Evidence / source |
+|---|---|---|---|
+| D-F-01 | Medium | `/docs/` pages display the disclosure as "As an Amazon Associate **we** earn from qualifying purchases." (plural) while OA §5 prescribes “As an Amazon Associate **I** earn from qualifying purchases.” The docs build's own compliance page argues "substantially similar"; the root site uses the exact sentence. User should decide which form is canonical. | [Operating Agreement §5](https://affiliate-program.amazon.com/help/operating/agreement) (fetched 2026-11-14) |
+| D-F-02 | Low | 15 broken relative links inside `archive/c4e71983/content/*.html` (fragments whose paths assume the pre-archive layout; e.g. `data/products.json`, `categories/air-fryers.html`). Not reachable from any navigation; archive is a preserved snapshot so links were not rewritten. | whole-tree link audit, 2026-11-14 |
+| D-F-03 | Low | `tools/verify_site.py` reports 223 non-blocking advisories on inherited pages (`docs/`, `sessions/`): disclosure-variant wording (overlaps D-F-01) and table rows whose cells are IDs/labels rather than claims (e.g. `R01`, `P1`, ordinal numbers) carrying no source link. Root flat pages are clean (84/84). | `verify_site.py` run, 2026-11-14 |
+| D-F-04 | Low | Generator/hand-edit drift: `scripts/build_site.py` does not emit two hand-added paragraphs on `index.html`; re-running it silently deletes them. Regeneration was reverted this session. Fix belongs in the generator (owner: root site). | `git diff` after build, 2026-11-14 |
+| D-F-05 | Info | `sitemap.xml` (emitted by `tools/build_site.py`) lists only that build's 16 directory URLs; the root flat pages, `/docs/` and `/sessions/` pages are not listed. SEO-only; no page is unreachable via nav. | `sitemap.xml`, 2026-11-14 |
+
+### D Sources used for this record (all official, fetched 2026-11-14 unless noted)
+
+S01–S03, S19, S25, S26, S28, S29 as listed in `data/sources.json` (same URLs); S04–S06 Creators API docs; S07, S24 ftc.gov; S08 + S11 amazon.com/link.amazon live responses; S22 GitHub Pages API (via `gh`, 2026-11-14). No third-party aggregator was used as evidence.
+
+### D Conflict log (protocol: resolve without discarding the other session's work)
+
+| Time (UTC) | What happened | Resolution |
+|---|---|---|
+| 2026-11-14 | `git pull --rebase origin main` before the PR: `main` had advanced `6bf308f` → `cfec2b3` (PRs #21–#25 from sessions incl. `b8beb448`, `a86f1d09`, `51fcb80d`). Content conflict in `COORDINATION.md` (both sides appended a Part at the same location). | Resolved by keeping **both sides in full**: main's Parts (incl. `b8beb448`, Part C `51fcb80d`) first, then this session's D Part. No marker left; `grep` for `<<<<<<<`/`>>>>>>>` clean; both parts asserted present by script before `git add`. Rebase then completed 3/3. Nothing from any session discarded. |
+| 2026-11-14 | Post-rebase re-check: `main`'s new commits had changed `scripts/build_site.py`, `scripts/check_site.py`, `tools/build_site.py` and root pages (register now 10 pages / 37 sources / 32 flags). | All checkers re-run on the merged tree — **all green** (see below). D-F-04 no longer reproduces: `python3 scripts/build_site.py` now rebuilds with **zero diff**, and `index.html` keeps both hand-added paragraphs — fixed on `main` by another session's generator update. Flag D-F-04 recorded as **resolved on main**. |
+
+### D Post-rebase integrity re-check (2026-11-14, merged tree)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 10 pages, 3 products, 37 sources, 32 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 58 pages · 922 table rows · 700 with official source · 163 with flag · 15 repo-anchor** |
+| `python3 tools/link_report.py --strict` | **PASS** (no dangling refs) |
+| `python3 sessions/3c886b62/tools/check_links.py` | **OK — no broken internal links, every data row has a source cell** |
+| `python3 scripts/build_site.py` rebuild idempotency | exit 0, **zero working-tree diff** |
+
+### D PR & deploy record (D-T6)
+
+| Event | Result |
+|---|---|
+| Pull request | [#27 — Zone3: final integration — line-by-line re-verification, integrity audit, flags D-F-01..05 (session dff4acde)](https://github.com/kanlerxz87-cyber/Zone3/pull/27) — `arena/dff4acde-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; all four site checkers green on the merged tree (10 pages / 37 sources / 32 flags; 58 pages / 922 rows / 700 sourced; link_report PASS; sessions check OK; rebuild idempotent) |
+| Merge | **MERGED** 2026-11-14T10:01:57Z via `gh pr merge 27 --merge` (no approval waited, per brief) → merge commit `0b41ab6256de22ec86ec6686514636b087b3edce` (state: MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Conflict history | One rebase conflict in `COORDINATION.md` vs PRs #21–#25 (see D Conflict log) — resolved by keeping both sides in full; no other session's work discarded |
+| Pages build | legacy `main` `/` source; build for `0b41ab6` → **built** (created 2026-11-14T10:01:59Z, updated 10:02:19Z, confirmed via Pages API `builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/ — serves the dashboard (fetched earlier this session, post-merge build covers it) |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**, flag register renders, every row carries official source links |
+| Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**, findings + per-claim source links render |
+| Site merged while flagged? | yes — D-F-01…05 and all prior FLG/V/Z/F flags are non-blocking and published on the Flagged for review pages, as the brief requires |
+| Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
+
+## E Part — session `f1b7da46` (branch `arena/f1b7da46-zone3`, base `8043815`)
+
+Read this file and the open-PR list before claiming. PR #26 (`arena/9fef7647-zone3`) is open and is the other session's integration candidate; this session does not edit or merge it.
+
+### E Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `f1b7da46` | `arena/f1b7da46-zone3` | Independent identity verification of the three submitted short links (link.amazon → ASIN → product title) against amazon.com; records the result under its own scope; PR + merge of that scope | in progress (E-T1) | 2026-11-14 |
+
+### E Task board
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| E-T1 — Independent re-check of short-link → ASIN identity (3 links) and raw 9-char code check | done | f1b7da46 | `sessions/f1b7da46/**` and this Part only | Claim written after read-only checks of the links (fetch on the 3 short links, the 3 raw codes, and the 3 resolved ASIN pages). Nothing else edited. |
+| E-T2 — Requests for the integration session (PR #26 owner) | done (log only) | f1b7da46 | none (log only) | See E Requests below. |
+
+### E-T1 verification record (session f1b7da46, 2026-11-14)
+
+Full record: `sessions/f1b7da46/README.md` and `sessions/f1b7da46/short-link-identity.json`.
+
+| Submitted short link | Raw `amazon.com/dp/<code>` | Short link resolves to | Page title matches PR #26 identity? |
+|---|---|---|---|
+| link.amazon/B04G1MEwY | Page Not Found | `dp/B0CDY277D3` (CHEFMAN 6 Quart Dual Basket Air Fryer) | yes |
+| link.amazon/B02NbDxp3 | Page Not Found | `dp/B09B7SB46R` (Emeril Lagasse 26QT French Door Air Fryer Toaster Oven) | yes |
+| link.amazon/B00hJ57DV | Page Not Found | `dp/B08DKYBTPH` (Chefman Air Fryer 8 Qt TurboFry) | yes |
+
+Sources (official): https://link.amazon/B04G1MEwY · https://link.amazon/B02NbDxp3 · https://link.amazon/B00hJ57DV · https://www.amazon.com/dp/B0CDY277D3 · https://www.amazon.com/dp/B09B7SB46R · https://www.amazon.com/dp/B08DKYBTPH · https://www.amazon.com/dp/B04G1MEwY · https://www.amazon.com/dp/B02NbDxp3 · https://www.amazon.com/dp/B00hJ57DV
+
+Checks run: `python3 scripts/check_site.py` → OK (10 pages, 3 products, 37 sources, 32 flags). `python3 tools/link_report.py --strict` run on this branch.
+
+Not verified in this session: prices, list prices, ratings, review counts, commission rate, BSR, competitor counts. Left blank here; PR #26's figures are not confirmed or refuted by this record.
+
+Irregularities: the three codes are 9 characters, not ASINs (raw `dp` lookup fails for all three). Amazon can change short-link targets, so identities must be re-checked before a row is published.
+
+### E Requests for the integration session (log only; not edited here)
+
+- **To the PR #26 owner (`9fef7647`):** the identity claims in PR #26 match this re-check. Its price and rating figures were not re-checked here. Before merging, re-fetch the price fields from the resolved ASIN pages and cite the time of observation. Also note that PR #26's `check_all_links.py` is not on `main` yet.
+- **To the integration session:** the short-link identity table above should be copied into the Flagged for Review page, with the source links, as FLG-022 addendum. This session did not edit the shared Flagged page.
+
+### E Task status
+
+| Task | Status |
+|---|---|
+| E-T1 — short-link identity re-check | done |
+| E-T2 — requests logged | done (log only) |
+
+### E PR & merge record (session f1b7da46)
+
+| Event | Result |
+|---|---|
+| Pull request | [#29 — f1b7da46: independent short-link identity re-check (E-T1) + board record](https://github.com/kanlerxz87-cyber/Zone3/pull/29) — `arena/f1b7da46-zone3` → `main` |
+| Merge | **MERGED** 2026-11-14T10:06:17Z via `gh pr merge 29 --merge` → merge commit `a659b9eeb2de7aa8e6ecfc03aa1d09c3e3a04687` (confirmed via `gh pr view`) |
+| Pre-merge checks | `scripts/check_site.py` OK; `tools/link_report.py --strict` exit 0 |
+| Pages | Scope is files under `sessions/f1b7da46/` and the E Part of this file only; no site page changed. |
+| PR #26 | Left open and untouched by this session (owner `9fef7647`). |
+
 ---
 
 # Part: session `ecbfe91b` (2026-11-14) — live re-verification, stale-claim takeover, final integration
@@ -1027,6 +1226,10 @@ Please do not re-apply the `a86f1d09` identity change without the owner's confir
 > Appended additively on branch `arena/ecbfe91b-zone3`. Nothing in the board above is removed or
 > rewritten. Task IDs (`E-T…`) and flag IDs (`E-F…`) are namespaced and are **not** the same items as
 > `A:…`, `B:…`, `FLG-…`, `F01–F17`, `c4e71983-FLG-…`, `Z-F…` or `Z-T…` used by other sessions.
+>
+> **ID-collision note (2026-11-14):** session `f1b7da46` later used the label `E-T1` for its own
+> "short-link identity re-check" task. That is **not** this Part's E-T1; read task IDs together with
+> their Part/owner. This Part's E-T1–E-T7 are as defined in the E Task board below.
 
 ## E Session registry
 
