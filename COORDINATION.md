@@ -2573,10 +2573,100 @@ cannot be written to `main` before #47 itself merges.
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| G-T1 — Integrate open PR #26 (`arena/9fef7647-zone3`) into this branch, resolving conflicts by keeping both sides | in progress | f118dddd | this branch (integration only) | — | — |
-| G-T2 — Line-by-line re-verification against live official sources | unclaimed → in progress | f118dddd | verification record in this Part | to be recorded | — |
-| G-T3 — Site integrity: run every checker, fix real breakage, confirm no broken links | unclaimed → in progress | f118dddd | site files only if a check fails | — | — |
-| G-T4 — Flagged-for-review: add E-T2 request (short-link identity table as FLG-022 addendum) | unclaimed → in progress | f118dddd | `flagged.html` (+ register data) | S-links from E Part | — |
-| G-T5 — PR to `main`, merge without waiting, confirm Pages deploy, record here | unclaimed → in progress | f118dddd | this Part | — | — |
+| G-T1 — Integrate open PR #26 (`arena/9fef7647-zone3`) into this branch, resolving conflicts by keeping both sides | done | f118dddd | this branch (integration only) | — | — |
+| G-T2 — Line-by-line re-verification against live official sources | done | f118dddd | verification record in this Part | to be recorded | — |
+| G-T3 — Site integrity: run every checker, fix real breakage, confirm no broken links | done | f118dddd | site files only if a check fails | — | — |
+| G-T4 — Flagged-for-review: E-T2 request (short-link identity table addendum; attached to FLG-035, the identity flag under current IDs) | done | f118dddd | `flagged.html` (+ register data) | S-links from E Part | — |
+| G-T5 — PR to `main`, merge without waiting, confirm Pages deploy, record here | in progress | f118dddd | this Part | — | — |
 
 Scope note: sessions `9fef7647` (PR #26, open) and `f1b7da46` (merged, PR #29/#30) are read for integration only; no other session's files are edited outside integration merges. Shared outputs (index, nav, tables) are touched only as the integration session.
+
+## G-T1 record — integration of PR #26 (2026-11-14)
+
+- Claimed before any other work (this Part, pushed as its own commit). PR #26's owner (`9fef7647`)
+  was active and reconciling in parallel; sessions `ecbfe91b` and `588693c9` had both explicitly
+  declined to touch it, so the claim was uncontested.
+- Merge of `pr26` head `15a49d0` into this branch: **content-clean** — `git diff` against `main`
+  showed only `COORDINATION.md`. PR #26's substance was already on `main` via PR #37
+  (`b90c5685`: renumbered IDs, blank product cells, both marketing sections kept) and PR #26's own
+  final reconciliation took main's integrated versions everywhere. The only unique content was the
+  **9F session record**, which was appended to `COORDINATION.md` in full (nothing discarded).
+- PR #26 was **merged to main by its owner at 2026-11-14T10:24:40Z** (merge commit `1cc2fbd`)
+  while this integration was in progress — so the work landed from both directions; no conflict
+  resulted because the content was identical.
+
+## G-T2 record — line-by-line re-verification against live official sources (2026-11-14)
+
+Every row below was re-fetched live this session; nothing inferred.
+
+| # | Claim on the site / in data | Official source re-fetched | Result |
+|---|---|---|---|
+| 1 | Short link 1 opens `amazon.com/dp/B0CDY277D3`, title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black" | `https://link.amazon/B04G1MEwY` | **Confirmed** — same destination and title; breadcrumb Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers (node 17659096011) |
+| 2 | Short link 2 opens `dp/B09B7SB46R`, "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven …" | `https://link.amazon/B02NbDxp3` | **Confirmed** — same destination, title, Air Fryers breadcrumb |
+| 3 | Short link 3 opens `dp/B08DKYBTPH`, "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 with 450°F Hi-Fry Option …" | `https://link.amazon/B00hJ57DV` | **Confirmed** — same destination, title, Air Fryers breadcrumb |
+| 4 | The three submitted codes are not ASINs: `dp/<code>` returns Page Not Found (S08–S10) | `amazon.com/dp/B04G1MEwY`, `/dp/B02NbDxp3`, `/dp/B00hJ57DV` | **Confirmed** — all three return "Page Not Found" |
+| 5 | P1 observed snapshot: USD 79.93 (list 99.99), OBO 57.45, 4.2★, 4.8K, 1K+ bought (S46) | `https://www.amazon.com/s?k=B0CDY277D3` | **Confirmed identical** on 2026-11-14 |
+| 6 | P2 observed: USD 149.99 (list 209.99, Early Black Friday Deal), OBO 92.99, 4.3★, 18.3K, 4K+ bought (S47) | `https://www.amazon.com/s?k=B09B7SB46R` | **Confirmed identical** |
+| 7 | P3 observed: USD 79.91 (list 119.99), OBO 49.54, 4.4★, 16.8K, 3K+ bought (S48) | `https://www.amazon.com/s?k=B08DKYBTPH` | **Confirmed identical** |
+| 8 | OA §5 exact disclosure sentence | `affiliate-program.amazon.com/help/operating/agreement` (chunk 0–1, "Updated: October 15, 2025") | **Confirmed verbatim**: "As an Amazon Associate I earn from qualifying purchases." §6(a) makes a §5 violation a material breach |
+| 9 | Standard Commission Table 1 (PF-38): 11 rows, 0.00–10.00%, Kitchen 4.50%, All Other 4.00% | `affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ` | **Confirmed** — full table matches row for row |
+| 10 | FTC Disclosures 101 quotes (PF-19/20/21) and its November 2019 date | `ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers` | **Confirmed verbatim** ("financial, employment, personal, or family relationship"; "hard to miss"; "can't talk about your experience with a product you haven't tried") |
+| 11 | ASIN = "10-Character alphanumeric unique identifier assigned by Amazon" (PF-18) | `affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items` (ItemIdType section, chunk 1) | **Confirmed verbatim** |
+| 12 | Register integrity: every source label on every page binds to its registered URL; every cited S/FLG ID exists | whole-tree audit of all `.html`/`.json`/`.md` against `data/sources.json` + `data/flags.json` | **Defects found and fixed** — see G-F-01; no dangling FLG refs anywhere |
+
+Observed snapshots in `data/products.json -> observed_2026_11_14` are research evidence only and are
+**not rendered** as product facts (identity/price/rating cells stay null; FLG-004, FLG-022, FLG-038).
+
+## G-T3 record — site integrity (2026-11-14, all on the merged tree)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK: 12 pages, 3 products, 48 sources, 49 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 69 pages · 1169 table rows · 967 with official source · 346 with flag · 82 repo anchor · 0 blocking advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** (no dangling refs) |
+| `python3 scripts/check_all_links.py` | **115 HTML pages, 104 external URLs, 0 errors** |
+| `python3 sessions/3c886b62/tools/check_links.py` | **OK — no broken internal links, every data row has a source cell** |
+| `scripts/build_site.py` / `tools/build_site.py` / `scripts/build_marketing.py` re-run | **idempotent** (second run = zero diff; nav-only sync after main's NAV update, committed separately) |
+
+### G irregularities found by this session (namespaced `G-F…`; non-blocking, all fixed or published)
+
+| ID | Sev | Finding | Resolution |
+|---|---|---|---|
+| G-F-01 | Medium | **Renumbering gap from PR #37:** `data/products.json` observed sources, `category/air-fryers.html` labels and `docs/executive-summary.md` still cited PR #26's pre-integration IDs `S30–S35`, which do not exist in the canonical register (it jumps `S32` → `S40`). The register's own prose notes say these were renumbered to `S46–S54`, but three files were missed. | **Fixed:** relabelled to `S46–S48`/`S52–S54` (same URLs, hrefs unchanged); mapping note added to `docs/repo-review-9fef7647.md` (its `S30–S38` labels are its own session's numbering — historical, left intact with the note). Re-audit: 0 wrong label→URL bindings outside `archive/` and session-namespaced registers. |
+| G-F-02 | Low | **Generator/hand-edit drift on `marketing/**`:** the committed pages carried hand patches the generator could not reproduce — flag-citation cells on the blank-fields table, a Source column on the "Never stated" table, and stray `<a>amazon.com/dp</a>` anchors placed directly under `<tr>` (invalid markup that HTML parsers foster-parent out of the table). Re-running `build_marketing.py` silently dropped the flag cells (29 V4 advisories). | **Fixed in the generator** (`scripts/build_marketing.py`): flag column emitted from a field→flag map (FLG-022/023/004/005, matching the register), Source column added, `cite()` appends the registered listing pages `S14–S16` when a claim's own sources are all `link.amazon`, briefs nav now flows from `base.NAV`. Regenerated output is structurally valid and passes verify with **856 → 967 sourced rows, 0 advisories**; regeneration is now lossless/idempotent. |
+| G-F-03 | Info | `link_report` advisory (non-blocking): `SRC-07` uncited; flags `FLG-001/002/003/007/027` unreferenced by any row's Source cell (they are cited from prose/other pages). | Published here; no action — exit code 0 in `--strict`. |
+| G-F-04 | Info | Two build-script traps observed in other sessions' logs (scripted edit during a stopped rebase committing conflict markers) were checked for this session's trees: `git grep -Il "^<<<<<<< "` → 0 hits. | Prevention only; nothing to fix. |
+
+## G-T4 record — E-T2 identity-table addendum (2026-11-14)
+
+- Session `f1b7da46`'s E-T2 request: publish the short-link identity table on the Flagged page with
+  source links. Under current register IDs the identity flag is **FLG-035** ("Product identity rests
+  on observed short-link redirects"), not FLG-022 (which now holds the price-display rule) — the
+  ID drift is noted in the addendum text.
+- `scripts/build_site.py -> build_flagged()` now renders the "Observed redirect targets" table with
+  a **Submitted link (observed)** column (clickable short link), the page-id column, the full title
+  as read, the not-confirmed badge, and a Source cell carrying **both** the short-link observation
+  source and the destination title source (`S11–S13` + `S14/S15/S23`).
+- `data/flags.json` FLG-035 gained a dated `addendum_2026_11_14` recording the E-T2 fulfilment and
+  this session's live re-check (short links stable; raw `dp/<code>` still Page Not Found).
+
+## G Sources used for this record (all official, fetched live 2026-11-14)
+
+`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`, `link.amazon/B00hJ57DV` ·
+`amazon.com/dp/B0CDY277D3`, `dp/B09B7SB46R`, `dp/B08DKYBTPH` ·
+`amazon.com/dp/B04G1MEwY`, `dp/B02NbDxp3`, `dp/B00hJ57DV` (Page Not Found) ·
+`amazon.com/s?k=` for all three ASINs · `affiliate-program.amazon.com/help/operating/agreement` ·
+`.../help/operating/policies` (S02, register) · `.../help/node/topic/GRXPHT8U84RAYDXZ` (Table 1) ·
+`.../creatorsapi/docs/en-us/api-reference/operations/get-items` ·
+`ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`.
+No third-party page was used as evidence.
+
+## G Conflict log (2026-11-14)
+
+| What happened | Resolution |
+|---|---|
+| Rebase onto `main` hit `COORDINATION.md` EOF conflicts 4 times (sessions `ecbfe91b`, `588693c9`, `b90c5685`, `edbd56a1` all appended Parts concurrently) | Kept **both sides in full** every time: main's file verbatim + this G Part appended (script asserts every Part present and no line-start markers before `git add`). My Part was renamed **F → G** at the first collision because `588693c9` had already published an `F Part`/`F-T…` namespace. |
+| One scripted edit ran while a rebase was stopped and briefly committed a truncated `COORDINATION.md` (173 lines) | Caught immediately: file rebuilt from `git show 9cfaf26:COORDINATION.md` (authoritative main) + this Part, asserted `+24/−0` vs main, re-committed before any push of the bad state. Remote never contained the truncated file. |
+| `marketing/**` regeneration conflicted with hand patches (G-F-02) | Generator fixed to reproduce the committed facts (flag cells, Source column) instead of reverting the pages; stray invalid anchors removed. |
+| `flagged.html` conflicted during rebase (both sides regenerated from different flag sets) | Not hand-merged: regenerated from the merged `data/flags.json` (49 flags) + merged generator, per the convention main already logged. |
+| PR #26 merged to `main` by its owner mid-session | No action needed — content identical to this branch's merge; both records (`9F` and this `G` Part) kept. |
