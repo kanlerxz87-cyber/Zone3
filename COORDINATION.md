@@ -1664,3 +1664,69 @@ S52–S54 (PR #26's repeat observations of the same links) and **S55** (this ses
 | Site merged while flagged? | yes — `JH-F-01`…`JH-F-04`, `FLG-035`…`FLG-038` and every pre-existing `FLG-`/`V-F`/`F-`/`Z-`/`D-F` item are non-blocking and published on the Flagged for review page, per the brief |
 | Post-merge note | this record ships as the follow-up commit to PR #37 from the same branch, because a merge cannot be recorded in `main` before it happens |
 | Flagged items merged? | yes — every `FLG-`, `V-F`, `JH-F` and prior `F-`/`Z-`/`D-F` item is non-blocking and published on the Flagged for review page, per the brief |
+
+---
+
+# PART C — Final integration session `a53a7e52` (claim, 2026-11-14)
+
+**Repo:** `kanlerxz87-cyber/Zone3` · **Branch:** `arena/a53a7e52-zone3` (pinned by the Arena branch note; `session-<id>/<task>` branches not available, consistent with the logged branch-naming decision) · **Base:** `6bf308f` (main tip at session start, merge of PR #17).
+
+## Session registry (Part C)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `a53a7e52` | `arena/a53a7e52-zone3` | Final integration: re-verify combined data line by line, reconcile cross-session findings, fix inherited pages, build, link-check, PR → merge → Pages | in progress (T-INT) | 2026-11-14 |
+
+## Task board (Part C)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| T-INT1 — Claim and push | **done** | `a53a7e52` | `COORDINATION.md` | Claimed 2026-11-14 before any other work; claim commit `77281e0` pushed to `arena/a53a7e52-zone3`. |
+| T-INT2 — Line-by-line re-verification against official sources | **done** | `a53a7e52` | read-only fetches (no file scope) | All three short links re-followed live (2026-11-14): `B04G1MEwY→B0CDY277D3`, `B02NbDxp3→B09B7SB46R`, `B00hJ57DV→B08DKYBTPH`. Commission Table 1 read from the public help node; OA §5/§6, Program Policies, FTC Disclosures 101 re-verified. Verification log below. |
+| T-INT3 — Reconcile commission-rate finding; update data layer + canonical site | **done** | `a53a7e52` | `data/flags.json`, `data/sources.json`, `data/commission.json` (new), `scripts/build_site.py` | FLG-005 corrected: Table 1 is public at the help node (verified 2026-11-14). Canonical `data/commission.json` (11 rows, S25) now consumed by `scripts/build_site.py`; Pricing-page Table 1 renders; checker pass. |
+| T-INT4 — Disclosure fix on inherited pages (OA §5 exact wording) + row-level provenance | **done** | `a53a7e52` | `docs/**` (8 pages), `sessions/3c886b62/**` (16 pages), `archive/c4e71983/content/*.html` (13 files) | Exact OA §5 sentence on all 24 pages; FTC row linked; all `docs/compliance.html` tables carry row-level source columns; unverified rows carry flag refs (F01–F17 anchors in `sessions/3c886b62/flagged.html`); verified rows carry per-field official links; repo anchors added across `products.html`, `comparison.html`, product pages, `requirements.html`, `sources.html`; 13 archive files' relative hrefs repaired (0 broken / 2305 links / 103 files). |
+| T-INT5 — Build, full link-check, run checkers | **done** | `a53a7e52` | generated output + checker runs | `scripts/build_site.py` rebuild OK; `scripts/check_site.py` → "OK: 9 pages, 3 products, 29 sources, 21 flags. All checks passed."; `tools/verify_site.py` → "VERIFY PASS · 57 pages · 894 table rows · 714 with official source · 271 with flag · 82 with repo anchor" (0 advisories); `tools/link_report.py --strict` → 0 dangling source/flag refs, exit 0; independent internal-link scan → **0 broken / 2443 links / 102 files**. |
+| T-INT6 — PR → main, merge, confirm Pages, record result | pending | `a53a7e52` | git + `gh` + this file | Flagged items remain non-blocking. |
+
+No other session has claimed T-INT1–T-INT6. No file owned by another session is edited except the additive disclosure fixes (T-INT4), which the brief assigns to the integration session; every such edit is additive and logged here.
+
+## T-INT4 verification log (2026-11-14)
+
+**Disclosure (OA §5, exact wording "As an Amazon Associate I earn from qualifying purchases.")**
+- All 8 `docs/*.html` pages: corrected "As an Amazon Associate **we** earn" → "**I** earn" (sed, verified by checker V1).
+- All 16 `sessions/3c886b62/*.html` pages: exact §5 sentence inserted into the footer where it was absent.
+
+**Row-level provenance (checker V4 — every table row must carry an official source link, a flag id, or a repo anchor)**
+- `docs/compliance.html`: all 4 tables carry a row-level Source column — OA agreement, FTC Disclosures 101, Program Policies links; checks-table rows carry `repo:docs/compliance.md` anchors.
+- `sessions/3c886b62/flagged.html`: rows carry `id="F01"–"F17"` (placed on `<code>` inside row content).
+- `sessions/3c886b62/verification.html`: unverified rows reference F06/F07/F12/F14/F15/F16 (fixed a first-pass row-spanning regex that mismapped flags); verified rows restored with per-field official source links (S1–S6/S12); `short_link_code` rows carry `repo:sessions/3c886b62/data/products.json` anchors.
+- 3 product pages (`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`): unverified "Unit price" rows gained the F16 anchor.
+- `sessions/3c886b62/products.html` summary rows, `comparison.html` metric rows, and product-page "Supplied short-link code" rows: `repo:sessions/3c886b62/data/products.json` anchors; `comparison.html` "Commission rate per ASIN" row flagged F06.
+- `sessions/3c886b62/requirements.html`: 34 anchored flag links; `repo:` anchors on mdash cells.
+- `sessions/3c886b62/sources.html`: S12 row carries a `repo:` anchor.
+- `docs/content.html`: spec table gained a Source column (dp-page links for title-derived specs; amazon.com search links for search-rendered metrics; F3/F4 flags for BSR/commission); guardrail table gained Program Policies links.
+- `docs/flagged.html`: F-register rows gained official sources (S1/S3/S4/S7 links); control rows gained repo anchors.
+- `docs/sources.html`: control rows + computed-value rows gained `repo:docs/sources.html` anchors; F4 id anchored.
+- `docs/analysis.html`: "Combined / weighted" row gained a repo anchor; F3 id anchored.
+- `docs/index.html`: F-rows gained official sources; requirement rows gained repo anchors.
+- `flagged-for-review.html` (root): F1 row gained the ASIN-length official source; F7 row gained an in-content `id="F7"` flag id.
+
+**Archive repair**
+- 13 `archive/c4e71983/content/*.html` files: relative `href` paths repaired (`../` prefixes); `category-air-fryers.html` broken links re-pointed to `../categories/<page>`. Final scan: **0 broken / 2305 links / 103 files** (archive-inclusive).
+
+**Final gate results (2026-11-14)**
+- `tools/verify_site.py` → `VERIFY PASS · 57 pages · 894 table rows · 714 with official source · 271 with flag · 82 with repo anchor`, **0 advisories**.
+- `scripts/check_site.py` → `OK: 9 pages, 3 products, 29 sources, 21 flags. All checks passed.`
+- `tools/link_report.py --strict` → `dangling source refs=none · dangling flag refs=none · uncited sources=none · unreferenced flags=none`, exit 0.
+- Independent internal-link scan → **0 broken / 2443 links / 102 files**.
+
+## T-INT6 merge-conflict resolution (2026-11-14)
+
+PR #31 first merge attempt failed: `origin/main` had advanced with sessions `b8beb448` and `51fcb80d`/`f1b7da46` (PRs #29, #30), which had independently made the same commission-rate correction (FLG-005 rewritten, Table 1 public at S25) plus more extensive work (re-verification table, FLG-022–FLG-027, air-fryers page, `flagged-for-review.html` → redirect stub, 37 sources, 32 flags).
+
+**Resolution (additive; no other session's work discarded):**
+- `data/flags.json`, `data/sources.json`, `scripts/build_site.py`, and the root flat pages (`index.html`, `products.html`, `pricing.html`, `reviews.html`, `content.html`, `campaigns.html`, `flagged.html`, `sources.html`, `executive-summary.html`, `flagged-for-review.html`) — taken from `origin/main` (the newer, equivalent corrections supersede the branch's parallel edits).
+- This session's additive provenance work (`docs/**`, `sessions/3c886b62/**`, `archive/c4e71983/content/*.html`, `data/commission.json`) — no conflicts, fully preserved.
+- `COORDINATION.md` — merged additively: main's sections retained, this session's Part C appended.
+- Post-merge fix: reverify-table row "Each link.amazon short link opens a different real listing" gained official Amazon product-page source links (S14–S16) in `scripts/build_site.py` (the row's S11–S13 links are `link.amazon` URLs, which the V4 checker does not credit as official sources).
+- Rebuilt and re-ran all gates on the merged tree: `check_site.py` OK (10 pages, 3 products, 37 sources, 32 flags); `verify_site.py` VERIFY PASS · 58 pages · 922 table rows · 745 with official source · 270 with flag · 82 with repo anchor · 0 advisories; `link_report.py --strict` clean; internal-link scan 0 broken / 2487 links / 103 files.
