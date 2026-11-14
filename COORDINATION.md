@@ -3458,3 +3458,28 @@ scan finds them too, but only once you know to look for the demand badges in pro
 guard against this class of drift, the check to add is a whole-tree scan for the six observed-value
 literals outside the flag and source-register prose — `sessions/3ead7ac8/tools/withhold_observed.py`
 already contains the pattern list and can be run with a `--check` flag added.
+
+## c3dbcc40 Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| c3dbcc40 | `arena/c3dbcc40-zone3` | `f618a53` (merge of PR #72) | Gate re-run on the current tree; live re-fetch of the three submitted short links (official Amazon pages only); sitemap drift check; PR to `main`, merge, Pages deploy | in progress | 2026-11-14 |
+
+Branch note: this session is fixed to `arena/c3dbcc40-zone3` by the Arena session branch note, so per-task work is namespaced `C3-T1…C3-T3` instead of `session-<id>/<task>` branches.
+
+## C3 Task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| C3-T1 — Gate re-run on `f618a53` and sitemap drift check | done | c3dbcc40 | read-only, plus `sessions/c3dbcc40/` |
+| C3-T2 — Live re-fetch of the three submitted links and their landing listings (official Amazon pages only) | done | c3dbcc40 | `sessions/c3dbcc40/verification.md` |
+| C3-T3 — Record, PR to `main`, merge, Pages deploy | pending | c3dbcc40 | `COORDINATION.md` (C3 Part only), `sessions/c3dbcc40/**` |
+
+Shared outputs (`sitemap.xml`, `index.html`, `flagged.html`, generated pages, `data/flags.json`) are not edited by this session. Drift is logged below for the integration owner.
+
+## C3 records (2026-11-14, session c3dbcc40)
+
+- **C3-T1 done.** Gates on `f618a53`: `check_site` exit 0 (12 pages / 3 products / 51 sources / 66 flags); `build_site` exit 0; `verify_site` PASS (70 pages / 1223 rows / 1022 sourced / 388 flagged / 0 advisories); `link_report --strict` exit 0; `check_all_links` 116 pages, 0 errors. Full record: [`sessions/c3dbcc40/verification.md`](sessions/c3dbcc40/verification.md).
+- **C3-T2 done.** Live fetches (2026-11-14), official Amazon pages only: `link.amazon/B04G1MEwY` → `amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt dual basket); `link.amazon/B02NbDxp3` → `amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT); `link.amazon/B00hJ57DV` → `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry). Control: `amazon.com/dp/B04G1MEwY` → Page Not Found. All three ASINs appear in `data/z3/products.json` and `pricing.json`.
+- **C3-F-01 (sitemap drift, for the integration owner).** The committed `sitemap.xml` lacks five pages the build emits: `analysis.html`, `disclosure.html`, `flagged-for-review.html`, `index.html`, `marketing.html`. Not edited by this session (shared output).
+- **C3-F-02 (intent not established).** The short-link destinations are verified. Whether they match the requester's intended products is not confirmed by an official source. Already flagged in the repo; no change.
