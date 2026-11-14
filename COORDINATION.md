@@ -2556,3 +2556,27 @@ cannot be written to `main` before #47 itself merges.
 * `S45` (`sell.amazon.com/blog/what-is-an-asin`) had already been registered on `main` when this
   session merged. This session had independently reached the same page and the same conclusion; it
   reused `S45` rather than adding a duplicate source ID.
+
+---
+
+# G Part — session `f118dddd` (namespace renamed F→G at rebase: session 588693c9 already owns F)
+
+> Branch `arena/f118dddd-zone3`; claim written at base `8043815`, rebased onto `9cfaf26`.
+
+## G Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| f118dddd | `arena/f118dddd-zone3` | Final integration for this round: integrate open PR #26 (session 9fef7647), line-by-line re-verification, site integrity, PR to `main`, merge, Pages deploy | in progress | 2026-11-14 |
+
+## G Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G-T1 — Integrate open PR #26 (`arena/9fef7647-zone3`) into this branch, resolving conflicts by keeping both sides | in progress | f118dddd | this branch (integration only) | — | — |
+| G-T2 — Line-by-line re-verification against live official sources | unclaimed → in progress | f118dddd | verification record in this Part | to be recorded | — |
+| G-T3 — Site integrity: run every checker, fix real breakage, confirm no broken links | unclaimed → in progress | f118dddd | site files only if a check fails | — | — |
+| G-T4 — Flagged-for-review: add E-T2 request (short-link identity table as FLG-022 addendum) | unclaimed → in progress | f118dddd | `flagged.html` (+ register data) | S-links from E Part | — |
+| G-T5 — PR to `main`, merge without waiting, confirm Pages deploy, record here | unclaimed → in progress | f118dddd | this Part | — | — |
+
+Scope note: sessions `9fef7647` (PR #26, open) and `f1b7da46` (merged, PR #29/#30) are read for integration only; no other session's files are edited outside integration merges. Shared outputs (index, nav, tables) are touched only as the integration session.
