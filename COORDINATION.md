@@ -1378,7 +1378,7 @@ product was meant — flagged for review, non-blocking.
 | F-T3 — Reconcile contradictory headlines between the two site generations | done | 588693c9 | `README.md`, `EXECUTIVE-SUMMARY.md` (+ generator nav only) | Resolved in favour of the evidence. `index.html`'s headline ("short links resolve to live listings; 9-char tokens are not ASINs") was already accurate, so it was left alone. The false inference was in `README.md` ("the `plpRedirect=mhFallback` route … confirms the identifiers select nothing") and is corrected there with the control from 588-V08. `EXECUTIVE-SUMMARY.md` gained a dated addendum with the current state. |
 | F-T4 — Marketing pages: 3 product briefs, comparison, buying guide (facts-only, sourced, compliant) | done | 588693c9 | `marketing/**` (7 pages, new), `data/marketing.json` (new), `scripts/build_marketing.py` (new) | Every factual sentence carries an official source URL; the generator refuses to build if a claim dangles, a row lacks a source, a banned field holds a value, or a page lacks the disclosure. |
 | F-T5 — Line-by-line verification + publish new flags | done (needs review, non-blocking) | 588693c9 | `data/flags.json`, `flagged.html` | FLG-028…FLG-034 added, each with official source links; rendered on `flagged.html`. |
-| F-T6 — PR to `main`, merge, confirm Pages deploy | in progress | 588693c9 | this branch | Recorded in the F PR section below. |
+| F-T6 — PR to `main`, merge, confirm Pages deploy | **done** | 588693c9 | this branch | PR #34 merged `58d2744`; follow-up PR #35 merged `bb81417`; Pages **built** for both; live pages verified. |
 
 **Scope boundary:** this session edits only the files listed above. It does **not** edit `archive/**`, `docs/**`, `sessions/3c886b62/**`, `sessions/f1b7da46/**`, `tools/**`, `data/z3/**`, or the 16 directory builds (`dashboard/`, `products/`, …), which belong to earlier sessions and stay as they are.
 
@@ -1477,3 +1477,36 @@ All Other 4.00 %) and is shown only as a category reference, never multiplied in
 | Reachability crawl from `index.html` | 18 pages reachable, incl. **all 6 marketing children**; 0 archive pages reachable |
 | Idempotency | re-running both generators leaves the working tree clean |
 | Live re-verification | 12 observations, `sessions/588693c9/verification-2026-11-14.json` |
+
+### F PR & deploy record (session 588693c9) — DONE
+
+| Event | Result |
+|---|---|
+| Pull request | [#34 — Final integration (588693c9): marketing section for the 3 products, mhFallback correction, line-by-line re-verification](https://github.com/kanlerxz87-cyber/Zone3/pull/34) — `arena/588693c9-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`, after rebasing onto `main` `dc88e53` (which had advanced past this branch) |
+| Merge | **MERGED** 2026-11-14T10:12:59Z via `gh pr merge 34 --merge` (no approval waited, per brief) → merge commit `58d27447e91509c7e25789d409f30c612255eae4` |
+| Follow-up PR | [#35 — comparison page: explain the blank commission column](https://github.com/kanlerxz87-cyber/Zone3/pull/35) — the commission column rendered as a silent empty cell; fixed. **MERGED** 2026-11-14T10:13:55Z → `bb8141714bacf007857162d27f062cdaa3591710` |
+| Pages build (both) | `status=built`, `error=null`, build commit equal to each merge commit (checked via the Pages API `builds/latest`) |
+| Live check — marketing home | https://kanlerxz87-cyber.github.io/Zone3/marketing/ — **live**, product table + sourcing table render, each row carrying its source ID |
+| Live check — comparison | https://kanlerxz87-cyber.github.io/Zone3/marketing/comparison.html — **live**; all three blank columns now state the clause that blanks them |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html — **live**, register renders |
+| Site merged while flagged? | yes — FLG-028…034 and all prior flags are non-blocking and published, as the brief requires |
+
+**Caching note.** The first live fetch of `comparison.html` after the #35 merge still showed the old
+empty cell. `git show origin/main:marketing/comparison.html` proved the fix was on `main`, and a
+cache-busted fetch (`?v=2`) served the fixed page. Recorded so a later session does not misread this as
+a deploy failure.
+
+**One defect found in this session's own work and fixed before merge:** the generator's `raw_table`
+helper wrapped each pre-rendered row in a single `<td>`, and `base.table` iterated a row *string*
+character-by-character, producing a 71 KB block of one-character cells on `marketing/index.html`. Both
+were caught by a structural audit added to the generator (`check_pages()`), which now fails the build
+(exit 3) on a cell-count mismatch, a duplicate `<h1>`, a missing disclosure, a currency figure, or a
+broken local link.
+
+### F Conflict log
+
+| Time (UTC) | What happened | Resolution |
+|---|---|---|
+| 2026-11-14 | `git pull --rebase origin main` before the PR: `main` had advanced `8cfe91f` → `dc88e53` (PRs #32–#33 from session `ecbfe91b`). Content conflict in `COORDINATION.md`: both sides appended a Part at the same location. | Resolved by **keeping both sides in full** — `ecbfe91b`'s Part first, then this F Part, separated by a rule. Verified no marker remains at line start and that both Parts are present before `git add`. Nothing from any session discarded. |
+| 2026-11-14 | Second conflict, in `flagged.html` (generated output). | Not hand-merged. Resolved by **regenerating** from the merged `data/flags.json` + `data/sources.json`, so the register is internally consistent (39 flags, 38 sources). Hand-resolving generated HTML could have dropped the other session's flags. |
