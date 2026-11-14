@@ -3556,7 +3556,6 @@ namespaced by task ID (`F2-T1…F2-T5`) and file scope, matching the convention 
 | F2-T3 | Fresh live re-verification round (2026-11-14, session f2102efa): the 3 submitted links, the 3 observed destination ASINs, the 10-character ASIN rule, Operating Agreement, Program Policies, Creators API, commission tables, FTC endorsement guidance | done | `sessions/f2102efa/verification.md` | Record below. **Zero discrepancies** — every load-bearing claim reproduces verbatim. |
 | F2-T4 | Site gap audit (dashboard UX, navigation integrity, per-row source links, disclosure placement) | done | `sessions/f2102efa/site-audit.md` | Record below. No defect within scope; owner-reserved scope questions (`I-F-02`, `21-F-04`) stay published for the owner. |
 | F2-T5 | Final integration: run all gates on the final tree, PR → `main`, merge without waiting, confirm Pages deploy, live check, record results | in progress | this branch, `COORDINATION.md` (records only), generated pages if flags are added | Flagged items stay non-blocking and are published on the Flagged for Review page. |
->>>>>>> d99981f (COORDINATION: register session f2102efa, claim F2-T1..F2-T5)
 
 ## F2-T2 record — repo review of the combined tree (2026-11-14, session f2102efa)
 
@@ -3623,3 +3622,44 @@ scope; `I-F-02` and `21-F-04` remain owner-reserved, published on the Flagged fo
 |---|---|---|
 | 2026-11-14, first rebase (claim push) | `main` had advanced `f618a53` → `96ea745` (PR #73, session c3dbcc40) while the claim commit was being pushed; both sessions appended a Part at the tail of `COORDINATION.md` | Kept **both**: main's file verbatim (asserted by byte-prefix diff), this session's Part appended. No marker left. |
 | 2026-11-14, second rebase (records push) | `main` had advanced to `6843206` (PRs #76 #77); same tail-append pattern; the rebase also rewrote this session's already-pushed claim commit (new SHA) | Kept **both** again; pushed with `--force-with-lease` to **this session's branch only** (pre-rebase commits preserved in the pushed ref), matching the convention session `21acd3c0` logged. No other branch touched. |
+
+---
+
+# PART — Session `3d359c23` (branch `arena/3d359c23-zone3`, base `f618a53`)
+
+> Appended additively on 2026-11-14 19:0x UTC. Nothing above is removed or rewritten. This session's
+> task IDs are `3D-T…` and its flag IDs are `3D-F…` — namespaced, and **not** the same items as any
+> other session's `T…`/`H-…`/`G-…`/`E-…`/`FLG-…`/`V-F…`/`Z-F…`/`I-F…`/`21-F…`/`554-F…`/`3E-F…`
+> registers. Arena pins this session to one branch (same logged branch-naming decision as
+> `7f84fea4`), so task IDs replace `session-<id>/<task>` branches.
+>
+> **Role:** final integration session for this round — every other task on the board is closed
+> (sessions `3ead7ac8`, `554c08ca`, `21acd3c0`, `c79eb5d9` and all earlier ones). Two PRs are open
+> and both are **record-only** (`#68` = `arena/554c08ca-zone3`, `COORDINATION.md` only; `#71` =
+> `arena/71dc8fea-zone3`, `COORDINATION.md` + its own session record). Both were updated within the
+> last 3 minutes, so their owners are live; this session does **not** edit, merge or take them over.
+> They are merged additively by `git pull --rebase` when they land, keeping both sides in full.
+
+## 3D Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 3d359c23 | `arena/3d359c23-zone3` | Repo review line by line · independent live re-verification · fix the content-status drift and add the editorial topic plan the brief asks for · all gates · PR → `main` · merge · Pages deploy confirm | in progress (3D-T1) | 2026-11-14 19:02 |
+
+## 3D Task board (claimed before any other work, per protocol)
+
+| Task ID | Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|---|
+| 3D-T1 | Read the board, register the session, claim tasks, push the claim immediately | done | 3d359c23 | `COORDINATION.md` (this Part only) | This commit, pushed before any other work. |
+| 3D-T2 | Repo review, line by line, of the combined tree at `f618a53` | in progress | 3d359c23 | read-only audit + `research/3d359c23-repo-review.md` (new file) | Every page, register and generator read; links for manual review. |
+| 3D-T3 | Independent live re-verification of every load-bearing claim against the official page it cites | in progress | 3d359c23 | `research/3d359c23-verification-log.md` (new file) | Fetched this session; no third-party page used as evidence. |
+| 3D-T4 | Fix the content-status drift and add the editorial **content topic plan** the brief requires ("catchy trendy articles and topics") | in progress | 3d359c23 | `data/topics.json` (new), `scripts/build_site.py` (generator), `scripts/check_site.py`, `content.html`, `content-topics.html` (generated), `scripts/build_sitemap.py` | Every topic row carries the official source of the fact it is built on; no trend, volume or demand claim is made. |
+| 3D-T5 | Site integrity: run every gate; fix real breakage only | pending | 3d359c23 | site files only if a gate is red | — |
+| 3D-T6 | PR → `main`, merge without waiting for approval, confirm the GitHub Pages deploy + live checks, record here | pending | 3d359c23 | git + `gh` + this Part | Merged only after the site is verified not broken. |
+
+### 3D Scope note
+
+Shared outputs (`index.html`, navigation, `data/*.json`, the generator) are edited only in the
+final-integration role and only where a check fails or a published claim is contradicted by the
+site's own output. Every such edit is logged here with before/after. Other sessions' pages
+(`/docs/`, `/dashboard/`, `/sessions/**`, `/archive/**`) are not rewritten.
