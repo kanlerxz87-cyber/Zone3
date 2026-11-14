@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-13",
+  "retrieved": "2026-11-14",
   "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration.",
   "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page.",
   "sources": [
@@ -29,8 +29,8 @@
       "url": "https://affiliate-program.amazon.com/help/operating/schedule",
       "publisher": "Amazon Associates (official)",
       "status": "not-accessible",
-      "status_note": "On 2026-11-13 this URL redirected to an Amazon sign-in page (ap/signin). No rate values were read, so no commission rate is stated anywhere on this site.",
-      "used_for": "Nothing. Commission rates are left blank and flagged (FLG-005).",
+      "status_note": "On 2026-11-13 AND again on 2026-11-14 this URL redirected to an Amazon sign-in page (ap/signin), return_to=.../home/account/payment/customratecard. That is a per-Account custom rate card, not the public table. No rate value was read from it. The public Standard Commission Income Statement IS readable without a sign-in at S25 (re-verified 2026-11-14); rates on the site come from S25/S26, never from this URL.",
+      "used_for": "Negative evidence only: confirms the customratecard route is sign-in gated (FLG-005, V-F1). Not used for any value.",
       "alias_of_26634cd5": "S9"
     },
     {
@@ -279,6 +279,24 @@
       "status_note": "Read 2026-11-13 (session 33226b37-zone3): 'we require at least three [qualifying sales] within the first 180 days. Please note that personal orders do not qualify.' and 'All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.'",
       "used_for": "Campaign ramp planning and content-feasibility bar (PF-40).",
       "alias_of_33226b37": "S20 (session-33226b37-zone3 registry)"
+    },
+    {
+      "id": "S30",
+      "title": "Associates Program: Commission Income Statement 2(e) — Redirecting Link definition",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \"Redirecting Link\")'.",
+      "used_for": "Why a link.amazon/<code> short link must not be published as the Special Link (see commission/index.html and FLG-003)."
+    },
+    {
+      "id": "S31",
+      "title": "Creators API: GetItems — ItemIdType parameter (ASIN definition)",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.'",
+      "used_for": "The 10-character ASIN rule used in the intake gate (FLG-001). Independent of S06/S08."
     }
   ]
 }

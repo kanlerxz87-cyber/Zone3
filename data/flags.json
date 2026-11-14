@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-13",
+  "retrieved": "2026-11-14",
   "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8).",
   "flags": [
     {
@@ -68,14 +68,15 @@
     },
     {
       "id": "FLG-005",
-      "severity": "High",
+      "severity": "Medium",
       "category": "Commission rates",
-      "item": "Commission rates are unverified; the official rate schedule is not accessible",
-      "detail": "The Commission Schedule link in the Program Policies (S03) redirected to an Amazon sign-in page on 2026-11-13. No rate was read, so no commission rate, commission-income estimate or payout figure is stated on this site.",
-      "action": "Sign in to Associates Central and export the rate card for the product category; send the file or the values so they can be added with a source.",
+      "item": "Per-product commission rate cannot be assigned; the public Table 1 category rates can be stated",
+      "detail": "FLG-005 as originally written said 'the official rate schedule is not accessible' and implied commission rates are unavailable. That is only half true and is corrected here after re-verification on 2026-11-14: (1) affiliate-program.amazon.com/help/operating/schedule DOES redirect to sign-in (re-confirmed 2026-11-14; S03) — but its return_to is /home/account/payment/customratecard, i.e. an account-specific custom rate card; (2) Amazon's Standard Commission Income Statement Table 1 IS public without a sign-in at S25 and was read in full on 2026-11-13 and again 2026-11-14 (Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%, Luxury Beauty 10.00%, ... 11 rows). What remains unverified is the per-ASIN category assignment and any custom rate, so the per-product commission rate cells stay blank.",
+      "action": "Read the public Table 1 (S25) as a category reference — already done, see pricing and commission pages. Leave the per-product commission rate and commission-income estimate blank until the listing's category and a custom rate card (sign-in) are available.",
       "sources": [
-        "S02",
-        "S03"
+        "S03",
+        "S25",
+        "S26"
       ]
     },
     {
@@ -168,11 +169,12 @@
       "severity": "Low",
       "category": "Disclosure placement",
       "item": "Disclosure is in the footer; placement needs owner review",
-      "detail": "The required statement (PF-01) is on every page. The FTC asks that a disclosure be hard to miss and placed with the endorsement (PF-20). The footer may not meet that standard for a product recommendation. Account enrolment could not be checked from this session.",
+      "detail": "The required statement (PF-01) is on every page. The FTC asks that a disclosure be hard to miss and placed with the endorsement (PF-20). The footer may not meet that standard for a product recommendation. Account enrolment could not be checked from this session. Re-verified 2026-11-14: the FTC Endorsement Guides were revised in 2023 (S24) and the FTC's current plain-language brochure is 'Disclosures 101 for Social Media Influencers' (S07). FTC guidance is that a disclosure must be hard to miss and placed near the endorsement (PF-19, PF-20); a footer-only statement is the weakest compliant position.",
       "action": "Owner: review the placement and confirm the Associates account is active.",
       "sources": [
         "S01",
-        "S07"
+        "S07",
+        "S24"
       ]
     },
     {
@@ -267,6 +269,60 @@
         "S26"
       ],
       "action": "Owner: confirm each listing's category in Associates Central (or via the Creators API, once approved) before using any rate."
+    },
+    {
+      "id": "V-F1",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "Board statements that the commission rate card is unavailable are superseded by the public Table 1 (S25)",
+      "detail": "FLG-005 and FLG-013 in data/flags.json, and the earlier note 'Rates are not stated anywhere on the site' in COORDINATION.md, treat the rate card as sign-in-only. Re-verified 2026-11-14: only the /help/operating/schedule route is gated (and it returns an account customratecard); the Standard and Onsite Income Statement help node pages (S25, S26) render the full tables to anonymous users. Both were read again in this session. The published tables match what two other sessions recorded. No per-product rate is claimed from them.",
+      "action": "No action required on the tables themselves. Read FLG-005 (rewritten) and FLG-013 (scope narrowed) for what is still unverified.",
+      "sources": [
+        "S25",
+        "S26",
+        "S03"
+      ]
+    },
+    {
+      "id": "V-F2",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "FLG-003's wording overstates what the policies say about link.amazon",
+      "detail": "FLG-003 says the links 'may not be trackable'. What the documents actually support, re-read verbatim on 2026-11-14, is narrower: Participation Requirements 6(w) prohibits a link shortener used in a way that makes it unclear you are linking to an Amazon Site (S02); Commission Income Statement 2(e) disqualifies purchases made through a 'Redirecting Link' (S30); 6(v) prohibits cloaking or obscuring the URL (S02). Whether link.amazon is itself such a link is a judgement on its behaviour, which was observed but is not addressed by name in any document read.",
+      "action": "Read as: do not publish link.amazon short links; publish canonical /dp/<ASIN> URLs with the Associates tag once a tag exists. Confirm with Amazon before using link.amazon at all.",
+      "sources": [
+        "S02",
+        "S30"
+      ]
+    },
+    {
+      "id": "V-F3",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "/docs/ page set is live but has no inbound link from either dashboard",
+      "detail": "The repository serves four independent page sets: the flat pages at the root (scripts/build_site.py), the 16-page audit at /dashboard/ (tools/build_site.py), the session-scoped pages at /sessions/3c886b62/, and /docs/ (session arena-79f85104, PR #14). /docs/ returns HTTP 200 and passes the link checker, but no page in the root build, the audit build or the audit nav links to it, so a visitor browsing the site cannot reach it. Nothing is broken; it is simply orphaned from navigation.",
+      "action": "Owner to decide: add one link to /docs/ in the root dashboard nav (a one-line change in scripts/build_site.py NAV), or retire the page set. Left unchanged here because the root nav is shared output.",
+      "sources": [],
+      "repo_evidence": "No inbound <a href> to /docs/ from any page outside /docs/, verified by scanning every checked-in HTML file; /docs/index.html returns HTTP 200 locally. Nothing external to cite."
+    },
+    {
+      "id": "V-F4",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "sitemap.xml lists only the audit-build URLs, not the root pages",
+      "detail": "sitemap.xml contains the 16 /dashboard/-generation URLs. The root flat pages (/, /products.html, /pricing.html, /reviews.html, /content.html, /campaigns.html, /flagged.html, /sources.html, /executive-summary.html) and /docs/ are absent, so search engines are given a partial map of the site. robots.txt points at the sitemap and Pages serves it at the expected path.",
+      "action": "Owner to decide the canonical URL set (the two generations publish overlapping material). Regenerate the sitemap once that is settled; not done here because it encodes an editorial decision about which generation is canonical.",
+      "sources": [],
+      "repo_evidence": "sitemap.xml contains 16 <loc> entries, all of the /dashboard/ generation; the nine root flat pages and /docs/ are absent. Verified by comparing sitemap.xml against the checked-in HTML files."
+    },
+    {
+      "id": "V-F5",
+      "severity": "Low",
+      "category": "Site structure",
+      "item": "15 broken internal links inside archive/c4e71983/ (pre-existing, inside a verbatim archive)",
+      "detail": "A full-tree scan of every checked-in HTML file finds 15 relative links that do not resolve to a file: for example archive/c4e71983/content/category-air-fryers.html links dual-basket.html, air-fryer-toaster-ovens.html and large-capacity.html, and archive/c4e71983/content/data-sources.html links data/products.json. All 15 are inside archive/c4e71983/, which is a byte-for-byte copy of another session's site kept for the record. Every page outside archive/ resolves: 0 broken links across the 57 live pages.",
+      "action": "None required for the live site. If the archive is meant to be browsable, its owner should regenerate it; rewriting archived files would falsify the record this board is built on.",
+      "repo_evidence": "Full-tree scan of all 74 checked-in HTML files: 15 unresolved relative href, all under archive/c4e71983/; 0 outside it. Reproduce with a scan of every href that is not http/mailto/#."
     }
   ]
 }

@@ -18,6 +18,7 @@ import json
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+REPO = "https://github.com/kanlerxz87-cyber/Zone3"
 DATA = ROOT / "data"
 ASSETS = ROOT / "assets"
 BUILT = "2026-11-13"
@@ -69,7 +70,9 @@ def badge(text: str, kind: str) -> str:
 
 
 def sev(text: str) -> str:
-    kind = {"Critical": "bad", "High": "warn", "Medium": "info", "Low": "muted"}[text]
+    # "Info" is used for correction/annotation entries (V-F1, V-F2 added 2026-11-14).
+    kind = {"Critical": "bad", "High": "warn", "Medium": "info", "Low": "muted",
+            "Info": "muted"}[text]
     return badge(text, kind)
 
 
@@ -127,7 +130,9 @@ def page(filename: str, title: str, body: str, lead: str = "") -> None:
 </main>
 <footer>
   <p class="disclosure"><strong>Disclosure:</strong> {e(DISCLOSURE)}</p>
-  <p class="muted">Data verified as of {BUILT}. A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+  <p class="muted">Data verified as of {BUILT} (re-verified 2026-11-14). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+  <p class="small" style="margin-top:10px">This repository carries two site generations: the flat pages above (built by <code>scripts/build_site.py</code> from <code>data/*.json</code>) and a 16-page audit build at <a href="dashboard/index.html">/dashboard/</a> (built by <code>tools/build_site.py</code> from <code>data/z3/*.json</code>). Neither overwrites the other; <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">COORDINATION.md</a> maps both.</p>
+  <p class="small" style="margin-top:6px"><a href="landing-prior.html">Previous landing page</a> (kept intact) · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md#part-session-b8beb448-2026-11-14--independent-line-by-line-re-verification--ux-integration">Verification record for this build</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
 </footer>
 </body>
 </html>
@@ -204,6 +209,40 @@ N = len(PRODUCTS)
 
 
 # ---------------------------------------------------------------- Dashboard
+
+def reverify_table() -> str:
+    """Rows re-checked on 2026-11-14. Source ids resolve through sources.json."""
+    rows = [
+        ("The three submitted identifiers are 9 characters, not 10", "Confirmed",
+         "Each id counted: B04G1MEwY=9, B02NbDxp3=9, B00hJ57DV=9. Amazon defines an ASIN as a 10-character alphanumeric id.", ["S31", "S08"]),
+        ("amazon.com/dp/&lt;id&gt; returns Page Not Found for all three", "Confirmed",
+         "All three fetched 2026-11-14; each returned Amazon&rsquo;s &ldquo;Page Not Found&rdquo; page.", ["S08", "S09", "S10"]),
+        ("Each link.amazon short link opens a different real listing", "Confirmed",
+         "B04G1MEwY&rarr;B0CDY277D3 (CHEFMAN 6 Qt dual basket), B02NbDxp3&rarr;B09B7SB46R (Emeril Lagasse 26QT), B00hJ57DV&rarr;B08DKYBTPH (Chefman TurboFry 8 Qt). Same three targets as 2026-11-13.", ["S11", "S12", "S13"]),
+        ("Operating Agreement &sect;5 disclosure wording", "Confirmed verbatim",
+         "&ldquo;As an Amazon Associate I earn from qualifying purchases.&rdquo; Header still reads Updated: October 15, 2025. Schedule 1 still lists the United States / amazon.com only.", ["S01"]),
+        ("Participation Requirements 6(t), 6(w), 6(y), 2(b) and CIS 2(e)", "Confirmed verbatim",
+         "Star-rating and review display limited to API-sourced data; link shorteners must not obscure an Amazon destination; no price tracking or alerting; prices/availability only if Amazon serves them or via the API; purchases via a Redirecting Link are disqualified.", ["S02", "S30"]),
+        ("PA-API 5 is deprecated; Creators API is the successor", "Confirmed",
+         "Deprecation notice re-read: PA-API 5 calls return HTTP 403 AccessDeniedException. Creators API prerequisites include at least 10 qualifying sales in the past 30 days.", ["S05", "S04"]),
+        ("IP License: no ML training on Program Content; API use needs prior written approval for analysis", "Confirmed verbatim",
+         "&sect;1 bars using Program Content to develop or improve LLMs or ML models; &sect;2(e) bars aggregating, analyzing, extracting or repurposing Product Advertising Content without express prior written approval; Agent Terms &sect;4 require an &ldquo;Agent/[name]&rdquo; user agent.", ["S02"]),
+        ("Commission Table 1 (Standard) and Table A (Onsite) are readable without a sign-in", "Corrected",
+         "The earlier site text implied all rate data was sign-in gated. Only /help/operating/schedule is gated (and it returns a per-account custom rate card). Table 1 and Table A render publicly. See V-F1; per-product rates remain blank.", ["S25", "S26", "S03"]),
+        ("ASIN is a 10-character identifier", "Confirmed",
+         "Creators API GetItems, ItemIdType parameter, quoted verbatim; independently stated on Amazon&rsquo;s seller blog.", ["S31", "S08"]),
+        ("FTC disclosure standard", "Confirmed, source updated",
+         "The 2019 brochure is still live but the Endorsement Guides were revised in 2023; the current FTC topic hub is cited alongside it.", ["S07", "S24"]),
+    ]
+    out = []
+    for claim, verdict, note, srcs in rows:
+        cls = "bad" if verdict.startswith("Corrected") else "ok"
+        out.append([claim, badge(verdict, cls), note, src_links(srcs)])
+    return table(["Claim re-checked", "Result", "What was observed on 2026-11-14", "Source"],
+                 out, "reverify")
+
+
+
 def build_index() -> None:
     stats = [
         ("Product links submitted", str(N), ""),
@@ -230,6 +269,7 @@ def build_index() -> None:
     tile_html = "".join(
         f'<a class="tile" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in tiles
     )
+    reverify_html = reverify_table()
     body = f"""
 <div class="callout">
   <p><strong>Headline:</strong> none of the three submitted Amazon links can be verified as a product listing.
@@ -239,6 +279,16 @@ def build_index() -> None:
 <div class="grid">{stat_html}</div>
 <h2>Sections</h2>
 <div class="tiles">{tile_html}</div>
+
+<p style="margin-top:18px"><a href="dashboard/index.html">Full audit: 16-page verification dashboard, commission rate tables and flag register</a></p>
+
+<h2>Re-verification performed 2026-11-14</h2>
+<p>Every load-bearing claim on the flat pages was checked again against the official page it cites. The
+result, per claim, is below. Nothing in this table was inferred; each row links the page that was read.</p>
+{reverify_html}
+<p class="small">Where a row says <em>corrected</em>, the earlier text on this site was wrong or overstated and has
+been rewritten in the same commit that added the row. Corrections are listed on the
+<a href="flagged.html">Flagged for review</a> page as V-F1 and V-F2, so the change is auditable rather than silent.</p>
 """
     page("index.html", "Dashboard", body,
          lead=f"Status as of {BUILT}. The site shows verified data only. Blank cells are unverified and listed on the Flagged for review page.")
@@ -252,6 +302,7 @@ def build_exec() -> None:
   <p>The three Amazon links in the brief cannot be verified as product listings. Their identifiers are nine characters long.
   Amazon&rsquo;s official Creators API documentation shows ASIN values of ten characters {src_links(['S06'])}.
   The amazon.com product page for each identifier returns &ldquo;Page Not Found&rdquo; {src_links(['S08', 'S09', 'S10'])}.
+  All of this was re-checked on 2026-11-14 and reproduced exactly; see the re-verification table on the dashboard.
   The short links open Amazon product pages, but for three different products (two CHEFMAN air fryers and one Emeril Lagasse air fryer toaster oven), which are not confirmed as the submitted products {src_links(['S11', 'S12', 'S13', 'S14', 'S15', 'S16'])}.</p>
   <p>As the brief requires, every product name, price, rating, review count, commission rate, niche score and click or conversion figure is left blank and marked <span class="badge unv">Unverified</span>. No value was inferred.</p>
 </section>
@@ -259,14 +310,14 @@ def build_exec() -> None:
 <section class="card">
   <h2>Key findings</h2>
   <ul class="findings">
-    <li><strong>0 of {N} product identifiers are confirmed.</strong> The identifiers are nine characters, and the amazon.com pages for them do not exist {flag_links(['FLG-001'])} {src_links(['S06', 'S08', 'S09', 'S10'])}.</li>
-    <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
-    <li><strong>Associates compliance of link.amazon is unconfirmed.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), and purchases from a Redirecting Link are disqualified (PF-07). Whether link.amazon redirects without a click has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
-    <li><strong>Commission rates cannot be verified.</strong> The rate schedule redirected to a sign-in page on 2026-11-13 {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
+    <li><strong>0 of {N} product identifiers are confirmed.</strong> The identifiers are nine characters, and the amazon.com pages for them do not exist {flag_links(['FLG-001'])} {src_links(['S31', 'S08', 'S09', 'S10'])}.</li>
+    <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches on 2026-11-13 and again on 2026-11-14. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
+    <li><strong>Applying the shortener rules to link.amazon needs a judgement call.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), a link must not be cloaked or obscured (6(v)), and purchases through a link that sends users on indirectly, without an affirmative click, are disqualified as a Redirecting Link {src_links(['S30'])} (CIS 2(e)). No document names <code>link.amazon</code>; what its redirects actually do is a behaviour observation, and it has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
+    <li><strong>Category rates are public; per-product rates are not assignable.</strong> Amazon&rsquo;s Standard Commission Income Statement, Table 1, is readable without a sign-in (Kitchen 4.50&nbsp;%, Home 3.00&nbsp;%, All Other Categories 4.00&nbsp;%) {src_links(['S25', 'S26'])}, and was re-read on 2026-11-14. The per-product rate cannot be stated, because the listing&rsquo;s category is unverified and the account-specific rate card route redirects to sign-in {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
     <li><strong>Automated product data needs Creators API access.</strong> The official prerequisite is &ldquo;at least 10 qualifying sales within the past 30 days&rdquo; {src_links(['S04'])}. Prices and reviews may be shown only through a Special Link or the API {src_links(['S02'])} (PF-04, PF-05) {flag_links(['FLG-006'])}.</li>
     <li><strong>The AI layer needs written approval from Amazon.</strong> The Creators API terms bar analysing, aggregating or repurposing its data, and bar using Program Content to develop or train machine learning or language models, without express prior written approval {src_links(['S02'])} (PF-23, PF-24, PF-25) {flag_links(['FLG-016'])}.</li>
     <li><strong>Eligibility for a Norway-based owner is not stated.</strong> Schedule 1 of the Operating Agreement lists only the United States site, amazon.com {src_links(['S01'])} (PF-35) {flag_links(['FLG-015'])}.</li>
-    <li><strong>PA-API 5 is deprecated.</strong> The official notice says it is being replaced by the Creators API {src_links(['S05'])} (PF-17). Another session branch cites PA-API 5 as the sanctioned source {flag_links(['FLG-007'])}.</li>
+    <li><strong>PA-API 5 is deprecated.</strong> The official notice says it is being replaced by the Creators API and that calls now return HTTP 403 <code>AccessDeniedException</code> {src_links(['S05'])} (PF-17), re-read on 2026-11-14. Another session branch cites PA-API 5 as the sanctioned source {flag_links(['FLG-007'])}.</li>
     <li><strong>Disclosure is on every page.</strong> The required wording is quoted from the Operating Agreement, Section 5 {src_links(['S01'])} (PF-01). Placement for FTC purposes still needs owner review {flag_links(['FLG-013'])}.</li>
   </ul>
 </section>
@@ -279,6 +330,7 @@ def build_exec() -> None:
     <li>The earlier session&rsquo;s site from PR #1 is merged in. Its scripts, data and HTML are archived under <code>archive/26634cd5/</code>, and its old <code>analysis.html</code> and category URLs redirect to the pages that replace them.</li>
     <li>A Sources page that lists each official page used, its retrieval status, and what it supports.</li>
     <li>A data layer (<code>data/*.json</code>) with a generator (<code>scripts/build_site.py</code>) and a checker (<code>scripts/check_site.py</code>). The checker fails if a table row has no official source link, or if a value appears without a source.</li>
+    <li><strong>An independent re-verification pass on 2026-11-14</strong> (this session): {len(SRC['sources'])} official sources, every load-bearing claim re-fetched and compared. Two earlier statements were found overstated and corrected rather than quietly dropped &mdash; see V-F1 and V-F2 on the Flagged for review page.</li>
   </ul>
 </section>
 
@@ -297,7 +349,7 @@ def build_exec() -> None:
   <ul class="findings">
     <li>Give the intended product URL or 10-character ASIN for each of the three products (FLG-001).</li>
     <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
-    <li>Export the commission rate card for the product category from Associates Central (FLG-005).</li>
+    <li>Confirm which Amazon product category each of the three listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021). The category rates themselves are already published and verified.</li>
     <li>Confirm Associates enrolment and supply the Associates tag, not a password or token (FLG-010).</li>
   </ul>
 </section>
@@ -471,7 +523,8 @@ def build_flagged() -> None:
             e(f["item"]),
             e(f["detail"]),
             e(f["action"]),
-            src_links(f["sources"]) if f["sources"] else '<span class="muted">internal (repo)</span>',
+            src_links(f["sources"]) if f.get("sources") else
+            f'<a href="{REPO}" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">(observed in this repository; no external source exists, so none is cited)</span>',
         ])
     body = (
         '<div class="callout"><p><strong>Flagged for review.</strong> These items do not block the merge. '
@@ -492,7 +545,9 @@ def build_flagged() -> None:
     body += "<h2>Observed redirect targets (full titles as read, not confirmed)</h2>" + table(
         ["Product link", "Page ID", "Page title as read", "Confirmed?", "Source"], obs)
     page("flagged.html", "Flagged for review", body,
-         lead=f"{len(FLAGS)} flags: {sev_count('Critical')} critical, {sev_count('High')} high, {sev_count('Medium')} medium, {sev_count('Low')} low.")
+         lead=(f"{len(FLAGS)} entries: {sev_count('Critical')} critical, {sev_count('High')} high, "
+               f"{sev_count('Medium')} medium, {sev_count('Low')} low, {sev_count('Info')} info "
+               "(info entries record a correction made to this site, not a problem with a product)."))
 
 
 # ------------------------------------------------------------- Sources
