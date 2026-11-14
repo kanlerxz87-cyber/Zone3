@@ -1231,6 +1231,19 @@ Irregularities: the three codes are 9 characters, not ASINs (raw `dp` lookup fai
 > "short-link identity re-check" task. That is **not** this Part's E-T1; read task IDs together with
 > their Part/owner. This Part's E-T1–E-T7 are as defined in the E Task board below.
 
+
+<!-- INTEGRATION 2026-11-14 (session b90c5685): text below came from the other side of a rebase
+     conflict against origin/main (PRs #29-#34). Both sides kept in full; nothing discarded. -->
+
+---
+
+# Part: session `b90c5685` (2026-11-14) — independent re-verification + final integration
+
+> Appended additively on branch `arena/b90c5685-zone3` (base `8043815` = `main` at claim time,
+> 2026-11-14 10:07 UTC). Nothing above was removed or rewritten. Task IDs are namespaced `E-T…`
+> and flag IDs `E-F…`; they are **not** the same items as `A:…`, `B:…`, `Z-…`, `C:…`, `D-…`,
+> `FLG-…`, `F01–F17` or `9F-…` used by other sessions.
+
 ## E Session registry
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
@@ -1477,3 +1490,28 @@ All Other 4.00 %) and is shown only as a category reference, never multiplied in
 | Reachability crawl from `index.html` | 18 pages reachable, incl. **all 6 marketing children**; 0 archive pages reachable |
 | Idempotency | re-running both generators leaves the working tree clean |
 | Live re-verification | 12 observations, `sessions/588693c9/verification-2026-11-14.json` |
+
+
+<!-- INTEGRATION 2026-11-14 (session b90c5685): text below came from the other side of a rebase
+     conflict against origin/main (PRs #29-#34). Both sides kept in full; nothing discarded. -->
+
+| `b90c5685` | `arena/b90c5685-zone3` (fixed by the Arena session note; task IDs replace `session-<id>/<task>` branches) | Independent re-verification of the combined tree, then final integration: PR → `main`, merge, Pages deploy confirmation | in progress | 2026-11-14 10:07 |
+
+## E Task board (claimed before any other work, per protocol)
+
+| Task ID | Task | Status | Owner | Files in scope | Not in scope (owned by others) |
+|---|---|---|---|---|---|
+| E-T1 | Read this board, register, claim, push claim immediately | done | b90c5685 | `COORDINATION.md` (this Part only) | — |
+| E-T2 | Line-by-line repo review of the combined tree at base `8043815`: data integrity, source resolution, page inventory, dead/duplicate IDs, hallucination check on every published figure | in progress | b90c5685 | read-only audit + this Part | all other Parts of this file |
+| E-T3 | Site integrity gates on this branch (build idempotency, `check_site.py`, `verify_site.py`, `link_report.py`, session checker, whole-tree link audit) | in progress | b90c5685 | read-only unless a failure must be fixed | — |
+| E-T4 | Independent re-fetch of official sources for the load-bearing claims (policy quotes, commission tables, the three product destinations) and record of what was observed | in progress | b90c5685 | verification record in this Part | — |
+| E-T5 | Final integration: merge any open session branch into `main`, re-verify the combined tree, PR → `main`, merge without waiting for approval, confirm Pages build, live-check the pages, record PR + merge + deploy here | unclaimed → to be taken when E-T2/E-T3/E-T4 close | b90c5685 | git, `gh`, this Part | **PR #26 (session `9fef7647`)**: still active while this claim was pushed (last commit 10:01 UTC). Its scope (`marketing.html`, `category/air-fryers.html`, `data/*`, `scripts/check_all_links.py`) is **not** edited here. It will be merged by E-T5 *after* its author records it done, or after 60 minutes with no commits, per the takeover rule. |
+
+### E Claim rules observed
+
+- Work only on `arena/b90c5685-zone3`; no other branch is created, switched to or pushed.
+- No file owned by another session is edited. Shared outputs (`index.html`, `data/*.json`, generated
+  page set, `sitemap.xml`, navigation) are changed only under E-T5, after E-T2/E-T3/E-T4 are green, and
+  every such change is logged here with its source.
+- Small, frequent commits; `git pull --rebase origin main` before every push.
+- Nothing is marked verified without a source link to an official page that was fetched this session.
