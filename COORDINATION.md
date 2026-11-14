@@ -4088,3 +4088,63 @@ All nine gates were re-run on the re-merged tree and are green; see the 54C gate
 (`check_site` OK 13/3/51/**78** · `verify_site` PASS · `link_report --strict` 0 ·
 `check_all_links` 117 pages 0 errors · `build_sitemap --check` 0 · `3c886b62` checker OK ·
 generators idempotent · 0 conflict markers · 0 pages with a duplicated nav destination).
+
+---
+
+# Part — session 25513d33 (2026-11-14) — independent line-by-line re-verification + final integration
+
+**Session ID:** `25513d33` · **Branch:** `arena/25513d33-zone3` (fixed; no other branch may be created or pushed)
+**Base at claim time:** `8d38af4` on `main`
+**Claimed:** 2026-11-14
+
+## 25 Task board
+
+| Task | Status | Owner | Files in scope |
+|---|---|---|---|
+| 25-T1 — Independent live re-verification of the three submitted links | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T2 — Independent re-verification of the load-bearing policy facts (2(b), 6(t), 6(w), 6(y), Table 1, payment terms) | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T3 — Repo review, line by line, with source links and irregularities | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T4 — Gate re-run on the rebased tree (check_site, verify_site, link_report, check_all_links, generator idempotence) | in progress | 25513d33 | read-only |
+| 25-T5 — Fix C3-F-01 (sitemap drift): regenerate `sitemap.xml` so every emitted page is listed | in progress | 25513d33 | `sitemap.xml`, `scripts/build_sitemap.py` (if drift is confirmed) |
+| 25-T6 — Executive summary review and refresh | in progress | 25513d33 | `sessions/25513d33/**` |
+| 25-T7 — Final integration: PR to `main`, merge, Pages deploy confirmation | in progress | 25513d33 | `COORDINATION.md` (this Part only), `sessions/25513d33/**` |
+
+**Scope discipline.** This session edits only `sessions/25513d33/**`, `COORDINATION.md` (this Part only), and `sitemap.xml` for 25-T5. `data/sources.json`, `data/flags.json`, `data/products.json`, `data/policy_facts.json`, `scripts/build_site.py`, `tools/build_site.py`, `index.html`, `flagged.html` and the other generated pages are **shared outputs** and are **not** edited by this session. Any change this session believes is needed in a shared file is logged as a change request below instead of being made.
+
+## 25 Method
+
+Official sources only. Each claim below was re-fetched on 2026-11-14 and the page's own wording recorded. Nothing is inferred; a value that could not be confirmed from an official page is left blank and flagged.
+
+## 25-T1 — Independent live re-verification of the three submitted links
+
+Fetched on 2026-11-14 by this session (not copied from another session's record):
+
+| Submitted link | Resolves to | Page title as served | Result |
+|---|---|---|---|
+| `https://link.amazon/B04G1MEwY` | `https://www.amazon.com/dp/B0CDY277D3` | "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen" | **Confirmed — matches the stored record (S11→S14)** |
+| `https://link.amazon/B02NbDxp3` | `https://www.amazon.com/dp/B09B7SB46R` | "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen" | **Confirmed — matches the stored record (S12→S15)** |
+| `https://link.amazon/B00hJ57DV` | `https://www.amazon.com/dp/B08DKYBTPH` | "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen" | **Confirmed — matches the stored record (S13→S16)** |
+
+**New observation this session (not in the stored record for products 2 and 3):** all three destination pages carry the same Amazon browse breadcrumb — `Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers`, with the Air Fryers node `17659096011` linked from the breadcrumb itself. The repository previously recorded that breadcrumb only for product 1 (in `products.json` → `observed_2026_11_14.category_path`). It is now observed for all three, straight from the pages Amazon served. **This does not change any published cell**: the Air Fryers browse node is a *category* fact, and the per-product commission rate still cannot be tied to a rate without the account's own rate card, so the rate cells stay blank (FLG-013 / FLG-021). Logged as **25-F-01** (register completeness) with a change request below.
+
+## 25-T2 — Independent re-verification of load-bearing policy facts
+
+Each row was read on 2026-11-14 from the official page, by this session.
+
+| Claim | Result | Page's own wording (read 2026-11-14) | Source |
+|---|---|---|---|
+| Program Policies page is current | **Confirmed** | Header reads "Updated: April 14, 2026" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Prices/availability may be shown only if Amazon serves the link or the data comes via Creators API / PA API (Participation Requirements 2(b)) | **Confirmed verbatim** | "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Star ratings and customer reviews may be shown only via Creators API / PA API (6(t)) | **Confirmed verbatim** | "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Link shorteners must not obscure the Amazon destination (6(w)) | **Confirmed verbatim** | "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| No artificial clicks or Sessions (6(s)) | **Confirmed verbatim** | "You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| No price tracking or price-alerting functionality (6(y)) | **Confirmed verbatim** | "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Special Links must carry the Associates tag (2(b)) | **Confirmed verbatim** | "you must include your Associates ID or 'tag' (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site." | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Commission session: 24 hours; cart window 89 days; payment/ship within 180 days (CIS 1(b)) | **Confirmed verbatim** | "(x) 24 hours elapse from that click … (i) … completing the order for that Product no later than 89 days after their initial click-through … (iii) within 180 days of the purchase, the Product is shipped to, streamed or downloaded by, and paid for by the customer" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Payment ~60 days after month end (CIS 6) | **Confirmed verbatim** | "We will pay Standard Commission Income and Special Commission Income in the default currency for an Amazon Site approximately 60 days following the end of each calendar month in which they were earned" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Payment Minimum Chart (US): deposit 10 USD; gift card 10 USD min / 2000 USD max; check 100 USD; check fee 15 USD | **Confirmed row for row** | Table rows: "Option 1 (Deposit) 10 USD"; "Option 2 (Gift Card) 10 USD / 2000 USD"; "Option 3 (Check) 100 USD"; "Check Processing Fee 15 USD" | [S02](https://affiliate-program.amazon.com/help/operating/policies) |
+| Standard Commission Table 1: "Physical Books, Kitchen, Automotive | 4.50%" | **Confirmed verbatim** | Row reads exactly "Physical Books, Kitchen, Automotive | 4.50%" | [S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| Standard Commission Table 1: "All Other Categories | 4.00%" | **Confirmed verbatim** | Row reads exactly "All Other Categories | 4.00%" | [S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| Prime bounty rates ($12.00 Prime trials/memberships, $2.00 Prime Video Free Trial, $5.00 First Stream, $0.25 Stream) | **Confirmed row for row** | Bounty-Eligible Program table as served | [S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+
+**Conclusion carried forward unchanged:** the repository's decision to leave price, star-rating and review-count cells blank is correct and is directly required by the two clauses above. This session independently reaches the same conclusion from the official text.
