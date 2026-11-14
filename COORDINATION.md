@@ -2893,3 +2893,29 @@ Pending.
 | Live check — executive summary | https://kanlerxz87-cyber.github.io/Zone3/executive-summary.html — **live**: headline + key findings + per-claim official source links |
 | Site merged while flagged? | yes — all flags are non-blocking and published on the Flagged for review page with source links, as the brief requires |
 | Post-merge record | this section, pushed as a follow-up PR (the record cannot be written to `main` before the merge it records) |
+
+---
+
+---
+
+# PART I — Session c79eb5d9 (branch `arena/c79eb5d9-zone3`, base `ab33669`)
+
+Claimed before any content work, per protocol. This Part records the claim, the work, its sources and its irregularities.
+
+## I Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `c79eb5d9` | `arena/c79eb5d9-zone3` | Independent live re-verification of the three submitted links and of every load-bearing policy quote; requirements traceability audit; repo irregularity audit; PR → `main`, merge, Pages check | in progress (I-T1…I-T5) | 2026-11-14 18:4x |
+
+## I Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| I-T1 — Gates on current `main` (`ab33669`) | in progress | c79eb5d9 | none (read-only) | — | — |
+| I-T2 — Live re-fetch of the 3 submitted links + their destinations | in progress | c79eb5d9 | `sessions/c79eb5d9/**` | S11–S16, S31 | — |
+| I-T3 — Independent re-read of the official policy pages behind the site's quotes | in progress | c79eb5d9 | `sessions/c79eb5d9/**` | S01, S02, S04, S05, S07, S24, S25 | — |
+| I-T4 — Brief-clause coverage audit (line-by-line of the tasking brief) | in progress | c79eb5d9 | `sessions/c79eb5d9/**` | — | — |
+| I-T5 — Record, PR to `main`, merge, Pages deploy check | in progress | c79eb5d9 | `COORDINATION.md` I Part, `sessions/c79eb5d9/**` | — | — |
+
+Scope note: this session does **not** rewrite the shared flat pages, the `/dashboard/` build, `data/*.json` or `scripts/*`. Where a defect is found outside its scope it is logged here as `I-F-nnn` and, if it can be fixed additively without touching another session's owned file, fixed in `sessions/c79eb5d9/**` only.
