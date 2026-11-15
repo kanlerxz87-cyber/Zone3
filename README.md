@@ -76,6 +76,7 @@ The pipeline records the observed destination listings separately from the 9-cha
 | Repo review | `/repo-review/` | Audit of the repository as found |
 | **This pass (2026-11-14)** | `/` (root dashboard) | Independent re-verification of every load-bearing claim against its official source, with a per-claim result table; corrections V-F1/V-F2 published at `/flagged.html`; repo review at `COORDINATION.md` § *Part: session b8beb448* |
 | **Final integration pass (2026-11-14)** | `/content-topics.html` | The editorial topic plan the brief asks for: 12 working article titles, the verified Amazon fact each is built on, the page that already carries it, and the rule that governs what it may not state. Every row carries an official source link |
+| **This pass (2026-11-15)** | `/suggestions.html` | Design and marketing proposals for making the site read like a polished marketing affiliate website, the open questions that must be answered before any decision, and suggestions for discovering the missing information. Proposals are labelled as proposals; every factual row links its official source. Nothing on this page is implemented yet — it is published for review |
 | **Executive summary (document)** | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | The standalone executive summary: verified facts, deliberately blank fields, capability status, and the three items that unblock the build |
 
 ---
