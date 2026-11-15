@@ -4983,7 +4983,7 @@ internal crawl 74 pages / 0 broken · 0 conflict markers.
 | Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on the branch (see 4f83-T3) |
 | Merge | **MERGED** 2026-11-15T11:57:48Z via `gh pr merge 96 --merge` (no approval waited). Merge commit **`366634dcd88814d5943b0a7beb79e2b32917a312`** |
 | Pages | Build for `366634d` → **status `built`** (polled via `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`) |
-| Live check — new page | https://kanlerxz87-cyberry.github.io/Zone3/suggestions.html — **live**; Verified basis, the 10 suggestions, the 10 questions, the 6 discovery actions and the workflow all render, with every factual row linking its official source |
+| Live check — new page | https://kanlerxz87-cyber.github.io/Zone3/suggestions.html — **live**; Verified basis, the 10 suggestions, the 10 questions, the 6 discovery actions and the workflow all render, with every factual row linking its official source |
 | Live check — dashboard | Cache-busted fetch of `/index.html` shows the **Suggestions & decisions** tile under *Sections* and the matching entry under *Site map → Marketing output* |
 
 **Tooling note (not a site irregularity).** `gh pr edit` failed with a GitHub GraphQL
