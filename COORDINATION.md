@@ -4822,3 +4822,14 @@ Pages builds report `built`.
 **Sources reused, not freshly fetched during C1:** Amazon Associates Operating Agreement (S01), Associates Program Policies (S02), Commission Schedule / Standard / Onsite statements (S03, S25, S26), Creators API Introduction / PA-API deprecation / ASIN reference (S04, S05, S31), Amazon seller ASIN guidance (S45), and FTC disclosure / endorsements material (S07, S24). Exact URLs and prior retrieval records are in `data/sources.json` and `sources.html`. C1 adds no new product facts, no price or trend values, and no claims that current links or API access are compliant/available. Link model uncertainty remains FLG-003; product intent remains FLG-001/002/027; API access remains FLG-006.
 
 **Verification performed:** `python3 scripts/check_site.py` passed (13 pages, 3 products, 51 sources, 78 flags); `python3 tools/verify_site.py` passed (73 pages, 1,301 table rows, 0 advisories); `python3 tools/link_report.py --strict` exited 0; `python3 scripts/build_sitemap.py --check` passed (68 pages); `python3 scripts/check_all_links.py` checked 119 HTML files / 105 external URLs with 0 errors. All factual paragraphs on the new page link directly to official Amazon/FTC sources; suggested editorial titles are explicitly marked as hypotheses.
+
+## C1 publication record
+
+| Event | Result |
+|---|---|
+| Pull request | [#92 — Add sourced affiliate marketing Decision Center](https://github.com/kanlerxz87-cyber/Zone3/pull/92), `arena/c1aeb5c7-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; no CI checks were configured |
+| Merge | **MERGED** 2026-11-15T11:40:50Z via `gh pr merge 92 --merge`; merge commit `01c0279ce4ba482fc38ecbee5d4ed2544ef4e62e` |
+| Pages | Build [1371669169](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/1371669169) completed with status **`built`** at 2026-11-15T11:41:10Z for merge commit `01c0279ce4ba482fc38ecbee5d4ed2544ef4e62e` |
+| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ · Decision Center: https://kanlerxz87-cyber.github.io/Zone3/decision-center.html |
+| Open items | Product-intent FLG-001/002/027; affiliate-link applicability FLG-003; API access FLG-006. These remain prominently flagged; none was silently filled in. |
