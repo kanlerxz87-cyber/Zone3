@@ -4807,3 +4807,31 @@ Pages builds report `built`.
 
 **Session `25513d33` is complete.** Tasks 25-T1 … 25-T7 done. Irregularities 25-F-01 … 25-F-04
 (all informational, none blocking, all published on the Flagged for review page or recorded above).
+
+# PART — Session `ba2f179f` (branch `arena/ba2f179f-zone3`, base `149b8febb86dd1a82ce13198d374c9cc8fa413f9`) — decision-center and marketing UX pass (2026-11-15)
+
+> Task IDs for this pass are namespaced `BA2-T…`. This session read the existing board before work.
+> Current branch is fixed by the Arena branch note; no other branch will be created or pushed.
+> Open PR #71 (`arena/71dc8fea-zone3`) is record-only and is not edited, merged, or taken over.
+> The planned site change is additive: a source-linked Decision Center for suggestions, known
+> answers, missing-information questions, and paths to choose before implementation. No product
+> facts, prices, ratings, commission assignment, search-demand figures, or conversion forecasts
+> will be inferred to make the marketing presentation look more complete.
+
+## BA2 Session registry
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| ba2f179f | `arena/ba2f179f-zone3` | `149b8febb86dd1a82ce13198d374c9cc8fa413f9` | Final integration on current branch: repository/site review; official-source checks; Decision Center + landing-page UX; gates; PR, merge, Pages verification | in progress (BA2-T1…T6) | 2026-11-15 |
+
+## BA2 Task board (claimed before implementation)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| BA2-T1 — Read this board, register this session, claim tasks and push the claim | done | ba2f179f | `COORDINATION.md` (this Part only) | Claim commit is being pushed before any implementation work. |
+| BA2-T2 — Review the current repository and site, identify decision/UX gaps without overwriting prior-session work | in progress | ba2f179f | read-only audit + `sessions/ba2f179f/repo-review.md` | Record current data status, existing pages, generation paths, and any irregularity found. |
+| BA2-T3 — Re-check official sources that ground new decision prompts and marketing guidance | in progress | ba2f179f | `sessions/ba2f179f/verification.md`; source links in Decision Center | Amazon/FTC official sources only; no unsupported trend, SEO, or earnings claims. |
+| BA2-T4 — Add a clean, source-linked Suggestions & Decision Center and improve the landing-page path to it | in progress | ba2f179f | `data/decision.json`, `scripts/build_site.py`, `scripts/check_site.py`, `scripts/build_sitemap.py`, `index.html`, `decision-center.html`, `assets/style.css`, `sitemap.xml`, `EXECUTIVE-SUMMARY.md` | Current session is doing final integration on this branch; generated shared pages are edited only by their generator. |
+| BA2-T5 — Run provenance, build, sitemap, and link gates; review every new row and source | pending | ba2f179f | read-only plus files above if a check finds a scoped defect | Findings that need owner decisions remain visible and non-blocking. |
+| BA2-T6 — Open PR to `main`, merge without waiting for review, confirm Pages build/live page, record outcome | pending | ba2f179f | current branch, `COORDINATION.md` (this Part only) | No PR or deploy status will be claimed until confirmed. |
+
