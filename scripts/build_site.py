@@ -35,6 +35,7 @@ PRODUCTS = load("products.json")["products"]
 FACTS = {f["id"]: f for f in load("policy_facts.json")["facts"]}
 FLAGS = load("flags.json")["flags"]
 TOPICS = load("topics.json")
+SUGGESTIONS = load("suggestions.json")
 
 
 def e(value) -> str:
@@ -99,6 +100,10 @@ NAV = [
     # asks for ("catchy trendy articles and topics"). Every topic row carries the official
     # source of the fact it rests on; no trend or volume claim is made.
     ("content-topics.html", "Content topics"),
+    # Added by session 4f83ee7b (2026-11-15): the suggestions and decision framework the brief
+    # asks for. Proposals are labelled as proposals; every factual row carries an official
+    # source. Nothing here is implemented by this session — it is published for review.
+    ("suggestions.html", "Suggestions &amp; decisions"),
     ("campaigns.html", "Campaigns &amp; tracking"),
     ("flagged.html", "Flagged for review"),
     ("sources.html", "Sources"),
@@ -324,6 +329,7 @@ SITEMAP_GROUPS = [
         ("marketing/product-2-emeril-lagasse-26qt-french-door.html", "Product brief 2"),
         ("marketing/product-3-chefman-8-quart-turbofry.html", "Product brief 3"),
         ("content-topics.html", "Content topics"),
+        ("suggestions.html", "Suggestions &amp; decisions"),
         ("content.html", "Content &amp; compliance"),
         ("campaigns.html", "Campaigns &amp; tracking"),
         ("content/index.html", "Audit build: Content"),
@@ -389,6 +395,12 @@ def build_index() -> None:
         # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan.
         ("content-topics.html", "Content topics",
          "The planned article topics, the verified fact each one is built on, and what it may not state."),
+        # Added by session 4f83ee7b (2026-11-15): design and marketing proposals plus the
+        # open questions to answer before any of them is implemented.
+        ("suggestions.html", "Suggestions &amp; decisions",
+         "Design and marketing proposals for the affiliate site, the open questions to answer "
+         "before a decision, and how to discover the missing information. Proposals only — "
+         "nothing here is implemented yet."),
         ("campaigns.html", "Campaigns &amp; tracking", "Click and conversion ledger. Empty until data exists."),
         ("flagged.html", "Flagged for review", "Every irregularity and unverified item, with its source links."),
         ("sources.html", "Sources", "The official source registry with retrieval status."),
@@ -803,6 +815,93 @@ def build_topics() -> None:
     page("content-topics.html", "Content topics", body,
          lead="The planned article topics for the three submitted links, each anchored to the verified "
               "Amazon fact it is built on, with the rule that governs what it may not say.")
+
+
+# --------------------------------------------------------- Suggestions & decisions
+def build_suggestions() -> None:
+    """The suggestions and decision framework (session 4f83ee7b, 2026-11-15).
+
+    Published for review before any change: design and marketing proposals to make the
+    site read like a polished marketing affiliate website, the open questions that must
+    be answered before a decision, and the ways to discover missing information. Every
+    factual row links the official page it was read from; every proposal is labelled as
+    a proposal. Nothing on this page is implemented by this session.
+    """
+    s = SUGGESTIONS
+    body = (
+        '<div class="callout"><p><strong>What this page is.</strong> Design and marketing '
+        'proposals for making this site read like a polished marketing affiliate website — '
+        'catchy, topic-driven articles, honest trend sections and conversion-ready pages — '
+        'together with the questions that must be answered, and the ways to discover the '
+        'missing information, before any proposal is implemented. Every statement of fact '
+        'below links the official page it was read from; every proposal is labelled '
+        '<span class="badge info">Proposal</span> and is not a verified fact. Nothing on '
+        'this page is implemented by this session: it exists so a reviewer can choose the '
+        'best path first.</p></div>'
+    )
+
+    body += "<h2>Verified basis</h2>" + '<p class="small">The facts the proposals rest on, re-verified 2026-11-15.</p>'
+    rows = []
+    for v in s["verified_basis"]:
+        rows.append([
+            e(v["id"]),
+            f'<strong>{e(v["item"])}</strong>',
+            e(v["value"]),
+            src_links(v["source"]),
+        ])
+    body += table(["ID", "Verified fact", "What the official source says", "Source"], rows)
+
+    sug_rows = []
+    for g in s["suggestions"]:
+        blocker = (
+            f'<div class="muted">Blocked: {e(g["blocker"])}</div>' if g.get("blocker") else ""
+        )
+        comp = "<ul class=\"findings\">" + "".join(
+            f"<li>{e(c['text'])} {src_links(c['source'])}</li>" for c in g["compliance"]
+        ) + "</ul>"
+        sug_rows.append([
+            e(g["id"]),
+            f'<strong>{e(g["title"])}</strong>',
+            f'<div>{e(g["what"])}</div>{blocker}',
+            f'<div>{e(g["why"])}</div>{comp}',
+            badge("Proposal", "info") if g["status"] == "proposed" else badge("Blocked", "warn"),
+        ])
+    body += "<h2>Design and marketing suggestions</h2>" + table(
+        ["ID", "Suggestion", "What it is", "Why it helps / compliance", "Status"], sug_rows)
+
+    q_rows = []
+    for q in s["questions"]:
+        q_rows.append([
+            e(q["id"]),
+            f'<strong>{e(q["question"])}</strong>',
+            e(q["what_we_know"]) + f" {src_links(q['source'])}",
+            e(q["what_we_dont_know"]),
+            e(q["why_it_matters"]),
+            e(q["how_to_discover"]),
+        ])
+    body += "<h2>Open questions: what must be answered before a decision</h2>" + table(
+        ["ID", "Question", "What we already know (sourced)", "What we do not know",
+         "Why it matters for the decision", "How to discover it"], q_rows)
+
+    d_rows = []
+    for d in s["discovery"]:
+        d_rows.append([
+            e(d["id"]),
+            f'<strong>{e(d["action"])}</strong>',
+            e(d["discovers"]),
+            src_links(d["source"]),
+        ])
+    body += "<h2>Suggestions for discovering the missing information</h2>" + table(
+        ["ID", "Action", "What it discovers", "Source"], d_rows)
+
+    body += "<h2>How to use this page</h2><ol class=\"findings\">" + "".join(
+        f"<li>{e(step)}</li>" for step in s["workflow"]
+    ) + "</ol>"
+
+    page("suggestions.html", "Suggestions & decisions", body,
+         lead="Design and marketing proposals for the affiliate site, the open questions that "
+              "must be answered before any decision, and how to discover the missing "
+              "information. Proposals are labelled as proposals; every fact carries its source.")
 
 
 # ------------------------------------------------------------- Campaigns
@@ -1461,6 +1560,7 @@ def main() -> None:
     build_marketing()
     build_content()
     build_topics()
+    build_suggestions()
     build_campaigns()
     build_flagged()
     build_category()
