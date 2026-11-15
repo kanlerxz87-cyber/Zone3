@@ -4833,3 +4833,50 @@ Pages builds report `built`.
 | Pages | Build [1371669169](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/1371669169) completed with status **`built`** at 2026-11-15T11:41:10Z for merge commit `01c0279ce4ba482fc38ecbee5d4ed2544ef4e62e` |
 | Live URL | https://kanlerxz87-cyber.github.io/Zone3/ · Decision Center: https://kanlerxz87-cyber.github.io/Zone3/decision-center.html |
 | Open items | Product-intent FLG-001/002/027; affiliate-link applicability FLG-003; API access FLG-006. These remain prominently flagged; none was silently filled in. |
+
+---
+
+# CD0E — coordination handoff (2026-11-15)
+
+**Initial claim:** Session `cd0e6279` claimed a Decision Room / decision-support task on base `149b8fe` in commit `7dba472`, before making feature edits. The required pre-push `git pull --rebase origin main` fetched newer `main` at `69388aa`, which already contains the same deliverable from session `c1aeb5c7` (PR #92, merged as `01c0279`; Pages build confirmation in PR #93 / merge `69388aa`).
+
+**Coordination decision:** Stop the duplicate feature work. The existing Decision Center at `decision-center.html`, landing/navigation integration, sourced open questions, recommendations, reviewable local choices, and editorial hypotheses already cover the claimed feature scope. During the independent review, this session found that six generated `/marketing/` pages still had the pre-Decision-Center navigation. `scripts/build_marketing.py` imports the shared navigation from `scripts/build_site.py`; rerunning it synchronized those six pages. This is a navigation-only integration fix—no second Decision Center, product data, marketing copy, or decision logic was added.
+
+**Rebase conflict log:** Both sessions appended to `COORDINATION.md`. Resolution keeps the fetched `main` version (including session `c1aeb5c7`'s complete Part and publication record) verbatim, then appends this note. No text from the other session was discarded and no feature scope was taken over.
+
+## CD0E task board (updated after coordination check)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| CD0E-T1 — Decision Room feature work initially claimed on base `149b8fe` | superseded by merged PR #92; no duplicate implementation | `cd0e6279` | No feature files; `COORDINATION.md` CD0E note only | Session `c1aeb5c7`'s published source register references S01–S55 in `data/sources.json` | The task was already completed on the updated `main`; feature work stopped before edits. |
+| CD0E-T2 — Independently verify the merged Decision Center and current repository/site state; sync the Decision Center link across generated marketing pages; record result | done | `cd0e6279` | `COORDINATION.md` CD0E note only; generated `marketing/index.html`, `marketing/comparison.html`, `marketing/buying-guide.html`, `marketing/product-{1,2,3}-*.html` | Fresh official-page re-fetches on 2026-11-15: S01–S05, S07, S11–S16, S24–S26, S31, S45; current Pages API/build | Product-intent, link-model, and API-access gaps remain open and are not inferred; no new product values were published. |
+
+## CD0E-T2 independent verification and close-out (2026-11-15)
+
+**Official-source review (re-fetched on 2026-11-15; sources are provided for manual review):**
+
+- [S01 — Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement): page header reports Updated October 15, 2025. Its Schedule 1 lists the U.S. Amazon Site as amazon.com; this does not establish the publisher's intended marketplace.
+- [S02 — Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies): page header reports Updated April 14, 2026. The relevant clauses remain on the live page: Participation Requirements 2(b) requires the assigned Associates ID on Special Links and limits price/availability displays to Amazon-served data or compliant Creators API/PA API data; 6(t) addresses customer reviews and star ratings; 6(v) bars obscuring the source URL; 6(w) bars link shortening that makes the destination unclear; 6(y) bars price tracking/alerts unless otherwise agreed.
+- [S04 — Creators API introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction) lists target-marketplace enrollment, at least 10 qualifying sales in the preceding 30 days, registration, and credentials as prerequisites. [S05 — PA-API 5 deprecation notice](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation) identifies Creators API as its successor and states PA-API 5 calls receive HTTP 403. [S31 — Creators API GetItems / ItemIdType](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter) and [S45 — Amazon's ASIN guide](https://sell.amazon.com/blog/what-is-an-asin) define an ASIN as a 10-character identifier.
+- [S25 — Standard Commission Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) and [S26 — Onsite Commission Table A](https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA) remain publicly readable. No rate was assigned to an individual submitted product because its product/category/account mapping is not established.
+- [S07 — FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) remains the November 2019 guide; [S24 — FTC Endorsements and Influencers hub](https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews) points to the Endorsement Guides revised in 2023.
+- The three submitted short links [S11](https://link.amazon/B04G1MEwY), [S12](https://link.amazon/B02NbDxp3), and [S13](https://link.amazon/B00hJ57DV) again opened Amazon listings with ASINs B0CDY277D3, B09B7SB46R, and B08DKYBTPH, respectively ([S14](https://www.amazon.com/dp/B0CDY277D3), [S15](https://www.amazon.com/dp/B09B7SB46R), [S16](https://www.amazon.com/dp/B08DKYBTPH)). These are observed destinations, not proof of requester intent or affiliate-link compliance. Dynamic prices and ratings were not copied into the site.
+
+**Repository and site checks on the updated main tree:**
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | PASS — 13 pages, 3 products, 51 sources, 78 flags |
+| `python3 tools/verify_site.py` | PASS — 73 pages, 1,301 table rows; 1,096 with official source, 405 with a flag, 86 repository-anchored; no advisories |
+| `python3 tools/link_report.py --strict` | Exit 0 — no dangling source or flag references, no uncited sources. Its report still lists six unreferenced flag IDs: FLG-001, FLG-002, FLG-003, FLG-007, FLG-027, I-F-01. These records remain visible in `flagged.html`; this is a non-blocking cross-reference advisory, not a failed gate. |
+| `python3 scripts/build_sitemap.py --check` | PASS — all 68 live pages covered |
+| `python3 scripts/check_all_links.py` | PASS — 119 HTML files, 105 distinct external URLs, 0 errors |
+| `python3 scripts/build_marketing.py` | PASS — 7 pages generated, 13 sourced claims, no prices/ratings/ranks stated; rerun was idempotent |
+| Decision Center review | PASS — one H1, required disclosures, four visibly labelled review controls, browser-local-only choices; inline JavaScript passes `node --check` |
+| `git diff --check` | PASS |
+
+**Navigation fix:** the six generated Marketing pages that use shared site navigation were stale and did not link to the already-merged Decision Center. Regenerating them with `scripts/build_marketing.py` adds one Decision Center link to each; the other marketing brief page already had the link. No Decision Center feature, product data, recommendation, or copy was changed.
+
+**Deployment baseline:** GitHub Pages reports the build for `main` commit `69388aaf43d357e7ad816cf45ba61932e765d965` as **built** at `2026-11-15T11:41:48Z` ([Pages build API](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest)). The live [dashboard](https://kanlerxz87-cyber.github.io/Zone3/) and [Decision Center](https://kanlerxz87-cyber.github.io/Zone3/decision-center.html) were fetched successfully. This deployment predates the CD0E navigation fix.
+
+**Open / irregular items:** intended product mapping, Associates enrollment and link-tag status, link applicability, API eligibility, marketplace/audience, demand, and conversion/revenue values remain unknown and flagged for review. No trend rank, price, rating, commission-per-product value, or earnings estimate was inferred. The six unreferenced-flag IDs noted above are still displayed on the Flagged for review page. Browser review choices do not submit or implement changes.
