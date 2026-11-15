@@ -4920,3 +4920,24 @@ Board read in full (all parts, 2026-11-15). Claim pushed as this commit **before
 verification work, per protocol. No task on this board is `in progress` with a live claim at
 this moment: the latest completed records are session `25513d33` (T1–T7 done, PRs #86/#88 merged)
 and the merged PR #91 at `149b8fe`, which this branch is based on. No session was taken over.
+
+### 4f83-T2 — Independent live re-verification (done, 2026-11-15)
+
+Every item below was fetched again **today** by this session (2026-11-15) and compared with
+what the site claims. Page URL is the source; nothing is taken from a search result, a blog or
+an aggregator.
+
+| # | Claim | Source re-read (fetched 2026-11-15) | Result |
+|---|---|---|---|
+| R1 | link.amazon/B04G1MEwY opens the CHEFMAN 6 Qt Dual Basket listing | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | **Confirmed** — final URL `amazon.com/dp/B0CDY277D3`; served title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black". Breadcrumb: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers |
+| R2 | link.amazon/B02NbDxp3 opens the Emeril Lagasse 26QT listing | [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | **Confirmed** — final URL `amazon.com/dp/B09B7SB46R`; served title "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included". Same ASIN as S12/S53; the title text differs slightly from the 2026-11-13/14 capture (titles drift) — destination stable |
+| R3 | link.amazon/B00hJ57DV opens the Chefman TurboFry 8 Qt listing | [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | **Confirmed** — final URL `amazon.com/dp/B08DKYBTPH`; served title "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel" |
+| R4 | Standard Commission Income Statement, Table 1 | [affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed** — "Physical Books, Kitchen, Automotive — 4.50%"; "All Other Categories — 4.00%"; Bounty rows $12.00/$2.00/$5.00/$0.25 read as printed |
+| R5 | Operating Agreement §5 disclosure wording; header date | [affiliate-program.amazon.com/help/operating/agreement](https://affiliate-program.amazon.com/help/operating/agreement) | **Confirmed verbatim** — header "Updated: October 15, 2025"; §5: "As an Amazon Associate I earn from qualifying purchases." |
+| R6 | Creators API GetItems: itemIds are ASINs (10 characters) | [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | **Confirmed** — `itemIdType` default `ASIN`; documented examples "B0199980K4", "B000HZD168" (10 chars) |
+
+**4f83-F-01 (Info).** The Emeril Lagasse destination title captured today differs in wording from
+the S12/S53 capture (2026-11-13/14). The ASIN and the destination are identical; Amazon listing
+titles are edited over time. Recorded so a future reader does not mistake the wording difference
+for a destination change. No flag raised; the destination mapping is stable across five captures
+by three sessions (S12, S53, and this session's R2).
