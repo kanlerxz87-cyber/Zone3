@@ -4880,3 +4880,14 @@ Pages builds report `built`.
 **Deployment baseline:** GitHub Pages reports the build for `main` commit `69388aaf43d357e7ad816cf45ba61932e765d965` as **built** at `2026-11-15T11:41:48Z` ([Pages build API](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest)). The live [dashboard](https://kanlerxz87-cyber.github.io/Zone3/) and [Decision Center](https://kanlerxz87-cyber.github.io/Zone3/decision-center.html) were fetched successfully. This deployment predates the CD0E navigation fix.
 
 **Open / irregular items:** intended product mapping, Associates enrollment and link-tag status, link applicability, API eligibility, marketplace/audience, demand, and conversion/revenue values remain unknown and flagged for review. No trend rank, price, rating, commission-per-product value, or earnings estimate was inferred. The six unreferenced-flag IDs noted above are still displayed on the Flagged for review page. Browser review choices do not submit or implement changes.
+
+## CD0E publication record
+
+| Event | Result |
+|---|---|
+| Pull request | [#94 — Expose the Decision Center throughout marketing pages](https://github.com/kanlerxz87-cyber/Zone3/pull/94), `arena/cd0e6279-zone3` → `main` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; no CI checks were configured |
+| Merge | **MERGED** 2026-11-15T11:49:15Z via `gh pr merge 94 --merge`; merge commit `e88c6014a14e3347513d7b576432f77123345cd1` |
+| Pages | Build for `e88c6014a14e3347513d7b576432f77123345cd1` completed with status **`built`** at 2026-11-15T11:49:37Z ([Pages build API](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest)) |
+| Live URL | [Marketing hub](https://kanlerxz87-cyber.github.io/Zone3/marketing/index.html); [Decision Center](https://kanlerxz87-cyber.github.io/Zone3/decision-center.html) |
+| Open items | Product-intent, affiliate-link applicability, and API-access gaps remain flagged; no owner-provided facts were inferred. |
