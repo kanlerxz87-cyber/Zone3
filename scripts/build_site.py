@@ -94,6 +94,7 @@ NAV = [
     ("pricing.html", "Pricing &amp; commission"),
     ("reviews.html", "Reviews &amp; competition"),
     ("content.html", "Content &amp; compliance"),
+    ("decision-center.html", "Decision Center"),
     # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan the brief
     # asks for ("catchy trendy articles and topics"). Every topic row carries the official
     # source of the fact it rests on; no trend or volume claim is made.
@@ -199,6 +200,18 @@ align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5
 main{max-width:1180px;margin:0 auto;padding:24px 22px 40px}
 h1{font-size:26px;margin:4px 0 6px}
 h2{font-size:19px;margin:0 0 10px}
+.hero{background:linear-gradient(115deg,#102b53,#315fe0 72%,#6e75e8);color:#fff;border-radius:18px;padding:30px clamp(20px,4vw,48px);margin:0 0 22px;box-shadow:0 14px 34px #183c7726}
+.hero .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#dbe7ff;font-weight:700;margin:0 0 10px}
+.hero h2{font-size:clamp(26px,4vw,42px);line-height:1.12;max-width:760px;margin:0 0 12px}
+.hero p{max-width:760px;color:#eef3ff;margin:0 0 18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-actions a{display:inline-block;border:1px solid #ffffff80;border-radius:8px;padding:9px 13px;color:#fff;text-decoration:none;font-weight:650}
+.hero-actions a:first-child{background:#fff;color:#173b77;border-color:#fff}
+.decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.decision-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px;box-shadow:0 4px 14px #172b4d08}
+.decision-card h3{margin:0 0 8px;font-size:16px}.decision-card p{margin:7px 0}.decision-card .status{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.decision-card select{width:100%;padding:9px;border:1px solid #cbd3df;border-radius:7px;background:#fff;color:var(--ink);font:inherit;margin-top:7px}
+.decision-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0 20px}.decision-tools button{background:#173b77;color:#fff;border:0;border-radius:7px;padding:9px 13px;font:inherit;cursor:pointer}.decision-tools output{color:var(--muted);font-size:13px}
+.suggestion{border-left:4px solid var(--accent);padding:4px 0 4px 14px;margin:16px 0}.suggestion h3{margin:0 0 5px;font-size:17px}.suggestion p{margin:5px 0}
 .lead{color:var(--muted);margin:0 0 18px;max-width:900px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:0 0 18px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 0 18px}
@@ -302,6 +315,7 @@ SITEMAP_GROUPS = [
         ("reviews/index.html", "Audit build: Reviews"),
     ]),
     ("Marketing output", [
+        ("decision-center.html", "Decision Center: open questions and suggestions"),
         ("marketing/index.html", "Marketing hub"),
         ("marketing/briefs.html", "Marketing briefs"),
         ("marketing/comparison.html", "Comparison article"),
@@ -371,6 +385,7 @@ def build_index() -> None:
         ("pricing.html", "Pricing &amp; commission", "Price and commission fields, plus the verified commission rules."),
         ("reviews.html", "Reviews &amp; competition", "Ratings and competitor fields, a dated category benchmark, plus the verified review rules."),
         ("content.html", "Content &amp; compliance", "Article status and the Associates and FTC checklist."),
+        ("decision-center.html", "Decision Center", "Sourced answers, open questions, ranked suggestions and reviewable paths."),
         # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan.
         ("content-topics.html", "Content topics",
          "The planned article topics, the verified fact each one is built on, and what it may not state."),
@@ -407,8 +422,14 @@ def build_index() -> None:
     reverify_html = reverify_table()
     sitemap_html = build_sitemap_html()
     body = f"""
+<section class="hero">
+  <p class="eyebrow">Evidence-first air-fryer research</p>
+  <h2>Make the next kitchen buy with clearer comparisons.</h2>
+  <p>Explore practical buying guides and product comparisons, with evidence behind published claims and unknowns clearly called out. This research is not a substitute for checking the live Amazon listing.</p>
+  <div class="hero-actions"><a href="marketing/index.html">Explore product research</a><a href="marketing/buying-guide.html">Read the buying guide</a></div>
+</section>
 <div class="callout">
-  <p><strong>Headline:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
+  <p><strong>Research status:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
 </div>
 <div class="grid">{stat_html}</div>
 <h2>Sections</h2>
@@ -1316,9 +1337,123 @@ def build_legacy_stubs() -> None:
         )
 
 
+
+def build_decision_center() -> None:
+    """Decision support. Recommendations are proposals; sources support factual claims only."""
+    policy = src_links(["S02"])
+    asin = src_links(["S31", "S45"])
+    api = src_links(["S04", "S05"])
+    rates = src_links(["S03", "S25", "S26"])
+    disclosure = src_links(["S01", "S07", "S24"])
+    body = f"""
+<style>
+.decision-intro{{background:linear-gradient(120deg,#112a4e,#294fae);color:#fff;border-radius:16px;padding:26px clamp(18px,4vw,38px);margin:8px 0 20px}}
+.decision-intro .eyebrow{{text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:700;color:#cbdcff}}
+.decision-intro h2{{font-size:clamp(24px,4vw,36px);line-height:1.15;margin:5px 0 10px;max-width:760px}}
+.decision-intro p{{color:#eef3ff;max-width:800px}}
+.decision-section{{margin:28px 0}}
+.question-grid,.choice-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:13px}}
+.question,.choice{{background:#fff;border:1px solid #e3e7ee;border-radius:12px;padding:16px}}
+.question h3,.choice h3{{font-size:16px;margin:0 0 7px}}
+.question p,.choice p{{margin:7px 0}}
+.answer{{border-left:3px solid #198754;padding-left:10px}}
+.missing{{border-left:3px solid #c37a00;padding-left:10px}}
+.choice label{{font-weight:700;font-size:13px;display:block;margin-top:12px}}
+.choice select{{width:100%;padding:9px;border-radius:7px;border:1px solid #cbd3df;font:inherit;background:#fff}}
+.savebar{{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}}
+.savebar button{{background:#173b77;color:#fff;border:0;border-radius:7px;padding:9px 13px;font:inherit;cursor:pointer}}
+.savebar output{{color:#5b6474;font-size:13px}}
+.proposal{{border-left:4px solid #315fe0;padding:2px 0 2px 14px;margin:17px 0}}
+.proposal h3{{margin:0 0 5px;font-size:17px}}
+.pill{{display:inline-block;border-radius:999px;background:#edf2ff;color:#244caa;padding:3px 9px;font-size:12px;font-weight:700}}
+</style>
+<section class="decision-intro">
+  <p class="eyebrow">Decision Center · prepared 2026-11-15</p>
+  <h2>Decide what to verify before the next page goes live.</h2>
+  <p>This is a sourced decision brief, not a claim that every automation feature is already built. It separates known facts from missing inputs, ranks practical next steps, and offers a review queue. The factual source register was last re-verified on 2026-11-14; this page does not claim a fresh live re-check of Amazon data.</p>
+  <p><a href="executive-summary.html" style="color:#fff">Executive summary</a> · <a href="flagged.html" style="color:#fff">All flagged items</a> · <a href="sources.html" style="color:#fff">Official source register</a></p>
+</section>
+
+<section class="decision-section">
+  <h2>Executive readout</h2>
+  <div class="question-grid">
+    <article class="question"><span class="pill">Known</span><h3>Three supplied links; product intent is not confirmed</h3><p>The project register records three short-link tokens and leaves product identity for the submitted identifiers unconfirmed. Amazon's API reference defines ASINs as ten-character identifiers. {asin} See <a href="products.html">Products</a> and <a href="flagged.html#FLG-001">FLG-001 / FLG-002</a>.</p></article>
+    <article class="question"><span class="pill">Blocked input</span><h3>API and performance data are not connected</h3><p>Amazon's Creators API documentation states an eligibility prerequisite of at least 10 qualifying sales in the past 30 days; the repository has no verified account eligibility or live account report. {api} See <a href="campaigns.html">Campaigns &amp; tracking</a> and <a href="flagged.html#FLG-006">FLG-006</a>.</p></article>
+    <article class="question"><span class="pill">Recommendation</span><h3>Keep product-specific monetized claims on hold</h3><p>Publish useful evergreen buying education now; do not turn observed redirect destinations into assumed product intent. Reopen product-specific recommendations after the intended ASINs and permitted tracking links have been confirmed. This is a risk-control recommendation, not an Amazon quote.</p></article>
+  </div>
+</section>
+
+<section class="decision-section">
+  <h2>What we know, what is missing, and how to discover it</h2>
+  <p>Answers below are limited to the repository's sourced record and official program documents. “Unknown” means the current evidence does not settle it; it is not a guess.</p>
+  <div class="question-grid">
+    <article class="question"><h3>1 · Which exact three products should be promoted?</h3><p class="answer"><strong>Known:</strong> The supplied link codes are nine characters; the official Amazon API reference describes ASIN identifiers as ten characters. {asin}</p><p class="missing"><strong>Missing:</strong> Owner-confirmed intended listing / ASIN mapping. Redirect observations do not establish intent. <a href="flagged.html#FLG-001">FLG-001</a> · <a href="flagged.html#FLG-002">FLG-002</a></p><p><strong>Discovery:</strong> Resolve the short-link owner/source, obtain the intended Amazon product URLs directly from the campaign brief, and compare each to the intended product before writing product-specific claims.</p></article>
+    <article class="question"><h3>2 · Can the platform fetch product content automatically?</h3><p class="answer"><strong>Known:</strong> Creators API documentation lists eligibility prerequisites, including at least 10 qualifying sales in the prior 30 days. The PA-API 5 deprecation notice and Creators API introduction are in the source register. {api}</p><p class="missing"><strong>Missing:</strong> Associates enrollment, qualifying-sales status, API access approval, marketplace, credentials and an authorized data-use path. <a href="flagged.html#FLG-006">FLG-006</a></p><p><strong>Discovery:</strong> Check Associates Central eligibility and API access; use a secrets manager for credentials. Never place keys in this public static repository. The answer is not assumed by this build.</p></article>
+    <article class="question"><h3>3 · Which facts may appear beside affiliate links?</h3><p class="answer"><strong>Known:</strong> Amazon policy sets conditions for displaying price/availability and customer ratings/reviews; see sections 2(b) and 6(t) in the policies. {policy}</p><p class="missing"><strong>Missing:</strong> An approved data route for each live product and a verified match between each fact and the intended ASIN. <a href="pricing.html">Pricing</a> · <a href="reviews.html">Reviews</a></p><p><strong>Discovery:</strong> Keep volatile price, rating, review count and rank fields blank until the exact product and policy-permitted source path are verified. Do not convert old screenshots or snapshots into live offers.</p></article>
+    <article class="question"><h3>4 · Are the submitted links suitable for affiliate attribution?</h3><p class="answer"><strong>Known:</strong> Amazon policy says links must not obscure that they lead to Amazon; the commission statement defines “Redirecting Link” and its consequence. {policy}</p><p class="missing"><strong>Missing:</strong> Whether these particular short links meet the applicable link and attribution requirements, and whether a valid Associates tracking tag is attached. <a href="flagged.html#FLG-003">FLG-003</a></p><p><strong>Discovery:</strong> Prefer tested Special Links generated in Associates Central; validate destination clarity and tracked-click reporting before publication. This is a prudent recommendation; applicability of policy to the given links remains flagged.</p></article>
+    <article class="question"><h3>5 · What commission and revenue can be forecast?</h3><p class="answer"><strong>Known:</strong> Amazon publishes standard and onsite category tables, while the account schedule is a separate source. The current record does not assign a per-product rate. {rates}</p><p class="missing"><strong>Missing:</strong> Confirmed product category, account-specific rate, eligible sessions, qualifying orders, cancellations and actual commission reports. <a href="flagged.html#FLG-005">FLG-005</a> · <a href="campaigns.html">Campaign ledger</a></p><p><strong>Discovery:</strong> Obtain the rate applicable to the intended ASIN and a date-bounded performance report. Do not fabricate a “potential earnings” number from category averages.</p></article>
+    <article class="question"><h3>6 · Which niche or article is actually trending?</h3><p class="answer"><strong>Known:</strong> No verified trend or search-volume evidence is included in this project's approved inputs. An article title is an editorial hypothesis, not demand proof.</p><p class="missing"><strong>Missing:</strong> Audience geography, first-party queries, search impressions/clicks, seasonality window, competitor set and conversion performance.</p><p><strong>Discovery:</strong> Connect the publisher's own search-performance export and Associates reports, date and preserve each measurement, then rank topics against observed demand. No score is assigned while inputs are absent.</p></article>
+    <article class="question"><h3>7 · Which commission marketplace and disclosure apply?</h3><p class="answer"><strong>Known:</strong> Operating Agreement Schedule 1 lists United States / Amazon.com for its listed program entity. The Associates disclosure statement and FTC endorsement resources are in the cited register. {disclosure}</p><p class="missing"><strong>Missing:</strong> Publisher location, audience locations, enrolled marketplace(s), legal entity and channel-specific disclosure placement.</p><p><strong>Discovery:</strong> Confirm those account and audience details before expanding beyond Amazon.com. Keep the Associate disclosure clear and proximate to recommendations; confirm local legal requirements for each market.</p></article>
+    <article class="question"><h3>8 · What can safely publish before inputs arrive?</h3><p class="answer"><strong>Known:</strong> Source-backed buying education can explain comparison criteria without asserting unsupported product performance. Amazon policy and FTC resources remain the relevant compliance anchors. {policy} {disclosure}</p><p class="missing"><strong>Missing:</strong> First-party audience evidence to validate which topic deserves priority.</p><p><strong>Discovery:</strong> Publish an evergreen checklist only after editorial review; record impressions and clicks once a compliant measurement route exists. Product-specific price/rating copy stays out until the evidence gate passes.</p></article>
+  </div>
+</section>
+
+<section class="decision-section">
+  <h2>Suggestions to review before implementation</h2>
+  <p>Priority is based on resolving blockers and reducing unsupported claims, not on assumed conversion lift. Editorial topic labels below are not verified trend rankings.</p>
+  <div class="proposal"><span class="pill">Priority 1 · unblock identity</span><h3>Build a product-intent confirmation record</h3><p>For each submitted link, store the intended ASIN, official listing URL, confirmation date, and source. Keep observed redirect targets in a separate field. Do not merge the two fields. Rationale: Amazon's ASIN definition provides a checkable identifier format. {asin}</p></div>
+  <div class="proposal"><span class="pill">Priority 2 · attribution safety</span><h3>Replace ambiguous outbound links with validated Special Links</h3><p>Test one link per product in the enrolled Associates workflow and confirm destination and tracking report before scaling. Do not claim that the supplied short links are invalid; their exact compliance status is unresolved in <a href="flagged.html#FLG-003">FLG-003</a>. {policy}</p></div>
+  <div class="proposal"><span class="pill">Priority 3 · editorial value</span><h3>Lead with useful, human-sounding buyer questions</h3><p>Suggested editorial hypotheses: “Basket or oven-style air fryer: what should you compare?”, “A no-hype checklist for comparing air fryer capacity”, “How to assess cleanup and counter-space trade-offs”, and “Questions to ask before buying a multi-function kitchen appliance.” These are working titles—not claims about popularity, search volume or product superiority.</p></div>
+  <div class="proposal"><span class="pill">Priority 4 · evidence-based iteration</span><h3>Measure before automating optimization</h3><p>Start with an empty but well-defined campaign ledger; add timestamp, source, channel, eligible sessions, clicks and reported orders only when obtained from authorized first-party reports. Keep a dated provenance trail. No conversion score or revenue forecast is presented here.</p></div>
+  <div class="proposal"><span class="pill">Priority 5 · compliance gate</span><h3>Put disclosures and API policy checks in the publishing workflow</h3><p>Keep the Associates statement visible and review disclosure placement and endorsement context against the Operating Agreement and FTC guidance. {disclosure}</p></div>
+</section>
+
+<section class="decision-section" id="review-choices">
+  <h2>Reviewable paths</h2>
+  <p>Choose a path for discussion before implementation. Choices are stored only in this browser's local storage; they are not submitted to the site, repository, or project owner. No option triggers a code or content change.</p>
+  <div class="savebar"><button type="button" id="clear-choices">Clear local choices</button><output id="choice-status" aria-live="polite">No path selected yet.</output></div>
+  <div class="choice-grid">
+    <article class="choice"><h3>A · Product content gate</h3><p><strong>Recommended:</strong> confirm the intended ASINs first; publish category-level evergreen content in the meantime.</p><label for="path-products">Path for review</label><select id="path-products" data-choice><option value="">No choice yet</option><option value="confirm">Confirm exact products, then write product-specific copy</option><option value="evergreen">Publish only general buying education until confirmed</option><option value="hold">Hold all new marketing pages</option></select><p>Evidence: ASIN definition {asin} · open item <a href="flagged.html#FLG-001">FLG-001</a>.</p></article>
+    <article class="choice"><h3>B · Product data source</h3><p><strong>Recommended:</strong> verify API eligibility and approved access before building automated product-data refresh.</p><label for="path-data">Path for review</label><select id="path-data" data-choice><option value="">No choice yet</option><option value="api">Check eligibility and pursue Creators API access</option><option value="editorial">Keep product fields blank; use sourced static editorial claims</option><option value="reports">First connect the publisher's approved campaign reports</option></select><p>Evidence: Creators API prerequisites {api} · open item <a href="flagged.html#FLG-006">FLG-006</a>.</p></article>
+    <article class="choice"><h3>C · Affiliate links</h3><p><strong>Recommended:</strong> validate and test Associates-generated Special Links before publishing conversion CTAs.</p><label for="path-links">Path for review</label><select id="path-links" data-choice><option value="">No choice yet</option><option value="special">Use tested Associates-generated Special Links</option><option value="investigate">Investigate current links before deciding</option><option value="hold">Hold outbound CTAs pending review</option></select><p>Evidence: Amazon link clarity and redirecting-link policy {policy} · open item <a href="flagged.html#FLG-003">FLG-003</a>.</p></article>
+    <article class="choice"><h3>D · Editorial launch</h3><p><strong>Recommended:</strong> start with one evergreen comparison checklist, then review first-party performance before expanding.</p><label for="path-editorial">Path for review</label><select id="path-editorial" data-choice><option value="">No choice yet</option><option value="checklist">One evergreen comparison checklist</option><option value="guide">A category buying guide plus topic cluster</option><option value="wait">Wait for audience and search data first</option></select><p>These are proposed workflows, not measured performance claims.</p></article>
+  </div>
+</section>
+
+<section class="decision-section">
+  <h2>Implementation gate</h2>
+  <ol>
+    <li>Record intended product identifiers and account marketplace. Link each claim to an official listing or policy page.</li>
+    <li>Confirm an eligible, approved data-access route before importing price, availability, review, or rating information. {policy} {api}</li>
+    <li>Test link behavior and reporting; document any unresolved policy ambiguity rather than treating an observation as approval. {policy}</li>
+    <li>Publish a disclosure alongside recommendations. {disclosure}</li>
+    <li>Only then build ranking and optimization from actual dated reports. Until then, keep conversion and revenue values blank.</li>
+  </ol>
+  <p>See the <a href="flagged.html">Flagged for review</a> register for the open evidence gaps, <a href="products.html">product audit</a> for the intake status, and <a href="executive-summary.html">executive summary</a> for the full project status.</p>
+</section>
+<script>
+(()=>{{
+ const key='zone3-decision-center-v1';
+ const controls=[...document.querySelectorAll('[data-choice]')];
+ const output=document.getElementById('choice-status');
+ const read=()=>{{try{{return JSON.parse(localStorage.getItem(key)||'{{}}')}}catch(e){{return {{}}}}}};
+ const saved=read();
+ controls.forEach(el=>{{el.value=saved[el.id]||'';el.addEventListener('change',()=>{{const next=read();if(el.value)next[el.id]=el.value;else delete next[el.id];try{{localStorage.setItem(key,JSON.stringify(next))}}catch(e){{}};update()}})}});
+ function update(){{const n=controls.filter(el=>el.value).length;output.textContent=n?`${{n}} of ${{controls.length}} paths selected in this browser only.`:'No path selected yet.'}}
+ document.getElementById('clear-choices').addEventListener('click',()=>{{try{{localStorage.removeItem(key)}}catch(e){{}};controls.forEach(el=>el.value='');update()}});
+ update();
+}})();
+</script>
+"""
+    page("decision-center.html", "Decision Center", body,
+         lead="A sourced decision brief: current answers, missing information, discovery steps, editorial suggestions and paths to review before implementation.")
+
+
+
 def main() -> None:
     build_assets()
     build_index()
+    build_decision_center()
     build_exec()
     build_products()
     build_pricing()

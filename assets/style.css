@@ -16,6 +16,18 @@ align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5
 main{max-width:1180px;margin:0 auto;padding:24px 22px 40px}
 h1{font-size:26px;margin:4px 0 6px}
 h2{font-size:19px;margin:0 0 10px}
+.hero{background:linear-gradient(115deg,#102b53,#315fe0 72%,#6e75e8);color:#fff;border-radius:18px;padding:30px clamp(20px,4vw,48px);margin:0 0 22px;box-shadow:0 14px 34px #183c7726}
+.hero .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#dbe7ff;font-weight:700;margin:0 0 10px}
+.hero h2{font-size:clamp(26px,4vw,42px);line-height:1.12;max-width:760px;margin:0 0 12px}
+.hero p{max-width:760px;color:#eef3ff;margin:0 0 18px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-actions a{display:inline-block;border:1px solid #ffffff80;border-radius:8px;padding:9px 13px;color:#fff;text-decoration:none;font-weight:650}
+.hero-actions a:first-child{background:#fff;color:#173b77;border-color:#fff}
+.decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.decision-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px;box-shadow:0 4px 14px #172b4d08}
+.decision-card h3{margin:0 0 8px;font-size:16px}.decision-card p{margin:7px 0}.decision-card .status{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.decision-card select{width:100%;padding:9px;border:1px solid #cbd3df;border-radius:7px;background:#fff;color:var(--ink);font:inherit;margin-top:7px}
+.decision-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0 20px}.decision-tools button{background:#173b77;color:#fff;border:0;border-radius:7px;padding:9px 13px;font:inherit;cursor:pointer}.decision-tools output{color:var(--muted);font-size:13px}
+.suggestion{border-left:4px solid var(--accent);padding:4px 0 4px 14px;margin:16px 0}.suggestion h3{margin:0 0 5px;font-size:17px}.suggestion p{margin:5px 0}
 .lead{color:var(--muted);margin:0 0 18px;max-width:900px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:0 0 18px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 0 18px}
