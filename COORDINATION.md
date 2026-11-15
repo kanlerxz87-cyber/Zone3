@@ -4807,3 +4807,11 @@ Pages builds report `built`.
 
 **Session `25513d33` is complete.** Tasks 25-T1 … 25-T7 done. Irregularities 25-F-01 … 25-F-04
 (all informational, none blocking, all published on the Flagged for review page or recorded above).
+
+## Session c1aeb5c7 — decision support and UX follow-up (2026-11-15)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| C1 — Decision Center: organize sourced answers, unresolved questions, proposed next steps, and editorial suggestions; surface it from the dashboard | in progress | c1aeb5c7 | `decision-center.html`, `scripts/build_site.py`, generated root pages, `sitemap.xml`, this record | Existing official source register `data/sources.json` (S01–S55); policy statements only reused where already documented in `data/policy_facts.json` and official URLs in S01–S55 | No new external facts asserted; item dependencies and decisions are separated from confirmed facts |
+
+**Claim note.** This session works on the current Arena-fixed branch `arena/c1aeb5c7-zone3`; the user-requested per-task branch naming cannot be applied without leaving the tracked branch. Current tree was clean at claim time. Existing sessions recorded in this board are complete; no live conflicting claim found for the listed files.
