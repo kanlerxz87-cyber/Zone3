@@ -4807,3 +4807,18 @@ Pages builds report `built`.
 
 **Session `25513d33` is complete.** Tasks 25-T1 … 25-T7 done. Irregularities 25-F-01 … 25-F-04
 (all informational, none blocking, all published on the Flagged for review page or recorded above).
+
+## Session c1aeb5c7 — decision support and UX follow-up (2026-11-15)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| C1 — Decision Center: organize sourced answers, unresolved questions, proposed next steps, and editorial suggestions; surface it from the dashboard | done | c1aeb5c7 | `decision-center.html`, `scripts/build_site.py`, generated root pages, `sitemap.xml`, this record | Existing official source register `data/sources.json` (S01–S55); policy statements only reused where already documented in `data/policy_facts.json` and official URLs in S01–S55 | No new external facts asserted; trend titles are hypotheses, not rankings; reviewer choices are browser-local and do not trigger changes |
+
+**Claim note.** This session works on the current Arena-fixed branch `arena/c1aeb5c7-zone3`; the user-requested per-task branch naming cannot be applied without leaving the tracked branch. Current tree was clean at claim time. Existing sessions recorded in this board are complete; no live conflicting claim found for the listed files.
+
+
+**C1 completion record (2026-11-15).** Added the Decision Center at `decision-center.html`, surfaced from the generated navigation, dashboard tiles, and sitemap. It covers known answers versus missing inputs; discovery steps for product identity, API eligibility, link attribution, permitted data use, commissions, audience demand, marketplace, and disclosure; five prioritized recommendations; non-trend editorial hypotheses; and four reviewable paths. Decision selections persist only in browser local storage and are not sent or applied. The landing page now has a clearer marketing-oriented hero that leads into the existing buying guide and marketing section.
+
+**Sources reused, not freshly fetched during C1:** Amazon Associates Operating Agreement (S01), Associates Program Policies (S02), Commission Schedule / Standard / Onsite statements (S03, S25, S26), Creators API Introduction / PA-API deprecation / ASIN reference (S04, S05, S31), Amazon seller ASIN guidance (S45), and FTC disclosure / endorsements material (S07, S24). Exact URLs and prior retrieval records are in `data/sources.json` and `sources.html`. C1 adds no new product facts, no price or trend values, and no claims that current links or API access are compliant/available. Link model uncertainty remains FLG-003; product intent remains FLG-001/002/027; API access remains FLG-006.
+
+**Verification performed:** `python3 scripts/check_site.py` passed (13 pages, 3 products, 51 sources, 78 flags); `python3 tools/verify_site.py` passed (73 pages, 1,301 table rows, 0 advisories); `python3 tools/link_report.py --strict` exited 0; `python3 scripts/build_sitemap.py --check` passed (68 pages); `python3 scripts/check_all_links.py` checked 119 HTML files / 105 external URLs with 0 errors. All factual paragraphs on the new page link directly to official Amazon/FTC sources; suggested editorial titles are explicitly marked as hypotheses.
