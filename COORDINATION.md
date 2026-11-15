@@ -4830,6 +4830,6 @@ Pages builds report `built`.
 | Pull request | [#92 — Add sourced affiliate marketing Decision Center](https://github.com/kanlerxz87-cyber/Zone3/pull/92), `arena/c1aeb5c7-zone3` → `main` |
 | Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; no CI checks were configured |
 | Merge | **MERGED** 2026-11-15T11:40:50Z via `gh pr merge 92 --merge`; merge commit `01c0279ce4ba482fc38ecbee5d4ed2544ef4e62e` |
-| Pages | Build [1371669169](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/1371669169) was `building` at first status check; final status will be recorded after the build completes |
+| Pages | Build [1371669169](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/1371669169) completed with status **`built`** at 2026-11-15T11:41:10Z for merge commit `01c0279ce4ba482fc38ecbee5d4ed2544ef4e62e` |
 | Live URL | https://kanlerxz87-cyber.github.io/Zone3/ · Decision Center: https://kanlerxz87-cyber.github.io/Zone3/decision-center.html |
 | Open items | Product-intent FLG-001/002/027; affiliate-link applicability FLG-003; API access FLG-006. These remain prominently flagged; none was silently filled in. |
