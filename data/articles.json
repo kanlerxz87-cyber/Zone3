@@ -1,0 +1,256 @@
+{
+  "desk": "Zone3 Research Desk",
+  "published": "2026-11-16",
+  "session": "5a56c084",
+  "note": "Articles implementing SUG-02 and SUG-03 (session 4f83ee7b's published proposals, decisions recorded in the decision log on suggestions.html). Every factual claim carries an inline source link to the official page it was read from; every article carries a byline, a date, a verified/not-verified box and an editorial-constraints note. No article states a price, a rating, a review quote, a search-volume figure or a first-hand product experience. Source IDs resolve through data/sources.json; the build fails if an article cites an ID that is not in the register.",
+  "review_checklist": [
+    "Specific and verifiable: every factual claim is traceable to the official page linked beside it.",
+    "No invented experience: no first-person product use, testing or ownership is claimed (FTC rule).",
+    "No generic filler: no unverifiable trend, volume, conversion or superiority claims.",
+    "Disclosure placement: the Associates disclosure appears at the top of the article and again beside the product pointers.",
+    "Named review: each article records how it was written and which pages were read."
+  ],
+  "articles": [
+    {
+      "id": "A1",
+      "topic_ref": "T-09",
+      "slug": "what-an-amazon-affiliate-link-has-to-look-like.html",
+      "title": "What an Amazon affiliate link has to look like - and why a short link can earn nothing",
+      "dek": "The tag rule, the link-shortener rule and the redirect rule, read from Amazon's own policy pages - plus the audit this project ran on the three links it was handed.",
+      "reading_minutes": 6,
+      "tldr": [
+        "A commission-earning Amazon link is a 'Special Link': it must point clearly to Amazon and carry the Associates tag.",
+        "Strip the tag, hide the destination behind a shortener, or route the click through a disallowed redirect, and the purchase can pay nothing - or disqualify entirely.",
+        "This project was handed three short links. Before writing a word of marketing copy, we audited them. Here is what the audit found, with every rule linked to Amazon's own page."
+      ],
+      "sections": [
+        {
+          "h": "A tagged link is the only link that pays",
+          "paras": [
+            "Amazon's Participation Requirements are specific about what an earning link looks like. The link must be one of the tagged link formats Amazon provides, and \"you must include your Associates ID or 'tag' (appearing as XXXXX-##, or such other format as we may designate)\" in it {{S02}}. The tag is how Amazon knows which Associate to credit when a reader clicks and buys.",
+            "That single requirement is why an affiliate site's most important asset is not its layout or its copy - it is a working tag on every outbound product link. Amazon's Operating Agreement says the same thing from the other side: commission income is earned by \"Qualifying Purchases\", and a qualifying purchase begins with a customer clicking through a Special Link {{S02}}. No Special Link, no commission."
+          ]
+        },
+        {
+          "h": "Why 'it works in my browser' is not enough",
+          "paras": [
+            "Two further rules decide whether a link that opens the right page can still earn nothing.",
+            "First, the shortener rule. Amazon forbids using \"a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear\" that the destination is Amazon {{S02}}. A short link is not banned by definition - but if a reader cannot tell where the click lands, the placement is out of compliance.",
+            "Second, the redirect rule. The Commission Income Statement disqualifies \"any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site\" - a Redirecting Link {{S30}}. Purchases that arrive through such a route can be stripped of commission after the fact, which makes indirect routing a business risk, not just a style problem."
+          ]
+        },
+        {
+          "h": "The audit this project ran",
+          "paras": [
+            "The three links this project was given - link.amazon/B04G1MEwY, link.amazon/B02NbDxp3 and link.amazon/B00hJ57DV - carry nine-character tokens. That length matters, because Amazon defines an ASIN as a 10-character alphanumeric identifier {{S31}} {{S45}}: a nine-character code cannot itself be an ASIN.",
+            "The audit, run independently by four sessions between 2026-11-13 and 2026-11-16 and re-run live on 2026-11-16, produced three findings. One: amazon.com/dp/<token> returns Amazon's Page Not Found page for all three tokens {{S08}} {{S09}} {{S10}}. Two: each short link does open a live listing - the CHEFMAN 6 Quart Dual Basket (B0CDY277D3), the Emeril Lagasse 26QT French Door (B09B7SB46R) and the Chefman 8 Qt TurboFry (B08DKYBTPH) {{S11}} {{S12}} {{S13}} {{S14}} {{S15}} {{S16}}. Three: no official document ties those destinations to the products the submitter intended, so the mapping is recorded as an observation, not an identity {{S11}}.",
+            "The practical consequence is visible across this site: there are no 'Check price on Amazon' buttons anywhere. Every Amazon link on this site is a labelled source link, and every conversion-oriented call to action stays unimplemented until the owner supplies the Associates tag that every Special Link must carry (open question Q1 on the Decision Center). That is a deliberate trade-off: a site that cannot earn commission yet is preferable to a site that pretends it can."
+          ]
+        },
+        {
+          "h": "What this means if you run an affiliate site",
+          "paras": [
+            "Three checks catch most link problems before publication: the destination resolves directly (no error page, no surprise intermediary); the tag is present in every product link; and nothing in the placement - button label, redirect, shortener - makes the destination ambiguous {{S02}} {{S30}}.",
+            "The fourth check has no tool: only the account owner can supply the tag. If the tag is missing, the honest move is the one this site made - label the links as sources, publish the research, and leave the earning mechanics switched off until they can be switched on properly."
+          ]
+        }
+      ],
+      "verified": [
+        {"text": "The Associates tag requirement, the shortener rule and the Redirecting Link clause are quoted from the Program Policies and the Commission Income Statement.", "source": ["S02", "S30"]},
+        {"text": "The 10-character ASIN definition is on Amazon's Creators API documentation and Sell on Amazon education page.", "source": ["S31", "S45"]},
+        {"text": "All three /dp/<token> checks returned Amazon's Page Not Found page, and all three short links opened live listings, re-fetched 2026-11-16.", "source": ["S08", "S09", "S10", "S11", "S12", "S13"]}
+      ],
+      "not_verified": [
+        {"text": "That the three observed listings are the products the submitter intended. No official source documents the submitter's intent (flag FLG-002).", "flag": "FLG-002"},
+        {"text": "That the submitted short links are compliant or non-compliant as Special Links - the owner's Associates tag is not known to this project (flag FLG-010).", "flag": "FLG-010"}
+      ],
+      "how_written": "Drafted 2026-11-16 from the Program Policies, the Commission Income Statement, the Creators API documentation, the Sell on Amazon ASIN page, and the audit records in products.html. The three short links and the three /dp/<token> URLs were re-fetched in this session on 2026-11-16; the observation record is published at sessions/5a56c084/index.html. No product was purchased, tested or used by anyone on this project.",
+      "constraints": [
+        "Must not state that the submitted short links are valid or invalid Special Links - the compliance status is unresolved while the owner's tag is unknown.",
+        "Must not imply that following the short links earned or will earn commission for this site."
+      ]
+    },
+    {
+      "id": "A2",
+      "topic_ref": "T-10",
+      "slug": "what-you-can-say-about-a-product-you-have-not-used.html",
+      "title": "What you can say about a product you have not used",
+      "dek": "The FTC's one-line rule on experience claims, Amazon's accuracy clause, and the editorial standard this desk follows instead of fake hands-on reviews.",
+      "reading_minutes": 5,
+      "tldr": [
+        "The FTC's rule is short: you cannot talk about your experience with a product you have not tried.",
+        "Amazon separately forbids inaccurate, overbroad or misleading claims about any product - regardless of who is speaking.",
+        "The way through is attribute-based writing: say what the listing and the official pages say, link every claim, and never fake the hands-on part."
+      ],
+      "sections": [
+        {
+          "h": "The rule that ends fake reviews",
+          "paras": [
+            "The FTC's guidance to influencers and reviewers is unusually plain: \"You can't talk about your experience with a product you haven't tried.\" {{S07}} The same guidance requires financial relationships with a brand to be disclosed {{S07}}, and it requires the disclosure to be placed \"so it's hard to miss\" {{S07}}. The Endorsement Guides behind that guidance were revised in 2023 and remain the current standard {{S24}}.",
+            "This is not a technicality. A review that invents a weekend of testing is a deceptive endorsement, and the FTC's material-connection rule applies to affiliate links exactly as it does to free samples: the commission is the relationship, so the relationship must be disclosed {{S07}}."
+          ]
+        },
+        {
+          "h": "Amazon's own accuracy clause",
+          "paras": [
+            "Beyond the FTC's rules, Associates operate under Amazon's Program Policies, which add their own floor: \"You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or the existence of a commission on Amazon purchases.\" {{S02}}",
+            "Read together, the two rules define a workable standard for a site that has not touched the product: stick to what the record supports, keep the commission relationship disclosed, and let the reader see the difference between a documented attribute and an opinion."
+          ]
+        },
+        {
+          "h": "The standard this desk follows",
+          "paras": [
+            "Every article here is written from official pages: the listings themselves, Amazon's policy documents and the FTC's guidance. Attributes - capacity, basket count, named functions - are read from the listing title or the listing page, and linked {{S14}} {{S15}} {{S16}}. Rules - what may be displayed, what must be disclosed - are linked to the policy document that states them.",
+            "What the desk never writes: 'we tested', 'in our kitchen', 'after three weeks of daily use'. Nobody on this project has used the products. Where the record is silent - performance, durability, real-world cook times - the article says so instead of inventing colour.",
+            "The disclosure that Amazon's Operating Agreement requires - 'As an Amazon Associate I earn from qualifying purchases.' - appears on every page of this site, and the FTC's placement rule (hard to miss, close to the recommendation) is applied to the product pointers on the marketing pages {{S01}} {{S07}}."
+          ]
+        },
+        {
+          "h": "A checklist for honest product copy",
+          "paras": [
+            "For every sentence about a product, ask three questions. Can I point to the page that states it? Does it claim an experience nobody here had? Would the sentence survive if the reader could see my sources? If any answer is no, the sentence does not ship.",
+            "That discipline is also what separates a useful site from the templated filler that searchers have learned to skip: specifics with sources read differently from adjectives without any, and readers can tell."
+          ]
+        }
+      ],
+      "verified": [
+        {"text": "The FTC experience rule, the disclosure rules and the 2023 revision of the Endorsement Guides are quoted from ftc.gov pages.", "source": ["S07", "S24", "S44"]},
+        {"text": "Amazon's accuracy clause and the Operating Agreement disclosure wording are quoted from Amazon's Program Policies and Operating Agreement.", "source": ["S01", "S02"]},
+        {"text": "The listing attributes used on this site are read from the three destination pages.", "source": ["S14", "S15", "S16"]}
+      ],
+      "not_verified": [
+        {"text": "First-hand performance of any product - nobody on this project has used the products, so no experience claim appears anywhere on the site.", "flag": "FLG-002"},
+        {"text": "Anything about the owner's account standing or business identity, which only the owner can supply.", "flag": "FLG-002"}
+      ],
+      "how_written": "Drafted 2026-11-16 from the FTC's Disclosures 101 page, the Endorsements topic hub and the Endorsement Guides FAQ, Amazon's Program Policies and the Operating Agreement. Product attributes referenced in passing are the ones already published on products.html with their own source links. No product was purchased, tested or used by anyone on this project.",
+      "constraints": [
+        "Must not claim or imply any first-hand use, testing or ownership of any product by this project or its owner.",
+        "Must not present this article as legal advice; the rules are linked so a reader can read them directly."
+      ]
+    },
+    {
+      "id": "A3",
+      "topic_ref": "T-07",
+      "slug": "where-air-fryers-sit-in-amazons-category-tree.html",
+      "title": "Where air fryers sit in Amazon's category tree - and why the category decides the commission",
+      "dek": "One breadcrumb, one row of a public rate table: how the 4.50% Kitchen rate attaches to the three listings this site tracks, and when the money actually arrives.",
+      "reading_minutes": 5,
+      "tldr": [
+        "Commission rates on Amazon Associates are set per category, and all three listings this site tracks sit in the Air Fryers category, inside Kitchen.",
+        "Amazon's public Standard Commission Income Statement puts Kitchen at 4.50% - but every account has its own schedule, so no per-product rate is claimed anywhere on this site.",
+        "The three clocks that matter after a sale: about 60 days after month end for payment, and the balance thresholds before anything is paid at all."
+      ],
+      "sections": [
+        {
+          "h": "Read the breadcrumb, not the product name",
+          "paras": [
+            "A product page's category is printed right on the page, as a breadcrumb above the buy box. For the three listings this site tracks, all three breadcrumbs read the same way: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers {{S14}} {{S15}} {{S16}}. Amazon's Best Sellers page for the category is published at the same browse node, 17659096011 {{S43}}.",
+            "The category matters because Amazon's commission structure is category-based. The Standard Commission Income Statement's Table 1 fixes rates by product category - and Kitchen is one of the named rows, at 4.50% {{S25}}. 'All other categories' default to 4.00% {{S25}}. That is the whole mechanism: the breadcrumb decides the row, the row decides the rate."
+          ]
+        },
+        {
+          "h": "The rate table is public; your rate card is not",
+          "paras": [
+            "Two different documents carry commission rates, and confusing them is a common mistake. Table 1 of the Standard Commission Income Statement is public - it is the category table quoted above {{S25}}. The account-specific commission schedule, by contrast, is published to each Associate's own account and can differ {{S03}}.",
+            "That is why every per-product commission cell on this site is blank. The public table says what the standard rate is for a category; only the account's own schedule says what a specific account earns on a specific sale. Publishing a per-product rate without the account schedule would be exactly the kind of unsupported figure this site exists to avoid.",
+            "There is also a separate programme for Onsite content with its own table {{S26}} - one more reason a single 'the commission is X%' sentence is usually wrong somewhere."
+          ]
+        },
+        {
+          "h": "When the money actually arrives",
+          "paras": [
+            "Amazon's policies state that commission income is paid approximately 60 days after the end of the month in which it was earned {{S02}}. Before anything is paid at all, the balance must clear a minimum: for the US marketplace, a USD 10 minimum for deposit and gift-card payouts, and USD 100 for a cheque {{S02}}.",
+            "Two more timing rules shape expectations. A new application is reviewed after the applicant has driven at least three qualifying sales within 180 days, and personal orders do not count {{S29}}. And an account that has not referred a sale within 180 days can be closed under the dormancy rule {{S28}}.",
+            "For the newer Creators API - the data interface that would let a compliant site display live prices and ratings - the prerequisite is higher: at least 10 qualifying sales within the past 30 days {{S04}}."
+          ]
+        },
+        {
+          "h": "What a reader should take from this",
+          "paras": [
+            "If you browse this site's comparisons and click through to the listings, nothing about your experience changes - you land on Amazon's own page and shop normally. The category breadcrumb and the public rate table explain what the site's operator might earn on a qualifying purchase: 4.50% of the sale at the standard Kitchen rate, on the account's own schedule, paid on Amazon's timing {{S25}} {{S02}}."
+          ]
+        }
+      ],
+      "verified": [
+        {"text": "The Air Fryers breadcrumb path appears on all three destination pages; the category's Best Sellers page is published at browse node 17659096011.", "source": ["S14", "S15", "S16", "S43"]},
+        {"text": "Table 1 of the Standard Commission Income Statement lists Kitchen at 4.50% and all other categories at 4.00%.", "source": ["S25"]},
+        {"text": "Payment timing, payment minimums, the application-review rule and the dormancy rule are quoted from the Program Policies and Associates Help pages.", "source": ["S02", "S28", "S29"]},
+        {"text": "The Creators API prerequisite of at least 10 qualifying sales in the past 30 days is stated in Amazon's API documentation.", "source": ["S04"]}
+      ],
+      "not_verified": [
+        {"text": "Any per-product or account-specific commission rate - the account schedule is separate (S03) and is not available to this project.", "flag": "FLG-005"},
+        {"text": "That the three observed listings are the products the submitter intended (flag FLG-002).", "flag": "FLG-002"}
+      ],
+      "how_written": "Drafted 2026-11-16 from the Standard Commission Income Statement (Table 1), the Onsite Commission Income Statement, the Program Policies, the Associates Help pages on application review and dormancy, the Creators API introduction, and the three destination pages' breadcrumbs (re-fetched 2026-11-16). No revenue projection is made anywhere in this article.",
+      "constraints": [
+        "Must not state a per-product commission rate or project an income figure for any product.",
+        "Must not present the 4.50% standard Kitchen rate as the rate any specific account receives."
+      ]
+    },
+    {
+      "id": "A4",
+      "topic_ref": "new (grounded in PF-12/PF-13/PF-48)",
+      "slug": "the-24-hour-window-how-amazons-cookie-pays.html",
+      "title": "The 24-hour window: how Amazon's shopping session actually pays",
+      "dek": "24 hours, 89 days, 180 days - the three clocks inside every qualifying purchase, read from the Commission Income Statement, plus the things that quietly cancel a commission.",
+      "reading_minutes": 6,
+      "tldr": [
+        "A click starts a shopping session that lasts 24 hours - unless the reader buys, or clicks someone else's affiliate link first.",
+        "Something left in the cart can still pay out for up to 89 days after the original click, provided the order completes, ships and is paid for within 180 days.",
+        "Returns, cancellations and refunded orders are stripped from commission - and purchases that arrive through a 'Redirecting Link' can be disqualified outright."
+      ],
+      "sections": [
+        {
+          "h": "Clock one: the 24-hour session",
+          "paras": [
+            "The Commission Income Statement defines a Session as beginning \"when a customer clicks through that Special Link\" and ending \"upon the first to occur of the following: (x) 24 hours elapse from that click, (y) the customer places an order for a Product, other than a digital product..., or (z) the customer clicks through a Special Link to an Amazon Site that is not your Special Link\" {{S02}}.",
+            "Clause (z) is the one most people miss: the session is exclusive. If your reader clicks your link today and a different site's affiliate link tonight, the second click ends your session - and whatever they buy afterwards is credited to the other site, not you {{S02}}.",
+            "There is no extension for 'engagement'. The window is the window, which is why affiliate copy that gives a reader a reason to act now is not just conversion craft - it is arithmetic."
+          ]
+        },
+        {
+          "h": "Clock two: the 89-day cart",
+          "paras": [
+            "A product added to the cart during the session gets its own, longer clock: the purchase can complete \"no later than 89 days after their initial click-through of the Special Link\" {{S02}}. That covers the very common pattern of a reader who clicks, carts, and then sleeps on a big-ticket purchase - the air-fryer-oven-at-christmas pattern.",
+            "The 89-day clock is tied to completing the order for that Product, not to browsing generally. It is a cart window, not a cookies-everywhere window."
+          ]
+        },
+        {
+          "h": "Clock three: the 180-day ship-and-pay",
+          "paras": [
+            "Even a completed order is not paid until it ships and settles: within 180 days of the purchase, the Product must be \"shipped to, streamed or downloaded by, and paid for by the customer\" {{S02}}. Pre-orders, backorders and slow fulfilment all live inside this rule.",
+            "After that, the accounting clock: commission income is paid approximately 60 days after the end of the month in which it was earned, and only once the balance clears the marketplace minimum - in the US, USD 10 for deposit or gift card, USD 100 for a cheque {{S02}}."
+          ]
+        },
+        {
+          "h": "What cancels a commission",
+          "paras": [
+            "Three cancellations are written directly into the policies. Returned, refunded or cancelled orders are disqualified {{S02}}. Purchases made through a Redirecting Link - a link that sends the reader indirectly to Amazon - are disqualified {{S30}}. And the session rules themselves disqualify credit whenever the last affiliate click before purchase was someone else's {{S02}}.",
+            "For a content site, the Redirecting Link clause is the one to engineer around deliberately: it is the reason this project refuses to wrap product links in intermediaries while the submitted links' own status is unresolved (see 'What an Amazon affiliate link has to look like' on this desk)."
+          ]
+        },
+        {
+          "h": "Why this site cannot show you its conversion numbers yet",
+          "paras": [
+            "Everything above describes how commission works in principle. What it does not do is produce numbers for this site: no Associates tag is connected, so no clicks and no conversions exist to report. Amazon's own reporting is the only compliant source for those figures when they exist, and Amazon's policies prohibit generating artificial clicks or sessions to manufacture them {{S02}}.",
+            "Until the account inputs arrive (open questions Q1 and Q4 on the Decision Center), the campaigns ledger on this site stays deliberately empty - which is the honest state of a site that has not yet earned anything."
+          ]
+        }
+      ],
+      "verified": [
+        {"text": "The 24-hour session definition, the (z) exclusive-session clause, the 89-day cart window and the 180-day ship-and-pay rule are quoted from the Commission Income Statement (re-read 2026-11-16).", "source": ["S02"]},
+        {"text": "The Redirecting Link disqualification is stated in Commission Income Statement 2(e).", "source": ["S30"]},
+        {"text": "Refund/return/cancellation disqualification and payment timing and minimums are stated in the Program Policies.", "source": ["S02"]}
+      ],
+      "not_verified": [
+        {"text": "Any click, conversion or revenue figure for this site - no Associates tag is connected, and no compliant data path exists yet.", "flag": "FLG-006"},
+        {"text": "That the submitted short links qualify as Special Links (flag FLG-010 - the owner's tag is unknown).", "flag": "FLG-010"}
+      ],
+      "how_written": "Drafted 2026-11-16 directly from the Commission Income Statement, section 1 (re-read from the live page in this session on 2026-11-16) and section 2(e), plus the Program Policies' payment rules. The session record with the re-read observations is published at sessions/5a56c084/index.html.",
+      "constraints": [
+        "Must not present the window rules as legal advice or as a guarantee of payment.",
+        "Must not attach any click or conversion figure to this site."
+      ]
+    }
+  ]
+}

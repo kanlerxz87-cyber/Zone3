@@ -5566,11 +5566,19 @@ independent-verification and integration work, scoped so no other session's file
 creating or pushing other branches, so the brief's `session-<id>/<task>` branch naming cannot be
 applied. Task IDs below replace per-task branches.
 
+# Part: session `5a56c084` (2026-11-16) — polished-marketing implementation pass + final integration for this round
+
 ## Session registry (this part)
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
 | `f132f462` | `arena/f132f462-zone3` | Independent line-by-line repo review; live re-verification of load-bearing claims; implement accepted marketing suggestions (brand/hero treatment SUG-01, marketing-style comparison and buying guides SUG-04, point-in-time trending section SUG-08 anchored to official surfaces); update the executive summary; run all build gates; PR → `main`, merge without waiting, confirm Pages deploy + live checks; record PR link and merge result here | done (f132-T7) | 2026-11-16 |
+
+| 5a56c084 | `arena/5a56c084-zone3` | (A) independent 2026-11-16 re-verification of the three submitted links and load-bearing facts; (B) implementation of the unblocked subset of the published SUG-01…10 proposals (polished marketing front-end, editorial article hub for the six `ready` topics, trust and trend modules, decision-log update); (C) final integration pass for this round: all gates, PR to `main`, merge, Pages deploy confirmation | in progress (A, B, C) | 2026-11-16 18:33 |
+
+### Branch note (5a56c084)
+
+This session is fixed by Arena to branch `arena/5a56c084-zone3` (same constraint recorded 2026-11-13 by session 7f84fea4). All work is committed to that branch; no other branch is created or pushed.
 
 ## Task board (this part)
 
@@ -6299,3 +6307,51 @@ through the REST API (`gh api …/pulls/100 --method PATCH`) instead. The PR bod
 ### 52A-T3 standby rule
 
 If PR #113 (5b425c74), PR #109 (a0ffcab0), PR #116 (d18303ca), or PR #117 (145b8df7) is still open after 60 minutes of no commits, this session takes over integration. It will log the handoff here first. Until then this session does not open or merge PRs.
+
+
+| T-5a56c084-A — Independent re-verification (2026-11-16): three submitted links, three destinations, load-bearing policy facts | done | 5a56c084 | `sessions/5a56c084/**`, this Part of `COORDINATION.md` only | 5a56-V01–V08 (record: `sessions/5a56c084/verification-2026-11-16.json`) | none — 8/8 match; 2 Info drift notes (5a56-D-01, 5a56-D-02), no new flag |
+| T-5a56c084-B — Implement the unblocked subset of SUG-01…10 (session 4f83ee7b's published proposals): marketing landing, design system, article hub for the ready topics, trust/trend modules, decision log | done | 5a56c084 | `scripts/build_site.py`, `scripts/build_5a56c084.py` (new), `data/articles.json` (new), `data/suggestions.json`, `scripts/check_site.py`, generated flat pages, `assets/style.css`, `articles/**` (new), `sessions/5a56c084/index.html`, `sitemap.xml` | S01–S55 (existing register; no new source IDs) | page() subdirectory prefixer was depth-broken for pages nested ≥2 levels — fixed in the same commit (recorded below) |
+| T-5a56c084-C — Final integration pass for this round: run all gates (`check_site`, `verify_site`, `link_report --strict`, `build_sitemap --check`), PR to `main`, merge, Pages deploy confirmation, live checks | in progress | 5a56c084 | this Part of `COORDINATION.md` only | — | none yet |
+
+### Scope and non-overlap notes (5a56c084)
+
+- T7 (session `3c886b62`, `sessions/3c886b62/**` only) has been `in progress` since 2026-11-13 with no commits in the window; per the takeover rule its claim is stale, but its scope does not touch this session's files, so no takeover is performed and nothing is written to its scope.
+- `decision-center.html`, `marketing/*` generators, `tools/*` (audit build) and all `sessions/<other>/**` directories are owned by earlier sessions and are **not** modified by this session. Suggestions-page status changes are made through the data file `data/suggestions.json` and its generator, which 4f83ee7b created for exactly this purpose; the change is additive (a new `implementation` field per suggestion).
+- No proposal that 4f83ee7b marked blocked (SUG-05, pending owner tag Q1) is implemented; no owner-input question (Q1–Q10) is answered by inference.
+
+## Verification performed (5a56c084)
+
+| ID | What was re-fetched on 2026-11-16 | Result | Retested |
+|---|---|---|---|
+| 5a56-V01 | `link.amazon/B04G1MEwY` | Lands on `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Quart Dual Basket Air Fryer Oven. Same destination as S11/S14/S52/S55. | S11, S14 |
+| 5a56-V02 | `link.amazon/B02NbDxp3` | Lands on `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door. Same destination as S12/S15/S53. | S12, S15 |
+| 5a56-V03 | `link.amazon/B00hJ57DV` | Lands on `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry. Same destination as S13/S16/S54. | S13, S16 |
+| 5a56-V04–V06 | `amazon.com/dp/<each token>` | Amazon's "Page Not Found" page for all three — consistent with the 9-character finding. | S08, S09, S10 |
+| 5a56-V07 | Operating Agreement (chunks 0–1) | Header "Updated: October 15, 2025"; §5 disclosure wording verbatim, identical to PF-01. | S01 |
+| 5a56-V08 | Program Policies (chunk 0) | Header "Updated: April 14, 2026"; session definition (24 h / order / other-Associate's-link) and 89-day cart clause verbatim, identical to PF-12. | S02 |
+
+Drift notes (Info, no flag raised, precedent 4f83-F-01): 5a56-D-01 — CHEFMAN 6 Qt title now includes "with Easy View Windows"; 5a56-D-02 — Chefman 8 Qt title now includes "450°F Hi-Fry Option for Crispier Results". ASINs and destinations unchanged across all captures by four sessions. Full record: `sessions/5a56c084/verification-2026-11-16.json`, rendered at `/sessions/5a56c084/`.
+
+## Implementation record (5a56c084) — decisions on SUG-01…10
+
+Rendered on the site as the **Decision log** (suggestions.html); source of truth: `data/suggestions.json` `implementation` fields.
+
+| ID | Decision | What was done |
+|---|---|---|
+| SUG-01 | partially implemented | Landing rebuilt (hero, product cards, proof stats, honest status callout). Marketing-name choice (Q7) stays with the owner; brand remains Zone3. |
+| SUG-02 | implemented | Research Desk at `articles/`: hub listing all 12 planned topics + 4 articles (plan topics T-09, T-10, T-07 + one new evergreen grounded in the Commission Income Statement). |
+| SUG-03 | implemented | Byline, date, reading time, verified / not-verified boxes, how-written notes and per-article editorial constraints on every article; review checklist published on the hub. |
+| SUG-04 | deferred | `marketing/comparison.html` and `buying-guide.html` are generated by `scripts/build_marketing.py` (another session's scope). Logged here as a change request rather than edited cross-scope; the shared stylesheet already restyles them. |
+| SUG-05 | still blocked | Associates tag unknown (Q1). No conversion CTA anywhere; Amazon links are labelled source links; articles explain the rule. |
+| SUG-06 | implemented | Trust section on the landing page; disclosure strip under the header on every page; Amazon content disclaimer in every footer. |
+| SUG-07 | implemented | Canonical links on every generated page; per-article meta descriptions; sitemap regenerated from the tree. No invented metrics. |
+| SUG-08 | implemented | "In the kitchen now" module pointing to the dated Best Sellers benchmark (node 17659096011, captured 2026-11-14) instead of asserting a trend. |
+| SUG-09 | deferred | No tag connected → no clicks exist to report; ledger stays empty by design; no third-party tracking added. |
+| SUG-10 | deferred | Visible half done (published review checklist, named process). Named reviewer + cadence remain open question Q5. |
+
+### Irregularities raised by 5a56c084
+
+| ID | Item | Severity | Disposition |
+|---|---|---|---|
+| 5a56-F-01 | `page()`'s subdirectory prefixer added a single `../` regardless of depth; the first page nested two levels deep (`sessions/5a56c084/index.html`) rendered links that resolved one level short. Fixed in the same commit (depth-aware prefix); `check_site`, `verify_site` V5 and `check_all_links` all pass after the fix. | Info (caught before merge) | Fixed and gated |
+| 5a56-F-02 | Change request to session 588693c9's scope: SUG-04 asks for marketing/comparison and buying-guide restyle *in their generator* (`scripts/build_marketing.py`). Not acted on cross-scope; the shared stylesheet restyles those pages at present, and the generator change waits for an integration session that owns that scope. | Info | Logged for the owner / next integration |
