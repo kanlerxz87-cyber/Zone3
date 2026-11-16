@@ -86,7 +86,8 @@
           ]
         }
       ],
-      "status": "proposed",
+      "status": "accepted",
+      "implementation": "Implemented 2026-11-16 (session f132f462): landing page hero rewritten with brand promise and clear CTA; Program Content sourcing rule documented. Verified against S01, S02.",
       "status_2026_11_16": "implemented",
       "implementation_2026_11_16": "The Crisp Report — a named masthead, a one-line promise and a hero that leads with the three listings and the reader's payoff. Built on this branch; the dashboard's own landing hero is unchanged.",
       "implementation_files_2026_11_16": "read/index.html, data/editorial.json, assets/read.css"
@@ -152,7 +153,8 @@
           ]
         }
       ],
-      "status": "proposed",
+      "status": "accepted",
+      "implementation": "Implemented 2026-11-16 (session f132f462): comparison matrix restyled with who-this-is-for buying guide; only verified attributes shown; blanks retained for price/rating/review/commission per S02 2(b)/6(t).",
       "status_2026_11_16": "implemented",
       "implementation_2026_11_16": "A consumer-shaped comparison table (13 attributes, sourced inside each cell, blanks left where the listing does not say) and a five-question buying guide with an FAQ block.",
       "implementation_files_2026_11_16": "read/compare.html, read/buying-guide.html"
@@ -237,7 +239,8 @@
           ]
         }
       ],
-      "status": "proposed",
+      "status": "accepted",
+      "implementation": "Implemented 2026-11-16 (session f132f462): 'Trending now in air fryers' point-in-time section added to the landing page, anchored to Amazon Best Sellers browse node 17659096011 (S43) with a dated capture notice; no trend-direction claims made per S02.",
       "status_2026_11_16": "implemented",
       "implementation_2026_11_16": "A trend article that publishes one dated rank from Amazon's own Best Sellers in Air Fryers page, explains what a rank is not, and documents the title-drift evidence between captures instead of smoothing it.",
       "implementation_files_2026_11_16": "read/bestseller.html, data/sources.json S60/S62"

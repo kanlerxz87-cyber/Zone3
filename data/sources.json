@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-16 — union: main's register plus session 145b8df7's dated re-verification entries (renumbered where main had already taken an id)",
+  "retrieved": "2026-11-16 — union: earlier sessions' dated entries plus session 145b8df7's S60-S68 re-verification captures (S59 is the FTC Consumer Reviews and Testimonials Rule Q&A, added by session 1f1b8bd2)",
   "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration. Integrated with session 9fef7647 (PR #26) by session b90c5685 on 2026-11-14.",
   "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45). RENUMBERING (2026-11-14, session b90c5685): PR #26's unique sources are kept as S46-S54 and this session's re-fetch as S55, because PR #26 had used S30-S32 and S33-S38 for pages main already assigns other IDs to.",
   "sources": [
@@ -577,5 +577,6 @@
       "status_note": "Fetched 2026-11-16 by session 145b8df7 (srctok-38bef00eb1e962ef). Final URL https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-38bef00eb1e962ef&channelId=704&plpRedirect=mhFallback&th=1. Same destination as S13 (2026-11-13) and S54 (2026-11-14). The submitted code is 9 characters, so it is not an ASIN (FLG-001), and the destination is an observation, not proof of owner intent (FLG-002). [Id renumbered from S68 on integration onto main, where that id already names a different document.]",
       "used_for": "Product 3 destination for the editorial layer."
     }
-  ]
+  ],
+  "id_reservation": "S01-S59 are held by earlier sessions (main@110). S60-S69 are claimed by session 145b8df7 for its 2026-11-16 re-verification captures and are NOT free: a session rebasing onto an older main must append from S70, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
 }
