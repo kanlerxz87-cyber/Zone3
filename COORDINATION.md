@@ -5504,7 +5504,7 @@ Flagged-for-review page and do not block the merge.
 | A0-T3 — live re-fetch of the three short links, `dp/` control, Operating Agreement, Program Policies 2(b)/6(s)/6(t)/6(w)/6(y), Creators API ASIN, Commission Table 1, FTC Disclosures 101 | **done** (A0-V01…V11) | `research/a0ffcab0-record.md` §3 |
 | A0-T4 — restricted-value scan of public output | **done** (scan); **fix not applied to `/docs/`** — owner decision logged as A0-F-01 | `research/a0ffcab0-record.md` §4 |
 | A0-T4b — remove restricted values from `docs/` (scope claimed above) | **not completed — owner decision.** Reason: the fix rewrites derived analysis (discounts, weighted rating, velocity) on five HTML pages and one Markdown file; a text swap would leave misleading numbers, and the owner decision is recorded as A0-F-01 | `research/a0ffcab0-record.md` §5, §8 |
-| A0-T5 — executive summary check against the gates | **done** — counts corrected (86 → 92 flags; severity counts); update block added | `EXECUTIVE-SUMMARY.md` §2, §6 and the 2026-11-16 a0ffcab0 block |
+| A0-T5 — executive summary check against the gates | **done** — counts corrected (86 → 93 flags; severity counts); update block added | `EXECUTIVE-SUMMARY.md` §2, §6 and the 2026-11-16 a0ffcab0 block |
 | A0-T6 — PR → `main`, merge without waiting, Pages confirmation, record | **in progress** — record appended after the PR is merged (see A0 publish record below) | — |
 
 ### A0 irregularities (published on the Flagged for review page; non-blocking)
@@ -5517,6 +5517,7 @@ Flagged-for-review page and do not block the merge.
 | A0-F-04 | Low | six `marketing/*.html` pages were one nav line behind `scripts/build_site.py` (`/site/` entry from PR #101) | **fixed** by regeneration; nav only |
 | A0-F-05 | Info | the three short links and the `dp/` control re-checked 2026-11-16 | none; intended-product match still an owner item (FLG-002, FLG-027) |
 | A0-F-06 | Info | `COORDINATION.md` is long, with 93 "in progress" lines, many from closed sessions; the rebase conflict was an append-append resolved by a merge | owner to archive closed Parts |
+| A0-F-07 | Medium | The Flagged page's 'Observed redirect targets' table says "No: not the submitted product" for each short link; no official source establishes the submitter's intent (the register's own rule is 'observed destination; intended match unconfirmed', 71-F-03) | open — wording change requested to the owner of that addendum; published as a flag |
 
 ### A0 change requests (cross-scope; not edited by this session)
 
@@ -5531,8 +5532,8 @@ Flagged-for-review page and do not block the merge.
 
 | Gate | Result |
 |---|---|
-| `scripts/check_site.py` | OK · 13 pages · 3 products · 52 sources · **92 flags** |
-| `tools/verify_site.py` | VERIFY PASS · 83 pages · 1,488 rows · 1,264 official · 440 flag · 89 repo anchor |
+| `scripts/check_site.py` | OK · 13 pages · 3 products · 52 sources · **93 flags** |
+| `tools/verify_site.py` | VERIFY PASS · 83 pages · 1,489 rows · 1,265 official · 441 flag · 89 repo anchor |
 | `tools/link_report.py --strict` | exit 0 |
 | `scripts/check_all_links.py` | 129 HTML pages · 116 external URLs · 0 errors |
 | `scripts/build_sitemap.py --check` | covers every live page; main's canonical sitemap kept |
@@ -5546,4 +5547,12 @@ Operating Agreement — <https://affiliate-program.amazon.com/help/operating/agr
 
 ### A0 publish record
 
-_Pending — appended in a follow-up commit after the PR is merged and the Pages build is confirmed._
+| Event | Result |
+|---|---|
+| PR #107 — `arena/a0ffcab0-zone3` → `main` (A0 review, six flags, marketing nav regeneration, exec-summary counts, research record) | **MERGED** 2026-11-16T18:46:51Z via `gh pr merge 107 --merge` (no approval waited, no `--auto`). Merge commit `2c66e2464e23379b00edab64fc52da3bb12399c7`. Mergeable state: clean. |
+| GitHub Pages build for `2c66e24` | **built** (2026-11-16T18:47:24Z). Latest build status after merge: `built`, error none. |
+| Live checks (fetched 2026-11-16 after the build) | Flagged page at `/flagged.html` reports **92 entries** with the severity counts that the PR's gates produced (3 critical, 16 high, 24 medium, 29 low, 20 info). The last chunk shows the Observed redirect-targets table (see A0-F-07). |
+| Post-merge finding | **A0-F-07 (Medium)**: the redirect-target table says "No: not the submitted product" for each short link. Published as a flag; wording change requested. Added in follow-up PR (below). |
+| Follow-up PR — A0-F-07 flag, counts 92 → 93, this publish record | PR number and merge result recorded in the GitHub PR log for this branch (`gh pr view` on `arena/a0ffcab0-zone3`). The repository's flags, record and summary all report 93. |
+
+**Open items after this session (none blocks the merge; all published):** A0-F-01 and A0-F-02 — owner decisions on restricted values in `/docs/`, `sessions/`, `archive/`, `research/` and root data snapshots; A0-F-03 — V4 gate change; A0-F-07 — wording change; A0-F-05 — intended-product confirmation, FLG-002.
