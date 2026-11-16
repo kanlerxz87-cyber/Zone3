@@ -481,6 +481,76 @@ those slots, this session built the part that can be true today — a site that 
 explains its own gaps, and whose claims a reviewer can check line by line — and published the missing
 inputs as twelve questions with a discovery action and an owner for each.
 
+---
+
+## 11. The second marketing implementation, and the state of the whole build — session `145b8df7` (2026-11-16)
+
+> Section 10 of this file was written on this branch before `main` moved. While it was open, five
+> other sessions landed (`ab3ed329` PR #98, `1f1b8bd2` PR #99/#102, `59d84c55` PR #101/#103,
+> `a0ffcab0`/`f132f462` PR #110), and one of them built a reader-facing marketing site too. Section 10's copy is kept as written — it
+> still describes `/read/` accurately — and this section reconciles it with what is actually on
+> `main` now. Nothing from those sessions was deleted, rewritten or reverted by this integration.
+
+### 11.1 What is on `main` now, as of this session's merge
+
+| Surface | Owner | What it is |
+|---|---|---|
+| `/` and the flat pages | sessions `7f84fea4`…`3d359c23`, extended by `59d84c55` | The verification dashboard: products, pricing, reviews, sources, verification log, flagged register, decision centre, suggestions page |
+| `/read/` — **The Crisp Report** | `145b8df7` (this session) | 11 generated pages: 6 articles, a 13-attribute three-way comparison, a five-question buying guide with an FAQ, an Air Fryers category hub, a method page. Built by `scripts/build_read.py` from `data/editorial.json`; `audit()` fails the build on an uncited row, a price pattern, a rating pattern, a stored Amazon image or a broken link |
+| `/site/` — **Air Fryer Field Notes** | `59d84c55` | 8 pages with its own provenance gate (`tools/i2_gate.py` G1–G10), its own evidence and verification pages, and a 12-proposal decision board in `data/i2/decisions.json` |
+| `/marketing/` | `588693c9`, `b90c5685` | The 2026-11-14 facts-only brief set, kept for the record |
+| `/dashboard/`, `/sessions/**`, `/docs/`, `/archive/` | earlier sessions | The 16-page audit build, per-session records, the archived build and byte-frozen snapshots of other sessions' sites |
+
+**Two reader-facing marketing layers now exist because two sessions answered the same Suggestions page
+in parallel and neither could see the other before landing.** That is a coherence and maintenance
+problem, not a data problem: both layers draw on the same verified register, both carry the disclosure
+sentence, and neither publishes a price, a star rating or an unverified value. It is published as
+**`Z14-F-04`** on the Flagged for review page with the recommendation stated plainly — the owner picks
+one as canonical, then a follow-up session folds the other's unique pages in and leaves redirect stubs so
+no published URL breaks. This session deliberately did not delete or redirect another session's output.
+
+### 11.2 The registers after integration
+
+| Register | Before this session | After |
+|---|---|---|
+| `data/sources.json` (flat site) | 52 entries, ids to `S59` | **62 entries, ids to `S69`** — this session's ten dated captures were renumbered `S60`–`S69` because `main` had already taken `S59` for the FTC Consumer Reviews and Testimonials Rule Q&A. Every reference in this session's files was rewritten by `scripts/renumber_sources.py`; 0 dangling references |
+| `data/flags.json` | 86 at this session's start; 93 after PR #110 | **96** — this session added `Z14-F-01` (Emeril listing-title wording drift), `Z14-F-02` (dated best-seller snapshots) and `Z14-F-04` (the parallel marketing layers); sessions `a0ffcab0`/`f132f462` added `A0-F-*` and `F1-F-*` in the same window. All non-blocking, all published on the flagged page with their sources |
+| `suggestions.html` | 10 proposals as published for review, 10 questions | **unchanged text plus three new registers**: an implementation status per proposal, a 10-row answers register (what official sources settle vs what only the owner can settle, and which decision each unlocks), and four ranked paths with a recommendation |
+| Marketing pages | 0 reader-facing pages from this branch | **11** under `/read/` |
+
+### 11.3 Verified by this session on 2026-11-16, and where it is published
+
+| Fact | Official page | Register id | Used by |
+|---|---|---|---|
+| `link.amazon/B04G1MEwY` → `amazon.com/dp/B0CDY277D3` | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | `S67` | comparison, category hub |
+| `link.amazon/B02NbDxp3` → `amazon.com/dp/B09B7SB46R` | [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | `S68` | comparison, drift flag |
+| `link.amazon/B00hJ57DV` → `amazon.com/dp/B08DKYBTPH` | [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | `S69` | comparison, feature article |
+| Served listing titles and the Air Fryers breadcrumb | [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) · [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) · [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) | `S60` `S61` `S62` | every product sentence in `/read/` |
+| Best Sellers in Air Fryers, positions 1–6 and the node taxonomy (289913 › 17659095011 › 17659096011, siblings 224479505011 and 289918) | [Best Sellers in Air Fryers](https://www.amazon.com/gp/bestsellers/kitchen/17659096011) | `S63` `S64` | the dated rank article, category hub |
+| Standard Commission Income Statement Table 1 — Kitchen **4.50%**, All Other **4.00%**, bounties **$12.00 / $2.00 / $5.00 / $0.25** | [GRXPHT8U84RAYDXZ](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | `S65` | "how this site gets paid" |
+| Program Policies header "Updated: April 14, 2026" and Commission Income Statement §1 (24 h session, 89-day cart, 180-day ship-and-pay) | [operating/policies](https://affiliate-program.amazon.com/help/operating/policies) | `S66` | the same article's clock section |
+
+Prices, star ratings and review counts printed on those pages were **not** copied into the site
+(Program Policies 2(b) and 6(t)). No per-product commission, demand rank, conversion or revenue figure
+was inferred anywhere.
+
+### 11.4 Gates on the integrated tree
+
+| Gate | Result |
+|---|---|
+| `scripts/build_read.py --check` | PASS — 11 pages, generator output matches the committed files |
+| `scripts/check_site.py` | OK — 13 pages, 3 products, **62 sources**, **96 flags** |
+| `tools/verify_site.py` | **PASS — 94 pages, 1,575 table rows, 1,348 officially sourced, 0 advisories** — every row provenanced by an official link, a flag or a repo anchor |
+| `tools/link_report.py --strict` | exit 0 — no dangling source or flag reference |
+| `scripts/build_sitemap.py --check` | PASS — every live page covered |
+| `scripts/check_all_links.py` | PASS — 0 broken internal links across the tree |
+| conflict-marker scan, `git diff --check` | 0 markers, clean |
+
+**Open items the owner must still settle** (unchanged, and unchanged by any other session): the
+Associates tag (blocks all revenue), confirmation of the three intended ASINs, the target marketplace,
+whether an approved account exists, the reviewer and cadence, the analytics stack, and — new from this
+session — which marketing layer is canonical.
+
 ## 10. Implementation pass — session `5a56c084` (2026-11-16)
 
 **What this pass is.** The polished-marketing implementation round. Session `4f83ee7b`

@@ -1,0 +1,278 @@
+{
+  "session": "5b425c74",
+  "date": "2026-11-16",
+  "scope": "Independent line-by-line re-verification of every load-bearing claim against the official page it cites, repo review, and gate re-run. Claims verified against the tree at 933e2f3 (merge of PR #97); the branch was rebased as main advanced under parallel sessions (final base 609dc76, merge of PR #103), and the gates were re-run on the final merged tree.",
+  "method": "Every page below was fetched by this session on 2026-11-16 with fetch_page. No third-party page, search result, blog or aggregator was used as evidence. A value that could not be confirmed from an official source is not shown.",
+  "product_links": [
+    {
+      "id": "P1",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "code": "B04G1MEwY",
+      "code_length": 9,
+      "resolves_to": "https://www.amazon.com/dp/B0CDY277D3",
+      "served_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "result": "confirmed",
+      "sources": ["S11", "S14"]
+    },
+    {
+      "id": "P2",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "code": "B02NbDxp3",
+      "code_length": 9,
+      "resolves_to": "https://www.amazon.com/dp/B09B7SB46R",
+      "served_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "result": "confirmed",
+      "sources": ["S12", "S15"]
+    },
+    {
+      "id": "P3",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "code": "B00hJ57DV",
+      "code_length": 9,
+      "resolves_to": "https://www.amazon.com/dp/B08DKYBTPH",
+      "served_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry\u00ae 4-in-1 with 450\u00b0F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "result": "confirmed",
+      "sources": ["S13", "S16"]
+    }
+  ],
+  "direct_lookup_control": [
+    {
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "result": "Page Not Found",
+      "source": "S08"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B02NbDxp3",
+      "result": "Page Not Found",
+      "source": "S09"
+    },
+    {
+      "url": "https://www.amazon.com/dp/B00hJ57DV",
+      "result": "Page Not Found",
+      "source": "S10"
+    }
+  ],
+  "asin_rule": {
+    "claim": "An ASIN is a 10-character alphanumeric identifier, so a 9-character code cannot be an ASIN.",
+    "creators_api": "itemIdType default ASIN; documented example itemIds \"B0199980K4\", \"B000HZD168\" (10 characters).",
+    "sell_on_amazon": "\u201cASIN\u201d stands for \u201cAmazon Standard Identification Number.\u201d It\u2019s a unique 10-character alphanumeric code assigned to every product listed in the Amazon store.",
+    "sources": ["S06", "S31", "S45"]
+  },
+  "policy_statements": [
+    {
+      "id": "PF-01",
+      "claim": "Operating Agreement \u00a75 required disclosure wording.",
+      "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site \u2026 \u201cAs an Amazon Associate I earn from qualifying purchases.\u201d",
+      "result": "confirmed_verbatim",
+      "source": "S01"
+    },
+    {
+      "id": "PF-02",
+      "claim": "Operating Agreement \u00a76: a Section 5 violation is a material breach.",
+      "quote": "For the avoidance of doubt and without limitation for purposes of the foregoing subsection (a) any violation of Section 5 and as specified in the Program Policies will be deemed a material breach of this Agreement.",
+      "result": "confirmed_verbatim",
+      "source": "S01"
+    },
+    {
+      "id": "PF-03",
+      "claim": "Participation Requirements 2(b): every Special Link must carry the Associates tag.",
+      "quote": "you must include your Associates ID or \u201ctag\u201d (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-04",
+      "claim": "Participation Requirements 2(b): prices and availability only via an Amazon-served link or the API.",
+      "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-05",
+      "claim": "Participation Requirements 6(t): customer reviews and star ratings only via Creators API / PA API.",
+      "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-06",
+      "claim": "Participation Requirements 6(w): link shorteners must not obscure the Amazon destination.",
+      "quote": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-07",
+      "claim": "Commission Income Statement 2(e): Redirecting Links disqualify purchases.",
+      "quote": "any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \u201cRedirecting Link\u201d)",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-08",
+      "claim": "Participation Requirements 6(v): no cloaking or obscured URLs.",
+      "quote": "You will not cloak, hide, spoof, or otherwise obscure the URL of your Site containing Special Links (including by use of Redirecting Links) \u2026",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-09",
+      "claim": "Participation Requirements 4: no offline or printed use of Special Links.",
+      "quote": "You will not engage in any Promotional Activities in any offline manner, including by using any of our or our affiliates\u2019 trademarks or logos (including any Amazon Mark), any Program Content, or any Special Link in connection with any printed material, ebook, mailing, or any oral solicitation.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-10",
+      "claim": "Participation Requirements 2(b): no inaccurate or misleading product claims.",
+      "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-12",
+      "claim": "Commission Income Statement 1: 24-hour session, 89-day cart window.",
+      "quote": "(x) 24 hours elapse from that click \u2026 (i) \u2026 completing the order for that Product no later than 89 days after their initial click-through of the Special Link",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-16",
+      "claim": "Creators API prerequisite: at least 10 qualifying sales within the past 30 days.",
+      "quote": "Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API",
+      "result": "confirmed_verbatim",
+      "source": "S04"
+    },
+    {
+      "id": "PF-17",
+      "claim": "PA-API 5 is deprecated and is being replaced by the Creators API.",
+      "quote": "The Amazon Product Advertising API 5.0 (PA-API 5) has been deprecated and is being replaced by the Creators API.",
+      "result": "confirmed_verbatim",
+      "source": "S05"
+    },
+    {
+      "id": "PF-23",
+      "claim": "IP License 2(e): no aggregation, analysis, or model training on Product Advertising Content without approval.",
+      "quote": "You will not, without our express prior written approval, access or use Creators API, PA API or Data Feeds for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content \u2026 or in the direct training or fine-tuning of a machine learning and/or foundational model.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-25",
+      "claim": "Participation Requirements 5: no ML models from Special Links / Program Content without approval.",
+      "quote": "You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-39",
+      "claim": "Onsite Commission Income Statement Table A: Kitchen is in the 1.25% band; applies to Onsite Content only.",
+      "quote": "Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive | 1.25%",
+      "result": "confirmed_verbatim",
+      "source": "S26"
+    },
+    {
+      "id": "PF-40",
+      "claim": "Application review: at least three qualifying sales within the first 180 days; personal orders do not qualify.",
+      "quote": "our Associates team will check your application once you\u2019ve driven qualified sales (we require at least three within the first 180 days). Please note that personal orders do not qualify.",
+      "result": "confirmed_verbatim",
+      "source": "S29"
+    },
+    {
+      "id": "PF-41",
+      "claim": "Account dormancy: 180 days to refer a sale after applying.",
+      "quote": "Once you\u2019ve applied, you have 180 days to refer a sale through one of your Associates links.",
+      "result": "confirmed_verbatim",
+      "source": "S28"
+    },
+    {
+      "id": "PF-42",
+      "claim": "Payment timing: approximately 60 days after the end of each calendar month.",
+      "quote": "We will pay Standard Commission Income and Special Commission Income in the default currency for an Amazon Site approximately 60 days following the end of each calendar month in which they were earned",
+      "result": "confirmed_verbatim",
+      "source": "S02"
+    },
+    {
+      "id": "PF-43",
+      "claim": "Payment Minimum Chart (US): deposit 10 USD; gift card 10 USD / 2000 USD; check 100 USD; check fee 15 USD.",
+      "quote": "Option 1 (Deposit) 10 USD \u00b7 Option 2 (Gift Card) 10 USD 2000 USD \u00b7 Option 3 (Check) 100 USD \u00b7 Check Processing Fee 15 USD",
+      "result": "confirmed_row_for_row",
+      "source": "S02"
+    },
+    {
+      "id": "PF-19",
+      "claim": "FTC Disclosures 101: disclose financial, employment, personal or family relationships.",
+      "quote": "Disclose when you have any financial, employment, personal, or family relationship with a brand.",
+      "result": "confirmed_verbatim",
+      "source": "S07"
+    },
+    {
+      "id": "PF-20",
+      "claim": "FTC Disclosures 101: placement must be hard to miss.",
+      "quote": "Place it so it\u2019s hard to miss.",
+      "result": "confirmed_verbatim",
+      "source": "S07"
+    },
+    {
+      "id": "PF-21",
+      "claim": "FTC Disclosures 101: no claims about products you have not tried.",
+      "quote": "You can\u2019t talk about your experience with a product you haven\u2019t tried.",
+      "result": "confirmed_verbatim",
+      "source": "S07"
+    },
+    {
+      "id": "PF-37",
+      "claim": "FTC topic hub: the Endorsement Guides were revised in 2023.",
+      "quote": "the FTC\u2019s Guides Concerning Use of Endorsements and Testimonials in Advertising (Endorsement Guides), revised in 2023",
+      "result": "confirmed_verbatim",
+      "source": "S24"
+    }
+  ],
+  "commission_table_1": {
+    "claim": "Standard Commission Income Statement Table 1, re-read row for row on 2026-11-16.",
+    "rows": [
+      ["Luxury Beauty, Luxury Stores Beauty, Amazon Explore", "10.00%"],
+      ["Digital Music, Physical Music, Handmade, Digital Videos", "5.00%"],
+      ["Physical Books, Kitchen, Automotive", "4.50%"],
+      ["Amazon Fire Tablet Devices, Amazon Kindle Devices, Luxury Stores Fashion, Apparel, Amazon Cloud Cam Devices, Fire TV Edition Smart TVs, Amazon Fire TV Devices, Amazon Echo Devices, Ring Devices, Watches, Jewelry, Luggage, Shoes, and Handbags & Accessories", "4.00%"],
+      ["Toys, Furniture, Home, Home Improvement, Lawn & Garden, Pets Products, Headphones, Beauty, Musical Instruments, Business & Industrial Supplies, Outdoors, Tools, Sports, Baby Products, Amazon Coins", "3.00%"],
+      ["PC, PC Components, DVD & Blu-Ray", "2.50%"],
+      ["Televisions, Digital Video Games", "2.00%"],
+      ["Amazon Fresh, Physical Video Games & Video Game Consoles, Grocery, Health & Personal Care", "1.00%"],
+      ["Gift Cards; Wireless Service Plans; Alcoholic Beverages; Digital Kindle Products purchased as a subscription; Vehicles - Leasing and Sales; Pet Prescription Medications; Food prepared and delivered from a restaurant; Amazon Appstore, Prime Now, or Amazon Pay Places", "0.00%"],
+      ["Coach", "0.00%"],
+      ["All Other Categories", "4.00%"]
+    ],
+    "bounty_rows": [
+      ["Prime Free Trial", "$12.00"],
+      ["Prime Paid Membership", "$12.00"],
+      ["Prime Video Free Trial", "$2.00"],
+      ["Prime Video First Stream", "$5.00"],
+      ["Prime Video Stream", "$0.25"]
+    ],
+    "result": "confirmed_row_for_row",
+    "source": "S25"
+  },
+  "integrity": {
+    "check_site": "OK (13 pages, 3 products, 51 sources, 78 flags)",
+    "verify_site": "PASS (74 pages, 1333 table rows, 1128 with official source, 406 with flag, 86 with repo anchor)",
+    "link_report_strict": "exit 0 (unresolved values left blank with stated reasons only)",
+    "build_sitemap_check": "exit 0 (69 pages)",
+    "check_all_links": "120 html pages, 105 distinct external URLs, 0 errors",
+    "internal_crawl": "2531 internal refs, 0 broken",
+    "conflict_markers": "0 files",
+    "disclosure_on_live_pages": "every live page carries the Operating Agreement \u00a75 disclosure; the 5 files without it are the documented meta-refresh redirect stubs (25-F-04)"
+  },
+  "irregularities": [
+    {
+      "id": "5b42-F-01",
+      "severity": "Info",
+      "item": "The Emeril Lagasse listing title served on 2026-11-16 matches the 2026-11-15 capture by session 4f83ee7b, while data/products.json stores a 2026-11-13/14 wording ('26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie'). Amazon edits listing titles over time. The ASIN and the destination are stable across all captures; this is the same title drift already logged as 4f83-F-01, re-confirmed today. Not blocking.",
+      "disposition": "Recorded; no new flag raised"
+    }
+  ],
+  "conclusion": "No load-bearing claim was found to be wrong. All three submitted short links resolve to the same destination listings the repository records; all cited policy, commission, API and FTC statements were re-read verbatim and match; the generated site passes every gate with no broken links and no conflict markers."
+}
