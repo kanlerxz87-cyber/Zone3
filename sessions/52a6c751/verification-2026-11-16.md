@@ -40,7 +40,7 @@ bounty amounts are not restricted under 2(b) or 6(t) and are excluded from the f
 
 | # | File | Line | What is shown | Rule | Status on `main` |
 |---|---|---|---|---|---|
-| F-01 | `docs/index.html` | ~66 | "Price range (observed) $79.91–$149.99; List prices $99.99–$209.99" | 2(b) | **Restricted value displayed publicly** |
+| F-01 | `docs/index.html` | 65–67, 86, 95, 104, 124 | Live page shows "Avg. rating 4.3 / 5", "39.9K reviews combined", "Price range (observed) $79.91–$149.99", "List prices $99.99–$209.99", "8K+ bought in past month", and per-product star ratings 4.2★ / 4.3★ / 4.4★ | 2(b) prices; 6(t) ratings and reviews | **Restricted values displayed publicly** (confirmed live after PR #119, see §6) |
 | F-02 | `docs/content.html` | ~58 | "Observed price: $79.93 (list $99.99, 'Limited time deal' at capture)" | 2(b); remove expired promotions | **Restricted value and promotion mention displayed publicly** |
 | F-03 | `docs/sources.html` | 95, 112, 129 | "Price $79.93 · list $99.99 · 4.2★ · 4.8K reviews · 1K+ bought/month · deal badge · other offer $57.45" (and the same pattern for the other two listings) | 2(b) / 6(t) | **Restricted values displayed publicly** — prices, star ratings, review counts, purchase counts and competitor offers |
 | F-04 | `sessions/3c886b62/index.html` (and the other `sessions/3c886b62/*.html` and `docs/*.md` files that match the sweep) | notice at lines 26–34 | Prices, star ratings and review counts remain on the page under a notice that it "is not a compliant product display" | 2(b) / 6(t) | **Restricted values displayed publicly** — same as 71-F-04 |
@@ -57,3 +57,14 @@ bounty amounts are not restricted under 2(b) or 6(t) and are excluded from the f
 ## 5. Irregularities (published as flags for owner review; none edit a shared output)
 
 See the board Part for the change requests. Severity: F-01…F-04 **High** (Policy 2(b)/6(t) display; affects Associate account standing under OA §2); F-05 **Medium**.
+
+## 6. Post-merge live check (2026-11-16, after PR #119)
+
+| Check | Result |
+|---|---|
+| PR #119 (session `52a6c751` record) | MERGED 2026-11-16T19:03:40Z, merge commit `ced0713` |
+| GitHub Pages build for `ced0713` | `built` at 19:04:05Z |
+| Live `/flagged.html` (fetched 2026-11-16) | Renders: "97 entries: 3 critical, 17 high, 26 medium, 29 low, 22 info". **None of 52A-F-01…05 is listed.** The brief requires irregularities to be published on the Flagged for Review page. |
+| Live `/docs/index.html` (fetched 2026-11-16) | Renders the observed price range, the list-price range, the average star rating, the combined review count, "bought in past month", and per-product star ratings. Confirms F-01 on the public site. |
+
+Requests raised: CR-52A-4 (publish 52A-F-01…05 on the Flagged for Review page) and CR-52A-1 (remove the restricted values).
