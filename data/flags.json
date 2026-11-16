@@ -688,7 +688,7 @@
       "severity": "Critical",
       "category": "Compliance (price and rating display)",
       "item": "Price and star-rating cells published with no permitted data path",
-      "detail": "The Air Fryers category page published observed Amazon prices (USD 79.93 / 149.99 / 79.91, list 99.99 / 209.99 / 119.99) and star ratings (4.2 / 4.3 / 4.4 out of 5). Participation Requirements 2(b) allows prices and availability only where Amazon serves the link that displays them, or where they come from Creators API / PA API under the License; 6(t) allows star ratings and customer reviews only when obtained through Creators API or PA API. This project has no Associates tag (FLG-010) and no Creators API credentials (FLG-006, PF-16), so neither route is open and a value transcribed from a rendered page is not permitted. Read live on 2026-11-14 at https://affiliate-program.amazon.com/help/operating/policies (Participation Requirements 2(b) and 6(t)) and https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction (prerequisite 2). This site's own registers already recorded the same exposure as FLG-022 and FLG-028 and withheld these cells on the flat pages, the /dashboard/ build and /marketing/; the category page and the /docs/ page set did not.",
+      "detail": "The Air Fryers category page published observed Amazon prices (USD [price withheld] / [price withheld] / [price withheld], list [price withheld] / [price withheld] / [price withheld]) and star ratings (4.2 / 4.3 / [rating withheld]). Participation Requirements 2(b) allows prices and availability only where Amazon serves the link that displays them, or where they come from Creators API / PA API under the License; 6(t) allows star ratings and customer reviews only when obtained through Creators API or PA API. This project has no Associates tag (FLG-010) and no Creators API credentials (FLG-006, PF-16), so neither route is open and a value transcribed from a rendered page is not permitted. Read live on 2026-11-14 at https://affiliate-program.amazon.com/help/operating/policies (Participation Requirements 2(b) and 6(t)) and https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction (prerequisite 2). This site's own registers already recorded the same exposure as FLG-022 and FLG-028 and withheld these cells on the flat pages, the /dashboard/ build and /marketing/; the category page and the /docs/ page set did not.",
       "action": "Fixed on this branch for the Air Fryers category page: the price, rating and review columns were removed and replaced with a sourced statement of why they are withheld, in the hand-edited page and in scripts/build_site.py so a rebuild keeps it. Remaining: the /docs/ page set is published from the same repository root and still shows the values; see I-F-02.",
       "sources": [
         "S02",
@@ -759,8 +759,8 @@
       "id": "21-F-05",
       "severity": "Low",
       "category": "Unverified values",
-      "item": "Live page price for dp/B0CDY277D3 ($69.97) differs from the register's same-day snapshot ($79.93) — prices are volatile and none is published as fact",
-      "detail": "During session 21acd3c0's live fetch of link.amazon/B04G1MEwY (2026-11-14) the destination page's widget showed USD 69.97 for dp/B0CDY277D3, while data/products.json's observed_2026_11_14 snapshot for P1 records USD 79.93 (deal) the same day. Two different figures within one day from the same listing. This corroborates the standing policy (FLG-004, FLG-022, FLG-038) and Amazon's Participation Requirements 2(b): no price is published as a product fact anywhere on the canonical site.",
+      "item": "Live page price for dp/B0CDY277D3 ([price withheld]) differs from the register's same-day snapshot ([price withheld]) — prices are volatile and none is published as fact",
+      "detail": "During session 21acd3c0's live fetch of link.amazon/B04G1MEwY (2026-11-14) the destination page's widget showed USD [price withheld] for dp/B0CDY277D3, while data/products.json's observed_2026_11_14 snapshot for P1 records USD [price withheld] (deal) the same day. Two different figures within one day from the same listing. This corroborates the standing policy (FLG-004, FLG-022, FLG-038) and Amazon's Participation Requirements 2(b): no price is published as a product fact anywhere on the canonical site.",
       "action": "None. When an Associates tag and Creators API access exist (FLG-006, FLG-010), fetch prices through the API and timestamp them.",
       "sources": [
         "S14"
@@ -771,7 +771,7 @@
       "severity": "High",
       "category": "Compliance",
       "item": "category/air-fryers.html published observed price, star rating and review count as product data",
-      "detail": "The hand-maintained category page rendered three columns - \"Price (observed 2026-11-14)\" (USD 79.93 / USD 149.99 / USD 79.91), \"Rating (observed)\" (4.2 / 4.3 / 4.4 out of 5) and \"Reviews (observed)\" (4.8K / 18.3K / 16.8K) - as product facts for the three listings. Associates Program Participation Requirements 2(b) and 6(t) were re-read verbatim on 2026-11-14 by this session: 2(b) allows price and availability display only where Amazon serves the link or the data comes from Creators API or PA API; 6(t) allows star-rating or review display only where the data is obtained through Creators API or PA API. Neither applies to this site, so publishing them is a program-policy breach, and it contradicted this repository's own standing rule (FLG-022, FLG-023, FLG-029) and the note in data/products.json that the observations are NOT displayed as price, rating or review facts on any page.",
+      "detail": "The hand-maintained category page rendered three columns - \"Price (observed 2026-11-14)\" (USD [price withheld] / USD [price withheld] / USD [price withheld]), \"Rating (observed)\" (4.2 / 4.3 / [rating withheld]) and \"Reviews (observed)\" (4.8K / 18.3K / 16.8K) - as product facts for the three listings. Associates Program Participation Requirements 2(b) and 6(t) were re-read verbatim on 2026-11-14 by this session: 2(b) allows price and availability display only where Amazon serves the link or the data comes from Creators API or PA API; 6(t) allows star-rating or review display only where the data is obtained through Creators API or PA API. Neither applies to this site, so publishing them is a program-policy breach, and it contradicted this repository's own standing rule (FLG-022, FLG-023, FLG-029) and the note in data/products.json that the observations are NOT displayed as price, rating or review facts on any page.",
       "action": "Fixed, in two steps by two sessions that found it independently. Session 554c08ca (PR #66, now on main) removed the three columns and replaced them with a full-width explanatory row citing 2(b)/6(t) and its own flag I-F-01. That version is the one kept after integration, because dropping the columns is cleaner than blanking them. This session's own pass, made before main was fetched, withheld the nine cells and renamed the headers; the wording it added was dropped in favour of main's, and its stale-navigation finding is kept as 3E-F-08.",
       "sources": [
         "S02",
@@ -892,7 +892,7 @@
       "severity": "Low",
       "category": "Compliance",
       "item": "category/air-fryers.html published Amazon's \"bought in past month\" demand badges in prose while withholding prices on the same page",
-      "detail": "The niche-assessment bullet stated \"Amazon displayed purchase badges on all three listings on 2026-11-14 (1K+, 4K+ and 3K+ bought in past month, as displayed)\". The product table on the same page withholds price, rating and review count precisely because those values were transcribed from a rendered Amazon page, and the project has no Associates tag and no Creators API credentials. Publishing the demand badge from the same rendered page is inconsistent with that rule. Found on 2026-11-14 by session 3ead7ac8 during the post-merge live check.",
+      "detail": "The niche-assessment bullet stated \"Amazon displayed purchase badges on all three listings on 2026-11-14 (1K+, 4K+ and [count withheld] in past month, as displayed)\". The product table on the same page withholds price, rating and review count precisely because those values were transcribed from a rendered Amazon page, and the project has no Associates tag and no Creators API credentials. Publishing the demand badge from the same rendered page is inconsistent with that rule. Found on 2026-11-14 by session 3ead7ac8 during the post-merge live check.",
       "action": "Fixed: the bullet now records that the badge values are withheld and why, with no figures. Applied by a targeted edit on 2026-11-14 and shipped in the follow-up pull request.",
       "sources": [
         "S46",
@@ -920,7 +920,7 @@
       "severity": "Info",
       "category": "Data capture",
       "item": "Independently re-observed: prices and star ratings inside a destination page belong to other ASINs",
-      "detail": "Re-fetched on 2026-11-14 by session 3d359c23. The destination page for product 1 (amazon.com/dp/B0CDY277D3) carries a \"Customers who viewed this item also viewed\" carousel. Each carousel entry shows a price and a star rating for a DIFFERENT ASIN - for example a 4.4-star, 392-review, $69.97 entry whose own link points at dp/B0B7C327LK - while the link it renders under is the destination ASIN dp/B0CDY277D3. Any tool that reads price or rating text from a product page without scoping it to the page's own ASIN will attribute another product's numbers to this one. FLG-029 already records this trap; this entry is an independent second observation of the same page on the same day, and is kept separate so the count of independent observations is visible.",
+      "detail": "Re-fetched on 2026-11-14 by session 3d359c23. The destination page for product 1 (amazon.com/dp/B0CDY277D3) carries a \"Customers who viewed this item also viewed\" carousel. Each carousel entry shows a price and a star rating for a DIFFERENT ASIN - for example a 4.4-star, 392-review, [price withheld] entry whose own link points at dp/B0B7C327LK - while the link it renders under is the destination ASIN dp/B0CDY277D3. Any tool that reads price or rating text from a product page without scoping it to the page's own ASIN will attribute another product's numbers to this one. FLG-029 already records this trap; this entry is an independent second observation of the same page on the same day, and is kept separate so the count of independent observations is visible.",
       "action": "No change needed to the published data: no price, rating or review count is shown anywhere on this site (FLG-022, FLG-029). Anyone adding an automated intake step should bind every value to the ASIN in the page URL and to the page's own title block, never to the surrounding carousel.",
       "sources": [
         "S11",
@@ -1045,7 +1045,7 @@
       "severity": "Medium",
       "category": "Compliance",
       "item": "sources.html renders observed star-rating, review-count and price literals inside table cells for S46–S48",
-      "detail": "A scan for price and star-rating literals inside <td> cells across the published tree returns 20 files. Most are unambiguously audit context: commission/index.html carries bounty figures copied from the official Standard Commission Income Statement Table 1; flagged.html and flagged/index.html quote the values they are flagging; compliance/index.html has a worked disclosure example with a 2008-vintage sample price; sessions/3c886b62/* is a retained archive carrying its own 3E-F-03 notice; docs/* is the archived 2026-11-13 build. One case is not clear-cut: the 'Note' column of the source register on sources.html publishes, for S46, S47 and S48, the exact star rating, review count and price that the product tables withhold — e.g. 'Result 1 for B0CDY277D3 as displayed: 4.2 out of 5 stars, (4.8K) reviews, 1K+ bought in past month, price USD 79.93'. Participation Requirement 6(t) bars displaying customer reviews or star ratings 'in part or in whole' unless obtained through the Creators API or PA API, without an exception for provenance. The counter-argument, accepted by earlier sessions, is that this is a note about what a fetch returned rather than a product display.",
+      "detail": "A scan for price and star-rating literals inside <td> cells across the published tree returns 20 files. Most are unambiguously audit context: commission/index.html carries bounty figures copied from the official Standard Commission Income Statement Table 1; flagged.html and flagged/index.html quote the values they are flagging; compliance/index.html has a worked disclosure example with a 2008-vintage sample price; sessions/3c886b62/* is a retained archive carrying its own 3E-F-03 notice; docs/* is the archived 2026-11-13 build. One case is not clear-cut: the 'Note' column of the source register on sources.html publishes, for S46, S47 and S48, the exact star rating, review count and price that the product tables withhold — e.g. 'Result 1 for B0CDY277D3 as displayed: [rating withheld], [count withheld] reviews, [count withheld] in past month, price USD [price withheld]'. Participation Requirement 6(t) bars displaying customer reviews or star ratings 'in part or in whole' unless obtained through the Creators API or PA API, without an exception for provenance. The counter-argument, accepted by earlier sessions, is that this is a note about what a fetch returned rather than a product display.",
       "action": "OWNER DECISION. Not changed by this session: data/sources.json is a shared register and the wording belongs to sessions 9fef7647 and b90c5685. If the owner reads 6(t) strictly, replace the literals in the S46–S48 notes with a description that names the fields observed without printing their values. Logged as change request 54C-CR-03.",
       "sources": [
         "S02",
@@ -1055,6 +1055,173 @@
       ],
       "session": "54ce6a2b",
       "date": "2026-11-14"
+    },
+    {
+      "id": "AB-F-01",
+      "severity": "High",
+      "category": "Compliance",
+      "item": "Other sessions' published pages and archives still display observed Amazon prices, star ratings or review counts",
+      "detail": "Session ab3ed329 removed observed price, rating, review-count and sales values from the public registers it could change: data/products.json (observed block for all three listings), data/sources.json (S46-S48 status notes) and quoted text in data/flags.json and data/z3/flags.json, and two passages of EXECUTIVE-SUMMARY.md. The same values remain in pages and files owned by other sessions or kept as archives, which this session did not edit under the COORDINATION.md rule: docs/ (the archived 2026-11-13 build), sessions/3c886b62/ (product, category, comparison, analysis and verification pages, and its data/products.json), sessions/03bbd050/ (index, findings, verification), sessions/f2102efa/verification.md, sessions/3c886b62/verification.html, the 51fcb80d and c4e71983 snapshot JSON files and research/ verification logs. Program Policies 2(b) and 6(t) apply to any display on a Site, including an archive.",
+      "action": "Owner decision for each path: remove the page, or remove the literal values and keep the dated source link. The full list is in sessions/ab3ed329/exposure-scan.txt (72 files at the 2026-11-16 scan, run by sessions/ab3ed329/exposure_scan.sh). The archived /docs/ build is the largest exposure. Change requests are logged in COORDINATION.md (AB Part).",
+      "sources": [
+        "S02",
+        "S01"
+      ]
+    },
+    {
+      "id": "AB-F-02",
+      "severity": "Low",
+      "category": "Wording",
+      "item": "FLG-001 says no product name can be tied to the identifiers, but the Products page shows observed listing titles",
+      "detail": "FLG-001 states that no product name, brand, price, rating or commission can be tied to the submitted identifiers. The Products page and the product register do show the title of the Amazon listing each short link opens, with the brand and capacity read from that title. product_name stays null, and each row says the destination is not confirmed as the submitted product (FLG-002). The two statements agree only if 'observed destination' is read as the identity not being established. The FLG-001 wording should match the Products page.",
+      "action": "Owner to confirm the intended product for each link. Until then, keep the wording 'observed destination' everywhere and do not present a listing title as the product identity.",
+      "sources": [
+        "S06",
+        "S11",
+        "S14"
+      ]
+    },
+    {
+      "id": "AB-F-03",
+      "severity": "Medium",
+      "category": "Governance",
+      "item": "COORDINATION.md is over 5,000 lines and many claims are still marked in progress",
+      "detail": "The shared task board has grown into one file of more than 5,000 lines. Many claims are still marked 'in progress' from 2026-11-13 and 2026-11-14 with no closing record, and several registry rows read 'unknown' or 'not read'. A new session cannot tell from the board which claims are live. Session ab3ed329 claimed its own tasks, edited no other session's rows, and found no live conflict with its scope.",
+      "action": "Owner to close or archive stale claims and move completed Parts to archive/. Not changed by this session because the file is shared by all sessions.",
+      "repo_evidence": "COORDINATION.md: 5,020 lines at the 2026-11-16 check; the words 'in progress' appear on 79 lines (this count includes this session's own AB claim row). Method: grep -c 'in progress' COORDINATION.md."
+    },
+    {
+      "id": "AB-F-04",
+      "severity": "Low",
+      "category": "Duplication",
+      "item": "Duplicate registers and pages: two product registers, two flag registers, several executive summaries and two category paths",
+      "detail": "The repository keeps overlapping copies of the same data and documents. Each copy was correct for the date it was written, but none of the three gate scripts (check_site.py, verify_site.py, link_report.py) reads both members of a pair, so the copies can drift apart without a failure. Session ab3ed329 did not merge them.",
+      "action": "Owner to choose one canonical file for each register and archive the rest.",
+      "repo_evidence": "data/products.json and data/z3/products.json; data/flags.json and data/z3/flags.json; EXECUTIVE-SUMMARY.md, executive-summary.html, executive-summary/index.html and docs/executive-summary*.md; category/air-fryers.html and categories/home-kitchen-air-fryers.html."
+    },
+    {
+      "id": "AB-F-05",
+      "severity": "Info",
+      "category": "Correction",
+      "item": "Status date and navigation corrected on rebuild (2026-11-16)",
+      "detail": "The generated status date moved from 2026-11-14 to 2026-11-16. The marketing pages under marketing/ were regenerated: their navigation did not yet link the Suggestions & decisions page added on 2026-11-15, and now links this session's record. The sitemap was checked against the generator and changed only by this record's entry; it correctly omits the redirect stubs analysis.html, disclosure.html and flagged-for-review.html.",
+      "action": "None required. Recorded as a correction to this site.",
+      "repo_evidence": "scripts/build_site.py BUILT constant; marketing/*.html navigation; sitemap.xml; sessions/ab3ed329/index.html (correction list)."
+    },
+    {
+      "id": "1F-F-01",
+      "severity": "Medium",
+      "category": "Compliance",
+      "item": "Source register and compliance citations do not include the FTC Rule on the Use of Consumer Reviews and Testimonials (16 CFR Part 465)",
+      "detail": "The site's FTC citations are S07 (Disclosures 101), S24 (Endorsements hub) and S44 (Endorsement Guides FAQ). The FTC hub page itself links the Rule on the Use of Consumer Reviews and Testimonials, and its official Q&A (S59, fetched 2026-11-16) states the rule 'went into effect on October 21, 2024' and that courts may impose civil penalties for knowing violations — including for fake or false consumer reviews, incentivized reviews, review suppression, misuse of fake social-media influence indicators (S59 quotes sections 465.2, 465.4, 465.7, 465.8) and for a business misrepresenting that a site it controls provides independent reviews (section 465.6). This site publishes comparisons, buying guides and a review/competition section, so the rule is directly in scope and is not cited anywhere in data/sources.json before S59 or on the compliance page.",
+      "action": "Read S59 (and the linked final rule) and add it to the compliance register and to the content-grounding rules on the content page: no fake or incentivized reviews, no misrepresenting this site's comparisons as independent where they are affiliate-driven, no fake engagement indicators. Owner decision on placement.",
+      "sources": [
+        "S59"
+      ]
+    },
+    {
+      "id": "1F-F-02",
+      "severity": "Low",
+      "category": "Register accuracy",
+      "item": "EXECUTIVE-SUMMARY.md current-state counts were stale (72 flags stated; register held 78 before this session added 1F-F-01..03)",
+      "detail": "Section 2 said '51 official sources · 55 policy facts · 72 flags · 13 root pages' and section 6 said '72 entries — 3 critical, 13 high, 20 medium, 21 low, 15 informational', while data/flags.json held 78 entries (3/13/21/24/17). This reproduces 54C-F-02's prediction that hand-written counts drift on every append. Fixed in this session: section 2 and section 6 were updated to the register values after adding 1F-F-01..03 (81 entries: 3 critical, 13 high, 22 medium, 26 low, 18 informational); sections that quote dated historical gate runs were left untouched.",
+      "action": "Change request from 54C-F-02 stands: generate these counts from data/flags.json and data/sources.json so they cannot drift again.",
+      "sources": [],
+      "repo_evidence": "EXECUTIVE-SUMMARY.md section 2 (pre-fix) read 2026-11-16: '51 official sources · 55 policy facts · 72 flags · 13 root pages'; section 6 (pre-fix): '72 entries ... 3 critical, 13 high, 20 medium, 21 low, 15 informational'; data/flags.json counted 78 entries with severity breakdown 3/13/21/24/17 at base 933e2f3. Reproduce: python3 -c \"import json;f=json.load(open('data/flags.json'))['flags'];print(len(f))\"."
+    },
+    {
+      "id": "1F-F-03",
+      "severity": "Low",
+      "category": "Site (fixed)",
+      "item": "The six generated marketing/*.html pages were stale relative to scripts/build_marketing.py — missing the Suggestions & decisions nav entry",
+      "detail": "Re-running scripts/build_marketing.py on 2026-11-16 changed exactly one line per page across all six marketing pages: the shared NAV imported from scripts/build_site.py contains the suggestions.html entry added by session 4f83ee7b (PR #96), but the committed marketing pages predated it. This is the same defect class session cd0e6279 fixed for the Decision Center link (its navigation-only sync), and it means the 'generators idempotent' claim from the 25/54C gate runs no longer reproduced at base 933e2f3. Fixed in this session by regenerating the six pages; no marketing copy, brief, price, rating or recommendation was changed.",
+      "action": "None — fixed. Future NAV additions to scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
+      "sources": [],
+      "repo_evidence": "git diff after re-running scripts/build_marketing.py at base 933e2f3: exactly one line changed in each of the six marketing/*.html files, adding href='../suggestions.html' (Suggestions &amp; decisions) to the top nav imported from scripts/build_site.py NAV. Reproduce: python3 scripts/build_marketing.py && git diff --stat marketing/."
+    },
+    {
+      "id": "A0-F-01",
+      "severity": "High",
+      "category": "Compliance (owner decision)",
+      "item": "Public /docs/ pages still display Amazon product prices, star ratings, review counts and 'bought in past month' badges for the three products",
+      "detail": "Live page https://kanlerxz87-cyber.github.io/Zone3/docs/sources.html (read 2026-11-16) shows, for each of the three products, the observed price, list price, star rating, review count and 'bought in past month' figure. The same kinds of values appear on /docs/index.html (KPI cards and a bullet), /docs/content.html, /docs/analysis.html (computed discount and weighted-average rating derived from those prices and counts), /docs/executive-summary.html and docs/executive-summary.md. Associates Program Participation Requirements 2(b) allow prices to appear only where Amazon serves the link or via Creators API / PA API; 6(t) allows star ratings and customer reviews only via Creators API / PA API. The /docs/ set is listed in sitemap.xml. A compliance banner does not cure a display (see 71-F-04). The values are not repeated in this flag. This session did not edit /docs/: the fix changes derived analysis (discounts, weighted rating, velocity) across six pages, which is an owner decision.",
+      "action": "Owner to choose one: (a) remove the restricted values from /docs/ and rebuild the affected analysis from non-restricted data (blank + flag per row); or (b) remove /docs/ and /sessions/ from the public sitemap and from the published branch. Until one is done, the /docs/ display is non-compliant under 2(b) and 6(t). Also see A0-F-02.",
+      "sources": [
+        "S02",
+        "S50"
+      ],
+      "repo_evidence": "grep -rlE for star-rating, 'bought/month', 'K reviews' and price patterns over docs/ (session a0ffcab0, 2026-11-16): 5 HTML files and 1 Markdown file in docs/ carry the values; sitemap.xml lists 8 /docs/ URLs."
+    },
+    {
+      "id": "A0-F-02",
+      "severity": "High",
+      "category": "Compliance (owner decision)",
+      "item": "Archived session and archive folders, and root data snapshots, that are publicly reachable still carry the restricted price, rating and review values",
+      "detail": "Files found by the same scan include sessions/3c886b62/ (incl. product pages, products.html, analysis.html, comparison.html, data/products.json), sessions/03bbd050/ (index.html, findings.md, verification.md), sessions/f2102efa/verification.md, sessions/7b70cfb0/verification-2026-11-14.json, archive/c4e71983/ (incl. products.html and data/products.json), docs/executive-summary-c4e71983.md, docs/repo-review-9fef7647.md, and the root data snapshots data/c4e71983-commercial-snapshot.json, data/c4e71983-competitors.json and data/z3-51fcb80d-snapshot.json. Some of these carry a notice, but a notice does not cure a display (71-F-04). These folders and files belong to other sessions; they were not edited by session a0ffcab0 (log-only, per the coordination rules). The values are not repeated in this flag.",
+      "action": "Owner decision with the same two options as A0-F-01, applied to these folders. Change requests for the owning sessions are logged in COORDINATION.md (A0 Part, 'Change requests').",
+      "sources": [
+        "S02",
+        "S50"
+      ],
+      "repo_evidence": "Same scan (session a0ffcab0, 2026-11-16): sessions/ 19 files, archive/ 16 files, research/ 4 files, root data/ 4 files, scripts/ 1, tools/ 1 (code patterns, not displays). sitemap.xml: 20 sessions/ <loc> entries; 0 archive/ entries."
+    },
+    {
+      "id": "A0-F-03",
+      "severity": "Medium",
+      "category": "Verification gate",
+      "item": "Row-provenance gate counts flag and repo-anchor rows as verified; the brief requires an official source link on every table row",
+      "detail": "tools/verify_site.py on 2026-11-16 reported 1,482 table rows: 1,258 with an official source, 439 with a flag, 89 with a repo anchor. A row with a flag or a repo anchor passes V4 without an official link, so the gate does not enforce the brief's 'every row has a source link to an official site' rule. Same defect as 71-F-02, still open.",
+      "action": "Owner or next integration session: split rows into factual (must carry an Amazon or FTC link), unknown (must carry a flag and a blank value), and repo-state (repo anchor). Make V4 fail on a factual row without an official link.",
+      "sources": [],
+      "repo_evidence": "python3 tools/verify_site.py → 'VERIFY PASS · 83 pages · 1482 table rows · 1258 with official source · 439 with flag · 89 with repo anchor' (session a0ffcab0 run on main b38d96a + 609dc76)."
+    },
+    {
+      "id": "A0-F-04",
+      "severity": "Low",
+      "category": "Site (fixed)",
+      "item": "Six generated marketing/*.html pages were stale against the shared nav in scripts/build_site.py (missing the /site/ entry added by PR #101)",
+      "detail": "Running scripts/build_marketing.py on 2026-11-16 changed exactly one line per page in six files: the nav gained '../site/index.html' (the reader-facing marketing site from PR #101). Same defect class as 1F-F-03: a shared NAV change was not followed by a marketing re-run. Fixed by regenerating the six pages; no marketing copy, brief, price, rating or recommendation changed.",
+      "action": "None — fixed. Any future NAV change in scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
+      "sources": [],
+      "repo_evidence": "git diff --stat after python3 scripts/build_marketing.py: 6 files, 6 insertions, 6 deletions; the only href added is ../site/index.html."
+    },
+    {
+      "id": "A0-F-05",
+      "severity": "Info",
+      "category": "Verification (re-checked)",
+      "item": "Short links and the 9-character codes re-checked against the official Amazon pages on 2026-11-16",
+      "detail": "link.amazon/B04G1MEwY, link.amazon/B02NbDxp3 and link.amazon/B00hJ57DV open the product pages for ASIN B0CDY277D3, B09B7SB46R and B08DKYBTPH (titles match the register). amazon.com/dp/B04G1MEwY returns Amazon's 'Page Not Found' page. The 9-character codes are therefore not ASINs. Whether the three destinations are the products the submitter intended is still not confirmed by an official source (FLG-002, FLG-027).",
+      "action": "None for the page. The owner should confirm the intended product for each link (FLG-002).",
+      "sources": [
+        "S06",
+        "S31"
+      ],
+      "repo_evidence": "Live fetches on 2026-11-16 of the three short links and of https://www.amazon.com/dp/B04G1MEwY (log: research/a0ffcab0-verification-log.md)."
+    },
+    {
+      "id": "A0-F-06",
+      "severity": "Info",
+      "category": "Board hygiene",
+      "item": "COORDINATION.md is 5,464 lines and holds 93 'in progress' lines, many from sessions that have closed",
+      "detail": "Several Parts still show 'in progress' or 'unclaimed' for tasks that were completed or superseded, which makes the claim check slower and more error-prone. The file also produced a merge conflict on this session's rebase (append-append at the end of file), resolved by keeping both sides in full.",
+      "action": "Owner to archive closed Parts into a dated file under docs/ or sessions/ when convenient. Not blocking.",
+      "sources": [],
+      "repo_evidence": "wc -l COORDINATION.md = 5,464; grep -c 'in progress' COORDINATION.md = 93 (session a0ffcab0, 2026-11-16, before this session's Part was appended)."
+    },
+    {
+      "id": "A0-F-07",
+      "severity": "Medium",
+      "category": "Wording (unsupported claim)",
+      "item": "The 'Observed redirect targets' table on the Flagged page says 'No: not the submitted product' for each short link; no official source establishes what the submitter intended",
+      "detail": "The table (the FLG-035 identity addendum, published on flagged.html) labels each destination 'No: not the submitted product'. The evidence is the three destination pages read on 2026-11-16 (titles match the register) and the 9-character codes returning Page Not Found on amazon.com/dp/<code>. The codes are not ASINs (Creators API: an ASIN is a 10-character identifier). Whether a destination is the intended product depends on the submitter's intent, which no official source records. The register's own rule (71-F-03) is 'observed destination; intended match unconfirmed'. The label states a conclusion the evidence does not support.",
+      "action": "Reword the column to 'Observed destination; intended match unconfirmed' and keep the owner question open (FLG-002). The wording sits in another session's addendum, so it is logged here as a request rather than edited.",
+      "sources": [
+        "S08",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "repo_evidence": "Live flagged.html, 'Observed redirect targets' table (read 2026-11-16 at https://kanlerxz87-cyber.github.io/Zone3/flagged.html): 'Confirmed?' column = 'No: not the submitted product' for rows 1–3."
     }
   ]
 }

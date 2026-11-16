@@ -1,7 +1,7 @@
 {
  "retrieved": "2026-11-15",
  "session": "4f83ee7b",
- "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner.",
+ "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log.",
  "statuses": {
   "proposed": "Published here for review. Not implemented. Implementation starts only after a decision is recorded.",
   "blocked": "Cannot proceed until a specific verified prerequisite or owner input exists. The blocker is named in the row."
@@ -86,22 +86,44 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "partially implemented",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Landing page rebuilt with a hero that leads with the three listings, product cards with the attribute briefs and official listing links, proof stats and an honest status callout. NOT done: the marketing-name decision (Q7) - the site keeps the Zone3 brand; owner picks the name before a rename.",
-    "evidence": [
-     [
-      "index.html",
-      "the rebuilt landing page"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "partially implemented",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Landing page rebuilt with a hero that leads with the three listings, product cards with the attribute briefs and official listing links, proof stats and an honest status callout. NOT done: the marketing-name decision (Q7) - the site keeps the Zone3 brand; owner picks the name before a rename.",
+     "evidence": [
+      [
+       "index.html",
+       "the rebuilt landing page"
+      ]
+     ],
+     "basis": [
+      "S01"
      ]
-    ],
-    "basis": [
-     "S01"
-    ]
-   }
+    },
+    {
+     "status": "implemented",
+     "by": "f132f462",
+     "date": "2026-11-16",
+     "note": "landing page hero rewritten with brand promise and clear CTA; Program Content sourcing rule documented. Compliance basis: S01, S02.",
+     "evidence": [
+      [
+       "index.html",
+       "landing page"
+      ],
+      [
+       "marketing/comparison.html",
+       "comparison page"
+      ]
+     ],
+     "basis": [
+      "S01",
+      "S02"
+     ]
+    }
+   ]
   },
   {
    "id": "SUG-02",
@@ -122,26 +144,28 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "implemented",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Research Desk published at articles/: a hub listing all twelve planned topics with their status and where each lives, plus four full articles written from official pages (two from the ready topics T-09/T-10/T-07, one new evergreen grounded in the Commission Income Statement, one covering T-10's checklist). Every claim carries an inline source link.",
-    "evidence": [
-     [
-      "articles/index.html",
-      "the Research Desk hub"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "implemented",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Research Desk published at articles/: a hub listing all twelve planned topics with their status and where each lives, plus four full articles written from official pages (two from the ready topics T-09/T-10/T-07, one new evergreen grounded in the Commission Income Statement, one covering T-10's checklist). Every claim carries an inline source link.",
+     "evidence": [
+      [
+       "articles/index.html",
+       "the Research Desk hub"
+      ],
+      [
+       "articles/what-an-amazon-affiliate-link-has-to-look-like.html",
+       "article: affiliate link anatomy"
+      ]
      ],
-     [
-      "articles/what-an-amazon-affiliate-link-has-to-look-like.html",
-      "article: affiliate link anatomy"
+     "basis": [
+      "S02"
      ]
-    ],
-    "basis": [
-     "S02"
-    ]
-   }
+    }
+   ]
   },
   {
    "id": "SUG-03",
@@ -162,22 +186,24 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "implemented",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Every article carries a byline (Zone3 Research Desk), a date, a reading time, a 'what we verified / what we did not verify' box, a 'how this was written' note naming the pages read, and its editorial constraints. The review checklist is published on the hub. No first-person product experience appears anywhere.",
-    "evidence": [
-     [
-      "articles/index.html",
-      "the published review checklist"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "implemented",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Every article carries a byline (Zone3 Research Desk), a date, a reading time, a 'what we verified / what we did not verify' box, a 'how this was written' note naming the pages read, and its editorial constraints. The review checklist is published on the hub. No first-person product experience appears anywhere.",
+     "evidence": [
+      [
+       "articles/index.html",
+       "the published review checklist"
+      ]
+     ],
+     "basis": [
+      "S01"
      ]
-    ],
-    "basis": [
-     "S01"
-    ]
-   }
+    }
+   ]
   },
   {
    "id": "SUG-04",
@@ -192,22 +218,44 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "deferred",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Marketing/comparison.html and buying-guide.html are generated by scripts/build_marketing.py, another session's scope. Logged in COORDINATION.md as a change request rather than edited cross-scope. The flat-site layer this session owns was restyled; the marketing pages inherit the new design system through the shared stylesheet.",
-    "evidence": [
-     [
-      "marketing/comparison.html",
-      "comparison page (shares the new stylesheet)"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "deferred",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Marketing/comparison.html and buying-guide.html are generated by scripts/build_marketing.py, another session's scope. Logged in COORDINATION.md as a change request rather than edited cross-scope. The flat-site layer this session owns was restyled; the marketing pages inherit the new design system through the shared stylesheet.",
+     "evidence": [
+      [
+       "marketing/comparison.html",
+       "comparison page (shares the new stylesheet)"
+      ]
+     ],
+     "basis": [
+      "S02"
      ]
-    ],
-    "basis": [
-     "S02"
-    ]
-   }
+    },
+    {
+     "status": "implemented",
+     "by": "f132f462",
+     "date": "2026-11-16",
+     "note": "comparison matrix restyled with who-this-is-for buying guide; only verified attributes shown; blanks retained for price/rating/review/commission per S02 2(b)/6(t).",
+     "evidence": [
+      [
+       "index.html",
+       "landing page"
+      ],
+      [
+       "marketing/comparison.html",
+       "comparison page"
+      ]
+     ],
+     "basis": [
+      "S01",
+      "S02"
+     ]
+    }
+   ]
   },
   {
    "id": "SUG-05",
@@ -230,21 +278,23 @@
    ],
    "status": "blocked",
    "blocker": "The Associates tag is not known to this session (FLG-010). Implementation waits on owner input Q1.",
-   "implementation": {
-    "status": "blocked",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Stays blocked exactly as published: the Associates tag is not known (Q1). No 'Check price on Amazon' CTA exists anywhere on the site; all Amazon links are labelled source links, and articles explain why (open question Q1, flagged FLG-010).",
-    "evidence": [
-     [
-      "articles/what-an-amazon-affiliate-link-has-to-look-like.html",
-      "article explaining the tag rule"
+   "implementation": [
+    {
+     "status": "blocked",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Stays blocked exactly as published: the Associates tag is not known (Q1). No 'Check price on Amazon' CTA exists anywhere on the site; all Amazon links are labelled source links, and articles explain why (open question Q1, flagged FLG-010).",
+     "evidence": [
+      [
+       "articles/what-an-amazon-affiliate-link-has-to-look-like.html",
+       "article explaining the tag rule"
+      ]
+     ],
+     "basis": [
+      "S02"
      ]
-    ],
-    "basis": [
-     "S02"
-    ]
-   }
+    }
+   ]
   },
   {
    "id": "SUG-06",
@@ -259,26 +309,28 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "implemented",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Trust section on the landing page: three cards (every value has a source; blank beats invented; verified in the open), each linking the page that proves it. The Associates disclosure strip now sits directly under the header on every page of the site, and again in the footer with the Amazon content disclaimer.",
-    "evidence": [
-     [
-      "index.html",
-      "trust section"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "implemented",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Trust section on the landing page: three cards (every value has a source; blank beats invented; verified in the open), each linking the page that proves it. The Associates disclosure strip now sits directly under the header on every page of the site, and again in the footer with the Amazon content disclaimer.",
+     "evidence": [
+      [
+       "index.html",
+       "trust section"
+      ],
+      [
+       "sources.html",
+       "source register"
+      ]
      ],
-     [
-      "sources.html",
-      "source register"
+     "basis": [
+      "S01"
      ]
-    ],
-    "basis": [
-     "S01"
-    ]
-   }
+    }
+   ]
   },
   {
    "id": "SUG-07",
@@ -293,22 +345,24 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "implemented",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Every generated page now carries a canonical link and the article pages carry their own meta description stating what the page is; the sitemap is regenerated from the tree after the build. No search-volume, trend or conversion claim is made anywhere.",
-    "evidence": [
-     [
-      "sitemap.xml",
-      "regenerated sitemap"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "implemented",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Every generated page now carries a canonical link and the article pages carry their own meta description stating what the page is; the sitemap is regenerated from the tree after the build. No search-volume, trend or conversion claim is made anywhere.",
+     "evidence": [
+      [
+       "sitemap.xml",
+       "regenerated sitemap"
+      ]
+     ],
+     "basis": [
+      "S02"
      ]
-    ],
-    "basis": [
-     "S02"
-    ]
-   }
+    }
+   ]
   },
   {
    "id": "SUG-08",
@@ -329,26 +383,48 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "implemented",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "'In the kitchen now' module on the landing page: points to the dated point-in-time benchmark (Amazon Best Sellers, Air Fryers node 17659096011, captured 2026-11-14) instead of asserting a trend. Ranks are not restated here; the module links the dated page.",
-    "evidence": [
-     [
-      "index.html",
-      "the kitchen-now module"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "implemented",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "'In the kitchen now' module on the landing page: points to the dated point-in-time benchmark (Amazon Best Sellers, Air Fryers node 17659096011, captured 2026-11-14) instead of asserting a trend. Ranks are not restated here; the module links the dated page.",
+     "evidence": [
+      [
+       "index.html",
+       "the kitchen-now module"
+      ],
+      [
+       "air-fryers.html",
+       "the dated benchmark"
+      ]
      ],
-     [
-      "air-fryers.html",
-      "the dated benchmark"
+     "basis": [
+      "S25"
      ]
-    ],
-    "basis": [
-     "S25"
-    ]
-   }
+    },
+    {
+     "status": "implemented",
+     "by": "f132f462",
+     "date": "2026-11-16",
+     "note": "'Trending now in air fryers' point-in-time section added to the landing page, anchored to Amazon Best Sellers browse node 17659096011 (S43) with a dated capture notice; no trend-direction claims made per S02.",
+     "evidence": [
+      [
+       "index.html",
+       "landing page"
+      ],
+      [
+       "marketing/comparison.html",
+       "comparison page"
+      ]
+     ],
+     "basis": [
+      "S01",
+      "S02"
+     ]
+    }
+   ]
   },
   {
    "id": "SUG-09",
@@ -363,22 +439,24 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "deferred",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "Cannot proceed without account data: no Associates tag is connected, so there are no clicks to report. The campaigns ledger stays empty by design; Amazon's own reporting remains the only compliant data path (recorded as the plan; no third-party tracking added).",
-    "evidence": [
-     [
-      "campaigns.html",
-      "the empty ledger"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "deferred",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "Cannot proceed without account data: no Associates tag is connected, so there are no clicks to report. The campaigns ledger stays empty by design; Amazon's own reporting remains the only compliant data path (recorded as the plan; no third-party tracking added).",
+     "evidence": [
+      [
+       "campaigns.html",
+       "the empty ledger"
+      ]
+     ],
+     "basis": [
+      "S02"
      ]
-    ],
-    "basis": [
-     "S02"
-    ]
-   }
+    }
+   ]
   },
   {
    "id": "SUG-10",
@@ -393,22 +471,24 @@
      ]
     }
    ],
-   "status": "proposed",
-   "implementation": {
-    "status": "deferred",
-    "by": "5a56c084",
-    "date": "2026-11-16",
-    "note": "The visible half is done: the desk publishes its review checklist and names its process. The owner decisions (named reviewer, cadence) remain open question Q5; the desk byline 'Zone3 Research Desk' is a process label, not a named human reviewer, and scaling the article hub waits on Q5.",
-    "evidence": [
-     [
-      "articles/index.html",
-      "review checklist published"
+   "status": "accepted",
+   "implementation": [
+    {
+     "status": "deferred",
+     "by": "5a56c084",
+     "date": "2026-11-16",
+     "note": "The visible half is done: the desk publishes its review checklist and names its process. The owner decisions (named reviewer, cadence) remain open question Q5; the desk byline 'Zone3 Research Desk' is a process label, not a named human reviewer, and scaling the article hub waits on Q5.",
+     "evidence": [
+      [
+       "articles/index.html",
+       "review checklist published"
+      ]
+     ],
+     "basis": [
+      "S01"
      ]
-    ],
-    "basis": [
-     "S01"
-    ]
-   }
+    }
+   ]
   }
  ],
  "questions": [

@@ -103,6 +103,8 @@ main{max-width:1180px;margin:0 auto;padding:26px 22px 46px}
 .kitchen-now p{margin:0;max-width:640px;color:#6d5638}
 .kitchen-now .btn{background:var(--copper);border-color:var(--copper);color:#fff}
 .kitchen-now .btn:hover{background:#99491e}
+.trending{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:30px 0}
+.trending h2{font-size:clamp(20px,2.6vw,25px);margin:0 0 8px}
 .decision-banner{background:linear-gradient(118deg,var(--accent-deep),var(--accent-dark));color:#fff}
 .decision-banner h2{margin:0 0 8px;color:#fff}
 .decision-banner p{margin:0;max-width:640px;color:#dfece2}

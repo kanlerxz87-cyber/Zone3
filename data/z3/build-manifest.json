@@ -21,7 +21,7 @@
     "compliance": "3f81af965f25",
     "content": "1a5f0f5b0199",
     "executive-summary": "2fb9558c9fe7",
-    "flagged": "0cdbfb7c3339",
+    "flagged": "72e7f57f2a2a",
     "index": "4e1e5d971bf6",
     "methodology": "5bf3ccee36f3",
     "niches": "f551917e6deb",
@@ -32,6 +32,6 @@
     "reviews": "e287786124f3",
     "sources": "0db2f47d32d2"
   },
-  "content_digest": "84c87cd00954160f",
+  "content_digest": "30fafd29b7f10f71",
   "built_utc_note": "deliberately absent: no build timestamp is recorded, so that a no-op rebuild is byte-identical and the tree stays clean. Use the commit date of the file for 'when', and content_digest for 'what'."
 }

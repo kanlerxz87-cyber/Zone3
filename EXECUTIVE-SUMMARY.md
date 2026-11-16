@@ -12,6 +12,41 @@
 
 ---
 
+## Update 2026-11-16 — session a0ffcab0 (repo review, live re-check, restricted-value scan)
+
+**Bottom line.** The repository builds and every gate passes on `main` (check_site, verify_site, link_report --strict, check_all_links, sitemap check, i2_gate). The live re-check of the three submitted short links and the policy text reproduces the record: the links open B0CDY277D3, B09B7SB46R and B08DKYBTPH, and `amazon.com/dp/B04G1MEwY` returns Page Not Found. The record is [research/a0ffcab0-record.md](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/a0ffcab0-record.md).
+
+- **Highest-priority finding (A0-F-01, High).** The public `/docs/` pages still show observed Amazon prices, star ratings, review counts and "bought in past month" badges. Program Policies 2(b) and 6(t) do not allow that display outside the Amazon-served link or Creators/PA API. This session did not rewrite `/docs/`, because the fix changes derived analysis on six pages. It is an owner decision with two options, listed in the flag.
+- **Archives (A0-F-02, High).** Other sessions' folders (`sessions/`, `archive/`) still carry the same values. They are logged as change requests, not edited.
+- **Row-provenance gate (A0-F-03, Medium).** `verify_site` counts flagged and repo-anchored rows as passing. The brief's rule, an official link on every row, is not enforced by the gate yet.
+- **Fixed in this pass (A0-F-04, Low).** Six marketing pages were regenerated for the `/site/` nav entry.
+- **Flags.** Seven new items (A0-F-01…07) on the Flagged for review page; the register now holds 93. A0-F-07 asks for a wording fix: the redirect-target table says "No: not the submitted product", which no official source establishes.
+
+## Update 2026-11-16 — session ab3ed329 (independent re-verification and compliance sweep)
+
+**Bottom line.** The three submitted links still open the three Amazon listings already on record. Their nine-character codes are short-link tokens, not ASINs. The owner still has to confirm which product each link was meant to reach. The record for this pass is [sessions/ab3ed329/index.html](https://kanlerxz87-cyber.github.io/Zone3/sessions/ab3ed329/index.html).
+
+- **Re-read today from official pages.** Link destinations, direct `/dp/` checks, the [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) (updated October 15, 2025, with the section 5 disclosure wording), the [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (updated April 14, 2026; clauses 2(a), 2(b), 6(t), 6(v), 6(w), 6(y), 6(z)), the [Standard Commission Income Statement, Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) (Kitchen 4.50%; All Other Categories 4.00%), the [Creators API GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) (ASIN default; 10-character examples) and the [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) guide (November 2019).
+- **Compliance fix.** Observed Amazon price, star-rating, review-count and sales values were removed from the public data files, the Sources page and flag text. Program Policies 2(b) and 6(t) do not allow that display outside the Creators API or PA API (AB-F-01).
+- **Still open.** Archived pages in `docs/`, `sessions/` and `research/`, and several snapshot files, still show those values. Their owners must remove or redact them. These are logged as change requests, not edited, under the coordination rules.
+- **Flags.** Five new items were added to the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page (AB-F-01 to AB-F-05). The register held 83 items after that pass; §2 carries the current count.
+- **Owner decisions needed.** (1) The intended product, or the 10-character ASIN, for each submitted link. (2) Whether to remove or redact the archives listed in AB-F-01. (3) Whether a link.amazon redirect counts as a Redirecting Link under Commission Income Statement 2(e). That can only be tested in a logged-in Associates account.
+
+---
+
+## Update 2026-11-16 — session f132f462 (marketing polish, independent re-verification)
+
+**Bottom line.** This session independently re-read every load-bearing claim from the official pages on 2026-11-16 and confirmed the record unchanged: the three short links open B0CDY277D3, B09B7SB46R and B08DKYBTPH; the raw 9-character tokens return Page Not Found; the Operating Agreement (§5 disclosure), Program Policies (2(b), 6(t), 6(w), 6(y)), Commission Table 1 (Kitchen 4.50%, All Other 4.00%), the Creators API ASIN rule (10 characters) and FTC Disclosures 101 all match. Record: `research/f132f462-verification-log.md`.
+
+**Marketing polish implemented (accepted suggestions SUG-01, SUG-04, SUG-08):**
+- Landing page hero rewritten as a brand-led promise ("Three air fryers. One clear comparison. Zero guesswork.") leading into the buying guide and product research — Amazon Program Content sourcing rule documented (S01).
+- A dated "Trending now in air fryers" point-in-time section added, anchored to the Amazon Best Sellers browse path (node 17659096011) read from the three destination listings (S14–S16), with an explicit notice that no trend direction, search volume or conversion data is published (S02).
+- Comparison matrix and buying guide restyled with a "who this is for" decision table using only verified listing attributes; price, rating, review count and commission stay blank-by-design per S02 2(b)/6(t).
+
+**Repo review:** `research/f132f462-repo-review.md` records the line-by-line review of the combined tree; no new irregularities, no secrets, no unverified inferred values.
+
+---
+
 ## 1. The bottom line
 
 **The three submitted short links were observed to open real Amazon listings; the requester's intended product match remains unconfirmed.** Each submitted token is **9 characters**, not a 10-character ASIN, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page for the raw token — reproduced again on 2026-11-14:
@@ -43,7 +78,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-51 official sources · 55 policy facts · 72 flags · 13 root pages, a 16-page audit build, a `/docs/`
+52 official sources · 55 policy facts · 93 flags · 13 root pages, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -137,8 +172,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-72 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 13 high, 20 medium, 21 low, 15 informational (informational entries record a correction
+93 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 16 high, 25 medium, 29 low, 20 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
@@ -185,6 +220,13 @@ changes are auditable rather than silent):
   anchored to the repo), `tools/link_report.py` (no dangling refs), `scripts/check_all_links.py`
   (117 pages, 105 external URLs, 0 errors), `scripts/build_sitemap.py` (66 pages covered), and both
   site generators rebuild to a stable fixpoint.
+* **Re-verification round 2026-11-16 (session `1f1b8bd2`)** — the three submitted short links, the
+  three direct `/dp/<9-char code>` controls, the Operating Agreement (§5, §6), the Program Policies
+  (header date, Participation Requirements 2(b) and 6(s)–6(z), Commission Income Statement §1), the
+  Standard Commission Table 1, the Creators API introduction and GetItems ASIN definition, FTC
+  Disclosures 101 and the FTC endorsements hub were all re-read from the official pages on
+  2026-11-16. Results identical to 2026-11-14. Record:
+  [`research/1f1b8bd2-verification-log.md`](research/1f1b8bd2-verification-log.md).
 * **Limits:** the sandbox reaches only github.com, npm and PyPI directly, so official pages were read
   through a fetch tool rather than an automated HTTP client, and the `--online` link check was not
   run. Whether `link.amazon` redirects without an affirmative click has not been tested in a
@@ -195,8 +237,8 @@ changes are auditable rather than silent):
 ## 8. Final integration pass — session `3ead7ac8` (2026-11-14)
 
 **A live compliance defect was found and fixed.** Two page sets were publishing observed prices
-(USD 79.93 / 149.99 / 79.91), star ratings (4.2 / 4.3 / 4.4 out of 5) and review counts
-(4.8K / 18.3K / 16.8K) as product facts. Associates Program **Participation Requirements 2(b)** and
+([price withheld] / [price withheld] / [price withheld]), star ratings ([rating withheld]) and review counts
+([count withheld]) as product facts. Values were removed from the public files on 2026-11-16 (AB-F-01). Associates Program **Participation Requirements 2(b)** and
 **6(t)**, re-read verbatim that day, allow those displays only where Amazon serves the link or the
 data comes from Creators API / PA API — neither is true for this project, which has no Associates tag
 and no API credentials.
@@ -282,8 +324,8 @@ in a single topic and is labelled point-in-time, because the positions move betw
 claimed and why.
 
 **A second observation was recorded.** Re-fetching the destination page for product 1 showed the
-"Customers who viewed this item also viewed" carousel rendering a 4.4-star, 392-review, $69.97
-entry whose own link points at a **different** ASIN (`dp/B0B7C327LK`), while the link it renders
+"Customers who viewed this item also viewed" carousel rendering a [rating withheld], [count withheld],
+[price withheld] entry whose own link points at a **different** ASIN (`dp/B0B7C327LK`), while the link it renders
 under is the destination ASIN (`dp/B0CDY277D3`). The published data was never affected — no price,
 rating or review count appears anywhere on the site (FLG-022, FLG-029) — but any future automated
 capture must bind each value to the page's own ASIN. Recorded as **3D-F-02**; the missing dashboard
@@ -351,6 +393,93 @@ navigation and in `sitemap.xml`, and passes all gates with 0 advisories. A rebas
 `sessions/25513d33/resolve_rebase.py`, was added alongside it: the board's own prose contains the
 string `<<<<<<<`, so a substring marker test false-positives and can let a conflicted file be
 published — the resolver's test is line-anchored.
+
+---
+
+## 10. Final integration and the reader-facing site — session `59d84c55` (2026-11-16)
+
+**One-line summary.** Every load-bearing claim this repository publishes was re-read from its official
+page today, the results agree with the existing record, and the repository now carries a reader-facing
+marketing site at `/site/` that a person can actually shop with — without a single invented number.
+
+### 10.1 What was re-verified today (22 claims, `site/evidence.html`)
+
+Every page below was fetched **once** on 2026-11-16 and the wording copied from the page at the time.
+Nothing was carried forward from an earlier session's capture.
+
+| Claim | Official page read today | Result |
+|---|---|---|
+| The three short links open three live listings | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) → `/dp/B0CDY277D3`, [B02NbDxp3](https://link.amazon/B02NbDxp3) → `/dp/B09B7SB46R`, [B00hJ57DV](https://link.amazon/B00hJ57DV) → `/dp/B08DKYBTPH` | **Confirmed**, same destinations as the 2026-11-13/14/15 captures |
+| Nine characters is not an ASIN | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) returns *Page Not Found*; [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) documents ASIN with ten-character examples | **Confirmed** |
+| §5 disclosure sentence and the header date | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) — "Updated: October 15, 2025" | **Confirmed verbatim** |
+| Price display rule 2(b), rating rule 6(t), no price tracking 6(y), no automated clicks 6(s), no link shortening 6(w), no sub-tag per visitor | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) — header "Updated: April 14, 2026" | **Confirmed verbatim** |
+| No ML training on Program Content; no API aggregation/analysis without prior written approval; 24-hour cache limit; no stored images | same Program Policies, IP License §1, §2(e), §2(h) | **Confirmed verbatim** |
+| Agents must identify as `Agent/[name]` and must not circumvent blocks | same Program Policies, Agent Terms §4(c) | **Confirmed verbatim** |
+| Kitchen 4.50%, All Other 4.00%, bounty rates $12/$2/$5/$0.25 | [Standard Commission Income Statement, Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed as printed** |
+| API access needs enrollment plus 10 qualifying sales in 30 days; the API has four operations and no trend or conversion endpoint | [Creators API introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction) | **Confirmed** |
+| FTC: disclose hard to miss, with the endorsement, not only in a footer; no invented first-hand experience | [Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | **Confirmed** |
+| The 180-day / three-sale window | not fetched today | **Not re-checked — no result asserted** |
+
+### 10.2 One correction to how the site described itself
+
+The older pages place the exact §5 sentence **in the footer only**. That satisfies the Operating
+Agreement's "on your Site" wording. It is weaker than the FTC's placement guidance, which warns that a
+disclosure appearing only at the end of a page is "likely to be missed". The new site therefore carries the
+disclosure as a **banner above the navigation** as well as beside every buy action, and the older pages are
+flagged for the same change (`I2-F-01`, proposal `D-07`). This is recorded rather than silently applied,
+because those pages belong to other sessions' builds.
+
+### 10.3 What the reader-facing site is
+
+`/site/` — eight pages, generated from `data/i2/*.json` by `tools/build_i2_site.py`, gated by
+`tools/i2_gate.py` (G1–G10):
+
+| Page | Purpose |
+|---|---|
+| `site/index.html` | The promise, three product cards built only on listing facts, a seven-row comparison, and a statement of what is deliberately left out |
+| `site/products.html` | Listing detail, the token caution, and the blank-fields table with the rule for each |
+| `site/guides/` | The guide plan and one live guide, built from listing facts only |
+| `site/evidence.html` | 14 sources, what each said, and the 22-row verification log |
+| `site/flagged.html` | 8 open items with severity, finding, resolution and source |
+| `site/decisions.html` | 12 proposals, 12 open questions, 9 discovery actions, 6 prompts, and an Accept/Reject/Defer control with a text export |
+| `site/front-door.html` | Where the audit builds live |
+
+**What makes it not read as generated:** the disclosure sits where a reader sees it before any product
+content; a blank cell is an explained state ("Not published" plus why plus a link to the blocking item)
+rather than a dash; every table row links the listing or policy page it came from; no sentence claims
+experience with a product that was never used; and the site says in the body copy which figures it refuses
+to publish, with the clause that stops each one.
+
+### 10.4 What is still blocked, and on what
+
+| Blocker | Question | What it stops | Who can unblock |
+|---|---|---|---|
+| No Associates tag | `Q1` | Every earning link. All buy actions are disabled and labelled | Account holder |
+| Intended product unconfirmed | `Q2` | Confidence that the three listings are the products you meant | Account holder (a yes/no) |
+| Marketplace unknown | `Q3` | Which storefront the tag applies to | Account holder |
+| No API eligibility | `Q4` | Any price, availability or star rating, ever | Account holder + 10 qualifying sales in 30 days |
+| No named editor | `Q5` | Publishing further guides without them reading as generated | A decision |
+
+### 10.5 Gates on the combined tree (run by this session)
+
+| Gate | Result |
+|---|---|
+| `tools/i2_gate.py` (new, G1–G10) | **PASS** · 8 pages · 104 rows · 89 sourced · 15 explicit blanks |
+| `tools/verify_site.py` V1–V7 | **PASS** · 82 pages · 1,437 rows · 1,217 sourced · 0 advisories |
+| `tools/build_site.py` (provenance gate) | **PASS** · 16 pages · 232 rows · 22 sources · 29 flags |
+| `scripts/check_site.py` | **OK** · 13 pages · 3 products · 51 sources · 78 flags |
+| `scripts/build_sitemap.py --check` | **PASS** · 77 pages · 0 extra entries |
+| Negative test of every gate check | 13 injected violations, 13 caught (see COORDINATION.md §I2) |
+| Internal link crawl of the whole tree | 0 broken |
+
+### 10.6 The point
+
+The brief asked for automation that finds trending, high-converting products and optimises campaigns.
+Two of those three are not obtainable through any official Amazon surface: there is no trend endpoint and
+no conversion endpoint, and per-product commission is not published. Rather than generate numbers to fill
+those slots, this session built the part that can be true today — a site that a reader can use, that
+explains its own gaps, and whose claims a reviewer can check line by line — and published the missing
+inputs as twelve questions with a discovery action and an owner for each.
 
 ## 10. Implementation pass — session `5a56c084` (2026-11-16)
 

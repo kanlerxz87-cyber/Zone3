@@ -1,0 +1,42 @@
+{
+  "session": "ab3ed329",
+  "branch": "arena/ab3ed329-zone3",
+  "base": "933e2f3931c9cade4e1801eb2f46a4cf94d93c9b",
+  "date_utc": "2026-11-16",
+  "claims_checked": [
+    {"id": "A1", "claim": "link.amazon/B04G1MEwY opens amazon.com/dp/B0CDY277D3 (CHEFMAN 6 Quart)", "result": "confirmed", "sources": ["https://link.amazon/B04G1MEwY", "https://www.amazon.com/dp/B0CDY277D3"]},
+    {"id": "A2", "claim": "link.amazon/B02NbDxp3 opens amazon.com/dp/B09B7SB46R (Emeril Lagasse 26QT)", "result": "confirmed", "sources": ["https://link.amazon/B02NbDxp3", "https://www.amazon.com/dp/B09B7SB46R"]},
+    {"id": "A3", "claim": "link.amazon/B00hJ57DV opens amazon.com/dp/B08DKYBTPH (Chefman 8 Qt TurboFry)", "result": "confirmed", "sources": ["https://link.amazon/B00hJ57DV", "https://www.amazon.com/dp/B08DKYBTPH"]},
+    {"id": "A4", "claim": "amazon.com/dp/B04G1MEwY returns Page Not Found", "result": "confirmed", "sources": ["https://www.amazon.com/dp/B04G1MEwY"]},
+    {"id": "A5", "claim": "amazon.com/dp/B02NbDxp3 returns Page Not Found", "result": "confirmed", "sources": ["https://www.amazon.com/dp/B02NbDxp3"]},
+    {"id": "A6", "claim": "amazon.com/dp/B00hJ57DV returns Page Not Found", "result": "confirmed", "sources": ["https://www.amazon.com/dp/B00hJ57DV"]},
+    {"id": "A7", "claim": "Creators API GetItems: itemIdType default ASIN; example IDs 10 characters", "result": "confirmed", "sources": ["https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"]},
+    {"id": "A8", "claim": "Operating Agreement updated October 15, 2025", "result": "confirmed", "sources": ["https://affiliate-program.amazon.com/help/operating/agreement"]},
+    {"id": "A9", "claim": "Operating Agreement section 5 disclosure wording", "result": "confirmed verbatim", "sources": ["https://affiliate-program.amazon.com/help/operating/agreement"]},
+    {"id": "A10", "claim": "Standard Commission Table 1: Physical Books, Kitchen, Automotive 4.50%; All Other Categories 4.00%", "result": "confirmed", "sources": ["https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ"]},
+    {"id": "A11", "claim": "Program Policies updated April 14, 2026", "result": "confirmed", "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]},
+    {"id": "A12", "claim": "Participation Requirements 2(a), 2(b): Special Links and price display", "result": "confirmed verbatim", "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]},
+    {"id": "A13", "claim": "Participation Requirement 6(t): reviews and star ratings", "result": "confirmed verbatim", "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]},
+    {"id": "A14", "claim": "Participation Requirements 6(v), 6(w): cloaking and link shortening", "result": "confirmed verbatim", "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]},
+    {"id": "A15", "claim": "Participation Requirement 6(y): price tracking and alerts", "result": "confirmed verbatim", "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]},
+    {"id": "A16", "claim": "Participation Requirement 6(z): Program Content for non-Amazon products", "result": "confirmed", "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]},
+    {"id": "A17", "claim": "FTC Disclosures 101: material connections; dated November 2019", "result": "confirmed", "sources": ["https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers"]}
+  ],
+  "changes": [
+    "data/products.json: observed price/other_offers/rating/review_count/sales_note set to null for P1-P3 (AB-F-01)",
+    "data/sources.json: S46-S48 status_note reworded without observed values (AB-F-01)",
+    "data/flags.json, data/z3/flags.json: observed values in flag text replaced by withheld markers (49 replacements)",
+    "data/flags.json: AB-F-01 to AB-F-05 added",
+    "scripts/build_site.py: BUILT 2026-11-14 -> 2026-11-16; navigation entries for this record",
+    "regenerated: root pages, flagged/, marketing/, sitemap.xml, data/z3/build-manifest.json"
+  ],
+  "not_established": [
+    "intended product for each submitted link (FLG-001, FLG-002)",
+    "whether link.amazon redirects are Redirecting Links (FLG-003; needs a logged-in Associates account)",
+    "any live price, rating, review count or sales value (withheld under 2(b), 6(t))"
+  ],
+  "cross_scope_requests_not_edited": [
+    "docs/ archived build", "sessions/3c886b62/**", "sessions/03bbd050/**", "sessions/f2102efa/verification.md",
+    "data/c4e71983-*.json", "data/z3-51fcb80d-snapshot.json", "research/*.md verification logs"
+  ]
+}

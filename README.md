@@ -76,11 +76,49 @@ The pipeline records the observed destination listings separately from the 9-cha
 | Repo review | `/repo-review/` | Audit of the repository as found |
 | **This pass (2026-11-14)** | `/` (root dashboard) | Independent re-verification of every load-bearing claim against its official source, with a per-claim result table; corrections V-F1/V-F2 published at `/flagged.html`; repo review at `COORDINATION.md` § *Part: session b8beb448* |
 | **Final integration pass (2026-11-14)** | `/content-topics.html` | The editorial topic plan the brief asks for: 12 working article titles, the verified Amazon fact each is built on, the page that already carries it, and the rule that governs what it may not state. Every row carries an official source link |
+| **This pass (2026-11-15)** | `/suggestions.html` | Design and marketing proposals for making the site read like a polished marketing affiliate website, the open questions that must be answered before any decision, and suggestions for discovering the missing information. Proposals are labelled as proposals; every factual row links its official source. Nothing on this page is implemented yet — it is published for review |
+| **This pass (2026-11-16)** | `/site/` | **The reader-facing marketing site.** Built by `tools/build_i2_site.py` from `data/i2/*.json`, gated by `tools/i2_gate.py` (G1–G10). Eight pages: a home page that leads with the three products, a comparison table where every row links the listing it came from and every blank cell says why, a buying guide, a source register with 14 pages read on 2026-11-16, a 22-row line-by-line verification log, a "flagged for review" page with 8 open items, and a decision board with 12 proposals, 12 open questions, 9 discovery actions, a 6-part prompt pack and an Accept/Reject/Defer control that changes nothing until a choice is recorded. |
+
 | **Final integration pass (2026-11-14)** | `/content-topics.html` | The editorial topic plan the brief asks for: 12 working article titles, the verified Amazon fact each is built on, the page that already carries it, and the rule that governs what it may not state. Every row carries an official source link |
 | **Suggestions & decisions** | `/suggestions.html` | Design and marketing proposals for making the site read like a polished marketing affiliate website, the open questions that must be answered before any decision, and suggestions for discovering the missing information. Proposals are labelled as proposals; every factual row links its official source. The **Decision log** records what session 5a56c084 implemented, deferred or left blocked (2026-11-16) |
 | **Research Desk (2026-11-16)** | `/articles/` | The article hub: four grounded articles (affiliate-link anatomy, what you may say about an untested product, category & commission mechanics, the 24-hour session window) plus the full 12-topic plan with status. Every claim carries an inline source link; every article carries a verified / not-verified box and its editorial constraints. Proposals SUG-02/SUG-03 implemented |
 | **This pass (2026-11-16)** | `/sessions/5a56c084/` | Independent re-verification of the three submitted links, the three destinations and the load-bearing policy pages, fetched 2026-11-16 — 8/8 observations match the register; two listing-title wording drifts recorded as Info items |
 | **Executive summary (document)** | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | The standalone executive summary: verified facts, deliberately blank fields, capability status, and the three items that unblock the build |
+
+---
+
+## The reader-facing site (`/site/`, added 2026-11-16)
+
+The repository's other builds are audit surfaces: they answer "what do we know and how do we know it",
+which is the right answer for a reviewer and the wrong first impression for a reader deciding what to buy.
+`/site/` is the reader-facing layer, and it keeps the same evidence rule while dropping the audit tone.
+
+| Page | What a reader gets |
+| --- | --- |
+| [`site/index.html`](site/index.html) | The promise, the three products as cards built only on listing facts, a seven-row comparison, and an explicit statement of what is deliberately left out |
+| [`site/products.html`](site/products.html) | Full listing detail, the nine-character-token caution, and a table of every field that is blank with the rule that requires it |
+| [`site/guides/index.html`](site/guides/index.html) | The guide plan and the one live guide, `dual-basket-vs-single-basket.html` |
+| [`site/evidence.html`](site/evidence.html) | 14 official sources read 2026-11-16, their observed text, and a 22-row verification log with the outcome per claim |
+| [`site/flagged.html`](site/flagged.html) | 8 open items, each with severity, what was found, what would resolve it and its source |
+| [`site/decisions.html`](site/decisions.html) | 12 proposals · 12 open questions · 9 discovery actions · 6 prompts · a working Accept/Reject/Defer control with an export |
+
+**What is different about it, concretely:**
+
+- **The disclosure is a banner above the navigation, not a footer line.** The exact Operating Agreement §5
+  sentence is unchanged; its placement now also meets the FTC's guidance that a footer-only disclosure is
+  likely to be missed ([I2-S01](https://affiliate-program.amazon.com/help/operating/agreement),
+  [I2-S06](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers)).
+- **A blank cell is a designed element, not a gap.** It renders as `Not published` with a one-sentence
+  reason and a link to the open item that blocks it.
+- **No figure can be published by accident.** `tools/i2_gate.py` G6 fails the build on any money amount,
+  percentage, star rating or review count that is not in the published-rate allowlist.
+- **Nothing on the decisions page is applied by reading it.** Choices are held in the browser, exported as
+  text, and only become changes when a later session implements what was accepted.
+
+```bash
+python3 tools/build_i2_site.py     # rebuild site/ from data/i2/*.json
+python3 tools/i2_gate.py           # G1–G10; exit 1 on any prohibited construct
+```
 
 ---
 

@@ -98,6 +98,9 @@ NAV_PRIMARY = [
     # (proposals SUG-02/SUG-03 implemented; decision log on suggestions.html).
     ("articles/index.html", "Research Desk"),
     ("decision-center.html", "Decision Center"),
+    # Added by integration session 59d84c55 (2026-11-16): the reader-facing marketing
+    # site built by tools/build_i2_site.py from data/i2/*.json.
+    ("site/index.html", "Marketing site"),
 ]
 
 # Grouped under the "More" menu; every destination that was previously in the flat
@@ -123,6 +126,11 @@ NAV_MORE = [
         ("sessions/3ead7ac8/index.html", "Verification (3ead7ac8)"),
         ("sessions/25513d33/index.html", "Verification (25513d33)"),
         ("sessions/5a56c084/index.html", "Verification (2026-11-16)"),
+        # Added by session ab3ed329 (2026-11-16) alongside the other verification tiles.
+        ("sessions/ab3ed329/index.html", "Verification (session ab3ed329)"),
+        # Added by session ab3ed329 (2026-11-16): independent re-verification of the three
+        # short links, the policy clauses and the commission table (AB Part on the board).
+        ("sessions/ab3ed329/index.html", "Verification (ab3ed329)"),
         ("flagged.html", "Flagged for review"),
         ("docs/index.html", "Reference (/docs/)"),
         ("dashboard/index.html", "Full audit (16 pages)"),
@@ -339,6 +347,8 @@ main{max-width:1180px;margin:0 auto;padding:26px 22px 46px}
 .kitchen-now p{margin:0;max-width:640px;color:#6d5638}
 .kitchen-now .btn{background:var(--copper);border-color:var(--copper);color:#fff}
 .kitchen-now .btn:hover{background:#99491e}
+.trending{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:30px 0}
+.trending h2{font-size:clamp(20px,2.6vw,25px);margin:0 0 8px}
 .decision-banner{background:linear-gradient(118deg,var(--accent-deep),var(--accent-dark));color:#fff}
 .decision-banner h2{margin:0 0 8px;color:#fff}
 .decision-banner p{margin:0;max-width:640px;color:#dfece2}
@@ -469,6 +479,16 @@ def reverify_table() -> str:
 
 
 SITEMAP_GROUPS = [
+    # Added by integration session 59d84c55 (2026-11-16): the reader-facing site.
+    ("Marketing site", [
+        ("site/index.html", "Marketing site: start here"),
+        ("site/products.html", "Marketing site: the three air fryers"),
+        ("site/guides/index.html", "Marketing site: buying guides"),
+        ("site/evidence.html", "Marketing site: how we know"),
+        ("site/decisions.html", "Marketing site: suggestions &amp; decisions"),
+        ("site/flagged.html", "Marketing site: flagged for review"),
+        ("site/front-door.html", "Marketing site: where the rest lives"),
+    ]),
     ("Overview", [
         ("executive-summary.html", "Executive summary"),
         ("dashboard/index.html", "Full audit dashboard (16 pages)"),
@@ -635,6 +655,7 @@ def build_index() -> None:
     <p class="eyebrow">In the kitchen now</p>
     <h2>What the category's official shelf looks like.</h2>
     <p>Amazon publishes one official popularity surface for this category: the Best Sellers page for Air Fryers, browse node 17659096011. Our benchmark is a point-in-time read of that page &mdash; six positions, captured 2026-11-14 &mdash; with the date attached, because ranks move and a rank without a date is decoration, not data.</p>
+    <p class="small">Category breadcrumb as served by the three destination listings (captured 2026-11-16 by session f132f462, kept from their trending section): Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers &middot; node 17659096011 &middot; {src_links(["S14", "S15", "S16"])}</p>
   </div>
   <a class="btn" href="air-fryers.html">See the dated benchmark</a>
 </section>
@@ -1082,10 +1103,14 @@ def build_suggestions() -> None:
             f'<strong>{e(g["title"])}</strong>',
             f'<div>{e(g["what"])}</div>{blocker}',
             f'<div>{e(g["why"])}</div>{comp}',
-            badge("Proposal", "info") if g["status"] == "proposed" else badge("Blocked", "warn"),
+            badge("Proposal", "info") if g["status"] == "proposed"
+            else badge("Blocked", "warn") if g["status"] == "blocked"
+            else badge("Accepted", "ok"),
         ])
-        impl = g.get("implementation")
-        if impl:
+        # Session 5a56c084 merge (2026-11-16): "implementation" is now a list of records,
+        # one per deciding session - f132f462 implemented its own versions of SUG-01/04/08
+        # in parallel, and both sessions' records are kept and rendered.
+        for impl in (g.get("implementation") or []):
             badge_html = {
                 "implemented": '<span class="badge ok">Implemented</span>',
                 "partially implemented": '<span class="badge ok">Implemented (partial)</span>',
@@ -1098,9 +1123,10 @@ def build_suggestions() -> None:
             impl_rows.append([
                 e(g["id"]),
                 f"<strong>{e(g['title'])}</strong>",
+                f"{e(impl.get('by', ''))}",
                 badge_html,
                 e(impl.get("note", "")),
-                f"{e(impl.get('date', ''))} &middot; {e(impl.get('by', ''))}",
+                f"{e(impl.get('date', ''))}",
                 evidence,
                 src_links(impl.get("basis", ["S01"])),
             ])
@@ -1110,15 +1136,16 @@ def build_suggestions() -> None:
     if impl_rows:
         body += (
             '<div class="callout ok"><p><strong>Decision log.</strong> For each proposal '
-            '(SUG-01 to SUG-10) the follow-up session recorded accept / defer / hold with a '
+            '(SUG-01 to SUG-10) the implementing sessions recorded accept / defer / hold with a '
             'reason, exactly as the workflow below asks. Every implemented item respects its '
             'compliance basis: no tagged conversion CTAs (SUG-05 stays blocked pending Q1), '
-            'no price or rating display (2(b)/6(t)), no invented metrics anywhere. Change '
-            'requests that touch another session\'s scope (SUG-04, the marketing/ page '
-            'generator) are logged in COORDINATION.md instead of acted on.</p></div>'
+            'no price or rating display (2(b)/6(t)), no invented metrics anywhere. Two sessions '
+            'worked this page in parallel (5a56c084 and f132f462) and both records are kept; '
+            'change requests that touch another session&#8217;s scope are logged in '
+            'COORDINATION.md instead of acted on.</p></div>'
         )
-        body += "<h2>Decision log (recorded 2026-11-16, session 5a56c084)</h2>" + table(
-            ["ID", "Proposal", "Decision", "What was done / why it waits", "Recorded", "Evidence on this site", "Basis"],
+        body += "<h2>Decision log (recorded 2026-11-16, sessions 5a56c084 and f132f462)</h2>" + table(
+            ["ID", "Proposal", "Decided by", "Decision", "What was done / why it waits", "Recorded", "Evidence on this site", "Basis"],
             impl_rows)
 
     q_rows = []
