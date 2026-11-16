@@ -5277,3 +5277,130 @@ All are logged only; no shared site/data/tool was edited. Existing published fla
 PR #71 is open from `arena/71dc8fea-zone3` against `main`, rebased onto `6843206` after PRs #70 and #73–#77 merged. The latest checked Pages build is `built` for `6843206` (ID `1369833399`); ordinary `/` shows 65 and ordinary `/flagged.html` 51, while cache-busted responses show the current 66. Append merge and post-merge Pages details here after integration.
 
 > **Takeover completion (2026-11-16, session `1f1b8bd2`).** The open-ended final line above is now answered: PR #71 was closed unmerged as superseded by this takeover; the audit record lives in `sessions/71dc8fea/verification-2026-11-14.md` and in this Part on `main`. The latest Pages build at takeover time was `built` for `933e2f3` (2026-11-15T12:00:53Z); edge-cache observations 71-F-06 are unchanged in kind.
+
+# Part I2 — session `59d84c55` (2026-11-16) — integration: reader-facing marketing site + decision board
+
+> Appended additively. IDs `I2-Tn` (tasks), `I2-F-nn` (irregularities), `I2-S-nn` (sources) are
+> **namespaced** and are not the same items as `A:`, `B:`, `Z:`, `V-`, `03-F-`, `4f83-F-`, `JH-F-`
+> or `FLG-nnn` used above. Nothing above this line was removed or rewritten by this session.
+> Branch: `arena/59d84c55-zone3` (Arena pins a session to one branch; base `933e2f3`).
+
+## I2 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `59d84c55` | `arena/59d84c55-zone3` | **Final integration + reader-facing marketing site.** Audits the combined tree line by line, re-verifies load-bearing claims against the official pages fetched **today**, and builds a polished marketing front office (`/site/`) that links every table row to its official source, plus a decision board where each proposal can be reviewed and accepted/rejected/deferred before anything is implemented. | in progress | 2026-11-16 |
+
+## I2 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
+|---|---|---|---|---|---|
+| I2-T1 — read the board, claim tasks, push the claim | **done** | `59d84c55` | `COORDINATION.md` (append only) | — | — |
+| I2-T2 — repo-wide line-by-line audit + live re-verification | **done** | `59d84c55` | read-only over the whole tree; writes only `data/i2/*.json` | `I2-S01…I2-S14` | `I2-F-01…09` |
+| I2-T3 — reader-facing marketing site | **done** | `59d84c55` | `site/**` (new), `tools/build_i2_site.py` (new), `tools/i2_gate.py` (new), `data/i2/**` (new) | `I2-S01…I2-S14` | none — G1–G10 pass |
+| I2-T4 — decision board (suggestions, questions, prompt pack) | **done** | `59d84c55` | `site/decisions.html`, `data/i2/decisions.json` | `I2-S01…I2-S06` | — |
+| I2-T5 — navigation, sitemap, gates, PR, merge, Pages confirm | unclaimed → see below | `59d84c55` | `scripts/build_site.py` (NAV + tile + sitemap group only), `sitemap.xml` (regenerated) | — | — |
+
+**Scope rule honoured:** no file owned by another session's build is rewritten. `site/**` is new and
+cannot collide; the only edits to an existing generator are one NAV entry, one dashboard tile, one
+sitemap group entry and one sentence of footer copy — additive, and logged here.
+
+**No other session is `in progress` on this repo at this moment.** The last merged record is PR #97
+(session `4f83ee7b`, merge `933e2f3`). One PR from 2026-11-14 (#71) is still open and CONFLICTING; it
+is not touched by this session and is raised as `I2-F-05`.
+
+### I2-T2 — Independent live re-verification (done, 2026-11-16)
+
+Every row below was fetched **once, today**, by this session. Nothing is carried over from another
+session's capture. Full quoted observations: `data/i2/verification.json`; rendered at `site/evidence.html`.
+
+| # | Claim re-checked | Official page read today | Result |
+|---|---|---|---|
+| I2-V01 | §5 disclosure sentence + header date | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | **Confirmed verbatim** — "Updated: October 15, 2025"; §5 exact sentence present |
+| I2-V02 | Every Amazon link must carry the tag | Operating Agreement §1 + [Program Policies 2(b)](https://affiliate-program.amazon.com/help/operating/policies) | **Confirmed verbatim**; no tag exists in the repo and none appears in the live redirects (`I2-F-03`) |
+| I2-V03 | Nine-character tokens are not ASINs | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) + [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | **Confirmed** — Page Not Found; ASIN documented with ten-character examples |
+| I2-V04–V06 | The three short links open three live listings | [B04G1MEwY](https://link.amazon/B04G1MEwY) → B0CDY277D3, [B02NbDxp3](https://link.amazon/B02NbDxp3) → B09B7SB46R, [B00hJ57DV](https://link.amazon/B00hJ57DV) → B08DKYBTPH | **Confirmed** — same destinations as the 11-13/14/15 captures; titles drift, destinations do not |
+| I2-V07 | Kitchen 4.50%, All Other 4.00%, bounty $12/$2/$5/$0.25 | [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed as printed** |
+| I2-V09 | Price rule 2(b); rating rule 6(t) | Program Policies | **Confirmed verbatim** |
+| I2-V11 | Agent Terms §4(c) user-agent requirement, no circumvention | Program Policies | **Confirmed verbatim** |
+| I2-V12 | No ML training on Program Content; no API aggregation/analysis without approval | Program Policies IP License §1, §2(e) | **Confirmed verbatim** |
+| I2-V14 | API needs enrollment + 10 qualifying sales in 30 days | [Creators API introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction) | **Confirmed verbatim** |
+| I2-V16–V19 | No price tracking (6(y)); no sub-tag per visitor (2(b)); no artificial clicks (6(s)); no stored Amazon images (IP License 2(h)) | Program Policies | **Confirmed verbatim** |
+| I2-V20 | FTC placement guidance; footer-only disclosure is likely to be missed | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | **Confirmed** — and it exposed `I2-F-01` on this repository's own pages |
+| I2-V21 | No first-hand experience claims | FTC Disclosures 101 | **Confirmed verbatim** |
+| I2-V15 | 180-day / three-sale window | — | **Not re-checked** — no fetch made, no result asserted |
+
+**I2-F-10 (Info, self-correction).** In the first build of this pass, the guide at
+`site/guides/dual-basket-vs-single-basket.html` stated that the 26QT oven has "a different counter
+footprint". The listings read today do not state exterior dimensions, so that was an inference, not a
+fact. The sentence was replaced with an explicit statement that dimensions are not known and must be
+checked on the listing before buying. Caught by this session's own read-through before any push;
+recorded here because the rule is that a correction is logged, not quietly edited.
+
+### I2-T3 — Reader-facing marketing site (done, 2026-11-16)
+
+**Files:** `site/*.html` (8 pages), `site/assets/site.css`, `site/assets/site.js`,
+`site/site-index.json`, `tools/build_i2_site.py`, `tools/i2_gate.py`, `data/i2/{sources,verification,
+catalog,decisions}.json`, `docs/repo-review-59d84c55.md`.
+
+**Gates on the emitted pages:** `i2_gate.py` **PASS** · 8 pages · 105 rows · 89 sourced · 16 explicit
+blanks · 0 flagged. `verify_site.py` **PASS** · 82 pages · 1,437 rows · 1,217 sourced · **0 advisories**.
+
+**Gate validation — 13 injected violations, 13 caught.** A gate that has never failed is decoration, so
+each check was tested by injecting the construct it forbids into a copy of `site/`:
+
+| Injected | Caught by |
+|---|---|
+| Disclosure sentence removed | G1 |
+| Banner given `hidden` | G2 |
+| Amazon content disclaimer removed | G3 |
+| `$79.93` inserted as a product price | G6 |
+| `4.2 out of 5 stars` inserted | G6 |
+| `4.8K ratings` inserted | G6 |
+| `amzn.to` shortener link | G7 |
+| `m.media-amazon.com` product image | G7 (**first attempt missed it — see below**) |
+| `<iframe src="amazon.com/…">` | G7 |
+| Broken internal link | G8 |
+| Missing anchor target | G8 |
+| `TODO` marker | G9 |
+| Read date removed | G10 |
+
+**I2-F-11 (High, fixed before publish).** The first version of the image rule matched only hosts ending
+in `amazon.com`. Amazon serves product imagery from `m.media-amazon.com`,
+`images-na.ssl-images-amazon.com` and `images-eu.ssl-images-amazon.com`, so **every real product image
+would have passed the gate**. The negative test caught it; the host list now covers the CDNs and the test
+passes on all three hosts. The same narrow pattern exists in `tools/verify_site.py`'s V6 rule — logged as
+recommendation 4 in `docs/repo-review-59d84c55.md` §7, not edited here because that file belongs to
+another session's build.
+
+**Decision-board control verified, not assumed.** `site.js` was executed against the real markup in a
+minimal DOM harness: selecting Accept on D-01 and Reject + a reason on D-05 produced the correct
+per-card output, a 2-of-12 counter, a correctly formatted text export, and — after a simulated reload —
+restored selections from `localStorage`. No browser was available in the sandbox to test the visual
+rendering; the markup was reviewed directly and every selector the script uses was asserted present.
+
+**I2-F-12 (Info, copy defects fixed).** Three copy defects were found on read-through and fixed before
+publishing: (a) product cards truncated long listing titles mid-word; (b) the comparison table's
+blank-reason sentence was printed three times per row instead of once; (c) the products page read
+"…followed by nine characters — nine characters." Each was a generated-output defect, not a factual one.
+
+### I2-T4 — Decision board (done, 2026-11-16)
+
+`site/decisions.html` publishes **12 proposals** (D-01…D-12), each with: the problem, the proposal, an
+evidence list where every item is labelled Official / Observed / Editorial and carries its source link,
+effort, expected effect, risks, what it will deliberately not do, what it depends on, acceptance criteria,
+and an Accept / Reject / Defer control with a free-text reason and a text export.
+
+The four already visible on `/site/` are marked **implemented** so they can be judged by looking at them
+rather than by reading a description. `D-05` (tagged links) and `D-10` (named editor) are **blocked** on
+`Q1` and `Q5` respectively. No proposal is implemented merely by being read.
+
+**12 open questions**, each stating what is known (sourced), what is not known, why it decides something,
+how to discover the answer, what happens if it is never answered, and which proposals it gates.
+**9 discovery actions**, each naming the official page to read, the person who can do it, and the output
+that closes the question. **6 prompts** for a design or content session, each with acceptance criteria and
+guardrails attached.
+
+### I2-T5 — PR, merge, Pages deploy
+
+Recorded in the publish table below once complete.

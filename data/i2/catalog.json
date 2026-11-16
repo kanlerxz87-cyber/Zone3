@@ -1,0 +1,295 @@
+{
+ "_meta": {
+  "title": "I2 product register — only facts that were read on the live Amazon page on 2026-11-16",
+  "rule": "A field is populated only if it was read in this session from the official listing (I2-S07…I2-S13). Anything not read stays null and is rendered as 'Not published'. No value is carried over from another session's capture, because those captures are dated observations that Program Policies 2(b) and 6(t) do not allow this site to display.",
+  "identity_caveat": "The three links were supplied as nine-character link.amazon short-link tokens. Each was followed and opened a live listing. Nothing official establishes that the listing is the product the owner meant to promote, so identity is recorded as an observation and the question is published as Q2 in the decision board.",
+  "tag_caveat": "The observed redirects carry no Associates tag. Program Policies 2(b) require the tag parameter on every link to an Amazon Site, so this site publishes no tagged buy link yet and every 'buy' action is disabled and labelled. The link that IS shown is labelled an evidence link and earns nothing."
+ },
+ "products": [
+  {
+   "ref": "P1",
+   "submitted": "https://link.amazon/B04G1MEwY",
+   "submitted_chars": 9,
+   "is_asin": "No — nine characters, not a ten-character ASIN",
+   "destination_asin": "B0CDY277D3",
+   "destination_url": "https://www.amazon.com/dp/B0CDY277D3",
+   "listing_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+   "brand_as_listed": "CHEFMAN",
+   "category_path": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+   "title_facts": [
+    "6 Quart total capacity across two baskets",
+    "Two independent 3Qt nonstick, dishwasher-safe frying baskets",
+    "Sync Finish control",
+    "Easy-view windows",
+    "Hi-Fry option",
+    "Auto shutoff",
+    "Digital controls"
+   ],
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "availability": null,
+   "product_commission_rate": null,
+   "trend_rank": null,
+   "conversion_rate": null,
+   "identity_confirmed": "No",
+   "tag_on_destination": "None observed",
+   "sources": [
+    "I2-S07",
+    "I2-S10",
+    "I2-S13"
+   ],
+   "flags": [
+    "I2-F-02",
+    "I2-F-03",
+    "I2-F-04"
+   ],
+   "buy_cta": "disabled",
+   "buy_cta_reason": "No Associates tag is available, and the destination is not confirmed as the intended product (Q1, Q2).",
+   "short_title": "CHEFMAN 6 Quart Dual Basket"
+  },
+  {
+   "ref": "P2",
+   "submitted": "https://link.amazon/B02NbDxp3",
+   "submitted_chars": 9,
+   "is_asin": "No — nine characters, not a ten-character ASIN",
+   "destination_asin": "B09B7SB46R",
+   "destination_url": "https://www.amazon.com/dp/B09B7SB46R",
+   "listing_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+   "brand_as_listed": "Emeril Lagasse",
+   "category_path": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+   "title_facts": [
+    "26QT capacity",
+    "French-door toaster-oven form factor",
+    "Multi-function: 24 one-touch preset options",
+    "Convection cooking",
+    "Six cooking accessories included"
+   ],
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "availability": null,
+   "product_commission_rate": null,
+   "trend_rank": null,
+   "conversion_rate": null,
+   "identity_confirmed": "No",
+   "tag_on_destination": "None observed",
+   "sources": [
+    "I2-S08",
+    "I2-S11"
+   ],
+   "flags": [
+    "I2-F-02",
+    "I2-F-03",
+    "I2-F-04"
+   ],
+   "buy_cta": "disabled",
+   "buy_cta_reason": "No Associates tag is available, and the destination is not confirmed as the intended product (Q1, Q2).",
+   "short_title": "Emeril Lagasse 26QT French Door"
+  },
+  {
+   "ref": "P3",
+   "submitted": "https://link.amazon/B00hJ57DV",
+   "submitted_chars": 9,
+   "is_asin": "No — nine characters, not a ten-character ASIN",
+   "destination_asin": "B08DKYBTPH",
+   "destination_url": "https://www.amazon.com/dp/B08DKYBTPH",
+   "listing_title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+   "brand_as_listed": "Chefman",
+   "category_path": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+   "title_facts": [
+    "8 Qt single-basket capacity",
+    "4-in-1 functions named in the title: bake, dehydrate, frozen",
+    "450°F Hi-Fry option",
+    "XL nonstick dishwasher-safe basket",
+    "Stainless steel"
+   ],
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "availability": null,
+   "product_commission_rate": null,
+   "trend_rank": null,
+   "conversion_rate": null,
+   "identity_confirmed": "No",
+   "tag_on_destination": "None observed",
+   "sources": [
+    "I2-S09",
+    "I2-S12"
+   ],
+   "flags": [
+    "I2-F-02",
+    "I2-F-03",
+    "I2-F-04"
+   ],
+   "buy_cta": "disabled",
+   "buy_cta_reason": "No Associates tag is available, and the destination is not confirmed as the intended product (Q1, Q2).",
+   "short_title": "Chefman TurboFry 8 Qt"
+  }
+ ],
+ "comparison": {
+  "caption": "The three listings side by side — only what the listing text states",
+  "columns": [
+   "What the listing states",
+   "P1 · CHEFMAN",
+   "P2 · Emeril Lagasse",
+   "P3 · Chefman",
+   "Source"
+  ],
+  "rows": [
+   {
+    "label": "Form factor",
+    "p1": "Dual-basket air fryer oven",
+    "p2": "French-door toaster oven / air fryer",
+    "p3": "Single-basket air fryer",
+    "sources": [
+     "I2-S10",
+     "I2-S11",
+     "I2-S12"
+    ]
+   },
+   {
+    "label": "Capacity as listed",
+    "p1": "6 Quart (2 × 3Qt baskets)",
+    "p2": "26QT",
+    "p3": "8 Qt",
+    "sources": [
+     "I2-S10",
+     "I2-S11",
+     "I2-S12"
+    ]
+   },
+   {
+    "label": "Baskets",
+    "p1": "Two independent 3Qt nonstick, dishwasher-safe",
+    "p2": "Not stated in the listing title",
+    "p3": "One XL nonstick, dishwasher-safe basket",
+    "sources": [
+     "I2-S10",
+     "I2-S11",
+     "I2-S12"
+    ]
+   },
+   {
+    "label": "Functions named in the listing title",
+    "p1": "Sync Finish, Hi-Fry, auto shutoff, digital",
+    "p2": "24 one-touch presets, convection, six accessories included",
+    "p3": "4-in-1: bake, dehydrate, frozen; 450°F Hi-Fry",
+    "sources": [
+     "I2-S10",
+     "I2-S11",
+     "I2-S12"
+    ]
+   },
+   {
+    "label": "Category path on Amazon",
+    "p1": "Fryers › Air Fryers",
+    "p2": "Fryers › Air Fryers",
+    "p3": "Fryers › Air Fryers",
+    "sources": [
+     "I2-S10",
+     "I2-S11",
+     "I2-S12"
+    ]
+   },
+   {
+    "label": "Price",
+    "p1": null,
+    "p2": null,
+    "p3": null,
+    "sources": [],
+    "blank_reason": "Program Policies 2(b): show a price only if Amazon serves the link that displays it, or it comes from Creators API / PA API. Neither path is available, so no price is shown. See I2-F-02.",
+    "flag": "I2-F-02"
+   },
+   {
+    "label": "Star rating and review count",
+    "p1": null,
+    "p2": null,
+    "p3": null,
+    "sources": [],
+    "blank_reason": "Program Policies 6(t): ratings and reviews may be displayed only when obtained through Creators API or PA API. See I2-F-02.",
+    "flag": "I2-F-02"
+   },
+   {
+    "label": "Commission for this specific product",
+    "p1": null,
+    "p2": null,
+    "p3": null,
+    "sources": [],
+    "blank_reason": "The published rate table is by category, not by ASIN, and the destination is not confirmed as the intended product. The Kitchen rate of 4.50% is published as a category reference only, on the programme page.",
+    "flag": "I2-F-05"
+   }
+  ]
+ },
+ "commission_reference": {
+  "caption": "Standard Commission Income, Table 1 — the rows that matter for a kitchen appliance site",
+  "rows": [
+   {
+    "category": "Physical Books, Kitchen, Automotive",
+    "rate": "4.50%",
+    "sources": [
+     "I2-S05"
+    ]
+   },
+   {
+    "category": "All Other Categories",
+    "rate": "4.00%",
+    "sources": [
+     "I2-S05"
+    ]
+   },
+   {
+    "category": "Toys, Furniture, Home, Home Improvement, Lawn & Garden, Pets Products, …",
+    "rate": "3.00%",
+    "sources": [
+     "I2-S05"
+    ]
+   },
+   {
+    "category": "Televisions, Digital Video Games",
+    "rate": "2.00%",
+    "sources": [
+     "I2-S05"
+    ]
+   },
+   {
+    "category": "Amazon Fresh, Physical Video Games & Video Game Consoles, Grocery, Health & Personal Care",
+    "rate": "1.00%",
+    "sources": [
+     "I2-S05"
+    ]
+   }
+  ],
+  "note": "'Kitchen' is the category that contains Appliances in Table 1's own wording. Whether a specific ASIN is classified by Amazon as Kitchen is not established by any page read in this session, so the rate is a category reference, not a per-product rate.",
+  "bounties": [
+   {
+    "program": "Prime Free Trial / Prime Paid Membership / Prime for Young Adults / Prime Access / Prime Sign Up at Checkout",
+    "rate": "$12.00",
+    "sources": [
+     "I2-S05"
+    ]
+   },
+   {
+    "program": "Prime Video Free Trial",
+    "rate": "$2.00",
+    "sources": [
+     "I2-S05"
+    ]
+   },
+   {
+    "program": "Prime Video First Stream",
+    "rate": "$5.00",
+    "sources": [
+     "I2-S05"
+    ]
+   },
+   {
+    "program": "Prime Video Stream",
+    "rate": "$0.25",
+    "sources": [
+     "I2-S05"
+    ]
+   }
+  ]
+ }
+}
