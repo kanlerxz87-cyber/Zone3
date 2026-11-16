@@ -4997,3 +4997,24 @@ through the REST API (`gh api …/pulls/96 --method PATCH`) instead. The PR body
 | 4f83-F-01 | The Emeril Lagasse destination title captured 2026-11-15 differs in wording from the S12/S53 capture (2026-11-13/14). The ASIN and destination are unchanged; Amazon listing titles are edited over time | Info | Recorded here and in the 4f83-T2 table. No flag raised; destination mapping stable across captures by three sessions. Does not block the merge |
 
 **Tasks 4f83-T1 through 4f83-T4: done.** Session `4f83ee7b` is complete.
+
+---
+
+## AB Part — session `ab3ed329` (branch `arena/ab3ed329-zone3`, base `933e2f3`, 2026-11-16)
+
+### AB Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `ab3ed329` | `arena/ab3ed329-zone3` | Independent live re-verification of the three submitted short links, their destination listings and the load-bearing official policy/commission facts; gate re-run on `main` `933e2f3`; repo irregularity review; record, PR → `main`, merge, Pages check. Own scope: `sessions/ab3ed329/**` plus this AB Part. | in progress (AB-T1–AB-T4) | 2026-11-16 |
+
+The branch name is fixed by the session's branch note (`arena/ab3ed329-zone3`); the `session-<id>/<task>` form from the brief is not used, as recorded for earlier sessions on this board.
+
+### AB Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| AB-T1 — Read board in full, claim tasks, push claim | done (this commit) | ab3ed329 | `COORDINATION.md` (AB Part, append only) | — | — |
+| AB-T2 — Live re-fetch of the 3 short links + destinations, Standard Commission Table 1, Operating Agreement §5, Associates Policies 2(b)/6(t)/6(w), Creators API ASIN rule, FTC Disclosures 101 | unclaimed | — | `sessions/ab3ed329/**` (read-only fetches) | S01, S02, S07, S11–S16, S25, S31 (existing IDs in `data/sources.json`) | — |
+| AB-T3 — Gate re-run on `main` (`check_site`, `verify_site`, `link_report --strict`, `build_sitemap --check`, `check_all_links`) and repo irregularity review | unclaimed | — | read-only; `sessions/ab3ed329/**` | — | — |
+| AB-T4 — Record, PR → `main`, merge, Pages deploy confirmation | unclaimed | — | `COORDINATION.md` (AB Part only), `sessions/ab3ed329/**` | — | — |
