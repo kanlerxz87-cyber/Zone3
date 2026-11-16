@@ -4997,3 +4997,34 @@ through the REST API (`gh api …/pulls/96 --method PATCH`) instead. The PR body
 | 4f83-F-01 | The Emeril Lagasse destination title captured 2026-11-15 differs in wording from the S12/S53 capture (2026-11-13/14). The ASIN and destination are unchanged; Amazon listing titles are edited over time | Info | Recorded here and in the 4f83-T2 table. No flag raised; destination mapping stable across captures by three sessions. Does not block the merge |
 
 **Tasks 4f83-T1 through 4f83-T4: done.** Session `4f83ee7b` is complete.
+
+# Part I2 — session `59d84c55` (2026-11-16) — integration: reader-facing marketing site + decision board
+
+> Appended additively. IDs `I2-Tn` (tasks), `I2-F-nn` (irregularities), `I2-S-nn` (sources) are
+> **namespaced** and are not the same items as `A:`, `B:`, `Z:`, `V-`, `03-F-`, `4f83-F-`, `JH-F-`
+> or `FLG-nnn` used above. Nothing above this line was removed or rewritten by this session.
+> Branch: `arena/59d84c55-zone3` (Arena pins a session to one branch; base `933e2f3`).
+
+## I2 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `59d84c55` | `arena/59d84c55-zone3` | **Final integration + reader-facing marketing site.** Audits the combined tree line by line, re-verifies load-bearing claims against the official pages fetched **today**, and builds a polished marketing front office (`/site/`) that links every table row to its official source, plus a decision board where each proposal can be reviewed and accepted/rejected/deferred before anything is implemented. | in progress | 2026-11-16 |
+
+## I2 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
+|---|---|---|---|---|---|
+| I2-T1 — read the board, claim tasks, push the claim | in progress | `59d84c55` | `COORDINATION.md` (append only) | — | — |
+| I2-T2 — repo-wide line-by-line audit + live re-verification | in progress | `59d84c55` | read-only over the whole tree; writes only `data/i2/verification.json` | `I2-S01…` | `I2-F-01…` |
+| I2-T3 — reader-facing marketing site | in progress | `59d84c55` | `site/**` (new), `tools/build_i2_site.py` (new), `tools/i2_gate.py` (new), `data/i2/**` (new) | `I2-S01…` | — |
+| I2-T4 — decision board (suggestions, questions, prompt pack) | in progress | `59d84c55` | `site/decisions.html`, `data/i2/decisions.json` | `I2-S01…` | — |
+| I2-T5 — navigation, sitemap, gates, PR, merge, Pages confirm | unclaimed → see below | `59d84c55` | `scripts/build_site.py` (NAV + tile + sitemap group only), `sitemap.xml` (regenerated) | — | — |
+
+**Scope rule honoured:** no file owned by another session's build is rewritten. `site/**` is new and
+cannot collide; the only edits to an existing generator are one NAV entry, one dashboard tile, one
+sitemap group entry and one sentence of footer copy — additive, and logged here.
+
+**No other session is `in progress` on this repo at this moment.** The last merged record is PR #97
+(session `4f83ee7b`, merge `933e2f3`). One PR from 2026-11-14 (#71) is still open and CONFLICTING; it
+is not touched by this session and is raised as `I2-F-05`.
