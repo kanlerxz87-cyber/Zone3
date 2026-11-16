@@ -5432,3 +5432,9 @@ Recorded in the publish table below once complete.
 `docs/**`, `sitemap.xml`, `README.md`) are not edited by this session. Any defect found in them is logged
 as an `A0-F-nn` finding with the owning file named, not fixed here. Flagged items are published on the
 Flagged-for-review page and do not block the merge.
+
+### A0 scope addendum (2026-11-16, session `a0ffcab0`) — claimed before any edit
+
+- **A0-T4 extended to a fix (A0-T4b):** remove the restricted values (observed price, list price, star rating, review count, "bought in past month" badges) from the **shared** `docs/` set that the public sitemap lists and the root landing page links. Owner: `a0ffcab0`, final-integration role (shared output). Every changed line is logged in the A0 record. Files: `docs/index.html`, `docs/sources.html`, `docs/content.html`, `docs/analysis.html`, `docs/executive-summary.html`, `docs/executive-summary.md`.
+- **Not edited by this session (log only):** `sessions/3c886b62/**`, `sessions/03bbd050/**`, `sessions/3ead7ac8/**`, `archive/c4e71983/**`, `docs/executive-summary-c4e71983.md`, `docs/repo-review-9fef7647.md`. These are other sessions' own work product or frozen archives. Change requests are in the A0 record below.
+- Reason: Associates Program Policies 2(b) and 6(t) (fetched 2026-11-16) permit price and star-rating display only through the Amazon-served link or Creators/PA API. A compliance banner does not cure a display (`71-F-04`). Live check: <https://kanlerxz87-cyber.github.io/Zone3/docs/sources.html> shows the restricted values.
