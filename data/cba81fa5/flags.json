@@ -105,6 +105,25 @@
         }
       ],
       "status": "open"
+    },
+    {
+      "id": "CBA-F-06",
+      "severity": "High",
+      "title": "The published home page was rendering a Python list as text — every gate passed it",
+      "what": "scripts/build_site.py built the three home-page product cards by appending them to a list and then interpolating that list into the page template: <div class=\"product-cards\">{product_cards}</div>. Python renders a list inside an f-string by repr(), so the live home page carried roughly a kilobyte of escaped repr text — ['<div class=\"pcard\"><span class=\"pcard-brand\">CHEFMAN &middot; 6 Quart</span>…', '…'] — where three cards should have been. The cards' content, links and disclosure all remained in the file, which is why nothing caught it: the disclosure sentence was present, all 165 external links resolved, the HTML parsed, exactly one h1, no placeholder token, the sitemap covered the page. Verified on main at 6432f9a and in the live page.",
+      "why_it_matters": "This is the failure mode the whole brief is about, in the opposite direction from a hallucination: the facts were right, the presentation was broken, and a gate that only checks facts and links cannot see it. A reader who saw this would judge the site by it in about two seconds.",
+      "action": "Fixed here, because leaving a broken home page published was the worse option: the template line is now <div class=\"product-cards\">{''.join(product_cards)}</div>, matching how article_cards is built fifteen lines below. Regression test added: scripts/cba81fa5_test_no_repr_output.py scans every published page for the three signatures of a joined repr (['< , ', '< , ']) with script/pre/code stripped, and carries its own --selftest that proves it catches the symptom and ignores clean markup. The right permanent fix is a render-level check in the shared gates: assert the home page contains the expected number of .pcard elements and that no page contains a bracket-quote-tag sequence.",
+      "sources": [
+        {
+          "label": "the fixed generator line on main",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py"
+        },
+        {
+          "label": "the regression test",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/cba81fa5_test_no_repr_output.py"
+        }
+      ],
+      "status": "fixed by this session (PR pending merge); regression test added"
     }
   ]
 }
