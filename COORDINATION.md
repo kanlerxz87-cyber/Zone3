@@ -6097,3 +6097,5 @@ published on the decision board: Q1 (Associates tag), Q2 (intended products), Q3
 (attribution-parameter ownership) — plus the pre-existing A0 items (restricted values in archives,
 V4 strictness, A0-F-07 wording). Nothing in this session's changes depends on any of them being
 answered; everything published is safe in the current state.
+
+
