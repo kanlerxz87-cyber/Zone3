@@ -5404,3 +5404,31 @@ guardrails attached.
 ### I2-T5 — PR, merge, Pages deploy
 
 Recorded in the publish table below once complete.
+
+## A0 Session registry — session `a0ffcab0` (branch `arena/a0ffcab0-zone3`, base `add6525`, `main` at `b38d96a` at claim)
+
+> Appended additively. Task IDs `A0-Tn` and irregularity IDs `A0-F-nn` are namespaced and are not the
+> same items as `I2-`, `1F-`, `71-`, `98-`, `FLG-nnn`, or the `A:`/`B:` registers above. Arena pins this
+> session to one branch, so the `session-<id>/<task>` naming in the brief is not used; the tasks below
+> are the claims instead. No other session is `in progress` on the board at claim time: PR #100
+> (`5b425c74`) and PR #102 (`1f1b8bd2`) are open close-outs and are not edited here.
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `a0ffcab0` | `arena/a0ffcab0-zone3` | Line-by-line repo review on current `main`; live re-fetch of official sources; restricted-value scan of public output (71-F-04); executive-summary check; PR → `main`, merge, Pages confirm | in progress (A0-T1 claimed) | 2026-11-16 18:4x |
+
+## A0 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| A0-T1 — Read the board, register session, claim tasks, push claim | **done** (this commit) | `a0ffcab0` | `COORDINATION.md` (this Part only) | — | — |
+| A0-T2 — Repo review, line by line, of `main` at `b38d96a`; gate run | unclaimed → in progress | `a0ffcab0` | read-only + `research/a0ffcab0-repo-review.md` (new) | — | `A0-F-nn` |
+| A0-T3 — Live re-fetch of the three short links and load-bearing official facts (fetched this session) | unclaimed → in progress | `a0ffcab0` | `research/a0ffcab0-verification-log.md` (new) | official pages only | `A0-F-nn` |
+| A0-T4 — Restricted-value scan of public output (71-F-04): list every public price/rating/review figure outside the blank-by-design cells | unclaimed → in progress | `a0ffcab0` | read-only scan; record in `research/a0ffcab0-restricted-scan.md` (new) | Program Policies 2(b), 6(t) | `A0-F-nn` |
+| A0-T5 — Executive summary check against the gates | unclaimed → in progress | `a0ffcab0` | read-only; corrections only if a count is wrong, logged in this Part | — | `A0-F-nn` |
+| A0-T6 — PR → `main`, merge without waiting, Pages deploy confirmation, record | unclaimed → in progress | `a0ffcab0` | git + `gh` + this Part | — | — |
+
+**Scope rule.** Shared outputs (`data/*.json`, root generated pages, `scripts/*`, `tools/*`, `site/**`,
+`docs/**`, `sitemap.xml`, `README.md`) are not edited by this session. Any defect found in them is logged
+as an `A0-F-nn` finding with the owning file named, not fixed here. Flagged items are published on the
+Flagged-for-review page and do not block the merge.
