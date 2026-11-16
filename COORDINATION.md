@@ -6052,3 +6052,24 @@ changes are strictly additive new list items (`D-13…`, `I2-S15…`); existing 
   D-15/Q13); D1-F-02 (drift corroboration, recorded); D1-F-03 (sitemap +5 additive lines — file was in
   closed PR #100's scope; at edit time only PR #109, COORDINATION.md scope, was open); D1-F-04
   (board length — corroborates A0-F-06, not acted on).
+
+### D1-T5 — PR, merge and Pages deploy (done, 2026-11-16)
+
+| Event | Result |
+|---|---|
+| Pull request | [#114 — session d18303ca: independent re-verification, article library, decision-board +D-13..D-15/+Q13, repo review, integration](https://github.com/kanlerxz87-cyber/Zone3/pull/114), `arena/d18303ca-zone3` → `main` |
+| Mergeable state at PR time | `MERGEABLE / CLEAN` (after two keep-both merge integrations of main: `2fc1bd9` for PRs #102/#104/#106/#107/#108 and `7cefc14` for PRs #100/#110/#111) |
+| Gates on the PR tree | `i2_gate` PASS (12 pages · 109 rows · 93 sourced · 16 blanks · 0 flagged) · `verify_site` PASS (100 pages · 1,649 rows · 0 advisories) · `check_site` OK (24 pages · 62 sources · 97 flags) · `link_report --strict` exit 0 · `build_sitemap --check` exit 0 · 0 conflict markers |
+| Merge | **MERGED** 2026-11-16T18:58:25Z via `gh pr merge 114 --merge` (no approval waited, no `--auto`, per the brief). Merge commit **`d3a8498c7ce6bd52cd8a2405e13fc7ada0c0359c`** |
+| Pages build | Build for `d3a8498` → **status `built`**, error `none` ([Pages build API](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest)) |
+| Live check — article library | https://kanlerxz87-cyber.github.io/Zone3/site/articles/ — **live**: disclosure banner above nav, sourced three-product table, three article cards, the rules list |
+| Live check — decisions board | https://kanlerxz87-cyber.github.io/Zone3/site/decisions.html — **live**, counter reads "0 of 15 decided": proposals D-01…D-15 including the three new cards and question Q13 |
+| Live check — articles | https://kanlerxz87-cyber.github.io/Zone3/site/articles/hi-fry-450.html — **live** (spot check; listing facts carry dp links, blanks name their reason, no price/rating anywhere) |
+| Live check — session record | https://kanlerxz87-cyber.github.io/Zone3/sessions/d18303ca/ — **live** (15 sourced claim rows, D1-F-01 section B) |
+| Final publish record | This close-out record (follow-up PR, same pattern as I2's #103) |
+
+**Session d18303ca close-out.** All five tasks done. Open owner decisions that gate future work remain
+published on the decision board: Q1 (Associates tag), Q2 (intended products), Q3 (marketplace), Q13
+(attribution-parameter ownership) — plus the pre-existing A0 items (restricted values in archives,
+V4 strictness, A0-F-07 wording). Nothing in this session's changes depends on any of them being
+answered; everything published is safe in the current state.
