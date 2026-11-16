@@ -6999,3 +6999,79 @@ time: open PR #100 (`5b425c74`, re-verification record) and open PR #102 (`1f1b8
 close-out record) — both respected, not touched. Stale "in progress" rows elsewhere on the
 board (F2, 3D, 54C, 25, 4f83, AB-T4) correspond to work whose PRs already merged; no takeover
 is needed for them by this session.
+
+### F65-T2 — repo review, line by line (done, 2026-11-16)
+
+Full record: [`sessions/f65d393b/repo-review.md`](sessions/f65d393b/repo-review.md).
+15 checks (R1–R15) on the tree at `609dc76`: all six gates green at baseline
+(`check_site` OK 13/3/52/86 · `verify_site` PASS 83 pages/1,482 rows · `link_report --strict` 0 ·
+`i2_gate` PASS 8 pages/105 rows · `build_sitemap --check` 0 (with the 5-entry sweep noted) ·
+`check_all_links` 129 pages/116 external/0 errors); 0 conflict markers; 0 secrets; generators
+idempotent except `build_marketing` (→ F65-F-01); new `site/` build reviewed page by page
+(generator writes only inside `site/`, gate G1–G10 enforced). Corroborated without editing:
+the `docs/` and `sessions/3c886b62/` price/rating exposure (AB-CR-1/AB-CR-2, 71-F-04) is
+**still live** on 2026-11-16 — owner decision remains open.
+
+### F65-T3 — independent verification round (done, 2026-11-16)
+
+Full record: [`sessions/f65d393b/verification-2026-11-16.md`](sessions/f65d393b/verification-2026-11-16.md).
+Every row fetched live by this session today; page URL is the source; no aggregator used.
+
+| # | Claim | Result |
+|---|---|---|
+| A1–A3 | The three short links open `dp/B0CDY277D3`, `dp/B09B7SB46R`, `dp/B08DKYBTPH` with the titles published in `data/i2/catalog.json` | **Confirmed** — verbatim titles; fifth independent day with identical mapping |
+| A4–A5 | Air Fryers breadcrumb (node 17659096011) on all three; no `tag=` in any destination URL | **Confirmed ×3 / ×3** |
+| A6–A8 | All 16 `title_facts` across P1–P3 present in the served listing titles | **Confirmed** |
+| B1–B4 | OA header "Updated: October 15, 2025"; §5 disclosure verbatim; §6 material-breach clause; compensated-review prohibition in the opening paragraph | **Confirmed verbatim** |
+| B5–B13 | PP 2(b) tag + price rules + dynamic-sub-tag ban; 6(s)/6(t)/6(v)/6(w)/6(y)/6(z); free-to-join / no paid set-up | **Confirmed verbatim** |
+| B14–B15 | Standard Commission Table 1 row for row (Kitchen 4.50 %, All Other 4.00 %, Luxury Beauty 10.00 %); bounty rows $12/$2/$5/$0.25 | **Confirmed** — category reference only, never assigned to a product |
+| B16–B17 | Creators API `itemIdType` default `ASIN`; "10-Character alphanumeric unique identifier assigned by Amazon" | **Confirmed verbatim** |
+| B18 | FTC Disclosures 101: "financial, employment, personal, or family relationship"; "hard to miss"; "can't talk about your experience with a product you haven't tried"; dated November 2019 | **Confirmed verbatim** |
+
+Not verified, and why: any price/rating/review count as a product fact (barred by 2(b)/6(t)
+without API access — deliberate refusal); per-product commission rates; live clicks/conversions
+(no account); whether the destinations are the submitter's intended products (owner input,
+FLG-002/027). The fetched Amazon pages did contain prices and ratings; they were read only to
+confirm identity and are recorded nowhere.
+
+### F65-T4 — brief-gap review (done, 2026-11-16)
+
+See Part 2 of [`sessions/f65d393b/repo-review.md`](sessions/f65d393b/repo-review.md). Every
+brief deliverable is present and linked: suggestions section (SUG-01…10 + Q1…10 + D1…6 on
+`suggestions.html`, proposals/questions/discovery/**prompt pack** on `site/decisions.html`),
+Decision Center, editorial topic plan + SEO briefs + buying/comparison guides, human-review
+AI-slop gate, executive summary, dashboard-style tables with per-row source links, three
+Flagged-for-Review surfaces, disclosure on every page, live GitHub Pages site. No gap required
+a new page; nothing was implemented from the suggestions without review, per the brief.
+
+### F65 irregularities raised (published on `flagged.html`)
+
+| ID | Sev | Item | Disposition |
+|---|---|---|---|
+| F65-F-01 | Low | Six `marketing/*.html` pages stale vs shared NAV after PR #101 (third recurrence of the class) | **fixed** — regenerated (nav-only); pipeline change request in the flag's `action` |
+| F65-F-02 | Info | `sitemap.xml` on `main` carried the 5 redirect-stub/duplicate entries `tools/build_site.py` sweeps in (25-F-04 root cause) | **fixed** — canonical regeneration: 78 pages, 0 extras, all 8 `site/` pages listed |
+
+### F65-T5 — final integration (in progress: gates green, PR next)
+
+Gates on the final tree (after F65-F-01/F-02 fixes and the 88-flag register):
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 13 pages, 3 products, 52 sources, 88 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS — 83 pages, 1,484 rows, 1,260 with official source, 439 with flag, 89 repo-anchored** |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 tools/i2_gate.py` | **PASS — 8 pages, 105 rows, 89 sourced, 16 explicit blanks** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 78 pages, 0 extra entries** |
+| `python3 scripts/check_all_links.py` | **129 pages, 116 external URLs, 0 errors** |
+| all four generators re-run | **idempotent** (second run: zero new diffs) |
+| conflict-marker / secrets sweep | **0 / 0** |
+
+Shared outputs edited by this session, each logged with its reason: `data/flags.json`
+(+F65-F-01/F-02, the two findings above), `EXECUTIVE-SUMMARY.md` (counts 86 → 88 flags and
+the severity breakdown, to keep the register and the summary in sync), generated
+`flagged.html`/`executive-summary.html`/`index.html` (regenerated from the data, plus the
+landing KPI), `marketing/*.html` (F65-F-01 fix), `sitemap.xml` (F65-F-02 fix).
+`sessions/f65d393b/**` (this session's records) and `COORDINATION.md` (this Part only) are
+this session's own scope. `scripts/build_site.py` was **not** edited — open PR #100
+(`5b425c74`) owns a NAV change to it; this session's records are linked from this board
+instead of from the nav, to keep the two PRs conflict-free.

@@ -1356,6 +1356,30 @@
       ],
       "session": "757efebc",
       "date": "2026-11-16"
+    },
+    {
+      "id": "F65-F-01",
+      "severity": "Low",
+      "category": "Site (fixed)",
+      "item": "The six generated marketing/*.html pages were stale relative to the shared navigation after PR #101 added the 'Marketing site (new)' entry",
+      "detail": "On 2026-11-16, re-running scripts/build_marketing.py changed exactly one line in each of the six marketing pages: the shared NAV imported from scripts/build_site.py already contained the site/index.html entry added by session 59d84c55 (PR #101), but the committed marketing pages predated it. This is the third occurrence of the same defect class (cd0e6279 fixed the Decision Center link, 1F-F-03 the Suggestions link), which means the 'generators idempotent' claim does not reproduce whenever a NAV entry lands without a marketing regeneration. Fixed in this session by regenerating the six pages; no marketing copy, brief, price, rating or recommendation was changed.",
+      "action": "Fixed in this session (six pages regenerated, nav-only). Change request for the pipeline owner: make the release checklist run scripts/build_marketing.py after scripts/build_site.py, or have one wrapper run both, so a NAV change cannot ship with stale marketing pages.",
+      "date": "2026-11-16",
+      "session": "f65d393b",
+      "status": "fixed",
+      "repo_evidence": "git diff after re-running scripts/build_marketing.py on base 609dc76: one nav line per file across marketing/{index,buying-guide,comparison,product-1-*,product-2-*,product-3-*}.html"
+    },
+    {
+      "id": "F65-F-02",
+      "severity": "Info",
+      "category": "Site (fixed)",
+      "item": "sitemap.xml on main carried 5 redirect-stub/duplicate entries swept in by tools/build_site.py",
+      "detail": "The committed sitemap listed analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. The first four are meta-refresh redirect stubs (canonical targets are listed) and index.html duplicates the root URL — exactly the five entries session 25513d33 diagnosed as 25-F-04: tools/build_site.py rewrites the sitemap from its own page list, so any directory-build run sweeps the stubs back in. Fixed in this session by regenerating with the canonical writer scripts/build_sitemap.py: 78 pages covered, 0 extra entries, and all eight reader-facing site/ pages listed.",
+      "action": "Fixed in this session (canonical regeneration; build_sitemap.py --check exits 0 with 0 extras). The standing change request from 25-F-04 remains: make scripts/build_sitemap.py the single writer of sitemap.xml so a tools/build_site.py run cannot reintroduce these entries.",
+      "date": "2026-11-16",
+      "session": "f65d393b",
+      "status": "fixed",
+      "repo_evidence": "git diff sitemap.xml on base 609dc76 removes exactly those five entries; python3 scripts/build_sitemap.py --check then reports 78 pages, 0 extra"
     }
   ]
 }
