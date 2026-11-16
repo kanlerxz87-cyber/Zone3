@@ -6211,3 +6211,9 @@ non-blocking and are published on `flagged.html` for review.
 ## 81 Publish record
 
 PR, merge, Pages build and live checks recorded here once complete (see below).
+
+*Completion path of this record, for the audit trail:* the site work reached `main` through **PR #111**
+(`b8f576d`), the publication record above through **PR #115** (`90046e6`, Pages `built` 18:59:35Z).
+`main`'s tree is byte-identical to the tree all seven gates were run on. Deployed inventory on `main`:
+11 pages under `read/`, 12 under `site/`, 84 generated/snapshot pages elsewhere, 11 `read/` URLs in
+`sitemap.xml`. Session `145b8df7`: closed.
