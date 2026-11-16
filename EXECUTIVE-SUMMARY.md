@@ -609,3 +609,49 @@ rates, clicks and conversions remain blank: no Associates tag (Q1) and no approv
 Amazon data path (Q4) are connected, and 2(b)/6(t) forbid displaying those values from
 anywhere else. The fastest path to a revenue-capable site remains the three unblock
 items in §5 — owner tag, intended ASINs, account/API status.
+
+---
+
+
+## 12. Front door, four guides and the decision record — session `cba81fa5` (2026-11-16)
+
+**What this pass was asked to do.** Implement what the earlier suggestion registers only proposed, so the
+repository opens like a marketing affiliate site rather than an audit; keep the site publishable without a
+single unverified number; and give the owner a decision record with the questions, the answers, and what is
+still missing. Nothing here was invented to fill a gap: where a source is silent the cell stays blank and the
+blank is explained.
+
+**Shipped.**
+
+| Deliverable | Where |
+|---|---|
+| Marketing front door at the canonical URL, generated and idempotent, with the dashboard preserved beneath it | `index.html` + `assets/front-door.css`, injected by `tools/build_cba81fa5_site.py` from `data/cba81fa5/guides.json` |
+| Four new buyer guides, each answering one question, every specification linked to the listing row it came from, each page ending with what it cannot tell you | `site/guides/capacity-maths.html`, `air-fryer-oven-vs-basket.html`, `what-four-in-one-means.html`, `dishwasher-safe-baskets.html` |
+| The suggestions section with a decision path: 9 settled questions, 11 owner-only questions (with the default the site ships with if unanswered) and three paths compared, one recommended | `site/answers.html` |
+| House style with 11 banned constructions and 7 page requirements, each tied to the Amazon or FTC rule it protects | `site/style-guide.html` |
+| A mechanical enforcement of that style, with a reviewed baseline so inherited findings are visible rather than suppressed | `tools/cba81fa5_lint.py`, `tools/cba81fa5_lint-baseline.json` |
+| Independent re-verification, dated, with the withheld values named | `research/cba81fa5-verification-log.md`, `data/cba81fa5/sources.json` (15 records) |
+| Repo review, measured not estimated | `research/cba81fa5-repo-review.md` |
+| Five new findings, published for review rather than fixed silently | `site/flagged.html` (§"second-source desk") and `data/cba81fa5/flags.json` |
+
+**The two answers the research produced that change decisions.** (1) Amazon's own enrolment rule requires
+original content and, for third-party material, "significant commentary, analysis, or transformation" — so the
+"no AI slop" instruction is a compliance requirement, not a preference, and it is now enforced by a build step.
+(2) Product-list links additionally require "additional original content on your Site that is relevant to the
+Special Link", which is why this site publishes analysis pages rather than link roundups
+([Program Policies, Participation Requirements 1 and 2(b)](https://affiliate-program.amazon.com/help/operating/policies),
+read 2026-11-16; CBA-S07, CBA-S09).
+
+**The finding that matters most for trust in this repository.** `tools/verify_site.py` — the gate that
+reports "VERIFY PASS" on disclosure, disclaimer, single-h1 and row-provenance — cannot fail those checks: it
+takes its "pages owned by this build" set from `data/z3/build-manifest.json` values, which hold content
+digests rather than paths, so every such finding is advisory. Reproduced with a synthetic page this session.
+`CBA-F-02` carries the proposed two-line fix and why it was not applied here: a corrected gate would turn
+hundreds of other sessions' rows into hard failures on `main`, and that is a reviewable change, not a
+side effect of a marketing pass. The compensating control that *does* fail is `tools/cba81fa5_lint.py`.
+
+**Still blocked, and unchanged by this pass.** No Associates tag exists, so no link can earn or be measured
+(Q-1/D-05); there are no Creators API credentials, so prices, availability, ratings and review counts stay
+blank on every page (Q-4); the campaign ledger is empty by design; and no human editor has reviewed any page,
+so the bylines say an agent desk wrote them (Q-5/D-10). Two reader layers now exist side by side, and the owner
+decision on which is canonical is on the flagged page (`CBA-F-03`), not quietly resolved.

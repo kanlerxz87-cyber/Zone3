@@ -1,0 +1,174 @@
+{
+  "register": "cba81fa5",
+  "retrieved": "2026-11-16",
+  "note": "Namespaced re-verification register for session cba81fa5, 2026-11-16. These are this session's own live reads, recorded so the site can cite them without editing the shared register data/sources.json (owned by the integration build). IDs are CBA-Snn and do not collide with Snn in the shared register: where the same fact exists there, the shared id is listed in 'also'. quote holds the wording read from the page; nothing is inferred. CBA-S13/14/15 added same day: the destination listings read at their plain /dp/ URLs as well as through the submitted short links, so a guide can cite the listing rather than a shortener.",
+  "also": "Shared register: S01, S02, S07, S08-S16, S25, S31, S43, S44, S45, S59 in data/sources.json.",
+  "sources": [
+    {
+      "id": "CBA-S01",
+      "url": "https://link.amazon/B04G1MEwY",
+      "title": "Submitted product link 1, fetched 2026-11-16",
+      "observed": "Redirects to https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-4f3c2fbac38e9131&channelId=704&plpRedirect=mhFallback ; served page title 'Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen'",
+      "also": [
+        "S11",
+        "I2-S07"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "CBA-S02",
+      "url": "https://link.amazon/B02NbDxp3",
+      "title": "Submitted product link 2, fetched 2026-11-16",
+      "observed": "Redirects to https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-086276cd4cc4c6ae&channelId=704&plpRedirect=mhFallback ; served page title 'Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen'",
+      "also": [
+        "S12",
+        "I2-S08"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "CBA-S03",
+      "url": "https://link.amazon/B00hJ57DV",
+      "title": "Submitted product link 3, fetched 2026-11-16",
+      "observed": "Redirects to https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1bf93398af899cda&channelId=704&plpRedirect=mhFallback&th=1 ; served page title 'Amazon.com: Chefman Air Fryer 8 Qt | TurboFry(R) 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen'",
+      "also": [
+        "S13",
+        "I2-S09"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "CBA-S04",
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "title": "Control check: the submitted token used as a /dp/ ASIN, fetched 2026-11-16",
+      "observed": "Amazon 'Page Not Found' error page (logo, 'Sorry! We couldn't find that page.'), 1 chunk, no product content",
+      "also": [
+        "S08",
+        "I2-S13"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "CBA-S05",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "title": "Destination listing 1, browse path read from the page 2026-11-16",
+      "observed": "Breadcrumb on the served page: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (node 17659096011)",
+      "also": [
+        "S14",
+        "I2-S10"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "CBA-S06",
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
+      "title": "Amazon Best Sellers in Air Fryers (browse node 17659096011), fetched 2026-11-16",
+      "observed": "Page heading 'Best Sellers in Air Fryers'; sub-category links shown: 'Air Fryer Ovens' (node 224479505011), 'Air Fryers (Current)', 'Deep Fryers' (node 289918). The Emeril Lagasse 26QT French Door listing (B09B7SB46R) was displayed at position #6 on this date. Rank and list membership change; page states 'Our most popular products based on sales. Updated frequently.' No price, star-rating or review-count value is carried over from this page into the site (Participation Requirements 2(b) and 6(t)).",
+      "also": [
+        "S43"
+      ],
+      "status": "observed-dated"
+    },
+    {
+      "id": "CBA-S07",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "title": "Amazon Associates Program Policies, Participation Requirements 1 (Enrollment and Eligibility), read 2026-11-16",
+      "quote": "To begin the enrollment process, you must submit a complete and accurate Associates Program application. Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
+      "also": [
+        "S02"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "CBA-S08",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "title": "Amazon Associates Program Policies, Participation Requirements 2(a) Special Links, read 2026-11-16",
+      "quote": "After you have applied to the Associates Program, you are permitted to display Special Links on your Site. Special Links enable accurate tracking, reporting, and accrual of commission income. Special Links must use the Associates ID we have assigned to you.",
+      "also": [
+        "S02"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "CBA-S09",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "title": "Amazon Associates Program Policies, Participation Requirements 2(b), read 2026-11-16",
+      "quote": "For example, you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site. ... When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link. Product lists include search results, events (e.g. Prime Day), or a department homepage (e.g. grocery). ... You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices. ... your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+      "also": [
+        "S02",
+        "PF-03",
+        "PF-04",
+        "PF-10",
+        "PF-54"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "CBA-S10",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "title": "Amazon Associates Program Policies, Commission Income Statement sections 5 and 6, read 2026-11-16",
+      "quote": "We will pay Standard Commission Income and Special Commission Income in the default currency for an Amazon Site approximately 60 days following the end of each calendar month in which they were earned by the method described below that you have selected. | Payment Minimum Chart: Option 1 (Deposit) 10 USD; Option 2 (Gift Card) 10 USD, maximum 2000 USD; Option 3 (Check) 100 USD; Check Processing Fee 15 USD.",
+      "also": [
+        "PF-42",
+        "PF-43"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "CBA-S11",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "title": "Associates Program Standard Commission Income Statement, Table 1, read 2026-11-16",
+      "quote": "Physical Books, Kitchen, Automotive | 4.50% ; All Other Categories | 4.00%",
+      "also": [
+        "S25"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "CBA-S12",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "title": "FTC Disclosures 101 for Social Media Influencers (November 2019), read 2026-11-16",
+      "quote": "Disclose when you have any financial, employment, personal, or family relationship with a brand. ... Place it so it's hard to miss. The disclosure should be placed with the endorsement message itself. ... You can't talk about your experience with a product you haven't tried.",
+      "also": [
+        "S07",
+        "PF-19",
+        "PF-20"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "CBA-S13",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "title": "Destination listing 1 read at its plain /dp/ URL, 2026-11-16",
+      "observed": "Served title identical to the redirect target: 'Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen'; breadcrumb Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (17659096011)",
+      "also": [
+        "S14",
+        "I2-S10"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "CBA-S14",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "title": "Destination listing 2 read at its plain /dp/ URL, 2026-11-16",
+      "observed": "Served title 'Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen'. The listing URL slug in the category page reads 'Emeril-Multi-Function-functions-dual-speed-rotisserie', i.e. the slug still carries 'dual-speed' and 'rotisserie' while the served title does not",
+      "also": [
+        "S15",
+        "I2-S11"
+      ],
+      "status": "observed"
+    },
+    {
+      "id": "CBA-S15",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "title": "Destination listing 3 read at its plain /dp/ URL, 2026-11-16",
+      "observed": "Served title 'Amazon.com: Chefman Air Fryer 8 Qt | TurboFry(R) 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen'; same browse breadcrumb; direct fetch of the plain URL and the redirect from the submitted short link returned the same title on the same date",
+      "also": [
+        "S16",
+        "S32",
+        "I2-S12"
+      ],
+      "status": "observed"
+    }
+  ]
+}
