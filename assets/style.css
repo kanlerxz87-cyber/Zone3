@@ -66,39 +66,4 @@ ul.findings li{margin:0 0 8px}
 .callout{border-left:4px solid var(--bad);background:var(--badbg);padding:12px 14px;border-radius:6px;margin:0 0 18px}
 .callout.ok{border-color:var(--ok);background:var(--okbg)}
 .callout p{margin:0}
-/* ---------- Marketing & trend layer ---------- */
-.marketing-hero{background:linear-gradient(135deg,#0b1f3f 0%,#173a7e 55%,#2563eb 100%);color:#fff;border-radius:24px;padding:44px clamp(24px,5vw,64px);margin:0 0 28px;box-shadow:0 20px 48px #0f2a4e33;position:relative;overflow:hidden}
-.marketing-hero::before{content:"";position:absolute;inset:-20% -10% auto auto;background:radial-gradient(600px circle at 80% -10%,rgba(99,102,241,.25),transparent 60%);z-index:0}
-.marketing-hero > *{position:relative;z-index:1}
-.marketing-hero .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#93c5fd;font-weight:800;margin:0 0 12px;display:block}
-.marketing-hero h2{font-size:clamp(30px,5vw,48px);line-height:1.1;max-width:820px;margin:0 0 14px;font-weight:800;letter-spacing:-0.02em}
-.marketing-hero p{font-size:clamp(15px,1.4vw,19px);color:#cbd5f5;max-width:720px;margin:0 0 22px;line-height:1.6}
-.marketing-actions{display:flex;gap:12px;flex-wrap:wrap}
-.cta{display:inline-block;border:none;border-radius:10px;padding:12px 22px;font-size:15px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .15s,filter .15s}
-.cta:active{transform:translateY(-1px)}
-.cta-primary{background:#ffffff;color:#0b1f3f}
-.cta-primary:hover{background:#f3f4f6}
-.cta-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35)}
-.cta-ghost:hover{background:rgba(255,255,255,.22)}
-.trend-band{margin:0 0 28px}
-.trend-band .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#173a7e;font-weight:800;margin:0 0 10px;display:block}
-.trend-band h3{font-size:22px;margin:0 0 14px;font-weight:800}
-.trend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.trend-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);transition:border-color .2s,box-shadow .2s}
-.trend-card:hover{border-color:#2563eb;box-shadow:0 8px 24px rgba(23,58,126,.12)}
-.trend-card .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#eff6ff;color:#173a7e;margin-bottom:10px}
-.trend-card h4{font-size:17px;margin:0 0 8px;font-weight:700}
-.trend-card p{font-size:13.5px;color:var(--muted);margin:0 0 12px;line-height:1.5}
-.trend-card .src{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;display:block}
-.article-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:0 0 28px}
-.article-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column}
-.article-card .kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#2563eb;font-weight:800;margin:0 0 8px}
-.article-card h4{font-size:16px;margin:0 0 8px;font-weight:700;line-height:1.35}
-.article-card p{font-size:13.5px;color:var(--muted);margin:0 0 12px;line-height:1.5;flex:1}
-.article-card .meta{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;margin-top:auto}
-.section-head{display:flex;align-items:center;gap:10px;margin:0 0 16px}
-.section-head .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#173a7e;font-weight:800}
-.section-head h2{font-size:20px;margin:0;font-weight:800}
-.badge.new{background:#f0fdf4;color:#15803d}
-.badge.planned{background:#fef3c7;color:#92400e}
 @media (max-width:640px){main{padding:16px 12px}.topbar{padding:10px 12px}}
