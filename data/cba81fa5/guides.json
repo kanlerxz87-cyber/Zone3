@@ -1,0 +1,120 @@
+{
+  "register": "cba81fa5",
+  "built": "2026-11-16",
+  "note": "Guide register for the reader site. The guide bodies are authored pages under site/guides/; this file drives only the two index surfaces (the landing strip on site/index.html and the plan table on site/guides/index.html), so a rebuild of the reader site cannot silently drop a published guide. status: live = published and lint-clean; planned = titled, not published, with the reason it is held back. sources lists register ids from data/cba81fa5/sources.json or the shared/I2 registers.",
+  "reviewed_by": "Air Fryer Field Notes desk — agent research session cba81fa5, 2026-11-16. No human editor has reviewed these pages (decision D-10 / question Q-5 open).",
+  "rules": [
+    "<b>One question.</b> If a page answers three questions it answers none of them well.",
+    "<b>Facts with sources.</b> Every specification links the listing or official page it was read from, on the row it supports.",
+    "<b>No invented experience.</b> No &ldquo;we tested&rdquo;, no &ldquo;in our kitchen&rdquo;, no implied ownership.",
+    "<b>No numbers we cannot publish.</b> No price, star rating or review count until Amazon serves or supplies them.",
+    "<b>Arithmetic labelled as arithmetic.</b> A ratio we worked out is shown as ours, never as Amazon&rsquo;s.",
+    "<b>A named gap.</b> Each guide ends by stating what it cannot tell you and where to check it yourself."
+  ],
+  "guides": [
+    {
+      "href": "guides/dual-basket-vs-single-basket.html",
+      "title": "Dual-basket vs single-basket: which layout suits how you cook?",
+      "blurb": "Two 3QT baskets are not one 6QT with a divider — what the layout changes at dinnertime, and when the single big basket wins.",
+      "status": "live",
+      "sources": [
+        "CBA-S13",
+        "CBA-S14",
+        "CBA-S15"
+      ],
+      "published": "2026-11-16"
+    },
+    {
+      "href": "guides/capacity-maths.html",
+      "title": "6QT, 8QT and 26QT: what the capacity numbers do and do not tell you",
+      "blurb": "The quart figures quoted from each listing, the ratios shown as our arithmetic, and the four checks to run before you pick.",
+      "status": "live",
+      "sources": [
+        "CBA-S13",
+        "CBA-S14",
+        "CBA-S15"
+      ],
+      "published": "2026-11-16"
+    },
+    {
+      "href": "guides/air-fryer-oven-vs-basket.html",
+      "title": "Air fryer oven vs basket fryer: the 26QT is not a bigger basket",
+      "blurb": "What doors, a convection cavity and six included accessories change — and why Amazon files this machine under Air Fryers, not Air Fryer Ovens.",
+      "status": "live",
+      "sources": [
+        "CBA-S13",
+        "CBA-S14",
+        "CBA-S15",
+        "CBA-S06"
+      ],
+      "published": "2026-11-16"
+    },
+    {
+      "href": "guides/what-four-in-one-means.html",
+      "title": "What “4-in-1” actually names — and what a listing leaves out",
+      "blurb": "Counted claims read closely, the temperature that is worth checking, and a two-minute test you can run on any listing.",
+      "status": "live",
+      "sources": [
+        "CBA-S13",
+        "CBA-S14",
+        "CBA-S15",
+        "CBA-S06"
+      ],
+      "published": "2026-11-16"
+    },
+    {
+      "href": "guides/dishwasher-safe-baskets.html",
+      "title": "Which air fryer parts actually go in the dishwasher — checked line by line",
+      "blurb": "The claim is about a basket, not a machine. What each listing states, and the one place the care section beats the title.",
+      "status": "live",
+      "sources": [
+        "CBA-S13",
+        "CBA-S14",
+        "CBA-S15",
+        "CBA-S06"
+      ],
+      "published": "2026-11-16"
+    },
+    {
+      "href": null,
+      "title": "Do open-rack air fryers brown better than closed baskets?",
+      "blurb": "Held back: the answer needs a test nobody has run, and a first-hand claim is not available to this site.",
+      "status": "held",
+      "sources": [
+        "CBA-S12"
+      ],
+      "reason": "Requires an experience claim (FTC) or a figure the listings do not state."
+    },
+    {
+      "href": null,
+      "title": "Which of the three is the best value right now?",
+      "blurb": "Held back: 'value' needs a price, and prices may only be shown when Amazon serves them in the link or supplies them through the Creators API.",
+      "status": "held",
+      "sources": [
+        "CBA-S09"
+      ],
+      "reason": "Blocked on decision D-05 / question Q-4 (API access)."
+    },
+    {
+      "href": null,
+      "title": "How these three compare with the same models elsewhere",
+      "blurb": "Held back on purpose: Program Content may not be used to advertise or promote products offered on a site that is not an Amazon Site.",
+      "status": "rejected",
+      "sources": [
+        "CBA-S09"
+      ],
+      "reason": "Not a gap to close. This topic will not be published here (Participation Requirements 6(z))."
+    }
+  ],
+  "category_snapshot": {
+    "heading": "In the category right now",
+    "body": "Amazon publishes no search-volume or conversion figures to affiliates, so this site does not invent a trend. What it can do is date an observation of a page that does exist. On <b>2026-11-16</b>, Amazon&rsquo;s own <em>Best Sellers in Air Fryers</em> list (browse node 17659096011, which states on itself that it is &ldquo;Updated frequently&rdquo;) showed the Emeril Lagasse 26QT at position <b>#6</b> in the category, alongside sibling nodes for <em>Air Fryer Ovens</em> and <em>Deep Fryers</em>. That is a snapshot of a list on a date &mdash; not a quality judgement, not a rank we awarded, and not a reason to buy. Prices and star ratings shown on that page are deliberately not repeated here: they may only be displayed when Amazon serves them in a link or supplies them through its API.",
+    "sources": [
+      "CBA-S06",
+      "CBA-S09"
+    ]
+  },
+  "landing_heading": "Buying guides",
+  "landing_intro": "One question each, answered from the listing text — with the arithmetic labelled as ours and the blanks left open instead of filled in. Nothing here claims a test that was not run.",
+  "rules_intro": "Five rules, and the sixth one the build enforces mechanically (<span class=\"mono\">tools/cba81fa5_lint.py</span>, documented in <a href=\"../style-guide.html\">the house style</a>):"
+}

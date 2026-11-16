@@ -1,0 +1,112 @@
+{
+ "note": "Findings inherited from pages this session did not author (mostly governance pages that quote the constructions they forbid, and blank-state rows that explain what is not published). They are reported on every run as advisory and do not fail the build; a finding NOT in this list fails it. Regenerate with: python3 tools/cba81fa5_lint.py --update-baseline, and only for findings you have read.",
+ "generated": "2026-11-16",
+ "inherited": [
+  {
+   "file": "site/evidence.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'V-15'"
+  },
+  {
+   "file": "site/flagged.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'I2-F-08An earlier session&#x27;s pull request is open and conflicting'"
+  },
+  {
+   "file": "site/flagged.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'I2-F-09The shared task board has duplicated records and is 528 KB'"
+  },
+  {
+   "file": "site/guides/index.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Do open-rack air fryers brown better than closed baskets?'"
+  },
+  {
+   "file": "site/guides/index.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'How these three compare with the same models elsewhere'"
+  },
+  {
+   "file": "site/guides/index.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Which of the three is the best value right now?'"
+  },
+  {
+   "file": "site/index.html",
+   "rule": "FTC:experience-claim",
+   "detail": "no experience may be claimed with a product that was not tried -> \"e until a choice is recorded. \\n \\n\\n What this site is not \\n It is not a review of products"
+  },
+  {
+   "file": "site/index.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Commission for this specific product'"
+  },
+  {
+   "file": "site/index.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Price'"
+  },
+  {
+   "file": "site/index.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Star rating and review count'"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "POLICY:price-display",
+   "detail": "prices may only appear when Amazon serves them or the API supplies them (Participation Requirements 2(b)) -> '$12.00   I2-S05     Prime Video Free Trial  $2.00 "
+  },
+  {
+   "file": "site/products.html",
+   "rule": "POLICY:price-display",
+   "detail": "prices may only appear when Amazon serves them or the API supplies them (Participation Requirements 2(b)) -> 'rial  $2.00   I2-S05     Prime Video First Stream "
+  },
+  {
+   "file": "site/products.html",
+   "rule": "POLICY:price-display",
+   "detail": "prices may only appear when Amazon serves them or the API supplies them (Participation Requirements 2(b)) -> 'rime Paid Membership / Prime for Young Adults / Pr"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "POLICY:price-display",
+   "detail": "prices may only appear when Amazon serves them or the API supplies them (Participation Requirements 2(b)) -> 's / Prime Access / Prime Sign Up at Checkout  $12."
+  },
+  {
+   "file": "site/products.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Availability'"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Commission for this product'"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Conversion rate'"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Price'"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Review count'"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Star rating'"
+  },
+  {
+   "file": "site/products.html",
+   "rule": "STYLE:row-source",
+   "detail": "a data row carries no link to an official source -> 'Trend rank / demand'"
+  }
+ ],
+ "key": "file | rule | first 48 characters of the finding detail \u2014 so a new row in an exempt table is still reported"
+}
