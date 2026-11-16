@@ -5097,7 +5097,7 @@ The PR, merge result and Pages build will be recorded in a follow-up section of 
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `1f1b8bd2` | `arena/1f1b8bd2-zone3` | Line-by-line repo review (2026-11-16); independent live re-verification round dated 2026-11-16; takeover of stale open PR #71 per the 60-minute rule; brief-gap review (articles/topics/suggestions/questions/executive summary); final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (1F-T6) | 2026-11-16 |
+| `1f1b8bd2` | `arena/1f1b8bd2-zone3` | Line-by-line repo review (2026-11-16); independent live re-verification round dated 2026-11-16; takeover of stale open PR #71 per the 60-minute rule; brief-gap review (articles/topics/suggestions/questions/executive summary); final integration: gates → PR → `main` → merge → Pages confirm → record | **done** (1F-T1…T6) | 2026-11-16 |
 
 ## 1F Task board (claimed before any other work, per protocol)
 
@@ -5108,7 +5108,7 @@ The PR, merge result and Pages build will be recorded in a follow-up section of 
 | 1F-T3 — Independent live re-verification round dated 2026-11-16 (three short links + `/dp/` controls, Operating Agreement, Program Policies, Standard Commission Table 1, Creators API, ASIN rule, FTC pages) | done (1F-V01…V32) | — | `research/1f1b8bd2-verification-log.md` (new, namespaced) | official pages only; no new source IDs unless a URL is absent from the register | — |
 | 1F-T4 — Takeover of stale PR #71 (`arena/71dc8fea-zone3`, open, `mergeable=CONFLICTING`, last commit 2026-11-14T19:07Z ≫ 60 min): integrate its unique record additively, close PR with supersession note | done (PR #71 closed; Part 71 + session file taken over verbatim) | — | `sessions/71dc8fea/verification-2026-11-14.md` (takeover), `COORDINATION.md` (note), `gh` | — | — |
 | 1F-T5 — Brief-gap review: trendy articles/topics, suggestions section, open-questions register, executive summary — verify each deliverable exists and is linked; change requests for defects in other sessions' scopes | done (all present and linked; 1F-F-01..03 raised) | — | read-only except this Part; fixes only inside 1F scope | — | — |
-| 1F-T6 — Final integration: all gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers), PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | in progress (gates green; PR next) | — | git + `gh` + this Part | — | — |
+| 1F-T6 — Final integration: all gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers), PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | done (PR #99 merged; record below) | — | git + `gh` + this Part | — | — |
 
 **Scope discipline.** This session edits `COORDINATION.md` (this Part only), its own
 `research/1f1b8bd2-*` records, `sessions/1f1b8bd2/**` if needed, and — in the takeover task —
@@ -5277,6 +5277,189 @@ All are logged only; no shared site/data/tool was edited. Existing published fla
 PR #71 is open from `arena/71dc8fea-zone3` against `main`, rebased onto `6843206` after PRs #70 and #73–#77 merged. The latest checked Pages build is `built` for `6843206` (ID `1369833399`); ordinary `/` shows 65 and ordinary `/flagged.html` 51, while cache-busted responses show the current 66. Append merge and post-merge Pages details here after integration.
 
 > **Takeover completion (2026-11-16, session `1f1b8bd2`).** The open-ended final line above is now answered: PR #71 was closed unmerged as superseded by this takeover; the audit record lives in `sessions/71dc8fea/verification-2026-11-14.md` and in this Part on `main`. The latest Pages build at takeover time was `built` for `933e2f3` (2026-11-15T12:00:53Z); edge-cache observations 71-F-06 are unchanged in kind.
+
+# Part I2 — session `59d84c55` (2026-11-16) — integration: reader-facing marketing site + decision board
+
+> Appended additively. IDs `I2-Tn` (tasks), `I2-F-nn` (irregularities), `I2-S-nn` (sources) are
+> **namespaced** and are not the same items as `A:`, `B:`, `Z:`, `V-`, `03-F-`, `4f83-F-`, `JH-F-`
+> or `FLG-nnn` used above. Nothing above this line was removed or rewritten by this session.
+> Branch: `arena/59d84c55-zone3` (Arena pins a session to one branch; base `933e2f3`).
+
+## I2 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `59d84c55` | `arena/59d84c55-zone3` | **Final integration + reader-facing marketing site.** Audits the combined tree line by line, re-verifies load-bearing claims against the official pages fetched **today**, and builds a polished marketing front office (`/site/`) that links every table row to its official source, plus a decision board where each proposal can be reviewed and accepted/rejected/deferred before anything is implemented. | in progress | 2026-11-16 |
+
+## I2 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
+|---|---|---|---|---|---|
+| I2-T1 — read the board, claim tasks, push the claim | **done** | `59d84c55` | `COORDINATION.md` (append only) | — | — |
+| I2-T2 — repo-wide line-by-line audit + live re-verification | **done** | `59d84c55` | read-only over the whole tree; writes only `data/i2/*.json` | `I2-S01…I2-S14` | `I2-F-01…09` |
+| I2-T3 — reader-facing marketing site | **done** | `59d84c55` | `site/**` (new), `tools/build_i2_site.py` (new), `tools/i2_gate.py` (new), `data/i2/**` (new) | `I2-S01…I2-S14` | none — G1–G10 pass |
+| I2-T4 — decision board (suggestions, questions, prompt pack) | **done** | `59d84c55` | `site/decisions.html`, `data/i2/decisions.json` | `I2-S01…I2-S06` | — |
+| I2-T5 — navigation, sitemap, gates, PR, merge, Pages confirm | unclaimed → see below | `59d84c55` | `scripts/build_site.py` (NAV + tile + sitemap group only), `sitemap.xml` (regenerated) | — | — |
+
+**Scope rule honoured:** no file owned by another session's build is rewritten. `site/**` is new and
+cannot collide; the only edits to an existing generator are one NAV entry, one dashboard tile, one
+sitemap group entry and one sentence of footer copy — additive, and logged here.
+
+**No other session is `in progress` on this repo at this moment.** The last merged record is PR #97
+(session `4f83ee7b`, merge `933e2f3`). One PR from 2026-11-14 (#71) is still open and CONFLICTING; it
+is not touched by this session and is raised as `I2-F-05`.
+
+### I2-T2 — Independent live re-verification (done, 2026-11-16)
+
+Every row below was fetched **once, today**, by this session. Nothing is carried over from another
+session's capture. Full quoted observations: `data/i2/verification.json`; rendered at `site/evidence.html`.
+
+| # | Claim re-checked | Official page read today | Result |
+|---|---|---|---|
+| I2-V01 | §5 disclosure sentence + header date | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | **Confirmed verbatim** — "Updated: October 15, 2025"; §5 exact sentence present |
+| I2-V02 | Every Amazon link must carry the tag | Operating Agreement §1 + [Program Policies 2(b)](https://affiliate-program.amazon.com/help/operating/policies) | **Confirmed verbatim**; no tag exists in the repo and none appears in the live redirects (`I2-F-03`) |
+| I2-V03 | Nine-character tokens are not ASINs | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) + [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | **Confirmed** — Page Not Found; ASIN documented with ten-character examples |
+| I2-V04–V06 | The three short links open three live listings | [B04G1MEwY](https://link.amazon/B04G1MEwY) → B0CDY277D3, [B02NbDxp3](https://link.amazon/B02NbDxp3) → B09B7SB46R, [B00hJ57DV](https://link.amazon/B00hJ57DV) → B08DKYBTPH | **Confirmed** — same destinations as the 11-13/14/15 captures; titles drift, destinations do not |
+| I2-V07 | Kitchen 4.50%, All Other 4.00%, bounty $12/$2/$5/$0.25 | [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed as printed** |
+| I2-V09 | Price rule 2(b); rating rule 6(t) | Program Policies | **Confirmed verbatim** |
+| I2-V11 | Agent Terms §4(c) user-agent requirement, no circumvention | Program Policies | **Confirmed verbatim** |
+| I2-V12 | No ML training on Program Content; no API aggregation/analysis without approval | Program Policies IP License §1, §2(e) | **Confirmed verbatim** |
+| I2-V14 | API needs enrollment + 10 qualifying sales in 30 days | [Creators API introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction) | **Confirmed verbatim** |
+| I2-V16–V19 | No price tracking (6(y)); no sub-tag per visitor (2(b)); no artificial clicks (6(s)); no stored Amazon images (IP License 2(h)) | Program Policies | **Confirmed verbatim** |
+| I2-V20 | FTC placement guidance; footer-only disclosure is likely to be missed | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | **Confirmed** — and it exposed `I2-F-01` on this repository's own pages |
+| I2-V21 | No first-hand experience claims | FTC Disclosures 101 | **Confirmed verbatim** |
+| I2-V15 | 180-day / three-sale window | — | **Not re-checked** — no fetch made, no result asserted |
+
+**I2-F-10 (Info, self-correction).** In the first build of this pass, the guide at
+`site/guides/dual-basket-vs-single-basket.html` stated that the 26QT oven has "a different counter
+footprint". The listings read today do not state exterior dimensions, so that was an inference, not a
+fact. The sentence was replaced with an explicit statement that dimensions are not known and must be
+checked on the listing before buying. Caught by this session's own read-through before any push;
+recorded here because the rule is that a correction is logged, not quietly edited.
+
+### I2-T3 — Reader-facing marketing site (done, 2026-11-16)
+
+**Files:** `site/*.html` (8 pages), `site/assets/site.css`, `site/assets/site.js`,
+`site/site-index.json`, `tools/build_i2_site.py`, `tools/i2_gate.py`, `data/i2/{sources,verification,
+catalog,decisions}.json`, `docs/repo-review-59d84c55.md`.
+
+**Gates on the emitted pages:** `i2_gate.py` **PASS** · 8 pages · 105 rows · 89 sourced · 16 explicit
+blanks · 0 flagged. `verify_site.py` **PASS** · 82 pages · 1,437 rows · 1,217 sourced · **0 advisories**.
+
+**Gate validation — 13 injected violations, 13 caught.** A gate that has never failed is decoration, so
+each check was tested by injecting the construct it forbids into a copy of `site/`:
+
+| Injected | Caught by |
+|---|---|
+| Disclosure sentence removed | G1 |
+| Banner given `hidden` | G2 |
+| Amazon content disclaimer removed | G3 |
+| `$79.93` inserted as a product price | G6 |
+| `4.2 out of 5 stars` inserted | G6 |
+| `4.8K ratings` inserted | G6 |
+| `amzn.to` shortener link | G7 |
+| `m.media-amazon.com` product image | G7 (**first attempt missed it — see below**) |
+| `<iframe src="amazon.com/…">` | G7 |
+| Broken internal link | G8 |
+| Missing anchor target | G8 |
+| `TODO` marker | G9 |
+| Read date removed | G10 |
+
+**I2-F-11 (High, fixed before publish).** The first version of the image rule matched only hosts ending
+in `amazon.com`. Amazon serves product imagery from `m.media-amazon.com`,
+`images-na.ssl-images-amazon.com` and `images-eu.ssl-images-amazon.com`, so **every real product image
+would have passed the gate**. The negative test caught it; the host list now covers the CDNs and the test
+passes on all three hosts. The same narrow pattern exists in `tools/verify_site.py`'s V6 rule — logged as
+recommendation 4 in `docs/repo-review-59d84c55.md` §7, not edited here because that file belongs to
+another session's build.
+
+**Decision-board control verified, not assumed.** `site.js` was executed against the real markup in a
+minimal DOM harness: selecting Accept on D-01 and Reject + a reason on D-05 produced the correct
+per-card output, a 2-of-12 counter, a correctly formatted text export, and — after a simulated reload —
+restored selections from `localStorage`. No browser was available in the sandbox to test the visual
+rendering; the markup was reviewed directly and every selector the script uses was asserted present.
+
+**I2-F-12 (Info, copy defects fixed).** Three copy defects were found on read-through and fixed before
+publishing: (a) product cards truncated long listing titles mid-word; (b) the comparison table's
+blank-reason sentence was printed three times per row instead of once; (c) the products page read
+"…followed by nine characters — nine characters." Each was a generated-output defect, not a factual one.
+
+### I2-T4 — Decision board (done, 2026-11-16)
+
+`site/decisions.html` publishes **12 proposals** (D-01…D-12), each with: the problem, the proposal, an
+evidence list where every item is labelled Official / Observed / Editorial and carries its source link,
+effort, expected effect, risks, what it will deliberately not do, what it depends on, acceptance criteria,
+and an Accept / Reject / Defer control with a free-text reason and a text export.
+
+The four already visible on `/site/` are marked **implemented** so they can be judged by looking at them
+rather than by reading a description. `D-05` (tagged links) and `D-10` (named editor) are **blocked** on
+`Q1` and `Q5` respectively. No proposal is implemented merely by being read.
+
+**12 open questions**, each stating what is known (sourced), what is not known, why it decides something,
+how to discover the answer, what happens if it is never answered, and which proposals it gates.
+**9 discovery actions**, each naming the official page to read, the person who can do it, and the output
+that closes the question. **6 prompts** for a design or content session, each with acceptance criteria and
+guardrails attached.
+
+### I2-T5 — PR, merge, Pages deploy
+
+Recorded in the publish table below once complete.
+
+### I2-T5 — PR, merge and Pages deploy (done, 2026-11-16)
+
+| Event | Result |
+|---|---|
+| Pull request | [#101 — Zone3: reader-facing marketing site + final integration (session 59d84c55)](https://github.com/kanlerxz87-cyber/Zone3/pull/101), `arena/59d84c55-zone3` → `main`, 39 files, +4,655 / −20 |
+| First state | `mergeable=CONFLICTING` — **two other sessions merged while this branch was open**: PR #98 (session `ab3ed329`) and PR #99 (session `1f1b8bd2`) landed at `add6525` |
+| Conflict resolution | Merged `origin/main` in. 17 conflicted files: `COORDINATION.md` (main's board taken verbatim, then this session's Part I2 re-appended — main did not contain it); 15 generated pages (took main's side, then **regenerated from the merged data** with the merged generator, so the committed output is what the generators produce and neither side's content is lost); `sitemap.xml` (regenerated by `scripts/build_sitemap.py` over the merged tree). `scripts/build_site.py` auto-merged cleanly and was verified to contain **both** sides' NAV entries, dashboard tiles, sitemap groups and main's `BUILT = "2026-11-16"` |
+| Marker check | 0 conflict markers in any staged file, checked individually before commit — the trap two earlier sessions hit |
+| Gates on merged tree | `i2_gate` PASS · `verify_site` PASS · `build_site` PASS · `check_site` OK · `sitemap --check` PASS · `link_report --strict` PASS · `check_all_links` 0 errors |
+| Data-integrity re-check | Scripted assertion before merge: 0 dangling source refs across 22 verification rows, 12 proposals, 12 questions, 9 discovery actions, 6 prompts; 0 populated suppressed fields (price/rating/review count/availability/commission/trend/conversion) across all 3 products; every blank comparison row has a reason; every non-blank row has a source. **0 problems.** |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN` |
+| Merge | **MERGED** 2026-11-16T18:40:43Z via `gh pr merge 101 --merge` (no approval waited, per the brief). Merge commit **`b38d96a1e42473eeea8c005f083562fcd17ad842`** |
+| Pages build | Build for `b38d96a` → **status `built`** at 2026-11-16T18:41:10Z ([Pages build API](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest)) |
+| Live check — new site | https://kanlerxz87-cyber.github.io/Zone3/site/ — **live**. Disclosure banner renders above the nav; three product cards; the seven-row table with `Not published` cells and their reasons; the guide, evidence, flagged and decisions pages all fetch correctly |
+| Live check — decisions board | https://kanlerxz87-cyber.github.io/Zone3/site/decisions.html — **live**. 12 proposals with per-proposal Accept/Reject/Defer controls, 12 open questions, 9 discovery actions, 6 prompts |
+| Live check — root | Cache-busted fetch shows the **Marketing site (new)** tile first under *Sections*, a **Marketing site** group first in the *Site map*, and the hero CTA retargeted to `/site/` |
+
+**I2-F-13 (Low, operational).** The first uncached fetch of the live root returned the **pre-merge** page
+(still dated 2026-11-14, without the new tile), even though the Pages build for `b38d96a` already reported
+`built`. An immediate re-fetch with a cache-busting query returned the correct post-merge page. This is
+GitHub Pages' edge cache, not a deploy failure: the artefact served from the build is correct. Recorded
+because a reviewer who checks the site within a minute of the merge may see the previous revision and
+conclude the merge did not deploy.
+
+## 1F-T6 — PR, merge, Pages deploy record (2026-11-16)
+
+| Event | Result |
+|---|---|
+| Pull request | [#99 — Zone3: 2026-11-16 integration — independent re-verification round, line-by-line repo review, PR #71 takeover, compliance gap + two fixes (session 1f1b8bd2)](https://github.com/kanlerxz87-cyber/Zone3/pull/99), `arena/1f1b8bd2-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; gates green on the final tree immediately before the merge: `check_site` OK (13 pages / 3 products / 52 sources / **86 flags**) · `verify_site` PASS (75 pages / 1,377 rows / 1,169 with official source / 0 advisories) · `link_report --strict` exit 0 · `check_all_links` 121 pages / 106 external URLs / 0 errors · `build_sitemap --check` exit 0 (70 pages) · sessions checker OK · both generators idempotent · 0 conflict markers · 0 secrets |
+| Merge | **MERGED 2026-11-16T18:38:58Z** via `gh pr merge 99 --merge` (no approval waited, per brief) → merge commit **`add6525725882cba9572e47aa58da0bded807e8a`** (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages | legacy `main` `/` source; build for `add6525` → **status `built`** at 2026-11-16T18:39:20Z (polled via `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/index.html (cache-busted fetch) — serves "Status as of 2026-11-16", KPI **86 Total flags open**, all section tiles incl. Suggestions & decisions and session ab3ed329's, full site map |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html (cache-busted fetch) — "**86 entries**: 3 critical, 14 high, 23 medium, 28 low, 18 info"; `1F-F-01`, `1F-F-02`, `1F-F-03` and `AB-F-01`…`AB-F-05` all render with source links |
+| Live check — sources / marketing | `sources.html` on `main` carries **S59** (FTC Consumer Reviews Rule Q&A, official ftc.gov link); `marketing/*.html` nav carries both the Suggestions entry and session ab3ed329's entry |
+| Site merged while flagged? | yes — 1F-F-01 (open) and all prior flags are non-blocking and published on the Flagged for review page with source links, as the brief requires |
+
+### 1F conflict log
+
+| When | What happened | Resolution |
+|---|---|---|
+| 2026-11-16 ~18:36 UTC | `main` advanced `933e2f3` → `3d5167c` (PR #98, session `ab3ed329`, merged while this session's PR #99 was already open) → GitHub reported `CONFLICTING`. Conflicts in `COORDINATION.md`, `data/flags.json`, `executive-summary.html`, `flagged.html`, `index.html`, `sources.html`, six `marketing/*.html` (their exposure-redaction + nav edits vs this session's counts/nav additions); `data/sources.json`, `EXECUTIVE-SUMMARY.md`, `scripts/build_site.py` auto-merged. | Resolved by keeping **both sides in full**: `COORDINATION.md` = main's entire board (incl. their Part) + this session's Part 1F re-appended verbatim; `data/flags.json` = union by ID (86 = their AB-F-01…05 + this session's 1F-F-01…03; 0 duplicate IDs); `data/sources.json` = auto-merged union (52, S59 present, 0 duplicate IDs); generated pages taken from main's side then **regenerated** by `scripts/build_site.py` + `scripts/build_marketing.py` from the merged data (output committed only after all gates passed); `EXECUTIVE-SUMMARY.md` §2/§6 counts set to the union register (86: 3/14/23/28/18) and their unattributed present-tense "register now holds 83 items" changed to "held 83 items after that pass; §2 carries the current count" so their dated record survives without reading stale. **Nothing from either session discarded; their redaction of observed price/rating literals was preserved (re-verified 0 hits after regeneration).** |
+| 2026-11-16 ~18:38 UTC | **Incident, caught immediately.** The routine pre-push `git pull --rebase origin main` attempted to rebase this branch's history (it contains a merge commit) and stopped on a conflict replaying claim commit `26e93c5`; the subsequent `git push` had already succeeded with the correct merge commit `62058ab`. | `git rebase --abort` restored the branch; verified HEAD = `62058ab`, working tree clean, 4 ahead / 0 behind `origin/main`, remote ref = `62058ab`, 0 conflict markers. Logged per the board's rule that a conflict is recorded, not hidden. (Convention already on this board: merge `origin/main` into the branch instead of rebasing when the branch carries a merge commit — sessions `ecbfe91b`, `d9828ec7`.) |
+
+### What is still open for the owner after this merge (unchanged in kind; all published on Flagged for review)
+
+1. **Confirm the three destination listings** (`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`) are the intended products — FLG-002 / FLG-027.
+2. **Supply the Associates tag** and an active account — FLG-010; no link is trackable without it.
+3. **Creators API access** (10 qualifying sales / 30 days, registration, credentials) — prices and star ratings stay blank until a compliant path exists (FLG-006, FLG-022, Program Policies 2(b)/6(t)).
+4. **1F-F-01** — add the FTC Rule on the Use of Consumer Reviews and Testimonials (S59) to the compliance register and content rules.
+5. **71-F-01/02/04** (from the taken-over audit) — verifier manifest paths, provenance-gate strictness, `/docs/` + archive exposure (overlaps AB-F-01); owners of `tools/` and `/docs/`.
+6. **54C-CR-01** — generate `EXECUTIVE-SUMMARY.md` counts from `data/*.json` (1F-F-02 reproduced the drift this round).
+
+**Tasks 1F-T1 through 1F-T6: done.** Session `1f1b8bd2` is complete. This record ships in
+[PR #102](https://github.com/kanlerxz87-cyber/Zone3/pull/102) (`1F-RECORD-PR`), the follow-up pull request created after the merge it records.
 
 # Part: session `e8f35298` (2026-11-16) — fresh official-source re-verification and final integration
 
