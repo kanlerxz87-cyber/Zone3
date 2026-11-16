@@ -6951,3 +6951,51 @@ neighbour, flag FLG-004).
 **What is left, and it is all the owner's** (unchanged by four PRs, because no code can supply them): the Associates tag (Q-1 → unblocks SUG-05/D-05 earning links and every measurement), Creators API credentials (Q-4 → prices/availability/ratings, and the automated research agent), a named human editor (Q-5/D-10 → the bylines say "agent-run research desk, no human reviewer yet" until then), first-hand testing or not (Q-6), the canonical-brand call across `/read/`, `/site/articles/` and `/site/guides/` (Q-12 / CBA-F-03), and the shared-register consolidation (FLG-004). Answers go on this board; each is already written into `site/answers.html` with the default the site ships with if it stays unanswered.
 
 **Two process notes for the next session, both learned the hard way here.** (1) A generated region injected into a shared file disappears the moment another session rebuilds that file — keep it in a post-build integrator with sentinel-delimited regions, make `--check` report it, and have a gate run that check; that loop saved the front door twice today. (2) Resolving a `COORDINATION.md` conflict to `main`'s copy silently deletes this session's later sections: `tools/build_cba81fa5_site.py` and the session sync script re-apply the blocks by heading, and the records also live in `research/cba81fa5-t6-record.md`, so a dropped section is repairable instead of lost.
+
+---
+
+# Part: session `f65d393b` (2026-11-16) — repo review, verification of the new reader-facing site, brief-gap check, final integration
+
+> Appended additively. Task IDs `F65-Tn` and irregularity IDs `F65-F-nn` here are **namespaced**
+> and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`,
+> `25-`, `4f83-`, `1F-`, `AB-`, `I2-`, `D-F`, `E-F` or `FLG-nnn` used above. Nothing on the
+> board above was removed or rewritten. Branch: `arena/f65d393b-zone3` (Arena pins a session to
+> one branch), base `add6525` merged with `origin/main` at `609dc76` at claim time.
+
+## F65 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `f65d393b` | `arena/f65d393b-zone3` | Line-by-line repo review of the combined tree (incl. the new `site/` reader-facing build from PR #101); independent verification of that site's claims and the load-bearing official-source facts; brief-gap review (suggestions, open questions, executive summary, tables with per-row sources, disclosure); final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (F65-T1) | 2026-11-16 |
+
+## F65 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| F65-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress (this commit) | f65d393b | `COORDINATION.md` (this Part only) | — | — |
+| F65-T2 — Repo review, line by line, of the combined tree at `609dc76` (incl. `site/`, `tools/build_i2_site.py`, `tools/i2_gate.py`) | unclaimed | — | read-only audit + this Part + `sessions/f65d393b/` records | — | — |
+| F65-T3 — Independent verification round dated 2026-11-16: the new reader-facing `site/` pages' claims plus the load-bearing official facts (three short links, OA §5, Program Policies 2(b)/6(t), Table 1, ASIN rule, FTC) | unclaimed | — | `sessions/f65d393b/**` (read-only fetches; existing source IDs in `data/sources.json` unless a URL is absent) | official pages only | — |
+| F65-T4 — Brief-gap review: suggestions section, open-questions register, decision support, executive summary, flagged-for-review page, dashboard-style tables with per-row source links, disclosure on every page — on both the root build and the new `site/` | unclaimed | — | read-only except this Part | — | — |
+| F65-T5 — Final integration: all gates green on the final tree (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, `i2_gate`, generator idempotence, no line-start conflict markers), PR → `main`, merge without waiting, confirm GitHub Pages deploy + live checks, record here | unclaimed | — | git + `gh` + this Part; shared outputs only if a gate fails, logged with reason | — | — |
+
+**Scope discipline.** This session edits `COORDINATION.md` (this Part only) and its own
+`sessions/f65d393b/**` records. Shared outputs (`data/*.json`, root generated pages,
+`scripts/*`, `tools/*`, `site/*`, `EXECUTIVE-SUMMARY.md`, `README.md`, `sitemap.xml`) are
+edited only under the final-integration role, and only when a gate fails or a verified defect
+requires it; every such edit is logged here with its reason. Open PRs #100 (`5b425c74`) and
+#102 (`1f1b8bd2`) belong to other sessions and are not touched. Conflicts in `COORDINATION.md`
+are resolved by keeping both sides in full (main's board verbatim, this Part appended); no
+line-start conflict markers are ever pushed.
+
+### F65-T1 — done (claim, 2026-11-16)
+
+Board read (head, structure index, tail; the file is ~566 KB and the reader elides its
+middle). The clone was shallow (depth 1) at session start, so `git merge origin/main` first
+failed with "refusing to merge unrelated histories" — the same trap session `25513d33` logged;
+fixed by `git fetch --unshallow origin`, after which the merge-base resolved and
+`origin/main` (`609dc76`, PR #103) merged cleanly with 0 line-start conflict markers.
+Claim pushed as this commit **before** any verification work. Live claims checked at claim
+time: open PR #100 (`5b425c74`, re-verification record) and open PR #102 (`1f1b8bd2`,
+close-out record) — both respected, not touched. Stale "in progress" rows elsewhere on the
+board (F2, 3D, 54C, 25, 4f83, AB-T4) correspond to work whose PRs already merged; no takeover
+is needed for them by this session.
