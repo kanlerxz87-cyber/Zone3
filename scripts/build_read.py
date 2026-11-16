@@ -147,7 +147,7 @@ def page(rel: str, title: str, desc: str, body: str, *, canonical_slug: str,
 <header class="mast">
   <div class="w row">
     <a class="brand" href="{here}index.html"><span class="mk">CR</span><span class="bn">{esc(E["brand"]["name"])}</span><span class="bg">{esc(E["brand"]["kicker"])}</span></a>
-    <nav>{nav}</nav>
+    <nav class="topbar">{nav}</nav>
   </div>
 </header>
 <main class="w">

@@ -27,8 +27,8 @@ publish any value that cannot be traced to an official source.
 | Observed redirect destination listings | **3 of 3** |
 | Product-attribute cells blank in the audit sheet | **27** (9 unavailable fields × 3 observed listings) |
 | Official sources cited | 22 in `data/z3/`; 62 in the flat-site register (S60–S69 added 2026-11-16) |
-| Open items published for review | 89 (flat-site register, Z14-F-01/02/04 added 2026-11-16) · 29 (audit build) |
-| Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks; `scripts/build_read.py` additionally refuses to emit an uncited table row, a price pattern, a star-rating pattern or a stored Amazon image |
+| Open items published for review | 97 (flat-site register: `Z14-F-01`…`Z14-F-04` added 2026-11-16, plus `A0-F-*`/`F1-F-*` from PR #110) · 29 (audit build) |
+| Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks; `scripts/build_read.py` additionally refuses to emit an uncited table row, a price pattern, a star-rating pattern or a stored Amazon image, and `read/**` is listed in `scripts/check_site.py`'s `PAGES` so the shared gate covers it too |
 | Reader-facing marketing layers | **two, in parallel** — `/read/` (The Crisp Report, 11 pages, session `145b8df7`) and `/site/` (Air Fryer Field Notes, 8 pages, session `59d84c55`). Overlap recorded as `Z14-F-04`; the owner picks one as canonical |
 
 The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,

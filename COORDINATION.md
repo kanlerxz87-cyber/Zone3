@@ -5789,3 +5789,16 @@ this session's 2026-11-16 re-verification captures; append from `S70`. The regis
 find `S60` free and take it — that is how this session's `S59` collided with `1f1b8bd2`'s — and because
 both ids *exist* after a union, a checker that only verifies "the id resolves" will pass while the
 citations point at the wrong documents. Renumber, then read back the target of every reference.
+
+**Close-out follow-ups (after the PR was opened).** Two consistency items from this session's own review
+were fixed on the branch rather than left as notes:
+
+- `Z14-F-03` (High — the marketing layer cannot earn, no Associates tag) was listed on this board's
+  irregularities table but not in `data/flags.json`, so it did not render on `flagged.html`. It is now a
+  register row written as an explicit **cross-reference to `FLG-010` / `Q1`** rather than a duplicate of
+  them, so the board, the flag page and `EXECUTIVE-SUMMARY.md` §11 agree. Register: **97 flags**.
+- `read/**` was covered by `tools/verify_site.py` but absent from `scripts/check_site.py`'s explicit
+  `PAGES` list. The eleven pages are now listed there (comment says why), which forced one real change:
+  the shared gate requires `class="topbar"` on the navigation, so `scripts/build_read.py` emits
+  `<nav class="topbar">`. Both gates now cover the marketing layer. `check_site` reports
+  **OK: 24 pages, 3 products, 62 sources, 97 flags**.

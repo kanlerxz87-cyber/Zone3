@@ -1269,6 +1269,23 @@
         "S63"
       ],
       "action": "Owner decision. Flagged, not resolved: no value is affected and both layers remain reachable from the dashboard navigation and tiles."
+    },
+    {
+      "id": "Z14-F-03",
+      "severity": "High",
+      "category": "Compliance / monetisation",
+      "date": "2026-11-16",
+      "session": "145b8df7",
+      "item": "The marketing layer cannot earn: no Amazon Associates tracking tag exists, so no published link carries one",
+      "detail": "Cross-reference, not a restatement: same root cause as FLG-010 and open question Q1, recorded here so the board's irregularities table and the Flagged for review page agree. Consequence in numbers: /read/ publishes 11 pages about three listings and can earn an organic click, but the click reaches Amazon untagged, so it attributes nothing and this project's commission potential is unmeasurable -- not zero, unmeasurable. No earnings figure, click count or conversion rate is stated anywhere in read/ for that reason. In order: the owner registers or confirms an Associates account and supplies the Tracking ID; link management appends it to outbound product links; only then can clicks and conversions be reported, and only against the published rate table (S65) and the income clocks (S66) may any figure ever be written.",
+      "sources": [
+        "S65",
+        "S66",
+        "S67",
+        "S68",
+        "S69"
+      ],
+      "action": "Owner input required. Nothing in this PR can close it, so it is published as a blocker on the flagged page and on the suggestions page rather than worked around: no tag was invented, no placeholder tag was shipped, and no revenue projection was written."
     }
   ]
 }
