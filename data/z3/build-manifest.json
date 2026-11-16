@@ -32,6 +32,24 @@
     "reviews": "e287786124f3",
     "sources": "0db2f47d32d2"
   },
-  "content_digest": "30fafd29b7f10f71",
+  "paths": {
+    "agent-terms": "agent-terms/index.html",
+    "campaigns": "campaigns/index.html",
+    "commission": "commission/index.html",
+    "compliance": "compliance/index.html",
+    "content": "content/index.html",
+    "executive-summary": "executive-summary/index.html",
+    "flagged": "flagged/index.html",
+    "index": "dashboard/index.html",
+    "methodology": "methodology/index.html",
+    "niches": "niches/index.html",
+    "pricing": "pricing/index.html",
+    "products": "products/index.html",
+    "repo-review": "repo-review/index.html",
+    "requirements": "requirements/index.html",
+    "reviews": "reviews/index.html",
+    "sources": "sources/index.html"
+  },
+  "content_digest": "7690d7784c17874f",
   "built_utc_note": "deliberately absent: no build timestamp is recorded, so that a no-op rebuild is byte-identical and the tree stays clean. Use the commit date of the file for 'when', and content_digest for 'what'."
 }

@@ -1,580 +1,1110 @@
 {
-  "_meta": {
-    "title": "I2 decision board — proposals, open questions, discovery actions and the design prompt pack",
-    "how_to_use": "Read a proposal, check the evidence column, then record Accept / Reject / Defer in the 'Your decision' control on the decision page and copy the generated line into COORDINATION.md. Nothing on this page changes the site by itself. A proposal marked 'blocked' cannot be implemented until the question it depends on is answered.",
-    "honesty_rule": "Every factual statement carries an I2-Snn link to the page it was read from on 2026-11-16. Estimates are labelled 'estimate' and carry no number, because no official source supports a number. Where a proposal would need a figure this build cannot source, the figure is withheld and the rule is stated instead.",
-    "evidence_terms": {
-      "Official": "Read on an Amazon or FTC page fetched by this session.",
-      "Observed": "A live response recorded as returned (redirect destination, served title, Page Not Found).",
-      "Editorial": "A design or writing judgement made by this session. Labelled as such, never presented as a fact."
+ "_meta": {
+  "title": "I2 decision board — proposals, open questions, discovery actions and the design prompt pack",
+  "how_to_use": "Read a proposal, check the evidence column, then record Accept / Reject / Defer in the 'Your decision' control on the decision page and copy the generated line into COORDINATION.md. Nothing on this page changes the site by itself. A proposal marked 'blocked' cannot be implemented until the question it depends on is answered.",
+  "honesty_rule": "Every factual statement carries an I2-Snn link to the page it was read from on 2026-11-16. Estimates are labelled 'estimate' and carry no number, because no official source supports a number. Where a proposal would need a figure this build cannot source, the figure is withheld and the rule is stated instead.",
+  "evidence_terms": {
+   "Official": "Read on an Amazon or FTC page fetched by this session.",
+   "Observed": "A live response recorded as returned (redirect destination, served title, Page Not Found).",
+   "Editorial": "A design or writing judgement made by this session. Labelled as such, never presented as a fact."
+  }
+ },
+ "proposals": [
+  {
+   "id": "D-01",
+   "title": "Fix the front door: one clear home page with a single job",
+   "status": "implemented",
+   "status_note": "Implemented on /site/ in this session as a proposal preview so it can be judged by looking at it. Reversible: the page is new and nothing else was changed.",
+   "problem": "The repository root opens on a 19-item navigation bar whose first screen is an audit dashboard: six KPI tiles, then 17 navigation tiles, then a site map and a 12-row re-verification table. A reader who arrived to decide which air fryer to buy cannot find that decision anywhere on the first screen. That is the main reason the site reads as internal tooling rather than a marketing site.",
+   "proposal": "Give the root a reader-first home page: a short promise, the three products as cards with what the listing actually states, one primary action, and a visible provenance line. Move the audit dashboard to its own page (it already exists at /dashboard/) and link it once as 'How this was verified'.",
+   "evidence": [
+    {
+     "claim": "The current root page is an audit dashboard with 17 navigation tiles and a re-verification table.",
+     "term": "Observed",
+     "via": "Read of index.html in this repository, 2026-11-16."
+    },
+    {
+     "claim": "A disclosure must be clearly and prominently stated on the site.",
+     "term": "Official",
+     "sources": [
+      "I2-S01"
+     ]
+    },
+    {
+     "claim": "A disclosure is likely to be missed if it appears only in a footer or on an about page.",
+     "term": "Official",
+     "sources": [
+      "I2-S06"
+     ]
     }
+   ],
+   "effort": "Low — one page template, no new data.",
+   "expected_effect": "Editorial: converts first-time readers instead of losing them to an audit table. No traffic or conversion figure is claimed.",
+   "risks": "If the root is replaced, the audit pages must still be reachable in one click, or the verification record becomes hidden.",
+   "what_it_does_not_do": "It does not add a price, a rating, a trend claim or a working buy link. It does not change any figure.",
+   "depends_on": [],
+   "acceptance": [
+    "Above the fold: one sentence saying what the site is for, and one primary action.",
+    "The disclosure banner is visible before any product content, not only in the footer.",
+    "Every product statement on the page links the Amazon listing it came from.",
+    "Nothing on the page states a price, star rating, review count, trend or conversion value."
+   ]
   },
-  "proposals": [
+  {
+   "id": "D-02",
+   "title": "Publish editorial guides that answer one question each, from listing facts only",
+   "status": "implemented",
+   "status_note": "One guide published at /site/guides/dual-basket-vs-single-basket.html as a worked example of the format.",
+   "problem": "'Catchy trendy articles' is the part of the brief that most easily turns into filler. The repository already has a verified topic plan with 12 working titles, but the published marketing pages are thin, and the thin ones are what read as AI-generated.",
+   "proposal": "Ship guides as a repeatable format: a real reader question, the listing facts that answer it, a table, a 'what we cannot tell you' box, and a provenance footer. One question per page. No page without a verifiable answer.",
+   "evidence": [
     {
-      "id": "D-01",
-      "title": "Fix the front door: one clear home page with a single job",
-      "status": "implemented",
-      "status_note": "Implemented on /site/ in this session as a proposal preview so it can be judged by looking at it. Reversible: the page is new and nothing else was changed.",
-      "problem": "The repository root opens on a 19-item navigation bar whose first screen is an audit dashboard: six KPI tiles, then 17 navigation tiles, then a site map and a 12-row re-verification table. A reader who arrived to decide which air fryer to buy cannot find that decision anywhere on the first screen. That is the main reason the site reads as internal tooling rather than a marketing site.",
-      "proposal": "Give the root a reader-first home page: a short promise, the three products as cards with what the listing actually states, one primary action, and a visible provenance line. Move the audit dashboard to its own page (it already exists at /dashboard/) and link it once as 'How this was verified'.",
-      "evidence": [
-        {"claim": "The current root page is an audit dashboard with 17 navigation tiles and a re-verification table.", "term": "Observed", "via": "Read of index.html in this repository, 2026-11-16."},
-        {"claim": "A disclosure must be clearly and prominently stated on the site.", "term": "Official", "sources": ["I2-S01"]},
-        {"claim": "A disclosure is likely to be missed if it appears only in a footer or on an about page.", "term": "Official", "sources": ["I2-S06"]}
-      ],
-      "effort": "Low — one page template, no new data.",
-      "expected_effect": "Editorial: converts first-time readers instead of losing them to an audit table. No traffic or conversion figure is claimed.",
-      "risks": "If the root is replaced, the audit pages must still be reachable in one click, or the verification record becomes hidden.",
-      "what_it_does_not_do": "It does not add a price, a rating, a trend claim or a working buy link. It does not change any figure.",
-      "depends_on": [],
-      "acceptance": [
-        "Above the fold: one sentence saying what the site is for, and one primary action.",
-        "The disclosure banner is visible before any product content, not only in the footer.",
-        "Every product statement on the page links the Amazon listing it came from.",
-        "Nothing on the page states a price, star rating, review count, trend or conversion value."
-      ]
+     "claim": "Manufacturers' listing titles already carry concrete, checkable specifications for all three products (capacity, basket count, functions).",
+     "term": "Official",
+     "sources": [
+      "I2-S10",
+      "I2-S11",
+      "I2-S12"
+     ]
     },
     {
-      "id": "D-02",
-      "title": "Publish editorial guides that answer one question each, from listing facts only",
-      "status": "implemented",
-      "status_note": "One guide published at /site/guides/dual-basket-vs-single-basket.html as a worked example of the format.",
-      "problem": "'Catchy trendy articles' is the part of the brief that most easily turns into filler. The repository already has a verified topic plan with 12 working titles, but the published marketing pages are thin, and the thin ones are what read as AI-generated.",
-      "proposal": "Ship guides as a repeatable format: a real reader question, the listing facts that answer it, a table, a 'what we cannot tell you' box, and a provenance footer. One question per page. No page without a verifiable answer.",
-      "evidence": [
-        {"claim": "Manufacturers' listing titles already carry concrete, checkable specifications for all three products (capacity, basket count, functions).", "term": "Official", "sources": ["I2-S10", "I2-S11", "I2-S12"]},
-        {"claim": "A claim about a product must not be inaccurate, overbroad, deceptive or misleading.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "You cannot describe first-hand experience with a product you have not tried.", "term": "Official", "sources": ["I2-S06"]},
-        {"claim": "A 12-title topic plan with the fact behind each title already exists in this repository.", "term": "Observed", "via": "data/topics.json, read 2026-11-16."}
-      ],
-      "effort": "Medium — one guide is roughly a working day of drafting plus a source pass.",
-      "expected_effect": "Editorial: this is the only content type on the site that can earn organic search traffic without inventing numbers, because it answers a question using facts a search engine can also see.",
-      "risks": "Volume temptation: publishing 40 thin variants would recreate the problem. The format gate below exists to prevent that.",
-      "what_it_does_not_do": "It does not claim the guides are tested, ranked by popularity, or more effective at converting than any other page.",
-      "depends_on": ["Q12"],
-      "acceptance": [
-        "Every factual sentence maps to a listing or a policy page, and the page links it.",
-        "A 'what this page does not know' box is present and specific.",
-        "No superlative ('best', '#1', 'top-rated') appears unless an official page states it.",
-        "No price, star rating or review count appears."
-      ]
+     "claim": "A claim about a product must not be inaccurate, overbroad, deceptive or misleading.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
     },
     {
-      "id": "D-03",
-      "title": "Put the evidence next to the claim, on the page, not in a footer",
-      "status": "implemented",
-      "status_note": "Implemented as the 'source' column and the provenance strip under each table on /site/.",
-      "problem": "Trust is the product here. A page that says 'verified' in a footer and shows nothing verifiable is indistinguishable from a page that made its facts up — which is exactly what readers now assume of affiliate sites.",
-      "proposal": "Every table row carries a short source link to the exact page the fact came from. Every product card carries a provenance line naming the listing and the date it was read. Every blank cell states why it is blank instead of showing a dash.",
-      "evidence": [
-        {"claim": "Price display requires an Amazon-served link or API data.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "Star ratings and reviews require API-obtained data.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "A disclosure must be hard to miss and placed with the endorsement.", "term": "Official", "sources": ["I2-S06"]}
-      ],
-      "effort": "Low — the data already carries sources; this is a presentation rule.",
-      "expected_effect": "Editorial: makes the site's one real differentiator visible instead of hidden behind a 'Verified' badge.",
-      "risks": "Link rot on official pages. Mitigation: the source register records the fetch date, so a dead link is visibly a dated reading, not a live claim.",
-      "what_it_does_not_do": "It does not add new facts; it cites existing ones.",
-      "depends_on": [],
-      "acceptance": [
-        "No table row without a source link or an explicit blank-reason.",
-        "The build fails if a row has neither."
-      ]
+     "claim": "You cannot describe first-hand experience with a product you have not tried.",
+     "term": "Official",
+     "sources": [
+      "I2-S06"
+     ]
     },
     {
-      "id": "D-04",
-      "title": "Say what the site does not know, in the same breath as what it does",
-      "status": "implemented",
-      "status_note": "Implemented as the amber 'Not published' cells and the per-product caveat blocks on /site/.",
-      "problem": "The three products have no publishable price, rating or per-product commission. Competing sites show all three. The temptation is to fill the gap; the alternative is to make the gap itself part of the design and explain it in one sentence a reader understands.",
-      "proposal": "Replace every missing value with a short, plain explanation of why it is missing and what would fill it — and keep the products comparable on the facts that do exist.",
-      "evidence": [
-        {"claim": "Prices may be shown only if Amazon serves the link or the data comes from Creators API / PA API.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "Ratings may be shown only when obtained through Creators API or PA API.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "The API requires enrollment and at least 10 qualifying sales in 30 days.", "term": "Official", "sources": ["I2-S04"]}
-      ],
-      "effort": "Low.",
-      "expected_effect": "Editorial: an explained gap reads as expertise; a dash reads as an unfinished page.",
-      "risks": "Too much caveat copy can bury the comparison. Keep each explanation to one sentence and link the long version.",
-      "what_it_does_not_do": "It does not estimate, average or infer any missing value.",
-      "depends_on": [],
-      "acceptance": ["Every blank cell on the site has a one-sentence reason within one line of it."]
-    },
-    {
-      "id": "D-05",
-      "title": "Activate earning links: a tag activation workflow and honest 'link not active yet' states",
-      "status": "blocked",
-      "status_note": "Blocked on Q1 (the Associates tag). Every buy action on /site/ is disabled and labelled until then.",
-      "problem": "There is no Associates tag anywhere in this repository, and the live redirects of the three submitted links carry no tag parameter. Without it, nothing on the site can earn. The repository's current answer is to publish no link at all, which leaves a marketing site with no commercial action.",
-      "proposal": "When the tag is supplied, build links with the tag parameter, label each one, and record the exact URL in data. Until then, show the listing as an 'evidence link' that is clearly labelled as not earning.",
-      "evidence": [
-        {"claim": "Every link to an Amazon Site must include the Associates ID or tag as a URL parameter.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "Special Links must properly use Amazon's tagged link formats.", "term": "Official", "sources": ["I2-S01"]},
-        {"claim": "The live redirect of the first submitted link carries no tag parameter.", "term": "Official", "sources": ["I2-S07"]},
-        {"claim": "The Creators API response returns a detailPageURL that already carries tag=…", "term": "Official", "sources": ["I2-S03"]}
-      ],
-      "effort": "Low once the tag exists; zero before it.",
-      "expected_effect": "Turns the site from a research document into a monetisable one. No revenue is estimated.",
-      "risks": "A tag used on the wrong marketplace earns nothing or is disqualified; this is why Q3 must be answered together with Q1. Paid search on Amazon trademark terms is a disqualified route even with a correct tag.",
-      "what_it_does_not_do": "It does not add link shorteners, redirect chains, per-visitor sub-tags or automated clicks — each of which the Program Policies prohibit.",
-      "depends_on": ["Q1", "Q3"],
-      "acceptance": [
-        "The tag appears in every Amazon URL the site renders.",
-        "A link with no tag is visibly labelled as not earning.",
-        "No URL passes through a third-party shortener or an intermediate redirect page."
-      ]
-    },
-    {
-      "id": "D-06",
-      "title": "A voice and anti-slop style guide with a lint list the build can enforce",
-      "status": "proposed",
-      "problem": "'Looks like AI slop' is diagnosable. The usual symptoms are all structural, not stylistic: every paragraph the same length, every section a three-item list, hedged claims with no source, adjectives doing the work a fact should do, and no named author or date.",
-      "proposal": "Adopt a short style guide and a banned-pattern list, and enforce the mechanical part in the build: no 'in today's fast-paced world', no 'whether you're a busy parent', no 'look no further', no unsourced superlatives, no sentence that asserts a benefit without a fact behind it. Add a named editor line and a published/updated date to each guide.",
-      "evidence": [
-        {"claim": "A claim about a product must not be inaccurate, overbroad, deceptive or misleading.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "You cannot make claims that would require proof the advertiser does not have.", "term": "Official", "sources": ["I2-S06"]},
-        {"claim": "Hedged, unsourced benefit sentences are the dominant pattern in the repository's current marketing copy.", "term": "Observed", "via": "Read of marketing/*.html on 2026-11-16."}
-      ],
-      "effort": "Low to write, low to enforce.",
-      "expected_effect": "Editorial: removes the single most recognisable tell.",
-      "risks": "A lint list can be gamed by synonym swapping. It is a floor, not a substitute for editing.",
-      "what_it_does_not_do": "It does not guarantee a page is good; it guarantees a page is not obviously generated.",
-      "depends_on": ["Q5"],
-      "acceptance": [
-        "The guide names a person and a date.",
-        "The banned list is checked by the build gate and a failure names the offending sentence.",
-        "Every remaining sentence that evaluates a product links the source of the fact it evaluates."
-      ]
-    },
-    {
-      "id": "D-07",
-      "title": "Move the disclosure from the footer into a banner and beside each action",
-      "status": "implemented",
-      "status_note": "Implemented on /site/. Proposed as a change to the older pages, which still carry it in the footer only.",
-      "problem": "The exact §5 sentence is present on every page — but in the footer. That satisfies the Operating Agreement's 'on your Site' wording. The FTC's guidance is stricter about placement: it warns that a disclosure is likely to be missed if it appears only on an about page or at the end of a page, and asks for it to be with the endorsement itself.",
-      "proposal": "Keep the exact §5 sentence, add it as a banner above the content, and repeat a short plain-language version next to each buy action.",
-      "evidence": [
-        {"claim": "The §5 sentence is required, clearly and prominently, on the site.", "term": "Official", "sources": ["I2-S01"]},
-        {"claim": "Disclosures are likely to be missed if they appear only at the end of posts or on a profile page; place them with the endorsement message.", "term": "Official", "sources": ["I2-S06"]},
-        {"claim": "The disclosure should be in the same language as the endorsement itself.", "term": "Official", "sources": ["I2-S06"]}
-      ],
-      "effort": "Low — one template change.",
-      "expected_effect": "Compliance: closes the gap between 'technically on the page' and 'hard to miss'.",
-      "risks": "Banner blindness if it is styled like an ad. Keep it plain text, no animation, no dismiss button.",
-      "what_it_does_not_do": "It does not replace legal review (Q10).",
-      "depends_on": ["Q10"],
-      "acceptance": [
-        "The exact §5 sentence renders above the fold on every page.",
-        "Each buy action has a plain-language disclosure within the same visual block.",
-        "The banner cannot be dismissed or collapsed."
-      ]
-    },
-    {
-      "id": "D-08",
-      "title": "Make the site structurally findable: one canonical home, clean URLs, honest metadata",
-      "status": "proposed",
-      "problem": "The repository publishes two site generations plus /docs/, /sessions/ archives and a 16-page audit build, and the sitemap lists dozens of pages including superseded ones. A search engine indexing that set sees contradictory pages about the same three products, and a reader arriving on the wrong one sees a stale audit.",
-      "proposal": "Choose one canonical home for readers, keep the audits as clearly-labelled evidence pages, add rel=canonical from legacy pages to their current equivalent, and write descriptions that describe the page instead of keyword-stuffing it. Exclude superseded pages from the sitemap rather than deleting them.",
-      "evidence": [
-        {"claim": "Pages kept for provenance are published because they are committed, and at least one still displays values this site's rule prohibits.", "term": "Observed", "via": "index.html tile text and data/flags.json (I-F-02), read 2026-11-16."},
-        {"claim": "A claim must not be inaccurate or misleading.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "GitHub Pages currently serves the site from main / with HTTPS enforced.", "term": "Official", "sources": ["I2-S14"]}
-      ],
-      "effort": "Medium — a routing decision plus a sitemap pass.",
-      "expected_effect": "Editorial: removes the main structural reason a crawler would treat the site as low quality.",
-      "risks": "Existing inbound links to old pages break if they are deleted. The proposal keeps them and redirects rather than deleting.",
-      "what_it_does_not_do": "It does not promise a ranking or a traffic number.",
-      "depends_on": ["Q7"],
-      "acceptance": [
-        "Exactly one page is designated the reader entry point.",
-        "Every superseded page either redirects or is labelled and excluded from the sitemap.",
-        "No meta description contains a claim that is not on the page."
-      ]
-    },
-    {
-      "id": "D-09",
-      "title": "Measure what can be measured lawfully: Amazon's own reports first, no third-party pixels yet",
-      "status": "proposed",
-      "problem": "The brief asks for click and conversion tracking. Two constraints bite: per-visitor sub-tag attribution is prohibited, and artificial clicks are prohibited. What remains is Amazon's own reporting for orders, plus first-party page analytics on your own site.",
-      "proposal": "Once the tag exists, read clicks and orders from Amazon's Associates reports. On your own site, use aggregate page analytics only. Add a privacy policy before adding any cookie-based analytics, and never assign a sub-tag to a visitor.",
-      "evidence": [
-        {"claim": "Sub-tags may not be associated with a specific end user.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "Artificially generating clicks or creating Sessions is prohibited.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "The site operator is responsible for disclosing cookie and pixel use.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "The API returns a tagged detail page URL, which is the tracking surface Amazon itself provides.", "term": "Official", "sources": ["I2-S03"]}
-      ],
-      "effort": "Low to start, once Q1 and Q8 are answered.",
-      "expected_effect": "Produces the first real numbers. No number can be shown before then.",
-      "risks": "Adding a pixel without a privacy policy is the classic compliance failure on affiliate sites.",
-      "what_it_does_not_do": "It does not add hidden affiliate cookies, pop-ups, or click interception — all prohibited.",
-      "depends_on": ["Q1", "Q8"],
-      "acceptance": [
-        "No third-party analytics is loaded before a privacy policy page exists.",
-        "No sub-tag is generated per visitor.",
-        "No automated process clicks a tagged link."
-      ]
-    },
-    {
-      "id": "D-10",
-      "title": "Name a human editor and publish a cadence the owner can actually sustain",
-      "status": "blocked",
-      "status_note": "Blocked on Q5 (who reviews and publishes).",
-      "problem": "The site currently has no named author, no byline and no dates on its marketing pages. That is both a trust problem and an SEO problem, and it is the difference between a site that looks staffed and one that looks generated.",
-      "proposal": "One named editor, one published cadence (for example one guide a fortnight), a visible 'fact-checked by / on' line, and a rule that nothing publishes without that person's pass.",
-      "evidence": [
-        {"claim": "The operator is responsible for the accuracy and completeness of material posted on the site.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "The current marketing pages carry no byline or date.", "term": "Observed", "via": "Read of marketing/*.html on 2026-11-16."}
-      ],
-      "effort": "A decision, not a build.",
-      "expected_effect": "Editorial: makes the human-review gate real rather than aspirational.",
-      "risks": "A byline that is not a real person reviewing the copy is worse than none.",
-      "what_it_does_not_do": "It does not permit AI-drafted copy to publish unread.",
-      "depends_on": ["Q5"],
-      "acceptance": ["Every published page names its editor and its last-checked date."]
-    },
-    {
-      "id": "D-11",
-      "title": "Build the compliance checklist into the build, not into a policy page",
-      "status": "implemented",
-      "status_note": "Implemented as tools/i2_gate.py for /site/; proposed as the release gate for the whole tree.",
-      "problem": "The repository documents 25 prohibitions and 5 mandatory text blocks, but a rule that lives only in a document is a rule that eventually stops being applied. The older pages already demonstrate this: they pass on the disclosure sentence while failing the FTC's placement guidance.",
-      "proposal": "One gate that fails the build on: missing disclosure, missing Amazon-content disclaimer, a table row with no source and no blank-reason, an Amazon image, a shortener, a price or rating string with no API provenance, a non-HTTPS link, or a broken internal link.",
-      "evidence": [
-        {"claim": "A violation of §5 is deemed a material breach of the Operating Agreement.", "term": "Official", "sources": ["I2-S01"]},
-        {"claim": "Program Content may not be stored as an image; caching text is limited to 24 hours.", "term": "Official", "sources": ["I2-S02"]},
-        {"claim": "Use of a link shortener that obscures an Amazon destination is prohibited.", "term": "Official", "sources": ["I2-S02"]}
-      ],
-      "effort": "Low — the checks already exist in tools/verify_site.py and are extended here.",
-      "expected_effect": "Compliance becomes a property of the build instead of a promise in a README.",
-      "risks": "A gate that is bypassed by hand-editing generated HTML. Mitigation: the gate runs on the committed output, not the source data.",
-      "what_it_does_not_do": "It does not catch a claim that is sourced but misread. That is what the human pass is for.",
-      "depends_on": [],
-      "acceptance": [
-        "`python3 tools/i2_gate.py` exits non-zero on each prohibited construct, tested one at a time.",
-        "The gate runs on every page, including inherited pages, and reports inherited failures distinctly."
-      ]
-    },
-    {
-      "id": "D-12",
-      "title": "Sequence the work: fix what is verifiable, then unblock what is not",
-      "status": "proposed",
-      "problem": "Most of the brief's ambitious half — trend detection, conversion optimisation, revenue maximisation — depends on data this build cannot obtain: no tag, no API eligibility, no trend endpoint. Attempting it now produces the fabricated numbers that make affiliate sites untrustworthy.",
-      "proposal": "Publish a plain sequence. Phase 1 (now): the reader-facing pages, the provenance rule and the gate. Phase 2 (needs Q1/Q3): tagged links. Phase 3 (needs Q1/Q3/Q4 and 10 qualifying sales in 30 days): API data, and only then prices and ratings with the required timestamp and disclaimer. Phase 4 (needs Q8): reporting-driven optimisation from Amazon's own numbers.",
-      "evidence": [
-        {"claim": "Creators API prerequisites include enrollment and at least 10 qualifying sales within 30 days.", "term": "Official", "sources": ["I2-S04"]},
-        {"claim": "The API has no trend, search-volume or conversion operation.", "term": "Official", "sources": ["I2-S04"]},
-        {"claim": "Displaying pricing requires a date/time stamp and a specific disclaimer.", "term": "Official", "sources": ["I2-S02"]}
-      ],
-      "effort": "A decision.",
-      "expected_effect": "Stops the project from shipping invented numbers while waiting for access.",
-      "risks": "Phases look slow to an owner expecting automation on day one. The counter-argument is in the evidence column: the automation is gated by Amazon, not by this build.",
-      "what_it_does_not_do": "It does not promise any revenue, traffic or conversion outcome.",
-      "depends_on": ["Q1", "Q4"],
-      "acceptance": ["Each phase names the exact unknown it waits on and the official page that gates it."]
+     "claim": "A 12-title topic plan with the fact behind each title already exists in this repository.",
+     "term": "Observed",
+     "via": "data/topics.json, read 2026-11-16."
     }
-  ],
-  "questions": [
+   ],
+   "effort": "Medium — one guide is roughly a working day of drafting plus a source pass.",
+   "expected_effect": "Editorial: this is the only content type on the site that can earn organic search traffic without inventing numbers, because it answers a question using facts a search engine can also see.",
+   "risks": "Volume temptation: publishing 40 thin variants would recreate the problem. The format gate below exists to prevent that.",
+   "what_it_does_not_do": "It does not claim the guides are tested, ranked by popularity, or more effective at converting than any other page.",
+   "depends_on": [
+    "Q12"
+   ],
+   "acceptance": [
+    "Every factual sentence maps to a listing or a policy page, and the page links it.",
+    "A 'what this page does not know' box is present and specific.",
+    "No superlative ('best', '#1', 'top-rated') appears unless an official page states it.",
+    "No price, star rating or review count appears."
+   ]
+  },
+  {
+   "id": "D-03",
+   "title": "Put the evidence next to the claim, on the page, not in a footer",
+   "status": "implemented",
+   "status_note": "Implemented as the 'source' column and the provenance strip under each table on /site/.",
+   "problem": "Trust is the product here. A page that says 'verified' in a footer and shows nothing verifiable is indistinguishable from a page that made its facts up — which is exactly what readers now assume of affiliate sites.",
+   "proposal": "Every table row carries a short source link to the exact page the fact came from. Every product card carries a provenance line naming the listing and the date it was read. Every blank cell states why it is blank instead of showing a dash.",
+   "evidence": [
     {
-      "id": "Q1",
-      "question": "What is the Amazon Associates tag (tracking ID) to put on every link?",
-      "priority": "Blocking",
-      "known": "The tag must appear as a parameter in every link to an Amazon Site, in a XXXXX-## style format. The observed redirects of the three submitted links carry no tag.",
-      "known_sources": ["I2-S02", "I2-S01", "I2-S07"],
-      "unknown": "The actual tag value. It is account-specific and cannot be derived from any public page.",
-      "why_it_matters": "Without it nothing can earn, and a site with no earning action is not an affiliate site. It also decides whether the tag matches the marketplace, which changes the destination domain.",
-      "how_to_discover": "Sign in to Associates Central, open Account Settings, and read the Store ID / Associate ID. Alternatively generate one storefront text link and copy the tag parameter out of it. Do not paste credentials — only the tag is needed.",
-      "discovery_id": "DA-1",
-      "if_unanswered": "All buy actions stay disabled and labelled as not earning. Nothing else is blocked.",
-      "decides": ["D-05", "D-09", "D-12"]
+     "claim": "Price display requires an Amazon-served link or API data.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
     },
     {
-      "id": "Q2",
-      "question": "Are the three listings the products you intended to promote?",
-      "priority": "Blocking",
-      "known": "Each nine-character short link opened a live listing: CHEFMAN 6 Quart Dual Basket (B0CDY277D3), Emeril Lagasse 26QT French Door (B09B7SB46R), Chefman TurboFry 8 Qt (B08DKYBTPH). The nine-character tokens are not ASINs, and /dp/<token> returns Page Not Found.",
-      "known_sources": ["I2-S07", "I2-S08", "I2-S09", "I2-S13", "I2-S03"],
-      "unknown": "Whether those three destinations are the intended products. No official page states intent; only the owner can.",
-      "why_it_matters": "Every product statement on the site is about the observed destination. If the intent was different, the site is promoting the wrong products — a costly and invisible error.",
-      "how_to_discover": "Open the three short links and compare the listing titles with what you meant to promote; or supply the intended ASINs directly so they can be verified.",
-      "discovery_id": "DA-2",
-      "if_unanswered": "The site keeps describing the observed destinations and labels identity as unconfirmed on every product card.",
-      "decides": ["D-02", "D-05"]
+     "claim": "Star ratings and reviews require API-obtained data.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
     },
     {
-      "id": "Q3",
-      "question": "Which Amazon marketplace is the site built for?",
-      "priority": "Blocking",
-      "known": "The Associates Program Operating Agreement read today lists marketplaces in Schedule 1, and the tag is marketplace-specific. The links resolve to amazon.com.",
-      "known_sources": ["I2-S01", "I2-S07"],
-      "unknown": "The marketplace the account is enrolled in, and whether the audience is US or elsewhere.",
-      "why_it_matters": "A tag from one marketplace on a link to another earns nothing, and prices/currency differ by marketplace.",
-      "how_to_discover": "Read the country selector in Associates Central after sign-in, and confirm which storefront the account is approved for.",
-      "discovery_id": "DA-1",
-      "if_unanswered": "The site assumes nothing and does not publish a currency or a locale-specific price.",
-      "decides": ["D-05", "D-08"]
-    },
-    {
-      "id": "Q4",
-      "question": "Is the Associates account enrolled and eligible for the Creators API?",
-      "priority": "High",
-      "known": "API access requires enrollment plus at least 10 qualifying sales within the past 30 days, then registration and credentials.",
-      "known_sources": ["I2-S04"],
-      "unknown": "The account's current status and qualifying-sales count. Neither is public.",
-      "why_it_matters": "Prices and star ratings can only be displayed from API data or an Amazon-served link. Without eligibility, those cells stay blank forever.",
-      "how_to_discover": "Check the Associates Central dashboard for the qualifying-sales figure, then the Creators API registration page for eligibility.",
-      "discovery_id": "DA-3",
-      "if_unanswered": "Price and rating cells stay blank with an explanation. Guides continue on listing facts.",
-      "decides": ["D-04", "D-12"]
-    },
-    {
-      "id": "Q5",
-      "question": "Who is the named human editor who reviews and publishes each page, and how often?",
-      "priority": "High",
-      "known": "The operator is responsible for the accuracy of published material. The current marketing pages carry no byline or date.",
-      "known_sources": ["I2-S02"],
-      "unknown": "The person, their availability, and the cadence.",
-      "why_it_matters": "It is the difference between a site that looks staffed and one that looks generated, and it is the only real defence against an unsourced claim reaching the page.",
-      "how_to_discover": "A decision, not research: name the person and pick a cadence the owner can hold for three months.",
-      "discovery_id": "DA-4",
-      "if_unanswered": "No new guide publishes; the existing pages stay as they are.",
-      "decides": ["D-06", "D-10"]
-    },
-    {
-      "id": "Q6",
-      "question": "Will any of these products be used or tested first-hand?",
-      "priority": "High",
-      "known": "You cannot describe experience with a product you have not tried, and you cannot make claims that would require proof you do not have.",
-      "known_sources": ["I2-S06"],
-      "unknown": "Whether the owner has or will obtain the products, and whether photographs or measurements would be produced.",
-      "why_it_matters": "It is the single biggest content differentiator available, and the only lawful route to phrases like 'in our test'.",
-      "how_to_discover": "A decision. If yes, log the purchase and keep the receipt; a purchase through your own affiliate link is prohibited, so buy without the tag.",
-      "discovery_id": "DA-5",
-      "if_unanswered": "The site continues to describe only what the listing states and says so plainly.",
-      "decides": ["D-02", "D-06"]
-    },
-    {
-      "id": "Q7",
-      "question": "What is the brand — name, tone and visual direction?",
-      "priority": "Medium",
-      "known": "The site currently presents as an audit dashboard named Zone3. A brand must not use an Amazon mark or variant in a domain, subdomain or identifier.",
-      "known_sources": ["I2-S02"],
-      "unknown": "The name, tone and visual direction the owner wants.",
-      "why_it_matters": "Decides whether the reader-facing layer replaces the dashboard at the root or sits beside it.",
-      "how_to_discover": "A decision; optionally test two candidate names with five readers before committing.",
-      "discovery_id": "DA-6",
-      "if_unanswered": "The reader-facing site stays at /site/ and the root keeps its current dashboard.",
-      "decides": ["D-01", "D-08"]
-    },
-    {
-      "id": "Q8",
-      "question": "Which analytics will be used, and is there a privacy policy?",
-      "priority": "Medium",
-      "known": "The operator must disclose cookie and pixel use and provide visitor choices where required. Sub-tags may not be tied to a visitor, and clicks may not be generated artificially.",
-      "known_sources": ["I2-S02"],
-      "unknown": "Whether any analytics is installed, and whether a privacy policy exists.",
-      "why_it_matters": "It decides whether any measurement at all is possible beyond Amazon's own reports.",
-      "how_to_discover": "Inventory what is currently loaded on the site, then choose: Amazon reports only, or a privacy-respecting aggregate analytics with a published policy.",
-      "discovery_id": "DA-7",
-      "if_unanswered": "No third-party analytics is added; only Amazon's own reports are used once tagged.",
-      "decides": ["D-09"]
-    },
-    {
-      "id": "Q9",
-      "question": "What budget exists for tools, hosting and — if any — paid promotion?",
-      "priority": "Medium",
-      "known": "The site is served free on GitHub Pages. Paid search on Amazon trademark terms is a disqualified route, and links must not be placed in a way that obscures the Amazon destination.",
-      "known_sources": ["I2-S14", "I2-S02"],
-      "unknown": "Any budget, and whether paid promotion is intended at all.",
-      "why_it_matters": "Decides whether keyword research means free methods or a paid tool, and rules out whole categories of promotion that would disqualify purchases.",
-      "how_to_discover": "A decision.",
-      "discovery_id": "DA-8",
-      "if_unanswered": "No paid tool is assumed and no paid promotion is proposed.",
-      "decides": ["D-08"]
-    },
-    {
-      "id": "Q10",
-      "question": "Should the disclosure wording and placement be reviewed before launch?",
-      "priority": "Medium",
-      "known": "§5 prescribes the sentence; the FTC prescribes placement qualities but not a fixed sentence. The two are separate obligations with separate sources.",
-      "known_sources": ["I2-S01", "I2-S06"],
-      "unknown": "Whether legal review will happen, and in which jurisdictions the site operates.",
-      "why_it_matters": "A §5 violation is deemed a material breach of the Operating Agreement, so this is the highest-consequence text on the site.",
-      "how_to_discover": "Commission a short review of the banner and the near-CTA wording against both sources.",
-      "discovery_id": "DA-9",
-      "if_unanswered": "The site keeps both the exact §5 sentence and the FTC-style placement, which is the conservative combination.",
-      "decides": ["D-07"]
-    },
-    {
-      "id": "Q11",
-      "question": "Is AI drafting acceptable if a human edits and signs off every page?",
-      "priority": "Medium",
-      "known": "Program Content may not be used to train or improve models, and API content may not be aggregated or analyzed without prior written approval. Nothing prohibits using a model to help draft original copy that is grounded in facts a human checked.",
-      "known_sources": ["I2-S02"],
-      "unknown": "The owner's policy on AI-assisted drafting, and who is accountable for it.",
-      "why_it_matters": "It decides whether 'automation' means drafting assistance with a human gate, or nothing at all.",
-      "how_to_discover": "A decision. If yes, the rule is: model may draft, human must verify each fact against the linked source before publish.",
-      "discovery_id": "DA-4",
-      "if_unanswered": "No AI-drafted copy publishes; this build's pages are written to be checkable line by line instead.",
-      "decides": ["D-02", "D-06"]
-    },
-    {
-      "id": "Q12",
-      "question": "Will more products be added beyond these three?",
-      "priority": "Low",
-      "known": "The site's comparison is built on three specific listings. A fourth product changes the comparison, the guides and the category page.",
-      "known_sources": ["I2-S10", "I2-S11", "I2-S12"],
-      "unknown": "Whether the catalogue is fixed at three, and how new products would be supplied.",
-      "why_it_matters": "Decides whether the data layer needs an intake process now or later.",
-      "how_to_discover": "A decision, plus, if yes, a rule for supplying ASINs rather than short links.",
-      "discovery_id": "DA-2",
-      "if_unanswered": "The site stays scoped to three products.",
-      "decides": ["D-02"]
+     "claim": "A disclosure must be hard to miss and placed with the endorsement.",
+     "term": "Official",
+     "sources": [
+      "I2-S06"
+     ]
     }
-  ],
-  "discovery": [
+   ],
+   "effort": "Low — the data already carries sources; this is a presentation rule.",
+   "expected_effect": "Editorial: makes the site's one real differentiator visible instead of hidden behind a 'Verified' badge.",
+   "risks": "Link rot on official pages. Mitigation: the source register records the fetch date, so a dead link is visibly a dated reading, not a live claim.",
+   "what_it_does_not_do": "It does not add new facts; it cites existing ones.",
+   "depends_on": [],
+   "acceptance": [
+    "No table row without a source link or an explicit blank-reason.",
+    "The build fails if a row has neither."
+   ]
+  },
+  {
+   "id": "D-04",
+   "title": "Say what the site does not know, in the same breath as what it does",
+   "status": "implemented",
+   "status_note": "Implemented as the amber 'Not published' cells and the per-product caveat blocks on /site/.",
+   "problem": "The three products have no publishable price, rating or per-product commission. Competing sites show all three. The temptation is to fill the gap; the alternative is to make the gap itself part of the design and explain it in one sentence a reader understands.",
+   "proposal": "Replace every missing value with a short, plain explanation of why it is missing and what would fill it — and keep the products comparable on the facts that do exist.",
+   "evidence": [
     {
-      "id": "DA-1",
-      "action": "Read the Associates ID and marketplace from the signed-in Associates Central account",
-      "answers": ["Q1", "Q3"],
-      "who": "Account holder only — this cannot be done by an agent without credentials, and credentials should never be shared.",
-      "official_page": "https://affiliate-program.amazon.com/",
-      "output": "A tag in XXXXX-## form and a marketplace name, pasted into data/i2/config.json by the owner.",
-      "source": "I2-S02"
+     "claim": "Prices may be shown only if Amazon serves the link or the data comes from Creators API / PA API.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
     },
     {
-      "id": "DA-2",
-      "action": "Confirm intent by opening the three short links and comparing titles, or by supplying intended ASINs",
-      "answers": ["Q2", "Q12"],
-      "who": "Owner.",
-      "official_page": "https://www.amazon.com/dp/B0CDY277D3 · https://www.amazon.com/dp/B09B7SB46R · https://www.amazon.com/dp/B08DKYBTPH",
-      "output": "A yes/no per link, recorded with the date. The three short-link tokens to open are B04G1MEwY, B02NbDxp3 and B00hJ57DV, prefixed link.amazon/ — typed into a browser, not linked from this site, because an outbound shortener link would obscure the Amazon destination (6(w), 6(v)).",
-      "source": "I2-S07"
+     "claim": "Ratings may be shown only when obtained through Creators API or PA API.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
     },
     {
-      "id": "DA-3",
-      "action": "Read the qualifying-sales figure and Creators API eligibility in the Associates dashboard",
-      "answers": ["Q4"],
-      "who": "Account holder.",
-      "official_page": "https://affiliate-program.amazon.com/creatorsapi",
-      "output": "Eligible / not eligible, with the date, and — only once eligible — a decision to enable API-sourced price and rating display with the required timestamp and disclaimer.",
-      "source": "I2-S04"
-    },
-    {
-      "id": "DA-4",
-      "action": "Name the editor and write the publish checklist into the repository",
-      "answers": ["Q5", "Q11"],
-      "who": "Owner decision; no external source needed.",
-      "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
-      "output": "A named person, a cadence, and a checklist item per published page.",
-      "source": "I2-S02"
-    },
-    {
-      "id": "DA-5",
-      "action": "Decide the first-hand testing policy, and if yes, buy the products without the affiliate tag",
-      "answers": ["Q6"],
-      "who": "Owner.",
-      "official_page": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "output": "A policy line: 'tested' claims are allowed only with a logged purchase and a dated note.",
-      "source": "I2-S06"
-    },
-    {
-      "id": "DA-6",
-      "action": "Choose the brand and, optionally, test two names with five readers",
-      "answers": ["Q7"],
-      "who": "Owner, with a small reader test if desired.",
-      "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
-      "output": "A name that contains no Amazon mark or variant, a tone, and a palette.",
-      "source": "I2-S02"
-    },
-    {
-      "id": "DA-7",
-      "action": "Inventory what the site loads today, then write a privacy policy before adding any analytics",
-      "answers": ["Q8"],
-      "who": "Site operator.",
-      "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
-      "output": "A list of scripts with a purpose each, plus a published privacy page.",
-      "source": "I2-S02"
-    },
-    {
-      "id": "DA-8",
-      "action": "Decide the tooling budget and rule out disqualified promotion routes in writing",
-      "answers": ["Q9"],
-      "who": "Owner decision.",
-      "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
-      "output": "A short do-not list: no paid search on Amazon marks, no link shorteners, no pop-unders, no email links without opt-in.",
-      "source": "I2-S02"
-    },
-    {
-      "id": "DA-9",
-      "action": "Have the disclosure wording and placement reviewed against both the §5 text and the FTC placement guidance",
-      "answers": ["Q10"],
-      "who": "Owner and reviewer.",
-      "official_page": "https://affiliate-program.amazon.com/help/operating/agreement · https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "output": "A signed-off banner sentence and a near-CTA sentence.",
-      "source": "I2-S01"
+     "claim": "The API requires enrollment and at least 10 qualifying sales in 30 days.",
+     "term": "Official",
+     "sources": [
+      "I2-S04"
+     ]
     }
-  ],
-  "prompt_pack": [
+   ],
+   "effort": "Low.",
+   "expected_effect": "Editorial: an explained gap reads as expertise; a dash reads as an unfinished page.",
+   "risks": "Too much caveat copy can bury the comparison. Keep each explanation to one sentence and link the long version.",
+   "what_it_does_not_do": "It does not estimate, average or infer any missing value.",
+   "depends_on": [],
+   "acceptance": [
+    "Every blank cell on the site has a one-sentence reason within one line of it."
+   ]
+  },
+  {
+   "id": "D-05",
+   "title": "Activate earning links: a tag activation workflow and honest 'link not active yet' states",
+   "status": "blocked",
+   "status_note": "Blocked on Q1 (the Associates tag). Every buy action on /site/ is disabled and labelled until then.",
+   "problem": "There is no Associates tag anywhere in this repository, and the live redirects of the three submitted links carry no tag parameter. Without it, nothing on the site can earn. The repository's current answer is to publish no link at all, which leaves a marketing site with no commercial action.",
+   "proposal": "When the tag is supplied, build links with the tag parameter, label each one, and record the exact URL in data. Until then, show the listing as an 'evidence link' that is clearly labelled as not earning.",
+   "evidence": [
     {
-      "id": "P-01",
-      "name": "Brand and tone prompt",
-      "purpose": "Feed this into the design session so the output does not read as generated.",
-      "prompt": "You are designing an editorial buying-guide site about kitchen air fryers. The reader is deciding between a 6-quart dual-basket basket fryer, a 26QT French-door air-fryer toaster oven, and an 8-quart single-basket fryer. Write and design for a sceptical reader who assumes affiliate sites are junk and will leave if they cannot see where a fact came from. Voice: plain, specific, confident where evidence exists and explicit where it does not. No exclamation marks. No 'in today's fast-paced world'. No sentence that praises a product without naming the listing fact that supports it. Never invent a number.",
-      "acceptance": ["A stranger can restate the site's promise after five seconds.", "No banned phrase appears.", "No number appears that is not linked to an official page."],
-      "guardrails": ["Program Policies 2(b) and 6(t): no price, rating or review without an Amazon-served link or API data.", "FTC: no first-hand claim without use."],
-      "sources": ["I2-S02", "I2-S06"]
+     "claim": "Every link to an Amazon Site must include the Associates ID or tag as a URL parameter.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
     },
     {
-      "id": "P-02",
-      "name": "Page template prompt",
-      "purpose": "The structure every reader-facing page should follow.",
-      "prompt": "Build a page template with, in this order: a persistent disclosure banner above the navigation; a breadcrumb; an H1 that names the reader's question; two sentences of framing that contain no claim; the answer as a short table with a source link in every row; a 'what this page does not know' box; a single primary action that is either an active tagged link or a visibly disabled link labelled 'not active yet'; a provenance line naming the listing and the date it was read; and a footer repeating the exact sentence 'As an Amazon Associate I earn from qualifying purchases.' Never render an image loaded from an Amazon host. Never render a price or star rating.",
-      "acceptance": ["Disclosure visible before any product content.", "Every table row has a source link or an explicit blank-reason.", "The primary action's state is unambiguous."],
-      "guardrails": ["IP License 2(k) disclaimer present.", "No iframe/embed of an Amazon page.", "No price-tracking widget."],
-      "sources": ["I2-S01", "I2-S02", "I2-S06"]
+     "claim": "Special Links must properly use Amazon's tagged link formats.",
+     "term": "Official",
+     "sources": [
+      "I2-S01"
+     ]
     },
     {
-      "id": "P-03",
-      "name": "Article brief prompt",
-      "purpose": "The format that keeps a guide from turning into filler.",
-      "prompt": "Turn this reader question into a guide. Before writing, list every fact you intend to use and the listing or official page each came from. Drop any sentence whose fact is not on that list. Structure: the question, the short answer, a comparison table, three practical considerations drawn only from listed specifications, a 'what we cannot tell you' section naming the missing data and why it is missing, and a sources block. Do not use a superlative unless the source uses it. Do not describe using, testing or owning the product. Target 700–1,000 words with varied sentence length.",
-      "acceptance": ["Fact list precedes draft.", "Every retained sentence traces to the list.", "The 'cannot tell you' section names a real gap."],
-      "guardrails": ["No comparative performance claim absent from the listing.", "No first-hand experience."],
-      "sources": ["I2-S02", "I2-S06"]
+     "claim": "The live redirect of the first submitted link carries no tag parameter.",
+     "term": "Official",
+     "sources": [
+      "I2-S07"
+     ]
     },
     {
-      "id": "P-04",
-      "name": "Anti-slop lint prompt",
-      "purpose": "Run this over any draft before it is published.",
-      "prompt": "Review the draft and flag, with the exact sentence: any paragraph longer than 90 words or more than two consecutive paragraphs of near-identical length; any three-item list that only restates the previous paragraph; any adjective doing the work of a fact ('incredible', 'game-changing', 'perfect for'); any hedge that hides a missing fact ('many users report', 'studies show', 'experts agree'); any sentence beginning with 'Whether you're'; any claim with no adjacent source; any repetition of the same section shape twice in a row. Return the list; do not rewrite.",
-      "acceptance": ["Every flagged sentence is quoted.", "Zero remaining unsourced evaluative sentences after the edit."],
-      "guardrails": ["The lint list is a floor, not a definition of quality."],
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "P-05",
-      "name": "Compliance guardrail prompt",
-      "purpose": "Hard constraints to paste into any content-generating session.",
-      "prompt": "Hard constraints, no exceptions: never state a price, availability or star rating unless it came from Creators API or an Amazon-served link, and if it did, add the date/time stamp and the Amazon price disclaimer. Never show an Amazon-hosted image. Never use a URL shortener or an intermediate redirect. Never attach a sub-tag to a visitor. Never generate artificial clicks. Never bid on Amazon marks. Never frame an Amazon page. Never use Program Content to train a model. Never paraphrase a review you did not obtain through the API. If a rule conflicts with a design request, the rule wins and you say so.",
-      "acceptance": ["Each constraint maps to a clause quoted in the source register."],
-      "guardrails": ["These are legal constraints, not style preferences."],
-      "sources": ["I2-S01", "I2-S02", "I2-S03", "I2-S04"]
-    },
-    {
-      "id": "P-06",
-      "name": "Data-safety prompt",
-      "purpose": "Stops the build from filling blanks.",
-      "prompt": "For every field in the product table, either cite the page it was read from in this session, or leave the cell empty and write one sentence saying why it is empty and what would fill it. Never estimate, average, interpolate, infer from a similar product, or carry a value forward from an older capture without a fresh read. If a value would make the page more persuasive but cannot be sourced, leave it out and say so on the page.",
-      "acceptance": ["No filled cell without a source.", "Every empty cell has a reason."],
-      "guardrails": ["A blank with a reason is a feature; a guess is a defect."],
-      "sources": ["I2-S02"]
+     "claim": "The Creators API response returns a detailPageURL that already carries tag=…",
+     "term": "Official",
+     "sources": [
+      "I2-S03"
+     ]
     }
-  ],
-  "workflow": [
-    "Read each proposal and its evidence column. Open the source links; they are the actual pages read on 2026-11-16.",
-    "Answer the blocking questions first (Q1, Q2, Q3). They gate every commercial change.",
-    "For each proposal, choose Accept, Reject or Defer and write one sentence of reason.",
-    "Export the decisions and paste them into COORDINATION.md under this session's part, so the next session implements only what was accepted.",
-    "Anything accepted is implemented in a follow-up session that re-verifies the affected pages and re-runs the gate before publishing."
-  ]
+   ],
+   "effort": "Low once the tag exists; zero before it.",
+   "expected_effect": "Turns the site from a research document into a monetisable one. No revenue is estimated.",
+   "risks": "A tag used on the wrong marketplace earns nothing or is disqualified; this is why Q3 must be answered together with Q1. Paid search on Amazon trademark terms is a disqualified route even with a correct tag.",
+   "what_it_does_not_do": "It does not add link shorteners, redirect chains, per-visitor sub-tags or automated clicks — each of which the Program Policies prohibit.",
+   "depends_on": [
+    "Q1",
+    "Q3"
+   ],
+   "acceptance": [
+    "The tag appears in every Amazon URL the site renders.",
+    "A link with no tag is visibly labelled as not earning.",
+    "No URL passes through a third-party shortener or an intermediate redirect page."
+   ]
+  },
+  {
+   "id": "D-06",
+   "title": "A voice and anti-slop style guide with a lint list the build can enforce",
+   "status": "proposed",
+   "problem": "'Looks like AI slop' is diagnosable. The usual symptoms are all structural, not stylistic: every paragraph the same length, every section a three-item list, hedged claims with no source, adjectives doing the work a fact should do, and no named author or date.",
+   "proposal": "Adopt a short style guide and a banned-pattern list, and enforce the mechanical part in the build: no 'in today's fast-paced world', no 'whether you're a busy parent', no 'look no further', no unsourced superlatives, no sentence that asserts a benefit without a fact behind it. Add a named editor line and a published/updated date to each guide.",
+   "evidence": [
+    {
+     "claim": "A claim about a product must not be inaccurate, overbroad, deceptive or misleading.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "You cannot make claims that would require proof the advertiser does not have.",
+     "term": "Official",
+     "sources": [
+      "I2-S06"
+     ]
+    },
+    {
+     "claim": "Hedged, unsourced benefit sentences are the dominant pattern in the repository's current marketing copy.",
+     "term": "Observed",
+     "via": "Read of marketing/*.html on 2026-11-16."
+    }
+   ],
+   "effort": "Low to write, low to enforce.",
+   "expected_effect": "Editorial: removes the single most recognisable tell.",
+   "risks": "A lint list can be gamed by synonym swapping. It is a floor, not a substitute for editing.",
+   "what_it_does_not_do": "It does not guarantee a page is good; it guarantees a page is not obviously generated.",
+   "depends_on": [
+    "Q5"
+   ],
+   "acceptance": [
+    "The guide names a person and a date.",
+    "The banned list is checked by the build gate and a failure names the offending sentence.",
+    "Every remaining sentence that evaluates a product links the source of the fact it evaluates."
+   ]
+  },
+  {
+   "id": "D-07",
+   "title": "Move the disclosure from the footer into a banner and beside each action",
+   "status": "implemented",
+   "status_note": "Implemented on /site/. Proposed as a change to the older pages, which still carry it in the footer only.",
+   "problem": "The exact §5 sentence is present on every page — but in the footer. That satisfies the Operating Agreement's 'on your Site' wording. The FTC's guidance is stricter about placement: it warns that a disclosure is likely to be missed if it appears only on an about page or at the end of a page, and asks for it to be with the endorsement itself.",
+   "proposal": "Keep the exact §5 sentence, add it as a banner above the content, and repeat a short plain-language version next to each buy action.",
+   "evidence": [
+    {
+     "claim": "The §5 sentence is required, clearly and prominently, on the site.",
+     "term": "Official",
+     "sources": [
+      "I2-S01"
+     ]
+    },
+    {
+     "claim": "Disclosures are likely to be missed if they appear only at the end of posts or on a profile page; place them with the endorsement message.",
+     "term": "Official",
+     "sources": [
+      "I2-S06"
+     ]
+    },
+    {
+     "claim": "The disclosure should be in the same language as the endorsement itself.",
+     "term": "Official",
+     "sources": [
+      "I2-S06"
+     ]
+    }
+   ],
+   "effort": "Low — one template change.",
+   "expected_effect": "Compliance: closes the gap between 'technically on the page' and 'hard to miss'.",
+   "risks": "Banner blindness if it is styled like an ad. Keep it plain text, no animation, no dismiss button.",
+   "what_it_does_not_do": "It does not replace legal review (Q10).",
+   "depends_on": [
+    "Q10"
+   ],
+   "acceptance": [
+    "The exact §5 sentence renders above the fold on every page.",
+    "Each buy action has a plain-language disclosure within the same visual block.",
+    "The banner cannot be dismissed or collapsed."
+   ]
+  },
+  {
+   "id": "D-08",
+   "title": "Make the site structurally findable: one canonical home, clean URLs, honest metadata",
+   "status": "proposed",
+   "problem": "The repository publishes two site generations plus /docs/, /sessions/ archives and a 16-page audit build, and the sitemap lists dozens of pages including superseded ones. A search engine indexing that set sees contradictory pages about the same three products, and a reader arriving on the wrong one sees a stale audit.",
+   "proposal": "Choose one canonical home for readers, keep the audits as clearly-labelled evidence pages, add rel=canonical from legacy pages to their current equivalent, and write descriptions that describe the page instead of keyword-stuffing it. Exclude superseded pages from the sitemap rather than deleting them.",
+   "evidence": [
+    {
+     "claim": "Pages kept for provenance are published because they are committed, and at least one still displays values this site's rule prohibits.",
+     "term": "Observed",
+     "via": "index.html tile text and data/flags.json (I-F-02), read 2026-11-16."
+    },
+    {
+     "claim": "A claim must not be inaccurate or misleading.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "GitHub Pages currently serves the site from main / with HTTPS enforced.",
+     "term": "Official",
+     "sources": [
+      "I2-S14"
+     ]
+    }
+   ],
+   "effort": "Medium — a routing decision plus a sitemap pass.",
+   "expected_effect": "Editorial: removes the main structural reason a crawler would treat the site as low quality.",
+   "risks": "Existing inbound links to old pages break if they are deleted. The proposal keeps them and redirects rather than deleting.",
+   "what_it_does_not_do": "It does not promise a ranking or a traffic number.",
+   "depends_on": [
+    "Q7"
+   ],
+   "acceptance": [
+    "Exactly one page is designated the reader entry point.",
+    "Every superseded page either redirects or is labelled and excluded from the sitemap.",
+    "No meta description contains a claim that is not on the page."
+   ]
+  },
+  {
+   "id": "D-09",
+   "title": "Measure what can be measured lawfully: Amazon's own reports first, no third-party pixels yet",
+   "status": "proposed",
+   "problem": "The brief asks for click and conversion tracking. Two constraints bite: per-visitor sub-tag attribution is prohibited, and artificial clicks are prohibited. What remains is Amazon's own reporting for orders, plus first-party page analytics on your own site.",
+   "proposal": "Once the tag exists, read clicks and orders from Amazon's Associates reports. On your own site, use aggregate page analytics only. Add a privacy policy before adding any cookie-based analytics, and never assign a sub-tag to a visitor.",
+   "evidence": [
+    {
+     "claim": "Sub-tags may not be associated with a specific end user.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "Artificially generating clicks or creating Sessions is prohibited.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "The site operator is responsible for disclosing cookie and pixel use.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "The API returns a tagged detail page URL, which is the tracking surface Amazon itself provides.",
+     "term": "Official",
+     "sources": [
+      "I2-S03"
+     ]
+    }
+   ],
+   "effort": "Low to start, once Q1 and Q8 are answered.",
+   "expected_effect": "Produces the first real numbers. No number can be shown before then.",
+   "risks": "Adding a pixel without a privacy policy is the classic compliance failure on affiliate sites.",
+   "what_it_does_not_do": "It does not add hidden affiliate cookies, pop-ups, or click interception — all prohibited.",
+   "depends_on": [
+    "Q1",
+    "Q8"
+   ],
+   "acceptance": [
+    "No third-party analytics is loaded before a privacy policy page exists.",
+    "No sub-tag is generated per visitor.",
+    "No automated process clicks a tagged link."
+   ]
+  },
+  {
+   "id": "D-10",
+   "title": "Name a human editor and publish a cadence the owner can actually sustain",
+   "status": "blocked",
+   "status_note": "Blocked on Q5 (who reviews and publishes).",
+   "problem": "The site currently has no named author, no byline and no dates on its marketing pages. That is both a trust problem and an SEO problem, and it is the difference between a site that looks staffed and one that looks generated.",
+   "proposal": "One named editor, one published cadence (for example one guide a fortnight), a visible 'fact-checked by / on' line, and a rule that nothing publishes without that person's pass.",
+   "evidence": [
+    {
+     "claim": "The operator is responsible for the accuracy and completeness of material posted on the site.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "The current marketing pages carry no byline or date.",
+     "term": "Observed",
+     "via": "Read of marketing/*.html on 2026-11-16."
+    }
+   ],
+   "effort": "A decision, not a build.",
+   "expected_effect": "Editorial: makes the human-review gate real rather than aspirational.",
+   "risks": "A byline that is not a real person reviewing the copy is worse than none.",
+   "what_it_does_not_do": "It does not permit AI-drafted copy to publish unread.",
+   "depends_on": [
+    "Q5"
+   ],
+   "acceptance": [
+    "Every published page names its editor and its last-checked date."
+   ]
+  },
+  {
+   "id": "D-11",
+   "title": "Build the compliance checklist into the build, not into a policy page",
+   "status": "implemented",
+   "status_note": "Implemented as tools/i2_gate.py for /site/; proposed as the release gate for the whole tree.",
+   "problem": "The repository documents 25 prohibitions and 5 mandatory text blocks, but a rule that lives only in a document is a rule that eventually stops being applied. The older pages already demonstrate this: they pass on the disclosure sentence while failing the FTC's placement guidance.",
+   "proposal": "One gate that fails the build on: missing disclosure, missing Amazon-content disclaimer, a table row with no source and no blank-reason, an Amazon image, a shortener, a price or rating string with no API provenance, a non-HTTPS link, or a broken internal link.",
+   "evidence": [
+    {
+     "claim": "A violation of §5 is deemed a material breach of the Operating Agreement.",
+     "term": "Official",
+     "sources": [
+      "I2-S01"
+     ]
+    },
+    {
+     "claim": "Program Content may not be stored as an image; caching text is limited to 24 hours.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "Use of a link shortener that obscures an Amazon destination is prohibited.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    }
+   ],
+   "effort": "Low — the checks already exist in tools/verify_site.py and are extended here.",
+   "expected_effect": "Compliance becomes a property of the build instead of a promise in a README.",
+   "risks": "A gate that is bypassed by hand-editing generated HTML. Mitigation: the gate runs on the committed output, not the source data.",
+   "what_it_does_not_do": "It does not catch a claim that is sourced but misread. That is what the human pass is for.",
+   "depends_on": [],
+   "acceptance": [
+    "`python3 tools/i2_gate.py` exits non-zero on each prohibited construct, tested one at a time.",
+    "The gate runs on every page, including inherited pages, and reports inherited failures distinctly."
+   ]
+  },
+  {
+   "id": "D-12",
+   "title": "Sequence the work: fix what is verifiable, then unblock what is not",
+   "status": "proposed",
+   "problem": "Most of the brief's ambitious half — trend detection, conversion optimisation, revenue maximisation — depends on data this build cannot obtain: no tag, no API eligibility, no trend endpoint. Attempting it now produces the fabricated numbers that make affiliate sites untrustworthy.",
+   "proposal": "Publish a plain sequence. Phase 1 (now): the reader-facing pages, the provenance rule and the gate. Phase 2 (needs Q1/Q3): tagged links. Phase 3 (needs Q1/Q3/Q4 and 10 qualifying sales in 30 days): API data, and only then prices and ratings with the required timestamp and disclaimer. Phase 4 (needs Q8): reporting-driven optimisation from Amazon's own numbers.",
+   "evidence": [
+    {
+     "claim": "Creators API prerequisites include enrollment and at least 10 qualifying sales within 30 days.",
+     "term": "Official",
+     "sources": [
+      "I2-S04"
+     ]
+    },
+    {
+     "claim": "The API has no trend, search-volume or conversion operation.",
+     "term": "Official",
+     "sources": [
+      "I2-S04"
+     ]
+    },
+    {
+     "claim": "Displaying pricing requires a date/time stamp and a specific disclaimer.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    }
+   ],
+   "effort": "A decision.",
+   "expected_effect": "Stops the project from shipping invented numbers while waiting for access.",
+   "risks": "Phases look slow to an owner expecting automation on day one. The counter-argument is in the evidence column: the automation is gated by Amazon, not by this build.",
+   "what_it_does_not_do": "It does not promise any revenue, traffic or conversion outcome.",
+   "depends_on": [
+    "Q1",
+    "Q4"
+   ],
+   "acceptance": [
+    "Each phase names the exact unknown it waits on and the official page that gates it."
+   ]
+  },
+  {
+   "id": "D-13",
+   "title": "Publish a reader article library: one question per page, listing facts only",
+   "status": "implemented",
+   "status_note": "Implemented in session d18303ca on 2026-11-16: site/articles/ (index + three articles). Reversible by deleting the folder; nothing outside site/ changes.",
+   "problem": "The reader site answered layout questions (one guide, one comparison page) but nothing answered the single-feature questions readers actually search for — what Sync Finish does, whether a french-door oven format fits, what a 450-degree Hi-Fry setting is. Long-tail search had no honest landing pages.",
+   "proposal": "A library of short articles under /site/articles/, each answering exactly one question, built only from listing facts with every unknown named, under the same rules as the guides: dated provenance, no price or rating, no first-hand claims.",
+   "evidence": [
+    {
+     "claim": "Prices and star ratings may be displayed only through an Amazon-served link or the Creators/PA API; this site shows neither until then.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "A person cannot describe experience with a product they have not tried; disclosures must be hard to miss.",
+     "term": "Official",
+     "sources": [
+      "I2-S06"
+     ]
+    },
+    {
+     "claim": "Before this session the reader site carried one guide and no feature-level articles; the three product cards were the only long-form entry points.",
+     "term": "Observed",
+     "via": "Read of the site/ tree, 2026-11-16, session d18303ca."
+    },
+    {
+     "claim": "Feature-question articles are a standard, durable format for appliance content; the format choice itself is editorial.",
+     "term": "Editorial",
+     "via": "Editorial judgment, session d18303ca."
+    }
+   ],
+   "effort": "Low — four static pages, no new data, no generator change.",
+   "expected_effect": "Editorial: gives organic search honest landing pages for feature questions and gives readers a second way into the comparison. No traffic figure is claimed.",
+   "risks": "Question overlap with the existing guide (mitigated: the articles take single-feature questions the guide does not); listing titles change over time (mitigated: every page states its read date, so drift is detectable rather than silent).",
+   "what_it_does_not_do": "It does not add a price, a rating, a trend claim or a working buy link. It does not touch the audit pages, the generators or any root page.",
+   "depends_on": [],
+   "acceptance": [
+    "Every article states the date its listing facts were read.",
+    "Every product fact carries a link to the listing it was read from.",
+    "Every blank names its reason (policy 2(b)/6(t) or not stated in the text read).",
+    "i2_gate and verify_site pass on the full tree."
+   ]
+  },
+  {
+   "id": "D-14",
+   "title": "Interlink the reader pages so nothing is an orphan",
+   "status": "implemented",
+   "status_note": "Implemented in session d18303ca on 2026-11-16 via the article templates: breadcrumbs, cross-links between articles, guides, products and the decision board, and a library index. Navigation entries in the generator's own nav are left to the owner of tools/build_i2_site.py (cross-scope request logged in COORDINATION.md Part D1).",
+   "problem": "New pages that nothing links to are unreachable in practice: the reader site's pages linked outward (to products and evidence) but there was no path from a product page or guide into deeper reading, and no hub listing the articles.",
+   "proposal": "Each article carries a breadcrumb back to the library, the library indexes the articles with one-line promises, and every article links to the comparison page, the relevant guide, and the decision board. The site's own navigation bar remains owned by the generator.",
+   "evidence": [
+    {
+     "claim": "The site's internal-link integrity is gate-checked (G8/V5): every internal link must resolve.",
+     "term": "Official",
+     "sources": [
+      "I2-S14"
+     ]
+    },
+    {
+     "claim": "Before this session there was no path from site/ pages into feature-level articles; articles did not exist.",
+     "term": "Observed",
+     "via": "Read of the site/ tree, 2026-11-16, session d18303ca."
+    }
+   ],
+   "effort": "Low — markup only.",
+   "expected_effect": "Editorial: readers can move from an answer to a decision without hitting a dead end; crawlers see a connected page set instead of isolated pages.",
+   "risks": "Link rot if pages are renamed (mitigated: G8/V5 gates fail the build on any broken internal link).",
+   "what_it_does_not_do": "It does not modify the generator's navigation or any other session's files.",
+   "depends_on": [],
+   "acceptance": [
+    "No broken internal links or anchors (gates enforce this).",
+    "Every article is reachable from the library index.",
+    "Every article links to at least one decision point (products page or decision board)."
+   ]
+  },
+  {
+   "id": "D-15",
+   "title": "Retire the submitted link.amazon URLs from any earning role; mint tagged Special Links in Associates Central once the tag exists",
+   "status": "blocked",
+   "status_note": "Blocked on Q1 (the Associates tag) and Q13 (who owns the third-party attribution parameters observed on the redirects). Nothing to implement until both are answered; this card exists so the path is written down before it is needed.",
+   "problem": "The three submitted short links redirect to their Amazon destinations carrying third-party attribution parameters (btn_ref=srctok-<hex>, channelId=704) and no Associates tag. Participation Requirements 2(b) requires the Associates ID or 'tag' parameter on every link an Associate places to an Amazon Site, so a click through these links cannot earn Associates commission. The Commission Income Limitations section (Program Policies) additionally warns against claiming commissions from both Amazon Associates and another program using the same traffic — for example by combining attribution links.",
+   "proposal": "When Q1 and Q13 are answered: if the owner wants these products promoted, mint fresh tagged Special Links inside Associates Central for the intended products (the observed ASINs or corrected products per Q2), switch the currently disabled buy actions over to those links, and record the change as a new implemented card on this board. Until then, every Amazon link on the site stays an evidence link and earning stays disabled, exactly as published.",
+   "evidence": [
+    {
+     "claim": "Every link an Associate places to an Amazon Site must include the Associates ID or 'tag' as a URL parameter.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "Associates' tags should only benefit Amazon Associates commissions; claiming commissions from both Amazon Associates and another program on the same traffic (e.g. combining attribution links) risks withheld commissions or termination.",
+     "term": "Official",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "claim": "The observed redirects on 2026-11-16 carry btn_ref=srctok-<hex> and channelId=704 and no tag parameter; the raw URLs are recorded in session d18303ca's verification record.",
+     "term": "Observed",
+     "via": "Fetch of the three short links, 2026-11-16, session d18303ca (sessions/d18303ca/)."
+    },
+    {
+     "claim": "FLG-010 already records that no Associates tag was supplied and that the submitted links carry only srctok and channelId parameters.",
+     "term": "Observed",
+     "via": "data/flags.json FLG-010, confirmed on the Flagged page, 2026-11-16."
+    }
+   ],
+   "effort": "Low once the tag exists — three links and the buy-action markup. Zero until then; the links stay disabled.",
+   "expected_effect": "Revenue: makes the buy actions eligible to earn Associates commission for the owner. No revenue figure is claimed.",
+   "risks": "If the observed listings are not the intended products (Q2), tagging them would promote the wrong product; if the srctok/channelId parameters are deliberate third-party monetization (Q13), mixing them with Associates traffic is the exact pattern the Commission Income Limitations clause warns about.",
+   "what_it_does_not_do": "It does not modify or blacklist the submitted URLs themselves; it does not enable earning before the owner's decisions; it does not change any product fact.",
+   "depends_on": [
+    "Q1",
+    "Q13"
+   ],
+   "acceptance": [
+    "Buy actions carry tagged Special Links, or earning stays disabled — no intermediate state.",
+    "The tag used matches the Associates ID supplied in the answer to Q1.",
+    "The decision and the link format are recorded on this board when done."
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "question": "What is the Amazon Associates tag (tracking ID) to put on every link?",
+   "priority": "Blocking",
+   "known": "The tag must appear as a parameter in every link to an Amazon Site, in a XXXXX-## style format. The observed redirects of the three submitted links carry no tag.",
+   "known_sources": [
+    "I2-S02",
+    "I2-S01",
+    "I2-S07"
+   ],
+   "unknown": "The actual tag value. It is account-specific and cannot be derived from any public page.",
+   "why_it_matters": "Without it nothing can earn, and a site with no earning action is not an affiliate site. It also decides whether the tag matches the marketplace, which changes the destination domain.",
+   "how_to_discover": "Sign in to Associates Central, open Account Settings, and read the Store ID / Associate ID. Alternatively generate one storefront text link and copy the tag parameter out of it. Do not paste credentials — only the tag is needed.",
+   "discovery_id": "DA-1",
+   "if_unanswered": "All buy actions stay disabled and labelled as not earning. Nothing else is blocked.",
+   "decides": [
+    "D-05",
+    "D-09",
+    "D-12"
+   ]
+  },
+  {
+   "id": "Q2",
+   "question": "Are the three listings the products you intended to promote?",
+   "priority": "Blocking",
+   "known": "Each nine-character short link opened a live listing: CHEFMAN 6 Quart Dual Basket (B0CDY277D3), Emeril Lagasse 26QT French Door (B09B7SB46R), Chefman TurboFry 8 Qt (B08DKYBTPH). The nine-character tokens are not ASINs, and /dp/<token> returns Page Not Found.",
+   "known_sources": [
+    "I2-S07",
+    "I2-S08",
+    "I2-S09",
+    "I2-S13",
+    "I2-S03"
+   ],
+   "unknown": "Whether those three destinations are the intended products. No official page states intent; only the owner can.",
+   "why_it_matters": "Every product statement on the site is about the observed destination. If the intent was different, the site is promoting the wrong products — a costly and invisible error.",
+   "how_to_discover": "Open the three short links and compare the listing titles with what you meant to promote; or supply the intended ASINs directly so they can be verified.",
+   "discovery_id": "DA-2",
+   "if_unanswered": "The site keeps describing the observed destinations and labels identity as unconfirmed on every product card.",
+   "decides": [
+    "D-02",
+    "D-05"
+   ]
+  },
+  {
+   "id": "Q3",
+   "question": "Which Amazon marketplace is the site built for?",
+   "priority": "Blocking",
+   "known": "The Associates Program Operating Agreement read today lists marketplaces in Schedule 1, and the tag is marketplace-specific. The links resolve to amazon.com.",
+   "known_sources": [
+    "I2-S01",
+    "I2-S07"
+   ],
+   "unknown": "The marketplace the account is enrolled in, and whether the audience is US or elsewhere.",
+   "why_it_matters": "A tag from one marketplace on a link to another earns nothing, and prices/currency differ by marketplace.",
+   "how_to_discover": "Read the country selector in Associates Central after sign-in, and confirm which storefront the account is approved for.",
+   "discovery_id": "DA-1",
+   "if_unanswered": "The site assumes nothing and does not publish a currency or a locale-specific price.",
+   "decides": [
+    "D-05",
+    "D-08"
+   ]
+  },
+  {
+   "id": "Q4",
+   "question": "Is the Associates account enrolled and eligible for the Creators API?",
+   "priority": "High",
+   "known": "API access requires enrollment plus at least 10 qualifying sales within the past 30 days, then registration and credentials.",
+   "known_sources": [
+    "I2-S04"
+   ],
+   "unknown": "The account's current status and qualifying-sales count. Neither is public.",
+   "why_it_matters": "Prices and star ratings can only be displayed from API data or an Amazon-served link. Without eligibility, those cells stay blank forever.",
+   "how_to_discover": "Check the Associates Central dashboard for the qualifying-sales figure, then the Creators API registration page for eligibility.",
+   "discovery_id": "DA-3",
+   "if_unanswered": "Price and rating cells stay blank with an explanation. Guides continue on listing facts.",
+   "decides": [
+    "D-04",
+    "D-12"
+   ]
+  },
+  {
+   "id": "Q5",
+   "question": "Who is the named human editor who reviews and publishes each page, and how often?",
+   "priority": "High",
+   "known": "The operator is responsible for the accuracy of published material. The current marketing pages carry no byline or date.",
+   "known_sources": [
+    "I2-S02"
+   ],
+   "unknown": "The person, their availability, and the cadence.",
+   "why_it_matters": "It is the difference between a site that looks staffed and one that looks generated, and it is the only real defence against an unsourced claim reaching the page.",
+   "how_to_discover": "A decision, not research: name the person and pick a cadence the owner can hold for three months.",
+   "discovery_id": "DA-4",
+   "if_unanswered": "No new guide publishes; the existing pages stay as they are.",
+   "decides": [
+    "D-06",
+    "D-10"
+   ]
+  },
+  {
+   "id": "Q6",
+   "question": "Will any of these products be used or tested first-hand?",
+   "priority": "High",
+   "known": "You cannot describe experience with a product you have not tried, and you cannot make claims that would require proof you do not have.",
+   "known_sources": [
+    "I2-S06"
+   ],
+   "unknown": "Whether the owner has or will obtain the products, and whether photographs or measurements would be produced.",
+   "why_it_matters": "It is the single biggest content differentiator available, and the only lawful route to phrases like 'in our test'.",
+   "how_to_discover": "A decision. If yes, log the purchase and keep the receipt; a purchase through your own affiliate link is prohibited, so buy without the tag.",
+   "discovery_id": "DA-5",
+   "if_unanswered": "The site continues to describe only what the listing states and says so plainly.",
+   "decides": [
+    "D-02",
+    "D-06"
+   ]
+  },
+  {
+   "id": "Q7",
+   "question": "What is the brand — name, tone and visual direction?",
+   "priority": "Medium",
+   "known": "The site currently presents as an audit dashboard named Zone3. A brand must not use an Amazon mark or variant in a domain, subdomain or identifier.",
+   "known_sources": [
+    "I2-S02"
+   ],
+   "unknown": "The name, tone and visual direction the owner wants.",
+   "why_it_matters": "Decides whether the reader-facing layer replaces the dashboard at the root or sits beside it.",
+   "how_to_discover": "A decision; optionally test two candidate names with five readers before committing.",
+   "discovery_id": "DA-6",
+   "if_unanswered": "The reader-facing site stays at /site/ and the root keeps its current dashboard.",
+   "decides": [
+    "D-01",
+    "D-08"
+   ]
+  },
+  {
+   "id": "Q8",
+   "question": "Which analytics will be used, and is there a privacy policy?",
+   "priority": "Medium",
+   "known": "The operator must disclose cookie and pixel use and provide visitor choices where required. Sub-tags may not be tied to a visitor, and clicks may not be generated artificially.",
+   "known_sources": [
+    "I2-S02"
+   ],
+   "unknown": "Whether any analytics is installed, and whether a privacy policy exists.",
+   "why_it_matters": "It decides whether any measurement at all is possible beyond Amazon's own reports.",
+   "how_to_discover": "Inventory what is currently loaded on the site, then choose: Amazon reports only, or a privacy-respecting aggregate analytics with a published policy.",
+   "discovery_id": "DA-7",
+   "if_unanswered": "No third-party analytics is added; only Amazon's own reports are used once tagged.",
+   "decides": [
+    "D-09"
+   ]
+  },
+  {
+   "id": "Q9",
+   "question": "What budget exists for tools, hosting and — if any — paid promotion?",
+   "priority": "Medium",
+   "known": "The site is served free on GitHub Pages. Paid search on Amazon trademark terms is a disqualified route, and links must not be placed in a way that obscures the Amazon destination.",
+   "known_sources": [
+    "I2-S14",
+    "I2-S02"
+   ],
+   "unknown": "Any budget, and whether paid promotion is intended at all.",
+   "why_it_matters": "Decides whether keyword research means free methods or a paid tool, and rules out whole categories of promotion that would disqualify purchases.",
+   "how_to_discover": "A decision.",
+   "discovery_id": "DA-8",
+   "if_unanswered": "No paid tool is assumed and no paid promotion is proposed.",
+   "decides": [
+    "D-08"
+   ]
+  },
+  {
+   "id": "Q10",
+   "question": "Should the disclosure wording and placement be reviewed before launch?",
+   "priority": "Medium",
+   "known": "§5 prescribes the sentence; the FTC prescribes placement qualities but not a fixed sentence. The two are separate obligations with separate sources.",
+   "known_sources": [
+    "I2-S01",
+    "I2-S06"
+   ],
+   "unknown": "Whether legal review will happen, and in which jurisdictions the site operates.",
+   "why_it_matters": "A §5 violation is deemed a material breach of the Operating Agreement, so this is the highest-consequence text on the site.",
+   "how_to_discover": "Commission a short review of the banner and the near-CTA wording against both sources.",
+   "discovery_id": "DA-9",
+   "if_unanswered": "The site keeps both the exact §5 sentence and the FTC-style placement, which is the conservative combination.",
+   "decides": [
+    "D-07"
+   ]
+  },
+  {
+   "id": "Q11",
+   "question": "Is AI drafting acceptable if a human edits and signs off every page?",
+   "priority": "Medium",
+   "known": "Program Content may not be used to train or improve models, and API content may not be aggregated or analyzed without prior written approval. Nothing prohibits using a model to help draft original copy that is grounded in facts a human checked.",
+   "known_sources": [
+    "I2-S02"
+   ],
+   "unknown": "The owner's policy on AI-assisted drafting, and who is accountable for it.",
+   "why_it_matters": "It decides whether 'automation' means drafting assistance with a human gate, or nothing at all.",
+   "how_to_discover": "A decision. If yes, the rule is: model may draft, human must verify each fact against the linked source before publish.",
+   "discovery_id": "DA-4",
+   "if_unanswered": "No AI-drafted copy publishes; this build's pages are written to be checkable line by line instead.",
+   "decides": [
+    "D-02",
+    "D-06"
+   ]
+  },
+  {
+   "id": "Q12",
+   "question": "Will more products be added beyond these three?",
+   "priority": "Low",
+   "known": "The site's comparison is built on three specific listings. A fourth product changes the comparison, the guides and the category page.",
+   "known_sources": [
+    "I2-S10",
+    "I2-S11",
+    "I2-S12"
+   ],
+   "unknown": "Whether the catalogue is fixed at three, and how new products would be supplied.",
+   "why_it_matters": "Decides whether the data layer needs an intake process now or later.",
+   "how_to_discover": "A decision, plus, if yes, a rule for supplying ASINs rather than short links.",
+   "discovery_id": "DA-2",
+   "if_unanswered": "The site stays scoped to three products.",
+   "decides": [
+    "D-02"
+   ]
+  },
+  {
+   "id": "Q13",
+   "question": "Who owns the third-party attribution parameters (btn_ref=srctok-…, channelId=704) observed on the submitted short links — and are those links meant to earn Associates commission at all?",
+   "priority": "High",
+   "known": "The redirects observed on 2026-11-16 carry btn_ref=srctok-<hex> and channelId=704 on all three links and no Associates tag; Participation Requirements 2(b) requires the tag parameter on every link an Associate places to an Amazon Site; the Commission Income Limitations section warns against claiming commissions from two programs on the same traffic. FLG-010 and I2-F-03 already record the missing tag.",
+   "known_sources": [
+    "I2-S02",
+    "I2-S07"
+   ],
+   "unknown": "What service minted the three link.amazon URLs; what the srctok and channelId parameters credit and for whom; whether the owner intends these links as Associates links at all.",
+   "why_it_matters": "A click through an untagged link earns nothing for this site, and attribution that also credits another program is called out by name in the April 2026 policies. Until this is answered, no earning link can be built safely.",
+   "how_to_discover": "Ask the person or tool that supplied the three link.amazon URLs what minted them; if an Associates account exists, use Associates Central's link checker and click reports to see whether any clicks credit the account; then record the answer on this board.",
+   "if_unanswered": "The buy actions stay disabled and every Amazon link stays an evidence link that earns nothing — the current published state, which is safe.",
+   "decides": [
+    "D-15"
+   ]
+  }
+ ],
+ "discovery": [
+  {
+   "id": "DA-1",
+   "action": "Read the Associates ID and marketplace from the signed-in Associates Central account",
+   "answers": [
+    "Q1",
+    "Q3"
+   ],
+   "who": "Account holder only — this cannot be done by an agent without credentials, and credentials should never be shared.",
+   "official_page": "https://affiliate-program.amazon.com/",
+   "output": "A tag in XXXXX-## form and a marketplace name, pasted into data/i2/config.json by the owner.",
+   "source": "I2-S02"
+  },
+  {
+   "id": "DA-2",
+   "action": "Confirm intent by opening the three short links and comparing titles, or by supplying intended ASINs",
+   "answers": [
+    "Q2",
+    "Q12"
+   ],
+   "who": "Owner.",
+   "official_page": "https://www.amazon.com/dp/B0CDY277D3 · https://www.amazon.com/dp/B09B7SB46R · https://www.amazon.com/dp/B08DKYBTPH",
+   "output": "A yes/no per link, recorded with the date. The three short-link tokens to open are B04G1MEwY, B02NbDxp3 and B00hJ57DV, prefixed link.amazon/ — typed into a browser, not linked from this site, because an outbound shortener link would obscure the Amazon destination (6(w), 6(v)).",
+   "source": "I2-S07"
+  },
+  {
+   "id": "DA-3",
+   "action": "Read the qualifying-sales figure and Creators API eligibility in the Associates dashboard",
+   "answers": [
+    "Q4"
+   ],
+   "who": "Account holder.",
+   "official_page": "https://affiliate-program.amazon.com/creatorsapi",
+   "output": "Eligible / not eligible, with the date, and — only once eligible — a decision to enable API-sourced price and rating display with the required timestamp and disclaimer.",
+   "source": "I2-S04"
+  },
+  {
+   "id": "DA-4",
+   "action": "Name the editor and write the publish checklist into the repository",
+   "answers": [
+    "Q5",
+    "Q11"
+   ],
+   "who": "Owner decision; no external source needed.",
+   "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
+   "output": "A named person, a cadence, and a checklist item per published page.",
+   "source": "I2-S02"
+  },
+  {
+   "id": "DA-5",
+   "action": "Decide the first-hand testing policy, and if yes, buy the products without the affiliate tag",
+   "answers": [
+    "Q6"
+   ],
+   "who": "Owner.",
+   "official_page": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+   "output": "A policy line: 'tested' claims are allowed only with a logged purchase and a dated note.",
+   "source": "I2-S06"
+  },
+  {
+   "id": "DA-6",
+   "action": "Choose the brand and, optionally, test two names with five readers",
+   "answers": [
+    "Q7"
+   ],
+   "who": "Owner, with a small reader test if desired.",
+   "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
+   "output": "A name that contains no Amazon mark or variant, a tone, and a palette.",
+   "source": "I2-S02"
+  },
+  {
+   "id": "DA-7",
+   "action": "Inventory what the site loads today, then write a privacy policy before adding any analytics",
+   "answers": [
+    "Q8"
+   ],
+   "who": "Site operator.",
+   "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
+   "output": "A list of scripts with a purpose each, plus a published privacy page.",
+   "source": "I2-S02"
+  },
+  {
+   "id": "DA-8",
+   "action": "Decide the tooling budget and rule out disqualified promotion routes in writing",
+   "answers": [
+    "Q9"
+   ],
+   "who": "Owner decision.",
+   "official_page": "https://affiliate-program.amazon.com/help/operating/policies",
+   "output": "A short do-not list: no paid search on Amazon marks, no link shorteners, no pop-unders, no email links without opt-in.",
+   "source": "I2-S02"
+  },
+  {
+   "id": "DA-9",
+   "action": "Have the disclosure wording and placement reviewed against both the §5 text and the FTC placement guidance",
+   "answers": [
+    "Q10"
+   ],
+   "who": "Owner and reviewer.",
+   "official_page": "https://affiliate-program.amazon.com/help/operating/agreement · https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+   "output": "A signed-off banner sentence and a near-CTA sentence.",
+   "source": "I2-S01"
+  }
+ ],
+ "prompt_pack": [
+  {
+   "id": "P-01",
+   "name": "Brand and tone prompt",
+   "purpose": "Feed this into the design session so the output does not read as generated.",
+   "prompt": "You are designing an editorial buying-guide site about kitchen air fryers. The reader is deciding between a 6-quart dual-basket basket fryer, a 26QT French-door air-fryer toaster oven, and an 8-quart single-basket fryer. Write and design for a sceptical reader who assumes affiliate sites are junk and will leave if they cannot see where a fact came from. Voice: plain, specific, confident where evidence exists and explicit where it does not. No exclamation marks. No 'in today's fast-paced world'. No sentence that praises a product without naming the listing fact that supports it. Never invent a number.",
+   "acceptance": [
+    "A stranger can restate the site's promise after five seconds.",
+    "No banned phrase appears.",
+    "No number appears that is not linked to an official page."
+   ],
+   "guardrails": [
+    "Program Policies 2(b) and 6(t): no price, rating or review without an Amazon-served link or API data.",
+    "FTC: no first-hand claim without use."
+   ],
+   "sources": [
+    "I2-S02",
+    "I2-S06"
+   ]
+  },
+  {
+   "id": "P-02",
+   "name": "Page template prompt",
+   "purpose": "The structure every reader-facing page should follow.",
+   "prompt": "Build a page template with, in this order: a persistent disclosure banner above the navigation; a breadcrumb; an H1 that names the reader's question; two sentences of framing that contain no claim; the answer as a short table with a source link in every row; a 'what this page does not know' box; a single primary action that is either an active tagged link or a visibly disabled link labelled 'not active yet'; a provenance line naming the listing and the date it was read; and a footer repeating the exact sentence 'As an Amazon Associate I earn from qualifying purchases.' Never render an image loaded from an Amazon host. Never render a price or star rating.",
+   "acceptance": [
+    "Disclosure visible before any product content.",
+    "Every table row has a source link or an explicit blank-reason.",
+    "The primary action's state is unambiguous."
+   ],
+   "guardrails": [
+    "IP License 2(k) disclaimer present.",
+    "No iframe/embed of an Amazon page.",
+    "No price-tracking widget."
+   ],
+   "sources": [
+    "I2-S01",
+    "I2-S02",
+    "I2-S06"
+   ]
+  },
+  {
+   "id": "P-03",
+   "name": "Article brief prompt",
+   "purpose": "The format that keeps a guide from turning into filler.",
+   "prompt": "Turn this reader question into a guide. Before writing, list every fact you intend to use and the listing or official page each came from. Drop any sentence whose fact is not on that list. Structure: the question, the short answer, a comparison table, three practical considerations drawn only from listed specifications, a 'what we cannot tell you' section naming the missing data and why it is missing, and a sources block. Do not use a superlative unless the source uses it. Do not describe using, testing or owning the product. Target 700–1,000 words with varied sentence length.",
+   "acceptance": [
+    "Fact list precedes draft.",
+    "Every retained sentence traces to the list.",
+    "The 'cannot tell you' section names a real gap."
+   ],
+   "guardrails": [
+    "No comparative performance claim absent from the listing.",
+    "No first-hand experience."
+   ],
+   "sources": [
+    "I2-S02",
+    "I2-S06"
+   ]
+  },
+  {
+   "id": "P-04",
+   "name": "Anti-slop lint prompt",
+   "purpose": "Run this over any draft before it is published.",
+   "prompt": "Review the draft and flag, with the exact sentence: any paragraph longer than 90 words or more than two consecutive paragraphs of near-identical length; any three-item list that only restates the previous paragraph; any adjective doing the work of a fact ('incredible', 'game-changing', 'perfect for'); any hedge that hides a missing fact ('many users report', 'studies show', 'experts agree'); any sentence beginning with 'Whether you're'; any claim with no adjacent source; any repetition of the same section shape twice in a row. Return the list; do not rewrite.",
+   "acceptance": [
+    "Every flagged sentence is quoted.",
+    "Zero remaining unsourced evaluative sentences after the edit."
+   ],
+   "guardrails": [
+    "The lint list is a floor, not a definition of quality."
+   ],
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "P-05",
+   "name": "Compliance guardrail prompt",
+   "purpose": "Hard constraints to paste into any content-generating session.",
+   "prompt": "Hard constraints, no exceptions: never state a price, availability or star rating unless it came from Creators API or an Amazon-served link, and if it did, add the date/time stamp and the Amazon price disclaimer. Never show an Amazon-hosted image. Never use a URL shortener or an intermediate redirect. Never attach a sub-tag to a visitor. Never generate artificial clicks. Never bid on Amazon marks. Never frame an Amazon page. Never use Program Content to train a model. Never paraphrase a review you did not obtain through the API. If a rule conflicts with a design request, the rule wins and you say so.",
+   "acceptance": [
+    "Each constraint maps to a clause quoted in the source register."
+   ],
+   "guardrails": [
+    "These are legal constraints, not style preferences."
+   ],
+   "sources": [
+    "I2-S01",
+    "I2-S02",
+    "I2-S03",
+    "I2-S04"
+   ]
+  },
+  {
+   "id": "P-06",
+   "name": "Data-safety prompt",
+   "purpose": "Stops the build from filling blanks.",
+   "prompt": "For every field in the product table, either cite the page it was read from in this session, or leave the cell empty and write one sentence saying why it is empty and what would fill it. Never estimate, average, interpolate, infer from a similar product, or carry a value forward from an older capture without a fresh read. If a value would make the page more persuasive but cannot be sourced, leave it out and say so on the page.",
+   "acceptance": [
+    "No filled cell without a source.",
+    "Every empty cell has a reason."
+   ],
+   "guardrails": [
+    "A blank with a reason is a feature; a guess is a defect."
+   ],
+   "sources": [
+    "I2-S02"
+   ]
+  }
+ ],
+ "workflow": [
+  "Read each proposal and its evidence column. Open the source links; they are the actual pages read on 2026-11-16.",
+  "Answer the blocking questions first (Q1, Q2, Q3). They gate every commercial change.",
+  "For each proposal, choose Accept, Reject or Defer and write one sentence of reason.",
+  "Export the decisions and paste them into COORDINATION.md under this session's part, so the next session implements only what was accepted.",
+  "Anything accepted is implemented in a follow-up session that re-verifies the affected pages and re-runs the gate before publishing."
+ ]
 }

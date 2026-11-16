@@ -31,7 +31,7 @@
     {
       "id": "757-ES-03",
       "point": "The site reads as AI slop because it is an audit dashboard, not a shop front",
-      "detail": "The root pages are an audit dashboard. The hero was rewritten into marketing copy by a parallel session on 2026-11-16, but the statistic block directly beneath it still leads with process metrics (0 of 3 prices verified, 97 total flags open), the navigation is a list of internal document names plus four entries named after agent sessions, and the buyer-facing product table still carries blank cells marked Unverified. Accurate, but addressed to an auditor rather than to someone choosing an air fryer. A reader-facing site now exists at /site/; this critique is what the next pass should be measured against.",
+      "detail": "The root pages are an audit dashboard. The hero was rewritten into marketing copy by a parallel session on 2026-11-16, but the statistic block directly beneath it still leads with process metrics (0 of 3 prices verified, 101 total flags open (the count rises as each session adds to the register)), the navigation is a list of internal document names plus four entries named after agent sessions, and the buyer-facing product table still carries blank cells marked Unverified. Accurate, but addressed to an auditor rather than to someone choosing an air fryer. A reader-facing site now exists at /site/; this critique is what the next pass should be measured against.",
       "repo": "index.html"
     },
     {
@@ -83,7 +83,7 @@
     {
       "id": "757-C-02",
       "area": "Landing page lead",
-      "observed": "The hero was rewritten into marketing copy on 2026-11-16, but the statistic block directly beneath it still leads with 3 product links submitted, 0 of 3 prices verified, 3 critical flags open and 97 total flags open.",
+      "observed": "The hero was rewritten into marketing copy on 2026-11-16, but the statistic block directly beneath it still leads with 3 product links submitted, 0 of 3 prices verified, 3 critical flags open and 101 total flags open (the count rises as each session adds to the register).",
       "slop": "The first numbers a visitor meets are the publisher's own incomplete homework. Confidence comes from a clear recommendation, not from a count of what is missing.",
       "fix": "Keep the rewritten hero. Move the counts into a small evidence bar that links to How we verify, and lead the page with the buying decision.",
       "repo": "index.html"
