@@ -338,7 +338,7 @@ def build_compare() -> None:
 <p class="acts">{cards}</p>
 <h2>How to read the blanks</h2>
 <ul class="bul">{notes}</ul>
-<section class="srcs"><h2>Sources</h2><p class="small">Every cell above is sourced inside the cell. The four register sources behind the row about Amazon's best-seller list: {src_ref("S62")}. Policy rows: {src_ref("S02")}.</p></section>
+<section class="srcs"><h2>Sources</h2><p class="small">Every cell above is sourced inside the cell. The four register sources behind the row about Amazon's best-seller list: {src_ref("S63")}. Policy rows: {src_ref("S02")}.</p></section>
 </article>"""
     ld = {
         "@context": "https://schema.org", "@type": "Table",
@@ -429,10 +429,10 @@ def build_category() -> None:
     c = E["category"]
     crumbs, ld_b = crumb(rel, "Air fryers")
     node_rows = "".join(
-        f'<tr><td>{esc(n["label"])}</td><td><code>{esc(n["node"])}</code></td><td>{src_ref("S63")}</td></tr>'
+        f'<tr><td>{esc(n["label"])}</td><td><code>{esc(n["node"])}</code></td><td>{src_ref("S64")}</td></tr>'
         for n in c["nodes"])
     sib_rows = "".join(
-        f'<tr><td>{esc(s["label"])}</td><td><code>{esc(s["node"])}</code></td><td>{src_ref("S63")}</td></tr>'
+        f'<tr><td>{esc(s["label"])}</td><td><code>{esc(s["node"])}</code></td><td>{src_ref("S64")}</td></tr>'
         for s in c["siblings"])
     cards = "".join(
         f'<a class="card" href="{a["slug"]}.html"><span class="kick">{esc(a["kicker"])}</span><h3>{esc(a["title"])}</h3>'
@@ -448,7 +448,7 @@ def build_category() -> None:
 <p class="dek">Everything on this site lives in one Amazon browse node. Here is that node, the three listings we read inside it, and the articles we wrote about them.</p>
 <p class="meta">{esc(E["verified"])} · {esc(E["brand"]["name"])}</p></header>
 <h2>Where this category sits</h2>
-<p>{esc(" › ".join(c["breadcrumb"]))} — read from the breadcrumb Amazon served on the product pages on {esc(E["verified"])} {src_ref("S59")}.</p>
+<p>{esc(" › ".join(c["breadcrumb"]))} — read from the breadcrumb Amazon served on the product pages on {esc(E["verified"])} {src_ref("S60")}.</p>
 <div class="tblwrap"><table><thead><tr><th>Node</th><th>Amazon browse node id</th><th>Source</th></tr></thead><tbody>{node_rows}{sib_rows}</tbody></table></div>
 <h2>The three listings in this category</h2>
 <div class="tblwrap"><table><thead><tr><th>Listing</th><th>ASIN of the destination page</th><th>Capacity as stated in the title</th><th>Shape of it</th><th>Sources</th></tr></thead><tbody>{prod_rows}</tbody></table></div>

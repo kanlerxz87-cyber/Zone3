@@ -36,11 +36,16 @@ def main() -> int:
     check = "--check" in sys.argv
     changed: list[str] = []
 
+    # ONE pass, one regex, an atomic shift. Applying the rules one after another lets a
+    # rewritten id be matched again by the next rule (S59 -> S60 -> S61 -> ... ), which
+    # silently collapses every reference onto the last target. That happened on the first
+    # version of this script; it is why the rewrite below is a single sub() and why the
+    # caller must verify each rewritten id resolves to the document it names.
+    keys = sorted(mapping, key=lambda x: -len(x))
+    pat = re.compile(r"\b(" + "|".join(keys) + r")\b")
+
     def sub(text: str) -> str:
-        # longest old ids first so S6 never rewrites inside S68
-        for old in sorted(mapping, key=lambda x: -len(x)):
-            text = re.sub(rf"\b{old}\b", mapping[old], text)
-        return text
+        return pat.sub(lambda m: mapping[m.group(1)], text)
 
     for rel in ("data/editorial.json", "scripts/build_read.py"):
         p = ROOT / rel

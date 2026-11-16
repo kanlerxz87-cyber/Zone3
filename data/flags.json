@@ -1150,8 +1150,8 @@
       "sources": [
         "S15",
         "S53",
-        "S60",
-        "S67"
+        "S61",
+        "S68"
       ],
       "action": "No change required. Keep quoting titles with their capture date; re-capture before any future wording-sensitive edit."
     },
@@ -1165,10 +1165,26 @@
       "detail": "The Air Fryers best-seller page states on its face that it is based on sales and is updated frequently. The 2026-11-14 capture (S43, used by air-fryers.html and reviews.html) and this session's 2026-11-16 capture (S62, used by read/bestseller.html) do not agree on every ordering, and the Emeril Lagasse 26QT appears at position 6 today. Both captures are published with their dates rather than one replacing the other, because a rank has no stable value to correct to. The marketing layer therefore publishes one dated rank and no interpretation of sales; prices and star ratings printed on the same page were deliberately not copied out (Program Policies 2(b) and 6(t)).",
       "sources": [
         "S43",
-        "S62",
+        "S63",
         "S02"
       ],
       "action": "Treat each rank row as a dated snapshot. If a single canonical benchmark table is wanted, an owner decision is needed on which capture date governs; unverified ordering claims are not merged across dates."
+    },
+    {
+      "id": "Z14-F-04",
+      "severity": "Medium",
+      "category": "Duplicate output",
+      "date": "2026-11-16",
+      "session": "145b8df7",
+      "item": "Two independent reader-facing marketing layers were published on the same day: /read/ (The Crisp Report, this session) and /site/ (Air Fryer Field Notes, session 59d84c55 via PR #101/#103)",
+      "detail": "Both were built from the same verified data set, in parallel, in response to the same Suggestions & decisions page, and neither session could see the other's work before it landed. Both are published; neither was deleted or rewritten by this integration, because deleting another session's output is not this session's call. The overlap is a maintenance and brand-coherence problem rather than a data problem: two site names, two stylesheets, two nav entries, and two sets of marketing prose describing the same three listings, plus the earlier facts-only brief set under /marketing/. Recommendation for the owner: pick one layer as canonical (the choice is stylistic — both carry the disclosure, neither publishes prices, ratings or unverified values), then in a follow-up session fold the other's unique pages into it and leave a redirect stub so no published URL breaks. This session's read/ layer contributes 6 articles, a 13-attribute comparison, a five-question buying guide with FAQ, a category hub and a method page with a build gate that refuses uncited rows; session 59d84c55's /site/ layer contributes products, guides, evidence, decisions and front-door pages with its own provenance gate.",
+      "sources": [
+        "S60",
+        "S61",
+        "S62",
+        "S63"
+      ],
+      "action": "Owner decision. Flagged, not resolved: no value is affected and both layers remain reachable from the dashboard navigation and tiles."
     }
   ]
 }
