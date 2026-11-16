@@ -27,7 +27,17 @@ DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 DISCLAIMER = "COMES FROM AMAZON"
 SHORTENERS = {"bit.ly", "tinyurl.com", "t.co", "is.gd", "goo.gl", "ow.ly",
               "buff.ly", "rebrand.ly", "amzn.to", "link.amazon", "shorturl.at"}
-AMAZON_HOSTS = re.compile(r"(^|\.)amazon\.[a-z]{2,3}$|(^|\.)amzn\.[a-z]{2,3}$", re.I)
+# 81bc99d0 (2026-11-16): Amazon serves product imagery from CDN hostnames that do not start
+# with "amazon." (m.media-amazon.com, images-na.ssl-images-amazon.com, ...). A rule that only
+# matched amazon.com let every real product image pass; the CDN hosts are now covered, matching
+# the corrected pattern already used in tools/i2_gate.py.
+AMAZON_HOSTS = re.compile(
+    r"(^|\.)amazon\.[a-z]{2,3}$"
+    r"|(^|\.)amzn\.[a-z]{2,3}$"
+    r"|(^|\.)media-amazon\.com$"
+    r"|(^|\.)images-amazon\.com$"
+    r"|(^|\.)ssl-images-amazon\.com$"
+    r"|(^|\.)media\.amazon\.com$", re.I)
 
 
 SKIP_DIRS = {"archive", "_site", ".git", "node_modules"}
@@ -43,15 +53,23 @@ def pages(root: pathlib.Path):
 
 
 def generated_set(root: pathlib.Path):
-    """Pages this session's builder emitted. Inherited pages are audited advisorially."""
+    """Pages this session's builder emitted. Inherited pages are audited advisorially.
+
+    81bc99d0 (2026-11-16): the manifest now records explicit output `paths` (relative to the
+    output root). The older digest-only `files` map cannot be matched against on-disk paths, so
+    consuming it left every generated page unrecognized and turned its hard checks into advisories.
+    Consume `paths` first; fall back to `files` only if a manifest predates the `paths` key.
+    """
     mf = root / "data" / "z3" / "build-manifest.json"
     if not mf.exists():
         return set()
     import json as _json
     try:
-        return set(_json.loads(mf.read_text()).get("files", {}).values())
+        data = _json.loads(mf.read_text())
     except Exception:
         return set()
+    raw = data.get("paths") or data.get("files") or {}
+    return {str(pathlib.PurePosixPath(v)) for v in raw.values()}
 
 
 def row_cells(tr_html: str):
@@ -61,6 +79,10 @@ def row_cells(tr_html: str):
 def check(root: pathlib.Path):
     errs, advisory = [], []
     stats = {"pages": 0, "rows": 0, "sourced": 0, "flagged": 0, "anchored": 0}
+    # 81bc99d0 (2026-11-16): provenance breakdown (71-F-02). Separates rows supported by an
+    # Amazon/FTC official link from rows resting only on a repository/GitHub link, so the
+    # "sourced" count is not mistaken for a line-by-line official-source audit.
+    prov = {"amazon_ftc": 0, "flag_or_blank": 0, "repo_only": 0, "uncited": 0}
     all_pages = pages(root)
     mine = generated_set(root)
     generated = {p.relative_to(root).as_posix() for p in all_pages}
@@ -125,6 +147,24 @@ def check(root: pathlib.Path):
                         (errs if own else advisory).append(
                             f"V4 {rel}: repo anchor {anchor.group(1)} does not exist")
                     stats["anchored"] += 1
+                # 81bc99d0 (2026-11-16): an Amazon/FTC link is the only support that counts as an
+                # official source for a factual row. A row whose only support is a GitHub/repo link
+                # (no Amazon/FTC, no flag) is reported for review instead of being credited as sourced.
+                amazon_ftc = re.search(
+                    r'href="https?://[^"]*'
+                    r'(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov)'
+                    r'[^"]*"', tr)
+                if amazon_ftc:
+                    prov["amazon_ftc"] += 1
+                elif has_flag:
+                    prov["flag_or_blank"] += 1
+                elif has_src or anchor:
+                    prov["repo_only"] += 1
+                    advisory.append(
+                        f"V4-review {rel}: row sourced only by a repository/GitHub link "
+                        f"(no Amazon/FTC, no flag) -> review whether the fact is officially sourced")
+                else:
+                    prov["uncited"] += 1
                 if not (has_src or has_flag or anchor):
                     snippet = re.sub(r"<[^>]+>", " ", cells[0])[:60]
                     (errs if own else advisory).append(
@@ -190,14 +230,14 @@ def check(root: pathlib.Path):
     else:
         errs.append("V5 sitemap.xml missing")
 
-    return errs, stats, advisory
+    return errs, stats, advisory, prov
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=str(ROOT))
     a = ap.parse_args()
-    errs, stats, advisory = check(pathlib.Path(a.root))
+    errs, stats, advisory, prov = check(pathlib.Path(a.root))
     if advisory:
         print(f"NOTE — {len(advisory)} advisory item(s) on pages inherited from earlier "
               f"sessions (non-blocking):", file=sys.stderr)
@@ -210,6 +250,8 @@ def main():
         sys.exit(3)
     print("VERIFY PASS · {pages} pages · {rows} table rows · "
           "{sourced} with official source · {flagged} with flag · {anchored} with repo anchor".format(**stats))
+    print("  provenance: " + " · ".join(
+        f"{k}={v}" for k, v in sorted(prov.items())))
     print("  checks: V1 disclosure · V2 disclaimer · V3 single h1 · V4 row provenance · "
           "V5 no broken links · V6 no prohibited constructs · V7 no placeholders")
 

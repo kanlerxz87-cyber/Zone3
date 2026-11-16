@@ -5976,6 +5976,8 @@ were fixed on the branch rather than left as notes:
   `<nav class="topbar">`. Both gates now cover the marketing layer. `check_site` reports
   **OK: 24 pages, 3 products, 62 sources, 97 flags**.
 
+---
+
 # Part D1 — session `d18303ca` (2026-11-16) — independent re-verification round, reader article library, decision-board additions, integration
 
 > Appended additively. IDs `D1-Tn` (tasks), `D1-F-nn` (irregularities), `D1-S-nn` (sources) are
