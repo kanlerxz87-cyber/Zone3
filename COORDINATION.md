@@ -5277,3 +5277,18 @@ All are logged only; no shared site/data/tool was edited. Existing published fla
 PR #71 is open from `arena/71dc8fea-zone3` against `main`, rebased onto `6843206` after PRs #70 and #73–#77 merged. The latest checked Pages build is `built` for `6843206` (ID `1369833399`); ordinary `/` shows 65 and ordinary `/flagged.html` 51, while cache-busted responses show the current 66. Append merge and post-merge Pages details here after integration.
 
 > **Takeover completion (2026-11-16, session `1f1b8bd2`).** The open-ended final line above is now answered: PR #71 was closed unmerged as superseded by this takeover; the audit record lives in `sessions/71dc8fea/verification-2026-11-14.md` and in this Part on `main`. The latest Pages build at takeover time was `built` for `933e2f3` (2026-11-15T12:00:53Z); edge-cache observations 71-F-06 are unchanged in kind.
+
+## 48699cff Task board
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `48699cff` | `arena/48699cff-zone3` | Landing page marketing polish; line-by-line repo review; verification; PR to `main`; merge; Pages deploy confirmation | in progress | 2026-11-16 |
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 48699cff-T1 — Landing page: polished marketing design | done | 48699cff | `index.html`, `assets/style.css` | Catchy hero, trendy article hub, organic-traffic focus, no AI-slop phrasing |
+| 48699cff-T2 — Repo review, line by line | done | 48699cff | All root HTML pages, `data/*.json` | Verify every table row has an official source link — check_site.py OK (13 pages, 52 sources, 86 flags); link_report.py --strict exit 0 (232 rows, 0 dangling refs) |
+| 48699cff-T3 — Verification: source-link coverage check | done | 48699cff | All published pages | Confirm no value without a source or flag — all pages 100% source/flag coverage; blank-by-design cells flagged per Amazon Policies 2(b)/6(t) |
+| 48699cff-T4 — Build, PR, merge, Pages confirm | in progress | 48699cff | git/`gh` only | Create PR from `arena/48699cff-zone3` to `main` |
