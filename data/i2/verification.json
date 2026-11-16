@@ -1,199 +1,250 @@
 {
-  "_meta": {
-    "title": "I2 verification record — line-by-line re-verification run by session 59d84c55 on 2026-11-16",
-    "purpose": "Each row is one claim the repository publishes, the official page that was fetched today, the text or response actually observed, and the outcome. A row exists only because the page was read in this session.",
-    "outcomes": {
-      "Confirmed": "The page, fetched today, carries the wording or returns the response the repository claims.",
-      "Confirmed (corrected wording)": "The substance holds, but the repository's phrasing of it was imprecise and is restated accurately here.",
-      "Not re-checked": "No fetch of the governing document was made in this session, so no result is asserted. The row exists so the gap is visible instead of implied.",
-      "Unverified": "No official source establishes the value. It stays blank."
-    },
-    "not_inferring": "Where a page could not be read (sign-in wall, block), the row records that and does not borrow another session's reading."
+ "_meta": {
+  "title": "I2 verification record — line-by-line re-verification run by session 59d84c55 on 2026-11-16",
+  "purpose": "Each row is one claim the repository publishes, the official page that was fetched today, the text or response actually observed, and the outcome. A row exists only because the page was read in this session.",
+  "outcomes": {
+   "Confirmed": "The page, fetched today, carries the wording or returns the response the repository claims.",
+   "Confirmed (corrected wording)": "The substance holds, but the repository's phrasing of it was imprecise and is restated accurately here.",
+   "Not re-checked": "No fetch of the governing document was made in this session, so no result is asserted. The row exists so the gap is visible instead of implied.",
+   "Unverified": "No official source establishes the value. It stays blank."
   },
-  "rows": [
-    {
-      "id": "V-01",
-      "claim": "Disclosure sentence: 'As an Amazon Associate I earn from qualifying purchases.'",
-      "where": "Footer of every page; Operating Agreement §5",
-      "observed": "§5 requires the sentence, or 'any substantially similar statement previously allowed under this Agreement', to be stated 'clearly and prominently ... on your Site or any other location where Amazon may authorize your display or other use of Program Content'. Header date: Updated: October 15, 2025.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S01"]
-    },
-    {
-      "id": "V-02",
-      "claim": "Every link to Amazon must carry the Associate tag.",
-      "where": "Products, marketing pages, decision board",
-      "observed": "§1: Special Links 'must properly use the special \"tagged\" link formats we provide'. Participation Requirements 2(b): 'you must include your Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.' No tag exists in this repository, and the live redirect of I2-S07 carries no tag parameter.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S01", "I2-S02", "I2-S07"]
-    },
-    {
-      "id": "V-03",
-      "claim": "The three submitted codes are nine characters and are not ASINs.",
-      "where": "Products, executive summary",
-      "observed": "B04G1MEwY, B02NbDxp3 and B00hJ57DV are nine characters each. /dp/B04G1MEwY returns 'Page Not Found' when fetched today (I2-S13). The Creators API documents ASIN as the item identifier with ten-character examples (B0199980K4, B000HZD168).",
-      "outcome": "Confirmed",
-      "sources": ["I2-S13", "I2-S03"]
-    },
-    {
-      "id": "V-04",
-      "claim": "link.amazon/B04G1MEwY opens the CHEFMAN 6 Quart Dual Basket listing (B0CDY277D3).",
-      "where": "Products, marketing comparison",
-      "observed": "Fetched today; final URL /dp/B0CDY277D3; title 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven ...'. Unchanged from the 2026-11-13, 2026-11-14 and 2026-11-15 captures.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S07", "I2-S10"]
-    },
-    {
-      "id": "V-05",
-      "claim": "link.amazon/B02NbDxp3 opens the Emeril Lagasse 26QT French Door listing (B09B7SB46R).",
-      "where": "Products, marketing comparison",
-      "observed": "Fetched today; final URL /dp/B09B7SB46R; title 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | ...'. Destination unchanged.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S08", "I2-S11"]
-    },
-    {
-      "id": "V-06",
-      "claim": "link.amazon/B00hJ57DV opens the Chefman TurboFry 8 Qt listing (B08DKYBTPH).",
-      "where": "Products, marketing comparison",
-      "observed": "Fetched today; final URL /dp/B08DKYBTPH; title 'Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 ...'. Destination unchanged.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S09", "I2-S12"]
-    },
-    {
-      "id": "V-07",
-      "claim": "Kitchen category commission rate is 4.50% (Standard Commission Income, Table 1).",
-      "where": "Pricing, marketing programme page",
-      "observed": "Table 1 row read as printed: 'Physical Books, Kitchen, Automotive — 4.50%'. 'All Other Categories — 4.00%'. Bounty rates $12.00 / $2.00 / $5.00 / $0.25 read as printed.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S05"]
-    },
-    {
-      "id": "V-08",
-      "claim": "A commission rate for each individual product is known.",
-      "where": "Pricing (left blank by the repository)",
-      "observed": "Table 1 is organised by product category, not by ASIN. The destination breadcrumb places all three products under Air Fryers, a sub-category of Kitchen — but no official page maps an ASIN to a Table 1 row, and the redirect destination is not confirmed as the intended product. The repository keeps the per-product rate blank. This session agrees and keeps it blank.",
-      "outcome": "Unverified",
-      "sources": ["I2-S05", "I2-S10"]
-    },
-    {
-      "id": "V-09",
-      "claim": "Prices and star ratings may not be shown unless Amazon serves them or they come from Creators API / PA API.",
-      "where": "Every page with product facts",
-      "observed": "Participation Requirements 2(b) and 6(t) read verbatim today. 6(t) is specific: reviews and star ratings may not be displayed 'unless you have obtained a link to that customer review or star rating through Creators API or PA API'.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "V-10",
-      "claim": "Prices captured by hand on 2026-11-14 are not publishable figures.",
-      "where": "data/products.json observed_2026_11_14 (kept, not rendered)",
-      "observed": "The 2026-11-14 readings in the repository include price, star rating and review counts against each destination. 2(b) and 6(t) permit display only through an Amazon-served link or API data, and IP License 2(i) additionally requires a date/time stamp and a specific disclaimer when pricing is displayed. This session's own fetch did not attribute a price or rating to any of the three featured ASINs (I2-S10, I2-S11, I2-S12), so no figure from either source is published.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02", "I2-S10"]
-    },
-    {
-      "id": "V-11",
-      "claim": "The agent must identify itself as 'Agent/<name>' in its user agent and must not circumvent blocks.",
-      "where": "Methodology, agent terms",
-      "observed": "IP License §4 Agent Terms (c) quoted verbatim today, including the 'Agent/[agent name]' user-agent requirement and 'Not circumvent or otherwise avoid any measure intended to block, limit, modify, or control whether and how Agents access'.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "V-12",
-      "claim": "Program Content may not be used to train or improve machine-learning models; API content may not be aggregated or analyzed without prior written approval.",
-      "where": "Methodology, agent terms, AI-layer design",
-      "observed": "IP License 1: 'You will not, and will not allow any third party to, use Program Content to, directly or indirectly, develop or improve large language or multimodal models, machine learning models or related technology.' IP License 2(e) bars accessing the API 'for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content' without express prior written approval.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "V-13",
-      "claim": "'Trending product' and 'high-converting product' rankings can be produced from official Amazon data.",
-      "where": "The brief's automation goal; the repository leaves these blank",
-      "observed": "The Creators API exposes four operations only: SearchItems, GetItems, GetVariations, GetBrowseNodes (I2-S04). No operation returns search volume, trend direction, conversion rate or commission-per-product. The repository therefore publishes no trend or conversion ranking. This session found no official endpoint that would change that.",
-      "outcome": "Unverified",
-      "sources": ["I2-S04"]
-    },
-    {
-      "id": "V-14",
-      "claim": "Creators API access requires enrollment and at least 10 qualifying sales in the past 30 days.",
-      "where": "Prerequisites for automation",
-      "observed": "Prerequisites quoted verbatim today: 'Be enrolled in the Amazon Associates program for your target marketplace' and 'Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API'.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S04"]
-    },
-    {
-      "id": "V-15",
-      "claim": "The 180-day / three-qualifying-sale enrollment window is a stated Amazon rule.",
-      "where": "Onboarding guidance",
-      "observed": "The Operating Agreement (I2-S01) and the Program Policies (I2-S02) as fetched today do not contain a 180-day or three-sale sentence. The repository cites separate Associates Help topics for it (its S28, S29). This session did not fetch those help pages, so it neither confirms nor denies them and asserts nothing.",
-      "outcome": "Not re-checked",
-      "sources": []
-    },
-    {
-      "id": "V-16",
-      "claim": "A price-alert or price-tracking feature is permitted.",
-      "where": "Platform design",
-      "observed": "Participation Requirements 6(y): 'Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.'",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "V-17",
-      "claim": "Sub-tag attribution per visitor is permitted.",
-      "where": "Campaign tracking design",
-      "observed": "Participation Requirements 2(b): sub-tags require Amazon's approval, and 'Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).'",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "V-18",
-      "claim": "Automated clicking of affiliate links to 'test' them is a normal thing to do.",
-      "where": "QA and campaign automation",
-      "observed": "Participation Requirements 6(s): 'You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.' 6(q) adds that a page of an Amazon Site may not open other than by the customer clicking a Special Link. Link checks in this repository are therefore HTTP fetches recorded as observations, not click simulations through a tagged link.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "V-19",
-      "claim": "Amazon images may be shown on the site as product pictures.",
-      "where": "Design proposals",
-      "observed": "IP License 2(h): 'You will not store or cache Product Advertising Content consisting of an image, but you may store a link to Product Advertising Content consisting of an image for up to 24 hours.' 6(c) requires prompt removal of Program Content no longer displayed on an Amazon Site. The repository's build gate V6 refuses any stored Amazon image.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S02"]
-    },
-    {
-      "id": "V-20",
-      "claim": "FTC requires the affiliate disclosure to be hard to miss and placed with the endorsement, not only in a footer or about page.",
-      "where": "Every page template",
-      "observed": "FTC brochure read today: place it so it is 'hard to miss' and 'with the endorsement message itself'; 'Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE'; 'The disclosure should be in the same language as the endorsement itself'.",
-      "outcome": "Confirmed (corrected wording)",
-      "note": "The repository's pages carry the disclosure in the footer. That satisfies Operating Agreement §5 ('on your Site') but is weaker than the FTC's placement guidance for the page that carries the recommendation. This session therefore places the disclosure in a banner above the navigation AND beside every buy action on the new site, and raises it as I2-F-01 for the older pages.",
-      "sources": ["I2-S06", "I2-S01"]
-    },
-    {
-      "id": "V-21",
-      "claim": "A first-person review or 'tested' claim may be written for these three products.",
-      "where": "Marketing copy",
-      "observed": "FTC brochure: 'You can't talk about your experience with a product you haven't tried.' No evidence in the repository shows any hands-on use of the three products.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S06"]
-    },
-    {
-      "id": "V-22",
-      "claim": "GitHub Pages serves this site from the main branch root with HTTPS enforced.",
-      "where": "Deployment",
-      "observed": "Pages API today: status 'built', source branch main, path '/', https_enforced true; latest build commit 933e2f3, built 2026-11-15T12:00:53Z.",
-      "outcome": "Confirmed",
-      "sources": ["I2-S14"]
-    }
-  ],
-  "counts": {
-    "rows": 22,
-    "confirmed": 18,
-    "confirmed_corrected": 1,
-    "not_rechecked": 1,
-    "unverified": 2
+  "not_inferring": "Where a page could not be read (sign-in wall, block), the row records that and does not borrow another session's reading."
+ },
+ "rows": [
+  {
+   "id": "V-01",
+   "claim": "Disclosure sentence: 'As an Amazon Associate I earn from qualifying purchases.'",
+   "where": "Footer of every page; Operating Agreement §5",
+   "observed": "§5 requires the sentence, or 'any substantially similar statement previously allowed under this Agreement', to be stated 'clearly and prominently ... on your Site or any other location where Amazon may authorize your display or other use of Program Content'. Header date: Updated: October 15, 2025.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S01"
+   ]
+  },
+  {
+   "id": "V-02",
+   "claim": "Every link to Amazon must carry the Associate tag.",
+   "where": "Products, marketing pages, decision board",
+   "observed": "§1: Special Links 'must properly use the special \"tagged\" link formats we provide'. Participation Requirements 2(b): 'you must include your Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.' No tag exists in this repository, and the live redirect of I2-S07 carries no tag parameter.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S01",
+    "I2-S02",
+    "I2-S07"
+   ]
+  },
+  {
+   "id": "V-03",
+   "claim": "The three submitted codes are nine characters and are not ASINs.",
+   "where": "Products, executive summary",
+   "observed": "B04G1MEwY, B02NbDxp3 and B00hJ57DV are nine characters each. /dp/B04G1MEwY returns 'Page Not Found' when fetched today (I2-S13). The Creators API documents ASIN as the item identifier with ten-character examples (B0199980K4, B000HZD168).",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S13",
+    "I2-S03"
+   ]
+  },
+  {
+   "id": "V-04",
+   "claim": "link.amazon/B04G1MEwY opens the CHEFMAN 6 Quart Dual Basket listing (B0CDY277D3).",
+   "where": "Products, marketing comparison",
+   "observed": "Fetched today; final URL /dp/B0CDY277D3; title 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven ...'. Unchanged from the 2026-11-13, 2026-11-14 and 2026-11-15 captures.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S07",
+    "I2-S10"
+   ]
+  },
+  {
+   "id": "V-05",
+   "claim": "link.amazon/B02NbDxp3 opens the Emeril Lagasse 26QT French Door listing (B09B7SB46R).",
+   "where": "Products, marketing comparison",
+   "observed": "Fetched today; final URL /dp/B09B7SB46R; title 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | ...'. Destination unchanged.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S08",
+    "I2-S11"
+   ]
+  },
+  {
+   "id": "V-06",
+   "claim": "link.amazon/B00hJ57DV opens the Chefman TurboFry 8 Qt listing (B08DKYBTPH).",
+   "where": "Products, marketing comparison",
+   "observed": "Fetched today; final URL /dp/B08DKYBTPH; title 'Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 ...'. Destination unchanged.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S09",
+    "I2-S12"
+   ]
+  },
+  {
+   "id": "V-07",
+   "claim": "Kitchen category commission rate is 4.50% (Standard Commission Income, Table 1).",
+   "where": "Pricing, marketing programme page",
+   "observed": "Table 1 row read as printed: 'Physical Books, Kitchen, Automotive — 4.50%'. 'All Other Categories — 4.00%'. Bounty rates $12.00 / $2.00 / $5.00 / $0.25 read as printed.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S05"
+   ]
+  },
+  {
+   "id": "V-08",
+   "claim": "A commission rate for each individual product is known.",
+   "where": "Pricing (left blank by the repository)",
+   "observed": "Table 1 is organised by product category, not by ASIN. The destination breadcrumb places all three products under Air Fryers, a sub-category of Kitchen — but no official page maps an ASIN to a Table 1 row, and the redirect destination is not confirmed as the intended product. The repository keeps the per-product rate blank. This session agrees and keeps it blank.",
+   "outcome": "Unverified",
+   "sources": [
+    "I2-S05",
+    "I2-S10"
+   ]
+  },
+  {
+   "id": "V-09",
+   "claim": "Prices and star ratings may not be shown unless Amazon serves them or they come from Creators API / PA API.",
+   "where": "Every page with product facts",
+   "observed": "Participation Requirements 2(b) and 6(t) read verbatim today. 6(t) is specific: reviews and star ratings may not be displayed 'unless you have obtained a link to that customer review or star rating through Creators API or PA API'.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "V-10",
+   "claim": "Prices captured by hand on 2026-11-14 are not publishable figures.",
+   "where": "data/products.json observed_2026_11_14 (kept, not rendered)",
+   "observed": "The 2026-11-14 readings in the repository include price, star rating and review counts against each destination. 2(b) and 6(t) permit display only through an Amazon-served link or API data, and IP License 2(i) additionally requires a date/time stamp and a specific disclaimer when pricing is displayed. This session's own fetch did not attribute a price or rating to any of the three featured ASINs (I2-S10, I2-S11, I2-S12), so no figure from either source is published.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02",
+    "I2-S10"
+   ]
+  },
+  {
+   "id": "V-11",
+   "claim": "The agent must identify itself as 'Agent/<name>' in its user agent and must not circumvent blocks.",
+   "where": "Methodology, agent terms",
+   "observed": "IP License §4 Agent Terms (c) quoted verbatim today, including the 'Agent/[agent name]' user-agent requirement and 'Not circumvent or otherwise avoid any measure intended to block, limit, modify, or control whether and how Agents access'.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "V-12",
+   "claim": "Program Content may not be used to train or improve machine-learning models; API content may not be aggregated or analyzed without prior written approval.",
+   "where": "Methodology, agent terms, AI-layer design",
+   "observed": "IP License 1: 'You will not, and will not allow any third party to, use Program Content to, directly or indirectly, develop or improve large language or multimodal models, machine learning models or related technology.' IP License 2(e) bars accessing the API 'for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content' without express prior written approval.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "V-13",
+   "claim": "'Trending product' and 'high-converting product' rankings can be produced from official Amazon data.",
+   "where": "The brief's automation goal; the repository leaves these blank",
+   "observed": "The Creators API exposes four operations only: SearchItems, GetItems, GetVariations, GetBrowseNodes (I2-S04). No operation returns search volume, trend direction, conversion rate or commission-per-product. The repository therefore publishes no trend or conversion ranking. This session found no official endpoint that would change that.",
+   "outcome": "Unverified",
+   "sources": [
+    "I2-S04"
+   ]
+  },
+  {
+   "id": "V-14",
+   "claim": "Creators API access requires enrollment and at least 10 qualifying sales in the past 30 days.",
+   "where": "Prerequisites for automation",
+   "observed": "Prerequisites quoted verbatim today: 'Be enrolled in the Amazon Associates program for your target marketplace' and 'Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API'.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S04"
+   ]
+  },
+  {
+   "id": "V-15",
+   "claim": "The 180-day / three-qualifying-sale enrollment window is a stated Amazon rule.",
+   "where": "Onboarding guidance",
+   "observed": "The Operating Agreement (I2-S01) and the Program Policies (I2-S02) as fetched today do not contain a 180-day or three-sale sentence. The repository cites separate Associates Help topics for it (its S28, S29). This session did not fetch those help pages, so it neither confirms nor denies them and asserts nothing.",
+   "outcome": "Not re-checked",
+   "sources": []
+  },
+  {
+   "id": "V-16",
+   "claim": "A price-alert or price-tracking feature is permitted.",
+   "where": "Platform design",
+   "observed": "Participation Requirements 6(y): 'Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.'",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "V-17",
+   "claim": "Sub-tag attribution per visitor is permitted.",
+   "where": "Campaign tracking design",
+   "observed": "Participation Requirements 2(b): sub-tags require Amazon's approval, and 'Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).'",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "V-18",
+   "claim": "Automated clicking of affiliate links to 'test' them is a normal thing to do.",
+   "where": "QA and campaign automation",
+   "observed": "Participation Requirements 6(s): 'You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.' 6(q) adds that a page of an Amazon Site may not open other than by the customer clicking a Special Link. Link checks in this repository are therefore HTTP fetches recorded as observations, not click simulations through a tagged link.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "V-19",
+   "claim": "Amazon images may be shown on the site as product pictures.",
+   "where": "Design proposals",
+   "observed": "IP License 2(h): 'You will not store or cache Product Advertising Content consisting of an image, but you may store a link to Product Advertising Content consisting of an image for up to 24 hours.' 6(c) requires prompt removal of Program Content no longer displayed on an Amazon Site. The repository's build gate V6 refuses any stored Amazon image.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S02"
+   ]
+  },
+  {
+   "id": "V-20",
+   "claim": "FTC requires the affiliate disclosure to be hard to miss and placed with the endorsement, not only in a footer or about page.",
+   "where": "Every page template",
+   "observed": "FTC brochure read today: place it so it is 'hard to miss' and 'with the endorsement message itself'; 'Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE'; 'The disclosure should be in the same language as the endorsement itself'.",
+   "outcome": "Confirmed (corrected wording)",
+   "note": "The repository's pages carry the disclosure in the footer. That satisfies Operating Agreement §5 ('on your Site') but is weaker than the FTC's placement guidance for the page that carries the recommendation. This session therefore places the disclosure in a banner above the navigation AND beside every buy action on the new site, and raises it as I2-F-01 for the older pages.",
+   "sources": [
+    "I2-S06",
+    "I2-S01"
+   ]
+  },
+  {
+   "id": "V-21",
+   "claim": "A first-person review or 'tested' claim may be written for these three products.",
+   "where": "Marketing copy",
+   "observed": "FTC brochure: 'You can't talk about your experience with a product you haven't tried.' No evidence in the repository shows any hands-on use of the three products.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S06"
+   ]
+  },
+  {
+   "id": "V-22",
+   "claim": "The published site is served by GitHub Pages from the main branch root with HTTPS enforced.",
+   "where": "Deployment",
+   "observed": "Pages API on 2026-11-16: status 'built', source branch 'main', path '/', https_enforced true. Latest build commit 933e2f3, created 2026-11-15T12:00:31Z, updated 2026-11-15T12:00:53Z, status 'built'. The build this session publishes is later than that and is confirmed separately after the merge.",
+   "outcome": "Confirmed",
+   "sources": [
+    "I2-S14"
+   ]
   }
+ ],
+ "counts": {
+  "rows": 22,
+  "confirmed": 18,
+  "confirmed_corrected": 1,
+  "not_rechecked": 1,
+  "unverified": 2
+ }
 }
