@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 import pathlib
+import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -116,16 +117,86 @@ def guides_index_block() -> str:
     )
 
 
-def patch(path: pathlib.Path, start: str, end: str, new: str, back: str | None = None) -> str:
-    t = path.read_text(encoding="utf-8")
+FRONT_DOOR_NOTE = "cba81fa5 front door — generated region, do not hand-edit"
+
+
+def products_for_band():
+    data = json.loads((ROOT / "data" / "products.json").read_text(encoding="utf-8"))
+    out = []
+    for prod in data["products"]:
+        obs = prod.get("redirect_observed") or {}
+        out.append({
+            "label": prod.get("label", ""),
+            "asin": obs.get("page_id") or "",
+            "title": (obs.get("page_title") or "").replace("Amazon.com: ", "").split(" : Home")[0],
+            "url": f'https://www.amazon.com/dp/{obs.get("page_id")}' if obs.get("page_id") else "",
+        })
+    return out
+
+
+def frontdoor_block() -> str:
+    live = [g for g in GUIDES["guides"] if g["status"] == "live"][:3]
+    cards = "\n".join(
+        f'      <a class="fd-card" href="site/{g["href"]}"><b>{html_escape(g["title"].split(":")[0])}</b>'
+        f'<span>{g["blurb"]}</span></a>'
+        for g in live
+    )
+    prods = "\n".join(
+        f'      <a class="fd-card" href="{SRC[d["source"]]["url"]}" target="_blank" rel="noopener noreferrer">'
+        f'<b>{html_escape(d["short"])}</b><span>{d["line"]}</span>'
+        f'<span class="fd-asin">{d["asin"]} &middot; listing text read 2026-11-16</span></a>'
+        for d in GUIDES["products_band"]
+    )
+    return (
+        f'<a id="cba81fa5-front-door" aria-hidden="true"></a><!-- {FRONT_DOOR_NOTE} -->\n'
+        '<section class="fdoor">\n'
+        '  <p class="fd-eyebrow">Air Fryer Field Notes &middot; three air fryers, checked line by line</p>\n'
+        '  <h1 class="fd-h1">Which of these three air fryers fits your kitchen? We read the listings so you can read the decision.</h1>\n'
+        '  <p class="fd-lede">No price, no star rating, no &ldquo;bestseller&rdquo; badge and no test nobody ran. '
+        'What is here is the specification each Amazon listing states, the page it was read from, the date it was read, '
+        'and a plain statement of what this site cannot tell you. Below the band is the audit trail behind it: every '
+        'finding, every source, every open flag.</p>\n'
+        '  <div class="fd-cta">\n'
+        '    <a class="fd-btn fd-btn-primary" href="site/index.html">Open the reader site</a>\n'
+        '    <a class="fd-btn fd-btn-ghost" href="site/guides/index.html">Read the buying guides</a>\n'
+        '    <a class="fd-btn fd-btn-ghost" href="site/answers.html">What we still need to know</a>\n'
+        '  </div>\n'
+        '  <h2 class="fd-h2">The three listings</h2>\n'
+        '  <div class="fd-cards">\n'
+        f'{prods}\n'
+        '  </div>\n'
+        '  <h2 class="fd-h2">Latest guides</h2>\n'
+        '  <div class="fd-cards">\n'
+        f'{cards}\n'
+        '  </div>\n'
+        '  <p class="fd-fine">All product figures here come from Amazon pages; nothing is inferred. '
+        'Disclosure: As an Amazon Associate I earn from qualifying purchases &mdash; and no link on this site carries '
+        'a tracking tag yet, so no click can earn. '
+        f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer" '
+        f'title="{SRC["CBA-S09"]["title"]}">CBA-S09</a></p>\n'
+        '</section>\n\n'
+        '<p class="fd-eyebrow-ops" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
+        'font-weight:700;color:#767f8d;margin:28px 0 6px">Operations &middot; the audit behind the front door</p>\n'
+    )
+
+
+def html_escape(v: str) -> str:
+    return (v.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
+
+
+def patch_text(t: str, start: str, end: str, new: str, back: str | None = None) -> str:
     i, j = t.find(start), t.find(end)
     if back and i > 0:
         k = t.rfind(back, 0, i)
         if k > 0:
             i = k
     if i < 0 or j < 0 or j <= i:
-        raise SystemExit(f"FAIL: anchors {start!r} / {end!r} not both found in {path.name}")
+        raise SystemExit(f"FAIL: anchors {start!r} / {end!r} not both found in the file")
     return t[:i] + new + t[j:]
+
+
+def patch(path: pathlib.Path, start: str, end: str, new: str, back: str | None = None) -> str:
+    return patch_text(path.read_text(encoding="utf-8"), start, end, new, back)
 
 
 def build_index_json() -> str:
@@ -161,6 +232,28 @@ def main() -> int:
             changed.append(path.relative_to(ROOT).as_posix())
             if not a.check:
                 path.write_text(want, encoding="utf-8")
+
+    root_index = ROOT / "index.html"
+    if root_index.exists():
+        raw = root_index.read_text(encoding="utf-8")
+        start = '<a id="cba81fa5-front-door"' if '<a id="cba81fa5-front-door"' in raw else "<h1>Dashboard</h1>"
+        want = patch_text(raw, start, '<div class="callout">', frontdoor_block())
+        if 'assets/front-door.css' not in want:
+            want = want.replace('<link rel="stylesheet" href="assets/style.css">',
+                                '<link rel="stylesheet" href="assets/style.css">\n'
+                                '<link rel="stylesheet" href="assets/front-door.css">')
+        want = re.sub(r"<title>[^<]*</title>",
+                      "<title>Air Fryer Field Notes — three air fryers, checked line by line</title>", want, count=1)
+        want = re.sub(r'<meta name="description" content="[^"]*">',
+                      '<meta name="description" content="Three air fryers compared on what the Amazon listings state, '
+                      'with every claim linked to the page it came from, plus the full verification dashboard behind it.">',
+                      want, count=1)
+        # a second h1 is not allowed by gate V3: fold the dashboard heading into the body copy
+        want = want.replace('<h1 class="visually-hidden" hidden></h1>', "", 1)
+        if want != raw:
+            changed.append("index.html")
+            if not a.check:
+                root_index.write_text(want, encoding="utf-8")
 
     idx_path = SITE / "site-index.json"
     want_idx = build_index_json()
