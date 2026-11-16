@@ -5097,7 +5097,7 @@ The PR, merge result and Pages build will be recorded in a follow-up section of 
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `1f1b8bd2` | `arena/1f1b8bd2-zone3` | Line-by-line repo review (2026-11-16); independent live re-verification round dated 2026-11-16; takeover of stale open PR #71 per the 60-minute rule; brief-gap review (articles/topics/suggestions/questions/executive summary); final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (1F-T6) | 2026-11-16 |
+| `1f1b8bd2` | `arena/1f1b8bd2-zone3` | Line-by-line repo review (2026-11-16); independent live re-verification round dated 2026-11-16; takeover of stale open PR #71 per the 60-minute rule; brief-gap review (articles/topics/suggestions/questions/executive summary); final integration: gates → PR → `main` → merge → Pages confirm → record | **done** (1F-T1…T6) | 2026-11-16 |
 
 ## 1F Task board (claimed before any other work, per protocol)
 
@@ -5108,7 +5108,7 @@ The PR, merge result and Pages build will be recorded in a follow-up section of 
 | 1F-T3 — Independent live re-verification round dated 2026-11-16 (three short links + `/dp/` controls, Operating Agreement, Program Policies, Standard Commission Table 1, Creators API, ASIN rule, FTC pages) | done (1F-V01…V32) | — | `research/1f1b8bd2-verification-log.md` (new, namespaced) | official pages only; no new source IDs unless a URL is absent from the register | — |
 | 1F-T4 — Takeover of stale PR #71 (`arena/71dc8fea-zone3`, open, `mergeable=CONFLICTING`, last commit 2026-11-14T19:07Z ≫ 60 min): integrate its unique record additively, close PR with supersession note | done (PR #71 closed; Part 71 + session file taken over verbatim) | — | `sessions/71dc8fea/verification-2026-11-14.md` (takeover), `COORDINATION.md` (note), `gh` | — | — |
 | 1F-T5 — Brief-gap review: trendy articles/topics, suggestions section, open-questions register, executive summary — verify each deliverable exists and is linked; change requests for defects in other sessions' scopes | done (all present and linked; 1F-F-01..03 raised) | — | read-only except this Part; fixes only inside 1F scope | — | — |
-| 1F-T6 — Final integration: all gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers), PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | in progress (gates green; PR next) | — | git + `gh` + this Part | — | — |
+| 1F-T6 — Final integration: all gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers), PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | done (PR #99 merged; record below) | — | git + `gh` + this Part | — | — |
 
 **Scope discipline.** This session edits `COORDINATION.md` (this Part only), its own
 `research/1f1b8bd2-*` records, `sessions/1f1b8bd2/**` if needed, and — in the takeover task —
@@ -5428,3 +5428,35 @@ Recorded in the publish table below once complete.
 GitHub Pages' edge cache, not a deploy failure: the artefact served from the build is correct. Recorded
 because a reviewer who checks the site within a minute of the merge may see the previous revision and
 conclude the merge did not deploy.
+
+## 1F-T6 — PR, merge, Pages deploy record (2026-11-16)
+
+| Event | Result |
+|---|---|
+| Pull request | [#99 — Zone3: 2026-11-16 integration — independent re-verification round, line-by-line repo review, PR #71 takeover, compliance gap + two fixes (session 1f1b8bd2)](https://github.com/kanlerxz87-cyber/Zone3/pull/99), `arena/1f1b8bd2-zone3` → `main` |
+| Pre-merge state | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`; gates green on the final tree immediately before the merge: `check_site` OK (13 pages / 3 products / 52 sources / **86 flags**) · `verify_site` PASS (75 pages / 1,377 rows / 1,169 with official source / 0 advisories) · `link_report --strict` exit 0 · `check_all_links` 121 pages / 106 external URLs / 0 errors · `build_sitemap --check` exit 0 (70 pages) · sessions checker OK · both generators idempotent · 0 conflict markers · 0 secrets |
+| Merge | **MERGED 2026-11-16T18:38:58Z** via `gh pr merge 99 --merge` (no approval waited, per brief) → merge commit **`add6525725882cba9572e47aa58da0bded807e8a`** (state MERGED, confirmed via `gh pr view --json state,mergedAt,mergeCommit`) |
+| Pages | legacy `main` `/` source; build for `add6525` → **status `built`** at 2026-11-16T18:39:20Z (polled via `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`) |
+| Live check — landing | https://kanlerxz87-cyber.github.io/Zone3/index.html (cache-busted fetch) — serves "Status as of 2026-11-16", KPI **86 Total flags open**, all section tiles incl. Suggestions & decisions and session ab3ed329's, full site map |
+| Live check — flagged | https://kanlerxz87-cyber.github.io/Zone3/flagged.html (cache-busted fetch) — "**86 entries**: 3 critical, 14 high, 23 medium, 28 low, 18 info"; `1F-F-01`, `1F-F-02`, `1F-F-03` and `AB-F-01`…`AB-F-05` all render with source links |
+| Live check — sources / marketing | `sources.html` on `main` carries **S59** (FTC Consumer Reviews Rule Q&A, official ftc.gov link); `marketing/*.html` nav carries both the Suggestions entry and session ab3ed329's entry |
+| Site merged while flagged? | yes — 1F-F-01 (open) and all prior flags are non-blocking and published on the Flagged for review page with source links, as the brief requires |
+
+### 1F conflict log
+
+| When | What happened | Resolution |
+|---|---|---|
+| 2026-11-16 ~18:36 UTC | `main` advanced `933e2f3` → `3d5167c` (PR #98, session `ab3ed329`, merged while this session's PR #99 was already open) → GitHub reported `CONFLICTING`. Conflicts in `COORDINATION.md`, `data/flags.json`, `executive-summary.html`, `flagged.html`, `index.html`, `sources.html`, six `marketing/*.html` (their exposure-redaction + nav edits vs this session's counts/nav additions); `data/sources.json`, `EXECUTIVE-SUMMARY.md`, `scripts/build_site.py` auto-merged. | Resolved by keeping **both sides in full**: `COORDINATION.md` = main's entire board (incl. their Part) + this session's Part 1F re-appended verbatim; `data/flags.json` = union by ID (86 = their AB-F-01…05 + this session's 1F-F-01…03; 0 duplicate IDs); `data/sources.json` = auto-merged union (52, S59 present, 0 duplicate IDs); generated pages taken from main's side then **regenerated** by `scripts/build_site.py` + `scripts/build_marketing.py` from the merged data (output committed only after all gates passed); `EXECUTIVE-SUMMARY.md` §2/§6 counts set to the union register (86: 3/14/23/28/18) and their unattributed present-tense "register now holds 83 items" changed to "held 83 items after that pass; §2 carries the current count" so their dated record survives without reading stale. **Nothing from either session discarded; their redaction of observed price/rating literals was preserved (re-verified 0 hits after regeneration).** |
+| 2026-11-16 ~18:38 UTC | **Incident, caught immediately.** The routine pre-push `git pull --rebase origin main` attempted to rebase this branch's history (it contains a merge commit) and stopped on a conflict replaying claim commit `26e93c5`; the subsequent `git push` had already succeeded with the correct merge commit `62058ab`. | `git rebase --abort` restored the branch; verified HEAD = `62058ab`, working tree clean, 4 ahead / 0 behind `origin/main`, remote ref = `62058ab`, 0 conflict markers. Logged per the board's rule that a conflict is recorded, not hidden. (Convention already on this board: merge `origin/main` into the branch instead of rebasing when the branch carries a merge commit — sessions `ecbfe91b`, `d9828ec7`.) |
+
+### What is still open for the owner after this merge (unchanged in kind; all published on Flagged for review)
+
+1. **Confirm the three destination listings** (`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`) are the intended products — FLG-002 / FLG-027.
+2. **Supply the Associates tag** and an active account — FLG-010; no link is trackable without it.
+3. **Creators API access** (10 qualifying sales / 30 days, registration, credentials) — prices and star ratings stay blank until a compliant path exists (FLG-006, FLG-022, Program Policies 2(b)/6(t)).
+4. **1F-F-01** — add the FTC Rule on the Use of Consumer Reviews and Testimonials (S59) to the compliance register and content rules.
+5. **71-F-01/02/04** (from the taken-over audit) — verifier manifest paths, provenance-gate strictness, `/docs/` + archive exposure (overlaps AB-F-01); owners of `tools/` and `/docs/`.
+6. **54C-CR-01** — generate `EXECUTIVE-SUMMARY.md` counts from `data/*.json` (1F-F-02 reproduced the drift this round).
+
+**Tasks 1F-T1 through 1F-T6: done.** Session `1f1b8bd2` is complete. This record ships in
+[PR #102](https://github.com/kanlerxz87-cyber/Zone3/pull/102) (`1F-RECORD-PR`), the follow-up pull request created after the merge it records.
