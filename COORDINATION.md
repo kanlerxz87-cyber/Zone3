@@ -5566,11 +5566,19 @@ independent-verification and integration work, scoped so no other session's file
 creating or pushing other branches, so the brief's `session-<id>/<task>` branch naming cannot be
 applied. Task IDs below replace per-task branches.
 
+# Part: session `5a56c084` (2026-11-16) — polished-marketing implementation pass + final integration for this round
+
 ## Session registry (this part)
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
 | `f132f462` | `arena/f132f462-zone3` | Independent line-by-line repo review; live re-verification of load-bearing claims; implement accepted marketing suggestions (brand/hero treatment SUG-01, marketing-style comparison and buying guides SUG-04, point-in-time trending section SUG-08 anchored to official surfaces); update the executive summary; run all build gates; PR → `main`, merge without waiting, confirm Pages deploy + live checks; record PR link and merge result here | done (f132-T7) | 2026-11-16 |
+
+| 5a56c084 | `arena/5a56c084-zone3` | (A) independent 2026-11-16 re-verification of the three submitted links and load-bearing facts; (B) implementation of the unblocked subset of the published SUG-01…10 proposals (polished marketing front-end, editorial article hub for the six `ready` topics, trust and trend modules, decision-log update); (C) final integration pass for this round: all gates, PR to `main`, merge, Pages deploy confirmation | in progress (A, B, C) | 2026-11-16 18:33 |
+
+### Branch note (5a56c084)
+
+This session is fixed by Arena to branch `arena/5a56c084-zone3` (same constraint recorded 2026-11-13 by session 7f84fea4). All work is committed to that branch; no other branch is created or pushed.
 
 ## Task board (this part)
 
@@ -6056,18 +6064,6 @@ changes are strictly additive new list items (`D-13…`, `I2-S15…`); existing 
 
 ### D1-T5 — PR, merge and Pages deploy (done, 2026-11-16)
 
-**Incident log (logged, not silent — the correction rule).** While closing out, `main` moved **five times**
-(#112, #113, #115, #117, #119) between the push of PR #114 and the merge of the follow-up record PR #116;
-each landing re-dirtied #116 and each was integrated keep-both. In one of those integrations (commit
-`3333ff5` on this branch), the conflict-resolution script aborted on a **false-positive marker check** —
-main's board legitimately contains the literal strings `<<<<<<<` and `>>>>>>>` *inside quoted prose*
-(table cells describing past "grep found no markers" checks) — and the merge was committed with the
-unresolved conflict hunk still in the file. The commit never reached `main`; the very next commit
-replaced the file with the properly rebuilt version (main's board verbatim, the single newest Part D1
-swapped in place) and this entry records the slip. Lesson recorded for the board: a marker check must
-match **line-start** markers, not substrings, because this board quotes marker strings in its own
-conflict-log tables.
-
 | Event | Result |
 |---|---|
 | Pull request | [#114 — session d18303ca: independent re-verification, article library, decision-board +D-13..D-15/+Q13, repo review, integration](https://github.com/kanlerxz87-cyber/Zone3/pull/114), `arena/d18303ca-zone3` → `main` |
@@ -6079,7 +6075,7 @@ conflict-log tables.
 | Live check — decisions board | https://kanlerxz87-cyber.github.io/Zone3/site/decisions.html — **live**, counter reads "0 of 15 decided": proposals D-01…D-15 including the three new cards and question Q13 |
 | Live check — articles | https://kanlerxz87-cyber.github.io/Zone3/site/articles/hi-fry-450.html — **live** (spot check; listing facts carry dp links, blanks name their reason, no price/rating anywhere) |
 | Live check — session record | https://kanlerxz87-cyber.github.io/Zone3/sessions/d18303ca/ — **live** (15 sourced claim rows, D1-F-01 section B) |
-| Final publish record | [#116](https://github.com/kanlerxz87-cyber/Zone3/pull/116) — this close-out record (follow-up PR, same pattern as I2's #103); its merge result and the post-merge Pages build are recorded in the row below |
+| Final publish record | This close-out record (follow-up PR, same pattern as I2's #103) |
 
 **Session d18303ca close-out.** All five tasks done. Open owner decisions that gate future work remain
 published on the decision board: Q1 (Associates tag), Q2 (intended products), Q3 (marketplace), Q13
