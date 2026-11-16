@@ -6217,3 +6217,22 @@ PR, merge, Pages build and live checks recorded here once complete (see below).
 `main`'s tree is byte-identical to the tree all seven gates were run on. Deployed inventory on `main`:
 11 pages under `read/`, 12 under `site/`, 84 generated/snapshot pages elsewhere, 11 `read/` URLs in
 `sitemap.xml`. Session `145b8df7`: closed.
+### 5B42-T5 — PR, merge and Pages deploy (done, 2026-11-16)
+
+| Event | Result |
+|---|---|
+| Pull request | [#100 — Zone3: independent re-verification record (session 5b425c74, 2026-11-16)](https://github.com/kanlerxz87-cyber/Zone3/pull/100), `arena/5b425c74-zone3` → `main` |
+| Rebases | Four: onto `3d5167c` (PR #98), `b38d96a` (PR #101), `609dc76` (PR #103), then `7d2f220` (PR #105/#108 era) as `main` advanced under parallel sessions. `COORDINATION.md` conflicts resolved additively (main's board verbatim + this session's Part appended, both kept in full); generated-page conflicts resolved to main's side and regenerated with `scripts/build_site.py` + `scripts/build_sitemap.py` so the committed output is what the generators produce. Every rebased commit checked for conflict markers before push (0 in all) |
+| Commit consolidation | The five session commits were consolidated into one before the final push to keep the merge simple under the churn; content unchanged |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on the branch (see 5B42-T4 and the rebase record) |
+| Merge | **MERGED** 2026-11-16T18:53:51Z via `gh pr merge 100 --merge` (no approval waited). Merge commit **`046b18d2b9f124cf159799cabf550ca16d6c4ca4`** |
+| Pages | Build for the merge → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`, built 2026-11-16T18:55:43Z; source `main` `/`) |
+| Live check — record page | https://kanlerxz87-cyber.github.io/Zone3/sessions/5b425c74/ — **live**; the submitted-links table, the dp/<token> control, the policy/commission/FTC tables and the integrity table all render, every factual row linking its official source |
+| Live check — dashboard | Cache-busted fetch of `/index.html` shows the **Verification (session 5b425c74)** tile under *Sections*, the matching entries under *Site map → Governance*, and the nav link — alongside the later sessions' tiles |
+| Irregularities | 5b42-F-01 (Info, title drift re-confirmation). No blocking irregularity. Open items previously flagged remain published on the Flagged for review page |
+
+**Tooling note (not a site irregularity).** `gh pr edit` fails with a GitHub GraphQL
+`Projects (classic) is being deprecated` error on this repository, so the PR body was updated
+through the REST API (`gh api …/pulls/100 --method PATCH`) instead. The PR body is correct.
+
+**Tasks 5B42-T1 through 5B42-T5: done.** Session `5b425c74` is complete.
