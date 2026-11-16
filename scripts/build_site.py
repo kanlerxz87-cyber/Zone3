@@ -130,6 +130,10 @@ NAV = [
     # rendered by tools/build_site.py from data/z3/*.json. Linked here so the two halves of
     # the merged site are one navigable product instead of two disconnected trees.
     ("dashboard/index.html", "Full audit (16 pages)"),
+    # Added by integration session 59d84c55 (2026-11-16): the reader-facing marketing
+    # site built by tools/build_i2_site.py from data/i2/*.json. Placed last in the nav
+    # because this nav serves the audit; the dashboard tile below gives it the top spot.
+    ("site/index.html", "Marketing site (new)"),
 ]
 
 
@@ -302,6 +306,16 @@ def reverify_table() -> str:
 
 
 SITEMAP_GROUPS = [
+    # Added by integration session 59d84c55 (2026-11-16): the reader-facing site.
+    ("Marketing site", [
+        ("site/index.html", "Marketing site: start here"),
+        ("site/products.html", "Marketing site: the three air fryers"),
+        ("site/guides/index.html", "Marketing site: buying guides"),
+        ("site/evidence.html", "Marketing site: how we know"),
+        ("site/decisions.html", "Marketing site: suggestions &amp; decisions"),
+        ("site/flagged.html", "Marketing site: flagged for review"),
+        ("site/front-door.html", "Marketing site: where the rest lives"),
+    ]),
     ("Overview", [
         ("executive-summary.html", "Executive summary"),
         ("dashboard/index.html", "Full audit dashboard (16 pages)"),
@@ -386,6 +400,12 @@ def build_index() -> None:
         for l, v, k in stats
     )
     tiles = [
+        # Added by integration session 59d84c55 (2026-11-16): leads with the reader-facing
+        # marketing site. The audit tiles below it are unchanged.
+        ("site/index.html", "Marketing site (new)",
+         "The reader-facing site: three air fryers compared on what their listings state, buying "
+         "guides, the source register, and a decision board where each proposal can be accepted, "
+         "rejected or deferred before anything is implemented."),
         ("executive-summary.html", "Executive summary", "Bottom line, findings, what was built, what is blocked."),
         ("products.html", "Products", "The 3 submitted links, identifier checks, redirect results."),
         ("pricing.html", "Pricing &amp; commission", "Price and commission fields, plus the verified commission rules."),
@@ -438,7 +458,7 @@ def build_index() -> None:
   <p class="eyebrow">Evidence-first air-fryer research</p>
   <h2>Make the next kitchen buy with clearer comparisons.</h2>
   <p>Explore practical buying guides and product comparisons, with evidence behind published claims and unknowns clearly called out. This research is not a substitute for checking the live Amazon listing.</p>
-  <div class="hero-actions"><a href="marketing/index.html">Explore product research</a><a href="marketing/buying-guide.html">Read the buying guide</a></div>
+  <div class="hero-actions"><a href="site/index.html">Start here: the reader-facing site</a><a href="marketing/buying-guide.html">Read the buying guide</a></div>
 </section>
 <div class="callout">
   <p><strong>Research status:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
