@@ -5462,3 +5462,56 @@ Flagged-for-review page and do not block the merge.
 - **A0-T4 extended to a fix (A0-T4b):** remove the restricted values (observed price, list price, star rating, review count, "bought in past month" badges) from the **shared** `docs/` set that the public sitemap lists and the root landing page links. Owner: `a0ffcab0`, final-integration role (shared output). Every changed line is logged in the A0 record. Files: `docs/index.html`, `docs/sources.html`, `docs/content.html`, `docs/analysis.html`, `docs/executive-summary.html`, `docs/executive-summary.md`.
 - **Not edited by this session (log only):** `sessions/3c886b62/**`, `sessions/03bbd050/**`, `sessions/3ead7ac8/**`, `archive/c4e71983/**`, `docs/executive-summary-c4e71983.md`, `docs/repo-review-9fef7647.md`. These are other sessions' own work product or frozen archives. Change requests are in the A0 record below.
 - Reason: Associates Program Policies 2(b) and 6(t) (fetched 2026-11-16) permit price and star-rating display only through the Amazon-served link or Creators/PA API. A compliance banner does not cure a display (`71-F-04`). Live check: <https://kanlerxz87-cyber.github.io/Zone3/docs/sources.html> shows the restricted values.
+
+### A0 task status (2026-11-16, session `a0ffcab0`)
+
+| Task | Status | Record |
+|---|---|---|
+| A0-T1 — read the board, register, claim, push claim | **done** | claim commit `dc8d1ab`; addendum `dd35259`; merge of `main` `ded79f9` |
+| A0-T2 — repo review, line by line; gates before and after | **done** | `research/a0ffcab0-record.md` §1–2 |
+| A0-T3 — live re-fetch of the three short links, `dp/` control, Operating Agreement, Program Policies 2(b)/6(s)/6(t)/6(w)/6(y), Creators API ASIN, Commission Table 1, FTC Disclosures 101 | **done** (A0-V01…V11) | `research/a0ffcab0-record.md` §3 |
+| A0-T4 — restricted-value scan of public output | **done** (scan); **fix not applied to `/docs/`** — owner decision logged as A0-F-01 | `research/a0ffcab0-record.md` §4 |
+| A0-T4b — remove restricted values from `docs/` (scope claimed above) | **not completed — owner decision.** Reason: the fix rewrites derived analysis (discounts, weighted rating, velocity) on five HTML pages and one Markdown file; a text swap would leave misleading numbers, and the owner decision is recorded as A0-F-01 | `research/a0ffcab0-record.md` §5, §8 |
+| A0-T5 — executive summary check against the gates | **done** — counts corrected (86 → 92 flags; severity counts); update block added | `EXECUTIVE-SUMMARY.md` §2, §6 and the 2026-11-16 a0ffcab0 block |
+| A0-T6 — PR → `main`, merge without waiting, Pages confirmation, record | **in progress** — record appended after the PR is merged (see A0 publish record below) | — |
+
+### A0 irregularities (published on the Flagged for review page; non-blocking)
+
+| ID | Severity | Summary | Disposition |
+|---|---|---|---|
+| A0-F-01 | High | `/docs/` pages show restricted price, rating, review and sales values (Program Policies 2(b), 6(t)); on the sitemap | open — owner decision (redact vs remove from public branch) |
+| A0-F-02 | High | `sessions/`, `archive/`, `research/` and root data snapshots carry the same values and are publicly reachable | open — change requests to the owning sessions; owner decision |
+| A0-F-03 | Medium | `tools/verify_site.py` V4 accepts flag and repo-anchor rows as passing; the brief's "official link on every row" rule is not enforced (same as 71-F-02) | open — gate change requested |
+| A0-F-04 | Low | six `marketing/*.html` pages were one nav line behind `scripts/build_site.py` (`/site/` entry from PR #101) | **fixed** by regeneration; nav only |
+| A0-F-05 | Info | the three short links and the `dp/` control re-checked 2026-11-16 | none; intended-product match still an owner item (FLG-002, FLG-027) |
+| A0-F-06 | Info | `COORDINATION.md` is long, with 93 "in progress" lines, many from closed sessions; the rebase conflict was an append-append resolved by a merge | owner to archive closed Parts |
+
+### A0 change requests (cross-scope; not edited by this session)
+
+- **`sessions/3c886b62/**`, `sessions/03bbd050/**`, `sessions/3ead7ac8/**`, `sessions/f2102efa/**`, `sessions/7b70cfb0/**`** — owners to remove or redact the observed price, rating, review and sales values (A0-F-02).
+- **`archive/c4e71983/**`** — same (A0-F-02).
+- **`docs/executive-summary-c4e71983.md`, `docs/repo-review-9fef7647.md`** — same (A0-F-02).
+- **`data/c4e71983-commercial-snapshot.json`, `data/c4e71983-competitors.json`, `data/z3-51fcb80d-snapshot.json`** — same (A0-F-02). These are public raw JSON files on Pages.
+- **`tools/verify_site.py` (V4)** — split factual, unknown and repo-state rows; fail on any factual row without an official link (A0-F-03).
+- **`scripts/build_sitemap.py` vs the canonical `sitemap.xml`** — the generator would drop five "Moved" redirect stubs that the committed sitemap lists. Keep one rule and make both generators agree (Info).
+
+### A0 gates on the final tree (run immediately before the PR)
+
+| Gate | Result |
+|---|---|
+| `scripts/check_site.py` | OK · 13 pages · 3 products · 52 sources · **92 flags** |
+| `tools/verify_site.py` | VERIFY PASS · 83 pages · 1,488 rows · 1,264 official · 440 flag · 89 repo anchor |
+| `tools/link_report.py --strict` | exit 0 |
+| `scripts/check_all_links.py` | 129 HTML pages · 116 external URLs · 0 errors |
+| `scripts/build_sitemap.py --check` | covers every live page; main's canonical sitemap kept |
+| `tools/i2_gate.py` | PASS · 8 pages · 105 rows · 89 sourced · 16 blanks |
+| generators (`build_site.py`, `build_marketing.py`, `build_i2_site.py`) | idempotent after the A0-F-04 regeneration |
+| conflict markers | none in any committed file (checked on the merged `COORDINATION.md`) |
+
+### A0 sources (all official; fetched 2026-11-16)
+
+Operating Agreement — <https://affiliate-program.amazon.com/help/operating/agreement> · Program Policies — <https://affiliate-program.amazon.com/help/operating/policies> · Standard Commission Income Statement Table 1 — <https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ> · Creators API GetItems — <https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items> · FTC Disclosures 101 — <https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers> · short links <https://link.amazon/B04G1MEwY>, <https://link.amazon/B02NbDxp3>, <https://link.amazon/B00hJ57DV> · `dp/` control <https://www.amazon.com/dp/B04G1MEwY>.
+
+### A0 publish record
+
+_Pending — appended in a follow-up commit after the PR is merged and the Pages build is confirmed._

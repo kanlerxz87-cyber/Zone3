@@ -1138,6 +1138,75 @@
       "action": "None — fixed. Future NAV additions to scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
       "sources": [],
       "repo_evidence": "git diff after re-running scripts/build_marketing.py at base 933e2f3: exactly one line changed in each of the six marketing/*.html files, adding href='../suggestions.html' (Suggestions &amp; decisions) to the top nav imported from scripts/build_site.py NAV. Reproduce: python3 scripts/build_marketing.py && git diff --stat marketing/."
+    },
+    {
+      "id": "A0-F-01",
+      "severity": "High",
+      "category": "Compliance (owner decision)",
+      "item": "Public /docs/ pages still display Amazon product prices, star ratings, review counts and 'bought in past month' badges for the three products",
+      "detail": "Live page https://kanlerxz87-cyber.github.io/Zone3/docs/sources.html (read 2026-11-16) shows, for each of the three products, the observed price, list price, star rating, review count and 'bought in past month' figure. The same kinds of values appear on /docs/index.html (KPI cards and a bullet), /docs/content.html, /docs/analysis.html (computed discount and weighted-average rating derived from those prices and counts), /docs/executive-summary.html and docs/executive-summary.md. Associates Program Participation Requirements 2(b) allow prices to appear only where Amazon serves the link or via Creators API / PA API; 6(t) allows star ratings and customer reviews only via Creators API / PA API. The /docs/ set is listed in sitemap.xml. A compliance banner does not cure a display (see 71-F-04). The values are not repeated in this flag. This session did not edit /docs/: the fix changes derived analysis (discounts, weighted rating, velocity) across six pages, which is an owner decision.",
+      "action": "Owner to choose one: (a) remove the restricted values from /docs/ and rebuild the affected analysis from non-restricted data (blank + flag per row); or (b) remove /docs/ and /sessions/ from the public sitemap and from the published branch. Until one is done, the /docs/ display is non-compliant under 2(b) and 6(t). Also see A0-F-02.",
+      "sources": [
+        "S02",
+        "S50"
+      ],
+      "repo_evidence": "grep -rlE for star-rating, 'bought/month', 'K reviews' and price patterns over docs/ (session a0ffcab0, 2026-11-16): 5 HTML files and 1 Markdown file in docs/ carry the values; sitemap.xml lists 8 /docs/ URLs."
+    },
+    {
+      "id": "A0-F-02",
+      "severity": "High",
+      "category": "Compliance (owner decision)",
+      "item": "Archived session and archive folders, and root data snapshots, that are publicly reachable still carry the restricted price, rating and review values",
+      "detail": "Files found by the same scan include sessions/3c886b62/ (incl. product pages, products.html, analysis.html, comparison.html, data/products.json), sessions/03bbd050/ (index.html, findings.md, verification.md), sessions/f2102efa/verification.md, sessions/7b70cfb0/verification-2026-11-14.json, archive/c4e71983/ (incl. products.html and data/products.json), docs/executive-summary-c4e71983.md, docs/repo-review-9fef7647.md, and the root data snapshots data/c4e71983-commercial-snapshot.json, data/c4e71983-competitors.json and data/z3-51fcb80d-snapshot.json. Some of these carry a notice, but a notice does not cure a display (71-F-04). These folders and files belong to other sessions; they were not edited by session a0ffcab0 (log-only, per the coordination rules). The values are not repeated in this flag.",
+      "action": "Owner decision with the same two options as A0-F-01, applied to these folders. Change requests for the owning sessions are logged in COORDINATION.md (A0 Part, 'Change requests').",
+      "sources": [
+        "S02",
+        "S50"
+      ],
+      "repo_evidence": "Same scan (session a0ffcab0, 2026-11-16): sessions/ 19 files, archive/ 16 files, research/ 4 files, root data/ 4 files, scripts/ 1, tools/ 1 (code patterns, not displays). sitemap.xml: 20 sessions/ <loc> entries; 0 archive/ entries."
+    },
+    {
+      "id": "A0-F-03",
+      "severity": "Medium",
+      "category": "Verification gate",
+      "item": "Row-provenance gate counts flag and repo-anchor rows as verified; the brief requires an official source link on every table row",
+      "detail": "tools/verify_site.py on 2026-11-16 reported 1,482 table rows: 1,258 with an official source, 439 with a flag, 89 with a repo anchor. A row with a flag or a repo anchor passes V4 without an official link, so the gate does not enforce the brief's 'every row has a source link to an official site' rule. Same defect as 71-F-02, still open.",
+      "action": "Owner or next integration session: split rows into factual (must carry an Amazon or FTC link), unknown (must carry a flag and a blank value), and repo-state (repo anchor). Make V4 fail on a factual row without an official link.",
+      "sources": [],
+      "repo_evidence": "python3 tools/verify_site.py → 'VERIFY PASS · 83 pages · 1482 table rows · 1258 with official source · 439 with flag · 89 with repo anchor' (session a0ffcab0 run on main b38d96a + 609dc76)."
+    },
+    {
+      "id": "A0-F-04",
+      "severity": "Low",
+      "category": "Site (fixed)",
+      "item": "Six generated marketing/*.html pages were stale against the shared nav in scripts/build_site.py (missing the /site/ entry added by PR #101)",
+      "detail": "Running scripts/build_marketing.py on 2026-11-16 changed exactly one line per page in six files: the nav gained '../site/index.html' (the reader-facing marketing site from PR #101). Same defect class as 1F-F-03: a shared NAV change was not followed by a marketing re-run. Fixed by regenerating the six pages; no marketing copy, brief, price, rating or recommendation changed.",
+      "action": "None — fixed. Any future NAV change in scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
+      "sources": [],
+      "repo_evidence": "git diff --stat after python3 scripts/build_marketing.py: 6 files, 6 insertions, 6 deletions; the only href added is ../site/index.html."
+    },
+    {
+      "id": "A0-F-05",
+      "severity": "Info",
+      "category": "Verification (re-checked)",
+      "item": "Short links and the 9-character codes re-checked against the official Amazon pages on 2026-11-16",
+      "detail": "link.amazon/B04G1MEwY, link.amazon/B02NbDxp3 and link.amazon/B00hJ57DV open the product pages for ASIN B0CDY277D3, B09B7SB46R and B08DKYBTPH (titles match the register). amazon.com/dp/B04G1MEwY returns Amazon's 'Page Not Found' page. The 9-character codes are therefore not ASINs. Whether the three destinations are the products the submitter intended is still not confirmed by an official source (FLG-002, FLG-027).",
+      "action": "None for the page. The owner should confirm the intended product for each link (FLG-002).",
+      "sources": [
+        "S06",
+        "S31"
+      ],
+      "repo_evidence": "Live fetches on 2026-11-16 of the three short links and of https://www.amazon.com/dp/B04G1MEwY (log: research/a0ffcab0-verification-log.md)."
+    },
+    {
+      "id": "A0-F-06",
+      "severity": "Info",
+      "category": "Board hygiene",
+      "item": "COORDINATION.md is 5,464 lines and holds 93 'in progress' lines, many from sessions that have closed",
+      "detail": "Several Parts still show 'in progress' or 'unclaimed' for tasks that were completed or superseded, which makes the claim check slower and more error-prone. The file also produced a merge conflict on this session's rebase (append-append at the end of file), resolved by keeping both sides in full.",
+      "action": "Owner to archive closed Parts into a dated file under docs/ or sessions/ when convenient. Not blocking.",
+      "sources": [],
+      "repo_evidence": "wc -l COORDINATION.md = 5,464; grep -c 'in progress' COORDINATION.md = 93 (session a0ffcab0, 2026-11-16, before this session's Part was appended)."
     }
   ]
 }
