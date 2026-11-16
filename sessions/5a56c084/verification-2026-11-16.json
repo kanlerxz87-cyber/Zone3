@@ -1,0 +1,77 @@
+{
+  "session": "5a56c084",
+  "record": "Independent re-verification of the three submitted links and the load-bearing policy pages",
+  "date": "2026-11-16",
+  "method": "Every observation below was produced in this session by fetching the page named in the row and reading what the page served on 2026-11-16. Nothing was carried over from an earlier session's capture without being re-fetched. Each row names the register source whose value it re-tests. Where the live page's wording differs from an earlier capture, the difference is recorded under drift_notes; wording drift of listing titles is expected because Amazon edits listing titles over time (precedent: 4f83-F-01).",
+  "observations": [
+    {
+      "id": "5a56-V01",
+      "claim": "link.amazon/B04G1MEwY opens amazon.com/dp/B0CDY277D3",
+      "observed": "Fetched 2026-11-16. The fetcher landed on https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-...&channelId=704&plpRedirect=mhFallback. Page title: 'Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen'. Breadcrumb: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (node 17659096011).",
+      "retests": ["S11", "S14"],
+      "matches_register": true
+    },
+    {
+      "id": "5a56-V02",
+      "claim": "link.amazon/B02NbDxp3 opens amazon.com/dp/B09B7SB46R",
+      "observed": "Fetched 2026-11-16. The fetcher landed on https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&...&plpRedirect=mhFallback. Page title: 'Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen'. Same breadcrumb path ending in Air Fryers.",
+      "retests": ["S12", "S15"],
+      "matches_register": true
+    },
+    {
+      "id": "5a56-V03",
+      "claim": "link.amazon/B00hJ57DV opens amazon.com/dp/B08DKYBTPH",
+      "observed": "Fetched 2026-11-16. The fetcher landed on https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&...&plpRedirect=mhFallback&th=1. Page title: 'Amazon.com: Chefman Air Fryer 8 Qt | TurboFry\u00ae 4-in-1 with 450\u00b0F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen'. Same breadcrumb path ending in Air Fryers.",
+      "retests": ["S13", "S16"],
+      "matches_register": true
+    },
+    {
+      "id": "5a56-V04",
+      "claim": "amazon.com/dp/B04G1MEwY returns Amazon's Page Not Found page",
+      "observed": "Fetched 2026-11-16. The served page is Amazon's error page; its <title> is 'Page Not Found' and the page text reads 'Sorry! We couldn't find that page. Try searching or go to Amazon's home page.'",
+      "retests": ["S08"],
+      "matches_register": true
+    },
+    {
+      "id": "5a56-V05",
+      "claim": "amazon.com/dp/B02NbDxp3 returns Amazon's Page Not Found page",
+      "observed": "Fetched 2026-11-16. Same Amazon error page ('Page Not Found') as 5a56-V04.",
+      "retests": ["S09"],
+      "matches_register": true
+    },
+    {
+      "id": "5a56-V06",
+      "claim": "amazon.com/dp/B00hJ57DV returns Amazon's Page Not Found page",
+      "observed": "Fetched 2026-11-16. Same Amazon error page ('Page Not Found') as 5a56-V04.",
+      "retests": ["S10"],
+      "matches_register": true
+    },
+    {
+      "id": "5a56-V07",
+      "claim": "Operating Agreement header reads 'Updated: October 15, 2025'",
+      "observed": "Fetched 2026-11-16 (chunks 0-1 of 4). Header reads 'Updated: October 15, 2025 (Current Associates, see what's changed)'. Section 5 'Identifying Yourself as an Associate' re-read verbatim: 'You must clearly and prominently state the following ... \"As an Amazon Associate I earn from qualifying purchases.\"' - identical to policy fact PF-01.",
+      "retests": ["S01"],
+      "matches_register": true
+    },
+    {
+      "id": "5a56-V08",
+      "claim": "Program Policies header reads 'Updated: April 14, 2026'; session definition unchanged",
+      "observed": "Fetched 2026-11-16 (chunk 0 of 11). Header reads 'Updated: April 14, 2026'. Commission Income Statement 1(a)-(b) re-read: a qualifying purchase occurs when a customer clicks through a Special Link and, during a single session measured from the click and ending at the first of (x) 24 hours elapsing, (y) a non-digital Product order, or (z) clicking another Associate's Special Link, purchases - identical to policy fact PF-12, including the 89-day cart-completion clause in 1(b)(i).",
+      "retests": ["S02"],
+      "matches_register": true
+    }
+  ],
+  "drift_notes": [
+    {
+      "id": "5a56-D-01",
+      "item": "The CHEFMAN 6 Quart destination title (B0CDY277D3) now includes the phrase 'with Easy View Windows'. Earlier captures (S14, 2026-11-13/14) also carry 'Easy View Windows' in the flat-site register; the 2026-11-15 capture recorded by session 4f83ee7b (4f83-F-01) differed in wording for the Emeril Lagasse listing. The ASIN and destination are unchanged across all captures by four sessions.",
+      "severity": "Info"
+    },
+    {
+      "id": "5a56-D-02",
+      "item": "The Chefman 8 Qt destination title (B08DKYBTPH) now includes '450\u00b0F Hi-Fry Option for Crispier Results' ahead of the earlier wording. ASIN and destination unchanged.",
+      "severity": "Info"
+    }
+  ],
+  "conclusion": "All eight observations match the register recorded by earlier sessions. The three submitted tokens remain 9-character short-link IDs, not ASINs; each short link still opens the same live listing; the direct /dp/<token> checks still return Amazon's Page Not Found page; and both policy documents are unchanged in every clause re-read. Per-product price, rating, review-count, availability and commission-rate cells remain blank: no approved Amazon data path (Amazon-served link, Creators API or PA API) is connected to this repository, so publishing them would breach Participation Requirements 2(b) and 6(t). No new flag is raised; the two title-wording drifts are recorded here and in COORDINATION.md Part 5a56c084."
+}
