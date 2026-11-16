@@ -477,6 +477,15 @@
       "status": "verified",
       "status_note": "File exists in the tree (redirect stub) but has no sitemap entry; observed by session 21acd3c0 on 2026-11-14.",
       "used_for": "21-F-03"
+    },
+    {
+      "id": "S59",
+      "title": "FTC: The Consumer Reviews and Testimonials Rule: Questions and Answers",
+      "url": "https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers",
+      "publisher": "U.S. Federal Trade Commission (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-16 (session 1f1b8bd2). Page states the Rule on the Use of Consumer Reviews and Testimonials 'went into effect on October 21, 2024'; quotes sections 465.2, 465.4, 465.6, 465.7 and 465.8; states the rule's disclosure requirements relate to company insiders and that influencer relationship disclosures remain under the FTC Act / Endorsement Guides.",
+      "used_for": "1F-F-01"
     }
   ]
 }

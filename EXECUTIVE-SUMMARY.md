@@ -43,7 +43,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-51 official sources · 55 policy facts · 72 flags · 13 root pages, a 16-page audit build, a `/docs/`
+52 official sources · 55 policy facts · 81 flags · 13 root pages, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -137,8 +137,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-72 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 13 high, 20 medium, 21 low, 15 informational (informational entries record a correction
+81 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 13 high, 22 medium, 26 low, 18 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
@@ -185,6 +185,13 @@ changes are auditable rather than silent):
   anchored to the repo), `tools/link_report.py` (no dangling refs), `scripts/check_all_links.py`
   (117 pages, 105 external URLs, 0 errors), `scripts/build_sitemap.py` (66 pages covered), and both
   site generators rebuild to a stable fixpoint.
+* **Re-verification round 2026-11-16 (session `1f1b8bd2`)** — the three submitted short links, the
+  three direct `/dp/<9-char code>` controls, the Operating Agreement (§5, §6), the Program Policies
+  (header date, Participation Requirements 2(b) and 6(s)–6(z), Commission Income Statement §1), the
+  Standard Commission Table 1, the Creators API introduction and GetItems ASIN definition, FTC
+  Disclosures 101 and the FTC endorsements hub were all re-read from the official pages on
+  2026-11-16. Results identical to 2026-11-14. Record:
+  [`research/1f1b8bd2-verification-log.md`](research/1f1b8bd2-verification-log.md).
 * **Limits:** the sandbox reaches only github.com, npm and PyPI directly, so official pages were read
   through a fetch tool rather than an automated HTTP client, and the `--online` link check was not
   run. Whether `link.amazon` redirects without an affirmative click has not been tested in a
