@@ -34,6 +34,19 @@
 
 ---
 
+## Update 2026-11-16 — session f132f462 (marketing polish, independent re-verification)
+
+**Bottom line.** This session independently re-read every load-bearing claim from the official pages on 2026-11-16 and confirmed the record unchanged: the three short links open B0CDY277D3, B09B7SB46R and B08DKYBTPH; the raw 9-character tokens return Page Not Found; the Operating Agreement (§5 disclosure), Program Policies (2(b), 6(t), 6(w), 6(y)), Commission Table 1 (Kitchen 4.50%, All Other 4.00%), the Creators API ASIN rule (10 characters) and FTC Disclosures 101 all match. Record: `research/f132f462-verification-log.md`.
+
+**Marketing polish implemented (accepted suggestions SUG-01, SUG-04, SUG-08):**
+- Landing page hero rewritten as a brand-led promise ("Three air fryers. One clear comparison. Zero guesswork.") leading into the buying guide and product research — Amazon Program Content sourcing rule documented (S01).
+- A dated "Trending now in air fryers" point-in-time section added, anchored to the Amazon Best Sellers browse path (node 17659096011) read from the three destination listings (S14–S16), with an explicit notice that no trend direction, search volume or conversion data is published (S02).
+- Comparison matrix and buying guide restyled with a "who this is for" decision table using only verified listing attributes; price, rating, review count and commission stay blank-by-design per S02 2(b)/6(t).
+
+**Repo review:** `research/f132f462-repo-review.md` records the line-by-line review of the combined tree; no new irregularities, no secrets, no unverified inferred values.
+
+---
+
 ## 1. The bottom line
 
 **The three submitted short links were observed to open real Amazon listings; the requester's intended product match remains unconfirmed.** Each submitted token is **9 characters**, not a 10-character ASIN, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page for the raw token — reproduced again on 2026-11-14:
