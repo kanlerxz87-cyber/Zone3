@@ -20,7 +20,7 @@
 - **Archives (A0-F-02, High).** Other sessions' folders (`sessions/`, `archive/`) still carry the same values. They are logged as change requests, not edited.
 - **Row-provenance gate (A0-F-03, Medium).** `verify_site` counts flagged and repo-anchored rows as passing. The brief's rule, an official link on every row, is not enforced by the gate yet.
 - **Fixed in this pass (A0-F-04, Low).** Six marketing pages were regenerated for the `/site/` nav entry.
-- **Flags.** Seven new items (A0-F-01…07) on the Flagged for review page; the register now holds 93. A0-F-07 asks for a wording fix: the redirect-target table says "No: not the submitted product", which no official source establishes.
+- **Flags.** Seven new items (A0-F-01…07) on the Flagged for review page; the register held 93 at that pass — §2 carries the current count. A0-F-07 asks for a wording fix: the redirect-target table says "No: not the submitted product", which no official source establishes.
 
 ## Update 2026-11-16 — session ab3ed329 (independent re-verification and compliance sweep)
 
@@ -112,7 +112,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-52 official sources · 55 policy facts · 99 flags · 13 root pages, a 16-page audit build, a `/docs/`
+62 official sources · 55 policy facts · 99 flags · 24 pages in the shared gate, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
