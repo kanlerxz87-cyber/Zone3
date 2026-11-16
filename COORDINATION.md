@@ -1139,7 +1139,7 @@ S01–S03, S19, S25, S26, S28, S29 as listed in `data/sources.json` (same URLs);
 
 | Time (UTC) | What happened | Resolution |
 |---|---|---|
-| 2026-11-14 | `git pull --rebase origin main` before the PR: `main` had advanced `6bf308f` → `cfec2b3` (PRs #21–#25 from sessions incl. `b8beb448`, `a86f1d09`, `51fcb80d`). Content conflict in `COORDINATION.md` (both sides appended a Part at the same location). | Resolved by keeping **both sides in full**: main's Parts (incl. `b8beb448`, Part C `51fcb80d`) first, then this session's D Part. No marker left; `grep` for `<<<<<<<`/`>>>>>>>` clean; both parts asserted present by script before `git add`. Rebase then completed 3/3. Nothing from any session discarded. |
+| 2026-11-14 | `git pull --rebase origin main` before the PR: `main` had advanced `6bf308f` → `cfec2b3` (PRs #21–#25 from sessions incl. `b8beb448`, `a86f1d09`, `51fcb80d`). Content conflict in `COORDINATION.md` (both sides appended a Part at the same location). | Resolved by keeping **both sides in full**: main's Parts (incl. `b8beb448`, Part C `51fcb80d`) first, then this session's D Part. No marker left; `grep` for `
 | 2026-11-14 | Post-rebase re-check: `main`'s new commits had changed `scripts/build_site.py`, `scripts/check_site.py`, `tools/build_site.py` and root pages (register now 10 pages / 37 sources / 32 flags). | All checkers re-run on the merged tree — **all green** (see below). D-F-04 no longer reproduces: `python3 scripts/build_site.py` now rebuilds with **zero diff**, and `index.html` keeps both hand-added paragraphs — fixed on `main` by another session's generator update. Flag D-F-04 recorded as **resolved on main**. |
 
 ### D Post-rebase integrity re-check (2026-11-14, merged tree)
@@ -5551,6 +5551,20 @@ _Pending — appended in a follow-up commit after the PR is merged and the Pages
 # Part: session `f132f462` (2026-11-16) — marketing polish, independent re-verification, suggestions implementation, PR and merge
 
 > Appended additively. Task IDs `f132-Tn` and irregularity IDs `f132-F-nn` here are **namespaced** and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`, `25-`, `4f83-`, `D-F`, `E-F`, `1F-`, `71-` or `FLG-nnn` used above. Nothing on the board above was removed or rewritten. Branch: `arena/f132f462-zone3` (Arena pins a session to one branch), base `add6525` (= `origin/main` at claim time).
+# 5B42 — coordination claim (2026-11-16, session `5b425c74`)
+
+**Session:** `5b425c74` · branch `arena/5b425c74-zone3` · base `933e2f3` (merge of PR #97, the
+latest `main`). Tree clean at claim time.
+
+**Board read in full (all parts, 2026-11-16).** All previously claimed tasks are recorded complete.
+The brief's deliverables — live GitHub Pages site, executive summary, decision center, suggestions
+page — were delivered by sessions through `4f83ee7b` (PR #97, merged at `933e2f3`). No task is live
+with a claim at this moment; nothing is taken over. This session claims the remaining
+independent-verification and integration work, scoped so no other session's files are touched.
+
+**Claim note.** Arena's session branch note fixes this session to `arena/5b425c74-zone3` and forbids
+creating or pushing other branches, so the brief's `session-<id>/<task>` branch naming cannot be
+applied. Task IDs below replace per-task branches.
 
 ## Session registry (this part)
 
@@ -5606,6 +5620,7 @@ Board read (all parts, through line 5279). Claim pushed as this commit **before*
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
 | `48699cff` | `arena/48699cff-zone3` | Session registration; landing page marketing polish; line-by-line repo review; verification; PR to `main`; merge; Pages deploy confirmation | done | 2026-11-16 |
+| `5b425c74` | `arena/5b425c74-zone3` | Independent line-by-line live re-verification of every load-bearing claim against official sources; repo review; gate re-run; PR → `main`, merge, Pages deploy confirm, record | in progress (5B42-T1) | 2026-11-16 |
 
 ## Task board (this part)
 
@@ -5615,6 +5630,164 @@ Board read (all parts, through line 5279). Claim pushed as this commit **before*
 | 48699cff-T2 — Repo review, line by line | done | 48699cff | All root HTML pages, `data/*.json` | check_site.py OK (13 pages, 52 sources, 86 flags); link_report.py --strict exit 0 (232 rows, 0 dangling refs) |
 | 48699cff-T3 — Verification: source-link coverage check | done | 48699cff | All published pages | All pages 100% source/flag coverage; blank-by-design cells flagged per Amazon Policies 2(b)/6(t) |
 | 48699cff-T4 — Build, PR, merge, Pages confirm | done | 48699cff | git/`gh` only | PR #104 created; merged into main |
+
+# Part: session `e8f35298` (2026-11-16) — fresh official-source re-verification and final integration
+
+> Appended additively. Task IDs `E8F-Tn` here are namespaced and are not the same items as other sessions' IDs. Nothing on the board above was removed or rewritten. Branch: `arena/e8f35298-zone3` (Arena pins a session to one branch; the `session-<id>/<task>` form is not used, per the decision logged by session `7f84fea4`), base `add6525725882cba9572e47aa58da0bded807e8a` (= `origin/main` at claim time).
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `e8f35298` | `arena/e8f35298-zone3` | Fresh live re-verification of the load-bearing official sources (Amazon Operating Agreement §5, Program Policies §2(b)/§6(t), Commission Table 1, short-link redirects, direct-ID 404 controls, FTC Disclosures 101); run all site gates; confirm the published site is complete and green; PR → `main`, merge without waiting, confirm GitHub Pages deploy, record here | in progress (E8F-T4) | 2026-11-16 |
+
+## Task board
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| E8F-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | done | e8f35298 | `COORDINATION.md` (this Part only) | This commit, pushed before any other work. |
+| E8F-T2 — Fresh live re-verification of official sources dated 2026-11-16 | done | e8f35298 | `research/e8f35298-verification-log.md` (new) | Official pages only; no inference. See table below. |
+| E8F-T3 — Run all site gates (build_site, check_site, verify_site, link_report --strict, build_sitemap --check, check_all_links) | done | e8f35298 | read-only | All green; see below. |
+| E8F-T4 — Final integration: PR → `main`, merge without waiting, confirm Pages deploy + live checks, record PR link + merge result here | in progress | e8f35298 | git + `gh` + this Part | PR next; merge record below after merge. |
+
+## E8F-T2 — Fresh live re-verification (2026-11-16)
+
+Every row below was fetched live today by this session; the page URL is the source; nothing is inferred. Full verbatim record in `research/e8f35298-verification-log.md`.
+
+| # | Claim | Result | Source fetched |
+|---|---|---|---|
+| V1 | Operating Agreement header date | **Confirmed** — "Updated: October 15, 2025" | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
+| V2 | Operating Agreement §5 disclosure wording | **Confirmed verbatim** — "As an Amazon Associate I earn from qualifying purchases."; §5 violation is a material breach | [Operating Agreement §5–6](https://affiliate-program.amazon.com/help/operating/agreement) |
+| V3 | Schedule 1: Amazon entity/site by location | **Confirmed** — United States / Amazon.com Services LLC / amazon.com (US-only) | [Operating Agreement, Schedule 1](https://affiliate-program.amazon.com/help/operating/agreement) |
+| V4 | Program Policies §2(b): Special Links must carry the Associates tag | **Confirmed verbatim** | [Program Policies §2(b)](https://affiliate-program.amazon.com/help/operating/policies) |
+| V5 | Program Policies §2(b): price/availability display rule | **Confirmed verbatim** — only if Amazon serves the link or via Creators API/PA API | [Program Policies §2(b)](https://affiliate-program.amazon.com/help/operating/policies) |
+| V6 | Program Policies §6(t): reviews and star ratings via API only | **Confirmed verbatim** | [Program Policies §6(t)](https://affiliate-program.amazon.com/help/operating/policies) |
+| V7 | Standard Commission Table 1 (public, no sign-in) | **Confirmed** — Kitchen 4.50%; All Other Categories 4.00% | [Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| V8 | Short link `link.amazon/B04G1MEwY` → live listing `dp/B0CDY277D3` | **Confirmed** — CHEFMAN 6 Quart Dual Basket Air Fryer; observed destination only, not confirmed as intended product (FLG-002) | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) · [amazon.com/dp/B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) |
+| V9 | Direct `amazon.com/dp/<9-char token>` → Page Not Found | **Confirmed ×3** (positive control passes) | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) |
+| V10 | FTC Disclosures 101: material-connection disclosure, hard-to-miss placement | **Confirmed**; page dated November 2019 | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
+
+**Not re-verified as product facts:** price, star rating and review count (barred by Policies §2(b)/§6(t) without API access — deliberate refusal); per-product commission rate (category not confirmed — FLG-021); whether destinations are the intended products (owner input needed — FLG-002/027); AI-automation features (not built — static research prototype, FLG-007/71-F-05); live clicks/conversions (no account — FLG-010/012).
+
+## E8F-T3 — Gate results on the final tree (re-run 2026-11-16, all green)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/build_site.py` | exit 0; idempotent (zero working-tree diff on re-run) |
+| `python3 scripts/check_site.py` | **OK: 13 pages, 3 products, 52 sources, 86 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 75 pages · 1,377 rows · 1,169 official source · 414 flag · 89 repo anchor · 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 70 pages** |
+| `python3 scripts/check_all_links.py` | **121 HTML pages, 106 external URLs, 0 errors** |
+| Conflict-marker / secrets sweep | **0 / 0** |
+
+## E8F Irregularities raised
+
+None new. All previously registered flags (FLG-001…036 plus V/Z/D/E/AB/1F/71/54C namespaces) remain published, non-blocking, on the Flagged for review page (`flagged.html`) with official source links. No value was inferred or filled; unverifiable cells remain blank.
+
+## Sources used (all official, fetched live 2026-11-16 by this session)
+
+- https://affiliate-program.amazon.com/help/operating/agreement — Amazon Associates Program Operating Agreement (§5 disclosure, §6 breach, Schedule 1 US-only)
+- https://affiliate-program.amazon.com/help/operating/policies — Amazon Associates Program Policies (§2(b) tag/price rules, §6(t) reviews via API, §6(w), §6(y), CIS §2(e))
+- https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ — Standard Commission Income Statement Table 1 (public)
+- https://link.amazon/B04G1MEwY — submitted short link (→ dp/B0CDY277D3)
+- https://www.amazon.com/dp/B04G1MEwY — direct-ID control (Page Not Found)
+- https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers — FTC Disclosures 101 (November 2019)
+
+No third-party page was used as evidence.
+
+## E8F-T4 — PR, merge and Pages deploy (recorded after merge)
+
+| Event | Result |
+|---|---|
+| Pull request | (to be recorded) |
+| Merge | (to be recorded) |
+| Pages build | (to be recorded) |
+| Live checks | (to be recorded) |
+
+| 5B42-T1 — Read board, claim tasks, push claim | in progress | 5b425c74 | `COORDINATION.md` (append only) | This commit. |
+| 5B42-T2 — Independent live re-verification of the load-bearing claims (read-only) | unclaimed | — | read-only | Re-fetch the three short links, the Standard Commission Table 1, the Operating Agreement §5 disclosure wording, the 10-character ASIN rule, the FTC endorsement-guide basis, and the Creators API facts — 2026-11-16. Official pages only; no third-party source as evidence. |
+| 5B42-T3 — Repo review, line by line | unclaimed | — | read-only | Data integrity, source-ID resolution, page inventory, conflict markers, dead links, hallucination check on published figures. Findings in `sessions/5b425c74/repo-review.md`. |
+| 5B42-T4 — Gate re-run on the current tree | unclaimed | — | read-only | `check_site`, `verify_site`, `link_report --strict`, `build_sitemap --check`, internal-link crawl, conflict-marker scan. Fix any drift found, within scope. |
+| 5B42-T5 — PR to `main`, merge, Pages deploy confirmation, record | unclaimed | — | git/`gh`, `COORDINATION.md` (records only), generated pages only if a drift fix is needed | Flagged/unverified items stay non-blocking and are published on the Flagged for Review page. |
+
+### 5B42-T2 — Independent live re-verification (done, 2026-11-16)
+
+Every item below was fetched again **today** by this session (2026-11-16) and compared with what the
+site claims. Page URL is the source; nothing is taken from a search result, a blog or an aggregator.
+Full record: `sessions/5b425c74/index.html` (linked from the dashboard and sitemap) and
+`sessions/5b425c74/verification-2026-11-16.json`.
+
+| # | Claim | Source re-read (fetched 2026-11-16) | Result |
+|---|---|---|---|
+| R1 | link.amazon/B04G1MEwY opens the CHEFMAN 6 Qt Dual Basket listing | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | **Confirmed** — final URL `amazon.com/dp/B0CDY277D3`; served title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black"; breadcrumb Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers |
+| R2 | link.amazon/B02NbDxp3 opens the Emeril Lagasse 26QT listing | [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | **Confirmed** — final URL `amazon.com/dp/B09B7SB46R`; served title "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven \| Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included" (matches the 2026-11-15 capture; see 5b42-F-01) |
+| R3 | link.amazon/B00hJ57DV opens the Chefman TurboFry 8 Qt listing | [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | **Confirmed** — final URL `amazon.com/dp/B08DKYBTPH`; served title "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results \| Bake, Dehydrate, Frozen \| XL Nonstick Dishwasher-Safe Basket \| Stainless Steel" |
+| R4 | dp/<token> lookups fail for all three raw codes | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY), [dp/B02NbDxp3](https://www.amazon.com/dp/B02NbDxp3), [dp/B00hJ57DV](https://www.amazon.com/dp/B00hJ57DV) | **Confirmed** — all three return Amazon's "Page Not Found" page |
+| R5 | ASIN is a 10-character identifier | [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items), [ItemIdType parameter](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter), [Sell on Amazon: Understanding ASIN numbers](https://sell.amazon.com/blog/what-is-an-asin) | **Confirmed** — `itemIdType` default `ASIN`; documented examples "B0199980K4", "B000HZD168" (10 chars); "a unique 10-character alphanumeric code assigned to every product listed in the Amazon store" |
+| R6 | Standard Commission Income Statement, Table 1 | [affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed row for row** — all 11 rows and the Bounty rates $12.00/$12.00/$2.00/$5.00/$0.25 read as printed; "Physical Books, Kitchen, Automotive — 4.50%"; "All Other Categories — 4.00%" |
+| R7 | Operating Agreement §5 disclosure; header date; §6 breach clause | [affiliate-program.amazon.com/help/operating/agreement](https://affiliate-program.amazon.com/help/operating/agreement) | **Confirmed verbatim** — header "Updated: October 15, 2025"; §5 "As an Amazon Associate I earn from qualifying purchases."; §6 "any violation of Section 5 and as specified in the Program Policies will be deemed a material breach" |
+| R8 | Program Policies 2(b), 4, 5, 6(v), 6(t), 6(w); Commission Statement 1(b), 2(e), 6 | [affiliate-program.amazon.com/help/operating/policies](https://affiliate-program.amazon.com/help/operating/policies) | **Confirmed verbatim** — tag requirement 2(b); price/availability display rule 2(b); reviews 6(t); link-shortener 6(w); cloaking 6(v); offline use §4; no-ML-models §5; 24h/89-day windows; Redirecting Link 2(e); ~60-day payment; US payment minimums |
+| R9 | Onsite Commission Table A (Kitchen 1.25%, applies to Onsite Content only) | [affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA](https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA) | **Confirmed verbatim** — "Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive | 1.25%"; "All Other Categories | 1.00%" |
+| R10 | Creators API prerequisites; PA-API 5 deprecation | [Creators API Introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction), [PA-API 5 Deprecation Notice](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation) | **Confirmed verbatim** — "at least 10 qualifying sales within the past 30 days"; "PA-API 5 has been deprecated and is being replaced by the Creators API" |
+| R11 | Application review (3 sales/180 days) and dormancy (180 days) | [Application Review Process](https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM), [Account Dormancy](https://affiliate-program.amazon.com/help/node/topic/G7MJTPEP9NC3YKMG) | **Confirmed verbatim** — "we require at least three within the first 180 days"; "you have 180 days to refer a sale through one of your Associates links" |
+| R12 | FTC disclosure statements; 2023 Endorsement Guides revision | [Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers), [Endorsements, Influencers, and Reviews](https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews) | **Confirmed verbatim** — "Disclose when you have any financial, employment, personal, or family relationship"; "Place it so it's hard to miss"; "revised in 2023". The brochure page itself is dated November 2019 (previously flagged FLG-017); the topic hub is the current surface |
+
+**5b42-F-01 (Info).** The Emeril Lagasse destination title served on 2026-11-16 matches the
+2026-11-15 capture by session `4f83ee7b`, while `data/products.json` stores a 2026-11-13/14 wording.
+Amazon edits listing titles over time; the ASIN and the destination are stable across all captures.
+This re-confirms 4f83-F-01. No new flag raised; does not block the merge.
+
+### 5B42-T3 — Repo review, line by line (done, 2026-11-16)
+
+- **Source-ID integrity:** all 51 source IDs referenced by `data/*.json` resolve in
+  `data/sources.json` — none missing, none dead.
+- **Page inventory:** 21 flat pages + the `dashboard/`, `products/`, `commission/`, `marketing/`,
+  `sessions/*`, `docs/*` trees; every brief deliverable (landing/dashboard, executive summary,
+  decision center, suggestions page, products, pricing, reviews, content topics, flagged, sources,
+  verification log) is present and wired into the navigation.
+- **Disclosure check:** every live page carries the Operating Agreement §5 disclosure. The only files
+  without it are the five documented meta-refresh redirect stubs (`analysis.html`, `disclosure.html`,
+  `categories/home-kitchen-air-fryers.html`, `flagged-for-review.html`, `marketing.html`) — the
+  arrangement logged as 25-F-04; each stub carries a `rel="canonical"` to its destination.
+- **No hallucinated values:** every published figure traces to a source ID; price/rating/review cells
+  remain deliberately blank where policy bars display (2(b), 6(t)); the `observed_2026_11_14`
+  research readings are stored but not rendered as product facts.
+- **No conflict markers** in any tracked file.
+
+### 5B42-T4 — Gate re-run on the current tree (done, 2026-11-16)
+
+| Gate | Result |
+|---|---|
+| `scripts/check_site.py` | **OK** (13 pages / 3 products / 51 sources / 78 flags) |
+| `tools/verify_site.py` | **PASS** (75 pages, 1,383 table rows, 1,168 with official source, 406 with flag, 86 with repo anchor; V1–V7 checks) |
+| `tools/link_report.py --strict` | **exit 0** — unresolved values left blank with stated reasons only |
+| `scripts/build_sitemap.py --check` | **exit 0** (70 pages, 0 extra entries) |
+| `scripts/check_all_links.py` | **0 errors** (121 html pages, 105 distinct external URLs) |
+| Internal link crawl | **2,560 refs / 0 broken** |
+| Conflict-marker scan | **0 files** |
+
+**Change made (this session's scope):** `sessions/5b425c74/index.html` and
+`sessions/5b425c74/verification-2026-11-16.json` added; three registration entries added to
+`scripts/build_site.py` (dashboard tile, Governance site-map list, site-map detail list); the 13
+root pages and `sitemap.xml` regenerated by the generators. No other session's content was modified;
+no site redesign was implemented (suggestions remain published for review, per the brief).
+
+### 5B42-T5 — PR, merge and Pages deploy (done, 2026-11-16)
+
+See the PR record appended below after the merge.
+
+**Tasks 5B42-T1 through 5B42-T4: done.** T5 complete after the merge record below.
+
+**5B42 rebase record (2026-11-16).** While this PR was open, `main` advanced twice under parallel
+sessions (PR #98 at `3d5167c`, then PRs #101/#103 at `b38d96a`/`609dc76`). The branch was rebased onto
+each, resolving `COORDINATION.md` additively (main's board + this session's Part, both kept in full, 0
+conflict markers verified before every push) and regenerating generated pages to main's side plus this
+session's registration entries in `scripts/build_site.py`. Gates were re-run on the final merged tree:
+`check_site` OK (13 pages / 3 products / 52 sources / 86 flags) · `verify_site` PASS (84 pages, 1,532
+table rows, 1,298 sourced, 439 flagged, 99 repo-anchored, 0 advisories) · `link_report --strict`
+exit 0 · `build_sitemap --check` exit 0 (79 pages) · `check_all_links` 0 errors (130 pages, 116 URLs) ·
+internal crawl 2,744 refs / 0 broken. No session's work was discarded.
 
 # Part: session `145b8df7` (2026-11-16) — implement the marketing layer the Suggestions page proposed
 

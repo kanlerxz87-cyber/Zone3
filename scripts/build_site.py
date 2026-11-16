@@ -119,6 +119,9 @@ NAV = [
     # Added by session ab3ed329 (2026-11-16): independent re-verification of the three short links,
     # the Associates policy clauses and the commission table, plus the exposure check (AB-F-01).
     ("sessions/ab3ed329/index.html", "Verification (ab3ed329)"),
+    # Added by session 5b425c74 (2026-11-16): this session's independent re-verification record.
+    # Every row was produced by a fetch performed by this session on 2026-11-16.
+    ("sessions/5b425c74/index.html", "Verification (5b425c74)"),
     # Added by integration session edbd56a1 (2026-11-14): /docs/ returned HTTP 200 but had
     # no inbound link from any dashboard, so a browsing visitor could not reach it (flag V-F3).
     ("docs/index.html", "Reference (/docs/)"),
@@ -373,6 +376,8 @@ SITEMAP_GROUPS = [
         ("sessions/25513d33/index.html", "Verification (session 25513d33)"),
         # Added by session ab3ed329 (2026-11-16) alongside the dashboard tile.
         ("sessions/ab3ed329/index.html", "Verification (session ab3ed329)"),
+        # Added by session 5b425c74 (2026-11-16) alongside the dashboard tile.
+        ("sessions/5b425c74/index.html", "Verification (session 5b425c74)"),
         ("requirements/index.html", "Requirements traceability"),
         ("repo-review/index.html", "Repository review"),
         ("compliance/index.html", "Compliance register"),
@@ -468,6 +473,13 @@ def build_index() -> None:
          "Live re-read of the three short links, their destination listings, the Operating Agreement, "
          "Program Policies 2(a), 2(b), 6(g), 6(t), 6(v), 6(w), 6(y), the commission table and the "
          "Creators API ASIN rule on 2026-11-16, plus a sweep that removed observed price and rating values from public data (AB-F-01)."),
+        # Added by session 5b425c74 (2026-11-16): same reason as the tiles above. This record
+        # independently re-fetches the three links and re-reads 22 policy, commission, API and
+        # FTC statements verbatim on 2026-11-16.
+        ("sessions/5b425c74/index.html", "Verification (session 5b425c74)",
+         "Independent re-fetch of all three submitted links, both commission rate tables, the "
+         "Operating Agreement, Program Policies, Creators API and FTC pages on 2026-11-16, each "
+         "row linked to the official page it came from."),
         ("docs/index.html", "Archived 2026-11-13 build (/docs/) — flagged",
          "An earlier build, kept for provenance. It still displays price and star-rating cells that "
          "this site's rule and Amazon's policy prohibit; see I-F-02 on the Flagged for review page. "
