@@ -32,9 +32,9 @@ building the wrong product set from them would have been easy.
 ## The commercial picture
 
 All three products are in one tight niche, all three were discounted at capture time, and all three have
-large review bases. The Emeril Lagasse unit is the standout on volume: 18.3K ratings and 4K+ units bought
-in the past month, against 4.8K ratings and 1K+ for the CHEFMAN dual basket and 16.8K ratings and 3K+ for
-the Chefman 8 quart. It also carries the highest price at $149.99 against $79.93 and $79.91 for the other
+large review bases. The Emeril Lagasse unit is the standout on volume: the largest rating count and
+demand signal of the three, against smaller figures for the CHEFMAN dual basket and the Chefman 8 quart.
+It also carries the highest price of the three
 two. On Amazon's own published rates, air fryers plausibly sit in either the Kitchen row at 4.50% or the
 Home row at 3.00%, and Amazon does not publish which row a given ASIN belongs to. That is a 50% swing on
 the same sale, so the site leaves the per-product rate blank rather than picking one.
@@ -47,7 +47,7 @@ First, Amazon's **Participation Requirements section 2(b)** says a site may only
 availability if Amazon serves the link containing that data, or if the data is obtained through the
 Product Advertising API or Creators API. The prices here were captured by other means.
 
-Second, **section 6(t)** says the same for customer reviews and star ratings. The 4.2, 4.3 and 4.4 star
+Second, **section 6(t)** says the same for customer reviews and star ratings. The observed star
 values on this site were not obtained through either API.
 
 Third, the supplied short links are themselves a risk. The Commission Income Statement **section 2(e)**

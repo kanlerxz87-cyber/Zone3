@@ -49,7 +49,7 @@ On the site: [Flagged for Review](../flagged.html). Machine-readable version:
 **Severity:** BLOCKING  
 **Source:** [S8 — Amazon Associates — Program Policies (incl. Associates Program Commission Income Statement, sections 1-4)](https://affiliate-program.amazon.com/help/operating/policies)
 
-**Detail.** Amazon's Participation Requirements section 6(t) states: 'You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.' The 4.2 / 4.3 / 4.4 star values and the 4.8K / 18.3K / 16.8K ratings counts on this site were not obtained through PA API or Creators API.
+**Detail.** Amazon's Participation Requirements section 6(t) states: 'You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.' The 4.2 / 4.3 / 4.4 star values and the Withheld / Withheld / Withheld ratings counts on this site were not obtained through PA API or Creators API.
 
 **Impact.** The rating columns cannot go live on an Associates property in their current form.
 
@@ -115,7 +115,7 @@ On the site: [Flagged for Review](../flagged.html). Machine-readable version:
 **Severity:** REVIEW  
 **Source:** [S8 — Amazon Associates — Program Policies (incl. Associates Program Commission Income Statement, sections 1-4)](https://affiliate-program.amazon.com/help/operating/policies)
 
-**Detail.** Participation Requirements section 2(b): 'You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.' Two of the three products currently carry a promotion badge ('Limited time deal' x2, 'Early Black Friday Deal' x1).
+**Detail.** Participation Requirements section 2(b): 'You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.' Two of the three products currently carry a promotion badge ('Withheld' x2, 'Withheld' x1).
 
 **Impact.** The badge text on this site will become a policy breach as soon as Amazon ends those promotions, which is outside this project's control.
 
@@ -170,7 +170,7 @@ On the site: [Flagged for Review](../flagged.html). Machine-readable version:
 **Severity:** INFO  
 **Source:** [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3)
 
-**Detail.** Amazon displays '4.8K', '18.3K' and '16.8K' rather than exact counts. These are Amazon's own rounded figures, recorded verbatim, not exact integers.
+**Detail.** Amazon displays rounded counts rather than exact integers. The observed rounded figures are withheld per 6(t).
 
 **Impact.** Any arithmetic on these counts carries the rounding error.
 

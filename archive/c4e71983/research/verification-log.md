@@ -33,14 +33,14 @@ Source: [amazon.com/s?k=B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) (qid 
 | Brand | CHEFMAN / Chefman | verified (from title) | search page |
 | Capacity | 6 Quart (2 × 3 Qt) | verified (from title) | search page |
 | Star rating | 4.2 out of 5 stars | verified | search page |
-| Ratings shown | 4.8K | verified — **rounded by Amazon** | search page |
+| Ratings shown | Withheld | verified — **rounded by Amazon** | search page |
 | Exact rating count | ␣ blank | **unverified** (FLAG-04) | review page is sign-in walled |
-| Current price | $79.93 | verified at 22:37:14Z | search page |
-| Price per count | $39.97 / count | verified at 22:37:14Z | search page |
-| List price | $99.99 | verified at 22:37:14Z | search page |
-| Promotion badge | Limited time deal | verified (FLAG-02) | search page |
-| Lowest other offer | $57.45 (2+ used & new offers) | verified at 22:37:14Z | search page |
-| Bought in past month | 1K+ | verified — rounded by Amazon | search page |
+| Current price | Withheld | verified at 22:37:14Z | search page |
+| Price per count | Withheld / count | verified at 22:37:14Z | search page |
+| List price | Withheld | verified at 22:37:14Z | search page |
+| Promotion badge | Withheld | verified (FLAG-02) | search page |
+| Lowest other offer | Withheld (2+ used & new offers) | verified at 22:37:14Z | search page |
+| Bought in past month | Withheld | verified — rounded by Amazon | search page |
 | Best Sellers Rank | ␣ blank | **unverified** (FLAG-03) | detail block not retrievable |
 | Wattage | ␣ blank | **unverified** (FLAG-10) | not exposed |
 | Model number | ␣ blank | **unverified** (FLAG-10) | not exposed |
@@ -58,13 +58,13 @@ Source: [amazon.com/s?k=B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) (qid 
 | Brand | Emeril Lagasse | verified (from title) | search page |
 | Capacity | 26 QT | verified (from title) | search page |
 | Star rating | 4.3 out of 5 stars | verified | search page |
-| Ratings shown | 18.3K | verified — **rounded by Amazon** | search page |
+| Ratings shown | Withheld | verified — **rounded by Amazon** | search page |
 | Exact rating count | ␣ blank | **unverified** (FLAG-04) | review page sign-in walled |
-| Current price | $149.99 | verified at 22:33:46Z | search page |
-| List price | $209.99 | verified at 22:33:46Z | search page |
-| Promotion badge | Early Black Friday Deal | verified (FLAG-02) | search page |
-| Lowest other offer | $92.99 (2+ used & new offers) | verified at 22:33:46Z | search page |
-| Bought in past month | 4K+ | verified — rounded by Amazon | search page |
+| Current price | Withheld | verified at 22:33:46Z | search page |
+| List price | Withheld | verified at 22:33:46Z | search page |
+| Promotion badge | Withheld | verified (FLAG-02) | search page |
+| Lowest other offer | Withheld (2+ used & new offers) | verified at 22:33:46Z | search page |
+| Bought in past month | Withheld | verified — rounded by Amazon | search page |
 | Best Sellers Rank | ␣ blank | **unverified** (FLAG-03) | detail block not retrievable |
 | Wattage / model number | ␣ blank | **unverified** (FLAG-10) | not exposed |
 | Affiliate tag present | **No** | fails a rule (FLAG-05) | Program Policies §2(b) |
@@ -81,13 +81,13 @@ Source: [amazon.com/s?k=B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) (qid 
 | Brand | Chefman | verified (from title) | search page |
 | Capacity | 8 Qt | verified (from title) | search page |
 | Star rating | 4.4 out of 5 stars | verified | search page |
-| Ratings shown | 16.8K | verified — **rounded by Amazon** | search page |
+| Ratings shown | Withheld | verified — **rounded by Amazon** | search page |
 | Exact rating count | ␣ blank | **unverified** (FLAG-04) | review page sign-in walled |
-| Current price | $79.91 | verified at 22:37:34Z | search page |
-| List price | $119.99 | verified at 22:37:34Z | search page |
-| Promotion badge | Limited time deal | verified (FLAG-02) | search page |
-| Lowest other offer | $49.54 (3+ used & new offers) | verified at 22:37:34Z | search page |
-| Bought in past month | 3K+ | verified — rounded by Amazon | search page |
+| Current price | Withheld | verified at 22:37:34Z | search page |
+| List price | Withheld | verified at 22:37:34Z | search page |
+| Promotion badge | Withheld | verified (FLAG-02) | search page |
+| Lowest other offer | Withheld (3+ used & new offers) | verified at 22:37:34Z | search page |
+| Bought in past month | Withheld | verified — rounded by Amazon | search page |
 | Best Sellers Rank | ␣ blank | **unverified** (FLAG-03) | detail block not retrievable |
 | Wattage / model number | ␣ blank | **unverified** (FLAG-10) | not exposed |
 | Affiliate tag present | **No** | fails a rule (FLAG-05) | Program Policies §2(b) |

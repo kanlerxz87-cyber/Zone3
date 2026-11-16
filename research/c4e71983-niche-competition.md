@@ -32,9 +32,9 @@ should verify the node rather than assume it.
 
 | Sub-category | Product | Capacity | Price | Buying intent |
 | --- | --- | --- | --- | --- |
-| Dual basket | B0CDY277D3 | 6 Qt (2 × 3 Qt) | $79.93 | Cook two foods with different timings, ready together |
-| Air fryer toaster oven | B09B7SB46R | 26 QT | $149.99 | Replace several countertop appliances with one |
-| Large capacity | B08DKYBTPH | 8 Qt | $79.91 | Feed more people in one go |
+| Dual basket | B0CDY277D3 | 6 Qt (2 × 3 Qt) | Withheld | Cook two foods with different timings, ready together |
+| Air fryer toaster oven | B09B7SB46R | 26 QT | Withheld | Replace several countertop appliances with one |
+| Large capacity | B08DKYBTPH | 8 Qt | Withheld | Feed more people in one go |
 
 Sub-categories are derived from what the official product titles actually say, not from an external
 taxonomy. Three distinct jobs to be done inside one category is what makes a comparison site viable
@@ -45,15 +45,15 @@ here rather than a single page.
 See `research/c4e71983-commercial-snapshot.md` §4 for the full table and the scope limit. Summary:
 
 - Leaders rate **4.7** and **4.8**; the promoted products rate **4.2–4.4**.
-- The volume leader (52,301 ratings) and two of the top six are **Chefman**, the brand behind two of
+- The volume leader and two of the top six are **Chefman**, the brand behind two of
   the three promoted products.
-- Only one of the top six is priced above **$130**, and it has 126 ratings. The premium band is the
-  thinnest part of the captured set — and the $149.99 promoted unit sits in it.
+- Only one of the top six is priced above **Withheld**, and it has 126 ratings. The premium band is the
+  thinnest part of the captured set — and the promoted premium unit sits in it.
 
 ## 4. Pricing
 
 All three were discounted at capture (20%, 29% and 33% against list). Two carried a *Limited time
-deal* badge and one an *Early Black Friday Deal* badge.
+promotion badges at capture time.
 
 The operational consequence matters more than the numbers: printed prices go stale within days, and
 two separate clauses of Program Policies §2(b) then bite — the price-display restriction
@@ -87,7 +87,7 @@ Untested — these follow from the captured data, not from keyword research:
 - **Dual basket vs one large basket** — a genuine trade-off, and the project owns both products.
 - **Replacing three appliances with one** — the real reason someone pays $150.
 - **8 Qt vs 6 Qt split across two baskets** — which actually feeds a family of four.
-- **Highest-rated unit at the lowest price** — the 8 Qt at 4.4 stars and $79.91 supports a value
+- **Highest-rated unit at the lowest price** — the 8 Qt at 4.4 stars and Withheld supports a value
   argument on measured data.
 
 Amazon's Participation Requirements §1 require original content with significant commentary or

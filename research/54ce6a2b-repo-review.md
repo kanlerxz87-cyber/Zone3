@@ -110,8 +110,7 @@ are unambiguously audit context:
 
 **One case is not clear-cut.** `sources.html` renders, in the *Note* column of the source register:
 
-> `S46` … "Fetched 2026-11-14. Result 1 for B0CDY277D3 as displayed: 4.2 out of 5 stars, (4.8K)
-> reviews, 1K+ bought in past month, price USD 79.93 (deal; List: USD 99.99) …"
+> `S46` … "Fetched 2026-11-14. Result 1 for B0CDY277D3 as displayed: rating, review count, demand signal and price all withheld (2(b)/6(t)) …"
 
 and the same for `S47` and `S48`. These are the same three values the product tables withhold. The
 counter-argument, which earlier sessions accepted, is that this is a note about what the fetch

@@ -32,6 +32,40 @@
 - **Flags.** Five new items were added to the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page (AB-F-01 to AB-F-05). The register held 83 items after that pass; §2 carries the current count.
 - **Owner decisions needed.** (1) The intended product, or the 10-character ASIN, for each submitted link. (2) Whether to remove or redact the archives listed in AB-F-01. (3) Whether a link.amazon redirect counts as a Redirecting Link under Commission Income Statement 2(e). That can only be tested in a logged-in Associates account.
 
+## Update 2026-11-16 — session 1dddf8c0 (final integration: re-verification and archive compliance remediation)
+
+**Bottom line.** All load-bearing claims were re-read from official pages today and confirmed
+verbatim; the compliance exposure flagged by ab3ed329 (AB-F-01) and audited by 71dc8fea
+(71-F-04) is remediated — observed prices, ratings, review counts, demand figures, promotion
+badges and values derived from them are withheld from every public page, record and data file
+in the repository, with official source links and flag references preserved on every row.
+
+- **Re-read today from official pages.** The three short links (same three destinations:
+  `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`), direct `/dp/<token>` "Page Not Found" checks, the
+  [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+  (October 15, 2025; §5 disclosure and §6 material-breach clause), the
+  [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (April 14,
+  2026; CIS §1 windows, PR 2(b), 5, 6(s), 6(t), 6(v), 6(w), 6(y)), the
+  [Standard Commission Income Statement, Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ),
+  the [Creators API introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction)
+  and [GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter)
+  (ASIN = "10-Character alphanumeric unique identifier"), the [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers)
+  guide and the [FTC Consumer Reviews and Testimonials Rule Q&A](https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers).
+- **Remediation.** 86 files: the session-3c886b62 data layer and its regenerated pages, the
+  `docs/` reference build, `sessions/03bbd050/`, `research/` logs, the frozen `archive/c4e71983/`
+  copy, the root snapshot JSON files and the flag registers. Restricted cells show an explicit
+  "Withheld" marker citing Policies 2(b)/6(t); row labels and official source links are kept.
+  The archive generator (`sessions/3c886b62/tools/build.py`) is patched so regeneration cannot
+  restore the values. Record: [`sessions/1dddf8c0/verification-2026-11-16.md`](sessions/1dddf8c0/verification-2026-11-16.md).
+- **Still open.** `COORDINATION.md`, the append-only governance ledger, retains the historical
+  observed figures inside prior sessions' records. It is not a site content page; an owner
+  decision is requested (accept as audit ledger, or redact across all Parts). Published as
+  **1dd-F-01** on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page.
+- **Owner decisions still needed.** (1) The intended product, or the 10-character ASIN, for each
+  submitted link. (2) The 1dd-F-01 ledger decision above. (3) Whether a link.amazon redirect
+  counts as a Redirecting Link under Commission Income Statement 2(e) — testable only in a
+  logged-in Associates account.
+
 ---
 
 ## Update 2026-11-16 — session f132f462 (marketing polish, independent re-verification)
@@ -248,7 +282,7 @@ and no API credentials.
 | `category/air-fryers.html` | Columns removed and replaced with a 2(b)/6(t) explanation carrying the S46–S48 and S02 links. Session `554c08ca` (PR #66) found the same file independently and raised `I-F-01`; **their fix is the one kept**, and `3E-F-01` cross-references it |
 | `/docs/` (six pages) | 81 cells withheld, replaced with the `Withheld` badge plus FLG-022 / FLG-023 links |
 | `sessions/3c886b62/**` and `sessions/03bbd050/` | Dated compliance notice added to 12 pages; their data cells were **not** rewritten, because those files belong to other sessions. Change request `3E-CR-01` is logged in `COORDINATION.md` |
-| `category/air-fryers.html`, *Niche assessment* | Amazon's "bought in past month" badges (`1K+`, `4K+`, `3K+`) were published in prose on a page that withholds prices for exactly that reason. Withheld, and raised as `3E-F-10` |
+| `category/air-fryers.html`, *Niche assessment* | Amazon's "bought in past month" badge figures were published in prose on a page that withholds prices for exactly that reason. Withheld, and raised as `3E-F-10` |
 
 **One stale claim was corrected.** `/docs/` and the category page said the commission rate schedule is
 sign-in-only. It is not: the Standard Commission Income Statement

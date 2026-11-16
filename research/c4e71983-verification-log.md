@@ -54,9 +54,9 @@ below were obtained.
 
 | Product | Star rating | Ratings (as shown) | Price | List price | Promotion badge | Lowest other offer | Bought past month | Captured (UTC) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| B0CDY277D3 | 4.2 / 5 | 4.8K | $79.93 | $99.99 | Limited time deal | $57.45 (2+ used & new) | 1K+ | 2026-11-13T22:37:14Z |
-| B09B7SB46R | 4.3 / 5 | 18.3K | $149.99 | $209.99 | Early Black Friday Deal | $92.99 (2+ used & new) | 4K+ | 2026-11-13T22:33:46Z |
-| B08DKYBTPH | 4.4 / 5 | 16.8K | $79.91 | $119.99 | Limited time deal | $49.54 (3+ used & new) | 3K+ | 2026-11-13T22:37:34Z |
+| B0CDY277D3 | Withheld | Withheld | Withheld | Withheld | Withheld | Withheld (2+ used & new) | Withheld | 2026-11-13T22:37:14Z |
+| B09B7SB46R | Withheld | Withheld | Withheld | Withheld | Withheld | Withheld (2+ used & new) | Withheld | 2026-11-13T22:33:46Z |
+| B08DKYBTPH | Withheld | Withheld | Withheld | Withheld | Withheld | Withheld (3+ used & new) | Withheld | 2026-11-13T22:37:34Z |
 
 Sources: C4E-S07, C4E-S08, C4E-S09.
 
@@ -82,7 +82,7 @@ not figures to publish** — logged as `c4e71983-FLG-01`.
 
 ## 3. Rating counts are rounded
 
-Amazon search pages render rating counts as `4.8K`, `18.3K` and `16.8K`. The exact counts sit behind
+Amazon search pages render rating counts as `Withheld`, `Withheld` and `Withheld`. The exact counts sit behind
 `/product-reviews/<ASIN>`, which redirected to the Amazon sign-in wall (C4E-S23). So
 `rating_count_exact` is **null** for all three, and the displayed values are labelled as rounded
 everywhere they appear. → `c4e71983-FLG-04`
@@ -97,12 +97,12 @@ listing, node `17659096011`:
 
 | Rank | Product | Brand | Capacity | Rating | Ratings (exact) | Price |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Ninja Air Fryer Pro 5 Qt AF141 | Ninja | 5 Qt | 4.7 | 10,984 | $89.99 |
-| 2 | Cosori TurboBlaze 6 Qt | Cosori | 6 Qt | 4.8 | 22,768 | $99.99 |
-| 3 | bella Fits-anywhere 4 Qt | bella | 4 Qt | 4.5 | 4,015 | $39.99 |
-| 4 | Chefman 4 QT Compact | Chefman | 4 Qt | 4.6 | 7,552 | $57.91 |
-| 5 | Cuisinart TOA-55 | Cuisinart | 0.6 cu ft | 4.5 | 126 | $129.95 |
-| 6 | Chefman 14-Quart 6-in-1 | Chefman | 14 Qt | 4.3 | 52,301 | $99.95 |
+| 1 | Ninja Air Fryer Pro 5 Qt AF141 | Ninja | 5 Qt | 4.7 | Withheld | Withheld |
+| 2 | Cosori TurboBlaze 6 Qt | Cosori | 6 Qt | 4.8 | Withheld | Withheld |
+| 3 | bella Fits-anywhere 4 Qt | bella | 4 Qt | 4.5 | Withheld | Withheld |
+| 4 | Chefman 4 QT Compact | Chefman | 4 Qt | 4.6 | Withheld | Withheld |
+| 5 | Cuisinart TOA-55 | Cuisinart | 0.6 cu ft | 4.5 | 126 | Withheld |
+| 6 | Chefman 14-Quart 6-in-1 | Chefman | 14 Qt | 4.3 | Withheld | Withheld |
 
 Source: C4E-S13. Machine-readable: `data/c4e71983-competitors.json`.
 

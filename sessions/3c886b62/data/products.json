@@ -68,50 +68,52 @@
           "source": "S2"
         },
         "current_price": {
-          "value": 79.93,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S2",
-          "note": "Shown as $79.93 on Amazon's search-results rendering of this ASIN."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "list_price": {
-          "value": 99.99,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S2",
-          "note": "Shown as 'List: $99.99'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "unit_price": {
-          "value": 39.97,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S2",
-          "note": "Shown as '($39.97/count)'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "deal_badge": {
-          "value": "Limited time deal",
-          "status": "verified",
-          "source": "S2"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S2",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "other_offers_low": {
-          "value": 57.45,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S2",
-          "note": "Lowest 'More Buying Choices' price shown; '(2+ used & new offers)'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "rating": {
-          "value": 4.2,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S2",
-          "note": "Shown as '4.2 out of 5 stars'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "ratings_count_display": {
-          "value": "4.8K",
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S2",
-          "note": "Amazon's rounded display value, not an exact count."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "demand_signal": {
-          "value": "1K+ bought in past month",
-          "status": "verified",
-          "source": "S2"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S2",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "best_sellers_rank": {
           "value": null,
@@ -201,15 +203,16 @@
           "source": "S4"
         },
         "current_price": {
-          "value": 149.99,
-          "status": "verified",
-          "source": "S4"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S4",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "list_price": {
-          "value": 209.99,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S4",
-          "note": "Shown as 'List: $209.99'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "unit_price": {
           "value": null,
@@ -218,31 +221,34 @@
           "note": "No per-count unit price was displayed for this ASIN."
         },
         "deal_badge": {
-          "value": "Early Black Friday Deal",
-          "status": "verified",
-          "source": "S4"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S4",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "other_offers_low": {
-          "value": 92.99,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S4",
-          "note": "Lowest 'More Buying Choices' price shown; '(2+ used & new offers)'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "rating": {
-          "value": 4.3,
-          "status": "verified",
-          "source": "S4"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S4",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "ratings_count_display": {
-          "value": "18.3K",
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S4",
-          "note": "Amazon's rounded display value, not an exact count."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "demand_signal": {
-          "value": "4K+ bought in past month",
-          "status": "verified",
-          "source": "S4"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S4",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "best_sellers_rank": {
           "value": null,
@@ -330,15 +336,16 @@
           "source": "S6"
         },
         "current_price": {
-          "value": 79.91,
-          "status": "verified",
-          "source": "S6"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S6",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "list_price": {
-          "value": 119.99,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S6",
-          "note": "Shown as 'List: $119.99'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "unit_price": {
           "value": null,
@@ -347,31 +354,34 @@
           "note": "No per-count unit price was displayed for this ASIN."
         },
         "deal_badge": {
-          "value": "Limited time deal",
-          "status": "verified",
-          "source": "S6"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S6",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "other_offers_low": {
-          "value": 49.54,
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S6",
-          "note": "Lowest 'More Buying Choices' price shown; '(3+ used & new offers)'."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "rating": {
-          "value": 4.4,
-          "status": "verified",
-          "source": "S6"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S6",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "ratings_count_display": {
-          "value": "16.8K",
-          "status": "verified",
+          "value": "Withheld",
+          "status": "withheld",
           "source": "S6",
-          "note": "Amazon's rounded display value, not an exact count."
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "demand_signal": {
-          "value": "3K+ bought in past month",
-          "status": "verified",
-          "source": "S6"
+          "value": "Withheld",
+          "status": "withheld",
+          "source": "S6",
+          "note": "Withheld from public display per Amazon Associates Program Policies Participation Requirements 2(b)/6(t) (session 1dddf8c0 remediation, 2026-11-16)."
         },
         "best_sellers_rank": {
           "value": null,

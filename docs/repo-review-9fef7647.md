@@ -56,10 +56,10 @@ the per-session `COORDINATION.md` parts) are left intact.
 
 | Field | B0CDY277D3 | B09B7SB46R | B08DKYBTPH | Source |
 | --- | --- | --- | --- | --- |
-| Price (deal / list) | $79.93 / $99.99 | $149.99 / $209.99 | $79.91 / $119.99 | [S33](https://www.amazon.com/s?k=B0CDY277D3) · [S34](https://www.amazon.com/s?k=B09B7SB46R) · [S35](https://www.amazon.com/s?k=B08DKYBTPH) |
-| Rating | 4.2 / 5 | 4.3 / 5 | 4.4 / 5 | same |
-| Reviews (as displayed) | ~4.8K | ~18.3K | ~16.8K | same |
-| Bought-in-month badge (as displayed) | 1K+ | 4K+ | 3K+ | same |
+| Price (deal / list) | Withheld / Withheld | Withheld / Withheld | Withheld / Withheld | [S33](https://www.amazon.com/s?k=B0CDY277D3) · [S34](https://www.amazon.com/s?k=B09B7SB46R) · [S35](https://www.amazon.com/s?k=B08DKYBTPH) |
+| Rating | Withheld | Withheld | Withheld | same |
+| Reviews (as displayed) | ~Withheld | ~Withheld | ~Withheld | same |
+| Bought-in-month badge (as displayed) | Withheld | Withheld | Withheld | same |
 | Category breadcrumb | Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers | same | same | [S14](https://www.amazon.com/dp/B0CDY277D3) · [S15](https://www.amazon.com/dp/B09B7SB46R) · [S23](https://www.amazon.com/dp/B08DKYBTPH) |
 
 These are volatile dated snapshots. Program Participation Requirements

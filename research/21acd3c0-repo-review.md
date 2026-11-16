@@ -64,6 +64,6 @@ design until a tag exists), compliance documentation, and an audit trail of ~20 
 | 21-F-02 | Info | `sitemap.xml` lists both the root URL (`''`) and `index.html` — the same page twice | https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml |
 | 21-F-03 | Info | Redirect stub `categories/home-kitchen-air-fryers.html` exists but is not in the sitemap (harmless for SEO; arguably correct) | https://github.com/kanlerxz87-cyber/Zone3/blob/main/categories/home-kitchen-air-fryers.html |
 | 21-F-04 | Info | Session workspaces (`sessions/3c886b62/*`, `sessions/03bbd050/`) are included in the public sitemap — other sessions' sub-sites are publicly discoverable. Owner may want them indexed or excluded | https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml |
-| 21-F-05 | Low | Live page widgets showed a price ($69.97) for `dp/B0CDY277D3` that differs from the register's same-day snapshot ($79.93). Confirms prices are volatile; the site correctly publishes none as facts (FLG-004/022/038) | https://www.amazon.com/dp/B0CDY277D3 |
+| 21-F-05 | Low | Live page widgets showed a price for `dp/B0CDY277D3` that differs from the register's same-day snapshot. Confirms prices are volatile; the site correctly publishes none as facts (FLG-004/022/038) | https://www.amazon.com/dp/B0CDY277D3 |
 
 Nothing in this review blocks publishing. No file outside this session's scope was changed.

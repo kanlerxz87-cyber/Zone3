@@ -6597,3 +6597,57 @@ Rendered on the site as the **Decision log** (suggestions.html); source of truth
 | 1dd-T4 — Final integration: PR to `main`, merge, Pages deploy confirmation, record | pending | 1dddf8c0 | `COORDINATION.md` (this Part) | GitHub Pages API, `gh` | — |
 
 Claim recorded and committed by session `1dddf8c0` at start.
+
+
+### 1dd-T1 record — independent official-source re-verification (done)
+
+Every claim fetched live 2026-11-16; page URL is the source.
+
+- Short links: all three still resolve to `dp/B0CDY277D3` (CHEFMAN 6 Qt dual basket),
+  `dp/B09B7SB46R` (Emeril Lagasse 26QT), `dp/B08DKYBTPH` (Chefman 8 Qt TurboFry) — **confirmed**,
+  same Home & Kitchen › Air Fryers breadcrumb on all three.
+- `/dp/<each 9-char token>` → Amazon "Page Not Found" — **confirmed ×3**.
+- OA (Oct 15, 2025) §5 disclosure + §6 material-breach clause; Policies (Apr 14, 2026) CIS §1
+  windows, §2(e), §5, §6 payment; PR 2(b), 5 (ML-model approval), 6(s), 6(t), 6(v), 6(w), 6(y) —
+  **confirmed verbatim**.
+- Commission Table 1 (Luxury Beauty 10.00%; Kitchen/Physical Books/Automotive 4.50%; All Other
+  4.00%; bounties $12/$2/$5/$0.25) — **confirmed row-for-row**, category rates only.
+- Creators API 4 operations + 10-qualifying-sales prerequisite; ASIN "10-Character alphanumeric
+  unique identifier" — **confirmed verbatim**.
+- FTC Disclosures 101 (Nov 2019); FTC Consumer Reviews and Testimonials Rule Q&A (effective
+  Oct 21, 2024; S59) — **confirmed**.
+- Not re-verified by design: observed price/rating/review/demand values as product facts
+  (barred by 2(b)/6(t)); per-product commission rates; live clicks/conversions; intended-product
+  match (owner input).
+
+Full table: [`sessions/1dddf8c0/verification-2026-11-16.md`](sessions/1dddf8c0/verification-2026-11-16.md).
+
+### 1dd-T2 record — repository review (done)
+
+| Gate | Result |
+|---|---|
+| `scripts/check_site.py` | **OK** — 13 pages, 3 products, 52 sources, 87 flags |
+| `tools/verify_site.py` | **VERIFY PASS** — 75 pages, 1,377 rows, 1,165 with official source, 315 with flag, 55 repo-anchored |
+| `tools/link_report.py --strict` | **exit 0** |
+| `scripts/check_all_links.py` | **121 HTML pages, 106 external URLs, 0 errors** |
+| `scripts/build_sitemap.py --check` | **exit 0** — 70 pages |
+| Generators (`scripts/build_site.py`, `tools/build_site.py`, `sessions/3c886b62/tools/build.py`) | re-run clean after remediation |
+| Git hygiene | 0 conflict markers, 0 secrets |
+
+### 1dd-T3 record — compliance remediation (done)
+
+Closes **AB-F-01** and **71-F-04** (values removed from public output, not merely flagged).
+Basis: Amazon Program Policies 2(b)/6(t), re-read verbatim 2026-11-16.
+86 files: `sessions/3c886b62/data/products.json` (22 field values withheld at the data layer),
+`sessions/3c886b62/tools/build.py` (withheld-safe renderers), all public pages/records under
+`docs/`, `sessions/03bbd050/`, `sessions/3c886b62/`, `research/`, the `archive/c4e71983/` frozen
+copy, root snapshot JSONs (`data/c4e71983-*`, `data/z3-51fcb80d-snapshot.json`) and the flag
+registers. Restricted cells show an explicit "Withheld" marker; row labels, official source links
+and flag references are preserved. Tooling kept: `sessions/1dddf8c0/remediate_restricted_values*.py`.
+Post-remediation residual scan: the only file still holding observed figures is `COORDINATION.md`
+(governance ledger) → **1dd-F-01**, published on `flagged.html`.
+
+### 1dd-T4 record — publish (see below)
+
+PR, merge and Pages confirmation recorded at the end of this Part after the merge.
+
