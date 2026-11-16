@@ -21,7 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = "https://github.com/kanlerxz87-cyber/Zone3"
 DATA = ROOT / "data"
 ASSETS = ROOT / "assets"
-BUILT = "2026-11-14"
+BUILT = "2026-11-16"
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 
 
@@ -116,6 +116,9 @@ NAV = [
     # Added by session 25513d33 (2026-11-14): this session's independent record. Every row
     # was produced by a fetch performed by this session; labels read from data/sources.json.
     ("sessions/25513d33/index.html", "Verification (25513d33)"),
+    # Added by session ab3ed329 (2026-11-16): independent re-verification of the three short links,
+    # the Associates policy clauses and the commission table, plus the exposure check (AB-F-01).
+    ("sessions/ab3ed329/index.html", "Verification (ab3ed329)"),
     # Added by integration session edbd56a1 (2026-11-14): /docs/ returned HTTP 200 but had
     # no inbound link from any dashboard, so a browsing visitor could not reach it (flag V-F3).
     ("docs/index.html", "Reference (/docs/)"),
@@ -343,6 +346,8 @@ SITEMAP_GROUPS = [
         ("sessions/3ead7ac8/index.html", "Verification (session 3ead7ac8)"),
         # Added by session 25513d33 (2026-11-14) alongside the dashboard tile.
         ("sessions/25513d33/index.html", "Verification (session 25513d33)"),
+        # Added by session ab3ed329 (2026-11-16) alongside the dashboard tile.
+        ("sessions/ab3ed329/index.html", "Verification (session ab3ed329)"),
         ("requirements/index.html", "Requirements traceability"),
         ("repo-review/index.html", "Repository review"),
         ("compliance/index.html", "Compliance register"),
@@ -423,6 +428,11 @@ def build_index() -> None:
         ("sessions/25513d33/index.html", "Verification (session 25513d33)",
          "Independent re-fetch of all three submitted links and 12 policy and disclosure "
          "statements, re-read verbatim on 2026-11-14, each row linked to the page it came from."),
+        # Added by session ab3ed329 (2026-11-16): same reason as the tile above.
+        ("sessions/ab3ed329/index.html", "Verification (session ab3ed329)",
+         "Live re-read of the three short links, their destination listings, the Operating Agreement, "
+         "Program Policies 2(a), 2(b), 6(g), 6(t), 6(v), 6(w), 6(y), the commission table and the "
+         "Creators API ASIN rule on 2026-11-16, plus a sweep that removed observed price and rating values from public data (AB-F-01)."),
         ("docs/index.html", "Archived 2026-11-13 build (/docs/) — flagged",
          "An earlier build, kept for provenance. It still displays price and star-rating cells that "
          "this site's rule and Amazon's policy prohibit; see I-F-02 on the Flagged for review page. "
