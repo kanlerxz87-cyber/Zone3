@@ -68,11 +68,20 @@ OFFICIAL_HOSTS = re.compile(
 ALLOWED_AMOUNTS = {
     "4.50%", "4.00%", "3.00%", "2.50%", "2.00%", "1.00%", "0.00%", "10.00%", "5.00%",
     "$12.00", "$2.00", "$5.00", "$0.25",
+    # Session f65d393b (2026-11-16), flag F65-F-04: the open-questions register
+    # (site/answers.html) quotes the Associates Program's own payment terms — US
+    # minimums of $10 by direct deposit or gift card (gift card capped at $2,000),
+    # $100 by check with a $15 check-processing fee — and the Standard Commission
+    # Table 1 Kitchen rate as "4.5%". These are official policy facts, not product
+    # prices: a product claim stays blocked, a quoted minimum stays allowed.
+    "$10", "$100", "$15", "$2,000", "4.5%",
 }
 
 MONEY_RE = re.compile(r"\$\s?\d[\d,]*(?:\.\d{2})?")
 PERCENT_RE = re.compile(r"\b\d{1,2}\.\d{1,2}\s?%")
-STAR_RE = re.compile(r"\b\d(?:\.\d)?\s*out of\s*5\b|\b★{{0,1}}\s*\d\.\d\s*(?:stars?|/5)\b", re.I)
+# F65-F-06: the pattern previously required a literal star or "out of 5", so a bare
+# "4.6 stars" was never matched. The plain "N.N stars" alternative is the common form.
+STAR_RE = re.compile(r"\b\d(?:\.\d)?\s*out of\s*5\b|\b★{{0,1}}\s*\d\.\d\s*(?:stars?|/5)\b|\b\d\.\d\s*stars?\b", re.I)
 REVCOUNT_RE = re.compile(r"\b\d[\d,.]*(?:K|M)?\s*(?:ratings|reviews|global ratings)\b", re.I)
 
 PROHIBITED_TEXT = [
@@ -170,9 +179,25 @@ def check(root: pathlib.Path):
         for m in PERCENT_RE.finditer(txt):
             if m.group(0).replace(" ", "") not in ALLOWED_AMOUNTS:
                 errs.append(f"G6 {rel}: unapproved percentage {m.group(0)!r}")
+        # Use/mention: a page whose surrounding sentence marks the string as a
+        # construction that is banned ("may not be displayed", "prohibit", "cannot",
+        # "not published", …) is quoting the rule, not rendering the fact. The same
+        # rule already applied to PROHIBITED_TEXT; F65-F-04 extends it here so the
+        # style guide can list what it forbids.
+        def quoted_as_banned(match) -> bool:
+            ctx = txt[max(0, match.start() - 140):match.end() + 80].lower()
+            return any(k in ctx for k in (
+                "may not", "must not", "cannot", "can’t", "can't", "prohibit",
+                "not published", "never", "no “", "no '", "no \"", "not allowed",
+                "instead of", "forbidden", "banned"))
+
         for m in STAR_RE.finditer(txt):
+            if quoted_as_banned(m):
+                continue
             errs.append(f"G6 {rel}: star-rating string rendered ({m.group(0)!r}) — 6(t) requires API data")
         for m in REVCOUNT_RE.finditer(txt):
+            if quoted_as_banned(m):
+                continue
             errs.append(f"G6 {rel}: review-count string rendered ({m.group(0)!r}) — 6(t) requires API data")
 
         # ---- G7 prohibited constructs

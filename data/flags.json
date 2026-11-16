@@ -1392,6 +1392,42 @@
       "session": "f65d393b",
       "status": "fixed",
       "repo_evidence": "python3 scripts/build_marketing.py at 7da5ce2 raises AttributeError on base.NAV; after the fix it builds 7 pages with rc=0"
+    },
+    {
+      "id": "F65-F-04",
+      "severity": "Medium",
+      "category": "Compliance gate (fixed)",
+      "item": "i2_gate was RED on main — 14 problems across four classes on the reader-facing site/",
+      "detail": "Run on main at 7da5ce2 before any edit by this session, tools/i2_gate.py failed with 14 problems: (a) site/answers.html quotes the Associates Program's own payment terms (US minimums $10 direct deposit, $10 gift card capped at $2,000, $100 by check with a $15 check-processing fee) and the Standard Commission Table 1 Kitchen rate '4.5%', which the G6 allowlist did not contain; (b) site/answers.html rendered the submitted link.amazon token twice and site/flagged.html (CBA-F-01's source column) once as clickable outbound links — exactly what FLG-003 and Participation Requirements 6(w)/CIS 2(e) say must be tested in an Associates account before publishing; (c) the four hand-authored guide pages (air-fryer-oven-vs-basket, capacity-maths, dishwasher-safe-baskets, what-four-in-one-means) were missing the IP License 2(k) Amazon content disclaimer their footer template requires; (d) site/style-guide.html quotes banned constructions ('4.6 stars', '1,393 reviews') in its table of what not to write, and G6 had no use/mention rule so it flagged the page for obeying the rule. All four classes fixed in this session; the gate now passes (18 pages, 162 rows, 0 flagged).",
+      "action": "Fixed in this session. The allowlist additions are commented as deliberate; the short-link citations render as text with the /dp/ destination left clickable; the disclaimer was added to the four guide footers; G6 gained a use/mention bypass mirroring the rule PROHIBITED_TEXT already had. Change request for the pipeline owner: run i2_gate.py in every release check — main shipped red, which suggests it is not yet in the checklist.",
+      "date": "2026-11-16",
+      "session": "f65d393b",
+      "status": "fixed",
+      "repo_evidence": "python3 tools/i2_gate.py at 7da5ce2 (stashed tree) exits 1 with 14 problems; after the fixes it exits 0 with 0 flagged"
+    },
+    {
+      "id": "F65-F-05",
+      "severity": "Low",
+      "category": "Build (fixed)",
+      "item": "The documented reader-layer chain (build_i2_site && build_cba81fa5) failed from any clean checkout — the injected region's start anchor does not survive a plain i2 rebuild",
+      "detail": "tools/build_cba81fa5_site.py replaces the region between '<h2>Buying guides</h2>' and '<h2>Side by side</h2>' on site/index.html, but the start anchor only exists inside the block it injects: tools/build_i2_site.py never emits it (checked with git log -S across its whole history). A plain rebuild of the reader site therefore drops the anchor, and the integrator exited with 'anchors not both found', so the README's own build order could not complete — and with it the guide cards, the guide plan, the CBA flag rows on site/flagged.html and the lint's register links all stayed missing. Fixed in this session by making patch_text self-healing: when the start anchor is missing but the end anchor survives, the block is inserted before the end anchor; the block re-emits the start anchor so the next run takes the replace path. The full chain was run twice and the tree hashes identically.",
+      "action": "Fixed in this session (tools/build_cba81fa5_site.py). Change request for the owner: the sentinel-based region the root index already uses (CBA-F-05) is the sturdier pattern — a region keyed on an anchor the upstream generator does not emit will keep breaking in this way.",
+      "date": "2026-11-16",
+      "session": "f65d393b",
+      "status": "fixed",
+      "repo_evidence": "python3 tools/build_cba81fa5_site.py after a plain tools/build_i2_site.py run raised SystemExit 'anchors not both found'; with the fix the same sequence writes the region and --check reports already current"
+    },
+    {
+      "id": "F65-F-06",
+      "severity": "Info",
+      "category": "Gate defect (fixed)",
+      "item": "i2_gate's star-rating pattern missed the plain '4.6 stars' form — it only matched a literal star glyph or 'out of 5'",
+      "detail": "STAR_RE required 'N out of 5' or a literal star glyph before 'N.N stars', so the most common written form ('4.6 stars') was never matched by G6 on the reader site. Fixed in this session by adding the bare 'N.N stars' alternative, together with the use/mention bypass (F65-F-04d) so pages that quote the construction as banned still pass. After the change the reader site still reports 0 flagged, which shows no page was actually rendering stars and the pattern now covers the gap.",
+      "action": "Fixed in this session (tools/i2_gate.py). No site content needed changing.",
+      "date": "2026-11-16",
+      "session": "f65d393b",
+      "status": "fixed",
+      "repo_evidence": "tools/i2_gate.py STAR_RE before/after in this session's diff; post-change gate run reports 18 pages, 0 flagged"
     }
   ]
 }

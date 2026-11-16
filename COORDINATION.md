@@ -7051,27 +7051,35 @@ a new page; nothing was implemented from the suggestions without review, per the
 | F65-F-01 | Low | Six `marketing/*.html` pages stale vs shared NAV after PR #101 (third recurrence of the class; parallel finding A0-F-04, cross-referenced) | **fixed** — regenerated (nav-only); pipeline change request in the flag's `action` |
 | F65-F-02 | Info | `sitemap.xml` on `main` carried the 5 redirect-stub/duplicate entries `tools/build_site.py` sweeps in (25-F-04 root cause) | **fixed** — canonical regeneration: 78 pages, 0 extras, all 8 `site/` pages listed |
 | F65-F-03 | Medium | **`scripts/build_marketing.py` crashed on `main`**: session 5a56c084 split `NAV` into `NAV_PRIMARY`/`NAV_MORE` in `scripts/build_site.py`, but the marketing generator still called `list(base.NAV)` → `AttributeError`. Reproduced on `main` at `7da5ce2` before any edit by this session; every other generator ran | **fixed** — flat entry list now built from `NAV_PRIMARY` + flattened `NAV_MORE`; 7 pages regenerate, rc=0; smoke-test change request in the flag's `action` |
+| F65-F-04 | Medium | **`tools/i2_gate.py` was RED on `main`** — 14 problems across four classes on `site/`: official policy payment minimums + Table-1 Kitchen rate missing from the G6 allowlist; the submitted short links rendered as clickable outbound links on `answers.html`/`flagged.html`; four hand-authored guides missing the IP License 2(k) disclaimer; the style guide's banned-construction examples flagged with no use/mention rule | **fixed** — allowlist extended (deliberately, commented), short links rendered as text with `/dp/` left clickable, disclaimer added to the four footers, use/mention bypass added; gate now **PASS (18 pages, 0 flagged)**; check-request in the flag's `action` |
+| F65-F-05 | Low | The README's own chain `build_i2_site.py && build_cba81fa5_site.py` **failed from any clean checkout**: the injected region's start anchor (`<h2>Buying guides</h2>`) does not exist in the upstream generator, so a plain i2 rebuild dropped it and the integrator raised — losing the guide cards, guide plan, CBA flag rows and lint links | **fixed** — self-healing insert path in `patch_text`; full chain run twice, tree hashes identically; sentinel-anchor change request in the flag's `action` |
+| F65-F-06 | Info | `i2_gate`'s star pattern missed the plain `4.6 stars` form (only `★N.N stars` / `N out of 5`) | **fixed** — bare form added; post-change run still 0 flagged, proving the gap was real but unexploited |
 
 ### F65-T5 — final integration (in progress: gates green, PR next)
 
-Gates on the final tree (after F65-F-01/F-02 fixes and the 88-flag register):
+Gates on the final tree (re-run after every rebase round; numbers are from the last run,
+after all three `F65-F-*` fixes and the third round of `main` movement):
 
-| Gate | Result |
+| Gate | Result (final run, after F65-F-01…F-06 fixes) |
 |---|---|
-| `python3 scripts/check_site.py` | **OK — 13 pages, 3 products, 52 sources, 88 flags** |
-| `python3 tools/verify_site.py` | **VERIFY PASS — 83 pages, 1,484 rows, 1,260 with official source, 439 with flag, 89 repo-anchored** |
+| `python3 scripts/check_site.py` | **OK — 30 pages, 3 products, 62 sources, 108 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS — 115 pages, 1,918 rows, 1,675 with official source**; 312 non-blocking V4 advisories on inherited pages (measured against pure `main`: 154 pre-existed before this session's edits, the rest arrived with main's own newest pages; this session's delta is its repo-evidence flag rows) |
 | `python3 tools/link_report.py --strict` | **exit 0** |
-| `python3 tools/i2_gate.py` | **PASS — 8 pages, 105 rows, 89 sourced, 16 explicit blanks** |
-| `python3 scripts/build_sitemap.py --check` | **exit 0 — 78 pages, 0 extra entries** |
-| `python3 scripts/check_all_links.py` | **129 pages, 116 external URLs, 0 errors** |
-| all four generators re-run | **idempotent** (second run: zero new diffs) |
+| `python3 tools/i2_gate.py` | **PASS — 18 pages, 162 rows, 146 sourced, 16 explicit blanks, 0 flagged** (was **FAILED, 14 problems** on pure `main` → F65-F-04) |
+| `python3 tools/cba81fa5_lint.py` | **PASS — 18 pages, 0 new findings**, 22 inherited advisory |
+| `python3 tools/build_cba81fa5_site.py --check` | **already current** (was `anchors not both found` → F65-F-05) |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 78 pages, 0 extra entries**, all `site/` pages listed (coverage deliberately excludes `/docs/`+`/sessions/` per main's f48ec8b; `build_sitemap.py` must run **last**, after `tools/build_site.py`, or the 5 stubs sweep back in — F65-F-02) |
+| `python3 scripts/check_all_links.py` | **0 errors** (161 pages, 179 external URLs) |
+| `sessions/3c886b62/tools/check_links.py` | **OK** |
+| full generator chain ×2 | **idempotent** — tree hash identical across runs (chain order: `build_site` → `build_i2_site` → `build_cba81fa5` → `build_marketing` → `build_read` → `build_5a56c084` → `tools/build_site` → `build_sitemap`) |
 | conflict-marker / secrets sweep | **0 / 0** |
 
 Shared outputs edited by this session, each logged with its reason: `data/flags.json`
-(+F65-F-01/F-02/F-03, the three findings above), `EXECUTIVE-SUMMARY.md` (counts corrected to
-the register — 62 sources / 55 facts / 100 flags / 24 pages in the shared gate, plus the
-severity breakdown; this also repaired a pre-existing drift where §2 said 93 flags while the
-register held 97), generated `flagged.html`/`executive-summary.html`/`index.html`
+(+F65-F-01…F-06, the six findings above), `EXECUTIVE-SUMMARY.md` (counts corrected to
+the register — 62 sources / 55 facts / 108 flags / 30 pages in the shared gate, plus the
+severity breakdown recomputed after every rebase round; this also repaired a pre-existing
+drift where §2 said 93 flags while the register held 97, and again when parallel sessions
+pushed the register to 102 before this branch’s final rebase), generated `flagged.html`/`executive-summary.html`/`index.html`
 (regenerated from the data, plus the landing KPI), `marketing/*.html` (F65-F-01 fix),
 `scripts/build_marketing.py` (F65-F-03 fix — a gate failure, not a style choice), and
 `sitemap.xml` (F65-F-02 fix). `sessions/f65d393b/**` (this session's records) and
@@ -7084,6 +7092,20 @@ board instead of from the nav.
 conflicts resolved main-verbatim + this Part appended, generated pages resolved to main's
 side then **regenerated** from the unioned data, flag registers unioned by ID (97 + 2 = 99).
 Round 2: `main` moved `b8f576d` → `7da5ce2` (PRs #119/#121) before the push; same resolution
-(`COORDINATION.md` main-verbatim + this Part, `flagged.html` regenerated afterwards). No
-line-start conflict marker was ever committed (checked before every continue/push); no other
-session's file was discarded.
+(`COORDINATION.md` main-verbatim + this Part, `flagged.html` regenerated afterwards).
+**Reader-layer repair (part of F65-T5, logged because it edits shared tools).** Pure `main`
+arrived with the reader site's own release gate failing (`i2_gate`: 14 problems) and the
+README's build chain unreproducible (`build_cba81fa5` raising on a clean tree). Under the
+brief's "fix and retry, never merge a broken site" rule this session fixed both rather than
+routing around them: G6's allowlist and use/mention rule (`tools/i2_gate.py`), the self-healing
+region (`tools/build_cba81fa5_site.py`), the four guide footers, the two hand-authored
+short-link citations on `site/answers.html`, plus the marketing generator (F65-F-03). Every
+edit is recorded in the corresponding `F65-F-*` flag with its before/after reproduction. The
+whole documented chain now runs clean twice in a row and `i2_gate`/`lint`/`cba --check` all
+report PASS/current on the same tree.
+Round 3: `main` moved `7da5ce2` → `f96a059` (PR #127, session `757efebc`, register 97 → 102)
+before the push; `COORDINATION.md` main-verbatim + this Part, `data/flags.json` unioned by ID
+again (102 + F65-F-01/F-02 = 104, then F65-F-03 → 105), generated pages resolved to main's
+side and **regenerated** from the unioned data, executive-summary counts recomputed from the
+registers (not from any earlier statement). No line-start conflict marker was ever committed
+(checked before every continue/push); no other session's file was discarded.

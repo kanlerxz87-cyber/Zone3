@@ -36,10 +36,23 @@ for s in json.loads((ROOT / "data" / "i2" / "sources.json").read_text(encoding="
     SRC.setdefault(s["id"], s)
 
 
+def is_short_link(url: str) -> bool:
+    """The three submitted link.amazon tokens: evidence to quote, never to click.
+
+    Session f65d393b (2026-11-16): i2_gate G7 (and FLG-003, and Participation
+    Requirements 6(w)/CIS 2(e)) — a submitted short link is rendered as text on
+    this site; the official /dp/ destination beside it stays clickable.
+    """
+    return url.startswith("https://link.amazon/")
+
+
 def src_tag(sid: str) -> str:
     s = SRC.get(sid)
     if not s:
         return f'<span class="mono">{sid}</span>'
+    if is_short_link(s["url"]):
+        return (f'<span class="src mono" title="{s.get("title", s["url"])} — shown as text, '
+                f'not as a link (i2_gate G7; FLG-003)">\u2192 {sid}</span>')
     return (f'<a class="src" href="{s["url"]}" target="_blank" rel="noopener noreferrer" '
             f'title="{s.get("title", s["url"])}">{sid}</a>')
 
@@ -236,9 +249,17 @@ def flagged_block() -> str:
     sev = {"High": "b-bad", "Medium": "b-warn", "Low": "b-mute", "Info": "b-mute"}
     rows = []
     for f in data["flags"]:
-        src = " ".join(
-            f'<a class="src" href="{s["url"]}" target="_blank" rel="noopener noreferrer" title="{s["label"]}">'
-            f'{html_escape(s["label"])}</a>' for s in f["sources"])
+        parts = []
+        for s in f["sources"]:
+            if is_short_link(s["url"]):
+                parts.append(
+                    f'<span class="src mono" title="{html_escape(s["label"])} — shown as text, '
+                    f'not as a link (i2_gate G7; FLG-003)">{html_escape(s["label"])}</span>')
+            else:
+                parts.append(
+                    f'<a class="src" href="{s["url"]}" target="_blank" rel="noopener noreferrer" title="{s["label"]}">'
+                    f'{html_escape(s["label"])}</a>')
+        src = " ".join(parts)
         rows.append(
             f'<tr id="{f["id"]}"><td class="lead-cell"><span class="mono">{f["id"]}</span><br>'
             f'{f["title"]}</td>'
@@ -270,7 +291,19 @@ def patch_text(t: str, start: str, end: str, new: str, back: str | None = None,
         k = t.rfind(back, 0, i)
         if k > 0:
             i = k
-    if i < 0 or j < 0 or j <= i:
+    if i < 0:
+        # Session f65d393b (2026-11-16), flag F65-F-05: a plain rebuild of the
+        # reader site (tools/build_i2_site.py) drops this session's injected
+        # region — including its start anchor — after which the replace raised
+        # and the whole "build_i2_site && build_cba81fa5" chain failed from any
+        # clean checkout. Self-heal: when the start anchor is gone but the end
+        # anchor survives, insert the block immediately before the end anchor.
+        # The block re-emits the start anchor, so the next run takes the replace
+        # path again and the result stays idempotent.
+        if j < 0:
+            raise SystemExit(f"FAIL: anchors {start!r} / {end!r} not both found in the file")
+        return t[:j] + new + t[j:]
+    if j < 0 or j <= i:
         raise SystemExit(f"FAIL: anchors {start!r} / {end!r} not both found in the file")
     j += len(end) if include_end else 0
     return t[:i] + new + t[j:]
