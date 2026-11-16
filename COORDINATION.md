@@ -5000,6 +5000,91 @@ through the REST API (`gh api …/pulls/96 --method PATCH`) instead. The PR body
 
 ---
 
+## AB Part — session `ab3ed329` (branch `arena/ab3ed329-zone3`, base `933e2f3`, 2026-11-16)
+
+### AB Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `ab3ed329` | `arena/ab3ed329-zone3` | Independent live re-verification of the three submitted short links, their destination listings and the load-bearing official policy/commission facts; gate re-run on `main` `933e2f3`; repo irregularity review; record, PR → `main`, merge, Pages check. Own scope: `sessions/ab3ed329/**` plus this AB Part. | in progress (AB-T4 — PR and merge) | 2026-11-16 |
+
+The branch name is fixed by the session's branch note (`arena/ab3ed329-zone3`); the `session-<id>/<task>` form from the brief is not used, as recorded for earlier sessions on this board.
+
+### AB Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| AB-T1 — Read board in full, claim tasks, push claim | done (this commit) | ab3ed329 | `COORDINATION.md` (AB Part, append only) | — | — |
+| AB-T2 — Live re-fetch of the 3 short links + destinations, Standard Commission Table 1, Operating Agreement §5, Associates Policies 2(a)/2(b)/6(t)/6(v)/6(w)/6(y)/6(z), Creators API ASIN rule, FTC Disclosures 101 | done | ab3ed329 | `sessions/ab3ed329/**` (read-only fetches) | S01, S02, S07, S11–S16, S25, S31 (existing IDs in `data/sources.json`) | — |
+| AB-T3 — Gate re-run on `main` (`check_site`, `verify_site`, `link_report --strict`, `build_sitemap --check`, `check_all_links`), exposure sweep, repo irregularity review | done | ab3ed329 | `sessions/ab3ed329/**`; redacted public data files (AB-F-01); regenerated generated pages | — | AB-F-01 to AB-F-05 |
+| AB-T4 — Record, PR → `main`, merge, Pages deploy confirmation | in progress | ab3ed329 | `COORDINATION.md` (AB Part only), `sessions/ab3ed329/**` | — | — |
+
+### AB-T2 — independent live re-verification (done, 2026-11-16)
+
+Every item below was fetched by session `ab3ed329` on 2026-11-16. The full table, with the wording each row relies on, is in [`sessions/ab3ed329/index.html`](sessions/ab3ed329/index.html) (Section A) and [`sessions/ab3ed329/verification-2026-11-16.json`](sessions/ab3ed329/verification-2026-11-16.json).
+
+| # | Claim | Result | Source fetched |
+|---|---|---|---|
+| A1–A3 | Short links `B04G1MEwY`, `B02NbDxp3`, `B00hJ57DV` open the CHEFMAN 6 Qt (`B0CDY277D3`), Emeril Lagasse 26QT (`B09B7SB46R`) and Chefman 8 Qt TurboFry (`B08DKYBTPH`) listings | Confirmed; observed destinations only, intent not established (FLG-001/002) | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) · [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) · [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) · [amazon.com/dp/B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) · [amazon.com/dp/B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) · [amazon.com/dp/B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) |
+| A4–A6 | Direct `/dp/<9-character token>` returns Page Not Found | Confirmed for all three | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) · [amazon.com/dp/B02NbDxp3](https://www.amazon.com/dp/B02NbDxp3) · [amazon.com/dp/B00hJ57DV](https://www.amazon.com/dp/B00hJ57DV) |
+| A7 | Creators API GetItems: `itemIdType` defaults to `ASIN`; examples are 10 characters | Confirmed | [GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) |
+| A8–A9 | Operating Agreement updated October 15, 2025; §5 disclosure wording | Confirmed verbatim | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
+| A10 | Standard Commission Table 1: Kitchen 4.50%; All Other Categories 4.00% | Confirmed | [Commission Income Statement, Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| A11–A16 | Program Policies updated April 14, 2026; Participation Requirements 2(a), 2(b), 6(t), 6(v), 6(w), 6(y), 6(z) | Confirmed verbatim. 2(b) and 6(t) are the basis of AB-F-01 | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
+| A17 | FTC Disclosures 101: disclose any financial, employment, personal or family relationship; dated November 2019 | Confirmed | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
+
+### AB-T3 — gates, exposure sweep and repo irregularities (done, 2026-11-16)
+
+**Gates on the final tree** (run after the last edit; `main` base `933e2f3`):
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | exit 0 — 13 pages, 3 products, 51 sources, 83 flags |
+| `python3 tools/verify_site.py` | exit 0 — 75 pages, 1,373 table rows, 1,165 with an official source, 414 with a flag, 89 with a repo anchor; 0 advisories |
+| `python3 tools/link_report.py --strict` | exit 0 |
+| `python3 scripts/build_sitemap.py --check` | exit 0 — 70 pages |
+| `python3 scripts/check_all_links.py` | exit 0 — 121 HTML pages, 105 external URLs, 0 errors |
+
+Generators were re-run with `scripts/build_site.py`, `tools/build_site.py`, `scripts/build_marketing.py` and `scripts/build_sitemap.py`. They were idempotent apart from the intended changes.
+
+**Exposure sweep (AB-F-01).** The sweep (`sessions/ab3ed329/exposure_scan.sh`) found observed Amazon price, star-rating and review-count values on public pages. Program Policies 2(b) and 6(t) do not allow that display outside Creators API or PA API. This session removed the values from the files it could change:
+
+- `data/products.json` (observed block for all three listings) → null, with a note.
+- `data/sources.json` S46–S48 status notes → reworded; source links kept.
+- `data/flags.json`, `data/z3/flags.json` and `EXECUTIVE-SUMMARY.md` → 49 literals replaced by withheld markers. Commission rates and bounty amounts were not touched.
+
+The regenerated pages (root, `flagged/`, `marketing/`, `sitemap.xml`) were rebuilt from those files. A check of the built HTML found no observed values in any generated page.
+
+**Cross-scope change requests — logged, NOT edited** (the file belongs to another session or is an archive; the coordination rule applies):
+
+| CR | Owner / path | Request | Scan file |
+|---|---|---|---|
+| AB-CR-1 | Owner of the archived 2026-11-13 build, `docs/` | Remove or redact the price and rating cells on the analysis, sources, content, executive summary and index pages. This is the largest live exposure. | `docs/*` in `sessions/ab3ed329/exposure-scan.txt` |
+| AB-CR-2 | Session `3c886b62` (`sessions/3c886b62/**`) | Remove or redact the observed values in its product, category, comparison, analysis, verification and data pages, and in its `docs/` notes | `sessions/3c886b62/**` |
+| AB-CR-3 | Session `03bbd050` (`sessions/03bbd050/**`) | Same, for its index, findings and verification pages | `sessions/03bbd050/**` |
+| AB-CR-4 | Sessions `f2102efa`, `c79eb5d9`, `7b70cfb0`; `archive/c4e71983/**` | Same, for the verification notes and archived snapshot pages | listed in the scan file |
+| AB-CR-5 | Archive snapshot files (`data/c4e71983-*.json`, `data/z3-51fcb80d-snapshot.json`) and `research/*.md` logs | Owner decision: redact or remove | listed in the scan file |
+| AB-CR-6 | `COORDINATION.md` (this board's history) | Historical records quote observed values. Not edited. Recommend archiving the closed Parts (see AB-F-03). | this file |
+
+**Irregularities raised (published on the Flagged for review page):**
+
+| ID | Severity | Item | Disposition |
+|---|---|---|---|
+| AB-F-01 | High | Other sessions' pages and archives still display observed prices, ratings or review counts | Public registers fixed; archives need an owner decision (CR list above) |
+| AB-F-02 | Low | FLG-001 says no product name can be tied to the identifiers, but the Products page shows observed listing titles | Owner to align the wording |
+| AB-F-03 | Medium | `COORDINATION.md` is over 5,000 lines; 79 lines contain "in progress" | Owner to close or archive stale claims |
+| AB-F-04 | Low | Duplicate registers and pages (`data/products.json` and `data/z3/products.json`; `data/flags.json` and `data/z3/flags.json`; several executive summaries; `category/` and `categories/`). No gate reads both members of a pair | Owner to choose canonical files |
+| AB-F-05 | Info | Status date (2026-11-14 → 2026-11-16) and marketing navigation corrected on rebuild. The sitemap was checked and is correct; redirect stubs are excluded | Corrected |
+
+**Open items not changed by this session:** the intended product for each short link (FLG-001, FLG-002, FLG-027), whether link.amazon is a Redirecting Link (FLG-003, needs a logged-in Associates account), and live price, rating and review values (withheld under 2(b) and 6(t), FLG-022/023). The owner has to decide these.
+
+### AB-T1 — claim (2026-11-16, commit `b20c030`)
+
+Claim pushed before any verification work. Board read in full. No other session had a live claim covering `sessions/ab3ed329/**`.
+
+### AB-T4 — PR, merge and Pages (in progress)
+
+The PR, merge result and Pages build will be recorded in a follow-up section of this Part, after the merge.
 # Part: session `1f1b8bd2` (2026-11-16) — repo review, independent re-verification round, stale-PR integration, final integration
 
 > Appended additively. Task IDs `1F-Tn` and irregularity IDs `1F-F-nn` here are **namespaced**

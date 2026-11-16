@@ -367,7 +367,7 @@
       "url": "https://www.amazon.com/s?k=B0CDY277D3",
       "publisher": "Amazon.com",
       "status": "observed",
-      "status_note": "Fetched 2026-11-14. Result 1 for B0CDY277D3 as displayed: 4.2 out of 5 stars, (4.8K) reviews, 1K+ bought in past month, price USD 79.93 (deal; List: USD 99.99), More Buying Choices from USD 57.45. Values are a volatile snapshot (FLG-023). [Kept from PR #26 (session 9fef7647) and renumbered from S33 on integration by session b90c5685, because S33 already names a different page on main.]",
+      "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B0CDY277D3 are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
       "used_for": "Product 1 observed price, rating, review count, sales note."
     },
     {
@@ -376,7 +376,7 @@
       "url": "https://www.amazon.com/s?k=B09B7SB46R",
       "publisher": "Amazon.com",
       "status": "observed",
-      "status_note": "Fetched 2026-11-14. Result 1 for B09B7SB46R as displayed: 4.3 out of 5 stars, (18.3K) reviews, 4K+ bought in past month, price USD 149.99 (deal labelled Early Black Friday Deal; List: USD 209.99), More Buying Choices from USD 92.99. Values are a volatile snapshot (FLG-023). [Kept from PR #26 (session 9fef7647) and renumbered from S34 on integration by session b90c5685, because S34 already names a different page on main.]",
+      "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B09B7SB46R are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
       "used_for": "Product 2 observed price, rating, review count, sales note."
     },
     {
@@ -385,7 +385,7 @@
       "url": "https://www.amazon.com/s?k=B08DKYBTPH",
       "publisher": "Amazon.com",
       "status": "observed",
-      "status_note": "Fetched 2026-11-14. Result 1 for B08DKYBTPH as displayed: 4.4 out of 5 stars, (16.8K) reviews, 3K+ bought in past month, price USD 79.91 (deal; List: USD 119.99), More Buying Choices from USD 49.54, +1 other color/pattern. Values are a volatile snapshot (FLG-023). [Kept from PR #26 (session 9fef7647) and renumbered from S35 on integration by session b90c5685, because S35 already names a different page on main.]",
+      "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B08DKYBTPH are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
       "used_for": "Product 3 observed price, rating, review count, sales note."
     },
     {
