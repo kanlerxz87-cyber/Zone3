@@ -200,6 +200,9 @@ def register_checks(root: pathlib.Path):
 
 
 STRAY_ATTR = re.compile(r">\s*(?:title|target|rel|href|class|aria-[\w-]+|data-[\w-]+)\s*=")
+# A page that documents a bad tag has to show it. Code spans and the style guide's example spans are
+# exempt, the same convention the phrase rules use, so the flagged page can quote a defect as evidence.
+EXAMPLE_SPANS = re.compile(r'<span class="example">.*?</span>|<(code|pre)\b.*?</\1>', re.S)
 
 
 def lint_generated_regions(root: pathlib.Path):
@@ -219,7 +222,7 @@ def lint_generated_regions(root: pathlib.Path):
             rel = "index.html (front-door band)"
             if DISCLOSURE not in html_unescape(TEXT_STRIP.sub(" ", band)):
                 yield (rel, "POLICY:disclosure-sentence", "the band must carry the required sentence, not rely on the page footer")
-            for m in STRAY_ATTR.finditer(band):
+            for m in STRAY_ATTR.finditer(EXAMPLE_SPANS.sub(" ", band)):
                 yield (rel, "STYLE:malformed-tag",
                        f"attribute text is outside the tag and renders as prose -> {band[max(0,m.start()-50):m.end()+40]!r}")
             for m in re.finditer(r'href="([^"]+)"', band):
@@ -240,7 +243,7 @@ def lint_malformed_tags(root: pathlib.Path):
     for p in sorted((root / "site").rglob("*.html")):
         raw = p.read_text(encoding="utf-8")
         rel = p.relative_to(root).as_posix()
-        for m in STRAY_ATTR.finditer(raw):
+        for m in STRAY_ATTR.finditer(EXAMPLE_SPANS.sub(" ", raw)):
             yield (rel, "STYLE:malformed-tag",
                    f"attribute text is outside the tag and renders as prose -> {raw[max(0,m.start()-50):m.end()+40]!r}")
 
