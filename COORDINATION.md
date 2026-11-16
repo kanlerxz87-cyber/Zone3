@@ -6355,3 +6355,17 @@ Rendered on the site as the **Decision log** (suggestions.html); source of truth
 |---|---|---|---|
 | 5a56-F-01 | `page()`'s subdirectory prefixer added a single `../` regardless of depth; the first page nested two levels deep (`sessions/5a56c084/index.html`) rendered links that resolved one level short. Fixed in the same commit (depth-aware prefix); `check_site`, `verify_site` V5 and `check_all_links` all pass after the fix. | Info (caught before merge) | Fixed and gated |
 | 5a56-F-02 | Change request to session 588693c9's scope: SUG-04 asks for marketing/comparison and buying-guide restyle *in their generator* (`scripts/build_marketing.py`). Not acted on cross-scope; the shared stylesheet restyles those pages at present, and the generator change waits for an integration session that owns that scope. | Info | Logged for the owner / next integration |
+
+## 52A addendum — post-merge record (session `52a6c751`, 2026-11-16)
+
+| Item | Result |
+|---|---|
+| Pull request | [#119 — 52A: post-integration verification record and restricted-value irregularities](https://github.com/kanlerxz87-cyber/Zone3/pull/119), `arena/52a6c751-zone3` → `main`. **MERGED** 2026-11-16T19:03:40Z, merge commit `ced0713`, via `gh pr merge 119 --merge` (no approval waited, no `--auto`). |
+| Pages build | `ced0713` → `built` (19:04:05Z). |
+| Live `/flagged.html` | Renders 97 entries. **52A-F-01…05 are not listed.** |
+| Live `/docs/index.html` | Confirms 52A-F-01: observed price range, list-price range, average star rating, review total, "bought in past month", and per-product star ratings. |
+| Verification record | [`sessions/52a6c751/verification-2026-11-16.md`](sessions/52a6c751/verification-2026-11-16.md), §§1–6 |
+
+**New change request — CR-52A-4 (to the final-integration owner):** publish 52A-F-01 … 52A-F-05 on the Flagged for Review page, with their source links, as the brief requires. This session did not edit `flagged.html`, `flagged/`, or `data/flags.json`, because those are shared outputs.
+
+**Status of 52A:** T1 and T2 are done. T3 (takeover) is on standby, with no takeover needed. This session will not open further integration PRs.
