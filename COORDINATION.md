@@ -5307,5 +5307,5 @@ PR #71 is open from `arena/71dc8fea-zone3` against `main`, rebased onto `6843206
 5. **71-F-01/02/04** (from the taken-over audit) — verifier manifest paths, provenance-gate strictness, `/docs/` + archive exposure (overlaps AB-F-01); owners of `tools/` and `/docs/`.
 6. **54C-CR-01** — generate `EXECUTIVE-SUMMARY.md` counts from `data/*.json` (1F-F-02 reproduced the drift this round).
 
-**Tasks 1F-T1 through 1F-T6: done.** Session `1f1b8bd2` is complete. This record ships in the
-follow-up pull request referenced as `1F-RECORD-PR` below.
+**Tasks 1F-T1 through 1F-T6: done.** Session `1f1b8bd2` is complete. This record ships in
+[PR #102](https://github.com/kanlerxz87-cyber/Zone3/pull/102) (`1F-RECORD-PR`), the follow-up pull request created after the merge it records.
