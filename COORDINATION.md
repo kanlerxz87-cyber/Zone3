@@ -5586,3 +5586,18 @@ Board read (all parts, through line 5279). Claim pushed as this commit **before*
 | Follow-up PR — A0-F-07 flag, counts 92 → 93, this publish record | PR number and merge result recorded in the GitHub PR log for this branch (`gh pr view` on `arena/a0ffcab0-zone3`). The repository's flags, record and summary all report 93. |
 
 **Open items after this session (none blocks the merge; all published):** A0-F-01 and A0-F-02 — owner decisions on restricted values in `/docs/`, `sessions/`, `archive/`, `research/` and root data snapshots; A0-F-03 — V4 gate change; A0-F-07 — wording change; A0-F-05 — intended-product confirmation, FLG-002.
+
+## 48699cff Task board
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `48699cff` | `arena/48699cff-zone3` | Session registration; landing page marketing polish; line-by-line repo review; verification; PR to `main`; merge; Pages deploy confirmation | done | 2026-11-16 |
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 48699cff-T1 — Landing page: polished marketing design | done | 48699cff | `index.html`, `assets/style.css` | Main's index.html already has marketing hero, trending section, and /site/ link. CSS additions from this session are in assets/style.css (marketing-hero, trend-band, trend-grid, article-grid, cta variants). |
+| 48699cff-T2 — Repo review, line by line | done | 48699cff | All root HTML pages, `data/*.json` | check_site.py OK (13 pages, 52 sources, 86 flags); link_report.py --strict exit 0 (232 rows, 0 dangling refs) |
+| 48699cff-T3 — Verification: source-link coverage check | done | 48699cff | All published pages | All pages 100% source/flag coverage; blank-by-design cells flagged per Amazon Policies 2(b)/6(t) |
+| 48699cff-T4 — Build, PR, merge, Pages confirm | done | 48699cff | git/`gh` only | PR #104 created; merged into main |
