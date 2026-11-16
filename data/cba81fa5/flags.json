@@ -11,36 +11,60 @@
       "why_it_matters": "Any page that promises rotisserie or a dual-speed fan for this machine is quoting wording that is not in the title today. This site publishes neither.",
       "action": "Decide whether to refresh the stored titles from a same-day capture (they will drift again), or keep dating every quotation, as the guides do. Nothing was overwritten.",
       "sources": [
-        {"label": "Listing P2 as served 2026-11-16", "url": "https://www.amazon.com/dp/B09B7SB46R"},
-        {"label": "Submitted short link 2, same destination", "url": "https://link.amazon/B02NbDxp3"},
-        {"label": "Best Sellers in Air Fryers, showing the slug", "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/"}
+        {
+          "label": "Listing P2 as served 2026-11-16",
+          "url": "https://www.amazon.com/dp/B09B7SB46R"
+        },
+        {
+          "label": "Submitted short link 2, same destination",
+          "url": "https://link.amazon/B02NbDxp3"
+        },
+        {
+          "label": "Best Sellers in Air Fryers, showing the slug",
+          "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/"
+        }
       ],
       "status": "open"
     },
     {
       "id": "CBA-F-02",
       "severity": "High",
-      "title": "The release gate cannot fail on disclosure, disclaimer, single-h1 or row-provenance checks",
-      "what": "tools/verify_site.py builds its 'owned pages' set from data/z3/build-manifest.json's 'files' values, but those values are 12-character content digests (e.g. agent-terms: 94cb0fee17a9), not paths. No page is ever matched, so V1/V2/V3/V4 findings are demoted to advisory for the whole repository. Reproduced on 2026-11-16 with a synthetic page missing the disclosure sentence and carrying an unsourced table row: those checks reported only as advisory and the exit code came from an unrelated 'sitemap.xml missing' error.",
+      "title": "The release gate could not fail on disclosure, disclaimer, single-h1 or row-provenance — found by this session, fixed upstream while this PR was in flight",
+      "what": "tools/verify_site.py builds its 'owned pages' set from data/z3/build-manifest.json's 'files' values, but those values are 12-character content digests (e.g. agent-terms: 94cb0fee17a9), not paths. No page is ever matched, so V1/V2/V3/V4 findings are demoted to advisory for the whole repository. Reproduced on 2026-11-16 with a synthetic page missing the disclosure sentence and carrying an unsourced table row: those checks reported only as advisory and the exit code came from an unrelated 'sitemap.xml missing' error. UPDATE 2026-11-16, before merge: while this session was in flight, session 81bc99d0 landed exactly this fix on main (PR #112): the manifest gained explicit 'paths' and verify_site.py consumes them, so V1-V4 can now fail. Reproduced on the rebased tree.",
       "why_it_matters": "'VERIFY PASS' on this repository has been read as evidence that disclosure and row-provenance rules hold. It is not. The rules do hold today — this session checked them independently — but the gate would not have caught it if they did not.",
-      "action": "Recommended: have tools/build_site.py record generated_paths in the manifest, make verify_site.py read that, and land it as its own PR because the corrected gate will turn inherited pages' advisory items into hard failures. Compensating control shipped now: tools/cba81fa5_lint.py fails the build on the same checks over site/**.",
+      "action": "Upstream fix landed during this session: tools/build_site.py now records explicit output paths in data/z3/build-manifest.json and tools/verify_site.py consumes 'paths' before falling back to 'files', with scripts/test_manifest_regression.py as the regression test (commit f48ec8b, merged in PR #112). This session re-verified on the rebased tree: the gate now hard-fails on V1/V3/V4 for pages it owns and VERIFY PASS covers 106 pages. The compensating lint tools/cba81fa5_lint.py is kept - it covers site/**, which the audit generator's manifest does not own, so the two are complementary, not duplicate.",
       "sources": [
-        {"label": "tools/verify_site.py (generated_set)", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/verify_site.py"},
-        {"label": "data/z3/build-manifest.json", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/z3/build-manifest.json"}
+        {
+          "label": "tools/verify_site.py (generated_set)",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/verify_site.py"
+        },
+        {
+          "label": "data/z3/build-manifest.json",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/z3/build-manifest.json"
+        }
       ],
-      "status": "open"
+      "status": "fixed upstream (PR #112, commit f48ec8b) — verified by this session on the rebased tree"
     },
     {
       "id": "CBA-F-03",
       "severity": "Medium",
-      "title": "Two reader sites, two brands, overlapping topics",
-      "what": "/read/ ('The Crisp Report', 11 pages, images, JSON-LD, session d18303ca) and /site/ ('Air Fryer Field Notes', 18 pages including the four guides, the open-questions register and the house style, sessions 59d84c55 and cba81fa5) both answer the same shopper questions from the same three listings, published on the same day. read/capacity.html and site/guides/capacity-maths.html are the clearest overlap, as are the cleaning, features and best-seller pages.",
+      "title": "Three reader sets, two brands, overlapping topics",
+      "what": "/read/ ('The Crisp Report', 11 pages, images, JSON-LD — session d18303ca), site/articles/ (4 feature articles: Sync Finish, the 26QT French door, the 450°F Hi-Fry button — same session, added to main while this session was in flight) and /site/ plus site/guides/ ('Air Fryer Field Notes', sessions 59d84c55 and cba81fa5, 5 guides) all answer shopper questions from the same three listings on the same day. read/capacity.html, site/guides/capacity-maths.html and articles/hi-fry-450.html are the clearest overlaps, as are the cleaning and best-seller pages.",
       "why_it_matters": "A reader who finds both sees the same argument twice from two names, and search engines see two near-duplicate sets. The board has flagged duplicate registers for the same reason; this is the reader-facing version of it.",
-      "action": "Owner decision (question Q-12 in site/answers.html): adopt one brand as canonical and keep the other as an internal verification set, or merge the two guide sets into one nav. This session took the middle path: the root front door points at /read/ for reading, /site/ keeps the evidence desk and the decision board, and site/guides/index.html labels itself a second-source check. Nothing was deleted.",
+      "action": "Owner decision (question Q-12 in site/answers.html): adopt one brand as canonical, keep the others as internal verification, or merge the sets into one nav with one index. This session took the middle path: the root front door leads to read/ for reading and site/ for the evidence desk and the decision board, and site/guides/index.html labels itself a second-source check with the overlap named. Nothing was deleted, and all three sets are in site/site-index.json (18 pages) and the sitemap.",
       "sources": [
-        {"label": "The Crisp Report (read/)", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/read/index.html"},
-        {"label": "Air Fryer Field Notes (site/)", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/site/index.html"},
-        {"label": "Guide plan with the overlap note", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/site/guides/index.html"}
+        {
+          "label": "The Crisp Report (read/)",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/read/index.html"
+        },
+        {
+          "label": "Air Fryer Field Notes (site/)",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/site/index.html"
+        },
+        {
+          "label": "Guide plan with the overlap note",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/site/guides/index.html"
+        }
       ],
       "status": "open"
     },
@@ -52,8 +76,14 @@
       "why_it_matters": "The rows are honest content in the wrong place: a row that explains what is not published still needs the rule it is standing on, or the next reader cannot tell a deliberate blank from a missing value.",
       "action": "Owners of those pages: move the 'cannot publish' rows into a note block or add the Participation Requirements link, and put quoted-ban examples in <span class=\"example\">. The findings are listed in tools/cba81fa5_lint-baseline.json and reported on every run as advisory.",
       "sources": [
-        {"label": "Participation Requirements 2(b), read 2026-11-16", "url": "https://affiliate-program.amazon.com/help/operating/policies"},
-        {"label": "The lint and its baseline", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/cba81fa5_lint.py"}
+        {
+          "label": "Participation Requirements 2(b), read 2026-11-16",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "The lint and its baseline",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/cba81fa5_lint.py"
+        }
       ],
       "status": "open"
     },
@@ -65,8 +95,14 @@
       "why_it_matters": "A future session that rebuilds and publishes without the documented order would silently remove the marketing front door — and the broken gate in CBA-F-02 would not catch it.",
       "action": "The order is documented in this register, in README.md and in the integrator's docstring, and the build fails on it: tools/build_cba81fa5_site.py --check reports STALE and the lint turns that into a SITE:generated-region-stale finding. Permanent fix: fold the band into scripts/build_site.py (a shared file, so it is a change request, not an edit).",
       "sources": [
-        {"label": "tools/build_cba81fa5_site.py", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/build_cba81fa5_site.py"},
-        {"label": "scripts/build_site.py", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py"}
+        {
+          "label": "tools/build_cba81fa5_site.py",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/build_cba81fa5_site.py"
+        },
+        {
+          "label": "scripts/build_site.py",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py"
+        }
       ],
       "status": "open"
     }

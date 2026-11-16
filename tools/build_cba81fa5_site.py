@@ -122,6 +122,8 @@ def guides_index_block() -> str:
 
 
 FRONT_DOOR_NOTE = "cba81fa5 front door — generated region, do not hand-edit"
+FD_START = '<a id="cba81fa5-front-door" aria-hidden="true"></a>'
+FD_END = '<a id="cba81fa5-front-door-end" aria-hidden="true"></a>'
 
 
 def products_for_band():
@@ -154,10 +156,10 @@ def frontdoor_block() -> str:
         f'    <a class="fd-btn fd-btn-{c["kind"]}" href="{c["href"]}">{c["label"]}</a>' for c in fd["cta"]
     )
     return (
-        f'<a id="cba81fa5-front-door" aria-hidden="true"></a><!-- {FRONT_DOOR_NOTE} -->\n'
+        f'{FD_START}<!-- {FRONT_DOOR_NOTE} -->\n'
         '<section class="fdoor">\n'
         f'  <p class="fd-eyebrow">{fd["eyebrow"]}</p>\n'
-        f'  <h1 class="fd-h1">{fd["h1"]}</h1>\n'
+        f'  {{H1}}\n'
         f'  <p class="fd-lede">{fd["lede"]}</p>\n'
         '  <div class="fd-cta">\n'
         f'{ctas}\n'
@@ -175,9 +177,24 @@ def frontdoor_block() -> str:
         f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer">'
         f'title="{SRC["CBA-S09"]["title"]}">CBA-S09</a></p>\n'
         '</section>\n\n'
-        '<p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
+        '<p class="fd-ops" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
         'font-weight:700;color:#767f8d;margin:28px 0 6px">Operations &middot; the audit behind the front door</p>\n'
+        f'{FD_END}'
     )
+
+
+def render_frontdoor(raw: str) -> str:
+    """Band text with the headline tag chosen for the page it is going into.
+
+    The root page already carries an <h1> from scripts/build_site.py ("Dashboard"). Gate V3 and the
+    lint both require exactly one h1 per page, so the band demotes its own headline to a styled
+    paragraph in that case instead of deleting the heading that is already there. Nothing already
+    on the page is removed by this function - the band is inserted, never substituted.
+    """
+    band = frontdoor_block()
+    other = re.sub(re.escape(FD_START) + r".*?" + re.escape(FD_END), "", raw, flags=re.S)
+    tag = "h1" if "<h1" not in other else "p"
+    return band.replace("{H1}", f'<{tag} class="fd-h1">{GUIDES["front_door"]["h1"]}</{tag}>')
 
 
 def flagged_block() -> str:
@@ -217,7 +234,8 @@ def html_escape(v: str) -> str:
     return (v.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
-def patch_text(t: str, start: str, end: str, new: str, back: str | None = None) -> str:
+def patch_text(t: str, start: str, end: str, new: str, back: str | None = None,
+               include_end: bool = False) -> str:
     i, j = t.find(start), t.find(end)
     if back and i > 0:
         k = t.rfind(back, 0, i)
@@ -225,6 +243,7 @@ def patch_text(t: str, start: str, end: str, new: str, back: str | None = None) 
             i = k
     if i < 0 or j < 0 or j <= i:
         raise SystemExit(f"FAIL: anchors {start!r} / {end!r} not both found in the file")
+    j += len(end) if include_end else 0
     return t[:i] + new + t[j:]
 
 
@@ -270,20 +289,25 @@ def main() -> int:
     root_index = ROOT / "index.html"
     if root_index.exists():
         raw = root_index.read_text(encoding="utf-8")
-        start = '<a id="cba81fa5-front-door"' if '<a id="cba81fa5-front-door"' in raw else "<h1>Dashboard</h1>"
-        want = patch_text(raw, start, '<div class="callout">', frontdoor_block())
+        band = render_frontdoor(raw)
+        if FD_START in raw:
+            want = patch_text(raw, FD_START, FD_END, band, include_end=True)
+        elif "<main>" in raw:
+            want = raw.replace("<main>", "<main>\n" + band, 1)
+        else:
+            want = raw
         if 'assets/front-door.css' not in want:
             want = want.replace('<link rel="stylesheet" href="assets/style.css">',
                                 '<link rel="stylesheet" href="assets/style.css">\n'
                                 '<link rel="stylesheet" href="assets/front-door.css">')
-        want = re.sub(r"<title>[^<]*</title>",
-                      "<title>Air Fryer Field Notes — three air fryers, checked line by line</title>", want, count=1)
-        want = re.sub(r'<meta name="description" content="[^"]*">',
-                      '<meta name="description" content="Three air fryers compared on what the Amazon listings state, '
-                      'with every claim linked to the page it came from, plus the full verification dashboard behind it.">',
-                      want, count=1)
-        # a second h1 is not allowed by gate V3: fold the dashboard heading into the body copy
-        want = want.replace('<h1 class="visually-hidden" hidden></h1>', "", 1)
+        if "Air Fryer Field Notes" not in want.split("<title>")[1].split("</title>")[0]:
+            want = re.sub(r"<title>[^<]*</title>",
+                          "<title>Air Fryer Field Notes — three air fryers, checked line by line</title>",
+                          want, count=1)
+            want = re.sub(r'<meta name="description" content="[^"]*">',
+                          '<meta name="description" content="Three air fryers compared on what the Amazon '
+                          'listings state, every claim linked to the page it came from, and the full '
+                          'verification dashboard behind it.">', want, count=1)
         if want != raw:
             changed.append("index.html")
             if not a.check:

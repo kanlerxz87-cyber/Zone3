@@ -155,7 +155,10 @@ def lint_file(path: pathlib.Path, root: pathlib.Path):
             if u.split("#")[0].endswith("/"):
                 target = target / "index.html"
             elif not target.suffix:
-                target = pathlib.Path(str(target) + ".html") if not (pathlib.Path(str(target) / "index.html")).exists() else pathlib.Path(str(target) / "index.html")
+                if (target / "index.html").exists():
+                    target = target / "index.html"
+                else:
+                    target = target.with_suffix(".html")
             if not target.exists():
                 yield (rel, "SITE:broken-link", f"internal link does not resolve -> {u}")
             if not low.startswith("skip"):

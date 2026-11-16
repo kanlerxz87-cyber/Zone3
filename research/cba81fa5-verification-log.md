@@ -74,5 +74,12 @@ and 6(t) allows customer reviews and star ratings only when obtained through tho
 3. **Enrollment rule now quoted on the site.** V6 (original content, "significant commentary,
    analysis, or transformation") is the official basis for the anti-slop style rule — the style guide
    cites it rather than asserting taste.
-4. **No value was added to any price, rating, review-count, click, conversion or revenue cell.** They
+4. **Gate fix landed mid-session, and was re-verified.** This session's CBA-F-02 finding (the ownership set in
+`tools/verify_site.py` reading manifest digests as paths, so V1/V2/V3/V4 could never fail) was fixed on `main`
+while this branch was in flight — commit `f48ec8b` (PR #112, session `81bc99d0`) added explicit `paths` to
+`data/z3/build-manifest.json`, taught `verify_site.py` to consume them, and added
+`scripts/test_manifest_regression.py`. After rebasing onto it, this session re-ran the whole gate set on the
+rebased tree and it passes with the corrected ownership, which is the first time "VERIFY PASS" has meant that for
+these pages. The lint added by this session stays: it covers `site/**`, which the audit manifest does not own.
+5. **No value was added to any price, rating, review-count, click, conversion or revenue cell.** They
    remain blank and flagged (shared flags FLG-022/023/033 and `link_report.py`'s unresolved list).

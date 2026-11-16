@@ -137,7 +137,7 @@
       "source": "CBA-S15"
     }
   ],
-  "duplication_note": "<b>Why this set exists alongside <a href=\"../../read/index.html\">The Crisp Report</a>.</b> Two research sessions published guides against the same brief on the same day, from the same three listings. Rather than delete one, the reader set is <a href=\"../../read/index.html\">The Crisp Report</a> — eleven pages, with images and structured data — and this set stays as a <em>second-source check</em>: the same facts quoted independently, with the register id each row rested on. Where the two disagree, the disagreement is a finding, not a style difference, and it belongs on the <a href=\"../flagged.html\">flagged page</a>.",
+  "duplication_note": "<b>Why this set exists, and what it overlaps.</b> Three sessions published reader copy against the same brief on 2026-11-16, from the same three listings: <a href=\"../../read/index.html\">The Crisp Report</a> (<span class=\"mono\">read/</span>, eleven pages with images and structured data), an article library in this same directory (<a href=\"articles/index.html\">site/articles/</a> — Sync Finish, the 26QT French door, the 450&deg;F Hi-Fry button), and this guide set. Nothing was deleted and no set was merged. This set stays as a <em>second-source check</em>: the same facts quoted independently, each row tagged with the register id it rested on, so a disagreement between two sets is a finding rather than a style difference. Which brand is canonical is question Q-12 / finding CBA-F-03, for the owner to decide.",
   "front_door": {
     "eyebrow": "Two research desks &middot; one standard: quoted from the listing, nothing invented",
     "h1": "Which of these three air fryers fits your kitchen? We read the listings so you can read the decision.",
