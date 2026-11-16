@@ -6064,6 +6064,20 @@ changes are strictly additive new list items (`D-13…`, `I2-S15…`); existing 
 
 ### D1-T5 — PR, merge and Pages deploy (done, 2026-11-16)
 
+**Incident log (logged, not silent — the correction rule).** While closing out, `main` moved **seven times**
+(#112, #113, #115, #117, #118, #119, #121) between the push of PR #114 and the merge of the follow-up
+record PR #116; each landing re-dirtied #116 and each was integrated keep-both. In one of those
+integrations (commit `3333ff5` on this branch), the conflict-resolution script aborted on a
+**false-positive marker check** — main's board legitimately contains the literal strings `<<<<<<<` and
+`>>>>>>>` *inside quoted prose* (table cells describing past "grep found no markers" checks) — and the
+merge was committed with the unresolved conflict hunk still in the file. The commit never reached `main`;
+the very next commit replaced the file with the properly rebuilt version. A second slip: the PR #118/#121
+integration rebuilt the board from a stale block copy, which temporarily reverted the incident log and
+the #116 result row; this paragraph restores both, and the file now equals main's board with the single
+newest Part D1 in place. Lesson recorded for the board: a marker check must match **line-start** markers,
+not substrings, because this board quotes marker strings in its own conflict-log tables — and block
+copies used for EOF re-appends must be regenerated from the current HEAD, not reused across rounds.
+
 | Event | Result |
 |---|---|
 | Pull request | [#114 — session d18303ca: independent re-verification, article library, decision-board +D-13..D-15/+Q13, repo review, integration](https://github.com/kanlerxz87-cyber/Zone3/pull/114), `arena/d18303ca-zone3` → `main` |
@@ -6075,7 +6089,8 @@ changes are strictly additive new list items (`D-13…`, `I2-S15…`); existing 
 | Live check — decisions board | https://kanlerxz87-cyber.github.io/Zone3/site/decisions.html — **live**, counter reads "0 of 15 decided": proposals D-01…D-15 including the three new cards and question Q13 |
 | Live check — articles | https://kanlerxz87-cyber.github.io/Zone3/site/articles/hi-fry-450.html — **live** (spot check; listing facts carry dp links, blanks name their reason, no price/rating anywhere) |
 | Live check — session record | https://kanlerxz87-cyber.github.io/Zone3/sessions/d18303ca/ — **live** (15 sourced claim rows, D1-F-01 section B) |
-| Final publish record | This close-out record (follow-up PR, same pattern as I2's #103) |
+| Final publish record | [#116](https://github.com/kanlerxz87-cyber/Zone3/pull/116) — **MERGED** 2026-11-16T19:07:07Z (merge commit `1b4633d`) after keep-both integrations of main's moves #115/#117/#118/#119/#121 (each re-dirtied the PR; each integration kept main's board verbatim with the single newest Part D1 in place, zero line-start markers). Pages build for `1b4633d` → **status `built`**, error `none`. Session d18303ca fully closed. |
+| Overlap note for the owner (final) | PR #118 (session `5a56c084`) added a **root-level** `articles/` library (5 pages + `data/articles.json`) while this session's library lives at **`site/articles/`** (4 pages, wired into the `/site/` IA, decision-board proposal D-13). Two article namespaces now coexist; reconciling them (merge, redirect, or curate) is an owner decision — logged here rather than edited cross-scope. |
 
 **Session d18303ca close-out.** All five tasks done. Open owner decisions that gate future work remain
 published on the decision board: Q1 (Associates tag), Q2 (intended products), Q3 (marketplace), Q13
