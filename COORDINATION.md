@@ -6647,9 +6647,17 @@ and flag references are preserved. Tooling kept: `sessions/1dddf8c0/remediate_re
 Post-remediation residual scan: the only file still holding observed figures is `COORDINATION.md`
 (governance ledger) → **1dd-F-01**, published on `flagged.html`.
 
-### 1dd-T4 record — publish (see below)
+### 1dd-T4 record — publish (done, 2026-11-16)
 
-PR, merge and Pages confirmation recorded at the end of this Part after the merge.
+| Step | Result |
+|---|---|
+| PR | **#122** — https://github.com/kanlerxz87-cyber/Zone3/pull/122 — "1dd: final integration — official re-verification, repo gates, restricted-value remediation (AB-F-01/71-F-04)" |
+| Merge | **`5abe367`** — `Merge pull request #122 from kanlerxz87-cyber/arena/1dddf8c0-zone3`, `gh pr merge 122 --merge`, exit 0. Merged without waiting for review, per the brief. |
+| Post-rebase conflicts | `main` advanced three times while the PR was open (PRs #115, #121, #116, #124). The branch was rebased onto each new `main`; `COORDINATION.md` conflicts resolved by the board's append-append convention (main's Parts first, then this Part, both sides kept in full; 0 deletions of any session's text). Reusable resolver kept at `sessions/1dddf8c0/resolve_coordination_conflict.py`. |
+| GitHub Pages | **Deployed** — https://kanlerxz87-cyber.github.io/Zone3/ · source `{branch:main, path:/}` · build_type `legacy` · https_enforced `true` · status `built` |
+| Post-merge live verification (via GitHub API on `main`) | `flagged.html` and `docs/index.html` serve the remediation commit `b2d3979`; restricted-value scan of the served content on `flagged.html`, `docs/index.html`, `docs/analysis.html`, `docs/content.html`, `docs/sources.html`, `sessions/3c886b62/products.html`, `sessions/03bbd050/index.html`, `executive-summary.html`, `index.html` → **0 restricted values**. `1dd-F-01` is live on the Flagged page. |
+
+**1dd-T4 status: done.** Session `1dddf8c0` is complete: 1dd-T1 re-verification (14 live official-source checks), 1dd-T2 repo gates (all green), 1dd-T3 compliance remediation (86 files, AB-F-01 and 71-F-04 closed), 1dd-T4 publication (PR #122 merged, Pages live and verified). The only open item is the owner decision in **1dd-F-01** (COORDINATION.md ledger), which does not block the site.
 
 ---
 
