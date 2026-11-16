@@ -915,6 +915,9 @@ def build_index() -> None:
         for a in ARTICLES["articles"]
     )
 
+    # INTEGRATION 2026-11-16 (session cba81fa5): product_cards is a list, and interpolating it into
+    # an f-string rendered Python repr text (\['<div class="pcard">…'\]) inside the published home
+    # page. Joining it matches how article_cards is built a few lines below. Logged as CBA-F-06.
     sitemap_html = build_sitemap_html()
     reverify_html = reverify_table()
     body = f"""
@@ -935,7 +938,7 @@ def build_index() -> None:
 
 <h2>The three listings this site tracks</h2>
 <p class="small">Each card is the observed destination of one submitted link, with the attribute brief built from its listing title. Every Amazon link on this page is a labelled source link: no conversion-oriented CTA is published while the Associates tag every Special Link must carry is unknown (open question Q1 on the Decision Center).</p>
-<div class="product-cards">{product_cards}</div>
+<div class="product-cards">{"".join(product_cards)}</div>
 
 <h2>From the Research Desk</h2>
 <div class="acards">{article_cards}</div>
