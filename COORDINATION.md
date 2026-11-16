@@ -5556,7 +5556,7 @@ _Pending — appended in a follow-up commit after the PR is merged and the Pages
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `f132f462` | `arena/f132f462-zone3` | Independent line-by-line repo review; live re-verification of load-bearing claims; implement accepted marketing suggestions (brand/hero treatment SUG-01, marketing-style comparison and buying guides SUG-04, point-in-time trending section SUG-08 anchored to official surfaces); update the executive summary; run all build gates; PR → `main`, merge without waiting, confirm Pages deploy + live checks; record PR link and merge result here | in progress (f132-T7) | 2026-11-16 |
+| `f132f462` | `arena/f132f462-zone3` | Independent line-by-line repo review; live re-verification of load-bearing claims; implement accepted marketing suggestions (brand/hero treatment SUG-01, marketing-style comparison and buying guides SUG-04, point-in-time trending section SUG-08 anchored to official surfaces); update the executive summary; run all build gates; PR → `main`, merge without waiting, confirm Pages deploy + live checks; record PR link and merge result here | done (f132-T7) | 2026-11-16 |
 
 ## Task board (this part)
 
@@ -5568,13 +5568,27 @@ _Pending — appended in a follow-up commit after the PR is merged and the Pages
 | f132-T4 — Implement accepted marketing suggestions: landing-page brand/hero treatment (SUG-01), marketing-style comparison and buying guides (SUG-04), point-in-time trending section anchored to official surfaces (SUG-08) | done | f132f462 | `index.html`, `marketing/comparison.html`, `marketing/buying-guide.html`, `marketing/index.html`, `assets/style.css`, `content-topics.html`, `data/suggestions.json` (status flipped to accepted) | S01, S02, S07, S25, S43, S44 | — |
 | f132-T5 — Executive summary update with current state and this session's findings | done | f132f462 | `EXECUTIVE-SUMMARY.md` (source of record) | S01–S55 | — |
 | f132-T6 — Build gates: `check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers | done | f132f462 | all generated pages | — | — |
-| f132-T7 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record PR link and merge result here | in progress | f132f462 | git + `gh` + this Part | — | — |
+| f132-T7 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record PR link and merge result here | done | f132f462 | git + `gh` + this Part | — | — |
 
 ### f132-T1 — done (2026-11-16)
 
 Board read (all parts, through line 5279). Claim pushed as this commit **before** any other work, per protocol. No live claim existed covering these scopes. No session was taken over.
 
 **Scope discipline.** This session edits `COORDINATION.md` (this Part only), its own `research/f132f462-*` records, and the files listed in f132-T4/T5/T6/T7. Shared outputs are edited only under the final-integration role. Conflicts in `COORDINATION.md` are resolved by keeping both sides in full (main's board verbatim, this Part appended); no line-start conflict markers are ever pushed. Where a suggestion is implemented, its status in `data/suggestions.json` is flipped from `proposed` to `accepted` and the implementation is logged here with its verification against official sources.
+
+### f132-T7 — publication record (done, 2026-11-16)
+
+| Event | Result |
+|---|---|
+| Pull request | [#106 — f132f462: marketing polish, independent re-verification, executive summary, gates green](https://github.com/kanlerxz87-cyber/Zone3/pull/106), `arena/f132f462-zone3` → `main` |
+| Rebase onto current `main` | Required twice (main advanced to `40de7db`, then `2c66e24` while this session worked). COORDINATION.md conflicts resolved by keeping both sides verbatim (main's Part I2 and this Part f132). index.html / scripts/build_site.py hero conflicts resolved to this session's marketing version; the I2 session's `/site/` reader-facing marketing pages and COORDINATION Part remain intact on `main`. |
+| Pre-merge | `mergeable=MERGEABLE`; no CI checks configured; all gates green on the branch (see f132-T6) |
+| Merge | **MERGED** 2026-11-16 via `gh pr merge 106 --merge` (no approval waited, no `--auto`). Merge commit `52f1d099d8187a16f6bc926109191a25f407fed8` |
+| Pages | Build [1375587637](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/1375587637) status **`built`**, error none, commit `52f1d099`, at 2026-11-16T18:48:38Z |
+| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ — HTTPS enforced, source `main` `/` |
+| Live check | Landing page renders the new brand hero ("Three air fryers. One clear comparison. Zero guesswork.") and the dated "Trending now in air fryers" point-in-time section (S14–S16), all sourced. |
+
+**Open items after this session (none blocks the merge; all published on Flagged for review):** FLG-001/002/004 (9-char tokens not ASINs), FLG-003 (link.amazon Redirecting Link status needs a logged-in Associates account), FLG-010 (no Associates tag → nothing trackable), FLG-013 (per-product commission rate not established), FLG-016 (automated AI analysis needs Amazon's prior written approval), FLG-022/023 (prices/ratings blank by policy), FLG-027 (observed destinations ≠ proven intent).
 
 
 | Event | Result |
