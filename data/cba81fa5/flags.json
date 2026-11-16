@@ -124,6 +124,25 @@
         }
       ],
       "status": "fixed by this session (PR pending merge); regression test added"
+    },
+    {
+      "id": "CBA-F-07",
+      "severity": "Medium",
+      "title": "This session's own front-door band shipped a malformed anchor, and it was visible on the live page",
+      "what": "The band's source citation was emitted with its title attribute *after* the closing angle bracket — <code>&amp;lt;a href=… target=… rel=…&amp;gt;<b>title=&quot;Amazon Associates Program Policies…&quot;</b>&amp;gt;CBA-S09&amp;lt;/a&amp;gt;</code> — so the browser painted the literal text title=&quot;Amazon Associates Program Policies, Participation Requirements 2(b), read 2026-11-16&quot; as prose in the band's fine print. Found by reading the deployed page after the merge, not by any gate. Fixed in tools/build_cba81fa5_site.py (attribute moved inside the tag), and the fine print now carries the exact required disclosure sentence, which a new rule checks.",
+      "why_it_matters": "It is the same class of defect as CBA-F-06 from the other direction: the facts, the links and the structure were all correct, and the page still read as broken to a human. Every existing gate passed it — the href resolved, the disclosure sentence existed elsewhere on the page, the HTML parsed. So the fix is not 'check the links harder': it is to scan for attribute text leaking outside a tag, which no gate did.",
+      "action": "Closed by this session: generator fixed; tools/cba81fa5_lint.py gained STYLE:malformed-tag, run over every page under site/ and over the band's own region in index.html, plus a band-specific check that the exact disclosure sentence appears inside the band rather than only in the page footer. Suggested for the shared gates: the same one-line pattern in tools/verify_site.py V7, since this defect class is generic.",
+      "sources": [
+        {
+          "label": "the lint rule that now catches it",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/cba81fa5_lint.py"
+        },
+        {
+          "label": "the generator that emits the band",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/build_cba81fa5_site.py"
+        }
+      ],
+      "status": "fixed by this session (regression rule added)"
     }
   ]
 }

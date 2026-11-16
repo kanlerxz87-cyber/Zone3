@@ -6924,3 +6924,15 @@ Plus `scripts/cba81fa5_test_no_repr_output.py` (PASS, 112 pages) and its `--self
 Creators API credentials (Q-4), a named human editor (Q-5 / D-10), the canonical-brand decision across
 `/read/`, `/site/articles/` and `/site/guides/` (Q-12 / CBA-F-03), and the shared-register consolidation (CBA-F-02's
 neighbour, flag FLG-004).
+
+#### CBA-F-07 and the re-deploy (same session, 2026-11-16, after PR #124 merged)
+
+| Step | Result |
+|---|---|
+| Live verification after merge | the deployed root page was fetched and read, not just curl-checked for a 200 — and that is how **CBA-F-07** was found: this session's own band emitted `<a …>title="…">CBA-S09</a>`, with the title attribute *after* the closing bracket, so the attribute text rendered as visible prose in the band's fine print |
+| Second recurrence, same cause as CBA-F-05 | session `757efebc`'s rebuild of `index.html` (PR #129) overwrote the root page and dropped the band again — `git show origin/main:index.html` → 0 sentinels. Repaired by `PR #130` (merge `ba938f2`), which re-inserts the band between its sentinels and touches none of their markup: their `<h1>Home</h1>`, hero, Research-Desk cards and stat grid all survive, and because their page supplies the only `h1`, the band's headline renders as `<p class="fd-h1">` so the one-h1 rule still holds |
+| Fix shipped in the follow-up | generator corrected; band fine print now carries the exact sentence `As an Amazon Associate I earn from qualifying purchases.`; `tools/cba81fa5_lint.py` gained `STYLE:malformed-tag` (attribute text outside a tag, scanned across `site/**` **and** the band's own region in `index.html`) and a band disclosure-placement check; `scripts/cba81fa5_test_no_repr_output.py` (from CBA-F-06) covers the sibling failure mode, with `--selftest` proving it catches the symptom and ignores clean markup |
+| Reading for the next session | a page can be factually perfect, linked, disclosed and structurally valid and still look broken. Two of the three defects found today were in presentation, not data, and neither was caught by a gate that existed at the time. If you add one check, make it "does any page contain markup-shaped text or attribute-shaped text?" — `python3 scripts/cba81fa5_test_no_repr_output.py` and the malformed-tag rule are the current answer |
+| Gates after the fix | all exit 0: `scripts/cba81fa5_test_no_repr_output.py` (PASS, 115 pages) + `--selftest` · `scripts/check_site.py` · `tools/verify_site.py` · `tools/link_report.py --strict` · `scripts/check_all_links.py` · `scripts/build_sitemap.py --check` · `tools/cba81fa5_lint.py` (0 new findings) · `tools/build_cba81fa5_site.py --check` · `scripts/test_manifest_regression.py` |
+
+**All CBA tasks remain done; the front door is live at `ba938f2` and the band fix follows in this PR.**

@@ -174,7 +174,7 @@ def frontdoor_block() -> str:
         f'{prods}\n'
         '  </div>\n'
         f'  <p class="fd-fine">{fd["fine"]} '
-        f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer">'
+        f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer" '
         f'title="{SRC["CBA-S09"]["title"]}">CBA-S09</a></p>\n'
         '</section>\n\n'
         '<p class="fd-ops" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
