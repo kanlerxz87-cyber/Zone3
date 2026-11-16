@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>House style and the anti-slop rules every page must pass · Air Fryer Field Notes</title>
+<meta name="description" content="The writing rules on this site, the constructions that get a page rejected by the build, and how a guide goes from listing text to published.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/site/style-guide.html">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="disclose-bar" role="note">
+  <div class="wrap">
+    <strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.
+    <span class="disclose-more">Links to Amazon on this site are evidence links while a tracking tag is unavailable, so they earn nothing yet. <a href="evidence.html#disclosure">Why this is stated twice</a>.</span>
+  </div>
+</div>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">AF</span>
+      <span class="brand-text"><strong>Air Fryer Field Notes</strong><small>Three air fryers, checked line by line.</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html">Start here</a><a href="products.html">The three air fryers</a><a href="guides/index.html">Buying guides</a><a href="evidence.html">How we know</a><a href="answers.html">Open questions</a><a href="style-guide.html">Our rules</a><a href="decisions.html">Suggestions &amp; decisions</a></nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<p class="small">Decisions &amp; evidence › House style</p>
+<h1>House style, and the rules the build enforces</h1>
+<p class="lede">"Don't make it read like AI slop" is not a style. So this page turns it into something checkable:
+the sentences we are not allowed to write, the ones we are, and a script that fails the build when a page slips.
+The rules are not taste — most of them are Amazon's or the FTC's, with the link on the row.</p>
+<p class="small">Version 1 · in force on this site since 2026-11-16 · enforced by <span class="mono">tools/cba81fa5_lint.py</span></p>
+
+<h2>Why a machine checks the prose</h2>
+<p>Amazon's own enrollment rule is that a site needs original content, and that content leaning on third-party
+material "must contain significant commentary, analysis, or transformation to any materials you include". A page
+that rephrases a listing title into three filler paragraphs fails that rule, a disclosure rule, and the reader —
+in that order. So the checks below are compliance as much as craft.
+<a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies, Participation Requirements 1 — read 2026-11-16">CBA-S07</a></p>
+
+<h2>Banned, with the reason and the replacement</h2>
+<div class="tablewrap"><table><caption>What gets a page rejected, and what to write instead</caption><thead><tr><th>Do not write</th><th>Why</th><th>Write instead</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td class="lead-cell">Any price, "was/now", "% off", or a price-tracking prompt</td><td>Prices and availability may only be shown when Amazon serves them in the link or supplies them via the Creators/PA API; price tracking and alerting on the site is prohibited outright</td><td>"Price is on the listing and it moves — check it there." Then link the listing.</td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Participation Requirements 2(b) and 6(y), read 2026-11-16">CBA-S09</a> <a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json" target="_blank" rel="noopener noreferrer" title="PF-34 in the shared policy-facts register">PF-34</a></td></tr>
+<tr><td class="lead-cell">"4.6 stars", "1,393 reviews", "highest rated"</td><td>Customer reviews and star ratings may not be displayed unless obtained through those APIs, and this site has no API credentials</td><td>"Buyer sentiment is not published here; here is why."</td><td><a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json" target="_blank" rel="noopener noreferrer" title="PF-05 and PF-45, verbatim quotes from Participation Requirements 6(t)">PF-45</a></td></tr>
+<tr><td class="lead-cell">"We tested", "in our kitchen", "hands-on", "after a month of use"</td><td>You cannot describe an experience with a product you have not tried. Nobody here has cooked in these machines</td><td>"Nobody cooked in these machines for this page. Here is what the listings state."</td><td><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="FTC Disclosures 101 — read 2026-11-16">CBA-S12</a></td></tr>
+<tr><td class="lead-cell">"#1 bestseller", "trending", "flying off the shelves"</td><td>Presentation of a rank as a quality claim, and no official source publishes trend or conversion data to affiliates</td><td>"On 2026-11-16 this listing appeared at #6 on Amazon's Best Sellers in Air Fryers page, which says it is updated frequently."</td><td><a class="src" href="https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/" target="_blank" rel="noopener noreferrer" title="Read 2026-11-16">CBA-S06</a></td></tr>
+<tr><td class="lead-cell">"Better than the Bosch", "cheaper than at Target"</td><td>Program Content may not be used to advertise or promote products offered on any site that is not an Amazon Site, and comparison pricing carries its own display rule</td><td>Compare within the category, on stated specs, with links to each listing.</td><td><a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json" target="_blank" rel="noopener noreferrer" title="PF-32 (6(z)) and PF-11, verbatim quotes from the Program Policies">PF-32</a></td></tr>
+<tr><td class="lead-cell">"Game changer", "elevate your cooking", "seamless", "unlock", "a must-have", "revolutionise"</td><td>Nothing in this list is illegal. All of it is the register that makes a page read as generated filler, and none of it carries information a reader can check</td><td>A concrete noun and a number, or nothing.</td><td>this site's own rule; the eligibility standard it protects is in <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Participation Requirements 1">CBA-S07</a></td></tr>
+<tr><td class="lead-cell">"In today's busy world…", "When it comes to…", "Look no further"</td><td>Openers that could precede any product on earth. If the first sentence survives swapping the product name for a kettle, it is not a sentence about this product</td><td>Start on the fact: "The dual basket is two 3QT baskets, not one 6QT with a divider."</td><td>the eligibility standard in <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Participation Requirements 1, read 2026-11-16">CBA-S07</a></td></tr>
+<tr><td class="lead-cell">A shortener, a redirect wrapper, or an "unlock the deal" button</td><td>A link must not obscure that it goes to Amazon; a link must be a Special Link to a Product, accessed directly from the site</td><td>A plain link, anchor text naming the destination: "View the CHEFMAN listing on Amazon".</td><td><a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/policy_facts.json" target="_blank" rel="noopener noreferrer" title="PF-06 / PF-46 (6(w)), verbatim quote">PF-46</a></td></tr>
+<tr><td class="lead-cell">A disclosure only in the footer</td><td>FTC: place it so it's hard to miss, with the endorsement itself, not only on an about page or behind a click</td><td>Banner above the content, disclosure next to each call to action, disclosure again in the footer.</td><td><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="FTC Disclosures 101, How to Disclose — read 2026-11-16">CBA-S12</a></td></tr>
+<tr><td class="lead-cell">A number in a product name treated as a spec ("4-in-1 ⇒ four cooking modes")</td><td>"You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product" — inferring the missing fourth mode is exactly that</td><td>Quote the number, quote what is enumerated, and say which is missing.</td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Participation Requirements 2(b), read 2026-11-16">CBA-S09</a></td></tr>
+</tbody></table></div>
+
+<h2>Required on every reader page</h2>
+<ol class="steps">
+  <li><b>One question per page,</b> stated in the H1 as a question or a comparison, and answered in the first paragraph.</li>
+  <li><b>Every factual sentence traceable</b> to a listing, an Amazon programme page or an FTC page, with the link on the row it supports — not stacked in a footer.</li>
+  <li><b>Arithmetic labelled as arithmetic.</b> "8 ÷ 3 ≈ 2.7" is ours; the page says so rather than implying Amazon published it.</li>
+  <li><b>A "what this page cannot tell you" block,</b> naming the blanks and the reason for each.</li>
+  <li><b>Disclosure</b> in the top banner and in the footer, in the exact required wording.</li>
+  <li><b>Provenance line:</b> which pages were read, on what date, and that the review was done by the research desk (an agent session) with no human reviewer yet.</li>
+  <li><b>No stored Amazon assets.</b> Program Content images may not be hosted here, so pages carry text and links instead of product photography. <a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/verify_site.py" target="_blank" rel="noopener noreferrer" title="V6 in the release gate blocks any img whose src is an Amazon host">gate V6</a></li>
+</ol>
+
+<h2>What a review pass means here, honestly</h2>
+<p>The proposals list asks for "a named human editor" (D-10) and for the guides to pass an editorial gate before
+publishing. Today four more guides went live. The pass they underwent is real and it is mechanical: the lint below
+runs against every page, and each factual row was re-read from the source that day. What it is <em>not</em> is
+human — so the byline says "Air Fryer Field Notes desk (an agent-run research session, no human reviewer yet)"
+rather than inventing a person with a first name and a taste for air fryers. A fake reviewer is worse than a
+fake review.</p>
+
+<h2>The lint</h2>
+<p><span class="mono">tools/cba81fa5_lint.py</span> walks every page under <span class="mono">site/</span> and fails
+the build on: a price or rating pattern; an experience claim; a hype word from the list above; a missing disclosure
+banner or footer; more or fewer than one <span class="mono">&lt;h1&gt;</span>; a table row without an official
+source link; a stored Amazon asset; a non-HTTPS or shortener outbound link; a broken internal link; a page not
+listed in <span class="mono">site/site-index.json</span>. It is deliberately boring and deliberately mechanical —
+that is what makes it fair to a page nobody human has read yet. Run it with
+<span class="mono">python3 tools/cba81fa5_lint.py</span>; it prints one line per finding and exits non-zero.</p>
+
+<h2>How a page gets made here, start to finish</h2>
+<ol class="steps">
+  <li>Pick the question a shopper actually has, from the listing text — not from a keyword tool.</li>
+  <li>Quote the sentences that answer it, with the page each came from and the date read.</li>
+  <li>Write the analysis the quote cannot give: what the spec means when you are holding a shopping list.</li>
+  <li>Write the blanks before the body text, so the shape of the page admits them.</li>
+  <li>Run the lint, re-read every source link, and only then add the page to the site index and the sitemap.</li>
+</ol>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-disclose"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Product information shown on this site comes from Amazon pages; the rules quoted here come from Amazon's programme documents and the FTC's guidance, read on the dates shown.</p>
+    <p class="foot-small">Air Fryer Field Notes · house style v1 · maintained by the research desk · <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/cba81fa5_lint.py">lint source</a></p>
+  </div>
+</footer>
+</body>
+</html>

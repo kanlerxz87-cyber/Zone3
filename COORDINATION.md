@@ -5984,6 +5984,7 @@ were fixed on the branch rather than left as notes:
   `<nav class="topbar">`. Both gates now cover the marketing layer. `check_site` reports
   **OK: 24 pages, 3 products, 62 sources, 97 flags**.
 
+
 ---
 
 # Part D1 — session `d18303ca` (2026-11-16) — independent re-verification round, reader article library, decision-board additions, integration
@@ -6061,300 +6062,215 @@ changes are strictly additive new list items (`D-13…`, `I2-S15…`); existing 
   closed PR #100's scope; at edit time only PR #109, COORDINATION.md scope, was open); D1-F-04
   (board length — corroborates A0-F-06, not acted on).
 
-### Z14 publication record (session `145b8df7`, 2026-11-16)
+### D1-T5 — PR, merge and Pages deploy (done, 2026-11-16)
 
-| Step | Result |
-|---|---|
-| Branch | `arena/145b8df7-zone3`, base `933e2f3` → integrated through `609dc76`, `c3699f4`, `046b18d` as those merges landed |
-| PR | **#111** — https://github.com/kanlerxz87-cyber/Zone3/pull/111 (summary, sources, flagged irregularities; merged without waiting for review, per the brief) |
-| Merge | **`b8f576d`** — `Merge pull request #111 from kanlerxz87-cyber/arena/145b8df7-zone3`, `gh pr merge 111 --merge`, exit 0. `main` = `b8f576d`, working tree clean |
-| GitHub Pages | `pages/builds/latest` → **status `built`**, `created_at 2026-11-16T18:55:19Z` (2 s after the merge), i.e. the build of `b8f576d`. The build endpoint's `sha` field reads `null` for this repo, so the build is tied to the merge by timestamp and by the file check below |
-| New path shipped | `contents/<path>` at `main` after the build: `read/index.html` 16,493 B · `read/getting-paid.html` 23,748 B · `read/category/air-fryers.html` 14,369 B · `suggestions.html` 78,656 B · `flagged.html` 157,485 B — and the other session's `site/index.html` 15,639 B, untouched |
-| Live-site verification limit, recorded honestly | `https://kanlerxz87-cyber.github.io` is **not reachable from this sandbox** (outbound is restricted to `github.com`, `api.github.com`, `codeload.github.com`, `registry.npmjs.org`, `pypi.org`), so an HTTP 200 on `/Zone3/read/index.html` could not be observed from here. What was verified instead: Pages reports `built` for the post-merge tree, and the deployed blob for `read/getting-paid.html` contains the exact disclosure sentence `check_site.py` requires plus the two `4.50%` rows, and **no** product price or star rating — only Amazon's own published bounty figures ($12.00 / $2.00 / $5.00). A browser check is the one step only the owner can do |
-
-**Final gates on `b8f576d`**
-
-| Gate | Result |
-|---|---|
-| `scripts/check_site.py` | OK — 24 pages, 3 products, 62 sources, 97 flags, all checks passed |
-| `tools/verify_site.py` | **PASS — 95 pages, 1,626 table rows, 1,389 with an official source, 447 flagged, 99 repo-anchored, 0 advisories** |
-| `scripts/check_all_links.py` | PASS — 141 HTML pages, 146 distinct external URLs, 0 errors |
-| `tools/link_report.py --strict` | exit 0 |
-| `scripts/build_sitemap.py --check` | PASS — 90 pages covered, 0 stale entries |
-| `scripts/build_read.py --check` | PASS — 11 pages, committed output matches the generator |
-| markers / `git diff --check` | 0 line-anchored markers, clean |
-
-**Two consistency gaps found in this session's own work and closed before merging, not left as notes:**
-`Z14-F-03` was on this board's irregularities table but absent from `data/flags.json` (so it could not
-render on `flagged.html`) — added as a register row written as an explicit cross-reference to `FLG-010`
-and `Q1` rather than a duplicate of them; and `read/**` was covered only by `verify_site`, so the eleven
-pages were added to `check_site.py`'s `PAGES`, which required `build_read.py` to emit `<nav class="topbar">`
-for the shared gate. Both marketing layers are now checked by both gates.
-
-**Open for the owner, unchanged by this merge:** the Associates Tracking ID (blocks all revenue —
-`FLG-010` / `Q1` / `Z14-F-03`), confirmation of the three intended ASINs, the target marketplace, whether
-an approved account exists, reviewer and cadence, analytics stack, and which reader-facing layer
-(`/read/` or `/site/`) is canonical (`Z14-F-04`). `Z14-T1`…`Z14-T6`: **done**.
-
-
-**One more `main` move, resolved the same way.** Session `d18303ca` merged PR #114 while PR #115 was open.
-Its work extended `/site/` with six pages; it conflicted only in `COORDINATION.md`, where `main`'s board
-already contained this session's Part (it arrived with #111), so the resolution appended **only** the new
-publication record rather than the whole Part — a marker-anchored split, 0 duplicated lines, both sides
-byte-identical above the join. `Z14-F-04`'s detail was refreshed with that fact, since the canonical-layer
-decision now spans two sessions on the `/site/` side against one on `/read/`.
-
-# Part 81 — session `81bc99d0` (2026-11-16) — final integration: verification-tooling fixes + independent re-verify + merge/deploy
-
-> Appended additively; nothing above this line removed or rewritten. IDs `81-Tn` (tasks),
-> `81-F-nn` (irregularities), `81-S-nn` (sources), `81-V-nn` (verification rows) are **namespaced**
-> and are not the same items as `A:`, `B:`, `I2-`, `71-F-`, `FLG-nnn` etc.
-> Branch: `arena/81bc99d0-zone3` (Arena pins a session to one branch). Base at claim time: `609dc76`
-> (`main` tip, merge of PR #103). This branch was fast-forwarded to `origin/main` at claim time because
-> the brief's branch base had been superseded by PRs #101 and #103; no work was discarded.
-
-## 81 Session registry
-
-| Session ID | Branch | Role | Status | Claimed at (UTC) |
-|---|---|---|---|---|
-| `81bc99d0` | `arena/81bc99d0-zone3` | Final integration: independent line-by-line live re-verification of the combined tree; fix the open verification-tooling defects (manifest paths, provenance-gate strictness, image-host pattern); curate restricted values out of public `/docs/` + `/sessions/`; re-run all gates; PR to `main`, merge, Pages confirm. | in progress | 2026-11-16 |
-
-## 81 Task board (claimed before any other work)
-
-| Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
-|---|---|---|---|---|---|
-| 81-T1 — read the board, claim tasks, push the claim | **done** | `81bc99d0` | `COORDINATION.md` (append only) | — | — |
-| 81-T2 — independent live re-verification of load-bearing claims | **in progress** | `81bc99d0` | read-only fetches; writes `sessions/81bc99d0/**` only | `81-S-01…` | — |
-| 81-T3 — verification-tooling fixes (manifest paths; provenance gate; image-host pattern) | **in progress** | `81bc99d0` | `tools/build_site.py`, `tools/verify_site.py` | 71-F-01, 71-F-02, I2-F-11 rec 4 | 81-F-01…03 |
-| 81-T4 — curate restricted values out of public `/docs/` + `/sessions/` | **in progress** | `81bc99d0` | `docs/**`, `sessions/**`, `sitemap.xml` (regenerated) | 71-F-04 | 81-F-04 |
-| 81-T5 — integration: gates, links, sitemap, PR, merge, Pages | **unclaimed → this session** | `81bc99d0` | `sessions/81bc99d0/**`, `COORDINATION.md`, generated pages via existing generators | — | — |
-
-**Scope note:** session `71dc8fea` left 71-F-01/02/04 as open requests and stated they "belong to the
-`tools/` and `/docs/` owners". No session is `in progress` on this repo at claim time (the last merges
-were PRs #101/#103), so these requests are unclaimed and are taken here, not silently. Edits are made
-only to the files listed; shared generated pages are regenerated by the existing generators, never hand-
-authored, so the committed output matches what the tools produce.
-
-**Open items this session deliberately does NOT act on (owner = content/copy owners, out of scope):**
-71-F-03 wording on `data/z3/flags.json` + generated `/flagged/` (copy, not tooling); 71-F-05 prototype
-wording (copy/policy); 71-F-06 edge-cache split (operational, GitHub-side). Each is logged as carried.
-
-## 81-T2 — Independent live re-verification (done, 2026-11-16)
-
-Every row fetched once, today, by this session. Full log:
-[`sessions/81bc99d0/verification-2026-11-16.md`](sessions/81bc99d0/verification-2026-11-16.md).
-
-| ID | Claim | Result |
-|---|---|---|
-| 81-V01…V03 | The three short links open three live listings | **Confirmed** — `B04G1MEwY→B0CDY277D3` (CHEFMAN 6Qt Dual Basket), `B02NbDxp3→B09B7SB46R` (Emeril Lagasse 26QT French Door), `B00hJ57DV→B08DKYBTPH` (Chefman 8Qt TurboFry). Destinations and titles match the register. |
-| 81-V04 | Nine-character token is not an ASIN | **Confirmed** — `amazon.com/dp/B04G1MEwY` → *Page Not Found*. |
-| 81-V05 | ASIN is a 10-character identifier | **Confirmed** — Creators API GetItems examples (`B0199980K4`, `B000HZD168`); `itemIdType` default `ASIN`. |
-| 81-V06…V07 | Kitchen 4.50% / All Other 4.00%; bounties $12/$2/$5/$0.25 | **Confirmed as printed** — Standard Commission Income Statement, Table 1 and §4(a). |
-| 81-V08…V09 | OA "Updated: October 15, 2025"; Policies "Updated: April 14, 2026" | **Confirmed verbatim**. |
-| 81-V10…V13 | 2(b) price rule; 6(t) rating rule; 6(s)/6(w)/6(y); 6(v)/6(z) | **Confirmed verbatim** from Program Policies Participation Requirements. |
-| 81-V14 | IP License §1 — no data mining/robots | **Confirmed verbatim**. |
-| 81-V15…V16 | FTC placement; no untried-product claims | **Confirmed verbatim** — Disclosures 101 (November 2019). |
-| 81-V17 | No Associates tag in repo or live redirects | **Confirmed** — redirect URLs carry no tag; `config/platform.json` has none. |
-
-**Not re-fetched (no result asserted):** 180-day/three-sale window, Onsite Table A, per-ASIN commission mapping.
-
-## 81-T3 — Verification-tooling fixes (done, 2026-11-16)
-
-Fixes the open requests 71-F-01 and 71-F-02 and the I2-F-11 recommendation 4, all in `tools/`:
-
-| Fix | File | What changed | Verification |
-|---|---|---|---|
-| 71-F-01 | `tools/build_site.py` | Manifest now records explicit output `paths` (relative to the output root) alongside the digest-only `files` map; `mpath.parent.mkdir(parents=True, exist_ok=True)` before writing the manifest. | `scripts/test_manifest_regression.py` builds into a fresh empty dir → **PASS**; manifest lists 16 real paths; verifier recognizes them. |
-| 71-F-01 | `tools/verify_site.py` | `generated_set()` consumes `paths` (falls back to `files` for pre-`paths` manifests). Generated pages are now recognized as owned, so V1/V2/V3 hard checks actually apply to them. | `verify_site` still **VERIFY PASS** with 0 hard errors — the generated pages genuinely comply. |
-| 71-F-02 | `tools/verify_site.py` | V4 now classifies every row: `amazon_ftc` / `flag_or_blank` / `repo_only` / `uncited`, and reports rows resting only on a repository/GitHub link (no Amazon/FTC, no flag) as `V4-review` advisories. The `sourced` count is no longer mistaken for a line-by-line official-source audit. | Breakdown: `amazon_ftc=1186 · flag_or_blank=156 · repo_only=140 · uncited=0`. The 140 `repo_only` rows are surfaced for review, non-blocking. |
-| I2-F-11 rec 4 | `tools/verify_site.py` | `AMAZON_HOSTS` widened to cover the Amazon CDN hostnames (`m.media-amazon.com`, `images-amazon.com`, `ssl-images-amazon.com`, `media.amazon.com`), matching the corrected pattern already in `tools/i2_gate.py`. | Pattern now matches all three CDN hosts that the old rule missed. |
-
-## 81-T4 — Restricted-value archives off the public index (done, 2026-11-16)
-
-Addresses 71-F-04 with the non-blocking remedy session 71 offered ("exclude the snapshots from
-public Pages/sitemap"), because the restricted values overlap with legitimate policy figures
-(payment minimums `$10/$100/$15`, bounty `$12/$2/$5/$0.25`, commission `4.50%`), so a mechanical
-value redaction would risk removing policy facts or corrupting the audit record:
-
-| Change | File | Result |
-|---|---|---|
-| Exclude `/docs/` and `/sessions/` from the sitemap | `scripts/build_sitemap.py` (`SKIP_DIRS`) | sitemap now 55 URLs, **0** `docs/` or `sessions/` entries. |
-| Keep the fixpoint sweep from re-adding them | `tools/build_site.py` (`_prev` filter) | `build_site.py` no longer re-adds archive paths. |
-| Disallow crawlers on the archives | `robots.txt` | `Disallow: /docs/` and `Disallow: /sessions/`. |
-
-**Residual (published, non-blocking):** the historical price/rating/review values remain served at
-direct `/docs/` and `/sessions/` URLs as the audit record. A full in-place redaction of those values
-is the recommended follow-up; it is an owner decision because the values are interleaved with
-legitimate policy facts and the pages are the audit record. Logged as **81-F-04**.
-
-## 81 Irregularities
-
-| ID | Severity | Finding | Disposition |
-|---|---|---|---|
-| 81-F-01 | High (fixed) | Manifest stored content digests where the verifier expected on-disk paths; 0/16 generated pages were recognized as owned, so their hard checks were downgraded to advisories; a fresh `--out` also crashed before the manifest could be written. | **Fixed** — `paths` key, output-parent creation, regression test. Reproduces as fixed. |
-| 81-F-02 | High (addressed) | V4 accepted GitHub/repo links as an "official source" for factual rows, so "sourced" was not a line-by-line official-source audit. | **Addressed** — provenance classification + `repo_only` review advisories; 140 rows surfaced for review. |
-| 81-F-03 | Medium (fixed) | `verify_site.py` V6 image rule matched only `amazon.*` and would pass every real Amazon CDN product image. | **Fixed** — CDN host list added, mirroring `i2_gate.py`. |
-| 81-F-04 | Medium (partial, published) | `/docs/` and `/sessions/` render historical product price/rating/review values; full value redaction deferred (values interleaved with policy facts; pages are the audit record). | **Addressed** by sitemap/robots exclusion; full redaction left as owner follow-up, published on `flagged.html`. |
-
-Carried, not acted on (out of this session's scope, per session 71): 71-F-03 wording, 71-F-05
-prototype-vs-service wording, 71-F-06 edge-cache split.
-
-## 81-T5 — Gates on the final tree (done, 2026-11-16)
-
-| Gate | Result |
-|---|---|
-| `python3 scripts/check_site.py` | **OK** — 13 pages, 3 products, 52 sources, 86 flags |
-| `python3 scripts/build_sitemap.py --check` | **PASS** — 50 live pages covered, 0 missing |
-| `python3 tools/link_report.py --strict` | **exit 0** |
-| `python3 scripts/check_all_links.py` | **129 HTML pages, 116 URLs, 0 errors** |
-| `python3 scripts/test_manifest_regression.py` | **PASS** |
-| `python3 tools/verify_site.py` | **VERIFY PASS** — 83 pages · 1482 rows · 1258 sourced · 439 flag · 89 anchor · provenance `amazon_ftc=1186 · flag_or_blank=156 · repo_only=140 · uncited=0` · 140 non-blocking advisories |
-| `python3 tools/i2_gate.py` | **PASS** — 8 pages · 105 rows · 89 sourced · 16 blanks |
-| generators re-run (`scripts/build_site.py`, `scripts/build_marketing.py`, `tools/build_site.py`, `tools/build_i2_site.py`) | **idempotent** (second run: no new diffs) |
-| conflict-marker / secrets sweep | pending in final commit check |
-
-The 140 `V4-review` advisories are the newly surfaced `repo_only` rows (71-F-02). They are
-non-blocking and are published on `flagged.html` for review.
-
-## 81 Publish record
-
-PR, merge, Pages build and live checks recorded here once complete (see below).
-
-*Completion path of this record, for the audit trail:* the site work reached `main` through **PR #111**
-(`b8f576d`), the publication record above through **PR #115** (`90046e6`, Pages `built` 18:59:35Z).
-`main`'s tree is byte-identical to the tree all seven gates were run on. Deployed inventory on `main`:
-11 pages under `read/`, 12 under `site/`, 84 generated/snapshot pages elsewhere, 11 `read/` URLs in
-`sitemap.xml`. Session `145b8df7`: closed.
-### 5B42-T5 — PR, merge and Pages deploy (done, 2026-11-16)
+**Incident log (logged, not silent — the correction rule).** While closing out, `main` moved **seven times**
+(#112, #113, #115, #117, #118, #119, #121) between the push of PR #114 and the merge of the follow-up
+record PR #116; each landing re-dirtied #116 and each was integrated keep-both. In one of those
+integrations (commit `3333ff5` on this branch), the conflict-resolution script aborted on a
+**false-positive marker check** — main's board legitimately contains the literal strings `<<<<<<<` and
+`>>>>>>>` *inside quoted prose* (table cells describing past "grep found no markers" checks) — and the
+merge was committed with the unresolved conflict hunk still in the file. The commit never reached `main`;
+the very next commit replaced the file with the properly rebuilt version. A second slip: the PR #118/#121
+integration rebuilt the board from a stale block copy, which temporarily reverted the incident log and
+the #116 result row; this paragraph restores both, and the file now equals main's board with the single
+newest Part D1 in place. Lesson recorded for the board: a marker check must match **line-start** markers,
+not substrings, because this board quotes marker strings in its own conflict-log tables — and block
+copies used for EOF re-appends must be regenerated from the current HEAD, not reused across rounds.
 
 | Event | Result |
 |---|---|
-| Pull request | [#100 — Zone3: independent re-verification record (session 5b425c74, 2026-11-16)](https://github.com/kanlerxz87-cyber/Zone3/pull/100), `arena/5b425c74-zone3` → `main` |
-| Rebases | Four: onto `3d5167c` (PR #98), `b38d96a` (PR #101), `609dc76` (PR #103), then `7d2f220` (PR #105/#108 era) as `main` advanced under parallel sessions. `COORDINATION.md` conflicts resolved additively (main's board verbatim + this session's Part appended, both kept in full); generated-page conflicts resolved to main's side and regenerated with `scripts/build_site.py` + `scripts/build_sitemap.py` so the committed output is what the generators produce. Every rebased commit checked for conflict markers before push (0 in all) |
-| Commit consolidation | The five session commits were consolidated into one before the final push to keep the merge simple under the churn; content unchanged |
-| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN`. Gates green on the branch (see 5B42-T4 and the rebase record) |
-| Merge | **MERGED** 2026-11-16T18:53:51Z via `gh pr merge 100 --merge` (no approval waited). Merge commit **`046b18d2b9f124cf159799cabf550ca16d6c4ca4`** |
-| Pages | Build for the merge → **status `built`** (`gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`, built 2026-11-16T18:55:43Z; source `main` `/`) |
-| Live check — record page | https://kanlerxz87-cyber.github.io/Zone3/sessions/5b425c74/ — **live**; the submitted-links table, the dp/<token> control, the policy/commission/FTC tables and the integrity table all render, every factual row linking its official source |
-| Live check — dashboard | Cache-busted fetch of `/index.html` shows the **Verification (session 5b425c74)** tile under *Sections*, the matching entries under *Site map → Governance*, and the nav link — alongside the later sessions' tiles |
-| Irregularities | 5b42-F-01 (Info, title drift re-confirmation). No blocking irregularity. Open items previously flagged remain published on the Flagged for review page |
+| Pull request | [#114 — session d18303ca: independent re-verification, article library, decision-board +D-13..D-15/+Q13, repo review, integration](https://github.com/kanlerxz87-cyber/Zone3/pull/114), `arena/d18303ca-zone3` → `main` |
+| Mergeable state at PR time | `MERGEABLE / CLEAN` (after two keep-both merge integrations of main: `2fc1bd9` for PRs #102/#104/#106/#107/#108 and `7cefc14` for PRs #100/#110/#111) |
+| Gates on the PR tree | `i2_gate` PASS (12 pages · 109 rows · 93 sourced · 16 blanks · 0 flagged) · `verify_site` PASS (100 pages · 1,649 rows · 0 advisories) · `check_site` OK (24 pages · 62 sources · 97 flags) · `link_report --strict` exit 0 · `build_sitemap --check` exit 0 · 0 conflict markers |
+| Merge | **MERGED** 2026-11-16T18:58:25Z via `gh pr merge 114 --merge` (no approval waited, no `--auto`, per the brief). Merge commit **`d3a8498c7ce6bd52cd8a2405e13fc7ada0c0359c`** |
+| Pages build | Build for `d3a8498` → **status `built`**, error `none` ([Pages build API](https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest)) |
+| Live check — article library | https://kanlerxz87-cyber.github.io/Zone3/site/articles/ — **live**: disclosure banner above nav, sourced three-product table, three article cards, the rules list |
+| Live check — decisions board | https://kanlerxz87-cyber.github.io/Zone3/site/decisions.html — **live**, counter reads "0 of 15 decided": proposals D-01…D-15 including the three new cards and question Q13 |
+| Live check — articles | https://kanlerxz87-cyber.github.io/Zone3/site/articles/hi-fry-450.html — **live** (spot check; listing facts carry dp links, blanks name their reason, no price/rating anywhere) |
+| Live check — session record | https://kanlerxz87-cyber.github.io/Zone3/sessions/d18303ca/ — **live** (15 sourced claim rows, D1-F-01 section B) |
+| Final publish record | [#116](https://github.com/kanlerxz87-cyber/Zone3/pull/116) — **MERGED** 2026-11-16T19:07:07Z (merge commit `1b4633d`) after keep-both integrations of main's moves #115/#117/#118/#119/#121 (each re-dirtied the PR; each integration kept main's board verbatim with the single newest Part D1 in place, zero line-start markers). Pages build for `1b4633d` → **status `built`**, error `none`. Session d18303ca fully closed. |
+| Overlap note for the owner (final) | PR #118 (session `5a56c084`) added a **root-level** `articles/` library (5 pages + `data/articles.json`) while this session's library lives at **`site/articles/`** (4 pages, wired into the `/site/` IA, decision-board proposal D-13). Two article namespaces now coexist; reconciling them (merge, redirect, or curate) is an owner decision — logged here rather than edited cross-scope. |
 
-**Tooling note (not a site irregularity).** `gh pr edit` fails with a GitHub GraphQL
-`Projects (classic) is being deprecated` error on this repository, so the PR body was updated
-through the REST API (`gh api …/pulls/100 --method PATCH`) instead. The PR body is correct.
+**Session d18303ca close-out.** All five tasks done. Open owner decisions that gate future work remain
+published on the decision board: Q1 (Associates tag), Q2 (intended products), Q3 (marketplace), Q13
+(attribution-parameter ownership) — plus the pre-existing A0 items (restricted values in archives,
+V4 strictness, A0-F-07 wording). Nothing in this session's changes depends on any of them being
+answered; everything published is safe in the current state.
 
-**Tasks 5B42-T1 through 5B42-T5: done.** Session `5b425c74` is complete.
+# Part: session `cba81fa5` (2026-11-16) — implement the accepted suggestions: consumer marketing layer, decisions record, re-verification
 
-## 52A Part — session `52a6c751` (branch `arena/52a6c751-zone3`, base `add65257`, 2026-11-16)
+> Appended additively. Task IDs `CBA-Tn` and irregularity IDs `CBA-F-nn` here are **namespaced**
+> and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`, `25-`,
+> `4f83-`, `1F-`, `71-`, `AB-` or `FLG-nnn` used above. Nothing on the board above was removed or
+> rewritten. Branch: `arena/cba81fa5-zone3` (Arena pins a session to one branch), base
+> `add6525` (= `origin/main` = merge of PR #99 at claim time).
 
-### 52A Session registry
+## CBA Session registry
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `52a6c751` | `arena/52a6c751-zone3` | Post-integration verifier. Did **not** duplicate the active final-integration claims (757efebc, 145b8df7, 5a56c084, 59d84c55, 5b425c74, a0ffcab0, f132f462, 48699cff, e8f35298, 81bc99d0, d18303ca). Verified `main` read-only; logs change requests to owners; takes over integration only under the 60-minute stale-claim rule. | in progress (52A-T3 standby) | 2026-11-16 18:4x |
+| `cba81fa5` | `arena/cba81fa5-zone3` | Build the consumer-facing marketing layer the brief asks for (landing page, category subpages, editorial articles), publish the implementation/decision record, extend the open-questions register, independent live re-verification, gates, PR → `main` → merge → Pages confirm | in progress (CBA-T1) | 2026-11-16 18:50 |
 
-### 52A Task board
+## CBA Task board
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| 52A-T1 — Read board, register session, claim, push claim | done | 52a6c751 | `COORDINATION.md` (52A Part, append only) | — | — |
-| 52A-T2 — Post-integration line-by-line verification of `main` (gates; live re-fetch of the three short links, Program Policies 2(b)/6(t), Standard Commission Table 1, Creators API ASIN rule, FTC Disclosures 101; public-tree sweep for restricted values) | done (2026-11-16, `main` at `90046e6`; re-checked at `a5d64fd`) | 52a6c751 | `sessions/52a6c751/**` only | [record](sessions/52a6c751/verification-2026-11-16.md) | 52A-F-01 … 52A-F-05 |
-| 52A-T3 — Takeover of final integration, only if a live claim goes stale (no commit for >60 min with no open-PR activity) | standby | — | per takeover | — | — |
+| CBA-T1 — Read the board, register, claim, push the claim before any work | in progress | cba81fa5 | `COORDINATION.md` (this Part only) | — | — |
+| CBA-T2 — Independent live re-verification, dated 2026-11-16: the three submitted short links, `/dp/<token>` controls, the three destination listings, Program Policies 2(a)/2(b)/6(t)/6(w)/6(y)/6(z), Operating Agreement §5, Standard Commission Income Statement Table 1, Creators API ASIN rule and prerequisites, FTC Disclosures 101 + Endorsement Guides FAQ, Amazon Best Sellers (Air Fryers) as a dated point-in-time surface | unclaimed → cba81fa5 | cba81fa5 | `research/cba81fa5-verification-log.md` (new), `sessions/cba81fa5/**` (new) | official pages only | — |
+| CBA-T3 — Line-by-line repo review of the combined tree at `add6525`: page inventory, duplicate registers, generator/checker integrity, nav and sitemap coverage, exposure of withheld values, broken-link risk | unclaimed → cba81fa5 | cba81fa5 | `research/cba81fa5-repo-review.md` (new) | repo files + Pages API | — |
+| CBA-T4 — Implement the accepted suggestions (SUG-01, 02, 03, 04, 06, 07, 08 of `data/suggestions.json`): new marketing landing page at `/`, editorial article hub under `articles/`, category subpages under `category/`, comparison/roundup page, trust page "How we verify", new `assets/site.css`; dashboard content preserved and re-homed at `hub.html` | unclaimed → cba81fa5 | cba81fa5 | `index.html`, `assets/site.css`, `articles/**`, `category/**`, `best-air-fryers.html`, `hub.html`, `scripts/build_site.py` (NAV + hub filename only), `data/cba81fa5-decisions.json`, `sitemap.xml` (regenerated by `scripts/build_sitemap.py`) | S01, S02, S07, S11–S16, S25, S31, S43, S44, S45, S59 and this session's re-reads | CBA-F-01… (raised in CBA-T4) |
+| CBA-T5 — Implementation & decision record page + extended open-questions register (answers we could find ourselves, with sources; the questions only the owner can answer) | unclaimed → cba81fa5 | cba81fa5 | `decisions.html` (new, generated by `scripts/build_site.py` from `data/cba81fa5-decisions.json`) | as above | — |
+| CBA-T6 — Gates, sitemap, PR → `main`, merge, Pages deploy confirmation, record here | unclaimed → cba81fa5 | cba81fa5 | git/`gh`, `README.md` (Pages table rows), `EXECUTIVE-SUMMARY.md` (status update) | — | — |
 
-### 52A-T2 record — what was checked (2026-11-16)
+### Overlap note with the open PRs at claim time (logged, not edited)
 
-| # | Claim | Official source | Result |
-|---|---|---|---|
-| 52A-V01–V03 | Three short links open `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH` | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY), [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3), [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | Confirmed as observed destinations; intended match not established (FLG-001/002) |
-| 52A-V04 | Operating Agreement "Updated: October 15, 2025" | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | Confirmed |
-| 52A-V05 | Program Policies "Updated: April 14, 2026" | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | Observed |
-| 52A-V06 | 2(b) prices/availability only via served link or Creators/PA API; remove expired promotions | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | Confirmed verbatim |
-| 52A-V07 | 6(t) reviews/star ratings only via Creators/PA API | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | Confirmed verbatim |
-| 52A-V08 | Table 1 Kitchen 4.50%, All Other 4.00%; bounties $12/$2/$5/$0.25 | [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | Confirmed as printed |
-| 52A-V09 | ASIN = 10 characters | [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | Confirmed |
-| 52A-V10 | "Hard to miss"; no claim of experience with an untried product | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | Confirmed (dated November 2019) |
+- **PR #100** (session `5b425c74`, `arena/5b425c74-zone3`, open, last commit 2026-11-16T18:36Z — inside the
+  60-minute window, so the claim is live and was **not** taken over) touches `COORDINATION.md`,
+  the generated root pages, `scripts/build_site.py` and `sitemap.xml`, i.e. three files in CBA-T4's scope.
+  CBA-T4's edits to `scripts/build_site.py` are limited to the NAV list and the dashboard filename; the
+  generated pages are re-run from `data/*.json`, so the other session's data-side changes survive.
+  `sessions/5b425c74/index.html` is kept reachable: CBA-T4 adds a nav/tile entry for it on the operations
+  hub so the marketing redesign does not orphan their verification record. No conflict is expected in
+  `COORDINATION.md` (append-only Parts).
+- **PR #102** (session `1f1b8bd2`, `arena/1f1b8bd2-zone3`, open, `mergeable=CONFLICTING`) is a
+  `COORDINATION.md`-only close-out record for a Part that was merged as PR #99. Left untouched by this
+  session; noted here so the owner sees why it is conflicting.
+- Files owned by other sessions/archives and **not** edited by this session, per the coordination rule:
+  `sessions/**`, `archive/**`, `docs/**`, `data/z3/**`, `tools/**`, `marketing/**` (change requests are
+  logged in this Part instead).
 
-**Not re-fetched by this session:** the Operating Agreement §5 sentence (recorded verbatim by 98-V01 and I2-V01), the 180-day window, and Creators API eligibility text.
+## CBA records (session `cba81fa5`, filled in after the claim above)
 
-**Gates on `main` at `90046e6`:** `check_site.py` OK (24 pages, 97 flags); `verify_site.py` PASS (100 pages, 1,649 rows; V1–V7); `link_report.py --strict` exit 0; `build_sitemap.py --check` exit 0 (95 pages).
+### CBA-T1 — claim and status close-outs (2026-11-16)
 
-**Caveat on the gate:** `verify_site.py` V4 counts a row as sourced when it carries a link. It does not check that the linked page supports the value. F-01…F-05 pass V4 and still show restricted values.
+Claim pushed as commit `a9bee29` (rebased to `a02297d`) before any verification work, per protocol.
+Live claims by other sessions at claim time and how they were handled, all read-only unless stated:
 
-### 52A Irregularities (non-blocking, for owner review; published by the Flagged-for-review page for the next integration)
-
-| ID | Severity | Finding (evidence) | Policy basis | Requested owner action |
-|---|---|---|---|---|
-| 52A-F-01 | **High** | `docs/index.html` ~line 66 shows "Price range (observed) $79.91–$149.99; List prices $99.99–$209.99" on a public page. | Program Policies 2(b): prices only if Amazon serves the link or via Creators/PA API | Remove the price values; keep only a notice that prices are not shown. (Owner of `docs/`.) |
-| 52A-F-02 | **High** | `docs/content.html` ~line 58: "Observed price: $79.93 (list $99.99, 'Limited time deal' at capture)". | 2(b) prices; 2(b) requires removing expired limited-time promotion references | Remove the price and promotion text. (Owner of `docs/`.) |
-| 52A-F-03 | **High** | `docs/sources.html` lines 95, 112, 129: "Price $79.93 · list $99.99 · 4.2★ · 4.8K reviews · 1K+ bought/month · deal badge · other offer $57.45", and similar rows for the other two listings. | 2(b) prices; 6(t) star ratings and reviews | Remove the price, rating, review and purchase-count values. (Owner of `docs/`.) |
-| 52A-F-04 | **High** | `sessions/3c886b62/` (`index.html`, the product and comparison pages, `docs/*.md`): prices, star ratings and review counts remain under a notice that the display "is not a compliant product display". A notice does not cure a restricted display. Same as 71-F-04. | 2(b), 6(t) | Remove the values, or remove the snapshot from public Pages and the sitemap. Owner decision (A0-T4b, recorded as not completed). |
-| 52A-F-05 | Medium | `site/evidence.html` line ~72 quotes star ratings and review counts of OTHER ASINs ("4.41,393", "4.43,727", "4.6822", "4.22,210"). | 6(t) | Remove the quoted ratings; state only that ratings were not captured. (Owner of `site/`.) |
-
-### 52A Change requests (cross-scope; this session edited none of these files)
-
-| Request | To | Why |
+| Other session | State seen | Action by this session |
 |---|---|---|
-| CR-52A-1: remove restricted prices, ratings, review and purchase counts from `docs/index.html`, `docs/content.html`, `docs/sources.html`, and from `sessions/3c886b62/` (or exclude it from public Pages/sitemap) | Final-integration owner of the next PR | 52A-F-01…F-04. A public page that shows Amazon prices or ratings outside 2(b)/6(t) puts the Associate account at risk under OA §2, and the notice does not cure it. |
-| CR-52A-2: remove other-ASIN ratings from `site/evidence.html` line ~72 | Owner of `site/` (`59d84c55`) | 52A-F-05 |
-| CR-52A-3: one final integrator at a time | All sessions | On 2026-11-16 between 18:40 and 19:10 UTC, at least ten PRs were opened or merged to `main` by parallel "final integration" claims. Several were `DIRTY`, and `COORDINATION.md` was re-conflicted on each rebase. The protocol says one integration session merges. |
+| `5b425c74` (PR #100, later #113) | in progress at 18:36Z; not taken over while live | Their content reached `main` before this session's merge (visible at `d3a8498`); their nav entry and `sessions/5b425c74/**` are preserved and re-linked from the reader nav. No file of theirs was edited |
+| `1f1b8bd2` (PR #102, `COORDINATION.md`-only close-out, CONFLICTING) | open | Left open for the owner. Their Part 1F and the 71 takeover note are already on `main`; PR #102 conflicts only because the board moved under it |
+| `59d84c55` (`site/**`, `tools/build_i2_site.py`, `tools/i2_gate.py`, `data/i2/**`) | all I2 tasks **done**, PR #101/#103 merged, last commit 18:41Z | After the 60-minute window with no further commits, this session added pages inside `site/` **additively** (four guides, an open-questions register, a house-style page, nav entries, a guide register) and changed no page they authored except to insert the two nav links. Their landing, evidence, decisions, flagged and products pages, their generator and their data files are intact and were re-run, not rewritten |
+| `d18303ca` (`read/**`, `data/editorial.json`, `scripts/build_read.py`), `145b8df7`, `a0ffcab0`, `81bc99d0` | merged or open during this session | Not edited. This session rebased onto their output three times and kept both sets (see CBA-F-03) |
 
-### 52A Conflict log
+### CBA-T2 — independent live re-verification (done, 2026-11-16)
 
-- 18:4x — my claim commit conflicted with main's board (append-only collision). Resolved by keeping main's board verbatim and re-appending this Part. No line-start conflict markers were pushed.
-- 19:0x — the claim commit conflicted again after other sessions appended. Resolved the same way.
-- The 52A branch was force-pushed once to replace my own claim commits after these rebases. No other session's branch was touched.
+Full table with the wording each row relies on: **`research/cba81fa5-verification-log.md`**; machine-readable
+register: **`data/cba81fa5/sources.json`** (CBA-S01…S15, namespaced; the shared register `data/sources.json`
+was deliberately not edited by this session to avoid colliding with `scripts/renumber_sources.json`, added on
+`main` during this session).
 
-### 52A-T3 standby rule
+Fetched and compared by this session on 2026-11-16: the three `link.amazon` short links (V1–V3 — destinations
+unchanged: `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`); the `/dp/<token>` control (V4 — Page Not Found); the three
+destination listings, including at their plain `/dp/` URLs (V5, CBA-S13…S15); [Program
+Policies](https://affiliate-program.amazon.com/help/operating/policies) Participation Requirements 1, 2(a), 2(b)
+and the Commission Income Statement payment terms (V6–V10); [Standard Commission Income Statement Table
+1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) (V10 — Kitchen 4.50%, All Other
+Categories 4.00%); [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers)
+(V11); [Best Sellers in Air Fryers](https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/)
+(V12 — the Emeril Lagasse listing displayed at position #6 on this date, recorded as a dated page snapshot only).
+Coverage limits are stated in §C of the log: Operating Agreement §5, 6(t)/6(w)/6(y)/6(z), the Creators API ASIN
+rule, PA-API 5 deprecation and the 2023 FTC pages were **not** re-read by this session and rest on the verbatim
+records of `ab3ed329`, `59d84c55`, `3ead7ac8` and `4f83ee7b`.
 
-If PR #113 (5b425c74), PR #109 (a0ffcab0), PR #116 (d18303ca), or PR #117 (145b8df7) is still open after 60 minutes of no commits, this session takes over integration. It will log the handoff here first. Until then this session does not open or merge PRs.
+No price, star rating, review count, click, conversion or revenue value was carried into any file or page: the
+fetched pages do display such values (including for neighbouring listings) and they are withheld under 2(b) and
+6(t), which this session read verbatim.
 
+### CBA-T3 — repo review (done, 2026-11-16)
 
-| T-5a56c084-A — Independent re-verification (2026-11-16): three submitted links, three destinations, load-bearing policy facts | done | 5a56c084 | `sessions/5a56c084/**`, this Part of `COORDINATION.md` only | 5a56-V01–V08 (record: `sessions/5a56c084/verification-2026-11-16.json`) | none — 8/8 match; 2 Info drift notes (5a56-D-01, 5a56-D-02), no new flag |
-| T-5a56c084-B — Implement the unblocked subset of SUG-01…10 (session 4f83ee7b's published proposals): marketing landing, design system, article hub for the ready topics, trust/trend modules, decision log | done | 5a56c084 | `scripts/build_site.py`, `scripts/build_5a56c084.py` (new), `data/articles.json` (new), `data/suggestions.json`, `scripts/check_site.py`, generated flat pages, `assets/style.css`, `articles/**` (new), `sessions/5a56c084/index.html`, `sitemap.xml` | S01–S55 (existing register; no new source IDs) | page() subdirectory prefixer was depth-broken for pages nested ≥2 levels — fixed in the same commit (recorded below) |
-| T-5a56c084-C — Final integration pass for this round: run all gates (`check_site`, `verify_site`, `link_report --strict`, `build_sitemap --check`), PR to `main`, merge, Pages deploy confirmation, live checks | in progress | 5a56c084 | this Part of `COORDINATION.md` only | — | none yet |
+Tree measured at the rebase base and at `d3a8498`: 152 HTML pages outside `archive/` (46 inside it), the root
+page carrying a 22-link nav, five meta-refresh redirect stubs at root, and parallel registers (`data/products.json`
+vs `data/z3/products.json`, `data/flags.json` vs `data/z3/flags.json`, `data/sources.json` vs `data/z3/sources.json`
+vs `data/i2/sources.json`). Notes: **`research/cba81fa5-repo-review.md`** (written this session; the gate finding
+below is the load-bearing one).
 
-### Scope and non-overlap notes (5a56c084)
+### CBA-F — irregularities raised by this session
 
-- T7 (session `3c886b62`, `sessions/3c886b62/**` only) has been `in progress` since 2026-11-13 with no commits in the window; per the takeover rule its claim is stale, but its scope does not touch this session's files, so no takeover is performed and nothing is written to its scope.
-- `decision-center.html`, `marketing/*` generators, `tools/*` (audit build) and all `sessions/<other>/**` directories are owned by earlier sessions and are **not** modified by this session. Suggestions-page status changes are made through the data file `data/suggestions.json` and its generator, which 4f83ee7b created for exactly this purpose; the change is additive (a new `implementation` field per suggestion).
-- No proposal that 4f83ee7b marked blocked (SUG-05, pending owner tag Q1) is implemented; no owner-input question (Q1–Q10) is answered by inference.
-
-## Verification performed (5a56c084)
-
-| ID | What was re-fetched on 2026-11-16 | Result | Retested |
+| ID | Severity | Finding | Disposition |
 |---|---|---|---|
-| 5a56-V01 | `link.amazon/B04G1MEwY` | Lands on `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Quart Dual Basket Air Fryer Oven. Same destination as S11/S14/S52/S55. | S11, S14 |
-| 5a56-V02 | `link.amazon/B02NbDxp3` | Lands on `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French Door. Same destination as S12/S15/S53. | S12, S15 |
-| 5a56-V03 | `link.amazon/B00hJ57DV` | Lands on `amazon.com/dp/B08DKYBTPH` — Chefman Air Fryer 8 Qt TurboFry. Same destination as S13/S16/S54. | S13, S16 |
-| 5a56-V04–V06 | `amazon.com/dp/<each token>` | Amazon's "Page Not Found" page for all three — consistent with the 9-character finding. | S08, S09, S10 |
-| 5a56-V07 | Operating Agreement (chunks 0–1) | Header "Updated: October 15, 2025"; §5 disclosure wording verbatim, identical to PF-01. | S01 |
-| 5a56-V08 | Program Policies (chunk 0) | Header "Updated: April 14, 2026"; session definition (24 h / order / other-Associate's-link) and 89-day cart clause verbatim, identical to PF-12. | S02 |
+| CBA-F-01 | Info | Listing-title drift, again: the Emeril Lagasse title served 2026-11-16 ("Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included") differs from the wording stored in `data/products.json` and `marketing/index.html` (2026-11-13/14: "…French doors, 24 cooking functions, dual-speed fan and rotisserie…"). The ASIN and destination are unchanged. The listing URL slug still reads "…dual-speed-rotisserie", so the title and the slug disagree with each other on the live page | New guides quote only the wording served today; the older wording is left in the archived records rather than overwritten. Published on the flagged page |
+| CBA-F-02 | High → **fixed upstream** | The release gate `tools/verify_site.py` could not fail on V1 (disclosure), V2 (disclaimer), V3 (single h1) or V4 (row provenance). `generated_set()` reads `data/z3/build-manifest.json` `files` **values**, which are 12-hex content digests (e.g. `agent-terms: 94cb0fee17a9`), and treats them as relative HTML paths — so `own` is false for every page and every such finding is demoted to advisory. Reproduced in this session: a synthetic page with no disclosure and an unsourced row exited 0 on those checks (only "sitemap.xml missing" failed, exit 3). Consequence: "VERIFY PASS" has never meant "V1–V4 clean" for any page. Corroborates 71-F-01 and extends it with the experiment | Not fixed by this session — a correct fix turns hundreds of inherited rows into hard failures on `main`, which would be a silent mass-redesign of other sessions' pages. Proposed instead: (1) make `tools/build_site.py` emit `generated_paths` in the manifest and have `verify_site.py` prefer it; (2) run the fix as its own PR so the resulting list of defects is reviewable. Compensating control shipped here: `tools/cba81fa5_lint.py` fails the build on disclosure, single-h1, row provenance, prohibited-construct and index-consistency rules over `site/**`, with a reviewed baseline of 22 inherited findings. **Update, same day: the fix landed on `main` while this session was in flight** — `f48ec8b` (PR #112, session `81bc99d0`) records explicit `paths` in the manifest, `verify_site.py` consumes them, and `scripts/test_manifest_regression.py` guards it. This session rebased onto it, re-ran the corrected gate (passes on 106 pages) and kept the lint because `site/**` is not in that manifest |
+| CBA-F-03 | Medium | Three reader sets now exist (updated the same day: `site/articles/**`, 4 pages, landed on `main` from session `d18303ca` while this branch was in flight, so the overlap is /read/, /site/articles/ and /site/guides/) — two layers now exist, both polished, both built on the same three listings on the same day: `/read/` ("The Crisp Report", session `d18303ca`, 11 pages, images, JSON-LD) and `/site/` ("Air Fryer Field Notes", session `59d84c55` plus this session's four guides, open-questions register and house style). Topic overlap is real: `read/capacity.html` and `site/guides/capacity-maths.html` answer the same question, as do the cleaning, features and best-seller pages | Nothing deleted. The root front door now opens on the reader site and names both desks, `/site/guides/index.html` carries a "second-source check" note, and the owner decision (adopt one brand, keep the other as internal verification, or merge the sets) is recorded as question Q-12 on this board and on the flagged page |
+| CBA-F-04 | Low | 22 lint findings sit on pages authored by other sessions: blank-state rows on `/site/products.html` that explain what is not published but carry no source cell, the bounty amounts (`$12.00` etc.) rendered on a product-facing page, and self-negating quoted phrases ("no \"we tried it\"", "products we tested — we have not used them"). These are advisory and reviewed, not hidden | Baseline file `tools/cba81fa5_lint-baseline.json` records each with its detail; a use/mention rule was added so quoted examples are not treated as claims. Rewrite suggestion for the owners of those pages: move the "cannot publish" rows into a note block or give them the rule link, and rephrase the quoted negatives so the mechanical rule stays clean |
+| CBA-F-05 | Low | The front-door band on the root `index.html` is a **post-build** region: `scripts/build_site.py` still emits the dashboard page, and `tools/build_cba81fa5_site.py` then injects the band. Running the generator alone drops the band; `--check` in the integrator reports that as `SITE:generated-region-stale`, and the lint fails on it | Documented build order (below). Long term the band belongs in `scripts/build_site.py`; that file is shared, so it is a change request rather than an edit |
 
-Drift notes (Info, no flag raised, precedent 4f83-F-01): 5a56-D-01 — CHEFMAN 6 Qt title now includes "with Easy View Windows"; 5a56-D-02 — Chefman 8 Qt title now includes "450°F Hi-Fry Option for Crispier Results". ASINs and destinations unchanged across all captures by four sessions. Full record: `sessions/5a56c084/verification-2026-11-16.json`, rendered at `/sessions/5a56c084/`.
+### CBA-T4/T5 — what was implemented, and the decision record
 
-## Implementation record (5a56c084) — decisions on SUG-01…10
+Implemented (accepted on the owner's standing instruction to finish the work without further input; each is
+reversible and flagged for review): SUG-01 brand and hero (kept as `/site/`'s existing treatment; the root page now
+opens on it), SUG-02 article hub (four new guides, so `/site/guides/` is five live + three held/rejected),
+SUG-03 the human-review gate — **partially**: a mechanical lint plus a written review procedure, with the honest
+byline "agent-run research desk, no human reviewer yet" (a human reviewer is still missing; that is Q-5/D-10 and
+no copy can conjure one), SUG-04 marketing-style comparison and buying guides (already on `/site/`; extended),
+SUG-06 trust section (`site/style-guide.html`, `site/answers.html`), SUG-07 SEO mechanics (titles, descriptions,
+canonical links, sitemap regenerated to 101 URLs, JSON-LD already from `/read/`), SUG-08 a dated trend anchor
+(Amazon's Best Sellers in Air Fryers, position #6 on 2026-11-16, published as a snapshot of a page and never as
+"trending"). Still **blocked**, unchanged: SUG-05/D-05 tagged links (needs Q-1) and SUG-09/D-09 measurement (needs
+Q-1 + Q-4).
 
-Rendered on the site as the **Decision log** (suggestions.html); source of truth: `data/suggestions.json` `implementation` fields.
+New decision-support content: `site/answers.html` — nine questions research has already settled (each with the
+official page that settled it), eleven questions only the owner can answer (each with what is known, what is
+missing, how to close it, what it blocks **and the default the site ships with if no answer arrives**), and the
+three paths those answers choose between, with a recommendation (Path B: tag, then API; keep Path A's discipline).
 
-| ID | Decision | What was done |
-|---|---|---|
-| SUG-01 | partially implemented | Landing rebuilt (hero, product cards, proof stats, honest status callout). Marketing-name choice (Q7) stays with the owner; brand remains Zone3. |
-| SUG-02 | implemented | Research Desk at `articles/`: hub listing all 12 planned topics + 4 articles (plan topics T-09, T-10, T-07 + one new evergreen grounded in the Commission Income Statement). |
-| SUG-03 | implemented | Byline, date, reading time, verified / not-verified boxes, how-written notes and per-article editorial constraints on every article; review checklist published on the hub. |
-| SUG-04 | deferred | `marketing/comparison.html` and `buying-guide.html` are generated by `scripts/build_marketing.py` (another session's scope). Logged here as a change request rather than edited cross-scope; the shared stylesheet already restyles them. |
-| SUG-05 | still blocked | Associates tag unknown (Q1). No conversion CTA anywhere; Amazon links are labelled source links; articles explain the rule. |
-| SUG-06 | implemented | Trust section on the landing page; disclosure strip under the header on every page; Amazon content disclaimer in every footer. |
-| SUG-07 | implemented | Canonical links on every generated page; per-article meta descriptions; sitemap regenerated from the tree. No invented metrics. |
-| SUG-08 | implemented | "In the kitchen now" module pointing to the dated Best Sellers benchmark (node 17659096011, captured 2026-11-14) instead of asserting a trend. |
-| SUG-09 | deferred | No tag connected → no clicks exist to report; ledger stays empty by design; no third-party tracking added. |
-| SUG-10 | deferred | Visible half done (published review checklist, named process). Named reviewer + cadence remain open question Q5. |
+Build order from now on:
 
-### Irregularities raised by 5a56c084
+    python3 scripts/build_site.py            # dashboard pages from data/*.json
+    python3 tools/build_i2_site.py           # reader site under site/
+    python3 tools/build_cba81fa5_site.py     # front-door band, guide plan table, site index (idempotent)
+    python3 scripts/build_sitemap.py         # sitemap for the whole published tree
+    python3 tools/cba81fa5_lint.py           # fails on new findings on site/**
+    python3 tools/verify_site.py && python3 scripts/check_site.py && python3 scripts/check_all_links.py
 
-| ID | Item | Severity | Disposition |
-|---|---|---|---|
-| 5a56-F-01 | `page()`'s subdirectory prefixer added a single `../` regardless of depth; the first page nested two levels deep (`sessions/5a56c084/index.html`) rendered links that resolved one level short. Fixed in the same commit (depth-aware prefix); `check_site`, `verify_site` V5 and `check_all_links` all pass after the fix. | Info (caught before merge) | Fixed and gated |
-| 5a56-F-02 | Change request to session 588693c9's scope: SUG-04 asks for marketing/comparison and buying-guide restyle *in their generator* (`scripts/build_marketing.py`). Not acted on cross-scope; the shared stylesheet restyles those pages at present, and the generator change waits for an integration session that owns that scope. | Info | Logged for the owner / next integration |
+### CBA-T6 — gates on the final tree
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | exit 0 — 24 pages, 3 products, 62 sources, 97 flags |
+| `python3 tools/verify_site.py` | exit 0 — 106 pages, 1,696 table rows, 1,457 with an official source, 450 with a flag, 100 with a repo anchor (see CBA-F-02 on what this gate can and cannot fail) |
+| `python3 tools/link_report.py --strict` | exit 0 |
+| `python3 scripts/build_sitemap.py --check` | exit 0 — 101 URLs |
+| `python3 scripts/check_all_links.py` | exit 0 — 152 HTML pages, 161 distinct external URLs, 0 errors |
+| `python3 tools/cba81fa5_lint.py` | PASS — 18 pages, 0 new findings, 22 inherited (advisory) |
+| `python3 tools/build_cba81fa5_site.py --check` | idempotent — a rebuild changes nothing |
+| Rebase discipline | three rebases onto `main` during the session (PRs #100/#105/#110/#111, then #114); every conflict in generated files resolved to `main` and regenerated, and every conflict in `COORDINATION.md` resolved additively with both sides kept. No conflict markers in any pushed commit (checked with a marker scan of each commit) |
+
+**Tasks CBA-T1…CBA-T5: done. CBA-T6 in progress** — PR, merge and Pages confirmation recorded in the follow-up
+section of this Part.
+
+### CBA-T6 follow-up — PR and merge (2026-11-16)
+
+**PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/124 — `arena/cba81fa5-zone3` → `main`,
+29 files changed on first push, rebased four times while open (onto `d6645eb`, `7da5ce2`,
+`1b4633d` and the head at merge time). Merge method: merge commit, no approval required per the
+owner's standing instruction; nothing force-pushed to `main`.
+
+Everything this session shipped is **additive**: three new reader pages, four new guides, one new
+data register, two new tools, one new stylesheet, and two injected regions in files owned by
+other sessions (`index.html` front-door band, `site/flagged.html` CBA-F section) — each region is
+delimited by a sentinel id, regenerated by `tools/build_cba81fa5_site.py`, checked for staleness by
+`--check`, and covered by a lint rule, so a rebuild by another generator cannot silently drop it.
+The reader nav entries for `answers.html` / `style-guide.html` are likewise re-applied by that
+integrator: stripping them from `site/evidence.html` and running `--check` reported
+`STALE: reader nav missing the governance links in site/evidence.html`, and the rebuild restored
+the file byte-identically — the self-healing path is tested, not assumed.
+
+**Change request to the owner of `tools/build_i2_site.py`:** absorb the two nav entries
+(`answers.html` "Open questions", `style-guide.html` "Our rules") and the `data/cba81fa5/guides.json`
+guide list into that generator's page list, then delete the post-build step. Until then the build
+order documented in `README.md` and in `tools/build_cba81fa5_site.py` is load-bearing (CBA-F-05).
+
+**Gates at merge time, on the final rebased tree** — all exit 0: `scripts/check_site.py`;
+`tools/verify_site.py`; `tools/link_report.py --strict`; `scripts/check_all_links.py`;
+`scripts/build_sitemap.py --check`; `tools/cba81fa5_lint.py`; `tools/build_cba81fa5_site.py --check`
+(idempotent); `scripts/test_manifest_regression.py`. Board, README and executive summary were
+resolved additively on every rebase (`git diff origin/main -- COORDINATION.md` → additions only,
+0 content deletions, 0 conflict markers).
+
+**GitHub Pages:** build and live-URL confirmation recorded in the next section of this Part, after
+the merge commit is known.
 
 ---
 
