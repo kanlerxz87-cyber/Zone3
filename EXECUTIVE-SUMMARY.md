@@ -112,7 +112,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-62 official sources · 55 policy facts · 99 flags · 24 pages in the shared gate, a 16-page audit build, a `/docs/`
+62 official sources · 55 policy facts · 100 flags · 24 pages in the shared gate, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -206,8 +206,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-99 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 17 high, 26 medium, 30 low, 23 informational (informational entries record a correction
+100 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 17 high, 27 medium, 30 low, 23 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 

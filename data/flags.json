@@ -1380,6 +1380,18 @@
       "session": "f65d393b",
       "status": "fixed",
       "repo_evidence": "git diff sitemap.xml on base 609dc76 removes exactly those five entries; python3 scripts/build_sitemap.py --check then reports 78 pages, 0 extra"
+    },
+    {
+      "id": "F65-F-03",
+      "severity": "Medium",
+      "category": "Build (fixed)",
+      "item": "scripts/build_marketing.py crashed on main after NAV was split into NAV_PRIMARY + NAV_MORE — the marketing generator could not run at all",
+      "detail": "Session 5a56c084's refactor replaced the flat NAV list in scripts/build_site.py with NAV_PRIMARY and NAV_MORE, but scripts/build_marketing.py still called list(base.NAV) and raised AttributeError: module 'build_site' has no attribute 'NAV'. Reproduced on main at 7da5ce2 before any edit by this session. Every other generator (build_site, build_read, build_5a56c084, build_sitemap, build_i2_site, tools/build_site) ran; only the marketing generator was dead, which meant the six marketing pages could never be regenerated again and the 'generators idempotent' release gate could not pass. Fixed in this session by building the flat entry list from NAV_PRIMARY plus the flattened NAV_MORE groups; the existing href dedup and the marketing/index fallback are unchanged, and regenerating the six pages changes only their nav line.",
+      "action": "Fixed in this session (scripts/build_marketing.py). Change request for the pipeline owner: add a smoke test that runs every generator in the release checklist — scripts/test_manifest_regression.py already exists as a pattern — so a refactor of a shared module cannot silently kill one generator.",
+      "date": "2026-11-16",
+      "session": "f65d393b",
+      "status": "fixed",
+      "repo_evidence": "python3 scripts/build_marketing.py at 7da5ce2 raises AttributeError on base.NAV; after the fix it builds 7 pages with rc=0"
     }
   ]
 }

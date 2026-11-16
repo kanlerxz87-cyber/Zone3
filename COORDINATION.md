@@ -7048,8 +7048,9 @@ a new page; nothing was implemented from the suggestions without review, per the
 
 | ID | Sev | Item | Disposition |
 |---|---|---|---|
-| F65-F-01 | Low | Six `marketing/*.html` pages stale vs shared NAV after PR #101 (third recurrence of the class) | **fixed** — regenerated (nav-only); pipeline change request in the flag's `action` |
+| F65-F-01 | Low | Six `marketing/*.html` pages stale vs shared NAV after PR #101 (third recurrence of the class; parallel finding A0-F-04, cross-referenced) | **fixed** — regenerated (nav-only); pipeline change request in the flag's `action` |
 | F65-F-02 | Info | `sitemap.xml` on `main` carried the 5 redirect-stub/duplicate entries `tools/build_site.py` sweeps in (25-F-04 root cause) | **fixed** — canonical regeneration: 78 pages, 0 extras, all 8 `site/` pages listed |
+| F65-F-03 | Medium | **`scripts/build_marketing.py` crashed on `main`**: session 5a56c084 split `NAV` into `NAV_PRIMARY`/`NAV_MORE` in `scripts/build_site.py`, but the marketing generator still called `list(base.NAV)` → `AttributeError`. Reproduced on `main` at `7da5ce2` before any edit by this session; every other generator ran | **fixed** — flat entry list now built from `NAV_PRIMARY` + flattened `NAV_MORE`; 7 pages regenerate, rc=0; smoke-test change request in the flag's `action` |
 
 ### F65-T5 — final integration (in progress: gates green, PR next)
 
@@ -7067,11 +7068,22 @@ Gates on the final tree (after F65-F-01/F-02 fixes and the 88-flag register):
 | conflict-marker / secrets sweep | **0 / 0** |
 
 Shared outputs edited by this session, each logged with its reason: `data/flags.json`
-(+F65-F-01/F-02, the two findings above), `EXECUTIVE-SUMMARY.md` (counts 86 → 88 flags and
-the severity breakdown, to keep the register and the summary in sync), generated
-`flagged.html`/`executive-summary.html`/`index.html` (regenerated from the data, plus the
-landing KPI), `marketing/*.html` (F65-F-01 fix), `sitemap.xml` (F65-F-02 fix).
-`sessions/f65d393b/**` (this session's records) and `COORDINATION.md` (this Part only) are
-this session's own scope. `scripts/build_site.py` was **not** edited — open PR #100
-(`5b425c74`) owns a NAV change to it; this session's records are linked from this board
-instead of from the nav, to keep the two PRs conflict-free.
+(+F65-F-01/F-02/F-03, the three findings above), `EXECUTIVE-SUMMARY.md` (counts corrected to
+the register — 62 sources / 55 facts / 100 flags / 24 pages in the shared gate, plus the
+severity breakdown; this also repaired a pre-existing drift where §2 said 93 flags while the
+register held 97), generated `flagged.html`/`executive-summary.html`/`index.html`
+(regenerated from the data, plus the landing KPI), `marketing/*.html` (F65-F-01 fix),
+`scripts/build_marketing.py` (F65-F-03 fix — a gate failure, not a style choice), and
+`sitemap.xml` (F65-F-02 fix). `sessions/f65d393b/**` (this session's records) and
+`COORDINATION.md` (this Part only) are this session's own scope. `scripts/build_site.py` was
+**not** edited — other sessions' refactors own it; this session's records are linked from this
+board instead of from the nav.
+
+**Rebase history (both resolved by keeping every side in full).** Round 1: `main` moved
+`609dc76` → `b8f576d` (PRs #100/#105/#110/#111) during the first push; `COORDINATION.md`
+conflicts resolved main-verbatim + this Part appended, generated pages resolved to main's
+side then **regenerated** from the unioned data, flag registers unioned by ID (97 + 2 = 99).
+Round 2: `main` moved `b8f576d` → `7da5ce2` (PRs #119/#121) before the push; same resolution
+(`COORDINATION.md` main-verbatim + this Part, `flagged.html` regenerated afterwards). No
+line-start conflict marker was ever committed (checked before every continue/push); no other
+session's file was discarded.

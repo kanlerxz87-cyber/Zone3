@@ -112,7 +112,16 @@ def page(name: str, title: str, body: str, lead: str = "", active: str = "") -> 
     # entry that may already exist is what breaks; the fix is to append only when the
     # destination is missing, then de-duplicate by href so the nav cannot depend on
     # whether base.NAV happens to list this page.
-    entries = list(base.NAV)
+    #
+    # Session f65d393b (2026-11-16): session 5a56c084 split `base.NAV` into
+    # `NAV_PRIMARY` + `NAV_MORE` in scripts/build_site.py, but this module still
+    # referenced `base.NAV` and crashed with AttributeError — the marketing
+    # generator could not run at all, so the "generators idempotent" gate failed
+    # on main (flag F65-F-03). Build the flat entry list from both parts instead;
+    # the dedup below is unchanged.
+    entries = list(base.NAV_PRIMARY)
+    for _group, items in base.NAV_MORE:
+        entries.extend(items)
     if not any(href == "marketing/index.html" for href, _ in entries):
         entries.append(("marketing/index.html", "Marketing"))
     seen: set[str] = set()
