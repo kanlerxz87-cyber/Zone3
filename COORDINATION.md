@@ -6824,3 +6824,69 @@ the hero no longer leads with process metrics (the statistic block beneath it st
 now carries four session-named entries, not two; there are three site generations, not two; the
 flag count moved 78 → 97. Corrected rows are 757-ES-03, 757-ES-07, 757-C-01, 757-C-02, 757-C-07
 and the matching rows on the session record page.
+
+---
+
+### 757-T7 — PR, merge and Pages deploy (done, 2026-11-16)
+
+| Event | Result |
+|---|---|
+| Pull request | [#120 — Design brief & prompt pack, review console, and session record (757efebc)](https://github.com/kanlerxz87-cyber/Zone3/pull/120), `arena/757efebc-zone3` → `main` |
+| Syncs required | **Five** merges of `origin/main`. Sessions `ab3ed329`, `5b425c74`, `f132f462`, `a0ffcab0`, `48699cff`, `e8f35298`, `59d84c55`, `145b8df7`, `5a56c084`, `d18303ca` and others all landed while this session worked. Scripted at `scripts/merge_main_757.py` |
+| Pre-merge | `mergeable=MERGEABLE`, `mergeStateStatus=CLEAN` |
+| Merge | **MERGED** 2026-11-16T19:11:27Z via `gh pr merge 120 --merge`. Merge commit **`403d972e2ac3f80eabede32bdd1a0b12d079fbc2`** |
+| Pages | Build for `403d972` → **status `built`** (created 19:11:29Z, updated 19:12:12Z) via `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest` |
+| Live check | https://kanlerxz87-cyber.github.io/Zone3/decision-queue.html — **live**; the relationship note, the state legend, the 22-proposal queue with anchored blocking-question links, and the sourced `S02`/`S14` links all render |
+
+**Conflict-marker trap: this session hit it and is recording it, because the rule here is that a
+conflict is recorded, not hidden.** On the round-4 sync, `scripts/build_site.py` conflicted. The
+merge script printed `MANUAL RESOLUTION STILL NEEDED` and returned 1 — but it had been invoked as
+`python3 scripts/merge_main_757.py 2>&1 | tail -6`, so **the pipeline's exit status came from
+`tail`**, the `&&` chain continued, and the conflicted file was committed and pushed in
+`34f3f9b`. Nothing was published from it — the PR was still open and Pages builds from `main`, so
+the generator could never have run — but the broken tree did reach the remote.
+
+Fixed in `7ace0f9`: took `origin/main`'s `scripts/build_site.py` and re-applied this session's
+additions against the current anchors, scripted at `scripts/_reapply_757.py`. Session `145b8df7`
+had restructured the generator (`NAV` → `NAV_PRIMARY` + `NAV_MORE`, a rebuilt landing page, an
+articles layer), which is why the original insertions no longer applied.
+
+**Anchor trap worth recording for the next session.** `NAV_MORE` holds
+`("suggestions.html", "Suggestions & decisions")` with a **raw** ampersand; `SITEMAP_GROUPS` holds
+the same row with **`&amp;`**. They are different strings. Matching the escaped literal when
+editing the nav silently edits the site map instead. Both anchors in the re-apply script are now
+distinct, and the script fails loudly rather than writing.
+
+**Piping masked an exit code.** The general form of the bug above: any
+`python3 <gate>.py | tail -n` makes the exit status `tail`'s. Redirect to a file
+(`> /tmp/x.log 2>&1`) or run it bare inside a `&&` chain.
+
+### 757 Follow-up (after the merge)
+
+Two rows on the review console carried a number that drifted with every merge: `757-S-02` said two
+nav entries were named after agent sessions (it is four) and `757-S-03` quoted a flag count that
+moved 78 → 97 → 101 → 102 across four syncs. Both were re-worded to drop the volatile number, since
+the point of the row is the pattern, not the tally. Same change on the design brief and the session
+record.
+
+### 757 Sources used (all read 2026-11-16 by this session)
+
+| ID | Page | What was read |
+|---|---|---|
+| S01 | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | §5 disclosure wording; the bar on implying Amazon endorsement |
+| S02 | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | 1(g), 2(a), 2(b) tag / original content / claims / prices / promotions, 6(f), 6(t), 6(w), 6(y), 6(z); CIS 2(c)–(e), 2(g) |
+| S06 | [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | `partnerTag` required |
+| S14 | [amazon.com/dp/B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) | Listing 1 title and breadcrumb |
+| S15 | [amazon.com/dp/B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) | Listing 2 title and breadcrumb |
+| S16 | [amazon.com/dp/B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) | Listing 3 title and breadcrumb |
+| S25 | [Standard Commission Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | Kitchen 4.50%, All Other 4.00%, bounty rows |
+| S31 | [GetItems ItemIdType](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter) | ASIN default and 10-character examples |
+| S43 | [Best Sellers: Air Fryers](https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/) | Browse node 17659096011 — **linked, not fetched; no rank is claimed** |
+
+### 757 Final state
+
+**Tasks 757-T1 through 757-T7: done.** Session `757efebc` is complete. Published:
+`design-brief.html`, `decision-queue.html`, `sessions/757efebc/` (index + verification log),
+four flag records `757-F-01`…`757-F-04` on the Flagged for review page, and two reusable scripts
+(`scripts/merge_main_757.py`, `scripts/_reapply_757.py`). No existing page's content was
+rewritten by this session.
