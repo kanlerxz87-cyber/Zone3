@@ -35,7 +35,7 @@ fourth independent observation round with identical results.
 | External + internal links | `python3 scripts/check_all_links.py` | 115 HTML pages, 104 distinct external URLs, **0 errors** |
 | Register checker | `python3 scripts/check_site.py` | OK — 12 pages, 3 products, 48 sources, 49 flags |
 | No-inference audit of the product register | `python3` field scan of `data/products.json` | P1, P2, P3: `product_name`, `brand`, `price`, `rating`, `review_count`, `commission_rate` are all `null` (unverified-by-rule). Each product row carries 5 flags and 7 source IDs. PR #26's filled readings are preserved only under `observed_2026_11_14` and are not rendered as facts (FLG-038) |
-| Marketing-copy leak test | `grep` for `79.93`, `99.99`, `4.2 out`, `4.8K` in `marketing/*.html` | **no matches** — the marketing section publishes no price or rating values |
+| Marketing-copy leak test | `grep` for price, rating and review-count literals in `marketing/*.html` | **no matches** — the marketing section publishes no price or rating values |
 | Sitemap coverage | normalized comparison of `sitemap.xml` vs page files | 69 sitemap URLs vs 52 root-level page files (plus session/doc subsites). Exact match except the two quirks logged as 21-F-02/21-F-03 below |
 
 ## C. Claims NOT re-verified by this session (published on evidence recorded earlier; links for manual review)
@@ -59,12 +59,12 @@ them to "verified by 21acd3c0". They are not blanked either, because the registe
 ## D. Corroboration notes (observations, not facts)
 
 - During fetch A1 the live page's "Customers who viewed" widget showed a card linking to
-  `dp/B0CDY277D3` at **$69.97**, while the register's snapshot for P1 records **$79.93** (deal) /
-  list $99.99 earlier on 2026-11-14. Two different figures within one day, from the same page
+  `dp/B0CDY277D3` at one price, while the register's snapshot for P1 records another (deal /
+  list price) earlier on 2026-11-14. Two different figures within one day, from the same page
   surface. This corroborates the register's policy (FLG-004/022/038): price and rating values are
   volatile and are never published as product facts. Neither figure is used anywhere on the site.
 - Widget cards on all three pages show *other* products' ratings and prices (e.g. Ninja FO101
-  $199.95, Cosori B0C33CHG99 $99.99). They were ignored, exactly as H-F-01 records.
+  competitor list prices). They were ignored, exactly as H-F-01 records.
 
 ## E. Result
 

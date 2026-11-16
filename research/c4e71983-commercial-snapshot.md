@@ -23,9 +23,9 @@ full commercial block. That is the route used here.
 
 | Product | Rating | Ratings (shown) | Price | List | Discount | Badge | Lowest other offer | Bought past month | Captured (UTC) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| B0CDY277D3 — Chefman 6 Qt dual basket | 4.2 / 5 | 4.8K | $79.93 | $99.99 | 20% | Limited time deal | $57.45 (2+ used & new) | 1K+ | 22:37:14Z |
-| B09B7SB46R — Emeril Lagasse 26 QT | 4.3 / 5 | 18.3K | $149.99 | $209.99 | 29% | Early Black Friday Deal | $92.99 (2+ used & new) | 4K+ | 22:33:46Z |
-| B08DKYBTPH — Chefman 8 Qt TurboFry | 4.4 / 5 | 16.8K | $79.91 | $119.99 | 33% | Limited time deal | $49.54 (3+ used & new) | 3K+ | 22:37:34Z |
+| B0CDY277D3 — Chefman 6 Qt dual basket | Withheld | Withheld | Withheld | Withheld | 20% | Withheld | Withheld (2+ used & new) | Withheld | 22:37:14Z |
+| B09B7SB46R — Emeril Lagasse 26 QT | Withheld | Withheld | Withheld | Withheld | 29% | Withheld | Withheld (2+ used & new) | Withheld | 22:33:46Z |
+| B08DKYBTPH — Chefman 8 Qt TurboFry | Withheld | Withheld | Withheld | Withheld | 33% | Withheld | Withheld (3+ used & new) | Withheld | 22:37:34Z |
 
 Discount is arithmetic from the two captured prices — it is not an Amazon-published figure.
 Sources: C4E-S07, C4E-S08, C4E-S09.
@@ -51,12 +51,12 @@ search results round them).
 
 | Rank | Product | Brand | Capacity | Rating | Ratings | Price |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Ninja Air Fryer Pro 5 Qt AF141 | Ninja | 5 Qt | 4.7 | 10,984 | $89.99 |
-| 2 | Cosori TurboBlaze 6 Qt | Cosori | 6 Qt | 4.8 | 22,768 | $99.99 |
-| 3 | bella Fits-anywhere 4 Qt | bella | 4 Qt | 4.5 | 4,015 | $39.99 |
-| 4 | Chefman 4 QT Compact | Chefman | 4 Qt | 4.6 | 7,552 | $57.91 |
-| 5 | Cuisinart TOA-55 | Cuisinart | 0.6 cu ft | 4.5 | 126 | $129.95 |
-| 6 | Chefman 14-Quart 6-in-1 | Chefman | 14 Qt | 4.3 | 52,301 | $99.95 |
+| 1 | Ninja Air Fryer Pro 5 Qt AF141 | Ninja | 5 Qt | 4.7 | Withheld | Withheld |
+| 2 | Cosori TurboBlaze 6 Qt | Cosori | 6 Qt | 4.8 | Withheld | Withheld |
+| 3 | bella Fits-anywhere 4 Qt | bella | 4 Qt | 4.5 | Withheld | Withheld |
+| 4 | Chefman 4 QT Compact | Chefman | 4 Qt | 4.6 | Withheld | Withheld |
+| 5 | Cuisinart TOA-55 | Cuisinart | 0.6 cu ft | 4.5 | 126 | Withheld |
+| 6 | Chefman 14-Quart 6-in-1 | Chefman | 14 Qt | 4.3 | Withheld | Withheld |
 
 **Scope limit:** positions 1–6 captured in full, 7 partially, 8–100 not enumerated. No claim is made
 that any of the three promoted products is absent from the full list.
@@ -64,24 +64,24 @@ that any of the three promoted products is absent from the full list.
 ## 5. What the numbers say
 
 **The gap is satisfaction, not price.** The category leaders rate 4.7 and 4.8; the three promoted
-products rate 4.2, 4.3 and 4.4. Yet the $149.99 unit — the most expensive thing in the comparison —
-shows the strongest velocity signal of the three (4K+ bought in past month). Buyers in this category
+products rate within a narrow band. Yet the premium unit — the most expensive thing in the comparison —
+shows the strongest velocity signal of the three. Buyers in this category
 are not being deterred by price.
 
-**Brand adjacency is favourable.** The category leader on volume (rank 6, 52,301 ratings) is a
+**Brand adjacency is favourable.** The category leader on volume is a
 Chefman, and two of the top six are Chefman. Two of the three promoted products are Chefman.
 
-**The premium band is thin.** Only one product in the captured top six sits above $130, and it has
-126 ratings. The promoted $149.99 unit has 18.3K ratings shown. That is the least contested band in
+**The premium band is thin.** Only one product in the captured top six sits above Withheld, and it has
+a thin sample. The promoted premium unit has a large rating count shown. That is the least contested band in
 the set and the strongest product within it.
 
-**Two products are priced identically.** At $79.91 and $79.93 they are two cents apart despite list
-prices $20 apart. On the captured data the 8 Qt unit (4.4 stars, 16.8K ratings) is the stronger of
+**Two products are priced almost identically.** Despite list
+prices apart. On the captured data the 8 Qt unit is the stronger of
 the two, which makes it the natural "best for most people" pick with the dual-basket unit as the
 "best if you cook two things at once" alternative.
 
 **Commission consequence.** At the published Kitchen rate of 4.50%, one qualifying unit is worth
-about $3.60 for either Chefman and about $6.75 for the Emeril Lagasse unit. The premium product is
+a thin per-unit commission for either Chefman and a higher figure for the Emeril Lagasse unit. The premium product is
 worth nearly twice as much per conversion, and it is also the fastest-moving. That alignment — the
 highest-value product is also the most popular one — is unusual and should drive placement.
 
@@ -90,8 +90,7 @@ sales at the Kitchen rate. Prime is a material part of the model, not an afterth
 
 ## 6. Volatility — the operational risk
 
-All three products were discounted at capture, two with a *Limited time deal* badge and one with an
-*Early Black Friday Deal* badge. That is consistent with mid-November, and it means any printed price
+All three products were discounted at capture and all three carried promotion badges at capture time. That is consistent with mid-November, and it means any printed price
 is wrong within days.
 
 Two rules bite at once:

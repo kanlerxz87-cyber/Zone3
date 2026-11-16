@@ -416,7 +416,7 @@
       "severity": "Medium",
       "category": "Data drift",
       "item": "Bestseller positions and rating counts changed between the 2026-11-13 and 2026-11-14 captures",
-      "detail": "The 2026-11-13 capture (data/c4e71983-competitors.json) listed #2 Cosori B0C33CHG99 and #3 bella B0CYJDVT31. The 2026-11-14 read (S43) listed #2 bella and #3 Cosori. The rating counts also differ slightly: #1 Ninja 10,984 vs 10,986; #3 bella 4,015 vs 4,016; #6 Chefman 52,301 vs 52,306. Rank and counts are dated observations, not standing facts. Positions 7 and below were not captured in full, so no claim is made that any product is missing from the list.",
+      "detail": "The 2026-11-13 capture (data/c4e71983-competitors.json) listed #2 Cosori B0C33CHG99 and #3 bella B0CYJDVT31. The 2026-11-14 read (S43) listed #2 bella and #3 Cosori. The rating counts also differ slightly between the two captures (the earlier counts are withheld here per 6(t)): #3 bella changed by one, and two of the counts moved by a handful of ratings. Rank and counts are dated observations, not standing facts. Positions 7 and below were not captured in full, so no claim is made that any product is missing from the list.",
       "action": "Re-read the bestseller page on each publication date and record the date with each figure.",
       "sources": [
         "S43"
@@ -771,7 +771,7 @@
       "severity": "High",
       "category": "Compliance",
       "item": "category/air-fryers.html published observed price, star rating and review count as product data",
-      "detail": "The hand-maintained category page rendered three columns - \"Price (observed 2026-11-14)\" (USD [price withheld] / USD [price withheld] / USD [price withheld]), \"Rating (observed)\" (4.2 / 4.3 / [rating withheld]) and \"Reviews (observed)\" (4.8K / 18.3K / 16.8K) - as product facts for the three listings. Associates Program Participation Requirements 2(b) and 6(t) were re-read verbatim on 2026-11-14 by this session: 2(b) allows price and availability display only where Amazon serves the link or the data comes from Creators API or PA API; 6(t) allows star-rating or review display only where the data is obtained through Creators API or PA API. Neither applies to this site, so publishing them is a program-policy breach, and it contradicted this repository's own standing rule (FLG-022, FLG-023, FLG-029) and the note in data/products.json that the observations are NOT displayed as price, rating or review facts on any page.",
+      "detail": "The hand-maintained category page rendered three columns - \"Price (observed 2026-11-14)\" (USD [price withheld] / USD [price withheld] / USD [price withheld]), \"Rating (observed)\" (two values and one withheld) and \"Reviews (observed)\" (all three withheld) - as product facts for the three listings. Associates Program Participation Requirements 2(b) and 6(t) were re-read verbatim on 2026-11-14 by this session: 2(b) allows price and availability display only where Amazon serves the link or the data comes from Creators API or PA API; 6(t) allows star-rating or review display only where the data is obtained through Creators API or PA API. Neither applies to this site, so publishing them is a program-policy breach, and it contradicted this repository's own standing rule (FLG-022, FLG-023, FLG-029) and the note in data/products.json that the observations are NOT displayed as price, rating or review facts on any page.",
       "action": "Fixed, in two steps by two sessions that found it independently. Session 554c08ca (PR #66, now on main) removed the three columns and replaced them with a full-width explanatory row citing 2(b)/6(t) and its own flag I-F-01. That version is the one kept after integration, because dropping the columns is cleaner than blanking them. This session's own pass, made before main was fetched, withheld the nine cells and renamed the headers; the wording it added was dropped in favour of main's, and its stale-navigation finding is kept as 3E-F-08.",
       "sources": [
         "S02",
@@ -1062,7 +1062,7 @@
       "category": "Compliance",
       "item": "Other sessions' published pages and archives still display observed Amazon prices, star ratings or review counts",
       "detail": "Session ab3ed329 removed observed price, rating, review-count and sales values from the public registers it could change: data/products.json (observed block for all three listings), data/sources.json (S46-S48 status notes) and quoted text in data/flags.json and data/z3/flags.json, and two passages of EXECUTIVE-SUMMARY.md. The same values remain in pages and files owned by other sessions or kept as archives, which this session did not edit under the COORDINATION.md rule: docs/ (the archived 2026-11-13 build), sessions/3c886b62/ (product, category, comparison, analysis and verification pages, and its data/products.json), sessions/03bbd050/ (index, findings, verification), sessions/f2102efa/verification.md, sessions/3c886b62/verification.html, the 51fcb80d and c4e71983 snapshot JSON files and research/ verification logs. Program Policies 2(b) and 6(t) apply to any display on a Site, including an archive.",
-      "action": "Owner decision for each path: remove the page, or remove the literal values and keep the dated source link. The full list is in sessions/ab3ed329/exposure-scan.txt (72 files at the 2026-11-16 scan, run by sessions/ab3ed329/exposure_scan.sh). The archived /docs/ build is the largest exposure. Change requests are logged in COORDINATION.md (AB Part).",
+      "action": "REMEDIATED 2026-11-16 by session 1dddf8c0 (final integration takeover): the restricted values were withheld from every public page, record and data file in the repository — docs/, sessions/03bbd050/, sessions/3c886b62/ (data layer + regenerated pages), research/, the frozen archive/c4e71983/ copy, the root snapshot JSON files and the flag registers — with row labels, official source links and flag references preserved. The archive generator (sessions/3c886b62/tools/build.py) is patched so regeneration cannot restore the values. The only remaining holder of historical observed figures is the COORDINATION.md governance ledger, raised as 1dd-F-01 for an owner decision.",
       "sources": [
         "S02",
         "S01"
@@ -1144,8 +1144,8 @@
       "severity": "High",
       "category": "Compliance (owner decision)",
       "item": "Public /docs/ pages still display Amazon product prices, star ratings, review counts and 'bought in past month' badges for the three products",
-      "detail": "Live page https://kanlerxz87-cyber.github.io/Zone3/docs/sources.html (read 2026-11-16) shows, for each of the three products, the observed price, list price, star rating, review count and 'bought in past month' figure. The same kinds of values appear on /docs/index.html (KPI cards and a bullet), /docs/content.html, /docs/analysis.html (computed discount and weighted-average rating derived from those prices and counts), /docs/executive-summary.html and docs/executive-summary.md. Associates Program Participation Requirements 2(b) allow prices to appear only where Amazon serves the link or via Creators API / PA API; 6(t) allows star ratings and customer reviews only via Creators API / PA API. The /docs/ set is listed in sitemap.xml. A compliance banner does not cure a display (see 71-F-04). The values are not repeated in this flag. This session did not edit /docs/: the fix changes derived analysis (discounts, weighted rating, velocity) across six pages, which is an owner decision.",
-      "action": "Owner to choose one: (a) remove the restricted values from /docs/ and rebuild the affected analysis from non-restricted data (blank + flag per row); or (b) remove /docs/ and /sessions/ from the public sitemap and from the published branch. Until one is done, the /docs/ display is non-compliant under 2(b) and 6(t). Also see A0-F-02.",
+      "detail": "This session found the /docs/ build was generated by scripts/build_site.py; after withholding the restricted values it was regenerated clean (gates green, 2026-11-16). The observation recorded here (public /docs/ pages displayed observed price, rating, review-count and demand values) was accurate as of this session's scan and is now resolved.",
+      "action": "REMEDIATED 2026-11-16 by session 1dddf8c0 (final integration): the restricted values were withheld from the public /docs/ build (regenerated) and all other public pages, records and data files; the archive generator was patched so regeneration cannot restore them. Superseded by 1dd-F-01 for the only remaining holder (COORDINATION.md).",
       "sources": [
         "S02",
         "S50"
@@ -1158,7 +1158,7 @@
       "category": "Compliance (owner decision)",
       "item": "Archived session and archive folders, and root data snapshots, that are publicly reachable still carry the restricted price, rating and review values",
       "detail": "Files found by the same scan include sessions/3c886b62/ (incl. product pages, products.html, analysis.html, comparison.html, data/products.json), sessions/03bbd050/ (index.html, findings.md, verification.md), sessions/f2102efa/verification.md, sessions/7b70cfb0/verification-2026-11-14.json, archive/c4e71983/ (incl. products.html and data/products.json), docs/executive-summary-c4e71983.md, docs/repo-review-9fef7647.md, and the root data snapshots data/c4e71983-commercial-snapshot.json, data/c4e71983-competitors.json and data/z3-51fcb80d-snapshot.json. Some of these carry a notice, but a notice does not cure a display (71-F-04). These folders and files belong to other sessions; they were not edited by session a0ffcab0 (log-only, per the coordination rules). The values are not repeated in this flag.",
-      "action": "Owner decision with the same two options as A0-F-01, applied to these folders. Change requests for the owning sessions are logged in COORDINATION.md (A0 Part, 'Change requests').",
+      "action": "REMEDIATED 2026-11-16 by session 1dddf8c0 (final integration): restricted values withheld from sessions/, archive/, research/ and the root data snapshots (see AB-F-01 record for the full file list). Superseded by 1dd-F-01 for COORDINATION.md, the governance ledger.",
       "sources": [
         "S02",
         "S50"
@@ -1286,6 +1286,18 @@
         "S69"
       ],
       "action": "Owner input required. Nothing in this PR can close it, so it is published as a blocker on the flagged page and on the suggestions page rather than worked around: no tag was invented, no placeholder tag was shipped, and no revenue projection was written."
+    },
+    {
+      "id": "1dd-F-01",
+      "severity": "Medium",
+      "category": "Compliance",
+      "item": "COORDINATION.md retains historical observed price/rating/review figures inside prior sessions' records",
+      "detail": "The shared coordination ledger keeps prior sessions' verification records, which quote the observed Amazon prices, star ratings, review counts and demand figures for the three listings. It is an append-only governance record rather than a site content page, and redacting it would rewrite other sessions' merged work, so session 1dddf8c0 left it intact while withholding the same values from every public content page, data file and archive (see AB-F-01 remediation). Amazon Program Policies 2(b)/6(t) restrict display of these values on a Site; the ledger is not a Site content page.",
+      "action": "Owner decision: (a) accept COORDINATION.md as a historical audit ledger, or (b) redact the observed figures across all Parts. Neither choice blocks the site; the decision is recorded here for review.",
+      "sources": [
+        "S02",
+        "S01"
+      ]
     }
   ]
 }

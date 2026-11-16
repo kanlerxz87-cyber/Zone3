@@ -21,22 +21,22 @@ lines, not as independently tested results.
 
 ### Consider what you are paying
 
-At capture the two Chefman units were both just under $80, at $79.93 and $79.91, while the Emeril Lagasse
-was $149.99 against a $209.99 list price. All three were discounted, and all three had cheaper used or
-new offers available: $57.45, $49.54 and $92.99 respectively. Prices move, and the values here are a
+At capture the two Chefman units were priced in the same low tier, while the Emeril Lagasse unit
+was in a distinctly higher tier against a higher list price. All three were discounted, and all three had
+cheaper used or new offers available. Prices move, and the values here are a
 single capture, so check the current price on Amazon before deciding.
 
 ### Ratings do not separate them
 
-The three sit within 0.2 stars of each other: 4.2 out of 5 on 4.8K ratings for the CHEFMAN dual basket,
-4.3 out of 5 on 18.3K ratings for the Emeril Lagasse, and 4.4 out of 5 on 16.8K ratings for the Chefman
+The three sit within a narrow band of each other: rating and rating count withheld (6(t)) for the
+CHEFMAN dual basket, the Emeril Lagasse, and the Chefman
 8 quart. Amazon rounds those counts, so treat them as approximate. On volume, the Emeril Lagasse and the
 Chefman 8 quart have far larger review bases and far higher recent purchase counts than the CHEFMAN dual
 basket.
 
 ### A note on review volume versus rating
 
-A 4.4 on 16.8K ratings is a different evidence base from a 4.2 on 4.8K ratings. The larger sample is
+The rating counts differ enough that the evidence bases are not the same. The larger sample is
 harder to move, so a high rating across many thousands of ratings is a stronger signal than the same
 rating across a few thousand. That is the main reason the two higher-volume units read as safer
 recommendations than the dual basket, independent of features.

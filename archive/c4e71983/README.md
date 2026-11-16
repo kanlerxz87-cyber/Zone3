@@ -57,9 +57,9 @@ That means a stray unverified URL or a broken link cannot silently ship.
 
 | Supplied link | ASIN | Product | Price at capture |
 | --- | --- | --- | --- |
-| `link.amazon/B04G1MEwY` | B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven | $79.93 |
-| `link.amazon/B02NbDxp3` | B09B7SB46R | Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 |
-| `link.amazon/B00hJ57DV` | B08DKYBTPH | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | $79.91 |
+| `link.amazon/B04G1MEwY` | B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven | Withheld |
+| `link.amazon/B02NbDxp3` | B09B7SB46R | Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | Withheld |
+| `link.amazon/B00hJ57DV` | B08DKYBTPH | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | Withheld |
 
 Captured 2026-11-13, 22:33–22:37 UTC, from `amazon.com`. They change continuously — re-check the
 linked source before acting on any figure.

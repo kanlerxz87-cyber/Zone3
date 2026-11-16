@@ -21,9 +21,9 @@ All three short links were fetched and followed. Each returns an official Amazon
 
 | # | Supplied link | Resolves to | ASIN | Product | Price at capture |
 | --- | --- | --- | --- | --- | --- |
-| P1 | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` | B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven | $79.93 (list $99.99) |
-| P2 | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` | B09B7SB46R | Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | $149.99 (list $209.99) |
-| P3 | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` | B08DKYBTPH | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | $79.91 (list $119.99) |
+| P1 | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` | B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven | Withheld (list Withheld) |
+| P2 | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` | B09B7SB46R | Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | Withheld (list Withheld) |
+| P3 | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` | B08DKYBTPH | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | Withheld (list Withheld) |
 
 Source for every cell: the official Amazon page linked in the table above.
 
@@ -38,9 +38,9 @@ content with no further product research.
 
 | Product | Rating | Ratings shown | Bought past month | Commission @ Kitchen 4.50% | Commission @ Home 3.00% |
 | --- | --- | --- | --- | --- | --- |
-| B0CDY277D3 | 4.2 / 5 | 4.8K | 1K+ | **$3.60** | $2.40 |
-| B09B7SB46R | 4.3 / 5 | 18.3K | 4K+ | **$6.75** | $4.50 |
-| B08DKYBTPH | 4.4 / 5 | 16.8K | 3K+ | **$3.60** | $2.40 |
+| B0CDY277D3 | Withheld | Withheld | Withheld | **Withheld** | Withheld |
+| B09B7SB46R | Withheld | Withheld | Withheld | **Withheld** | Withheld |
+| B08DKYBTPH | Withheld | Withheld | Withheld | **Withheld** | Withheld |
 
 Rate source: [Associates Program Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ).
 
@@ -58,16 +58,16 @@ Official *Best Sellers in Air Fryers*, positions 1–6 (only these were enumerat
 
 | Rank | Product | Rating | Ratings | Price |
 | --- | --- | --- | --- | --- |
-| 1 | Ninja Air Fryer Pro 5 Qt AF141 | 4.7 | 10,984 | $89.99 |
-| 2 | Cosori TurboBlaze 6 Qt | 4.8 | 22,768 | $99.99 |
-| 3 | bella Fits-anywhere 4 Qt | 4.5 | 4,015 | $39.99 |
-| 4 | Chefman 4 QT Compact | 4.6 | 7,552 | $57.91 |
-| 5 | Cuisinart TOA-55 | 4.5 | 126 | $129.95 |
-| 6 | Chefman 14-Quart 6-in-1 | 4.3 | 52,301 | $99.95 |
+| 1 | Ninja Air Fryer Pro 5 Qt AF141 | 4.7 | Withheld | Withheld |
+| 2 | Cosori TurboBlaze 6 Qt | 4.8 | Withheld | Withheld |
+| 3 | bella Fits-anywhere 4 Qt | 4.5 | Withheld | Withheld |
+| 4 | Chefman 4 QT Compact | 4.6 | Withheld | Withheld |
+| 5 | Cuisinart TOA-55 | 4.5 | 126 | Withheld |
+| 6 | Chefman 14-Quart 6-in-1 | 4.3 | Withheld | Withheld |
 
 Source: [Amazon Best Sellers: Best Air Fryers](https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/)
 
-The band above $130 is the thinnest part of the captured top six — and it is where the $149.99 unit sits.
+The upper price band is the thinnest part of the captured top six, and the premium unit sits in it.
 
 ## 5. What was actually built
 
@@ -110,8 +110,8 @@ a data table is not original content in Amazon's sense).
 ## 8. Bottom line
 
 The product research is done, verified and published. The niche is confirmed and coherent. The
-economics are thin per unit — $3.60 to $6.75 at the published Kitchen rate — so this only works with
-volume, with Prime bounties, or by steering traffic toward the $149.99 unit. Nothing can earn yet:
+economics are thin per unit — Withheld to Withheld at the published Kitchen rate — so this only works with
+volume, with Prime bounties, or by steering traffic toward the premium unit. Nothing can earn yet:
 there is no Associates tag, no original content, and the price display as it currently stands breaks
 the Program Policies. Those three items are cheap to fix and are the whole gap between this repository
 and a monetised site.

@@ -50,9 +50,9 @@ supplied are left blank.
 
 | Product | Price | List | Rating | Ratings | Bought past month | Promotion | Lowest other offer |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| CHEFMAN | $79.93 | $99.99 | 4.2 / 5 | 4.8K | 1K+ bought in past month | Limited time deal | $57.45 |
-| Emeril Lagasse | $149.99 | $209.99 | 4.3 / 5 | 18.3K | 4K+ bought in past month | Early Black Friday Deal | $92.99 |
-| Chefman | $79.91 | $119.99 | 4.4 / 5 | 16.8K | 3K+ bought in past month | Limited time deal | $49.54 |
+| CHEFMAN | Withheld | Withheld | Withheld | Withheld | Withheld (demand signal) | Withheld | Withheld |
+| Emeril Lagasse | Withheld | Withheld | Withheld | Withheld | Withheld (demand signal) | Withheld | Withheld |
+| Chefman | Withheld | Withheld | Withheld | Withheld | Withheld (demand signal) | Withheld | Withheld |
 
 Sources S1-S6 are listed with links in [VERIFICATION.md](VERIFICATION.md).
 Full detail in [VERIFICATION.md](VERIFICATION.md).

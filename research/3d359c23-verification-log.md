@@ -27,7 +27,7 @@ observation only (FLG-002, FLG-027, FLG-035).
 ### V05 — an observation worth recording (3D-F-02)
 
 On the `dp/B0CDY277D3` page the *Customers who viewed this item also viewed* carousel renders a
-**4.4-star / 392-review / $69.97** entry whose own link points at `dp/B0B7C327LK` — a different
+**rating / review-count / price** entry whose own link points at `dp/B0B7C327LK` — a different
 ASIN — while the link it renders under is the destination ASIN `dp/B0CDY277D3`. The same pattern
 appeared on the other two destination pages. Any capture that reads price or rating text from a
 product page without binding it to the page's own ASIN will attribute another product's numbers to

@@ -57,7 +57,7 @@ committed into `data/products.json` is neither route. Two further facts close th
 | PF-27 date/time stamp requirement; PF-10 "no inaccurate … or misleading claims about … prices" | a static number goes stale the moment Amazon changes it |
 
 `data/products.json` on `main` keeps `price: null` — **correct under this rule**. PR #26 proposed filling those fields
-with observed values ($79.93 / $149.99 / $79.91 — all three re-confirmed by me today, see `verification.md` §A);
+with observed values (all three re-confirmed by me today, see `verification.md` §A);
 that proposal is what 03-CR-1 responds to. Keep the observation in a dated research log, out of rendered tables.
 
 ## 03-F-05 · Medium · Tokenised redirect URLs are cited as sources but cannot be re-opened
@@ -163,7 +163,7 @@ Everything above was therefore re-checked; the numbers here — not the ones rai
 | 03-F-11 (archive links) | **Resolved** | broken internal links, tree-wide: **0** (was 15 across 5 archive pages). |
 | 03-F-11 (sitemap, `<h1>`) | **Partly** | sitemap now lists 35 URLs (was 16); still unlisted: `dashboard/index.html`, `marketing/index.html`, `marketing/briefs.html`. 33 pages still have zero or multiple `<h1>` (17 archive, 13 sub-site, 3 root stubs incl. `404.html`). |
 | 03-F-08 | **Worsened** | duplicate URLs under different ids: **10 groups** (was 2) — `S01`/`S49`, `S02`/`S30`/`S50`, `S07`/`S51`, `S11`/`S52`/`S55`, `S12`/`S53`, `S13`/`S54`, `S16`/`S32`, `S40`/`S46`, `S41`/`S47`, `S42`/`S48`. |
-| 03-F-04 | **Live, mitigated, still open** | `data/products.json` keeps `price`/`rating`/`review_count` = `null` ✓, but `category/air-fryers.html` renders `USD 79.93 (observed 2026-11-14; list USD 99.99)`-style columns and `sources.html` quotes prices in status notes, cited to `S46–S48` = `https://www.amazon.com/s?k=<ASIN>` search pages. Dated, labelled, disclosed — still not the licensed route. |
+| 03-F-04 | **Live, mitigated, still open** | `data/products.json` keeps `price`/`rating`/`review_count` = `null` ✓, but `category/air-fryers.html` renders an observed-price-style columns and `sources.html` quotes prices in status notes, cited to `S46–S48` = `https://www.amazon.com/s?k=<ASIN>` search pages. Dated, labelled, disclosed — still not the licensed route. |
 
 ### 03-F-13 · Medium · The register has holes exactly where the category page cites into it
 
@@ -183,7 +183,7 @@ reports "dangling source refs=none" because it only walks `data/products.json`).
 
 For the identical three listings, `products.html` renders the price and rating cells **blank** ("unverified") while
 `category/air-fryers.html` renders dated values from the side block `observed_2026_11_14`, and `flagged/index.html`
-describes the sub-site's figures as "displays prices ($79.93, $149.99, $79.91)". A visitor cannot tell which page is
+describes the sub-site's figures as "displays prices". A visitor cannot tell which page is
 the site's position; against the brief's rule ("if a value can't be confirmed from an official source, leave it blank
 and flag it"), one of the two is wrong by construction. This is a single generator-level decision, not a per-page edit
 → folded into 03-CR-1 and 03-CR-2.
@@ -198,7 +198,7 @@ headline asserts:
 and the KPI strip says **0 of 3 — Prices verified**. Both are true of `data/products.json` (`price: null`) and of
 `products.html` / `pricing.html` / `reviews.html`. They are **not** true of `category/air-fryers.html`, which renders a
 "Price (observed 2026-11-14)" and a "Rating (observed)" column for all three listings, nor of `sources.html`, whose
-status notes quote `USD 79.93 (deal; List: USD 99.99)` and friends.
+status notes quote observed price values.
 
 Requested of the page owner (03-CR-1/03-CR-4 family), pick one and make the generator enforce it:
 

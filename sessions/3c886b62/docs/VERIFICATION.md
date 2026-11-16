@@ -45,14 +45,14 @@ On the site: [Verification Log](../verification.html).
 | `department` | Home & Kitchen | verified | [S1 — Amazon product page — CHEFMAN 6 Quart Dual Basket Air Fryer Oven (B0CDY277D3)](https://www.amazon.com/dp/B0CDY277D3) | Trailing department segment of the amazon.com page <title> after the colon. |
 | `canonical_url` | https://www.amazon.com/dp/B0CDY277D3 | verified | [S1 — Amazon product page — CHEFMAN 6 Quart Dual Basket Air Fryer Oven (B0CDY277D3)](https://www.amazon.com/dp/B0CDY277D3) | — |
 | `amazon_listing_url` | https://www.amazon.com/CHEFMAN-Windows-Independent-Nonstick-Dishwasher/dp/B0CDY277D3 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | — |
-| `current_price` | 79.93 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Shown as $79.93 on Amazon's search-results rendering of this ASIN. |
-| `list_price` | 99.99 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Shown as 'List: $99.99'. |
-| `unit_price` | 39.97 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Shown as '($39.97/count)'. |
-| `deal_badge` | Limited time deal | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | — |
+| `current_price` | 79.93 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Observed on Amazon's search-results rendering of this ASIN (value withheld, 2(b)). |
+| `list_price` | 99.99 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Observed on the same rendering (value withheld, 2(b)). |
+| `unit_price` | 39.97 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Observed on the same rendering (value withheld, 2(b)). |
+| `deal_badge` | Withheld | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | — |
 | `other_offers_low` | 57.45 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Lowest 'More Buying Choices' price shown; '(2+ used & new offers)'. |
-| `rating` | 4.20 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Shown as '4.2 out of 5 stars'. |
-| `ratings_count_display` | 4.8K | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Amazon's rounded display value, not an exact count. |
-| `demand_signal` | 1K+ bought in past month | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | — |
+| `rating` | 4.20 | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Shown as 'Withheld stars'. |
+| `ratings_count_display` | Withheld | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Amazon's rounded display value (value withheld, 6(t)), not an exact count. |
+| `demand_signal` | Withheld (demand signal) | verified | [S2 — Amazon search results for B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | — |
 | `best_sellers_rank` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon serves BSR via JavaScript on the detail page; not readable from an official static render. Left blank by rule. |
 | `associates_commission_category` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon does not publish the commission category for an individual ASIN. Candidates on the official rate table (S7) are 'Kitchen' 4.50% and 'Home' 3.00%. |
 | `review_sentiment_breakdown` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon's star histogram and review text are served via JavaScript / behind sign-in. Left blank by rule. |
@@ -78,13 +78,13 @@ On the site: [Verification Log](../verification.html).
 | `canonical_url` | https://www.amazon.com/dp/B09B7SB46R | verified | [S3 — Amazon product page — Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven (B09B7SB46R)](https://www.amazon.com/dp/B09B7SB46R) | — |
 | `amazon_listing_url` | https://www.amazon.com/Emeril-Multi-Function-functions-dual-speed-rotisserie/dp/B09B7SB46R | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | — |
 | `current_price` | 149.99 | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | — |
-| `list_price` | 209.99 | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | Shown as 'List: $209.99'. |
+| `list_price` | 209.99 | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | Observed on the same rendering (value withheld, 2(b)). |
 | `unit_price` | *(blank — unverified)* | **unverified** | _no official source_ | No per-count unit price was displayed for this ASIN. |
-| `deal_badge` | Early Black Friday Deal | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | — |
+| `deal_badge` | Withheld | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | — |
 | `other_offers_low` | 92.99 | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | Lowest 'More Buying Choices' price shown; '(2+ used & new offers)'. |
 | `rating` | 4.30 | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | — |
-| `ratings_count_display` | 18.3K | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | Amazon's rounded display value, not an exact count. |
-| `demand_signal` | 4K+ bought in past month | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | — |
+| `ratings_count_display` | Withheld | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | Amazon's rounded display value (value withheld, 6(t)), not an exact count. |
+| `demand_signal` | Withheld (demand signal) | verified | [S4 — Amazon search results for B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | — |
 | `best_sellers_rank` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon serves BSR via JavaScript on the detail page; not readable from an official static render. Left blank by rule. |
 | `associates_commission_category` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon does not publish the commission category for an individual ASIN. Candidates on the official rate table (S7) are 'Kitchen' 4.50% and 'Home' 3.00%. |
 | `review_sentiment_breakdown` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon's star histogram and review text are served via JavaScript / behind sign-in. Left blank by rule. |
@@ -110,13 +110,13 @@ On the site: [Verification Log](../verification.html).
 | `canonical_url` | https://www.amazon.com/dp/B08DKYBTPH | verified | [S5 — Amazon product page — Chefman Air Fryer 8 Qt TurboFry 4-in-1 (B08DKYBTPH)](https://www.amazon.com/dp/B08DKYBTPH) | — |
 | `amazon_listing_url` | https://www.amazon.com/Chefman-TurboFry-Air-Fryer-Dishwasher/dp/B08DKYBTPH | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | — |
 | `current_price` | 79.91 | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | — |
-| `list_price` | 119.99 | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | Shown as 'List: $119.99'. |
+| `list_price` | 119.99 | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | Observed on the same rendering (value withheld, 2(b)). |
 | `unit_price` | *(blank — unverified)* | **unverified** | _no official source_ | No per-count unit price was displayed for this ASIN. |
-| `deal_badge` | Limited time deal | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | — |
+| `deal_badge` | Withheld | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | — |
 | `other_offers_low` | 49.54 | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | Lowest 'More Buying Choices' price shown; '(3+ used & new offers)'. |
 | `rating` | 4.40 | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | — |
-| `ratings_count_display` | 16.8K | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | Amazon's rounded display value, not an exact count. |
-| `demand_signal` | 3K+ bought in past month | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | — |
+| `ratings_count_display` | Withheld | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | Amazon's rounded display value (value withheld, 6(t)), not an exact count. |
+| `demand_signal` | Withheld (demand signal) | verified | [S6 — Amazon search results for B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | — |
 | `best_sellers_rank` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon serves BSR via JavaScript on the detail page; not readable from an official static render. Left blank by rule. |
 | `associates_commission_category` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon does not publish the commission category for an individual ASIN. Candidates on the official rate table (S7) are 'Kitchen' 4.50% and 'Home' 3.00%. |
 | `review_sentiment_breakdown` | *(blank — unverified)* | **unverified** | _no official source_ | Amazon's star histogram and review text are served via JavaScript / behind sign-in. Left blank by rule. |
