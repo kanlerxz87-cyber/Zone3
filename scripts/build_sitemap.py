@@ -28,7 +28,13 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE_ORIGIN = "https://kanlerxz87-cyber.github.io"
 SITE_BASE = "/Zone3"
 
-SKIP_DIRS = {".git", "archive", "__pycache__", ".github"}
+SKIP_DIRS = {".git", "archive", "__pycache__", ".github",
+             # 81bc99d0 (2026-11-16): /docs/ and /sessions/ are audit snapshots that render
+             # historical product price/rating/review values captured before Program Policies
+             # 2(b)/6(t) barred displaying them without an Amazon-served link or Creators/PA API
+             # data (71-F-04). They are kept in the repository as the audit record but are not
+             # part of the public, indexable marketing site, so they are excluded from the sitemap.
+             "docs", "sessions"}
 # Pages whose entire content is a meta-refresh to another page.
 REDIRECT_STUBS = {
     "analysis.html",
