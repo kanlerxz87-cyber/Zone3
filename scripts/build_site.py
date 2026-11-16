@@ -663,7 +663,7 @@ def build_index() -> None:
 
 <h2>The three listings this site tracks</h2>
 <p class="small">Each card is the observed destination of one submitted link, with the attribute brief built from its listing title. Every Amazon link on this page is a labelled source link: no conversion-oriented CTA is published while the Associates tag every Special Link must carry is unknown (open question Q1 on the Decision Center).</p>
-<div class="product-cards">{product_cards}</div>
+<div class="product-cards">{''.join(product_cards)}</div>
 
 <h2>From the Research Desk</h2>
 <div class="acards">{article_cards}</div>
