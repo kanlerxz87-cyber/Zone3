@@ -62,4 +62,7 @@ ul.findings li{margin:0 0 8px}
 .callout{border-left:4px solid var(--bad);background:var(--badbg);padding:12px 14px;border-radius:6px;margin:0 0 18px}
 .callout.ok{border-color:var(--ok);background:var(--okbg)}
 .callout p{margin:0}
+.promptbox{background:#101c2e;color:#e7eef8;border-radius:12px;padding:20px 22px;overflow-x:auto;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;margin:0 0 18px}
+.promptbox b{color:#ffd9c2}
+
 @media (max-width:640px){main{padding:16px 12px}.topbar{padding:10px 12px}}

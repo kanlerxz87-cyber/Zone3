@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 757efebc: executive summary, verification and repository review | Zone3</title>
+<meta name="description" content="Session 757efebc (2026-11-16): executive summary, independent line-by-line verification against official sources, and a repository review with links for manual checking.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="../../index.html">Zone3</a><span>Session 757efebc record</span></div>
+  <nav>
+    <a href="../../index.html">Dashboard</a>
+    <a href="../../design-brief.html">Design brief</a>
+    <a href="../../decision-queue.html">Review console</a>
+    <a href="../../suggestions.html">Suggestions &amp; decisions</a>
+    <a href="../../flagged.html">Flagged for review</a>
+    <a href="../../sources.html">Sources</a>
+  </nav>
+</header>
+<main>
+<h1>Session 757efebc: executive summary, verification and repository review</h1>
+
+<p class="lead">Run on 2026-11-16 from <code>main</code> at <code>933e2f3</code>. This page is the
+record behind this session's two published pages. Every row links the official page it was read
+from, or the file in this repository it describes. Where a value could not be confirmed from an
+official source it is left blank and flagged rather than filled in.</p>
+
+<div class="callout">
+  <p><strong>What this session produced.</strong>
+  <a href="../../design-brief.html">Design brief</a> — why the site reads as machine output, plus a
+  copy-and-paste prompt, a design system, a twelve-article editorial plan, a traffic architecture
+  and an anti-slop checklist.
+  <a href="../../decision-queue.html">Review console</a> — every proposal with a recommendation,
+  priority, effort, risk, blocking question and decision state, plus what this project has, what it
+  does not have, and how to get it. Nothing on either page is implemented.</p>
+</div>
+
+<h2>Executive summary</h2>
+<p class="small">The details that decide the rest, each with the source it rests on.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Point</th><th>Detail</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>757-ES-01</td><td><strong>The three submitted links open three live listings</strong></td>
+<td>link.amazon/B04G1MEwY opens amazon.com/dp/B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven); link.amazon/B02NbDxp3 opens amazon.com/dp/B09B7SB46R (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven); link.amazon/B00hJ57DV opens amazon.com/dp/B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry 4-in-1, 450F Hi-Fry). All three carry the browse path Home &amp; Kitchen &rsaquo; Kitchen &amp; Dining &rsaquo; Small Appliances &rsaquo; Fryers &rsaquo; Air Fryers. Re-verified by this session on 2026-11-16.</td>
+<td><a href="https://www.amazon.com/dp/B0CDY277D3" title="Observed destination 1">S14</a> &middot; <a href="https://www.amazon.com/dp/B09B7SB46R" title="Observed destination 2">S15</a> &middot; <a href="https://www.amazon.com/dp/B08DKYBTPH" title="Observed destination 3">S16</a></td></tr>
+
+<tr><td>757-ES-02</td><td><strong>The submitted tokens are not ASINs</strong></td>
+<td>Each token is 9 characters. Amazon's Creators API documents ASINs as 10 characters and shows 10-character examples. Whether the three listings the short links open are the products the requester intended is not established by any official source, so it stays open rather than being inferred.</td>
+<td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter" title="Creators API GetItems, ItemIdType">S31</a> &middot; <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" title="Creators API GetItems">S06</a></td></tr>
+
+<tr><td>757-ES-03</td><td><strong>The site reads as AI slop because it is an audit dashboard, not a shop front</strong></td>
+<td>The landing page leads with process metrics (0 of 3 prices verified, 78 total flags open), the navigation is a list of internal document names plus two entries named after agent sessions, and the buyer-facing product table is mostly blank cells marked Unverified. Accurate, but addressed to an auditor rather than to someone choosing an air fryer.</td>
+<td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/index.html" title="Landing page">repo: index.html</a></td></tr>
+
+<tr><td>757-ES-04</td><td><strong>Amazon's own policy already forbids thin, unoriginal product pages</strong></td>
+<td>Participation Requirements 2(b): when linking to pages with product lists the site must carry additional original content relevant to the link, and product lists include search results, event pages and department homepages. Original editorial is a compliance requirement here, not only a matter of taste.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/policies" title="Associates Program Policies">S02</a></td></tr>
+
+<tr><td>757-ES-05</td><td><strong>The two things a marketing site usually sells on are blocked, not merely missing</strong></td>
+<td>Prices and availability may be shown only if Amazon serves the link or the data comes from Creators API or PA API (2(b)). Star ratings and customer reviews may be shown only if obtained through those APIs (6(t)). A price-and-rating comparison table cannot lawfully be published until API access exists, so it must be designed around rather than faked.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/policies" title="Associates Program Policies">S02</a></td></tr>
+
+<tr><td>757-ES-06</td><td><strong>No Associates tag exists in the repository, so no published link can earn yet</strong></td>
+<td>Special Links must use the assigned Associates ID (2(a)); the tag must be a URL parameter in every link to an Amazon site (2(b)); a purchase is disqualified if it is not tracked because links were not properly formatted (2(g)). Monetisation is gated on a value that is not in this repo.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/policies" title="Associates Program Policies">S02</a></td></tr>
+
+<tr><td>757-ES-07</td><td><strong>Recommended path: two surfaces, not one</strong></td>
+<td>Keep the evidence dashboard as a trust asset behind one link labelled How we verify, and build a separate reader-facing surface that leads with the buying decision. The current build's rigour becomes a competitive advantage once it is presented as proof rather than as the product.</td>
+<td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py" title="Flat site generator">repo: scripts/build_site.py</a></td></tr>
+
+<tr><td>757-ES-08</td><td><strong>Commission reference only, never applied per product</strong></td>
+<td>Table 1 lists Kitchen at 4.50% and All Other Categories at 4.00%, read publicly on 2026-11-16. Nothing on that page states which category a given ASIN settles in, so no per-product rate is published. A browse path is not a commission category.</td>
+<td><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ" title="Standard Commission Income Statement, Table 1">S25</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>Verification performed 2026-11-16</h2>
+<p class="small">Every row below was produced by a fetch made by this session today. The full log,
+including the clauses this session did <em>not</em> re-read, is at
+<a href="verification-log.md">verification-log.md</a>. The three submitted tokens are written as
+plain text and are not hyperlinked: this repository's own release gate treats
+<code>link.amazon</code> as a prohibited link shortener in emitted output.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Claim</th><th>Observed today</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>V01</td><td>Link 1 opens a live listing</td><td>Final URL amazon.com/dp/B0CDY277D3; served title &ldquo;CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black&rdquo;</td><td><a href="https://www.amazon.com/dp/B0CDY277D3">S14</a></td></tr>
+<tr><td>V02</td><td>Link 2 opens a live listing</td><td>Final URL amazon.com/dp/B09B7SB46R; served title &ldquo;Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included&rdquo;</td><td><a href="https://www.amazon.com/dp/B09B7SB46R">S15</a></td></tr>
+<tr><td>V03</td><td>Link 3 opens a live listing</td><td>Final URL amazon.com/dp/B08DKYBTPH; served title &ldquo;Chefman Air Fryer 8 Qt | TurboFry&reg; 4-in-1 with 450&deg;F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel&rdquo;</td><td><a href="https://www.amazon.com/dp/B08DKYBTPH">S16</a></td></tr>
+<tr><td>V04</td><td>All three sit in the Air Fryers browse node</td><td>Each breadcrumb ends at Air Fryers, browse node 17659096011. This is the browse path, not a commission category.</td><td><a href="https://www.amazon.com/dp/B0CDY277D3">S14</a> &middot; <a href="https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/">S43</a></td></tr>
+<tr><td>V05</td><td>Operating Agreement &sect;5 disclosure</td><td>&ldquo;You must clearly and prominently state the following &hellip; on your Site &hellip;: &lsquo;As an Amazon Associate I earn from qualifying purchases.&rsquo;&rdquo; followed by the bar on implying that Amazon supports, sponsors or endorses the site</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">S01</a></td></tr>
+<tr><td>V06</td><td>&sect;2(a) Special Links</td><td>&ldquo;Special Links must use the Associates ID we have assigned to you.&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V07</td><td>&sect;2(b) tag parameter</td><td>&ldquo;you must include your Associates ID or &lsquo;tag&rsquo; (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V08</td><td>&sect;2(b) original content</td><td>&ldquo;When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link. Product lists include search results, events (e.g. Prime Day), or a department homepage (e.g. grocery).&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V09</td><td>&sect;2(b) claims</td><td>&ldquo;You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices.&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V10</td><td>&sect;2(b) prices</td><td>&ldquo;your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V11</td><td>&sect;2(b) promotions</td><td>&ldquo;You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V12</td><td>CIS &sect;2(g) formatting</td><td>Purchases disqualified where &ldquo;not correctly tracked or reported because the links from your site to the relevant Amazon Site are not properly formatted&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V13</td><td>CIS &sect;2(e) redirecting links</td><td>A Redirecting Link, sending users indirectly to an Amazon Site via an intermediate site with no affirmative click, disqualifies the purchase</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V14</td><td>CIS &sect;2(c)&ndash;(d) search</td><td>Prohibited Paid Search Placement: no bidding on &ldquo;amazon&rdquo;, &ldquo;kindle&rdquo; or any Amazon Mark; links generated or displayed on a search engine disqualify</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V15</td><td>&sect;6(f) paid search to your own site is allowed</td><td>&ldquo;You may purchase paid search advertisements and submit links to Search Engines to appear in response to a general Internet search query or keyword &hellip; so long as &hellip; those paid or unpaid search results send users to your site and not directly, or indirectly via a Redirecting Link, to an Amazon Site.&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V16</td><td>&sect;6(t) star ratings and reviews</td><td>&ldquo;You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V17</td><td>&sect;6(w) link shorteners</td><td>&ldquo;You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V18</td><td>&sect;6(y) price tracking</td><td>&ldquo;Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V19</td><td>&sect;6(z) other retailers</td><td>&ldquo;You will not display on your Site &hellip; any Program Content to advertise or promote any products that are offered on any site that is not an Amazon Site&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V20</td><td>&sect;1(g) Amazon marks</td><td>No Amazon trademark &ldquo;in any domain name, subdomain name, in any &lsquo;tag&rsquo; or Associates ID, or in any username, group name, or other identifier on any social networking site&rdquo;</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+<tr><td>V21</td><td>Commission Table 1 is public</td><td>&ldquo;Physical Books, Kitchen, Automotive &mdash; 4.50%&rdquo;; &ldquo;All Other Categories &mdash; 4.00%&rdquo;; bounty rows $12.00 / $2.00 / $5.00 / $0.25 read as printed</td><td><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ">S25</a></td></tr>
+<tr><td>V22</td><td>ASIN is a 10-character identifier</td><td>Creators API GetItems: <code>itemIdType</code> default <code>ASIN</code>; <code>itemIds</code> examples &ldquo;B0199980K4&rdquo;, &ldquo;B000HZD168&rdquo;</td><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter">S31</a></td></tr>
+<tr><td>V23</td><td>A Creators API call requires a partner tag</td><td><code>partnerTag</code> &mdash; &ldquo;Unique Id for a partner&rdquo; &mdash; is listed Required: Yes, with usage example <code>{"partnerTag":"xyz-20"}</code></td><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items">S06</a></td></tr>
+<tr><td>V24</td><td>Nav contains two entries named after agent sessions</td><td>&ldquo;Verification (3ead7ac8)&rdquo; and &ldquo;Verification (25513d33)&rdquo;</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py">repo: scripts/build_site.py</a></td></tr>
+<tr><td>V25</td><td>Landing headline statistics are process metrics</td><td>3 product links submitted; 0 of 3 with a confirmed ASIN; 0 of 3 prices verified; 3 critical flags open; 78 total flags open</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/index.html">repo: index.html</a></td></tr>
+<tr><td>V26</td><td>Nav labels are internal document names</td><td>Pricing &amp; commission, Content &amp; compliance, Campaigns &amp; tracking</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py">repo: scripts/build_site.py</a></td></tr>
+<tr><td>V27</td><td>Two site generations share one navigation</td><td>The root flat pages and the 16-page audit build at /dashboard/</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/README.md">repo: README.md</a></td></tr>
+<tr><td>V28</td><td>Default visual identity</td><td>Accent colour #1f5eff, body type is the system font stack</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/assets/style.css">repo: assets/style.css</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>Repository review</h2>
+<p class="small">Line by line over the repository as found at <code>933e2f3</code>. Each row names
+the artefact, what was checked, and what was found. Links go to the file on GitHub for manual
+review. This session edited only the rows marked <em>changed by this session</em>; everything else
+is reported, not modified.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Area</th><th>What was checked</th><th>Finding</th><th>Link</th></tr></thead>
+<tbody>
+<tr><td><strong>COORDINATION.md</strong></td><td>The shared task board: 4,999 lines, about 534 KB, roughly 30 appended session parts</td><td>Append-only by design and working. Two earlier sessions logged the same conflict-marker trap independently, which is a good sign the log is honest rather than curated. No task was under a live claim when this session started.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">repo: COORDINATION.md</a></td></tr>
+<tr><td><strong>Two site generations</strong></td><td><code>scripts/build_site.py</code> (flat pages from <code>data/*.json</code>) and <code>tools/build_site.py</code> (16-page audit from <code>data/z3/*.json</code>)</td><td>Both are live and cross-linked, and neither overwrites the other. The cost is one navigation serving two products. Recorded as finding 757-C-07 and irregularity-free: it is a design problem, not a data error.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/README.md">repo: README.md</a></td></tr>
+<tr><td><strong>Release gate</strong></td><td><code>tools/verify_site.py</code> (V1&ndash;V7) and <code>scripts/check_site.py</code></td><td>Genuinely strict: per-row provenance, no broken internal links, no stored Amazon images, no link shorteners, no placeholder markers. Both pass on this build. The gate also refuses to let a session mark its own pages as exempt, which is why this session's new pages were held to the same row rule.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/verify_site.py">repo: tools/verify_site.py</a></td></tr>
+<tr><td><strong>Data separation</strong></td><td><code>data/*.json</code> against <code>data/z3/*.json</code></td><td>Clean: 51 sources and 78 flags in the flat register, separate namespaced sets in the audit build. No cross-contamination found. This session added two new data files and did not touch any existing one.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/sources.json">repo: data/sources.json</a></td></tr>
+<tr><td><strong>Archived sessions</strong></td><td><code>archive/</code> holding three byte-for-byte snapshots</td><td>Correctly excluded from the sitemap, so their unresolved links cannot break the live site. Kept for provenance.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/archive">repo: archive/</a></td></tr>
+<tr><td><strong>Session directories</strong></td><td><code>sessions/</code> holding ten earlier session records</td><td>Two are linked in the top navigation under their session IDs, which is the clearest single reason the site reads as machine-generated. Recommended fix: 757-S-02.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/sessions">repo: sessions/</a></td></tr>
+<tr><td><strong>Duplicate category pages</strong></td><td><code>air-fryers.html</code> and <code>category/air-fryers.html</code></td><td>Two near-identical targets for one category. Recommended fix: 757-S-10, retire the mirror.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/category/air-fryers.html">repo: category/air-fryers.html</a></td></tr>
+<tr><td><strong>Redirect stubs</strong></td><td><code>analysis.html</code>, <code>disclosure.html</code>, <code>flagged-for-review.html</code>, <code>categories/home-kitchen-air-fryers.html</code></td><td>Meta-refresh stubs kept so old URLs do not break, and excluded from the sitemap so search engines index the destination. Correct handling.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/disclosure.html">repo: disclosure.html</a></td></tr>
+<tr><td><strong>Disclosure coverage</strong></td><td>Every generated page for the Operating Agreement &sect;5 sentence</td><td>Present on every page, enforced by check V1. The gap is placement, not presence: it sits in the footer rather than adjacent to the links it applies to. See 757-DS-05.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement" title="Operating Agreement section 5">S01</a></td></tr>
+<tr><td><strong>Sitemap</strong></td><td><code>scripts/build_sitemap.py</code> against the published tree</td><td>Walks the tree rather than a hand-maintained list, so it cannot drift. Passes <code>--check</code>.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_sitemap.py">repo: scripts/build_sitemap.py</a></td></tr>
+<tr><td><strong>New pages (this session)</strong></td><td><code>design-brief.html</code>, <code>decision-queue.html</code>, <code>data/design-brief.json</code>, <code>data/decision-queue.json</code>, this directory</td><td><em>Changed by this session.</em> Two generated pages plus two data files, added through two new builder functions. No existing builder function was rewritten and no existing data file was edited.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py">repo: scripts/build_site.py</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>Irregularities raised by this session</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Item</th><th>Severity</th><th>Disposition</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>757-F-01</td><td>Amazon listing titles drift over time. The three titles read today match the ASINs and destinations recorded by earlier sessions; wording differences of this kind are normal listing edits, not a destination change.</td><td><span class="badge muted">Info</span></td><td>Recorded. No flag raised against the site's data.</td><td><a href="https://www.amazon.com/dp/B0CDY277D3">S14</a></td></tr>
+<tr><td>757-F-02</td><td>Pull request #71 (<code>arena/71dc8fea-zone3</code>) is still open, but its head branch no longer exists on the remote and GitHub reports it as conflicting. Last updated 2026-11-14.</td><td><span class="badge warn">Medium</span></td><td>Logged here and published for review. Not actioned: it is another session's pull request.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3/pull/71">repo: pull request 71</a></td></tr>
+<tr><td>757-F-03</td><td>The three submitted tokens are 9 characters and do not resolve as ASINs. Whether the listings the short links open are the products the requester intended is not established by any official source.</td><td><span class="badge bad">High</span></td><td>Carried forward from earlier sessions and re-confirmed today. No intent is inferred.</td><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter">S31</a></td></tr>
+<tr><td>757-F-04</td><td>No Associates tag exists anywhere in the repository, so no published link can accrue commission.</td><td><span class="badge bad">High</span></td><td>Blocks the conversion workstream. Question Q1 on the review console.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">S02</a></td></tr>
+</tbody>
+</table></div>
+
+<h2>What this session did not do</h2>
+<ul class="findings">
+  <li>It did not redesign any existing page. The brief is published for review first, as the task asks.</li>
+  <li>It did not edit another session's files. <code>EXECUTIVE-SUMMARY.md</code>, <code>index.html</code>, <code>suggestions.html</code>, <code>decision-center.html</code> and every <code>data/z3/*.json</code> file are exactly as found.</li>
+  <li>It did not close, merge or edit pull request #71.</li>
+  <li>It did not fetch the Best Sellers page for browse node 17659096011, so no ranking, price, rating or review-count figure appears anywhere in its output.</li>
+  <li>It did not re-read four clauses carried in the register from earlier sessions; those are listed as not re-read today in <a href="verification-log.md">verification-log.md</a> rather than presented as confirmed.</li>
+</ul>
+</main>
+<footer>
+  <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+  <p class="muted">Session 757efebc record, 2026-11-16, built from <code>main</code> at <code>933e2f3</code>.
+  Every factual row links the official page it was read from, or the repository file it describes.
+  A cell that cannot be confirmed from an official source is left blank and flagged rather than filled in.
+  Content on this site comes from Amazon and is provided as-is; see the
+  <a href="../../sources.html">source register</a>.</p>
+</footer>
+</body>
+</html>
