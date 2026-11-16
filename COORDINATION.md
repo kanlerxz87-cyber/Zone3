@@ -6217,3 +6217,66 @@ PR, merge, Pages build and live checks recorded here once complete (see below).
 `main`'s tree is byte-identical to the tree all seven gates were run on. Deployed inventory on `main`:
 11 pages under `read/`, 12 under `site/`, 84 generated/snapshot pages elsewhere, 11 `read/` URLs in
 `sitemap.xml`. Session `145b8df7`: closed.
+
+## 52A Part — session `52a6c751` (branch `arena/52a6c751-zone3`, base `add65257`, 2026-11-16)
+
+### 52A Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `52a6c751` | `arena/52a6c751-zone3` | Post-integration verifier. Did **not** duplicate the active final-integration claims (757efebc, 145b8df7, 5a56c084, 59d84c55, 5b425c74, a0ffcab0, f132f462, 48699cff, e8f35298, 81bc99d0, d18303ca). Verified `main` read-only; logs change requests to owners; takes over integration only under the 60-minute stale-claim rule. | in progress (52A-T3 standby) | 2026-11-16 18:4x |
+
+### 52A Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 52A-T1 — Read board, register session, claim, push claim | done | 52a6c751 | `COORDINATION.md` (52A Part, append only) | — | — |
+| 52A-T2 — Post-integration line-by-line verification of `main` (gates; live re-fetch of the three short links, Program Policies 2(b)/6(t), Standard Commission Table 1, Creators API ASIN rule, FTC Disclosures 101; public-tree sweep for restricted values) | done (2026-11-16, `main` at `90046e6`; re-checked at `a5d64fd`) | 52a6c751 | `sessions/52a6c751/**` only | [record](sessions/52a6c751/verification-2026-11-16.md) | 52A-F-01 … 52A-F-05 |
+| 52A-T3 — Takeover of final integration, only if a live claim goes stale (no commit for >60 min with no open-PR activity) | standby | — | per takeover | — | — |
+
+### 52A-T2 record — what was checked (2026-11-16)
+
+| # | Claim | Official source | Result |
+|---|---|---|---|
+| 52A-V01–V03 | Three short links open `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH` | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY), [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3), [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | Confirmed as observed destinations; intended match not established (FLG-001/002) |
+| 52A-V04 | Operating Agreement "Updated: October 15, 2025" | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | Confirmed |
+| 52A-V05 | Program Policies "Updated: April 14, 2026" | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | Observed |
+| 52A-V06 | 2(b) prices/availability only via served link or Creators/PA API; remove expired promotions | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | Confirmed verbatim |
+| 52A-V07 | 6(t) reviews/star ratings only via Creators/PA API | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | Confirmed verbatim |
+| 52A-V08 | Table 1 Kitchen 4.50%, All Other 4.00%; bounties $12/$2/$5/$0.25 | [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | Confirmed as printed |
+| 52A-V09 | ASIN = 10 characters | [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | Confirmed |
+| 52A-V10 | "Hard to miss"; no claim of experience with an untried product | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | Confirmed (dated November 2019) |
+
+**Not re-fetched by this session:** the Operating Agreement §5 sentence (recorded verbatim by 98-V01 and I2-V01), the 180-day window, and Creators API eligibility text.
+
+**Gates on `main` at `90046e6`:** `check_site.py` OK (24 pages, 97 flags); `verify_site.py` PASS (100 pages, 1,649 rows; V1–V7); `link_report.py --strict` exit 0; `build_sitemap.py --check` exit 0 (95 pages).
+
+**Caveat on the gate:** `verify_site.py` V4 counts a row as sourced when it carries a link. It does not check that the linked page supports the value. F-01…F-05 pass V4 and still show restricted values.
+
+### 52A Irregularities (non-blocking, for owner review; published by the Flagged-for-review page for the next integration)
+
+| ID | Severity | Finding (evidence) | Policy basis | Requested owner action |
+|---|---|---|---|---|
+| 52A-F-01 | **High** | `docs/index.html` ~line 66 shows "Price range (observed) $79.91–$149.99; List prices $99.99–$209.99" on a public page. | Program Policies 2(b): prices only if Amazon serves the link or via Creators/PA API | Remove the price values; keep only a notice that prices are not shown. (Owner of `docs/`.) |
+| 52A-F-02 | **High** | `docs/content.html` ~line 58: "Observed price: $79.93 (list $99.99, 'Limited time deal' at capture)". | 2(b) prices; 2(b) requires removing expired limited-time promotion references | Remove the price and promotion text. (Owner of `docs/`.) |
+| 52A-F-03 | **High** | `docs/sources.html` lines 95, 112, 129: "Price $79.93 · list $99.99 · 4.2★ · 4.8K reviews · 1K+ bought/month · deal badge · other offer $57.45", and similar rows for the other two listings. | 2(b) prices; 6(t) star ratings and reviews | Remove the price, rating, review and purchase-count values. (Owner of `docs/`.) |
+| 52A-F-04 | **High** | `sessions/3c886b62/` (`index.html`, the product and comparison pages, `docs/*.md`): prices, star ratings and review counts remain under a notice that the display "is not a compliant product display". A notice does not cure a restricted display. Same as 71-F-04. | 2(b), 6(t) | Remove the values, or remove the snapshot from public Pages and the sitemap. Owner decision (A0-T4b, recorded as not completed). |
+| 52A-F-05 | Medium | `site/evidence.html` line ~72 quotes star ratings and review counts of OTHER ASINs ("4.41,393", "4.43,727", "4.6822", "4.22,210"). | 6(t) | Remove the quoted ratings; state only that ratings were not captured. (Owner of `site/`.) |
+
+### 52A Change requests (cross-scope; this session edited none of these files)
+
+| Request | To | Why |
+|---|---|---|
+| CR-52A-1: remove restricted prices, ratings, review and purchase counts from `docs/index.html`, `docs/content.html`, `docs/sources.html`, and from `sessions/3c886b62/` (or exclude it from public Pages/sitemap) | Final-integration owner of the next PR | 52A-F-01…F-04. A public page that shows Amazon prices or ratings outside 2(b)/6(t) puts the Associate account at risk under OA §2, and the notice does not cure it. |
+| CR-52A-2: remove other-ASIN ratings from `site/evidence.html` line ~72 | Owner of `site/` (`59d84c55`) | 52A-F-05 |
+| CR-52A-3: one final integrator at a time | All sessions | On 2026-11-16 between 18:40 and 19:10 UTC, at least ten PRs were opened or merged to `main` by parallel "final integration" claims. Several were `DIRTY`, and `COORDINATION.md` was re-conflicted on each rebase. The protocol says one integration session merges. |
+
+### 52A Conflict log
+
+- 18:4x — my claim commit conflicted with main's board (append-only collision). Resolved by keeping main's board verbatim and re-appending this Part. No line-start conflict markers were pushed.
+- 19:0x — the claim commit conflicted again after other sessions appended. Resolved the same way.
+- The 52A branch was force-pushed once to replace my own claim commits after these rebases. No other session's branch was touched.
+
+### 52A-T3 standby rule
+
+If PR #113 (5b425c74), PR #109 (a0ffcab0), PR #116 (d18303ca), or PR #117 (145b8df7) is still open after 60 minutes of no commits, this session takes over integration. It will log the handoff here first. Until then this session does not open or merge PRs.
