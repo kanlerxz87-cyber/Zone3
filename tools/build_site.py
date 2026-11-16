@@ -1195,21 +1195,32 @@ def main():
     if (out / "category").is_dir():
         flat += sorted(p.relative_to(out).as_posix() for p in (out / "category").glob("*.html"))
     sm_paths = {_urlpath(v) for v in written.values()} | set(flat)
-    # INTEGRATION 2026-11-14 (session edbd56a1): /docs/, /sessions/ and /marketing/ are not
-    # covered by either generator's own list, so paths already in the sitemap are kept too.
-    # Without this the file shrinks on every rebuild; with it the sitemap is a fixpoint.
+    # INTEGRATION 2026-11-14 (session edbd56a1): /marketing/ is not covered by either
+    # generator's own list, so paths already in the sitemap are kept too. Without this the file
+    # shrinks on every rebuild; with it the sitemap is a fixpoint.
+    # 81bc99d0 (2026-11-16): /docs/ and /sessions/ are excluded from the public sitemap (71-F-04)
+    # — they are audit snapshots that render historical price/rating/review values barred by
+    # Program Policies 2(b)/6(t). They are kept on disk but not re-added to the sitemap.
     _prev = out / "sitemap.xml"
     if _prev.exists():
         for _m in re.finditer(r"<loc>https?://[^/]*/Zone3/([^<]*)</loc>",
                               _prev.read_text(encoding="utf-8")):
-            sm_paths.add(_m.group(1))
+            _prev_path = _m.group(1)
+            if _prev_path.startswith(("docs/", "sessions/")):
+                continue
+            sm_paths.add(_prev_path)
     sm_paths = sorted(sm_paths)
     (out / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f'  <url><loc>{SITE_ORIGIN}{SITE_BASE}/{p}</loc></url>\n' for p in sm_paths)
         + "</urlset>\n", encoding="utf-8")
-    (out / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_ORIGIN}{SITE_BASE}/sitemap.xml\n",
-                                    encoding="utf-8")
+    (out / "robots.txt").write_text(
+        "User-agent: *\n"
+        "Allow: /\n"
+        "Disallow: /docs/\n"
+        "Disallow: /sessions/\n"
+        f"Sitemap: {SITE_ORIGIN}{SITE_BASE}/sitemap.xml\n",
+        encoding="utf-8")
 
     manifest = {
         "pages": len(written), "table_rows": nrows,
@@ -1219,6 +1230,11 @@ def main():
                                   "G7 no-placeholder-text", "G8 flag-has-action"],
                          "result": "pass"},
         "files": {k: hashlib.sha256((out / v).read_bytes()).hexdigest()[:12] for k, v in sorted(written.items())},
+        # 81bc99d0 (2026-11-16): explicit output paths, relative to the output root. The verifier
+        # needs these to recognize which pages this build owns; the digest-only `files` map above
+        # cannot be matched against on-disk paths. Kept alongside `files` so the faithfulness
+        # check (byte-identical rebuild => byte-identical manifest) is unchanged.
+        "paths": {k: str(pathlib.PurePosixPath(v)) for k, v in sorted(written.items())},
     }
     # Generated HTML is committed here (Pages deploys from the branch root), so a build that
     # changes nothing must leave the tree clean. A wall-clock stamp dirties every run and makes
@@ -1231,6 +1247,10 @@ def main():
                                   "no-op rebuild is byte-identical and the tree stays clean. Use the "
                                   "commit date of the file for 'when', and content_digest for 'what'.")
     mpath = out / "data" / "z3" / "build-manifest.json"
+    # 81bc99d0 (2026-11-16): create the output parent directory. Building into a fresh --out dir
+    # previously crashed with FileNotFoundError here before the manifest could be written, so a
+    # clean rebuild into an empty directory was impossible.
+    mpath.parent.mkdir(parents=True, exist_ok=True)
     txt = json.dumps(manifest, indent=2) + "\n"
     if not (mpath.exists() and mpath.read_text(encoding="utf-8") == txt):
         mpath.write_text(txt, encoding="utf-8")
