@@ -180,6 +180,39 @@ def frontdoor_block() -> str:
     )
 
 
+def flagged_block() -> str:
+    """Findings raised by this session, published on the reader site's Flagged for review page.
+
+    Inserted as a region the integrator owns, between the sentinel and </main>, so a rebuild of
+    the reader site (tools/build_i2_site.py) cannot drop the CBA-F rows and cannot duplicate them.
+    """
+    data = json.loads((DATA / "flags.json").read_text(encoding="utf-8"))
+    sev = {"High": "b-bad", "Medium": "b-warn", "Low": "b-mute", "Info": "b-mute"}
+    rows = []
+    for f in data["flags"]:
+        src = " ".join(
+            f'<a class="src" href="{s["url"]}" target="_blank" rel="noopener noreferrer" title="{s["label"]}">'
+            f'{html_escape(s["label"])}</a>' for s in f["sources"])
+        rows.append(
+            f'<tr id="{f["id"]}"><td class="lead-cell"><span class="mono">{f["id"]}</span><br>'
+            f'{f["title"]}</td>'
+            f'<td><span class="badge {sev.get(f["severity"], "b-mute")}">{f["severity"]}</span></td>'
+            f'<td>{f["what"]}</td><td>{f["why_it_matters"]}</td><td>{f["action"]}</td>'
+            f'<td>{src}</td></tr>'
+        )
+    return (
+        '<a id="cba81fa5-flagged" aria-hidden="true"></a>\n'
+        '<h2>Raised on 2026-11-16 by the second-source desk (session cba81fa5)</h2>\n'
+        '<p class="small">Five findings, none of which blocks publishing. Each was checked against the page in '
+        'its Source column on 2026-11-16. Two of them are about the machinery that is supposed to catch the '
+        'other three, and that is the point of listing them here rather than fixing them quietly.</p>\n'
+        '<div class="tablewrap"><table><caption>CBA-F-01&hellip;05 — what was found, why it matters, what to do</caption>'
+        '<thead><tr><th>ID &amp; finding</th><th>Severity</th><th>What</th><th>Why it matters</th>'
+        '<th>Action</th><th>Source</th></tr></thead>'
+        f'<tbody>{"".join(rows)}</tbody></table></div>\n\n'
+    )
+
+
 def html_escape(v: str) -> str:
     return (v.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
@@ -255,6 +288,21 @@ def main() -> int:
             changed.append("index.html")
             if not a.check:
                 root_index.write_text(want, encoding="utf-8")
+
+    fl = SITE / "flagged.html"
+    if fl.exists():
+        raw = fl.read_text(encoding="utf-8")
+        start = '<a id="cba81fa5-flagged"' if '<a id="cba81fa5-flagged"' in raw else None
+        if start:
+            want = patch_text(raw, start, "</main>", flagged_block())
+        elif "</main>" in raw and "Raised on 2026-11-16 by the second-source desk" not in raw:
+            want = raw.replace("</main>", flagged_block() + "</main>", 1)
+        else:
+            want = raw
+        if want != raw:
+            changed.append("site/flagged.html")
+            if not a.check:
+                fl.write_text(want, encoding="utf-8")
 
     idx_path = SITE / "site-index.json"
     want_idx = build_index_json()

@@ -1,0 +1,74 @@
+{
+  "register": "cba81fa5",
+  "retrieved": "2026-11-16",
+  "note": "Findings raised by session cba81fa5. Namespaced CBA-F-nn: they are not the same items as FLG-nnn, I2-F-nn, AB-F-nn, 71-F-nn, D-F, E-F or the other sessions' prefixes. None of these blocks a merge (owner instruction); each is published on the Flagged for review page so it can be reviewed after the site is live. Status 'open' means no session has changed the thing it describes.",
+  "flags": [
+    {
+      "id": "CBA-F-01",
+      "severity": "Info",
+      "title": "Amazon edited the listing title; the stored wording and the live wording differ",
+      "what": "The Emeril Lagasse listing (B09B7SB46R) served 'Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included' on 2026-11-16. data/products.json and marketing/index.html still carry the 2026-11-13/14 wording ('French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals'). The listing's own URL slug still contains 'dual-speed-rotisserie', so the live title and the live slug disagree with each other.",
+      "why_it_matters": "Any page that promises rotisserie or a dual-speed fan for this machine is quoting wording that is not in the title today. This site publishes neither.",
+      "action": "Decide whether to refresh the stored titles from a same-day capture (they will drift again), or keep dating every quotation, as the guides do. Nothing was overwritten.",
+      "sources": [
+        {"label": "Listing P2 as served 2026-11-16", "url": "https://www.amazon.com/dp/B09B7SB46R"},
+        {"label": "Submitted short link 2, same destination", "url": "https://link.amazon/B02NbDxp3"},
+        {"label": "Best Sellers in Air Fryers, showing the slug", "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/"}
+      ],
+      "status": "open"
+    },
+    {
+      "id": "CBA-F-02",
+      "severity": "High",
+      "title": "The release gate cannot fail on disclosure, disclaimer, single-h1 or row-provenance checks",
+      "what": "tools/verify_site.py builds its 'owned pages' set from data/z3/build-manifest.json's 'files' values, but those values are 12-character content digests (e.g. agent-terms: 94cb0fee17a9), not paths. No page is ever matched, so V1/V2/V3/V4 findings are demoted to advisory for the whole repository. Reproduced on 2026-11-16 with a synthetic page missing the disclosure sentence and carrying an unsourced table row: those checks reported only as advisory and the exit code came from an unrelated 'sitemap.xml missing' error.",
+      "why_it_matters": "'VERIFY PASS' on this repository has been read as evidence that disclosure and row-provenance rules hold. It is not. The rules do hold today — this session checked them independently — but the gate would not have caught it if they did not.",
+      "action": "Recommended: have tools/build_site.py record generated_paths in the manifest, make verify_site.py read that, and land it as its own PR because the corrected gate will turn inherited pages' advisory items into hard failures. Compensating control shipped now: tools/cba81fa5_lint.py fails the build on the same checks over site/**.",
+      "sources": [
+        {"label": "tools/verify_site.py (generated_set)", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/verify_site.py"},
+        {"label": "data/z3/build-manifest.json", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/z3/build-manifest.json"}
+      ],
+      "status": "open"
+    },
+    {
+      "id": "CBA-F-03",
+      "severity": "Medium",
+      "title": "Two reader sites, two brands, overlapping topics",
+      "what": "/read/ ('The Crisp Report', 11 pages, images, JSON-LD, session d18303ca) and /site/ ('Air Fryer Field Notes', 18 pages including the four guides, the open-questions register and the house style, sessions 59d84c55 and cba81fa5) both answer the same shopper questions from the same three listings, published on the same day. read/capacity.html and site/guides/capacity-maths.html are the clearest overlap, as are the cleaning, features and best-seller pages.",
+      "why_it_matters": "A reader who finds both sees the same argument twice from two names, and search engines see two near-duplicate sets. The board has flagged duplicate registers for the same reason; this is the reader-facing version of it.",
+      "action": "Owner decision (question Q-12 in site/answers.html): adopt one brand as canonical and keep the other as an internal verification set, or merge the two guide sets into one nav. This session took the middle path: the root front door points at /read/ for reading, /site/ keeps the evidence desk and the decision board, and site/guides/index.html labels itself a second-source check. Nothing was deleted.",
+      "sources": [
+        {"label": "The Crisp Report (read/)", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/read/index.html"},
+        {"label": "Air Fryer Field Notes (site/)", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/site/index.html"},
+        {"label": "Guide plan with the overlap note", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/site/guides/index.html"}
+      ],
+      "status": "open"
+    },
+    {
+      "id": "CBA-F-04",
+      "severity": "Low",
+      "title": "22 lint findings inherited from other sessions' reader pages",
+      "what": "Blank-state rows on site/products.html (Price, Star rating, Review count, Availability, Commission for this product, Trend rank / demand, Conversion rate) carry no source cell; Amazon's bounty amounts are rendered on a product-facing page; and two pages quote the constructions they forbid in a form the mechanical rule matched before the use/mention rule was added.",
+      "why_it_matters": "The rows are honest content in the wrong place: a row that explains what is not published still needs the rule it is standing on, or the next reader cannot tell a deliberate blank from a missing value.",
+      "action": "Owners of those pages: move the 'cannot publish' rows into a note block or add the Participation Requirements link, and put quoted-ban examples in <span class=\"example\">. The findings are listed in tools/cba81fa5_lint-baseline.json and reported on every run as advisory.",
+      "sources": [
+        {"label": "Participation Requirements 2(b), read 2026-11-16", "url": "https://affiliate-program.amazon.com/help/operating/policies"},
+        {"label": "The lint and its baseline", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/cba81fa5_lint.py"}
+      ],
+      "status": "open"
+    },
+    {
+      "id": "CBA-F-05",
+      "severity": "Low",
+      "title": "The root front door is a post-build injection",
+      "what": "scripts/build_site.py still emits the dashboard as index.html; tools/build_cba81fa5_site.py then replaces the region between its sentinel and the callout block with the front-door band, and regenerates the guide plan and site index. Running the generator without the integrator drops the band.",
+      "why_it_matters": "A future session that rebuilds and publishes without the documented order would silently remove the marketing front door — and the broken gate in CBA-F-02 would not catch it.",
+      "action": "The order is documented in this register, in README.md and in the integrator's docstring, and the build fails on it: tools/build_cba81fa5_site.py --check reports STALE and the lint turns that into a SITE:generated-region-stale finding. Permanent fix: fold the band into scripts/build_site.py (a shared file, so it is a change request, not an edit).",
+      "sources": [
+        {"label": "tools/build_cba81fa5_site.py", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/build_cba81fa5_site.py"},
+        {"label": "scripts/build_site.py", "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/scripts/build_site.py"}
+      ],
+      "status": "open"
+    }
+  ]
+}
