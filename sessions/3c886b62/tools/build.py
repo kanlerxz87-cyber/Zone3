@@ -75,7 +75,12 @@ def esc(x):
     return html.escape(str(x), quote=True)
 
 
+WITHHELD_BADGE = '<span class="badge unv" title="Withheld per Amazon Program Policies 2(b)/6(t)">Withheld</span>'
+
+
 def money(v):
+    if v == "Withheld":
+        return WITHHELD_BADGE
     return "&mdash;" if v is None else "$%0.2f" % v
 
 
@@ -367,7 +372,7 @@ PRODUCT_COLUMNS = [
 def discount_depth(p):
     cur = fv(p, "current_price")["value"]
     lst = fv(p, "list_price")["value"]
-    if cur is None or lst is None or not lst:
+    if not isinstance(cur, (int, float)) or not isinstance(lst, (int, float)) or not lst:
         return None
     return (1.0 - cur / lst) * 100.0
 
@@ -385,13 +390,13 @@ def product_row(p, extra=True):
         '<td class="mono"><a href="%s" target="_blank" rel="noopener nofollow">%s</a></td>'
         % (esc(f["canonical_url"]["value"]), esc(f["asin"]["value"])),
         "<td>%s</td>" % esc(f["department"]["value"]),
-        '<td class="num" data-v="%s">%s</td>' % ("" if cur is None else cur, money(cur)),
-        '<td class="num" data-v="%s">%s</td>' % ("" if lst is None else lst, money(lst)),
+        '<td class="num" data-v="%s">%s</td>' % ("" if cur in (None, "Withheld") else cur, money(cur)),
+        '<td class="num" data-v="%s">%s</td>' % ("" if lst in (None, "Withheld") else lst, money(lst)),
         '<td class="num" data-v="%s">%s</td>' % ("" if dd is None else "%.2f" % dd,
                                                  "&mdash;" if dd is None else "%0.1f%%" % dd),
         '<td class="num" data-v="%s">%s</td>' % (
             fv(p, "rating")["value"] if fv(p, "rating")["value"] is not None else "",
-            "&mdash;" if fv(p, "rating")["value"] is None else "%0.1f / 5" % fv(p, "rating")["value"]),
+            WITHHELD_BADGE if fv(p, "rating")["value"] == "Withheld" else ('&mdash;' if fv(p, "rating")["value"] is None else "%0.1f / 5" % fv(p, "rating")["value"])),
         "<td>%s</td>" % esc(fv(p, "ratings_count_display")["value"] or "&mdash;"),
         "<td>%s</td>" % esc(fv(p, "demand_signal")["value"] or "&mdash;"),
         "<td>%s</td>" % esc(fv(p, "deal_badge")["value"] or "&mdash;"),
@@ -593,7 +598,8 @@ def page_categories():
         depts.setdefault(p["fields"]["department"]["value"], []).append(p)
     rows = []
     for dept, items in sorted(depts.items()):
-        prices = [fv(p, "current_price")["value"] for p in items if fv(p, "current_price")["value"]]
+        prices = [fv(p, "current_price")["value"] for p in items
+                if isinstance(fv(p, "current_price")["value"], (int, float))]
         rows.append(
             "<tr><td><strong>%s</strong></td><td class=\"num\">%d</td>"
             "<td>Air fryers</td>"
@@ -756,11 +762,11 @@ def page_comparison():
          lambda p: fv(p, "current_price")["value"], True),
         ("List price", lambda p: money(fv(p, "list_price")["value"]),
          lambda p: fv(p, "list_price")["value"], True),
-        ("Discount depth (derived)", lambda p: "%0.1f%%" % discount_depth(p) if discount_depth(p) is not None else "&mdash;",
+        ("Discount depth (derived)", lambda p: WITHHELD_BADGE if discount_depth(p) is None else "%0.1f%%" % discount_depth(p),
          lambda p: discount_depth(p), True),
         ("Lowest other offer", lambda p: money(fv(p, "other_offers_low")["value"]),
          lambda p: fv(p, "other_offers_low")["value"], True),
-        ("Star rating", lambda p: "%0.1f / 5" % fv(p, "rating")["value"],
+        ("Star rating", lambda p: WITHHELD_BADGE if fv(p, "rating")["value"] == "Withheld" else "%0.1f / 5" % fv(p, "rating")["value"],
          lambda p: fv(p, "rating")["value"], True),
         ("Ratings count", lambda p: esc(fv(p, "ratings_count_display")["value"]), None, False),
         ("Bought in past month", lambda p: esc(fv(p, "demand_signal")["value"].replace(" bought in past month", "")),
@@ -811,7 +817,7 @@ def page_analysis():
             + '<td class="num">%s</td>' % money(lst)
             + '<td class="num">%s</td>' % ("&mdash;" if dd is None else "%0.1f%%" % dd)
             + '<td class="num">%s</td>' % money(fv(p, "other_offers_low")["value"])
-            + '<td class="num">%s</td>' % ("%0.1f / 5" % fv(p, "rating")["value"])
+            + '<td class="num">%s</td>' % (WITHHELD_BADGE if fv(p, "rating")["value"] == "Withheld" else "%0.1f / 5" % fv(p, "rating")["value"])
             + "<td>%s</td>" % esc(fv(p, "ratings_count_display")["value"])
             + "<td>%s</td>" % esc(fv(p, "demand_signal")["value"])
             + '<td class="src">%s</td>' % srclinks(

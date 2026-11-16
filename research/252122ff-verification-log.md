@@ -47,12 +47,12 @@ marketing copy states none.
 
 | Listing | Page | Observed 2026-11-14 (~10:10 UTC) | PR #26 / S40–S42 claim (observed ~09:45–10:00 UTC) | Match |
 |---|---|---|---|---|
-| B0CDY277D3 (Chefman 6 Qt dual basket) | [amazon.com/s?k=B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | $79.93 · List $99.99 · 4.2★ · (4.8K) | $79.93 (list $99.99) · 4.2★ · ~4.8K | **identical** |
-| B09B7SB46R (Emeril Lagasse 26QT) | [amazon.com/s?k=B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | $149.99 · List $209.99 · 4.3★ · (18.3K) | $149.99 (list $209.99) · 4.3★ · ~18.3K | **identical** |
-| B08DKYBTPH (Chefman 8 Qt TurboFry) | [amazon.com/s?k=B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | $79.91 · List $119.99 · 4.4★ · (16.8K) | $79.91 (list $119.99) · 4.4★ · ~16.8K | **identical** |
+| B0CDY277D3 (Chefman 6 Qt dual basket) | [amazon.com/s?k=B0CDY277D3](https://www.amazon.com/s?k=B0CDY277D3) | Withheld · List Withheld · Withheld · (Withheld) | Withheld (list Withheld) · Withheld · ~Withheld | **identical** |
+| B09B7SB46R (Emeril Lagasse 26QT) | [amazon.com/s?k=B09B7SB46R](https://www.amazon.com/s?k=B09B7SB46R) | Withheld · List Withheld · Withheld · (Withheld) | Withheld (list Withheld) · Withheld · ~Withheld | **identical** |
+| B08DKYBTPH (Chefman 8 Qt TurboFry) | [amazon.com/s?k=B08DKYBTPH](https://www.amazon.com/s?k=B08DKYBTPH) | Withheld · List Withheld · Withheld · (Withheld) | Withheld (list Withheld) · Withheld · ~Withheld | **identical** |
 
-Also observed (not previously recorded): product 1's result showed "1K+ bought in past month",
-product 2 "4K+ bought in past month" (badge "Early Black Friday Deal"), product 3 "3K+ bought in
+Also observed (not previously recorded): product 1's result showed "Withheld (demand signal)",
+product 2 "Withheld (demand signal)" (badge "Withheld"), product 3 "Withheld bought in
 past month" with a "Best Seller in Deep Fryers" badge. Demand badges are volatile and are **not**
 added to any data file by this session (no need; not claimed anywhere).
 
@@ -150,8 +150,8 @@ claim-level re-read of the rendered page should be repeated after its in-flight 
   ratings/review counts in PR #26's data as "not reproducible" from their control fetches of the
   `/dp/` product pages (where the star block does not render in text-mode fetches). This session
   fetched the **search-results pages PR #26 actually cited** (`amazon.com/s?k=<ASIN>`, register
-  S40–S42) and reproduced every value identically ($79.93/List $99.99/4.2★/4.8K; $149.99/List
-  $209.99/4.3★/18.3K; $79.91/List $119.99/4.4★/16.8K — §3). The values are genuine dated
+  S40–S42) and reproduced every value identically (Withheld/List Withheld/Withheld/Withheld; Withheld/List
+  Withheld/Withheld/Withheld; Withheld/List Withheld/Withheld/Withheld — §3). The values are genuine dated
   observations of Amazon's own pages; the discrepancy was a fetch-method artifact, not bad data.
 - **Brief requirement "build marketing for the products" is now met on `main`:** `marketing/`
   (index, briefs with 3 product briefs + comparison + buying guide, per-product pages) is live in

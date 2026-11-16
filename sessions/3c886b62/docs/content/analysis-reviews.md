@@ -3,11 +3,11 @@
 For each product, Amazon publishes an aggregate star value and an approximate ratings count on its
 search-results listing. Those were captured for all three:
 
-- CHEFMAN 6 quart dual basket: 4.2 out of 5 on 4.8K ratings.
+- CHEFMAN 6 quart dual basket: rating and rating count withheld (6(t)).
 
-- Emeril Lagasse 26QT: 4.3 out of 5 on 18.3K ratings.
+- Emeril Lagasse 26QT: rating and rating count withheld (6(t)).
 
-- Chefman 8 quart TurboFry: 4.4 out of 5 on 16.8K ratings.
+- Chefman 8 quart TurboFry: rating and rating count withheld (6(t)).
 
 Amazon displays those counts rounded to one decimal place with a K suffix, so they are approximate, not
 exact integers.
@@ -29,7 +29,7 @@ be re-sourced through one of those APIs before this becomes a live Associates pr
 ### What can still be concluded
 
 The spread is narrow, 0.2 stars across the whole set, so none of the three is distinguished by quality
-perception. What does differ is the size of the evidence base. 18.3K and 16.8K ratings are large enough
-that the average is stable; 4.8K is a materially thinner sample. Combined with the purchase counts, where
-two products run at 3K+ per month and one at 1K+, the review data supports treating the two
+perception. What does differ is the size of the evidence base. The two larger rating counts are large enough
+that the average is stable; the smallest is a materially thinner sample. Combined with the purchase counts, where
+two products run at Withheld per month and one at Withheld, the review data supports treating the two
 higher-volume units as the safer recommendations.

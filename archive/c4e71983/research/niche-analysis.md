@@ -25,9 +25,9 @@ Sibling sub-categories under Fryers: Air Fryer Ovens, Air Fryers, Deep Fryers.
 
 | ID | ASIN | Sub-category | Capacity | Price | List | Rating | Ratings shown |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| P1 | B0CDY277D3 | Dual Basket | 6 Qt (2 × 3 Qt) | $79.93 | $99.99 | 4.2 | 4.8K |
-| P2 | B09B7SB46R | Air Fryer Toaster Oven | 26 QT | $149.99 | $209.99 | 4.3 | 18.3K |
-| P3 | B08DKYBTPH | Large Capacity | 8 Qt | $79.91 | $119.99 | 4.4 | 16.8K |
+| P1 | B0CDY277D3 | Dual Basket | 6 Qt (2 × 3 Qt) | Withheld | Withheld | 4.2 | Withheld |
+| P2 | B09B7SB46R | Air Fryer Toaster Oven | 26 QT | Withheld | Withheld | 4.3 | Withheld |
+| P3 | B08DKYBTPH | Large Capacity | 8 Qt | Withheld | Withheld | 4.4 | Withheld |
 
 Sub-categories are derived from what the official product titles actually say, not from an external
 taxonomy.
@@ -36,12 +36,12 @@ taxonomy.
 
 | Rank | Product | Brand | Capacity | Rating | Ratings | Price |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Ninja Air Fryer Pro 5 Qt AF141 | Ninja | 5 Qt | 4.7 | 10,984 | $89.99 |
-| 2 | Cosori TurboBlaze 6 Qt | Cosori | 6 Qt | 4.8 | 22,768 | $99.99 |
-| 3 | bella Fits-anywhere 4 Qt | bella | 4 Qt | 4.5 | 4,015 | $39.99 |
-| 4 | Chefman 4 QT Compact | Chefman | 4 Qt | 4.6 | 7,552 | $57.91 |
-| 5 | Cuisinart TOA-55 | Cuisinart | 0.6 cu ft | 4.5 | 126 | $129.95 |
-| 6 | Chefman 14-Quart 6-in-1 | Chefman | 14 Qt | 4.3 | 52,301 | $99.95 |
+| 1 | Ninja Air Fryer Pro 5 Qt AF141 | Ninja | 5 Qt | 4.7 | Withheld | Withheld |
+| 2 | Cosori TurboBlaze 6 Qt | Cosori | 6 Qt | 4.8 | Withheld | Withheld |
+| 3 | bella Fits-anywhere 4 Qt | bella | 4 Qt | 4.5 | Withheld | Withheld |
+| 4 | Chefman 4 QT Compact | Chefman | 4 Qt | 4.6 | Withheld | Withheld |
+| 5 | Cuisinart TOA-55 | Cuisinart | 0.6 cu ft | 4.5 | 126 | Withheld |
+| 6 | Chefman 14-Quart 6-in-1 | Chefman | 14 Qt | 4.3 | Withheld | Withheld |
 
 Source: [Best Sellers in Air Fryers](https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/).
 Rating counts on this page are exact — unlike Amazon search results, which round them.
@@ -52,32 +52,31 @@ claim is made that any target product is absent from the full list.
 ## 4. Findings
 
 **a. The gap is satisfaction, not price.** Category leaders rate 4.7 and 4.8. These three rate
-4.2–4.4. Meanwhile the $149.99 unit — the most expensive thing on this page — shows the strongest
+a narrow high band. Meanwhile the premium unit — the most expensive thing on this page — shows the strongest
 velocity signal in the catalogue. Buyers are not being deterred by price here.
 
 **b. Brand adjacency is favourable.** The category leader on volume (#6) and two of the top six are
 Chefman, which is also the brand of two of the three promoted products. Brand familiarity in the
 category helps.
 
-**c. The premium band is thin.** Only one product in the captured top six sits above $130, and it has
-just 126 ratings. The $149.99 promoted unit has 18.3K ratings shown. That is the least contested
+**c. The premium band is thin.** Only one product in the captured top six sits above Withheld, and it has
+a thin sample. The promoted premium unit has a large rating count shown. That is the least contested
 band and the strongest product within it.
 
-**d. Two products are priced identically.** At $79.91 and $79.93 they are two cents apart, despite
+**d. Two products are priced almost identically.** Despite
 list prices $20 apart. The differentiator is features and ratings, not cost — and P3 (4.4 stars,
-16.8K ratings) is objectively the stronger of the two on the captured data. That makes it the natural
+the larger rating count) is objectively the stronger of the two on the captured data. That makes it the natural
 "best for most people" pick, with P1 as the "best if you cook two things at once" alternative.
 
 ## 5. Pricing
 
-All three products were discounted at capture, two with a *Limited time deal* badge and one with an
-*Early Black Friday Deal* badge — consistent with mid-November. Discount depth vs list:
+All three products were discounted at capture, with promotion badges on all three — consistent with mid-November. Discount depth vs list:
 
 | Product | Price | List | Discount |
 | --- | --- | --- | --- |
-| B0CDY277D3 | $79.93 | $99.99 | 20% |
-| B09B7SB46R | $149.99 | $209.99 | 29% |
-| B08DKYBTPH | $79.91 | $119.99 | 33% |
+| B0CDY277D3 | Withheld | Withheld | 20% |
+| B09B7SB46R | Withheld | Withheld | 29% |
+| B08DKYBTPH | Withheld | Withheld | 33% |
 
 (Discount is calculated from the two captured prices; it is arithmetic, not an Amazon-published figure.)
 

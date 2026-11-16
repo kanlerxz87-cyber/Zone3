@@ -19,7 +19,7 @@
       "severity": "blocker",
       "category": "Amazon Associates compliance",
       "title": "Limited-time promotion badges are displayed and must be removed the moment the promotion ends",
-      "detail": "All three products carried a live promotion badge at capture time: B0CDY277D3 'Limited time deal', B08DKYBTPH 'Limited time deal', B09B7SB46R 'Early Black Friday Deal'. Participation Requirements section 2(b) states: 'You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.'",
+      "detail": "All three products carried a live promotion badge at capture time: B0CDY277D3 'Withheld', B08DKYBTPH 'Withheld', B09B7SB46R 'Withheld'. Participation Requirements section 2(b) states: 'You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.'",
       "action_required": "Do not publish the deal badges on a live page unless the page is updated at least daily from a live feed. Safest option: remove the badge column before launch.",
       "sources": ["https://affiliate-program.amazon.com/help/operating/policies", "https://www.amazon.com/s?k=B0CDY277D3", "https://www.amazon.com/s?k=B09B7SB46R", "https://www.amazon.com/s?k=B08DKYBTPH"]
     },
@@ -37,8 +37,8 @@
       "severity": "unverified-data",
       "category": "Data precision",
       "title": "Rating counts are Amazon's rounded display values, not exact counts",
-      "detail": "Amazon search results render rating counts as '4.8K', '18.3K' and '16.8K'. The exact review counts are only available on the review pages, which require sign-in. The rounded values are marked as rounded everywhere they appear on this site, and the exact-count column is deliberately left blank.",
-      "action_required": "Populate exact counts from PA-API or by reading the signed-in review page. Do not treat 4.8K / 18.3K / 16.8K as exact.",
+      "detail": "Amazon search results render rating counts as 'Withheld', 'Withheld' and 'Withheld'. The exact review counts are only available on the review pages, which require sign-in. The rounded values are marked as rounded everywhere they appear on this site, and the exact-count column is deliberately left blank.",
+      "action_required": "Populate exact counts from PA-API or by reading the signed-in review page. Do not treat Withheld / Withheld / Withheld as exact.",
       "sources": ["https://www.amazon.com/s?k=B0CDY277D3", "https://www.amazon.com/s?k=B09B7SB46R", "https://www.amazon.com/s?k=B08DKYBTPH", "https://www.amazon.com/product-reviews/B0CDY277D3"]
     },
     {
@@ -73,7 +73,7 @@
       "severity": "needs-review",
       "category": "Amazon Associates compliance",
       "title": "Amazon's 'bought in past month' signal may not be republished verbatim",
-      "detail": "Amazon displayed '1K+ bought in past month', '4K+ bought in past month' and '3K+ bought in past month'. This is Amazon-rendered Program Content adjacent to the product listing. Content-on-your-Site rule 6(a) states 'You will not add to, delete from, or otherwise alter any Program Content in any way.' The signal is reproduced verbatim here, but it is volatile Amazon content and its reuse should be cleared before publication.",
+      "detail": "Amazon displayed 'Withheld bought in past month', 'Withheld bought in past month' and 'Withheld bought in past month'. This is Amazon-rendered Program Content adjacent to the product listing. Content-on-your-Site rule 6(a) states 'You will not add to, delete from, or otherwise alter any Program Content in any way.' The signal is reproduced verbatim here, but it is volatile Amazon content and its reuse should be cleared before publication.",
       "action_required": "Prefer Amazon-served widgets for this signal, or drop the column before launch.",
       "sources": ["https://affiliate-program.amazon.com/help/operating/policies", "https://www.amazon.com/s?k=B09B7SB46R"]
     },

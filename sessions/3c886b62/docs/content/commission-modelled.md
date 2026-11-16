@@ -4,9 +4,9 @@ column is a prediction. They are shown together so the size of the unresolved qu
 
 | Product | Captured price | At 3.00% (Home row) | At 4.50% (Kitchen row) |
 | --- | --- | --- | --- |
-| CHEFMAN 6 qt dual basket | $79.93 | $2.40 | $3.60 |
-| Emeril Lagasse 26 qt | $149.99 | $4.50 | $6.75 |
-| Chefman 8 qt TurboFry | $79.91 | $2.40 | $3.60 |
+| CHEFMAN 6 qt dual basket | Withheld | Withheld | Withheld |
+| Emeril Lagasse 26 qt | Withheld | Withheld | Withheld |
+| Chefman 8 qt TurboFry | Withheld | Withheld | Withheld |
 
 Three things make even the higher column an upper bound.
 
@@ -25,7 +25,7 @@ for within 180 days of purchase.
 
 ### Where the money actually is in this set
 
-On these numbers the Emeril Lagasse unit is worth roughly 1.9 times a Chefman conversion at either rate,
+On these numbers the Emeril Lagasse unit is worth roughly twice a Chefman conversion at either rate,
 because the commission is a percentage of a price that is nearly double. That is why the demand data
 matters: if the higher-priced unit converts at even two-thirds the rate of the cheaper ones, it earns
 more per hundred clicks. Whether it does is unknowable without conversion data from a connected

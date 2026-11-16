@@ -5,9 +5,9 @@ Fetched each supplied short link, then fetched the resolved Amazon product page 
 
 | Ref | Submitted short URL → target ASIN | Listing | Rating / ratings | Price snapshot | Category / rank | Official source |
 |---|---|---|---|---|---|---|
-| P-01 | [B04G1MEwY](https://link.amazon/B04G1MEwY) → B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven | 4.2 / 4,859 | $79.93 new; $57.45 used; $99.99 list, observed 2026-11-14 | Air Fryers; Kitchen & Dining #4,782; Air Fryers #29 | [Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
-| P-02 | [B02NbDxp3](https://link.amazon/B02NbDxp3) → B09B7SB46R | Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 4.3 / 18,320 | $149.99 new; $97.49 used; $209.99 list, observed 2026-11-14 | Air Fryers; Kitchen & Dining #1,043; Air Fryers #15 | [Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
-| P-03 | [B00hJ57DV](https://link.amazon/B00hJ57DV) → B08DKYBTPH | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | 4.4 / 16,863 | $79.91 new; $51.94 used; $119.99 list, observed 2026-11-14 | Air Fryers; Kitchen & Dining #554; Air Fryers #10 | [Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
+| P-01 | [B04G1MEwY](https://link.amazon/B04G1MEwY) → B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven | 4.2 / Withheld | Withheld new; Withheld used; Withheld list, observed 2026-11-14 | Air Fryers; Kitchen & Dining #4,782; Air Fryers #29 | [Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
+| P-02 | [B02NbDxp3](https://link.amazon/B02NbDxp3) → B09B7SB46R | Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 4.3 / Withheld | Withheld new; Withheld used; Withheld list, observed 2026-11-14 | Air Fryers; Kitchen & Dining #1,043; Air Fryers #15 | [Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
+| P-03 | [B00hJ57DV](https://link.amazon/B00hJ57DV) → B08DKYBTPH | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | 4.4 / Withheld | Withheld new; Withheld used; Withheld list, observed 2026-11-14 | Air Fryers; Kitchen & Dining #554; Air Fryers #10 | [Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
 
 ## Additional verified facts
 
