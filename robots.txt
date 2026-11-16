@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /docs/
+Disallow: /sessions/
 Sitemap: https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml
