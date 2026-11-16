@@ -5097,6 +5097,325 @@ The PR, merge result and Pages build will be recorded in a follow-up section of 
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
+| `1f1b8bd2` | `arena/1f1b8bd2-zone3` | Line-by-line repo review (2026-11-16); independent live re-verification round dated 2026-11-16; takeover of stale open PR #71 per the 60-minute rule; brief-gap review (articles/topics/suggestions/questions/executive summary); final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (1F-T6) | 2026-11-16 |
+
+## 1F Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 1F-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | done | 1f1b8bd2 | `COORDINATION.md` (this Part only) | — | — |
+| 1F-T2 — Repo review, line by line, of the combined tree at base `933e2f3` | done | — | read-only audit + this Part + `research/1f1b8bd2-repo-review.md` | — | — |
+| 1F-T3 — Independent live re-verification round dated 2026-11-16 (three short links + `/dp/` controls, Operating Agreement, Program Policies, Standard Commission Table 1, Creators API, ASIN rule, FTC pages) | done (1F-V01…V32) | — | `research/1f1b8bd2-verification-log.md` (new, namespaced) | official pages only; no new source IDs unless a URL is absent from the register | — |
+| 1F-T4 — Takeover of stale PR #71 (`arena/71dc8fea-zone3`, open, `mergeable=CONFLICTING`, last commit 2026-11-14T19:07Z ≫ 60 min): integrate its unique record additively, close PR with supersession note | done (PR #71 closed; Part 71 + session file taken over verbatim) | — | `sessions/71dc8fea/verification-2026-11-14.md` (takeover), `COORDINATION.md` (note), `gh` | — | — |
+| 1F-T5 — Brief-gap review: trendy articles/topics, suggestions section, open-questions register, executive summary — verify each deliverable exists and is linked; change requests for defects in other sessions' scopes | done (all present and linked; 1F-F-01..03 raised) | — | read-only except this Part; fixes only inside 1F scope | — | — |
+| 1F-T6 — Final integration: all gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers), PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | in progress (gates green; PR next) | — | git + `gh` + this Part | — | — |
+
+**Scope discipline.** This session edits `COORDINATION.md` (this Part only), its own
+`research/1f1b8bd2-*` records, `sessions/1f1b8bd2/**` if needed, and — in the takeover task —
+`sessions/71dc8fea/verification-2026-11-14.md`. Shared outputs (`data/*.json`, root generated
+pages, `scripts/*`, `tools/*`, `EXECUTIVE-SUMMARY.md`, `README.md`) are edited only under the
+final-integration role, and every such edit is logged here with its reason. Conflicts in
+`COORDINATION.md` are resolved by keeping both sides in full (main's board verbatim, this Part
+appended); no line-start conflict markers are ever pushed.
+
+## 1F completion record (2026-11-16)
+
+### 1F-T1 — done
+Board read (all parts; head, structure via section index, and full tail — the file is 534 KB and
+the reader elides its middle). Claim pushed as commit `26e93c5` **before** any other work. No
+live claim existed at that moment (latest completed record: session `4f83ee7b`, PRs #96/#97,
+merged 2026-11-15). No session was taken over — except stale PR #71, per 1F-T4 below.
+
+### 1F-T3 — independent live re-verification round (done, 2026-11-16)
+
+Full record: [`research/1f1b8bd2-verification-log.md`](research/1f1b8bd2-verification-log.md).
+Every row fetched live **today** by this session; page URL is the source; no aggregator used.
+
+| # | Claim | Result |
+|---|---|---|
+| 1F-V01…03 | The three short links open `dp/B0CDY277D3`, `dp/B09B7SB46R`, `dp/B08DKYBTPH` (titles as served) | **Confirmed** — fourth independent day with identical mapping; same Air Fryers breadcrumb (node 17659096011) on all three |
+| 1F-V04…06 | `amazon.com/dp/<each 9-char token>` → "Page Not Found" | **Confirmed ×3** (positive control passes: real ASINs serve pages) |
+| 1F-V08 | No `tag=` in any destination URL | **Confirmed** — FLG-010 stands |
+| 1F-V10 | OA header "Updated: October 15, 2025"; §5 "As an Amazon Associate I earn from qualifying purchases."; §6 material-breach clause | **Confirmed verbatim** |
+| 1F-V11…14 | PP header "Updated: April 14, 2026"; CIS §1 windows (24 h / 89 d / 180 d); PR 2(b) tag + price rules; 6(s)/6(t)/6(v)/6(w)/6(y) | **Confirmed verbatim** |
+| 1F-V15 | Standard Commission Table 1 row for row (Kitchen 4.50%, All Other 4.00%, Luxury Beauty 10.00%; bounties $12/$2/$5/$0.25) | **Confirmed** — category rates only, never assigned to a product |
+| 1F-V16…17 | Creators API 4 operations + "at least 10 qualifying sales within the past 30 days"; ASIN = "10-Character alphanumeric unique identifier" | **Confirmed verbatim** |
+| 1F-V18…19 | FTC Disclosures 101 (Nov 2019) key sentences; Endorsement Guides "revised in 2023" | **Confirmed verbatim** |
+| 1F-V20 | **New:** FTC Rule on the Use of Consumer Reviews and Testimonials Q&A — rule "went into effect on October 21, 2024"; §465.2/465.4/465.6/465.7/465.8 scope | **Confirmed verbatim** → registered as **S59**, gap published as **1F-F-01** |
+| 1F-V31 | GitHub Pages latest build = `933e2f3`, status `built` (2026-11-15T12:00:53Z) | **Confirmed** |
+
+**Not re-verified, and why:** any price/rating/review count as a product fact (barred by 2(b)/6(t)
+without API access — deliberate refusal, not a gap); per-product commission rates; live clicks/
+conversions (no account configured); whether the destinations are the submitter's intended
+products (needs owner input, FLG-002/027).
+
+### 1F-T2 — repo review, line by line (done)
+
+Full report: [`research/1f1b8bd2-repo-review.md`](research/1f1b8bd2-repo-review.md).
+15 checks (R1–R15): all five gates green at base; 0 conflict markers; 0 secrets; 0 duplicate-nav
+pages; `scripts/build_site.py` idempotent; Pages deployed from current `main`. Three defects
+found → 1F-F-01/02/03 below. Brief-deliverable reachability (R15): suggestions, decision center,
+executive summary, content topics, marketing hub/briefs/guide/comparison, flagged, products,
+pricing, reviews, campaigns, sources, air-fryers all exist **and** are linked from the landing
+page; `analysis.html` is a canonical redirect stub by design.
+
+### 1F-T5 — brief-gap review (done)
+
+| Brief item | State found 2026-11-16 | Action |
+|---|---|---|
+| Suggestions section for review-before-implementation | `suggestions.html` — SUG-01…10, Q1…10, D1…6, decision workflow (session 4f83ee7b, PR #96) | none needed; linked from nav, dashboard tiles and sitemap |
+| Decision-making support | `decision-center.html` (sessions c1aeb5c7/cd0e6279) | none needed |
+| Open questions register ("questions, information, answers before deciding") | suggestions Q1–Q10 (known/unknown/why/how-to-discover per row) + decision-center discovery steps | none needed |
+| Trendy articles/topics | `content-topics.html` (topic plan) + `marketing/briefs.html` (3 SEO briefs), `marketing/buying-guide.html`, `marketing/comparison.html` — all grounded, blocked-on-flag rows honest | none needed; full product articles remain policy-blocked (identity + API data), documented on `content.html` |
+| Executive summary | `EXECUTIVE-SUMMARY.md` + `executive-summary.html` | counts fixed (**1F-F-02**); 2026-11-16 round added to §7 |
+| Dashboard-style UI, tables with sources | root + directory builds; `verify_site` V4 enforces row provenance (1,132/1,337 rows carry official sources; remainder flags/anchors/blanks by design) | none needed |
+| Flagged-for-review page | `flagged.html` — now 81 entries incl. this session's | extended |
+| AI-slop guard | human-review gate = SUG-04/SUG-06 in `suggestions.html`; claim-grounding contract on `content.html` | none needed |
+
+### 1F irregularities raised (published on `flagged.html`)
+
+| ID | Severity | Finding | Disposition |
+|---|---|---|---|
+| 1F-F-01 | Medium | FTC **Rule on the Use of Consumer Reviews and Testimonials** (16 CFR Part 465; "went into effect on October 21, 2024" per the FTC Q&A, fetched 2026-11-16) was not cited anywhere in the register or the compliance pages — it is directly in scope for this site's comparison/buying-guide/review content | **open, for review** — S59 added with the official link; change request in the flag's `action` |
+| 1F-F-02 | Low | `EXECUTIVE-SUMMARY.md` current-state counts stale (72 stated / 78 held) — reproduces 54C-F-02 | **fixed** (§2/§6 now 81 flags: 3 critical, 13 high, 22 medium, 26 low, 18 informational · 52 sources · 55 policy facts) |
+| 1F-F-03 | Low | Six generated `marketing/*.html` pages stale vs `scripts/build_marketing.py` (missing Suggestions nav entry); "generators idempotent" gate claim did not reproduce at base | **fixed** by regeneration; nav-only, no copy/data change |
+
+### 1F-T4 — takeover of stale PR #71 (done)
+
+PR #71 (`arena/71dc8fea-zone3`) was open since 2026-11-14T19:07Z with **zero commits for ≫60
+minutes** and `mergeable=CONFLICTING` — takeover per the board's 60-minute rule. Nothing was
+discarded:
+
+- `sessions/71dc8fea/verification-2026-11-14.md` was taken over **verbatim** from the PR branch.
+- Its `COORDINATION.md` **Part 71** is appended verbatim after this section (takeover note
+  prepended, its final publish-record line completed).
+- PR #71 is closed with a supersession comment pointing here (closed via `gh pr close 71`).
+
+The takeover preserves 71-F-01…06 (verifier manifest bug, provenance-gate strictness, wording
+consistency, `/docs/` exposure, prototype-vs-service wording, edge-cache split) as open items in
+their own words; this session did not act on them because they belong to the `tools/` and `/docs/`
+owners.
+
+### Gate results on the final 1F tree (re-run immediately before the PR)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 13 pages, 3 products, 52 sources, 81 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS — 74 pages, 1,337 rows, 1,132 with official source, 406 with flag, 86 repo-anchored, 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 scripts/check_all_links.py` | **120 HTML pages, 106 distinct external URLs, 0 errors** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 69 pages** |
+| generators re-run (`scripts/build_site.py`, `scripts/build_marketing.py`) | **idempotent** (second run: zero new diffs) |
+| conflict-marker / secrets sweep | **0 / 0** |
+
+## Part 71 — session `71dc8fea` (2026-11-14) — independent final audit — TAKEN OVER by session `1f1b8bd2` on 2026-11-16
+
+> **Takeover note (2026-11-16).** PR #71 (`arena/71dc8fea-zone3` → `main`) was open with no
+> commits since 2026-11-14T19:07Z and reported `mergeable=CONFLICTING`, so the 60-minute takeover
+> rule applied. The text below is session `71dc8fea`'s Part 71 reproduced **verbatim** (only this
+> note and the final line are the taking-over session's). Its file
+> `sessions/71dc8fea/verification-2026-11-14.md` was also taken over verbatim in the same commit.
+> PR #71 was then closed with a supersession comment. Nothing from the PR was discarded.
+
+# Part 71 — session `71dc8fea` (2026-11-14) — independent final audit
+
+> Branch `arena/71dc8fea-zone3`, initially based on `4fd8bd6`; rebased and re-audited against `main` at `6843206` after concurrent merges. This session edited only this coordination Part and `sessions/71dc8fea/**`.
+
+## 71 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 71dc8fea | `arena/71dc8fea-zone3` | Independent repository, official-source boundary, and live-page audit; read-only against shared site outputs | done (71-T1) | 2026-11-14 |
+
+## 71 Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 71-T1 — Independently review the shipped site, local integrity/provenance gates, official-source evidence coverage, and Pages status; record findings and scope requests | done | 71dc8fea | `COORDINATION.md`; `sessions/71dc8fea/**` | Amazon Creators API and Associates policies; FTC; live Amazon short-link destinations; prior merged line-by-line evidence | 71-F-01…06 |
+
+The report is [`sessions/71dc8fea/verification-2026-11-14.md`](sessions/71dc8fea/verification-2026-11-14.md). It includes the rebase status, local gate results, live Pages/source observations, the audit limits, and follow-up requests. Session 21's completed line-by-line review is referenced rather than duplicated; session 71 adds the generated-page-manifest/provenance-gate review and a fresh live archive check. Shared pages, data, scripts, and tools were not edited.
+
+## 71-T1 record — repository gates (2026-11-14, `main` at `6843206`)
+
+| Check | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK** — 12 pages, 3 products, 51 sources, 66 flags |
+| `python3 tools/verify_site.py` | **VERIFY PASS** — 70 pages, 1,223 rows, 1,022 counted as sourced, 388 with flag, 82 with repo anchor |
+| `python3 tools/link_report.py --strict` | **Exit 0** — 232 rows, 945 cells, 55 blank-by-design; no dangling refs or uncited sources; unreferenced flags: `FLG-001/002/003/007/027`, `I-F-01` |
+| `python3 scripts/check_all_links.py` | **116 HTML pages, 105 external URL strings, 0 internal-link errors**; external links are not fetched by this script |
+| `python3 scripts/build_sitemap.py --check` | **Pass** — 65 pages covered, 0 extra entries; `/docs/` and `/sessions/` remain listed |
+| `python3 sessions/3c886b62/tools/check_links.py` | **Pass** — 16 pages, 285 rows, 18 internal targets, no broken links, every row has a source cell |
+| Direct Amazon/FTC row scan | **965/1,223** verifier-equivalent data rows contain a direct Amazon/FTC URL in-row; 258 do not. This is a literal host scan, not claim validation. |
+| Fresh `tools/build_site.py --out <empty dir>` | **Failed** with `FileNotFoundError` for `<out>/data/z3/build-manifest.json`; reproduces because the output parent is not created |
+| Git hygiene | **Pass** — `git diff --check`, no line-start conflict markers outside `archive/` |
+
+**Release-gate limitation:** `tools/build_site.py` stores content digests in manifest `files` values, but `tools/verify_site.py:45–54` treats those values as relative HTML paths. Comparing the 16 manifest values to generated HTML paths yields **zero matches**. Its page-ownership-specific V2/V3 checks therefore do not recognize those outputs. V4 also accepts GitHub URLs, flag IDs, and repo anchors in place of the brief's direct official link for factual product/policy rows. These findings are requests, not fixes made by this read-only session.
+
+## 71-T1 record — sources and live Pages (2026-11-14)
+
+- Fresh official fetches: [Creators API GetItems / ItemIdType](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter) (ASIN = 10-character alphanumeric identifier); [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (updated 2026-04-14; Participation Requirements 2(b), 6(t), 6(w), Commission Income Statement 2(e), IP License model-use restrictions); [Standard Commission Income Statement Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ); and [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers).
+- Fresh short-link fetches on 2026-11-14: the submitted links led to destination listings `B0CDY277D3`, `B09B7SB46R`, and `B08DKYBTPH`, with the titles recorded in the report. These are observed current redirects, not proof of requester intent. No price or rating value is asserted.
+- Pages API: public legacy Pages source `main` `/`, HTTPS enforced; latest build for `6843206` reported **`built`** (build ID `1369833399`, updated 2026-11-14T19:06:01Z). Ordinary `/` shows 65 and cache-busted `/` 66; ordinary `/flagged.html` shows 51 and cache-busted `/flagged.html` 66. The repository and cache-busted responses agree at 66; stale-edge/page-cache discrepancy remains active on both URLs (71-F-06).
+- The public `/docs/` and `/sessions/3c886b62/` archives remain in the sitemap. PR #70 added notices and withheld some `/docs/` table cells, but numeric ratings and summary price/rating/review/demand figures remain on `/docs/index.html`; the session archive still renders historical price/rating/review fields alongside a notice that the display is noncompliant. PR #73 corrected the category page but not these archives. Disclosures do not cure restricted displays. I-F-02, 21-F-04 and 3E-F-02/03 remain relevant.
+- Source trail includes [`research/21acd3c0-verification-log.md`](research/21acd3c0-verification-log.md), [`research/21acd3c0-repo-review.md`](research/21acd3c0-repo-review.md), `data/sources.json` (51 records, IDs S01–S58 with gaps), and `data/z3/sources.json` (SRC-01–SRC-22). Session 71 did not re-fetch every claim in the entire flat register.
+
+## 71 Irregularities and cross-scope requests
+
+All are logged only; no shared site/data/tool was edited. Existing published flags remain non-blocking as instructed.
+
+| ID | Severity | Finding | Follow-up request |
+|---|---|---|---|
+| 71-F-01 | High | Generated-page manifest contains digests where the verifier expects paths; 0/16 generated pages are recognized. A fresh `--out` also fails before the manifest can be written. | Add explicit output paths to the manifest, make `generated_set()` consume them, add a failure regression test, and create the output parent directory. Scope: `tools/build_site.py`, `tools/verify_site.py`. |
+| 71-F-02 | High | Row provenance gate does not enforce a relevant Amazon/FTC source link for every nonblank product/policy fact; GitHub/repo anchors and flags can satisfy current checks. The updated gate counted 1,022 sourced rows, not a line-by-line support audit. | Type factual, repository-state, and unverified rows separately; require official Amazon/FTC links for factual product/policy rows, explicit flags for unknowns, and repo anchors only for repository-state rows. |
+| 71-F-03 | Medium | Redirect destination vs user-intent wording remains inconsistent. Root data, R-23, and FLG-007/027 separate them; parallel `data/z3/flags.json` FLG-001–003 and generated `/flagged/` still say the short-link path failed to select the intended product. | Reword the parallel flags/page as “observed destination; intended match unconfirmed.” Ask for a replacement only if the observed target is not what the user intended. |
+| 71-F-04 | High | `/docs/` and `/sessions/3c886b62/` remain public in the sitemap with some historical price/rating/review values. PR #70 added notices and withheld some `/docs/` price/review table cells, but numeric ratings and narrative aggregates remain on `/docs/index.html`; the session archive retains historical table values alongside a noncompliance notice. | Remove restricted values from public output or exclude the snapshots from public Pages/sitemap. Keep I-F-02 and 21-F-04/3E-F-02/03 open; a warning alone does not cure the restricted display. Official basis: [Amazon Program Policies](https://affiliate-program.amazon.com/help/operating/policies). |
+| 71-F-05 | Medium | The repository is a static research prototype, not an operating AI/affiliate service. `config/platform.json` disables Creators API and has null tag/account/keys; campaign metrics are null; no hosted backend or model-provider client was found. A CLI API client exists but has no enabled credentials. `assets/script.js` uses localStorage and is not referenced by published HTML. | Keep click/conversion/revenue blank and describe features as prototype/design until a compliant runtime, data access, and required approval are configured. Official policy: [Amazon Program Policies, IP License 1/2(e)](https://affiliate-program.amazon.com/help/operating/policies). |
+| 71-F-06 | Low (active recurrence) | After the `6843206` Pages build, ordinary `/` showed 65 vs cache-busted 66; ordinary `/flagged.html` showed 51 vs cache-busted 66, matching the repository. | Do not change the register based on stale responses. Compare build ID and cache-busted outputs; monitor the edge/cache split and investigate if it persists or either cache-busted page diverges from the register. |
+
+## 71 Publish record — PR #71 open
+
+PR #71 is open from `arena/71dc8fea-zone3` against `main`, rebased onto `6843206` after PRs #70 and #73–#77 merged. The latest checked Pages build is `built` for `6843206` (ID `1369833399`); ordinary `/` shows 65 and ordinary `/flagged.html` 51, while cache-busted responses show the current 66. Append merge and post-merge Pages details here after integration.
+
+> **Takeover completion (2026-11-16, session `1f1b8bd2`).** The open-ended final line above is now answered: PR #71 was closed unmerged as superseded by this takeover; the audit record lives in `sessions/71dc8fea/verification-2026-11-14.md` and in this Part on `main`. The latest Pages build at takeover time was `built` for `933e2f3` (2026-11-15T12:00:53Z); edge-cache observations 71-F-06 are unchanged in kind.
+
+# Part I2 — session `59d84c55` (2026-11-16) — integration: reader-facing marketing site + decision board
+
+> Appended additively. IDs `I2-Tn` (tasks), `I2-F-nn` (irregularities), `I2-S-nn` (sources) are
+> **namespaced** and are not the same items as `A:`, `B:`, `Z:`, `V-`, `03-F-`, `4f83-F-`, `JH-F-`
+> or `FLG-nnn` used above. Nothing above this line was removed or rewritten by this session.
+> Branch: `arena/59d84c55-zone3` (Arena pins a session to one branch; base `933e2f3`).
+
+## I2 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `59d84c55` | `arena/59d84c55-zone3` | **Final integration + reader-facing marketing site.** Audits the combined tree line by line, re-verifies load-bearing claims against the official pages fetched **today**, and builds a polished marketing front office (`/site/`) that links every table row to its official source, plus a decision board where each proposal can be reviewed and accepted/rejected/deferred before anything is implemented. | in progress | 2026-11-16 |
+
+## I2 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
+|---|---|---|---|---|---|
+| I2-T1 — read the board, claim tasks, push the claim | **done** | `59d84c55` | `COORDINATION.md` (append only) | — | — |
+| I2-T2 — repo-wide line-by-line audit + live re-verification | **done** | `59d84c55` | read-only over the whole tree; writes only `data/i2/*.json` | `I2-S01…I2-S14` | `I2-F-01…09` |
+| I2-T3 — reader-facing marketing site | **done** | `59d84c55` | `site/**` (new), `tools/build_i2_site.py` (new), `tools/i2_gate.py` (new), `data/i2/**` (new) | `I2-S01…I2-S14` | none — G1–G10 pass |
+| I2-T4 — decision board (suggestions, questions, prompt pack) | **done** | `59d84c55` | `site/decisions.html`, `data/i2/decisions.json` | `I2-S01…I2-S06` | — |
+| I2-T5 — navigation, sitemap, gates, PR, merge, Pages confirm | unclaimed → see below | `59d84c55` | `scripts/build_site.py` (NAV + tile + sitemap group only), `sitemap.xml` (regenerated) | — | — |
+
+**Scope rule honoured:** no file owned by another session's build is rewritten. `site/**` is new and
+cannot collide; the only edits to an existing generator are one NAV entry, one dashboard tile, one
+sitemap group entry and one sentence of footer copy — additive, and logged here.
+
+**No other session is `in progress` on this repo at this moment.** The last merged record is PR #97
+(session `4f83ee7b`, merge `933e2f3`). One PR from 2026-11-14 (#71) is still open and CONFLICTING; it
+is not touched by this session and is raised as `I2-F-05`.
+
+### I2-T2 — Independent live re-verification (done, 2026-11-16)
+
+Every row below was fetched **once, today**, by this session. Nothing is carried over from another
+session's capture. Full quoted observations: `data/i2/verification.json`; rendered at `site/evidence.html`.
+
+| # | Claim re-checked | Official page read today | Result |
+|---|---|---|---|
+| I2-V01 | §5 disclosure sentence + header date | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | **Confirmed verbatim** — "Updated: October 15, 2025"; §5 exact sentence present |
+| I2-V02 | Every Amazon link must carry the tag | Operating Agreement §1 + [Program Policies 2(b)](https://affiliate-program.amazon.com/help/operating/policies) | **Confirmed verbatim**; no tag exists in the repo and none appears in the live redirects (`I2-F-03`) |
+| I2-V03 | Nine-character tokens are not ASINs | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) + [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | **Confirmed** — Page Not Found; ASIN documented with ten-character examples |
+| I2-V04–V06 | The three short links open three live listings | [B04G1MEwY](https://link.amazon/B04G1MEwY) → B0CDY277D3, [B02NbDxp3](https://link.amazon/B02NbDxp3) → B09B7SB46R, [B00hJ57DV](https://link.amazon/B00hJ57DV) → B08DKYBTPH | **Confirmed** — same destinations as the 11-13/14/15 captures; titles drift, destinations do not |
+| I2-V07 | Kitchen 4.50%, All Other 4.00%, bounty $12/$2/$5/$0.25 | [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed as printed** |
+| I2-V09 | Price rule 2(b); rating rule 6(t) | Program Policies | **Confirmed verbatim** |
+| I2-V11 | Agent Terms §4(c) user-agent requirement, no circumvention | Program Policies | **Confirmed verbatim** |
+| I2-V12 | No ML training on Program Content; no API aggregation/analysis without approval | Program Policies IP License §1, §2(e) | **Confirmed verbatim** |
+| I2-V14 | API needs enrollment + 10 qualifying sales in 30 days | [Creators API introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction) | **Confirmed verbatim** |
+| I2-V16–V19 | No price tracking (6(y)); no sub-tag per visitor (2(b)); no artificial clicks (6(s)); no stored Amazon images (IP License 2(h)) | Program Policies | **Confirmed verbatim** |
+| I2-V20 | FTC placement guidance; footer-only disclosure is likely to be missed | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | **Confirmed** — and it exposed `I2-F-01` on this repository's own pages |
+| I2-V21 | No first-hand experience claims | FTC Disclosures 101 | **Confirmed verbatim** |
+| I2-V15 | 180-day / three-sale window | — | **Not re-checked** — no fetch made, no result asserted |
+
+**I2-F-10 (Info, self-correction).** In the first build of this pass, the guide at
+`site/guides/dual-basket-vs-single-basket.html` stated that the 26QT oven has "a different counter
+footprint". The listings read today do not state exterior dimensions, so that was an inference, not a
+fact. The sentence was replaced with an explicit statement that dimensions are not known and must be
+checked on the listing before buying. Caught by this session's own read-through before any push;
+recorded here because the rule is that a correction is logged, not quietly edited.
+
+### I2-T3 — Reader-facing marketing site (done, 2026-11-16)
+
+**Files:** `site/*.html` (8 pages), `site/assets/site.css`, `site/assets/site.js`,
+`site/site-index.json`, `tools/build_i2_site.py`, `tools/i2_gate.py`, `data/i2/{sources,verification,
+catalog,decisions}.json`, `docs/repo-review-59d84c55.md`.
+
+**Gates on the emitted pages:** `i2_gate.py` **PASS** · 8 pages · 105 rows · 89 sourced · 16 explicit
+blanks · 0 flagged. `verify_site.py` **PASS** · 82 pages · 1,437 rows · 1,217 sourced · **0 advisories**.
+
+**Gate validation — 13 injected violations, 13 caught.** A gate that has never failed is decoration, so
+each check was tested by injecting the construct it forbids into a copy of `site/`:
+
+| Injected | Caught by |
+|---|---|
+| Disclosure sentence removed | G1 |
+| Banner given `hidden` | G2 |
+| Amazon content disclaimer removed | G3 |
+| `$79.93` inserted as a product price | G6 |
+| `4.2 out of 5 stars` inserted | G6 |
+| `4.8K ratings` inserted | G6 |
+| `amzn.to` shortener link | G7 |
+| `m.media-amazon.com` product image | G7 (**first attempt missed it — see below**) |
+| `<iframe src="amazon.com/…">` | G7 |
+| Broken internal link | G8 |
+| Missing anchor target | G8 |
+| `TODO` marker | G9 |
+| Read date removed | G10 |
+
+**I2-F-11 (High, fixed before publish).** The first version of the image rule matched only hosts ending
+in `amazon.com`. Amazon serves product imagery from `m.media-amazon.com`,
+`images-na.ssl-images-amazon.com` and `images-eu.ssl-images-amazon.com`, so **every real product image
+would have passed the gate**. The negative test caught it; the host list now covers the CDNs and the test
+passes on all three hosts. The same narrow pattern exists in `tools/verify_site.py`'s V6 rule — logged as
+recommendation 4 in `docs/repo-review-59d84c55.md` §7, not edited here because that file belongs to
+another session's build.
+
+**Decision-board control verified, not assumed.** `site.js` was executed against the real markup in a
+minimal DOM harness: selecting Accept on D-01 and Reject + a reason on D-05 produced the correct
+per-card output, a 2-of-12 counter, a correctly formatted text export, and — after a simulated reload —
+restored selections from `localStorage`. No browser was available in the sandbox to test the visual
+rendering; the markup was reviewed directly and every selector the script uses was asserted present.
+
+**I2-F-12 (Info, copy defects fixed).** Three copy defects were found on read-through and fixed before
+publishing: (a) product cards truncated long listing titles mid-word; (b) the comparison table's
+blank-reason sentence was printed three times per row instead of once; (c) the products page read
+"…followed by nine characters — nine characters." Each was a generated-output defect, not a factual one.
+
+### I2-T4 — Decision board (done, 2026-11-16)
+
+`site/decisions.html` publishes **12 proposals** (D-01…D-12), each with: the problem, the proposal, an
+evidence list where every item is labelled Official / Observed / Editorial and carries its source link,
+effort, expected effect, risks, what it will deliberately not do, what it depends on, acceptance criteria,
+and an Accept / Reject / Defer control with a free-text reason and a text export.
+
+The four already visible on `/site/` are marked **implemented** so they can be judged by looking at them
+rather than by reading a description. `D-05` (tagged links) and `D-10` (named editor) are **blocked** on
+`Q1` and `Q5` respectively. No proposal is implemented merely by being read.
+
+**12 open questions**, each stating what is known (sourced), what is not known, why it decides something,
+how to discover the answer, what happens if it is never answered, and which proposals it gates.
+**9 discovery actions**, each naming the official page to read, the person who can do it, and the output
+that closes the question. **6 prompts** for a design or content session, each with acceptance criteria and
+guardrails attached.
+
+### I2-T5 — PR, merge, Pages deploy
+
+Recorded in the publish table below once complete.
+# Part: session `1f1b8bd2` (2026-11-16) — repo review, independent re-verification round, stale-PR integration, final integration
+
+> Appended additively. Task IDs `1F-Tn` and irregularity IDs `1F-F-nn` here are **namespaced**
+> and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`,
+> `25-`, `4f83-`, `D-F`, `E-F` or `FLG-nnn` used above. Nothing on the board above was
+> removed or rewritten. Branch: `arena/1f1b8bd2-zone3` (Arena pins a session to one branch),
+> base `933e2f3` (= `origin/main` at claim time).
+
+## 1F Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
 | `1f1b8bd2` | `arena/1f1b8bd2-zone3` | Line-by-line repo review (2026-11-16); independent live re-verification round dated 2026-11-16; takeover of stale open PR #71 per the 60-minute rule; brief-gap review (articles/topics/suggestions/questions/executive summary); final integration: gates → PR → `main` → merge → Pages confirm → record | **done** (1F-T1…T6) | 2026-11-16 |
 
 ## 1F Task board (claimed before any other work, per protocol)

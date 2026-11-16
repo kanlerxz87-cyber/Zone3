@@ -370,3 +370,90 @@ navigation and in `sitemap.xml`, and passes all gates with 0 advisories. A rebas
 `sessions/25513d33/resolve_rebase.py`, was added alongside it: the board's own prose contains the
 string `<<<<<<<`, so a substring marker test false-positives and can let a conflicted file be
 published — the resolver's test is line-anchored.
+
+---
+
+## 10. Final integration and the reader-facing site — session `59d84c55` (2026-11-16)
+
+**One-line summary.** Every load-bearing claim this repository publishes was re-read from its official
+page today, the results agree with the existing record, and the repository now carries a reader-facing
+marketing site at `/site/` that a person can actually shop with — without a single invented number.
+
+### 10.1 What was re-verified today (22 claims, `site/evidence.html`)
+
+Every page below was fetched **once** on 2026-11-16 and the wording copied from the page at the time.
+Nothing was carried forward from an earlier session's capture.
+
+| Claim | Official page read today | Result |
+|---|---|---|
+| The three short links open three live listings | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) → `/dp/B0CDY277D3`, [B02NbDxp3](https://link.amazon/B02NbDxp3) → `/dp/B09B7SB46R`, [B00hJ57DV](https://link.amazon/B00hJ57DV) → `/dp/B08DKYBTPH` | **Confirmed**, same destinations as the 2026-11-13/14/15 captures |
+| Nine characters is not an ASIN | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) returns *Page Not Found*; [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) documents ASIN with ten-character examples | **Confirmed** |
+| §5 disclosure sentence and the header date | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) — "Updated: October 15, 2025" | **Confirmed verbatim** |
+| Price display rule 2(b), rating rule 6(t), no price tracking 6(y), no automated clicks 6(s), no link shortening 6(w), no sub-tag per visitor | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) — header "Updated: April 14, 2026" | **Confirmed verbatim** |
+| No ML training on Program Content; no API aggregation/analysis without prior written approval; 24-hour cache limit; no stored images | same Program Policies, IP License §1, §2(e), §2(h) | **Confirmed verbatim** |
+| Agents must identify as `Agent/[name]` and must not circumvent blocks | same Program Policies, Agent Terms §4(c) | **Confirmed verbatim** |
+| Kitchen 4.50%, All Other 4.00%, bounty rates $12/$2/$5/$0.25 | [Standard Commission Income Statement, Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) | **Confirmed as printed** |
+| API access needs enrollment plus 10 qualifying sales in 30 days; the API has four operations and no trend or conversion endpoint | [Creators API introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction) | **Confirmed** |
+| FTC: disclose hard to miss, with the endorsement, not only in a footer; no invented first-hand experience | [Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | **Confirmed** |
+| The 180-day / three-sale window | not fetched today | **Not re-checked — no result asserted** |
+
+### 10.2 One correction to how the site described itself
+
+The older pages place the exact §5 sentence **in the footer only**. That satisfies the Operating
+Agreement's "on your Site" wording. It is weaker than the FTC's placement guidance, which warns that a
+disclosure appearing only at the end of a page is "likely to be missed". The new site therefore carries the
+disclosure as a **banner above the navigation** as well as beside every buy action, and the older pages are
+flagged for the same change (`I2-F-01`, proposal `D-07`). This is recorded rather than silently applied,
+because those pages belong to other sessions' builds.
+
+### 10.3 What the reader-facing site is
+
+`/site/` — eight pages, generated from `data/i2/*.json` by `tools/build_i2_site.py`, gated by
+`tools/i2_gate.py` (G1–G10):
+
+| Page | Purpose |
+|---|---|
+| `site/index.html` | The promise, three product cards built only on listing facts, a seven-row comparison, and a statement of what is deliberately left out |
+| `site/products.html` | Listing detail, the token caution, and the blank-fields table with the rule for each |
+| `site/guides/` | The guide plan and one live guide, built from listing facts only |
+| `site/evidence.html` | 14 sources, what each said, and the 22-row verification log |
+| `site/flagged.html` | 8 open items with severity, finding, resolution and source |
+| `site/decisions.html` | 12 proposals, 12 open questions, 9 discovery actions, 6 prompts, and an Accept/Reject/Defer control with a text export |
+| `site/front-door.html` | Where the audit builds live |
+
+**What makes it not read as generated:** the disclosure sits where a reader sees it before any product
+content; a blank cell is an explained state ("Not published" plus why plus a link to the blocking item)
+rather than a dash; every table row links the listing or policy page it came from; no sentence claims
+experience with a product that was never used; and the site says in the body copy which figures it refuses
+to publish, with the clause that stops each one.
+
+### 10.4 What is still blocked, and on what
+
+| Blocker | Question | What it stops | Who can unblock |
+|---|---|---|---|
+| No Associates tag | `Q1` | Every earning link. All buy actions are disabled and labelled | Account holder |
+| Intended product unconfirmed | `Q2` | Confidence that the three listings are the products you meant | Account holder (a yes/no) |
+| Marketplace unknown | `Q3` | Which storefront the tag applies to | Account holder |
+| No API eligibility | `Q4` | Any price, availability or star rating, ever | Account holder + 10 qualifying sales in 30 days |
+| No named editor | `Q5` | Publishing further guides without them reading as generated | A decision |
+
+### 10.5 Gates on the combined tree (run by this session)
+
+| Gate | Result |
+|---|---|
+| `tools/i2_gate.py` (new, G1–G10) | **PASS** · 8 pages · 104 rows · 89 sourced · 15 explicit blanks |
+| `tools/verify_site.py` V1–V7 | **PASS** · 82 pages · 1,437 rows · 1,217 sourced · 0 advisories |
+| `tools/build_site.py` (provenance gate) | **PASS** · 16 pages · 232 rows · 22 sources · 29 flags |
+| `scripts/check_site.py` | **OK** · 13 pages · 3 products · 51 sources · 78 flags |
+| `scripts/build_sitemap.py --check` | **PASS** · 77 pages · 0 extra entries |
+| Negative test of every gate check | 13 injected violations, 13 caught (see COORDINATION.md §I2) |
+| Internal link crawl of the whole tree | 0 broken |
+
+### 10.6 The point
+
+The brief asked for automation that finds trending, high-converting products and optimises campaigns.
+Two of those three are not obtainable through any official Amazon surface: there is no trend endpoint and
+no conversion endpoint, and per-product commission is not published. Rather than generate numbers to fill
+those slots, this session built the part that can be true today — a site that a reader can use, that
+explains its own gaps, and whose claims a reviewer can check line by line — and published the missing
+inputs as twelve questions with a discovery action and an owner for each.

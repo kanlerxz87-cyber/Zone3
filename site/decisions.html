@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions &amp; decisions · Air Fryer Field Notes</title>
+<meta name="description" content="Proposals for improving this affiliate site, the evidence for each, the open questions that block them, and a control to accept, reject or defer.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/site/decisions.html">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="disclose-bar" role="note">
+  <div class="wrap">
+    <strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.
+    <span class="disclose-more">Links to Amazon on this site are evidence links while a tracking tag is unavailable, so they earn nothing yet. <a href="evidence.html#disclosure">Why this is stated twice</a>.</span>
+  </div>
+</div>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">AF</span>
+      <span class="brand-text"><strong>Air Fryer Field Notes</strong><small>Three air fryers, checked line by line.</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html">Start here</a><a href="products.html">The three air fryers</a><a href="guides/index.html">Buying guides</a><a href="evidence.html">How we know</a><a href="decisions.html" class="on">Suggestions &amp; decisions</a></nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+
+<h1>Suggestions &amp; decisions</h1>
+<p class="lede">Every proposal for improving this site in one place: what is wrong, what is proposed, the evidence behind it, and a control to accept, reject or defer. Nothing here changes the site by itself. That is the point — you get to choose the path before anyone builds it.</p>
+
+<div class="note">
+  <h3>What the status labels mean</h3>
+  <p><span class="badge b-ok">implemented</span> already visible on this site, as a preview you can judge — and revert by ignoring it.
+  <span class="badge b-mute">proposed</span> not built; waiting on your decision.
+  <span class="badge b-bad">blocked</span> cannot be built until a named question is answered.</p>
+</div>
+
+<h2 id="tools">Record your decisions</h2>
+<div class="decision-tools">
+  <p>Choose Accept, Reject or Defer on any proposal below, add a reason if you want one, then export. The export is plain text you can paste into the repository's task board so the next session implements only what you chose. Nothing is submitted anywhere automatically, and no choice changes this page.</p>
+  <div class="tools-row">
+    <button type="button" id="exportBtn">Export my decisions</button>
+    <button type="button" id="printBtn" style="background:#48505f">Print / save as PDF</button>
+    <span class="small" id="count">0 of 12 decided</span>
+  </div>
+  <textarea id="exportBox" readonly aria-label="Exported decisions" placeholder="Your export will appear here."></textarea>
+</div>
+
+<h2 id="proposals">The proposals</h2>
+<p>Ordered by what unblocks the most: the first four are previewable now, the fifth unlocks earning, the rest are quality and structure.</p>
+<article class="prop" id="D-01">
+  <div class="prop-head"><h3>Fix the front door: one clear home page with a single job</h3><span class="pid">D-01</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented on /site/ in this session as a proposal preview so it can be judged by looking at it. Reversible: the page is new and nothing else was changed.</p>
+  <dl>
+    <dt>The problem</dt><dd>The repository root opens on a 19-item navigation bar whose first screen is an audit dashboard: six KPI tiles, then 17 navigation tiles, then a site map and a 12-row re-verification table. A reader who arrived to decide which air fryer to buy cannot find that decision anywhere on the first screen. That is the main reason the site reads as internal tooling rather than a marketing site.</dd>
+    <dt>What is proposed</dt><dd>Give the root a reader-first home page: a short promise, the three products as cards with what the listing actually states, one primary action, and a visible provenance line. Move the audit dashboard to its own page (it already exists at /dashboard/) and link it once as &#x27;How this was verified&#x27;.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-observed">Observed</span>The current root page is an audit dashboard with 17 navigation tiles and a re-verification table. <span class="small">(Read of index.html in this repository, 2026-11-16.)</span></li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> A disclosure must be clearly and prominently stated on the site.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> A disclosure is likely to be missed if it appears only in a footer or on an about page.</li></ul></dd>
+    <dt>Effort</dt><dd>Low — one page template, no new data.</dd>
+    <dt>Expected effect</dt><dd>Editorial: converts first-time readers instead of losing them to an audit table. No traffic or conversion figure is claimed.</dd>
+    <dt>Risks</dt><dd>If the root is replaced, the audit pages must still be reachable in one click, or the verification record becomes hidden.</dd>
+    <dt>What it will not do</dt><dd>It does not add a price, a rating, a trend claim or a working buy link. It does not change any figure.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>Above the fold: one sentence saying what the site is for, and one primary action.</li><li>The disclosure banner is visible before any product content, not only in the footer.</li><li>Every product statement on the page links the Amazon listing it came from.</li><li>Nothing on the page states a price, star rating, review count, trend or conversion value.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-01" value="Accept" data-pid="D-01"><span>Accept</span></label>
+        <label><input type="radio" name="D-01" value="Reject" data-pid="D-01"><span>Reject</span></label>
+        <label><input type="radio" name="D-01" value="Defer" data-pid="D-01"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-01" data-out="D-01">No decision recorded yet</output>
+    <textarea data-note="D-01" aria-label="Reason for the decision on D-01" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-02">
+  <div class="prop-head"><h3>Publish editorial guides that answer one question each, from listing facts only</h3><span class="pid">D-02</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">One guide published at /site/guides/dual-basket-vs-single-basket.html as a worked example of the format.</p>
+  <dl>
+    <dt>The problem</dt><dd>&#x27;Catchy trendy articles&#x27; is the part of the brief that most easily turns into filler. The repository already has a verified topic plan with 12 working titles, but the published marketing pages are thin, and the thin ones are what read as AI-generated.</dd>
+    <dt>What is proposed</dt><dd>Ship guides as a repeatable format: a real reader question, the listing facts that answer it, a table, a &#x27;what we cannot tell you&#x27; box, and a provenance footer. One question per page. No page without a verifiable answer.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="Product detail page: B0CDY277D3 — read 2026-11-16">I2-S10</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer" title="Product detail page: B09B7SB46R — read 2026-11-16">I2-S11</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer" title="Product detail page: B08DKYBTPH — read 2026-11-16">I2-S12</a> Manufacturers&#x27; listing titles already carry concrete, checkable specifications for all three products (capacity, basket count, functions).</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> A claim about a product must not be inaccurate, overbroad, deceptive or misleading.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> You cannot describe first-hand experience with a product you have not tried.</li><li><span class="term t-observed">Observed</span>A 12-title topic plan with the fact behind each title already exists in this repository. <span class="small">(data/topics.json, read 2026-11-16.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Medium — one guide is roughly a working day of drafting plus a source pass.</dd>
+    <dt>Expected effect</dt><dd>Editorial: this is the only content type on the site that can earn organic search traffic without inventing numbers, because it answers a question using facts a search engine can also see.</dd>
+    <dt>Risks</dt><dd>Volume temptation: publishing 40 thin variants would recreate the problem. The format gate below exists to prevent that.</dd>
+    <dt>What it will not do</dt><dd>It does not claim the guides are tested, ranked by popularity, or more effective at converting than any other page.</dd>
+    <dt>Depends on</dt><dd><a href="#Q12">Q12</a></dd>
+    <dt>Done when</dt><dd><ul><li>Every factual sentence maps to a listing or a policy page, and the page links it.</li><li>A &#x27;what this page does not know&#x27; box is present and specific.</li><li>No superlative (&#x27;best&#x27;, &#x27;#1&#x27;, &#x27;top-rated&#x27;) appears unless an official page states it.</li><li>No price, star rating or review count appears.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-02" value="Accept" data-pid="D-02"><span>Accept</span></label>
+        <label><input type="radio" name="D-02" value="Reject" data-pid="D-02"><span>Reject</span></label>
+        <label><input type="radio" name="D-02" value="Defer" data-pid="D-02"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-02" data-out="D-02">No decision recorded yet</output>
+    <textarea data-note="D-02" aria-label="Reason for the decision on D-02" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-03">
+  <div class="prop-head"><h3>Put the evidence next to the claim, on the page, not in a footer</h3><span class="pid">D-03</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented as the &#x27;source&#x27; column and the provenance strip under each table on /site/.</p>
+  <dl>
+    <dt>The problem</dt><dd>Trust is the product here. A page that says &#x27;verified&#x27; in a footer and shows nothing verifiable is indistinguishable from a page that made its facts up — which is exactly what readers now assume of affiliate sites.</dd>
+    <dt>What is proposed</dt><dd>Every table row carries a short source link to the exact page the fact came from. Every product card carries a provenance line naming the listing and the date it was read. Every blank cell states why it is blank instead of showing a dash.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Price display requires an Amazon-served link or API data.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Star ratings and reviews require API-obtained data.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> A disclosure must be hard to miss and placed with the endorsement.</li></ul></dd>
+    <dt>Effort</dt><dd>Low — the data already carries sources; this is a presentation rule.</dd>
+    <dt>Expected effect</dt><dd>Editorial: makes the site&#x27;s one real differentiator visible instead of hidden behind a &#x27;Verified&#x27; badge.</dd>
+    <dt>Risks</dt><dd>Link rot on official pages. Mitigation: the source register records the fetch date, so a dead link is visibly a dated reading, not a live claim.</dd>
+    <dt>What it will not do</dt><dd>It does not add new facts; it cites existing ones.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>No table row without a source link or an explicit blank-reason.</li><li>The build fails if a row has neither.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-03" value="Accept" data-pid="D-03"><span>Accept</span></label>
+        <label><input type="radio" name="D-03" value="Reject" data-pid="D-03"><span>Reject</span></label>
+        <label><input type="radio" name="D-03" value="Defer" data-pid="D-03"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-03" data-out="D-03">No decision recorded yet</output>
+    <textarea data-note="D-03" aria-label="Reason for the decision on D-03" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-04">
+  <div class="prop-head"><h3>Say what the site does not know, in the same breath as what it does</h3><span class="pid">D-04</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented as the amber &#x27;Not published&#x27; cells and the per-product caveat blocks on /site/.</p>
+  <dl>
+    <dt>The problem</dt><dd>The three products have no publishable price, rating or per-product commission. Competing sites show all three. The temptation is to fill the gap; the alternative is to make the gap itself part of the design and explain it in one sentence a reader understands.</dd>
+    <dt>What is proposed</dt><dd>Replace every missing value with a short, plain explanation of why it is missing and what would fill it — and keep the products comparable on the facts that do exist.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Prices may be shown only if Amazon serves the link or the data comes from Creators API / PA API.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Ratings may be shown only when obtained through Creators API or PA API.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API: Welcome / Introduction — operations and prerequisites — read 2026-11-16">I2-S04</a> The API requires enrollment and at least 10 qualifying sales in 30 days.</li></ul></dd>
+    <dt>Effort</dt><dd>Low.</dd>
+    <dt>Expected effect</dt><dd>Editorial: an explained gap reads as expertise; a dash reads as an unfinished page.</dd>
+    <dt>Risks</dt><dd>Too much caveat copy can bury the comparison. Keep each explanation to one sentence and link the long version.</dd>
+    <dt>What it will not do</dt><dd>It does not estimate, average or infer any missing value.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>Every blank cell on the site has a one-sentence reason within one line of it.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-04" value="Accept" data-pid="D-04"><span>Accept</span></label>
+        <label><input type="radio" name="D-04" value="Reject" data-pid="D-04"><span>Reject</span></label>
+        <label><input type="radio" name="D-04" value="Defer" data-pid="D-04"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-04" data-out="D-04">No decision recorded yet</output>
+    <textarea data-note="D-04" aria-label="Reason for the decision on D-04" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-05">
+  <div class="prop-head"><h3>Activate earning links: a tag activation workflow and honest &#x27;link not active yet&#x27; states</h3><span class="pid">D-05</span>
+    <span class="badge b-bad">blocked</span></div>
+  <p class="small">Blocked on Q1 (the Associates tag). Every buy action on /site/ is disabled and labelled until then.</p>
+  <dl>
+    <dt>The problem</dt><dd>There is no Associates tag anywhere in this repository, and the live redirects of the three submitted links carry no tag parameter. Without it, nothing on the site can earn. The repository&#x27;s current answer is to publish no link at all, which leaves a marketing site with no commercial action.</dd>
+    <dt>What is proposed</dt><dd>When the tag is supplied, build links with the tag parameter, label each one, and record the exact URL in data. Until then, show the listing as an &#x27;evidence link&#x27; that is clearly labelled as not earning.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Every link to an Amazon Site must include the Associates ID or tag as a URL parameter.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> Special Links must properly use Amazon&#x27;s tagged link formats.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a> The live redirect of the first submitted link carries no tag parameter.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a> The Creators API response returns a detailPageURL that already carries tag=…</li></ul></dd>
+    <dt>Effort</dt><dd>Low once the tag exists; zero before it.</dd>
+    <dt>Expected effect</dt><dd>Turns the site from a research document into a monetisable one. No revenue is estimated.</dd>
+    <dt>Risks</dt><dd>A tag used on the wrong marketplace earns nothing or is disqualified; this is why Q3 must be answered together with Q1. Paid search on Amazon trademark terms is a disqualified route even with a correct tag.</dd>
+    <dt>What it will not do</dt><dd>It does not add link shorteners, redirect chains, per-visitor sub-tags or automated clicks — each of which the Program Policies prohibit.</dd>
+    <dt>Depends on</dt><dd><a href="#Q1">Q1</a>, <a href="#Q3">Q3</a></dd>
+    <dt>Done when</dt><dd><ul><li>The tag appears in every Amazon URL the site renders.</li><li>A link with no tag is visibly labelled as not earning.</li><li>No URL passes through a third-party shortener or an intermediate redirect page.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-05" value="Accept" data-pid="D-05"><span>Accept</span></label>
+        <label><input type="radio" name="D-05" value="Reject" data-pid="D-05"><span>Reject</span></label>
+        <label><input type="radio" name="D-05" value="Defer" data-pid="D-05"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-05" data-out="D-05">No decision recorded yet</output>
+    <textarea data-note="D-05" aria-label="Reason for the decision on D-05" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-06">
+  <div class="prop-head"><h3>A voice and anti-slop style guide with a lint list the build can enforce</h3><span class="pid">D-06</span>
+    <span class="badge b-mute">proposed</span></div>
+  <p class="small"></p>
+  <dl>
+    <dt>The problem</dt><dd>&#x27;Looks like AI slop&#x27; is diagnosable. The usual symptoms are all structural, not stylistic: every paragraph the same length, every section a three-item list, hedged claims with no source, adjectives doing the work a fact should do, and no named author or date.</dd>
+    <dt>What is proposed</dt><dd>Adopt a short style guide and a banned-pattern list, and enforce the mechanical part in the build: no &#x27;in today&#x27;s fast-paced world&#x27;, no &#x27;whether you&#x27;re a busy parent&#x27;, no &#x27;look no further&#x27;, no unsourced superlatives, no sentence that asserts a benefit without a fact behind it. Add a named editor line and a published/updated date to each guide.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> A claim about a product must not be inaccurate, overbroad, deceptive or misleading.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> You cannot make claims that would require proof the advertiser does not have.</li><li><span class="term t-observed">Observed</span>Hedged, unsourced benefit sentences are the dominant pattern in the repository&#x27;s current marketing copy. <span class="small">(Read of marketing/*.html on 2026-11-16.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Low to write, low to enforce.</dd>
+    <dt>Expected effect</dt><dd>Editorial: removes the single most recognisable tell.</dd>
+    <dt>Risks</dt><dd>A lint list can be gamed by synonym swapping. It is a floor, not a substitute for editing.</dd>
+    <dt>What it will not do</dt><dd>It does not guarantee a page is good; it guarantees a page is not obviously generated.</dd>
+    <dt>Depends on</dt><dd><a href="#Q5">Q5</a></dd>
+    <dt>Done when</dt><dd><ul><li>The guide names a person and a date.</li><li>The banned list is checked by the build gate and a failure names the offending sentence.</li><li>Every remaining sentence that evaluates a product links the source of the fact it evaluates.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-06" value="Accept" data-pid="D-06"><span>Accept</span></label>
+        <label><input type="radio" name="D-06" value="Reject" data-pid="D-06"><span>Reject</span></label>
+        <label><input type="radio" name="D-06" value="Defer" data-pid="D-06"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-06" data-out="D-06">No decision recorded yet</output>
+    <textarea data-note="D-06" aria-label="Reason for the decision on D-06" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-07">
+  <div class="prop-head"><h3>Move the disclosure from the footer into a banner and beside each action</h3><span class="pid">D-07</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented on /site/. Proposed as a change to the older pages, which still carry it in the footer only.</p>
+  <dl>
+    <dt>The problem</dt><dd>The exact §5 sentence is present on every page — but in the footer. That satisfies the Operating Agreement&#x27;s &#x27;on your Site&#x27; wording. The FTC&#x27;s guidance is stricter about placement: it warns that a disclosure is likely to be missed if it appears only on an about page or at the end of a page, and asks for it to be with the endorsement itself.</dd>
+    <dt>What is proposed</dt><dd>Keep the exact §5 sentence, add it as a banner above the content, and repeat a short plain-language version next to each buy action.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> The §5 sentence is required, clearly and prominently, on the site.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> Disclosures are likely to be missed if they appear only at the end of posts or on a profile page; place them with the endorsement message.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> The disclosure should be in the same language as the endorsement itself.</li></ul></dd>
+    <dt>Effort</dt><dd>Low — one template change.</dd>
+    <dt>Expected effect</dt><dd>Compliance: closes the gap between &#x27;technically on the page&#x27; and &#x27;hard to miss&#x27;.</dd>
+    <dt>Risks</dt><dd>Banner blindness if it is styled like an ad. Keep it plain text, no animation, no dismiss button.</dd>
+    <dt>What it will not do</dt><dd>It does not replace legal review (Q10).</dd>
+    <dt>Depends on</dt><dd><a href="#Q10">Q10</a></dd>
+    <dt>Done when</dt><dd><ul><li>The exact §5 sentence renders above the fold on every page.</li><li>Each buy action has a plain-language disclosure within the same visual block.</li><li>The banner cannot be dismissed or collapsed.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-07" value="Accept" data-pid="D-07"><span>Accept</span></label>
+        <label><input type="radio" name="D-07" value="Reject" data-pid="D-07"><span>Reject</span></label>
+        <label><input type="radio" name="D-07" value="Defer" data-pid="D-07"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-07" data-out="D-07">No decision recorded yet</output>
+    <textarea data-note="D-07" aria-label="Reason for the decision on D-07" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-08">
+  <div class="prop-head"><h3>Make the site structurally findable: one canonical home, clean URLs, honest metadata</h3><span class="pid">D-08</span>
+    <span class="badge b-mute">proposed</span></div>
+  <p class="small"></p>
+  <dl>
+    <dt>The problem</dt><dd>The repository publishes two site generations plus /docs/, /sessions/ archives and a 16-page audit build, and the sitemap lists dozens of pages including superseded ones. A search engine indexing that set sees contradictory pages about the same three products, and a reader arriving on the wrong one sees a stale audit.</dd>
+    <dt>What is proposed</dt><dd>Choose one canonical home for readers, keep the audits as clearly-labelled evidence pages, add rel=canonical from legacy pages to their current equivalent, and write descriptions that describe the page instead of keyword-stuffing it. Exclude superseded pages from the sitemap rather than deleting them.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-observed">Observed</span>Pages kept for provenance are published because they are committed, and at least one still displays values this site&#x27;s rule prohibits. <span class="small">(index.html tile text and data/flags.json (I-F-02), read 2026-11-16.)</span></li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> A claim must not be inaccurate or misleading.</li><li><span class="term t-official">Official</span><a class="src" href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer" title="Pages configuration and latest build for this repository — read 2026-11-16">I2-S14</a> GitHub Pages currently serves the site from main / with HTTPS enforced.</li></ul></dd>
+    <dt>Effort</dt><dd>Medium — a routing decision plus a sitemap pass.</dd>
+    <dt>Expected effect</dt><dd>Editorial: removes the main structural reason a crawler would treat the site as low quality.</dd>
+    <dt>Risks</dt><dd>Existing inbound links to old pages break if they are deleted. The proposal keeps them and redirects rather than deleting.</dd>
+    <dt>What it will not do</dt><dd>It does not promise a ranking or a traffic number.</dd>
+    <dt>Depends on</dt><dd><a href="#Q7">Q7</a></dd>
+    <dt>Done when</dt><dd><ul><li>Exactly one page is designated the reader entry point.</li><li>Every superseded page either redirects or is labelled and excluded from the sitemap.</li><li>No meta description contains a claim that is not on the page.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-08" value="Accept" data-pid="D-08"><span>Accept</span></label>
+        <label><input type="radio" name="D-08" value="Reject" data-pid="D-08"><span>Reject</span></label>
+        <label><input type="radio" name="D-08" value="Defer" data-pid="D-08"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-08" data-out="D-08">No decision recorded yet</output>
+    <textarea data-note="D-08" aria-label="Reason for the decision on D-08" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-09">
+  <div class="prop-head"><h3>Measure what can be measured lawfully: Amazon&#x27;s own reports first, no third-party pixels yet</h3><span class="pid">D-09</span>
+    <span class="badge b-mute">proposed</span></div>
+  <p class="small"></p>
+  <dl>
+    <dt>The problem</dt><dd>The brief asks for click and conversion tracking. Two constraints bite: per-visitor sub-tag attribution is prohibited, and artificial clicks are prohibited. What remains is Amazon&#x27;s own reporting for orders, plus first-party page analytics on your own site.</dd>
+    <dt>What is proposed</dt><dd>Once the tag exists, read clicks and orders from Amazon&#x27;s Associates reports. On your own site, use aggregate page analytics only. Add a privacy policy before adding any cookie-based analytics, and never assign a sub-tag to a visitor.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Sub-tags may not be associated with a specific end user.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Artificially generating clicks or creating Sessions is prohibited.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> The site operator is responsible for disclosing cookie and pixel use.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a> The API returns a tagged detail page URL, which is the tracking surface Amazon itself provides.</li></ul></dd>
+    <dt>Effort</dt><dd>Low to start, once Q1 and Q8 are answered.</dd>
+    <dt>Expected effect</dt><dd>Produces the first real numbers. No number can be shown before then.</dd>
+    <dt>Risks</dt><dd>Adding a pixel without a privacy policy is the classic compliance failure on affiliate sites.</dd>
+    <dt>What it will not do</dt><dd>It does not add hidden affiliate cookies, pop-ups, or click interception — all prohibited.</dd>
+    <dt>Depends on</dt><dd><a href="#Q1">Q1</a>, <a href="#Q8">Q8</a></dd>
+    <dt>Done when</dt><dd><ul><li>No third-party analytics is loaded before a privacy policy page exists.</li><li>No sub-tag is generated per visitor.</li><li>No automated process clicks a tagged link.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-09" value="Accept" data-pid="D-09"><span>Accept</span></label>
+        <label><input type="radio" name="D-09" value="Reject" data-pid="D-09"><span>Reject</span></label>
+        <label><input type="radio" name="D-09" value="Defer" data-pid="D-09"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-09" data-out="D-09">No decision recorded yet</output>
+    <textarea data-note="D-09" aria-label="Reason for the decision on D-09" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-10">
+  <div class="prop-head"><h3>Name a human editor and publish a cadence the owner can actually sustain</h3><span class="pid">D-10</span>
+    <span class="badge b-bad">blocked</span></div>
+  <p class="small">Blocked on Q5 (who reviews and publishes).</p>
+  <dl>
+    <dt>The problem</dt><dd>The site currently has no named author, no byline and no dates on its marketing pages. That is both a trust problem and an SEO problem, and it is the difference between a site that looks staffed and one that looks generated.</dd>
+    <dt>What is proposed</dt><dd>One named editor, one published cadence (for example one guide a fortnight), a visible &#x27;fact-checked by / on&#x27; line, and a rule that nothing publishes without that person&#x27;s pass.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> The operator is responsible for the accuracy and completeness of material posted on the site.</li><li><span class="term t-observed">Observed</span>The current marketing pages carry no byline or date. <span class="small">(Read of marketing/*.html on 2026-11-16.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>A decision, not a build.</dd>
+    <dt>Expected effect</dt><dd>Editorial: makes the human-review gate real rather than aspirational.</dd>
+    <dt>Risks</dt><dd>A byline that is not a real person reviewing the copy is worse than none.</dd>
+    <dt>What it will not do</dt><dd>It does not permit AI-drafted copy to publish unread.</dd>
+    <dt>Depends on</dt><dd><a href="#Q5">Q5</a></dd>
+    <dt>Done when</dt><dd><ul><li>Every published page names its editor and its last-checked date.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-10" value="Accept" data-pid="D-10"><span>Accept</span></label>
+        <label><input type="radio" name="D-10" value="Reject" data-pid="D-10"><span>Reject</span></label>
+        <label><input type="radio" name="D-10" value="Defer" data-pid="D-10"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-10" data-out="D-10">No decision recorded yet</output>
+    <textarea data-note="D-10" aria-label="Reason for the decision on D-10" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-11">
+  <div class="prop-head"><h3>Build the compliance checklist into the build, not into a policy page</h3><span class="pid">D-11</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented as tools/i2_gate.py for /site/; proposed as the release gate for the whole tree.</p>
+  <dl>
+    <dt>The problem</dt><dd>The repository documents 25 prohibitions and 5 mandatory text blocks, but a rule that lives only in a document is a rule that eventually stops being applied. The older pages already demonstrate this: they pass on the disclosure sentence while failing the FTC&#x27;s placement guidance.</dd>
+    <dt>What is proposed</dt><dd>One gate that fails the build on: missing disclosure, missing Amazon-content disclaimer, a table row with no source and no blank-reason, an Amazon image, a shortener, a price or rating string with no API provenance, a non-HTTPS link, or a broken internal link.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> A violation of §5 is deemed a material breach of the Operating Agreement.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Program Content may not be stored as an image; caching text is limited to 24 hours.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Use of a link shortener that obscures an Amazon destination is prohibited.</li></ul></dd>
+    <dt>Effort</dt><dd>Low — the checks already exist in tools/verify_site.py and are extended here.</dd>
+    <dt>Expected effect</dt><dd>Compliance becomes a property of the build instead of a promise in a README.</dd>
+    <dt>Risks</dt><dd>A gate that is bypassed by hand-editing generated HTML. Mitigation: the gate runs on the committed output, not the source data.</dd>
+    <dt>What it will not do</dt><dd>It does not catch a claim that is sourced but misread. That is what the human pass is for.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>`python3 tools/i2_gate.py` exits non-zero on each prohibited construct, tested one at a time.</li><li>The gate runs on every page, including inherited pages, and reports inherited failures distinctly.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-11" value="Accept" data-pid="D-11"><span>Accept</span></label>
+        <label><input type="radio" name="D-11" value="Reject" data-pid="D-11"><span>Reject</span></label>
+        <label><input type="radio" name="D-11" value="Defer" data-pid="D-11"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-11" data-out="D-11">No decision recorded yet</output>
+    <textarea data-note="D-11" aria-label="Reason for the decision on D-11" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-12">
+  <div class="prop-head"><h3>Sequence the work: fix what is verifiable, then unblock what is not</h3><span class="pid">D-12</span>
+    <span class="badge b-mute">proposed</span></div>
+  <p class="small"></p>
+  <dl>
+    <dt>The problem</dt><dd>Most of the brief&#x27;s ambitious half — trend detection, conversion optimisation, revenue maximisation — depends on data this build cannot obtain: no tag, no API eligibility, no trend endpoint. Attempting it now produces the fabricated numbers that make affiliate sites untrustworthy.</dd>
+    <dt>What is proposed</dt><dd>Publish a plain sequence. Phase 1 (now): the reader-facing pages, the provenance rule and the gate. Phase 2 (needs Q1/Q3): tagged links. Phase 3 (needs Q1/Q3/Q4 and 10 qualifying sales in 30 days): API data, and only then prices and ratings with the required timestamp and disclaimer. Phase 4 (needs Q8): reporting-driven optimisation from Amazon&#x27;s own numbers.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API: Welcome / Introduction — operations and prerequisites — read 2026-11-16">I2-S04</a> Creators API prerequisites include enrollment and at least 10 qualifying sales within 30 days.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API: Welcome / Introduction — operations and prerequisites — read 2026-11-16">I2-S04</a> The API has no trend, search-volume or conversion operation.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Displaying pricing requires a date/time stamp and a specific disclaimer.</li></ul></dd>
+    <dt>Effort</dt><dd>A decision.</dd>
+    <dt>Expected effect</dt><dd>Stops the project from shipping invented numbers while waiting for access.</dd>
+    <dt>Risks</dt><dd>Phases look slow to an owner expecting automation on day one. The counter-argument is in the evidence column: the automation is gated by Amazon, not by this build.</dd>
+    <dt>What it will not do</dt><dd>It does not promise any revenue, traffic or conversion outcome.</dd>
+    <dt>Depends on</dt><dd><a href="#Q1">Q1</a>, <a href="#Q4">Q4</a></dd>
+    <dt>Done when</dt><dd><ul><li>Each phase names the exact unknown it waits on and the official page that gates it.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-12" value="Accept" data-pid="D-12"><span>Accept</span></label>
+        <label><input type="radio" name="D-12" value="Reject" data-pid="D-12"><span>Reject</span></label>
+        <label><input type="radio" name="D-12" value="Defer" data-pid="D-12"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-12" data-out="D-12">No decision recorded yet</output>
+    <textarea data-note="D-12" aria-label="Reason for the decision on D-12" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article>
+
+<h2 id="questions">Open questions</h2>
+<p>These are the gaps that stop a decision from being made on the evidence alone. Each row states what is known (with a source), what is not known, why it matters, and how to find out. A question marked <span class="badge b-bad">Blocking</span> stops every commercial change until it is answered.</p>
+<div class="tablewrap"><table><caption>The questions that must be answered before the blocked work can start</caption><thead><tr><th>Question</th><th>What is known, and what is not</th><th>How to discover the answer</th><th>If it stays unanswered</th><th>Decides</th></tr></thead><tbody><tr id="Q1"><td class="lead-cell"><span class="mono">Q1</span><br><span class="badge b-bad">Blocking</span></td>
+<td><strong>What is the Amazon Associates tag (tracking ID) to put on every link?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The tag must appear as a parameter in every link to an Amazon Site, in a XXXXX-## style format. The observed redirects of the three submitted links carry no tag. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> The actual tag value. It is account-specific and cannot be derived from any public page.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Without it nothing can earn, and a site with no earning action is not an affiliate site. It also decides whether the tag matches the marketplace, which changes the destination domain.</div>
+</td>
+<td class="small"><b>How to find out:</b> Sign in to Associates Central, open Account Settings, and read the Store ID / Associate ID. Alternatively generate one storefront text link and copy the tag parameter out of it. Do not paste credentials — only the tag is needed.</td>
+<td class="small"><b>If unanswered:</b> All buy actions stay disabled and labelled as not earning. Nothing else is blocked.</td>
+<td><a href="#D-05">D-05</a>, <a href="#D-09">D-09</a>, <a href="#D-12">D-12</a></td></tr><tr id="Q2"><td class="lead-cell"><span class="mono">Q2</span><br><span class="badge b-bad">Blocking</span></td>
+<td><strong>Are the three listings the products you intended to promote?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> Each nine-character short link opened a live listing: CHEFMAN 6 Quart Dual Basket (B0CDY277D3), Emeril Lagasse 26QT French Door (B09B7SB46R), Chefman TurboFry 8 Qt (B08DKYBTPH). The nine-character tokens are not ASINs, and /dp/&lt;token&gt; returns Page Not Found. <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer" title="link.amazon/B02NbDxp3 — observed redirect — read 2026-11-16">I2-S08</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer" title="link.amazon/B00hJ57DV — observed redirect — read 2026-11-16">I2-S09</a> <a class="src" href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener noreferrer" title="Direct probe: amazon.com/dp/B04G1MEwY — read 2026-11-16">I2-S13</a> <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether those three destinations are the intended products. No official page states intent; only the owner can.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Every product statement on the site is about the observed destination. If the intent was different, the site is promoting the wrong products — a costly and invisible error.</div>
+</td>
+<td class="small"><b>How to find out:</b> Open the three short links and compare the listing titles with what you meant to promote; or supply the intended ASINs directly so they can be verified.</td>
+<td class="small"><b>If unanswered:</b> The site keeps describing the observed destinations and labels identity as unconfirmed on every product card.</td>
+<td><a href="#D-02">D-02</a>, <a href="#D-05">D-05</a></td></tr><tr id="Q3"><td class="lead-cell"><span class="mono">Q3</span><br><span class="badge b-bad">Blocking</span></td>
+<td><strong>Which Amazon marketplace is the site built for?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The Associates Program Operating Agreement read today lists marketplaces in Schedule 1, and the tag is marketplace-specific. The links resolve to amazon.com. <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> The marketplace the account is enrolled in, and whether the audience is US or elsewhere.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> A tag from one marketplace on a link to another earns nothing, and prices/currency differ by marketplace.</div>
+</td>
+<td class="small"><b>How to find out:</b> Read the country selector in Associates Central after sign-in, and confirm which storefront the account is approved for.</td>
+<td class="small"><b>If unanswered:</b> The site assumes nothing and does not publish a currency or a locale-specific price.</td>
+<td><a href="#D-05">D-05</a>, <a href="#D-08">D-08</a></td></tr><tr id="Q4"><td class="lead-cell"><span class="mono">Q4</span><br><span class="badge b-warn">High</span></td>
+<td><strong>Is the Associates account enrolled and eligible for the Creators API?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> API access requires enrollment plus at least 10 qualifying sales within the past 30 days, then registration and credentials. <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API: Welcome / Introduction — operations and prerequisites — read 2026-11-16">I2-S04</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> The account&#x27;s current status and qualifying-sales count. Neither is public.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Prices and star ratings can only be displayed from API data or an Amazon-served link. Without eligibility, those cells stay blank forever.</div>
+</td>
+<td class="small"><b>How to find out:</b> Check the Associates Central dashboard for the qualifying-sales figure, then the Creators API registration page for eligibility.</td>
+<td class="small"><b>If unanswered:</b> Price and rating cells stay blank with an explanation. Guides continue on listing facts.</td>
+<td><a href="#D-04">D-04</a>, <a href="#D-12">D-12</a></td></tr><tr id="Q5"><td class="lead-cell"><span class="mono">Q5</span><br><span class="badge b-warn">High</span></td>
+<td><strong>Who is the named human editor who reviews and publishes each page, and how often?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The operator is responsible for the accuracy of published material. The current marketing pages carry no byline or date. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> The person, their availability, and the cadence.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> It is the difference between a site that looks staffed and one that looks generated, and it is the only real defence against an unsourced claim reaching the page.</div>
+</td>
+<td class="small"><b>How to find out:</b> A decision, not research: name the person and pick a cadence the owner can hold for three months.</td>
+<td class="small"><b>If unanswered:</b> No new guide publishes; the existing pages stay as they are.</td>
+<td><a href="#D-06">D-06</a>, <a href="#D-10">D-10</a></td></tr><tr id="Q6"><td class="lead-cell"><span class="mono">Q6</span><br><span class="badge b-warn">High</span></td>
+<td><strong>Will any of these products be used or tested first-hand?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> You cannot describe experience with a product you have not tried, and you cannot make claims that would require proof you do not have. <a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether the owner has or will obtain the products, and whether photographs or measurements would be produced.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> It is the single biggest content differentiator available, and the only lawful route to phrases like &#x27;in our test&#x27;.</div>
+</td>
+<td class="small"><b>How to find out:</b> A decision. If yes, log the purchase and keep the receipt; a purchase through your own affiliate link is prohibited, so buy without the tag.</td>
+<td class="small"><b>If unanswered:</b> The site continues to describe only what the listing states and says so plainly.</td>
+<td><a href="#D-02">D-02</a>, <a href="#D-06">D-06</a></td></tr><tr id="Q7"><td class="lead-cell"><span class="mono">Q7</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>What is the brand — name, tone and visual direction?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The site currently presents as an audit dashboard named Zone3. A brand must not use an Amazon mark or variant in a domain, subdomain or identifier. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> The name, tone and visual direction the owner wants.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Decides whether the reader-facing layer replaces the dashboard at the root or sits beside it.</div>
+</td>
+<td class="small"><b>How to find out:</b> A decision; optionally test two candidate names with five readers before committing.</td>
+<td class="small"><b>If unanswered:</b> The reader-facing site stays at /site/ and the root keeps its current dashboard.</td>
+<td><a href="#D-01">D-01</a>, <a href="#D-08">D-08</a></td></tr><tr id="Q8"><td class="lead-cell"><span class="mono">Q8</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>Which analytics will be used, and is there a privacy policy?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The operator must disclose cookie and pixel use and provide visitor choices where required. Sub-tags may not be tied to a visitor, and clicks may not be generated artificially. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether any analytics is installed, and whether a privacy policy exists.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> It decides whether any measurement at all is possible beyond Amazon&#x27;s own reports.</div>
+</td>
+<td class="small"><b>How to find out:</b> Inventory what is currently loaded on the site, then choose: Amazon reports only, or a privacy-respecting aggregate analytics with a published policy.</td>
+<td class="small"><b>If unanswered:</b> No third-party analytics is added; only Amazon&#x27;s own reports are used once tagged.</td>
+<td><a href="#D-09">D-09</a></td></tr><tr id="Q9"><td class="lead-cell"><span class="mono">Q9</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>What budget exists for tools, hosting and — if any — paid promotion?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The site is served free on GitHub Pages. Paid search on Amazon trademark terms is a disqualified route, and links must not be placed in a way that obscures the Amazon destination. <a class="src" href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer" title="Pages configuration and latest build for this repository — read 2026-11-16">I2-S14</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Any budget, and whether paid promotion is intended at all.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Decides whether keyword research means free methods or a paid tool, and rules out whole categories of promotion that would disqualify purchases.</div>
+</td>
+<td class="small"><b>How to find out:</b> A decision.</td>
+<td class="small"><b>If unanswered:</b> No paid tool is assumed and no paid promotion is proposed.</td>
+<td><a href="#D-08">D-08</a></td></tr><tr id="Q10"><td class="lead-cell"><span class="mono">Q10</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>Should the disclosure wording and placement be reviewed before launch?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> §5 prescribes the sentence; the FTC prescribes placement qualities but not a fixed sentence. The two are separate obligations with separate sources. <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether legal review will happen, and in which jurisdictions the site operates.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> A §5 violation is deemed a material breach of the Operating Agreement, so this is the highest-consequence text on the site.</div>
+</td>
+<td class="small"><b>How to find out:</b> Commission a short review of the banner and the near-CTA wording against both sources.</td>
+<td class="small"><b>If unanswered:</b> The site keeps both the exact §5 sentence and the FTC-style placement, which is the conservative combination.</td>
+<td><a href="#D-07">D-07</a></td></tr><tr id="Q11"><td class="lead-cell"><span class="mono">Q11</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>Is AI drafting acceptable if a human edits and signs off every page?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> Program Content may not be used to train or improve models, and API content may not be aggregated or analyzed without prior written approval. Nothing prohibits using a model to help draft original copy that is grounded in facts a human checked. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> The owner&#x27;s policy on AI-assisted drafting, and who is accountable for it.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> It decides whether &#x27;automation&#x27; means drafting assistance with a human gate, or nothing at all.</div>
+</td>
+<td class="small"><b>How to find out:</b> A decision. If yes, the rule is: model may draft, human must verify each fact against the linked source before publish.</td>
+<td class="small"><b>If unanswered:</b> No AI-drafted copy publishes; this build&#x27;s pages are written to be checkable line by line instead.</td>
+<td><a href="#D-02">D-02</a>, <a href="#D-06">D-06</a></td></tr><tr id="Q12"><td class="lead-cell"><span class="mono">Q12</span><br><span class="badge b-mute">Low</span></td>
+<td><strong>Will more products be added beyond these three?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The site&#x27;s comparison is built on three specific listings. A fourth product changes the comparison, the guides and the category page. <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="Product detail page: B0CDY277D3 — read 2026-11-16">I2-S10</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer" title="Product detail page: B09B7SB46R — read 2026-11-16">I2-S11</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer" title="Product detail page: B08DKYBTPH — read 2026-11-16">I2-S12</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether the catalogue is fixed at three, and how new products would be supplied.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Decides whether the data layer needs an intake process now or later.</div>
+</td>
+<td class="small"><b>How to find out:</b> A decision, plus, if yes, a rule for supplying ASINs rather than short links.</td>
+<td class="small"><b>If unanswered:</b> The site stays scoped to three products.</td>
+<td><a href="#D-02">D-02</a></td></tr></tbody></table></div>
+
+<h2 id="discovery">How to discover the missing information</h2>
+<p>Nine concrete actions, each with the official page to read, the person who can do it, and the output that closes the question.</p>
+<div class="tablewrap"><table><caption>How to discover the missing information</caption><thead><tr><th>#</th><th>Action</th><th>Answers</th><th>Who</th><th>Output</th><th>Where</th></tr></thead><tbody><tr id="DA-1"><td class="lead-cell"><span class="mono">DA-1</span></td>
+<td>Read the Associates ID and marketplace from the signed-in Associates Central account</td><td><a href="#Q1">Q1</a>, <a href="#Q3">Q3</a></td>
+<td class="small">Account holder only — this cannot be done by an agent without credentials, and credentials should never be shared.</td><td class="small">A tag in XXXXX-## form and a marketplace name, pasted into data/i2/config.json by the owner.</td>
+<td><a href="https://affiliate-program.amazon.com/" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr><tr id="DA-2"><td class="lead-cell"><span class="mono">DA-2</span></td>
+<td>Confirm intent by opening the three short links and comparing titles, or by supplying intended ASINs</td><td><a href="#Q2">Q2</a>, <a href="#Q12">Q12</a></td>
+<td class="small">Owner.</td><td class="small">A yes/no per link, recorded with the date. The three short-link tokens to open are B04G1MEwY, B02NbDxp3 and B00hJ57DV, prefixed link.amazon/ — typed into a browser, not linked from this site, because an outbound shortener link would obscure the Amazon destination (6(w), 6(v)).</td>
+<td><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></td></tr><tr id="DA-3"><td class="lead-cell"><span class="mono">DA-3</span></td>
+<td>Read the qualifying-sales figure and Creators API eligibility in the Associates dashboard</td><td><a href="#Q4">Q4</a></td>
+<td class="small">Account holder.</td><td class="small">Eligible / not eligible, with the date, and — only once eligible — a decision to enable API-sourced price and rating display with the required timestamp and disclaimer.</td>
+<td><a href="https://affiliate-program.amazon.com/creatorsapi" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API: Welcome / Introduction — operations and prerequisites — read 2026-11-16">I2-S04</a></td></tr><tr id="DA-4"><td class="lead-cell"><span class="mono">DA-4</span></td>
+<td>Name the editor and write the publish checklist into the repository</td><td><a href="#Q5">Q5</a>, <a href="#Q11">Q11</a></td>
+<td class="small">Owner decision; no external source needed.</td><td class="small">A named person, a cadence, and a checklist item per published page.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr><tr id="DA-5"><td class="lead-cell"><span class="mono">DA-5</span></td>
+<td>Decide the first-hand testing policy, and if yes, buy the products without the affiliate tag</td><td><a href="#Q6">Q6</a></td>
+<td class="small">Owner.</td><td class="small">A policy line: &#x27;tested&#x27; claims are allowed only with a logged purchase and a dated note.</td>
+<td><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a></td></tr><tr id="DA-6"><td class="lead-cell"><span class="mono">DA-6</span></td>
+<td>Choose the brand and, optionally, test two names with five readers</td><td><a href="#Q7">Q7</a></td>
+<td class="small">Owner, with a small reader test if desired.</td><td class="small">A name that contains no Amazon mark or variant, a tone, and a palette.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr><tr id="DA-7"><td class="lead-cell"><span class="mono">DA-7</span></td>
+<td>Inventory what the site loads today, then write a privacy policy before adding any analytics</td><td><a href="#Q8">Q8</a></td>
+<td class="small">Site operator.</td><td class="small">A list of scripts with a purpose each, plus a published privacy page.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr><tr id="DA-8"><td class="lead-cell"><span class="mono">DA-8</span></td>
+<td>Decide the tooling budget and rule out disqualified promotion routes in writing</td><td><a href="#Q9">Q9</a></td>
+<td class="small">Owner decision.</td><td class="small">A short do-not list: no paid search on Amazon marks, no link shorteners, no pop-unders, no email links without opt-in.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr><tr id="DA-9"><td class="lead-cell"><span class="mono">DA-9</span></td>
+<td>Have the disclosure wording and placement reviewed against both the §5 text and the FTC placement guidance</td><td><a href="#Q10">Q10</a></td>
+<td class="small">Owner and reviewer.</td><td class="small">A signed-off banner sentence and a near-CTA sentence.</td>
+<td><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a></td></tr></tbody></table></div>
+
+<h2 id="prompts">Prompt pack</h2>
+<p>If you take these decisions to a design or content session, paste these. Each one is written to produce work that can be checked, and each carries its guardrails with it.</p>
+<article class="prop" id="P-01">
+  <div class="prop-head"><h3>Brand and tone prompt</h3><span class="pid">P-01</span></div>
+  <p class="small">Feed this into the design session so the output does not read as generated.</p>
+  <pre class="prompt">You are designing an editorial buying-guide site about kitchen air fryers. The reader is deciding between a 6-quart dual-basket basket fryer, a 26QT French-door air-fryer toaster oven, and an 8-quart single-basket fryer. Write and design for a sceptical reader who assumes affiliate sites are junk and will leave if they cannot see where a fact came from. Voice: plain, specific, confident where evidence exists and explicit where it does not. No exclamation marks. No &#x27;in today&#x27;s fast-paced world&#x27;. No sentence that praises a product without naming the listing fact that supports it. Never invent a number.</pre>
+  <dl><dt>Acceptance</dt><dd><ul><li>A stranger can restate the site&#x27;s promise after five seconds.</li><li>No banned phrase appears.</li><li>No number appears that is not linked to an official page.</li></ul></dd>
+      <dt>Guardrails</dt><dd><ul><li>Program Policies 2(b) and 6(t): no price, rating or review without an Amazon-served link or API data.</li><li>FTC: no first-hand claim without use.</li></ul></dd>
+      <dt>Sources</dt><dd><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a></dd></dl>
+</article><article class="prop" id="P-02">
+  <div class="prop-head"><h3>Page template prompt</h3><span class="pid">P-02</span></div>
+  <p class="small">The structure every reader-facing page should follow.</p>
+  <pre class="prompt">Build a page template with, in this order: a persistent disclosure banner above the navigation; a breadcrumb; an H1 that names the reader&#x27;s question; two sentences of framing that contain no claim; the answer as a short table with a source link in every row; a &#x27;what this page does not know&#x27; box; a single primary action that is either an active tagged link or a visibly disabled link labelled &#x27;not active yet&#x27;; a provenance line naming the listing and the date it was read; and a footer repeating the exact sentence &#x27;As an Amazon Associate I earn from qualifying purchases.&#x27; Never render an image loaded from an Amazon host. Never render a price or star rating.</pre>
+  <dl><dt>Acceptance</dt><dd><ul><li>Disclosure visible before any product content.</li><li>Every table row has a source link or an explicit blank-reason.</li><li>The primary action&#x27;s state is unambiguous.</li></ul></dd>
+      <dt>Guardrails</dt><dd><ul><li>IP License 2(k) disclaimer present.</li><li>No iframe/embed of an Amazon page.</li><li>No price-tracking widget.</li></ul></dd>
+      <dt>Sources</dt><dd><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a></dd></dl>
+</article><article class="prop" id="P-03">
+  <div class="prop-head"><h3>Article brief prompt</h3><span class="pid">P-03</span></div>
+  <p class="small">The format that keeps a guide from turning into filler.</p>
+  <pre class="prompt">Turn this reader question into a guide. Before writing, list every fact you intend to use and the listing or official page each came from. Drop any sentence whose fact is not on that list. Structure: the question, the short answer, a comparison table, three practical considerations drawn only from listed specifications, a &#x27;what we cannot tell you&#x27; section naming the missing data and why it is missing, and a sources block. Do not use a superlative unless the source uses it. Do not describe using, testing or owning the product. Target 700–1,000 words with varied sentence length.</pre>
+  <dl><dt>Acceptance</dt><dd><ul><li>Fact list precedes draft.</li><li>Every retained sentence traces to the list.</li><li>The &#x27;cannot tell you&#x27; section names a real gap.</li></ul></dd>
+      <dt>Guardrails</dt><dd><ul><li>No comparative performance claim absent from the listing.</li><li>No first-hand experience.</li></ul></dd>
+      <dt>Sources</dt><dd><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a></dd></dl>
+</article><article class="prop" id="P-04">
+  <div class="prop-head"><h3>Anti-slop lint prompt</h3><span class="pid">P-04</span></div>
+  <p class="small">Run this over any draft before it is published.</p>
+  <pre class="prompt">Review the draft and flag, with the exact sentence: any paragraph longer than 90 words or more than two consecutive paragraphs of near-identical length; any three-item list that only restates the previous paragraph; any adjective doing the work of a fact (&#x27;incredible&#x27;, &#x27;game-changing&#x27;, &#x27;perfect for&#x27;); any hedge that hides a missing fact (&#x27;many users report&#x27;, &#x27;studies show&#x27;, &#x27;experts agree&#x27;); any sentence beginning with &#x27;Whether you&#x27;re&#x27;; any claim with no adjacent source; any repetition of the same section shape twice in a row. Return the list; do not rewrite.</pre>
+  <dl><dt>Acceptance</dt><dd><ul><li>Every flagged sentence is quoted.</li><li>Zero remaining unsourced evaluative sentences after the edit.</li></ul></dd>
+      <dt>Guardrails</dt><dd><ul><li>The lint list is a floor, not a definition of quality.</li></ul></dd>
+      <dt>Sources</dt><dd><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></dd></dl>
+</article><article class="prop" id="P-05">
+  <div class="prop-head"><h3>Compliance guardrail prompt</h3><span class="pid">P-05</span></div>
+  <p class="small">Hard constraints to paste into any content-generating session.</p>
+  <pre class="prompt">Hard constraints, no exceptions: never state a price, availability or star rating unless it came from Creators API or an Amazon-served link, and if it did, add the date/time stamp and the Amazon price disclaimer. Never show an Amazon-hosted image. Never use a URL shortener or an intermediate redirect. Never attach a sub-tag to a visitor. Never generate artificial clicks. Never bid on Amazon marks. Never frame an Amazon page. Never use Program Content to train a model. Never paraphrase a review you did not obtain through the API. If a rule conflicts with a design request, the rule wins and you say so.</pre>
+  <dl><dt>Acceptance</dt><dd><ul><li>Each constraint maps to a clause quoted in the source register.</li></ul></dd>
+      <dt>Guardrails</dt><dd><ul><li>These are legal constraints, not style preferences.</li></ul></dd>
+      <dt>Sources</dt><dd><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a> <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API: Welcome / Introduction — operations and prerequisites — read 2026-11-16">I2-S04</a></dd></dl>
+</article><article class="prop" id="P-06">
+  <div class="prop-head"><h3>Data-safety prompt</h3><span class="pid">P-06</span></div>
+  <p class="small">Stops the build from filling blanks.</p>
+  <pre class="prompt">For every field in the product table, either cite the page it was read from in this session, or leave the cell empty and write one sentence saying why it is empty and what would fill it. Never estimate, average, interpolate, infer from a similar product, or carry a value forward from an older capture without a fresh read. If a value would make the page more persuasive but cannot be sourced, leave it out and say so on the page.</pre>
+  <dl><dt>Acceptance</dt><dd><ul><li>No filled cell without a source.</li><li>Every empty cell has a reason.</li></ul></dd>
+      <dt>Guardrails</dt><dd><ul><li>A blank with a reason is a feature; a guess is a defect.</li></ul></dd>
+      <dt>Sources</dt><dd><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></dd></dl>
+</article>
+
+<h2 id="workflow">How a decision becomes a change</h2>
+<ol class="steps"><li>Read each proposal and its evidence column. Open the source links; they are the actual pages read on 2026-11-16.</li><li>Answer the blocking questions first (Q1, Q2, Q3). They gate every commercial change.</li><li>For each proposal, choose Accept, Reject or Defer and write one sentence of reason.</li><li>Export the decisions and paste them into COORDINATION.md under this session&#x27;s part, so the next session implements only what was accepted.</li><li>Anything accepted is implemented in a follow-up session that re-verifies the affected pages and re-runs the gate before publishing.</li></ol>
+
+<div class="note warn">
+  <h3>What is deliberately not on this page</h3>
+  <p>No traffic, revenue or conversion estimate. No promise that any proposal will rank, convert or earn. Those numbers cannot be sourced, and a proposal that rests on an invented number is worse than no proposal. Where a proposal's value is a judgement, it is labelled <span class="term t-editorial">Editorial</span> in its evidence list.</p>
+</div>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-disclose"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+    <p class="foot-small">CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
+    <p class="foot-small">Air Fryer Field Notes is independent and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates. Facts on this site were read from the official pages linked under each table on <strong>2026-11-16</strong>; each link opens the page it was read from. Blank cells are blank on purpose and say why.</p>
+    <p class="foot-small"><a href="evidence.html">How we know — sources and verification log</a> · <a href="decisions.html">Suggestions &amp; decisions</a> · <a href="front-door.html">Front door (audit dashboard)</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
+  </div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

@@ -105,7 +105,12 @@ def check(root: pathlib.Path):
                     r'href="https?://[^"]*'
                     r'(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov|github\.com|githubusercontent\.com)'
                     r'[^"]*"', tr)
-                flagid = re.search(r'(FLG-\d+|id="F\d+")', tr)
+                # INTEGRATION 2026-11-16 (session 59d84c55): the reader-facing site under site/
+                # namespaces its open items I2-F-nn and marks a deliberately blank cell with
+                # class="blank" (which always carries its reason in the adjacent cell). Both are
+                # provenance the rule already accepts in spirit, so the patterns are widened
+                # rather than the rows being exempted. Additive: no earlier page changes result.
+                flagid = re.search(r'(FLG-\d+|id="F\d+"|I2-F-\d+|class="blank")', tr)
                 # anchors live in the trailing cells; search the whole row so a session that
                 # orders its columns differently is still credited correctly
                 anchor = re.search(r'repo:([A-Za-z0-9_.\-/]+[A-Za-z0-9])', tr)
