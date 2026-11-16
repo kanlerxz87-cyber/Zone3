@@ -5615,3 +5615,78 @@ Board read (all parts, through line 5279). Claim pushed as this commit **before*
 | 48699cff-T2 — Repo review, line by line | done | 48699cff | All root HTML pages, `data/*.json` | check_site.py OK (13 pages, 52 sources, 86 flags); link_report.py --strict exit 0 (232 rows, 0 dangling refs) |
 | 48699cff-T3 — Verification: source-link coverage check | done | 48699cff | All published pages | All pages 100% source/flag coverage; blank-by-design cells flagged per Amazon Policies 2(b)/6(t) |
 | 48699cff-T4 — Build, PR, merge, Pages confirm | done | 48699cff | git/`gh` only | PR #104 created; merged into main |
+
+# Part: session `e8f35298` (2026-11-16) — fresh official-source re-verification and final integration
+
+> Appended additively. Task IDs `E8F-Tn` here are namespaced and are not the same items as other sessions' IDs. Nothing on the board above was removed or rewritten. Branch: `arena/e8f35298-zone3` (Arena pins a session to one branch; the `session-<id>/<task>` form is not used, per the decision logged by session `7f84fea4`), base `add6525725882cba9572e47aa58da0bded807e8a` (= `origin/main` at claim time).
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `e8f35298` | `arena/e8f35298-zone3` | Fresh live re-verification of the load-bearing official sources (Amazon Operating Agreement §5, Program Policies §2(b)/§6(t), Commission Table 1, short-link redirects, direct-ID 404 controls, FTC Disclosures 101); run all site gates; confirm the published site is complete and green; PR → `main`, merge without waiting, confirm GitHub Pages deploy, record here | in progress (E8F-T4) | 2026-11-16 |
+
+## Task board
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| E8F-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | done | e8f35298 | `COORDINATION.md` (this Part only) | This commit, pushed before any other work. |
+| E8F-T2 — Fresh live re-verification of official sources dated 2026-11-16 | done | e8f35298 | `research/e8f35298-verification-log.md` (new) | Official pages only; no inference. See table below. |
+| E8F-T3 — Run all site gates (build_site, check_site, verify_site, link_report --strict, build_sitemap --check, check_all_links) | done | e8f35298 | read-only | All green; see below. |
+| E8F-T4 — Final integration: PR → `main`, merge without waiting, confirm Pages deploy + live checks, record PR link + merge result here | in progress | e8f35298 | git + `gh` + this Part | PR next; merge record below after merge. |
+
+## E8F-T2 — Fresh live re-verification (2026-11-16)
+
+Every row below was fetched live today by this session; the page URL is the source; nothing is inferred. Full verbatim record in `research/e8f35298-verification-log.md`.
+
+| # | Claim | Result | Source fetched |
+|---|---|---|---|
+| V1 | Operating Agreement header date | **Confirmed** — "Updated: October 15, 2025" | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
+| V2 | Operating Agreement §5 disclosure wording | **Confirmed verbatim** — "As an Amazon Associate I earn from qualifying purchases."; §5 violation is a material breach | [Operating Agreement §5–6](https://affiliate-program.amazon.com/help/operating/agreement) |
+| V3 | Schedule 1: Amazon entity/site by location | **Confirmed** — United States / Amazon.com Services LLC / amazon.com (US-only) | [Operating Agreement, Schedule 1](https://affiliate-program.amazon.com/help/operating/agreement) |
+| V4 | Program Policies §2(b): Special Links must carry the Associates tag | **Confirmed verbatim** | [Program Policies §2(b)](https://affiliate-program.amazon.com/help/operating/policies) |
+| V5 | Program Policies §2(b): price/availability display rule | **Confirmed verbatim** — only if Amazon serves the link or via Creators API/PA API | [Program Policies §2(b)](https://affiliate-program.amazon.com/help/operating/policies) |
+| V6 | Program Policies §6(t): reviews and star ratings via API only | **Confirmed verbatim** | [Program Policies §6(t)](https://affiliate-program.amazon.com/help/operating/policies) |
+| V7 | Standard Commission Table 1 (public, no sign-in) | **Confirmed** — Kitchen 4.50%; All Other Categories 4.00% | [Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) |
+| V8 | Short link `link.amazon/B04G1MEwY` → live listing `dp/B0CDY277D3` | **Confirmed** — CHEFMAN 6 Quart Dual Basket Air Fryer; observed destination only, not confirmed as intended product (FLG-002) | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) · [amazon.com/dp/B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) |
+| V9 | Direct `amazon.com/dp/<9-char token>` → Page Not Found | **Confirmed ×3** (positive control passes) | [amazon.com/dp/B04G1MEwY](https://www.amazon.com/dp/B04G1MEwY) |
+| V10 | FTC Disclosures 101: material-connection disclosure, hard-to-miss placement | **Confirmed**; page dated November 2019 | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
+
+**Not re-verified as product facts:** price, star rating and review count (barred by Policies §2(b)/§6(t) without API access — deliberate refusal); per-product commission rate (category not confirmed — FLG-021); whether destinations are the intended products (owner input needed — FLG-002/027); AI-automation features (not built — static research prototype, FLG-007/71-F-05); live clicks/conversions (no account — FLG-010/012).
+
+## E8F-T3 — Gate results on the final tree (re-run 2026-11-16, all green)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/build_site.py` | exit 0; idempotent (zero working-tree diff on re-run) |
+| `python3 scripts/check_site.py` | **OK: 13 pages, 3 products, 52 sources, 86 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS · 75 pages · 1,377 rows · 1,169 official source · 414 flag · 89 repo anchor · 0 advisories** |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 70 pages** |
+| `python3 scripts/check_all_links.py` | **121 HTML pages, 106 external URLs, 0 errors** |
+| Conflict-marker / secrets sweep | **0 / 0** |
+
+## E8F Irregularities raised
+
+None new. All previously registered flags (FLG-001…036 plus V/Z/D/E/AB/1F/71/54C namespaces) remain published, non-blocking, on the Flagged for review page (`flagged.html`) with official source links. No value was inferred or filled; unverifiable cells remain blank.
+
+## Sources used (all official, fetched live 2026-11-16 by this session)
+
+- https://affiliate-program.amazon.com/help/operating/agreement — Amazon Associates Program Operating Agreement (§5 disclosure, §6 breach, Schedule 1 US-only)
+- https://affiliate-program.amazon.com/help/operating/policies — Amazon Associates Program Policies (§2(b) tag/price rules, §6(t) reviews via API, §6(w), §6(y), CIS §2(e))
+- https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ — Standard Commission Income Statement Table 1 (public)
+- https://link.amazon/B04G1MEwY — submitted short link (→ dp/B0CDY277D3)
+- https://www.amazon.com/dp/B04G1MEwY — direct-ID control (Page Not Found)
+- https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers — FTC Disclosures 101 (November 2019)
+
+No third-party page was used as evidence.
+
+## E8F-T4 — PR, merge and Pages deploy (recorded after merge)
+
+| Event | Result |
+|---|---|
+| Pull request | (to be recorded) |
+| Merge | (to be recorded) |
+| Pages build | (to be recorded) |
+| Live checks | (to be recorded) |
+
