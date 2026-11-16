@@ -4997,3 +4997,38 @@ through the REST API (`gh api …/pulls/96 --method PATCH`) instead. The PR body
 | 4f83-F-01 | The Emeril Lagasse destination title captured 2026-11-15 differs in wording from the S12/S53 capture (2026-11-13/14). The ASIN and destination are unchanged; Amazon listing titles are edited over time | Info | Recorded here and in the 4f83-T2 table. No flag raised; destination mapping stable across captures by three sessions. Does not block the merge |
 
 **Tasks 4f83-T1 through 4f83-T4: done.** Session `4f83ee7b` is complete.
+
+---
+
+# Part: session `1f1b8bd2` (2026-11-16) — repo review, independent re-verification round, stale-PR integration, final integration
+
+> Appended additively. Task IDs `1F-Tn` and irregularity IDs `1F-F-nn` here are **namespaced**
+> and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`,
+> `25-`, `4f83-`, `D-F`, `E-F` or `FLG-nnn` used above. Nothing on the board above was
+> removed or rewritten. Branch: `arena/1f1b8bd2-zone3` (Arena pins a session to one branch),
+> base `933e2f3` (= `origin/main` at claim time).
+
+## 1F Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `1f1b8bd2` | `arena/1f1b8bd2-zone3` | Line-by-line repo review (2026-11-16); independent live re-verification round dated 2026-11-16; takeover of stale open PR #71 per the 60-minute rule; brief-gap review (articles/topics/suggestions/questions/executive summary); final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (1F-T1) | 2026-11-16 |
+
+## 1F Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 1F-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress | 1f1b8bd2 | `COORDINATION.md` (this Part only) | — | — |
+| 1F-T2 — Repo review, line by line, of the combined tree at base `933e2f3` | unclaimed | — | read-only audit + this Part + `research/1f1b8bd2-repo-review.md` | — | — |
+| 1F-T3 — Independent live re-verification round dated 2026-11-16 (three short links + `/dp/` controls, Operating Agreement, Program Policies, Standard Commission Table 1, Creators API, ASIN rule, FTC pages) | unclaimed | — | `research/1f1b8bd2-verification-log.md` (new, namespaced) | official pages only; no new source IDs unless a URL is absent from the register | — |
+| 1F-T4 — Takeover of stale PR #71 (`arena/71dc8fea-zone3`, open, `mergeable=CONFLICTING`, last commit 2026-11-14T19:07Z ≫ 60 min): integrate its unique record additively, close PR with supersession note | unclaimed | — | `sessions/71dc8fea/verification-2026-11-14.md` (takeover), `COORDINATION.md` (note), `gh` | — | — |
+| 1F-T5 — Brief-gap review: trendy articles/topics, suggestions section, open-questions register, executive summary — verify each deliverable exists and is linked; change requests for defects in other sessions' scopes | unclaimed | — | read-only except this Part; fixes only inside 1F scope | — | — |
+| 1F-T6 — Final integration: all gates green (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers), PR → `main`, merge without waiting, confirm Pages deploy + live checks, record here | unclaimed | — | git + `gh` + this Part | — | — |
+
+**Scope discipline.** This session edits `COORDINATION.md` (this Part only), its own
+`research/1f1b8bd2-*` records, `sessions/1f1b8bd2/**` if needed, and — in the takeover task —
+`sessions/71dc8fea/verification-2026-11-14.md`. Shared outputs (`data/*.json`, root generated
+pages, `scripts/*`, `tools/*`, `EXECUTIVE-SUMMARY.md`, `README.md`) are edited only under the
+final-integration role, and every such edit is logged here with its reason. Conflicts in
+`COORDINATION.md` are resolved by keeping both sides in full (main's board verbatim, this Part
+appended); no line-start conflict markers are ever pushed.
