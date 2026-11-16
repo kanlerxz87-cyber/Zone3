@@ -5547,3 +5547,31 @@ Operating Agreement — <https://affiliate-program.amazon.com/help/operating/agr
 ### A0 publish record
 
 _Pending — appended in a follow-up commit after the PR is merged and the Pages build is confirmed._
+# Part: session `f132f462` (2026-11-16) — marketing polish, independent re-verification, suggestions implementation, PR and merge
+
+> Appended additively. Task IDs `f132-Tn` and irregularity IDs `f132-F-nn` here are **namespaced** and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`, `25-`, `4f83-`, `D-F`, `E-F`, `1F-`, `71-` or `FLG-nnn` used above. Nothing on the board above was removed or rewritten. Branch: `arena/f132f462-zone3` (Arena pins a session to one branch), base `add6525` (= `origin/main` at claim time).
+
+## Session registry (this part)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `f132f462` | `arena/f132f462-zone3` | Independent line-by-line repo review; live re-verification of load-bearing claims; implement accepted marketing suggestions (brand/hero treatment SUG-01, marketing-style comparison and buying guides SUG-04, point-in-time trending section SUG-08 anchored to official surfaces); update the executive summary; run all build gates; PR → `main`, merge without waiting, confirm Pages deploy + live checks; record PR link and merge result here | in progress (f132-T7) | 2026-11-16 |
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| f132-T1 — Read board, register session, claim tasks, push claim immediately | in progress | f132f462 | `COORDINATION.md` (this Part only) | — | — |
+| f132-T2 — Independent live re-verification round dated 2026-11-16 | unclaimed | f132f462 | `research/f132f462-verification-log.md` (new, namespaced) | official pages only | — |
+| f132-T3 — Line-by-line repo review of the combined tree at base `add6525` | unclaimed | f132f462 | `research/f132f462-repo-review.md` (new, namespaced) | — | — |
+| f132-T4 — Implement accepted marketing suggestions: landing-page brand/hero treatment (SUG-01), marketing-style comparison and buying guides (SUG-04), point-in-time trending section anchored to official surfaces (SUG-08) | unclaimed | f132f462 | `index.html`, `marketing/comparison.html`, `marketing/buying-guide.html`, `marketing/index.html`, `assets/style.css`, `content-topics.html`, `data/suggestions.json` (status flip to accepted) | S01, S02, S07, S25, S43, S44 | — |
+| f132-T5 — Executive summary update with current state and this session's findings | unclaimed | f132f462 | `EXECUTIVE-SUMMARY.md`, `executive-summary.html` | S01–S55 | — |
+| f132-T6 — Build gates: `check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers | unclaimed | f132f462 | all generated pages | — | — |
+| f132-T7 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record PR link and merge result here | unclaimed | f132f462 | git + `gh` + this Part | — | — |
+
+### f132-T1 — done (2026-11-16)
+
+Board read (all parts, through line 5279). Claim pushed as this commit **before** any other work, per protocol. No live claim existed covering these scopes. No session was taken over.
+
+**Scope discipline.** This session edits `COORDINATION.md` (this Part only), its own `research/f132f462-*` records, and the files listed in f132-T4/T5/T6/T7. Shared outputs are edited only under the final-integration role. Conflicts in `COORDINATION.md` are resolved by keeping both sides in full (main's board verbatim, this Part appended); no line-start conflict markers are ever pushed. Where a suggestion is implemented, its status in `data/suggestions.json` is flipped from `proposed` to `accepted` and the implementation is logged here with its verification against official sources.
+
