@@ -1,0 +1,800 @@
+{
+  "retrieved": "2026-11-16",
+  "session": "757efebc",
+  "note": "Design brief and prompt pack for turning the current audit dashboard into a polished marketing affiliate website. Every row is either a proposal (labelled as one) or a fact with the official page it was read from. Nothing here is implemented by this session: the redesign is published for review first.",
+  "statuses": {
+    "proposal": "Published for review. Not implemented. Implement only after a decision is recorded.",
+    "recommended": "This session recommends doing this first. Still a proposal until accepted.",
+    "blocked": "Cannot proceed until a named prerequisite is supplied. The blocker is on the Questions page.",
+    "do-not-do": "Proposed and rejected by this session, with the policy reason recorded."
+  },
+  "executive_summary": [
+    {
+      "id": "757-ES-01",
+      "point": "The three submitted links open three live Amazon listings",
+      "detail": "link.amazon/B04G1MEwY opens amazon.com/dp/B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven); link.amazon/B02NbDxp3 opens amazon.com/dp/B09B7SB46R (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven); link.amazon/B00hJ57DV opens amazon.com/dp/B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry 4-in-1, 450F Hi-Fry). All three carry the same browse path: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers. Re-verified by this session on 2026-11-16.",
+      "src": [
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "757-ES-02",
+      "point": "The submitted tokens are not ASINs",
+      "detail": "Each token is 9 characters. Amazon's Creators API documents ASINs as 10 characters and shows 10-character examples. Whether the three listings opened by the short links are the products the requester intended is not established by any official source, so it is left open rather than inferred.",
+      "src": [
+        "S31",
+        "S06"
+      ]
+    },
+    {
+      "id": "757-ES-03",
+      "point": "The site reads as AI slop because it is an audit dashboard, not a shop front",
+      "detail": "The root pages are an audit dashboard. The hero was rewritten into marketing copy by a parallel session on 2026-11-16, but the statistic block directly beneath it still leads with process metrics (0 of 3 prices verified, 101 total flags open (the count rises as each session adds to the register)), the navigation is a list of internal document names plus four entries named after agent sessions, and the buyer-facing product table still carries blank cells marked Unverified. Accurate, but addressed to an auditor rather than to someone choosing an air fryer. A reader-facing site now exists at /site/; this critique is what the next pass should be measured against.",
+      "repo": "index.html"
+    },
+    {
+      "id": "757-ES-04",
+      "point": "Amazon's own policy already forbids thin, unoriginal product pages",
+      "detail": "Participation Requirements 2(b): when linking to pages with product lists, the site must carry additional original content relevant to the link. Product lists include search results, event pages and department homepages. Original editorial is therefore a compliance requirement here, not just a taste preference.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-ES-05",
+      "point": "The two things a marketing site normally sells on are blocked, not merely missing",
+      "detail": "Prices and availability may be shown only if Amazon serves the link or the data comes through Creators API or PA API (2(b)). Star ratings and customer reviews may be shown only if obtained through those APIs (6(t)). Until API access exists, a price-and-rating comparison table cannot be published lawfully, so it must be designed around rather than faked.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-ES-06",
+      "point": "No Associates tag exists in the repository, so no published link can earn yet",
+      "detail": "Special Links must use the assigned Associates ID (2(a)); the tag must appear as a URL parameter in every link to an Amazon site (2(b)); and a purchase is disqualified if it is not tracked because the links were not properly formatted (2(g)). Monetisation is gated on the tag, and the tag is not in the repo.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-ES-07",
+      "point": "Recommended path: two surfaces, not one",
+      "detail": "Keep the evidence dashboard as a trust asset behind one link labelled How we verify, and keep the reader-facing surface leading with the buying decision. A parallel session built that reader surface at /site/ on 2026-11-16; this brief is the design pass for what it should become, and the critique below is what to measure it against.",
+      "repo": "scripts/build_site.py"
+    },
+    {
+      "id": "757-ES-08",
+      "point": "Nothing on this page is implemented",
+      "detail": "This session publishes the brief, the prompt, the article plan and the review console. No existing page was rewritten and no design change was applied to the live site.",
+      "repo": "COORDINATION.md"
+    }
+  ],
+  "critique": [
+    {
+      "id": "757-C-01",
+      "area": "Navigation",
+      "observed": "Four top-level nav entries are named after agent sessions: Verification (3ead7ac8), Verification (25513d33), Verification (ab3ed329) and Verification (5b425c74). Two more were added on 2026-11-16. Others are internal document names: Pricing & commission, Content & compliance, Campaigns & tracking.",
+      "slop": "The single strongest tell, and it is getting stronger with every session. A real publication names destinations after what the reader wants; only a machine names them after the process that produced them.",
+      "fix": "Rename to reader language: Home, Reviews, Comparisons, Buying guides, How we test. Move every process-named page behind one How we verify link.",
+      "repo": "scripts/build_site.py"
+    },
+    {
+      "id": "757-C-02",
+      "area": "Landing page lead",
+      "observed": "The hero was rewritten into marketing copy on 2026-11-16, but the statistic block directly beneath it still leads with 3 product links submitted, 0 of 3 prices verified, 3 critical flags open and 101 total flags open (the count rises as each session adds to the register).",
+      "slop": "The first numbers a visitor meets are the publisher's own incomplete homework. Confidence comes from a clear recommendation, not from a count of what is missing.",
+      "fix": "Keep the rewritten hero. Move the counts into a small evidence bar that links to How we verify, and lead the page with the buying decision.",
+      "repo": "index.html"
+    },
+    {
+      "id": "757-C-03",
+      "area": "Product tables",
+      "observed": "The buyer-facing product sheet is mostly blank cells labelled Unverified.",
+      "slop": "A comparison table with no comparanda reads as a broken page, however honest the blanks are.",
+      "fix": "Split the sheet. Reader surface compares decision attributes that are verifiable from the listing itself (capacity, basket configuration, stated presets, finish). Evidence surface keeps the full 12-field sheet with its blanks and flags.",
+      "src": [
+        "S02",
+        "S14"
+      ]
+    },
+    {
+      "id": "757-C-04",
+      "area": "Voice",
+      "observed": "Lead paragraph reads: Static price offers and unverified analytics are not published. This research is not a substitute for checking the live Amazon listing.",
+      "slop": "Compliance-memo register. Hedging stacked in front of the reader before any value is delivered.",
+      "fix": "State the recommendation first in plain sentences; put the caveat once, adjacent to the claim it qualifies, in the disclosure block.",
+      "src": [
+        "S01"
+      ]
+    },
+    {
+      "id": "757-C-05",
+      "area": "Calls to action",
+      "observed": "The two hero actions are Explore product research and Read the buying guide.",
+      "slop": "Generic, interchangeable, and neither says what the reader gets or that the link goes to Amazon.",
+      "fix": "One primary action per page, phrased as the outcome: See which one fits your kitchen, Check availability on Amazon. Disclosure text sits adjacent, not in the footer.",
+      "src": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "757-C-06",
+      "area": "Visual identity",
+      "observed": "Accent colour is #1f5eff and body type is the system font stack.",
+      "slop": "Default UI blue plus default system type is the signature of an unreviewed template.",
+      "fix": "Adopt a named type pairing and a warm kitchen palette. Specifics in the design system below.",
+      "repo": "assets/style.css"
+    },
+    {
+      "id": "757-C-07",
+      "area": "Site architecture",
+      "observed": "Three site generations are merged into one navigation: the root flat pages, the 16-page audit build at /dashboard/, and the reader-facing marketing site at /site/ added on 2026-11-16.",
+      "slop": "Visitors meet three products wearing one nav, and cannot tell which half is for them.",
+      "fix": "Make the split explicit and purposeful: /site/ is the front door, the audit build is the proof library behind How we verify, and the root dashboard stops being a destination.",
+      "repo": "README.md"
+    },
+    {
+      "id": "757-C-08",
+      "area": "Editorial surface",
+      "observed": "There is no bylined, opinionated article on the site. Articles exist as inventory tables and a topic plan.",
+      "slop": "Content about content. Nothing to read, only tables describing what could be written.",
+      "fix": "Ship the twelve article concepts below, each anchored to a fact verified from the listing, each with a stated point of view.",
+      "src": [
+        "S02",
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "757-C-09",
+      "area": "Imagery",
+      "observed": "No product imagery anywhere on the reader-facing pages.",
+      "slop": "A commerce page with no product image reads unfinished. Note this is also a policy area, not only a design gap.",
+      "fix": "Use Amazon-served Program Content (SiteStripe or API) rather than stored images; the release gate already blocks stored Amazon image assets.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-C-10",
+      "area": "Category depth",
+      "observed": "One category page exists, plus a mirror of it. Three products, no per-product review page written as prose.",
+      "slop": "Thin taxonomy with duplicated pages reads as filler and gives search engines two near-identical targets.",
+      "fix": "One canonical page per product, one comparison, one buying guide, then expand the category only when there is original content for it.",
+      "src": [
+        "S02"
+      ]
+    }
+  ],
+  "prompt_intro": "Copy everything in the box below and paste it into your design tool or coding agent. It is written to produce a reader-facing affiliate site, not a dashboard. The constraints block is not optional: each line cites the Amazon rule it comes from, and breaking one can disqualify commission or breach the Operating Agreement.",
+  "prompt": [
+    {
+      "id": "P-1",
+      "label": "Role and goal",
+      "text": "You are designing and building a reader-facing Amazon affiliate website for air fryers. Its job is to help a real person choose between three specific air fryers, and to earn commission honestly when they click through to Amazon. It is NOT a data dashboard, an audit report, or an internal research tool. If a page would only make sense to the person who built it, cut it."
+    },
+    {
+      "id": "P-2",
+      "label": "The three products",
+      "text": "Only three products exist. Do not invent others.\n1. CHEFMAN 6 Quart Dual Basket Air Fryer Oven - two independent 3Qt nonstick dishwasher-safe baskets, Easy View windows, Sync Finish, Hi-Fry, auto shutoff, black. amazon.com/dp/B0CDY277D3\n2. Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven - countertop convection cooker, 24 one-touch presets, extra-large interior, six cooking accessories included. amazon.com/dp/B09B7SB46R\n3. Chefman Air Fryer 8 Qt TurboFry 4-in-1 - 450F Hi-Fry option, bake, dehydrate, frozen, XL nonstick dishwasher-safe basket, stainless steel. amazon.com/dp/B08DKYBTPH\nThese descriptions come from the listing titles only. Do not add specifications, prices, ratings or review counts."
+    },
+    {
+      "id": "P-3",
+      "label": "Audience and jobs",
+      "text": "Primary reader: a US home cook with limited counter space deciding whether to buy an air fryer this week, and if so which size. They arrive from Google with a question, want an answer in the first screen, and leave to check availability on Amazon. They are not interested in our verification process, our flag counts, or our data pipeline. Write for that person."
+    },
+    {
+      "id": "P-4",
+      "label": "Brand and voice",
+      "text": "Voice: a knowledgeable friend who owns too many kitchen gadgets. Direct, specific, willing to say which one to buy and which one not to. Short sentences. Concrete nouns and numbers instead of adjectives. No hedging stack, no 'in today's fast-paced world', no 'it's important to note', no 'unlock the power of', no em-dash pile-ups, no tricolon of adjectives, no concluding summary paragraph that restates the introduction. Never use the phrase 'AI-powered' about the site itself."
+    },
+    {
+      "id": "P-5",
+      "label": "Information architecture",
+      "text": "Pages: Home (the decision, in one screen) - one Review page per product - one Comparison page (all three, side by side) - one Buying guide (evergreen, how to choose a size) - How we verify (the evidence layer: sources, blanks, flags) - About and contact. That is the whole site. Every nav label is a reader destination. No page is named after a process, a file, or a build."
+    },
+    {
+      "id": "P-6",
+      "label": "Design system",
+      "text": "Palette: warm off-white background #FAF7F2, near-black ink #16130F, ember accent #E4572E used only for actions and the recommended-product badge, sage #6B7A5A for secondary surfaces, hairline borders #E5DED3. No default blue. Type: a characterful display face for headlines (Fraunces or Instrument Serif) paired with Inter for body; body 17px/1.65, measure capped at 68ch; headlines tight at -0.02em. Layout: 1180px container, 24px gutters, generous vertical rhythm, asymmetric hero with text left and product visual right. Cards: 14px radius, 1px hairline border, no drop shadows except one soft lift on the primary CTA. Motion: none by default, 120ms ease on hover only."
+    },
+    {
+      "id": "P-7",
+      "label": "Components to build",
+      "text": "Verdict card (one sentence, who it is for, who it is not for). Spec strip (capacity, configuration, presets, finish - listing-derived only). Sticky comparison table with the CTA column pinned on scroll. Who-should-buy-which decision list. Sourced-claim block, where each factual claim carries a small link to the Amazon page it came from. Disclosure block adjacent to every affiliate link. How-we-verify teaser linking to the evidence layer."
+    },
+    {
+      "id": "P-8",
+      "label": "Hard constraints - Amazon",
+      "text": "- Every link to Amazon must carry the Associates tag as a URL parameter. Special Links must use the assigned Associates ID; a purchase is disqualified if it is not tracked because links were not properly formatted.\n- The disclosure 'As an Amazon Associate I earn from qualifying purchases.' must appear clearly and prominently, adjacent to affiliate links, not only in the footer.\n- Do not imply that Amazon sponsors, supports or endorses the site.\n- Do not publish prices or availability unless Amazon serves the link or the data comes from Creators API or PA API. Do not scrape or hard-code a price.\n- Do not publish star ratings or customer reviews unless obtained through Creators API or PA API.\n- No price tracking or price-alerting feature.\n- No link shortener that makes it unclear the link goes to Amazon. Do not cloak the destination.\n- Any page linking to a product list, search results or department page must carry additional original content relevant to the link.\n- No inaccurate, overbroad or misleading claim about any product or Amazon's prices.\n- Do not promote non-Amazon products using Amazon Program Content.\n- Amazon trademarks may not appear in the domain, subdomain, Associates tag or social handles."
+    },
+    {
+      "id": "P-9",
+      "label": "Hard constraints - evidence",
+      "text": "Every factual claim on the site links to the official page it was read from. Anything not confirmed from an official source is left blank and marked unverified; never fill it in, estimate it, or infer it. No trend rank, price, rating, review count or earnings estimate may appear without a source read on the day of publication."
+    },
+    {
+      "id": "P-10",
+      "label": "Hard constraints - FTC",
+      "text": "Disclose the affiliate relationship clearly and conspicuously, in the same place as the recommendation it applies to, in language a reader will actually see. Disclosure must not be buried below the fold or behind a link."
+    },
+    {
+      "id": "P-11",
+      "label": "Anti-slop rules",
+      "text": "No page named after a build artefact or an internal process. No headline statistic about our own completeness. No comparison table whose cells are mostly empty. No generic hero buttons. No three-column feature grid of vague benefits. No stock illustration of a kitchen. No fake urgency, no countdown, no 'as of today' price claims. Every article takes a position."
+    },
+    {
+      "id": "P-12",
+      "label": "Deliverable",
+      "text": "A complete static site, responsive, accessible (WCAG AA contrast, visible focus states, semantic headings, alt text), fast (no web fonts above 2 files, no third-party script), with a working sitemap and one clean page per item in the architecture above. Ship HTML and CSS that a human designer would not be embarrassed to have made."
+    }
+  ],
+  "design_system": [
+    {
+      "id": "757-DS-01",
+      "element": "Background and ink",
+      "spec": "Background #FAF7F2, card #FFFFFF, ink #16130F, muted #6B6357, hairline #E5DED3.",
+      "why": "Warm neutrals read as food and kitchen. The current build uses a cool grey-blue (#F6F8FB / #1D2433) that reads as admin software.",
+      "repo": "assets/style.css"
+    },
+    {
+      "id": "757-DS-02",
+      "element": "Accent",
+      "spec": "Ember #E4572E, used only for the primary action and the recommended-product badge. Sage #6B7A5A for secondary surfaces.",
+      "why": "One accent colour reserved for action is what makes a CTA visible. The current build spends #1f5eff on nav, links and active states alike, so nothing is emphasised.",
+      "repo": "assets/style.css"
+    },
+    {
+      "id": "757-DS-03",
+      "element": "Typography",
+      "spec": "Headlines: Fraunces or Instrument Serif, tight tracking -0.02em. Body: Inter 17px / 1.65, measure capped at 68ch. Small caps or 12px uppercase for eyebrows.",
+      "why": "A characterful display face is the cheapest way to stop looking like a template. The current build uses the system font stack throughout.",
+      "repo": "assets/style.css"
+    },
+    {
+      "id": "757-DS-04",
+      "element": "Product imagery",
+      "spec": "Amazon-served Program Content only, via SiteStripe or the API. Never a locally stored Amazon image asset.",
+      "why": "Program Content may only be displayed as Amazon serves it, and this repo's release gate already fails the build on a stored Amazon image.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-DS-05",
+      "element": "Disclosure placement",
+      "spec": "The Operating Agreement sentence sits directly above each affiliate link group, at body size, in ink - not muted, not only in the footer.",
+      "why": "The Agreement requires it clearly and prominently; the FTC wants it where the recommendation is made, not buried.",
+      "src": [
+        "S01",
+        "S24"
+      ]
+    },
+    {
+      "id": "757-DS-06",
+      "element": "Comparison table",
+      "spec": "Sticky header row, sticky CTA column, one decision attribute per row, blank cells explicitly labelled rather than left empty.",
+      "why": "A comparison table is the highest-intent element on the page; it must survive horizontal scroll on mobile.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-DS-07",
+      "element": "CTA button",
+      "spec": "Check availability on Amazon, with the Amazon destination stated in the link text or immediately beside it.",
+      "why": "The reader must be able to tell the link goes to Amazon before they click it.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-DS-08",
+      "element": "Trust marks",
+      "spec": "A small sourced-claim link beside every factual statement, and a How we verify link in the footer and in the comparison header.",
+      "why": "Turns the existing audit work into a differentiator instead of a disclaimer.",
+      "repo": "verification.html"
+    }
+  ],
+  "ia": [
+    {
+      "id": "757-IA-01",
+      "surface": "Reader",
+      "page": "Home",
+      "job": "Answer which of the three fits this kitchen, above the fold",
+      "cta": "See the comparison",
+      "status": "proposal",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-02",
+      "surface": "Reader",
+      "page": "Review: Chefman 6 Qt dual basket",
+      "job": "One product, one verdict, who it suits and who it does not",
+      "cta": "Check availability on Amazon",
+      "status": "blocked",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-03",
+      "surface": "Reader",
+      "page": "Review: Emeril Lagasse 26QT French door",
+      "job": "Same, for the large-capacity multi-cooker",
+      "cta": "Check availability on Amazon",
+      "status": "blocked",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-04",
+      "surface": "Reader",
+      "page": "Review: Chefman 8 Qt TurboFry",
+      "job": "Same, for the single-basket 450F model",
+      "cta": "Check availability on Amazon",
+      "status": "blocked",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-05",
+      "surface": "Reader",
+      "page": "Comparison: all three side by side",
+      "job": "The highest-intent page; decide and click",
+      "cta": "Check availability on Amazon",
+      "status": "blocked",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-06",
+      "surface": "Reader",
+      "page": "Buying guide: what size air fryer do you need",
+      "job": "Evergreen entry point that ranks for capacity questions",
+      "cta": "See the three we compared",
+      "status": "proposal",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-07",
+      "surface": "Evidence",
+      "page": "How we verify",
+      "job": "The sources, the blanks, the flags - the reason to trust the other pages",
+      "cta": "Read the source register",
+      "status": "proposal",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-08",
+      "surface": "Evidence",
+      "page": "Existing audit build",
+      "job": "Keep it, relabel it, link it from How we verify only",
+      "cta": "Open the audit build",
+      "status": "proposal",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-IA-09",
+      "surface": "Reader",
+      "page": "Deals page",
+      "job": "Proposed and rejected until the promotion-removal rule can be met operationally",
+      "cta": "n/a",
+      "status": "do-not-do",
+      "src": [
+        "S02"
+      ]
+    }
+  ],
+  "editorial": [
+    {
+      "id": "757-A-01",
+      "title": "Two Baskets, One Dinner: Settling the Dual-Basket Air Fryer Argument",
+      "hook": "The pitch is that both foods finish at the same time. The question is whether you cook that way.",
+      "angle": "Who actually needs two independent baskets, and when it is just a smaller oven twice.",
+      "format": "1,400-word review with the Chefman 6 Qt as the worked example",
+      "fact": "The listing states two independent 3Qt nonstick dishwasher-safe baskets with Sync Finish and Easy View windows.",
+      "rule": "May not state cooking times, results or temperature performance: none was tested and none is sourced.",
+      "src": [
+        "S14",
+        "S02"
+      ]
+    },
+    {
+      "id": "757-A-02",
+      "title": "26 Quarts Is a Lot of Air Fryer. Here Is Who It Is Actually For.",
+      "hook": "Capacity sells, and capacity is the thing most buyers overestimate.",
+      "angle": "Translate 26 quarts into what it means on a real counter and for a real household.",
+      "format": "1,200-word explainer anchored on the Emeril Lagasse listing",
+      "fact": "The listing states 26QT capacity, French door design, 24 one-touch presets, extra-large interior, six accessories included.",
+      "rule": "May not state how many people it feeds or what fits inside: no dimension beyond capacity was verified.",
+      "src": [
+        "S15",
+        "S02"
+      ]
+    },
+    {
+      "id": "757-A-03",
+      "title": "450 Degrees: The Number That Decides Whether Your Fries Are Crisp",
+      "hook": "Most air fryers top out lower. This one does not, and that is the whole argument.",
+      "angle": "What a higher maximum temperature is for, and what it is not for.",
+      "format": "900-word feature anchored on the Chefman 8 Qt TurboFry",
+      "fact": "The listing states a 450F Hi-Fry option, 4-in-1 bake/dehydrate/frozen, XL nonstick dishwasher-safe basket, stainless steel.",
+      "rule": "May not compare this maximum temperature to any other model's unless that model's figure is read from its own listing.",
+      "src": [
+        "S16",
+        "S02"
+      ]
+    },
+    {
+      "id": "757-A-04",
+      "title": "French Door or Pull-Out Basket: Two Philosophies of Air Fryer",
+      "hook": "One behaves like a small oven, one like a deep drawer. Pick the motion you want to repeat nightly.",
+      "angle": "The ergonomic difference that specification tables never capture.",
+      "format": "1,300-word comparison between the Emeril Lagasse and the two Chefman models",
+      "fact": "One listing states a French door multi-function convection oven; the other two state basket-style fryers.",
+      "rule": "May not claim either design cooks better: no comparative test was performed.",
+      "src": [
+        "S15",
+        "S14",
+        "S16"
+      ]
+    },
+    {
+      "id": "757-A-05",
+      "title": "Air Fryer Sizes, Decoded: 6 Quarts and 26 Quarts Are Not Two Points on One Scale",
+      "hook": "Capacity numbers across the category describe different things. Here is how to read them.",
+      "angle": "Evergreen buyer education, the pillar piece the rest of the cluster links to.",
+      "format": "1,800-word buying guide, updated quarterly",
+      "fact": "The three listings state 6 quart total in two 3Qt baskets, 26QT, and 8 quart respectively.",
+      "rule": "May not give a servings-per-quart conversion unless that conversion is sourced.",
+      "src": [
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "757-A-06",
+      "title": "Dishwasher-Safe or Deal-Breaker: The Cleaning Question Nobody Asks First",
+      "hook": "Every listing says dishwasher-safe. Almost every owner stops using the dishwasher by week three.",
+      "angle": "The ownership cost that decides satisfaction after the novelty wears off.",
+      "format": "1,000-word practical piece",
+      "fact": "All three listings state dishwasher-safe baskets or frying baskets.",
+      "rule": "May not claim how owners behave: no review data was accessed.",
+      "src": [
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "757-A-07",
+      "title": "The Counter Space Math Nobody Does Before Buying",
+      "hook": "Height under the cabinet is the constraint that sends air fryers back.",
+      "angle": "A pre-purchase checklist built around fit rather than capacity.",
+      "format": "800-word checklist with a printable summary",
+      "fact": "No exterior dimension for any of the three products was verified from an official source.",
+      "rule": "Must be published with the dimension fields blank and marked unverified until the API supplies them.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-A-08",
+      "title": "Air Fryer Toaster Oven Combos: When One Appliance Really Can Replace Three",
+      "hook": "24 presets sounds like progress. It also sounds like 19 you will never touch.",
+      "angle": "Which presets are worth having, framed honestly around a single product.",
+      "format": "1,100-word review",
+      "fact": "The Emeril Lagasse listing states 24 one-touch preset options and six included accessories.",
+      "rule": "May not name or evaluate individual presets: the listing does not enumerate them.",
+      "src": [
+        "S15",
+        "S02"
+      ]
+    },
+    {
+      "id": "757-A-09",
+      "title": "Bake, Dehydrate, Reheat: The Settings You Will Actually Use",
+      "hook": "Multi-function is a feature until it is a dial you never turn.",
+      "angle": "Rank the secondary functions by how often a normal kitchen uses them.",
+      "format": "900-word piece",
+      "fact": "The Chefman 8 Qt listing states 4-in-1 with bake, dehydrate and frozen functions.",
+      "rule": "May not claim how often anyone uses a setting: no usage data was collected.",
+      "src": [
+        "S16"
+      ]
+    },
+    {
+      "id": "757-A-10",
+      "title": "How to Read an Air Fryer Listing Without Getting Fooled",
+      "hook": "Wattage is not power. Capacity is not servings. Hi-Fry is not a standard.",
+      "angle": "Consumer-protection explainer that builds trust and earns links.",
+      "format": "1,500-word evergreen guide",
+      "fact": "Uses the three listings as worked examples of what listing titles do and do not tell you.",
+      "rule": "May not accuse any seller of deception; state only what a listing does and does not disclose.",
+      "src": [
+        "S02",
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "id": "757-A-11",
+      "title": "What Comes in the Box: Air Fryer Accessories You Will Buy Anyway",
+      "hook": "Six accessories included sounds generous until you learn which six.",
+      "angle": "Total cost of ownership framing.",
+      "format": "800-word piece",
+      "fact": "The Emeril Lagasse listing states six cooking accessories included; the other two state no accessory count that this session verified.",
+      "rule": "May not list the accessories: the listing title does not enumerate them.",
+      "src": [
+        "S15",
+        "S02"
+      ]
+    },
+    {
+      "id": "757-A-12",
+      "title": "Three Air Fryers, One Kitchen: Which We Would Buy and Why",
+      "hook": "A verdict, not a summary. The page the other eleven point to.",
+      "angle": "The cluster's conversion page: pick one for each reader type.",
+      "format": "1,600-word comparison with an explicit recommendation",
+      "fact": "Rests on the listing-derived attributes of all three products, each linked to its Amazon page.",
+      "rule": "May not rank on price, rating or review count: none of those figures was verified.",
+      "src": [
+        "S14",
+        "S15",
+        "S16",
+        "S02"
+      ]
+    }
+  ],
+  "traffic": [
+    {
+      "id": "757-T-01",
+      "action": "Pillar and cluster structure",
+      "what": "One capacity buying guide as the pillar; the three reviews, the comparison and the explainers as clusters linking up to it and across to each other.",
+      "why": "Gives search engines a topical centre and gives readers a next page.",
+      "constraint": "Every page needs its own original content; thin pages that exist only to hold links are exactly what the original-content rule prohibits.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-T-02",
+      "action": "Answer the question in the first paragraph",
+      "what": "Open every page with the direct answer, then support it.",
+      "why": "Featured-snippet and AI-overview selection favours a direct, extractable answer.",
+      "constraint": "The answer must be true and sourced, or the page cannot say it.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-T-03",
+      "action": "Paid search to your own site is permitted",
+      "what": "You may buy search ads that send users to your site rather than directly to Amazon.",
+      "why": "Read verbatim from the Participation Requirements; paid acquisition is not banned outright.",
+      "constraint": "Bidding on the word amazon, kindle, or any Amazon Mark is a Prohibited Paid Search Placement, and results must send users to your site, not through a redirect to Amazon.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-T-04",
+      "action": "No price-tracking or alerting feature",
+      "what": "Drop the price-drop-alert idea entirely.",
+      "why": "The site must not have price tracking or price alerting functionality unless Amazon agrees otherwise.",
+      "constraint": "This is a hard scope cut, not a deferral.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-T-05",
+      "action": "Do not build a deals page yet",
+      "what": "A promotions page must be stripped the moment the promotion ends.",
+      "why": "Any link to, or mention of, a limited-time promotion must be removed as soon as it ends on Amazon. Without an operational process to do that, the page is a compliance liability.",
+      "constraint": "Rejected until someone owns the removal step.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-T-06",
+      "action": "Earn links with the evidence layer",
+      "what": "Publish How we verify as a real page: sources, blanks, what is unknown and why.",
+      "why": "The one genuinely unusual asset here. It is link-worthy and it doubles as the trust block on every commercial page.",
+      "constraint": "Only official sources may be cited; nothing may be inferred to fill a gap.",
+      "repo": "sources.html"
+    },
+    {
+      "id": "757-T-07",
+      "action": "Keep the domain and handles free of Amazon marks",
+      "what": "No amazon or kindle in the domain, subdomain, Associates tag or social usernames.",
+      "why": "Explicitly prohibited by the Participation Requirements.",
+      "constraint": "Check the tag before it is issued, because it cannot be changed later without re-tagging every link.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-T-08",
+      "action": "Never buy traffic that clicks your own links",
+      "what": "No artificial clicks, impressions or sessions.",
+      "why": "Explicitly prohibited, and it is the fastest route to losing the account.",
+      "constraint": "Applies to bot traffic and to incentivised clicking alike.",
+      "src": [
+        "S02"
+      ]
+    }
+  ],
+  "conversion": [
+    {
+      "id": "757-V-01",
+      "element": "Verdict above the fold",
+      "spec": "One sentence naming the recommended product and the reader it suits, before any table.",
+      "why": "The reader came for a recommendation. Making them scroll past process notes loses them.",
+      "repo": "index.html"
+    },
+    {
+      "id": "757-V-02",
+      "element": "Tagged Special Link",
+      "spec": "Every Amazon link carries the Associates tag as a URL parameter, in the documented XXXXX-## form.",
+      "why": "Without it the purchase is not tracked and is disqualified from commission. This is the single revenue gate.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-V-03",
+      "element": "Disclosure adjacent to the link",
+      "spec": "The Operating Agreement sentence, at body size, directly above each group of affiliate links.",
+      "why": "Required clearly and prominently; the FTC also expects it where the endorsement appears.",
+      "src": [
+        "S01",
+        "S07"
+      ]
+    },
+    {
+      "id": "757-V-04",
+      "element": "Destination stated in the link",
+      "spec": "Link text names Amazon. No generic button, no shortener.",
+      "why": "The reader must be able to tell where the link goes before clicking.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-V-05",
+      "element": "Comparison table with sticky CTA column",
+      "spec": "Decision attributes as rows, products as columns, one action per column, always visible.",
+      "why": "Highest-intent element on the site; on mobile it is the only thing that still converts.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-V-06",
+      "element": "Price and rating, when lawful",
+      "spec": "Publish price and rating only once Amazon serves the link or the API supplies the data, with a visible timestamp.",
+      "why": "Both are prohibited outside those two paths. The timestamp is a separate API requirement.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-V-07",
+      "element": "Who it is not for",
+      "spec": "Each product page states the reader who should skip it.",
+      "why": "A site that only praises reads as a brochure; a constraint builds more trust than a superlative.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-V-08",
+      "element": "Evidence link on every claim",
+      "spec": "Small source link beside each factual claim, pointing at the Amazon or FTC page it came from.",
+      "why": "Converts the existing discipline into a visible reason to trust the recommendation.",
+      "repo": "verification.html"
+    }
+  ],
+  "anti_slop": [
+    {
+      "id": "757-AS-01",
+      "tell": "Navigation entries named after build artefacts, sessions or internal documents",
+      "fix": "Every label is a reader destination. If a visitor would not know what the page is, rename it.",
+      "repo": "scripts/build_site.py"
+    },
+    {
+      "id": "757-AS-02",
+      "tell": "Headline statistics about the publisher's own completeness",
+      "fix": "Lead with the reader's decision. Put audit counts behind How we verify.",
+      "repo": "index.html"
+    },
+    {
+      "id": "757-AS-03",
+      "tell": "Comparison tables whose cells are mostly blank or labelled unverified",
+      "fix": "Publish only the attributes that are verifiable; move the rest to the evidence layer.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-AS-04",
+      "tell": "Hedging stacked in front of the answer",
+      "fix": "Answer first. Put the one caveat next to the one claim it qualifies.",
+      "src": [
+        "S01"
+      ]
+    },
+    {
+      "id": "757-AS-05",
+      "tell": "No position taken; every product described as suitable for everyone",
+      "fix": "Say which one to buy, and who should skip each of the others.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-AS-06",
+      "tell": "Default template blue and system fonts",
+      "fix": "Choose a named type pairing and a palette tied to the subject.",
+      "repo": "assets/style.css"
+    },
+    {
+      "id": "757-AS-07",
+      "tell": "Three-column feature grids of vague benefits",
+      "fix": "Replace with a specific decision list: who buys which, and why.",
+      "repo": "index.html"
+    },
+    {
+      "id": "757-AS-08",
+      "tell": "A closing paragraph that restates the introduction",
+      "fix": "End on the next action instead.",
+      "repo": "index.html"
+    },
+    {
+      "id": "757-AS-09",
+      "tell": "Fake urgency: countdowns, only-today language, invented price drops",
+      "fix": "Remove. Price alerting is prohibited and invented scarcity is a misleading claim.",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "757-AS-10",
+      "tell": "Content about content: tables describing articles that do not exist",
+      "fix": "Publish the articles. A plan is not a page.",
+      "src": [
+        "S02"
+      ]
+    }
+  ],
+  "workflow": [
+    "Read the critique and the executive summary side by side: they describe the same problem from two directions.",
+    "Copy the prompt in full into the design or build tool of your choice. Do not trim the constraints block; each line is a rule, not a preference.",
+    "Work the questions register on the Suggestions review console first. Anything marked blocked here cannot be built regardless of how good the design is.",
+    "Record accept, reject or defer against each proposal before any code is written.",
+    "Build the reader surface and the evidence surface as two clearly separated areas of one site, linked by How we verify.",
+    "Publish the twelve articles only against facts read from the live listings on the day of publication, each with its source link.",
+    "Re-run the release gate. A page that cannot trace a claim to an official source does not ship."
+  ],
+  "relationship_note": "A parallel session (59d84c55, integrated on 2026-11-16) shipped a reader-facing marketing site at /site/, including a decision board with proposals, open questions, discovery actions and a prompt pack. This brief is not a rival to it: it is the deeper design pass behind it. Where /site/decisions.html records decisions, this page supplies the design system, the full copy-paste prompt, the twelve-article editorial plan and the ten-point critique that a decision can be made against. Both are linked from each other's intro."
+}
