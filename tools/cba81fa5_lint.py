@@ -199,6 +199,52 @@ def register_checks(root: pathlib.Path):
                (r.stderr or r.stdout).strip()[:200] + " — run python3 tools/build_cba81fa5_site.py")
 
 
+STRAY_ATTR = re.compile(r">\s*(?:title|target|rel|href|class|aria-[\w-]+|data-[\w-]+)\s*=")
+
+
+def lint_generated_regions(root: pathlib.Path):
+    """Checks over the band this session injects into the root page, and over every page's tags.
+
+    The root page belongs to scripts/build_site.py, so the full page rules are not applied to it -
+    only the region between this session's sentinels, plus a malformed-tag scan of every page,
+    because a broken anchor leaks its attributes into the visible text and no other check notices:
+    the link still resolves, the HTML parses, and the disclosure is still on the page.
+    """
+    idx = root / "index.html"
+    if idx.exists():
+        raw = idx.read_text(encoding="utf-8")
+        s, e = raw.find('<a id="cba81fa5-front-door"'), raw.find('<a id="cba81fa5-front-door-end"')
+        if s >= 0 and e > s:
+            band = raw[s:e]
+            rel = "index.html (front-door band)"
+            if DISCLOSURE not in html_unescape(TEXT_STRIP.sub(" ", band)):
+                yield (rel, "POLICY:disclosure-sentence", "the band must carry the required sentence, not rely on the page footer")
+            for m in STRAY_ATTR.finditer(band):
+                yield (rel, "STYLE:malformed-tag",
+                       f"attribute text is outside the tag and renders as prose -> {band[max(0,m.start()-50):m.end()+40]!r}")
+            for m in re.finditer(r'href="([^"]+)"', band):
+                u = m.group(1)
+                if u.startswith("http://"):
+                    yield (rel, "POLICY:insecure-link", u)
+                elif (urlparse(u).hostname or "").lower() in SHORTENERS:
+                    yield (rel, "POLICY:link-shortener", u)
+                elif not u.startswith(("http://", "https://", "#", "mailto:")):
+                    tgt = (idx.parent / u.split("#")[0])
+                    if not tgt.suffix:
+                        tgt = tgt / "index.html" if (idx.parent / u.split("#")[0]).is_dir() else tgt.with_suffix(".html")
+                    if not tgt.exists():
+                        yield (rel, "SITE:broken-link", u)
+
+
+def lint_malformed_tags(root: pathlib.Path):
+    for p in sorted((root / "site").rglob("*.html")):
+        raw = p.read_text(encoding="utf-8")
+        rel = p.relative_to(root).as_posix()
+        for m in STRAY_ATTR.finditer(raw):
+            yield (rel, "STYLE:malformed-tag",
+                   f"attribute text is outside the tag and renders as prose -> {raw[max(0,m.start()-50):m.end()+40]!r}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=str(pathlib.Path(__file__).resolve().parent.parent))
@@ -233,6 +279,8 @@ def main() -> int:
                 findings.append((f"site/{rel}", "SITE:index-entry-missing", "page exists but is not in site-index.json, so the build and the sitemap cannot see it"))
 
     findings += list(register_checks(root))
+    findings += list(lint_generated_regions(root))
+    findings += list(lint_malformed_tags(root))
 
     if a.update_baseline:
         BASELINE.write_text(json.dumps({
