@@ -5975,3 +5975,38 @@ were fixed on the branch rather than left as notes:
   the shared gate requires `class="topbar"` on the navigation, so `scripts/build_read.py` emits
   `<nav class="topbar">`. Both gates now cover the marketing layer. `check_site` reports
   **OK: 24 pages, 3 products, 62 sources, 97 flags**.
+
+### Z14 publication record (session `145b8df7`, 2026-11-16)
+
+| Step | Result |
+|---|---|
+| Branch | `arena/145b8df7-zone3`, base `933e2f3` → integrated through `609dc76`, `c3699f4`, `046b18d` as those merges landed |
+| PR | **#111** — https://github.com/kanlerxz87-cyber/Zone3/pull/111 (summary, sources, flagged irregularities; merged without waiting for review, per the brief) |
+| Merge | **`b8f576d`** — `Merge pull request #111 from kanlerxz87-cyber/arena/145b8df7-zone3`, `gh pr merge 111 --merge`, exit 0. `main` = `b8f576d`, working tree clean |
+| GitHub Pages | `pages/builds/latest` → **status `built`**, `created_at 2026-11-16T18:55:19Z` (2 s after the merge), i.e. the build of `b8f576d`. The build endpoint's `sha` field reads `null` for this repo, so the build is tied to the merge by timestamp and by the file check below |
+| New path shipped | `contents/<path>` at `main` after the build: `read/index.html` 16,493 B · `read/getting-paid.html` 23,748 B · `read/category/air-fryers.html` 14,369 B · `suggestions.html` 78,656 B · `flagged.html` 157,485 B — and the other session's `site/index.html` 15,639 B, untouched |
+| Live-site verification limit, recorded honestly | `https://kanlerxz87-cyber.github.io` is **not reachable from this sandbox** (outbound is restricted to `github.com`, `api.github.com`, `codeload.github.com`, `registry.npmjs.org`, `pypi.org`), so an HTTP 200 on `/Zone3/read/index.html` could not be observed from here. What was verified instead: Pages reports `built` for the post-merge tree, and the deployed blob for `read/getting-paid.html` contains the exact disclosure sentence `check_site.py` requires plus the two `4.50%` rows, and **no** product price or star rating — only Amazon's own published bounty figures ($12.00 / $2.00 / $5.00). A browser check is the one step only the owner can do |
+
+**Final gates on `b8f576d`**
+
+| Gate | Result |
+|---|---|
+| `scripts/check_site.py` | OK — 24 pages, 3 products, 62 sources, 97 flags, all checks passed |
+| `tools/verify_site.py` | **PASS — 95 pages, 1,626 table rows, 1,389 with an official source, 447 flagged, 99 repo-anchored, 0 advisories** |
+| `scripts/check_all_links.py` | PASS — 141 HTML pages, 146 distinct external URLs, 0 errors |
+| `tools/link_report.py --strict` | exit 0 |
+| `scripts/build_sitemap.py --check` | PASS — 90 pages covered, 0 stale entries |
+| `scripts/build_read.py --check` | PASS — 11 pages, committed output matches the generator |
+| markers / `git diff --check` | 0 line-anchored markers, clean |
+
+**Two consistency gaps found in this session's own work and closed before merging, not left as notes:**
+`Z14-F-03` was on this board's irregularities table but absent from `data/flags.json` (so it could not
+render on `flagged.html`) — added as a register row written as an explicit cross-reference to `FLG-010`
+and `Q1` rather than a duplicate of them; and `read/**` was covered only by `verify_site`, so the eleven
+pages were added to `check_site.py`'s `PAGES`, which required `build_read.py` to emit `<nav class="topbar">`
+for the shared gate. Both marketing layers are now checked by both gates.
+
+**Open for the owner, unchanged by this merge:** the Associates Tracking ID (blocks all revenue —
+`FLG-010` / `Q1` / `Z14-F-03`), confirmation of the three intended ASINs, the target marketplace, whether
+an approved account exists, reviewer and cadence, analytics stack, and which reader-facing layer
+(`/read/` or `/site/`) is canonical (`Z14-F-04`). `Z14-T1`…`Z14-T6`: **done**.
