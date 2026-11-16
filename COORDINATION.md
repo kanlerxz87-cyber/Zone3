@@ -4997,3 +4997,31 @@ through the REST API (`gh api …/pulls/96 --method PATCH`) instead. The PR body
 | 4f83-F-01 | The Emeril Lagasse destination title captured 2026-11-15 differs in wording from the S12/S53 capture (2026-11-13/14). The ASIN and destination are unchanged; Amazon listing titles are edited over time | Info | Recorded here and in the 4f83-T2 table. No flag raised; destination mapping stable across captures by three sessions. Does not block the merge |
 
 **Tasks 4f83-T1 through 4f83-T4: done.** Session `4f83ee7b` is complete.
+
+---
+
+# Part: session `5a56c084` (2026-11-16) — polished-marketing implementation pass + final integration for this round
+
+## Session registry (this part)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 5a56c084 | `arena/5a56c084-zone3` | (A) independent 2026-11-16 re-verification of the three submitted links and load-bearing facts; (B) implementation of the unblocked subset of the published SUG-01…10 proposals (polished marketing front-end, editorial article hub for the six `ready` topics, trust and trend modules, decision-log update); (C) final integration pass for this round: all gates, PR to `main`, merge, Pages deploy confirmation | in progress (A, B, C) | 2026-11-16 18:33 |
+
+### Branch note (5a56c084)
+
+This session is fixed by Arena to branch `arena/5a56c084-zone3` (same constraint recorded 2026-11-13 by session 7f84fea4). All work is committed to that branch; no other branch is created or pushed.
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| T-5a56c084-A — Independent re-verification (2026-11-16): three submitted links, three destinations, load-bearing policy facts | in progress | 5a56c084 | `sessions/5a56c084/**`, this Part of `COORDINATION.md` only | S01, S02, S08–S16 (re-fetched 2026-11-16) | none yet |
+| T-5a56c084-B — Implement the unblocked subset of SUG-01…10 (session 4f83ee7b's published proposals): marketing landing, design system, article hub for the six ready topics, trust/trend modules, suggestion status updates | in progress | 5a56c084 | `scripts/build_site.py`, `scripts/build_articles.py` (new), `data/articles.json` (new), `data/suggestions.json`, generated flat pages, `assets/style.css`, `articles/**` (new), `README.md`, `EXECUTIVE-SUMMARY.md`, `sitemap.xml` | S01–S55 (existing register) | none yet |
+| T-5a56c084-C — Final integration pass for this round: run all gates (`check_site`, `verify_site`, `link_report --strict`, `build_sitemap --check`), PR to `main`, merge, Pages deploy confirmation, live checks | in progress | 5a56c084 | this Part of `COORDINATION.md` only | — | none yet |
+
+### Scope and non-overlap notes (5a56c084)
+
+- T7 (session `3c886b62`, `sessions/3c886b62/**` only) has been `in progress` since 2026-11-13 with no commits in the window; per the takeover rule its claim is stale, but its scope does not touch this session's files, so no takeover is performed and nothing is written to its scope.
+- `decision-center.html`, `marketing/*` generators, `tools/*` (audit build) and all `sessions/<other>/**` directories are owned by earlier sessions and are **not** modified by this session. Suggestions-page status changes are made through the data file `data/suggestions.json` and its generator, which 4f83ee7b created for exactly this purpose; the change is additive (a new `implementation` field per suggestion).
+- No proposal that 4f83ee7b marked blocked (SUG-05, pending owner tag Q1) is implemented; no owner-input question (Q1–Q10) is answered by inference.
