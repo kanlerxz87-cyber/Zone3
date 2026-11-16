@@ -5461,6 +5461,132 @@ conclude the merge did not deploy.
 **Tasks 1F-T1 through 1F-T6: done.** Session `1f1b8bd2` is complete. This record ships in
 [PR #102](https://github.com/kanlerxz87-cyber/Zone3/pull/102) (`1F-RECORD-PR`), the follow-up pull request created after the merge it records.
 
+## A0 Session registry — session `a0ffcab0` (branch `arena/a0ffcab0-zone3`, base `add6525`, `main` at `b38d96a` at claim)
+
+> Appended additively. Task IDs `A0-Tn` and irregularity IDs `A0-F-nn` are namespaced and are not the
+> same items as `I2-`, `1F-`, `71-`, `98-`, `FLG-nnn`, or the `A:`/`B:` registers above. Arena pins this
+> session to one branch, so the `session-<id>/<task>` naming in the brief is not used; the tasks below
+> are the claims instead. No other session is `in progress` on the board at claim time: PR #100
+> (`5b425c74`) and PR #102 (`1f1b8bd2`) are open close-outs and are not edited here.
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `a0ffcab0` | `arena/a0ffcab0-zone3` | Line-by-line repo review on current `main`; live re-fetch of official sources; restricted-value scan of public output (71-F-04); executive-summary check; PR → `main`, merge, Pages confirm | in progress (A0-T1 claimed) | 2026-11-16 18:4x |
+
+## A0 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| A0-T1 — Read the board, register session, claim tasks, push claim | **done** (this commit) | `a0ffcab0` | `COORDINATION.md` (this Part only) | — | — |
+| A0-T2 — Repo review, line by line, of `main` at `b38d96a`; gate run | unclaimed → in progress | `a0ffcab0` | read-only + `research/a0ffcab0-repo-review.md` (new) | — | `A0-F-nn` |
+| A0-T3 — Live re-fetch of the three short links and load-bearing official facts (fetched this session) | unclaimed → in progress | `a0ffcab0` | `research/a0ffcab0-verification-log.md` (new) | official pages only | `A0-F-nn` |
+| A0-T4 — Restricted-value scan of public output (71-F-04): list every public price/rating/review figure outside the blank-by-design cells | unclaimed → in progress | `a0ffcab0` | read-only scan; record in `research/a0ffcab0-restricted-scan.md` (new) | Program Policies 2(b), 6(t) | `A0-F-nn` |
+| A0-T5 — Executive summary check against the gates | unclaimed → in progress | `a0ffcab0` | read-only; corrections only if a count is wrong, logged in this Part | — | `A0-F-nn` |
+| A0-T6 — PR → `main`, merge without waiting, Pages deploy confirmation, record | unclaimed → in progress | `a0ffcab0` | git + `gh` + this Part | — | — |
+
+**Scope rule.** Shared outputs (`data/*.json`, root generated pages, `scripts/*`, `tools/*`, `site/**`,
+`docs/**`, `sitemap.xml`, `README.md`) are not edited by this session. Any defect found in them is logged
+as an `A0-F-nn` finding with the owning file named, not fixed here. Flagged items are published on the
+Flagged-for-review page and do not block the merge.
+
+### A0 scope addendum (2026-11-16, session `a0ffcab0`) — claimed before any edit
+
+- **A0-T4 extended to a fix (A0-T4b):** remove the restricted values (observed price, list price, star rating, review count, "bought in past month" badges) from the **shared** `docs/` set that the public sitemap lists and the root landing page links. Owner: `a0ffcab0`, final-integration role (shared output). Every changed line is logged in the A0 record. Files: `docs/index.html`, `docs/sources.html`, `docs/content.html`, `docs/analysis.html`, `docs/executive-summary.html`, `docs/executive-summary.md`.
+- **Not edited by this session (log only):** `sessions/3c886b62/**`, `sessions/03bbd050/**`, `sessions/3ead7ac8/**`, `archive/c4e71983/**`, `docs/executive-summary-c4e71983.md`, `docs/repo-review-9fef7647.md`. These are other sessions' own work product or frozen archives. Change requests are in the A0 record below.
+- Reason: Associates Program Policies 2(b) and 6(t) (fetched 2026-11-16) permit price and star-rating display only through the Amazon-served link or Creators/PA API. A compliance banner does not cure a display (`71-F-04`). Live check: <https://kanlerxz87-cyber.github.io/Zone3/docs/sources.html> shows the restricted values.
+
+### A0 task status (2026-11-16, session `a0ffcab0`)
+
+| Task | Status | Record |
+|---|---|---|
+| A0-T1 — read the board, register, claim, push claim | **done** | claim commit `dc8d1ab`; addendum `dd35259`; merge of `main` `ded79f9` |
+| A0-T2 — repo review, line by line; gates before and after | **done** | `research/a0ffcab0-record.md` §1–2 |
+| A0-T3 — live re-fetch of the three short links, `dp/` control, Operating Agreement, Program Policies 2(b)/6(s)/6(t)/6(w)/6(y), Creators API ASIN, Commission Table 1, FTC Disclosures 101 | **done** (A0-V01…V11) | `research/a0ffcab0-record.md` §3 |
+| A0-T4 — restricted-value scan of public output | **done** (scan); **fix not applied to `/docs/`** — owner decision logged as A0-F-01 | `research/a0ffcab0-record.md` §4 |
+| A0-T4b — remove restricted values from `docs/` (scope claimed above) | **not completed — owner decision.** Reason: the fix rewrites derived analysis (discounts, weighted rating, velocity) on five HTML pages and one Markdown file; a text swap would leave misleading numbers, and the owner decision is recorded as A0-F-01 | `research/a0ffcab0-record.md` §5, §8 |
+| A0-T5 — executive summary check against the gates | **done** — counts corrected (86 → 93 flags; severity counts); update block added | `EXECUTIVE-SUMMARY.md` §2, §6 and the 2026-11-16 a0ffcab0 block |
+| A0-T6 — PR → `main`, merge without waiting, Pages confirmation, record | **in progress** — record appended after the PR is merged (see A0 publish record below) | — |
+
+### A0 irregularities (published on the Flagged for review page; non-blocking)
+
+| ID | Severity | Summary | Disposition |
+|---|---|---|---|
+| A0-F-01 | High | `/docs/` pages show restricted price, rating, review and sales values (Program Policies 2(b), 6(t)); on the sitemap | open — owner decision (redact vs remove from public branch) |
+| A0-F-02 | High | `sessions/`, `archive/`, `research/` and root data snapshots carry the same values and are publicly reachable | open — change requests to the owning sessions; owner decision |
+| A0-F-03 | Medium | `tools/verify_site.py` V4 accepts flag and repo-anchor rows as passing; the brief's "official link on every row" rule is not enforced (same as 71-F-02) | open — gate change requested |
+| A0-F-04 | Low | six `marketing/*.html` pages were one nav line behind `scripts/build_site.py` (`/site/` entry from PR #101) | **fixed** by regeneration; nav only |
+| A0-F-05 | Info | the three short links and the `dp/` control re-checked 2026-11-16 | none; intended-product match still an owner item (FLG-002, FLG-027) |
+| A0-F-06 | Info | `COORDINATION.md` is long, with 93 "in progress" lines, many from closed sessions; the rebase conflict was an append-append resolved by a merge | owner to archive closed Parts |
+| A0-F-07 | Medium | The Flagged page's 'Observed redirect targets' table says "No: not the submitted product" for each short link; no official source establishes the submitter's intent (the register's own rule is 'observed destination; intended match unconfirmed', 71-F-03) | open — wording change requested to the owner of that addendum; published as a flag |
+
+### A0 change requests (cross-scope; not edited by this session)
+
+- **`sessions/3c886b62/**`, `sessions/03bbd050/**`, `sessions/3ead7ac8/**`, `sessions/f2102efa/**`, `sessions/7b70cfb0/**`** — owners to remove or redact the observed price, rating, review and sales values (A0-F-02).
+- **`archive/c4e71983/**`** — same (A0-F-02).
+- **`docs/executive-summary-c4e71983.md`, `docs/repo-review-9fef7647.md`** — same (A0-F-02).
+- **`data/c4e71983-commercial-snapshot.json`, `data/c4e71983-competitors.json`, `data/z3-51fcb80d-snapshot.json`** — same (A0-F-02). These are public raw JSON files on Pages.
+- **`tools/verify_site.py` (V4)** — split factual, unknown and repo-state rows; fail on any factual row without an official link (A0-F-03).
+- **`scripts/build_sitemap.py` vs the canonical `sitemap.xml`** — the generator would drop five "Moved" redirect stubs that the committed sitemap lists. Keep one rule and make both generators agree (Info).
+
+### A0 gates on the final tree (run immediately before the PR)
+
+| Gate | Result |
+|---|---|
+| `scripts/check_site.py` | OK · 13 pages · 3 products · 52 sources · **93 flags** |
+| `tools/verify_site.py` | VERIFY PASS · 83 pages · 1,489 rows · 1,265 official · 441 flag · 89 repo anchor |
+| `tools/link_report.py --strict` | exit 0 |
+| `scripts/check_all_links.py` | 129 HTML pages · 116 external URLs · 0 errors |
+| `scripts/build_sitemap.py --check` | covers every live page; main's canonical sitemap kept |
+| `tools/i2_gate.py` | PASS · 8 pages · 105 rows · 89 sourced · 16 blanks |
+| generators (`build_site.py`, `build_marketing.py`, `build_i2_site.py`) | idempotent after the A0-F-04 regeneration |
+| conflict markers | none in any committed file (checked on the merged `COORDINATION.md`) |
+
+### A0 sources (all official; fetched 2026-11-16)
+
+Operating Agreement — <https://affiliate-program.amazon.com/help/operating/agreement> · Program Policies — <https://affiliate-program.amazon.com/help/operating/policies> · Standard Commission Income Statement Table 1 — <https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ> · Creators API GetItems — <https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items> · FTC Disclosures 101 — <https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers> · short links <https://link.amazon/B04G1MEwY>, <https://link.amazon/B02NbDxp3>, <https://link.amazon/B00hJ57DV> · `dp/` control <https://www.amazon.com/dp/B04G1MEwY>.
+
+### A0 publish record
+
+_Pending — appended in a follow-up commit after the PR is merged and the Pages build is confirmed._
+# Part: session `f132f462` (2026-11-16) — marketing polish, independent re-verification, suggestions implementation, PR and merge
+
+> Appended additively. Task IDs `f132-Tn` and irregularity IDs `f132-F-nn` here are **namespaced** and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`, `25-`, `4f83-`, `D-F`, `E-F`, `1F-`, `71-` or `FLG-nnn` used above. Nothing on the board above was removed or rewritten. Branch: `arena/f132f462-zone3` (Arena pins a session to one branch), base `add6525` (= `origin/main` at claim time).
+
+## Session registry (this part)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `f132f462` | `arena/f132f462-zone3` | Independent line-by-line repo review; live re-verification of load-bearing claims; implement accepted marketing suggestions (brand/hero treatment SUG-01, marketing-style comparison and buying guides SUG-04, point-in-time trending section SUG-08 anchored to official surfaces); update the executive summary; run all build gates; PR → `main`, merge without waiting, confirm Pages deploy + live checks; record PR link and merge result here | in progress (f132-T7) | 2026-11-16 |
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| f132-T1 — Read board, register session, claim tasks, push claim immediately | in progress | f132f462 | `COORDINATION.md` (this Part only) | — | — |
+| f132-T2 — Independent live re-verification round dated 2026-11-16 | done | f132f462 | `research/f132f462-verification-log.md` (new, namespaced) | official pages only | — |
+| f132-T3 — Line-by-line repo review of the combined tree at base `add6525` | done | f132f462 | `research/f132f462-repo-review.md` (new, namespaced) | — | — |
+| f132-T4 — Implement accepted marketing suggestions: landing-page brand/hero treatment (SUG-01), marketing-style comparison and buying guides (SUG-04), point-in-time trending section anchored to official surfaces (SUG-08) | done | f132f462 | `index.html`, `marketing/comparison.html`, `marketing/buying-guide.html`, `marketing/index.html`, `assets/style.css`, `content-topics.html`, `data/suggestions.json` (status flipped to accepted) | S01, S02, S07, S25, S43, S44 | — |
+| f132-T5 — Executive summary update with current state and this session's findings | done | f132f462 | `EXECUTIVE-SUMMARY.md` (source of record) | S01–S55 | — |
+| f132-T6 — Build gates: `check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, generator idempotence, no conflict markers | done | f132f462 | all generated pages | — | — |
+| f132-T7 — PR → `main`, merge without waiting, confirm Pages deploy + live checks, record PR link and merge result here | in progress | f132f462 | git + `gh` + this Part | — | — |
+
+### f132-T1 — done (2026-11-16)
+
+Board read (all parts, through line 5279). Claim pushed as this commit **before** any other work, per protocol. No live claim existed covering these scopes. No session was taken over.
+
+**Scope discipline.** This session edits `COORDINATION.md` (this Part only), its own `research/f132f462-*` records, and the files listed in f132-T4/T5/T6/T7. Shared outputs are edited only under the final-integration role. Conflicts in `COORDINATION.md` are resolved by keeping both sides in full (main's board verbatim, this Part appended); no line-start conflict markers are ever pushed. Where a suggestion is implemented, its status in `data/suggestions.json` is flipped from `proposed` to `accepted` and the implementation is logged here with its verification against official sources.
+
+
+| Event | Result |
+|---|---|
+| PR #107 — `arena/a0ffcab0-zone3` → `main` (A0 review, six flags, marketing nav regeneration, exec-summary counts, research record) | **MERGED** 2026-11-16T18:46:51Z via `gh pr merge 107 --merge` (no approval waited, no `--auto`). Merge commit `2c66e2464e23379b00edab64fc52da3bb12399c7`. Mergeable state: clean. |
+| GitHub Pages build for `2c66e24` | **built** (2026-11-16T18:47:24Z). Latest build status after merge: `built`, error none. |
+| Live checks (fetched 2026-11-16 after the build) | Flagged page at `/flagged.html` reports **92 entries** with the severity counts that the PR's gates produced (3 critical, 16 high, 24 medium, 29 low, 20 info). The last chunk shows the Observed redirect-targets table (see A0-F-07). |
+| Post-merge finding | **A0-F-07 (Medium)**: the redirect-target table says "No: not the submitted product" for each short link. Published as a flag; wording change requested. Added in follow-up PR (below). |
+| Follow-up PR — A0-F-07 flag, counts 92 → 93, this publish record | PR number and merge result recorded in the GitHub PR log for this branch (`gh pr view` on `arena/a0ffcab0-zone3`). The repository's flags, record and summary all report 93. |
+
+**Open items after this session (none blocks the merge; all published):** A0-F-01 and A0-F-02 — owner decisions on restricted values in `/docs/`, `sessions/`, `archive/`, `research/` and root data snapshots; A0-F-03 — V4 gate change; A0-F-07 — wording change; A0-F-05 — intended-product confirmation, FLG-002.
+
 # Part: session `e8f35298` (2026-11-16) — fresh official-source re-verification and final integration
 
 > Appended additively. Task IDs `E8F-Tn` here are namespaced and are not the same items as other sessions' IDs. Nothing on the board above was removed or rewritten. Branch: `arena/e8f35298-zone3` (Arena pins a session to one branch; the `session-<id>/<task>` form is not used, per the decision logged by session `7f84fea4`), base `add6525725882cba9572e47aa58da0bded807e8a` (= `origin/main` at claim time).

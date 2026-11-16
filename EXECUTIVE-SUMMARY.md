@@ -12,6 +12,16 @@
 
 ---
 
+## Update 2026-11-16 — session a0ffcab0 (repo review, live re-check, restricted-value scan)
+
+**Bottom line.** The repository builds and every gate passes on `main` (check_site, verify_site, link_report --strict, check_all_links, sitemap check, i2_gate). The live re-check of the three submitted short links and the policy text reproduces the record: the links open B0CDY277D3, B09B7SB46R and B08DKYBTPH, and `amazon.com/dp/B04G1MEwY` returns Page Not Found. The record is [research/a0ffcab0-record.md](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/a0ffcab0-record.md).
+
+- **Highest-priority finding (A0-F-01, High).** The public `/docs/` pages still show observed Amazon prices, star ratings, review counts and "bought in past month" badges. Program Policies 2(b) and 6(t) do not allow that display outside the Amazon-served link or Creators/PA API. This session did not rewrite `/docs/`, because the fix changes derived analysis on six pages. It is an owner decision with two options, listed in the flag.
+- **Archives (A0-F-02, High).** Other sessions' folders (`sessions/`, `archive/`) still carry the same values. They are logged as change requests, not edited.
+- **Row-provenance gate (A0-F-03, Medium).** `verify_site` counts flagged and repo-anchored rows as passing. The brief's rule, an official link on every row, is not enforced by the gate yet.
+- **Fixed in this pass (A0-F-04, Low).** Six marketing pages were regenerated for the `/site/` nav entry.
+- **Flags.** Seven new items (A0-F-01…07) on the Flagged for review page; the register now holds 93. A0-F-07 asks for a wording fix: the redirect-target table says "No: not the submitted product", which no official source establishes.
+
 ## Update 2026-11-16 — session ab3ed329 (independent re-verification and compliance sweep)
 
 **Bottom line.** The three submitted links still open the three Amazon listings already on record. Their nine-character codes are short-link tokens, not ASINs. The owner still has to confirm which product each link was meant to reach. The record for this pass is [sessions/ab3ed329/index.html](https://kanlerxz87-cyber.github.io/Zone3/sessions/ab3ed329/index.html).
@@ -21,6 +31,19 @@
 - **Still open.** Archived pages in `docs/`, `sessions/` and `research/`, and several snapshot files, still show those values. Their owners must remove or redact them. These are logged as change requests, not edited, under the coordination rules.
 - **Flags.** Five new items were added to the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page (AB-F-01 to AB-F-05). The register held 83 items after that pass; §2 carries the current count.
 - **Owner decisions needed.** (1) The intended product, or the 10-character ASIN, for each submitted link. (2) Whether to remove or redact the archives listed in AB-F-01. (3) Whether a link.amazon redirect counts as a Redirecting Link under Commission Income Statement 2(e). That can only be tested in a logged-in Associates account.
+
+---
+
+## Update 2026-11-16 — session f132f462 (marketing polish, independent re-verification)
+
+**Bottom line.** This session independently re-read every load-bearing claim from the official pages on 2026-11-16 and confirmed the record unchanged: the three short links open B0CDY277D3, B09B7SB46R and B08DKYBTPH; the raw 9-character tokens return Page Not Found; the Operating Agreement (§5 disclosure), Program Policies (2(b), 6(t), 6(w), 6(y)), Commission Table 1 (Kitchen 4.50%, All Other 4.00%), the Creators API ASIN rule (10 characters) and FTC Disclosures 101 all match. Record: `research/f132f462-verification-log.md`.
+
+**Marketing polish implemented (accepted suggestions SUG-01, SUG-04, SUG-08):**
+- Landing page hero rewritten as a brand-led promise ("Three air fryers. One clear comparison. Zero guesswork.") leading into the buying guide and product research — Amazon Program Content sourcing rule documented (S01).
+- A dated "Trending now in air fryers" point-in-time section added, anchored to the Amazon Best Sellers browse path (node 17659096011) read from the three destination listings (S14–S16), with an explicit notice that no trend direction, search volume or conversion data is published (S02).
+- Comparison matrix and buying guide restyled with a "who this is for" decision table using only verified listing attributes; price, rating, review count and commission stay blank-by-design per S02 2(b)/6(t).
+
+**Repo review:** `research/f132f462-repo-review.md` records the line-by-line review of the combined tree; no new irregularities, no secrets, no unverified inferred values.
 
 ---
 
@@ -55,7 +78,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-52 official sources · 55 policy facts · 86 flags · 13 root pages, a 16-page audit build, a `/docs/`
+52 official sources · 55 policy facts · 93 flags · 13 root pages, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -149,8 +172,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-86 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 14 high, 23 medium, 28 low, 18 informational (informational entries record a correction
+93 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 16 high, 25 medium, 29 low, 20 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
