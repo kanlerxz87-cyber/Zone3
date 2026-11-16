@@ -22,6 +22,10 @@ h2{font-size:19px;margin:0 0 10px}
 .hero p{max-width:760px;color:#eef3ff;margin:0 0 18px}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-actions a{display:inline-block;border:1px solid #ffffff80;border-radius:8px;padding:9px 13px;color:#fff;text-decoration:none;font-weight:650}
 .hero-actions a:first-child{background:#fff;color:#173b77;border-color:#fff}
+.trending{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:0 0 22px;box-shadow:0 4px 14px #172b4d08}
+.trending h2{font-size:20px;margin:0 0 8px}
+.trending table{font-size:14px}
+.trending td a{white-space:normal}
 .decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .decision-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px;box-shadow:0 4px 14px #172b4d08}
 .decision-card h3{margin:0 0 8px;font-size:16px}.decision-card p{margin:7px 0}.decision-card .status{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}

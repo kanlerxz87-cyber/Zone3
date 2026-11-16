@@ -31,7 +31,7 @@
     {
       "id": "757-ES-03",
       "point": "The site reads as AI slop because it is an audit dashboard, not a shop front",
-      "detail": "The landing page leads with process metrics (0 of 3 prices verified, 78 total flags open), the navigation is a list of internal document names plus two entries named after agent sessions, and the buyer-facing product table is mostly blank cells marked Unverified. Accurate, but it speaks to an auditor, not to someone deciding which air fryer to buy.",
+      "detail": "The root pages are an audit dashboard. The hero was rewritten into marketing copy by a parallel session on 2026-11-16, but the statistic block directly beneath it still leads with process metrics (0 of 3 prices verified, 97 total flags open), the navigation is a list of internal document names plus four entries named after agent sessions, and the buyer-facing product table still carries blank cells marked Unverified. Accurate, but addressed to an auditor rather than to someone choosing an air fryer. A reader-facing site now exists at /site/; this critique is what the next pass should be measured against.",
       "repo": "index.html"
     },
     {
@@ -61,7 +61,7 @@
     {
       "id": "757-ES-07",
       "point": "Recommended path: two surfaces, not one",
-      "detail": "Keep the evidence dashboard as a trust asset behind a How we verify link, and build a separate reader-facing surface that leads with buying decisions. The current build's rigour is a competitive advantage once it is presented as proof rather than as the product.",
+      "detail": "Keep the evidence dashboard as a trust asset behind one link labelled How we verify, and keep the reader-facing surface leading with the buying decision. A parallel session built that reader surface at /site/ on 2026-11-16; this brief is the design pass for what it should become, and the critique below is what to measure it against.",
       "repo": "scripts/build_site.py"
     },
     {
@@ -75,17 +75,17 @@
     {
       "id": "757-C-01",
       "area": "Navigation",
-      "observed": "Two top-level nav entries are named after agent sessions: Verification (3ead7ac8) and Verification (25513d33). Others are internal document names: Pricing & commission, Content & compliance, Campaigns & tracking.",
-      "slop": "The single strongest tell. A real publication names destinations after what the reader wants; only a machine names them after the process that produced them.",
+      "observed": "Four top-level nav entries are named after agent sessions: Verification (3ead7ac8), Verification (25513d33), Verification (ab3ed329) and Verification (5b425c74). Two more were added on 2026-11-16. Others are internal document names: Pricing & commission, Content & compliance, Campaigns & tracking.",
+      "slop": "The single strongest tell, and it is getting stronger with every session. A real publication names destinations after what the reader wants; only a machine names them after the process that produced them.",
       "fix": "Rename to reader language: Home, Reviews, Comparisons, Buying guides, How we test. Move every process-named page behind one How we verify link.",
       "repo": "scripts/build_site.py"
     },
     {
       "id": "757-C-02",
       "area": "Landing page lead",
-      "observed": "Headline statistics are 3 product links submitted, 0 of 3 prices verified, 3 critical flags open, 78 total flags open.",
-      "slop": "The first thing a visitor meets is the publisher's own incomplete homework. Confidence comes from a clear recommendation, not from a count of what is missing.",
-      "fix": "Lead with the buying decision: which of the three suits which kitchen. Move the counts into a small evidence bar that links to How we verify.",
+      "observed": "The hero was rewritten into marketing copy on 2026-11-16, but the statistic block directly beneath it still leads with 3 product links submitted, 0 of 3 prices verified, 3 critical flags open and 97 total flags open.",
+      "slop": "The first numbers a visitor meets are the publisher's own incomplete homework. Confidence comes from a clear recommendation, not from a count of what is missing.",
+      "fix": "Keep the rewritten hero. Move the counts into a small evidence bar that links to How we verify, and lead the page with the buying decision.",
       "repo": "index.html"
     },
     {
@@ -131,9 +131,9 @@
     {
       "id": "757-C-07",
       "area": "Site architecture",
-      "observed": "Two independent site generations are merged into one navigation: the root flat pages and a 16-page audit build at /dashboard/.",
-      "slop": "Visitors meet two products wearing one nav, and cannot tell which half is for them.",
-      "fix": "Make the split explicit and purposeful: reader surface is the front door, audit build is the proof library behind How we verify.",
+      "observed": "Three site generations are merged into one navigation: the root flat pages, the 16-page audit build at /dashboard/, and the reader-facing marketing site at /site/ added on 2026-11-16.",
+      "slop": "Visitors meet three products wearing one nav, and cannot tell which half is for them.",
+      "fix": "Make the split explicit and purposeful: /site/ is the front door, the audit build is the proof library behind How we verify, and the root dashboard stops being a destination.",
       "repo": "README.md"
     },
     {
@@ -795,5 +795,6 @@
     "Build the reader surface and the evidence surface as two clearly separated areas of one site, linked by How we verify.",
     "Publish the twelve articles only against facts read from the live listings on the day of publication, each with its source link.",
     "Re-run the release gate. A page that cannot trace a claim to an official source does not ship."
-  ]
+  ],
+  "relationship_note": "A parallel session (59d84c55, integrated on 2026-11-16) shipped a reader-facing marketing site at /site/, including a decision board with proposals, open questions, discovery actions and a prompt pack. This brief is not a rival to it: it is the deeper design pass behind it. Where /site/decisions.html records decisions, this page supplies the design system, the full copy-paste prompt, the twelve-article editorial plan and the ten-point critique that a decision can be made against. Both are linked from each other's intro."
 }

@@ -21,7 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = "https://github.com/kanlerxz87-cyber/Zone3"
 DATA = ROOT / "data"
 ASSETS = ROOT / "assets"
-BUILT = "2026-11-14"
+BUILT = "2026-11-16"
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 
 
@@ -122,6 +122,12 @@ NAV = [
     # Added by session 25513d33 (2026-11-14): this session's independent record. Every row
     # was produced by a fetch performed by this session; labels read from data/sources.json.
     ("sessions/25513d33/index.html", "Verification (25513d33)"),
+    # Added by session ab3ed329 (2026-11-16): independent re-verification of the three short links,
+    # the Associates policy clauses and the commission table, plus the exposure check (AB-F-01).
+    ("sessions/ab3ed329/index.html", "Verification (ab3ed329)"),
+    # Added by session 5b425c74 (2026-11-16): this session's independent re-verification record.
+    # Every row was produced by a fetch performed by this session on 2026-11-16.
+    ("sessions/5b425c74/index.html", "Verification (5b425c74)"),
     # Added by integration session edbd56a1 (2026-11-14): /docs/ returned HTTP 200 but had
     # no inbound link from any dashboard, so a browsing visitor could not reach it (flag V-F3).
     ("docs/index.html", "Reference (/docs/)"),
@@ -136,6 +142,10 @@ NAV = [
     # rendered by tools/build_site.py from data/z3/*.json. Linked here so the two halves of
     # the merged site are one navigable product instead of two disconnected trees.
     ("dashboard/index.html", "Full audit (16 pages)"),
+    # Added by integration session 59d84c55 (2026-11-16): the reader-facing marketing
+    # site built by tools/build_i2_site.py from data/i2/*.json. Placed last in the nav
+    # because this nav serves the audit; the dashboard tile below gives it the top spot.
+    ("site/index.html", "Marketing site (new)"),
 ]
 
 
@@ -217,6 +227,10 @@ h2{font-size:19px;margin:0 0 10px}
 .hero p{max-width:760px;color:#eef3ff;margin:0 0 18px}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero-actions a{display:inline-block;border:1px solid #ffffff80;border-radius:8px;padding:9px 13px;color:#fff;text-decoration:none;font-weight:650}
 .hero-actions a:first-child{background:#fff;color:#173b77;border-color:#fff}
+.trending{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin:0 0 22px;box-shadow:0 4px 14px #172b4d08}
+.trending h2{font-size:20px;margin:0 0 8px}
+.trending table{font-size:14px}
+.trending td a{white-space:normal}
 .decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .decision-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px;box-shadow:0 4px 14px #172b4d08}
 .decision-card h3{margin:0 0 8px;font-size:16px}.decision-card p{margin:7px 0}.decision-card .status{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
@@ -311,6 +325,16 @@ def reverify_table() -> str:
 
 
 SITEMAP_GROUPS = [
+    # Added by integration session 59d84c55 (2026-11-16): the reader-facing site.
+    ("Marketing site", [
+        ("site/index.html", "Marketing site: start here"),
+        ("site/products.html", "Marketing site: the three air fryers"),
+        ("site/guides/index.html", "Marketing site: buying guides"),
+        ("site/evidence.html", "Marketing site: how we know"),
+        ("site/decisions.html", "Marketing site: suggestions &amp; decisions"),
+        ("site/flagged.html", "Marketing site: flagged for review"),
+        ("site/front-door.html", "Marketing site: where the rest lives"),
+    ]),
     ("Overview", [
         ("executive-summary.html", "Executive summary"),
         ("dashboard/index.html", "Full audit dashboard (16 pages)"),
@@ -355,6 +379,10 @@ SITEMAP_GROUPS = [
         ("sessions/3ead7ac8/index.html", "Verification (session 3ead7ac8)"),
         # Added by session 25513d33 (2026-11-14) alongside the dashboard tile.
         ("sessions/25513d33/index.html", "Verification (session 25513d33)"),
+        # Added by session ab3ed329 (2026-11-16) alongside the dashboard tile.
+        ("sessions/ab3ed329/index.html", "Verification (session ab3ed329)"),
+        # Added by session 5b425c74 (2026-11-16) alongside the dashboard tile.
+        ("sessions/5b425c74/index.html", "Verification (session 5b425c74)"),
         ("requirements/index.html", "Requirements traceability"),
         ("repo-review/index.html", "Repository review"),
         ("compliance/index.html", "Compliance register"),
@@ -398,6 +426,12 @@ def build_index() -> None:
         for l, v, k in stats
     )
     tiles = [
+        # Added by integration session 59d84c55 (2026-11-16): leads with the reader-facing
+        # marketing site. The audit tiles below it are unchanged.
+        ("site/index.html", "Marketing site (new)",
+         "The reader-facing site: three air fryers compared on what their listings state, buying "
+         "guides, the source register, and a decision board where each proposal can be accepted, "
+         "rejected or deferred before anything is implemented."),
         ("executive-summary.html", "Executive summary", "Bottom line, findings, what was built, what is blocked."),
         ("products.html", "Products", "The 3 submitted links, identifier checks, redirect results."),
         ("pricing.html", "Pricing &amp; commission", "Price and commission fields, plus the verified commission rules."),
@@ -443,6 +477,18 @@ def build_index() -> None:
         ("sessions/25513d33/index.html", "Verification (session 25513d33)",
          "Independent re-fetch of all three submitted links and 12 policy and disclosure "
          "statements, re-read verbatim on 2026-11-14, each row linked to the page it came from."),
+        # Added by session ab3ed329 (2026-11-16): same reason as the tile above.
+        ("sessions/ab3ed329/index.html", "Verification (session ab3ed329)",
+         "Live re-read of the three short links, their destination listings, the Operating Agreement, "
+         "Program Policies 2(a), 2(b), 6(g), 6(t), 6(v), 6(w), 6(y), the commission table and the "
+         "Creators API ASIN rule on 2026-11-16, plus a sweep that removed observed price and rating values from public data (AB-F-01)."),
+        # Added by session 5b425c74 (2026-11-16): same reason as the tiles above. This record
+        # independently re-fetches the three links and re-reads 22 policy, commission, API and
+        # FTC statements verbatim on 2026-11-16.
+        ("sessions/5b425c74/index.html", "Verification (session 5b425c74)",
+         "Independent re-fetch of all three submitted links, both commission rate tables, the "
+         "Operating Agreement, Program Policies, Creators API and FTC pages on 2026-11-16, each "
+         "row linked to the official page it came from."),
         ("docs/index.html", "Archived 2026-11-13 build (/docs/) — flagged",
          "An earlier build, kept for provenance. It still displays price and star-rating cells that "
          "this site's rule and Amazon's policy prohibit; see I-F-02 on the Flagged for review page. "
@@ -455,10 +501,16 @@ def build_index() -> None:
     sitemap_html = build_sitemap_html()
     body = f"""
 <section class="hero">
-  <p class="eyebrow">Evidence-first air-fryer research</p>
-  <h2>Make the next kitchen buy with clearer comparisons.</h2>
-  <p>Explore practical buying guides and product comparisons, with evidence behind published claims and unknowns clearly called out. This research is not a substitute for checking the live Amazon listing.</p>
+  <p class="eyebrow">Zone3 &bull; Verified air-fryer affiliate research</p>
+  <h2>Three air fryers. One clear comparison. Zero guesswork.</h2>
+  <p>We read the live Amazon listings and Amazon's own programme rules so you don't have to. Every specification below comes from an official Amazon or FTC page — prices, ratings and review counts stay blank by policy, not by omission. No invented trends, no AI filler.</p>
   <div class="hero-actions"><a href="marketing/index.html">Explore product research</a><a href="marketing/buying-guide.html">Read the buying guide</a></div>
+</section>
+<section class="trending">
+  <h2>Trending now in air fryers (point-in-time)</h2>
+  <p class="muted">Popularity surfaces move between captures. This section points to Amazon's own Best Sellers browse path as a dated reference — it does not claim any product is trending, best-selling, or high-converting.</p>
+  <div class="table-wrap"><table class="trending"><thead><tr><th>Amazon browse path (as served)</th><th>Browse node</th><th>Captured</th><th>Source</th></tr></thead><tbody><tr><td>Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers</td><td>17659096011</td><td>2026-11-16</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="Observed redirect target: amazon.com/dp/B0CDY277D3 (page title, breadcrumb)">S14</a> &middot; <a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer" title="Observed redirect target: amazon.com/dp/B09B7SB46R (page title, breadcrumb)">S15</a> &middot; <a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer" title="Amazon.com product page check: amazon.com/dp/B08DKYBTPH (page title, breadcrumb)">S16</a></td></tr></tbody></table></div>
+  <p class="muted small">This is a category breadcrumb read from the three destination listings Amazon served. It is not a ranking, a sales figure, or a recommendation. No trend direction, search volume, or conversion data is published anywhere on this site — Amazon provides no such affiliate endpoint.</p>
 </section>
 <div class="callout">
   <p><strong>Research status:</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links. Static price offers and unverified analytics are not published.</p>
@@ -971,6 +1023,10 @@ def build_design_brief() -> None:
         'is implemented</strong>: it exists so the path is chosen before anything is built. '
         'The reviewable version of every proposal is on the '
         '<a href="decision-queue.html">Review console</a>. This session&rsquo;s verification log and repository review are in the <a href="sessions/757efebc/index.html">session record</a>.</p></div>'
+        + '<div class="suggestion"><h3>How this relates to the /site/ marketing site</h3>'
+        f'<p>{e(d["relationship_note"])}</p>'
+        '<p><a href="site/index.html">Marketing site</a> &middot; '
+        '<a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a></p></div>'
     )
 
     rows = [[e(r["id"]), f'<strong>{e(r["point"])}</strong>', e(r["detail"]), basis(r)]
@@ -1079,6 +1135,10 @@ def build_decision_queue() -> None:
         'actions that would get it. Nothing on this page implements anything: the point is to '
         'choose the path first. The design rationale behind these rows is on the '
         '<a href="design-brief.html">Design brief</a>. This session&rsquo;s verification log and repository review are in the <a href="sessions/757efebc/index.html">session record</a>.</p></div>'
+        + '<div class="suggestion"><h3>How this relates to /site/decisions.html</h3>'
+        f'<p>{e(q["relationship_note"])}</p>'
+        '<p><a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a> &middot; '
+        '<a href="site/index.html">Marketing site home</a></p></div>'
     )
 
     # Rendered as a definition list, not a table. This site's rule is that every *table* row

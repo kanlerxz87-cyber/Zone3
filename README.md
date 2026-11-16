@@ -80,7 +80,43 @@ The pipeline records the observed destination listings separately from the 9-cha
 | **This pass (2026-11-16)** | `/design-brief.html` | **Design brief and prompt pack.** Why the site reads as machine output (ten findings against this repo's own files), a copy-and-paste prompt for the redesign, the design system, a twelve-article editorial plan, the organic-traffic architecture, the conversion architecture and an anti-slop checklist. Every factual row links its official source. Proposals only — nothing here is implemented |
 | **This pass (2026-11-16)** | `/decision-queue.html` | **Review console.** All 22 proposals in one queue with a recommendation, priority, effort, risk, the question that blocks it and a decision state; then the information this project has, the information it does not have, and the actions that would get it. This is the section to review before implementing anything |
 | **This pass (2026-11-16)** | `/sessions/757efebc/` | This session's record: executive summary, the 28 claims re-verified live on 2026-11-16 against the official page each one cites, the line-by-line repository review with link-outs for manual checking, and the four irregularities raised |
+| **This pass (2026-11-16)** | `/site/` | **The reader-facing marketing site.** Built by `tools/build_i2_site.py` from `data/i2/*.json`, gated by `tools/i2_gate.py` (G1–G10). Eight pages: a home page that leads with the three products, a comparison table where every row links the listing it came from and every blank cell says why, a buying guide, a source register with 14 pages read on 2026-11-16, a 22-row line-by-line verification log, a "flagged for review" page with 8 open items, and a decision board with 12 proposals, 12 open questions, 9 discovery actions, a 6-part prompt pack and an Accept/Reject/Defer control that changes nothing until a choice is recorded. |
 | **Executive summary (document)** | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | The standalone executive summary: verified facts, deliberately blank fields, capability status, and the three items that unblock the build |
+
+---
+
+## The reader-facing site (`/site/`, added 2026-11-16)
+
+The repository's other builds are audit surfaces: they answer "what do we know and how do we know it",
+which is the right answer for a reviewer and the wrong first impression for a reader deciding what to buy.
+`/site/` is the reader-facing layer, and it keeps the same evidence rule while dropping the audit tone.
+
+| Page | What a reader gets |
+| --- | --- |
+| [`site/index.html`](site/index.html) | The promise, the three products as cards built only on listing facts, a seven-row comparison, and an explicit statement of what is deliberately left out |
+| [`site/products.html`](site/products.html) | Full listing detail, the nine-character-token caution, and a table of every field that is blank with the rule that requires it |
+| [`site/guides/index.html`](site/guides/index.html) | The guide plan and the one live guide, `dual-basket-vs-single-basket.html` |
+| [`site/evidence.html`](site/evidence.html) | 14 official sources read 2026-11-16, their observed text, and a 22-row verification log with the outcome per claim |
+| [`site/flagged.html`](site/flagged.html) | 8 open items, each with severity, what was found, what would resolve it and its source |
+| [`site/decisions.html`](site/decisions.html) | 12 proposals · 12 open questions · 9 discovery actions · 6 prompts · a working Accept/Reject/Defer control with an export |
+
+**What is different about it, concretely:**
+
+- **The disclosure is a banner above the navigation, not a footer line.** The exact Operating Agreement §5
+  sentence is unchanged; its placement now also meets the FTC's guidance that a footer-only disclosure is
+  likely to be missed ([I2-S01](https://affiliate-program.amazon.com/help/operating/agreement),
+  [I2-S06](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers)).
+- **A blank cell is a designed element, not a gap.** It renders as `Not published` with a one-sentence
+  reason and a link to the open item that blocks it.
+- **No figure can be published by accident.** `tools/i2_gate.py` G6 fails the build on any money amount,
+  percentage, star rating or review count that is not in the published-rate allowlist.
+- **Nothing on the decisions page is applied by reading it.** Choices are held in the browser, exported as
+  text, and only become changes when a later session implements what was accepted.
+
+```bash
+python3 tools/build_i2_site.py     # rebuild site/ from data/i2/*.json
+python3 tools/i2_gate.py           # G1–G10; exit 1 on any prohibited construct
+```
 
 ---
 

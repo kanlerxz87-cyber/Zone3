@@ -1,0 +1,150 @@
+{
+  "_meta": {
+    "title": "I2 source register — official pages read by session 59d84c55 on 2026-11-16",
+    "rule": "A source is listed here only if this session fetched it on 2026-11-16 and read the quoted text on the page. Nothing is quoted from memory, from a search-result snippet, or from another session's record. Each entry records what was observed and the safety-relevant quota it was read under.",
+    "namespacing": "I2-Snn is this session's namespace. It does not reuse A:Snn, SRC-nn or C4E-Snn numbers, so an ID collision cannot silently point at a different document.",
+    "fetch_route": "The sandbox's direct HTTPS egress is limited to github.com, api.github.com, registry.npmjs.org, pypi.org and files.pythonhosted.org (verified: curl to amazon.com and ftc.gov returns SSL_ERROR_SYSCALL). Official pages were therefore read through the page-fetch tool, one fetch per URL, with the Agent/Zone3ProductResearch user agent identified in the repository's tooling. Amazon's Program Policies Agent Terms §4(c) require an agent to identify itself and not to circumvent any measure intended to limit automated access; a block or a sign-in wall was recorded as a result, not worked around."
+  },
+  "sources": [
+    {
+      "id": "I2-S01",
+      "publisher": "Amazon Associates Central (official)",
+      "title": "Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Header reads 'Updated: October 15, 2025'. Section 5 'Identifying Yourself as an Associate' carries the exact sentence 'As an Amazon Associate I earn from qualifying purchases.' Section 1 defines Special Links as links that 'must properly use the special tagged link formats we provide'. Section 2 makes compliance a condition of commission income. Section 6 states a violation of Section 5 is deemed a material breach.",
+      "supports": ["Disclosure wording and placement duty", "Tagged-link requirement", "Breach consequence"]
+    },
+    {
+      "id": "I2-S02",
+      "publisher": "Amazon Associates Central (official)",
+      "title": "Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Header reads 'Updated: April 14, 2026'. Read on the page: 2(b) 'you may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API'; 2(b) 'You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product'; 2(b) sub-tag rule: 'Under no circumstances may you associate any sub-tag, other ID or reporting ... with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site)'; 6(s) 'You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise'; 6(t) 'You will not display or otherwise use any of our customer reviews or star ratings ... unless you have obtained a link to that customer review or star rating through Creators API or PA API'; 6(w) no link shortening that makes it unclear you are linking to an Amazon Site; 6(y) 'Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality'; 6(e)/6(f) no Amazon Mark in paid search, no keyword bidding on Proprietary Terms; 6(n) no framing an Amazon Site; 6(o) no pop-up/pop-under layers; 6(u) no buying through your own Special Links; IP License 1 bars using Program Content 'to, directly or indirectly, develop or improve large language or multimodal models, machine learning models or related technology'; IP License 2(e) bars accessing the API 'for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content' without express prior written approval; IP License 2(h) 24-hour cache limit and 'you will not store or cache Product Advertising Content consisting of an image' (a link to an image may be stored for up to 24 hours); IP License 2(i) date/time stamp plus the 'Product prices and availability are accurate as of the date/time indicated...' disclaimer when displaying pricing/availability; IP License 2(k) the verbatim 'CERTAIN CONTENT THAT APPEARS ... COMES FROM AMAZON' text disclaimer; Agent Terms §4(c) 'In all HTTP/HTTPS requests, identify that the request is from an Agent and disclose the name of the Agent by including the following in the request's user agent string: Agent/[agent name]', plus the prohibition on concealing agent access and on circumventing blocks.",
+      "supports": ["Price and rating display limits", "No price tracking", "No automated clicks", "Link-shortener rule", "API analysis limit", "No ML training on Program Content", "Cache limits", "Agents must self-identify"]
+    },
+    {
+      "id": "I2-S03",
+      "publisher": "Amazon Associates Central — Creators API documentation (official)",
+      "title": "Creators API: GetItems operation",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "itemIdType 'Default Value: ASIN'. itemIds: 'One or more ItemIds like ASIN that uniquely identify an item' with the documented examples 'B0199980K4' and 'B000HZD168'. partnerTag is a Required parameter. The response returns each item's 'asin' and a 'detailPageURL' of the form https://www.amazon.com/dp/<ASIN>?tag=xyz-20 — i.e. the API returns an already-tagged destination link.",
+      "supports": ["ASIN identifier rule", "API returns a tagged detail page URL", "No price-history or trend operation"]
+    },
+    {
+      "id": "I2-S04",
+      "publisher": "Amazon Associates Central — Creators API documentation (official)",
+      "title": "Creators API: Welcome / Introduction — operations and prerequisites",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "The API exposes exactly four operations: SearchItems, GetItems, GetVariations, GetBrowseNodes. Prerequisites listed verbatim: '1. Be enrolled in the Amazon Associates program for your target marketplace; 2. Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API; 3. Register for API access through Associates Central; 4. Generate API credentials'.",
+      "supports": ["API capability boundary (no search-volume or trend endpoint)", "API eligibility gate: enrollment plus 10 qualifying sales in 30 days"]
+    },
+    {
+      "id": "I2-S05",
+      "publisher": "Amazon Associates Central (official)",
+      "title": "Associates Program Standard Commission Income Statement — Table 1 and Bounty table",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Table 1 rows read as printed: 'Physical Books, Kitchen, Automotive — 4.50%'; 'Luxury Beauty, Luxury Stores Beauty, Amazon Explore — 10.00%'; 'Digital Music, Physical Music, Handmade, Digital Videos — 5.00%'; 'Toys, Furniture, Home, ... — 3.00%'; 'PC, PC Components, DVD & Blu-Ray — 2.50%'; 'Televisions, Digital Video Games — 2.00%'; 'Amazon Fresh, ... Health & Personal Care — 1.00%'; several 0.00% rows; 'All Other Categories — 4.00%'. Bounty rates read as printed: Prime Free Trial / Prime Paid Membership / Prime for Young Adults / Prime Access / Prime Sign Up at Checkout — $12.00; Prime Video Free Trial — $2.00; Prime Video First Stream — $5.00; Prime Video Stream — $0.25.",
+      "supports": ["Category commission rates", "Bounty schedule"]
+    },
+    {
+      "id": "I2-S06",
+      "publisher": "U.S. Federal Trade Commission (official)",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Page dated November 2019. Read verbatim: disclose 'when you have any financial, employment, personal, or family relationship with a brand'; place the disclosure so it is 'hard to miss' and 'with the endorsement message itself'; 'Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE'; use 'simple and clear language'; 'The disclosure should be in the same language as the endorsement itself'; 'You can't talk about your experience with a product you haven't tried'; 'You can't make up claims about a product that would require proof the advertiser doesn't have'; 'Don't assume that a platform's disclosure tool is good enough'.",
+      "supports": ["FTC disclosure placement", "No invented first-hand experience", "No unprovable claims"]
+    },
+    {
+      "id": "I2-S07",
+      "publisher": "Submitted link (owner-supplied) resolved live",
+      "title": "link.amazon/B04G1MEwY — observed redirect",
+      "url": "https://link.amazon/B04G1MEwY",
+      "fetched": "2026-11-16",
+      "http": "200 (final URL amazon.com/dp/B0CDY277D3)",
+      "observed": "Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-68884e8aa630b24a&channelId=704&plpRedirect=mhFallback . Served page title: 'Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen'. Breadcrumb on the page: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (node 17659096011). The redirect carries no Associates tag parameter.",
+      "supports": ["Destination of submitted link 1", "No tag present in the redirect"]
+    },
+    {
+      "id": "I2-S08",
+      "publisher": "Submitted link (owner-supplied) resolved live",
+      "title": "link.amazon/B02NbDxp3 — observed redirect",
+      "url": "https://link.amazon/B02NbDxp3",
+      "fetched": "2026-11-16",
+      "http": "200 (final URL amazon.com/dp/B09B7SB46R)",
+      "observed": "Final URL: https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-662480f5bd825c83&channelId=704&plpRedirect=mhFallback . Served page title: 'Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen'. Same Air Fryers breadcrumb.",
+      "supports": ["Destination of submitted link 2"]
+    },
+    {
+      "id": "I2-S09",
+      "publisher": "Submitted link (owner-supplied) resolved live",
+      "title": "link.amazon/B00hJ57DV — observed redirect",
+      "url": "https://link.amazon/B00hJ57DV",
+      "fetched": "2026-11-16",
+      "http": "200 (final URL amazon.com/dp/B08DKYBTPH)",
+      "observed": "Final URL: https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-38bef00eb1e962ef&channelId=704&plpRedirect=mhFallback&th=1 . Served page title: 'Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen'. Same Air Fryers breadcrumb.",
+      "supports": ["Destination of submitted link 3"]
+    },
+    {
+      "id": "I2-S10",
+      "publisher": "Amazon.com (official retailer)",
+      "title": "Product detail page: B0CDY277D3",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Live listing. Title as in I2-S07. Breadcrumb Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers. The fetched text placed price and star-rating strings only inside 'Customers who viewed this item also viewed' carousels for OTHER ASINs (e.g. B0B7C327LK '4.41,393'), not against B0CDY277D3; no price or rating for the featured ASIN was read from this fetch.",
+      "supports": ["Listing title and category for product 1", "A caution that carousel ratings are not the product's"]
+    },
+    {
+      "id": "I2-S11",
+      "publisher": "Amazon.com (official retailer)",
+      "title": "Product detail page: B09B7SB46R",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Live listing. Title as in I2-S08. Breadcrumb as above. Price/rating strings in the fetched text sat inside related-item carousels for other ASINs (B0BZ52FLKC '4.43,727', B0FM5KF34G '4.6822', B0D1BGLW25 '4.22,210'); none was attributed to B09B7SB46R.",
+      "supports": ["Listing title and category for product 2"]
+    },
+    {
+      "id": "I2-S12",
+      "publisher": "Amazon.com (official retailer)",
+      "title": "Product detail page: B08DKYBTPH",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Live listing. Title as in I2-S09. Breadcrumb as above. The page carried a 'Sponsored' label above its related-item block; the ratings in that block belong to B0CNY1YVDD, B0D5FX6VRL and B09MR7QWKZ, not to B08DKYBTPH.",
+      "supports": ["Listing title and category for product 3", "Advertising on the page is Amazon's, not this site's"]
+    },
+    {
+      "id": "I2-S13",
+      "publisher": "Amazon.com (official retailer)",
+      "title": "Direct probe: amazon.com/dp/B04G1MEwY",
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "fetched": "2026-11-16",
+      "http": "200 with error page",
+      "observed": "Served title 'Page Not Found'; body 'Sorry! We couldn't find that page.' The nine-character submitted token is not a resolvable ASIN, which is consistent with I2-S03 (ASIN is the item identifier, documented examples are ten characters).",
+      "supports": ["The submitted nine-character tokens are not ASINs"]
+    },
+    {
+      "id": "I2-S14",
+      "publisher": "GitHub REST API (official host of record)",
+      "title": "Pages configuration and latest build for this repository",
+      "url": "https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest",
+      "fetched": "2026-11-16",
+      "http": "200",
+      "observed": "Pages 'status: built', source branch 'main', path '/', 'https_enforced: true'. Latest build commit 933e2f3931c9cade4e1801eb2f46a4cf94d93c9b, created 2026-11-15T12:00:31Z, updated 2026-11-15T12:00:53Z, status 'built'.",
+      "supports": ["The published site is served from main / on GitHub Pages", "Deployment state at the start of this session"]
+    }
+  ]
+}
