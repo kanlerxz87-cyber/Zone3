@@ -36,14 +36,11 @@ FACTS = {f["id"]: f for f in load("policy_facts.json")["facts"]}
 FLAGS = load("flags.json")["flags"]
 TOPICS = load("topics.json")
 SUGGESTIONS = load("suggestions.json")
-<<<<<<< HEAD
-DESIGN = load("design-brief.json")
-QUEUE = load("decision-queue.json")
-=======
 # Added by session 5a56c084 (2026-11-16): the Research Desk articles, used by the
 # landing page's editorial section. Generated into articles/ by build_5a56c084.py.
 ARTICLES = load("articles.json")
->>>>>>> origin/main
+DESIGN = load("design-brief.json")
+QUEUE = load("decision-queue.json")
 
 
 def e(value) -> str:
@@ -65,6 +62,262 @@ def src_links(ids) -> str:
 
 def flag_links(ids) -> str:
     return " ".join(f'<a class="flagid" href="flagged.html#{e(i)}">{e(i)}</a>' for i in ids) or "&mdash;"
+
+# ------------------------------------------- Design brief (session 757efebc, 2026-11-16)
+STATE_KIND = {
+    "do-now": "ok",
+    "do-next": "info",
+    "blocked": "warn",
+    "defer": "muted",
+    "do-not-do": "bad",
+    "proposal": "info",
+    "recommended": "ok",
+}
+
+
+def repo_link(path: str, label: str) -> str:
+    """Link a file in this repository. Used where a row describes repository state."""
+    return (f'<a href="{REPO}/blob/main/{e(path)}" target="_blank" '
+            f'rel="noopener noreferrer">{e(label)}</a>')
+
+
+def basis(rec: dict) -> str:
+    """Evidence cell for a row: official sources first, then the repository reference."""
+    parts = []
+    if rec.get("src"):
+        parts.append(src_links(rec["src"]))
+    if rec.get("repo"):
+        parts.append(repo_link(rec["repo"], "this repo: " + rec["repo"]))
+    return " &middot; ".join(parts) or '<span class="muted">no source</span>'
+
+
+def build_design_brief() -> None:
+    """The redesign brief and prompt pack (session 757efebc, 2026-11-16).
+
+    The concrete answer to "it reads like AI slop": a critique of what the site does now,
+    a copy-and-paste prompt for the redesign, a design system, a twelve-article editorial
+    plan, a traffic architecture, a conversion architecture and an anti-slop checklist.
+    Every factual row links the official page it was read from, or the file in this
+    repository it describes. Published for review; nothing here is implemented.
+    """
+    d = DESIGN
+    body = (
+        '<div class="callout"><p><strong>What this page is.</strong> The redesign brief for '
+        'this site. It names what makes the current pages read as machine output, then gives '
+        'a copy-and-paste prompt, a design system, a twelve-article editorial plan, a traffic '
+        'architecture and an anti-slop checklist. Every factual row carries the official source '
+        'it rests on, or the file in this repository it describes. <strong>Nothing on this page '
+        'is implemented</strong>: it exists so the path is chosen before anything is built. '
+        'The reviewable version of every proposal is on the '
+        '<a href="decision-queue.html">Review console</a>.</p></div>'
+        + '<div class="suggestion"><h3>How this relates to the /site/ marketing site</h3>'
+        f'<p>{e(d["relationship_note"])}</p>'
+        '<p><a href="site/index.html">Marketing site</a> &middot; '
+        '<a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a></p></div>'
+    )
+
+    rows = [[e(r["id"]), f'<strong>{e(r["point"])}</strong>', e(r["detail"]), basis(r)]
+            for r in d["executive_summary"]]
+    body += ("<h2>Executive summary</h2>"
+             '<p class="small">The eight things that decide everything else, each with the '
+             "source it rests on.</p>") + table(
+        ["ID", "Point", "Detail", "Source"], rows)
+
+    rows = [[e(c["id"]), f'<strong>{e(c["area"])}</strong>', e(c["observed"]),
+             e(c["slop"]), e(c["fix"]), basis(c)] for c in d["critique"]]
+    body += ("<h2>Why it reads as generated: ten findings</h2>"
+             '<p class="small">Each row names something actually present in this repository '
+             "today, why it reads the way it does, and the fix. The observations are about "
+             "this site's own files, so they cite the file.</p>") + table(
+        ["ID", "Area", "What is there now", "Why it reads as generated", "Fix", "Basis"], rows)
+
+    blocks = [f'{b["label"].upper()}\n\n{b["text"]}' for b in d["prompt"]]
+    prompt_text = "\n" + ("\n\n" + ("-" * 64) + "\n\n").join(blocks) + "\n"
+    body += (
+        "<h2>The prompt</h2>"
+        f'<p class="small">{e(d["prompt_intro"])}</p>'
+        '<div class="decision-tools"><button type="button" id="copy-prompt">Copy the prompt</button>'
+        '<output id="copy-status" aria-live="polite"></output></div>'
+        f'<pre class="promptbox" id="prompt-block">{e(prompt_text)}</pre>'
+        '<script>(function(){var b=document.getElementById("copy-prompt");'
+        'if(!b){return;}var out=document.getElementById("copy-status");'
+        'b.addEventListener("click",function(){'
+        'var t=document.getElementById("prompt-block").innerText;'
+        'if(navigator.clipboard&&navigator.clipboard.writeText){'
+        'navigator.clipboard.writeText(t).then(function(){out.textContent="Copied to clipboard.";},'
+        'function(){out.textContent="Copy failed - select the text by hand.";});}'
+        'else{out.textContent="Copy unavailable in this browser - select the text by hand.";}});})();</script>'
+    )
+
+    rows = [[e(r["id"]), f'<strong>{e(r["element"])}</strong>', e(r["spec"]), e(r["why"]),
+             basis(r)] for r in d["design_system"]]
+    body += ("<h2>Design system</h2>"
+             '<p class="small">Concrete values, with the current value or the rule that '
+             "constrains it.</p>") + table(
+        ["ID", "Element", "Specification", "Why", "Basis"], rows)
+
+    rows = []
+    for r in d["ia"]:
+        rows.append([e(r["id"]), badge(e(r["surface"]), "info" if r["surface"] == "Reader" else "muted"),
+                     f'<strong>{e(r["page"])}</strong>', e(r["job"]), e(r["cta"]),
+                     badge(e(r["status"]), STATE_KIND.get(r["status"], "muted")), basis(r)])
+    body += ("<h2>Information architecture</h2>"
+             '<p class="small">Two surfaces: the reader site, and the evidence layer that '
+             "makes it trustworthy. They are linked by one page, How we verify.</p>") + table(
+        ["ID", "Surface", "Page", "Job", "Primary action", "State", "Basis"], rows)
+
+    rows = []
+    for r in d["editorial"]:
+        rows.append([e(r["id"]), f'<strong>{e(r["title"])}</strong>',
+                     f'<div>{e(r["hook"])}</div><div class="muted">{e(r["angle"])}</div>',
+                     e(r["format"]), e(r["fact"]), e(r["rule"]), basis(r)])
+    body += ("<h2>Editorial plan: twelve articles</h2>"
+             '<p class="small">Catchy, shareable titles, each anchored to a fact read from '
+             "the live listing and each with the thing it must not claim. No article may "
+             "state a price, a rating or a test result.</p>") + table(
+        ["ID", "Working title", "Hook and angle", "Format", "Verified fact it rests on",
+         "What it must not say", "Source"], rows)
+
+    rows = [[e(r["id"]), f'<strong>{e(r["action"])}</strong>', e(r["what"]), e(r["why"]),
+             e(r["constraint"]), basis(r)] for r in d["traffic"]]
+    body += ("<h2>Organic traffic architecture</h2>"
+             '<p class="small">How the site earns visitors, and the programme rules that '
+             "bound each move.</p>") + table(
+        ["ID", "Move", "What it is", "Why it works", "Constraint", "Source"], rows)
+
+    rows = [[e(r["id"]), f'<strong>{e(r["element"])}</strong>', e(r["spec"]), e(r["why"]),
+             basis(r)] for r in d["conversion"]]
+    body += ("<h2>Conversion architecture</h2>"
+             '<p class="small">Where the money is made, lawfully.</p>') + table(
+        ["ID", "Element", "Specification", "Why", "Basis"], rows)
+
+    rows = [[e(r["id"]), e(r["tell"]), e(r["fix"]), basis(r)] for r in d["anti_slop"]]
+    body += ("<h2>Anti-slop checklist</h2>"
+             '<p class="small">Ten tells, and what to do instead. Run a page against this '
+             "before it ships.</p>") + table(
+        ["ID", "The tell", "What to do instead", "Basis"], rows)
+
+    body += "<h2>How to use this brief</h2><ol class=\"findings\">" + "".join(
+        f"<li>{e(step)}</li>" for step in d["workflow"]) + "</ol>"
+
+    page("design-brief.html", "Design brief", body,
+         lead="Why the site reads as generated, and the prompt, design system, editorial plan "
+              "and checklists to fix it. Proposals only, each with its source. Nothing here is "
+              "implemented yet.")
+
+
+def build_decision_queue() -> None:
+    """The review console (session 757efebc, 2026-11-16).
+
+    Every proposal in one place with a recommendation, a priority, an effort estimate, a
+    risk, the question that blocks it and a decision state; then the information we already
+    have, the information we do not have, and how to go and get it.
+    """
+    q = QUEUE
+    body = (
+        '<div class="callout"><p><strong>What this page is.</strong> The section to review '
+        'before anything is implemented. Every proposal from this session and from session '
+        '4f83ee7b sits in one queue with a recommendation and a decision state. Below it is '
+        'the information this project already has, the information it does not have, and the '
+        'actions that would get it. Nothing on this page implements anything: the point is to '
+        'choose the path first. The design rationale behind these rows is on the '
+        '<a href="design-brief.html">Design brief</a>.</p></div>'
+        + '<div class="suggestion"><h3>How this relates to /site/decisions.html</h3>'
+        f'<p>{e(q["relationship_note"])}</p>'
+        '<p><a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a> &middot; '
+        '<a href="site/index.html">Marketing site home</a></p></div>'
+    )
+
+    # Rendered as a definition list, not a table. This site's rule is that every *table* row
+    # carries a source link or a flag; these rows are this project's own workflow vocabulary
+    # and cite nothing, so putting them in a table would either fake a source or trip the
+    # row-provenance gate. A legend is not data.
+    legend = "".join(
+        f'<div class="suggestion"><h3>{badge(e(k), STATE_KIND.get(k, "muted"))}</h3>'
+        f"<p>{e(v)}</p></div>" for k, v in q["states"].items()
+    )
+    body += ("<h2>What the decision states mean</h2>" + legend
+             + f'<p class="small">{e(q["columns_note"])}</p>')
+
+    rows = []
+    for s in q["suggestions"]:
+        sizing = (f'<div><strong>{e(s["recommendation"])}</strong></div>'
+                  f'<div class="muted">{e(s["priority"])} &middot; effort {e(s["effort"])} '
+                  f'&middot; risk {e(s["risk"])}</div>')
+        blocked = (" &middot; ".join(
+            f'<a class="flagid" href="#{e(b)}">{e(b)}</a>' for b in s["blocked_by"]
+        ) or '<span class="muted">nothing</span>')
+        rows.append([
+            # The id is the anchor the "Blocks" column of the questions table links to, so a
+            # reviewer can jump from a question to every proposal it gates.
+            f'<strong id="{e(s["id"])}">{e(s["id"])}</strong><div class="muted">{e(s["origin"])}</div>',
+            f'<strong>{e(s["title"])}</strong><div class="muted">{e(s["area"])}</div>',
+            e(s["what"]),
+            sizing,
+            blocked,
+            badge(e(s["status"]), STATE_KIND.get(s["status"], "muted")),
+            basis(s),
+        ])
+    body += ("<h2>The queue</h2>"
+             '<p class="small">22 proposals. Blocked-by links jump to the question that '
+             "unblocks the row.</p>") + table(
+        ["ID and origin", "Proposal", "What it is", "Recommendation and sizing",
+         "Blocked by", "State", "Basis"], rows)
+
+    rows = [[e(r["id"]), f'<strong>{e(r["item"])}</strong>', e(r["value"]), basis(r)]
+            for r in q["have"]]
+    body += ("<h2>What we already have</h2>"
+             '<p class="small">Everything on this list was read from the official page named '
+             "in its Source cell. Nothing here is inferred.</p>") + table(
+        ["ID", "Information", "What it says", "Source"], rows)
+
+    rows = []
+    for r in q["missing"]:
+        rows.append([e(r["id"]), f'<strong>{e(r["item"])}</strong>', e(r["needed_for"]),
+                     sev(e(r["severity"])), e(r["how"]), basis(r)])
+    body += ("<h2>What we do not have</h2>"
+             '<p class="small">Every gap that stands between this repository and a working '
+             "affiliate site, with the way to close it. No value on this page is filled in "
+             "from anywhere but an official source, so these cells stay empty until one "
+             "exists.</p>") + table(
+        ["ID", "Missing information", "What it blocks", "Severity", "How to get it", "Source"], rows)
+
+    rows = []
+    for r in q["questions"]:
+        blocks = (" &middot; ".join(
+            f'<a class="flagid" href="#{e(b)}">{e(b)}</a>' for b in r["blocks"]
+        ) or '<span class="muted">none directly</span>')
+        rows.append([
+            f'<strong id="{e(r["id"])}">{e(r["id"])}</strong>',
+            f'<strong>{e(r["question"])}</strong>',
+            e(r["have"]),
+            e(r["missing"]),
+            e(r["why"]),
+            e(r["how"]),
+            blocks,
+            basis(r),
+        ])
+    body += ("<h2>Questions that must be answered first</h2>"
+             '<p class="small">Split into what we can already source and what we cannot. '
+             "A decision made before these are answered is a guess.</p>") + table(
+        ["ID", "Question", "What we have (sourced)", "What we do not have",
+         "Why it matters", "How to answer it", "Blocks", "Source"], rows)
+
+    rows = [[e(r["id"]), f'<strong>{e(r["action"])}</strong>', e(r["discovers"]),
+             e(r["effort"]), basis(r)] for r in q["discovery"]]
+    body += ("<h2>How to discover the missing information</h2>"
+             '<p class="small">Concrete actions, each one closing a named gap.</p>') + table(
+        ["ID", "Action", "What it discovers", "Effort", "Source"], rows)
+
+    body += "<h2>How to run the review</h2><ol class=\"findings\">" + "".join(
+        f"<li>{e(step)}</li>" for step in q["workflow"]) + "</ol>"
+
+    page("decision-queue.html", "Review console", body,
+         lead="Every proposal, the recommendation against it, the question that blocks it, and "
+              "the information this project has and does not have. Review and decide before "
+              "anything is built.")
+
+
 
 
 def unv() -> str:
@@ -103,60 +356,6 @@ NAV_PRIMARY = [
     # (proposals SUG-02/SUG-03 implemented; decision log on suggestions.html).
     ("articles/index.html", "Research Desk"),
     ("decision-center.html", "Decision Center"),
-<<<<<<< HEAD
-    # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan the brief
-    # asks for ("catchy trendy articles and topics"). Every topic row carries the official
-    # source of the fact it rests on; no trend or volume claim is made.
-    ("content-topics.html", "Content topics"),
-    # Added by session 4f83ee7b (2026-11-15): the suggestions and decision framework the brief
-    # asks for. Proposals are labelled as proposals; every factual row carries an official
-    # source. Nothing here is implemented by this session — it is published for review.
-    ("suggestions.html", "Suggestions &amp; decisions"),
-    # Added by session 757efebc (2026-11-16): the redesign brief with the copy-paste
-    # prompt, and the console where every proposal is reviewed before implementation.
-    ("design-brief.html", "Design brief"),
-    ("decision-queue.html", "Review console"),
-    ("campaigns.html", "Campaigns &amp; tracking"),
-    ("flagged.html", "Flagged for review"),
-    ("sources.html", "Sources"),
-    # Added by integration session edbd56a1 (2026-11-14): one row per published claim,
-    # each linked to the official page it was read from.
-    ("verification.html", "Verification log"),
-    # Added by integration session 3ead7ac8 (2026-11-14): this session's line-by-line record.
-    # Every row links the official page it was read from; source URLs come from data/sources.json.
-    ("sessions/3ead7ac8/index.html", "Verification (3ead7ac8)"),
-    # Added by session 25513d33 (2026-11-14): this session's independent record. Every row
-    # was produced by a fetch performed by this session; labels read from data/sources.json.
-    ("sessions/25513d33/index.html", "Verification (25513d33)"),
-    # Added by session ab3ed329 (2026-11-16): independent re-verification of the three short links,
-    # the Associates policy clauses and the commission table, plus the exposure check (AB-F-01).
-    ("sessions/ab3ed329/index.html", "Verification (ab3ed329)"),
-    # Added by session 5b425c74 (2026-11-16): this session's independent re-verification record.
-    # Every row was produced by a fetch performed by this session on 2026-11-16.
-    ("sessions/5b425c74/index.html", "Verification (5b425c74)"),
-    # Added by integration session edbd56a1 (2026-11-14): /docs/ returned HTTP 200 but had
-    # no inbound link from any dashboard, so a browsing visitor could not reach it (flag V-F3).
-    ("docs/index.html", "Reference (/docs/)"),
-    # Added by session 588693c9 (2026-11-14): the marketing section generated by
-    # scripts/build_marketing.py from data/marketing.json. Linked from the flat
-    # site nav so product pages, comparison and buying guide are reachable.
-    ("marketing/index.html", "Marketing (2026-11-14 brief set)"),
-    # Added on integration 2026-11-14 (session b90c5685): product briefs page kept from PR #26
-    # (session 9fef7647), rewritten to the no-inference/no-price rules and re-homed under marketing/.
-    ("marketing/briefs.html", "Marketing briefs"),
-    # Added by integration session 3c6cba43: the second site generation in this repo,
-    # rendered by tools/build_site.py from data/z3/*.json. Linked here so the two halves of
-    # the merged site are one navigable product instead of two disconnected trees.
-    ("dashboard/index.html", "Full audit (16 pages)"),
-    # Added by session 145b8df7 (2026-11-16): the editorial marketing layer this project
-    # builds from data/editorial.json (read/), generated by scripts/build_read.py. It is a
-    # SECOND reader-facing surface, produced in parallel with session 59d84c55's /site/
-    # ("Air Fryer Field Notes"); neither session knew of the other before landing. Both are
-    # published, neither is deleted, and the overlap is raised for the owner to resolve
-    # (Z14-F-04 on the Flagged for review page).
-    ("read/index.html", "Marketing site: The Crisp Report"),
-=======
->>>>>>> origin/main
     # Added by integration session 59d84c55 (2026-11-16): the reader-facing marketing
     # site built by tools/build_i2_site.py from data/i2/*.json.
     # Added by session 145b8df7 (2026-11-16): the read/ editorial layer ("The Crisp
@@ -181,6 +380,10 @@ NAV_MORE = [
     ("Governance", [
         ("executive-summary.html", "Executive summary"),
         ("suggestions.html", "Suggestions & decisions"),
+        # Added by session 757efebc (2026-11-16): the redesign brief with the
+        # copy-paste prompt, and the console where every proposal is reviewed first.
+        ("design-brief.html", "Design brief"),
+        ("decision-queue.html", "Review console"),
         ("campaigns.html", "Campaigns & tracking"),
         ("sources.html", "Sources"),
         ("verification.html", "Verification log"),
@@ -477,23 +680,11 @@ td a{word-break:break-word}
 .flagid{font-weight:700;text-decoration:none;margin-right:4px;white-space:nowrap}
 ul.findings{padding-left:20px;margin:0}
 ul.findings li{margin:0 0 8px}
-<<<<<<< HEAD
-.callout{border-left:4px solid var(--bad);background:var(--badbg);padding:12px 14px;border-radius:6px;margin:0 0 18px}
-.callout.ok{border-color:var(--ok);background:var(--okbg)}
-.callout p{margin:0}
-.promptbox{background:#101c2e;color:#e7eef8;border-radius:12px;padding:20px 22px;overflow-x:auto;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;margin:0 0 18px}
-.promptbox b{color:#ffd9c2}
-
-@media (max-width:640px){main{padding:16px 12px}.topbar{padding:10px 12px}}
-"""
-
-=======
 .sitemap{columns:2;column-gap:34px;padding-left:20px;margin:0 0 8px}
 @media (max-width:720px){.sitemap{columns:1}}
 .sitemap li{margin:0 0 6px;break-inside:avoid}
 .sitemap-details summary{cursor:pointer;font-weight:650;font-family:var(--serif);font-size:16px;color:var(--accent-dark);padding:9px 0}
 .sitemap-details[open] summary{margin-bottom:10px}
->>>>>>> origin/main
 
 /* ---------- footer ---------- */
 footer{background:var(--accent-deep);color:#c9d6c6;margin-top:34px;padding:30px 22px 34px;font-size:13px}
@@ -506,6 +697,9 @@ footer a{color:#e4e9dc}
 footer .small{color:#a9bda9;margin-top:6px;max-width:1180px}
 @media (max-width:720px){.foot-grid{grid-template-columns:1fr}.foot-links{justify-content:flex-start}}
 @media (max-width:640px){main{padding:18px 14px 36px}.topbar{padding:10px 12px}}
+
+.promptbox{background:#101c2e;color:#e7eef8;border-radius:12px;padding:20px 22px;overflow-x:auto;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;margin:0 0 18px}
+.promptbox b{color:#ffd9c2}
 @media print{.topbar,.disclose{display:none}footer{background:#fff;color:#222}.hero{box-shadow:none}}
 '''
 def count_verified(field: str) -> int:
@@ -607,10 +801,10 @@ SITEMAP_GROUPS = [
         ("marketing/product-3-chefman-8-quart-turbofry.html", "Product brief 3"),
         ("content-topics.html", "Content topics"),
         ("suggestions.html", "Suggestions &amp; decisions"),
-        ("content.html", "Content &amp; compliance"),
         # Added by session 757efebc (2026-11-16).
         ("design-brief.html", "Design brief and prompt pack"),
         ("decision-queue.html", "Review console: proposals and open questions"),
+        ("content.html", "Content &amp; compliance"),
         ("campaigns.html", "Campaigns &amp; tracking"),
         ("content/index.html", "Audit build: Content"),
         ("campaigns/index.html", "Audit build: Campaigns"),
@@ -674,83 +868,6 @@ def build_index() -> None:
         f'<div class="stat {k}"><div class="n">{e(v)}</div><div class="l">{e(l)}</div></div>'
         for l, v, k in stats
     )
-<<<<<<< HEAD
-    tiles = [
-        # Added by integration session 59d84c55 (2026-11-16): leads with the reader-facing
-        # marketing site. The audit tiles below it are unchanged.
-        ("site/index.html", "Marketing site (new)",
-         "The reader-facing site: three air fryers compared on what their listings state, buying "
-         "guides, the source register, and a decision board where each proposal can be accepted, "
-         "rejected or deferred before anything is implemented."),
-        ("read/index.html", "Marketing site — The Crisp Report",
-         "Six sourced articles, a 13-attribute comparison, a five-question buying guide with an FAQ, "
-         "an Air Fryers category hub and a method page. Same verified data as this dashboard; "
-         "a second reader-facing surface, parallel to <a href=\"site/index.html\">/site/</a> (see Z14-F-04)."),
-        ("executive-summary.html", "Executive summary", "Bottom line, findings, what was built, what is blocked."),
-        ("products.html", "Products", "The 3 submitted links, identifier checks, redirect results."),
-        ("pricing.html", "Pricing &amp; commission", "Price and commission fields, plus the verified commission rules."),
-        ("reviews.html", "Reviews &amp; competition", "Ratings and competitor fields, a dated category benchmark, plus the verified review rules."),
-        ("content.html", "Content &amp; compliance", "Article status and the Associates and FTC checklist."),
-        ("decision-center.html", "Decision Center", "Sourced answers, open questions, ranked suggestions and reviewable paths."),
-        # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan.
-        ("content-topics.html", "Content topics",
-         "The planned article topics, the verified fact each one is built on, and what it may not state."),
-        # Added by session 4f83ee7b (2026-11-15): design and marketing proposals plus the
-        # open questions to answer before any of them is implemented.
-        ("suggestions.html", "Suggestions &amp; decisions",
-         "Design and marketing proposals for the affiliate site, the open questions to answer "
-         "before a decision, and how to discover the missing information. Proposals only — "
-         "nothing here is implemented yet."),
-        ("campaigns.html", "Campaigns &amp; tracking", "Click and conversion ledger. Empty until data exists."),
-        # Added by session 757efebc (2026-11-16): the redesign brief and the review
-        # console, so both are reachable from the landing page as well as the nav.
-        ("design-brief.html", "Design brief",
-         "Why the site reads as generated, and the prompt, design system, editorial plan "
-         "and anti-slop checklist to fix it. Proposals only."),
-        ("decision-queue.html", "Review console",
-         "Every proposal with a recommendation and decision state, plus what the project "
-         "has, what it does not have, and how to get it."),
-        ("flagged.html", "Flagged for review", "Every irregularity and unverified item, with its source links."),
-        ("sources.html", "Sources", "The official source registry with retrieval status."),
-        # Added by integration session edbd56a1 (2026-11-14): these sections were in the
-        # navigation but missing from the dashboard tiles, so a visitor landing on the
-        # dashboard could not see them.
-        ("air-fryers.html", "Category: Air Fryers",
-         "The one verified category: browse path and a six-position bestseller benchmark."),
-        ("marketing/index.html", "Marketing",
-         "Product briefs, comparison and buying guide. No prices or ratings are published."),
-        ("verification.html", "Verification log",
-         "One row per published claim, with the wording its official page carries."),
-        # Added by integration session 3ead7ac8 (2026-11-14): the page was in the top
-        # navigation but not in the dashboard tiles, so it was invisible from the landing page.
-        ("sessions/3ead7ac8/index.html", "Verification (session 3ead7ac8)",
-         "30 load-bearing claims re-read from the official pages on 2026-11-14, each linked to "
-         "the page it came from, plus the fields deliberately left blank and why."),
-        # Added by session 25513d33 (2026-11-14): same reason as the tile above. This record
-        # re-fetches and re-reads every load-bearing claim independently of the one above.
-        ("sessions/25513d33/index.html", "Verification (session 25513d33)",
-         "Independent re-fetch of all three submitted links and 12 policy and disclosure "
-         "statements, re-read verbatim on 2026-11-14, each row linked to the page it came from."),
-        # Added by session ab3ed329 (2026-11-16): same reason as the tile above.
-        ("sessions/ab3ed329/index.html", "Verification (session ab3ed329)",
-         "Live re-read of the three short links, their destination listings, the Operating Agreement, "
-         "Program Policies 2(a), 2(b), 6(g), 6(t), 6(v), 6(w), 6(y), the commission table and the "
-         "Creators API ASIN rule on 2026-11-16, plus a sweep that removed observed price and rating values from public data (AB-F-01)."),
-        # Added by session 5b425c74 (2026-11-16): same reason as the tiles above. This record
-        # independently re-fetches the three links and re-reads 22 policy, commission, API and
-        # FTC statements verbatim on 2026-11-16.
-        ("sessions/5b425c74/index.html", "Verification (session 5b425c74)",
-         "Independent re-fetch of all three submitted links, both commission rate tables, the "
-         "Operating Agreement, Program Policies, Creators API and FTC pages on 2026-11-16, each "
-         "row linked to the official page it came from."),
-        ("docs/index.html", "Archived 2026-11-13 build (/docs/) — flagged",
-         "An earlier build, kept for provenance. It still displays price and star-rating cells that "
-         "this site's rule and Amazon's policy prohibit; see I-F-02 on the Flagged for review page. "
-         "Do not treat its figures as current."),
-    ]
-    tile_html = "".join(
-        f'<a class="tile" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in tiles
-=======
 
     brief_slugs = {
         "P1": "marketing/product-1-chefman-6-quart-dual-basket.html",
@@ -792,7 +909,6 @@ def build_index() -> None:
         f"<span>{e(a['dek'])}</span>"
         f'<span class="acard-go">Read the article &rarr;</span></a>'
         for a in ARTICLES["articles"]
->>>>>>> origin/main
     )
 
     sitemap_html = build_sitemap_html()
@@ -1354,261 +1470,6 @@ def build_suggestions() -> None:
               "information. Proposals are labelled as proposals; every fact carries its "
               "source; the decision log records what has been implemented, deferred or "
               "left blocked.")
-
-
-# ------------------------------------------- Design brief (session 757efebc, 2026-11-16)
-STATE_KIND = {
-    "do-now": "ok",
-    "do-next": "info",
-    "blocked": "warn",
-    "defer": "muted",
-    "do-not-do": "bad",
-    "proposal": "info",
-    "recommended": "ok",
-}
-
-
-def repo_link(path: str, label: str) -> str:
-    """Link a file in this repository. Used where a row describes repository state."""
-    return (f'<a href="{REPO}/blob/main/{e(path)}" target="_blank" '
-            f'rel="noopener noreferrer">{e(label)}</a>')
-
-
-def basis(rec: dict) -> str:
-    """Evidence cell for a row: official sources first, then the repository reference."""
-    parts = []
-    if rec.get("src"):
-        parts.append(src_links(rec["src"]))
-    if rec.get("repo"):
-        parts.append(repo_link(rec["repo"], "this repo: " + rec["repo"]))
-    return " &middot; ".join(parts) or '<span class="muted">no source</span>'
-
-
-def build_design_brief() -> None:
-    """The redesign brief and prompt pack (session 757efebc, 2026-11-16).
-
-    The concrete answer to "it reads like AI slop": a critique of what the site does now,
-    a copy-and-paste prompt for the redesign, a design system, a twelve-article editorial
-    plan, a traffic architecture, a conversion architecture and an anti-slop checklist.
-    Every factual row links the official page it was read from, or the file in this
-    repository it describes. Published for review; nothing here is implemented.
-    """
-    d = DESIGN
-    body = (
-        '<div class="callout"><p><strong>What this page is.</strong> The redesign brief for '
-        'this site. It names what makes the current pages read as machine output, then gives '
-        'a copy-and-paste prompt, a design system, a twelve-article editorial plan, a traffic '
-        'architecture and an anti-slop checklist. Every factual row carries the official source '
-        'it rests on, or the file in this repository it describes. <strong>Nothing on this page '
-        'is implemented</strong>: it exists so the path is chosen before anything is built. '
-        'The reviewable version of every proposal is on the '
-        '<a href="decision-queue.html">Review console</a>. This session&rsquo;s verification log and repository review are in the <a href="sessions/757efebc/index.html">session record</a>.</p></div>'
-        + '<div class="suggestion"><h3>How this relates to the /site/ marketing site</h3>'
-        f'<p>{e(d["relationship_note"])}</p>'
-        '<p><a href="site/index.html">Marketing site</a> &middot; '
-        '<a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a></p></div>'
-    )
-
-    rows = [[e(r["id"]), f'<strong>{e(r["point"])}</strong>', e(r["detail"]), basis(r)]
-            for r in d["executive_summary"]]
-    body += ("<h2>Executive summary</h2>"
-             '<p class="small">The eight things that decide everything else, each with the '
-             "source it rests on.</p>") + table(
-        ["ID", "Point", "Detail", "Source"], rows)
-
-    rows = [[e(c["id"]), f'<strong>{e(c["area"])}</strong>', e(c["observed"]),
-             e(c["slop"]), e(c["fix"]), basis(c)] for c in d["critique"]]
-    body += ("<h2>Why it reads as generated: ten findings</h2>"
-             '<p class="small">Each row names something actually present in this repository '
-             "today, why it reads the way it does, and the fix. The observations are about "
-             "this site's own files, so they cite the file.</p>") + table(
-        ["ID", "Area", "What is there now", "Why it reads as generated", "Fix", "Basis"], rows)
-
-    blocks = [f'{b["label"].upper()}\n\n{b["text"]}' for b in d["prompt"]]
-    prompt_text = "\n" + ("\n\n" + ("-" * 64) + "\n\n").join(blocks) + "\n"
-    body += (
-        "<h2>The prompt</h2>"
-        f'<p class="small">{e(d["prompt_intro"])}</p>'
-        '<div class="decision-tools"><button type="button" id="copy-prompt">Copy the prompt</button>'
-        '<output id="copy-status" aria-live="polite"></output></div>'
-        f'<pre class="promptbox" id="prompt-block">{e(prompt_text)}</pre>'
-        '<script>(function(){var b=document.getElementById("copy-prompt");'
-        'if(!b){return;}var out=document.getElementById("copy-status");'
-        'b.addEventListener("click",function(){'
-        'var t=document.getElementById("prompt-block").innerText;'
-        'if(navigator.clipboard&&navigator.clipboard.writeText){'
-        'navigator.clipboard.writeText(t).then(function(){out.textContent="Copied to clipboard.";},'
-        'function(){out.textContent="Copy failed - select the text by hand.";});}'
-        'else{out.textContent="Copy unavailable in this browser - select the text by hand.";}});})();</script>'
-    )
-
-    rows = [[e(r["id"]), f'<strong>{e(r["element"])}</strong>', e(r["spec"]), e(r["why"]),
-             basis(r)] for r in d["design_system"]]
-    body += ("<h2>Design system</h2>"
-             '<p class="small">Concrete values, with the current value or the rule that '
-             "constrains it.</p>") + table(
-        ["ID", "Element", "Specification", "Why", "Basis"], rows)
-
-    rows = []
-    for r in d["ia"]:
-        rows.append([e(r["id"]), badge(e(r["surface"]), "info" if r["surface"] == "Reader" else "muted"),
-                     f'<strong>{e(r["page"])}</strong>', e(r["job"]), e(r["cta"]),
-                     badge(e(r["status"]), STATE_KIND.get(r["status"], "muted")), basis(r)])
-    body += ("<h2>Information architecture</h2>"
-             '<p class="small">Two surfaces: the reader site, and the evidence layer that '
-             "makes it trustworthy. They are linked by one page, How we verify.</p>") + table(
-        ["ID", "Surface", "Page", "Job", "Primary action", "State", "Basis"], rows)
-
-    rows = []
-    for r in d["editorial"]:
-        rows.append([e(r["id"]), f'<strong>{e(r["title"])}</strong>',
-                     f'<div>{e(r["hook"])}</div><div class="muted">{e(r["angle"])}</div>',
-                     e(r["format"]), e(r["fact"]), e(r["rule"]), basis(r)])
-    body += ("<h2>Editorial plan: twelve articles</h2>"
-             '<p class="small">Catchy, shareable titles, each anchored to a fact read from '
-             "the live listing and each with the thing it must not claim. No article may "
-             "state a price, a rating or a test result.</p>") + table(
-        ["ID", "Working title", "Hook and angle", "Format", "Verified fact it rests on",
-         "What it must not say", "Source"], rows)
-
-    rows = [[e(r["id"]), f'<strong>{e(r["action"])}</strong>', e(r["what"]), e(r["why"]),
-             e(r["constraint"]), basis(r)] for r in d["traffic"]]
-    body += ("<h2>Organic traffic architecture</h2>"
-             '<p class="small">How the site earns visitors, and the programme rules that '
-             "bound each move.</p>") + table(
-        ["ID", "Move", "What it is", "Why it works", "Constraint", "Source"], rows)
-
-    rows = [[e(r["id"]), f'<strong>{e(r["element"])}</strong>', e(r["spec"]), e(r["why"]),
-             basis(r)] for r in d["conversion"]]
-    body += ("<h2>Conversion architecture</h2>"
-             "<p class=\"small\">Where the money is made, lawfully.</p>") + table(
-        ["ID", "Element", "Specification", "Why", "Basis"], rows)
-
-    rows = [[e(r["id"]), e(r["tell"]), e(r["fix"]), basis(r)] for r in d["anti_slop"]]
-    body += ("<h2>Anti-slop checklist</h2>"
-             '<p class="small">Ten tells, and what to do instead. Run a page against this '
-             "before it ships.</p>") + table(
-        ["ID", "The tell", "What to do instead", "Basis"], rows)
-
-    body += "<h2>How to use this brief</h2><ol class=\"findings\">" + "".join(
-        f"<li>{e(step)}</li>" for step in d["workflow"]) + "</ol>"
-
-    page("design-brief.html", "Design brief", body,
-         lead="Why the site reads as generated, and the prompt, design system, editorial plan "
-              "and checklists to fix it. Proposals only, each with its source. Nothing here is "
-              "implemented yet.")
-
-
-def build_decision_queue() -> None:
-    """The review console (session 757efebc, 2026-11-16).
-
-    Every proposal in one place with a recommendation, a priority, an effort estimate, a
-    risk, the question that blocks it and a decision state; then the information we already
-    have, the information we do not have, and how to go and get it.
-    """
-    q = QUEUE
-    body = (
-        '<div class="callout"><p><strong>What this page is.</strong> The section to review '
-        'before anything is implemented. Every proposal from this session and from session '
-        '4f83ee7b sits in one queue with a recommendation and a decision state. Below it is '
-        'the information this project already has, the information it does not have, and the '
-        'actions that would get it. Nothing on this page implements anything: the point is to '
-        'choose the path first. The design rationale behind these rows is on the '
-        '<a href="design-brief.html">Design brief</a>. This session&rsquo;s verification log and repository review are in the <a href="sessions/757efebc/index.html">session record</a>.</p></div>'
-        + '<div class="suggestion"><h3>How this relates to /site/decisions.html</h3>'
-        f'<p>{e(q["relationship_note"])}</p>'
-        '<p><a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a> &middot; '
-        '<a href="site/index.html">Marketing site home</a></p></div>'
-    )
-
-    # Rendered as a definition list, not a table. This site's rule is that every *table* row
-    # carries a source link or a flag; these rows are this project's own workflow vocabulary
-    # and cite nothing, so putting them in a table would either fake a source or trip the
-    # row-provenance gate. A legend is not data.
-    legend = "".join(
-        f'<div class="suggestion"><h3>{badge(e(k), STATE_KIND.get(k, "muted"))}</h3>'
-        f"<p>{e(v)}</p></div>" for k, v in q["states"].items()
-    )
-    body += ("<h2>What the decision states mean</h2>" + legend
-             + f'<p class="small">{e(q["columns_note"])}</p>')
-
-    rows = []
-    for s in q["suggestions"]:
-        sizing = (f'<div><strong>{e(s["recommendation"])}</strong></div>'
-                  f'<div class="muted">{e(s["priority"])} &middot; effort {e(s["effort"])} '
-                  f'&middot; risk {e(s["risk"])}</div>')
-        blocked = (" &middot; ".join(
-            f'<a class="flagid" href="#{e(b)}">{e(b)}</a>' for b in s["blocked_by"]
-        ) or '<span class="muted">nothing</span>')
-        rows.append([
-            # The id is the anchor the "Blocks" column of the questions table links to, so a
-            # reviewer can jump from a question to every proposal it gates.
-            f'<strong id="{e(s["id"])}">{e(s["id"])}</strong><div class="muted">{e(s["origin"])}</div>',
-            f'<strong>{e(s["title"])}</strong><div class="muted">{e(s["area"])}</div>',
-            e(s["what"]),
-            sizing,
-            blocked,
-            badge(e(s["status"]), STATE_KIND.get(s["status"], "muted")),
-            basis(s),
-        ])
-    body += ("<h2>The queue</h2>"
-             '<p class="small">22 proposals. Blocked-by links jump to the question that '
-             "unblocks the row.</p>") + table(
-        ["ID and origin", "Proposal", "What it is", "Recommendation and sizing",
-         "Blocked by", "State", "Basis"], rows)
-
-    rows = [[e(r["id"]), f'<strong>{e(r["item"])}</strong>', e(r["value"]), basis(r)]
-            for r in q["have"]]
-    body += ("<h2>What we already have</h2>"
-             '<p class="small">Everything on this list was read from the official page named '
-             "in its Source cell. Nothing here is inferred.</p>") + table(
-        ["ID", "Information", "What it says", "Source"], rows)
-
-    rows = []
-    for r in q["missing"]:
-        rows.append([e(r["id"]), f'<strong>{e(r["item"])}</strong>', e(r["needed_for"]),
-                     sev(e(r["severity"])), e(r["how"]), basis(r)])
-    body += ("<h2>What we do not have</h2>"
-             '<p class="small">Every gap that stands between this repository and a working '
-             "affiliate site, with the way to close it. No value on this page is filled in "
-             "from anywhere but an official source, so these cells stay empty until one "
-             "exists.</p>") + table(
-        ["ID", "Missing information", "What it blocks", "Severity", "How to get it", "Source"], rows)
-
-    rows = []
-    for r in q["questions"]:
-        blocks = (" &middot; ".join(
-            f'<a class="flagid" href="#{e(b)}">{e(b)}</a>' for b in r["blocks"]
-        ) or '<span class="muted">none directly</span>')
-        rows.append([
-            f'<strong id="{e(r["id"])}">{e(r["id"])}</strong>',
-            f'<strong>{e(r["question"])}</strong>',
-            e(r["have"]),
-            e(r["missing"]),
-            e(r["why"]),
-            e(r["how"]),
-            blocks,
-            basis(r),
-        ])
-    body += ("<h2>Questions that must be answered first</h2>"
-             '<p class="small">Split into what we can already source and what we cannot. '
-             "A decision made before these are answered is a guess.</p>") + table(
-        ["ID", "Question", "What we have (sourced)", "What we do not have",
-         "Why it matters", "How to answer it", "Blocks", "Source"], rows)
-
-    rows = [[e(r["id"]), f'<strong>{e(r["action"])}</strong>', e(r["discovers"]),
-             e(r["effort"]), basis(r)] for r in q["discovery"]]
-    body += ("<h2>How to discover the missing information</h2>"
-             "<p class=\"small\">Concrete actions, each one closing a named gap.</p>\"") + table(
-        ["ID", "Action", "What it discovers", "Effort", "Source"], rows)
-
-    body += "<h2>How to run the review</h2><ol class=\"findings\">" + "".join(
-        f"<li>{e(step)}</li>" for step in q["workflow"]) + "</ol>"
-
-    page("decision-queue.html", "Review console", body,
-         lead="Every proposal, the recommendation against it, the question that blocks it, and "
-              "the information this project has and does not have. Review and decide before "
-              "anything is built.")
 
 
 # ------------------------------------------------------------- Campaigns
@@ -2268,8 +2129,6 @@ def main() -> None:
     build_content()
     build_topics()
     build_suggestions()
-    build_design_brief()
-    build_decision_queue()
     build_campaigns()
     build_flagged()
     build_category()
@@ -2282,6 +2141,8 @@ def main() -> None:
     # which imports this module's template. Run here so one command rebuilds
     # everything and no gate can pass with a stale article layer.
     import build_5a56c084
+    build_design_brief()
+    build_decision_queue()
     build_5a56c084.main()
     print("built site in", ROOT)
 

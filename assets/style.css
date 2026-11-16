@@ -186,4 +186,7 @@ footer a{color:#e4e9dc}
 footer .small{color:#a9bda9;margin-top:6px;max-width:1180px}
 @media (max-width:720px){.foot-grid{grid-template-columns:1fr}.foot-links{justify-content:flex-start}}
 @media (max-width:640px){main{padding:18px 14px 36px}.topbar{padding:10px 12px}}
+
+.promptbox{background:#101c2e;color:#e7eef8;border-radius:12px;padding:20px 22px;overflow-x:auto;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;margin:0 0 18px}
+.promptbox b{color:#ffd9c2}
 @media print{.topbar,.disclose{display:none}footer{background:#fff;color:#222}.hero{box-shadow:none}}
