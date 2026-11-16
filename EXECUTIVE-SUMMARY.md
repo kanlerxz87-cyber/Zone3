@@ -12,6 +12,18 @@
 
 ---
 
+## Update 2026-11-16 — session ab3ed329 (independent re-verification and compliance sweep)
+
+**Bottom line.** The three submitted links still open the three Amazon listings already on record. Their nine-character codes are short-link tokens, not ASINs. The owner still has to confirm which product each link was meant to reach. The record for this pass is [sessions/ab3ed329/index.html](https://kanlerxz87-cyber.github.io/Zone3/sessions/ab3ed329/index.html).
+
+- **Re-read today from official pages.** Link destinations, direct `/dp/` checks, the [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) (updated October 15, 2025, with the section 5 disclosure wording), the [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (updated April 14, 2026; clauses 2(a), 2(b), 6(t), 6(v), 6(w), 6(y), 6(z)), the [Standard Commission Income Statement, Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) (Kitchen 4.50%; All Other Categories 4.00%), the [Creators API GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) (ASIN default; 10-character examples) and the [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) guide (November 2019).
+- **Compliance fix.** Observed Amazon price, star-rating, review-count and sales values were removed from the public data files, the Sources page and flag text. Program Policies 2(b) and 6(t) do not allow that display outside the Creators API or PA API (AB-F-01).
+- **Still open.** Archived pages in `docs/`, `sessions/` and `research/`, and several snapshot files, still show those values. Their owners must remove or redact them. These are logged as change requests, not edited, under the coordination rules.
+- **Flags.** Five new items were added to the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page (AB-F-01 to AB-F-05). The register now holds 83 items.
+- **Owner decisions needed.** (1) The intended product, or the 10-character ASIN, for each submitted link. (2) Whether to remove or redact the archives listed in AB-F-01. (3) Whether a link.amazon redirect counts as a Redirecting Link under Commission Income Statement 2(e). That can only be tested in a logged-in Associates account.
+
+---
+
 ## 1. The bottom line
 
 **The three submitted short links were observed to open real Amazon listings; the requester's intended product match remains unconfirmed.** Each submitted token is **9 characters**, not a 10-character ASIN, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page for the raw token — reproduced again on 2026-11-14:
@@ -195,8 +207,8 @@ changes are auditable rather than silent):
 ## 8. Final integration pass — session `3ead7ac8` (2026-11-14)
 
 **A live compliance defect was found and fixed.** Two page sets were publishing observed prices
-(USD 79.93 / 149.99 / 79.91), star ratings (4.2 / 4.3 / 4.4 out of 5) and review counts
-(4.8K / 18.3K / 16.8K) as product facts. Associates Program **Participation Requirements 2(b)** and
+([price withheld] / [price withheld] / [price withheld]), star ratings ([rating withheld]) and review counts
+([count withheld]) as product facts. Values were removed from the public files on 2026-11-16 (AB-F-01). Associates Program **Participation Requirements 2(b)** and
 **6(t)**, re-read verbatim that day, allow those displays only where Amazon serves the link or the
 data comes from Creators API / PA API — neither is true for this project, which has no Associates tag
 and no API credentials.
@@ -282,8 +294,8 @@ in a single topic and is labelled point-in-time, because the positions move betw
 claimed and why.
 
 **A second observation was recorded.** Re-fetching the destination page for product 1 showed the
-"Customers who viewed this item also viewed" carousel rendering a 4.4-star, 392-review, $69.97
-entry whose own link points at a **different** ASIN (`dp/B0B7C327LK`), while the link it renders
+"Customers who viewed this item also viewed" carousel rendering a [rating withheld], [count withheld],
+[price withheld] entry whose own link points at a **different** ASIN (`dp/B0B7C327LK`), while the link it renders
 under is the destination ASIN (`dp/B0CDY277D3`). The published data was never affected — no price,
 rating or review count appears anywhere on the site (FLG-022, FLG-029) — but any future automated
 capture must bind each value to the page's own ASIN. Recorded as **3D-F-02**; the missing dashboard
