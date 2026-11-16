@@ -44,7 +44,7 @@
   <div class="tools-row">
     <button type="button" id="exportBtn">Export my decisions</button>
     <button type="button" id="printBtn" style="background:#48505f">Print / save as PDF</button>
-    <span class="small" id="count">0 of 12 decided</span>
+    <span class="small" id="count">0 of 15 decided</span>
   </div>
   <textarea id="exportBox" readonly aria-label="Exported decisions" placeholder="Your export will appear here."></textarea>
 </div>
@@ -363,6 +363,84 @@
     <output for="D-12" data-out="D-12">No decision recorded yet</output>
     <textarea data-note="D-12" aria-label="Reason for the decision on D-12" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
   </div>
+</article><article class="prop" id="D-13">
+  <div class="prop-head"><h3>Publish a reader article library: one question per page, listing facts only</h3><span class="pid">D-13</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented in session d18303ca on 2026-11-16: site/articles/ (index + three articles). Reversible by deleting the folder; nothing outside site/ changes.</p>
+  <dl>
+    <dt>The problem</dt><dd>The reader site answered layout questions (one guide, one comparison page) but nothing answered the single-feature questions readers actually search for — what Sync Finish does, whether a french-door oven format fits, what a 450-degree Hi-Fry setting is. Long-tail search had no honest landing pages.</dd>
+    <dt>What is proposed</dt><dd>A library of short articles under /site/articles/, each answering exactly one question, built only from listing facts with every unknown named, under the same rules as the guides: dated provenance, no price or rating, no first-hand claims.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Prices and star ratings may be displayed only through an Amazon-served link or the Creators/PA API; this site shows neither until then.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> A person cannot describe experience with a product they have not tried; disclosures must be hard to miss.</li><li><span class="term t-observed">Observed</span>Before this session the reader site carried one guide and no feature-level articles; the three product cards were the only long-form entry points. <span class="small">(Read of the site/ tree, 2026-11-16, session d18303ca.)</span></li><li><span class="term t-editorial">Editorial</span>Feature-question articles are a standard, durable format for appliance content; the format choice itself is editorial. <span class="small">(Editorial judgment, session d18303ca.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Low — four static pages, no new data, no generator change.</dd>
+    <dt>Expected effect</dt><dd>Editorial: gives organic search honest landing pages for feature questions and gives readers a second way into the comparison. No traffic figure is claimed.</dd>
+    <dt>Risks</dt><dd>Question overlap with the existing guide (mitigated: the articles take single-feature questions the guide does not); listing titles change over time (mitigated: every page states its read date, so drift is detectable rather than silent).</dd>
+    <dt>What it will not do</dt><dd>It does not add a price, a rating, a trend claim or a working buy link. It does not touch the audit pages, the generators or any root page.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>Every article states the date its listing facts were read.</li><li>Every product fact carries a link to the listing it was read from.</li><li>Every blank names its reason (policy 2(b)/6(t) or not stated in the text read).</li><li>i2_gate and verify_site pass on the full tree.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-13" value="Accept" data-pid="D-13"><span>Accept</span></label>
+        <label><input type="radio" name="D-13" value="Reject" data-pid="D-13"><span>Reject</span></label>
+        <label><input type="radio" name="D-13" value="Defer" data-pid="D-13"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-13" data-out="D-13">No decision recorded yet</output>
+    <textarea data-note="D-13" aria-label="Reason for the decision on D-13" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-14">
+  <div class="prop-head"><h3>Interlink the reader pages so nothing is an orphan</h3><span class="pid">D-14</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented in session d18303ca on 2026-11-16 via the article templates: breadcrumbs, cross-links between articles, guides, products and the decision board, and a library index. Navigation entries in the generator&#x27;s own nav are left to the owner of tools/build_i2_site.py (cross-scope request logged in COORDINATION.md Part D1).</p>
+  <dl>
+    <dt>The problem</dt><dd>New pages that nothing links to are unreachable in practice: the reader site&#x27;s pages linked outward (to products and evidence) but there was no path from a product page or guide into deeper reading, and no hub listing the articles.</dd>
+    <dt>What is proposed</dt><dd>Each article carries a breadcrumb back to the library, the library indexes the articles with one-line promises, and every article links to the comparison page, the relevant guide, and the decision board. The site&#x27;s own navigation bar remains owned by the generator.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer" title="Pages configuration and latest build for this repository — read 2026-11-16">I2-S14</a> The site&#x27;s internal-link integrity is gate-checked (G8/V5): every internal link must resolve.</li><li><span class="term t-observed">Observed</span>Before this session there was no path from site/ pages into feature-level articles; articles did not exist. <span class="small">(Read of the site/ tree, 2026-11-16, session d18303ca.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Low — markup only.</dd>
+    <dt>Expected effect</dt><dd>Editorial: readers can move from an answer to a decision without hitting a dead end; crawlers see a connected page set instead of isolated pages.</dd>
+    <dt>Risks</dt><dd>Link rot if pages are renamed (mitigated: G8/V5 gates fail the build on any broken internal link).</dd>
+    <dt>What it will not do</dt><dd>It does not modify the generator&#x27;s navigation or any other session&#x27;s files.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>No broken internal links or anchors (gates enforce this).</li><li>Every article is reachable from the library index.</li><li>Every article links to at least one decision point (products page or decision board).</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-14" value="Accept" data-pid="D-14"><span>Accept</span></label>
+        <label><input type="radio" name="D-14" value="Reject" data-pid="D-14"><span>Reject</span></label>
+        <label><input type="radio" name="D-14" value="Defer" data-pid="D-14"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-14" data-out="D-14">No decision recorded yet</output>
+    <textarea data-note="D-14" aria-label="Reason for the decision on D-14" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-15">
+  <div class="prop-head"><h3>Retire the submitted link.amazon URLs from any earning role; mint tagged Special Links in Associates Central once the tag exists</h3><span class="pid">D-15</span>
+    <span class="badge b-bad">blocked</span></div>
+  <p class="small">Blocked on Q1 (the Associates tag) and Q13 (who owns the third-party attribution parameters observed on the redirects). Nothing to implement until both are answered; this card exists so the path is written down before it is needed.</p>
+  <dl>
+    <dt>The problem</dt><dd>The three submitted short links redirect to their Amazon destinations carrying third-party attribution parameters (btn_ref=srctok-&lt;hex&gt;, channelId=704) and no Associates tag. Participation Requirements 2(b) requires the Associates ID or &#x27;tag&#x27; parameter on every link an Associate places to an Amazon Site, so a click through these links cannot earn Associates commission. The Commission Income Limitations section (Program Policies) additionally warns against claiming commissions from both Amazon Associates and another program using the same traffic — for example by combining attribution links.</dd>
+    <dt>What is proposed</dt><dd>When Q1 and Q13 are answered: if the owner wants these products promoted, mint fresh tagged Special Links inside Associates Central for the intended products (the observed ASINs or corrected products per Q2), switch the currently disabled buy actions over to those links, and record the change as a new implemented card on this board. Until then, every Amazon link on the site stays an evidence link and earning stays disabled, exactly as published.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Every link an Associate places to an Amazon Site must include the Associates ID or &#x27;tag&#x27; as a URL parameter.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Associates&#x27; tags should only benefit Amazon Associates commissions; claiming commissions from both Amazon Associates and another program on the same traffic (e.g. combining attribution links) risks withheld commissions or termination.</li><li><span class="term t-observed">Observed</span>The observed redirects on 2026-11-16 carry btn_ref=srctok-&lt;hex&gt; and channelId=704 and no tag parameter; the raw URLs are recorded in session d18303ca&#x27;s verification record. <span class="small">(Fetch of the three short links, 2026-11-16, session d18303ca (sessions/d18303ca/).)</span></li><li><span class="term t-observed">Observed</span>FLG-010 already records that no Associates tag was supplied and that the submitted links carry only srctok and channelId parameters. <span class="small">(data/flags.json FLG-010, confirmed on the Flagged page, 2026-11-16.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Low once the tag exists — three links and the buy-action markup. Zero until then; the links stay disabled.</dd>
+    <dt>Expected effect</dt><dd>Revenue: makes the buy actions eligible to earn Associates commission for the owner. No revenue figure is claimed.</dd>
+    <dt>Risks</dt><dd>If the observed listings are not the intended products (Q2), tagging them would promote the wrong product; if the srctok/channelId parameters are deliberate third-party monetization (Q13), mixing them with Associates traffic is the exact pattern the Commission Income Limitations clause warns about.</dd>
+    <dt>What it will not do</dt><dd>It does not modify or blacklist the submitted URLs themselves; it does not enable earning before the owner&#x27;s decisions; it does not change any product fact.</dd>
+    <dt>Depends on</dt><dd><a href="#Q1">Q1</a>, <a href="#Q13">Q13</a></dd>
+    <dt>Done when</dt><dd><ul><li>Buy actions carry tagged Special Links, or earning stays disabled — no intermediate state.</li><li>The tag used matches the Associates ID supplied in the answer to Q1.</li><li>The decision and the link format are recorded on this board when done.</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-15" value="Accept" data-pid="D-15"><span>Accept</span></label>
+        <label><input type="radio" name="D-15" value="Reject" data-pid="D-15"><span>Reject</span></label>
+        <label><input type="radio" name="D-15" value="Defer" data-pid="D-15"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-15" data-out="D-15">No decision recorded yet</output>
+    <textarea data-note="D-15" aria-label="Reason for the decision on D-15" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
 </article>
 
 <h2 id="questions">Open questions</h2>
@@ -463,7 +541,15 @@
 </td>
 <td class="small"><b>How to find out:</b> A decision, plus, if yes, a rule for supplying ASINs rather than short links.</td>
 <td class="small"><b>If unanswered:</b> The site stays scoped to three products.</td>
-<td><a href="#D-02">D-02</a></td></tr></tbody></table></div>
+<td><a href="#D-02">D-02</a></td></tr><tr id="Q13"><td class="lead-cell"><span class="mono">Q13</span><br><span class="badge b-warn">High</span></td>
+<td><strong>Who owns the third-party attribution parameters (btn_ref=srctok-…, channelId=704) observed on the submitted short links — and are those links meant to earn Associates commission at all?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The redirects observed on 2026-11-16 carry btn_ref=srctok-&lt;hex&gt; and channelId=704 on all three links and no Associates tag; Participation Requirements 2(b) requires the tag parameter on every link an Associate places to an Amazon Site; the Commission Income Limitations section warns against claiming commissions from two programs on the same traffic. FLG-010 and I2-F-03 already record the missing tag. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> What service minted the three link.amazon URLs; what the srctok and channelId parameters credit and for whom; whether the owner intends these links as Associates links at all.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> A click through an untagged link earns nothing for this site, and attribution that also credits another program is called out by name in the April 2026 policies. Until this is answered, no earning link can be built safely.</div>
+</td>
+<td class="small"><b>How to find out:</b> Ask the person or tool that supplied the three link.amazon URLs what minted them; if an Associates account exists, use Associates Central&#x27;s link checker and click reports to see whether any clicks credit the account; then record the answer on this board.</td>
+<td class="small"><b>If unanswered:</b> The buy actions stay disabled and every Amazon link stays an evidence link that earns nothing — the current published state, which is safe.</td>
+<td><a href="#D-15">D-15</a></td></tr></tbody></table></div>
 
 <h2 id="discovery">How to discover the missing information</h2>
 <p>Nine concrete actions, each with the official page to read, the person who can do it, and the output that closes the question.</p>
