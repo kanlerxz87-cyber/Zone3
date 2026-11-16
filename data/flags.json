@@ -1138,6 +1138,37 @@
       "action": "None — fixed. Future NAV additions to scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
       "sources": [],
       "repo_evidence": "git diff after re-running scripts/build_marketing.py at base 933e2f3: exactly one line changed in each of the six marketing/*.html files, adding href='../suggestions.html' (Suggestions &amp; decisions) to the top nav imported from scripts/build_site.py NAV. Reproduce: python3 scripts/build_marketing.py && git diff --stat marketing/."
+    },
+    {
+      "id": "Z14-F-01",
+      "severity": "Info",
+      "category": "Source drift",
+      "date": "2026-11-16",
+      "session": "145b8df7",
+      "item": "The Emeril Lagasse listing title (B09B7SB46R) changed wording between captures; the destination did not change",
+      "detail": "Read 2026-11-16, the served page title is \"Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included\". The 2026-11-13/14 captures (S15, S53) rendered \"…26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals\". Same ASIN, same redirect destination, different sentence: Amazon listing titles are edited by the seller over time. Consequence for this repository: any copy that quotes a title must carry the capture date, which the marketing layer (read/) does on every page, and the rotisserie and dual-speed-fan wording is NOT stated as a current attribute anywhere on the site because today's capture does not contain it. No published value changes; the observation is recorded so a future reader does not mistake wording drift for a destination change.",
+      "sources": [
+        "S15",
+        "S53",
+        "S60",
+        "S67"
+      ],
+      "action": "No change required. Keep quoting titles with their capture date; re-capture before any future wording-sensitive edit."
+    },
+    {
+      "id": "Z14-F-02",
+      "severity": "Info",
+      "category": "Point-in-time data",
+      "date": "2026-11-16",
+      "session": "145b8df7",
+      "item": "Best-seller positions read 2026-11-16 differ from the 2026-11-14 capture the dashboard publishes",
+      "detail": "The Air Fryers best-seller page states on its face that it is based on sales and is updated frequently. The 2026-11-14 capture (S43, used by air-fryers.html and reviews.html) and this session's 2026-11-16 capture (S62, used by read/bestseller.html) do not agree on every ordering, and the Emeril Lagasse 26QT appears at position 6 today. Both captures are published with their dates rather than one replacing the other, because a rank has no stable value to correct to. The marketing layer therefore publishes one dated rank and no interpretation of sales; prices and star ratings printed on the same page were deliberately not copied out (Program Policies 2(b) and 6(t)).",
+      "sources": [
+        "S43",
+        "S62",
+        "S02"
+      ],
+      "action": "Treat each rank row as a dated snapshot. If a single canonical benchmark table is wanted, an owner decision is needed on which capture date governs; unverified ordering claims are not merged across dates."
     }
   ]
 }

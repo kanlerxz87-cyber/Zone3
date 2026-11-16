@@ -118,7 +118,7 @@ def page(rel: str, title: str, desc: str, body: str, *, canonical_slug: str,
         f'{esc(l["label"])}</a>'
         for l in E["brand"]["links"]
     )
-    og_img = f'\n<meta property="og:image" content="{E["site_base"]}/{image}">' if image else ""
+    og_image = image or "assets/img/hero-kitchen.jpg"
     ld_html = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     url = f'{E["site_base"]}/read/{rel}'
 
@@ -135,7 +135,7 @@ def page(rel: str, title: str, desc: str, body: str, *, canonical_slug: str,
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{E["site_base"]}/assets/img/hero-kitchen.jpg">{og_img}
+<meta property="og:image" content="{E["site_base"]}/{og_image}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="stylesheet" href="{up}assets/read.css">
@@ -258,7 +258,11 @@ def build_index() -> None:
               "url": f'{E["site_base"]}/read/{a["slug"]}.html'} for i, a in enumerate(E["articles"])
          ]},
     ]
-    html_out = page("index.html", f"{b['name']} — {b['promise']}", b["sub"], body,
+    seo_title = f"{b['name']} — air fryers, read line by line off the listing"
+    seo_desc = ("Three real air-fryer listings compared on what their titles actually say: "
+                "capacity arithmetic, feature names, cleaning claims and a dated best-seller rank. "
+                "No prices, no invented specs.")
+    html_out = page("index.html", seo_title, seo_desc, body,
                     canonical_slug="read/index.html", ld=ld, image="assets/img/hero-kitchen.jpg")
     (OUT / "index.html").write_text(html_out, encoding="utf-8")
 
