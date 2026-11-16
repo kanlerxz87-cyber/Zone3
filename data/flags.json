@@ -1207,6 +1207,21 @@
       "action": "Owner to archive closed Parts into a dated file under docs/ or sessions/ when convenient. Not blocking.",
       "sources": [],
       "repo_evidence": "wc -l COORDINATION.md = 5,464; grep -c 'in progress' COORDINATION.md = 93 (session a0ffcab0, 2026-11-16, before this session's Part was appended)."
+    },
+    {
+      "id": "A0-F-07",
+      "severity": "Medium",
+      "category": "Wording (unsupported claim)",
+      "item": "The 'Observed redirect targets' table on the Flagged page says 'No: not the submitted product' for each short link; no official source establishes what the submitter intended",
+      "detail": "The table (the FLG-035 identity addendum, published on flagged.html) labels each destination 'No: not the submitted product'. The evidence is the three destination pages read on 2026-11-16 (titles match the register) and the 9-character codes returning Page Not Found on amazon.com/dp/<code>. The codes are not ASINs (Creators API: an ASIN is a 10-character identifier). Whether a destination is the intended product depends on the submitter's intent, which no official source records. The register's own rule (71-F-03) is 'observed destination; intended match unconfirmed'. The label states a conclusion the evidence does not support.",
+      "action": "Reword the column to 'Observed destination; intended match unconfirmed' and keep the owner question open (FLG-002). The wording sits in another session's addendum, so it is logged here as a request rather than edited.",
+      "sources": [
+        "S08",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "repo_evidence": "Live flagged.html, 'Observed redirect targets' table (read 2026-11-16 at https://kanlerxz87-cyber.github.io/Zone3/flagged.html): 'Confirmed?' column = 'No: not the submitted product' for rows 1–3."
     }
   ]
 }
