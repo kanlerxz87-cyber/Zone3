@@ -74,6 +74,14 @@ def html_unescape(s: str) -> str:
              .replace("&amp;", "&"))
 
 
+def mentioned(text: str, i: int, j: int) -> bool:
+    """True when the match is a mention (inside quotes) rather than a use."""
+    before = text[max(0, i - 1):i]
+    after = text[j:j + 1]
+    quotes = ("\u201c", "\u201d", '"', "'")
+    return before in quotes and after in quotes
+
+
 def rows_of(raw: str):
     """Yield (table_attrs, row_html) for every data row in the page."""
     for tbl in re.findall(r"<table([^>]*)>(.*?)</table>", raw, re.S):
@@ -114,6 +122,10 @@ def lint_file(path: pathlib.Path, root: pathlib.Path):
             window = text[max(0, m.start() - 90):m.end() + 90]
             if rx is PRICE and PAYOUT_CONTEXT.search(window):
                 continue
+            if mentioned(text, m.start(), m.end()):
+                continue  # a use/mention distinction: a phrase inside quotation marks is being
+                          # discussed (the style guide and several pages quote what they forbid),
+                          # not asserted about a product
             snippet = window.strip()
             yield (rel, name, f"{why} -> {snippet!r}")
 

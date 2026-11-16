@@ -3,6 +3,11 @@
  "generated": "2026-11-16",
  "inherited": [
   {
+   "file": "site/articles/index.html",
+   "rule": "FTC:experience-claim",
+   "detail": "no experience may be claimed with a product that was not tried -> 'listing states \u2014 and it names what the listing leaves out. No price, no star rating, no \"we t"
+  },
+  {
    "file": "site/evidence.html",
    "rule": "STYLE:row-source",
    "detail": "a data row carries no link to an official source -> 'V-15'"

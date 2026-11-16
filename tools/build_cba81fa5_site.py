@@ -109,7 +109,11 @@ def guides_index_block() -> str:
                 f'<span class="blank-why">{g["reason"]}</span></td></tr>'
             )
     tail = note_and_rules(n_live, n_held).format(held="Held" if n_held else "no")
+    note = (f'<a id="cba81fa5-guide-plan" aria-hidden="true"></a>'
+            f'<div class="note warn">\n  <p>{GUIDES["duplication_note"]}</p>\n</div>\n'
+            if GUIDES.get("duplication_note") else "")
     return (
+        note +
         '<div class="tablewrap"><table>\n<caption>The guide plan</caption>\n'
         '<div class="tablewrap"><table><caption>Every guide, published or not, with the register it was read from</caption>'
         '<thead><tr><th>Question this guide answers</th><th>Status</th><th>Provenance</th></tr></thead>'
@@ -135,11 +139,10 @@ def products_for_band():
 
 
 def frontdoor_block() -> str:
-    live = [g for g in GUIDES["guides"] if g["status"] == "live"][:3]
+    fd = GUIDES["front_door"]
     cards = "\n".join(
-        f'      <a class="fd-card" href="site/{g["href"]}"><b>{html_escape(g["title"].split(":")[0])}</b>'
-        f'<span>{g["blurb"]}</span></a>'
-        for g in live
+        f'      <a class="fd-card" href="{g["href"]}"><b>{g["title"]}</b><span>{g["line"]}</span></a>'
+        for g in fd["guides"]
     )
     prods = "\n".join(
         f'      <a class="fd-card" href="{SRC[d["source"]]["url"]}" target="_blank" rel="noopener noreferrer">'
@@ -147,35 +150,32 @@ def frontdoor_block() -> str:
         f'<span class="fd-asin">{d["asin"]} &middot; listing text read 2026-11-16</span></a>'
         for d in GUIDES["products_band"]
     )
+    ctas = "\n".join(
+        f'    <a class="fd-btn fd-btn-{c["kind"]}" href="{c["href"]}">{c["label"]}</a>' for c in fd["cta"]
+    )
     return (
         f'<a id="cba81fa5-front-door" aria-hidden="true"></a><!-- {FRONT_DOOR_NOTE} -->\n'
         '<section class="fdoor">\n'
-        '  <p class="fd-eyebrow">Air Fryer Field Notes &middot; three air fryers, checked line by line</p>\n'
-        '  <h1 class="fd-h1">Which of these three air fryers fits your kitchen? We read the listings so you can read the decision.</h1>\n'
-        '  <p class="fd-lede">No price, no star rating, no &ldquo;bestseller&rdquo; badge and no test nobody ran. '
-        'What is here is the specification each Amazon listing states, the page it was read from, the date it was read, '
-        'and a plain statement of what this site cannot tell you. Below the band is the audit trail behind it: every '
-        'finding, every source, every open flag.</p>\n'
+        f'  <p class="fd-eyebrow">{fd["eyebrow"]}</p>\n'
+        f'  <h1 class="fd-h1">{fd["h1"]}</h1>\n'
+        f'  <p class="fd-lede">{fd["lede"]}</p>\n'
         '  <div class="fd-cta">\n'
-        '    <a class="fd-btn fd-btn-primary" href="site/index.html">Open the reader site</a>\n'
-        '    <a class="fd-btn fd-btn-ghost" href="site/guides/index.html">Read the buying guides</a>\n'
-        '    <a class="fd-btn fd-btn-ghost" href="site/answers.html">What we still need to know</a>\n'
+        f'{ctas}\n'
         '  </div>\n'
-        '  <h2 class="fd-h2">The three listings</h2>\n'
-        '  <div class="fd-cards">\n'
-        f'{prods}\n'
-        '  </div>\n'
-        '  <h2 class="fd-h2">Latest guides</h2>\n'
+        f'  <h2 class="fd-h2">{fd["guides_heading"]}</h2>\n'
         '  <div class="fd-cards">\n'
         f'{cards}\n'
         '  </div>\n'
-        '  <p class="fd-fine">All product figures here come from Amazon pages; nothing is inferred. '
-        'Disclosure: As an Amazon Associate I earn from qualifying purchases &mdash; and no link on this site carries '
-        'a tracking tag yet, so no click can earn. '
-        f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer" '
+        f'  <p class="fd-fine">{fd["guides_more"]}</p>\n'
+        '  <h2 class="fd-h2">The three listings, as served</h2>\n'
+        '  <div class="fd-cards">\n'
+        f'{prods}\n'
+        '  </div>\n'
+        f'  <p class="fd-fine">{fd["fine"]} '
+        f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer">'
         f'title="{SRC["CBA-S09"]["title"]}">CBA-S09</a></p>\n'
         '</section>\n\n'
-        '<p class="fd-eyebrow-ops" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
+        '<p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
         'font-weight:700;color:#767f8d;margin:28px 0 6px">Operations &middot; the audit behind the front door</p>\n'
     )
 
@@ -221,8 +221,9 @@ def main() -> int:
 
     targets = [
         (SITE / "index.html", "<h2>Buying guides</h2>", "<h2>Side by side</h2>", landing_block(), None),
-        (SITE / "guides" / "index.html", "<caption>The guide plan</caption>", "</main>",
-         guides_index_block(), '<div class="tablewrap">'),
+        (SITE / "guides" / "index.html",
+         '<a id="cba81fa5-guide-plan"' if '<a id="cba81fa5-guide-plan"' in (SITE / "guides" / "index.html").read_text(encoding="utf-8") else "<caption>The guide plan</caption>",
+         "</main>", guides_index_block(), '<div class="tablewrap">'),
     ]
     changed = []
     for path, start, end, new, back in targets:

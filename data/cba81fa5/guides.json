@@ -136,5 +136,48 @@
       "line": "450°F Hi-Fry option, bake / dehydrate / frozen named on the line, XL dishwasher-safe basket",
       "source": "CBA-S15"
     }
-  ]
+  ],
+  "duplication_note": "<b>Why this set exists alongside <a href=\"../../read/index.html\">The Crisp Report</a>.</b> Two research sessions published guides against the same brief on the same day, from the same three listings. Rather than delete one, the reader set is <a href=\"../../read/index.html\">The Crisp Report</a> — eleven pages, with images and structured data — and this set stays as a <em>second-source check</em>: the same facts quoted independently, with the register id each row rested on. Where the two disagree, the disagreement is a finding, not a style difference, and it belongs on the <a href=\"../flagged.html\">flagged page</a>.",
+  "front_door": {
+    "eyebrow": "Two research desks &middot; one standard: quoted from the listing, nothing invented",
+    "h1": "Which of these three air fryers fits your kitchen? We read the listings so you can read the decision.",
+    "lede": "No price, no star rating, no &ldquo;bestseller&rdquo; badge and no test nobody ran. What is here is the specification each Amazon listing states, the page it was read from, the date it was read, and a plain statement of what this site cannot tell you. The reader site below is written for shoppers; the operations pages under it hold every finding, every source and every open flag.",
+    "cta": [
+      {
+        "label": "Read the guides — The Crisp Report",
+        "href": "read/index.html",
+        "kind": "primary"
+      },
+      {
+        "label": "The evidence desk and decision board",
+        "href": "site/index.html",
+        "kind": "ghost"
+      },
+      {
+        "label": "What we still need to know",
+        "href": "site/answers.html",
+        "kind": "ghost"
+      }
+    ],
+    "guides_heading": "Latest from the reader site",
+    "guides": [
+      {
+        "href": "read/capacity.html",
+        "title": "6 QT, 8 QT and 26 QT are not the same kind of number",
+        "line": "What the quart figures measure, and where the comparison stops being like-for-like."
+      },
+      {
+        "href": "read/features.html",
+        "title": "French doors, Sync Finish and a 450&deg;F button",
+        "line": "Three features the listings name, and what each one is actually for."
+      },
+      {
+        "href": "read/bestseller.html",
+        "title": "One of these three is on Amazon&rsquo;s best-seller list today",
+        "line": "A dated observation of a real page — and why that is all it can be."
+      }
+    ],
+    "guides_more": "<a href=\"read/index.html\">All eleven pages &rarr;</a> &middot; second-source set: <a href=\"site/guides/index.html\">five guides with their register ids</a>",
+    "fine": "All product figures here come from Amazon pages read on 2026-11-16; nothing is inferred. Disclosure: As an Amazon Associate I earn from qualifying purchases &mdash; and no link on this site carries a tracking tag yet, so no click can earn."
+  }
 }

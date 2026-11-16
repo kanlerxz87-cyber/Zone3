@@ -1,6 +1,7 @@
 {
  "built": "2026-11-16",
  "pages": [
+  "answers.html",
   "articles/french-door-26qt.html",
   "articles/hi-fry-450.html",
   "articles/index.html",
@@ -9,10 +10,15 @@
   "evidence.html",
   "flagged.html",
   "front-door.html",
+  "guides/air-fryer-oven-vs-basket.html",
+  "guides/capacity-maths.html",
+  "guides/dishwasher-safe-baskets.html",
   "guides/dual-basket-vs-single-basket.html",
   "guides/index.html",
+  "guides/what-four-in-one-means.html",
   "index.html",
-  "products.html"
+  "products.html",
+  "style-guide.html"
  ],
  "sources": [
   "I2-S01",
