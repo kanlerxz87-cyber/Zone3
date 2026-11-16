@@ -351,3 +351,62 @@ navigation and in `sitemap.xml`, and passes all gates with 0 advisories. A rebas
 `sessions/25513d33/resolve_rebase.py`, was added alongside it: the board's own prose contains the
 string `<<<<<<<`, so a substring marker test false-positives and can let a conflicted file be
 published — the resolver's test is line-anchored.
+
+## 10. Implementation pass — session `5a56c084` (2026-11-16)
+
+**What this pass is.** The polished-marketing implementation round. Session `4f83ee7b`
+(2026-11-15) published ten design/marketing proposals (SUG-01…10), ten owner questions
+(Q1…10) and six discovery actions (D1…6) — deliberately without implementing anything.
+Session `5a56c084` recorded a decision per proposal (now rendered as the **Decision log**
+on `suggestions.html`, sourced from `data/suggestions.json`) and implemented only the
+unblocked subset. Blocked proposals stayed blocked; no owner question was answered by
+inference.
+
+**Independent re-verification (2026-11-16).** All eight load-bearing observations were
+re-fetched live in this session and matched the register: the three submitted short links
+still open the same three listings (`B04G1MEwY`→`B0CDY277D3`, `B02NbDxp3`→`B09B7SB46R`,
+`B00hJ57DV`→`B08DKYBTPH`); the three direct `/dp/<token>` checks still return Amazon's
+"Page Not Found" page; the Operating Agreement (header October 15, 2025) carries the §5
+disclosure wording verbatim; the Program Policies (header April 14, 2026) carry the
+session definition verbatim. Two listing-title wording drifts were recorded as Info items
+(precedent 4f83-F-01); no new flag was raised. Record:
+`sessions/5a56c084/verification-2026-11-16.json`, rendered at `/sessions/5a56c084/`.
+
+**What shipped.**
+
+* **Design system** — the generic dashboard styling is replaced by an editorial
+  "research desk" look across every generated page: warm paper ground, evergreen
+  primary, copper accents, serif display headings; no external fonts, images or scripts.
+* **Disclosure placement** — the Associates statement is a strip under the header on
+  every page (§5 "clearly and prominently"; FTC "hard to miss"), repeated beside product
+  pointers in the articles, with the Amazon content disclaimer and trademark note in
+  every footer.
+* **Landing page** — now a front door: hero, honest research-status callout, proof
+  stats computed from the registers, three listing cards (labelled source links only),
+  Research Desk cards, the "In the kitchen now" point-in-time module (SUG-08), a trust
+  section (SUG-06), a Decision Center banner, and a collapsed site map. Navigation is
+  five primary links plus a grouped "More pages" menu; every previous destination is
+  still reachable and gate-checked.
+* **Research Desk** — `articles/index.html` plus four grounded articles (plan topics
+  T-09, T-10, T-07, plus one new evergreen grounded in the Commission Income
+  Statement). Every claim carries an inline source link; every article carries a
+  verified / not-verified box, a how-this-was-written note, and its enforced editorial
+  constraints; the review checklist is published on the hub (SUG-03's gate).
+* **Decision log** — per-proposal accept/defer/hold records with evidence links
+  (SUG-01 partial, SUG-02/03/06/07/08 implemented, SUG-04/09/10 deferred, SUG-05 still
+  blocked pending the owner's Associates tag).
+
+**One defect found and fixed in flight (5a56-F-01).** The shared page template's
+subdirectory link prefixer added a single `../` regardless of nesting depth; the first
+page nested two levels deep rendered links that resolved one level short. Fixed
+(depth-aware prefix) in the same commit, before merge; all link gates pass.
+
+**Gates at publication.** `check_site` OK (19 pages, 3 products, 51 sources, 78 flags) ·
+`verify_site` PASS (80 pages, 1,369 rows, 0 advisories) · `link_report --strict` exit 0 ·
+`build_sitemap --check` exit 0 (75 pages) · `check_all_links` 126 pages, 0 errors.
+
+**Still blank, still correct.** Prices, ratings, review counts, per-product commission
+rates, clicks and conversions remain blank: no Associates tag (Q1) and no approved
+Amazon data path (Q4) are connected, and 2(b)/6(t) forbid displaying those values from
+anywhere else. The fastest path to a revenue-capable site remains the three unblock
+items in §5 — owner tag, intended ASINs, account/API status.

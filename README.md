@@ -76,7 +76,10 @@ The pipeline records the observed destination listings separately from the 9-cha
 | Repo review | `/repo-review/` | Audit of the repository as found |
 | **This pass (2026-11-14)** | `/` (root dashboard) | Independent re-verification of every load-bearing claim against its official source, with a per-claim result table; corrections V-F1/V-F2 published at `/flagged.html`; repo review at `COORDINATION.md` § *Part: session b8beb448* |
 | **Final integration pass (2026-11-14)** | `/content-topics.html` | The editorial topic plan the brief asks for: 12 working article titles, the verified Amazon fact each is built on, the page that already carries it, and the rule that governs what it may not state. Every row carries an official source link |
-| **This pass (2026-11-15)** | `/suggestions.html` | Design and marketing proposals for making the site read like a polished marketing affiliate website, the open questions that must be answered before any decision, and suggestions for discovering the missing information. Proposals are labelled as proposals; every factual row links its official source. Nothing on this page is implemented yet — it is published for review |
+| **Final integration pass (2026-11-14)** | `/content-topics.html` | The editorial topic plan the brief asks for: 12 working article titles, the verified Amazon fact each is built on, the page that already carries it, and the rule that governs what it may not state. Every row carries an official source link |
+| **Suggestions & decisions** | `/suggestions.html` | Design and marketing proposals for making the site read like a polished marketing affiliate website, the open questions that must be answered before any decision, and suggestions for discovering the missing information. Proposals are labelled as proposals; every factual row links its official source. The **Decision log** records what session 5a56c084 implemented, deferred or left blocked (2026-11-16) |
+| **Research Desk (2026-11-16)** | `/articles/` | The article hub: four grounded articles (affiliate-link anatomy, what you may say about an untested product, category & commission mechanics, the 24-hour session window) plus the full 12-topic plan with status. Every claim carries an inline source link; every article carries a verified / not-verified box and its editorial constraints. Proposals SUG-02/SUG-03 implemented |
+| **This pass (2026-11-16)** | `/sessions/5a56c084/` | Independent re-verification of the three submitted links, the three destinations and the load-bearing policy pages, fetched 2026-11-16 — 8/8 observations match the register; two listing-title wording drifts recorded as Info items |
 | **Executive summary (document)** | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | The standalone executive summary: verified facts, deliberately blank fields, capability status, and the three items that unblock the build |
 
 ---
@@ -104,10 +107,15 @@ COORDINATION.md            shared task board for parallel agent sessions
 ## Working with it
 
 ```bash
-python3 tools/build_site.py            # rebuild + run the provenance gate (exit 2 on violation)
-python3 tools/verify_site.py           # audit the emitted HTML    (exit 3 on violation)
-python3 tools/link_report.py           # provenance coverage report
-python3 tools/link_report.py --strict  # fail if any table is under-covered
+python3 scripts/build_site.py            # rebuild the flat site + articles/ + session records
+                                         # (runs scripts/build_5a56c084.py for the Research Desk)
+python3 scripts/check_site.py            # data + HTML gate      (exit 1 on violation)
+python3 tools/verify_site.py             # whole-tree release gate (exit 3 on violation)
+python3 tools/link_report.py             # provenance coverage report
+python3 tools/link_report.py --strict    # fail if any table is under-covered
+python3 scripts/build_sitemap.py         # rewrite sitemap.xml from the checked-in tree
+python3 scripts/build_sitemap.py --check # exit 1 if any live page is missing from it
+python3 scripts/check_all_links.py       # crawl every published page for broken links
 
 # verify the finding yourself
 for a in B04G1MEwY B02NbDxp3 B00hJ57DV; do
@@ -120,6 +128,46 @@ python3 tools/amazon_intake.py --asin B0CDY277D3 --offline   # exit 0, queued fo
 ```
 
 No third-party dependencies: the standard library only.
+
+---
+
+## The 2026-11-16 pass (session 5a56c084): the polished-marketing layer
+
+Session 4f83ee7b (2026-11-15) published ten design/marketing proposals
+(SUG-01…10) with ten owner questions (Q1…10) and six discovery actions
+(D1…6) — published for review before anything was implemented. Session
+5a56c084 is the follow-up pass that recorded a decision per proposal (the
+**Decision log** on `suggestions.html`) and implemented only the unblocked
+subset:
+
+- **Design system rebuilt** — an editorial "research desk" look (warm paper
+  ground, evergreen primary, copper accents, serif display headings) replaces
+  the generic dashboard styling, across every generated page. No external
+  fonts, no images, no JavaScript required.
+- **Disclosure made prominent** — the Associates statement is now a strip
+  directly under the header on every page (Operating Agreement §5, "clearly
+  and prominently"; FTC: hard to miss), repeated beside product pointers on
+  the articles, with the Amazon content disclaimer and trademark note in the
+  footer.
+- **Landing page is now a front door, not a file listing** — hero with the
+  actual promise, the three listings as cards (labelled source links only),
+  proof stats computed from the registers, the Research Desk's articles,
+  a point-in-time "In the kitchen now" module anchored to the dated Best
+  Sellers benchmark, a trust section, and a Decision Center banner. The
+  20-link wall of navigation is grouped into five primary links plus a
+  "More pages" menu; the site map is collapsed into it.
+- **Research Desk** — `articles/index.html` plus four articles written from
+  official pages, each claim linked, each with a verified / not-verified box,
+  a how-this-was-written note and enforced editorial constraints. The desk's
+  review checklist is published on the hub (SUG-03's anti-AI-slop gate).
+- **Still blocked, on purpose** — no conversion CTA (SUG-05 needs the owner's
+  Associates tag, Q1), no price/rating display (2(b)/6(t) — no approved data
+  path), no campaign numbers (no account data). The decision log shows
+  exactly what waits on which owner input.
+
+Full decision records: `suggestions.html` Decision log and
+`data/suggestions.json` (`implementation` fields); board record:
+`COORDINATION.md` Part session 5a56c084.
 
 ---
 
