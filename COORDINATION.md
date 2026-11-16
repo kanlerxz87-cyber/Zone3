@@ -6053,6 +6053,126 @@ changes are strictly additive new list items (`D-13…`, `I2-S15…`); existing 
   closed PR #100's scope; at edit time only PR #109, COORDINATION.md scope, was open); D1-F-04
   (board length — corroborates A0-F-06, not acted on).
 
+### Z14 publication record (session `145b8df7`, 2026-11-16)
+
+| Step | Result |
+|---|---|
+| Branch | `arena/145b8df7-zone3`, base `933e2f3` → integrated through `609dc76`, `c3699f4`, `046b18d` as those merges landed |
+| PR | **#111** — https://github.com/kanlerxz87-cyber/Zone3/pull/111 (summary, sources, flagged irregularities; merged without waiting for review, per the brief) |
+| Merge | **`b8f576d`** — `Merge pull request #111 from kanlerxz87-cyber/arena/145b8df7-zone3`, `gh pr merge 111 --merge`, exit 0. `main` = `b8f576d`, working tree clean |
+| GitHub Pages | `pages/builds/latest` → **status `built`**, `created_at 2026-11-16T18:55:19Z` (2 s after the merge), i.e. the build of `b8f576d`. The build endpoint's `sha` field reads `null` for this repo, so the build is tied to the merge by timestamp and by the file check below |
+| New path shipped | `contents/<path>` at `main` after the build: `read/index.html` 16,493 B · `read/getting-paid.html` 23,748 B · `read/category/air-fryers.html` 14,369 B · `suggestions.html` 78,656 B · `flagged.html` 157,485 B — and the other session's `site/index.html` 15,639 B, untouched |
+| Live-site verification limit, recorded honestly | `https://kanlerxz87-cyber.github.io` is **not reachable from this sandbox** (outbound is restricted to `github.com`, `api.github.com`, `codeload.github.com`, `registry.npmjs.org`, `pypi.org`), so an HTTP 200 on `/Zone3/read/index.html` could not be observed from here. What was verified instead: Pages reports `built` for the post-merge tree, and the deployed blob for `read/getting-paid.html` contains the exact disclosure sentence `check_site.py` requires plus the two `4.50%` rows, and **no** product price or star rating — only Amazon's own published bounty figures ($12.00 / $2.00 / $5.00). A browser check is the one step only the owner can do |
+
+**Final gates on `b8f576d`**
+
+| Gate | Result |
+|---|---|
+| `scripts/check_site.py` | OK — 24 pages, 3 products, 62 sources, 97 flags, all checks passed |
+| `tools/verify_site.py` | **PASS — 95 pages, 1,626 table rows, 1,389 with an official source, 447 flagged, 99 repo-anchored, 0 advisories** |
+| `scripts/check_all_links.py` | PASS — 141 HTML pages, 146 distinct external URLs, 0 errors |
+| `tools/link_report.py --strict` | exit 0 |
+| `scripts/build_sitemap.py --check` | PASS — 90 pages covered, 0 stale entries |
+| `scripts/build_read.py --check` | PASS — 11 pages, committed output matches the generator |
+| markers / `git diff --check` | 0 line-anchored markers, clean |
+
+**Two consistency gaps found in this session's own work and closed before merging, not left as notes:**
+`Z14-F-03` was on this board's irregularities table but absent from `data/flags.json` (so it could not
+render on `flagged.html`) — added as a register row written as an explicit cross-reference to `FLG-010`
+and `Q1` rather than a duplicate of them; and `read/**` was covered only by `verify_site`, so the eleven
+pages were added to `check_site.py`'s `PAGES`, which required `build_read.py` to emit `<nav class="topbar">`
+for the shared gate. Both marketing layers are now checked by both gates.
+
+**Open for the owner, unchanged by this merge:** the Associates Tracking ID (blocks all revenue —
+`FLG-010` / `Q1` / `Z14-F-03`), confirmation of the three intended ASINs, the target marketplace, whether
+an approved account exists, reviewer and cadence, analytics stack, and which reader-facing layer
+(`/read/` or `/site/`) is canonical (`Z14-F-04`). `Z14-T1`…`Z14-T6`: **done**.
+
+
+**One more `main` move, resolved the same way.** Session `d18303ca` merged PR #114 while PR #115 was open.
+Its work extended `/site/` with six pages; it conflicted only in `COORDINATION.md`, where `main`'s board
+already contained this session's Part (it arrived with #111), so the resolution appended **only** the new
+publication record rather than the whole Part — a marker-anchored split, 0 duplicated lines, both sides
+byte-identical above the join. `Z14-F-04`'s detail was refreshed with that fact, since the canonical-layer
+decision now spans two sessions on the `/site/` side against one on `/read/`.
+
+---
+
+# Part D1 — session `d18303ca` (2026-11-16) — independent re-verification round, reader article library, decision-board additions, integration
+
+> Appended additively. IDs `D1-Tn` (tasks), `D1-F-nn` (irregularities), `D1-S-nn` (sources) are
+> **namespaced** and are not the same items as `A:`, `B:`, `Z:`, `V-`, `03-F-`, `4f83-F-`, `JH-F-`,
+> `FLG-nnn`, `1F-`, `AB-`, `I2-` used above. Nothing above this line was removed or rewritten by this
+> session. Branch: `arena/d18303ca-zone3` (Arena pins a session to one branch).
+
+**Base note.** The session was checked out at `b38d96a` (PR #101) while `origin/main` had already moved
+to `609dc76` (PR #103, same session's close-out). PR #103's history does not share an ancestor with
+`b38d96a` in this clone, so `git merge --ff-only` was refused ("unrelated histories"). The tree delta
+between the two was verified first (`git diff` = +24 lines `COORDINATION.md` I2-T5 publish record,
++5 lines `sitemap.xml`) and the branch was then aligned with `git reset --hard origin/main` **before any
+local commit existed**, which is this session's form of "pull before push": nothing was lost, nothing was
+rewritten, and the first push starts from current `main`.
+
+## D1 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `d18303ca` | `arena/d18303ca-zone3` | **Independent re-verification round (fresh fetches, 2026-11-16), reader-facing article library, additive decision-board proposals, fresh repo review, final integration PR → merge → Pages confirm.** | in progress | 2026-11-16 |
+
+## D1 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
+|---|---|---|---|---|---|
+| D1-T1 — read the board, claim tasks, push the claim | **done** (`0a78341`) | `d18303ca` | `COORDINATION.md` (append only) | — | — |
+| D1-T2 — independent live re-verification of load-bearing claims | **done** (`ed4a452`) | `d18303ca` | `sessions/d18303ca/**` (new) | `D1-S01…D1-S15` | `D1-F-01`, `D1-F-02` |
+| D1-T3 — reader article library + additive decision-board proposals | **done** (`8569bd1`) | `d18303ca` | `site/articles/**` (new); `data/i2/decisions.json` (additive `D-13…`, `Q13` only); `site/decisions.html`, `site/site-index.json` (regenerated by `tools/build_i2_site.py`, which was run but **not modified**); `sitemap.xml` (+5 additive lines, see D1-F-03) | — | — |
+| D1-T4 — fresh repo review + consolidated unknowns register | **done** (`8569bd1`) | `d18303ca` | `docs/repo-review-d18303ca.md` (new) | — | `D1-F-03`, `D1-F-04` |
+| D1-T5 — gates, PR, merge, Pages deploy confirm, publish record | in progress | `d18303ca` | this branch only; PR → `main` | — | — |
+
+**Overlap notes (coordination).** Two PRs from other sessions are open at claim time and are **not
+touched** by this session: #100 (`arena/5b425c74-zone3` — root pages, `scripts/build_site.py`,
+`sitemap.xml`) and #102 (`arena/1f1b8bd2-zone3` — `COORDINATION.md` close-out record). `COORDINATION.md`
+append-only is the shared surface by design. **Cross-scope requests (logged, not edited by this
+session):** (1) add `site/articles/**` to the sitemap build and `sitemap.xml`; (2) surface the article
+library from the root dashboard's Marketing-site group and from `site/` navigation — both belong to the
+owners of `scripts/build_site.py` / `tools/build_i2_site.py` respectively. `tools/build_i2_site.py` and
+`tools/i2_gate.py` are executed for the build/gates but their code is not modified. `data/i2/*.json`
+changes are strictly additive new list items (`D-13…`, `I2-S15…`); existing items are byte-identical.
+
+## D1 mid-session conflict log (2026-11-16)
+
+| Event | Resolution |
+|---|---|
+| While this session was fetching official pages, **five PRs from four other sessions merged into `main`**: #102 (`1f1b8bd2` close-out), #104 (`48699cff` landing-page polish), #106 (`f132f462` marketing suggestions implementation), #107/#108 (`a0ffcab0` review + follow-up). This session's first `git pull --rebase origin main` attempt stopped on a COORDINATION.md append-append conflict ("Could not apply 0a78341"); the push of the two already-made commits had already succeeded, so the half-finished rebase was **aborted** (`git rebase --abort`) and the integration was redone as a merge. | `git merge origin/main` at `2fc1bd9`: main's board taken verbatim, Part D1 appended after it, zero conflict markers committed, nothing from any side discarded. Overlap check: none of the four sessions touched `site/`, `data/i2/`, `sessions/d18303ca/` or the decision-board data — file scopes stayed non-overlapping throughout. The session record was also corrected at this point: D1-F-01 was reframed from "new finding" to "corroboration of FLG-010/I2-F-03 + first verbatim quotation of the Commission Income Limitations clause", after grep showed the raw `srctok`/`channelId` URLs were already captured by sessions 7b70cfb0 and 59d84c55. |
+
+## D1 completion record (T1–T4, 2026-11-16)
+
+- **Sources fetched once, by this session, on 2026-11-16** (all quoted observations in
+  `sessions/d18303ca/verification-2026-11-16.json`): the three submitted short links; the `dp/` control
+  probe; the [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+  (header date + §5 verbatim); the [Program Policies](https://affiliate-program.amazon.com/help/operating/policies)
+  (April 14, 2026 header; 2(b), 6(t), 6(s), 6(v), 6(w), 6(y), Commission Income Limitations clause, IP
+  License 2(h)–2(k), Agent Terms 4(c)); the [Standard Commission Income Statement](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ)
+  (Kitchen 4.50%, All Other 4.00%, bounty rates); [Creators API GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items)
+  (10-character ASIN definition) and [introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction)
+  (prerequisites); [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers);
+  GitHub Pages config/build API. No price, rating or review value observed during these fetches is
+  reproduced anywhere in this session's output (2(b), 6(t)).
+- **What was added:** the article library `site/articles/` (index + three feature articles, every
+  product fact linked to its listing, unknowns named, no first-hand claims); decision-board proposals
+  **D-13** (article library, implemented), **D-14** (interlinking, implemented), **D-15** (retire the
+  untagged attribution links once Q1/Q13 are answered, blocked) and question **Q13**; the consolidated
+  unknowns register in `docs/repo-review-d18303ca.md`; five additive sitemap lines.
+- **Verification performed:** gates on the final tree — `i2_gate` PASS (12 pages · 109 rows · 93 sourced
+  · 16 explicit blanks · 0 flagged); `verify_site` PASS (88 pages · 1,513 rows · 1,287 official · 0
+  advisories); `check_site` OK (13 pages · 52 sources · 93 flags); `link_report --strict` exit 0;
+  `build_sitemap.py --check` exit 0. Regeneration idempotence: `tools/build_i2_site.py` re-run changes
+  only `site/decisions.html` and `site/site-index.json`; the other generated pages are byte-identical.
+- **Irregularities:** D1-F-01 (corroboration + newly quoted clause, published on the decision board as
+  D-15/Q13); D1-F-02 (drift corroboration, recorded); D1-F-03 (sitemap +5 additive lines — file was in
+  closed PR #100's scope; at edit time only PR #109, COORDINATION.md scope, was open); D1-F-04
+  (board length — corroborates A0-F-06, not acted on).
+
 ### D1-T5 — PR, merge and Pages deploy (done, 2026-11-16)
 
 | Event | Result |
