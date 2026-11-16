@@ -1,0 +1,1058 @@
+{
+  "verified": "2026-11-16",
+  "built_by": "scripts/build_read.py from data/editorial.json + data/sources.json + data/products.json",
+  "site_base": "https://kanlerxz87-cyber.github.io/Zone3",
+  "note": "Editorial marketing layer for the three submitted Amazon product links. Every stated product attribute is quoted from the listing title that Amazon served at capture time (see data/products.json and the source IDs in data/sources.json). Prices, star ratings and review counts are deliberately absent: Program Policies 2(b) and 6(t) permit them only when Amazon serves the data or it comes from the Creators API, and this build has no API credentials (FLG-004, FLG-022). No first-hand product testing is claimed anywhere; the FTC's position is that an endorser cannot describe experience with a product they have not used (S07, S24).",
+  "brand": {
+    "name": "The Crisp Report",
+    "kicker": "Kitchen gear, checked",
+    "promise": "Three air fryers, read line by line off the listing",
+    "sub": "We are not a lab and we have not cooked with these machines. What we do is read every word the manufacturer and Amazon put on the page, do the arithmetic the spec sheet skips, and tell you plainly which questions the listing cannot answer.",
+    "stamp": "Updated 2026-11-16",
+    "links": [
+      {
+        "href": "index.html",
+        "label": "Home"
+      },
+      {
+        "href": "buying-guide.html",
+        "label": "Buying guide"
+      },
+      {
+        "href": "compare.html",
+        "label": "Head to head"
+      },
+      {
+        "href": "category/air-fryers.html",
+        "label": "Air fryers"
+      },
+      {
+        "href": "method.html",
+        "label": "How we check"
+      },
+      {
+        "href": "../suggestions.html",
+        "label": "Suggestions"
+      },
+      {
+        "href": "../flagged.html",
+        "label": "Flagged"
+      }
+    ]
+  },
+  "hero": {
+    "eyebrow": "The 2026 countertop question",
+    "h2": "Twin baskets, a French door, or one big XL drawer?",
+    "lede": "Three air fryers are on the table: a CHEFMAN 6 Quart dual basket, an Emeril Lagasse 26QT French-door oven and a Chefman 8 Qt TurboFry. Between them sit about twenty decisions you have to make yourself. We took the ones the listing title settles, and left the ones it does not.",
+    "cta_primary": {
+      "href": "compare.html",
+      "label": "See the three-way table"
+    },
+    "cta_secondary": {
+      "href": "buying-guide.html",
+      "label": "Read the buying guide"
+    },
+    "image": {
+      "src": "assets/img/hero-kitchen.jpg",
+      "alt": "Illustration of a dual-basket air fryer and a French-door countertop oven side by side on a kitchen counter"
+    },
+    "stats": [
+      {
+        "n": "3",
+        "l": "listings read line by line"
+      },
+      {
+        "n": "4.50%",
+        "l": "published Kitchen commission rate [[S25]]"
+      },
+      {
+        "n": "0",
+        "n_note": "prices shown",
+        "l": "prices or star ratings published, by policy [[S02]]"
+      },
+      {
+        "n": "6",
+        "l": "articles, every claim footnoted"
+      }
+    ]
+  },
+  "rules": [
+    {
+      "h": "We quote, we don't guess",
+      "p": "Every number on this site comes from the text of the listing Amazon served us, or from Amazon's own programme pages. Capacity, preset counts and accessories are quoted, never rounded up or estimated."
+    },
+    {
+      "h": "No prices, no stars — on purpose",
+      "p": "Amazon's Program Policies allow a site to show prices and availability only when Amazon serves them, and star ratings only when they come through the Creators API. We have neither, so we publish neither rather than something stale. [[S02]]"
+    },
+    {
+      "h": "We have not cooked with these",
+      "p": "No product was tested for this site. The FTC's guidance is that you cannot claim an experience you did not have, so you will get analysis instead of fake enthusiasm. [[S07]] [[S24]]"
+    },
+    {
+      "h": "Unknowns stay visible",
+      "p": "Where the listing does not answer something, the article says so in the open. The running list of unanswered questions lives on the method page and the site's flagged register. [[S01]]"
+    }
+  ],
+  "products": [
+    {
+      "id": "P1",
+      "asin": "B0CDY277D3",
+      "brand": "CHEFMAN",
+      "short": "Chefman 6 Qt dual basket",
+      "name": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+      "title_as_served": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "sources": {
+        "link": "S11",
+        "listing": "S14"
+      },
+      "position": "Two drawers, one footprint",
+      "stated": [
+        {
+          "k": "Capacity",
+          "v": "6 Quart, described as 2 independent 3Qt baskets"
+        },
+        {
+          "k": "Layout",
+          "v": "Dual basket; the title calls it an air fryer oven and a Digital Double Air Fryer"
+        },
+        {
+          "k": "You can watch",
+          "v": "Easy View Windows — plural, one per basket"
+        },
+        {
+          "k": "Two modes named",
+          "v": "Sync Finish, Hi-Fry"
+        },
+        {
+          "k": "Safety",
+          "v": "Auto Shutoff"
+        },
+        {
+          "k": "Cleaning",
+          "v": "Nonstick Dishwasher Safe Frying Baskets"
+        },
+        {
+          "k": "Finish",
+          "v": "Black"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "asin": "B09B7SB46R",
+      "brand": "Emeril Lagasse",
+      "short": "Emeril Lagasse 26QT",
+      "name": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+      "title_as_served": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "sources": {
+        "link": "S12",
+        "listing": "S15"
+      },
+      "position": "The oven-shaped option",
+      "stated": [
+        {
+          "k": "Capacity",
+          "v": "26QT, the largest number stated across the three titles"
+        },
+        {
+          "k": "Doors",
+          "v": "French door (side-opening)"
+        },
+        {
+          "k": "Cooking method named",
+          "v": "Countertop Convection Cooker"
+        },
+        {
+          "k": "Controls",
+          "v": "24 One-Touch Preset Options"
+        },
+        {
+          "k": "Cavity",
+          "v": "Extra Large Interior"
+        },
+        {
+          "k": "In the box",
+          "v": "Six Cooking Accessories Included"
+        },
+        {
+          "k": "Category",
+          "v": "Sits in Amazon's Air Fryers browse path, and its title sells it as an air fryer toaster oven"
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "asin": "B08DKYBTPH",
+      "brand": "Chefman",
+      "short": "Chefman TurboFry 8 Qt",
+      "name": "Chefman Air Fryer 8 Qt TurboFry 4-in-1",
+      "title_as_served": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "sources": {
+        "link": "S13",
+        "listing": "S16"
+      },
+      "position": "One big drawer, fewer decisions",
+      "stated": [
+        {
+          "k": "Capacity",
+          "v": "8 Qt, single XL basket"
+        },
+        {
+          "k": "Marketing count",
+          "v": "TurboFry® 4-in-1"
+        },
+        {
+          "k": "Named modes",
+          "v": "Bake, Dehydrate, Frozen (air frying being the fourth)"
+        },
+        {
+          "k": "The hot button",
+          "v": "450°F Hi-Fry Option for Crispier Results"
+        },
+        {
+          "k": "Cleaning",
+          "v": "Nonstick Dishwasher-Safe Basket"
+        },
+        {
+          "k": "Finish",
+          "v": "Stainless Steel"
+        }
+      ]
+    }
+  ],
+  "category": {
+    "name": "Air Fryers",
+    "breadcrumb": [
+      "Home & Kitchen",
+      "Kitchen & Dining",
+      "Small Appliances",
+      "Fryers",
+      "Air Fryers"
+    ],
+    "nodes": [
+      {
+        "label": "Air Fryers",
+        "node": "17659096011",
+        "url": "https://www.amazon.com/Air-Fryers/b/ref=dp_bc_5?ie=UTF8&node=17659096011"
+      },
+      {
+        "label": "Fryers (parent)",
+        "node": "17659095011",
+        "url": "https://www.amazon.com/Fryers/b/ref=dp_bc_4?ie=UTF8&node=17659095011"
+      },
+      {
+        "label": "Small Appliances (grandparent)",
+        "node": "289913",
+        "url": "https://www.amazon.com/kitchen-small-appliances/b/ref=dp_bc_3?ie=UTF8&node=289913"
+      }
+    ],
+    "siblings": [
+      {
+        "label": "Air Fryer Ovens",
+        "node": "224479505011",
+        "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryer-Ovens/zgbs/kitchen/224479505011/"
+      },
+      {
+        "label": "Deep Fryers",
+        "node": "289918",
+        "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Deep-Fryers/zgbs/kitchen/289918/"
+      }
+    ],
+    "bestsellers_url": "https://www.amazon.com/gp/bestsellers/kitchen/17659096011",
+    "bestsellers_note": "Amazon describes the list as its most popular products based on sales, updated frequently. Read 2026-11-16. [[S62]]"
+  },
+  "articles": [
+    {
+      "slug": "capacity",
+      "kicker": "Sizes, decoded",
+      "title": "6 QT, 8 QT and 26 QT are not the same kind of number",
+      "dek": "Quartage is the first thing printed on an air fryer listing and the least useful thing to compare. Here is the arithmetic the box skips, using three real listings.",
+      "date": "2026-11-16",
+      "read": 5,
+      "image": {
+        "src": "assets/img/capacity.jpg",
+        "alt": "Illustration of three air-fryer baskets of different volumes, one split into two compartments"
+      },
+      "lede": [
+        "Every air fryer argument starts with quarts and every one of them goes slightly wrong at the second step, because a quart rating is a volume, a volume is not a dinner, and the three listings on this site prove it.",
+        "So let's do the boring maths. Nothing below is estimated: the numbers are the ones printed in the listing titles Amazon served us on 2026-11-16 [[S66]] [[S67]] [[S68]]."
+      ],
+      "body": [
+        {
+          "h": "The three numbers, exactly as stated",
+          "table": {
+            "caption": "Capacity claims, quoted from the listing titles. Empty means the listing does not say.",
+            "headers": [
+              "Listing",
+              "Total volume stated",
+              "How it is divided",
+              "Source"
+            ],
+            "rows": [
+              [
+                "{P1}",
+                "6 Quart",
+                "Two independent 3Qt baskets — 3 + 3 is 6, so the total and the halves agree [[S59]]",
+                "[[S14]]"
+              ],
+              [
+                "{P3}",
+                "8 Qt",
+                "One XL basket, not divided [[S61]]",
+                "[[S16]]"
+              ],
+              [
+                "{P2}",
+                "26QT",
+                "A single oven cavity, called an Extra Large Interior in the title [[S60]]",
+                "[[S15]]"
+              ]
+            ]
+          }
+        },
+        {
+          "h": "Divided volume is the one real difference",
+          "p": [
+            "Six quarts in two drawers is a different object from eight quarts in one. The dual-basket listing says the baskets are *independent*, which is the only reason that layout exists: two foods, two settings, one finish time. The 8 Qt TurboFry has more room per basket but exactly one of them [[S14]] [[S16]].",
+            "So the question that actually decides it is not *how big*, it is *how many things do you cook at once*. Fries in one drawer and chicken wings in the other is a twin-basket argument. A whole tray of something, or a 26QT cavity that can hold a dish instead of a basket, is not.",
+            "And an oven-shaped cavity plays a different sport entirely: the Emeril listing sells accessories, not baskets — *Six Cooking Accessories Included* [[S15]]. Trays and racks spread food across levels, which is how you get around a smaller footprint. Volume alone cannot tell you that."
+          ]
+        },
+        {
+          "h": "What quartage will never tell you",
+          "ul": [
+            "**Usable cooking surface.** A basket that is 3Qt deep may still hold one layer of anything you want crispy. Nothing in the three titles states a surface area, a tray count for the twin-basket model, or a maximum food height.",
+            "**Whether it fits your counter.** No external dimensions are printed in any of the three titles. Measure the space before you fall for a number, then check the listing.",
+            "**How many people it feeds.** That is a portion claim, and none of these listings makes it here. Anything you read elsewhere that converts quarts to family size is a guess dressed up as a spec."
+          ],
+          "pull": "Two 3Qt drawers and one 8Qt drawer differ by two quarts and by everything that matters at 6pm."
+        },
+        {
+          "h": "A rule of thumb that survives contact with the spec sheet",
+          "p": [
+            "If you cook one thing at a time, buy the biggest single cavity you have counter for. If you cook a starch and a protein together and you want them done at the same moment, buy divided volume even if the total number is smaller. If you want to roast, bake and toast as well as fry, buy the oven format and read the accessory list before you read the quartage.",
+            "That is a preference, not a performance claim — and this site will not pretend to have tested these three in your kitchen."
+          ]
+        }
+      ],
+      "gaps": [
+        "External dimensions and required clearance: not stated in any of the three listing titles we read [[S14]] [[S15]] [[S16]].",
+        "Rack or tray levels for the 26QT oven, and what the six accessories actually are: not stated in the title. The listing body would have to be read from the official page before we could publish it.",
+        "Whether the two 3Qt baskets can be merged into one large zone: not stated. Twin-basket models differ on this and it is a real question for a whole chicken."
+      ],
+      "sources": [
+        "S14",
+        "S15",
+        "S16",
+        "S66",
+        "S67",
+        "S68"
+      ]
+    },
+    {
+      "slug": "features",
+      "kicker": "Feature tax",
+      "title": "French doors, Sync Finish and a 450°F button",
+      "dek": "Three listings, twenty-odd named features, and one honest category: the ones that change what you can cook, and the ones that just change the price of the word 'multi'.",
+      "date": "2026-11-16",
+      "read": 6,
+      "image": {
+        "src": "assets/img/counter.jpg",
+        "alt": "Illustration of a countertop oven with open glass doors and a tape measure on the counter"
+      },
+      "lede": [
+        "Air fryer listings read like rap battles. Every title has to out-name the last one, and you are left with a wall of proper nouns: *Sync Finish*, *Hi-Fry*, *TurboFry*, *24 One-Touch Preset Options*. Some of those words describe a mechanism you will use weekly. Some describe a marketing count.",
+        "The way to tell which is which: ask whether the feature changes what fits, what cooks at the same time, or how hot it gets. If it changes none of those three, it is a convenience, not a capability."
+      ],
+      "body": [
+        {
+          "h": "Sorted against that test",
+          "table": {
+            "caption": "Every feature word in the three titles, as served 2026-11-16. What a feature does is our reading of the wording, not a manufacturer claim.",
+            "headers": [
+              "Phrase in the listing",
+              "Which machine",
+              "What it plausibly changes",
+              "Source"
+            ],
+            "rows": [
+              [
+                "2 Independent 3Qt … Frying Baskets",
+                "{P1}",
+                "Two foods, two settings, one appliance. This is the capability of the whole design.",
+                "[[S14]]"
+              ],
+              [
+                "Sync Finish",
+                "{P1}",
+                "Timing, not heat: the listing pairs it with the dual-basket layout, which is where a finish-time problem lives.",
+                "[[S14]]"
+              ],
+              [
+                "Easy View Windows",
+                "{P1}",
+                "Lets you check colour without opening a drawer. Note it is plural — a window per basket.",
+                "[[S14]]"
+              ],
+              [
+                "Auto Shutoff",
+                "{P1}",
+                "A safety behaviour named outright, with no timing stated.",
+                "[[S14]]"
+              ],
+              [
+                "24 One-Touch Preset Options",
+                "{P2}",
+                "Convenience: fewer dial fumbles. A preset is a saved temperature and time, not a new capability.",
+                "[[S15]]"
+              ],
+              [
+                "French Door / Extra Large Interior",
+                "{P2}",
+                "Geometry. Side-opening doors need clearance to swing, and a tall cavity fits dishes a basket will not.",
+                "[[S15]]"
+              ],
+              [
+                "Six Cooking Accessories Included",
+                "{P2}",
+                "What arrives in the box. Which six, the title does not say.",
+                "[[S15]]"
+              ],
+              [
+                "450°F Hi-Fry Option",
+                "{P3}",
+                "Heat ceiling. 450°F is stated in this title, and it is the only temperature figure across all three.",
+                "[[S16]]"
+              ],
+              [
+                "TurboFry® 4-in-1",
+                "{P3}",
+                "A count. The title names three modes — Bake, Dehydrate, Frozen — with air frying as the fourth, and does not enumerate the set.",
+                "[[S16]]"
+              ],
+              [
+                "Nonstick Dishwasher-Safe (all three)",
+                "all",
+                "Cleaning, and it is a claim about the removable parts only. See the cleaning piece.",
+                "[[S14]] [[S15]] [[S16]]"
+              ]
+            ]
+          }
+        },
+        {
+          "h": "The one number nobody should have to share between models",
+          "p": [
+            "Two of these listings use the same name — *Hi-Fry* — for what looks like the same idea. Only one of them attaches a temperature to it: the 8 Qt TurboFry says 450°F [[S16]]. The 6 Quart dual-basket title says Hi-Fry with no number at all [[S14]].",
+            "Same word, different documentation. If a specific heat ceiling matters to you — thin-cut fries, searing, reheating something that went soggy — hunt the number, not the brand name. Two listings can share a marketing term and not share a spec."
+          ],
+          "pull": "\"Hi-Fry\" appears twice here. A temperature appears beside it once."
+        },
+        {
+          "h": "What to ignore, courteously",
+          "ul": [
+            "**Any '-in-1' on its own.** Nine-in-one and four-in-one are counts of modes; a mode is a preset. Ask what temperatures and what racks.",
+            "**Preset counts as a proxy for quality.** 24 presets on the 26QT oven tells you the dial has been busy, not that dinner is better [[S15]]. It is a genuinely nice feature for someone who cooks the same eight things.",
+            "**Accessory counts without a list.** *Six Cooking Accessories Included* is only useful once you know if one of them is a rotisserie spit, a stone, or two racks [[S15]]."
+          ]
+        }
+      ],
+      "gaps": [
+        "Maximum temperature for {P1} and {P2}: not stated in either title. Only {P3} states 450°F [[S14]] [[S15]] [[S16]].",
+        "Wattage for all three: not in the titles we read, and it is the number that decides whether your toaster and fryer can share a circuit.",
+        "Which six accessories ship with {P2}, and whether any mode is unavailable without one of them: not stated [[S15]]."
+      ],
+      "sources": [
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "slug": "cleaning",
+      "kicker": "The part you will actually live with",
+      "title": "'Dishwasher-safe' describes a part, not a machine",
+      "dek": "All three listings promise it. None of them promises what most people mean by it. Here is the exact wording, and the two questions to ask instead.",
+      "date": "2026-11-16",
+      "read": 4,
+      "lede": [
+        "There is a reason 'dishwasher-safe' is on three out of three air fryer listings: it is the only feature in the whole category that touches you every single day. It is also the most casually read phrase on the page.",
+        "Read the strings carefully and a pattern shows up. Nobody is promising you a dishwasher-safe appliance."
+      ],
+      "body": [
+        {
+          "h": "Three listings, three careful wordings",
+          "table": {
+            "caption": "Cleaning language exactly as the listing titles serve it [[S14]] [[S15]] [[S16]].",
+            "headers": [
+              "Listing",
+              "The cleaning phrase",
+              "What it covers",
+              "What it does not cover"
+            ],
+            "rows": [
+              [
+                "{P1}",
+                "Nonstick Dishwasher Safe Frying Baskets",
+                "The two baskets, plural.",
+                "The housing, the windows, the element. Nothing else is claimed. [[S14]]"
+              ],
+              [
+                "{P3}",
+                "XL Nonstick Dishwasher-Safe Basket",
+                "One basket.",
+                "The same list of things the first one leaves out. [[S16]]"
+              ],
+              [
+                "{P2}",
+                "Six Cooking Accessories Included",
+                "Nothing about washing at all.",
+                "The 26QT title states no dishwasher claim. That is an absence of a claim, not a claim of its absence. [[S15]]"
+              ]
+            ]
+          }
+        },
+        {
+          "h": "Why the distinction is worth a paragraph",
+          "p": [
+            "An air fryer fails in two ways: food burns on the removable surface, and grease finds the fixed parts. The baskets are the easy half — they are nonstick and they come out. The housing has a heating element and a fan in it and cannot go anywhere near a dishwasher, which is why the listings are careful.",
+            "The twin-basket model doubles your removable parts, so it doubles the washing but keeps every piece small enough for a rack. The 8 Qt single basket is one large object, which may or may not fit your machine — that depends on your dishwasher, and no listing on earth can help you there.",
+            "The oven format is the interesting case: it states accessories, not cleaning. A cavity with rack positions and a door with two glass panels gets wiped, not run. If a countertop oven is going to work in your kitchen, the wipe-down has to be tolerable twice a week."
+          ],
+          "pull": "Nonstick and dishwasher-safe are two promises stapled together. The coating is about cooking. The basket is about Sunday."
+        },
+        {
+          "h": "Two questions that beat the buzzword",
+          "ul": [
+            "**Does the coated part fit your rack?** Nobody can answer that for you, and it is the difference between a promise and a chore.",
+            "**What is left after the parts come out?** Elements, fans and cavity walls stay with the machine forever. Any listing that never mentions them is not hiding anything — it just has nothing to promise."
+          ]
+        }
+      ],
+      "gaps": [
+        "Coating chemistry: none of the three titles states whether the nonstick surface is PFAS-free. Competing listings in this category do use that phrase, so it is a live question to answer from the official listing, not to assume [[S14]] [[S15]] [[S16]].",
+        "Whether {P2}'s accessories or cavity are dishwasher-safe: not stated [[S15]].",
+        "Any statement about the baskets surviving repeated dishwasher cycles: not stated anywhere. Durability is a testing claim and we have not tested."
+      ],
+      "sources": [
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    {
+      "slug": "bestseller",
+      "kicker": "Trends, with the receipt",
+      "title": "One of these three is on Amazon's best-seller list today",
+      "dek": "Not the one most people would guess. What the list is, what a rank means on the day you read it, and why we publish the date.",
+      "date": "2026-11-16",
+      "read": 5,
+      "lede": [
+        "Most 'best air fryers of 2026' pages are a stack of affiliate links wearing a headline. Ours would be, too, if we had a reason to rank these three. We don't. What we do have is Amazon's own list, read today.",
+        "On 2026-11-16 the {P2} appeared at **position #6** on Amazon's *Best Sellers in Air Fryers* page, which Amazon itself describes as its most popular products based on sales, updated frequently [[S62]]. The other two were not in the first six positions in the page we read."
+      ],
+      "body": [
+        {
+          "h": "What that rank is, and is not",
+          "ul": [
+            "**It is a sales ranking in one browse node.** Air Fryers is node 17659096011, sitting under Fryers (17659095011), under Small Appliances (289913) [[S63]]. Two of our three products live in that node according to the breadcrumb on their own listings.",
+            "**It is not a review.** No stars, no editorial judgement, no durability data. A best-seller list measures what people bought, which correlates with price and availability as much as with cooking.",
+            "**It is not stable.** Amazon says the list is updated frequently. A rank quoted without a date is a screenshot of a river.",
+            "**It is not the whole niche.** Air Fryer Ovens (224479505011) is a sibling node with its own list; a machine can be an oven in your kitchen and an air fryer in the catalogue, and the boundary moves between departments [[S63]]."
+          ]
+        },
+        {
+          "h": "The same list, one week apart, can disagree with itself",
+          "p": [
+            "We have history here. Two earlier captures of this category page, on 2026-11-13 and 2026-11-14, ordered two of the positions differently from each other. That is recorded in this site's own flag register as FLG-025 rather than smoothed over.",
+            "The same drift shows up in product titles. One earlier capture of the {P2} listing rendered its title with the words *24 cooking functions, dual-speed fan and rotisserie* [[S53]]; the title we were served on 2026-11-16 says *24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included* [[S60]]. Same ASIN, same destination, different sentence. Manufacturers edit listing copy.",
+            "Which is the honest way to use a rank: it is a data point for the day it was read, on the page that was read, from the account that read it. That is also why every trend sentence on this site carries a date and a link."
+          ],
+          "pull": "A rank without a date is a rumour with a screenshot."
+        },
+        {
+          "h": "What we will not do with this",
+          "p": [
+            "We will not call the {P2} the best of the three, or 'trending', or 'loved by thousands'. Being sixth in a category that updates constantly is not a quality claim, and Amazon's own Program Policies bar a site from making inaccurate or misleading claims about a product [[S02]]. Neither we nor you can decide that a position on a list is a reason to buy.",
+            "What you can take from it: in a niche where a buyer's first instinct is to grab the biggest number, the sixth-most-popular item in the Air Fryers node today is a 26QT oven, not a basket. That is a fact about the market, and a decent prompt for your own decision."
+          ]
+        }
+      ],
+      "gaps": [
+        "Sales figures behind the ranking are not published on the list page, so no number can be quoted for them [[S62]].",
+        "Prices of the top positions were visible in the capture and are deliberately not published: Program Policies 2(b) permits price display only when Amazon serves the price data or it comes through the Creators API [[S02]] [[S62]].",
+        "Star ratings and review counts appear on the same page and are likewise withheld under Program Policies 6(t) [[S02]]."
+      ],
+      "sources": [
+        "S53",
+        "S60",
+        "S62",
+        "S63"
+      ]
+    },
+    {
+      "slug": "listing-titles",
+      "kicker": "A skill worth more than any spec",
+      "title": "How to read an Amazon listing title like a buyer",
+      "dek": "Sixty characters of marketing, written to be skimmed. Five habits that turn a title into actual information.",
+      "date": "2026-11-16",
+      "read": 6,
+      "lede": [
+        "A listing title is the most-read and least-read sentence on the internet. It is written for a search engine, skimmed by a human, and edited more often than the product changes. Reading it well is the single highest-return skill in this whole category, and it takes about a week to learn.",
+        "Here are the five habits, demonstrated on the three titles this site was built around."
+      ],
+      "body": [
+        {
+          "h": "1. Find the identifier before you find the opinion",
+          "p": [
+            "An ASIN is ten characters — Amazon defines it that way in its own documentation and seller education [[S31]] [[S45]]. That gives you a fast lie detector on a link. The three codes this project was handed are nine characters each, counted: B04G1MEwY, B02NbDxp3, B00hJ57DV [[S66]] [[S67]] [[S68]].",
+            "They are not ASINs. They are short-link codes, and each one opens a real listing — which we confirmed by following them, and wrote down as destinations rather than as proof of intent. Typing a nine-character code into a product URL returns a Page Not Found, and that tells you something about the link, not about the product. Ask any site that shows you a page without showing you the identifier behind it which page it is really on."
+          ]
+        },
+        {
+          "h": "2. Separate the noun from the adjective",
+          "p": [
+            "In *Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results*, the nouns are checkable: 8 Qt, four modes, 450°F. The adjectives are not: *crispier* is a comparison with no stated second term [[S16]].",
+            "Do it again on *Sync Finish* and *Easy View Windows* [[S14]]. Windows and a finish behaviour are nouns. How many windows, and finish to what — those answers are not in the title, and that is where reading stops and checking begins."
+          ]
+        },
+        {
+          "h": "3. Watch the plural",
+          "p": [
+            "The dual-basket listing says *2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets* [[S14]]. Three separate facts hide in that grammar: the count (2), the division (3Qt each) and the claim (independent). A listing that says *basket* means one.",
+            "Same sentence, different lesson: *Easy View Windows* is plural and *XL Nonstick Dishwasher-Safe Basket* is singular [[S14]] [[S16]]. Which parts are washable is a fact about a part, not about a machine."
+          ]
+        },
+        {
+          "h": "4. Treat an absence as an absence",
+          "p": [
+            "Two of the three titles promise dishwasher-safe baskets. One promises six accessories and says nothing about washing [[S14]] [[S15]] [[S16]]. That third one is not claiming its accessories are hand-wash-only. The title just does not cover it, and a title is not a warranty.",
+            "This is the habit that most separates a reader from a shopper: *not stated* is a category with its own name, and it is not 'no'."
+          ],
+          "pull": "Not stated is not the same as not true. It is a reason to look, not a verdict."
+        },
+        {
+          "h": "5. Date what you read",
+          "p": [
+            "Titles get edited. This site caught one moving: the {P2} listing served a different sentence on 2026-11-13 than on 2026-11-16, same ASIN, same destination [[S53]] [[S60]]. A screenshot of a product page has a shelf life measured in weeks.",
+            "So write down what you were served and when. It costs one line, and it is the difference between an argument and a memory. Every product statement on this site is a dated capture of an official page, with the link left open so you can check it."
+          ]
+        }
+      ],
+      "gaps": [
+        "A title is not the listing. Warranty terms, included parts, exact dimensions and every other answer usually sits in the bullet list or product details, which this site has not published because it has only captured and verified the title strings.",
+        "Brand casing is not a signal: the same parent brand appears as CHEFMAN on one title and Chefman on another [[S14]] [[S16]]."
+      ],
+      "sources": [
+        "S14",
+        "S15",
+        "S16",
+        "S31",
+        "S45",
+        "S53",
+        "S66",
+        "S67",
+        "S68",
+        "S60"
+      ]
+    },
+    {
+      "slug": "getting-paid",
+      "kicker": "Transparency, in full sentences",
+      "title": "How this site gets paid, and what that does to the copy",
+      "dek": "The commission rate, the click window, the payment lag and the rules about which numbers we are even allowed to print. No vague 'we may earn a commission'. Actual terms.",
+      "date": "2026-11-16",
+      "read": 5,
+      "lede": [
+        "The FTC's line on affiliate content is short: disclose the relationship clearly and conspicuously, close to the recommendation, because readers cannot be expected to know that an 'affiliate link' or a 'buy now' button means somebody gets paid [[S44]] [[S07]]. So here is the whole arrangement, in numbers.",
+        "Every figure below was read from an official Amazon Associates page on 2026-11-16. Nothing here is a rate card from memory."
+      ],
+      "body": [
+        {
+          "h": "The rate",
+          "table": {
+            "caption": "Standard Commission Income Statement, Table 1, as published [[S64]]. Kitchen appears in the same row as physical books and automotive.",
+            "headers": [
+              "Product category row, as printed",
+              "Fixed rate",
+              "Source"
+            ],
+            "rows": [
+              [
+                "Luxury Beauty, Luxury Stores Beauty, Amazon Explore",
+                "10.00%",
+                "[[S25]]"
+              ],
+              [
+                "Digital Music, Physical Music, Handmade, Digital Videos",
+                "5.00%",
+                "[[S25]]"
+              ],
+              [
+                "Physical Books, Kitchen, Automotive",
+                "4.50%",
+                "[[S25]]"
+              ],
+              [
+                "All Other Categories",
+                "4.00%",
+                "[[S25]]"
+              ],
+              [
+                "Gift Cards, wireless plans, alcoholic beverages and others listed in the table",
+                "0.00%",
+                "[[S25]]"
+              ]
+            ]
+          },
+          "p": [
+            "Two honest caveats. First, this is the *standard* published table; an individual account can be on different terms, and the account-level schedule sits behind sign-in, so we cannot quote a rate for this site's own account. Second, we are not assigning a category to any of the three products beyond what the breadcrumb says, and therefore we are not stating an earning per product. Kitchen is the row that a reader will infer. It is published as a category reference only.",
+            {
+              "t": "Bounties are a separate line: $12.00 for a successful Prime free-trial or paid membership registration, $2.00 for a Prime Video free trial, $5.00 for a first stream [[S64]].",
+              "class": "rates"
+            }
+          ]
+        },
+        {
+          "h": "The clock",
+          "ul": [
+            "**24 hours.** A session starts when someone clicks the link, and it ends when 24 hours have elapsed [[S02]].",
+            "**89 days, with a catch.** A purchase completed from the cart counts if it happens no later than 89 days after that initial click [[S02]].",
+            "**180 days to be real.** Within 180 days of the purchase the item must be shipped or downloaded *and paid for* [[S02]].",
+            "**Returns disqualify.** An order with a cancellation, return or refund initiated is not a qualifying purchase [[S02]]."
+          ]
+        },
+        {
+          "h": "The money, and the delay",
+          "p": [
+            {
+              "t": "Commission income is paid about 60 days after the end of the calendar month in which it was earned [[S02]]. US payment minimums published in the same statement are 10 USD for a deposit, 10 USD for a gift card, 100 USD for a check, with a 15 USD check processing fee [[S02]].",
+              "class": "rates"
+            },
+            "There is also a gate before the account earns anything at all. Amazon's help pages state that an application is reviewed once you have driven at least three qualifying sales in the first 180 days, that personal orders do not count, and that an account can be closed for not referring a sale within 180 days [[S29]] [[S28]].",
+            "Which is the useful way to read this page: an affiliate site is not a publisher with a side income. It is a small business with a 60-day lag, a three-sale audition and a rulebook. We would rather you saw the machinery than a lifestyle."
+          ]
+        },
+        {
+          "h": "What the rules stop us from telling you",
+          "p": [
+            "This is the part that makes our pages look like everyone else's, minus the numbers. Amazon's Program Policies say a site may show prices and availability only when Amazon serves that data in the link, or when the site pulls it from the Creators API [[S02]]. Star ratings and customer reviews may be shown only if obtained through the Creators API or PA API [[S02]].",
+            "We have no API credentials. The API itself has an entry requirement — at least ten qualifying sales in the previous 30 days, alongside enrolment and registration [[S04]] — and the older Product Advertising API is retired, returning HTTP 403 [[S05]].",
+            "So a price on this page would be a screenshot from Tuesday. Instead: no prices, no stars, no review counts, and a link on every product card that takes you to the official listing where the current number actually lives. That is the whole explanation."
+          ],
+          "pull": "We could paste a price here. It would be wrong within a day. So we paste a link instead."
+        }
+      ],
+      "gaps": [
+        "The rate this site's own account would be paid is not verifiable from public pages; the account-level schedule is behind sign-in [[S03]].",
+        "No Associates tag has been supplied for this project, so no link on this site is currently a qualifying Special Link, and no commission can be earned until one is [[S02]]. That is the single biggest open item and it is listed on the site's flagged register."
+      ],
+      "sources": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S07",
+        "S25",
+        "S28",
+        "S29",
+        "S44",
+        "S64"
+      ]
+    }
+  ],
+  "compare": {
+    "kicker": "Head to head",
+    "title": "Three air fryers, one table, zero invented specs",
+    "dek": "The CHEFMAN 6 Quart dual basket, the Emeril Lagasse 26QT French door and the Chefman 8 Qt TurboFry, compared on what their listings actually state. Every blank is a listing that does not say.",
+    "date": "2026-11-16",
+    "rows": [
+      {
+        "attr": "Format",
+        "cells": {
+          "P1": "Dual basket — two drawers, one housing [[S14]]",
+          "P2": "French-door countertop oven, convection [[S15]]",
+          "P3": "Single XL basket [[S16]]"
+        }
+      },
+      {
+        "attr": "Stated volume",
+        "cells": {
+          "P1": "6 Quart total, 3Qt per basket [[S14]]",
+          "P2": "26QT [[S15]]",
+          "P3": "8 Qt [[S16]]"
+        }
+      },
+      {
+        "attr": "Things you can cook at once",
+        "cells": {
+          "P1": "Two, with independent settings [[S14]]",
+          "P2": "One cavity with an Extra Large Interior [[S15]]",
+          "P3": "One basket [[S16]]"
+        }
+      },
+      {
+        "attr": "Preset count named",
+        "cells": {
+          "P1": "Not stated in the title",
+          "P2": "24 one-touch options [[S15]]",
+          "P3": "Not stated; modes named instead [[S16]]"
+        }
+      },
+      {
+        "attr": "Modes named",
+        "cells": {
+          "P1": "Sync Finish, Hi-Fry [[S14]]",
+          "P2": "Multi-function; accessories included [[S15]]",
+          "P3": "Bake, Dehydrate, Frozen, plus Hi-Fry at 450°F [[S16]]"
+        }
+      },
+      {
+        "attr": "Highest temperature stated",
+        "cells": {
+          "P1": "Not stated in the title",
+          "P2": "Not stated in the title",
+          "P3": "450°F (Hi-Fry) [[S16]]"
+        }
+      },
+      {
+        "attr": "Watch while it cooks",
+        "cells": {
+          "P1": "Easy View Windows, plural [[S14]]",
+          "P2": "Glass doors are implied by the format, not stated as a viewing feature",
+          "P3": "Not stated in the title"
+        }
+      },
+      {
+        "attr": "Auto shutoff named",
+        "cells": {
+          "P1": "Yes [[S14]]",
+          "P2": "Not stated in the title",
+          "P3": "Not stated in the title"
+        }
+      },
+      {
+        "attr": "Dishwasher-safe parts",
+        "cells": {
+          "P1": "Two baskets [[S14]]",
+          "P2": "Not stated in the title",
+          "P3": "One basket [[S16]]"
+        }
+      },
+      {
+        "attr": "Finish",
+        "cells": {
+          "P1": "Black [[S14]]",
+          "P2": "Not stated in the title",
+          "P3": "Stainless Steel [[S16]]"
+        }
+      },
+      {
+        "attr": "Price",
+        "cells": {
+          "P1": "Not published — Program Policies 2(b) [[S02]]",
+          "P2": "Not published — Program Policies 2(b) [[S02]]",
+          "P3": "Not published — Program Policies 2(b) [[S02]]"
+        }
+      },
+      {
+        "attr": "Star rating / review count",
+        "cells": {
+          "P1": "Not published — Program Policies 6(t) [[S02]]",
+          "P2": "Not published — Program Policies 6(t) [[S02]]",
+          "P3": "Not published — Program Policies 6(t) [[S02]]"
+        }
+      },
+      {
+        "attr": "Category today, 2026-11-16",
+        "cells": {
+          "P1": "Not among the first six positions of the Air Fryers best-seller page we read [[S62]]",
+          "P2": "Position #6 in Best Sellers in Air Fryers [[S62]]",
+          "P3": "Not among the first six positions of the page we read [[S62]]"
+        }
+      }
+    ],
+    "verdicts": [
+      {
+        "h": "Buy {P1} if",
+        "p": "your real constraint is two foods at once — a protein and a starch, on different settings, finishing together. The whole design exists for that, and the 3 + 3 arithmetic in its own title is the honest way to read its size [[S14]]."
+      },
+      {
+        "h": "Buy {P2} if",
+        "p": "you want one appliance to replace a second oven and you have the counter depth for a French-door cavity. It is the only one of the three that states accessories rather than baskets, and the only one on Amazon's category best-seller list today [[S15]] [[S62]]."
+      },
+      {
+        "h": "Buy {P3} if",
+        "p": "you want the most volume per moving part and you cook one thing at a time. It is also the only one of the three whose title commits to a number for the hot mode: 450°F [[S16]]."
+      }
+    ],
+    "notes": [
+      "These are three different shapes, not three grades of the same shape. A comparison that treats a 26QT oven and an 8Qt basket as points on one line is measuring the wrong thing.",
+      "Every 'not stated in the title' row means our capture did not include that fact. It is not a statement that the product lacks it — read the official listing for the answer, and treat our blank cell as an open question rather than a finding."
+    ]
+  },
+  "guide": {
+    "kicker": "The five questions",
+    "title": "Buying an air fryer in 2026: five questions before you spend",
+    "dek": "A short guide that starts with your kitchen and ends with the listing, because in that order the marketing gets a lot easier to see through.",
+    "date": "2026-11-16",
+    "steps": [
+      {
+        "n": "1",
+        "h": "How many things do you cook at the same time?",
+        "p": "This is the fork in the road, and it is answered by your dinner, not by a spec sheet. Two foods, two settings, one finish: divided baskets — the {P1} is the only one of our three built that way [[S14]]. One big batch: a single XL basket, like the {P3} [[S16]]. Whole dish, sheet pan or a roast: an oven cavity, like the {P2} [[S15]]."
+      },
+      {
+        "n": "2",
+        "h": "What can you permanently give up on the counter?",
+        "p": "An air fryer that lives under a cabinet is an air fryer you will stop using. Measure the space you would let it occupy forever, then check clearance for the door: a French door swings sideways and needs room to open, which the {P2}'s own format implies but no title states [[S15]]. No external dimensions appear in any of the three titles we captured, so this is a tape-measure job and then a listing check [[S14]] [[S15]] [[S16]]."
+      },
+      {
+        "n": "3",
+        "h": "Which modes will you actually press?",
+        "p": "Bake, dehydrate, frozen, rotisserie, toast, proof, sterilise — the counts in this category climb endlessly. Read them as a list of presets, not capabilities. Then notice what is stated as a number, because that is the only part you can verify: {P3} gives its hot mode a ceiling of 450°F, while {P1} names the same style of mode with no temperature [[S14]] [[S16]]."
+      },
+      {
+        "n": "4",
+        "h": "Who washes it?",
+        "p": "Ask which parts are dishwasher-safe, because the listing answers that question and only that one: baskets and baskets-plus, on two of our three [[S14]] [[S16]]. The {P2} title states accessories instead, and says nothing about washing [[S15]]. If a twice-a-week wipe-down of a cavity is unacceptable to you, that absence is your answer, and it is worth reading the full listing over."
+      },
+      {
+        "n": "5",
+        "h": "What do you need to know that the listing will not say?",
+        "p": "Write the two or three questions down before you buy — wattage, rack positions, whether the twin baskets merge, whether the coating is PFAS-free — and go look. A buying decision that survives its own open questions is a decision you will not revisit. This site's own unresolved items are published on the method page, because a guide that hides its gaps is a brochure."
+      }
+    ],
+    "donts": [
+      {
+        "h": "Do not shop by quart number alone",
+        "p": "Two 3Qt drawers and one 8Qt drawer are different objects that happen to share a unit. Divide first, compare second."
+      },
+      {
+        "h": "Do not treat a best-seller rank as a review",
+        "p": "Amazon's list is a sales ranking that updates frequently. Ours quotes it with a date attached and stops there [[S62]]."
+      },
+      {
+        "h": "Do not assume a price you saw last week",
+        "p": "Prices move, and by policy this site may not print them anyway. The button on every product card here goes to the official listing where the live number is [[S02]]."
+      },
+      {
+        "h": "Do not let an adjective do a spec's job",
+        "p": "'Crispier results' is a comparison with the second term missing. Numbers are checkable; adjectives are not [[S16]]."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Are these three products tested by you?",
+        "a": "No. Nothing on this site claims first-hand use, because the FTC's position is that an endorser cannot describe experience they did not have. We read the official pages and did the arithmetic [[S07]] [[S24]]."
+      },
+      {
+        "q": "Why is there no price on the product cards?",
+        "a": "Amazon's Program Policies permit price and availability display only where Amazon serves that data, or via the Creators API. No API access here, so no price here — a stale number would be worse than none [[S02]]."
+      },
+      {
+        "q": "Why no star ratings?",
+        "a": "Same rulebook, different clause: reviews and star ratings may be shown only when obtained through the Creators API or PA API. The older API is deprecated with HTTP 403 responses [[S02]] [[S05]]."
+      },
+      {
+        "q": "Is Kitchen really a 4.50% category?",
+        "a": "That is the rate printed on Amazon's published Standard Commission Income Statement Table 1 for the row 'Physical Books, Kitchen, Automotive'. Account-specific schedules can differ and are not public [[S25]]."
+      },
+      {
+        "q": "Which of the three should I buy?",
+        "a": "That depends on questions 1 and 2 above, which only you can answer. The comparison page is built so that you can decide in about four minutes without us deciding for you."
+      }
+    ]
+  },
+  "method": {
+    "kicker": "Receipts",
+    "title": "How we check",
+    "dek": "The method, the source list, and the questions this site cannot answer yet.",
+    "intro": [
+      "This site is generated from a verified data file, not written from impression. Each product statement is a dated capture of an official Amazon page; each policy statement is a dated quote from Amazon's Associates pages or the FTC. The generator refuses to publish a table row that has no source link, and the site's checker fails the build if a row loses one.",
+      "The register behind these pages — {NSRC} dated official sources, an operations dashboard, a per-row verification log and a flagged-items list — is published alongside this editorial layer, because the point of evidence is that you can look at it."
+    ],
+    "open_questions": [
+      {
+        "q": "Which products did the owner mean to promote?",
+        "status": "Unconfirmed",
+        "why": "Each submitted code is 9 characters, so it is not an ASIN; amazon.com/dp/<code> returns Page Not Found, and each short link resolves to a live listing whose identity no official source ties to the owner's intent. The destinations are recorded as observations, not confirmations.",
+        "unlock": "Owner confirms the three ASINs, or supplies full amazon.com/dp links.",
+        "src": "S59"
+      },
+      {
+        "q": "Is there an Associates tag to link with?",
+        "status": "Not supplied",
+        "why": "Participation Requirement 2(b) requires the Associates ID as a URL parameter on every link. Without it nothing here is a qualifying Special Link, so the site cannot earn.",
+        "unlock": "Owner supplies the tag from Associates Central; it must not be committed to a public file.",
+        "src": "S02"
+      },
+      {
+        "q": "Which marketplace and which audience?",
+        "status": "Unconfirmed",
+        "why": "The captures are amazon.com, and Schedule 1 lists the United States site, but no document states the intended marketplace.",
+        "unlock": "Owner states the target marketplace and audience; commission tables are country-specific.",
+        "src": "S01"
+      },
+      {
+        "q": "Can we publish prices, ratings and review counts?",
+        "status": "Blocked by policy + no access",
+        "why": "Allowed only via Amazon-served link data or the Creators API; the API requires at least 10 qualifying sales in the past 30 days, and PA-API 5 is retired.",
+        "unlock": "Account eligibility, then API credentials; until then these cells stay empty by design.",
+        "src": "S04"
+      },
+      {
+        "q": "Is any first-hand testing funded?",
+        "status": "No",
+        "why": "Testing would license experience claims and product photography we do not have. Without it, the copy stays analytical — which is why this site reads differently from a review farm.",
+        "unlock": "Owner decision and budget; then a documented test protocol.",
+        "src": "S07"
+      },
+      {
+        "q": "Which brand and visual direction is approved?",
+        "status": "Proposed here",
+        "why": "This editorial layer is a working proposal for the marketing direction: name, masthead, typography and article slate.",
+        "unlock": "Review the suggestions page, accept or amend; the dashboard stays as the audit view either way.",
+        "src": "S01"
+      }
+    ],
+    "sources_note": "Source IDs in this section are the repository's register, so a citation resolves to a URL and a capture date."
+  },
+  "footer": {
+    "disclosure": "As an Amazon Associate I earn from qualifying purchases.",
+    "disclaimer": "Product and pricing information shown on Amazon pages comes from Amazon. This site does not display prices or availability, star ratings or customer reviews, in line with the Associates Program Policies.",
+    "links": [
+      {
+        "href": "../index.html",
+        "label": "Operations dashboard"
+      },
+      {
+        "href": "../suggestions.html",
+        "label": "Suggestions & decisions"
+      },
+      {
+        "href": "../flagged.html",
+        "label": "Flagged for review"
+      },
+      {
+        "href": "../sources.html",
+        "label": "Source register"
+      },
+      {
+        "href": "../verification.html",
+        "label": "Verification log"
+      },
+      {
+        "href": "method.html",
+        "label": "How we check"
+      },
+      {
+        "href": "category/air-fryers.html",
+        "label": "Air fryers"
+      }
+    ]
+  }
+}
