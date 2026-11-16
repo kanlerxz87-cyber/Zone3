@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session d18303ca verification record | Zone3</title>
+<meta name="description" content="Independent re-verification record, session d18303ca, 2026-11-16: the three submitted short links re-followed, Associates policy and commission clauses re-read verbatim, plus a new finding on third-party attribution parameters carried by the submitted links.">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="../../index.html">Zone3</a><span>Amazon affiliate dashboard</span></div>
+  <nav><a href="../../index.html">Dashboard</a><a href="../../executive-summary.html">Executive summary</a><a href="../../products.html">Products</a><a href="../../verification.html">Verification log</a><a href="../../flagged.html">Flagged for review</a><a href="../../sources.html">Sources</a><a href="../../site/index.html">Marketing site</a></nav>
+</header>
+<main>
+<h1>Session d18303ca &mdash; verification record, 2026-11-16</h1>
+<p class="lead">Every row below was produced by a fetch that this session made on 2026-11-16 against the official page named in its Source column. No third-party page is used as evidence, and no price, rating or review value observed during these fetches is reproduced on this page (Participation Requirements 2(b) and 6(t) do not permit that display outside an approved API path).</p>
+
+<h2>Executive summary</h2>
+<ul>
+  <li><strong>Independent round, same result.</strong> All three submitted short links re-followed today open the same three listings already on record: <code>amazon.com/dp/B0CDY277D3</code> (CHEFMAN 6 Quart Dual Basket), <code>/dp/B09B7SB46R</code> (Emeril Lagasse 26QT French Door), <code>/dp/B08DKYBTPH</code> (Chefman TurboFry 8 Qt). Listing titles observed today match the recorded ones. The nine-character tokens still return Amazon&rsquo;s Page Not Found when used directly on <code>/dp/</code>, consistent with the documented ten-character ASIN format.</li>
+  <li><strong>New finding (D1-F-01, High).</strong> All three redirects observed today carry attribution query parameters &mdash; <code>btn_ref=srctok-&lt;hex&gt;</code> and <code>channelId=704</code> &mdash; and none carries an Associates <code>tag</code> parameter. A link without the tag cannot earn Associates commission, and the April 2026 Program Policies added explicit language about claiming commissions from two programs on the same traffic. See <a href="#d1f01">Section B</a>.</li>
+  <li><strong>Policy and commission text re-read verbatim.</strong> Operating Agreement (October 15, 2025) &sect;5 disclosure sentence; Program Policies (April 14, 2026) 2(b), 6(t), 6(s), 6(v), 6(w), 6(y), the Commission Income Limitations clause, IP License 2(h)&ndash;2(k), and Agent Terms; Table 1 Kitchen 4.50% / All Other Categories 4.00%; bounty rates; Creators API prerequisites. All match what the site already records.</li>
+  <li><strong>GitHub Pages is healthy.</strong> Serving from <code>main</code> path <code>/</code>, status <code>built</code>, latest build error-free at the time of the check.</li>
+  <li><strong>Owner decisions still open</strong> (published on the <a href="../../site/decisions.html">decision board</a>): the Associates tag (Q1), intended products (Q2), marketplace (Q3), and now the ownership of the third-party attribution parameters (Q13, new).</li>
+</ul>
+
+<h2>A. Claims re-read on 2026-11-16</h2>
+<table>
+  <thead><tr><th>#</th><th>Claim checked</th><th>Result on 2026-11-16</th><th>Source (official)</th></tr></thead>
+  <tbody>
+    <tr><td>D1-V01</td><td>Short link <code>link.amazon/B04G1MEwY</code> opens a live listing</td><td>Confirmed. Lands on <code>amazon.com/dp/B0CDY277D3</code>; title names the CHEFMAN 6 Quart Dual Basket Air Fryer Oven; breadcrumb Home &amp; Kitchen &rsaquo; Kitchen &amp; Dining &rsaquo; Small Appliances &rsaquo; Fryers &rsaquo; Air Fryers. Attribution parameters observed &mdash; see <a href="#d1f01">D1-F-01</a>.</td><td><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener noreferrer">link.amazon/B04G1MEwY</a> &middot; <a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer">amazon.com/dp/B0CDY277D3</a></td></tr>
+    <tr><td>D1-V02</td><td>Short link <code>link.amazon/B02NbDxp3</code> opens a live listing</td><td>Confirmed. Lands on <code>amazon.com/dp/B09B7SB46R</code>; title names the Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven.</td><td><a href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener noreferrer">link.amazon/B02NbDxp3</a> &middot; <a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer">amazon.com/dp/B09B7SB46R</a></td></tr>
+    <tr><td>D1-V03</td><td>Short link <code>link.amazon/B00hJ57DV</code> opens a live listing</td><td>Confirmed. Lands on <code>amazon.com/dp/B08DKYBTPH</code>; title names the Chefman Air Fryer 8 Qt TurboFry 4-in-1.</td><td><a href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener noreferrer">link.amazon/B00hJ57DV</a> &middot; <a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer">amazon.com/dp/B08DKYBTPH</a></td></tr>
+    <tr><td>D1-V04</td><td>Nine-character tokens are not ASINs (control probe)</td><td>Confirmed. <code>amazon.com/dp/B04G1MEwY</code> returns Amazon&rsquo;s &ldquo;Sorry! We couldn&rsquo;t find that page.&rdquo; error. The Creators API GetItems documentation defines the ASIN as a ten-character alphanumeric unique identifier; its example IDs are ten characters.</td><td><a href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener noreferrer">amazon.com/dp/B04G1MEwY</a> &middot; <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer">Creators API GetItems</a></td></tr>
+    <tr><td>D1-V05</td><td>Operating Agreement header date; &sect;5 disclosure sentence</td><td>Confirmed verbatim: &ldquo;Updated: October 15, 2025&rdquo;; &sect;5 requires &ldquo;clearly and prominently&rdquo; stating &ldquo;As an Amazon Associate I earn from qualifying purchases.&rdquo; &sect;1 requires the special tagged link formats.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer">Operating Agreement</a></td></tr>
+    <tr><td>D1-V06</td><td>Program Policies header date</td><td>Confirmed: &ldquo;Updated: April 14, 2026.&rdquo; Same date session ab3ed329 recorded earlier today; re-confirmed by this session&rsquo;s own fetch.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies</a></td></tr>
+    <tr><td>D1-V07</td><td>Participation Requirements 2(b): tag parameter; price display</td><td>Confirmed verbatim, including that the Associates ID or &ldquo;tag&rdquo; must be a parameter in the URL of each link placed to an Amazon Site, and that prices/availability may display only when Amazon serves the link or the data comes through Creators API or PA API.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies, Participation Requirements 2(b)</a></td></tr>
+    <tr><td>D1-V08</td><td>Participation Requirements 6(t): reviews and star ratings</td><td>Confirmed verbatim: no display of customer reviews or star ratings, in part or in whole, unless obtained through Creators API or PA API.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies, Participation Requirements 6(t)</a></td></tr>
+    <tr><td>D1-V09</td><td>Participation Requirements 6(s), 6(v), 6(w), 6(y)</td><td>Confirmed: no artificially generated clicks (6(s)); no cloaking of the site URL carrying Special Links (6(v)); no shortening that obscures an Amazon destination (6(w)); no price tracking or alerting functionality (6(y)).</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies, Participation Requirements 6</a></td></tr>
+    <tr><td>D1-V10</td><td>Commission Income Limitations: attribution combining</td><td>Confirmed as printed: tags are only for Associates commissions; claiming commissions from both Amazon Associates and another program on the same traffic (e.g. by manipulating or combining attribution links) may cost withheld commissions or termination. Basis for the D1-F-01 concern below.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies, Commission Income Limitations</a></td></tr>
+    <tr><td>D1-V11</td><td>Standard Commission Income Statement, Table 1 and bounties</td><td>Confirmed as printed: Kitchen 4.50%; All Other Categories 4.00%; Prime-related bounty $12.00; Prime Video Free Trial $2.00; First Stream $5.00; Stream $0.25. Category reference only; no per-product rate assigned.</td><td><a href="https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ" target="_blank" rel="noopener noreferrer">Standard Commission Income Statement</a></td></tr>
+    <tr><td>D1-V12</td><td>IP License 2(h), 2(i), 2(k); Agent Terms 4(c)</td><td>Confirmed verbatim: no storing or caching of Product Advertising Content images; 24-hour cache with refresh for non-image content; ASINs may be stored indefinitely; date/time stamp plus the &ldquo;accurate as of&rdquo; disclaimer adjacent to any pricing display; the &ldquo;COMES FROM AMAZON&rdquo; disclaimer in plain view for text content; agents must identify as <code>Agent/[name]</code> in the user agent and not circumvent access measures.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies, IP License</a></td></tr>
+    <tr><td>D1-V13</td><td>Creators API prerequisites</td><td>Confirmed as printed: enrollment for the target marketplace; at least 10 qualifying sales within the past 30 days to access PA API through the Creators API; registration and credentials.</td><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer">Creators API introduction</a></td></tr>
+    <tr><td>D1-V14</td><td>FTC Disclosures 101: placement; first-hand experience</td><td>Confirmed: place the disclosure so it is hard to miss; disclosures at the end of posts or on profile pages are likely to be missed; and &ldquo;You can&rsquo;t talk about your experience with a product you haven&rsquo;t tried.&rdquo; Brochure dated November 2019, still live.</td><td><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer">FTC Disclosures 101</a></td></tr>
+    <tr><td>D1-V15</td><td>GitHub Pages configuration and latest build</td><td>Confirmed via the GitHub API: serving <code>main</code> at path <code>/</code>, status <code>built</code>; latest build created 2026-11-16T18:46:53Z with error <code>null</code>.</td><td><a href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages" target="_blank" rel="noopener noreferrer">Pages config</a> &middot; <a href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer">Pages latest build</a></td></tr>
+  </tbody>
+</table>
+
+<h2 id="d1f01">B. New finding D1-F-01 (High) &mdash; third-party attribution parameters on the submitted links</h2>
+<p>When each submitted short link was followed on 2026-11-16, the destination URL it produced carried these query parameters, on all three links:</p>
+<ul>
+  <li><code>btn_ref=srctok-&lt;16-character-hex&gt;</code> (a distinct hex value per link, stable within the fetch)</li>
+  <li><code>channelId=704</code> (identical value on all three)</li>
+  <li>No <code>tag</code> parameter anywhere in the URL ( Associates tags are documented in Participation Requirements 2(b) as a required URL parameter on every link an Associate places to an Amazon Site).</li>
+</ul>
+<table>
+  <thead><tr><th>What is verified</th><th>Basis</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td>The parameters exist on the observed redirects, and no Associates tag is present</td><td>Observed in this session&rsquo;s fetches on 2026-11-16 (the full URLs are quoted in <code>sessions/d18303ca/verification-2026-11-16.json</code>)</td><td><a href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener noreferrer">link.amazon/B04G1MEwY</a> &middot; <a href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener noreferrer">link.amazon/B02NbDxp3</a> &middot; <a href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener noreferrer">link.amazon/B00hJ57DV</a></td></tr>
+    <tr><td>Every link an Associate places to an Amazon Site must carry the Associates ID or &ldquo;tag&rdquo; parameter</td><td>Participation Requirements 2(b), read verbatim on 2026-11-16</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies 2(b)</a></td></tr>
+    <tr><td>Claiming commissions from both Amazon Associates and another program on the same traffic (e.g. combining attribution links) risks withheld commissions or termination</td><td>Commission Income Limitations clause, read as printed on 2026-11-16</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">Program Policies, Commission Income Limitations</a></td></tr>
+    <tr><td>What the <code>srctok</code> and <code>channelId</code> parameters mean, and who owns them</td><td><strong>Not established from any official source &mdash; deliberately left blank.</strong> How to discover: check the tool or service that produced the three <code>link.amazon</code> links; if an Associates account exists, use Associates Central&rsquo;s link checker and reports to see whether any clicks are credited. See Q13 on the decision board.</td><td><span class="blank" title="unverified">Unverified &mdash; no official source states the meaning of these parameters</span></td></tr>
+  </tbody>
+</table>
+<p><strong>Why it matters:</strong> a &ldquo;buy&rdquo; click sent through one of these links today would <em>not</em> be a tagged Special Link. Under 2(b) it cannot earn Associates commission, and if the parameters credit a third-party program, the Commission Income Limitations clause puts any mixed program traffic at risk. Until the owner answers Q1 (the Associates tag) and Q13 (who owns these parameters), this site keeps every Amazon action disabled and labelled &mdash; which is what the <a href="../../site/products.html">product page</a> already does.</p>
+<p><strong>Practical next step (proposal D-15 on the <a href="../../site/decisions.html">decision board</a>):</strong> once the Associates tag exists, mint fresh tagged Special Links inside Associates Central for the three destination ASINs (or the owner&rsquo;s intended products), retire the <code>link.amazon</code> URLs from any earning role, and record that decision on the board.</p>
+
+<h2>C. What this record does not establish</h2>
+<ul>
+  <li>That the three listings are the products the owner intended to promote (decision-board question Q2).</li>
+  <li>The meaning or ownership of the <code>srctok</code>/<code>channelId</code> parameters (D1-F-01, deliberately blank above).</li>
+  <li>Whether a <code>link.amazon</code> redirect is a Redirecting Link under the Commission Income Statement; that test needs a logged-in Associates account (carried over as FLG-003).</li>
+  <li>Live prices, ratings, review counts, availability or sales data. Values seen during today&rsquo;s fetches are withheld from this record under Participation Requirements 2(b) and 6(t).</li>
+  <li>Per-product commission rates. Only the category table (Kitchen 4.50% reference) is verified; each listing&rsquo;s exact rate is visible only inside an Associates account.</li>
+</ul>
+
+<p><a href="../../index.html">&larr; Back to the dashboard</a> &middot; <a href="../../site/decisions.html">Decision board (suggestions &amp; decisions)</a> &middot; <a href="../../site/articles/index.html">Article library</a> &middot; <a href="../../docs/repo-review-d18303ca.md">Repo review by this session</a></p>
+</main>
+<footer>
+  <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+  <p class="muted">Session d18303ca verification record, 2026-11-16. Source URLs above are official Amazon, Amazon Associates, FTC or GitHub API pages. Machine-readable copy: <code>sessions/d18303ca/verification-2026-11-16.json</code>.</p>
+</footer>
+</body>
+</html>
