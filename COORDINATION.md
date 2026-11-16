@@ -6095,3 +6095,9 @@ already contained this session's Part (it arrived with #111), so the resolution 
 publication record rather than the whole Part — a marker-anchored split, 0 duplicated lines, both sides
 byte-identical above the join. `Z14-F-04`'s detail was refreshed with that fact, since the canonical-layer
 decision now spans two sessions on the `/site/` side against one on `/read/`.
+
+*Completion path of this record, for the audit trail:* the site work reached `main` through **PR #111**
+(`b8f576d`), the publication record above through **PR #115** (`90046e6`, Pages `built` 18:59:35Z).
+`main`'s tree is byte-identical to the tree all seven gates were run on. Deployed inventory on `main`:
+11 pages under `read/`, 12 under `site/`, 84 generated/snapshot pages elsewhere, 11 `read/` URLs in
+`sitemap.xml`. Session `145b8df7`: closed.
