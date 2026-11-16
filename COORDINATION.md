@@ -6951,3 +6951,161 @@ neighbour, flag FLG-004).
 **What is left, and it is all the owner's** (unchanged by four PRs, because no code can supply them): the Associates tag (Q-1 → unblocks SUG-05/D-05 earning links and every measurement), Creators API credentials (Q-4 → prices/availability/ratings, and the automated research agent), a named human editor (Q-5/D-10 → the bylines say "agent-run research desk, no human reviewer yet" until then), first-hand testing or not (Q-6), the canonical-brand call across `/read/`, `/site/articles/` and `/site/guides/` (Q-12 / CBA-F-03), and the shared-register consolidation (FLG-004). Answers go on this board; each is already written into `site/answers.html` with the default the site ships with if it stays unanswered.
 
 **Two process notes for the next session, both learned the hard way here.** (1) A generated region injected into a shared file disappears the moment another session rebuilds that file — keep it in a post-build integrator with sentinel-delimited regions, make `--check` report it, and have a gate run that check; that loop saved the front door twice today. (2) Resolving a `COORDINATION.md` conflict to `main`'s copy silently deletes this session's later sections: `tools/build_cba81fa5_site.py` and the session sync script re-apply the blocks by heading, and the records also live in `research/cba81fa5-t6-record.md`, so a dropped section is repairable instead of lost.
+
+---
+
+# Part: session `f65d393b` (2026-11-16) — repo review, verification of the new reader-facing site, brief-gap check, final integration
+
+> Appended additively. Task IDs `F65-Tn` and irregularity IDs `F65-F-nn` here are **namespaced**
+> and are not the same items as `A:`, `B:`, `Z-`, `V-`, `98-`, `54C-`, `C3-`, `3E-`, `21-`,
+> `25-`, `4f83-`, `1F-`, `AB-`, `I2-`, `D-F`, `E-F` or `FLG-nnn` used above. Nothing on the
+> board above was removed or rewritten. Branch: `arena/f65d393b-zone3` (Arena pins a session to
+> one branch), base `add6525` merged with `origin/main` at `609dc76` at claim time.
+
+## F65 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `f65d393b` | `arena/f65d393b-zone3` | Line-by-line repo review of the combined tree (incl. the new `site/` reader-facing build from PR #101); independent verification of that site's claims and the load-bearing official-source facts; brief-gap review (suggestions, open questions, executive summary, tables with per-row sources, disclosure); final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (F65-T1) | 2026-11-16 |
+
+## F65 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| F65-T1 — Read COORDINATION.md, register session, claim tasks, push claim immediately | in progress (this commit) | f65d393b | `COORDINATION.md` (this Part only) | — | — |
+| F65-T2 — Repo review, line by line, of the combined tree at `609dc76` (incl. `site/`, `tools/build_i2_site.py`, `tools/i2_gate.py`) | unclaimed | — | read-only audit + this Part + `sessions/f65d393b/` records | — | — |
+| F65-T3 — Independent verification round dated 2026-11-16: the new reader-facing `site/` pages' claims plus the load-bearing official facts (three short links, OA §5, Program Policies 2(b)/6(t), Table 1, ASIN rule, FTC) | unclaimed | — | `sessions/f65d393b/**` (read-only fetches; existing source IDs in `data/sources.json` unless a URL is absent) | official pages only | — |
+| F65-T4 — Brief-gap review: suggestions section, open-questions register, decision support, executive summary, flagged-for-review page, dashboard-style tables with per-row source links, disclosure on every page — on both the root build and the new `site/` | unclaimed | — | read-only except this Part | — | — |
+| F65-T5 — Final integration: all gates green on the final tree (`check_site`, `verify_site`, `link_report --strict`, `check_all_links`, `build_sitemap --check`, `i2_gate`, generator idempotence, no line-start conflict markers), PR → `main`, merge without waiting, confirm GitHub Pages deploy + live checks, record here | unclaimed | — | git + `gh` + this Part; shared outputs only if a gate fails, logged with reason | — | — |
+
+**Scope discipline.** This session edits `COORDINATION.md` (this Part only) and its own
+`sessions/f65d393b/**` records. Shared outputs (`data/*.json`, root generated pages,
+`scripts/*`, `tools/*`, `site/*`, `EXECUTIVE-SUMMARY.md`, `README.md`, `sitemap.xml`) are
+edited only under the final-integration role, and only when a gate fails or a verified defect
+requires it; every such edit is logged here with its reason. Open PRs #100 (`5b425c74`) and
+#102 (`1f1b8bd2`) belong to other sessions and are not touched. Conflicts in `COORDINATION.md`
+are resolved by keeping both sides in full (main's board verbatim, this Part appended); no
+line-start conflict markers are ever pushed.
+
+### F65-T1 — done (claim, 2026-11-16)
+
+Board read (head, structure index, tail; the file is ~566 KB and the reader elides its
+middle). The clone was shallow (depth 1) at session start, so `git merge origin/main` first
+failed with "refusing to merge unrelated histories" — the same trap session `25513d33` logged;
+fixed by `git fetch --unshallow origin`, after which the merge-base resolved and
+`origin/main` (`609dc76`, PR #103) merged cleanly with 0 line-start conflict markers.
+Claim pushed as this commit **before** any verification work. Live claims checked at claim
+time: open PR #100 (`5b425c74`, re-verification record) and open PR #102 (`1f1b8bd2`,
+close-out record) — both respected, not touched. Stale "in progress" rows elsewhere on the
+board (F2, 3D, 54C, 25, 4f83, AB-T4) correspond to work whose PRs already merged; no takeover
+is needed for them by this session.
+
+### F65-T2 — repo review, line by line (done, 2026-11-16)
+
+Full record: [`sessions/f65d393b/repo-review.md`](sessions/f65d393b/repo-review.md).
+15 checks (R1–R15) on the tree at `609dc76`: all six gates green at baseline
+(`check_site` OK 13/3/52/86 · `verify_site` PASS 83 pages/1,482 rows · `link_report --strict` 0 ·
+`i2_gate` PASS 8 pages/105 rows · `build_sitemap --check` 0 (with the 5-entry sweep noted) ·
+`check_all_links` 129 pages/116 external/0 errors); 0 conflict markers; 0 secrets; generators
+idempotent except `build_marketing` (→ F65-F-01); new `site/` build reviewed page by page
+(generator writes only inside `site/`, gate G1–G10 enforced). Corroborated without editing:
+the `docs/` and `sessions/3c886b62/` price/rating exposure (AB-CR-1/AB-CR-2, 71-F-04) is
+**still live** on 2026-11-16 — owner decision remains open.
+
+### F65-T3 — independent verification round (done, 2026-11-16)
+
+Full record: [`sessions/f65d393b/verification-2026-11-16.md`](sessions/f65d393b/verification-2026-11-16.md).
+Every row fetched live by this session today; page URL is the source; no aggregator used.
+
+| # | Claim | Result |
+|---|---|---|
+| A1–A3 | The three short links open `dp/B0CDY277D3`, `dp/B09B7SB46R`, `dp/B08DKYBTPH` with the titles published in `data/i2/catalog.json` | **Confirmed** — verbatim titles; fifth independent day with identical mapping |
+| A4–A5 | Air Fryers breadcrumb (node 17659096011) on all three; no `tag=` in any destination URL | **Confirmed ×3 / ×3** |
+| A6–A8 | All 16 `title_facts` across P1–P3 present in the served listing titles | **Confirmed** |
+| B1–B4 | OA header "Updated: October 15, 2025"; §5 disclosure verbatim; §6 material-breach clause; compensated-review prohibition in the opening paragraph | **Confirmed verbatim** |
+| B5–B13 | PP 2(b) tag + price rules + dynamic-sub-tag ban; 6(s)/6(t)/6(v)/6(w)/6(y)/6(z); free-to-join / no paid set-up | **Confirmed verbatim** |
+| B14–B15 | Standard Commission Table 1 row for row (Kitchen 4.50 %, All Other 4.00 %, Luxury Beauty 10.00 %); bounty rows $12/$2/$5/$0.25 | **Confirmed** — category reference only, never assigned to a product |
+| B16–B17 | Creators API `itemIdType` default `ASIN`; "10-Character alphanumeric unique identifier assigned by Amazon" | **Confirmed verbatim** |
+| B18 | FTC Disclosures 101: "financial, employment, personal, or family relationship"; "hard to miss"; "can't talk about your experience with a product you haven't tried"; dated November 2019 | **Confirmed verbatim** |
+
+Not verified, and why: any price/rating/review count as a product fact (barred by 2(b)/6(t)
+without API access — deliberate refusal); per-product commission rates; live clicks/conversions
+(no account); whether the destinations are the submitter's intended products (owner input,
+FLG-002/027). The fetched Amazon pages did contain prices and ratings; they were read only to
+confirm identity and are recorded nowhere.
+
+### F65-T4 — brief-gap review (done, 2026-11-16)
+
+See Part 2 of [`sessions/f65d393b/repo-review.md`](sessions/f65d393b/repo-review.md). Every
+brief deliverable is present and linked: suggestions section (SUG-01…10 + Q1…10 + D1…6 on
+`suggestions.html`, proposals/questions/discovery/**prompt pack** on `site/decisions.html`),
+Decision Center, editorial topic plan + SEO briefs + buying/comparison guides, human-review
+AI-slop gate, executive summary, dashboard-style tables with per-row source links, three
+Flagged-for-Review surfaces, disclosure on every page, live GitHub Pages site. No gap required
+a new page; nothing was implemented from the suggestions without review, per the brief.
+
+### F65 irregularities raised (published on `flagged.html`)
+
+| ID | Sev | Item | Disposition |
+|---|---|---|---|
+| F65-F-01 | Low | Six `marketing/*.html` pages stale vs shared NAV after PR #101 (third recurrence of the class; parallel finding A0-F-04, cross-referenced) | **fixed** — regenerated (nav-only); pipeline change request in the flag's `action` |
+| F65-F-02 | Info | `sitemap.xml` on `main` carried the 5 redirect-stub/duplicate entries `tools/build_site.py` sweeps in (25-F-04 root cause) | **fixed** — canonical regeneration: 78 pages, 0 extras, all 8 `site/` pages listed |
+| F65-F-03 | Medium | **`scripts/build_marketing.py` crashed on `main`**: session 5a56c084 split `NAV` into `NAV_PRIMARY`/`NAV_MORE` in `scripts/build_site.py`, but the marketing generator still called `list(base.NAV)` → `AttributeError`. Reproduced on `main` at `7da5ce2` before any edit by this session; every other generator ran | **fixed** — flat entry list now built from `NAV_PRIMARY` + flattened `NAV_MORE`; 7 pages regenerate, rc=0; smoke-test change request in the flag's `action` |
+| F65-F-04 | Medium | **`tools/i2_gate.py` was RED on `main`** — 14 problems across four classes on `site/`: official policy payment minimums + Table-1 Kitchen rate missing from the G6 allowlist; the submitted short links rendered as clickable outbound links on `answers.html`/`flagged.html`; four hand-authored guides missing the IP License 2(k) disclaimer; the style guide's banned-construction examples flagged with no use/mention rule | **fixed** — allowlist extended (deliberately, commented), short links rendered as text with `/dp/` left clickable, disclaimer added to the four footers, use/mention bypass added; gate now **PASS (18 pages, 0 flagged)**; check-request in the flag's `action` |
+| F65-F-05 | Low | The README's own chain `build_i2_site.py && build_cba81fa5_site.py` **failed from any clean checkout**: the injected region's start anchor (`<h2>Buying guides</h2>`) does not exist in the upstream generator, so a plain i2 rebuild dropped it and the integrator raised — losing the guide cards, guide plan, CBA flag rows and lint links | **fixed** — self-healing insert path in `patch_text`; full chain run twice, tree hashes identically; sentinel-anchor change request in the flag's `action` |
+| F65-F-06 | Info | `i2_gate`'s star pattern missed the plain `4.6 stars` form (only `★N.N stars` / `N out of 5`) | **fixed** — bare form added; post-change run still 0 flagged, proving the gap was real but unexploited |
+
+### F65-T5 — final integration (in progress: gates green, PR next)
+
+Gates on the final tree (re-run after every rebase round; numbers are from the last run,
+after all three `F65-F-*` fixes and the third round of `main` movement):
+
+| Gate | Result (final run, after F65-F-01…F-06 fixes) |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 30 pages, 3 products, 62 sources, 108 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS — 115 pages, 1,918 rows, 1,675 with official source**; 312 non-blocking V4 advisories on inherited pages (measured against pure `main`: 154 pre-existed before this session's edits, the rest arrived with main's own newest pages; this session's delta is its repo-evidence flag rows) |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 tools/i2_gate.py` | **PASS — 18 pages, 162 rows, 146 sourced, 16 explicit blanks, 0 flagged** (was **FAILED, 14 problems** on pure `main` → F65-F-04) |
+| `python3 tools/cba81fa5_lint.py` | **PASS — 18 pages, 0 new findings**, 22 inherited advisory |
+| `python3 tools/build_cba81fa5_site.py --check` | **already current** (was `anchors not both found` → F65-F-05) |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 78 pages, 0 extra entries**, all `site/` pages listed (coverage deliberately excludes `/docs/`+`/sessions/` per main's f48ec8b; `build_sitemap.py` must run **last**, after `tools/build_site.py`, or the 5 stubs sweep back in — F65-F-02) |
+| `python3 scripts/check_all_links.py` | **0 errors** (161 pages, 179 external URLs) |
+| `sessions/3c886b62/tools/check_links.py` | **OK** |
+| full generator chain ×2 | **idempotent** — tree hash identical across runs (chain order: `build_site` → `build_i2_site` → `build_cba81fa5` → `build_marketing` → `build_read` → `build_5a56c084` → `tools/build_site` → `build_sitemap`) |
+| conflict-marker / secrets sweep | **0 / 0** |
+
+Shared outputs edited by this session, each logged with its reason: `data/flags.json`
+(+F65-F-01…F-06, the six findings above), `EXECUTIVE-SUMMARY.md` (counts corrected to
+the register — 62 sources / 55 facts / 108 flags / 30 pages in the shared gate, plus the
+severity breakdown recomputed after every rebase round; this also repaired a pre-existing
+drift where §2 said 93 flags while the register held 97, and again when parallel sessions
+pushed the register to 102 before this branch’s final rebase), generated `flagged.html`/`executive-summary.html`/`index.html`
+(regenerated from the data, plus the landing KPI), `marketing/*.html` (F65-F-01 fix),
+`scripts/build_marketing.py` (F65-F-03 fix — a gate failure, not a style choice), and
+`sitemap.xml` (F65-F-02 fix). `sessions/f65d393b/**` (this session's records) and
+`COORDINATION.md` (this Part only) are this session's own scope. `scripts/build_site.py` was
+**not** edited — other sessions' refactors own it; this session's records are linked from this
+board instead of from the nav.
+
+**Rebase history (both resolved by keeping every side in full).** Round 1: `main` moved
+`609dc76` → `b8f576d` (PRs #100/#105/#110/#111) during the first push; `COORDINATION.md`
+conflicts resolved main-verbatim + this Part appended, generated pages resolved to main's
+side then **regenerated** from the unioned data, flag registers unioned by ID (97 + 2 = 99).
+Round 2: `main` moved `b8f576d` → `7da5ce2` (PRs #119/#121) before the push; same resolution
+(`COORDINATION.md` main-verbatim + this Part, `flagged.html` regenerated afterwards).
+**Reader-layer repair (part of F65-T5, logged because it edits shared tools).** Pure `main`
+arrived with the reader site's own release gate failing (`i2_gate`: 14 problems) and the
+README's build chain unreproducible (`build_cba81fa5` raising on a clean tree). Under the
+brief's "fix and retry, never merge a broken site" rule this session fixed both rather than
+routing around them: G6's allowlist and use/mention rule (`tools/i2_gate.py`), the self-healing
+region (`tools/build_cba81fa5_site.py`), the four guide footers, the two hand-authored
+short-link citations on `site/answers.html`, plus the marketing generator (F65-F-03). Every
+edit is recorded in the corresponding `F65-F-*` flag with its before/after reproduction. The
+whole documented chain now runs clean twice in a row and `i2_gate`/`lint`/`cba --check` all
+report PASS/current on the same tree.
+Round 3: `main` moved `7da5ce2` → `f96a059` (PR #127, session `757efebc`, register 97 → 102)
+before the push; `COORDINATION.md` main-verbatim + this Part, `data/flags.json` unioned by ID
+again (102 + F65-F-01/F-02 = 104, then F65-F-03 → 105), generated pages resolved to main's
+side and **regenerated** from the unioned data, executive-summary counts recomputed from the
+registers (not from any earlier statement). No line-start conflict marker was ever committed
+(checked before every continue/push); no other session's file was discarded.
