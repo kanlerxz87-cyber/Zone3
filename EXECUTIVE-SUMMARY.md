@@ -19,7 +19,7 @@
 - **Re-read today from official pages.** Link destinations, direct `/dp/` checks, the [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) (updated October 15, 2025, with the section 5 disclosure wording), the [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (updated April 14, 2026; clauses 2(a), 2(b), 6(t), 6(v), 6(w), 6(y), 6(z)), the [Standard Commission Income Statement, Table 1](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ) (Kitchen 4.50%; All Other Categories 4.00%), the [Creators API GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) (ASIN default; 10-character examples) and the [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) guide (November 2019).
 - **Compliance fix.** Observed Amazon price, star-rating, review-count and sales values were removed from the public data files, the Sources page and flag text. Program Policies 2(b) and 6(t) do not allow that display outside the Creators API or PA API (AB-F-01).
 - **Still open.** Archived pages in `docs/`, `sessions/` and `research/`, and several snapshot files, still show those values. Their owners must remove or redact them. These are logged as change requests, not edited, under the coordination rules.
-- **Flags.** Five new items were added to the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page (AB-F-01 to AB-F-05). The register now holds 83 items.
+- **Flags.** Five new items were added to the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page (AB-F-01 to AB-F-05). The register held 83 items after that pass; §2 carries the current count.
 - **Owner decisions needed.** (1) The intended product, or the 10-character ASIN, for each submitted link. (2) Whether to remove or redact the archives listed in AB-F-01. (3) Whether a link.amazon redirect counts as a Redirecting Link under Commission Income Statement 2(e). That can only be tested in a logged-in Associates account.
 
 ---
@@ -55,7 +55,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-51 official sources · 55 policy facts · 72 flags · 13 root pages, a 16-page audit build, a `/docs/`
+52 official sources · 55 policy facts · 86 flags · 13 root pages, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -149,8 +149,8 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-72 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 13 high, 20 medium, 21 low, 15 informational (informational entries record a correction
+86 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 14 high, 23 medium, 28 low, 18 informational (informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
@@ -197,6 +197,13 @@ changes are auditable rather than silent):
   anchored to the repo), `tools/link_report.py` (no dangling refs), `scripts/check_all_links.py`
   (117 pages, 105 external URLs, 0 errors), `scripts/build_sitemap.py` (66 pages covered), and both
   site generators rebuild to a stable fixpoint.
+* **Re-verification round 2026-11-16 (session `1f1b8bd2`)** — the three submitted short links, the
+  three direct `/dp/<9-char code>` controls, the Operating Agreement (§5, §6), the Program Policies
+  (header date, Participation Requirements 2(b) and 6(s)–6(z), Commission Income Statement §1), the
+  Standard Commission Table 1, the Creators API introduction and GetItems ASIN definition, FTC
+  Disclosures 101 and the FTC endorsements hub were all re-read from the official pages on
+  2026-11-16. Results identical to 2026-11-14. Record:
+  [`research/1f1b8bd2-verification-log.md`](research/1f1b8bd2-verification-log.md).
 * **Limits:** the sandbox reaches only github.com, npm and PyPI directly, so official pages were read
   through a fetch tool rather than an automated HTTP client, and the `--online` link check was not
   run. Whether `link.amazon` redirects without an affirmative click has not been tested in a

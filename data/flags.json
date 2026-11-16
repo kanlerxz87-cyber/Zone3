@@ -1107,6 +1107,37 @@
       "detail": "The generated status date moved from 2026-11-14 to 2026-11-16. The marketing pages under marketing/ were regenerated: their navigation did not yet link the Suggestions & decisions page added on 2026-11-15, and now links this session's record. The sitemap was checked against the generator and changed only by this record's entry; it correctly omits the redirect stubs analysis.html, disclosure.html and flagged-for-review.html.",
       "action": "None required. Recorded as a correction to this site.",
       "repo_evidence": "scripts/build_site.py BUILT constant; marketing/*.html navigation; sitemap.xml; sessions/ab3ed329/index.html (correction list)."
+    },
+    {
+      "id": "1F-F-01",
+      "severity": "Medium",
+      "category": "Compliance",
+      "item": "Source register and compliance citations do not include the FTC Rule on the Use of Consumer Reviews and Testimonials (16 CFR Part 465)",
+      "detail": "The site's FTC citations are S07 (Disclosures 101), S24 (Endorsements hub) and S44 (Endorsement Guides FAQ). The FTC hub page itself links the Rule on the Use of Consumer Reviews and Testimonials, and its official Q&A (S59, fetched 2026-11-16) states the rule 'went into effect on October 21, 2024' and that courts may impose civil penalties for knowing violations — including for fake or false consumer reviews, incentivized reviews, review suppression, misuse of fake social-media influence indicators (S59 quotes sections 465.2, 465.4, 465.7, 465.8) and for a business misrepresenting that a site it controls provides independent reviews (section 465.6). This site publishes comparisons, buying guides and a review/competition section, so the rule is directly in scope and is not cited anywhere in data/sources.json before S59 or on the compliance page.",
+      "action": "Read S59 (and the linked final rule) and add it to the compliance register and to the content-grounding rules on the content page: no fake or incentivized reviews, no misrepresenting this site's comparisons as independent where they are affiliate-driven, no fake engagement indicators. Owner decision on placement.",
+      "sources": [
+        "S59"
+      ]
+    },
+    {
+      "id": "1F-F-02",
+      "severity": "Low",
+      "category": "Register accuracy",
+      "item": "EXECUTIVE-SUMMARY.md current-state counts were stale (72 flags stated; register held 78 before this session added 1F-F-01..03)",
+      "detail": "Section 2 said '51 official sources · 55 policy facts · 72 flags · 13 root pages' and section 6 said '72 entries — 3 critical, 13 high, 20 medium, 21 low, 15 informational', while data/flags.json held 78 entries (3/13/21/24/17). This reproduces 54C-F-02's prediction that hand-written counts drift on every append. Fixed in this session: section 2 and section 6 were updated to the register values after adding 1F-F-01..03 (81 entries: 3 critical, 13 high, 22 medium, 26 low, 18 informational); sections that quote dated historical gate runs were left untouched.",
+      "action": "Change request from 54C-F-02 stands: generate these counts from data/flags.json and data/sources.json so they cannot drift again.",
+      "sources": [],
+      "repo_evidence": "EXECUTIVE-SUMMARY.md section 2 (pre-fix) read 2026-11-16: '51 official sources · 55 policy facts · 72 flags · 13 root pages'; section 6 (pre-fix): '72 entries ... 3 critical, 13 high, 20 medium, 21 low, 15 informational'; data/flags.json counted 78 entries with severity breakdown 3/13/21/24/17 at base 933e2f3. Reproduce: python3 -c \"import json;f=json.load(open('data/flags.json'))['flags'];print(len(f))\"."
+    },
+    {
+      "id": "1F-F-03",
+      "severity": "Low",
+      "category": "Site (fixed)",
+      "item": "The six generated marketing/*.html pages were stale relative to scripts/build_marketing.py — missing the Suggestions & decisions nav entry",
+      "detail": "Re-running scripts/build_marketing.py on 2026-11-16 changed exactly one line per page across all six marketing pages: the shared NAV imported from scripts/build_site.py contains the suggestions.html entry added by session 4f83ee7b (PR #96), but the committed marketing pages predated it. This is the same defect class session cd0e6279 fixed for the Decision Center link (its navigation-only sync), and it means the 'generators idempotent' claim from the 25/54C gate runs no longer reproduced at base 933e2f3. Fixed in this session by regenerating the six pages; no marketing copy, brief, price, rating or recommendation was changed.",
+      "action": "None — fixed. Future NAV additions to scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
+      "sources": [],
+      "repo_evidence": "git diff after re-running scripts/build_marketing.py at base 933e2f3: exactly one line changed in each of the six marketing/*.html files, adding href='../suggestions.html' (Suggestions &amp; decisions) to the top nav imported from scripts/build_site.py NAV. Reproduce: python3 scripts/build_marketing.py && git diff --stat marketing/."
     }
   ]
 }
