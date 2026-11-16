@@ -202,7 +202,24 @@ def register_checks(root: pathlib.Path):
 STRAY_ATTR = re.compile(r">\s*(?:title|target|rel|href|class|aria-[\w-]+|data-[\w-]+)\s*=")
 # A page that documents a bad tag has to show it. Code spans and the style guide's example spans are
 # exempt, the same convention the phrase rules use, so the flagged page can quote a defect as evidence.
-EXAMPLE_SPANS = re.compile(r'<span class="example">.*?</span>|<(code|pre)\b.*?</\1>', re.S)
+EXAMPLE_OPEN = re.compile(r'<span class="example">|<(code|pre)\b[^>]*>', re.I)
+
+
+def strip_examples(html: str) -> str:
+    """Blank out the contents of example/code/pre spans so a documented defect is not flagged.
+
+    Only balanced pairs up to a sane length are treated as spans: an unclosed <code> elsewhere in a
+    page must not mask the rest of the file and hide a real defect from this rule.
+    """
+    out = list(html)
+    for m in EXAMPLE_OPEN.finditer(html):
+        tag = "span" if m.group(0).startswith("<span") else m.group(1)
+        close = html.find(f"</{tag}>", m.end())
+        if close < 0 or close - m.end() > 4000:
+            continue
+        for i in range(m.end(), close):
+            out[i] = " "
+    return "".join(out)
 
 
 def lint_generated_regions(root: pathlib.Path):
@@ -222,7 +239,7 @@ def lint_generated_regions(root: pathlib.Path):
             rel = "index.html (front-door band)"
             if DISCLOSURE not in html_unescape(TEXT_STRIP.sub(" ", band)):
                 yield (rel, "POLICY:disclosure-sentence", "the band must carry the required sentence, not rely on the page footer")
-            for m in STRAY_ATTR.finditer(EXAMPLE_SPANS.sub(" ", band)):
+            for m in STRAY_ATTR.finditer(strip_examples(band)):
                 yield (rel, "STYLE:malformed-tag",
                        f"attribute text is outside the tag and renders as prose -> {band[max(0,m.start()-50):m.end()+40]!r}")
             for m in re.finditer(r'href="([^"]+)"', band):
@@ -243,7 +260,7 @@ def lint_malformed_tags(root: pathlib.Path):
     for p in sorted((root / "site").rglob("*.html")):
         raw = p.read_text(encoding="utf-8")
         rel = p.relative_to(root).as_posix()
-        for m in STRAY_ATTR.finditer(EXAMPLE_SPANS.sub(" ", raw)):
+        for m in STRAY_ATTR.finditer(strip_examples(raw)):
             yield (rel, "STYLE:malformed-tag",
                    f"attribute text is outside the tag and renders as prose -> {raw[max(0,m.start()-50):m.end()+40]!r}")
 
@@ -252,10 +269,26 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=str(pathlib.Path(__file__).resolve().parent.parent))
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--selftest", action="store_true",
+                    help="prove the malformed-tag rule catches a broken anchor and ignores a documented one")
     ap.add_argument("--update-baseline", action="store_true",
                     help="record the current findings as inherited (advisory) in the baseline file")
     a = ap.parse_args()
     root = pathlib.Path(a.root).resolve()
+
+    if a.selftest:
+        bad = '<p>see <a href="x" rel="noopener">title="oops">source</a></p>'
+        good = '<p>the defect looked like <code><a href="x" rel="noopener">title="oops">source</a></code></p>'
+        caught = bool(STRAY_ATTR.search(strip_examples(bad)))
+        exempted = not list(STRAY_ATTR.finditer(strip_examples(good)))
+        if not caught:
+            print("SELFTEST FAIL: the malformed-tag rule missed a broken anchor")
+            return 1
+        if not exempted:
+            print("SELFTEST FAIL: the rule flags an example quoted inside <code>")
+            return 1
+        print("SELFTEST PASS · malformed-tag rule catches the defect and exempts documented examples")
+        return 0
     site = root / "site"
     pages = sorted(p for p in site.rglob("*.html"))
     if not pages:
