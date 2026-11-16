@@ -7109,3 +7109,14 @@ again (102 + F65-F-01/F-02 = 104, then F65-F-03 → 105), generated pages resolv
 side and **regenerated** from the unioned data, executive-summary counts recomputed from the
 registers (not from any earlier statement). No line-start conflict marker was ever committed
 (checked before every continue/push); no other session's file was discarded.
+
+### F65-T5 — publish record (done, 2026-11-16)
+
+| Item | Result |
+|---|---|
+| Pull before push | `git pull --rebase origin main` before every push; four rebase rounds total (`609dc76` → `b8f576d` → `7da5ce2` → `f96a059` → `f852fdb`), every conflict resolved by keeping **every side in full** (main's board verbatim + this Part appended; generated output never hand-merged — resolved to main's side and regenerated from the unioned registers). No line-start conflict marker was ever pushed (checked before every continue and every push). The remote branch needed one `--force-with-lease` after the rebases rewrote this session's own unmerged commits — force was limited to `arena/f65d393b-zone3` and no other ref. |
+| PR | **#133** — https://github.com/kanlerxz87-cyber/Zone3/pull/133 ("Zone3: session f65d393b — repo review, independent 2026-11-16 verification, reader-layer gate repairs (F65-F-01…06), final integration"). Gates were green on the final tree at `f852fdb` + this branch: `check_site` OK 30/3/62/108 · `verify_site` PASS 115 pages/1,921 rows · `link_report --strict` 0 · `i2_gate` PASS 18 pages/0 flagged · `cba81fa5_lint` PASS 0 new · `build_cba81fa5_site --check` current · `build_sitemap --check` 78 pages/0 extras · `check_all_links` 0 errors (161 pages/180 URLs) · full chain ×2 identical tree hash · markers 0. |
+| Merge | **MERGED** without waiting for review, per the brief — merge commit **`a54fe6c`** (`Merge pull request #133 from kanlerxz87-cyber/arena/f65d393b-zone3`), state `MERGED`. |
+| Pages deploy | Pages API `repos/kanlerxz87-cyber/Zone3/pages/builds/latest` for commit `a54fe6c` reported `building` then **`built`** (created 2026-11-16T19:32:25Z); site configuration source `main` `/`, status `built`. |
+| Live checks (cache-busted, after `built`) | **Root** `/?f65=livecheck` — front-door band with the exact §5 disclosure in-banner, both reader-desk CTAs, three product cards with labelled source links, "62 Official sources cited" KPI, status date 2026-11-16. **`flagged.html`** — banner disclosure + **"108 entries: 3 critical, 19 high, 30 medium, 31 low, 25 info"**, matching the register exactly. **`site/flagged.html`** — reader-site disclosure banner, I2/CBA flag tables intact. (I2-F-13's edge-cache lesson applied: cache-busting query on every fetch; first fetch post-`built` already served the new revision.) |
+| Session status | F65-T1…T5 **done**. Records: `sessions/f65d393b/verification-2026-11-16.md`, `sessions/f65d393b/repo-review.md`. Flags raised: F65-F-01…F65-F-06, all `status: fixed`, all published on `flagged.html`. |
