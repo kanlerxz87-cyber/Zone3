@@ -1,7 +1,7 @@
 {
- "retrieved": "2026-11-15",
+ "retrieved": "2026-11-17",
  "session": "4f83ee7b",
- "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log.",
+ "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log. MERGE (2026-11-17): session cbb03ec7 added CBB-SUG-01..04 and the brief's parallel-pass rows SG-27..SG-30 (nav labels, RSS feed, Search Console, reader capture) as proposals only; nothing on this page is implemented by that session either.",
  "statuses": {
   "proposed": "Published here for review. Not implemented. Implementation starts only after a decision is recorded.",
   "blocked": "Cannot proceed until a specific verified prerequisite or owner input exists. The blocker is named in the row."
@@ -489,6 +489,143 @@
      ]
     }
    ]
+  },
+  {
+   "id": "CBB-SUG-01",
+   "title": "Validate the supplied tracking ID, then tag one Special Link per product",
+   "what": "Once the owner confirms shopnow047c-20 in the Associates console, build exactly one canonical /dp/ Special Link per product, test destination and tracking report for each, and only then scale tagged links across the site.",
+   "why": "The brief requires validation before scaling; Program Policies disqualify purchases on improperly formatted links (S02). The value exists now, so the workflow - not the value - is what is missing.",
+   "compliance": [
+    {
+     "text": "Special Links must use the Associates ID assigned to you; the tag must be a URL parameter on every link to an Amazon site; improperly formatted links disqualify the purchase.",
+     "source": [
+      "S02"
+     ]
+    }
+   ],
+   "status": "blocked",
+   "blocked_by": [
+    "CBB-Q-01"
+   ],
+   "src": [
+    "S02"
+   ],
+   "note": "Proposal by session cbb03ec7, 2026-11-17. Not implemented: console confirmation cannot be performed from this repository.",
+   "blocker": "Owner must confirm shopnow047c-20 in the Associates console and run the one-link-per-product Special Link test first (CBB-Q-01)."
+  },
+  {
+   "id": "CBB-SUG-02",
+   "title": "Resolve the two-category scope before the next content batch",
+   "what": "Owner chooses: (a) two-category site (air fryers + meat thermometers) with category pages and guides for both, or (b) air-fryer site that keeps the two thermometer links as observed-only rows in the register.",
+   "why": "Two of five destinations are meat thermometers (S71, S74) while every published guide is air-fryer scoped; writing either way before the decision risks rework or content the owner removes.",
+   "compliance": [
+    {
+     "text": "Original content relevant to the linked lists must accompany product-list links; scope decides which original content is written.",
+     "source": [
+      "S02"
+     ]
+    }
+   ],
+   "status": "blocked",
+   "blocked_by": [
+    "CBB-Q-03"
+   ],
+   "src": [
+    "S71",
+    "S74"
+   ],
+   "note": "Proposal by session cbb03ec7, 2026-11-17.",
+   "blocker": "Owner must decide the two-category scope first (CBB-Q-03)."
+  },
+  {
+   "id": "CBB-SUG-03",
+   "title": "Stand up the measurement set-up the brief specifies (click counter + five events)",
+   "what": "Pick the analytics stack (Q8/DEC-03), deploy a privacy-preserving outbound-click counter and a self-hosted endpoint, and record the five defined events before more content is published, so the next topic is chosen from measured queries.",
+   "why": "The brief turns on measurement before further writing; GitHub Pages is static, so the endpoint is an owner infrastructure decision, not a code change in this repo.",
+   "compliance": [
+    {
+     "text": "No price or review data is collected by the counter; only outbound-click and page events.",
+     "source": []
+    }
+   ],
+   "status": "blocked",
+   "blocked_by": [
+    "Q8"
+   ],
+   "src": [],
+   "note": "Proposal by session cbb03ec7, 2026-11-17. Cross-record: shop decision DEC-03 / FLG-S06.",
+   "repo": "shop/decisions/index.html",
+   "blocker": "Owner must pick the analytics stack and provide an endpoint; GitHub Pages is static (Q8, shop decision DEC-03)."
+  },
+  {
+   "id": "CBB-SUG-04",
+   "title": "Extend feed.xml to carry the Research Desk articles as well as the guides",
+   "what": "Add the four Research Desk articles (articles/) to the shipped RSS feed alongside the four guides, keeping the same channel metadata, and re-check autodiscovery links after any generator run.",
+   "why": "The feed currently lists the guides only; the article hub is the other half of the publication surface, and the brief asks every new guide and article to be in the sitemap and the feed.",
+   "compliance": [],
+   "status": "proposed",
+   "blocked_by": [],
+   "src": [],
+   "note": "Proposal by session cbb03ec7, 2026-11-17. feed.xml is owned by session aebf0747's publication pass - implement only via that owner's generator, not by hand.",
+   "repo": "feed.xml"
+  },
+  {
+   "id": "SG-27",
+   "title": "Nav labels: one consistent label set across the four surfaces",
+   "what": "Review the navigation labels on the root publication front page, /shop/, /read/ and /site/ and agree one label set (Home, Shop, Guides, Products, Sources, Flagged, Decisions) so a reader never sees two names for the same destination.",
+   "why": "The brief's reader-facing polish path names nav labels as a parallel pass row; four surfaces currently carry four navs, and the overlap is already logged (FLG-S10, 757-Q-11).",
+   "compliance": [],
+   "status": "proposed",
+   "blocked_by": [
+    "757-Q-11"
+   ],
+   "src": [],
+   "note": "Parallel-pass row added by session cbb03ec7, 2026-11-17, per the brief's SG-27.",
+   "repo": "index.html",
+   "blocker": "Front-door ownership question 757-Q-11 is open; four navs cannot be unified before it is answered."
+  },
+  {
+   "id": "SG-28",
+   "title": "RSS feed: shipped for the guides; articles still missing from it",
+   "what": "feed.xml shipped 2026-11-17 (four guides) with autodiscovery markup on the published pages. Remaining: add the Research Desk articles (CBB-SUG-04) and confirm the feed URL from a fresh session after every generator run.",
+   "why": "The brief lists the shipped RSS feed as a parallel pass row; recording what is shipped and what is not keeps the row honest.",
+   "compliance": [],
+   "status": "proposed",
+   "blocked_by": [],
+   "src": [],
+   "note": "Parallel-pass row added by session cbb03ec7, 2026-11-17, per the brief's SG-28. Shipped half credited to session aebf0747 (PR #136).",
+   "repo": "feed.xml"
+  },
+  {
+   "id": "SG-29",
+   "title": "Google Search Console: property + sitemap submission",
+   "what": "Owner adds a Search Console property for https://kanlerxz87-cyber.github.io/Zone3/, verifies it (HTML tag or DNS), and submits sitemap.xml; then read actual queries and choose the next topic from them.",
+   "why": "The brief ties the next topic to measured queries; Search Console needs an owner Google account and cannot be created from this repository.",
+   "compliance": [],
+   "status": "blocked",
+   "blocked_by": [
+    "Q9"
+   ],
+   "src": [],
+   "note": "Parallel-pass row added by session cbb03ec7, 2026-11-17, per the brief's SG-29.",
+   "repo": "sitemap.xml",
+   "blocker": "Search Console needs an owner Google account and a verification token (Q9)."
+  },
+  {
+   "id": "SG-30",
+   "title": "Reader capture: an email/list capture point on the publication surface",
+   "what": "Add a single reader-capture point (newsletter signup) to the front page and guides, backed by an owner-chosen form endpoint; until an endpoint exists, no capture form is published.",
+   "why": "The brief names reader capture as a parallel pass row; GitHub Pages has no server-side form handling, so this is blocked on the owner's stack choice (Q5/Q8), not on markup.",
+   "compliance": [],
+   "status": "blocked",
+   "blocked_by": [
+    "Q5",
+    "Q8"
+   ],
+   "src": [],
+   "note": "Parallel-pass row added by session cbb03ec7, 2026-11-17, per the brief's SG-30.",
+   "repo": "index.html",
+   "blocker": "No form endpoint exists; GitHub Pages cannot handle form posts (Q5, Q8)."
   }
  ],
  "questions": [

@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10 (union by ID over main's board).",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge).",
   "flags": [
     {
       "id": "FLG-001",
@@ -1430,354 +1430,14 @@
       "repo_evidence": "tools/i2_gate.py STAR_RE before/after in this session's diff; post-change gate run reports 18 pages, 0 flagged"
     },
     {
-      "id": "G82-F-01",
-      "severity": "Low",
-      "category": "Accessibility (fixed)",
-      "item": "Reader site (site/) shipped three tap targets below the usable floor: source chips ~22px tall, header nav and decision controls ~33-39px",
-      "detail": "S-20 asked for a mobile-first pass; the audit measured the CSS in tools/build_i2_site.py rather than assuming. Found: viewport meta, text-size-adjust, clamp() type scale, sticky header and overflow:auto table wrappers were already in place (credit to the i2 layer); the gaps were box-model ones — .src chips (font 11px, padding 1px 6px → ~22px rendered height, below the WCAG 2.2 SC 2.5.8 24×24 AA floor, and under 24px of separating space so the spacing exception did not apply), .top nav a (~39px) and the Accept/Reject/Defer .seg spans (~33px). Fixed 2026-11-17 by session 82372fd1 in the generator: min-height 24px on .src, 44px on .top nav a, .seg span and .btn (mobile block), mobile table cell padding 9px 10px to reclaim width, and a prefers-reduced-motion guard for scroll-behavior:smooth. Deliberately did NOT shrink table font on mobile (would fight 1.4.4-style resize expectations).",
-      "action": "No owner action. Measurements are box-model computations from the checked-in CSS (documented in sessions/82372fd1/mobile-audit.md), not browser renders; a human can spot-check on a phone at any time.",
-      "date": "2026-11-17",
-      "session": "82372fd1",
-      "status": "fixed",
-      "repo_evidence": "tools/build_i2_site.py commit 2ca865e; site/assets/site.css regenerated; gates i2_gate/lint/verify_site PASS on the rebuilt tree"
-    },
-    {
-      "id": "G82-F-02",
-      "severity": "Info",
-      "category": "Build",
-      "item": "The publishing brief asks each new guide to reach 'the existing sitemap and feed' — the sitemap half existed, the feed half did not; feed.xml now ships, with a maintenance rule",
-      "detail": "A repo-wide search on 2026-11-17 found no RSS/Atom implementation anywhere (only the brief text asking for one). Session 82372fd1 added tools/build_feed.py: feed.xml is generated strictly from data/cba81fa5/guides.json (the register the guide surfaces already read), entries = live guides only, dates come from the register (output is deterministic), and the same prohibited-figure rules the reader gates use are enforced at feed build time. Head <link rel=alternate> injections in site/index.html and site/guides/index.html live inside a self-healing sentinel region: after any reader-site rebuild run python3 tools/build_feed.py (the README chain lists it as the last step but one); python3 tools/build_feed.py --check fails when the region is missing or the feed drifted. Verified this session: i2 rebuild drops the region, --check reports drift with exit 1, re-run restores and all gates pass.",
-      "action": "None — mechanical. Any future session that rebuilds site/ must keep the chain order in README.md.",
-      "date": "2026-11-17",
-      "session": "82372fd1",
-      "status": "fixed",
-      "repo_evidence": "tools/build_feed.py; feed.xml; README build-order block; commit a3c365b"
-    },
-    {
-      "id": "G82-F-03",
-      "severity": "Medium",
-      "category": "Register gap (needs owner)",
-      "item": "Two of the five product links in the 2026-11-17 owner brief (link.amazon/B0c8moW59, link.amazon/B0f3GKalj) had no register row, no observation and no flag anywhere in the repo",
-      "detail": "data/products.json carries the three links the earlier sessions received and re-checked (S67-S69 cover B04G1MEwY, B02NbDxp3, B00hJ57DV). A full-tree search for B0c8moW59 and B0f3GKalj found nothing before 2026-11-17: the site has been presenting three products while the brief lists five. This session did NOT resolve or probe those links (no observation claims). They are now represented honestly as two 'not registered' rows in the product-intent confirmation record on products.html, with every intended field Unverified and observed field empty by design, and as question Q11 with discovery action D7 on the suggestions page.",
-      "action": "Owner: confirm what each of the two links is supposed to point at (or withdraw it), via D7. After that, a later session can open register rows for them through the intake tool and the same verification path the first three went through.",
-      "date": "2026-11-17",
-      "session": "82372fd1",
-      "sources": [
-        "S02",
-        "S31",
-        "S67",
-        "S68",
-        "S69"
-      ]
-    },
-    {
-      "id": "G82-F-04",
-      "severity": "Info",
-      "category": "Build (fixed)",
-      "item": "Two sessions shipped a feed at the same root path feed.xml on 2026-11-17; the merge keeps both content sets in one union feed",
-      "detail": "Session aebf0747 (PRs #136/#137) published an RSS 2.0 feed.xml listing the four /guides/ pages; this session built an Atom feed.xml from the live rows of data/cba81fa5/guides.json (reader guides under site/guides/). Both head links, both footer links and both sitemaps point at the single path feed.xml with type=application/rss+xml, so the union ships as RSS 2.0: entries are the verbatim re-home of aebf0747's four items (snapshot register data/feed/entries-shop.json, provenance to ad99ca8) plus every live row of the guide register, sorted by date. aebf0747's build_pass.py keeps writing its own feed.xml; tools/build_feed.py runs AFTER it in the chain and overwrites with the union — documented in the README chain. The snapshot means a future /guides/ addition must update data/feed/entries-shop.json too; the feed builder fails loudly on any missing page, date mismatch or prohibited figure instead of drifting.",
-      "action": "Fixed by this session. Owner note: to retire the dual-writer entirely, remove the feed write in sessions/aebf0747/build_pass.py once its session is no longer rebuilt — not done here because it is that session's file and the chain order makes it harmless.",
-      "date": "2026-11-17",
-      "session": "82372fd1",
-      "status": "fixed",
-      "repo_evidence": "tools/build_feed.py; data/feed/entries-shop.json; sessions/aebf0747/build_pass.py line 661 (their writer, kept); README chain"
-    },
-    {
-      "id": "G82-F-05",
-      "severity": "Low",
-      "category": "Gate defect (fixed)",
-      "item": "main arrived failing its own shared gate: scripts/check_site.py 'navigation missing' on the publication front page index.html",
-      "detail": "Reproduced on ad99ca8 in a clean worktree: check_site requires the exact substring 'class=\"topbar\"' on every PAGES entry, but the front page (aebf0747, PRs #136/#137) carries its masthead as class=\"z3-mast topbar\" and has no link named flagged.html — the page is compliant by design (own nav + publication-pass.html#flagged), the gate just predates the template. Under the brief's never-merge-a-broken-site rule this session fixed it from both ends: (a) the generator sessions/aebf0747/build_pass.py NAV gains a 'Flagged (register)' link to flagged.html and the masthead keeps the topbar token — additive; (b) scripts/check_site.py matches the token 'topbar' instead of the exact attribute, with the flagged.html requirement unchanged. After the change check_site passes and no page lost its governance link.",
-      "action": "Fixed by this session (both edits are one-liners with their comments in place). A later integration may fold the token rule into a proper nav-shape check.",
-      "date": "2026-11-17",
-      "session": "82372fd1",
-      "status": "fixed",
-      "repo_evidence": "scripts/check_site.py nav rule; sessions/aebf0747/build_pass.py NAV + masthead; reproduction: git worktree at ad99ca8 → 'FAILED: 1 problem(s) - index.html: navigation missing'"
-    },
-    {
-      "id": "F-2F-01",
+      "id": "CBB-F-01",
       "severity": "High",
-      "category": "Scope (owner decision)",
-      "item": "Two of the five submitted links open listings in a category the site is not written for",
-      "detail": "The brief for this session supplies five product links. Three open air-fryer listings under Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (browse node 17659096011). The two added this session, link.amazon/B0c8moW59 and link.amazon/B0f3GKalj, open meat-thermometer listings under Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (browse node 289810): B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer, Gen3). The site name, navigation, category pages, comparison and article plan are all air-fryer specific. No source read in this project states the owner's intent for any of the five links, so this is published as a decision for the owner (SUG-2F-01 on sessions/2f181cd9/decision-lab.html) rather than acted on.",
-      "action": "Owner decision: pick one of the three scope paths in SUG-2F-01 (one publication with two category hubs, two microsites, or air fryers only with the two thermometer links held unpublished), and record the intended ASIN for each link with a confirmation date in the intake register.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S70",
-        "S71",
-        "S72",
-        "S73",
-        "S76",
-        "S77",
-        "S78"
-      ],
-      "repo_evidence": "sessions/2f181cd9/intake.html — the five-link intake register, intended and observed columns separate"
-    },
-    {
-      "id": "F-2F-02",
-      "severity": "Medium",
-      "category": "Product identity",
-      "item": "Both new identifiers are nine characters, so neither is an ASIN, and both direct /dp/ checks return Page Not Found",
-      "detail": "Amazon defines an ASIN as a 10-character alphanumeric unique identifier (Creators API GetItems, ItemIdType table, read 2026-11-17). B0c8moW59 and B0f3GKalj are nine characters, and amazon.com/dp/B0c8moW59 and amazon.com/dp/B0f3GKalj each return Amazon's Page Not Found page, exactly as the first three identifiers do. The nine-character tokens are short-link identifiers, and the listing they open is an observed destination, not a confirmed identity.",
-      "action": "No action by the site. Fill the intended_* columns of the intake register when the owner confirms the five ASINs.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S74",
-        "S75",
-        "S82"
-      ],
-      "repo_evidence": "sessions/2f181cd9/intake.html"
-    },
-    {
-      "id": "F-2F-03",
-      "severity": "High",
-      "category": "Revenue",
-      "item": "No link on the site carries an Associates tag, including the two new links",
-      "detail": "Participation Requirements 2(b) requires the Associates tag as a URL parameter on every link to an Amazon Site. The two new submitted links contain no tag, and no tag has been supplied for the site, so five of five links can be clicked without earning anything.",
-      "action": "Supply the tag, build one Special Link per product, test one end to end, then scale (SUG-2F-06).",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S80"
-      ],
-      "repo_evidence": "sessions/2f181cd9/intake.html and data/2f/intake.json"
-    },
-    {
-      "id": "F-2F-04",
-      "severity": "Medium",
-      "category": "Commission",
-      "item": "No commission rate can be stated for any of the five listings",
-      "detail": "The published Standard Commission Income Statement Table 1 (read 2026-11-17) gives Kitchen 4.50%, Home 3.00% and All Other Categories 4.00%. No official page read in this project maps a browse node to a Table 1 category, and the two new listings sit in a different part of the tree from the first three, so the question is now sharper rather than answered: the same table may or may not apply to both groups.",
-      "action": "Read the classification back through the Creators API once access exists, or take the realised rate from the owner's own Associates reports. Do not publish a per-product rate until then.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S81",
-        "S72",
-        "S73"
-      ],
-      "repo_evidence": "sessions/2f181cd9/questions.html#Q2F-04"
-    },
-    {
-      "id": "F-2F-05",
-      "severity": "Medium",
-      "category": "Compliance",
-      "item": "Outbound product links are marked rel=\"sponsored\" on 6 links and not on the rest of the site",
-      "detail": "A repository-wide scan on 2026-11-17 counted 6 outbound links carrying rel=sponsored against more than 2,300 that do not, so the same class of link is marked two different ways depending on which generator built the page. The brief requires every outbound product link to be marked as sponsored. This session's own pages mark every outbound Amazon link with rel=\"sponsored noopener noreferrer\".",
-      "action": "Cross-scope change request: change the link helper in each generator so every outbound product link carries rel=\"sponsored\", then rebuild. Suggestion SUG-2F-07 on sessions/2f181cd9/decision-lab.html.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S79",
-        "S80"
-      ],
-      "repo_evidence": "grep -c 'rel=\"[^\"]*sponsored' across the published pages, run 2026-11-17"
-    },
-    {
-      "id": "F-2F-06",
-      "severity": "Medium",
-      "category": "Information architecture",
-      "item": "The reader's path runs through an operations dashboard, and the page set is large",
-      "detail": "The root page opens with a hero and then a status callout, statistics about the verification process, and a site map listing 78 pages including per-session archives and superseded builds. The brief asks for a publication front page with every dashboard surface reachable from the footer and a single navigation group.",
-      "action": "Owner decision between the two paths in SUG-2F-02; then consolidate the page set as in SUG-2F-10.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S79"
-      ],
-      "repo_evidence": "index.html at the base commit, and the design diagnosis on sessions/2f181cd9/design-direction.html"
-    },
-    {
-      "id": "F-2F-07",
-      "severity": "Low",
-      "category": "Design",
-      "item": "Four visual languages are published on one domain",
-      "detail": "assets/style.css, assets/front-door.css, assets/read.css and site/assets each define their own palette, type stack and card shape, so following an internal link can arrive at a page that looks like a different website.",
-      "action": "Adopt one token set and rebuild every surface against it (SUG-2F-03).",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S79"
-      ],
-      "repo_evidence": "the four stylesheets in this repository, and the diagnosis table on sessions/2f181cd9/design-direction.html"
-    },
-    {
-      "id": "F-2F-08",
-      "severity": "Low",
-      "category": "Editorial",
-      "item": "Product pages carry no photography",
-      "detail": "Every product block is typographic. Imagery is the single largest visual upgrade available, and it is constrained: images must be Amazon-served Program Content or the owner's own photographs. Generated or copied photography is not an option.",
-      "action": "Pick a path in SUG-2F-04 once the tag or the products are available.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S79",
-        "S80"
-      ],
-      "repo_evidence": "marketing/product-*.html at the base commit"
-    },
-    {
-      "id": "F-2F-09",
-      "severity": "Low",
-      "category": "Content accuracy (cross-scope)",
-      "item": "Copy that says 'three air fryers' remains on surfaces this session does not own",
-      "detail": "This session updated the shared copy in scripts/build_site.py so that products.html, pricing.html, reviews.html, campaigns.html, content.html and the executive summary read correctly for five links. Surfaces owned by other generators still say three, including the front-door band injected into index.html by tools/build_cba81fa5_site.py ('Which of these three air fryers fits your kitchen?'), the /read/ pages built by scripts/build_read.py, the /site/ pages built by tools/build_i2_site.py and tools/build_cba81fa5_site.py, and the marketing pages under /marketing/ that compare three listings. Left as written rather than half-updated: the marketing comparison genuinely covers three air fryers, and the front-door band is an injected region this session does not generate.",
-      "action": "Change request for the owner or the next integration session: decide the scope (F-2F-01) and then regenerate or re-word those surfaces in one pass, so the site never mixes 'three' and 'five'.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [
-        "S72",
-        "S73"
-      ],
-      "repo_evidence": "grep -rn 'three air fryers|three listings' across the generated pages, run 2026-11-17"
-    },
-    {
-      "id": "F-2F-10",
-      "severity": "Info",
-      "category": "Method",
-      "item": "This session's sandbox could only reach the network through the page-fetch tool",
-      "detail": "Command-line fetches to amazon.com and link.amazon were refused at the connection layer in this session's sandbox, so every observation was taken through the page-fetch tool instead. Each observation names the exact URL that was fetched, so it can be repeated by hand. This is recorded because it is a difference in method from earlier sessions, which used command-line fetches.",
-      "action": "No action. Noted so a reviewer knows how the observations were taken.",
-      "date": "2026-11-17",
-      "session": "2f181cd9",
-      "status": "open",
-      "sources": [],
-      "repo_evidence": "sessions/2f181cd9/index.html"
-    },
-    {
-      "id": "G84-F-01",
-      "severity": "Medium",
-      "category": "Register self-contradiction (reconciled by this session)",
-      "item": "products.html contradicted itself about submitted links 4-5 (B0c8moW59, B0f3GKalj): the product table carried session 2f181cd9's P4/P5 rows with observed destinations, while the intent-record table below still said 'No observation on file' for the same links",
-      "detail": "Session 82372fd1 wrote the shared-register intent rows before any observation existed (G82-F-03). Session 2f181cd9 later added register rows P4/P5 with observed destinations (S70-S75 on main), but the intent rows kept their 'not registered — no register row, observation or flag for it existed' status, so one published page showed the same two links as both observed (top table) and never observed (bottom table). Session aebf0747's /intent-record/ and the shop register (SHOP-04/SHOP-05) showed the observations too. Session 73029680 re-fetched all six URLs itself on 2026-11-17 (S83-S88): both short links open exactly the destinations P4/P5 record (B0DHZTCNR5 ThermoMaven; B0DZFD6R9Z CHEF iQ Sense), and both 9-character direct URLs stay Page Not Found — the mapping now has same-day captures by three sessions. The intent rows now point at P4/P5 and carry the observed block; intended fields stay empty-by-design.",
-      "action": "Reconciled by session 73029680 on 2026-11-17 (additive: the observed blocks were filled from this session's own fetches; sessions 82372fd1's and 2f181cd9's records are carried forward in the row status text; nothing deleted). G82-F-03's 'no observation anywhere' premise is thereby superseded; that flag stays as history.",
-      "date": "2026-11-17",
-      "session": "73029680",
-      "status": "fixed",
-      "repo_evidence": "data/products.json intent_records rows 4-5 + P4/P5 rows; sessions/aebf0747/intent-record.json rows 4-5; data/shop/products.json SHOP-04/SHOP-05",
-      "sources": [
-        "S83",
-        "S84",
-        "S85",
-        "S86",
-        "S87",
-        "S88"
-      ]
-    },
-    {
-      "id": "5B-F-01",
-      "severity": "High",
-      "category": "Scope and information architecture",
-      "item": "Two of the five submitted links land in a different Amazon browse node than the site's only category",
-      "detail": "The brief submits five links. Fetched 2026-11-17: B04G1MEwY -> B0CDY277D3, B02NbDxp3 -> B09B7SB46R and B00hJ57DV -> B08DKYBTPH all sit in Air Fryers (node 17659096011). B0c8moW59 -> B0DHZTCNR5 and B0f3GKalj -> B0DZFD6R9Z sit in Meat, under Thermometers & Timers (node 289810) - they are meat thermometers, not air fryers. Every published page on this site assumes a single air-fryer category (category/air-fryers.html, read/category/air-fryers.html, the niche scoring, the commission category reference). The five products therefore cannot all be published under the existing information architecture without a scope decision first. The only listing-stated connection between the two groups is that one thermometer listing names 'Air Fryer' among its use contexts; that is a use case, not a category.",
-      "action": "Decide which of the three paths on direction/choose.html this site follows: one kitchen site with two pillars, air-fryer only, or two separate sites. Logged as open question 5B-Q02; the default if unanswered is Path A (two pillars).",
-      "sources": [
-        "S70",
-        "S71",
-        "S72",
-        "S73",
-        "S60",
-        "S61",
-        "S62"
-      ],
-      "session": "5b443d02",
-      "date": "2026-11-17"
-    },
-    {
-      "id": "5B-F-02",
-      "severity": "High",
-      "category": "Product intake",
-      "item": "Two of the five submitted links were absent from every data file in the repository",
-      "detail": "Grepping data/** for B0c8moW59 and B0f3GKalj returned zero hits before this session. The site's product register (data/products.json, three products), the niche and commission analysis, the editorial plans and every generated page were all built on three of the five links in the brief. Any conclusion drawn from 'the products' was drawn from 60% of them. Both links were fetched and recorded on 2026-11-17.",
-      "action": "Re-read any conclusion that generalises across 'the products' - the commission category reference, the niche decision, the comparison table - now that the fifth and fourth products are known to be in a different category. Registered as S70-S74.",
-      "sources": [
-        "S70",
-        "S71",
-        "S72",
-        "S73"
-      ],
-      "session": "5b443d02",
-      "date": "2026-11-17"
-    },
-    {
-      "id": "5B-F-03",
-      "severity": "Medium",
       "category": "Product identifiers",
-      "item": "The intended ASIN is unknown for all five submitted links; only observed destinations are recorded",
-      "detail": "All five submitted tokens are 9 characters. The Creators API GetItems reference, read 2026-11-17, defines an ASIN as a '10-Character alphanumeric unique identifier assigned by Amazon', so no submitted token is itself the ASIN. The intended product behind each link can be stated only by the person who submitted it. Where a link goes when fetched is an observation and is not evidence of intent, which is why the product-intent record on direction/products.html keeps the two facts in separate tables and never merges them.",
-      "action": "The account owner states the intended ASIN - or at least the intended product - for each of the five links. Until then the Intended ASIN field stays blank on every row. Open question 5B-Q01.",
+      "item": "Two further submitted links (P4, P5) are 9-character tokens whose destinations are observed, not confirmed",
+      "detail": "The owner's 2026-11-17 brief added link.amazon/B0c8moW59 and link.amazon/B0f3GKalj. Session cbb03ec7 fetched both on 2026-11-17: each identifier is 9 characters, so it cannot be a 10-character ASIN (S06); amazon.com/dp/<each token> returned Amazon's Page Not Found page (S72, S75); each short link resolved to a live listing (P4 -> B0DHZTCNR5, S70/S71; P5 -> B0DZFD6R9Z, S73/S74), the same observation class as FLG-001/FLG-002/FLG-035 for the original three links. Identity cells for P4/P5 are blank (Unverified) and the destinations are marked not-confirmed-as-submitted. This is the flat register's row-level flag for the two new links; the shop and publication-pass surfaces carry their own namespaced records (FLG-S02, AE flags).",
+      "action": "Owner: state the intended 10-character ASIN or official listing URL for product 4 and product 5 (the intent-record page has the fields). Until then the P4/P5 rows stay blank and are not promoted as verified products.",
       "sources": [
         "S06",
-        "S70",
-        "S71",
-        "S72",
-        "S73",
-        "S60",
-        "S61",
-        "S62"
-      ],
-      "session": "5b443d02",
-      "date": "2026-11-17"
-    },
-    {
-      "id": "5B-F-04",
-      "severity": "Low",
-      "category": "Release gate",
-      "item": "verify_site.py V4 does not count Google Search Central as an official source host",
-      "detail": "V4's provenance regex recognises amazon.com, amazon.<tld>, ftc.gov and github.com as official hosts. Google Search Central (developers.google.com) is not on that list, even though the brief cites it as the standard for findability, unique titles, rel=sponsored and thin affiliation. A table row whose only support is Google guidance is therefore reported as 'sourced only by a repository/GitHub link'. On this session's pages that is 6 rows: suggestions DS-07, DS-09, DS-15 and DS-16, and questions 5B-Q11 and 5B-Q12. The rows are advisory, not failing, and the classification is arguably correct - those rows are design judgements, not facts about a product. It is recorded so the next session does not read the advisory as a defect.",
-      "action": "Decide whether V4 should recognise developers.google.com as an official host for guidance rows. Not urgent: the correct behaviour today is to report them for review.",
-      "sources": [],
-      "repo_evidence": "tools/verify_site.py (the `official` and `amazon_ftc` regexes in check()); data/5b443d02/suggestions.json and data/5b443d02/questions.json (the six rows).",
-      "session": "5b443d02",
-      "date": "2026-11-17"
-    },
-    {
-      "id": "5B-F-05",
-      "severity": "Medium",
-      "category": "Compliance gate",
-      "item": "No outbound link on this site is a validated Special Link, and the supplied tracking tag is unconfirmed",
-      "detail": "The Operating Agreement (section 1, read 2026-11-17) requires links to 'properly use the special tagged link formats we provide', and the Commission Income Statement pays on purchases made through a Special Link. No link on this site has been generated or tested inside an enrolled Associates account, and the tracking tag given in the brief has not been confirmed against the account. Whether an intermediate link.amazon hop counts as the Associate's Special Link, or as a redirect that ends the qualifying session, is determined by Amazon's systems and cannot be settled by reading the policy text. The compliance status of the supplied short links is therefore recorded as unresolved rather than asserted either way.",
-      "action": "In the enrolled Associates account: generate one Special Link for one product, confirm where it lands and that it reports, before scaling to the rest. Open questions 5B-Q03, 5B-Q04, 5B-Q05 and 5B-Q06.",
-      "sources": [
-        "S01",
-        "S02",
-        "S29"
-      ],
-      "session": "5b443d02",
-      "date": "2026-11-17"
-    },
-    {
-      "id": "5B-F-06",
-      "severity": "Info",
-      "category": "Release gate",
-      "item": "check_site.py reported same-page anchor links on subdirectory pages as broken (fixed)",
-      "detail": "A pure-fragment link such as href=\"#5B-Q07\" has an empty path. The internal-link resolution fell back to the page's site-relative name and joined it to the page's own directory, so a page at direction/questions.html resolved '#5B-Q07' to direction/direction/questions.html and reported a broken link for an anchor that exists on the page being checked. Reproduced 2026-11-17: 5 failures on direction/questions.html and direction/choose.html. Fixed by resolving a pure-fragment link against the page itself (base = the repository root when the path is empty). After the fix: 0 failures, and the whole gate passes on 34 pages. The bug would have affected any subdirectory page with same-page anchors.",
-      "action": "None. Recorded because the fix edits a shared gate, so the change is reviewable.",
-      "sources": [],
-      "repo_evidence": "scripts/check_site.py (internal link resolution in check_html); direction/questions.html; direction/choose.html.",
-      "status": "fixed",
-      "session": "5b443d02",
-      "date": "2026-11-17"
-    },
-    {
-      "id": "929-F-01",
-      "severity": "High",
-      "category": "Intake gap",
-      "item": "The 2026-11-17 brief submits five short links; this repository's register covers three -- links 4 and 5 (B0c8moW59, B0f3GKalj) appear in no data file",
-      "detail": "Session 92988cd8 re-fetched all five links named in the brief on 2026-11-17. Links 1-3 resolve exactly as the register records (B0CDY277D3, B09B7SB46R, B08DKYBTPH, all in Air Fryers node 17659096011). Links 4 and 5 -- https://link.amazon/B0c8moW59 and https://link.amazon/B0f3GKalj -- were absent from every *.json, *.html and *.md file in the repository before this session (grep over the whole tree). Both tokens are 9 characters, so neither is a 10-character ASIN (Creators API ItemIdType, S31), and both direct /dp/ checks serve Amazon's Page Not Found page (S74, S75). Each short link does open a live listing: B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer), both in Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat -- a different category from the three air fryers the site's editorial, comparison and category pages are built around. Whether the two thermometer listings are the requester's intended products is not established by any official source (same standing rule as FLG-002). No price, rating or review-count value observed on those pages is recorded anywhere in this repository (Program Policies 2(b) and 6(t), read verbatim 2026-11-17).",
-      "action": "Owner decision first (review console question 929-Q-16): confirm by ASIN name whether links 4 and 5 are intended products for this site. If yes, an integration session adds P4/P5 rows to data/products.json with S70-S75 as sources, blank attribute cells, and a Meat Thermometers category page; if no, record the decline. Do not infer intent from the redirects (FLG-002). Until then the five-link intake table on sessions/92988cd8/index.html is the only published record of links 4 and 5.",
-      "sources": [
         "S70",
         "S71",
         "S72",
@@ -1787,16 +1447,40 @@
       ]
     },
     {
-      "id": "929-F-02",
-      "severity": "Medium",
-      "category": "Owner input (received, unverified)",
-      "item": "Owner supplied an Associates Tracking ID in the 2026-11-17 brief; its format matches Participation Requirements 2(b), its validity cannot be verified from any public page",
-      "detail": "The brief states a selected Tracking ID (value recorded in COORDINATION.md, Part session 92988cd8, and deliberately not duplicated into data files or rendered pages: data/suggestions.json question Q1 says to record owner answers in the coordination log and not to store the tag in public files). Participation Requirements 2(b), re-read verbatim 2026-11-17, requires that every Special Link include the Associates ID or 'tag' as a URL parameter, 'appearing as XXXXX-##, or such other format as we may designate' (S02); the supplied value matches that shape and carries the -20 marketplace suffix used in Amazon's own format example. What no public page can establish: whether the tag is registered to an approved Associates account, whether that account is approved at all, and whether the marketplace matches -- Schedule 1 of the Operating Agreement lists only the United States / amazon.com (S01). No outbound link on this site carries the tag yet, so nothing here can earn or be measured today. This updates, but does not close, review-console question Q1 and missing item 757-M-01.",
-      "action": "Validate before use, in the sequence the brief itself prescribes (S-03: test one link per product in the enrolled Associates workflow before scaling): (1) confirm the value in Associates Central or SiteStripe once enrolled; (2) build one tagged Special Link per product and confirm its destination and its entry in the tracking report; (3) only then append the tag to outbound product links and switch on click/conversion measurement (SUG-05, Q9). Until all three steps pass, SUG-05 stays blocked, Q1 stays open, and the tag value stays out of data files and pages.",
+      "id": "CBB-F-02",
+      "severity": "High",
+      "category": "Tracking and monetisation",
+      "item": "Tracking ID shopnow047c-20 is owner-supplied; assignment to an Associates account is unverified and it is in no link",
+      "detail": "The owner's 2026-11-17 brief names shopnow047c-20 as the Selected Tracking ID. It is recorded in config/platform.json (associates_tag) and matches this repository's tag pattern, but assignment to an Associates account cannot be checked without a logged-in Associates console, and no official page confirms it. Amazon's Program Policies require Special Links to use the Associates ID assigned to you and the tag as a URL parameter, and a purchase is disqualified when links were not properly formatted (S02). No link on this site carries the tag yet, so no published link is a monetisable Special Link; the value is deliberately not embedded anywhere (repo evidence: config/platform.json, data/shop/config.json, sessions/aebf0747 front-page note). Cross-records: FLG-S05 (shop register) and the AE flags on publication-pass.html.",
+      "action": "Owner: confirm shopnow047c-20 in the Associates console, then run the brief's required test — one Special Link per product, destination and tracking report confirmed — before scaling tagged links anywhere (decision-queue CBB-Q-01).",
       "sources": [
-        "S01",
         "S02"
+      ],
+      "repo_evidence": "config/platform.json (associates_tag, associates_tag_status); data/shop/config.json; no tag parameter appears in any href in the published pages (checked by tools/build_shop.py --check and sessions/aebf0747/publish_pass.py)."
+    },
+    {
+      "id": "CBB-F-03",
+      "severity": "Medium",
+      "category": "Editorial scope",
+      "item": "Two of the five submitted links resolve to meat-thermometer listings while the site's editorial coverage is air fryers",
+      "detail": "The five observed destinations split across two Amazon categories: three air-fryer/oven listings (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers, S14-S16, S60-S62) and two meat thermometers (Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat, S71, S74). The root site's guides, comparison and buying guide are air-fryer scoped; the shop surface already carries both category pages. Whether the site is a two-category site or an air-fryer site that records the thermometer links as observed-only rows is an owner decision, not a fact, and it determines the next content batch and how the commission category is framed.",
+      "action": "Owner: decide the scope (decision-queue CBB-Q-03) before the next guide or comparison is written.",
+      "sources": [
+        "S14",
+        "S15",
+        "S16",
+        "S71",
+        "S74"
       ]
+    },
+    {
+      "id": "CBB-F-04",
+      "severity": "Low",
+      "category": "Build gate",
+      "item": "check_site's navigation rule did not accept the publication front page shipped in PR #136",
+      "detail": "Session aebf0747's publication front page (index.html, merged 2026-11-17 in PR #136) uses the z3-mast/z3-nav header and reaches the flagged surface via flagged/index.html and publication-pass.html#flagged. scripts/check_site.py required class=\"topbar\" plus the literal string flagged.html on every page, so the shared gate reported 'index.html: navigation missing' on main from that merge onward until this pass. The failure was reproduced by session cbb03ec7 on the merged tree before any edit. The nav requirement itself is unchanged; the rule now accepts either published nav system when the page reaches the flagged surface.",
+      "action": "Fixed 2026-11-17 by session cbb03ec7 in scripts/check_site.py (both nav patterns accepted). Re-run scripts/check_site.py after any future nav redesign so the two systems cannot drift apart again.",
+      "repo_evidence": "scripts/check_site.py (navigation rule); index.html (z3-nav, flagged/index.html link); git history: check_site last changed at fedc9f6, front page added at 9b99990 (PR #136)."
     }
   ]
 }
