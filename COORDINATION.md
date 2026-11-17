@@ -7321,3 +7321,12 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 - No new Amazon observations were made. The current products/sources registers are the evidence for the dated 2026-11-17 observations (shop sources SH-S06–SH-S15); official ASIN definition is SH-S03. Unresolved intent, Special Link test, account/marketplace fit, endpoint/events, Search Console and product imagery remain on the shop decision/flag surfaces (DEC-01–DEC-07; FLG-S02–S08). The supplied short links are not described as invalid; exact compliance remains unresolved (FLG-003).
 - Review record: `sessions/59b2194c/repo-review.md`.
 - Gates: `check_site` OK 30/3/62/113; `verify_site` PASS 134 pages / 2,068 rows; strict link report 0; i2 gate PASS 18/164/148/16/0; cba lint PASS 0 new / 22 inherited; cba check current; feed check 9 entries; sitemap check 97 pages / 0 extras; all-links 180 pages / 207 external / 0 errors; shop build check 11 pages PASS.
+
+### 83 Publish record
+
+| Item | Result |
+|---|---|
+| Pull request | **#142** — https://github.com/kanlerxz87-cyber/Zone3/pull/142 (executive-summary reconciliation against the five-product shop register) |
+| Merge | **MERGED** at 2026-11-17T16:34:18Z; merge commit **`0fbe95e58b508651e1e8861348a7b3ccedd7ec52`**. |
+| Pages deploy | GitHub Pages build `1378384894` for `0fbe95e58b508651e1e8861348a7b3ccedd7ec52`: **`built`** at 2026-11-17T16:34:42Z. |
+| Post-merge checks | The release-gate suite was rerun after rebasing on PR #141's `d192053` and before the merge; all gates recorded above passed. |
