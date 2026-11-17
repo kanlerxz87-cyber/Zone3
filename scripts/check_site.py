@@ -235,7 +235,11 @@ def check_html(data: dict) -> None:
 
         if DISCLOSURE not in text:
             fail(f"{name}: Associates disclosure text missing")
-        if 'class="topbar"' not in text or "flagged.html" not in text:
+        if 'topbar' not in text or "flagged.html" not in text:
+            # token match, not exact 'class="topbar"' — the publication front page carries
+            # the same nav chrome under class="z3-mast topbar" (session aebf0747); the gate's
+            # intent is "masthead present AND the flagged register reachable", both required.
+            # Relaxation recorded as flag G82-F-05 (session 82372fd1, 2026-11-17).
             fail(f"{name}: navigation missing")
         full = "".join(p.text_chunks)
         # Python leakage (a bare None cell or None inside a literal), plus placeholder words
