@@ -43,7 +43,7 @@ same two links to the same two destinations on 2026-11-17 (`data/shop/sources.js
 | `python3 tools/build_cba81fa5_site.py --check` | already current |
 | `python3 tools/build_shop.py --check` | OK — 11 pages |
 | `python3 scripts/build_sitemap.py --check` | exit 0 — 97 pages, 0 extras |
-| `python3 scripts/check_all_links.py` | 0 errors |
+| `python3 scripts/check_all_links.py` | 0 errors on 118 published HTML pages (historical `sessions/` and `archive/` snapshots excluded; their anchors may refer to retired IDs) |
 | `python3 scripts/cba81fa5_test_no_repr_output.py` | PASS — 134 pages, 0 repr-shaped |
 | full generator chain ×2 | idempotent (tree hash identical) |
 | conflict-marker / secrets sweep | 0 / 0 |

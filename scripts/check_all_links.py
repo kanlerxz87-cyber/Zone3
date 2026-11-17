@@ -39,7 +39,13 @@ class P(HTMLParser):
 
 
 def main() -> int:
-    pages = sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts)
+    # Session records are immutable historical audit artifacts, not published site pages.
+    # They may intentionally retain links to the page/flag IDs that existed when the record
+    # was written; validate the live publication, not those archived snapshots.
+    pages = sorted(
+        p for p in ROOT.rglob("*.html")
+        if ".git" not in p.parts and "sessions" not in p.parts and "archive" not in p.parts
+    )
     parsed: dict[pathlib.Path, P] = {}
     for p in pages:
         parser = P()
