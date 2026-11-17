@@ -7330,3 +7330,38 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 | Merge | **MERGED** at 2026-11-17T16:34:18Z; merge commit **`0fbe95e58b508651e1e8861348a7b3ccedd7ec52`**. |
 | Pages deploy | GitHub Pages build `1378384894` for `0fbe95e58b508651e1e8861348a7b3ccedd7ec52`: **`built`** at 2026-11-17T16:34:42Z. |
 | Post-merge checks | The release-gate suite was rerun after rebasing on PR #141's `d192053` and before the merge; all gates recorded above passed. |
+
+---
+
+## Part 38 — session `38650305` (branch `arena/38650305-zone3`, base `d192053` (main at claim), 2026-11-17)
+
+### 38 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 38650305 | `arena/38650305-zone3` | Measurement layer (privacy-preserving outbound-click counter, five event definitions, self-hosted collector script, OFF until an endpoint host exists); brief-status register (S-04…S-25, SG-27…SG-30 checked against this repo); flags for the blocked items; executive summary update; integration, PR to `main`, merge, Pages check | in progress | 2026-11-17 |
+
+### 38 Coordination check before claiming
+
+- Branch was behind `main`: fast-forwarded to `d192053` (PR #141, session `82372fd1`). Shallow clone unshallowed to find the merge base. No other session has an `in progress` row touching the files below; `aebf0747` (AE-T7, click counter / endpoint / Search Console / Special Link validation) is recorded `blocked` and is taken over here **only for the parts that can be built without an owner account**. The blocked parts stay blocked.
+- Scope (this session edits only): `assets/measure.js`, `assets/measure-config.js` (generated), `data/shop/measurement.json`, `data/shop/brief-status.json`, `data/shop/flags.json` (appended), `tools/measure_pass.py`, `tools/build_measurement.py`, `tools/analytics_endpoint.py`, `tools/build_brief_status.py`, `measurement/**`, `brief-status/**`, `sessions/38650305/**`, the footer group list in `sessions/aebf0747/publish_pass.py`, `EXECUTIVE-SUMMARY.md` (dated section), `README.md` (build-chain lines), `sitemap.xml` (regenerated), and the new script tags on published pages (mechanical, via `tools/measure_pass.py`).
+
+### 38 Task board (claimed before any other work)
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| M38-T1 — Claim and coordination record | done (this commit) | `COORDINATION.md` (Part 38 only) | — |
+| M38-T2 — Source verification of the measurement rules (Participation Requirements 2(a)/2(b), GitHub Pages data-collection statement) | in progress | `sessions/38650305/verification.md` | Every row links the official page; fetched 2026-11-17. |
+| M38-T3 — Privacy-preserving outbound-click counter and five event definitions (client) | in progress | `assets/measure.js`, `assets/measure-config.js`, `data/shop/measurement.json`, `tools/measure_pass.py` | Off unless an endpoint is set. No cookies, no storage, no visitor ID; honours GPC and Do Not Track. |
+| M38-T4 — Self-hosted analytics collector (aggregate daily counts; no IP, user agent or referrer stored) | in progress | `tools/analytics_endpoint.py` | Stdlib only; `--self-test` tests the allowlist, the aggregate store and the no-identifier rule. Not hosted: GitHub Pages is static. |
+| M38-T5 — Measurement page | in progress | `tools/build_measurement.py`, `measurement/index.html` | States exactly what is and is not collected, and that counting is OFF. |
+| M38-T6 — Brief-status register (S-04…S-25, SG-27…SG-30) | in progress | `data/shop/brief-status.json`, `tools/build_brief_status.py`, `brief-status/index.html` | Each row says what this repo shows, what was checked and what is only claimed. |
+| M38-T7 — Flags for blocked items | in progress | `data/shop/flags.json` (append) | Special Link validation, Search Console, endpoint host, reader capture, imagery, the five events, cadence. |
+| M38-T8 — Integration: gates, build chain, sitemap, executive summary, PR to `main`, merge, Pages check | planned | as above | Merge only after every gate passes; no broken links. |
+
+### 38 Blocked, not built (by design)
+
+- **Special Link validation (brief: "test one link per product in the enrolled Associates workflow").** Needs a logged-in Associates account. This sandbox has no account access and no permission to act in one. Not done. Short links kept as supplied; not described as invalid (FLG-003).
+- **Search Console.** Needs the owner's Google account to verify ownership. Not done.
+- **Reader capture (SG-30).** No provider, privacy notice or decision exists. Not done.
+- **Hosting for the collector.** GitHub Pages cannot run the endpoint. The collector ships as a script the owner can run on a host of their choice; the counter stays OFF until that host and its URL are set.
