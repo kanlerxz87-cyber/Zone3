@@ -7120,3 +7120,17 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 | Pages deploy | Pages API `repos/kanlerxz87-cyber/Zone3/pages/builds/latest` for commit `a54fe6c` reported `building` then **`built`** (created 2026-11-16T19:32:25Z); site configuration source `main` `/`, status `built`. |
 | Live checks (cache-busted, after `built`) | **Root** `/?f65=livecheck` — front-door band with the exact §5 disclosure in-banner, both reader-desk CTAs, three product cards with labelled source links, "62 Official sources cited" KPI, status date 2026-11-16. **`flagged.html`** — banner disclosure + **"108 entries: 3 critical, 19 high, 30 medium, 31 low, 25 info"**, matching the register exactly. **`site/flagged.html`** — reader-site disclosure banner, I2/CBA flag tables intact. (I2-F-13's edge-cache lesson applied: cache-busting query on every fetch; first fetch post-`built` already served the new revision.) |
 | Session status | F65-T1…T5 **done**. Records: `sessions/f65d393b/verification-2026-11-16.md`, `sessions/f65d393b/repo-review.md`. Flags raised: F65-F-01…F65-F-06, all `status: fixed`, all published on `flagged.html`. |
+
+## 974e366d — Session registry and claim (branch `arena/974e366d-zone3`)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 974e366d | `arena/974e366d-zone3` | Shop site for the five submitted Amazon links (`/shop/`): product intent record, category pages, disclosure strip, `rel="sponsored"` on every outbound product link, Flagged for review, decisions/suggestions page, executive summary, empty campaign ledger; final integration, PR to `main`, merge, Pages check | in progress (T-974) | 2026-11-17 |
+
+### 974e-T1 — Shop site build (claimed 2026-11-17, in progress)
+
+- **Scope (files this session may edit):** `shop/**`, `data/shop/**`, `tools/build_shop.py`, `sitemap.xml` (append `/shop/` URLs only), `index.html` (one navigation link to `shop/index.html`), this section of `COORDINATION.md`.
+- **Not touched:** every other page, `data/*.json` (flat register), `data/z3/**`, `site/**`, `read/**`, `sessions/**`, `archive/**`, `scripts/**`.
+- **Submitted tracking ID (user-selected):** `shopnow047c-20`. It is recorded in `data/shop/config.json`. It is **not** embedded in any link in this build, because the submitted short links were supplied as-is and Special Link validation needs an Associates account test that this session cannot perform.
+- **Sources for this claim:** Operating Agreement §5 (disclosure sentence), Creators API GetItems ItemIdType (ASIN = 10 characters), Google Search Central `rel="sponsored"`, and the five submitted short links resolved on 2026-11-17.
+- **Stale claims noted:** `7f84fea4` (T6, 2026-11-13) and `3c886b62` (T7, 2026-11-13) are listed as in progress with no activity in this checkout. Their scopes do not overlap with this claim, so they are not taken over.
