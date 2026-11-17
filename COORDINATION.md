@@ -8033,3 +8033,16 @@ sessions fix the same thing, the second one must not clobber the first.
 `B0c8moW59` and `B0f3GKalj` (session `82372fd1`) still have empty observed fields. The destinations
 (`B0DHZTCNR5`, `B0DZFD6R9Z`, observed 2026-11-17, sources `S72`/`S73`) are available; this session
 does not edit that file, because another session owns it.
+
+### 5b-T7 — publish record (done, 2026-11-17)
+
+| Item | Result |
+|---|---|
+| Rebases | `main` moved **five** times during this session (`fedc9f6` → `d192053` → `213516e` → `6ef32c4` → `dbba41c` → `6efae2f`). Every rebase used `git pull --rebase`; every conflict was resolved by `scripts/resolve_5b443d02.py` (append-only docs: main's text kept, this branch's block re-appended; registers unioned by id via `git show :2:` / `:3:`; generated pages: main's side, then regenerated). No line-start conflict marker was ever committed (verified before every `--continue` and every push). The branch needed `--force-with-lease` after each rebase rewrote its own unmerged commits — limited to `arena/5b443d02-zone3`, no other ref. |
+| PR | **#153** — https://github.com/kanlerxz87-cyber/Zone3/pull/153 |
+| Merge | **MERGED** without waiting for review, per the brief — merge commit **`6efae2f`**, state `MERGED`. |
+| Pages deploy | Pages API `repos/kanlerxz87-cyber/Zone3/pages/builds/latest` for commit `6efae2f` reported `building` → **`built`** (created 2026-11-17T16:54:32Z, updated 2026-11-17T16:54:58Z). Site source `main` `/`, https://kanlerxz87-cyber.github.io/Zone3/ |
+| Live checks (cache-busted, after `built`) | **`direction/`** — disclosure strip, one h1, the five-product table with the two thermometers badged "outside the existing category", the 19-row suggestions table, source links resolving to amazon.com. **`direction/products.html`** — the intent table with Intended ASIN blank on all five rows, the separate observed-targets table with browse nodes 17659096011 / 289810, the token-length table, and the cross-session note. |
+| Gates at merge | `check_site` OK 40 pages / 5 products / 82 sources / 130 flags · `verify_site` PASS 149 pages / 2,381 rows · `i2_gate` PASS 20 pages / 0 flagged · `cba81fa5_lint` PASS 0 new · `build_feed --check` OK 9 entries · `build_sitemap --check` 105 pages / 0 extra · `link_report --strict` exit 0 · `no_repr` PASS 149 pages · 0 conflict markers. |
+| Session status | `5b-T1`…`5b-T7` **done**. |
+| Follow-up | One cosmetic fix after merge: the ASIN-definition cell carried stray quotation marks from the JSON source. Fixed in `scripts/build_5b443d02.py` (the sentence is cleaned once, at module level) and regenerated. |
