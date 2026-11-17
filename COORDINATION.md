@@ -7124,6 +7124,7 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 | Live checks (cache-busted, after `built`) | **Root** `/?f65=livecheck` — front-door band with the exact §5 disclosure in-banner, both reader-desk CTAs, three product cards with labelled source links, "62 Official sources cited" KPI, status date 2026-11-16. **`flagged.html`** — banner disclosure + **"108 entries: 3 critical, 19 high, 30 medium, 31 low, 25 info"**, matching the register exactly. **`site/flagged.html`** — reader-site disclosure banner, I2/CBA flag tables intact. (I2-F-13's edge-cache lesson applied: cache-busting query on every fetch; first fetch post-`built` already served the new revision.) |
 | Session status | F65-T1…T5 **done**. Records: `sessions/f65d393b/verification-2026-11-16.md`, `sessions/f65d393b/repo-review.md`. Flags raised: F65-F-01…F65-F-06, all `status: fixed`, all published on `flagged.html`. |
 
+<<<<<<< HEAD
 ## 974e366d — Session registry and claim (branch `arena/974e366d-zone3`)
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
@@ -7213,3 +7214,36 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 - **Integration and merge record (AE-T9).** PR #136 (`arena/aebf0747-zone3` into `main`) opened after the gates above and merged with a merge commit at `5f07d3b` (2026-11-17 16:16 UTC). GitHub Pages: legacy build for `5f07d3b` finished `built`. Live checks: front page shows the disclosure, the five products and the four guides; `feed.xml` lists the four guides. The branch was force-pushed once with a lease (`e2d559c` to `24e3418`) to replace the unmerged claim commit with its rebased version; no other branch was touched. This record is committed after the merge and merged in a small follow-up PR.
 - **Later merges (AE-T8 addendum).** PR #137 recorded the merge above on `main`. PR #138 added the options and suggested default for each open decision ("Suggestions for choosing a path") to the Flagged page; merged at `b5c26fc`; Pages build for `b5c26fc`: `built`. All gates were re-run before merge.
 - **Next (AE-T9).** Done (see above). Nothing else is open on this session.
+=======
+---
+
+## Part 82 — session `82372fd1` (branch `arena/82372fd1-zone3`, base `fedc9f6` (main at claim), 2026-11-17)
+
+### 82 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 82372fd1 | `arena/82372fd1-zone3` | Feed publication for the reader guides (feeds+sitemap item of the S-07 cadence), S-20 mobile-first audit, dated refresh of the suggestions/decision layer (design paths + open questions re-statused 2026-11-17), flag register additions, final integration PR to `main` | in progress | 2026-11-17 |
+
+### 82 Coordination check before claiming
+
+- `main` at claim: `fedc9f6` (merge of PR #134, session f65d393b). No open PRs from other sessions seen moving against this base at claim time; all prior Parts' session statuses are merged or done.
+- Rebased scope discipline: no edits to `scripts/check_site.py`, `tools/i2_gate.py`, `tools/cba81fa5_lint*.py/json`, `tools/verify_site.py`, `data/decision-queue.json`, `data/i2/*.json`, `data/cba81fa5/sources.json` beyond what a rebuild regenerates. `tools/build_i2_site.py` may be touched **only** for the S-20 CSS audit, recorded with before/after evidence in a `G82-F-*` flag (precedent: F65 shared-tool repairs).
+- Gates on the claimed base re-run before any edit: `check_site` OK 30/3/62/108 · `link_report --strict` 0 · `i2_gate` PASS 18/164/148/16/0 · `cba81fa5_lint` PASS 0 new / 22 inherited · `build_cba81fa5 --check` current · `build_sitemap --check` 78/0 · `check_all_links` 0 errors (161 pages/180 URLs). All green at `fedc9f6`.
+
+### 82 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G82-T1 — Repo review at the claimed base; gate snapshot; live-Pages spot check | in progress | 82372fd1 | read-only; record in `sessions/82372fd1/repo-review.md` | repo registers | — |
+| G82-T2 — Ship an Atom feed for the reader guides (`feed.xml`), self-healing `<link rel="alternate">` in the two reader index heads, `--check` gate; closes the "add each new guide to the sitemap and feed" item of the publishing-cadence brief for the guide set | in progress | 82372fd1 | `tools/build_feed.py` (new), `feed.xml` (new), `site/index.html` + `site/guides/index.html` head regions (injected only, never hand-edited), `scripts/check_all_links.py` untouched (already checks local targets) | `data/cba81fa5/guides.json`, site registers | — |
+| G82-T3 — S-20 mobile-first pass: audit `site/` reader CSS against tap-target, type-scale, sticky-bar and table-scroll criteria; fix only where measured deficient, via `tools/build_i2_site.py` CSS (regenerated, not hand-edited) | in progress | 82372fd1 | `tools/build_i2_site.py` (CSS constant only, if needed), `site/**` via generator, audit in `sessions/82372fd1/mobile-audit.md` | WCAG 2.2 Target Size (Minimum) 2.5.8; site CSS measurement | any deficiency found → `G82-F-*` flag |
+| G82-T4 — Suggestions layer, dated 2026-11-17: new "Design paths" section (three costed paths for the polished-affiliate-look goal) + re-statused open questions + discovery actions added where stale; rendered by extending `build_suggestions()`; regenerated `suggestions.html` | in progress | 82372fd1 | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | existing `data/sources.json` S01–S62; no new external facts claimed | — |
+| G82-T5 — Final integration: flags unioned + counts recomputed in `EXECUTIVE-SUMMARY.md`, full chain ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check | planned | 82372fd1 | `data/flags.json`, `flagged.html`/`executive-summary.html`/`index.html` (regenerated), `sitemap.xml` (re-check; no new HTML page expected), this Part | gate outputs | — |
+
+### 82 Rules I follow
+
+- Every feed entry derives from the checked-in registers; the script **refuses** to emit any price, star-rating, review-count or Amazon-image pattern (same G6-family patterns the reader gates use).
+- Nothing is claimed as trending/popular; the feed is a publication log, not a ranking.
+- Shared outputs are touched only through their owning generators or the documented registers, per the board note above.
+>>>>>>> ef85bfe (COORDINATION.md: claim Part 82 (session 82372fd1) — T1–T5 scopes and board)
