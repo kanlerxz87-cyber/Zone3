@@ -1,0 +1,39 @@
+{
+ "register": "feed_shop",
+ "note": "The four /guides/ entries published on 2026-11-17 by session aebf0747 in the root RSS feed. Session 82372fd1 re-homed them verbatim into this register on 2026-11-17 when the two sessions' feeds collided at feed.xml (flag G82-F-04): feed.xml is now the union of this register and the live rows of data/cba81fa5/guides.json, built by tools/build_feed.py. pubDate_rfc822 is kept byte-for-byte as it was published (09:00 +0000 is the time aebf0747 put on it); no claim is made beyond 'this page exists with this title on the date shown'. Pages: guides/*.html at the site root.",
+ "provenance": {
+  "source_commit": "ad99ca8 (feed.xml as published by session aebf0747, PR #136/#137)",
+  "captured": "2026-11-17",
+  "captured_by": "82372fd1"
+ },
+ "entries": [
+  {
+   "title": "Basket or oven-style air fryer: what should you compare?",
+   "link": "https://kanlerxz87-cyber.github.io/Zone3/guides/basket-or-oven-style.html",
+   "pubDate_rfc822": "Tue, 17 Nov 2026 09:00:00 +0000",
+   "pubDate_iso": "2026-11-17",
+   "description": "Start with the form, then check what the title says about compartments, presets and accessories."
+  },
+  {
+   "title": "A no-hype checklist for comparing air fryer capacity",
+   "link": "https://kanlerxz87-cyber.github.io/Zone3/guides/capacity-checklist.html",
+   "pubDate_rfc822": "Tue, 17 Nov 2026 09:00:00 +0000",
+   "pubDate_iso": "2026-11-17",
+   "description": "Capacity numbers on listings can measure different things. Check what the number measures before you compare two."
+  },
+  {
+   "title": "How to assess cleanup and counter-space trade-offs",
+   "link": "https://kanlerxz87-cyber.github.io/Zone3/guides/cleanup-and-counter-space.html",
+   "pubDate_rfc822": "Tue, 17 Nov 2026 09:00:00 +0000",
+   "pubDate_iso": "2026-11-17",
+   "description": "Dishwasher-safe wording is in two of the three titles. Counter space is in none of them. Here is how to check both."
+  },
+  {
+   "title": "Questions to ask before buying a multi-function kitchen appliance",
+   "link": "https://kanlerxz87-cyber.github.io/Zone3/guides/multi-function-questions.html",
+   "pubDate_rfc822": "Tue, 17 Nov 2026 09:00:00 +0000",
+   "pubDate_iso": "2026-11-17",
+   "description": "Multi-function claims are easy to count and hard to test. Ask what each number refers to and what is in the box."
+  }
+ ]
+}

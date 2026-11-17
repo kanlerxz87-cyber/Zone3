@@ -745,8 +745,8 @@
    {
     "item": "Feed for the guide cadence",
     "where": "feed.xml at the site root",
-    "what": "Atom feed generated from the live-guide register, head link in the two reader indexes, self-healing after any rebuild, --check wired as a build step. The brief's 'add each new guide to the existing sitemap and feed' item: sitemap half existed, feed half now does.",
-    "evidence": "tools/build_feed.py; commit a3c365b; README chain line; flag G82-F-02"
+    "what": "Union RSS 2.0 feed.xml: the four root /guides/ pages (verbatim, from the aebf0747 register snapshot data/feed/entries-shop.json) plus the five live reader guides from the cba81fa5 register — one URL, both content sets (collision and merge rule: flag G82-F-04). Deterministic output; prohibited-figure rules enforced; --check gate; backstop head link only where the publish pass has not already placed one.",
+    "evidence": "tools/build_feed.py; commit 6b3fc90 + the union rebuild; README chain line; flags G82-F-02, G82-F-04, G82-F-05"
    },
    {
     "item": "Product-intent confirmation record",

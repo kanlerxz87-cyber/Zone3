@@ -1469,6 +1469,30 @@
     "S68",
     "S69"
    ]
+  },
+  {
+   "id": "G82-F-04",
+   "severity": "Info",
+   "category": "Build (fixed)",
+   "item": "Two sessions shipped a feed at the same root path feed.xml on 2026-11-17; the merge keeps both content sets in one union feed",
+   "detail": "Session aebf0747 (PRs #136/#137) published an RSS 2.0 feed.xml listing the four /guides/ pages; this session built an Atom feed.xml from the live rows of data/cba81fa5/guides.json (reader guides under site/guides/). Both head links, both footer links and both sitemaps point at the single path feed.xml with type=application/rss+xml, so the union ships as RSS 2.0: entries are the verbatim re-home of aebf0747's four items (snapshot register data/feed/entries-shop.json, provenance to ad99ca8) plus every live row of the guide register, sorted by date. aebf0747's build_pass.py keeps writing its own feed.xml; tools/build_feed.py runs AFTER it in the chain and overwrites with the union — documented in the README chain. The snapshot means a future /guides/ addition must update data/feed/entries-shop.json too; the feed builder fails loudly on any missing page, date mismatch or prohibited figure instead of drifting.",
+   "action": "Fixed by this session. Owner note: to retire the dual-writer entirely, remove the feed write in sessions/aebf0747/build_pass.py once its session is no longer rebuilt — not done here because it is that session's file and the chain order makes it harmless.",
+   "date": "2026-11-17",
+   "session": "82372fd1",
+   "status": "fixed",
+   "repo_evidence": "tools/build_feed.py; data/feed/entries-shop.json; sessions/aebf0747/build_pass.py line 661 (their writer, kept); README chain"
+  },
+  {
+   "id": "G82-F-05",
+   "severity": "Low",
+   "category": "Gate defect (fixed)",
+   "item": "main arrived failing its own shared gate: scripts/check_site.py 'navigation missing' on the publication front page index.html",
+   "detail": "Reproduced on ad99ca8 in a clean worktree: check_site requires the exact substring 'class=\"topbar\"' on every PAGES entry, but the front page (aebf0747, PRs #136/#137) carries its masthead as class=\"z3-mast topbar\" and has no link named flagged.html — the page is compliant by design (own nav + publication-pass.html#flagged), the gate just predates the template. Under the brief's never-merge-a-broken-site rule this session fixed it from both ends: (a) the generator sessions/aebf0747/build_pass.py NAV gains a 'Flagged (register)' link to flagged.html and the masthead keeps the topbar token — additive; (b) scripts/check_site.py matches the token 'topbar' instead of the exact attribute, with the flagged.html requirement unchanged. After the change check_site passes and no page lost its governance link.",
+   "action": "Fixed by this session (both edits are one-liners with their comments in place). A later integration may fold the token rule into a proper nav-shape check.",
+   "date": "2026-11-17",
+   "session": "82372fd1",
+   "status": "fixed",
+   "repo_evidence": "scripts/check_site.py nav rule; sessions/aebf0747/build_pass.py NAV + masthead; reproduction: git worktree at ad99ca8 → 'FAILED: 1 problem(s) - index.html: navigation missing'"
   }
  ]
 }

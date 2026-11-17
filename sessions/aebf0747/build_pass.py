@@ -57,6 +57,11 @@ NAV = [
     ("index.html#products", "Products"),
     ("intent-record/index.html", "Intent record"),
     ("sources/index.html", "Sources"),
+    # session 82372fd1 (2026-11-17): the shared gate scripts/check_site.py requires every
+    # PAGES page to link the flagged-for-review register by its canonical name; the dashboard
+    # surfaces must stay reachable from the front page per the owner brief's "single navigation
+    # group" rule. Additive entry; nothing else in the nav changed.
+    ("flagged.html", "Flagged (register)"),
     ("publication-pass.html", "This pass and flags"),
 ]
 
@@ -67,7 +72,7 @@ def masthead(prefix: str, current: str) -> str:
         cur = ' aria-current="page"' if path == current else ""
         links.append(f'<a href="{prefix}{path}"{cur}>{esc(label)}</a>')
     return (
-        '<!-- z3:masthead --><header class="z3-mast"><div class="z3-wrap">'
+        '<!-- z3:masthead --><header class="z3-mast topbar"><div class="z3-wrap">'  # topbar token: shared gate nav check (82372fd1)
         f'<a class="z3-brand" href="{prefix}index.html">Zone3<small>Product guides, checked against the listing</small></a>'
         '<nav class="z3-nav" aria-label="Main">' + "".join(links) + "</nav>"
         "</div></header>\n"

@@ -127,7 +127,10 @@ python3 tools/build_i2_site.py            # reader site  -> site/
 python3 tools/build_cba81fa5_site.py      # front-door band + guide plan + site index (idempotent)
 python3 tools/cba81fa5_lint.py            # style + compliance lint over site/** (baseline = reviewed inherited items)
 python3 scripts/cba81fa5_test_no_repr_output.py   # no Python repr in any published page (CBA-F-06)
-python3 tools/build_feed.py               # feed.xml + reader head link, from the guide register (session 82372fd1; run last-but-one, --check gates drift)
+python3 tools/build_shop.py                     # shop layer from data/shop/*.json (session 974e366d; also self-checks)
+python3 sessions/aebf0747/build_pass.py         # publication front page, /guides/ pages, their feed draft (writes feed.xml; next step supersedes it)
+python3 sessions/aebf0747/publish_pass.py       # mechanical pass: disclosure strip, sponsored rel, head links (markers; idempotent)
+python3 tools/build_feed.py               # feed.xml = UNION of both guide registers; runs after every HTML generator, --check gates drift (session 82372fd1)
 python3 scripts/build_sitemap.py          # sitemap for the whole published tree
 ```
 | [`site/decisions.html`](site/decisions.html) | 12 proposals · 12 open questions · 9 discovery actions · 6 prompts · a working Accept/Reject/Defer control with an export |
