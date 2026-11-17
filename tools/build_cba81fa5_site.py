@@ -36,6 +36,24 @@ for s in json.loads((ROOT / "data" / "i2" / "sources.json").read_text(encoding="
     SRC.setdefault(s["id"], s)
 
 
+
+def _rel_s(s) -> str:
+    return _rel(s["url"])
+
+
+def _rel_d(d) -> str:
+    return _rel(SRC[d["source"]]["url"])
+
+
+def _rel(url: str) -> str:
+    """session aebf0747: Amazon product or short links are marked sponsored (Google qualify-outbound-links).
+    Mirrors sessions/aebf0747/publish_pass.py: the Associates policy page is not a product link."""
+    host = re.sub(r"^https?://", "", str(url)).split("/")[0].split(":")[0].lower()
+    if "amazon." in host or host.startswith("link.amazon") or host.startswith("amzn.to") or host == "a.co":
+        if host != "affiliate-program.amazon.com":
+            return "noopener noreferrer sponsored"
+    return "noopener noreferrer"
+
 def is_short_link(url: str) -> bool:
     """The three submitted link.amazon tokens: evidence to quote, never to click.
 
@@ -53,7 +71,7 @@ def src_tag(sid: str) -> str:
     if is_short_link(s["url"]):
         return (f'<span class="src mono" title="{s.get("title", s["url"])} — shown as text, '
                 f'not as a link (i2_gate G7; FLG-003)">\u2192 {sid}</span>')
-    return (f'<a class="src" href="{s["url"]}" target="_blank" rel="noopener noreferrer" '
+    return (f'<a class="src" href="{s["url"]}" target="_blank" rel="{_rel_s(s)}" '
             f'title="{s.get("title", s["url"])}">{sid}</a>')
 
 
@@ -160,7 +178,7 @@ def frontdoor_block() -> str:
         for g in fd["guides"]
     )
     prods = "\n".join(
-        f'      <a class="fd-card" href="{SRC[d["source"]]["url"]}" target="_blank" rel="noopener noreferrer">'
+        f'      <a class="fd-card" href="{SRC[d["source"]]["url"]}" target="_blank" rel="{_rel_d(d)}">'
         f'<b>{html_escape(d["short"])}</b><span>{d["line"]}</span>'
         f'<span class="fd-asin">{d["asin"]} &middot; listing text read 2026-11-16</span></a>'
         for d in GUIDES["products_band"]
@@ -257,7 +275,7 @@ def flagged_block() -> str:
                     f'not as a link (i2_gate G7; FLG-003)">{html_escape(s["label"])}</span>')
             else:
                 parts.append(
-                    f'<a class="src" href="{s["url"]}" target="_blank" rel="noopener noreferrer" title="{s["label"]}">'
+                    f'<a class="src" href="{s["url"]}" target="_blank" rel="{_rel_s(s)}" title="{s["label"]}">'
                     f'{html_escape(s["label"])}</a>')
         src = " ".join(parts)
         rows.append(
@@ -349,7 +367,8 @@ def main() -> int:
                 path.write_text(want, encoding="utf-8")
 
     root_index = ROOT / "index.html"
-    if root_index.exists():
+    # session aebf0747 guard: the publication front page owns index.html; do not re-inject the old band
+    if root_index.exists() and "aebf0747-front" not in root_index.read_text(encoding="utf-8"):
         raw = root_index.read_text(encoding="utf-8")
         band = render_frontdoor(raw)
         if FD_START in raw:
