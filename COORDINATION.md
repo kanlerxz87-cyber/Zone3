@@ -7390,3 +7390,15 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 - The brief's S-14 and S-15 cite files and a settled brand name that this repo does not contain.
 
 Pending: merge record and Pages check (below).
+
+### 38 Publish record (M38-T8)
+
+| Item | Result |
+|---|---|
+| Pull request #144 | https://github.com/kanlerxz87-cyber/Zone3/pull/144 — `arena/38650305-zone3` → `main`, `mergeStateStatus` CLEAN, merged with `gh pr merge 144 --merge` at 2026-11-17 16:39 UTC, merge commit `52df5aa`. |
+| Pages | Legacy build for `52df5aa`: `built` (16:39:42 UTC). Source `main` `/`. |
+| Live checks (cache-busted fetch, 2026-11-17) | `/measurement/` shows "Measurement · status: OFF"; `/assets/measure-config.js` reads `enabled: false`, endpoint empty; `/brief-status/` loads with the register and footer disclosure. |
+| Correction found after merge | The live brief-status page quoted 102 pages and 1,444 links. Those were the counts before the two new pages were added; the measured tree has 104 pages and 1,447 links. Fixed in `data/shop/brief-status.json` and `data/shop/flags.json` (M38-F-05, M38-F-07), regenerated, all gates re-run. Shipped as a follow-up PR (number and merge result: GitHub, PR titled "Session 38650305 — correct page counts in brief-status register"). |
+| Clean checkout | Fresh clone of `arena/38650305-zone3` at `e97afc7` ran every gate. One failure (`build_shop --check`, `search.google.com` not allow-listed) was fixed in `5ada925`; the clean clone was then re-run at the commit above with every gate passing. |
+| Rebase | `main` moved to `c67596a` (PR #143, session `59b2194c`) during this work. Rebased; the one conflict in `COORDINATION.md` (both sides appended) was resolved by keeping both sides in full. `EXECUTIVE-SUMMARY.md` merged cleanly; both sessions' sections are present. |
+| Session status | M38-T1…T8 **done**. Blocked, not built, each flagged: Special Link validation (M38-F-01), Search Console (M38-F-03), reader capture (M38-F-14), collector hosting (M38-F-04, M38-F-15), the five events (M38-F-04), the image decision (M38-F-10), the brand name (M38-F-09). |
