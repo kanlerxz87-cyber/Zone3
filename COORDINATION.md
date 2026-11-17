@@ -7298,3 +7298,38 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 | Pages deploy | `pages/builds/latest` for commit `5bc965a`: **`built`**. Configuration source `main` `/`, status `built`. |
 | Live checks (cache-busted, post-build) | **feed.xml** — union serves: 9 items (four /guides/ pages with aebf0747's exact pubDates, then five site/guides entries), channel copy correct. **products.html** — "Product-intent confirmation record (added 2026-11-17)" table live with intended fields Unverified and observed block separate. **flagged.html** — "113 entries: 3 critical, 19 high, 31 medium, 33 low, 27 info", matching the register exactly. Root front page nav (Flagged (register) + topbar token) live via the merge itself. (`.css` live fetch bounced off the preview proxy's own credential error, not a site error; the merged commit IS what Pages serves and the shipped rules are in `site/assets/site.css` at `5bc965a`.) |
 | Session status | G82-T1…T5 **done**. Records: `sessions/82372fd1/repo-review.md`, `mobile-audit.md`, `verification-2026-11-17.md`. Flags: G82-F-01…F-05 (four fixed, G82-F-03 needs owner — published on flagged.html). Tracking ID from the 2026-11-17 brief kept in this log only, per Q1's own rule. |
+
+---
+
+## Part 9D — session `5cded67e` (branch `arena/5cded67e-zone3`, base `d192053` (main at claim), 2026-11-17)
+
+### 9D Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 5cded67e | `arena/5cded67e-zone3` | Click + conversion measurement layer (the brief's named-but-unbuilt deliverable); live re-verification of all five submitted links; the two products missing from the flat register (G82-F-03); executive-summary + suggestions refresh; final integration, PR to `main`, merge, Pages deploy | in progress | 2026-11-17 |
+
+### 9D Coordination check before claiming
+
+- `main` at claim: `d192053` (merge of PR #141, session `82372fd1`). `gh pr list --state open` → **no open PRs**; every prior Part's session status is `merged`/`done`. No other session is mid-flight, so the shared-output rule (final integration session changes them) is satisfied by this session.
+- Live site at claim: Pages `status: built`, `source: main /`, latest build commit `d192053`. Front page read live via the fetch proxy: five products, four guides, disclosure strip present.
+- Gate snapshot at claim (all green): `scripts/check_site.py` OK (30 pages / 3 products / 62 sources / 113 flags) · `tools/verify_site.py` VERIFY PASS (134 pages, 2,068 rows, 1,769 with an official source) · `tools/i2_gate.py` PASS · `tools/link_report.py --strict` 0.
+
+### 9D Task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G9-T1 — Repo review + live re-verification of all five submitted links; register the two products the flat register never had (closes the register half of G82-F-03) | in progress | 5cded67e | `data/products.json`, `data/sources.json`, `data/flags.json`, `products.html` (generated), `sessions/5cded67e/verification.md` | S01–S69 register + live fetch of each of the five `link.amazon` short links | any drift from the recorded observation → `G9-F-*` |
+| G9-T2 — Measurement layer: privacy-preserving outbound-click counter, self-hosted analytics endpoint, the five defined events, and a gate that refuses a prohibited construct | in progress | 5cded67e | `assets/measure.js`, `data/measurement/events.json`, `analytics/collector/**`, `tools/measurement_gate.py`, `measurement/index.html` (generated), `sessions/5cded67e/measurement.md` | PF-07/PF-48 (no redirecting link), PF-33 (no artificial clicks), PF-08 (no cloaking), PF-34/PF-47 (no price data); FTC Disclosures 101 for the disclosure wording | endpoint not deployed → `G9-F-*`, flagged, non-blocking |
+| G9-T3 — Wire the counter onto every published page as an additive, idempotent publish rule; add the page to the shared gate list | in progress | 5cded67e | `sessions/aebf0747/publish_pass.py` (new rule 5 — **additive**, no existing rule touched), `scripts/check_site.py` (PAGES entry only), `sitemap.xml` (re-check) | — | — |
+| G9-T4 — Refresh the executive summary and the suggestions/decision layer to the 2026-11-17 state; add this session's flags to the register | in progress | 5cded67e | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated), `EXECUTIVE-SUMMARY.md`, `data/flags.json`, `flagged.html` (generated) | existing register only | — |
+| G9-T5 — Final integration: full chain ×2 idempotency, every gate green, PR to `main`, merge, Pages deploy + live check | planned | 5cded67e | `data/flags.json`, `flagged.html` / `executive-summary.html` / `index.html` (regenerated), `sitemap.xml` (re-check), this Part | gate outputs | — |
+
+### 9D Rules I follow
+
+- **The measurement layer must not change what an Amazon click does.** The counter observes a click that already happened; it never rewrites `href`, never redirects, never inserts an intermediate page, and never delays navigation. PF-07/PF-48 disqualify purchases referred through a redirecting link; PF-08 forbids cloaking the destination.
+- **Only real, person-caused events are recorded.** No synthetic events, no event replay, no server-side fabrication of a click. PF-33 forbids artificially generating clicks or impressions.
+- **No price, rating, review count, rank or dimension is ever put in an event payload.** PF-34/PF-47 (price tracking/alerting) and the reader gates' prohibited-figure rules.
+- **No identifier leaves the browser except the path of the page the reader was already on.** No cookies, no IP retention, no user-agent retention, no fingerprinting, no third-party script, no cross-site identifier. Do Not Track and Global Privacy Control switch the counter off entirely.
+- **The endpoint is opt-in.** Until the owner points it at a self-hosted collector, events stay in the reader's own browser and can be exported by hand. No data leaves the site by default.
+- **Every factual row on a published page links its official source, or is left blank and flagged.** Never inferred.
