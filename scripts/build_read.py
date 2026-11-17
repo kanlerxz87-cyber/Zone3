@@ -138,6 +138,7 @@ def page(rel: str, title: str, desc: str, body: str, *, canonical_slug: str,
 <meta property="og:image" content="{E["site_base"]}/{og_image}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml">
 <link rel="stylesheet" href="{up}assets/read.css">
 <link rel="icon" href="{up}assets/favicon.svg" type="image/svg+xml">
 {ld_html}

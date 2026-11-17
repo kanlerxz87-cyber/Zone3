@@ -459,6 +459,7 @@ def page(filename: str, title: str, body: str, lead: str = "",
 <title>{e(title)} | Zone3 — Air Fryer Research Desk</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{canonical}">
+<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="feed.xml">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -480,7 +481,7 @@ def page(filename: str, title: str, body: str, lead: str = "",
       <p class="muted">Zone3 is independent and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
     </div>
     <div class="foot-links">
-      <a href="articles/index.html">Research Desk</a><a href="sources.html">Sources</a><a href="flagged.html">Flagged for review</a><a href="verification.html">Verification log</a><a href="suggestions.html">Suggestions &amp; decisions</a><a href="landing-prior.html">Previous landing page</a><a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a>
+      <a href="articles/index.html">Research Desk</a><a href="sources.html">Sources</a><a href="flagged.html">Flagged for review</a><a href="verification.html">Verification log</a><a href="suggestions.html">Suggestions &amp; decisions</a><a href="feed.xml">RSS feed</a><a href="landing-prior.html">Previous landing page</a><a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a>
     </div>
   </div>
   <p class="small foot-note">Data verified as of {BUILT} (re-verified 2026-11-14 and 2026-11-16; per-session records under <code>sessions/</code>). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> and <code>scripts/build_5a56c084.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>

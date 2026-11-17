@@ -141,6 +141,7 @@ def page(name: str, title: str, body: str, lead: str = "", active: str = "") -> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)} | Zone3 Amazon affiliate dashboard</title>
 <meta name="description" content="Zone3 marketing: {e(title)}. Generated from verified attributes only; no prices, ratings or ranks are stated.">
+<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>

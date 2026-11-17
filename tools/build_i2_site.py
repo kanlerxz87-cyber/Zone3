@@ -132,6 +132,7 @@ def page(path: str, title: str, body: str, lead: str = "", description: str = ""
 <title>{e(title)} · {e(SITE_NAME)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/site/{e(path)}">
+<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml">
 <link rel="stylesheet" href="{rel('assets/site.css')}">
 </head>
 <body>

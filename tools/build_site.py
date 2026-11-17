@@ -294,6 +294,7 @@ def render_page(pname, title, lead, body, depth, badges=None, updated="2026-11-1
 <title>{esc(title)} · Zone3 Affiliate Intelligence</title>
 <meta name="description" content="{esc(lead)[:155]}">
 <link rel="canonical" href="{SITE_ORIGIN}{SITE_BASE}/{cpath}" data-page="{esc(pname)}">
+<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml">
 <link rel="stylesheet" href="{css}app.css">
 </head>
 <body>
