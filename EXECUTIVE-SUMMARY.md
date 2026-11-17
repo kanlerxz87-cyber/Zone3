@@ -12,6 +12,43 @@
 
 ---
 
+## Update 2026-11-17 — session `3c96f21d` (measurement layer: the counter, the collector, the measurement desk)
+
+**Bottom line.** The owner brief's first instruction — turn on click and conversion measurement before
+writing anything else — is now built and published. Five events are defined, a privacy-preserving
+outbound-click counter runs on every published page, a self-hosted collector is written and tested, and
+the [measurement desk](https://kanlerxz87-cyber.github.io/Zone3/analytics/) publishes the whole thing
+with its sources. One owner step remains: the host the collector runs on. Until that step is taken
+nothing leaves a reader's browser, so the site still holds no traffic evidence and the ledger is empty
+by design.
+
+- **The five events** ([data/analytics/events.json](https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/analytics/events.json),
+  published at `/analytics/`): `outbound_click`, `guide_view`, `comparison_view`, `cta_click` and
+  `disclosure_impression`. Each answers a question the site cannot answer another way and is limited on
+  purpose. They are a proposal until the owner accepts or amends them (flag **G3c-F-02**).
+- **What the counter will not do** (rules R1–R5 in the same register): it never generates a click or an
+  impression, because Participation Requirement 6(s) prohibits artificial generation; it sets no cookie
+  and creates no identifier; it talks to one owner-controlled endpoint and nothing else; it measures no
+  price, rating or review figure; and it never infers a conversion.
+- **The collector** (`tools/collector/`): a standard-library Python server and a Cloudflare Worker
+  variant. Both write one JSON line per event, both drop every field outside the seven-field contract
+  before writing it, and neither stores an address, a User-Agent or a cookie. The test
+  (`tools/collector/test_collector.py`) passes six checks, one of which asserts that those three never
+  reach the stored record.
+- **Why the host is an owner decision**: [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
+  is a static site hosting service — it publishes files from a repository and cannot run a program or
+  accept a POST. The counter is therefore inert until one endpoint is set in
+  `data/analytics/config.json` (flag **G3c-F-01**); `tools/collector/README.md` documents both hosting
+  options.
+- **What is still not measured, and will not be**: orders, commission, revenue and eligible sessions come
+  only from an authorised first-party Amazon report. Unique visitors are not counted at all, because
+  counting them needs an identifier and a consent decision the owner has not made (flag **G3c-F-05**).
+- **Gate repair found on the way**: the release gate's flag pattern did not recognise session-prefixed
+  flag ids, so rows citing a real flag were reported as uncited. Widened; rows with a flag reference went
+  from 369 to 461 and rows with no provenance at all fell from 174 to 162 (flag **G3c-F-04**).
+
+---
+
 ## Update 2026-11-16 — session a0ffcab0 (repo review, live re-check, restricted-value scan)
 
 **Bottom line.** The repository builds and every gate passes on `main` (check_site, verify_site, link_report --strict, check_all_links, sitemap check, i2_gate). The live re-check of the three submitted short links and the policy text reproduces the record: the links open B0CDY277D3, B09B7SB46R and B08DKYBTPH, and `amazon.com/dp/B04G1MEwY` returns Page Not Found. The record is [research/a0ffcab0-record.md](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/a0ffcab0-record.md).
@@ -112,7 +149,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-62 official sources · 55 policy facts · 113 flags · 30 pages in the shared gate, a 16-page audit build, a `/docs/`
+69 official sources · 55 policy facts · 120 flags · 31 pages in the shared gate, a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),

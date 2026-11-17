@@ -28,7 +28,7 @@
     "pricing": "f505f45be5ca",
     "products": "a6f30f61ed38",
     "repo-review": "d7682ef2e868",
-    "requirements": "eb26b38be5b7",
+    "requirements": "2427a877db7a",
     "reviews": "e287786124f3",
     "sources": "0db2f47d32d2"
   },
@@ -50,6 +50,6 @@
     "reviews": "reviews/index.html",
     "sources": "sources/index.html"
   },
-  "content_digest": "7690d7784c17874f",
+  "content_digest": "4d900a68379ac8c6",
   "built_utc_note": "deliberately absent: no build timestamp is recorded, so that a no-op rebuild is byte-identical and the tree stays clean. Use the commit date of the file for 'when', and content_digest for 'what'."
 }

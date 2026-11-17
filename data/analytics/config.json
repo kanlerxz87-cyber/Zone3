@@ -1,86 +1,77 @@
 {
-  "_meta": {
-    "title": "Runtime configuration for the outbound-click counter",
-    "session": "3c96f21d",
-    "written": "2026-11-17",
-    "note": "This file is the only place the counter's runtime behaviour is set. tools/build_analytics.py turns it into assets/analytics.js. Nothing here is a product fact; it is configuration, and it is reviewed like everything else in this repository."
-  },
-
-  "endpoint": "",
-  "endpoint_note": "Empty means: no request leaves the visitor's browser. Events are kept in the reader's own browser until an owner-controlled collector is configured here. Set this to the collector's /e URL to start sending.",
-
-  "storage_key": "z3:events:v1",
-  "max_queue": 200,
-  "max_age_days": 7,
-  "queue_note": "The queue is capped and aged out so an unused browser does not keep growing a record the owner never receives.",
-
-  "events": [
-    "outbound_click",
-    "guide_view",
-    "comparison_view",
-    "cta_click",
-    "disclosure_impression"
-  ],
-
-  "guide_prefixes": [
-    "/guides/",
-    "/site/guides/",
-    "/read/",
-    "/articles/"
-  ],
-
-  "comparison_prefixes": [
-    "/read/compare",
-    "/site/products",
-    "/marketing/comparison",
-    "/products"
-  ],
-
-  "cta_prefixes": [
-    "/guides/",
-    "/site/guides/",
-    "/read/",
-    "/articles/",
-    "/shop/",
-    "/intent-record/",
-    "/marketing/comparison",
-    "/site/products",
-    "/products"
-  ],
-
-  "amazon_hosts": [
-    "amazon.com",
-    "amazon.co.uk",
-    "amazon.de",
-    "amazon.fr",
-    "amazon.ca",
-    "amazon.co.jp",
-    "amazon.in",
-    "amazon.com.au",
-    "amazon.com.mx",
-    "amazon.com.br",
-    "amazon.es",
-    "amazon.it",
-    "amazon.nl",
-    "amazon.se",
-    "amazon.pl",
-    "amazon.sg",
-    "amazon.ae",
-    "amazon.sa",
-    "amazon.eg",
-    "amazon.com.tr",
-    "amazon.cn",
-    "link.amazon",
-    "amzn.to",
-    "a.co",
-    "amzlinks.in"
-  ],
-
-  "disclosure_selectors": [
-    ".disclose-bar",
-    ".z3-strip",
-    ".disclose"
-  ],
-
-  "local_log_element": "z3-analytics-local"
+ "_meta": {
+  "title": "Runtime configuration for the outbound-click counter",
+  "session": "3c96f21d",
+  "written": "2026-11-17",
+  "note": "This file is the only place the counter's runtime behaviour is set. tools/build_analytics.py turns it into assets/analytics.js. Nothing here is a product fact; it is configuration, and it is reviewed like everything else in this repository."
+ },
+ "endpoint": "",
+ "endpoint_note": "Empty means: no request leaves the visitor's browser. Events are kept in the reader's own browser until an owner-controlled collector is configured here. Set this to the collector's /e URL to start sending.",
+ "storage_key": "z3:events:v1",
+ "max_queue": 200,
+ "max_age_days": 7,
+ "queue_note": "The queue is capped and aged out so an unused browser does not keep growing a record the owner never receives.",
+ "events": [
+  "outbound_click",
+  "guide_view",
+  "comparison_view",
+  "cta_click",
+  "disclosure_impression"
+ ],
+ "guide_prefixes": [
+  "/guides/",
+  "/site/guides/",
+  "/read/",
+  "/articles/"
+ ],
+ "comparison_prefixes": [
+  "/read/compare",
+  "/site/products",
+  "/marketing/comparison",
+  "/products"
+ ],
+ "cta_prefixes": [
+  "/guides/",
+  "/site/guides/",
+  "/read/",
+  "/articles/",
+  "/shop/",
+  "/intent-record/",
+  "/marketing/comparison",
+  "/site/products",
+  "/products"
+ ],
+ "amazon_hosts": [
+  "amazon.com",
+  "amazon.co.uk",
+  "amazon.de",
+  "amazon.fr",
+  "amazon.ca",
+  "amazon.co.jp",
+  "amazon.in",
+  "amazon.com.au",
+  "amazon.com.mx",
+  "amazon.com.br",
+  "amazon.es",
+  "amazon.it",
+  "amazon.nl",
+  "amazon.se",
+  "amazon.pl",
+  "amazon.sg",
+  "amazon.ae",
+  "amazon.sa",
+  "amazon.eg",
+  "amazon.com.tr",
+  "amazon.cn",
+  "link.amazon",
+  "amzn.to",
+  "a.co",
+  "amzlinks.in"
+ ],
+ "disclosure_selectors": [
+  ".disclose-bar",
+  ".z3-strip",
+  ".disclose"
+ ],
+ "local_log_element": "z3-analytics-local"
 }

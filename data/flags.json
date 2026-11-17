@@ -1,5 +1,5 @@
 {
- "retrieved": "2026-11-17 — union of earlier sessions' dated entries plus session 3c96f21d's G3c-F-01..G3c-F-06 (measurement layer) and S70-S76 (its sources)",
+ "retrieved": "2026-11-17 — union of earlier sessions' dated entries plus session 3c96f21d's G3c-F-01..G3c-F-07 (measurement layer) and S70-S76 (its sources)",
  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge).",
  "flags": [
   {
@@ -1570,6 +1570,18 @@
    "session": "3c96f21d",
    "status": "by design",
    "repo_evidence": "sessions/aebf0747/publish_pass.py SKIP_TOP"
+  },
+  {
+   "id": "G3c-F-07",
+   "severity": "Info",
+   "category": "Consistency (needs owner)",
+   "item": "The feed's first item uses the URL form /guides/index.html while the sitemap lists /guides/.",
+   "detail": "The feed is produced by tools/build_feed.py (session 82372fd1) and the sitemap by scripts/build_sitemap.py, which writes a directory-style URL for an index page. Both forms resolve on GitHub Pages: the live /guides/index.html was fetched on 2026-11-17 and returns the guides index, and /guides/ is the same page. So this is a canonical-form inconsistency between two published files, not a broken link - the link check reports no error. It is recorded because a feed reader and a search engine see two different URLs for one page, which is exactly the kind of duplication the findability work is trying to remove.",
+   "action": "Owner or integration session: decide which form is canonical and make the feed and the sitemap agree. This session did not change feed.xml, because that file is produced by another session's union build and its rules are recorded there.",
+   "date": "2026-11-17",
+   "session": "3c96f21d",
+   "status": "needs owner",
+   "repo_evidence": "feed.xml (first <link>) vs sitemap.xml (/guides/); live fetch of https://kanlerxz87-cyber.github.io/Zone3/guides/index.html on 2026-11-17 returned the guides index"
   }
  ]
 }
