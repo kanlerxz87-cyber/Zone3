@@ -7120,3 +7120,30 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 | Pages deploy | Pages API `repos/kanlerxz87-cyber/Zone3/pages/builds/latest` for commit `a54fe6c` reported `building` then **`built`** (created 2026-11-16T19:32:25Z); site configuration source `main` `/`, status `built`. |
 | Live checks (cache-busted, after `built`) | **Root** `/?f65=livecheck` — front-door band with the exact §5 disclosure in-banner, both reader-desk CTAs, three product cards with labelled source links, "62 Official sources cited" KPI, status date 2026-11-16. **`flagged.html`** — banner disclosure + **"108 entries: 3 critical, 19 high, 30 medium, 31 low, 25 info"**, matching the register exactly. **`site/flagged.html`** — reader-site disclosure banner, I2/CBA flag tables intact. (I2-F-13's edge-cache lesson applied: cache-busting query on every fetch; first fetch post-`built` already served the new revision.) |
 | Session status | F65-T1…T5 **done**. Records: `sessions/f65d393b/verification-2026-11-16.md`, `sessions/f65d393b/repo-review.md`. Flags raised: F65-F-01…F65-F-06, all `status: fixed`, all published on `flagged.html`. |
+
+---
+
+# Part M — session 35e946da (2026-11-17)
+
+Repo: `kanlerxz87-cyber/Zone3` · branch `arena/35e946da-zone3` · branched from `fedc9f6` (`main`, = PR #134 merge).
+Live site: https://kanlerxz87-cyber.github.io/Zone3/ (GitHub Pages, source `main` `/`).
+
+## Session registry (this Part)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 35e946da | `arena/35e946da-zone3` | Repo review of `main`@`fedc9f6`; monetisation gate for the **owner-supplied tracking ID `shopnow047c-20`**; product-intent register; RSS feed; revenue-gate page; final integration, PR, merge, Pages deploy | in progress | 2026-11-17T16:0x |
+
+## Task board (this Part) — ids prefixed `M-`
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| M-T1 — Line-by-line review of `main`@`fedc9f6` (structure, gates, claims) | in progress | 35e946da | `sessions/35e946da/**` (read-only over everything else) | S01, S02, S04 | M-F-01…M-F-nn |
+| M-T2 — Monetisation gate: put the owner-supplied tag `shopnow047c-20` on every published Amazon product link, and `rel="sponsored noopener noreferrer"` on every outbound Amazon link | in progress | 35e946da | `scripts/apply_affiliate_tags.py` (new), `data/affiliate.json` (new), generated HTML under the published tree | S02 (Participation Requirements 2(a)/(b), 5(w)) | see M-F-01 |
+| M-T3 — Product-intent confirmation register (intended ASIN / official listing URL / confirmation date / source kept separate from observed redirect target) | in progress | 35e946da | `data/affiliate.json`, `revenue-gate.html` (new) | S04, S31 | M-F-02 |
+| M-T4 — RSS feed of the reader articles + head link + sitemap | in progress | 35e946da | `scripts/build_feed.py` (new), `feed.xml` (new), `read/index.html` head | — | — |
+| M-T5 — `revenue-gate.html`: the six gates that stand between the site and a commission, the product-intent table, and the open questions with how to close each one | in progress | 35e946da | `revenue-gate.html` (new), `data/affiliate.json` | S01, S02, S04, S07, S25 | — |
+| M-T6 — Re-run every documented gate; update `README.md` build chain, `sitemap.xml`, `check_site.py` page list; final integration, PR to `main`, merge, confirm Pages deploy, record it here | in progress | 35e946da | `README.md`, `sitemap.xml`, `scripts/check_site.py`, `COORDINATION.md` (this Part) | — | — |
+
+**Scope note.** The branch note in this session fixes this session to `arena/35e946da-zone3`; per-task branches are not created (same resolution recorded in the branch-naming note above). Generated pages are produced by the generators listed in `README.md`; where this session must change generated output it changes the generator or the final publish step, then regenerates — never a hand-edit that the next rebuild would revert. No other session's file is deleted or rewritten: `main`-verbatim content is kept and this Part is appended.
+
