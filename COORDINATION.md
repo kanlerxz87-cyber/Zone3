@@ -7920,3 +7920,68 @@ none. Recorded as `5B-F-04` so the next session does not read them as defects.
 
 **Records:** `sessions/5b443d02/index.html` · `direction/index.html` · `direction/products.html` ·
 `direction/questions.html` · `direction/choose.html`.
+
+### 5b-T7 — rebase record and cross-session reconciliation (session `5b443d02`, 2026-11-17)
+
+**Rebase.** `git pull --rebase origin main` moved the base from `fedc9f6` to `d192053` (PRs #136–#141,
+sessions `aebf0747` and `82372fd1`). Three of this branch's five commits conflicted, all in
+append-only or generated files. Resolved by `scripts/resolve_5b443d02.py`, written for this purpose on
+the same discipline as `scripts/resolve_rebase.py` and `scripts/integrate_rebase.py`:
+
+| File | Resolution |
+|---|---|
+| `COORDINATION.md`, `EXECUTIVE-SUMMARY.md` | append-only: main's text kept verbatim, this branch's block re-appended. Nothing from either side dropped. |
+| `data/flags.json` | union by id via `git show :2:` / `:3:` (main's 113 + this branch's 6 = **119**). No flag rewritten. |
+| `data/sources.json` | union by id (main's 62 + this branch's S70–S74 = **67**). No collision; `id_reservation` updated to point the next session at S75. |
+| generated HTML | this branch's copy kept, then the whole tree regenerated from the merged data and merged generators. |
+
+One stray line resulted and was removed: the counts sentence in `EXECUTIVE-SUMMARY.md` §2 conflicted,
+and re-appending this branch's side left it orphaned at end of file. Deleted, and §2's counts
+recomputed from the registers rather than from either side's text: **67 sources · 55 policy facts ·
+119 flags · 34 pages**.
+
+**Cross-session reconciliation with `82372fd1` — same finding, complementary gap.** Session
+`82372fd1` was working in parallel on 2026-11-17 and reached the same two previously unrecorded links
+independently, flagging them as `G82-F-03` and adding five rows to `data/products.json`
+(`intent_records`) rendered at `intent-record/index.html`. **Its rows for `B0c8moW59` and `B0f3GKalj`
+have empty observed fields — no destination recorded.** This session fetched both links on
+2026-11-17 and recorded what those rows are missing:
+
+| Link | Observed destination | Recorded by `82372fd1` | Recorded by `5b443d02` |
+|---|---|---|---|
+| `link.amazon/B0c8moW59` | [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) — ThermoMaven meat thermometer, node 289810 | row present, observed empty | yes (`S70`, `S72`) |
+| `link.amazon/B0f3GKalj` | [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) — Chef iQ Sense meat thermometer, node 289810 | row present, observed empty | yes (`S71`, `S73`) |
+
+Two sessions reaching the same two links independently is corroboration of the finding, not a
+conflict. **Change request, not an edit:** `data/products.json` is owned by `82372fd1`, so this
+session did not fill those rows. The values above and their sources (`S70`–`S73`) are available to
+whoever owns that file. Both pages now cross-link: `direction/products.html` carries a section
+explaining the relationship, and the executive summary points at both records.
+
+**Gate results on the rebased, regenerated tree** (`d192053` + this branch):
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 34 pages, 3 products, 67 sources, 119 flags** |
+| `python3 tools/verify_site.py` | **PASS** — 139 pages, every row sourced, flagged or anchored |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 tools/i2_gate.py` | **PASS — 18 pages, 0 flagged** |
+| `python3 tools/cba81fa5_lint.py` | **PASS — 0 new findings**, 22 inherited advisory |
+| `python3 scripts/cba81fa5_test_no_repr_output.py` | **PASS — 139 pages, 0 repr** |
+| `python3 tools/build_feed.py --check` | **OK — 9 entries, union of both registers** |
+| `python3 tools/build_cba81fa5_site.py --check` | **already current** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 101 pages, 0 extra entries** |
+| full generator chain ×2 | **idempotent** — tree hash identical (`42c099c853c57638`) |
+| conflict-marker sweep | **0** |
+| `git diff origin/main -- EXECUTIVE-SUMMARY.md` | additions = this branch's section; the only deletion is the superseded counts line |
+
+**Shared outputs edited by this session, each with its reason** (final-integration role):
+`data/flags.json` (+5B-F-01…06, unioned by id), `data/sources.json` (+S70–S74, unioned by id),
+`scripts/build_site.py` (one additive nav group; the executive-summary headline and the landing-page
+meta description corrected from three links to five), `scripts/check_site.py` (this branch's four
+pages registered in `PAGES`; a pure-fragment link-resolution bug fixed), `EXECUTIVE-SUMMARY.md`
+(counts recomputed from the registers), `sitemap.xml` (regenerated from the tree), and this Part of
+the board. `scripts/build_5b443d02.py`, `data/5b443d02/`, `direction/**` and `sessions/5b443d02/**`
+are new files owned by this session. `suggestions.html`, `decision-center.html`,
+`decision-queue.html`, `design-brief.html`, `site/decisions.html`, `site/answers.html`,
+`intent-record/**` and `data/products.json` are owned by earlier sessions and were not modified.

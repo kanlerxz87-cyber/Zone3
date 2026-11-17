@@ -393,6 +393,18 @@ evidence of intent, and nothing on this site treats it as such.</p>
       "characters, so none of the submitted tokens can itself be the ASIN. That is "
       "precisely why the intended ASIN has to be confirmed rather than derived.")}
 
+<h2>How this relates to the other intent record</h2>
+<p>Session <code>82372fd1</code>, working in parallel on 2026-11-17, added rows for all five
+links to its own intent-record page, and independently flagged the two previously
+unrecorded links. Its rows for <code>B0c8moW59</code> and <code>B0f3GKalj</code> carry no
+observed destination, so they are empty. This page supplies what those rows are
+missing: both links were fetched on 2026-11-17 and their destinations, served titles
+and browse nodes are recorded below and on the
+<a href="intent-record/index.html">intent-record page</a>. Two sessions reaching the same
+two links independently is corroboration, not duplication; the gap this page fills is
+the observed data. Filling the empty rows in that session's file is a change request,
+not something this session edits, because that file is owned by another session.</p>
+
 <h2>Why the two fields are never merged</h2>
 <p>The brief asks for an intended ASIN, an official listing URL, a confirmation date
 and a source, with observed redirect targets kept in a separate field. The reason is
