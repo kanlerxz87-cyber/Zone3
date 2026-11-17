@@ -7166,7 +7166,7 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 
 | Session ID | Branch | Role | Status | Claimed (UTC) |
 |---|---|---|---|---|
-| `aebf0747` | `arena/aebf0747-zone3` | Publication pass: compliance strip and sponsored links on every published page, question-shaped guides, RSS feed, product-intent record, publication front page, flagged-for-review, integration, PR to `main`, merge, Pages check | in progress | 2026-11-17 |
+| `aebf0747` | `arena/aebf0747-zone3` | Publication pass: compliance strip and sponsored links on every published page, question-shaped guides, RSS feed, product-intent record, publication front page, flagged-for-review, integration, PR to `main`, merge, Pages check | merged (PR #136, merge `5f07d3b`); record PR open | 2026-11-17 |
 
 Scope: this session edits `sessions/aebf0747/**` and the new pages `guides/**`, `intent-record/**`, `publication-pass.html`, `feed.xml`, plus the root `index.html` (front page), `sitemap.xml`, `robots.txt` and the mechanical disclosure/sponsored/feed-link markup on every published HTML file. Nothing else is changed. Other sessions' data files (`data/*.json`, `data/z3/*`, `data/i2/*`, `data/cba81fa5/*`) are read, not edited.
 
@@ -7175,14 +7175,14 @@ Scope: this session edits `sessions/aebf0747/**` and the new pages `guides/**`, 
 | Task | Status | Files | Notes |
 |---|---|---|---|
 | AE-T1 — Claim and coordination record | in progress | `COORDINATION.md` (Part D only) | This entry. |
-| AE-T2 — Source verification (Associates, FTC, Amazon listings, ASIN definition) | done 2026-11-17 (pending merge) | `sessions/aebf0747/verification.md` | Every row links an official page. |
-| AE-T3 — Disclosure strip under masthead and in footer; `rel="sponsored"` on outbound Amazon links; RSS autodiscovery on every published HTML page | done 2026-11-17 (pending merge) | all published `*.html` (mechanical markup only) | Idempotent script: `sessions/aebf0747/publish_pass.py`. |
-| AE-T4 — Question-shaped guides (4 working titles), guides hub, `feed.xml`, sitemap | done 2026-11-17 (pending merge) | `guides/**`, `feed.xml`, `sitemap.xml` | Facts only from verified official pages. |
-| AE-T5 — Product-intent confirmation record | done 2026-11-17 (pending merge) | `intent-record/index.html`, `sessions/aebf0747/intent-record.json` | Intended ASIN, official listing URL, confirmation date and source are kept apart from observed redirect targets. |
-| AE-T6 — Publication front page | done 2026-11-17 (pending merge; `index.html` now guarded, see log) | `index.html` (previous root kept at `dashboard-register.html`) | Products first; every dashboard surface in footer. |
+| AE-T2 — Source verification (Associates, FTC, Amazon listings, ASIN definition) | done 2026-11-17 (merged, PR #136) | `sessions/aebf0747/verification.md` | Every row links an official page. |
+| AE-T3 — Disclosure strip under masthead and in footer; `rel="sponsored"` on outbound Amazon links; RSS autodiscovery on every published HTML page | done 2026-11-17 (merged, PR #136) | all published `*.html` (mechanical markup only) | Idempotent script: `sessions/aebf0747/publish_pass.py`. |
+| AE-T4 — Question-shaped guides (4 working titles), guides hub, `feed.xml`, sitemap | done 2026-11-17 (merged, PR #136) | `guides/**`, `feed.xml`, `sitemap.xml` | Facts only from verified official pages. |
+| AE-T5 — Product-intent confirmation record | done 2026-11-17 (merged, PR #136) | `intent-record/index.html`, `sessions/aebf0747/intent-record.json` | Intended ASIN, official listing URL, confirmation date and source are kept apart from observed redirect targets. |
+| AE-T6 — Publication front page | done 2026-11-17 (merged, PR #136; `index.html` guarded, see log) | `index.html` (previous root kept at `dashboard-register.html`) | Products first; every dashboard surface in footer. |
 | AE-T7 — Click counter, self-hosted analytics endpoint, Search Console, Special Link validation | **blocked — needs decision/account** | `publication-pass.html` (status only) | Not implemented; see AE-F items. |
-| AE-T8 — Flagged for Review and executive summary | done 2026-11-17 (pending merge) | `publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md` | Published; non-blocking. |
-| AE-T9 — Integration, gates, PR to `main`, merge, Pages check | pending | this file (merge record) | |
+| AE-T8 — Flagged for Review and executive summary | done 2026-11-17 (merged, PR #136) | `publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md` | Published; non-blocking. |
+| AE-T9 — Integration, gates, PR to `main`, merge, Pages check | done 2026-11-17 | this file (merge record) | PR #136 merged 2026-11-17 16:16 UTC at `5f07d3b`. Pages build for `5f07d3b`: `built`. Live front page and `feed.xml` checked. |
 
 ## D Log (session `aebf0747`)
 
@@ -7207,4 +7207,5 @@ Entries are appended in time order. Nothing outside the lines listed below was e
   2. `index.html` (AE-T6): main had added a "Shop" link (`shop/index.html`) to the old front-door navigation. Resolved by keeping the publication front page and adding the same Shop link to its navigation. The previous root page, including its Shop link, is kept unchanged at `dashboard-register.html`. `sessions/aebf0747/build_pass.py` carries the Shop link so a rebuild does not drop it.
 - **Shop section (PR #135) after merge.** `tools/build_shop.py --check` passes (11 pages). The publish pass added only additive markup to `shop/**` (55 lines, 0 removed): the stylesheet link, the feed link, and the shared footer. No shop content was changed.
 - **Gates after merge (102 pages, 134 with `shop/` and the other reader sets).** `tools/verify_site.py`: VERIFY PASS, 134 pages, V1 to V7. `scripts/check_all_links.py`: 180 HTML pages, 207 external URLs, 0 errors. Internal link check: 0 broken. `tools/cba81fa5_lint.py`: PASS. `scripts/build_sitemap.py --check`: PASS. Publish pass: idempotent. Audit after (102 pages): disclosure above masthead 102/102; footer 102/102; RSS 102/102; product links 1,422, all sponsored.
-- **Next (AE-T9).** Commit in steps, `git pull --rebase origin main`, push to `arena/aebf0747-zone3`, open the PR, merge with `gh pr merge --merge` when the checks pass, then confirm the Pages deploy with `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`. Record the PR link and merge result here.
+- **Integration and merge record (AE-T9).** PR #136 (`arena/aebf0747-zone3` into `main`) opened after the gates above and merged with a merge commit at `5f07d3b` (2026-11-17 16:16 UTC). GitHub Pages: legacy build for `5f07d3b` finished `built`. Live checks: front page shows the disclosure, the five products and the four guides; `feed.xml` lists the four guides. The branch was force-pushed once with a lease (`e2d559c` to `24e3418`) to replace the unmerged claim commit with its rebased version; no other branch was touched. This record is committed after the merge and merged in a small follow-up PR.
+- **Next (AE-T9).** Done (see above). Nothing else is open on this session.
