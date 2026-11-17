@@ -579,7 +579,7 @@ def build_summary() -> None:
         'Associate I earn from qualifying purchases." ' + src_links(["S79"]) + '</li>'
     )
     body += (
-        '<li>The site builds clean: no broken links across 161 pages, a sitemap that matches the page set, and no '
+        '<li>The site builds clean: no broken links across the published page set, a sitemap that matches the '
         'placeholder text. The problem is not correctness, it is presentation. '
         '<a class="srcid" href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repository</a></li>'
     )
