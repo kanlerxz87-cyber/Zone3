@@ -7134,3 +7134,22 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 - **Submitted tracking ID (user-selected):** `shopnow047c-20`. It is recorded in `data/shop/config.json`. It is **not** embedded in any link in this build, because the submitted short links were supplied as-is and Special Link validation needs an Associates account test that this session cannot perform.
 - **Sources for this claim:** Operating Agreement §5 (disclosure sentence), Creators API GetItems ItemIdType (ASIN = 10 characters), Google Search Central `rel="sponsored"`, and the five submitted short links resolved on 2026-11-17.
 - **Stale claims noted:** `7f84fea4` (T6, 2026-11-13) and `3c886b62` (T7, 2026-11-13) are listed as in progress with no activity in this checkout. Their scopes do not overlap with this claim, so they are not taken over.
+
+### 974e-T1 — record (done, pending PR; 2026-11-17)
+
+**Built (on `arena/974e366d-zone3`):** `shop/` (11 pages: landing, Air fryers, Meat thermometers, All products, Findings, Decisions, Flagged for review, Sources, Executive summary, Campaign ledger, Disclosure), `data/shop/*.json` (config, product intent record, sources, flags, decisions, empty campaign ledger), `tools/build_shop.py` (generator and publishing gate), `sitemap.xml` (11 `/shop/` URLs appended), `index.html` (one "Shop" navigation link).
+
+**Sources read on 2026-11-17 (see `shop/sources/` and `data/shop/sources.json`):**
+- Operating Agreement, `https://affiliate-program.amazon.com/help/operating/agreement`: header "Updated: October 15, 2025"; §1 Special Links and Program Content; §5 disclosure sentence (verbatim: "As an Amazon Associate I earn from qualifying purchases."); §6 §5 violation = material breach.
+- Commission Income Statement (Program Policies), `https://affiliate-program.amazon.com/help/operating/policies`: chunk 1 of 11; §2(e) redirecting links and §2(g) improperly formatted links are disqualifying. Participation Requirements 2(b) and 6(t)/6(v)/6(w) were **not** re-read today.
+- Creators API GetItems, `https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items`: ItemIdType ASIN = "10-Character alphanumeric unique identifier".
+- Google Search Central, `https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links`: rel="sponsored" (page last updated 2025-12-10 UTC).
+- FTC, `https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`: placement "hard to miss", with the endorsement itself (guide dated November 2019).
+- GitHub Docs, `https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages`: "static site hosting service"; visitor IP addresses are logged.
+- Observed: `https://link.amazon/B04G1MEwY`→`B0CDY277D3`; `B02NbDxp3`→`B09B7SB46R`; `B00hJ57DV`→`B08DKYBTPH`; `B0c8moW59`→`B0DHZTCNR5`; `B0f3GKalj`→`B0DZFD6R9Z` (each on 2026-11-17; listing pages at `https://www.amazon.com/dp/<ASIN>`).
+
+**Verification performed:** `python3 tools/build_shop.py --check` passes (11 pages). The gate checks: disclosure sentence ≥2× per page; every amazon.com/link.amazon link `rel="sponsored noopener"`; no price/star/rating pattern; every data-table row has an https source link; every internal link resolves; no tracking tag embedded; all shop URLs in `sitemap.xml`; each submitted token is 9 characters; intended-ASIN fields blank. Negative tests confirmed the gate fails on an unmarked Amazon link, on a price string, and on a missing disclosure. `scripts/check_all_links.py`: 172 pages, 0 errors. `scripts/check_site.py`: pass.
+
+**Not done (each is a flag or decision on the site):** intended ASIN for any of the five links (FLG-S02, DEC-02); Special Link test in an Associates account (FLG-S04, DEC-01); tracking-ID ownership (FLG-S05); outbound click counter and self-hosted endpoint (FLG-S06, DEC-03); price/rating display (FLG-S07); product images (FLG-S08, DEC-05); brand name (FLG-S09, DEC-04); repository overlap (FLG-S10); publishing cadence (DEC-06); RSS feed (none added; no guides published yet).
+
+**Irregularities raised (published on `shop/flagged/`):** FLG-S01…FLG-S10 — see that page for severity, impact, sources and "claim not made".
