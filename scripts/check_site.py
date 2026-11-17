@@ -84,6 +84,12 @@ OFFICIAL_HOSTS = {
     # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);
     # added 2026-11-14 by integration session ecbfe91b so S31 (the ASIN rule page) can be cited.
     "sell.amazon.com",
+    # developers.google.com is Google's own documentation host (Google Search Central). Added
+    # 2026-11-17 by session 0b2ffabd (flag G0B2-F-09) so the guidance this site implements on
+    # Amazon's and the FTC's instructions -- rel="sponsored" on outbound product links (S-05) and
+    # unique per-page titles and descriptions (S-04) -- can be cited from the official page rather
+    # than paraphrased. No row changed status: no source in this repository cited that host before.
+    "developers.google.com",
     "www.ftc.gov", "github.com", "api.github.com",
 }
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."

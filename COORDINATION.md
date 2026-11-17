@@ -7748,7 +7748,7 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 0b2ffabd | `arena/0b2ffabd-zone3` | Design-prompt consolidation for the marketing-affiliate look, the decision-readiness ledger (what must be known, by whom, and what each answer unblocks), dated refresh of the suggestions register against the 2026-11-17 owner brief, flag register additions, final integration PR to `main` | in progress | 2026-11-17 |
+| 0b2ffabd | `arena/0b2ffabd-zone3` | Design-prompt consolidation for the marketing-affiliate look, the decision-readiness ledger (what must be known, by whom, and what each answer unblocks), dated refresh of the suggestions register against the 2026-11-17 owner brief, flag register additions, final integration PR to `main` | in progress → publishing now | 2026-11-17 |
 
 ## 0B2 Coordination check before claiming
 
@@ -7760,11 +7760,11 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| G0B2-T1 — Repo review at the claimed base: gate snapshot, live-Pages spot check, measured inventory of the reader-facing surfaces | in progress | 0b2ffabd | read-only; record in `sessions/0b2ffabd/repo-review.md` | repo registers | any drift found → `G0B2-F-*` |
-| G0B2-T2 — Dated re-verification of the load-bearing official facts the suggestions layer cites (disclosure wording, sponsored-rel guidance, ASIN definition, participation requirements, snippet/description guidance) | in progress | 0b2ffabd | `sessions/0b2ffabd/verification.md`, `data/sources.json` (append S70+ only) | official pages | — |
-| G0B2-T3 — Design prompt for the polished affiliate look: `DESIGN_PROMPT.md` assembled only from decisions already recorded in this repo, labelled a draft awaiting a path choice | in progress | 0b2ffabd | `DESIGN_PROMPT.md` (new) | `data/suggestions.json`, `data/flags.json` | — |
-| G0B2-T4 — Suggestions register, dated 2026-11-17 (this session): decision-readiness ledger, corrected reader-layer inventory (measured), design-prompt pointer, new questions + discovery actions, and source links on the rows `verify_site` V4 reported as uncited | in progress | 0b2ffabd | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | `data/sources.json` S01–S74 | — |
-| G0B2-T5 — Final integration: flags unioned + counts recomputed in `EXECUTIVE-SUMMARY.md`, full chain ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check, this Part completed | planned | 0b2ffabd | `data/flags.json`, `flagged.html`/`suggestions.html` (regenerated), `README.md`, this Part | gate outputs | — |
+| G0B2-T1 — Repo review at the claimed base: gate snapshot, live-Pages spot check, measured inventory of the reader-facing surfaces | done 2026-11-17 | 0b2ffabd | read-only; record in `sessions/0b2ffabd/repo-review.md` | repo registers | any drift found → `G0B2-F-*` |
+| G0B2-T2 — Dated re-verification of the load-bearing official facts the suggestions layer cites (disclosure wording, sponsored-rel guidance, ASIN definition, participation requirements, snippet/description guidance) | done 2026-11-17 | 0b2ffabd | `sessions/0b2ffabd/verification.md`, `data/sources.json` (append S70+ only) | official pages | — |
+| G0B2-T3 — Design prompt for the polished affiliate look: `DESIGN_PROMPT.md` assembled only from decisions already recorded in this repo, labelled a draft awaiting a path choice | done 2026-11-17 | 0b2ffabd | `DESIGN_PROMPT.md` (new) | `data/suggestions.json`, `data/flags.json` | — |
+| G0B2-T4 — Suggestions register, dated 2026-11-17 (this session): decision-readiness ledger, corrected reader-layer inventory (measured), design-prompt pointer, new questions + discovery actions, and source links on the rows `verify_site` V4 reported as uncited | done 2026-11-17 | 0b2ffabd | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | `data/sources.json` S01–S74 | — |
+| G0B2-T5 — Final integration: flags unioned + counts recomputed in `EXECUTIVE-SUMMARY.md`, full chain ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check, this Part completed | done 2026-11-17 | 0b2ffabd | `data/flags.json`, `flagged.html`/`suggestions.html` (regenerated), `README.md`, this Part | gate outputs | — |
 
 ## 0B2 Rules I follow
 
@@ -7772,3 +7772,66 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 - No invented metric, price, rating, review count or popularity claim; no generated or copied product photography (S-18 is still "needs a decision").
 - Every factual row links an official source ID from `data/sources.json`; every proposal keeps the `Proposal` label.
 - Gates run through the documented build order; generated output is never hand-edited.
+
+## 0B2 completion record (2026-11-17)
+
+**G0B2-T1 — repo review (done).** `sessions/0b2ffabd/repo-review.md`. Eleven gates green on the claimed base
+(snapshot in the file); live Pages spot check confirms the deployed `suggestions.html` matches the tree; the
+reader-surface inventory is measured, not inherited (`site/` 18, `read/` 11, `shop/` 11, `marketing/` 7,
+`guides/` 5, `articles/` 5, root 25) and contradicts the register's "three layers" wording — recorded as
+`G0B2-F-02` and corrected in the data.
+
+**G0B2-T2 — dated verification (done).** `sessions/0b2ffabd/verification.md` + sources **S70–S81**: Operating
+Agreement §5/§6 (chunk 1 of 4), Program Policies Participation Requirements 2(a)/2(b) (chunk 3 of 11) and
+Commission Income Statement §2 (chunk 1 of 11), FTC *Disclosures 101* (whole page), Google Search Central on
+`rel="sponsored"`, snippets and sitemaps, the FAQ-removal notice, and this session's own captures of the two
+thermometer short links and their destination listings. Six clauses never before quoted here were appended as
+**PF-57…PF-62** (no-bookmark / direct access, sub-tag–end-user ban, product-list originality, limited-time
+promotion removal, comparison display condition, Special Links must use the assigned ID). What was not re-read
+today is named as inherited in the same file (§4).
+
+**G0B2-T3 — `DESIGN_PROMPT.md` (done, new file at the repository root).** The paste-ready brief the owner brief
+asks for: the one-sentence goal, **twelve rails** (each quoting the clause and naming the source ID, and stating
+what it does to the layout — R1 disclosure, R2 no price/rating, R3 no urgency module without an owner, R4 no price
+comparison, R5 direct/un-bookmarked links, R6 a linking page must earn it, R7 aggregate-only measurement, R8 no
+artificial traffic, R9 no Amazon or invented imagery, R10 no experience claims, R11 no invented market data, R12
+not child-directed / no Amazon marks in identifiers), the layout and component tables, the head-block
+specification with the measured numbers, the article ladder (published / buildable / held), the measurement loop,
+and a definition of done keyed to the existing gate chain. It implements nothing and says so.
+
+**G0B2-T4 — suggestions register (done).** `data/suggestions.json → review_2026_11_17b`: design prompt
+(feel / rails / sections / avoid), the measured six-surface table, the **decision-readiness ledger** (eight rows:
+answer form, who can supply it, what it unblocks, default while blank, where to record), DP-A/B/C recosted against
+that state, the findability numbers, and an updated "how to choose". **SUG-11…SUG-14** and **Q13…Q16**,
+**D11…D14** added; the workflow and `statuses.proposed` text now name the new IDs; Q11/Q12 and D8/D10/D11–D14
+carry real provenance (official links or repo anchors), which cleared all 19 `verify_site` V4 advisories on
+`suggestions.html`. Renderer change is confined to `build_suggestions()` in `scripts/build_site.py`;
+`scripts/check_site.py` gained one line — `developers.google.com` in `OFFICIAL_HOSTS` — recorded as `G0B2-F-09`
+rather than left implicit.
+
+**G0B2-T5 — flags and integration.** Nine flags added (`G0B2-F-01`…`G0B2-F-09`); register 113 → **122**
+(3 critical, 19 high, 33 medium, 36 low, 31 info), `flagged.html` regenerated from it and the counts in
+`EXECUTIVE-SUMMARY.md` (§2 and §6) and `README.md` recomputed from the register. Three of the nine need the
+owner: the tracking-ID convention conflict (`G0B2-F-01`), the two unregistered links' owner half
+(`G0B2-F-03`, which this pass partly closed by capturing both links), and the index-surface decision
+(`G0B2-F-06`). `DESIGN_PROMPT.md`'s meta-description resolution against 2(b) is recorded as `G0B2-F-07`; the
+FAQ rich-result removal as `G0B2-F-08`.
+
+**Gates after the pass.** `check_site` OK 30/3/74/122 · `verify_site` PASS 134 pages / 2,127 rows / 1,839
+official-source / 116 repo-anchored, 0 V4 advisories on `suggestions.html` · `i2_gate` PASS · `cba81fa5_lint`
+PASS 0 new / 22 inherited · `link_report --strict` exit 0 · `build_cba81fa5 --check` current ·
+`build_feed --check` current (9 entries) · `publish_pass --check` 102 pages / 0 changed · `build_shop --check`
+OK 11 pages · `build_sitemap --check` 97/0 · `check_all_links` 0 errors (180 pages / 214 URLs) ·
+`no_repr` PASS 134 · aebf0747 `audit` missing_sponsored 0 and `link_check` 0 broken. Full chain re-run twice:
+idempotent.
+
+**Side effects on other sessions' files, stated plainly.** Nothing outside the scope list was edited.
+`publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md` and `sessions/aebf0747/audit-after.json`
+changed because **their own generators re-measured the tree** after this pass added links (Amazon link count
+1445 → 1457, sponsored coverage still 100%, `missing_sponsored` 0). The other reader layers, `feed.xml`,
+`sitemap.xml` and `index.html` are byte-identical to the claimed base.
+
+**Scope discipline / conflicts.** No other session was active against this base (`gh pr list --state open` empty
+at claim and at publish). `main` did not move during this work — verified by `git pull --rebase origin main`
+before the push. Source IDs S70–S81 and flag IDs `G0B2-F-*` are this session's namespace; the reservation note
+in `data/sources.json` was updated to hand S82+ to the next session.
