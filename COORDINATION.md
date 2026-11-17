@@ -5620,7 +5620,10 @@ Board read (all parts, through line 5279). Claim pushed as this commit **before*
 | GitHub Pages build for `2c66e24` | **built** (2026-11-16T18:47:24Z). Latest build status after merge: `built`, error none. |
 | Live checks (fetched 2026-11-16 after the build) | Flagged page at `/flagged.html` reports **92 entries** with the severity counts that the PR's gates produced (3 critical, 16 high, 24 medium, 29 low, 20 info). The last chunk shows the Observed redirect-targets table (see A0-F-07). |
 | Post-merge finding | **A0-F-07 (Medium)**: the redirect-target table says "No: not the submitted product" for each short link. Published as a flag; wording change requested. Added in follow-up PR (below). |
-| Follow-up PR — A0-F-07 flag, counts 92 → 93, this publish record | PR number and merge result recorded in the GitHub PR log for this branch (`gh pr view` on `arena/a0ffcab0-zone3`). The repository's flags, record and summary all report 93. |
+| Follow-up PR **#108** — `arena/a0ffcab0-zone3` → `main`: A0-F-07 flag, counts 92 → 93, PR #107 publish record | **MERGED** 2026-11-16T18:48:58Z via `gh pr merge 108 --merge`. Merge commit `a1ff535c0309c4a42480137247e28e67590697bf`. |
+| GitHub Pages build for `a1ff535` | **built** (2026-11-16T18:49:28Z); repo Pages status `built`. |
+| Live checks after #108 (fetched 2026-11-16, cache-busted query string) | `/flagged.html` reports **93 entries: 3 critical, 16 high, 25 medium, 29 low, 20 info**; A0-F-01…A0-F-07 all present in the published table. `/docs/sources.html` still shows the restricted values (A0-F-01) — open, owner decision, as logged. |
+| Close-out | A0-T6 **done**. This record is the close-out; any later merge of this record is visible in the PR log for this branch. |
 
 **Open items after this session (none blocks the merge; all published):** A0-F-01 and A0-F-02 — owner decisions on restricted values in `/docs/`, `sessions/`, `archive/`, `research/` and root data snapshots; A0-F-03 — V4 gate change; A0-F-07 — wording change; A0-F-05 — intended-product confirmation, FLG-002.
 
