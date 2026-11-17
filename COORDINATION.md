@@ -7360,3 +7360,125 @@ sides in full (main's board verbatim, this Part appended); no line-start conflic
 are ever pushed.
 
 **Claim pushed as this commit before any verification work, per protocol.**
+
+### Z3-T2 — Independent live re-verification (done, 2026-11-17)
+
+Every row fetched once today by this session; page URL is the source; no aggregator or earlier
+capture used as evidence. Full log:
+[`sessions/92988cd8/verification-2026-11-17.md`](sessions/92988cd8/verification-2026-11-17.md);
+rendered: [`sessions/92988cd8/index.html`](sessions/92988cd8/index.html).
+
+| ID | Claim | Result |
+|---|---|---|
+| 929-V01–V03 | The three registered short links open `dp/B0CDY277D3`, `dp/B09B7SB46R`, `dp/B08DKYBTPH` | **Confirmed** — destinations, titles and the Air Fryers breadcrumb (node 17659096011) identical to the register; no `tag=` parameter on any destination |
+| 929-V04–V06 | `/dp/<each registered token>` serves Amazon's Page Not Found | **Confirmed ×3**; tokens are 9 characters, ASIN is 10 ([S31](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter)) |
+| 929-V07 | `link.amazon/B0c8moW59` opens `dp/B0DHZTCNR5` — ThermoMaven 1 Sec meat thermometer, Meat browse path (node 289810) | **Confirmed — and new**: this token was absent from every `*.json`/`*.html`/`*.md` in the repository (grep, whole tree) |
+| 929-V08 | `link.amazon/B0f3GKalj` opens `dp/B0DZFD6R9Z` — CHEF iQ Sense meat thermometer, same Meat browse path | **Confirmed — and new**, same absence |
+| 929-V09–V10 | `/dp/B0c8moW59` and `/dp/B0f3GKalj` serve Page Not Found | **Confirmed ×2** — both new tokens are short-link IDs, not ASINs |
+| 929-V11–V12 | Operating Agreement header "Updated: October 15, 2025"; §5 disclosure sentence verbatim | **Confirmed verbatim** (chunks 0–1 of 4) |
+| 929-V13–V15 | Program Policies header "Updated: April 14, 2026"; CIS §1 windows; PR 2(b) (tag `XXXXX-##`, no dynamic sub-tags, price rule, promotion-removal); PR 6(s)/6(t)/6(v)/6(w)/6(y)/6(z) | **Confirmed verbatim** (chunks 0, 3, 5 of 11) |
+| 929-V16 | Standard Commission Table 1 and bounty table, public without sign-in | **Confirmed as printed** — Kitchen 4.50%, All Other Categories 4.00%, Luxury Beauty 10.00%, bounties $12/$2/$5/$0.25. Category reference only; no per-product rate published |
+| 929-V17 | Creators API: ASIN "10-Character alphanumeric unique identifier assigned by Amazon"; `partnerTag` Required: Yes | **Confirmed verbatim** |
+| 929-V18 | FTC Disclosures 101: "financial, employment, personal, or family relationship"; "hard to miss"; no untried-product claims; dated November 2019 | **Confirmed verbatim** |
+| 929-V19 | No destination URL of the five carries a `tag=` parameter | **Confirmed** — only Amazon routing parameters (`srctok`, `channelId`, `lv`, `plpRedirect`, `th`, `sbo`); corroborates FLG-010 |
+
+**Not re-verified, by design:** any price/star rating/review count/sales badge (barred as product
+facts by 2(b)/6(t) without an Amazon-served link or Creators/PA API — the fetched pages display
+such values and none of them is recorded anywhere in this session's output); per-product
+commission rates; live clicks/conversions; whether any destination is the submitter's intended
+product (owner input, FLG-002).
+
+### Z3-T3 — Repository review (done, 2026-11-17)
+
+Full record: [`sessions/92988cd8/repo-review.md`](sessions/92988cd8/repo-review.md). Tree at base
+`fedc9f6` (= `origin/main`, PR #134): 152+ HTML pages across six site generations; all twelve
+gates green at baseline; 0 conflict markers; 0 secrets; every generator in the documented chain
+runs clean and is idempotent (chain run twice, byte-identical tree). Open PRs **#123** and
+**#109** (other sessions' record pages, last committed 2026-11-16) were observed, respected and
+not touched; no takeover was needed because their scopes are record pages this session does not
+require.
+
+### Z3-T4 — Brief-gap check (done, 2026-11-17) and what was added
+
+Every deliverable the current brief asks for has a reviewable surface; the matrix is published on
+[`sessions/92988cd8/index.html`](sessions/92988cd8/index.html) (rows 929-G1…G7). Verified by
+reading the pages themselves, not by their descriptions:
+
+| Brief ask | Served by | Verdict |
+|---|---|---|
+| Suggestions feeding a design prompt (shop-like, catchy articles, organic traffic, not machine output) | `design-brief.html` (12-block copy-paste prompt, design system, 12-article editorial plan, traffic + conversion architecture, anti-slop checklist) | Served |
+| A dedicated suggestions section for review before implementation | `decision-queue.html` (22 proposals with recommendation/priority/effort/risk/blocker/state) | Served — extended this session |
+| Clear questions / information / answers + discovery suggestions | `decision-queue.html` (now 16 questions, 13 have, 14 missing, 9 discovery), `suggestions.html` (10 questions), `site/answers.html` | Served — Q1/757-M-01 updated; 929-Q-16/929-M-14/929-D-09 added |
+| Executive summary | `executive-summary.html` + `EXECUTIVE-SUMMARY.md` (§13 appended) | Served |
+| Live GitHub Pages site, landing + category subpages, dashboard tables with per-row sources | root front door + flat pages + `/site/` + `/read/` + `/dashboard/`; twelve gates green | Served |
+| Marketing for **five** products | three air fryers marketed; links 4 and 5 have no surface | **Gap — flagged as 929-F-01** |
+| Click/conversion measurement; disclosure above the fold; rel sponsored | disclosure gate-enforced on every page; campaign ledger empty by design; measurement blocked on tag validation | Served but blocked (929-F-02) |
+
+**Shared-output edits made under the final-integration role, each with its reason:**
+
+| File | Edit | Reason |
+|---|---|---|
+| `data/sources.json` | +S70–S75, `id_reservation` advanced to S76 | New official captures (two new submitted links, their controls, their destinations); flag rows must cite registered IDs |
+| `data/flags.json` | +929-F-01 (High), +929-F-02 (Medium) | The brief's five-link intake and the Tracking ID are irregularities the brief requires to be published for review, non-blocking |
+| `data/decision-queue.json` | Q1, 757-M-01 updated (value received → validation pending); +929-H-13, +929-M-14, +929-Q-16, +929-D-09 | Owner answer must be reflected in the questions register the brief asks for; two new links need a scope question |
+| `data/suggestions.json` | Q1 updated the same way | Same reason; the value itself is deliberately **not** written here — the row's own rule says coordination log, not public data files |
+| `scripts/check_site.py` | `sessions/92988cd8/index.html` added to `PAGES` | Precedent (`sessions/5a56c084/index.html`): the shared gate should cover this session's page |
+| `EXECUTIVE-SUMMARY.md` | §13 appended | The brief asks for an executive summary; the dated section records this round |
+| generated pages | rebuilt by the full documented chain (never hand-merged) | `flagged.html`, `decision-queue.html`, `suggestions.html`, `sources.html`, `executive-summary.html`, `index.html` (KPI 62→68), `read/method.html` (source count) |
+
+**Owner answer recorded (COORDINATION.md is its designated place; the value is deliberately kept
+out of `data/*.json` and every rendered page, per suggestions question Q1's own instruction
+"Record it in the coordination log; do not store it in public files"):**
+
+> **Associates Tracking ID supplied by the owner in the 2026-11-17 brief: `shopnow047c-20`.**
+> Format matches Participation Requirements 2(b) ("appearing as XXXXX-##, or such other format as
+> we may designate", [S02](https://affiliate-program.amazon.com/help/operating/policies), read
+> verbatim 2026-11-17). **Unverified against Amazon's systems**: no public page can show that the
+> tag is registered, that an Associates account is approved, or that the marketplace matches
+> (Schedule 1 lists only the United States / amazon.com, [S01](https://affiliate-program.amazon.com/help/operating/agreement)).
+> No outbound link on the site carries it yet. Closing sequence (the brief's own S-03):
+> (1) confirm the value in Associates Central/SiteStripe after enrolment; (2) test one tagged link
+> per product in the enrolled workflow and confirm destination **and** tracking report; (3) only
+> then append the tag to outbound links and switch on click/conversion measurement. Until all
+> three pass: SUG-05 stays blocked, Q1 stays open, and 929-F-02 stays published.
+
+### Z3-T5 — gates on the final tree (all exit 0)
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 31 pages, 3 products, 68 sources, 110 flags** |
+| `python3 tools/verify_site.py` | **VERIFY PASS — 116 pages, 1,985 rows, 1,736 with official source**; 0 hard errors; the V4-review repo-only advisories on this session's page are its gate-results rows, which cite repository files by design |
+| `python3 tools/link_report.py --strict` | exit 0 — no dangling source or flag reference |
+| `python3 tools/i2_gate.py` | PASS — 18 pages, 0 flagged |
+| `python3 tools/cba81fa5_lint.py` | PASS — 0 new findings, 22 inherited advisory |
+| `python3 scripts/build_sitemap.py --check` | exit 0 — 78 pages, 0 extras (`/docs/`+`/sessions/` excluded by design) |
+| `python3 scripts/check_all_links.py` | 0 errors — 162 pages, 194 external URLs (the 14 new URLs are this session's five-link evidence links) |
+| `python3 tools/build_cba81fa5_site.py --check` | already current |
+| `python3 scripts/test_manifest_regression.py` | PASS |
+| `python3 scripts/cba81fa5_test_no_repr_output.py` | PASS — 116 pages |
+| `python3 scripts/build_read.py --check` | PASS |
+| `python3 sessions/3c886b62/tools/check_links.py` | OK |
+| full generator chain ×2 | idempotent — second run changed nothing |
+| conflict-marker / secrets sweep | 0 line-anchored markers outside this board's own quoted prose; no tag, key or token in any tracked file except this board's owner-answer record |
+
+### Z3 change requests (cross-scope; not edited by this session)
+
+1. **To the owners of `data/i2/decisions.json` and `data/editorial.json`:** their prose still says
+   "there is no Associates tag anywhere in this repository". Since the owner supplied one in the
+   2026-11-17 brief (recorded above), the operational claim to keep is "no tagged buy link is
+   published yet, and the supplied value is unvalidated (929-F-02)". Not edited here: `/site/`
+   and `/read/` are other sessions' surfaces.
+2. **To the next integration session:** if the owner answers 929-Q-16 with "in scope", intake P4/P5
+   into `data/products.json` (and the `/dashboard/` register) with sources S70–S75, blank
+   attribute cells, `confirmed_as_submitted_product: false`, plus a Meat Thermometers category
+   page — not by editing this session's files.
+3. **Carried, unchanged:** 52A-F-01…05 (restricted values in `docs/`/`sessions/`), 81-F-04,
+   Z14-F-04/CBA-F-03 (which reader layer is canonical), FLG-004 (shared-register consolidation).
+
+### Z3 conflict log
+
+| Time (UTC) | What happened | Resolution |
+|---|---|---|
+| 2026-11-17 | `main` was at `fedc9f6` (= PR #134) at claim time and had not moved when this session pushed; open PRs #123 and #109 belong to other sessions and were not touched | none required |
+| 2026-11-17 | Generated pages rebuilt from the unioned registers after the data edits; no generated file was hand-merged | chain re-run twice, byte-identical |
+
