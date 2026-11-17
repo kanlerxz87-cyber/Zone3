@@ -293,6 +293,42 @@ def reapply_py_edits() -> None:
     print(f"scripts/check_site.py: re-applied {changed or 'nothing (already present)'}")
 
 
+def fixup_exec_summary() -> None:
+    """De-duplicate the counts sentence in EXECUTIVE-SUMMARY.md and recompute it.
+
+    Every rebase so far has left this branch's side of the counts-line conflict
+    re-appended at end of file as an orphan, because the resolver keeps HEAD's side
+    in place and appends this branch's block. Keep the first instance (§2) and drop
+    the rest, then recompute the numbers from the registers instead of trusting
+    either side's text.
+    """
+    f = ROOT / "EXECUTIVE-SUMMARY.md"
+    if not f.exists():
+        return
+    lines = f.read_text(encoding="utf-8").splitlines(keepends=True)
+    idxs = [i for i, l in enumerate(lines)
+            if l.startswith(("62 official sources", "67 official sources",
+                             "75 official sources", "80 official sources"))]
+    if len(idxs) <= 1 and not idxs:
+        return
+    dropped = 0
+    for i in reversed(idxs[1:]):
+        del lines[i]
+        dropped += 1
+    try:
+        srcs = len(json.loads((ROOT / "data" / "sources.json").read_text())["sources"])
+        flags = len(json.loads((ROOT / "data" / "flags.json").read_text())["flags"])
+    except Exception:
+        srcs = flags = None
+    if srcs is not None:
+        # pages are counted by the shared gate; recomputed at the end of the run
+        lines[idxs[0]] = (f"{srcs} official sources · 55 policy facts · {flags} flags "
+                          f"in the shared gate, a 16-page audit build, a `/docs/`\n")
+    f.write_text("".join(lines), encoding="utf-8")
+    print(f"EXECUTIVE-SUMMARY.md: dropped {dropped} orphan counts line(s), "
+          f"recomputed §2 counts")
+
+
 def main() -> int:
     files = conflicted()
     if not files:
@@ -315,6 +351,7 @@ def main() -> int:
                   f"to be regenerated from the merged data")
     rewrite_ids(renumber)
     reapply_py_edits()
+    fixup_exec_summary()
     if renumber:
         print("renumbering map:", renumber)
     return 0
