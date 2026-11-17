@@ -7155,3 +7155,31 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 **Irregularities raised (published on `shop/flagged/`):** FLG-S01…FLG-S10 — see that page for severity, impact, sources and "claim not made".
 
 **PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/135 (`arena/974e366d-zone3` → `main`), opened 2026-11-17. Merge and Pages result to be recorded after the merge.
+
+---
+
+# PART D — Session `aebf0747` (branch `arena/aebf0747-zone3`) — claimed 2026-11-17 (UTC)
+
+> Appended additively. Nothing above was edited. This session's task IDs are `AE-Tn` and flag IDs are `AE-Fnn`; they are not the same items as `A:`, `B:`, `Z-`, `C-`, `FLG-`, `F65-` or `I2-`/`CBA-` IDs used elsewhere.
+
+## D Session registry
+
+| Session ID | Branch | Role | Status | Claimed (UTC) |
+|---|---|---|---|---|
+| `aebf0747` | `arena/aebf0747-zone3` | Publication pass: compliance strip and sponsored links on every published page, question-shaped guides, RSS feed, product-intent record, publication front page, flagged-for-review, integration, PR to `main`, merge, Pages check | in progress | 2026-11-17 |
+
+Scope: this session edits `sessions/aebf0747/**` and the new pages `guides/**`, `intent-record/**`, `publication-pass.html`, `feed.xml`, plus the root `index.html` (front page), `sitemap.xml`, `robots.txt` and the mechanical disclosure/sponsored/feed-link markup on every published HTML file. Nothing else is changed. Other sessions' data files (`data/*.json`, `data/z3/*`, `data/i2/*`, `data/cba81fa5/*`) are read, not edited.
+
+## D Task board
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| AE-T1 — Claim and coordination record | in progress | `COORDINATION.md` (Part D only) | This entry. |
+| AE-T2 — Source verification (Associates, FTC, Amazon listings, ASIN definition) | in progress | `sessions/aebf0747/verification.md` | Every row links an official page. |
+| AE-T3 — Disclosure strip under masthead and in footer; `rel="sponsored"` on outbound Amazon links; RSS autodiscovery on every published HTML page | in progress | all published `*.html` (mechanical markup only) | Idempotent script: `sessions/aebf0747/publish_pass.py`. |
+| AE-T4 — Question-shaped guides (4 working titles), guides hub, `feed.xml`, sitemap | in progress | `guides/**`, `feed.xml`, `sitemap.xml` | Facts only from verified official pages. |
+| AE-T5 — Product-intent confirmation record | in progress | `intent-record/index.html`, `sessions/aebf0747/intent-record.json` | Intended ASIN, official listing URL, confirmation date and source are kept apart from observed redirect targets. |
+| AE-T6 — Publication front page | in progress | `index.html` (previous root kept at `dashboard-register.html`) | Products first; every dashboard surface in footer. |
+| AE-T7 — Click counter, self-hosted analytics endpoint, Search Console, Special Link validation | **blocked — needs decision/account** | `publication-pass.html` (status only) | Not implemented; see AE-F items. |
+| AE-T8 — Flagged for Review and executive summary | in progress | `publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md` | Published; non-blocking. |
+| AE-T9 — Integration, gates, PR to `main`, merge, Pages check | pending | this file (merge record) | |
