@@ -8234,17 +8234,17 @@ does not edit that file, because another session owns it.
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| cbb03ec7 | `arena/cbb03ec7-zone3` | (CB-T1) claim; (CB-T2) line-by-line brief gap audit + repo review; (CB-T3) intake of the two unregistered product links (`link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`) and the owner-supplied tracking ID `shopnow047c-20`; (CB-T4) suggestions/decision-queue additions for this brief; (CB-T5) final integration: all gates, PR → `main`, merge, Pages deploy confirmation | in progress (CB-T1) | 2026-11-17 |
+| cbb03ec7 | `arena/cbb03ec7-zone3` | (CB-T1) claim; (CB-T2) line-by-line brief gap audit + repo review; (CB-T3) intake of the two unregistered product links (`link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`) and the owner-supplied tracking ID `shopnow047c-20`; (CB-T4) suggestions/decision-queue additions for this brief; (CB-T5) final integration: all gates, PR → `main`, merge, Pages deploy confirmation | done (CB-T1..T5) | 2026-11-17 |
 
 ### CB Task board (claimed before any other work, per protocol)
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| CB-T1 — Read board, claim tasks, push claim | in progress | cbb03ec7 | `COORDINATION.md` (this Part only, append) | — | — |
-| CB-T2 — Brief line-by-line gap audit + repo review | unclaimed → claimed | cbb03ec7 | `sessions/cbb03ec7/**` | existing S-register | to be recorded |
-| CB-T3 — Intake P4/P5 short links + tracking ID `shopnow047c-20` | unclaimed → claimed | cbb03ec7 | `data/products.json`, `data/sources.json`, `data/flags.json`, `config/platform.json`, generated pages via the generator chain | new S70+ (live fetches 2026-11-17) | to be recorded |
-| CB-T4 — Suggestions + decision-queue additions for this brief's open items | unclaimed → claimed | cbb03ec7 | `data/suggestions.json`, `data/decision-queue.json` | existing register | — |
-| CB-T5 — Final integration: gates, PR → `main`, merge, Pages confirm, record | unclaimed → claimed | cbb03ec7 | this Part of `COORDINATION.md` only | — | — |
+| CB-T1 — Read board, claim tasks, push claim | done | cbb03ec7 | `COORDINATION.md` (this Part only, append) | — | — |
+| CB-T2 — Brief line-by-line gap audit + repo review | done | cbb03ec7 | `sessions/cbb03ec7/**` | existing S-register | to be recorded |
+| CB-T3 — Intake P4/P5 short links + tracking ID `shopnow047c-20` | done | cbb03ec7 | `data/products.json`, `data/sources.json`, `data/flags.json`, `config/platform.json`, generated pages via the generator chain | new S70+ (live fetches 2026-11-17) | to be recorded |
+| CB-T4 — Suggestions + decision-queue additions for this brief's open items | done | cbb03ec7 | `data/suggestions.json`, `data/decision-queue.json` | existing register | — |
+| CB-T5 — Final integration: gates, PR → `main`, merge, Pages confirm, record | done | cbb03ec7 | this Part of `COORDINATION.md` only | — | — |
 
 ### CB Scope and non-overlap notes (cbb03ec7)
 
@@ -8252,3 +8252,15 @@ does not edit that file, because another session owns it.
 - PR #109 (session `a0ffcab0`, COORDINATION.md publish record, open since 2026-11-16T18:49Z, stale) was **merged first**, before this claim was pushed, so their record is preserved and this Part appends cleanly.
 - Shared outputs (generated pages, sitemap, executive-summary counts) are changed only by this session as the final integration session for this round, and each change is logged in this Part.
 - All live observations below are fetches performed by this session on **2026-11-17** through the platform's page-fetch tool; the fetched URLs and titles are recorded verbatim in `data/sources.json` (new IDs S70+) and `sessions/cbb03ec7/`.
+
+### CB-T5 publish record (done, 2026-11-17)
+
+| Item | Result |
+|---|---|
+| PR | **#158** — https://github.com/kanlerxz87-cyber/Zone3/pull/158 |
+| Merge | **MERGED** without waiting for review; merge commit **`951bdceaaac7cf993a751429987004d6216898a5`** at 2026-11-17 17:10 UTC. |
+| Pages deploy | Workflow **pages build and deployment** run [44133944145](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44133944145) completed successfully (build, report-build-status, deploy jobs green). Live root fetched after deploy: https://kanlerxz87-cyber.github.io/Zone3/ — displays the five products, disclosure above the fold, four buyer-question guides, and the explicit unresolved verification list. |
+| Local gates after rebase | `check_site` OK 30 pages / 5 products / 68 sources / 112 flags; `verify_site` PASS; `check_all_links` 118 published HTML pages / 0 errors (historical session/archive snapshots excluded); internal link check OK; strict link report exit 0; i2_gate PASS 20 pages; cba lint 0 new findings; build_shop --check OK; sitemap --check 105 pages; repr test PASS 150 pages; generator chain idempotent. |
+| Sources / audit | Source register S01–S75, 68 sources; `sessions/cbb03ec7/brief-audit.md`; `sessions/cbb03ec7/verification-2026-11-17.md`. |
+| Irregularities | 112 review flags (3 critical / 21 high / 31 medium / 32 low / 25 informational). `shopnow047c-20` was supplied by the owner but account assignment is unverified. The two submitted short-link tokens remain unresolved for exact Associates compliance; observed destination targets are stored separately from intended ASINs. These are published and non-blocking. |
+| Session status | CB-T1…CB-T5 done. |
