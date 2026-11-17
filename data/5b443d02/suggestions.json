@@ -1,0 +1,209 @@
+{
+  "retrieved": "2026-11-17",
+  "session": "5b443d02",
+  "how_to_read": "Every row is a proposal, not an implemented change and not a claim about a product. 'Needs before it ships' is the gate: nothing here is applied by publishing this page. Where a row states a requirement that comes from Amazon or the FTC, the official page is linked in the 'Standard' column. Where a row is a design or editorial judgement, it is anchored to the record in this repository that defines it.",
+  "repo_anchor": "data/5b443d02/suggestions.json",
+  "suggestions": [
+    {
+      "id": "DS-01",
+      "theme": "Settle the shape first",
+      "suggestion": "Settle the category boundary before any redesign work starts.",
+      "what_changes": "Decide whether the site is one kitchen site with two pillars (Air Fryers, Kitchen Thermometers) or an air-fryer-only site. Everything downstream - the navigation, the category pages, the brand name, the internal links - depends on this one answer.",
+      "needs": "An owner decision on Path A, B or C on the Choose a path page.",
+      "standard": ["5B-S16", "5B-S17"],
+      "standard_note": "The five submitted links land in two different Amazon browse nodes: three in Air Fryers (17659096011), two in Meat under Thermometers & Timers (289810).",
+      "state": "blocked"
+    },
+    {
+      "id": "DS-02",
+      "theme": "Settle the shape first",
+      "suggestion": "Confirm the intended product behind each submitted link before building product pages on them.",
+      "what_changes": "The product-intent record keeps 'intended ASIN' blank for all five links until the account owner confirms it. Product pages are then built on confirmed intent, not on where a redirect happened to land.",
+      "needs": "The owner states the intended ASIN, or at least the intended product, for each of the five links.",
+      "standard": ["5B-S03", "5B-S01"],
+      "standard_note": "A 9-character token is not a 10-character ASIN, so the submitted tokens cannot themselves be the identifier.",
+      "state": "blocked"
+    },
+    {
+      "id": "DS-03",
+      "theme": "Reads like a shop, not an audit",
+      "suggestion": "Give the site one buyer-shaped front door.",
+      "what_changes": "The first screen answers 'which of these is for you?' with the products and a plain-language next step. Verification status moves below the fold. The page stops opening with a table of what has been checked.",
+      "needs": "DS-01 (the category boundary) settled, and the product cards from DS-05.",
+      "standard": ["5B-S01"],
+      "standard_note": "Section 5 still requires the disclosure to be clearly and prominently stated, so it stays in a strip under the masthead rather than moving to the footer.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-04",
+      "theme": "Reads like a shop, not an audit",
+      "suggestion": "Demote the audit dashboard without deleting it.",
+      "what_changes": "Every dashboard surface stays reachable from the footer and from exactly one navigation group. No dashboard link appears in the buyer's path between the front page and a product.",
+      "needs": "A nav audit so no page is orphaned.",
+      "standard": ["5B-S01"],
+      "standard_note": "Section 5 applies to the Site as a whole, so the disclosure must survive on every page the audit links to.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-05",
+      "theme": "Reads like a shop, not an audit",
+      "suggestion": "Build product cards only from facts the listing itself states.",
+      "what_changes": "Capacity, basket count, presets and dimensions appear only where the listing states them. Anything the listing does not state renders as an explicit blank with its reason, not as an estimate.",
+      "needs": "The intended product confirmed (DS-02) and a field-by-field listing capture.",
+      "standard": ["5B-S11", "5B-S12", "5B-S13", "5B-S14", "5B-S15"],
+      "standard_note": "Program Content is data, images and text Amazon makes available for advertising these items; values observed outside that route are not published here.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-06",
+      "theme": "Reads like a shop, not an audit",
+      "suggestion": "Put a three-question chooser above the comparison table.",
+      "what_changes": "How many people do you cook for, how much counter depth do you have, and do you want two foods finishing at once. Three answers point at one of the products.",
+      "needs": "Listing-stated capacity and dimensions for each confirmed product.",
+      "standard": ["5B-S11", "5B-S12", "5B-S13"],
+      "standard_note": "Uses only capacity and dimensions as the listings state them.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-07",
+      "theme": "Findable",
+      "suggestion": "Give every page its own title and meta description.",
+      "what_changes": "One hand-written title and one hand-written description per page, each describing that page. No shared boilerplate.",
+      "needs": "A page inventory, then one line per page.",
+      "standard": [],
+      "standard_note": "Google's snippet guidance is the standard to write these against: developers.google.com/search/docs/appearance/snippet",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-08",
+      "theme": "Findable",
+      "suggestion": "Mark every outbound product link rel=\"sponsored\" and keep the disclosure above the fold.",
+      "what_changes": "The sponsored attribute goes on the paid links; the Associates statement stays in a strip under the masthead on every page and is repeated in the footer. The two are complements, not alternatives.",
+      "needs": "A pass over every outbound product link in the tree.",
+      "standard": ["5B-S01", "5B-S04"],
+      "standard_note": "Operating Agreement section 5 sets the disclosure; the FTC's guidance is that a footer-only disclosure is easy to miss. Google's guidance on qualifying outbound links is developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-09",
+      "theme": "Findable",
+      "suggestion": "One canonical host, one sitemap, one feed.",
+      "what_changes": "Every indexable page is in sitemap.xml and in the RSS feed exactly once. Redirect stubs stay out of the sitemap. New pages are added to both the day they publish.",
+      "needs": "A post-publish checklist item, and Search Console access to submit the sitemap.",
+      "standard": [],
+      "standard_note": "Google's sitemap guidance is the standard: developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-10",
+      "theme": "Findable",
+      "suggestion": "Make internal linking a rule, not a hope: every article reaches a product, a comparison and its category pillar.",
+      "what_changes": "A fixed three-link footer template on every article, so no page is a dead end and the pillar pages accumulate internal links.",
+      "needs": "The pillar pages to exist, which depends on DS-01.",
+      "standard": ["5B-S02"],
+      "standard_note": "Participation Requirements 6(v) and 6(w) concern not obscuring where a link goes; a reader should always be able to see that a link leads to Amazon.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-11",
+      "theme": "Trustworthy machinery",
+      "suggestion": "Automate the checks that can be automated and put a gate in front of the ones that cannot.",
+      "what_changes": "Disclosure presence, one-h1, https-only links, no shorteners, no stored Amazon images and per-row provenance stay as automated build gates. Judgement calls - is this claim supported, is this blank justified - stay as a human review queue.",
+      "needs": "Nothing; the gates already exist in this repository and pass.",
+      "standard": ["5B-S01"],
+      "standard_note": "Section 2 requires compliance with the Agreement; automated gates are how that is kept true after the tenth edit.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-12",
+      "theme": "Trustworthy machinery",
+      "suggestion": "Make blank a designed state, never a guessed value.",
+      "what_changes": "A cell with no official source renders as an explicit blank with a one-line reason and a link to the item that would fill it. Nothing is ever filled in from a plausible-looking pattern.",
+      "needs": "Nothing; this is already the rule across the published pages.",
+      "standard": ["5B-S02"],
+      "standard_note": "Where a value can only come from Amazon-served content or the Creators API, the blank is the compliant answer.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-13",
+      "theme": "Reads like a publication",
+      "suggestion": "Add named authorship and visible dates.",
+      "what_changes": "A byline and a 'last checked' date on every reader-facing page. Where nothing has been tested hands-on, the page says so plainly instead of implying experience.",
+      "needs": "A name to publish under, and a decision about whether to claim hands-on testing.",
+      "standard": ["5B-S05", "5B-S04"],
+      "standard_note": "The FTC's endorsement guidance is that an endorsement must reflect the honest experience of the endorser; a claim of testing that did not happen is the specific risk here.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-14",
+      "theme": "Reads like a publication",
+      "suggestion": "Use real product photography only - never generated or copied imagery.",
+      "what_changes": "Either photographs the site owner took, or no photograph. Generated product images and images copied from a listing or another site are both out.",
+      "needs": "A decision on whether the owner will supply photographs.",
+      "standard": ["5B-S01"],
+      "standard_note": "Section 1: Program Content includes data, images and text; it specifically excludes product information relating to any site other than the Amazon Site.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-15",
+      "theme": "Reads like a publication",
+      "suggestion": "Give every article a question for a title, and answer one question per page.",
+      "what_changes": "Titles become the sentences people actually type. One page, one question, answered in the first two paragraphs. No page tries to be both a comparison and a buying guide.",
+      "needs": "The topic list below, and the category decision from DS-01.",
+      "standard": [],
+      "standard_note": "Google's people-first content guidance is the standard to write these against: developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-16",
+      "theme": "Reads like a publication",
+      "suggestion": "Build seasonal clusters around a pillar, and keep a cadence you can actually hold.",
+      "what_changes": "Each pillar page links its cluster articles; the cluster articles link back. The cadence is set to what can be sustained, and each new article is added to the sitemap and feed on the day it publishes.",
+      "needs": "DS-01 and a realistic publishing commitment.",
+      "standard": [],
+      "standard_note": "Thin affiliation - pages that add nothing beyond what the listing already says - is the specific failure mode to avoid: developers.google.com/search/docs/essentials/spam-policies",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-17",
+      "theme": "Writes like a person",
+      "suggestion": "Adopt a written anti-slop rule and enforce it on every draft.",
+      "what_changes": "A short banned-construction list: no 'in today's fast-paced world', no 'look no further', no three-adjective openers, no invented statistics, no claim of testing that did not happen, no closing summary paragraph that repeats the opening.",
+      "needs": "Nothing; it is a writing rule.",
+      "standard": ["5B-S05", "5B-S01"],
+      "standard_note": "Two independent reasons: unsupported superiority claims are an FTC endorsement problem, and empty restatement is a thin-content problem.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-18",
+      "theme": "Writes like a person",
+      "suggestion": "Publish, then measure whether anyone arrives, and choose the next topic from measured queries.",
+      "what_changes": "Analytics and Search Console live before the next article is written. Topics are then chosen from the queries the site actually receives rather than from instinct.",
+      "needs": "Analytics installed and Search Console verified.",
+      "standard": ["5B-S01"],
+      "standard_note": "Operating Agreement section 4: Amazon makes no representation, warranty or covenant regarding the amount of traffic or commission income you can expect. Any traffic figure this site publishes has to be its own measured first-party data, not a projection.",
+      "state": "proposed"
+    },
+    {
+      "id": "DS-19",
+      "theme": "Writes like a person",
+      "suggestion": "Keep the campaign ledger empty until there is real first-party data.",
+      "what_changes": "The ledger keeps its columns - timestamp, source, channel, eligible sessions, clicks, reported orders - and stays empty. No conversion score and no revenue forecast is published, because none has been measured.",
+      "needs": "An enrolled Associates account producing authorised reports.",
+      "standard": ["5B-S01", "5B-S18"],
+      "standard_note": "Section 4 covers commission expectations too; the Standard Commission Income Statement rates are category references, not a forecast of what this site will earn.",
+      "state": "proposed"
+    }
+  ],
+  "topics_caveat": "These are working titles. They are not claims about popularity, search volume or product superiority, and no such claim is made anywhere on this site.",
+  "topics": [
+    {"id": "T-01", "title": "Basket or oven-style air fryer: what should you compare?", "serves": "5B-P1, 5B-P2, 5B-P3", "basis": "5B-S11, 5B-S12, 5B-S13", "basis_note": "The three air-fryer listings state different form factors and capacities; the comparison is a listing-stated one.", "state": "working title"},
+    {"id": "T-02", "title": "A no-hype checklist for comparing air fryer capacity", "serves": "5B-P1, 5B-P2, 5B-P3", "basis": "5B-S11, 5B-S12, 5B-S13", "basis_note": "Capacity as the listings state it, and what 'quarts' does and does not tell you.", "state": "working title"},
+    {"id": "T-03", "title": "How to assess cleanup and counter-space trade-offs", "serves": "5B-P1, 5B-P2, 5B-P3", "basis": "5B-S11, 5B-S12, 5B-S13", "basis_note": "Dishwasher-safe claims and dimensions as listed.", "state": "working title"},
+    {"id": "T-04", "title": "Questions to ask before buying a multi-function kitchen appliance", "serves": "5B-P1, 5B-P2, 5B-P3", "basis": "5B-S11, 5B-S12, 5B-S13", "basis_note": "Preset counts and function claims as enumerated on the listings.", "state": "working title"},
+    {"id": "T-05", "title": "Do you need a thermometer if you already own an air fryer?", "serves": "5B-P4, 5B-P5 and the air-fryer set", "basis": "5B-S14, 5B-S15", "basis_note": "The CHEF iQ listing names 'Air Fryer' among its use contexts; that listing-stated overlap is the honest bridge between the two categories.", "state": "working title"},
+    {"id": "T-06", "title": "Instant-read or wireless probe: what changes in the kitchen?", "serves": "5B-P4, 5B-P5", "basis": "5B-S14, 5B-S15", "basis_note": "One listing is an instant-read thermometer, the other a wireless multi-probe one; the difference is stated on the listings.", "state": "working title"},
+    {"id": "T-07", "title": "What does 'NIST certified accuracy' actually refer to?", "serves": "5B-P4", "basis": "5B-S14", "basis_note": "The claim appears in the listing title; what it does and does not cover needs a check before any article asserts it.", "state": "working title - blocked"},
+    {"id": "T-08", "title": "How many probes do you actually need?", "serves": "5B-P5", "basis": "5B-S15", "basis_note": "Probe count is stated on the listing; need is a reader judgement, not a listing fact.", "state": "working title"}
+  ]
+}

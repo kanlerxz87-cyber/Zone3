@@ -799,3 +799,67 @@ flag_view`) that differ from D-16's five (`page_view, outbound_product_click, co
 guide_read_through, decision_open`) on the same page — both sessions derived "five events" from a
 brief that names no list (flag M38-F-04). The owner decision that unifies them is recorded on
 `site/decisions.html` (Q14/D-20 for the endpoint; the event list needs a ratification choice).
+
+
+## Update 2026-11-17 — session 5b443d02 (five-link intake, Direction section, final integration)
+
+**Bottom line.** The brief submits **five** product links. Every data file, page and analysis in this
+repository had been built on **three** of them. The two missing links were fetched from the official
+Amazon pages on 2026-11-17 and they do not belong to the site's only category: they are **meat
+thermometers**, not air fryers. That single fact invalidates the site's information architecture
+before any redesign work starts, so this session published a product-intent confirmation record, a
+design-suggestion pack, an open-questions register and a three-path chooser under
+[`/direction/`](https://kanlerxz87-cyber.github.io/Zone3/direction/) rather than changing the site's
+shape unilaterally.
+
+**All five submitted links, fetched 2026-11-17.** Every token is 9 characters; the
+[Creators API GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items)
+defines an ASIN as a *"10-Character alphanumeric unique identifier"*, so no submitted token is itself
+the ASIN, and the intended product can only be stated by the person who submitted the link.
+
+| Submitted link | Observed destination | Listing title as served | Browse node (leaf) |
+|---|---|---|---|
+| [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) | Chefman 6 Quart Dual Basket Air Fryer Oven | Air Fryers (17659096011) |
+| [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) | Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | Air Fryers (17659096011) |
+| [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | Air Fryers (17659096011) |
+| [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) | ThermoMaven 1 Sec Professional Digital Meat Thermometer | Meat (289810) |
+| [link.amazon/B0f3GKalj](https://link.amazon/B0f3GKalj) | [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) | Chef iQ Sense Smart Wireless Meat Thermometer, Gen3 | Meat (289810) |
+
+**Records this session published.** [Product intent](https://kanlerxz87-cyber.github.io/Zone3/direction/products.html)
+keeps the intended ASIN and the observed destination in two separate tables and never merges them;
+the intended field is blank on all five rows and stays blank until the owner confirms it.
+[Direction](https://kanlerxz87-cyber.github.io/Zone3/direction/) carries 19 design and editorial
+suggestions, each with the prerequisite that gates it, plus 8 working article titles.
+[Open questions](https://kanlerxz87-cyber.github.io/Zone3/direction/questions.html) carries 14
+decision-blocking questions, each with what is already established, what is missing, the action that
+would close it, what it blocks and the default if it stays unanswered.
+[Choose a path](https://kanlerxz87-cyber.github.io/Zone3/direction/choose.html) sets out three
+complete answers and records a choice without applying it.
+
+**Re-read from the official pages on 2026-11-17:** the
+[Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+(updated October 15, 2025 — §1 Special Links and the Program Content definition, §4 no representation
+as to traffic or commission income, §5 the disclosure, §6(a) breach of §5 is a material breach), the
+[Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (updated April 14,
+2026 — Commission Income Statement §1 qualifying purchases), and the
+[Creators API GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items)
+(ASIN, 10 characters; `partnerTag` required).
+
+**Flags raised:** six — 5B-F-01 (two of five links are in a different browse node, High), 5B-F-02 (two
+links were absent from every data file, High), 5B-F-03 (intended ASIN unknown for all five, Medium),
+5B-F-04 (the release gate does not count Google Search Central as an official host, Low), 5B-F-05 (no
+validated Special Link and an unconfirmed tracking tag, Medium), 5B-F-06 (a same-page anchor bug in the
+shared gate, fixed, Info). All are on the
+[Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page.
+
+**Independent corroboration.** Session `2f181cd9`, working in parallel on 2026-11-17, reached the same two previously unrecorded links and registered them in the shared source register as `S70`–`S75`; session `82372fd1` flagged the same two links as `G82-F-03` and added rows for them that still have empty observed fields. Three sessions finding the same gap independently is corroboration of the finding. This session's contribution is the destinations, the browse-node mismatch, and the decision records that follow from it.
+
+**Owner decisions needed.** (1) Which of the three paths this site follows — one kitchen site with two
+pillars is the default. (2) The intended product or ASIN behind each of the five links. (3) Associates
+account status, the tracking tag and the Special Link format. (4) Whether two of the five products are
+in scope at all.
+
+---
+
+82 official sources · 55 policy facts · 130 flags in the shared gate, a 16-page audit build, a `/docs/`
+
