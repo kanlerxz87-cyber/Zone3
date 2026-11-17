@@ -7694,6 +7694,21 @@ Retired as duplicates (kept in tree as `--check`-only verifiers, both PASS on th
 
 `main` moved again (PR #147, session 2f181cd9 publish record); same recipe applied: main's board
 verbatim, this session's parts re-appended. No other session's content edited. PR: #149.
+
+## ded63349 — publish + live-check record (PR #149 merged at a103fa5, 2026-11-17)
+
+- PR #149 merged without waiting (brief rule). Pages build for main completed ("built" per Pages API).
+- Live (kanlerxz87-cyber.github.io/Zone3, fetched via page fetch after the build): `site/measure.html`
+  serves the five-event table, never-stored table, device ledger UI and cadence with the §5 banner +
+  publish-pass strip above the fold; `site/intent-record.html` serves the three-row record with
+  intended-ASIN blanks (Q2/I2-F-04) and separate observed-redirect fields; `feed.xml` serves the union
+  RSS covering both guide desks including `site/guides/dual-basket-vs-single-basket.html`; that guide
+  serves with the sourced comparison table and disclosure banner. Direct curl from the sandbox is
+  network-blocked (HTTP 000 — sandbox allowlist), so live checks used the page-fetch tool; this is the
+  same limitation previous sessions recorded.
+- Session status: D6-T1..T6 **done**. Open for the owner (unchanged): Q1 tag, Q2 intended ASINs,
+  Q4 credentials, Q14 endpoint host (D-20), Q15 Search Console (D-21), Special Links test, and the
+  event-list unification flagged with M38-F-04 (see second reconciliation note).
 ---
 
 # PART 84 — Session 73029680 (2026-11-17, later)
