@@ -7298,3 +7298,39 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 | Pages deploy | `pages/builds/latest` for commit `5bc965a`: **`built`**. Configuration source `main` `/`, status `built`. |
 | Live checks (cache-busted, post-build) | **feed.xml** — union serves: 9 items (four /guides/ pages with aebf0747's exact pubDates, then five site/guides entries), channel copy correct. **products.html** — "Product-intent confirmation record (added 2026-11-17)" table live with intended fields Unverified and observed block separate. **flagged.html** — "113 entries: 3 critical, 19 high, 31 medium, 33 low, 27 info", matching the register exactly. Root front page nav (Flagged (register) + topbar token) live via the merge itself. (`.css` live fetch bounced off the preview proxy's own credential error, not a site error; the merged commit IS what Pages serves and the shipped rules are in `site/assets/site.css` at `5bc965a`.) |
 | Session status | G82-T1…T5 **done**. Records: `sessions/82372fd1/repo-review.md`, `mobile-audit.md`, `verification-2026-11-17.md`. Flags: G82-F-01…F-05 (four fixed, G82-F-03 needs owner — published on flagged.html). Tracking ID from the 2026-11-17 brief kept in this log only, per Q1's own rule. |
+
+---
+
+# PART 45 — session `45e0c858` (branch `arena/45e0c858-zone3`, base `d192053`, 2026-11-17)
+
+## 45 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `45e0c858` | `arena/45e0c858-zone3` | Owner brief round: close the two unregistered brief links (G82-F-03 factual half), line-by-line repo review, independent live re-verification from official sources, a **decision-readiness Q&A matrix** (questions → what we know / what we do not have / what would answer it / what it unblocks), final integration, PR → `main`, merge, Pages deploy | in progress | 2026-11-17 |
+
+### 45 Coordination check before claiming
+
+- Board read in full (7,300 lines at claim time). No task on this board is `in progress` under a **live** claim: `7f84fea4` (T6), `3c886b62` (T7), `52a6c751`, `1dddf8c0`, `757efebc`, `f65d393b`, `5a56c084`, `974e366d`, `aebf0747`, `82372fd1` all have merged PRs and are recorded as done in their own Parts. **No takeover performed.**
+- `gh pr list --state open` returned `[]` at claim time — no other session had a PR open against `main`, so no rebase conflict was in flight.
+- `main` was at `d192053` (merge of PR #141) when this branch was cut; `git pull --rebase origin main` is run before every push.
+- The owner brief's tracking ID (`shopnow047c-20`) is recorded **in this log only**, never on a public page (the register rule set by Q1; the same rule session `82372fd1` applied).
+
+## 45 Task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 45-T1 — Read the board, register the session, claim tasks, push the claim before any other work | in progress | `45e0c858` | `COORDINATION.md` (this Part only) | — | — |
+| 45-T2 — Repo review, line by line, of the combined tree at `d192053`: page inventory, register integrity, generator/checker integrity, nav + sitemap coverage, disclosure coverage, restricted-value exposure, broken-link risk | in progress | `45e0c858` | read-only over the tree; `sessions/45e0c858/repo-review.md` (new) | repo registers; official pages as cited | `45-F-*` as found |
+| 45-T3 — Independent live re-verification from official sources: **all five** brief links (`link.amazon/<code>`) and their `/dp/` destinations; Operating Agreement §5 + header date; Program Policies 2(b)/6(t)/6(w); Creators API ASIN definition; FTC Disclosures 101 | in progress | `45e0c858` | `sessions/45e0c858/verification-2026-11-17.md` (new); `data/sources.json` (new source IDs only, additive) | Amazon Operating Agreement; Amazon Program Policies; Amazon Creators API reference; FTC | `45-F-*` as found |
+| 45-T4 — **Close the factual half of G82-F-03**: add register rows for the two brief links that had no row anywhere (`B0c8moW59`, `B0f3GKalj`). Intended-ASIN block left empty (owner input); observed redirect block filled from live checks. The two blocks stay disjoint. | in progress | `45e0c858` | `data/products.json` (additive), `data/flags.json` (additive) | the live fetches of 45-T3 | `45-F-*` |
+| 45-T5 — **Decision-readiness register**: one matrix where every open question shows what we already know (with source), what we do not have, what would answer it, and what decision it unblocks. Rendered on the suggestions page so a reviewer can choose a path before anything is implemented | in progress | `45e0c858` | `data/suggestions.json` (additive block), `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | existing `data/sources.json` S01–S62; no new external fact claimed | — |
+| 45-T6 — Final integration: regenerate shared pages, union flags, recompute counts, full generator chain ×2 idempotency, all gates green, PR → `main`, merge, Pages deploy confirmation, live checks | planned | `45e0c858` | `data/flags.json`, `EXECUTIVE-SUMMARY.md`, generated `products.html`/`suggestions.html`/`flagged.html`/`executive-summary.html`/`index.html`, `sitemap.xml` (re-check), this Part | gate outputs | — |
+
+### 45 Rules I follow
+
+- Nothing is marked verified without checking it against an official source in this session, and the source link is recorded with the claim.
+- Price, rating and review-count values are **not** recorded as product facts (Program Policies 2(b) and 6(t) bar them without an Amazon-served link or Creators API data). Where a fetched page carried such values, they were read only to confirm identity and are recorded nowhere.
+- The intended-ASIN block and the observed-redirect block are never merged.
+- No product is described as trending, popular or high-converting. No revenue or conversion figure is presented.
+- Shared outputs are edited only through their owning generator or the documented registers, and each such edit is logged with its reason.
