@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies \u00a75 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01\u202654C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10 (union by ID over main's board).",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10 (union by ID over main's board).",
   "flags": [
     {
       "id": "FLG-001",
@@ -84,8 +84,8 @@
       "severity": "Medium",
       "category": "Commission rates",
       "item": "Per-product commission rate cannot be assigned; the public Table 1 category rates can be stated",
-      "detail": "FLG-005 as originally written said 'the official rate schedule is not accessible' and implied commission rates are unavailable. That is only half true and is corrected here after re-verification on 2026-11-14: (1) affiliate-program.amazon.com/help/operating/schedule DOES redirect to sign-in (re-confirmed 2026-11-14; S03) \u2014 but its return_to is /home/account/payment/customratecard, i.e. an account-specific custom rate card; (2) Amazon's Standard Commission Income Statement Table 1 IS public without a sign-in at S25 and was read in full on 2026-11-13 and again 2026-11-14 (Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%, Luxury Beauty 10.00%, ... 11 rows). What remains unverified is the per-ASIN category assignment and any custom rate, so the per-product commission rate cells stay blank.",
-      "action": "Read the public Table 1 (S25) as a category reference \u2014 already done, see pricing and commission pages. Leave the per-product commission rate and commission-income estimate blank until the listing's category and a custom rate card (sign-in) are available.",
+      "detail": "FLG-005 as originally written said 'the official rate schedule is not accessible' and implied commission rates are unavailable. That is only half true and is corrected here after re-verification on 2026-11-14: (1) affiliate-program.amazon.com/help/operating/schedule DOES redirect to sign-in (re-confirmed 2026-11-14; S03) — but its return_to is /home/account/payment/customratecard, i.e. an account-specific custom rate card; (2) Amazon's Standard Commission Income Statement Table 1 IS public without a sign-in at S25 and was read in full on 2026-11-13 and again 2026-11-14 (Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%, Luxury Beauty 10.00%, ... 11 rows). What remains unverified is the per-ASIN category assignment and any custom rate, so the per-product commission rate cells stay blank.",
+      "action": "Read the public Table 1 (S25) as a category reference — already done, see pricing and commission pages. Leave the per-product commission rate and commission-income estimate blank until the listing's category and a custom rate card (sign-in) are available.",
       "sources": [
         "S03",
         "S25",
@@ -214,7 +214,7 @@
       "severity": "Low",
       "category": "Source dates",
       "item": "Source pages show different copyright years",
-      "detail": "The Associates Operating Agreement and Program Policies show a footer of '\u00a9 1996-2025'. The Amazon product pages show '\u00a9 1996-2026'. Both were read on 2026-11-13. The header dates (S01: October 15, 2025; S02: April 14, 2026) were used as the versions read.",
+      "detail": "The Associates Operating Agreement and Program Policies show a footer of '© 1996-2025'. The Amazon product pages show '© 1996-2026'. Both were read on 2026-11-13. The header dates (S01: October 15, 2025; S02: April 14, 2026) were used as the versions read.",
       "action": "None required. Re-check the policy version before each content update.",
       "sources": [
         "S01",
@@ -238,7 +238,7 @@
       "severity": "High",
       "category": "AI and data use",
       "item": "The AI analysis layer cannot use Creators API data without written approval",
-      "detail": "Creators API terms bar aggregating, analysing or repurposing Product Advertising Content without express prior written approval, and bar using Program Content to develop or train machine learning or language models (PF-23, PF-24, PF-25). The brief asks for an AI-powered platform. Any AI analysis of Amazon data is therefore blocked until approval is obtained. No AI analysis of Amazon data has been built. Widened 2026-11-14 (session ecbfe91b, adopting c4e71983-FLG-16): the bar is not limited to Creators API data. Program Policies, Participation Requirements section 5, reads verbatim: \u201cYou will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.\u201d (S02; re-read live 2026-11-14; the odd wording \u2018without or express\u2019 is Amazon\u2019s own text, reproduced verbatim.) Any machine-learning use of Special Links or Program Content needs Amazon\u2019s express prior written approval \u2014 not only Creators API data.",
+      "detail": "Creators API terms bar aggregating, analysing or repurposing Product Advertising Content without express prior written approval, and bar using Program Content to develop or train machine learning or language models (PF-23, PF-24, PF-25). The brief asks for an AI-powered platform. Any AI analysis of Amazon data is therefore blocked until approval is obtained. No AI analysis of Amazon data has been built. Widened 2026-11-14 (session ecbfe91b, adopting c4e71983-FLG-16): the bar is not limited to Creators API data. Program Policies, Participation Requirements section 5, reads verbatim: “You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.” (S02; re-read live 2026-11-14; the odd wording ‘without or express’ is Amazon’s own text, reproduced verbatim.) Any machine-learning use of Special Links or Program Content needs Amazon’s express prior written approval — not only Creators API data.",
       "sources": [
         "S02"
       ],
@@ -439,7 +439,7 @@
       "severity": "High",
       "category": "Product identity and redirect interpretation",
       "item": "Observed redirect destinations do not establish requester intent",
-      "detail": "The submitted nine-character values are short-link tokens, not ASINs. The three short links were observed to land on live destination listings recorded in the product register (S11\u2013S16). A destination listing is not evidence that it matches the requester\u2019s intended product. The `plpRedirect=mhFallback` query parameter is not treated as failure evidence: it also appeared on a known-good ASIN control. The separate sources S30/S31 citation collision noted in the earlier record must not be used to support this redirect conclusion.",
+      "detail": "The submitted nine-character values are short-link tokens, not ASINs. The three short links were observed to land on live destination listings recorded in the product register (S11–S16). A destination listing is not evidence that it matches the requester’s intended product. The `plpRedirect=mhFallback` query parameter is not treated as failure evidence: it also appeared on a known-good ASIN control. The separate sources S30/S31 citation collision noted in the earlier record must not be used to support this redirect conclusion.",
       "action": "Keep the short-link token and observed destination listing distinct in all reports. Do not label the destination as confirmed requester intent; use the listing only as an observed destination unless intent is established. Obtain approval for any data fields that require an approved Amazon data path.",
       "sources": [
         "S11",
@@ -639,7 +639,7 @@
       "id": "E-F-04",
       "severity": "Low",
       "category": "Site structure",
-      "item": "V-F3 (/docs/ orphaned from navigation) and V-F4 (sitemap covers only part of the site) \u2014 fixed by the integration session",
+      "item": "V-F3 (/docs/ orphaned from navigation) and V-F4 (sitemap covers only part of the site) — fixed by the integration session",
       "detail": "Both were raised by session b8beb448 on 2026-11-14 and left for the owner because they touch shared output. This session is the final integration session named in the brief, so both were closed. V-F3: a 'Reference (/docs/)' entry was added to the root navigation in scripts/build_site.py. V-F4: sitemap.xml is now produced by scripts/build_sitemap.py, which walks the checked-in tree, so it lists all 63 live pages rather than one generator's subset; tools/build_site.py was made a fixpoint so it no longer de-lists pages it does not own (session b90c5685 had already added the root flat pages, and tools/verify_site.py's V5 check had already been relaxed from 'emitted by this build' to 'exists on disk'). The 15 broken relative links inside archive/c4e71983/ (V-F5) were deliberately NOT rewritten, because that directory is a preserved byte-for-byte snapshot.",
       "action": "None required. If /docs/ is later retired rather than kept, remove its nav entry in scripts/build_site.py NAV, delete docs/ and re-run scripts/build_sitemap.py.",
       "sources": [],
@@ -650,7 +650,7 @@
       "severity": "Low",
       "category": "Wording",
       "item": "The dashboard headline says product identities are 'documented', which reads against FLG-002 and FLG-027",
-      "detail": "index.html opens: 'all three supplied Amazon short links resolve to live product listings. \u2026 Product identities are documented with official listing links.' 'Resolve to live product listings' is accurate and is what was observed (S11-S13). 'Product identities are documented' is the wording another session added and which session 51fcb80d declined to adopt as data (FLG-027): the redirect targets are NOT confirmed as the submitted products, and data/products.json keeps confirmed_as_submitted_product=false with asin, product_name and brand null.",
+      "detail": "index.html opens: 'all three supplied Amazon short links resolve to live product listings. … Product identities are documented with official listing links.' 'Resolve to live product listings' is accurate and is what was observed (S11-S13). 'Product identities are documented' is the wording another session added and which session 51fcb80d declined to adopt as data (FLG-027): the redirect targets are NOT confirmed as the submitted products, and data/products.json keeps confirmed_as_submitted_product=false with asin, product_name and brand null.",
       "action": "Owner decision. Left unchanged because it is editorial, not data: the data layer is correct and every product row still reads 'Not confirmed as submitted'. If you want it tighter, change 'Product identities are documented with official listing links' to name the three destinations as observed, not identified.",
       "sources": [
         "S14",
@@ -665,7 +665,7 @@
       "severity": "Low",
       "category": "Data",
       "item": "S43's 'used_for' says the benchmark carries star ratings, rating counts and prices; the rendered benchmark carries none of them",
-      "detail": "data/sources.json S43 reads: 'Category competition benchmark: what a buyer sees above the fold in the verified category, with star ratings, exact rating counts and prices.' The published benchmark on air-fryers.html shows rank, ASIN, title and link only \u2014 which is correct, because FLG-022 and Participation Requirements 2(b)/6(t) bar displaying those values without an approved data path. The source note therefore describes the Amazon page, not what this site uses from it.",
+      "detail": "data/sources.json S43 reads: 'Category competition benchmark: what a buyer sees above the fold in the verified category, with star ratings, exact rating counts and prices.' The published benchmark on air-fryers.html shows rank, ASIN, title and link only — which is correct, because FLG-022 and Participation Requirements 2(b)/6(t) bar displaying those values without an approved data path. The source note therefore describes the Amazon page, not what this site uses from it.",
       "action": "Owner decision. Either narrow the S43 'used_for' text to the four fields actually published, or keep it as a description of the source page. Not changed here because data/sources.json is shared output and the rendered tables are already compliant.",
       "sources": [
         "S43",
@@ -715,7 +715,7 @@
       "severity": "Info",
       "category": "Coordination",
       "item": "COORDINATION.md duplicates several Parts verbatim (merge artifacts from earlier add/add resolutions)",
-      "detail": "Session 21acd3c0's line-by-line review found whole Parts repeated at the file tail: the 'PART C \u2014 a53a7e52', 'Part E \u2014 252122ff' and 'G Session registry' blocks each appear twice, the results of earlier conflict resolutions that concatenated both sides. The records are not wrong; the board state is just hard to read as a single view (corroborates H-F-02).",
+      "detail": "Session 21acd3c0's line-by-line review found whole Parts repeated at the file tail: the 'PART C — a53a7e52', 'Part E — 252122ff' and 'G Session registry' blocks each appear twice, the results of earlier conflict resolutions that concatenated both sides. The records are not wrong; the board state is just hard to read as a single view (corroborates H-F-02).",
       "action": "Owner may request a dedicated cleanup pass that deduplicates the board while preserving every record. Sessions cannot rewrite each other's Parts under the no-clobber rule.",
       "sources": [
         "S57"
@@ -725,7 +725,7 @@
       "id": "21-F-02",
       "severity": "Info",
       "category": "Site map",
-      "item": "sitemap.xml lists both the root URL and index.html \u2014 the same page twice",
+      "item": "sitemap.xml lists both the root URL and index.html — the same page twice",
       "detail": "The sitemap contains an empty-path entry (the dashboard root) and a separate 'index.html' entry. Both resolve to the same page on GitHub Pages. Observed by session 21acd3c0 on 2026-11-14 at main@cb2dc1d and re-reproduced at main@62c5c6a.",
       "action": "Optional: drop the 'index.html' entry from scripts/build_sitemap.py so crawlers see one canonical URL. Not blocking.",
       "sources": [
@@ -759,7 +759,7 @@
       "id": "21-F-05",
       "severity": "Low",
       "category": "Unverified values",
-      "item": "Live page price for dp/B0CDY277D3 ([price withheld]) differs from the register's same-day snapshot ([price withheld]) \u2014 prices are volatile and none is published as fact",
+      "item": "Live page price for dp/B0CDY277D3 ([price withheld]) differs from the register's same-day snapshot ([price withheld]) — prices are volatile and none is published as fact",
       "detail": "During session 21acd3c0's live fetch of link.amazon/B04G1MEwY (2026-11-14) the destination page's widget showed USD [price withheld] for dp/B0CDY277D3, while data/products.json's observed_2026_11_14 snapshot for P1 records USD [price withheld] (deal) the same day. Two different figures within one day from the same listing. This corroborates the standing policy (FLG-004, FLG-022, FLG-038) and Amazon's Participation Requirements 2(b): no price is published as a product fact anywhere on the canonical site.",
       "action": "None. When an Associates tag and Creators API access exist (FLG-006, FLG-010), fetch prices through the API and timestamp them.",
       "sources": [
@@ -942,8 +942,8 @@
       "id": "F2-F-01",
       "severity": "Info",
       "category": "Site",
-      "item": "C3-F-01 (sitemap drift) does not reproduce \u2014 audited and resolved",
-      "detail": "Session c3dbcc40 flagged that sitemap.xml lacks five pages the build emits: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Session f2102efa audited each: the root URL IS in the sitemap (as the bare https://kanlerxz87-cyber.github.io/Zone3/ URL \u2014 the conventional form for a site root), and the other four are meta-refresh redirect stubs that scripts/build_sitemap.py excludes by documented design (REDIRECT_STUBS set and is_redirect_stub() detection; see flags V-F4/V-F5 for why redirect stubs are delisted).",
+      "item": "C3-F-01 (sitemap drift) does not reproduce — audited and resolved",
+      "detail": "Session c3dbcc40 flagged that sitemap.xml lacks five pages the build emits: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Session f2102efa audited each: the root URL IS in the sitemap (as the bare https://kanlerxz87-cyber.github.io/Zone3/ URL — the conventional form for a site root), and the other four are meta-refresh redirect stubs that scripts/build_sitemap.py excludes by documented design (REDIRECT_STUBS set and is_redirect_stub() detection; see flags V-F4/V-F5 for why redirect stubs are delisted).",
       "action": "No change to sitemap.xml or the generator. python3 scripts/build_sitemap.py reproduces the committed file byte-for-byte. Resolution published for the owner's review.",
       "sources": [
         "S56"
@@ -955,7 +955,7 @@
       "severity": "Info",
       "category": "Accuracy",
       "item": "Amazon re-issued the Program Policies (Updated: April 14, 2026) and Operating Agreement (Updated: October 15, 2025); all site quotes still match verbatim",
-      "detail": "Fresh fetches on 2026-11-14 (session f2102efa) show both documents carry new 'Updated:' header dates. The site does not publish either date, so nothing displayed is stale. Every quote the site publishes was re-checked verbatim against the re-issued documents this round: OA \u00a75 disclosure statement, \u00a76 material-breach clause, Community Guidelines sentence; PR 2(b) tag requirement, price-display restriction, comparison-format rule, misleading-claims rule, original-content rule, PR 6(s)/(t)/(v)/(w)/(y)/(z); Commission Income Statement Session, disqualifiers incl. 2(e) Redirecting Link, \u224860-day payment, Payment Minimum Chart; IP License clauses incl. date/time stamp + pricing disclaimer, ASIN storage, 40 KB, CERTAIN CONTENT, 2(e) aggregation/ML-training, Agent Terms user-agent rule. Full table: sessions/f2102efa/verification.md.",
+      "detail": "Fresh fetches on 2026-11-14 (session f2102efa) show both documents carry new 'Updated:' header dates. The site does not publish either date, so nothing displayed is stale. Every quote the site publishes was re-checked verbatim against the re-issued documents this round: OA §5 disclosure statement, §6 material-breach clause, Community Guidelines sentence; PR 2(b) tag requirement, price-display restriction, comparison-format rule, misleading-claims rule, original-content rule, PR 6(s)/(t)/(v)/(w)/(y)/(z); Commission Income Statement Session, disqualifiers incl. 2(e) Redirecting Link, ≈60-day payment, Payment Minimum Chart; IP License clauses incl. date/time stamp + pricing disclaimer, ASIN storage, 40 KB, CERTAIN CONTENT, 2(e) aggregation/ML-training, Agent Terms user-agent rule. Full table: sessions/f2102efa/verification.md.",
       "action": "No change needed. Recorded so future sessions know the documents were re-issued and re-check affected wording after any future re-issue.",
       "sources": [
         "S01",
@@ -973,14 +973,14 @@
       "sources": [
         "S57"
       ],
-      "repo_evidence": "data/flags.json (FLG-016); flagged.html; sessions/f2102efa/repo-review.md \u00a71."
+      "repo_evidence": "data/flags.json (FLG-016); flagged.html; sessions/f2102efa/repo-review.md §1."
     },
     {
       "id": "54C-F-01",
       "severity": "Info",
       "category": "Accuracy (resolved upstream)",
       "item": "EXECUTIVE-SUMMARY.md carried stale register counts (48 sources / 51 policy facts / 51 flags)",
-      "detail": "Read line by line on 2026-11-14 (session 54ce6a2b), EXECUTIVE-SUMMARY.md section 2 opened with '48 official sources \u00b7 51 policy facts \u00b7 51 flags' and section 7 repeated 'All 51 policy facts' plus gate figures from an earlier run. The registers at that moment held 51 sources, 55 policy facts and 66 flags. Independently, main had already been corrected by PR #75 (session 3ead7ac8) to 51/55/72/13, which is correct for the current tree. On merge this session kept main's version and dropped its own edit.",
+      "detail": "Read line by line on 2026-11-14 (session 54ce6a2b), EXECUTIVE-SUMMARY.md section 2 opened with '48 official sources · 51 policy facts · 51 flags' and section 7 repeated 'All 51 policy facts' plus gate figures from an earlier run. The registers at that moment held 51 sources, 55 policy facts and 66 flags. Independently, main had already been corrected by PR #75 (session 3ead7ac8) to 51/55/72/13, which is correct for the current tree. On merge this session kept main's version and dropped its own edit.",
       "action": "None needed. Recorded because the correction was made twice by two sessions working in parallel; the durable fix is 54C-F-02.",
       "sources": [
         "S20"
@@ -1006,7 +1006,7 @@
       "severity": "Low",
       "category": "Site",
       "item": "Duplicate 'Marketing' navigation entry on the six pages emitted by scripts/build_marketing.py",
-      "detail": "scripts/build_marketing.py built its nav as base.NAV + [('marketing/index.html','Marketing')]. base.NAV, owned by scripts/build_site.py, already contained that entry after the marketing section was integrated, so every page rendered the link twice \u2014 and on marketing/index.html both copies carried class='active'. Found by counting nav hrefs per page: 6 pages affected.",
+      "detail": "scripts/build_marketing.py built its nav as base.NAV + [('marketing/index.html','Marketing')]. base.NAV, owned by scripts/build_site.py, already contained that entry after the marketing section was integrated, so every page rendered the link twice — and on marketing/index.html both copies carried class='active'. Found by counting nav hrefs per page: 6 pages affected.",
       "action": "FIXED in place by session 54ce6a2b on 2026-11-14. The generator now appends the entry only when the destination is absent and de-duplicates by href, so the nav no longer depends on whether base.NAV happens to list this page. 6 files regenerated, one line each; generator re-run and confirmed idempotent; re-scan shows 0 pages with a duplicated nav destination.",
       "sources": [],
       "session": "54ce6a2b",
@@ -1018,8 +1018,8 @@
       "id": "54C-F-04",
       "severity": "Info",
       "category": "Corroboration",
-      "item": "C3-F-01 (sitemap drift) does not reproduce \u2014 independently re-checked",
-      "detail": "Session c3dbcc40 reported that sitemap.xml lacks five pages: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Checked against scripts/build_sitemap.py, which owns the file: analysis.html, disclosure.html and flagged-for-review.html are excluded by its REDIRECT_STUBS set on purpose; marketing.html is also a meta-refresh stub and is caught by its dynamic is_redirect_stub() test; index.html is mapped to the site root, present as the bare \u2026/Zone3/ URL; and marketing/index.html is mapped to the directory URL \u2026/Zone3/marketing/, which is present. 'python3 scripts/build_sitemap.py --check' returns exit 0 ('65 pages checked, 0 extra entries'). Session f2102efa reached the same conclusion and logged it as F2-F-01; this session's check is independent and agrees.",
+      "item": "C3-F-01 (sitemap drift) does not reproduce — independently re-checked",
+      "detail": "Session c3dbcc40 reported that sitemap.xml lacks five pages: analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. Checked against scripts/build_sitemap.py, which owns the file: analysis.html, disclosure.html and flagged-for-review.html are excluded by its REDIRECT_STUBS set on purpose; marketing.html is also a meta-refresh stub and is caught by its dynamic is_redirect_stub() test; index.html is mapped to the site root, present as the bare …/Zone3/ URL; and marketing/index.html is mapped to the directory URL …/Zone3/marketing/, which is present. 'python3 scripts/build_sitemap.py --check' returns exit 0 ('65 pages checked, 0 extra entries'). Session f2102efa reached the same conclusion and logged it as F2-F-01; this session's check is independent and agrees.",
       "action": "None. C3-F-01 should be treated as withdrawn. Recorded so the agreement of two independent checks is visible on the board.",
       "sources": [
         "S56"
@@ -1032,7 +1032,7 @@
       "severity": "Low",
       "category": "Register",
       "item": "Ten groups of source IDs in data/sources.json point at the same URL",
-      "detail": "S01=S49, S02=S30=S50, S07=S51, S11=S52=S55, S12=S53, S13=S54, S16=S32, S40=S46, S41=S47, S42=S48. The register holds 51 IDs over 39 distinct URLs. Each entry is a real fetch by a different session, so no fact is wrong; the cost is that '51 sources' overstates distinct sources and a reader cannot tell that S46 and S40 are the same page. Session 3ead7ac8 raised part of this as 3E-CR-02 (S32, S40, S41, S42); the S49\u2013S55 block was added later.",
+      "detail": "S01=S49, S02=S30=S50, S07=S51, S11=S52=S55, S12=S53, S13=S54, S16=S32, S40=S46, S41=S47, S42=S48. The register holds 51 IDs over 39 distinct URLs. Each entry is a real fetch by a different session, so no fact is wrong; the cost is that '51 sources' overstates distinct sources and a reader cannot tell that S46 and S40 are the same page. Session 3ead7ac8 raised part of this as 3E-CR-02 (S32, S40, S41, S42); the S49–S55 block was added later.",
       "action": "Note the alias in each duplicate entry's note field, or retire the later ID and repoint its citations. Logged as change request 54C-CR-02; not edited by this session because data/sources.json is a shared register.",
       "sources": [
         "S20"
@@ -1044,9 +1044,9 @@
       "id": "54C-F-06",
       "severity": "Medium",
       "category": "Compliance",
-      "item": "sources.html renders observed star-rating, review-count and price literals inside table cells for S46\u2013S48",
-      "detail": "A scan for price and star-rating literals inside <td> cells across the published tree returns 20 files. Most are unambiguously audit context: commission/index.html carries bounty figures copied from the official Standard Commission Income Statement Table 1; flagged.html and flagged/index.html quote the values they are flagging; compliance/index.html has a worked disclosure example with a 2008-vintage sample price; sessions/3c886b62/* is a retained archive carrying its own 3E-F-03 notice; docs/* is the archived 2026-11-13 build. One case is not clear-cut: the 'Note' column of the source register on sources.html publishes, for S46, S47 and S48, the exact star rating, review count and price that the product tables withhold \u2014 e.g. 'Result 1 for B0CDY277D3 as displayed: [rating withheld], [count withheld] reviews, [count withheld] in past month, price USD [price withheld]'. Participation Requirement 6(t) bars displaying customer reviews or star ratings 'in part or in whole' unless obtained through the Creators API or PA API, without an exception for provenance. The counter-argument, accepted by earlier sessions, is that this is a note about what a fetch returned rather than a product display.",
-      "action": "OWNER DECISION. Not changed by this session: data/sources.json is a shared register and the wording belongs to sessions 9fef7647 and b90c5685. If the owner reads 6(t) strictly, replace the literals in the S46\u2013S48 notes with a description that names the fields observed without printing their values. Logged as change request 54C-CR-03.",
+      "item": "sources.html renders observed star-rating, review-count and price literals inside table cells for S46–S48",
+      "detail": "A scan for price and star-rating literals inside <td> cells across the published tree returns 20 files. Most are unambiguously audit context: commission/index.html carries bounty figures copied from the official Standard Commission Income Statement Table 1; flagged.html and flagged/index.html quote the values they are flagging; compliance/index.html has a worked disclosure example with a 2008-vintage sample price; sessions/3c886b62/* is a retained archive carrying its own 3E-F-03 notice; docs/* is the archived 2026-11-13 build. One case is not clear-cut: the 'Note' column of the source register on sources.html publishes, for S46, S47 and S48, the exact star rating, review count and price that the product tables withhold — e.g. 'Result 1 for B0CDY277D3 as displayed: [rating withheld], [count withheld] reviews, [count withheld] in past month, price USD [price withheld]'. Participation Requirement 6(t) bars displaying customer reviews or star ratings 'in part or in whole' unless obtained through the Creators API or PA API, without an exception for provenance. The counter-argument, accepted by earlier sessions, is that this is a note about what a fetch returned rather than a product display.",
+      "action": "OWNER DECISION. Not changed by this session: data/sources.json is a shared register and the wording belongs to sessions 9fef7647 and b90c5685. If the owner reads 6(t) strictly, replace the literals in the S46–S48 notes with a description that names the fields observed without printing their values. Logged as change request 54C-CR-03.",
       "sources": [
         "S02",
         "S46",
@@ -1062,7 +1062,7 @@
       "category": "Compliance",
       "item": "Other sessions' published pages and archives still display observed Amazon prices, star ratings or review counts",
       "detail": "Session ab3ed329 removed observed price, rating, review-count and sales values from the public registers it could change: data/products.json (observed block for all three listings), data/sources.json (S46-S48 status notes) and quoted text in data/flags.json and data/z3/flags.json, and two passages of EXECUTIVE-SUMMARY.md. The same values remain in pages and files owned by other sessions or kept as archives, which this session did not edit under the COORDINATION.md rule: docs/ (the archived 2026-11-13 build), sessions/3c886b62/ (product, category, comparison, analysis and verification pages, and its data/products.json), sessions/03bbd050/ (index, findings, verification), sessions/f2102efa/verification.md, sessions/3c886b62/verification.html, the 51fcb80d and c4e71983 snapshot JSON files and research/ verification logs. Program Policies 2(b) and 6(t) apply to any display on a Site, including an archive.",
-      "action": "REMEDIATED 2026-11-16 by session 1dddf8c0 (final integration takeover): the restricted values were withheld from every public page, record and data file in the repository \u2014 docs/, sessions/03bbd050/, sessions/3c886b62/ (data layer + regenerated pages), research/, the frozen archive/c4e71983/ copy, the root snapshot JSON files and the flag registers \u2014 with row labels, official source links and flag references preserved. The archive generator (sessions/3c886b62/tools/build.py) is patched so regeneration cannot restore the values. The only remaining holder of historical observed figures is the COORDINATION.md governance ledger, raised as 1dd-F-01 for an owner decision.",
+      "action": "REMEDIATED 2026-11-16 by session 1dddf8c0 (final integration takeover): the restricted values were withheld from every public page, record and data file in the repository — docs/, sessions/03bbd050/, sessions/3c886b62/ (data layer + regenerated pages), research/, the frozen archive/c4e71983/ copy, the root snapshot JSON files and the flag registers — with row labels, official source links and flag references preserved. The archive generator (sessions/3c886b62/tools/build.py) is patched so regeneration cannot restore the values. The only remaining holder of historical observed figures is the COORDINATION.md governance ledger, raised as 1dd-F-01 for an owner decision.",
       "sources": [
         "S02",
         "S01"
@@ -1113,7 +1113,7 @@
       "severity": "Medium",
       "category": "Compliance",
       "item": "Source register and compliance citations do not include the FTC Rule on the Use of Consumer Reviews and Testimonials (16 CFR Part 465)",
-      "detail": "The site's FTC citations are S07 (Disclosures 101), S24 (Endorsements hub) and S44 (Endorsement Guides FAQ). The FTC hub page itself links the Rule on the Use of Consumer Reviews and Testimonials, and its official Q&A (S59, fetched 2026-11-16) states the rule 'went into effect on October 21, 2024' and that courts may impose civil penalties for knowing violations \u2014 including for fake or false consumer reviews, incentivized reviews, review suppression, misuse of fake social-media influence indicators (S59 quotes sections 465.2, 465.4, 465.7, 465.8) and for a business misrepresenting that a site it controls provides independent reviews (section 465.6). This site publishes comparisons, buying guides and a review/competition section, so the rule is directly in scope and is not cited anywhere in data/sources.json before S59 or on the compliance page.",
+      "detail": "The site's FTC citations are S07 (Disclosures 101), S24 (Endorsements hub) and S44 (Endorsement Guides FAQ). The FTC hub page itself links the Rule on the Use of Consumer Reviews and Testimonials, and its official Q&A (S59, fetched 2026-11-16) states the rule 'went into effect on October 21, 2024' and that courts may impose civil penalties for knowing violations — including for fake or false consumer reviews, incentivized reviews, review suppression, misuse of fake social-media influence indicators (S59 quotes sections 465.2, 465.4, 465.7, 465.8) and for a business misrepresenting that a site it controls provides independent reviews (section 465.6). This site publishes comparisons, buying guides and a review/competition section, so the rule is directly in scope and is not cited anywhere in data/sources.json before S59 or on the compliance page.",
       "action": "Read S59 (and the linked final rule) and add it to the compliance register and to the content-grounding rules on the content page: no fake or incentivized reviews, no misrepresenting this site's comparisons as independent where they are affiliate-driven, no fake engagement indicators. Owner decision on placement.",
       "sources": [
         "S59"
@@ -1124,18 +1124,18 @@
       "severity": "Low",
       "category": "Register accuracy",
       "item": "EXECUTIVE-SUMMARY.md current-state counts were stale (72 flags stated; register held 78 before this session added 1F-F-01..03)",
-      "detail": "Section 2 said '51 official sources \u00b7 55 policy facts \u00b7 72 flags \u00b7 13 root pages' and section 6 said '72 entries \u2014 3 critical, 13 high, 20 medium, 21 low, 15 informational', while data/flags.json held 78 entries (3/13/21/24/17). This reproduces 54C-F-02's prediction that hand-written counts drift on every append. Fixed in this session: section 2 and section 6 were updated to the register values after adding 1F-F-01..03 (81 entries: 3 critical, 13 high, 22 medium, 26 low, 18 informational); sections that quote dated historical gate runs were left untouched.",
+      "detail": "Section 2 said '51 official sources · 55 policy facts · 72 flags · 13 root pages' and section 6 said '72 entries — 3 critical, 13 high, 20 medium, 21 low, 15 informational', while data/flags.json held 78 entries (3/13/21/24/17). This reproduces 54C-F-02's prediction that hand-written counts drift on every append. Fixed in this session: section 2 and section 6 were updated to the register values after adding 1F-F-01..03 (81 entries: 3 critical, 13 high, 22 medium, 26 low, 18 informational); sections that quote dated historical gate runs were left untouched.",
       "action": "Change request from 54C-F-02 stands: generate these counts from data/flags.json and data/sources.json so they cannot drift again.",
       "sources": [],
-      "repo_evidence": "EXECUTIVE-SUMMARY.md section 2 (pre-fix) read 2026-11-16: '51 official sources \u00b7 55 policy facts \u00b7 72 flags \u00b7 13 root pages'; section 6 (pre-fix): '72 entries ... 3 critical, 13 high, 20 medium, 21 low, 15 informational'; data/flags.json counted 78 entries with severity breakdown 3/13/21/24/17 at base 933e2f3. Reproduce: python3 -c \"import json;f=json.load(open('data/flags.json'))['flags'];print(len(f))\"."
+      "repo_evidence": "EXECUTIVE-SUMMARY.md section 2 (pre-fix) read 2026-11-16: '51 official sources · 55 policy facts · 72 flags · 13 root pages'; section 6 (pre-fix): '72 entries ... 3 critical, 13 high, 20 medium, 21 low, 15 informational'; data/flags.json counted 78 entries with severity breakdown 3/13/21/24/17 at base 933e2f3. Reproduce: python3 -c \"import json;f=json.load(open('data/flags.json'))['flags'];print(len(f))\"."
     },
     {
       "id": "1F-F-03",
       "severity": "Low",
       "category": "Site (fixed)",
-      "item": "The six generated marketing/*.html pages were stale relative to scripts/build_marketing.py \u2014 missing the Suggestions & decisions nav entry",
+      "item": "The six generated marketing/*.html pages were stale relative to scripts/build_marketing.py — missing the Suggestions & decisions nav entry",
       "detail": "Re-running scripts/build_marketing.py on 2026-11-16 changed exactly one line per page across all six marketing pages: the shared NAV imported from scripts/build_site.py contains the suggestions.html entry added by session 4f83ee7b (PR #96), but the committed marketing pages predated it. This is the same defect class session cd0e6279 fixed for the Decision Center link (its navigation-only sync), and it means the 'generators idempotent' claim from the 25/54C gate runs no longer reproduced at base 933e2f3. Fixed in this session by regenerating the six pages; no marketing copy, brief, price, rating or recommendation was changed.",
-      "action": "None \u2014 fixed. Future NAV additions to scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
+      "action": "None — fixed. Future NAV additions to scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
       "sources": [],
       "repo_evidence": "git diff after re-running scripts/build_marketing.py at base 933e2f3: exactly one line changed in each of the six marketing/*.html files, adding href='../suggestions.html' (Suggestions &amp; decisions) to the top nav imported from scripts/build_site.py NAV. Reproduce: python3 scripts/build_marketing.py && git diff --stat marketing/."
     },
@@ -1173,7 +1173,7 @@
       "detail": "tools/verify_site.py on 2026-11-16 reported 1,482 table rows: 1,258 with an official source, 439 with a flag, 89 with a repo anchor. A row with a flag or a repo anchor passes V4 without an official link, so the gate does not enforce the brief's 'every row has a source link to an official site' rule. Same defect as 71-F-02, still open.",
       "action": "Owner or next integration session: split rows into factual (must carry an Amazon or FTC link), unknown (must carry a flag and a blank value), and repo-state (repo anchor). Make V4 fail on a factual row without an official link.",
       "sources": [],
-      "repo_evidence": "python3 tools/verify_site.py \u2192 'VERIFY PASS \u00b7 83 pages \u00b7 1482 table rows \u00b7 1258 with official source \u00b7 439 with flag \u00b7 89 with repo anchor' (session a0ffcab0 run on main b38d96a + 609dc76)."
+      "repo_evidence": "python3 tools/verify_site.py → 'VERIFY PASS · 83 pages · 1482 table rows · 1258 with official source · 439 with flag · 89 with repo anchor' (session a0ffcab0 run on main b38d96a + 609dc76)."
     },
     {
       "id": "A0-F-04",
@@ -1181,7 +1181,7 @@
       "category": "Site (fixed)",
       "item": "Six generated marketing/*.html pages were stale against the shared nav in scripts/build_site.py (missing the /site/ entry added by PR #101)",
       "detail": "Running scripts/build_marketing.py on 2026-11-16 changed exactly one line per page in six files: the nav gained '../site/index.html' (the reader-facing marketing site from PR #101). Same defect class as 1F-F-03: a shared NAV change was not followed by a marketing re-run. Fixed by regenerating the six pages; no marketing copy, brief, price, rating or recommendation changed.",
-      "action": "None \u2014 fixed. Any future NAV change in scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
+      "action": "None — fixed. Any future NAV change in scripts/build_site.py must be followed by a scripts/build_marketing.py re-run in the same commit.",
       "sources": [],
       "repo_evidence": "git diff --stat after python3 scripts/build_marketing.py: 6 files, 6 insertions, 6 deletions; the only href added is ../site/index.html."
     },
@@ -1221,7 +1221,7 @@
         "S15",
         "S16"
       ],
-      "repo_evidence": "Live flagged.html, 'Observed redirect targets' table (read 2026-11-16 at https://kanlerxz87-cyber.github.io/Zone3/flagged.html): 'Confirmed?' column = 'No: not the submitted product' for rows 1\u20133."
+      "repo_evidence": "Live flagged.html, 'Observed redirect targets' table (read 2026-11-16 at https://kanlerxz87-cyber.github.io/Zone3/flagged.html): 'Confirmed?' column = 'No: not the submitted product' for rows 1–3."
     },
     {
       "id": "Z14-F-01",
@@ -1230,7 +1230,7 @@
       "date": "2026-11-16",
       "session": "145b8df7",
       "item": "The Emeril Lagasse listing title (B09B7SB46R) changed wording between captures; the destination did not change",
-      "detail": "Read 2026-11-16, the served page title is \"Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included\". The 2026-11-13/14 captures (S15, S53) rendered \"\u202626QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals\". Same ASIN, same redirect destination, different sentence: Amazon listing titles are edited by the seller over time. Consequence for this repository: any copy that quotes a title must carry the capture date, which the marketing layer (read/) does on every page, and the rotisserie and dual-speed-fan wording is NOT stated as a current attribute anywhere on the site because today's capture does not contain it. No published value changes; the observation is recorded so a future reader does not mistake wording drift for a destination change.",
+      "detail": "Read 2026-11-16, the served page title is \"Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included\". The 2026-11-13/14 captures (S15, S53) rendered \"…26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals\". Same ASIN, same redirect destination, different sentence: Amazon listing titles are edited by the seller over time. Consequence for this repository: any copy that quotes a title must carry the capture date, which the marketing layer (read/) does on every page, and the rotisserie and dual-speed-fan wording is NOT stated as a current attribute anywhere on the site because today's capture does not contain it. No published value changes; the observation is recorded so a future reader does not mistake wording drift for a destination change.",
       "sources": [
         "S15",
         "S53",
@@ -1261,7 +1261,7 @@
       "date": "2026-11-16",
       "session": "145b8df7",
       "item": "Two independent reader-facing marketing layers were published on the same day: /read/ (The Crisp Report, this session) and /site/ (Air Fryer Field Notes, session 59d84c55 via PR #101/#103)",
-      "detail": "Both were built from the same verified data set, in parallel, in response to the same Suggestions & decisions page, and neither session could see the other's work before it landed. Both are published; neither was deleted or rewritten by this integration, because deleting another session's output is not this session's call. The overlap is a maintenance and brand-coherence problem rather than a data problem: two site names, two stylesheets, two nav entries, and two sets of marketing prose describing the same three listings, plus the earlier facts-only brief set under /marketing/. Recommendation for the owner: pick one layer as canonical (the choice is stylistic \u2014 both carry the disclosure, neither publishes prices, ratings or unverified values), then in a follow-up session fold the other's unique pages into it and leave a redirect stub so no published URL breaks. This session's read/ layer contributes 6 articles, a 13-attribute comparison, a five-question buying guide with FAQ, a category hub and a method page with a build gate that refuses uncited rows; session 59d84c55's /site/ layer contributes products, guides, evidence, decisions and front-door pages with its own provenance gate. Update while this flag was open: session d18303ca (PR #114) extended /site/ with six more pages on 2026-11-16, so the canonical-layer decision now covers two sessions' work on that side against one on /read/. verify_site counts 100 pages and 1,649 rows on the merged tree with both layers present.",
+      "detail": "Both were built from the same verified data set, in parallel, in response to the same Suggestions & decisions page, and neither session could see the other's work before it landed. Both are published; neither was deleted or rewritten by this integration, because deleting another session's output is not this session's call. The overlap is a maintenance and brand-coherence problem rather than a data problem: two site names, two stylesheets, two nav entries, and two sets of marketing prose describing the same three listings, plus the earlier facts-only brief set under /marketing/. Recommendation for the owner: pick one layer as canonical (the choice is stylistic — both carry the disclosure, neither publishes prices, ratings or unverified values), then in a follow-up session fold the other's unique pages into it and leave a redirect stub so no published URL breaks. This session's read/ layer contributes 6 articles, a 13-attribute comparison, a five-question buying guide with FAQ, a category hub and a method page with a build gate that refuses uncited rows; session 59d84c55's /site/ layer contributes products, guides, evidence, decisions and front-door pages with its own provenance gate. Update while this flag was open: session d18303ca (PR #114) extended /site/ with six more pages on 2026-11-16, so the canonical-layer decision now covers two sessions' work on that side against one on /read/. verify_site counts 100 pages and 1,649 rows on the merged tree with both layers present.",
       "sources": [
         "S60",
         "S61",
@@ -1374,7 +1374,7 @@
       "severity": "Info",
       "category": "Site (fixed)",
       "item": "sitemap.xml on main carried 5 redirect-stub/duplicate entries swept in by tools/build_site.py",
-      "detail": "The committed sitemap listed analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. The first four are meta-refresh redirect stubs (canonical targets are listed) and index.html duplicates the root URL \u2014 exactly the five entries session 25513d33 diagnosed as 25-F-04: tools/build_site.py rewrites the sitemap from its own page list, so any directory-build run sweeps the stubs back in. Fixed in this session by regenerating with the canonical writer scripts/build_sitemap.py: 78 pages covered, 0 extra entries, and all eight reader-facing site/ pages listed.",
+      "detail": "The committed sitemap listed analysis.html, disclosure.html, flagged-for-review.html, index.html and marketing.html. The first four are meta-refresh redirect stubs (canonical targets are listed) and index.html duplicates the root URL — exactly the five entries session 25513d33 diagnosed as 25-F-04: tools/build_site.py rewrites the sitemap from its own page list, so any directory-build run sweeps the stubs back in. Fixed in this session by regenerating with the canonical writer scripts/build_sitemap.py: 78 pages covered, 0 extra entries, and all eight reader-facing site/ pages listed.",
       "action": "Fixed in this session (canonical regeneration; build_sitemap.py --check exits 0 with 0 extras). The standing change request from 25-F-04 remains: make scripts/build_sitemap.py the single writer of sitemap.xml so a tools/build_site.py run cannot reintroduce these entries.",
       "date": "2026-11-16",
       "session": "f65d393b",
@@ -1385,9 +1385,9 @@
       "id": "F65-F-03",
       "severity": "Medium",
       "category": "Build (fixed)",
-      "item": "scripts/build_marketing.py crashed on main after NAV was split into NAV_PRIMARY + NAV_MORE \u2014 the marketing generator could not run at all",
+      "item": "scripts/build_marketing.py crashed on main after NAV was split into NAV_PRIMARY + NAV_MORE — the marketing generator could not run at all",
       "detail": "Session 5a56c084's refactor replaced the flat NAV list in scripts/build_site.py with NAV_PRIMARY and NAV_MORE, but scripts/build_marketing.py still called list(base.NAV) and raised AttributeError: module 'build_site' has no attribute 'NAV'. Reproduced on main at 7da5ce2 before any edit by this session. Every other generator (build_site, build_read, build_5a56c084, build_sitemap, build_i2_site, tools/build_site) ran; only the marketing generator was dead, which meant the six marketing pages could never be regenerated again and the 'generators idempotent' release gate could not pass. Fixed in this session by building the flat entry list from NAV_PRIMARY plus the flattened NAV_MORE groups; the existing href dedup and the marketing/index fallback are unchanged, and regenerating the six pages changes only their nav line.",
-      "action": "Fixed in this session (scripts/build_marketing.py). Change request for the pipeline owner: add a smoke test that runs every generator in the release checklist \u2014 scripts/test_manifest_regression.py already exists as a pattern \u2014 so a refactor of a shared module cannot silently kill one generator.",
+      "action": "Fixed in this session (scripts/build_marketing.py). Change request for the pipeline owner: add a smoke test that runs every generator in the release checklist — scripts/test_manifest_regression.py already exists as a pattern — so a refactor of a shared module cannot silently kill one generator.",
       "date": "2026-11-16",
       "session": "f65d393b",
       "status": "fixed",
@@ -1397,9 +1397,9 @@
       "id": "F65-F-04",
       "severity": "Medium",
       "category": "Compliance gate (fixed)",
-      "item": "i2_gate was RED on main \u2014 14 problems across four classes on the reader-facing site/",
-      "detail": "Run on main at 7da5ce2 before any edit by this session, tools/i2_gate.py failed with 14 problems: (a) site/answers.html quotes the Associates Program's own payment terms (US minimums $10 direct deposit, $10 gift card capped at $2,000, $100 by check with a $15 check-processing fee) and the Standard Commission Table 1 Kitchen rate '4.5%', which the G6 allowlist did not contain; (b) site/answers.html rendered the submitted link.amazon token twice and site/flagged.html (CBA-F-01's source column) once as clickable outbound links \u2014 exactly what FLG-003 and Participation Requirements 6(w)/CIS 2(e) say must be tested in an Associates account before publishing; (c) the four hand-authored guide pages (air-fryer-oven-vs-basket, capacity-maths, dishwasher-safe-baskets, what-four-in-one-means) were missing the IP License 2(k) Amazon content disclaimer their footer template requires; (d) site/style-guide.html quotes banned constructions ('4.6 stars', '1,393 reviews') in its table of what not to write, and G6 had no use/mention rule so it flagged the page for obeying the rule. All four classes fixed in this session; the gate now passes (18 pages, 162 rows, 0 flagged).",
-      "action": "Fixed in this session. The allowlist additions are commented as deliberate; the short-link citations render as text with the /dp/ destination left clickable; the disclaimer was added to the four guide footers; G6 gained a use/mention bypass mirroring the rule PROHIBITED_TEXT already had. Change request for the pipeline owner: run i2_gate.py in every release check \u2014 main shipped red, which suggests it is not yet in the checklist.",
+      "item": "i2_gate was RED on main — 14 problems across four classes on the reader-facing site/",
+      "detail": "Run on main at 7da5ce2 before any edit by this session, tools/i2_gate.py failed with 14 problems: (a) site/answers.html quotes the Associates Program's own payment terms (US minimums $10 direct deposit, $10 gift card capped at $2,000, $100 by check with a $15 check-processing fee) and the Standard Commission Table 1 Kitchen rate '4.5%', which the G6 allowlist did not contain; (b) site/answers.html rendered the submitted link.amazon token twice and site/flagged.html (CBA-F-01's source column) once as clickable outbound links — exactly what FLG-003 and Participation Requirements 6(w)/CIS 2(e) say must be tested in an Associates account before publishing; (c) the four hand-authored guide pages (air-fryer-oven-vs-basket, capacity-maths, dishwasher-safe-baskets, what-four-in-one-means) were missing the IP License 2(k) Amazon content disclaimer their footer template requires; (d) site/style-guide.html quotes banned constructions ('4.6 stars', '1,393 reviews') in its table of what not to write, and G6 had no use/mention rule so it flagged the page for obeying the rule. All four classes fixed in this session; the gate now passes (18 pages, 162 rows, 0 flagged).",
+      "action": "Fixed in this session. The allowlist additions are commented as deliberate; the short-link citations render as text with the /dp/ destination left clickable; the disclaimer was added to the four guide footers; G6 gained a use/mention bypass mirroring the rule PROHIBITED_TEXT already had. Change request for the pipeline owner: run i2_gate.py in every release check — main shipped red, which suggests it is not yet in the checklist.",
       "date": "2026-11-16",
       "session": "f65d393b",
       "status": "fixed",
@@ -1409,9 +1409,9 @@
       "id": "F65-F-05",
       "severity": "Low",
       "category": "Build (fixed)",
-      "item": "The documented reader-layer chain (build_i2_site && build_cba81fa5) failed from any clean checkout \u2014 the injected region's start anchor does not survive a plain i2 rebuild",
-      "detail": "tools/build_cba81fa5_site.py replaces the region between '<h2>Buying guides</h2>' and '<h2>Side by side</h2>' on site/index.html, but the start anchor only exists inside the block it injects: tools/build_i2_site.py never emits it (checked with git log -S across its whole history). A plain rebuild of the reader site therefore drops the anchor, and the integrator exited with 'anchors not both found', so the README's own build order could not complete \u2014 and with it the guide cards, the guide plan, the CBA flag rows on site/flagged.html and the lint's register links all stayed missing. Fixed in this session by making patch_text self-healing: when the start anchor is missing but the end anchor survives, the block is inserted before the end anchor; the block re-emits the start anchor so the next run takes the replace path. The full chain was run twice and the tree hashes identically.",
-      "action": "Fixed in this session (tools/build_cba81fa5_site.py). Change request for the owner: the sentinel-based region the root index already uses (CBA-F-05) is the sturdier pattern \u2014 a region keyed on an anchor the upstream generator does not emit will keep breaking in this way.",
+      "item": "The documented reader-layer chain (build_i2_site && build_cba81fa5) failed from any clean checkout — the injected region's start anchor does not survive a plain i2 rebuild",
+      "detail": "tools/build_cba81fa5_site.py replaces the region between '<h2>Buying guides</h2>' and '<h2>Side by side</h2>' on site/index.html, but the start anchor only exists inside the block it injects: tools/build_i2_site.py never emits it (checked with git log -S across its whole history). A plain rebuild of the reader site therefore drops the anchor, and the integrator exited with 'anchors not both found', so the README's own build order could not complete — and with it the guide cards, the guide plan, the CBA flag rows on site/flagged.html and the lint's register links all stayed missing. Fixed in this session by making patch_text self-healing: when the start anchor is missing but the end anchor survives, the block is inserted before the end anchor; the block re-emits the start anchor so the next run takes the replace path. The full chain was run twice and the tree hashes identically.",
+      "action": "Fixed in this session (tools/build_cba81fa5_site.py). Change request for the owner: the sentinel-based region the root index already uses (CBA-F-05) is the sturdier pattern — a region keyed on an anchor the upstream generator does not emit will keep breaking in this way.",
       "date": "2026-11-16",
       "session": "f65d393b",
       "status": "fixed",
@@ -1421,7 +1421,7 @@
       "id": "F65-F-06",
       "severity": "Info",
       "category": "Gate defect (fixed)",
-      "item": "i2_gate's star-rating pattern missed the plain '4.6 stars' form \u2014 it only matched a literal star glyph or 'out of 5'",
+      "item": "i2_gate's star-rating pattern missed the plain '4.6 stars' form — it only matched a literal star glyph or 'out of 5'",
       "detail": "STAR_RE required 'N out of 5' or a literal star glyph before 'N.N stars', so the most common written form ('4.6 stars') was never matched by G6 on the reader site. Fixed in this session by adding the bare 'N.N stars' alternative, together with the use/mention bypass (F65-F-04d) so pages that quote the construction as banned still pass. After the change the reader site still reports 0 flagged, which shows no page was actually rendering stars and the pattern now covers the gap.",
       "action": "Fixed in this session (tools/i2_gate.py). No site content needed changing.",
       "date": "2026-11-16",
@@ -1434,7 +1434,7 @@
       "severity": "Low",
       "category": "Accessibility (fixed)",
       "item": "Reader site (site/) shipped three tap targets below the usable floor: source chips ~22px tall, header nav and decision controls ~33-39px",
-      "detail": "S-20 asked for a mobile-first pass; the audit measured the CSS in tools/build_i2_site.py rather than assuming. Found: viewport meta, text-size-adjust, clamp() type scale, sticky header and overflow:auto table wrappers were already in place (credit to the i2 layer); the gaps were box-model ones \u2014 .src chips (font 11px, padding 1px 6px \u2192 ~22px rendered height, below the WCAG 2.2 SC 2.5.8 24\u00d724 AA floor, and under 24px of separating space so the spacing exception did not apply), .top nav a (~39px) and the Accept/Reject/Defer .seg spans (~33px). Fixed 2026-11-17 by session 82372fd1 in the generator: min-height 24px on .src, 44px on .top nav a, .seg span and .btn (mobile block), mobile table cell padding 9px 10px to reclaim width, and a prefers-reduced-motion guard for scroll-behavior:smooth. Deliberately did NOT shrink table font on mobile (would fight 1.4.4-style resize expectations).",
+      "detail": "S-20 asked for a mobile-first pass; the audit measured the CSS in tools/build_i2_site.py rather than assuming. Found: viewport meta, text-size-adjust, clamp() type scale, sticky header and overflow:auto table wrappers were already in place (credit to the i2 layer); the gaps were box-model ones — .src chips (font 11px, padding 1px 6px → ~22px rendered height, below the WCAG 2.2 SC 2.5.8 24×24 AA floor, and under 24px of separating space so the spacing exception did not apply), .top nav a (~39px) and the Accept/Reject/Defer .seg spans (~33px). Fixed 2026-11-17 by session 82372fd1 in the generator: min-height 24px on .src, 44px on .top nav a, .seg span and .btn (mobile block), mobile table cell padding 9px 10px to reclaim width, and a prefers-reduced-motion guard for scroll-behavior:smooth. Deliberately did NOT shrink table font on mobile (would fight 1.4.4-style resize expectations).",
       "action": "No owner action. Measurements are box-model computations from the checked-in CSS (documented in sessions/82372fd1/mobile-audit.md), not browser renders; a human can spot-check on a phone at any time.",
       "date": "2026-11-17",
       "session": "82372fd1",
@@ -1445,9 +1445,9 @@
       "id": "G82-F-02",
       "severity": "Info",
       "category": "Build",
-      "item": "The publishing brief asks each new guide to reach 'the existing sitemap and feed' \u2014 the sitemap half existed, the feed half did not; feed.xml now ships, with a maintenance rule",
+      "item": "The publishing brief asks each new guide to reach 'the existing sitemap and feed' — the sitemap half existed, the feed half did not; feed.xml now ships, with a maintenance rule",
       "detail": "A repo-wide search on 2026-11-17 found no RSS/Atom implementation anywhere (only the brief text asking for one). Session 82372fd1 added tools/build_feed.py: feed.xml is generated strictly from data/cba81fa5/guides.json (the register the guide surfaces already read), entries = live guides only, dates come from the register (output is deterministic), and the same prohibited-figure rules the reader gates use are enforced at feed build time. Head <link rel=alternate> injections in site/index.html and site/guides/index.html live inside a self-healing sentinel region: after any reader-site rebuild run python3 tools/build_feed.py (the README chain lists it as the last step but one); python3 tools/build_feed.py --check fails when the region is missing or the feed drifted. Verified this session: i2 rebuild drops the region, --check reports drift with exit 1, re-run restores and all gates pass.",
-      "action": "None \u2014 mechanical. Any future session that rebuilds site/ must keep the chain order in README.md.",
+      "action": "None — mechanical. Any future session that rebuilds site/ must keep the chain order in README.md.",
       "date": "2026-11-17",
       "session": "82372fd1",
       "status": "fixed",
@@ -1475,8 +1475,8 @@
       "severity": "Info",
       "category": "Build (fixed)",
       "item": "Two sessions shipped a feed at the same root path feed.xml on 2026-11-17; the merge keeps both content sets in one union feed",
-      "detail": "Session aebf0747 (PRs #136/#137) published an RSS 2.0 feed.xml listing the four /guides/ pages; this session built an Atom feed.xml from the live rows of data/cba81fa5/guides.json (reader guides under site/guides/). Both head links, both footer links and both sitemaps point at the single path feed.xml with type=application/rss+xml, so the union ships as RSS 2.0: entries are the verbatim re-home of aebf0747's four items (snapshot register data/feed/entries-shop.json, provenance to ad99ca8) plus every live row of the guide register, sorted by date. aebf0747's build_pass.py keeps writing its own feed.xml; tools/build_feed.py runs AFTER it in the chain and overwrites with the union \u2014 documented in the README chain. The snapshot means a future /guides/ addition must update data/feed/entries-shop.json too; the feed builder fails loudly on any missing page, date mismatch or prohibited figure instead of drifting.",
-      "action": "Fixed by this session. Owner note: to retire the dual-writer entirely, remove the feed write in sessions/aebf0747/build_pass.py once its session is no longer rebuilt \u2014 not done here because it is that session's file and the chain order makes it harmless.",
+      "detail": "Session aebf0747 (PRs #136/#137) published an RSS 2.0 feed.xml listing the four /guides/ pages; this session built an Atom feed.xml from the live rows of data/cba81fa5/guides.json (reader guides under site/guides/). Both head links, both footer links and both sitemaps point at the single path feed.xml with type=application/rss+xml, so the union ships as RSS 2.0: entries are the verbatim re-home of aebf0747's four items (snapshot register data/feed/entries-shop.json, provenance to ad99ca8) plus every live row of the guide register, sorted by date. aebf0747's build_pass.py keeps writing its own feed.xml; tools/build_feed.py runs AFTER it in the chain and overwrites with the union — documented in the README chain. The snapshot means a future /guides/ addition must update data/feed/entries-shop.json too; the feed builder fails loudly on any missing page, date mismatch or prohibited figure instead of drifting.",
+      "action": "Fixed by this session. Owner note: to retire the dual-writer entirely, remove the feed write in sessions/aebf0747/build_pass.py once its session is no longer rebuilt — not done here because it is that session's file and the chain order makes it harmless.",
       "date": "2026-11-17",
       "session": "82372fd1",
       "status": "fixed",
@@ -1487,12 +1487,12 @@
       "severity": "Low",
       "category": "Gate defect (fixed)",
       "item": "main arrived failing its own shared gate: scripts/check_site.py 'navigation missing' on the publication front page index.html",
-      "detail": "Reproduced on ad99ca8 in a clean worktree: check_site requires the exact substring 'class=\"topbar\"' on every PAGES entry, but the front page (aebf0747, PRs #136/#137) carries its masthead as class=\"z3-mast topbar\" and has no link named flagged.html \u2014 the page is compliant by design (own nav + publication-pass.html#flagged), the gate just predates the template. Under the brief's never-merge-a-broken-site rule this session fixed it from both ends: (a) the generator sessions/aebf0747/build_pass.py NAV gains a 'Flagged (register)' link to flagged.html and the masthead keeps the topbar token \u2014 additive; (b) scripts/check_site.py matches the token 'topbar' instead of the exact attribute, with the flagged.html requirement unchanged. After the change check_site passes and no page lost its governance link.",
+      "detail": "Reproduced on ad99ca8 in a clean worktree: check_site requires the exact substring 'class=\"topbar\"' on every PAGES entry, but the front page (aebf0747, PRs #136/#137) carries its masthead as class=\"z3-mast topbar\" and has no link named flagged.html — the page is compliant by design (own nav + publication-pass.html#flagged), the gate just predates the template. Under the brief's never-merge-a-broken-site rule this session fixed it from both ends: (a) the generator sessions/aebf0747/build_pass.py NAV gains a 'Flagged (register)' link to flagged.html and the masthead keeps the topbar token — additive; (b) scripts/check_site.py matches the token 'topbar' instead of the exact attribute, with the flagged.html requirement unchanged. After the change check_site passes and no page lost its governance link.",
       "action": "Fixed by this session (both edits are one-liners with their comments in place). A later integration may fold the token rule into a proper nav-shape check.",
       "date": "2026-11-17",
       "session": "82372fd1",
       "status": "fixed",
-      "repo_evidence": "scripts/check_site.py nav rule; sessions/aebf0747/build_pass.py NAV + masthead; reproduction: git worktree at ad99ca8 \u2192 'FAILED: 1 problem(s) - index.html: navigation missing'"
+      "repo_evidence": "scripts/check_site.py nav rule; sessions/aebf0747/build_pass.py NAV + masthead; reproduction: git worktree at ad99ca8 → 'FAILED: 1 problem(s) - index.html: navigation missing'"
     },
     {
       "id": "F-2F-01",
@@ -1513,7 +1513,7 @@
         "S77",
         "S78"
       ],
-      "repo_evidence": "sessions/2f181cd9/intake.html \u2014 the five-link intake register, intended and observed columns separate"
+      "repo_evidence": "sessions/2f181cd9/intake.html — the five-link intake register, intended and observed columns separate"
     },
     {
       "id": "F-2F-02",
@@ -1660,7 +1660,7 @@
       "severity": "Medium",
       "category": "Register self-contradiction (reconciled by this session)",
       "item": "products.html contradicted itself about submitted links 4-5 (B0c8moW59, B0f3GKalj): the product table carried session 2f181cd9's P4/P5 rows with observed destinations, while the intent-record table below still said 'No observation on file' for the same links",
-      "detail": "Session 82372fd1 wrote the shared-register intent rows before any observation existed (G82-F-03). Session 2f181cd9 later added register rows P4/P5 with observed destinations (S70-S75 on main), but the intent rows kept their 'not registered \u2014 no register row, observation or flag for it existed' status, so one published page showed the same two links as both observed (top table) and never observed (bottom table). Session aebf0747's /intent-record/ and the shop register (SHOP-04/SHOP-05) showed the observations too. Session 73029680 re-fetched all six URLs itself on 2026-11-17 (S83-S88): both short links open exactly the destinations P4/P5 record (B0DHZTCNR5 ThermoMaven; B0DZFD6R9Z CHEF iQ Sense), and both 9-character direct URLs stay Page Not Found \u2014 the mapping now has same-day captures by three sessions. The intent rows now point at P4/P5 and carry the observed block; intended fields stay empty-by-design.",
+      "detail": "Session 82372fd1 wrote the shared-register intent rows before any observation existed (G82-F-03). Session 2f181cd9 later added register rows P4/P5 with observed destinations (S70-S75 on main), but the intent rows kept their 'not registered — no register row, observation or flag for it existed' status, so one published page showed the same two links as both observed (top table) and never observed (bottom table). Session aebf0747's /intent-record/ and the shop register (SHOP-04/SHOP-05) showed the observations too. Session 73029680 re-fetched all six URLs itself on 2026-11-17 (S83-S88): both short links open exactly the destinations P4/P5 record (B0DHZTCNR5 ThermoMaven; B0DZFD6R9Z CHEF iQ Sense), and both 9-character direct URLs stay Page Not Found — the mapping now has same-day captures by three sessions. The intent rows now point at P4/P5 and carry the observed block; intended fields stay empty-by-design.",
       "action": "Reconciled by session 73029680 on 2026-11-17 (additive: the observed blocks were filled from this session's own fetches; sessions 82372fd1's and 2f181cd9's records are carried forward in the row status text; nothing deleted). G82-F-03's 'no observation anywhere' premise is thereby superseded; that flag stays as history.",
       "date": "2026-11-17",
       "session": "73029680",
@@ -1769,6 +1769,34 @@
       "status": "fixed",
       "session": "5b443d02",
       "date": "2026-11-17"
+    },
+    {
+      "id": "929-F-01",
+      "severity": "High",
+      "category": "Intake gap",
+      "item": "The 2026-11-17 brief submits five short links; this repository's register covers three -- links 4 and 5 (B0c8moW59, B0f3GKalj) appear in no data file",
+      "detail": "Session 92988cd8 re-fetched all five links named in the brief on 2026-11-17. Links 1-3 resolve exactly as the register records (B0CDY277D3, B09B7SB46R, B08DKYBTPH, all in Air Fryers node 17659096011). Links 4 and 5 -- https://link.amazon/B0c8moW59 and https://link.amazon/B0f3GKalj -- were absent from every *.json, *.html and *.md file in the repository before this session (grep over the whole tree). Both tokens are 9 characters, so neither is a 10-character ASIN (Creators API ItemIdType, S31), and both direct /dp/ checks serve Amazon's Page Not Found page (S74, S75). Each short link does open a live listing: B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer), both in Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat -- a different category from the three air fryers the site's editorial, comparison and category pages are built around. Whether the two thermometer listings are the requester's intended products is not established by any official source (same standing rule as FLG-002). No price, rating or review-count value observed on those pages is recorded anywhere in this repository (Program Policies 2(b) and 6(t), read verbatim 2026-11-17).",
+      "action": "Owner decision first (review console question 929-Q-16): confirm by ASIN name whether links 4 and 5 are intended products for this site. If yes, an integration session adds P4/P5 rows to data/products.json with S70-S75 as sources, blank attribute cells, and a Meat Thermometers category page; if no, record the decline. Do not infer intent from the redirects (FLG-002). Until then the five-link intake table on sessions/92988cd8/index.html is the only published record of links 4 and 5.",
+      "sources": [
+        "S70",
+        "S71",
+        "S72",
+        "S73",
+        "S74",
+        "S75"
+      ]
+    },
+    {
+      "id": "929-F-02",
+      "severity": "Medium",
+      "category": "Owner input (received, unverified)",
+      "item": "Owner supplied an Associates Tracking ID in the 2026-11-17 brief; its format matches Participation Requirements 2(b), its validity cannot be verified from any public page",
+      "detail": "The brief states a selected Tracking ID (value recorded in COORDINATION.md, Part session 92988cd8, and deliberately not duplicated into data files or rendered pages: data/suggestions.json question Q1 says to record owner answers in the coordination log and not to store the tag in public files). Participation Requirements 2(b), re-read verbatim 2026-11-17, requires that every Special Link include the Associates ID or 'tag' as a URL parameter, 'appearing as XXXXX-##, or such other format as we may designate' (S02); the supplied value matches that shape and carries the -20 marketplace suffix used in Amazon's own format example. What no public page can establish: whether the tag is registered to an approved Associates account, whether that account is approved at all, and whether the marketplace matches -- Schedule 1 of the Operating Agreement lists only the United States / amazon.com (S01). No outbound link on this site carries the tag yet, so nothing here can earn or be measured today. This updates, but does not close, review-console question Q1 and missing item 757-M-01.",
+      "action": "Validate before use, in the sequence the brief itself prescribes (S-03: test one link per product in the enrolled Associates workflow before scaling): (1) confirm the value in Associates Central or SiteStripe once enrolled; (2) build one tagged Special Link per product and confirm its destination and its entry in the tracking report; (3) only then append the tag to outbound product links and switch on click/conversion measurement (SUG-05, Q9). Until all three steps pass, SUG-05 stays blocked, Q1 stays open, and the tag value stays out of data files and pages.",
+      "sources": [
+        "S01",
+        "S02"
+      ]
     }
   ]
 }

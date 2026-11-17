@@ -165,7 +165,7 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-82 official sources · 55 policy facts · 124 flags · 36 pages in the shared gate (counts recomputed
+82 official sources · 55 policy facts · 132 flags · 41 pages in the shared gate (counts recomputed
 2026-11-17, session `73029680`, after the rebase onto session 2f181cd9's tree), a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
@@ -745,6 +745,50 @@ blank on every page (Q-4); the campaign ledger is empty by design; and no human 
 so the bylines say an agent desk wrote them (Q-5/D-10). Two reader layers now exist side by side, and the owner
 decision on which is canonical is on the flagged page (`CBA-F-03`), not quietly resolved.
 
+## 13. Independent verification round and the five-link intake — session `92988cd8` (2026-11-17)
+
+**Verified today, from the official pages themselves.** Nineteen observations, all matching the
+register: the three registered short links still open the same three air fryers
+([S11](https://link.amazon/B04G1MEwY) · [S12](https://link.amazon/B02NbDxp3) ·
+[S13](https://link.amazon/B00hJ57DV)); all five direct `/dp/<token>` controls (three registered
+plus two new) serve Amazon's *Page Not Found*; the Operating Agreement still reads
+"Updated: October 15, 2025" with the §5 disclosure sentence verbatim
+([S01](https://affiliate-program.amazon.com/help/operating/agreement)); the Program Policies still
+read "Updated: April 14, 2026" with 2(b), 6(s), 6(t), 6(w) and 6(y) re-read verbatim
+([S02](https://affiliate-program.amazon.com/help/operating/policies)); Standard Commission Table 1
+([S25](https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ)), the 10-character
+ASIN rule ([S31](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter))
+and FTC Disclosures 101 ([S07](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers))
+are unchanged. Full record:
+[sessions/92988cd8/verification-2026-11-17.md](sessions/92988cd8/verification-2026-11-17.md).
+
+**The intake grew from three links to five, and that is now published rather than assumed.**
+The 2026-11-17 brief lists five short links. Links 4 and 5 (`B0c8moW59`, `B0f3GKalj`) appeared in
+no data file, page or document in this repository. Both are 9-character tokens (not ASINs); both
+`/dp/` controls serve Page Not Found; both short links open live **meat-thermometer** listings
+(B0DHZTCNR5, B0DZFD6R9Z) in Amazon's Thermometers & Timers › Meat browse path — a different
+category from the three air fryers every editorial surface covers. The complete five-link intake
+table, with a source link on every row, is on
+[sessions/92988cd8/index.html](sessions/92988cd8/index.html); the finding is published as
+**929-F-01** on the Flagged for review page, with the scope decision recorded as review-console
+question **929-Q-16**. No product row was added and no intent was inferred (FLG-002 rule).
+
+**The Tracking ID blocker moved from discovery to validation — not to done.** The brief supplies
+an Associates Tracking ID for the first time (value recorded in `COORDINATION.md`, Part session
+92988cd8, and deliberately not stored in data files or pages, per suggestions question Q1's own
+rule). Its format matches Participation Requirements 2(b) — the tag appearing "as XXXXX-##, or such
+other format as we may designate" — but no public page can confirm tag registration, account
+approval or marketplace match. No outbound link carries it yet, so nothing on the site can earn or
+be measured today. Recorded as **929-F-02**; review-console **Q1**, missing item **757-M-01** and
+suggestions **Q1** were updated from "value unknown" to "value received, validation pending", with
+the brief's own S-03 sequence (one tagged link per product in the enrolled workflow, destination
+plus tracking report) as the closing action. SUG-05 stays blocked until that passes.
+
+**Gates.** All twelve exit 0 on the final tree: `check_site`, `verify_site`, `link_report --strict`,
+`i2_gate`, `cba81fa5_lint`, `build_sitemap --check`, `check_all_links`,
+`build_cba81fa5_site --check`, `test_manifest_regression`, `cba81fa5_test_no_repr_output`,
+`build_read --check`, `sessions/3c886b62/tools/check_links.py`. Brief-gap verdict for every ask in
+the current brief — served, or served-but-blocked — is the brief-gap matrix on the session page.
 ---
 
 ## Session ded63349 pass (2026-11-17) — measurement machinery, intent record, sponsored-rel gate, decision console (updated after merge reconciliation)
@@ -861,5 +905,5 @@ in scope at all.
 
 ---
 
-82 official sources · 55 policy facts · 130 flags in the shared gate, a 16-page audit build, a `/docs/`
+82 official sources · 55 policy facts · 132 flags in the shared gate, a 16-page audit build, a `/docs/`
 
