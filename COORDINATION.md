@@ -7694,3 +7694,30 @@ Retired as duplicates (kept in tree as `--check`-only verifiers, both PASS on th
 
 `main` moved again (PR #147, session 2f181cd9 publish record); same recipe applied: main's board
 verbatim, this session's parts re-appended. No other session's content edited. PR: #149.
+
+---
+
+## Part 84 — session `ed27e766` (current branch `arena/ed27e766-zone3`, 2026-11-17 UTC)
+
+### 84 Session registry and claim
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `ed27e766` | `arena/ed27e766-zone3` | Refresh the decision/review layer against the complete five-link brief; reconcile outdated three-product/three-layer prompt text; define a proposed, privacy-minimizing five-event measurement schema without pretending GitHub Pages has an endpoint; update the copy-paste design prompt; run release gates; integrate via PR | in progress | 2026-11-17 |
+
+### 84 Coordination check
+
+- Read the current board through Part 83. The preceding G82 and G83 work is merged (PRs #140–#143); no open PRs were returned by `gh pr list` when this claim was made.
+- Current branch was fast-forwarded to `origin/main` at `c67596a` before the claim. The earlier shallow-boundary rebase conflict was aborted without editing or losing work; after fetching ancestry, `git pull --rebase origin main` fast-forwarded cleanly. No other branch is being used.
+- G82's suggestions files were already merged and are not considered an active claim. This is a follow-up consistency pass after the five-product register and executive-summary reconciliation in Part 83, not a takeover of another active task.
+- No new product observation, policy interpretation, user identity, account state, or audience fact will be invented. The five observed destination records are dated 2026-11-17 in `data/shop/products.json` and `data/shop/sources.json`; intended-ASIN fields remain blank by rule. The tracking ID in the current request is an owner-provided value, not account-verified evidence.
+
+### 84 Task board (claim; no implementation started before this entry)
+
+| Task | Status | Owner | Files in scope | Sources / basis | Irregularities |
+|---|---|---|---|---|---|
+| E84-T1 — Refresh current suggestions/questions (including the supplied tracking-ID status, five products/two categories, canonical reader layer, endpoint constraints and discovery actions) | in progress | `ed27e766` | `data/suggestions.json`; `data/decision-queue.json`; `data/shop/decisions.json`; `scripts/build_site.py` (source resolver and only the relevant design-brief/suggestions/queue renderers); generated `suggestions.html`, `decision-queue.html`, `shop/decisions/index.html` | Existing official registers `data/sources.json` and `data/shop/sources.json`; `data/shop/products.json`; user brief (owner inputs only) | Existing Q1/Q2/Q11/Q12 and DEC-03 text may be stale; do not describe supplied short links as invalid |
+| E84-T2 — Reconcile the copy-paste design prompt with current scope and publish a current-state summary/addendum | in progress | `ed27e766` | `data/design-brief.json`; generated `design-brief.html`; `sessions/ed27e766/**` | Existing official sources linked in the prompt register; product listing records SH-S11–SH-S15 | Product imagery, human byline, brand, audience, and account-dependent recommendations remain gated |
+| E84-T3 — Verify the modified output and complete integration | planned | `ed27e766` | claimed files only; this Part of `COORDINATION.md` | repository gates; no external product re-fetch planned | Any remaining infrastructure/owner-side dependency remains explicitly flagged |
+
+**Scope boundary:** no edits to root publication content, product/source/flag registers, shared analytics infrastructure, the five submitted links, `sitemap.xml`, `feed.xml`, or another session's verification records. No click-collection endpoint will be deployed or faked: the current Pages host is static; a separate runtime and its logging/retention behavior need evidence before activation. The five-event list will be labelled a proposal because the brief requests five definitions but does not name them.
