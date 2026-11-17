@@ -1,0 +1,60 @@
+{
+ "_meta": {
+  "title": "Product-intent confirmation record — one row per submitted link (session ded63349, 2026-11-17)",
+  "rule": "The brief specifies per submitted link: the intended ASIN, the official listing URL, the confirmation date and the source, with observed redirect targets kept in a separate field. The two field groups are never merged: a redirect is an observation anyone can reproduce; intent is a statement only the account owner can make, so intended_asin stays null until the owner supplies it (question Q2, finding I2-F-04). No value in this record is inferred; blanks are recorded as nulls with a reason.",
+  "companion_page": "site/intent-record.html",
+  "source_register": "data/i2/sources.json (I2-S03, I2-S07..I2-S12)",
+  "re_observation": "Session ded63349 re-followed all three submitted links on 2026-11-17 (record: sessions/ded63349/verification-2026-11-17.md, observations D6-V14..V17); destinations and served titles were identical to the 2026-11-16 register."
+ },
+ "records": [
+  {
+   "ref": "P1",
+   "submitted_link": "https://link.amazon/B04G1MEwY",
+   "submitted_token_chars": 9,
+   "intended_asin": null,
+   "intended_asin_reason": "Not supplied by the owner. The submitted token is 9 characters and cannot be an ASIN (an ASIN is a 10-character identifier, Creators API GetItems itemIdType documentation). Only the account owner can confirm intent — question Q2, finding I2-F-04.",
+   "official_listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+   "listing_title_as_served": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+   "confirmation_date": "2026-11-16",
+   "re_observed": "2026-11-17 — same destination and served title",
+   "observed_redirect_target": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1ffea10d1d3c7fc5&channelId=704&plpRedirect=mhFallback",
+   "observed_redirect_note": "Logged as returned on 2026-11-17. The plpRedirect=mhFallback parameter also appears when a known-valid ASIN is fetched directly, so it is not evidence of a failed lookup (correction recorded by session 588693c9). The srctok parameter is a third-party shortener's token, not an Associates tag.",
+   "associates_tag_on_destination": "None observed",
+   "sources": ["I2-S07", "I2-S10", "I2-S03"]
+  },
+  {
+   "ref": "P2",
+   "submitted_link": "https://link.amazon/B02NbDxp3",
+   "submitted_token_chars": 9,
+   "intended_asin": null,
+   "intended_asin_reason": "Not supplied by the owner. The submitted token is 9 characters and cannot be an ASIN. Only the account owner can confirm intent — question Q2, finding I2-F-04.",
+   "official_listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+   "listing_title_as_served": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+   "confirmation_date": "2026-11-16",
+   "re_observed": "2026-11-17 — same destination and served title",
+   "observed_redirect_target": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-6af2110975721338&channelId=704&plpRedirect=mhFallback",
+   "observed_redirect_note": "Logged as returned on 2026-11-17; see the P1 note on the plpRedirect parameter.",
+   "associates_tag_on_destination": "None observed",
+   "sources": ["I2-S08", "I2-S11", "I2-S03"]
+  },
+  {
+   "ref": "P3",
+   "submitted_link": "https://link.amazon/B00hJ57DV",
+   "submitted_token_chars": 9,
+   "intended_asin": null,
+   "intended_asin_reason": "Not supplied by the owner. The submitted token is 9 characters and cannot be an ASIN. Only the account owner can confirm intent — question Q2, finding I2-F-04.",
+   "official_listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+   "listing_title_as_served": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+   "confirmation_date": "2026-11-16",
+   "re_observed": "2026-11-17 — same destination and served title",
+   "observed_redirect_target": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-573e21e39d4d4c1c&channelId=704&plpRedirect=mhFallback&th=1",
+   "observed_redirect_note": "Logged as returned on 2026-11-17; see the P1 note on the plpRedirect parameter.",
+   "associates_tag_on_destination": "None observed",
+   "sources": ["I2-S09", "I2-S12", "I2-S03"]
+  }
+ ],
+ "next_step": {
+  "special_links_test": "When the account is enrolled and a tag exists (question Q1): build one tagged link per product, click it from a real visit, confirm the destination and that the click appears in the Associates reports, and only then scale to the rest. Until that test is run by the account holder, no claim is made about any link's validity or compliance status.",
+  "sources": ["I2-S02"]
+ }
+}

@@ -26,6 +26,7 @@ Checks:
       Amazon page, no Amazon-hosted image, no price-tracking or alerting control
   G8  every internal link and anchor resolves inside site/
   G9  no placeholder marker (TODO/FIXME/TBD/lorem/XXXX)
+  G11 every outbound product link carries rel="sponsored" (proposal D-19)
   G10 every page states the date its facts were read
 
 Exit code 0 means every check passed.
@@ -58,9 +59,21 @@ AMAZON_HOSTS = re.compile(
     r"|(^|\.)ssl-images-amazon\.com$"
     r"|(^|\.)media\.amazon\.com$", re.I)
 
+# Product-page URLs only (ded63349): /dp/ and /gp/product/ on any amazon host and the
+# submitted link.amazon short links. Browse-node, search and help pages are not product
+# links, so they are deliberately left out of this rule.
+PRODUCT_HREF = re.compile(
+    r'https?://[^\"\']*?(?:amazon\.[a-z]{2,3})?/[^\"\']*(?:/dp/[A-Z0-9]{10}|/gp/product/[A-Z0-9]{10})[^\"\']*'
+    r'|https?://link\.amazon/[^\"\']*', re.I)
+
 OFFICIAL_HOSTS = re.compile(
-    r"https?://[^\"']*?(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov|github\.com|githubusercontent\.com|api\.github\.com)",
+    r"https?://[^\"']*?(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov|github\.com|githubusercontent\.com|api\.github\.com|search\.google\.com|developers\.google\.com)",
     re.I)
+
+# ded63349 (2026-11-17): search.google.com (Search Console, discovery DA-11) and
+# developers.google.com (the search-documentation pages the brief cites) are official
+# hosts for those references, so the provenance gate recognises them.
+
 
 # The only numeric money and rating strings allowed to render. These are the
 # published programme rates, quoted on the category-reference table, not claims
@@ -229,6 +242,23 @@ def check(root: pathlib.Path):
                 errs.append(f"G7 {rel}: prohibited wording — {why} -> {m.group(0)!r}")
         if re.search(r'type="(?:number|range)"[^>]*(?:price|alert)', raw, re.I):
             errs.append(f"G7 {rel}: price input control present")
+
+        # ---- G11 sponsored rel on product links (ded63349, 2026-11-17; proposal D-19)
+        # Every outbound link to an Amazon product page must carry rel="sponsored":
+        # the site's declared purpose is Associates promotion, so the relationship
+        # markup travels with the link even while no Associates tag exists. Policy
+        # and documentation links are not product links and stay unmarked.
+        for m_tag in ANCHOR_RE.finditer(raw):
+            atag = m_tag.group(0)
+            href_m = re.search(r'href="([^"]*)"', atag)
+            if not href_m:
+                continue
+            href = href_m.group(1)
+            if not PRODUCT_HREF.search(href):
+                continue
+            rel_m = re.search(r'rel="([^"]*)"', atag)
+            if not rel_m or "sponsored" not in rel_m.group(1).split():
+                errs.append(f'G11 {rel}: product link without rel="sponsored" -> {href[:80]}')
 
         # ---- G8 internal links and anchors
         for m in re.finditer(r'href="([^"]+)"', raw):

@@ -171,6 +171,43 @@ def products_for_band():
     return out
 
 
+def dashboard_links() -> list[tuple[str, str]]:
+    """Every flat dashboard surface, from the flat generator's own nav lists.
+
+    Session ded63349 (2026-11-17): the brief asks that the publication front page keep
+    'every dashboard surface reachable from the footer and a single navigation group'.
+    The list is imported from scripts/build_site.py's NAV_PRIMARY/NAV_MORE (the canonical
+    register of those surfaces) instead of being copied, so the two stay in sync. If the
+    import fails, the band still builds with the core surfaces listed by hand.
+    """
+    try:
+        import sys as _sys
+        scripts_dir = str(ROOT / "scripts")
+        if scripts_dir not in _sys.path:
+            _sys.path.insert(0, scripts_dir)
+        import build_site as flat  # module-level code only reads data files
+        links: list[tuple[str, str]] = []
+        for href, label in flat.NAV_PRIMARY:
+            if href not in ("index.html",):
+                links.append((href, label))
+        for _group, items in flat.NAV_MORE:
+            links.extend(items)
+        if not any(h == "flagged.html" for h, _ in links):
+            links.append(("flagged.html", "Flagged for review"))
+        return links
+    except Exception as exc:  # pragma: no cover - fallback keeps the band renderable
+        print(f"build_cba81fa5_site: dashboard link import failed ({exc}); using fallback list")
+        return [
+            ("marketing/index.html", "Marketing hub"),
+            ("products.html", "Products"),
+            ("pricing.html", "Pricing & commission"),
+            ("executive-summary.html", "Executive summary"),
+            ("sources.html", "Sources"),
+            ("flagged.html", "Flagged for review"),
+            ("dashboard/index.html", "Full audit (16 pages)"),
+        ]
+
+
 def frontdoor_block() -> str:
     fd = GUIDES["front_door"]
     cards = "\n".join(
@@ -207,9 +244,16 @@ def frontdoor_block() -> str:
         f'  <p class="fd-fine">{fd["fine"]} '
         f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer" '
         f'title="{SRC["CBA-S09"]["title"]}">CBA-S09</a></p>\n'
+        f'  <p class="fd-fine">How this site counts visits and clicks: '
+        f'<a href="site/measure.html">How we measure</a> &middot; '
+        f'<a href="site/intent-record.html">Product-intent record</a> &middot; '
+        f'<a href="feed.xml">Atom feed</a></p>\n'
         '</section>\n\n'
         '<p class="fd-ops" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
         'font-weight:700;color:#767f8d;margin:28px 0 6px">Operations &middot; the audit behind the front door</p>\n'
+        '<nav class="fd-ops-nav" aria-label="Dashboard surfaces" style="display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 14px">\n'
+        + "".join(f'<a href="{h}">{html_escape(lab)}</a>' for h, lab in dashboard_links())
+        + '\n</nav>\n'
         f'{FD_END}'
     )
 
@@ -381,6 +425,11 @@ def main() -> int:
             want = want.replace('<link rel="stylesheet" href="assets/style.css">',
                                 '<link rel="stylesheet" href="assets/style.css">\n'
                                 '<link rel="stylesheet" href="assets/front-door.css">')
+        # ded63349 (2026-11-17): feed discovery on the publication front page.
+        if 'application/atom+xml' not in want:
+            want = want.replace('</head>',
+                                '<link rel="alternate" type="application/atom+xml" '
+                                'title="Air Fryer Field Notes — new guides and field notes" href="feed.xml">\n</head>', 1)
         if "Air Fryer Field Notes" not in want.split("<title>")[1].split("</title>")[0]:
             want = re.sub(r"<title>[^<]*</title>",
                           "<title>Air Fryer Field Notes — three air fryers, checked line by line</title>",

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product-intent confirmation record — what each submitted link was confirmed to be · Air Fryer Field Notes</title>
+<meta name="description" content="For each submitted link: the intended ASIN (blank until the owner supplies it), the official listing URL, the confirmation date and the source — with observed redirect targets kept in a separate field, never merged.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/site/intent-record.html">
+<link rel="alternate" type="application/atom+xml" title="Air Fryer Field Notes — new guides and field notes" href="../feed.xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="disclose-bar" role="note">
+  <div class="wrap">
+    <strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.
+    <span class="disclose-more">Links to Amazon on this site are evidence links while a tracking tag is unavailable, so they earn nothing yet. <a href="evidence.html#disclosure">Why this is stated twice</a>.</span>
+  </div>
+</div>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">AF</span>
+      <span class="brand-text"><strong>Air Fryer Field Notes</strong><small>Three air fryers, checked line by line.</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html">Start here</a><a href="products.html">The three air fryers</a><a href="guides/index.html">Buying guides</a><a href="evidence.html">How we know</a><a href="measure.html">How we measure</a><a href="intent-record.html" class="on">Intent record</a><a href="answers.html">Open questions</a><a href="style-guide.html">Our rules</a><a href="decisions.html">Suggestions &amp; decisions</a></nav>
+  </div>
+</header>
+<main id="main" class="wrap">
+
+<p class="small">How we know › Intent record</p>
+<h1>Product-intent confirmation record</h1>
+<p class="lede">Three links were submitted for promotion. For each one this record stores what the brief requires in separate fields: the intended ASIN (blank until the account owner supplies it), the official listing URL, the confirmation date and the source — and it keeps the observed redirect target in a field of its own, because a redirect proves where a link goes, not what someone meant.</p>
+<p class="small">Record adopted 2026-11-17 (proposal <a href="decisions.html#D-24">D-24</a>) · confirmations performed 2026-11-16, re-observed 2026-11-17 · machine-readable copy: <span class="mono">data/ded63349/intent_record.json</span> in the repository</p>
+
+<h2>The record</h2>
+<div class="tablewrap"><table>
+<caption>One row per submitted link — the intent fields and the observation fields are separate and stay separate</caption>
+<thead><tr><th>Ref</th><th>Submitted link</th><th>Intended ASIN</th><th>Official listing URL</th><th>Confirmation date</th><th>Observed redirect target (separate field)</th><th>Source</th></tr></thead>
+<tbody>
+<tr>
+  <td class="lead-cell"><span class="mono">P1</span></td>
+  <td><span class="mono">link.amazon/B04G1MEwY</span> (9 characters — <strong>not</strong> an ASIN; an ASIN is a 10-character identifier <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API GetItems: itemIdType defaults to ASIN; documented examples are 10 characters — read 2026-11-16">I2-S03</a>)</td>
+  <td><span class="blank">Not supplied by the owner</span> — only the account holder can confirm intent. <a href="decisions.html#Q2">Question Q2</a> · <a href="flagged.html#I2-F-04">I2-F-04</a></td>
+  <td><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer">amazon.com/dp/B0CDY277D3</a> — CHEFMAN 6 Quart Dual Basket Air Fryer Oven</td>
+  <td>2026-11-16 (register) · re-observed 2026-11-17, same destination and served title</td>
+  <td><span class="mono">amazon.com/dp/B0CDY277D3?lv=shuf&amp;btn_type=ss&amp;…&amp;plpRedirect=mhFallback</span> — logged as returned; the <span class="mono">plpRedirect</span> parameter also appears on direct listings, so it is not evidence of a failed lookup</td>
+  <td><a class="src" href="https://link.amazon/B04G1MEwY" target="_blank" rel="noopener noreferrer" title="Submitted link 1 — observed redirect — read 2026-11-16">I2-S07</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="Product detail page B0CDY277D3 — read 2026-11-16">I2-S10</a></td>
+</tr>
+<tr>
+  <td class="lead-cell"><span class="mono">P2</span></td>
+  <td><span class="mono">link.amazon/B02NbDxp3</span> (9 characters — not an ASIN <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API GetItems: itemIdType defaults to ASIN; documented examples are 10 characters — read 2026-11-16">I2-S03</a>)</td>
+  <td><span class="blank">Not supplied by the owner</span> — only the account holder can confirm intent. <a href="decisions.html#Q2">Question Q2</a> · <a href="flagged.html#I2-F-04">I2-F-04</a></td>
+  <td><a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer">amazon.com/dp/B09B7SB46R</a> — Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven</td>
+  <td>2026-11-16 (register) · re-observed 2026-11-17, same destination and served title</td>
+  <td><span class="mono">amazon.com/dp/B09B7SB46R?lv=shuf&amp;btn_type=ss&amp;…&amp;plpRedirect=mhFallback</span></td>
+  <td><a class="src" href="https://link.amazon/B02NbDxp3" target="_blank" rel="noopener noreferrer" title="Submitted link 2 — observed redirect — read 2026-11-16">I2-S08</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer" title="Product detail page B09B7SB46R — read 2026-11-16">I2-S11</a></td>
+</tr>
+<tr>
+  <td class="lead-cell"><span class="mono">P3</span></td>
+  <td><span class="mono">link.amazon/B00hJ57DV</span> (9 characters — not an ASIN <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API GetItems: itemIdType defaults to ASIN; documented examples are 10 characters — read 2026-11-16">I2-S03</a>)</td>
+  <td><span class="blank">Not supplied by the owner</span> — only the account holder can confirm intent. <a href="decisions.html#Q2">Question Q2</a> · <a href="flagged.html#I2-F-04">I2-F-04</a></td>
+  <td><a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer">amazon.com/dp/B08DKYBTPH</a> — Chefman Air Fryer 8 Qt TurboFry 4-in-1</td>
+  <td>2026-11-16 (register) · re-observed 2026-11-17, same destination and served title</td>
+  <td><span class="mono">amazon.com/dp/B08DKYBTPH?lv=shuf&amp;btn_type=ss&amp;…&amp;plpRedirect=mhFallback&amp;th=1</span></td>
+  <td><a class="src" href="https://link.amazon/B00hJ57DV" target="_blank" rel="noopener noreferrer" title="Submitted link 3 — observed redirect — read 2026-11-16">I2-S09</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer" title="Product detail page B08DKYBTPH — read 2026-11-16">I2-S12</a></td>
+</tr>
+</tbody>
+</table></div>
+
+<h2>Why the intent fields and the observation fields are never merged</h2>
+<p>A redirect target is an <strong>observation</strong>: it is what Amazon served when the link was followed, on the dates recorded, and anyone can reproduce it. An intended product is an <strong>instruction</strong>: it exists in the mind of whoever submitted the link, and no official page states it. Merging the two fields would turn the observation into an assumption and then into marketing copy — the exact move that makes a site untrustworthy. The split also has a practical use: if Amazon ever changes where a short link lands, the observation field changes and the drift is visible, while the intent field stays whatever the owner said it was. The three listings sit in Amazon's browse path Home &amp; Kitchen › Kitchen &amp; Dining › Small Appliances › Fryers › Air Fryers, shown on each listing page <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer" title="Browse path as served on the listing — read 2026-11-16">I2-S10</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer" title="Browse path as served on the listing — read 2026-11-16">I2-S11</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer" title="Browse path as served on the listing — read 2026-11-16">I2-S12</a>.</p>
+
+<h2>What would close the gaps</h2>
+<ul class="findings">
+<li><strong>The intended ASINs.</strong> The account owner states, in the coordination log, which ASIN each submitted link was meant to promote — or confirms the observed destinations. Either answer fills the blank column with a sourced statement. <a href="decisions.html#Q2">Q2</a></li>
+<li><strong>The Associates tag.</strong> Until one exists, no link on this site is a Special Link and no buy action is active; every Amazon link is an evidence link marked <span class="mono">rel="sponsored"</span>. The tag is question <a href="decisions.html#Q1">Q1</a>; the no-tag finding is <a href="flagged.html#I2-F-03">I2-F-03</a>.</li>
+<li><strong>The Special Links test, one product at a time.</strong> Once the account is enrolled and a tag exists: build one tagged link, click it from a real visit, confirm the destination and that the click appears in the Associates reports, and only then scale to the rest. Until the account holder runs that test, no claim is made here about any link's validity or compliance status — the submitted short links are recorded as observed, not judged. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Participation Requirements 2(b): Special Links must use the assigned Associates ID — read 2026-11-16">I2-S02</a></li>
+</ul>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-disclose"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+    <p class="foot-small">Air Fryer Field Notes is independent and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates. Product information shown on this site comes from Amazon pages; the policy rules quoted here come from Amazon's programme documents, read on the dates shown.</p>
+    <p class="foot-small"><a href="evidence.html">How we know — sources and verification log</a> · <a href="measure.html">How we measure</a> · <a href="products.html">The three air fryers</a> · <a href="decisions.html">Suggestions &amp; decisions</a> · <a href="front-door.html">Front door (audit dashboard)</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
+  </div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>
