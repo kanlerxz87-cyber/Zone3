@@ -16,6 +16,7 @@ from __future__ import annotations
 import html
 import json
 import pathlib
+import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = "https://github.com/kanlerxz87-cyber/Zone3"
@@ -296,8 +297,14 @@ def build_decision_queue() -> None:
 
     rows = []
     for r in q["questions"]:
-        blocks = (" &middot; ".join(
-            f'<a class="flagid" href="#{e(b)}">{e(b)}</a>' for b in r["blocks"]
+        # A blocked item is usually a question on this page, so it links to a same-page
+        # anchor. Session 3c96f21d (2026-11-17) added flag ids to that list, and a flag
+        # lives on the flagged-for-review page, not here: an id that names a flag now
+        # links to flagged.html#<id>. Question ids keep the same-page anchor.
+        def _block_link(b: str) -> str:
+            target = "flagged.html#" + e(b) if re.match(r"^[A-Z][A-Za-z0-9]*-F-\d+$", b) else "#" + e(b)
+            return f'<a class="flagid" href="{target}">{e(b)}</a>'
+        blocks = (" &middot; ".join(_block_link(b) for b in r["blocks"]
         ) or '<span class="muted">none directly</span>')
         rows.append([
             f'<strong id="{e(r["id"])}">{e(r["id"])}</strong>',

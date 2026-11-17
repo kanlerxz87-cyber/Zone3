@@ -28,6 +28,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "sessions" / "aebf0747"))
 import build_pass  # noqa: E402  (the publication chrome, so the new page matches the front page)
+import publish_pass  # noqa: E402  (the mechanical pass every published page gets)
 
 SITE_URL = "https://kanlerxz87-cyber.github.io/Zone3/"
 READ_ON = "2026-11-17"
@@ -497,6 +498,19 @@ browser has recorded — nothing more, and nothing that came from anywhere else.
 
 # ---------------------------------------------------------------- main
 
+def publication_pass(html_text: str, rel: str) -> str:
+    """Apply the same mechanical publication pass every other page gets.
+
+    The disclosure strip, the shared footer and the head markup are added by
+    sessions/aebf0747/publish_pass.py after any generator has written a page. The desk is
+    generated the same way, so this call reproduces what the pass does to it. The pass is
+    idempotent and marker-based, so running it here does not stack anything.
+    """
+    existing = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob("*") if p.is_file()}
+    new_html, _missing = publish_pass.apply(html_text, rel, existing)
+    return new_html
+
+
 def main() -> int:
     check = "--check" in sys.argv
     events = load("events.json")
@@ -504,7 +518,7 @@ def main() -> int:
     ledger = load("ledger.json")
 
     js = build_js(cfg)
-    page = build_page(events, cfg, ledger)
+    page = publication_pass(build_page(events, cfg, ledger), "analytics/index.html")
 
     outputs = [(OUT_JS, js), (OUT_PAGE, page)]
     stale = []
@@ -522,6 +536,10 @@ def main() -> int:
             return 1
         print("analytics layer is current: assets/analytics.js, analytics/index.html")
         return 0
+
+    # The desk is written; give it the same chrome every other page has, exactly as the
+    # publication pass does for the pages the other generators write.
+    publish_pass.run(ROOT, write=True)
 
     print({"written": [p.relative_to(ROOT).as_posix() for p, _ in outputs],
            "changed": stale,
