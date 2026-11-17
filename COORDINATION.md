@@ -7567,3 +7567,16 @@ file belongs to another session's scope.
 **Gate results on the merged tree:** `check_site` OK 36 pages / 5 products / 75 sources /
 123 flags · `check_all_links` 0 errors (186 pages, 215 external URLs) · `build_sitemap --check`
 97 pages, 0 extras · `verify_site` PASS 140 pages / 2,188 rows.
+
+### 2F-T8 — publish record (done, 2026-11-17)
+
+| Item | Result |
+|---|---|
+| Pull before push | `git pull origin main` / `git merge origin/main` before every push; two merge rounds (`c67596a`, then the round that produced the merge base for PR #146). Every conflict resolved by keeping **every side in full**: generated HTML was resolved to main's side and then **regenerated** from the unioned registers; `data/flags.json` and `data/products.json` were unioned by ID; `COORDINATION.md` keeps main's board verbatim with this session's Part appended. No line-start conflict marker was ever committed (checked before every continue and every push). |
+| PR | **#146** — https://github.com/kanlerxz87-cyber/Zone3/pull/146 ("Zone3: session 2f181cd9 — five-link intake (two new links), Decision Lab, design-direction pack, final integration"). |
+| Merge | **MERGED** without waiting for review, per the brief — merge commit **`213516e`**, state `MERGED`, merged at 2026-11-17T16:42:25Z. |
+| Pages deploy | Pages API `repos/kanlerxz87-cyber/Zone3/pages/builds/latest` for commit `213516e` reported **`built`** (created 2026-11-17T16:42:27Z); site configuration source `main` `/`. |
+| Live checks (cache-busted, after `built`) | **`/sessions/2f181cd9/intake.html?2f=livecheck`** — the register renders all five rows, disclosure strip under the masthead, intended columns marked `Unverified` with the reason, P4 and P5 showing the Thermometers & Timers > Meat breadcrumb and the F-2F-01/02/03 chips. **`products.html?2f=livecheck`** — five product rows now (P4 and P5 present with the thermometer status), lead reads "three open air-fryer listings and two open meat-thermometer listings", the breadcrumb sentence names both branches, and every row carries its source links. |
+| Cross-session corroboration | Sessions `82372fd1` / `59b2194c` / `974e366d` built `/shop/` from the same brief and mapped the same two links to B0DHZTCNR5 and B0DZFD6R9Z independently. Two sessions, same day, same destinations, recorded in the merge addendum above. |
+| Session status | 2F-T1…T8 **done**. Records: `research/2f181cd9-verification-log.md`, `research/2f181cd9-repo-review.md`, `sessions/2f181cd9/*.html`. Flags raised: F-2F-01…F-2F-10, all published on `flagged.html`. Suggestions: SUG-2F-01…13, all published **proposed / ready / blocked** — none scheduled, none implemented, which is the point of the console. |
+| One follow-up applied here | The generated page title still read "Zone3 — Air Fryer Research Desk" on every flat page after P4 and P5 were added. Changed to "Zone3 — Kitchen Product Research Desk" in `scripts/build_site.py` so the title stops contradicting the register. The brand name itself remains an owner decision (Q2F-05, SUG-2F-12). |
