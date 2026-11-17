@@ -499,9 +499,9 @@
    "source": [
     "S02"
    ],
-   "what_we_dont_know": "The tag value. No document read in this project contains it.",
+   "what_we_dont_know": "UPDATE 2026-11-17 (session 92988cd8): the owner supplied a Tracking ID in the brief. Its value is recorded in COORDINATION.md, Part session 92988cd8, and deliberately not stored in data files or pages -- this register's own rule for Q1 is to record owner answers in the coordination log and keep the tag out of public files. Still unknown: whether the tag is registered to an approved Associates account, whether the account is approved, and whether the marketplace matches (Schedule 1 lists the United States / amazon.com only, S01). No public page can settle any of that.",
    "why_it_matters": "Blocks SUG-05 (CTAs) and every commission-earning link on the site.",
-   "how_to_discover": "Owner supplies the tag from Associates Central. Record it in the coordination log; do not store it in public files."
+   "how_to_discover": "Validate rather than discover: (1) confirm the value in Associates Central or SiteStripe after enrolment; (2) test one tagged link per product in the enrolled Associates workflow and confirm destination plus tracking report -- the brief's own S-03 sequence; (3) only then append the tag to outbound links and switch on measurement. Until all three pass, SUG-05 stays blocked. Format requirement read verbatim 2026-11-17: Participation Requirements 2(b), tag appearing 'as XXXXX-##, or such other format as we may designate' (S02). Recorded as 929-F-02."
   },
   {
    "id": "Q2",

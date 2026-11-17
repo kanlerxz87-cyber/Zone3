@@ -49,6 +49,10 @@ PAGES = [
     "articles/where-air-fryers-sit-in-amazons-category-tree.html",
     "articles/the-24-hour-window-how-amazons-cookie-pays.html",
     "sessions/5a56c084/index.html",
+    # Added by session 92988cd8 (2026-11-17): the five-link intake table (the brief lists
+    # five short links; the register carried three), the 2026-11-17 verification round and
+    # the brief-gap matrix. Listed here so the shared gate covers it, same as the row above.
+    "sessions/92988cd8/index.html",
     # Added by integration session edbd56a1 (2026-11-14): line-by-line verification log.
     "verification.html",
 

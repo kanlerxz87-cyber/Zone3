@@ -1493,6 +1493,34 @@
    "session": "82372fd1",
    "status": "fixed",
    "repo_evidence": "scripts/check_site.py nav rule; sessions/aebf0747/build_pass.py NAV + masthead; reproduction: git worktree at ad99ca8 → 'FAILED: 1 problem(s) - index.html: navigation missing'"
+  },
+  {
+   "id": "929-F-01",
+   "severity": "High",
+   "category": "Intake gap",
+   "item": "The 2026-11-17 brief submits five short links; this repository's register covers three -- links 4 and 5 (B0c8moW59, B0f3GKalj) appear in no data file",
+   "detail": "Session 92988cd8 re-fetched all five links named in the brief on 2026-11-17. Links 1-3 resolve exactly as the register records (B0CDY277D3, B09B7SB46R, B08DKYBTPH, all in Air Fryers node 17659096011). Links 4 and 5 -- https://link.amazon/B0c8moW59 and https://link.amazon/B0f3GKalj -- were absent from every *.json, *.html and *.md file in the repository before this session (grep over the whole tree). Both tokens are 9 characters, so neither is a 10-character ASIN (Creators API ItemIdType, S31), and both direct /dp/ checks serve Amazon's Page Not Found page (S71, S74). Each short link does open a live listing: B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer), both in Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat -- a different category from the three air fryers the site's editorial, comparison and category pages are built around. Whether the two thermometer listings are the requester's intended products is not established by any official source (same standing rule as FLG-002). No price, rating or review-count value observed on those pages is recorded anywhere in this repository (Program Policies 2(b) and 6(t), read verbatim 2026-11-17).",
+   "action": "Owner decision first (review console question 929-Q-16): confirm by ASIN name whether links 4 and 5 are intended products for this site. If yes, an integration session adds P4/P5 rows to data/products.json with S70-S75 as sources, blank attribute cells, and a Meat Thermometers category page; if no, record the decline. Do not infer intent from the redirects (FLG-002). Until then the five-link intake table on sessions/92988cd8/index.html is the only published record of links 4 and 5.",
+   "sources": [
+    "S70",
+    "S71",
+    "S72",
+    "S73",
+    "S74",
+    "S75"
+   ]
+  },
+  {
+   "id": "929-F-02",
+   "severity": "Medium",
+   "category": "Owner input (received, unverified)",
+   "item": "Owner supplied an Associates Tracking ID in the 2026-11-17 brief; its format matches Participation Requirements 2(b), its validity cannot be verified from any public page",
+   "detail": "The brief states a selected Tracking ID (value recorded in COORDINATION.md, Part session 92988cd8, and deliberately not duplicated into data files or rendered pages: data/suggestions.json question Q1 says to record owner answers in the coordination log and not to store the tag in public files). Participation Requirements 2(b), re-read verbatim 2026-11-17, requires that every Special Link include the Associates ID or 'tag' as a URL parameter, 'appearing as XXXXX-##, or such other format as we may designate' (S02); the supplied value matches that shape and carries the -20 marketplace suffix used in Amazon's own format example. What no public page can establish: whether the tag is registered to an approved Associates account, whether that account is approved at all, and whether the marketplace matches -- Schedule 1 of the Operating Agreement lists only the United States / amazon.com (S01). No outbound link on this site carries the tag yet, so nothing here can earn or be measured today. This updates, but does not close, review-console question Q1 and missing item 757-M-01.",
+   "action": "Validate before use, in the sequence the brief itself prescribes (S-03: test one link per product in the enrolled Associates workflow before scaling): (1) confirm the value in Associates Central or SiteStripe once enrolled; (2) build one tagged Special Link per product and confirm its destination and its entry in the tracking report; (3) only then append the tag to outbound product links and switch on click/conversion measurement (SUG-05, Q9). Until all three steps pass, SUG-05 stays blocked, Q1 stays open, and the tag value stays out of data files and pages.",
+   "sources": [
+    "S01",
+    "S02"
+   ]
   }
  ]
 }

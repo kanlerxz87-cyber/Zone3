@@ -576,7 +576,61 @@
       "status": "observed",
       "status_note": "Fetched 2026-11-16 by session 145b8df7 (srctok-38bef00eb1e962ef). Final URL https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-38bef00eb1e962ef&channelId=704&plpRedirect=mhFallback&th=1. Same destination as S13 (2026-11-13) and S54 (2026-11-14). The submitted code is 9 characters, so it is not an ASIN (FLG-001), and the destination is an observation, not proof of owner intent (FLG-002). [Id renumbered from S68 on integration onto main, where that id already names a different document.]",
       "used_for": "Product 3 destination for the editorial layer."
+    },
+    {
+      "id": "S70",
+      "title": "Submitted product link 4: link.amazon/B0c8moW59 (redirect result)",
+      "url": "https://link.amazon/B0c8moW59",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 92988cd8. Final URL: https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-633f9dc54185b50f&channelId=500&plpRedirect=mhFallback . Page title read: 'Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, +/-0.5 F Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen'. Breadcrumb: Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat. No tag= parameter in the destination URL. This token appeared nowhere in this repository before this session (929-F-01). Price, rating and review-count values present in the served page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002). New intake candidate 4 (929-F-01, 929-Q-16)."
+    },
+    {
+      "id": "S71",
+      "title": "Amazon.com product page check: amazon.com/dp/B0c8moW59",
+      "url": "https://www.amazon.com/dp/B0c8moW59",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 92988cd8: title 'Page Not Found'; page text 'Sorry! We couldn't find that page. Try searching or go to Amazon's home page.' Consistent with the 9-character token being a short-link ID and not a 10-character ASIN (S31).",
+      "used_for": "Direct-identifier check for submitted link 4 (929-F-01)."
+    },
+    {
+      "id": "S72",
+      "title": "Observed redirect target: amazon.com/dp/B0DHZTCNR5 (page title)",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Reached 2026-11-17 via link.amazon/B0c8moW59 (S70). Page title and breadcrumb read from that fetch. Listing sits in Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (node 289810), not in Air Fryers (node 17659096011). Price, rating and review-count values on the page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
+      "used_for": "Title and breadcrumb of destination 4 only, shown on the session record page and the Flagged for Review page."
+    },
+    {
+      "id": "S73",
+      "title": "Submitted product link 5: link.amazon/B0f3GKalj (redirect result)",
+      "url": "https://link.amazon/B0f3GKalj",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 92988cd8. Final URL: https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-101536bcd8e0be02&channelId=500&plpRedirect=mhFallback&th=1 . Page title read: 'Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000 F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen'. Breadcrumb: Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat. No tag= parameter in the destination URL. This token appeared nowhere in this repository before this session (929-F-01). Price, rating and review-count values present in the served page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002). New intake candidate 5 (929-F-01, 929-Q-16)."
+    },
+    {
+      "id": "S74",
+      "title": "Amazon.com product page check: amazon.com/dp/B0f3GKalj",
+      "url": "https://www.amazon.com/dp/B0f3GKalj",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 92988cd8: title 'Page Not Found'; page text 'Sorry! We couldn't find that page. Try searching or go to Amazon's home page.' Consistent with the 9-character token being a short-link ID and not a 10-character ASIN (S31).",
+      "used_for": "Direct-identifier check for submitted link 5 (929-F-01)."
+    },
+    {
+      "id": "S75",
+      "title": "Observed redirect target: amazon.com/dp/B0DZFD6R9Z (page title)",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Reached 2026-11-17 via link.amazon/B0f3GKalj (S73). Page title and breadcrumb read from that fetch. Listing sits in Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (node 289810), not in Air Fryers (node 17659096011). Price, rating and review-count values on the page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
+      "used_for": "Title and breadcrumb of destination 5 only, shown on the session record page and the Flagged for Review page."
     }
   ],
-  "id_reservation": "S01-S59 are held by earlier sessions (main@110). S60-S69 are claimed by session 145b8df7 for its 2026-11-16 re-verification captures and are NOT free: a session rebasing onto an older main must append from S70, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
+  "id_reservation": "S01-S59 are held by earlier sessions. S60-S69 are claimed by session 145b8df7 (its 2026-11-16 re-verification captures). S70-S75 are claimed by session 92988cd8 for its 2026-11-17 captures of the two newly submitted short links, their /dp/ controls and their destination listings. A session appending after 92988cd8 must start at S76, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
 }
