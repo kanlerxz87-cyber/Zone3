@@ -7306,10 +7306,17 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 59b2194c | `arena/59b2194c-zone3` | Current-tree review and executive-summary reconciliation for the five-link brief; verify existing gates and record remaining owner/account-side blockers | in progress | 2026-11-17 |
+| 59b2194c | `arena/59b2194c-zone3` | Current-tree review and executive-summary reconciliation for the five-link brief; verify existing gates and record remaining owner/account-side blockers | done | 2026-11-17 |
 
 ### 83 Task board (claimed before edits)
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| G83-T1 — Review current publication against the five-link brief, run release gates, reconcile top-level executive summary with the current shop register, and document verifiable remainder | in progress | 59b2194c | `EXECUTIVE-SUMMARY.md`, `sessions/59b2194c/**`, this Part of `COORDINATION.md` | `data/shop/products.json`, `data/shop/sources.json`, `data/shop/decisions.json`, GitHub Pages docs | stale three-product executive-summary baseline; analytics/Search Console and enrolled-account actions remain owner-side |
+| G83-T1 — Review current publication against the five-link brief, run release gates, reconcile top-level executive summary with the current shop register, and document verifiable remainder | done | 59b2194c | `EXECUTIVE-SUMMARY.md`, `sessions/59b2194c/**`, this Part of `COORDINATION.md` | `data/shop/products.json`, `data/shop/sources.json`, `data/shop/decisions.json`, GitHub Pages docs | stale three-product executive-summary baseline; analytics/Search Console and enrolled-account actions remain owner-side |
+
+### 83 Completion record (2026-11-17)
+
+- Reconciled the current 5-link shop register with the historical three-product summary; added the five observed destination ASINs as dated observations, explicitly not intent confirmations. Added a concise current status, working-scope decisions, and current versus unbuilt capability notes to `EXECUTIVE-SUMMARY.md`; preserved prior sections as audit history.
+- No new Amazon observations were made. The current products/sources registers are the evidence for the dated 2026-11-17 observations (shop sources SH-S06–SH-S15); official ASIN definition is SH-S03. Unresolved intent, Special Link test, account/marketplace fit, endpoint/events, Search Console and product imagery remain on the shop decision/flag surfaces (DEC-01–DEC-07; FLG-S02–S08). The supplied short links are not described as invalid; exact compliance remains unresolved (FLG-003).
+- Review record: `sessions/59b2194c/repo-review.md`.
+- Gates: `check_site` OK 30/3/62/113; `verify_site` PASS 134 pages / 2,068 rows; strict link report 0; i2 gate PASS 18/164/148/16/0; cba lint PASS 0 new / 22 inherited; cba check current; feed check 9 entries; sitemap check 97 pages / 0 extras; all-links 180 pages / 207 external / 0 errors; shop build check 11 pages PASS.
