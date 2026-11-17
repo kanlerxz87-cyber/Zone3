@@ -1,0 +1,327 @@
+{
+ "_meta": {
+  "title": "The five measured events",
+  "session": "3c96f21d",
+  "written": "2026-11-17",
+  "status": "Proposal — defined here for owner review. The brief asks for five recorded events but does not define them; this register defines them, and decision DEC-03 records them as pending acceptance. Nothing on this page is presented as an approved measurement plan.",
+  "why_a_register": "Every other number on this site comes from a register that names its source. The event list is a decision, not a fact, so it is written as a decision with a source for every external rule it depends on.",
+  "supersedes": "Nothing. This is the first measurement definition in the repository.",
+  "related": {
+   "decision": "DEC-03 in data/shop/decisions.json — 'How should clicks and conversions be measured?'",
+   "open_question": "Q8 in data/decision-queue.json — 'Which analytics and reporting stack will be used?'",
+   "brief_item": "'Turn on click and conversion measurement before writing anything else' — the owner brief of 2026-11-17"
+  },
+  "main_register": "The same documents are listed in the site's main source register as S70-S76; the 3C-Sxx ids here are local to this register so the measurement layer can cite a rule without borrowing another session's numbering."
+ },
+ "rules_the_counter_must_not_break": [
+  {
+   "id": "R1",
+   "rule": "No synthetic events. The counter may only record something a reader actually did: a click they made, a page they opened, a CTA they chose, a disclosure they scrolled to. It never generates a click or an impression on its own.",
+   "why": "Participation Requirements: 'You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.'",
+   "source": "3C-S07"
+  },
+  {
+   "id": "R2",
+   "rule": "No personal data and no persistent identifier. The counter stores no cookie, sets no cookie, generates no device or browser fingerprint, and creates no visitor identifier. By default the payload carries no field that identifies a person.",
+   "why": "The site's own principle: a reader-facing page may collect only what the reader's own browser keeps for them. MDN documents that localStorage is scoped to one origin and can throw SecurityError when storage is blocked, so every read and write is guarded.",
+   "source": "3C-S03"
+  },
+  {
+   "id": "R3",
+   "rule": "No third-party request. The counter only ever talks to an endpoint the owner controls. While that endpoint is unset, nothing leaves the visitor's browser.",
+   "why": "An analytics script that calls a third party changes the site's data position and its consent story without the owner deciding. GitHub Pages serves static files, so the site itself can never be the receiver.",
+   "source": "3C-S01"
+  },
+  {
+   "id": "R4",
+   "rule": "No commercial figure is measured. The counter records interest (a click, a page opened). It does not record price, rating, review count, availability, sales rank or any other commercial attribute of a product, because those may not be displayed without an Amazon-served link or Creators/PA API data.",
+   "why": "Participation Requirements 2(b) and 6(t); the site's blank-cell rule in the reader layer.",
+   "source": "3C-S07"
+  },
+  {
+   "id": "R5",
+   "rule": "No conversion is inferred. An order, a commission or a revenue figure enters this site's records only from an authorised first-party Amazon report, with the report named and dated. The counter never estimates one.",
+   "why": "A 'session' is Amazon's own construct: a click on a Special Link opens a session that ends 24 hours later, or when the customer returns to Amazon by another means.",
+   "source": "3C-S07"
+  }
+ ],
+ "events": [
+  {
+   "id": "E1",
+   "name": "outbound_click",
+   "plain": "A reader clicked a link that leaves this site for Amazon.",
+   "trigger": "A click on an <a> whose host is an Amazon retail or link host. Nothing else counts.",
+   "fields": {
+    "e": "the event name",
+    "p": "the page path the click happened on (no query string)",
+    "t": "the product target: the ASIN in the link when the link exposes one, otherwise the destination host and path",
+    "l": "the link label, trimmed to 60 characters",
+    "ts": "the event time as a Unix timestamp",
+    "d": "the UTC date of the event"
+   },
+   "answers": "Which product and which call to action actually get clicked. This is the one number the site can produce entirely on its own.",
+   "does_not_answer": "Whether the click became an order. That is a first-party Amazon report, never a site-side estimate.",
+   "source": "3C-S02"
+  },
+  {
+   "id": "E2",
+   "name": "guide_view",
+   "plain": "A reader opened a guide or an article.",
+   "trigger": "A page whose path matches one of the published guide or article prefixes (listed in the runtime config).",
+   "fields": {
+    "e": "the event name",
+    "p": "the guide path",
+    "ts": "the event time as a Unix timestamp",
+    "d": "the UTC date of the event"
+   },
+   "answers": "Which question-shaped page people arrive at. This is the input the publishing cadence should use instead of instinct.",
+   "does_not_answer": "Why they arrived, or whether search engines sent them. That needs a search console the owner must set up; this page does not claim it.",
+   "source": "3C-S02"
+  },
+  {
+   "id": "E3",
+   "name": "comparison_view",
+   "plain": "A reader opened a comparison page.",
+   "trigger": "A page whose path matches one of the published comparison prefixes (listed in the runtime config).",
+   "fields": {
+    "e": "the event name",
+    "p": "the comparison path",
+    "ts": "the event time as a Unix timestamp",
+    "d": "the UTC date of the event"
+   },
+   "answers": "Whether comparison intent exists on this site at all, and which comparison people open.",
+   "does_not_answer": "Which row of the comparison they read. A scroll-depth measurement is not proposed here.",
+   "source": "3C-S02"
+  },
+  {
+   "id": "E4",
+   "name": "cta_click",
+   "plain": "A reader clicked a key internal call to action.",
+   "trigger": "A click on an <a> whose target path matches one of the listed key paths (guides, comparison, products, shop, the front page).",
+   "fields": {
+    "e": "the event name",
+    "p": "the page path the click happened on",
+    "t": "the destination path inside this site",
+    "l": "the link label, trimmed to 60 characters",
+    "ts": "the event time as a Unix timestamp",
+    "d": "the UTC date of the event"
+   },
+   "answers": "Which on-site path leads towards the outbound click. It is the first step of the funnel the site can see by itself.",
+   "does_not_answer": "Anything about a reader who never clicks anything.",
+   "source": "3C-S02"
+  },
+  {
+   "id": "E5",
+   "name": "disclosure_impression",
+   "plain": "The affiliate disclosure was actually in view on the page.",
+   "trigger": "The disclosure element became visible in the viewport (Intersection Observer), fired once per page view.",
+   "fields": {
+    "e": "the event name",
+    "p": "the page path",
+    "a": "true when the disclosure was already in view when the page opened, false when the reader scrolled to it",
+    "ts": "the event time as a Unix timestamp",
+    "d": "the UTC date of the event"
+   },
+   "answers": "Whether the disclosure was seen, which is the placement question the FTC guidance raises and which this site cannot otherwise evidence.",
+   "does_not_answer": "Whether the reader understood it. Visibility is not comprehension, and the page does not claim it is.",
+   "source": "3C-S04"
+  }
+ ],
+ "payload_contract": {
+  "method": "POST",
+  "content_type": "application/json",
+  "maximum_body_bytes": 4096,
+  "allowed_fields": [
+   "e",
+   "p",
+   "t",
+   "l",
+   "a",
+   "ts",
+   "d"
+  ],
+  "field_rules": {
+   "e": "one of the five event names; anything else is rejected",
+   "p": "path only, at most 200 characters, no query string and no fragment",
+   "t": "at most 120 characters",
+   "l": "at most 60 characters",
+   "a": "true or false",
+   "ts": "integer seconds",
+   "d": "YYYY-MM-DD"
+  },
+  "rejected_on_arrival": "Any field outside the allowed list is dropped by the collector before the event is written, so a future client change cannot quietly widen what is stored.",
+  "never_stored": [
+   "IP address",
+   "User-Agent string",
+   "Referrer header",
+   "cookies",
+   "any visitor identifier",
+   "price, rating, review count or any other product attribute"
+  ]
+ },
+ "endpoint": {
+  "configured": false,
+  "why_not": "GitHub Pages is a static site hosting service: it publishes HTML, CSS and JavaScript files from a repository and serves them. It cannot run a collector or accept a POST. The collection endpoint therefore has to live on a host the owner controls, and that host is an owner decision (DEC-03).",
+  "source": "3C-S01",
+  "options": [
+   {
+    "id": "A",
+    "choice": "No site-side counter. Use the Associates reports only.",
+    "state": "available today",
+    "cost": "You learn what converted, never which link was clicked, and the next guide topic stays a guess."
+   },
+   {
+    "id": "B",
+    "choice": "Run the collector included in this repository on a host the owner controls and point the counter at it.",
+    "state": "built and tested in this session; the host is not chosen",
+    "cost": "One host, one URL in one config file. The collector is in tools/collector/ and its test is in tools/collector/test_collector.py."
+   },
+   {
+    "id": "C",
+    "choice": "Both A and B: the site's own click counts, and Amazon's reports for orders.",
+    "state": "the recommended combination once B has a host",
+    "cost": "Two sources that must be kept apart. The ledger keeps them in separate columns for that reason."
+   }
+  ],
+  "routes": [
+   {
+    "method": "POST",
+    "path": "/e",
+    "purpose": "record one event",
+    "response": "204 with no body once the event is written; 400 when the payload does not match the contract"
+   },
+   {
+    "method": "GET",
+    "path": "/stats",
+    "purpose": "aggregate counts by event, page and target, computed from the stored events",
+    "response": "200 with a JSON summary"
+   },
+   {
+    "method": "GET",
+    "path": "/health",
+    "purpose": "liveness check",
+    "response": "200 with a JSON status"
+   }
+  ]
+ },
+ "privacy": {
+  "cookies": "none set, none read",
+  "identifier": "none — the payload carries no field that identifies a visitor, so unique-visitor counts are deliberately not available",
+  "storage": "until an endpoint is configured, events are held in the reader's own browser under one origin-scoped key, capped and aged out; when an endpoint is configured the queue is flushed and emptied",
+  "third_parties": "none — the only request the page can make is to the owner-controlled endpoint",
+  "ip_address": "not written by the collector; the collector reads no client address into any stored record",
+  "retention": "the collector prunes events older than the retention window it is started with; the default is 30 days",
+  "sources": [
+   "3C-S01",
+   "3C-S02",
+   "3C-S03",
+   "3C-S04"
+  ]
+ },
+ "not_measured": [
+  {
+   "item": "Orders, conversions, commission and revenue",
+   "why": "They exist only in an authorised first-party Amazon report, and a session is Amazon's own construct rather than a site-side one.",
+   "source": "3C-S07"
+  },
+  {
+   "item": "Unique visitors",
+   "why": "Counting them needs an identifier, and an identifier needs a decision about consent and retention that the owner has not made."
+  },
+  {
+   "item": "Price, rating, review count, availability, sales rank",
+   "why": "These may not be displayed without an Amazon-served link or Creators/PA API data, and a counter is not a display exception.",
+   "source": "3C-S07"
+  },
+  {
+   "item": "Search queries and referrers",
+   "why": "Search Console is a separate, owner-side system; the counter deliberately does not read the referrer header."
+  },
+  {
+   "item": "Any popularity or trend statement",
+   "why": "The site's evidence rule requires a dated first-party snapshot for those, and a click count on one page is not a popularity measure."
+  }
+ ],
+ "sources": [
+  {
+   "id": "3C-S01",
+   "label": "GitHub Docs: What is GitHub Pages?",
+   "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+   "retrieved": "2026-11-17",
+   "supports": "GitHub Pages is a static site hosting service: it takes HTML, CSS and JavaScript files from a repository and publishes them. The site therefore cannot receive a POST, which is why the collection endpoint has to be hosted elsewhere.",
+   "register_ref": "S70"
+  },
+  {
+   "id": "3C-S02",
+   "label": "MDN: Navigator: sendBeacon() method",
+   "url": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon",
+   "retrieved": "2026-11-17",
+   "supports": "sendBeacon asynchronously sends an HTTP POST containing a small amount of data to a web server and is intended for sending analytics data to a web server; the queued payload is limited to 64 KiB and the call returns true when the data was queued. The counter uses it for the click event, and fetch with keepalive as the fallback.",
+   "register_ref": "S71 (main register)"
+  },
+  {
+   "id": "3C-S03",
+   "label": "MDN: Window: localStorage property",
+   "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+   "retrieved": "2026-11-17",
+   "supports": "localStorage is scoped to the document's origin and persists across sessions; it throws SecurityError when the origin cannot store data, for example in a private window with storage blocked. Every read and write in the counter is therefore guarded.",
+   "register_ref": "S72 (main register)"
+  },
+  {
+   "id": "3C-S04",
+   "label": "MDN: Intersection Observer API",
+   "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API",
+   "retrieved": "2026-11-17",
+   "supports": "The Intersection Observer API asynchronously observes changes in the intersection of a target element with the viewport, which is how the disclosure-impression event is detected without a scroll handler.",
+   "register_ref": "S73 (main register)"
+  },
+  {
+   "id": "3C-S05",
+   "label": "Cloudflare Workers documentation: Overview",
+   "url": "https://developers.cloudflare.com/workers/",
+   "retrieved": "2026-11-17",
+   "supports": "Workers is a serverless platform for building and deploying APIs with a JavaScript runtime and no infrastructure to manage; the Worker variant of the collector is written against it.",
+   "register_ref": "S74 (main register)"
+  },
+  {
+   "id": "3C-S06",
+   "label": "Cloudflare Workers KV documentation",
+   "url": "https://developers.cloudflare.com/kv/",
+   "retrieved": "2026-11-17",
+   "supports": "Workers KV is a global key-value store accessed from a Worker through a binding; the Worker variant of the collector stores events in a KV namespace binding named KV.",
+   "register_ref": "S75 (main register)"
+  },
+  {
+   "id": "3C-S07",
+   "label": "Amazon Associates Program Policies (Participation Requirements)",
+   "url": "https://affiliate-program.amazon.com/help/operating/policies",
+   "retrieved": "2026-11-13, re-used from the register",
+   "supports": "Participation requirement on artificial generation of clicks and impressions; requirement 2(b) and 6(t) on displaying price, availability, rating and review data; the 24-hour session definition; the rules on redirecting links.",
+   "register_ref": "S02"
+  },
+  {
+   "id": "3C-S08",
+   "label": "Amazon Associates Program Operating Agreement, Section 5",
+   "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+   "retrieved": "2026-11-13, re-used from the register",
+   "supports": "The exact disclosure sentence the site carries: 'As an Amazon Associate I earn from qualifying purchases.', required clearly and prominently on the site.",
+   "register_ref": "S01"
+  },
+  {
+   "id": "3C-S09",
+   "label": "FTC: Disclosures 101 for Social Media Influencers",
+   "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+   "retrieved": "2026-11-13, re-used from the register",
+   "supports": "A disclosure must be hard to miss and cannot be placed where it is likely to be missed, which is why the disclosure-impression event exists and why the disclosure sits above the fold on every page.",
+   "register_ref": "S07"
+  },
+  {
+   "id": "3C-S10",
+   "label": "Google Search Central: rel=\"sponsored\" for paid links",
+   "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+   "retrieved": "2026-11-13, re-used from the register",
+   "supports": "Outbound links that are paid or sponsored must carry rel=\"sponsored\"; every outbound product link on this site carries it, which is also how the counter recognises a product link.",
+   "register_ref": "S76"
+  }
+ ]
+}

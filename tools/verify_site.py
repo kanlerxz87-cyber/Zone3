@@ -123,16 +123,28 @@ def check(root: pathlib.Path):
                 # to a file in this repo. This rule is applied identically to pages generated
                 # here and to pages inherited from earlier sessions, so that one session's column
                 # layout is not treated as a defect in another's.
+                # Session 3c96f21d (2026-11-17): the measurement desk cites two documentation
+                # hosts that are official for the thing they document — Mozilla's MDN for the
+                # web APIs the counter uses, and Cloudflare's own documentation for the Worker
+                # the collector variant targets. Both are added to the allowlist here, and
+                # only here: the amazon/FTC breakdown below is unchanged, because it answers a
+                # different question (is this fact about Amazon or the FTC).
                 official = re.search(
                     r'href="https?://[^"]*'
-                    r'(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov|github\.com|githubusercontent\.com)'
+                    r'(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov|github\.com|githubusercontent\.com'
+                    r'|developer\.mozilla\.org|developers\.cloudflare\.com)'
                     r'[^"]*"', tr)
                 # INTEGRATION 2026-11-16 (session 59d84c55): the reader-facing site under site/
                 # namespaces its open items I2-F-nn and marks a deliberately blank cell with
                 # class="blank" (which always carries its reason in the adjacent cell). Both are
                 # provenance the rule already accepts in spirit, so the patterns are widened
                 # rather than the rows being exempted. Additive: no earlier page changes result.
-                flagid = re.search(r'(FLG-\d+|id="F\d+"|I2-F-\d+|class="blank")', tr)
+                # Session 3c96f21d (2026-11-17): flags raised by a later session carry a
+                # session prefix (G82-F-01, G3c-F-01, F65-F-04, Z14-F-04). The pattern now
+                # accepts that shape too, so a row that cites such a flag counts as
+                # provenanced exactly as a row citing FLG-nnn already did.
+                flagid = re.search(
+                    r'(FLG-\d+|id="F\d+"|I2-F-\d+|class="blank"|[A-Z][A-Za-z0-9]*-F-\d+)', tr)
                 # anchors live in the trailing cells; search the whole row so a session that
                 # orders its columns differently is still credited correctly
                 anchor = re.search(r'repo:([A-Za-z0-9_.\-/]+[A-Za-z0-9])', tr)

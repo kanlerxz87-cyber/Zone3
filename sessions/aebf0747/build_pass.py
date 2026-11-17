@@ -63,6 +63,9 @@ NAV = [
     # group" rule. Additive entry; nothing else in the nav changed.
     ("flagged.html", "Flagged (register)"),
     ("publication-pass.html", "This pass and flags"),
+    # session 3c96f21d (2026-11-17): the measurement desk, which documents the five recorded
+    # events and the collector contract. Additive entry; nothing else in the nav changed.
+    ("analytics/index.html", "Measurement"),
 ]
 
 

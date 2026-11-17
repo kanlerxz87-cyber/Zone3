@@ -7,8 +7,6 @@
 <meta name="description" content="Options for each open decision, the questions still unanswered, and what information would settle them.">
 <link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/shop/decisions/">
 <link rel="stylesheet" href="../assets/shop.css">
-<!-- z3:css --><link rel="stylesheet" href="../../assets/zone3-publication.css">
-<!-- z3:rss --><link rel="alternate" type="application/rss+xml" title="Zone3 guides" href="../../feed.xml">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -56,7 +54,7 @@
 </tr>
 <tr>
   <td>DEC-03</td><td>How should clicks and conversions be measured?</td><td><ol class="opts"><li>A. Use the Associates reports as the first-party source. No new code is needed. Rows enter the campaign ledger only from those reports.</li><li>B. Add a privacy-preserving outbound-click counter. This needs a collection endpoint on a host outside GitHub Pages, plus the five event definitions.</li><li>C. Both A and B.</li></ol></td>
-  <td>A now; B only after the five events are defined and a host is chosen.</td><td>The five event definitions and a choice of hosting for any endpoint. Neither is in the brief.</td><td><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Docs: What is GitHub Pages? (SH-S16)</a></td>
+  <td>A now; B as built, once a host is chosen; C once both are in place. The five events are a proposal until the owner accepts them (G3c-F-02).</td><td>The five event definitions are proposed and published; what is still missing is a choice of host for the collection endpoint, and the owner&#x27;s acceptance of the event set. Neither can be inferred.</td><td><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Docs: What is GitHub Pages? (the site cannot host a collector)</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies">Amazon Associates Program Policies (no artificially generated clicks or impressions)</a></td>
 </tr>
 <tr>
   <td>DEC-04</td><td>What is the site&#x27;s name?</td><td><ol class="opts"><li>A. Keep &#x27;Zone3 Kitchen&#x27; as a working name.</li><li>B. Choose another name that has been cleared for use.</li></ol></td>
@@ -106,16 +104,16 @@
   <td>Confirm the account country and the Schedule 1 marketplace list in the Operating Agreement.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement (Schedule 1 marketplaces) (SH-S01)</a></td>
 </tr>
 <tr>
-  <td>What are the five events to record?</td><td>Nothing defined in the brief.</td><td>The event list.</td>
-  <td>Requester supplies the list (DEC-03).</td><td><span class="muted">No external source applies.</span></td>
+  <td>What are the five events to record?</td><td>A proposed set of five: outbound_click, guide_view, comparison_view, cta_click and disclosure_impression, each with its trigger, its payload fields and the rule it obeys (data/analytics/events.json, published at /analytics/).</td><td>The owner&#x27;s acceptance of that set, and a host for the collector.</td>
+  <td>DEC-03. Accept or amend the set; the client is generated from the register.</td><td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon">MDN: Navigator: sendBeacon() method (how an event is posted)</a> · <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">MDN: Intersection Observer API (how the disclosure event is detected)</a></td>
 </tr>
 <tr>
   <td>Which price, availability and review figures, if any, may appear on the site, and from which source?</td><td>A reason not to show them (FLG-S07).</td><td>Confirmed approved data path and the current wording of Participation Requirement 2(b), which this build did not re-read.</td>
   <td>Re-read the Program Policies Participation Requirements and check the approved data path in the Associates account.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Program Policies (SH-S02)</a></td>
 </tr>
 <tr>
-  <td>Is there any measured search or on-site question data to choose the next topic?</td><td>None.</td><td>Search Console data and on-site search logs.</td>
-  <td>Connect Search Console for the site once it is live (DEC-03 for the analytics path).</td><td><span class="muted">No external source applies.</span></td>
+  <td>Is there any measured search or on-site question data to choose the next topic?</td><td>None yet. The site-side counter is built (session 3c96f21d) but its endpoint is not configured, so no event has left any browser and no count exists yet.</td><td>Search Console data and on-site event counts. Both are owner-side steps: connect Search Console, and choose a host for the collector.</td>
+  <td>DEC-03 for the analytics path: set one endpoint in data/analytics/config.json, then connect Search Console for the query side.</td><td><span class="muted">No external source applies.</span></td>
 </tr>
     </tbody>
   </table>
@@ -147,8 +145,5 @@
     </div>
   </div>
 </footer>
-<!-- z3:footer -->
-<footer class="z3-foot" role="contentinfo"><div class="z3-wrap"><p class="z3-disc">As an Amazon Associate I earn from qualifying purchases.</p><p class="z3-foot-small">Links to Amazon are marked sponsored. This site is not operated by Amazon. Titles, ASINs and breadcrumbs are as observed on the dates shown; no price, rating or forecast is published here.</p><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px"><div><h4>Read</h4><nav aria-label="Read"><a href="../../index.html">Front page</a><a href="../../guides/index.html">Guides</a><a href="../../articles/index.html">Research Desk articles</a><a href="../../read/index.html">The Crisp Report</a><a href="../../site/index.html">Reader site</a></nav></div><div><h4>Products and pricing</h4><nav aria-label="Products and pricing"><a href="../../intent-record/index.html">Product-intent record</a><a href="../../products/index.html">Products</a><a href="../../pricing/index.html">Pricing</a><a href="../../commission/index.html">Commission</a><a href="../../reviews/index.html">Reviews</a><a href="../../niches/index.html">Niches</a></nav></div><div><h4>Governance</h4><nav aria-label="Governance"><a href="../../publication-pass.html">This pass and flagged for review</a><a href="../../executive-summary/index.html">Executive summary</a><a href="../../compliance/index.html">Compliance</a><a href="../../agent-terms/index.html">Agent terms</a><a href="../../methodology/index.html">Methodology</a><a href="../../requirements/index.html">Requirements</a><a href="../../sources/index.html">Sources</a><a href="../../verification.html">Verification log</a><a href="../../flagged/index.html">Flagged (all items)</a></nav></div><div><h4>Dashboards</h4><nav aria-label="Dashboards"><a href="../../dashboard/index.html">Dashboard</a><a href="../../dashboard-register.html">Register (previous front page)</a><a href="../../campaigns/index.html">Campaigns</a><a href="../../content/index.html">Content</a><a href="../../repo-review/index.html">Repo review</a><a href="../../suggestions.html">Suggestions</a><a href="../../decision-queue.html">Decision queue</a><a href="../../design-brief.html">Design brief</a></nav></div><div><h4>Feeds</h4><nav aria-label="Feeds"><a href="../../feed.xml">RSS feed</a><a href="../../sitemap.xml">Sitemap</a></nav></div></div></div></footer>
-<!-- /z3:footer -->
 </body>
 </html>

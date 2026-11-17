@@ -580,13 +580,13 @@
   {
    "id": "Q8",
    "question": "Which analytics and reporting stack will be used for clicks and conversions?",
-   "what_we_know": "Amazon provides reporting to Associates; participation requirements prohibit artificial clicks or sessions.",
+   "what_we_know": "Amazon's own reports are the compliant source for clicks and conversions, and the participation requirements prohibit artificially generated clicks or sessions. The site-side half of the question was built on 2026-11-17: five defined events, a privacy-preserving outbound-click counter on every published page, and a tested self-hosted collector.",
    "source": [
     "S02"
    ],
-   "what_we_dont_know": "The owner's preference and any third-party tooling.",
+   "what_we_dont_know": "Where the collector runs, and whether the owner accepts the proposed event set. Nothing has been collected yet, so the site still has no traffic evidence.",
    "why_it_matters": "Determines how the Campaigns ledger gets real values and how optimization is measured.",
-   "how_to_discover": "Owner decision, reviewed against Program Policies before any third-party tool is added."
+   "how_to_discover": "One owner step: set one endpoint in data/analytics/config.json. Until then the counter keeps its events in the reader's own browser and sends nothing."
   },
   {
    "id": "Q9",
@@ -759,6 +759,12 @@
     "where": "site/guides/",
     "what": "Five question-shaped guides live (all four editorial hypotheses from the brief plus dual-basket); two held (one needs an experience claim, one needs the API), one rejected on policy. All five reach the feed now.",
     "evidence": "data/cba81fa5/guides.json (register), site/guides/index.html plan table"
+   },
+   {
+    "item": "Measurement layer: five events, a privacy-preserving counter, a tested collector",
+    "where": "assets/analytics.js on every published page; the desk at /analytics/; the collector in tools/collector/",
+    "what": "The counter records only what a reader did - a click to Amazon, a guide opened, a comparison opened, a key call to action chosen, the affiliate disclosure coming into view - with no cookie, no identifier and no third party. While the endpoint is unset it sends nothing and keeps the events in the reader's own browser; the collector that receives them is written, unit-tested and documented for two hosting options.",
+    "evidence": "data/analytics/events.json; tools/build_analytics.py; tools/collector/test_collector.py (6 checks pass); flags G3c-F-01..G3c-F-06"
    }
   ],
   "paths": [
@@ -806,6 +812,21 @@
     "effort": "Small edits, but touches the most shared files in the repo — must be ONE integration session (per the coordination protocol), not three parallel ones.",
     "risk": "Link churn: internal cross-links and the sitemap shift. The gates in scripts/ catch every broken one before push.",
     "do_not": "Do not delete the losing layers (history rule: archives stay); do not hand-merge the three feeds of copy into one without re-running every gate on the result."
+   },
+   {
+    "id": "DP-D",
+    "name": "Measure first, then write (the owner's brief, built)",
+    "thesis": "The brief's instruction is to turn on click and conversion measurement before writing anything else. That half is now built and published; the remaining half is an owner step, not a build step.",
+    "steps": [
+     "Set one endpoint in data/analytics/config.json; the collector is in tools/collector/ with both hosting options documented.",
+     "Accept or amend the five events in DEC-03; the client is generated from the register, so an amendment is one line plus a rebuild.",
+     "Connect Search Console (discovery action D8) so the query side of the next-topic decision has measured input.",
+     "Then choose the next guide topic from measured arrivals, not from instinct."
+    ],
+    "resolves": "The measurement half of SUG-09 and the 'measure whether anyone arrives' half of the publishing cadence.",
+    "effort": "One owner step and one rebuild.",
+    "risk": "Low. Until the endpoint is set nothing changes about what the site does.",
+    "do_not": "Do not add an identifier to reach unique-visitor counts without a consent decision (G3c-F-05). Do not publish an event count as a traffic, popularity or earnings figure."
    }
   ],
   "cadence": "Proposed cadence (owner-adoptable, changes nothing until accepted): one guide per week from the register's held queue as soon as its blocker clears; each ship = register row + rebuild + gate run (all mechanical). Measure with D8; the ledger rule stands: timestamp, source, channel, eligible sessions, clicks and orders ONLY from authorized first-party reports, kept dated, no forecast. Until Search Console data exists, the next topic after the held queue is chosen by the brief's own question list, not by claimed search volume.",
@@ -855,8 +876,8 @@
    {
     "q": "Q8",
     "was": "open — analytics stack",
-    "now": "unchanged; options narrowed",
-    "change": "GitHub Pages serves static files only — a self-hosted endpoint cannot run on this host; the realistic first step is D8 (Search Console) + owner-side privacy-safe page analytics, each recorded in the ledger only when authorized reports exist. The ledger stays empty by design until then."
+    "now": "partly moved (2026-11-17)",
+    "change": "The stack is no longer undecided: the site measures with its own first-party counter (five defined events, no cookie, no identifier, no third party) and the collector it posts to is built and tested in tools/collector/. What is left is one owner step - the host - and the acceptance of the event set. The search half of the question (Search Console) is unchanged and still open."
    },
    {
     "q": "Q9",

@@ -40,6 +40,11 @@ CHECKED_HUMAN = "17 Nov 2026"
 OFFICIAL_HOSTS = {
     "affiliate-program.amazon.com", "www.amazon.com", "amazon.com", "link.amazon",
     "developers.google.com", "www.ftc.gov", "ftc.gov", "github.com", "docs.github.com",
+    # Added by session 3c96f21d (2026-11-17): the two documentation hosts the measurement
+    # layer cites - Mozilla MDN for the web APIs the counter uses, and Cloudflare's own
+    # documentation for the Worker the collector variant targets. Both are official for the
+    # thing they document; neither is a product-fact source.
+    "developer.mozilla.org", "developers.cloudflare.com",
 }
 SPONSORED_HOSTS = {"www.amazon.com", "amazon.com", "link.amazon"}
 

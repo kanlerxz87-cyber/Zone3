@@ -80,6 +80,10 @@ FOOTER_GROUPS = [
         ("suggestions.html", "Suggestions"),
         ("decision-queue.html", "Decision queue"),
         ("design-brief.html", "Design brief"),
+        # Added by session 3c96f21d (2026-11-17): the measurement desk, which documents the
+        # five recorded events, the collector endpoint contract and the empty ledger. It is a
+        # dashboard surface, so it belongs in the same footer group as the others.
+        ("analytics/index.html", "Measurement desk"),
     ]),
     ("Feeds", [
         ("feed.xml", "RSS feed"),
@@ -214,6 +218,11 @@ def apply(html: str, rel: str, existing: set[str]) -> tuple[str, list[str]]:
     if "application/rss+xml" not in html:
         head_add += (f'<!-- z3:rss --><link rel="alternate" type="application/rss+xml" '
                      f'title="Zone3 guides" href="{prefix}feed.xml">\n')
+    # 4b. the measurement counter (session 3c96f21d, 2026-11-17). The client sets no cookie,
+    # creates no identifier and sends nothing while its endpoint is unset, so adding it to
+    # every published page changes what the site measures without changing what it does.
+    if "assets/analytics.js" not in html:
+        head_add += (f'<!-- z3:analytics --><script src="{prefix}assets/analytics.js" defer></script>\n')
     if head_add:
         if re.search(r"</head\s*>", html, re.I):
             html = re.sub(r"</head\s*>", lambda _m: head_add + "</head>", html, count=1, flags=re.I)

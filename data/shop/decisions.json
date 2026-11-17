@@ -1,206 +1,220 @@
 {
-  "_meta": {
-    "title": "Suggestions and decisions",
-    "prepared_on": "2026-11-17",
-    "note": "These are suggestions only. Nothing on this list has been implemented beyond what the Findings page says. The 'suggested' label is a recommendation, not a decision."
+ "_meta": {
+  "title": "Suggestions and decisions",
+  "prepared_on": "2026-11-17",
+  "note": "These are suggestions only. Nothing on this list has been implemented beyond what the Findings page says. The 'suggested' label is a recommendation, not a decision."
+ },
+ "decisions": [
+  {
+   "id": "DEC-01",
+   "question": "How should the five submitted links be replaced or confirmed?",
+   "options": [
+    "A. Create one Special Link per product in the Associates account, click it once, and check the destination and the tracking report before using it on the site. Suggested, because it is the only route to a checkable tracking record.",
+    "B. Keep the submitted short links as supplied, but still run the test in option A on at least one link.",
+    "C. Remove any product whose intended ASIN is not confirmed (see DEC-02)."
+   ],
+   "suggested": "A, then B until A succeeds.",
+   "needs": "Access to the Associates account. The requester must run or approve the test.",
+   "sources": [
+    {
+     "label": "Commission Income Statement, Section 2(g) (SH-S02)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ]
   },
-  "decisions": [
+  {
+   "id": "DEC-02",
+   "question": "What is the intended ASIN for each submitted link?",
+   "options": [
+    "A. The requester supplies the 10-character ASIN for each link. The build then checks the official listing and records the confirmation date and source.",
+    "B. Accept the observed redirect target as intended. Not suggested: the brief asks for intent, and a redirect is not an intent record.",
+    "C. Leave the intended field blank and publish the observed target only."
+   ],
+   "suggested": "A.",
+   "needs": "The requester's statement for each link.",
+   "sources": [
     {
-      "id": "DEC-01",
-      "question": "How should the five submitted links be replaced or confirmed?",
-      "options": [
-        "A. Create one Special Link per product in the Associates account, click it once, and check the destination and the tracking report before using it on the site. Suggested, because it is the only route to a checkable tracking record.",
-        "B. Keep the submitted short links as supplied, but still run the test in option A on at least one link.",
-        "C. Remove any product whose intended ASIN is not confirmed (see DEC-02)."
-      ],
-      "suggested": "A, then B until A succeeds.",
-      "needs": "Access to the Associates account. The requester must run or approve the test.",
-      "sources": [
-        {
-          "label": "Commission Income Statement, Section 2(g) (SH-S02)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ]
-    },
-    {
-      "id": "DEC-02",
-      "question": "What is the intended ASIN for each submitted link?",
-      "options": [
-        "A. The requester supplies the 10-character ASIN for each link. The build then checks the official listing and records the confirmation date and source.",
-        "B. Accept the observed redirect target as intended. Not suggested: the brief asks for intent, and a redirect is not an intent record.",
-        "C. Leave the intended field blank and publish the observed target only."
-      ],
-      "suggested": "A.",
-      "needs": "The requester's statement for each link.",
-      "sources": [
-        {
-          "label": "Creators API ItemIdType ASIN (SH-S03)",
-          "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
-        }
-      ]
-    },
-    {
-      "id": "DEC-03",
-      "question": "How should clicks and conversions be measured?",
-      "options": [
-        "A. Use the Associates reports as the first-party source. No new code is needed. Rows enter the campaign ledger only from those reports.",
-        "B. Add a privacy-preserving outbound-click counter. This needs a collection endpoint on a host outside GitHub Pages, plus the five event definitions.",
-        "C. Both A and B."
-      ],
-      "suggested": "A now; B only after the five events are defined and a host is chosen.",
-      "needs": "The five event definitions and a choice of hosting for any endpoint. Neither is in the brief.",
-      "sources": [
-        {
-          "label": "GitHub Docs: What is GitHub Pages? (SH-S16)",
-          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
-        }
-      ]
-    },
-    {
-      "id": "DEC-04",
-      "question": "What is the site's name?",
-      "options": [
-        "A. Keep 'Zone3 Kitchen' as a working name.",
-        "B. Choose another name that has been cleared for use."
-      ],
-      "suggested": "A until a name is chosen.",
-      "needs": "The requester's choice.",
-      "sources": []
-    },
-    {
-      "id": "DEC-05",
-      "question": "Which images, if any, should appear?",
-      "options": [
-        "A. Text only (current).",
-        "B. Product images supplied through an approved Associates data feed, with attribution.",
-        "C. Images from the manufacturer, only with written permission."
-      ],
-      "suggested": "A until B is available.",
-      "needs": "Confirmation of the approved data path under the Operating Agreement.",
-      "sources": [
-        {
-          "label": "Operating Agreement, Section 1 (SH-S01)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ]
-    },
-    {
-      "id": "DEC-06",
-      "question": "How often should new guides be published?",
-      "options": [
-        "A. Monthly, one guide a month.",
-        "B. Quarterly, four guides a year.",
-        "C. Only when a measured question justifies a guide."
-      ],
-      "suggested": "C, after the first measurement window has data.",
-      "needs": "A measured source of search or on-site questions. None exists yet.",
-      "sources": []
-    },
-    {
-      "id": "DEC-07",
-      "question": "Which guide topic should come first?",
-      "options": [
-        "A. 'Basket or oven-style air fryer: what should you compare?'",
-        "B. 'A no-hype checklist for comparing air fryer capacity'",
-        "C. 'How to assess cleanup and counter-space trade-offs'",
-        "D. 'Questions to ask before buying a multi-function kitchen appliance'",
-        "E. A thermometer guide (not yet proposed)"
-      ],
-      "suggested": "Hold until DEC-06 has data. These are working titles, not claims about popularity, search volume or product quality.",
-      "needs": "Measured queries (none yet).",
-      "sources": []
-    },
-    {
-      "id": "DEC-08",
-      "question": "Which disclosure wording should appear?",
-      "options": [
-        "A. The exact sentence in Operating Agreement Section 5 (in use).",
-        "B. A paraphrase."
-      ],
-      "suggested": "A. Section 5 asks for the exact sentence or a substantially similar statement.",
-      "needs": "None.",
-      "sources": [
-        {
-          "label": "Operating Agreement, Section 5 (SH-S01)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ]
+     "label": "Creators API ItemIdType ASIN (SH-S03)",
+     "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
     }
-  ],
-  "questions": [
+   ]
+  },
+  {
+   "id": "DEC-03",
+   "question": "How should clicks and conversions be measured?",
+   "options": [
+    "A. Use the Associates reports as the first-party source. No new code is needed. Rows enter the campaign ledger only from those reports.",
+    "B. Add a privacy-preserving outbound-click counter. This needs a collection endpoint on a host outside GitHub Pages, plus the five event definitions.",
+    "C. Both A and B."
+   ],
+   "suggested": "A now; B as built, once a host is chosen; C once both are in place. The five events are a proposal until the owner accepts them (G3c-F-02).",
+   "needs": "The five event definitions are proposed and published; what is still missing is a choice of host for the collection endpoint, and the owner's acceptance of the event set. Neither can be inferred.",
+   "sources": [
     {
-      "question": "Which ASIN was intended for each link?",
-      "have": "The observed redirect target for each link.",
-      "missing": "The requester's statement of intent.",
-      "how_to_find": "Ask the requester (DEC-02). Then check each ASIN on its official listing.",
-      "sources": [
-        {
-          "label": "Creators API ItemIdType (SH-S03)",
-          "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
-        }
-      ]
+     "label": "GitHub Docs: What is GitHub Pages? (the site cannot host a collector)",
+     "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
     },
     {
-      "question": "Does each link produce a tracked click under the requester's Associates ID?",
-      "have": "Nothing. No Associates report was available.",
-      "missing": "The Associates report.",
-      "how_to_find": "Run the DEC-01 test in the Associates workflow and read the tracking report.",
-      "sources": [
-        {
-          "label": "Commission Income Statement Section 2(g) (SH-S02)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ]
-    },
-    {
-      "question": "Does shopnow047c-20 belong to the requester's Associates account, for the marketplace the links point to?",
-      "have": "The requester's statement of the value.",
-      "missing": "Account and marketplace check.",
-      "how_to_find": "Check the account settings in the Associates account.",
-      "sources": [
-        {
-          "label": "Operating Agreement, Section 1 (SH-S01)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ]
-    },
-    {
-      "question": "Which marketplace should the site serve? The links point to amazon.com. The site's location is Singapore.",
-      "have": "amazon.com redirects for all five links.",
-      "missing": "The requester's choice of marketplace, and the matching Associates country.",
-      "how_to_find": "Confirm the account country and the Schedule 1 marketplace list in the Operating Agreement.",
-      "sources": [
-        {
-          "label": "Operating Agreement (Schedule 1 marketplaces) (SH-S01)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ]
-    },
-    {
-      "question": "What are the five events to record?",
-      "have": "Nothing defined in the brief.",
-      "missing": "The event list.",
-      "how_to_find": "Requester supplies the list (DEC-03).",
-      "sources": []
-    },
-    {
-      "question": "Which price, availability and review figures, if any, may appear on the site, and from which source?",
-      "have": "A reason not to show them (FLG-S07).",
-      "missing": "Confirmed approved data path and the current wording of Participation Requirement 2(b), which this build did not re-read.",
-      "how_to_find": "Re-read the Program Policies Participation Requirements and check the approved data path in the Associates account.",
-      "sources": [
-        {
-          "label": "Program Policies (SH-S02)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ]
-    },
-    {
-      "question": "Is there any measured search or on-site question data to choose the next topic?",
-      "have": "None.",
-      "missing": "Search Console data and on-site search logs.",
-      "how_to_find": "Connect Search Console for the site once it is live (DEC-03 for the analytics path).",
-      "sources": []
+     "label": "Amazon Associates Program Policies (no artificially generated clicks or impressions)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
     }
-  ]
+   ],
+   "status_2026_11_17": "Partly built by session 3c96f21d. Option B is now implemented as far as it can be without an owner input: the five events are defined (data/analytics/events.json), the privacy-preserving counter is built and wired into every published page (assets/analytics.js, generated by tools/build_analytics.py), and the self-hosted collector is built and tested (tools/collector/collect.py with tools/collector/test_collector.py, plus a Cloudflare Worker variant). What is still open is the host: GitHub Pages is a static site hosting service and cannot receive a POST, so the collector needs a home the owner chooses. Until the endpoint is set, the counter sends nothing and keeps the events in the reader's own browser. Flag G3c-F-01."
+  },
+  {
+   "id": "DEC-04",
+   "question": "What is the site's name?",
+   "options": [
+    "A. Keep 'Zone3 Kitchen' as a working name.",
+    "B. Choose another name that has been cleared for use."
+   ],
+   "suggested": "A until a name is chosen.",
+   "needs": "The requester's choice.",
+   "sources": []
+  },
+  {
+   "id": "DEC-05",
+   "question": "Which images, if any, should appear?",
+   "options": [
+    "A. Text only (current).",
+    "B. Product images supplied through an approved Associates data feed, with attribution.",
+    "C. Images from the manufacturer, only with written permission."
+   ],
+   "suggested": "A until B is available.",
+   "needs": "Confirmation of the approved data path under the Operating Agreement.",
+   "sources": [
+    {
+     "label": "Operating Agreement, Section 1 (SH-S01)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ]
+  },
+  {
+   "id": "DEC-06",
+   "question": "How often should new guides be published?",
+   "options": [
+    "A. Monthly, one guide a month.",
+    "B. Quarterly, four guides a year.",
+    "C. Only when a measured question justifies a guide."
+   ],
+   "suggested": "C, after the first measurement window has data.",
+   "needs": "A measured source of search or on-site questions. None exists yet.",
+   "sources": []
+  },
+  {
+   "id": "DEC-07",
+   "question": "Which guide topic should come first?",
+   "options": [
+    "A. 'Basket or oven-style air fryer: what should you compare?'",
+    "B. 'A no-hype checklist for comparing air fryer capacity'",
+    "C. 'How to assess cleanup and counter-space trade-offs'",
+    "D. 'Questions to ask before buying a multi-function kitchen appliance'",
+    "E. A thermometer guide (not yet proposed)"
+   ],
+   "suggested": "Hold until DEC-06 has data. These are working titles, not claims about popularity, search volume or product quality.",
+   "needs": "Measured queries (none yet).",
+   "sources": []
+  },
+  {
+   "id": "DEC-08",
+   "question": "Which disclosure wording should appear?",
+   "options": [
+    "A. The exact sentence in Operating Agreement Section 5 (in use).",
+    "B. A paraphrase."
+   ],
+   "suggested": "A. Section 5 asks for the exact sentence or a substantially similar statement.",
+   "needs": "None.",
+   "sources": [
+    {
+     "label": "Operating Agreement, Section 5 (SH-S01)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "question": "Which ASIN was intended for each link?",
+   "have": "The observed redirect target for each link.",
+   "missing": "The requester's statement of intent.",
+   "how_to_find": "Ask the requester (DEC-02). Then check each ASIN on its official listing.",
+   "sources": [
+    {
+     "label": "Creators API ItemIdType (SH-S03)",
+     "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
+    }
+   ]
+  },
+  {
+   "question": "Does each link produce a tracked click under the requester's Associates ID?",
+   "have": "Nothing. No Associates report was available.",
+   "missing": "The Associates report.",
+   "how_to_find": "Run the DEC-01 test in the Associates workflow and read the tracking report.",
+   "sources": [
+    {
+     "label": "Commission Income Statement Section 2(g) (SH-S02)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ]
+  },
+  {
+   "question": "Does shopnow047c-20 belong to the requester's Associates account, for the marketplace the links point to?",
+   "have": "The requester's statement of the value.",
+   "missing": "Account and marketplace check.",
+   "how_to_find": "Check the account settings in the Associates account.",
+   "sources": [
+    {
+     "label": "Operating Agreement, Section 1 (SH-S01)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ]
+  },
+  {
+   "question": "Which marketplace should the site serve? The links point to amazon.com. The site's location is Singapore.",
+   "have": "amazon.com redirects for all five links.",
+   "missing": "The requester's choice of marketplace, and the matching Associates country.",
+   "how_to_find": "Confirm the account country and the Schedule 1 marketplace list in the Operating Agreement.",
+   "sources": [
+    {
+     "label": "Operating Agreement (Schedule 1 marketplaces) (SH-S01)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ]
+  },
+  {
+   "question": "What are the five events to record?",
+   "have": "A proposed set of five: outbound_click, guide_view, comparison_view, cta_click and disclosure_impression, each with its trigger, its payload fields and the rule it obeys (data/analytics/events.json, published at /analytics/).",
+   "missing": "The owner's acceptance of that set, and a host for the collector.",
+   "how_to_find": "DEC-03. Accept or amend the set; the client is generated from the register.",
+   "sources": [
+    {
+     "label": "MDN: Navigator: sendBeacon() method (how an event is posted)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon"
+    },
+    {
+     "label": "MDN: Intersection Observer API (how the disclosure event is detected)",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
+    }
+   ]
+  },
+  {
+   "question": "Which price, availability and review figures, if any, may appear on the site, and from which source?",
+   "have": "A reason not to show them (FLG-S07).",
+   "missing": "Confirmed approved data path and the current wording of Participation Requirement 2(b), which this build did not re-read.",
+   "how_to_find": "Re-read the Program Policies Participation Requirements and check the approved data path in the Associates account.",
+   "sources": [
+    {
+     "label": "Program Policies (SH-S02)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ]
+  },
+  {
+   "question": "Is there any measured search or on-site question data to choose the next topic?",
+   "have": "None yet. The site-side counter is built (session 3c96f21d) but its endpoint is not configured, so no event has left any browser and no count exists yet.",
+   "missing": "Search Console data and on-site event counts. Both are owner-side steps: connect Search Console, and choose a host for the collector.",
+   "how_to_find": "DEC-03 for the analytics path: set one endpoint in data/analytics/config.json, then connect Search Console for the query side.",
+   "sources": []
+  }
+ ]
 }

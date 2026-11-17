@@ -28,6 +28,10 @@ TABLES = [
     ("requirements", "traceability", "requirements.json", ["matrix"]),
     ("agent_terms", "agent governance", "agent_terms.json", ["table", "model_rules", "api"]),
     ("flags", "flagged for review", "flags.json", ["table"]),
+    # Session 3c96f21d (2026-11-17): the measurement ledger. It is empty by design - a row is
+    # written only from a named first-party report - so it contributes no rows and reports full
+    # coverage. The path reaches data/analytics/ledger.json from data/z3/.
+    ("measurement ledger", "measurement", "../analytics/ledger.json", ["rows"]),
 ]
 
 # Field families the brief asked for that have no official source at all.

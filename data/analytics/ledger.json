@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "title": "Campaign measurement ledger",
+    "session": "3c96f21d",
+    "written": "2026-11-17",
+    "rows": 0,
+    "status": "Empty by design. A row is added only when the numbers behind it have been obtained from an authorised first-party report, with the report named and dated.",
+    "rule": "Every row needs a timestamp, the source it came from, the channel, the eligible sessions, the clicks and the reported orders — and the reported orders column may only be filled from an Amazon report. No conversion rate, no earnings forecast and no projection is ever written here.",
+    "provenance": [
+      "timestamp — the date the row was written",
+      "source — the first-party report the numbers came from, named and dated (for example an Associates report for a named day, or this site's own event store for click counts)",
+      "channel — the path or campaign the row describes",
+      "eligible_sessions — sessions as Amazon defines them: a click on a Special Link opens a session that ends 24 hours later or when the customer returns to Amazon by another means (Participation Requirements, PF-12)",
+      "clicks — outbound clicks observed by this site's own counter, or the click figure in the named report",
+      "reported_orders — orders as reported in the named first-party Amazon report; never estimated"
+    ],
+    "why_empty": "No Associates account is enrolled in this repository and no report has been read, so there is nothing to write. The campaign ledger on campaigns.html follows the same rule and the same emptiness."
+  },
+
+  "columns": [
+    {"key": "timestamp", "label": "Date written", "type": "date", "rule": "The day the row was written."},
+    {"key": "source", "label": "Source", "type": "text", "rule": "The named first-party report the numbers came from, with its date."},
+    {"key": "channel", "label": "Channel", "type": "text", "rule": "The path or campaign on this site."},
+    {"key": "sessions", "label": "Eligible sessions", "type": "integer", "rule": "Amazon's session definition, from a report."},
+    {"key": "clicks", "label": "Clicks", "type": "integer", "rule": "Outbound clicks recorded by this site's counter, or the click figure in the named report."},
+    {"key": "orders", "label": "Reported orders", "type": "integer", "rule": "Orders from the named Amazon report only. Never an estimate."}
+  ],
+
+  "rows": []
+}
