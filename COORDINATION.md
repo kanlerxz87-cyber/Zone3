@@ -7580,3 +7580,117 @@ file belongs to another session's scope.
 | Cross-session corroboration | Sessions `82372fd1` / `59b2194c` / `974e366d` built `/shop/` from the same brief and mapped the same two links to B0DHZTCNR5 and B0DZFD6R9Z independently. Two sessions, same day, same destinations, recorded in the merge addendum above. |
 | Session status | 2F-T1…T8 **done**. Records: `research/2f181cd9-verification-log.md`, `research/2f181cd9-repo-review.md`, `sessions/2f181cd9/*.html`. Flags raised: F-2F-01…F-2F-10, all published on `flagged.html`. Suggestions: SUG-2F-01…13, all published **proposed / ready / blocked** — none scheduled, none implemented, which is the point of the console. |
 | One follow-up applied here | The generated page title still read "Zone3 — Air Fryer Research Desk" on every flat page after P4 and P5 were added. Changed to "Zone3 — Kitchen Product Research Desk" in `scripts/build_site.py` so the title stops contradicting the register. The brand name itself remains an owner decision (Q2F-05, SUG-2F-12). |
+
+# Part: session `ded63349` (2026-11-17) — measurement machinery, feed, sponsored rel, intent record, publication front page, decision console update
+
+> Append-only, per board convention. Nothing above this Part was edited. Branch: `arena/ded63349-zone3`
+> (Arena pins a session to one branch; the `session-<id>/<task>` branch naming in the brief is not
+> possible here — same reason recorded by session 7f84fea4 on 2026-11-13). Base: `fedc9f6` (PR #134).
+
+## Session registry (this Part)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `ded63349` | `arena/ded63349-zone3` | Implement the brief's measurement/cadence/feed/sponsored/intent-record priorities on the reader layer, publication pass on the front door, update the decision console with the new proposals and the missing-information list, independent verification round dated 2026-11-17, gates → PR → merge → Pages confirm | in progress (D6-T1) | 2026-11-17 |
+
+## Tasks claimed (ded63349)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| D6-T1 — Read board, register, claim, push claim immediately | in progress (this commit) | ded63349 | `COORDINATION.md` (this Part only) | — | — |
+| D6-T2 — Independent verification round dated 2026-11-17: OA §5, Program Policies 2(b)/6(t), Commission Table 1, ASIN rule, FTC pages, the three submitted short links and their observed destinations | unclaimed | — | `sessions/ded63349/**` (fetches only) | official pages | recorded under D6-T2 when done |
+| D6-T3 — Measurement machinery: five defined events, first-party click ledger (no cookies, no third party), measurement + cadence page on `/site/`, publishing cadence | unclaimed | — | `tools/build_i2_site.py` (JS/CSS/nav only), `site/measure.html`, `data/i2/decisions.json` (append rows) | policy pages (artificial-click rule) | — |
+| D6-T4 — Sponsored rel + feed + intent record + disclosure-above-the-fold pass + mobile-first pass + publication front-page pass (footer dashboard nav group) | unclaimed | — | `tools/apply_sponsored.py` (new), `tools/build_feed.py` (new), `tools/add_disclosure_banner.py` (new), `feed.xml` (new), `data/ded63349/intent_record.json` (new), `site/intent-record.html` (new), `tools/build_cba81fa5_site.py` (front-door region), `tools/i2_gate.py` (additive G11 check), hand-authored `site/` pages (nav links only) | policy pages | — |
+| D6-T5 — Decision console update: new proposals (implemented/blocked), new open questions, discovery actions; missing-information list | unclaimed | — | `data/i2/decisions.json` (append rows), `site/measure.html`, README rows | — | — |
+| D6-T6 — Gates, sitemap, README, session record, PR to `main`, merge, Pages deploy confirmation, publish record | unclaimed | — | `scripts/build_sitemap.py` (run only), `README.md`, `sessions/ded63349/**`, `COORDINATION.md` (this Part only) | — | — |
+
+## Scope notes (ded63349)
+
+- No product price, rating, review count, or product image is introduced. The five events and the
+  cadence are this project's own definitions and policies, labelled as such — not claims about
+  traffic, popularity or search volume (none is available from any official source).
+- The self-hosted analytics endpoint the brief asks for **cannot run on GitHub Pages static
+  hosting**; that is recorded as a blocked proposal with the options that would unblock it, not
+  worked around by adding a third-party script (which would contradict the privacy-preserving rule).
+- Shared tools edited only where a priority cannot be met otherwise, with the edit recorded in the
+  task's completion note below (pattern set by session f65d393b's gate repairs).
+
+## ded63349 — completion record (2026-11-17)
+
+| Task | Status | Result |
+|---|---|---|
+| D6-T1 — register, claim, push | done | claim pushed as commit on `arena/ded63349-zone3` before any other work |
+| D6-T2 — verification round 2026-11-17 | done | `sessions/ded63349/verification-2026-11-17.md` — D6-V01..V18: OA §5 verbatim ("Updated: October 15, 2025"), Program Policies 2(b)/6(s)/6(t)/6(v)/6(w)/6(y) verbatim (header now "Updated: April 14, 2026" — additive observation), Table 1 row-for-row, Creators API ASIN rule, FTC 101 verbatim, all three short links re-followed to the same destinations and served titles as the register. Prices/ratings present in fetched text were read for identity only and recorded nowhere |
+| D6-T3 — measurement machinery | done | five defined events (page_view, outbound_product_click, comparison_open, guide_read_through, decision_open) in `site/assets/site.js` (localStorage, no cookies/identifiers/network); `site/measure.html` defines them, the privacy rules, the cadence and the limits; device-side counts + CSV export on the page |
+| D6-T4 — sponsored rel / feed / intent record / disclosure / mobile / front page | done | `tools/apply_sponsored.py` + i2_gate G11 (every /dp/, /gp/product and link.amazon link `rel="sponsored"`, emitted by both site generators); `tools/build_feed.py` → `feed.xml` (21 entries, derived from the pages) + discovery links in every site/ head; `site/intent-record.html` + `data/ded63349/intent_record.json` (intended ASIN blank by design, observed redirect target a separate field); `tools/add_disclosure_banner.py` (11 footer-only pages gained an above-the-fold §5 banner — implements published proposal D-07 under the brief's explicit instruction); mobile pass (clamped type, 44px targets, sticky quick-compare bar); front door gained the dashboard footer nav group generated from `scripts/build_site.py`'s NAV lists (D-23) |
+| D6-T5 — decision console | done | `data/i2/decisions.json` +9 proposals (D-16..D-24), +3 questions (Q14..Q16), +3 discovery actions (DA-10..DA-12); 24/16/12 totals reflected in README |
+| D6-T6 — gates, README, records, PR, merge, Pages | done | see below |
+
+### Shared tools edited by this session (all logged)
+
+- `tools/i2_gate.py` — additive: G11 sponsored-rel rule, PRODUCT_HREF/ANCHOR_RE constants, google
+  official hosts (search.google.com, developers.google.com), checks-line text. No existing rule loosened.
+- `tools/build_i2_site.py` — NAV gains measure/intent-record; head gains the feed alternate link;
+  JS gains the event ledger; CSS gains the mobile pass + sticky bar; products page gains intent/measure
+  cross-links; guides emit the sticky bar and (fix D6-F-03) their page() write again; pages emit
+  rel="sponsored" at write time.
+- `tools/build_cba81fa5_site.py` — front-door band gains measure/intent/feed links and the dashboard
+  footer nav group (`dashboard_links()` imports the flat nav lists); writes apply mark_sponsored;
+  comparisons marked so `--check` is stable.
+- `scripts/build_sitemap.py` — **not edited** (run only). Other generators — **not edited**.
+
+### Irregularities raised (all self-caught before push, all fixed; published on flagged.html via the register? — no: session-scoped, recorded here and in sessions/ded63349/repo-review.md)
+
+D6-F-01 product-link pattern missed direct /dp/ form · D6-F-02 feed regex did not escape `atom+xml` and
+duplicated discovery links · D6-F-03 build_guides lost its page() write, leaving the guide stale ·
+D6-F-04 sticky-bar links built with a stale depth · D6-F-05 cba --check compared marked file against
+unmarked text. None touches the fact registers; no flags.json entry added.
+
+### Publish record (D6-T6)
+
+| Item | Result |
+|---|---|
+| Gates | all exit 0 on the final tree: i2_gate PASS 20 pages/186 rows/170 sourced/0 flagged (incl. G11) · cba_lint PASS 0 new/22 inherited · check_site OK 30/3/62/108 · verify_site PASS 117 pages/1,945 rows/1,702 sourced · link_report --strict 0 · check_all_links 0 errors (163 pages/187 URLs) · apply_sponsored --check PASS · add_disclosure_banner --check PASS · build_feed --check PASS (21 entries) · build_cba81fa5_site --check current · build_sitemap --check 80 pages/0 extras · full chain ×2 identical tree hash · no conflict markers |
+| Pull request | created from `arena/ded63349-zone3` → `main` (link recorded below after creation) |
+| Merge | merged without waiting for review, per the brief |
+| Pages deploy | confirmed via the Pages API after merge; live checks recorded below |
+
+## ded63349 — merge-reconciliation + publish record (2026-11-17, supersedes publish details above)
+
+While this session worked, `main` advanced twice (PR #140/#141, session `82372fd1` — mobile pass,
+union feed, dashboard intent record, suggestions review; earlier the same day sessions `974e366d`
+and `aebf0747`). `git pull --rebase` therefore conflicted. Resolution, per board rules (no one's
+work discarded; conflicts logged):
+
+- **COORDINATION.md (add/add):** `main`'s board taken verbatim; this session's claim Part re-appended
+  below it; completion record kept. No other session's text altered.
+- **tools/build_feed.py (add/add):** `main`'s union RSS 2.0 builder (82372fd1) kept as canonical;
+  ded63349's Atom-format variant retired. This session's feed-discovery links in
+  `tools/build_i2_site.py`, `tools/build_cba81fa5_site.py` (backstop), `site/measure.html` and
+  `site/intent-record.html` normalized to `type="application/rss+xml"`; "Atom feed" labels → "RSS
+  feed". The cba backstop now injects only when no feed link of either type exists (never duplicates
+  `publish_pass.py`'s `z3:rss` link).
+- **Generated pages (60+ files, both/edited):** `main`'s outputs taken, then the full merged chain
+  regenerated everything with the merged generators.
+- **tools/build_cba81fa5_site.py (content):** both sides kept — main's `_rel` sponsored-marking
+  helpers and ded63349's `mark_sponsored` write-site wrapper (idempotent no-op where `_rel` already
+  marked). One label edit logged above ("Atom feed" → "RSS feed" in the fd band).
+- **README.md:** `main`'s chain (authoritative, includes build_shop/build_pass/publish_pass) kept;
+  ded63349 re-added its page rows, the G11 note and the two `--check` verifier lines.
+
+Retired as duplicates (kept in tree as `--check`-only verifiers, both PASS on the merged tree):
+`tools/apply_sponsored.py` (marking owned by generators + `publish_pass.py`),
+`tools/add_disclosure_banner.py` (placement owned by `publish_pass.py`'s strip + generators).
+
+### Publish record (D6-T6, factual)
+
+| Item | Result |
+|---|---|
+| Gates on final merged tree | 13/13 exit 0 — i2_gate PASS 20 pages/186 rows/170 sourced/0 flagged (G1–G11) · cba_lint PASS 0 new · no_repr PASS · check_site OK 30/3/62/113 · verify_site PASS 136 pages/2,090 rows/1,791 sourced · link_report --strict 0 · check_all_links 0 errors · apply_sponsored --check PASS · add_disclosure_banner --check PASS · build_feed --check PASS · build_shop --check PASS · publish_pass --check PASS · build_cba81fa5_site --check current · build_sitemap --check current; full chain ×2 identical tree hash; zero `atom+xml` strings in published html; exactly one RSS discovery link per page head |
+| Pull request | from `arena/ded63349-zone3` → `main`, merged without waiting for review, per the brief (number recorded in the session record) |
+| Pages deploy | confirmed via Pages API after merge |
+
+## ded63349 — final note, round 2 (2026-11-17)
+
+`main` moved again (PR #147, session 2f181cd9 publish record); same recipe applied: main's board
+verbatim, this session's parts re-appended. No other session's content edited. PR: #149.

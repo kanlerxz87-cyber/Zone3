@@ -77,3 +77,64 @@
 
   refreshOutputs();
 })();
+
+/* ---- First-party event ledger (session ded63349, 2026-11-17; proposal D-16) ----
+   Five defined events, recorded on this device only: no cookies, no third-party
+   requests, no identifiers, no referrer storage — just event name, UTC timestamp,
+   page path and (for product clicks) which product card. Participation Requirements
+   6(s) bans artificial clicks or sessions: this ledger counts real clicks made by a
+   real visitor on this site's own pages, and never touches Amazon sessions. */
+(function(){
+  var KEY = 'z3-events-v1', MAX = 500;
+  var EVENTS = { page_view:1, outbound_product_click:1, comparison_open:1, guide_read_through:1, decision_open:1 };
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e){ return []; } }
+  function save(a){ try { localStorage.setItem(KEY, JSON.stringify(a.slice(-MAX))); } catch(e){} }
+  function rec(name, data){
+    if (!EVENTS[name]) return;
+    var a = load();
+    a.push({ t: new Date().toISOString(), e: name,
+             p: location.pathname.replace(/^\/Zone3/, ''),
+             r: (data && data.ref) ? data.ref : null });
+    save(a);
+    try { document.dispatchEvent(new CustomEvent('z3-event', { detail: { name: name } })); } catch(e){}
+  }
+  rec('page_view');
+  document.addEventListener('click', function(ev){
+    var t = ev.target;
+    var a = t && t.closest ? t.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('/dp/') > -1 || href.indexOf('link.amazon') > -1) {
+      rec('outbound_product_click', { ref: a.getAttribute('data-ref') || '' });
+    } else if (href.indexOf('compare') > -1 || (a.textContent || '').toLowerCase().indexOf('compare') > -1
+               || href.indexOf('products.html') > -1) {
+      rec('comparison_open');
+    } else if (href.indexOf('decisions.html') > -1 || href.indexOf('answers.html') > -1) {
+      rec('decision_open');
+    }
+  }, true);
+  if (location.pathname.indexOf('/guides/') > -1) {
+    var readFired = false;
+    window.addEventListener('scroll', function(){
+      if (readFired) return;
+      var d = document.documentElement;
+      var total = (d.scrollHeight || 1) - (d.clientHeight || 1);
+      var progress = (d.scrollTop || document.body.scrollTop || 0) / (total || 1);
+      if (progress > 0.92) { readFired = true; rec('guide_read_through'); }
+    }, { passive: true });
+  }
+  window.z3Ledger = {
+    events: Object.keys(EVENTS),
+    all: load,
+    record: rec,
+    clear: function(){ try { localStorage.removeItem(KEY); } catch(e){} },
+    csv: function(){
+      var rows = ['timestamp,event,path,product'];
+      load().forEach(function(x){
+        var cells = [x.t, x.e, x.p, x.r || ''];
+        rows.push(cells.map(function(v){ return '"' + String(v).replace(/"/g, '""') + '"'; }).join(','));
+      });
+      return rows.join('\n');
+    }
+  };
+})();

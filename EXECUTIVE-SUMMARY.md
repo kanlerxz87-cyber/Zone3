@@ -742,3 +742,58 @@ side effect of a marketing pass. The compensating control that *does* fail is `t
 blank on every page (Q-4); the campaign ledger is empty by design; and no human editor has reviewed any page,
 so the bylines say an agent desk wrote them (Q-5/D-10). Two reader layers now exist side by side, and the owner
 decision on which is canonical is on the flagged page (`CBA-F-03`), not quietly resolved.
+
+---
+
+## Session ded63349 pass (2026-11-17) — measurement machinery, intent record, sponsored-rel gate, decision console (updated after merge reconciliation)
+
+Scope: the brief's measurement, cadence, disclosure-placement, sponsored-rel and product-intent
+priorities, implemented on the reader layer without changing any registered fact. Independent
+verification round: `sessions/ded63349/verification-2026-11-17.md` (D6-V01..V18 — every load-bearing
+official page re-read on 2026-11-17; all match the register).
+
+**What this session shipped (present in the merged tree):**
+
+| Item | Result |
+|---|---|
+| Five defined events | `page_view`, `outbound_product_click`, `comparison_open`, `guide_read_through`, `decision_open` — defined on `site/measure.html` (D-16), recorded device-side in `site/assets/site.js`; no cookies, no identifiers, no third-party calls, no server (static hosting — recorded as blocked D-20) |
+| Publishing cadence | one guide per fortnight from 2026-12-01, monthly measurement review, quarterly compliance re-read (D-17); new guides enter sitemap + feed automatically |
+| Product-intent record | `site/intent-record.html` + `data/ded63349/intent_record.json` (D-24): intended ASIN blank by design (owner-only, Q2), official listing URL, confirmation dates 2026-11-16 (re-observed 2026-11-17), observed redirect targets in a separate field. The dashboard's intent table on `products.html` (session 82372fd1) is the complementary dashboard view |
+| Sponsored-rel gate | i2_gate **G11** (D-19): every `/dp/`, `/gp/product/` and `link.amazon` anchor must carry `rel="sponsored"`; marking itself is done by the site generators and `sessions/aebf0747/publish_pass.py`, and `tools/apply_sponsored.py --check` runs as a redundant verifier |
+| Disclosure-placement check | `tools/add_disclosure_banner.py --check` verifies the §5 sentence sits above the fold on every published page (complements `publish_pass.py`'s strip; on the merged tree every page already passes) |
+| Mobile + front door | fluid type scale, 44px tap targets and a sticky quick-compare bar on guide pages (D-22); front door gained the dashboard footer nav group generated from `scripts/build_site.py`'s nav lists (D-23) plus measure/intent/feed links |
+| Decision console | D-16..D-24, Q14..Q16, DA-10..DA-12 appended — 24 proposals, 16 questions, 12 discovery actions |
+
+**Merge reconciliation (same day).** While this session worked, `main` absorbed sessions 974e366d
+(shop layer), aebf0747 (publication pass: disclosure strip, sponsored rel, head links) and 82372fd1
+(mobile pass, union feed, dashboard intent record, suggestions review). The rebase kept every
+session's work and retired only this session's *duplicate* machinery: its Atom-format feed
+variant and its standalone banner-insertion pass. The canonical feed is the **union RSS 2.0
+`feed.xml`** (session 82372fd1, both guide registers); all feed-discovery links and labels were
+normalized to `application/rss+xml`, and `tools/build_cba81fa5_site.py`'s front-page feed-link
+backstop now injects RSS only when no feed link of either type exists. Conflicts (COORDINATION.md
+add/add; `tools/build_feed.py` add/add; generated pages) were resolved by taking `main`'s version
+and re-applying only the deltas this session owns. Logged in COORDINATION.md's reconciliation record.
+
+**Gates on the final merged tree (all exit 0; full chain run twice, identical tree hash):**
+`i2_gate` PASS — 20 pages · 186 rows · 170 sourced · 16 explicit blanks · 0 flagged (checks G1–G11) ·
+`cba81fa5_lint` PASS (0 new findings) · `cba81fa5_test_no_repr_output` PASS · `check_site` OK
+(30 pages / 3 products / 62 sources / 113 flags) · `verify_site` PASS (136 pages · 2,090 rows ·
+1,791 sourced) · `link_report --strict` 0 · `check_all_links` 0 errors · `apply_sponsored --check`
+PASS · `add_disclosure_banner --check` PASS · `build_feed --check` PASS · `build_shop --check` PASS ·
+`publish_pass --check` PASS · `build_cba81fa5_site --check` current · `build_sitemap --check` current.
+
+**Still blocked, unchanged:** Associates tag (Q1), intended ASINs (Q2), Creators API credentials (Q4),
+human editor review (Q5/D-10), the analytics endpoint's host (Q14/D-20), Search Console verification
+(Q15/D-21), and the Special Links test that only the account holder can run.
+
+**Parallel measurement layer (session 38650305, merged the same day).** On top of the five-event
+device ledger above, the merged tree carries a second, endpoint-bound counter: `assets/measure.js`
++ `assets/measure-config.js` generated from `data/shop/measurement.json` (counting **OFF** until
+`endpoint_url` is set), injected site-wide by `tools/measure_pass.py`, with an aggregate-only
+collector (`tools/analytics_endpoint.py`, self-test PASS). Known divergence, flagged for review:
+`measurement.json` proposes five event ids (`page_view, outbound_click, guide_view, intent_view,
+flag_view`) that differ from D-16's five (`page_view, outbound_product_click, comparison_open,
+guide_read_through, decision_open`) on the same page — both sessions derived "five events" from a
+brief that names no list (flag M38-F-04). The owner decision that unifies them is recorded on
+`site/decisions.html` (Q14/D-20 for the endpoint; the event list needs a ratification choice).
