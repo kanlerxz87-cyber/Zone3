@@ -52,6 +52,7 @@ def prefix_for(rel: str) -> str:
 
 NAV = [
     ("index.html", "Home"),
+    ("shop/index.html", "Shop"),  # route kept from PR #135 (session 974e366d)
     ("guides/index.html", "Guides"),
     ("index.html#products", "Products"),
     ("intent-record/index.html", "Intent record"),
