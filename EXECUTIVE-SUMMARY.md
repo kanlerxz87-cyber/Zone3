@@ -853,6 +853,8 @@ validated Special Link and an unconfirmed tracking tag, Medium), 5B-F-06 (a same
 shared gate, fixed, Info). All are on the
 [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page.
 
+**Independent corroboration.** Session `2f181cd9`, working in parallel on 2026-11-17, reached the same two previously unrecorded links and registered them in the shared source register as `S70`–`S75`; session `82372fd1` flagged the same two links as `G82-F-03` and added rows for them that still have empty observed fields. Three sessions finding the same gap independently is corroboration of the finding. This session's contribution is the destinations, the browse-node mismatch, and the decision records that follow from it.
+
 **Owner decisions needed.** (1) Which of the three paths this site follows — one kitchen site with two
 pillars is the default. (2) The intended product or ASIN behind each of the five links. (3) Associates
 account status, the tracking tag and the Special Link format. (4) Whether two of the five products are
@@ -861,3 +863,5 @@ in scope at all.
 ---
 
 67 official sources · 55 policy facts · 119 flags · 34 pages in the shared gate, a 16-page audit build, a `/docs/`
+
+75 official sources · 55 policy facts · 129 flags · 40 pages in the shared gate, a 16-page audit build, a `/docs/`

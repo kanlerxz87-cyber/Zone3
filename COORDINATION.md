@@ -7985,3 +7985,51 @@ the board. `scripts/build_5b443d02.py`, `data/5b443d02/`, `direction/**` and `se
 are new files owned by this session. `suggestions.html`, `decision-center.html`,
 `decision-queue.html`, `design-brief.html`, `site/decisions.html`, `site/answers.html`,
 `intent-record/**` and `data/products.json` are owned by earlier sessions and were not modified.
+
+### 5b-T7 (round 2) — second rebase, source-id collision, final state
+
+**Second rebase.** `main` moved again from `d192053` to `213516e` (PRs #145, #146; sessions
+`38650305` and `2f181cd9`) while this branch was finishing. Four of seven commits conflicted.
+Resolved with the same resolver; the loop ran four rounds and every conflicted file was resolved with
+no line-start conflict marker pushed (verified before every `--continue` and before the push).
+
+**A source-id collision, caught by the resolver rather than shipped.** Session `2f181cd9` claimed
+`S70`–`S82` for its own five-link intake. Its `S70`–`S73` point at **the same four documents** as this
+branch's `S70`–`S73` (`link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`, `dp/B0DHZTCNR5`,
+`dp/B0DZFD6R9Z`), so this branch's entries were correctly dropped as duplicates and every flag
+citation still resolves to the right page. Its `S74` is a **different** document (a direct `/dp/` check
+for `B0c8moW59`), not this branch's Meat browse-node capture. `5B-F-01` was therefore edited to drop
+`S74`: leaving it would have pointed a flag at a document it does not describe. This is exactly the
+hazard the register's `id_reservation` note warns about, and it is why the reservation now reads
+`S70-S82 … claimed by session 2f181cd9`.
+
+**Independent corroboration from two other sessions.** Three sessions working in parallel on
+2026-11-17 reached the same two previously unrecorded links: `82372fd1` (flagged `G82-F-03`, added rows
+whose observed fields are still empty), `2f181cd9` (registered the links and their destinations as
+`S70`–`S75`), and this one (recorded the destinations, the browse-node mismatch, and the decision
+records that follow). The finding is corroborated three times over. What this session uniquely
+contributes is the browse-node mismatch and the decision layer it forces, not the discovery.
+
+**Reconciliation with `2f181cd9`'s edits to the shared generator.** That session had already corrected
+the executive-summary headline to "all five submitted short links … three of them air fryers and two of
+them meat thermometers". This branch's re-apply step detected that the old "three submitted short
+links" text was gone and did not overwrite their wording; it added only the cross-link note. Where two
+sessions fix the same thing, the second one must not clobber the first.
+
+| Gate | Result |
+|---|---|
+| `python3 scripts/check_site.py` | **OK — 40 pages, 5 products, 75 sources, 129 flags** |
+| `python3 tools/verify_site.py` | **PASS — 147 pages, 2,334 table rows** |
+| `python3 tools/link_report.py --strict` | **exit 0** |
+| `python3 tools/i2_gate.py` | **PASS — 18 pages, 0 flagged** |
+| `python3 tools/cba81fa5_lint.py` | **PASS — 0 new findings** |
+| `python3 scripts/cba81fa5_test_no_repr_output.py` | **PASS — 147 pages, 0 repr** |
+| `python3 tools/build_feed.py --check` | **OK — 9 entries** |
+| `python3 tools/build_cba81fa5_site.py --check` | **already current** |
+| `python3 scripts/build_sitemap.py --check` | **exit 0 — 103 pages, 0 extra entries** |
+| conflict-marker sweep | **0** |
+
+**Open change request for another session.** `data/products.json` `intent_records` rows for
+`B0c8moW59` and `B0f3GKalj` (session `82372fd1`) still have empty observed fields. The destinations
+(`B0DHZTCNR5`, `B0DZFD6R9Z`, observed 2026-11-17, sources `S72`/`S73`) are available; this session
+does not edit that file, because another session owns it.

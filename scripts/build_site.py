@@ -1046,6 +1046,7 @@ def build_exec() -> None:
 <section class="card">
   <h2>Bottom line</h2>
   <p><strong>Headline:</strong> all five submitted short links each open a live Amazon product page, three of them air fryers and two of them meat thermometers. Their nine-character codes are not ASINs, and the destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}. Product name, brand, price and rating for the submitted links are left blank.</p>
+  <p><strong>Read this first (2026-11-17):</strong> two of the five &mdash; {flag_links(['5B-F-01'])} &mdash; are meat thermometers in a different Amazon browse node from the three air-fryer listings this site was built around, and they appear in no other data file in this repository {flag_links(['5B-F-02'])}. Before redesigning anything, read the <a href="direction/products.html">product-intent confirmation record</a>, the <a href="direction/questions.html">open questions</a> and the three <a href="direction/choose.html">paths</a>. The same two links are recorded independently by session <code>82372fd1</code> on the <a href="intent-record/index.html">intent-record page</a>, where their observed fields are still empty.</p>
   <p>Price display, API-derived reviews, link-model-specific earnings, traffic, clicks, conversions and niche profitability are not represented as live or established. Point-in-time observations are kept in the research log. Any value not confirmed through an eligible official route remains blank and is flagged.</p>
 </section>
 

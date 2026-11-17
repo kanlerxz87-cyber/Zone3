@@ -673,7 +673,7 @@ def build_record() -> str:
     frows = [
         ("5B-F-01", "High", "Two of the five links sit in a different browse node (Meat, 289810) "
                             "from the Air Fryers node the whole site is built around.",
-         ["S70", "S71", "S72", "S73", "S74"]),
+         ["S70", "S71", "S72", "S73"]),
         ("5B-F-02", "High", "Those two links appear in no data file in the repository before this "
                             "session; every page was built on three of five submitted links.",
          ["S70", "S71", "S72", "S73"]),
