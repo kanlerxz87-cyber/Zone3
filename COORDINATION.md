@@ -7335,17 +7335,17 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `92988cd8` | `arena/92988cd8-zone3` | Independent line-by-line re-verification (fresh official-source fetches, 2026-11-17); repo review; brief-gap check of the suggestions / questions-and-answers / executive-summary deliverables; any missing additive deliverable; final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (Z3-T1) | 2026-11-17 |
+| `92988cd8` | `arena/92988cd8-zone3` | Independent line-by-line re-verification (fresh official-source fetches, 2026-11-17); repo review; brief-gap check of the suggestions / questions-and-answers / executive-summary deliverables; any missing additive deliverable; final integration: gates → PR → `main` → merge → Pages confirm → record | **done (Z3-T1..T5)** | 2026-11-17 |
 
 ## 929 Task board (claimed before any other work, per protocol)
 
 | Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
 |---|---|---|---|---|---|
 | Z3-T1 — Read the board, register session, claim tasks, push the claim immediately | **done (this commit)** | 92988cd8 | `COORDINATION.md` (this Part only) | — | — |
-| Z3-T2 — Independent live re-verification, dated 2026-11-17: three submitted short links, `/dp/<token>` controls, three destination listings, Operating Agreement §5, Program Policies 2(b)/6(t)/6(w)/6(y), Standard Commission Income Statement Table 1, Creators API ASIN rule, FTC Disclosures 101 | unclaimed → 92988cd8 | 92988cd8 | `sessions/92988cd8/**` (new, read-only fetches; existing source IDs in `data/sources.json` unless a URL is absent) | official pages only | as found |
-| Z3-T3 — Line-by-line repo review of the combined tree at `fedc9f6`: page inventory, gate status, duplicate registers, nav/sitemap coverage, disclosure coverage, broken-link risk | unclaimed → 92988cd8 | 92988cd8 | `sessions/92988cd8/**` (report) | repo files + GitHub API | as found |
-| Z3-T4 — Brief-gap check: the suggestions section, the questions/information/answers register, the decision-review section, the executive summary, the design-prompt deliverable — confirm each brief ask has a reviewable surface, and add any missing additive deliverable | unclaimed → 92988cd8 | 92988cd8 | additive new files only under `sessions/92988cd8/`; shared outputs only if a gate fails, logged with reason | as above | as found |
-| Z3-T5 — Final integration: all gates green on the final tree, PR → `main`, merge without waiting, confirm GitHub Pages deploy + live checks, record here | unclaimed → 92988cd8 | 92988cd8 | git + `gh` + this Part | GitHub Pages API | — |
+| Z3-T2 — Independent live re-verification, dated 2026-11-17: three submitted short links, `/dp/<token>` controls, three destination listings, Operating Agreement §5, Program Policies 2(b)/6(t)/6(w)/6(y), Standard Commission Income Statement Table 1, Creators API ASIN rule, FTC Disclosures 101 | **done (19/19 match; log + page below)** | 92988cd8 | `sessions/92988cd8/**` (new, read-only fetches; existing source IDs in `data/sources.json` unless a URL is absent) | official pages only | as found |
+| Z3-T3 — Line-by-line repo review of the combined tree at `fedc9f6`: page inventory, gate status, duplicate registers, nav/sitemap coverage, disclosure coverage, broken-link risk | **done (record: sessions/92988cd8/repo-review.md)** | 92988cd8 | `sessions/92988cd8/**` (report) | repo files + GitHub API | as found |
+| Z3-T4 — Brief-gap check: the suggestions section, the questions/information/answers register, the decision-review section, the executive summary, the design-prompt deliverable — confirm each brief ask has a reviewable surface, and add any missing additive deliverable | **done (matrix 929-G1..G7 on the session page; gaps flagged, not silently filled)** | 92988cd8 | additive new files only under `sessions/92988cd8/`; shared outputs only if a gate fails, logged with reason | as above | as found |
+| Z3-T5 — Final integration: all gates green on the final tree, PR → `main`, merge without waiting, confirm GitHub Pages deploy + live checks, record here | **done (record below)** | 92988cd8 | git + `gh` + this Part | GitHub Pages API | — |
 
 **Scope discipline.** This session edits `COORDINATION.md` (this Part only) and its own
 `sessions/92988cd8/**` records. Shared outputs (`data/*.json`, root generated pages,
@@ -7565,6 +7565,22 @@ Pending: merge record and Pages check (below).
 | Clean checkout | Fresh clone of `arena/38650305-zone3` at `e97afc7` ran every gate. One failure (`build_shop --check`, `search.google.com` not allow-listed) was fixed in `5ada925`; the clean clone was then re-run at the commit above with every gate passing. |
 | Rebase | `main` moved to `c67596a` (PR #143, session `59b2194c`) during this work. Rebased; the one conflict in `COORDINATION.md` (both sides appended) was resolved by keeping both sides in full. `EXECUTIVE-SUMMARY.md` merged cleanly; both sessions' sections are present. |
 | Session status | M38-T1…T8 **done**. Blocked, not built, each flagged: Special Link validation (M38-F-01), Search Console (M38-F-03), reader capture (M38-F-14), collector hosting (M38-F-04, M38-F-15), the five events (M38-F-04), the image decision (M38-F-10), the brand name (M38-F-09). |
+
+### Z3-T5 — Publish record (2026-11-17)
+
+| Item | Result |
+|---|---|
+| PR | [#148](https://github.com/kanlerxz87-cyber/Zone3/pull/148) — merged without waiting, per the brief's do-not-wait instruction |
+| Merge | `334f4f1` (merge commit on `main`), mergedAt **2026-11-17T17:01:01Z**; PR body carries the summary, sources and flags |
+| Gates before merge (final tree, all exit 0) | check_site **OK: 41 pages, 5 products, 82 sources, 132 flags** · verify_site **VERIFY PASS: 150 pages, 2,437 rows, 2,082 official source** · link_report --strict · i2_gate · cba81fa5_lint (0 new) · sitemap --check · check_all_links **196 pages, 0 errors** · build_cba81fa5_site --check · test_manifest_regression · no-repr · build_read --check · sessions/3c886b62 check_links |
+| GitHub Pages | workflow `pages-build-deployment` run 44132275730 **success**; Pages API status **`built`** |
+| Live checks (fetched from the deployed site) | root 200 — disclosure strip, five product cards (intent "not confirmed" on all five), no tag literal, no price/rating values; `sessions/92988cd8/` 200 — disclosure, one h1, intake table with remapped S-IDs, flag links resolving |
+| Rebase/merge history on this branch | two union merges onto `main` (0fbe95e→5ea453c→6efae2f) plus the final PR merge; every conflict resolved by union-by-ID + full generator re-run; gates re-run green after each |
+| Collisions/repairs recorded | source-ID collision with 2f181cd9 (adopted their numbering, remapped 26 references by URL); exec-summary counts recomputed to 82/55/132/41; 7 wrong-depth flag links in sessions/5b443d02 repaired (pre-existing on main, gate red) |
+| Not touched | open PRs #123 and #109; other sessions' Parts and generators; the tag value stays out of every public file |
+
+**Z3-T1..T5 are done.** Sources/verification/irregularities for every marked-done row are in this Part, in `sessions/92988cd8/verification-2026-11-17.md`, `sessions/92988cd8/repo-review.md`, `sessions/92988cd8/index.html`, `data/sources.json` (S70-S75 under 2f181cd9's numbering), `data/flags.json` (929-F-01, 929-F-02) and `EXECUTIVE-SUMMARY.md` §13.
+
 # Part: session `2f181cd9` (2026-11-17) — five-link intake (two new links), design-direction pack, decision lab, final integration
 
 ## Session registry (this part)
