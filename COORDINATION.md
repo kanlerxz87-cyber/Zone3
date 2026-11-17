@@ -7298,3 +7298,41 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 | Pages deploy | `pages/builds/latest` for commit `5bc965a`: **`built`**. Configuration source `main` `/`, status `built`. |
 | Live checks (cache-busted, post-build) | **feed.xml** — union serves: 9 items (four /guides/ pages with aebf0747's exact pubDates, then five site/guides entries), channel copy correct. **products.html** — "Product-intent confirmation record (added 2026-11-17)" table live with intended fields Unverified and observed block separate. **flagged.html** — "113 entries: 3 critical, 19 high, 31 medium, 33 low, 27 info", matching the register exactly. Root front page nav (Flagged (register) + topbar token) live via the merge itself. (`.css` live fetch bounced off the preview proxy's own credential error, not a site error; the merged commit IS what Pages serves and the shipped rules are in `site/assets/site.css` at `5bc965a`.) |
 | Session status | G82-T1…T5 **done**. Records: `sessions/82372fd1/repo-review.md`, `mobile-audit.md`, `verification-2026-11-17.md`. Flags: G82-F-01…F-05 (four fixed, G82-F-03 needs owner — published on flagged.html). Tracking ID from the 2026-11-17 brief kept in this log only, per Q1's own rule. |
+
+---
+
+## Part 83 — session `3c96f21d` (branch `arena/3c96f21d-zone3`, base `d192053` (main at claim), 2026-11-17)
+
+### 83 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 3c96f21d | `arena/3c96f21d-zone3` | The measurement layer the owner brief asks for first ("Turn on click and conversion measurement before writing anything else"): define the five measured events, build the privacy-preserving outbound-click counter, build and test the self-hosted collector, publish the measurement desk, and integrate. | in progress | 2026-11-17 |
+
+### 83 Coordination check before claiming
+
+- `main` at claim: `d192053` (merge of PR #141, session 82372fd1). No open PR from another session against this base at claim time; every earlier Part on this board reads `merged` or `done`.
+- Branch discipline: this session works only on `arena/3c96f21d-zone3`. It does not create, switch, or push any other branch.
+- Shared-tool edits are declared in advance and recorded with before/after evidence in a `G3c-F-*` flag (precedent: F65-F-04, G82-F-04/05):
+  - `sessions/aebf0747/publish_pass.py` — one additive head-markup rule (the tracker script tag) and one additive footer group (the measurement desk). Nothing else in that file changes.
+  - `scripts/check_site.py`, `tools/verify_site.py` — official-host allowlist widened to the two documentation hosts the measurement page cites (Mozilla MDN, Cloudflare Workers docs). No existing rule is relaxed.
+  - `data/flags.json`, `data/suggestions.json`, `data/decision-queue.json`, `data/shop/decisions.json`, `data/z3/requirements.json`, `EXECUTIVE-SUMMARY.md` — register edits only, all counts recomputed from the registers.
+- Gates re-run at the claimed base before any edit: `check_site` OK 30/3/62/113 · `link_report --strict` 0 · `i2_gate` PASS 18 pages/164 rows/0 flagged · `cba81fa5_lint` PASS 0 new / 22 inherited · `build_cba81fa5 --check` current · `build_sitemap --check` 97/0 · `check_all_links` 0 errors (180 pages/207 URLs) · `verify_site` PASS 134 pages/2,068 rows. All green at `d192053`.
+
+### 83 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G3c-T1 — Repo review at the claimed base; gate snapshot; live-Pages spot check; line-by-line irregularity scan | in progress | 3c96f21d | read-only; record in `sessions/3c96f21d/repo-review.md` | repo registers + live site | any defect found → `G3c-F-*` flag |
+| G3c-T2 — Define the five measured events, the collector endpoint contract and the privacy rules; record DEC-03 | in progress | 3c96f21d | `data/analytics/events.json` (new), `data/analytics/config.json` (new), `data/analytics/ledger.json` (new), `data/shop/decisions.json` (DEC-03 row only) | SH-S01…SH-S16, MDN, GitHub Docs, Cloudflare Docs | event set is a proposal until the owner accepts it → flag |
+| G3c-T3 — Privacy-preserving outbound-click counter: generated `assets/analytics.js`, wired into every published page by the marker-based publication pass | in progress | 3c96f21d | `tools/build_analytics.py` (new), `assets/analytics.js` (generated), `sessions/aebf0747/publish_pass.py` (head-markup rule only) | MDN sendBeacon / IntersectionObserver, Google rel=sponsored | shared-tool edit → `G3c-F-*` flag with before/after evidence |
+| G3c-T4 — Self-hosted collector and its test: stdlib Python collector, Cloudflare Worker variant, round-trip unit test | in progress | 3c96f21d | `tools/collector/**` (new) | GitHub Docs (Pages is static), Cloudflare Workers docs | — |
+| G3c-T5 — Publish the measurement desk: `analytics/index.html` with the five events, the endpoint contract, the privacy rules and the empty ledger; footer entry; sitemap | in progress | 3c96f21d | `analytics/index.html` (generated), `sessions/aebf0747/publish_pass.py` (footer group only), `sitemap.xml` (regenerated) | registers | — |
+| G3c-T6 — Registers updated: new flags, Q8 status on the questions page, DEC-03 record, requirements traceability row, executive-summary counts | in progress | 3c96f21d | `data/flags.json`, `data/suggestions.json`, `data/decision-queue.json`, `data/shop/decisions.json`, `data/z3/requirements.json`, `EXECUTIVE-SUMMARY.md`, `README.md` | — | — |
+| G3c-T7 — Final integration: full chain ×2, every gate, PR to `main`, merge, Pages deploy, live check | planned | 3c96f21d | `sitemap.xml`, `COORDINATION.md` (Part 83 only) | gate outputs | — |
+
+### 83 Rules this session follows
+
+- No price, star rating, review count, "trending" or "popular" claim is added anywhere, and no figure is inferred. The counter measures clicks; orders and revenue come only from authorised first-party Amazon reports.
+- The counter stores no cookie, no identifier and no personal data by default. The event set and the collection host are owner decisions and are published as open questions, not as finished choices.
+- Every table row on the new page carries a source link, a flag reference or a `repo:` anchor, so the shared provenance gate applies to it exactly as it applies to the rest of the site.
