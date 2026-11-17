@@ -800,7 +800,6 @@ guide_read_through, decision_open`) on the same page — both sessions derived "
 brief that names no list (flag M38-F-04). The owner decision that unifies them is recorded on
 `site/decisions.html` (Q14/D-20 for the endpoint; the event list needs a ratification choice).
 
-67 official sources · 55 policy facts · 114 flags · 34 pages in the shared gate, a 16-page audit build, a `/docs/`
 
 ## Update 2026-11-17 — session 5b443d02 (five-link intake, Direction section, final integration)
 
@@ -862,6 +861,5 @@ in scope at all.
 
 ---
 
-67 official sources · 55 policy facts · 119 flags · 34 pages in the shared gate, a 16-page audit build, a `/docs/`
+82 official sources · 55 policy facts · 130 flags in the shared gate, a 16-page audit build, a `/docs/`
 
-75 official sources · 55 policy facts · 129 flags · 40 pages in the shared gate, a 16-page audit build, a `/docs/`
