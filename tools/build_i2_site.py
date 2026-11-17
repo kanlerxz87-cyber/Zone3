@@ -23,8 +23,8 @@ from __future__ import annotations
 
 import html
 import json
-import pathlib
 import re
+import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "i2"
@@ -169,7 +169,37 @@ def page(path: str, title: str, body: str, lead: str = "", description: str = ""
 """
     target = OUT / path
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(doc, encoding="utf-8")
+    target.write_text(mark_sponsored(doc), encoding="utf-8")
+
+
+
+# ---------------------------------------------------------------------------
+# Sponsored rel (session ded63349, 2026-11-17; proposal D-19). Every outbound
+# product link this generator emits carries rel="sponsored" at write time, so
+# the emitted pages already satisfy tools/apply_sponsored.py --check and the
+# G11 rule in tools/i2_gate.py without a second rewriting pass over site/.
+# tools/apply_sponsored.py remains the canonical enforcer for the pages other
+# generators own; the pattern here must match the one defined there.
+MARK_PRODUCT_HREF = re.compile(
+    r'https?://[^\"\']*link\.amazon/[^\"\']*'
+    r'|https?://[^\"\']*amazon\.[a-z]{2,3}(?:/[^\"\']*)?/(?:dp/[A-Z0-9]{10}|gp/product/[A-Z0-9]{10})[^\"\']*', re.I)
+MARK_ANCHOR_RE = re.compile(r'<a\b[^>]*>', re.I)
+
+
+def mark_sponsored(html: str) -> str:
+    def fix(m):
+        tag = m.group(0)
+        href = re.search(r'href="([^"]*)"', tag)
+        if not href or not MARK_PRODUCT_HREF.search(href.group(1)):
+            return tag
+        rel = re.search(r'rel="([^"]*)"', tag)
+        if rel:
+            if "sponsored" in rel.group(1).split():
+                return tag
+            tokens = [t for t in ("sponsored",) if t not in rel.group(1).split()]
+            return tag[:rel.start(1)] + " ".join(tokens + rel.group(1).split()) + tag[rel.end(1):]
+        return tag[:-1].rstrip() + ' rel="sponsored noopener noreferrer">'
+    return MARK_ANCHOR_RE.sub(fix, html)
 
 
 # --------------------------------------------------------------------------- css
@@ -644,9 +674,11 @@ def build_guides():
 """
     # Mobile quick-compare bar (D-22): sticky on small screens so a reader partway
     # through a guide is one tap from the comparison it rests on.
+    # Guide pages always live at site/guides/ (depth 1), so the prefixes are fixed;
+    # rel() cannot be used here because DEPTH is set by page() at render time.
     msticky = ('<nav class="msticky" aria-label="Quick compare">'
-               f'<a href="{rel("products.html")}">Compare the three</a>'
-               f'<a href="{rel("guides/index.html")}">More guides</a></nav>')
+               '<a href="../products.html">Compare the three</a>'
+               '<a href="index.html">More guides</a></nav>')
     body = GUIDE["body"]
     body = body.replace("[TABLE]", gtable)
     body = body.replace("[SRC-P1-P3]", srcs(["I2-S10", "I2-S11", "I2-S12"]))
@@ -654,6 +686,10 @@ def build_guides():
     body = body.replace("[SRC-2b]", srcs(["I2-S02"]))
     body = body.replace("[SRC-6t]", srcs(["I2-S02"]))
     body = body + msticky
+
+    page("guides/" + GUIDE["slug"], GUIDE["title"], header + body,
+         description="Dual-basket versus single-basket air fryers compared on what the listings state, with the unknowns named.",
+         depth=1)
 
     # ---------------------------------------------------------------- guides index
     topic_rows = []

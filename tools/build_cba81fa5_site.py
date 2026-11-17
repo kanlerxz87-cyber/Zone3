@@ -54,6 +54,35 @@ def _rel(url: str) -> str:
             return "noopener noreferrer sponsored"
     return "noopener noreferrer"
 
+
+# ---------------------------------------------------------------------------
+# Sponsored rel (session ded63349, 2026-11-17; proposal D-19). The regions this
+# integrator writes contain product links (the fd-card listings); they are marked
+# here so a cba rebuild equals the post-pass tree that tools/apply_sponsored.py
+# --check and tools/i2_gate.py G11 expect. The pattern below is copied verbatim
+# from tools/apply_sponsored.py, which stays the canonical enforcer.
+MARK_PRODUCT_HREF = re.compile(
+    r'https?://[^\"\']*link\.amazon/[^\"\']*'
+    r'|https?://[^\"\']*amazon\.[a-z]{2,3}(?:/[^\"\']*)?/(?:dp/[A-Z0-9]{10}|gp/product/[A-Z0-9]{10})[^\"\']*', re.I)
+MARK_ANCHOR_RE = re.compile(r'<a\b[^>]*>', re.I)
+
+
+def mark_sponsored(html: str) -> str:
+    def fix(m):
+        tag = m.group(0)
+        href = re.search(r'href="([^"]*)"', tag)
+        if not href or not MARK_PRODUCT_HREF.search(href.group(1)):
+            return tag
+        rel = re.search(r'rel="([^"]*)"', tag)
+        if rel:
+            if "sponsored" in rel.group(1).split():
+                return tag
+            tokens = [t for t in ("sponsored",) if t not in rel.group(1).split()]
+            return tag[:rel.start(1)] + " ".join(tokens + rel.group(1).split()) + tag[rel.end(1):]
+        return tag[:-1].rstrip() + ' rel="sponsored noopener noreferrer">'
+    return MARK_ANCHOR_RE.sub(fix, html)
+
+
 def is_short_link(url: str) -> bool:
     """The three submitted link.amazon tokens: evidence to quote, never to click.
 
@@ -403,7 +432,10 @@ def main() -> int:
     ]
     changed = []
     for path, start, end, new, back in targets:
-        want = patch(path, start, end, new, back)
+        # ded63349: compare like with like — the write applies mark_sponsored, so the
+        # expected text must be marked before the comparison (otherwise --check always
+        # reports a stale region on pages whose regions contain product links).
+        want = mark_sponsored(patch(path, start, end, new, back))
         have = path.read_text(encoding="utf-8")
         if want != have:
             changed.append(path.relative_to(ROOT).as_posix())
@@ -416,7 +448,9 @@ def main() -> int:
         raw = root_index.read_text(encoding="utf-8")
         band = render_frontdoor(raw)
         if FD_START in raw:
-            want = patch_text(raw, FD_START, FD_END, band, include_end=True)
+            # ded63349: mark before compare — the file on disk is post-sponsored, so the
+            # expected text must be too (otherwise --check always reports a stale region).
+            want = mark_sponsored(patch_text(raw, FD_START, FD_END, band, include_end=True))
         elif "<main>" in raw:
             want = raw.replace("<main>", "<main>\n" + band, 1)
         else:
@@ -448,7 +482,7 @@ def main() -> int:
         raw = fl.read_text(encoding="utf-8")
         start = '<a id="cba81fa5-flagged"' if '<a id="cba81fa5-flagged"' in raw else None
         if start:
-            want = patch_text(raw, start, "</main>", flagged_block())
+            want = mark_sponsored(patch_text(raw, start, "</main>", flagged_block()))
         elif "</main>" in raw and "Raised on 2026-11-16 by the second-source desk" not in raw:
             want = raw.replace("</main>", flagged_block() + "</main>", 1)
         else:

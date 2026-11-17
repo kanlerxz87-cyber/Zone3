@@ -34,8 +34,10 @@ SKIP_DIRS = {".git", "archive", "sessions", "docs", "__pycache__", ".github",
 # Product-page URLs only: /dp/ and /gp/product/ on any amazon host, and the submitted
 # link.amazon short links. Browse-node, search and help pages are not product links.
 PRODUCT_HREF = re.compile(
-    r'https?://[^"\']*(?:amazon\.[a-z]{2,3})?/[^"\']*(?:/dp/[A-Z0-9]{10}|/gp/product/[A-Z0-9]{10})[^"\']*'
-    r'|https?://link\.amazon/[^"\']*', re.I)
+    r'https?://[^\"\']*link\.amazon/[^\"\']*'
+    r'|https?://[^\"\']*amazon\.[a-z]{2,3}(?:/[^\"\']*)?/(?:dp/[A-Z0-9]{10}|gp/product/[A-Z0-9]{10})[^\"\']*', re.I)
+
+
 
 ANCHOR_RE = re.compile(r'<a\b[^>]*>', re.I)
 HREF_RE = re.compile(r'href="([^"]*)"')

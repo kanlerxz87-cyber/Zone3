@@ -62,9 +62,13 @@ AMAZON_HOSTS = re.compile(
 # Product-page URLs only (ded63349): /dp/ and /gp/product/ on any amazon host and the
 # submitted link.amazon short links. Browse-node, search and help pages are not product
 # links, so they are deliberately left out of this rule.
+ANCHOR_RE = re.compile(r'<a\b[^>]*>', re.I)
+
 PRODUCT_HREF = re.compile(
-    r'https?://[^\"\']*?(?:amazon\.[a-z]{2,3})?/[^\"\']*(?:/dp/[A-Z0-9]{10}|/gp/product/[A-Z0-9]{10})[^\"\']*'
-    r'|https?://link\.amazon/[^\"\']*', re.I)
+    r'https?://[^\"\']*link\.amazon/[^\"\']*'
+    r'|https?://[^\"\']*amazon\.[a-z]{2,3}(?:/[^\"\']*)?/(?:dp/[A-Z0-9]{10}|gp/product/[A-Z0-9]{10})[^\"\']*', re.I)
+
+
 
 OFFICIAL_HOSTS = re.compile(
     r"https?://[^\"']*?(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov|github\.com|githubusercontent\.com|api\.github\.com|search\.google\.com|developers\.google\.com)",
@@ -327,7 +331,7 @@ def main() -> None:
           "{blank} explicit blanks · {flagged} flagged".format(**stats))
     print("  checks: G1 §5 disclosure · G2 banner placement · G3 Amazon disclaimer · G4 one h1 · "
           "G5 row provenance · G6 no unpublishable figures · G7 prohibited constructs · "
-          "G8 links and anchors · G9 placeholders · G10 read date")
+          "G8 links and anchors · G9 placeholders · G10 read date · G11 sponsored rel on product links")
 
 
 if __name__ == "__main__":
