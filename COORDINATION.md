@@ -7124,7 +7124,6 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 | Live checks (cache-busted, after `built`) | **Root** `/?f65=livecheck` — front-door band with the exact §5 disclosure in-banner, both reader-desk CTAs, three product cards with labelled source links, "62 Official sources cited" KPI, status date 2026-11-16. **`flagged.html`** — banner disclosure + **"108 entries: 3 critical, 19 high, 30 medium, 31 low, 25 info"**, matching the register exactly. **`site/flagged.html`** — reader-site disclosure banner, I2/CBA flag tables intact. (I2-F-13's edge-cache lesson applied: cache-busting query on every fetch; first fetch post-`built` already served the new revision.) |
 | Session status | F65-T1…T5 **done**. Records: `sessions/f65d393b/verification-2026-11-16.md`, `sessions/f65d393b/repo-review.md`. Flags raised: F65-F-01…F65-F-06, all `status: fixed`, all published on `flagged.html`. |
 
-<<<<<<< HEAD
 ## 974e366d — Session registry and claim (branch `arena/974e366d-zone3`)
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
@@ -7214,7 +7213,7 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 - **Integration and merge record (AE-T9).** PR #136 (`arena/aebf0747-zone3` into `main`) opened after the gates above and merged with a merge commit at `5f07d3b` (2026-11-17 16:16 UTC). GitHub Pages: legacy build for `5f07d3b` finished `built`. Live checks: front page shows the disclosure, the five products and the four guides; `feed.xml` lists the four guides. The branch was force-pushed once with a lease (`e2d559c` to `24e3418`) to replace the unmerged claim commit with its rebased version; no other branch was touched. This record is committed after the merge and merged in a small follow-up PR.
 - **Later merges (AE-T8 addendum).** PR #137 recorded the merge above on `main`. PR #138 added the options and suggested default for each open decision ("Suggestions for choosing a path") to the Flagged page; merged at `b5c26fc`; Pages build for `b5c26fc`: `built`. All gates were re-run before merge.
 - **Next (AE-T9).** Done (see above). Nothing else is open on this session.
-=======
+
 ---
 
 ## Part 82 — session `82372fd1` (branch `arena/82372fd1-zone3`, base `fedc9f6` (main at claim), 2026-11-17)
@@ -7246,4 +7245,36 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 - Every feed entry derives from the checked-in registers; the script **refuses** to emit any price, star-rating, review-count or Amazon-image pattern (same G6-family patterns the reader gates use).
 - Nothing is claimed as trending/popular; the feed is a publication log, not a ranking.
 - Shared outputs are touched only through their owning generators or the documented registers, per the board note above.
->>>>>>> ef85bfe (COORDINATION.md: claim Part 82 (session 82372fd1) — T1–T5 scopes and board)
+
+
+### 82 completion record (T1–T4, 2026-11-17)
+
+- **T1 repo review** — `sessions/82372fd1/repo-review.md`. Gates green at claim (`fedc9f6`);
+  three new irregularities raised (G82-F-01/02/03); no external observations made this session.
+- **T2 feed** — `tools/build_feed.py` → `feed.xml` (5 live-guide entries from
+  `data/cba81fa5/guides.json`) + self-healing `<link rel="alternate">` in the two reader
+  index heads; README chain updated; `--check` fails on drift (verified: i2 rebuild drops the
+  region, exit 1; re-run restores; i2_gate/lint/verify_site/check_all_links green). Commits
+  `a3c365b` + follow-ups. Flag G82-F-02 (Info, fixed).
+- **T3 S-20 mobile pass** — measured audit `sessions/82372fd1/mobile-audit.md`: viewport,
+  text-size-adjust, clamp scale, sticky header and overflow tables already present (i2 layer);
+  deficient: `.src` chips ~22px (< WCAG 2.2 SC 2.5.8 24px floor), nav ~39px, seg controls
+  ~33px, unguarded smooth scroll. Fixed in `tools/build_i2_site.py` CSS (the generator,
+  output rebuilt never hand-edited): 24/44px min-heights, `prefers-reduced-motion` guard,
+  mobile table padding. Table font deliberately not shrunk. Commit `2ca865e`. Flag G82-F-01.
+- **T4 suggestions layer, dated 2026-11-17** — `data/suggestions.json`: `review_2026_11_17`
+  (shipped-since table, design paths DP-A shopfront-first / DP-B magazine-desk / DP-C
+  consolidate-first, proposed cadence, Q1–Q10 re-status + how-to-choose), new questions
+  **Q11** (two of the five brief links — `B0c8moW59`, `B0f3GKalj` — had no register row
+  anywhere: flag **G82-F-03, Medium, needs owner**) and **Q12** (which reader layer is
+  canonical — selects DP-C; closes Z14-F-04's owner half); discovery **D7–D10** added.
+  Product-intent confirmation record (intended ASIN/URL/date/source stored empty-until-
+  confirmed, observed redirects in a disjoint block, two unregistered links shown as such)
+  rendered on `products.html` from `data/products.json:intent_records`. Flags +3 (108→111);
+  `EXECUTIVE-SUMMARY.md` live counts recomputed (3/19/31/32/26). Owner brief input recorded
+  per Q1's rule: selected tracking ID **shopnow047c-20** lives in this log only, not on
+  public pages; link rewrite stays gated on the one-test-first workflow (S02).
+- Gate state at final run: `check_site` OK 30/3/62/111 · `verify_site` PASS 115/1,953/1,690 ·
+  `link_report --strict` 0 · `i2_gate` PASS · lint PASS 0 new · `cba --check` current ·
+  `feed --check` current · `build_sitemap --check` 78/0 · `check_all_links` 0 errors (161/182) ·
+  no-repr test PASS · 3c886b62 check OK · chain ×2 idempotent (hash-verified).

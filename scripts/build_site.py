@@ -32,6 +32,14 @@ def load(name: str):
 SRC = load("sources.json")
 SOURCES = {s["id"]: s for s in SRC["sources"]}
 PRODUCTS = load("products.json")["products"]
+# Intent confirmation records (session 82372fd1, 2026-11-17). The owner brief asks for a
+# per-link record of the *intended* product (ASIN, official listing URL, confirmation date,
+# source) kept strictly separate from *observed* redirect targets. Nulls stay null until the
+# owner confirms — nothing here is inferred. The data lives in data/products.json so the
+# same gate (check_site rules 1-3) covers its source ids.
+_PRODUCTS_RAW = load("products.json")
+INTENT = _PRODUCTS_RAW.get("intent_records", [])
+INTENT_NOTE = _PRODUCTS_RAW.get("intent_records_note", "")
 FACTS = {f["id"]: f for f in load("policy_facts.json")["facts"]}
 FLAGS = load("flags.json")["flags"]
 TOPICS = load("topics.json")
@@ -1089,6 +1097,46 @@ def build_products() -> None:
   </ul>
 </section>
 """
+    if INTENT:
+        irows = []
+        for r in INTENT:
+            obs = r["observed"]
+            if obs:
+                obs_cell = (
+                    f'<a href="{e(obs["direct_dp_check"]["url"])}" target="_blank" rel="noopener noreferrer">{e(obs["direct_dp_check"]["result"])}</a>'
+                    f' &middot; redirect opens <a href="{e(obs["redirect_final_url"])}" target="_blank" rel="noopener noreferrer">{e(obs["redirect_page_id"])}</a>'
+                    f'<div class="muted">Observed {e(obs["observed_on"])}; kept separate from the intended record. {e(obs["note"])}</div>'
+                )
+            else:
+                obs_cell = '<span class="badge unv">No observation on file</span>'
+            irows.append([
+                f'<a href="{e(r["submitted_url"])}" target="_blank" rel="noopener noreferrer">{e(r["link_id"])}</a>',
+                e(r["register_row"]) if r["register_row"] else badge("No register row", "warn"),
+                e(r["identifier_shape"]),
+                val(r["intended"]["asin"]),
+                val(r["intended"]["official_listing_url"]),
+                val(r["intended"]["confirmation_date"]),
+                val(r["intended"]["confirmation_source"]),
+                obs_cell,
+                f'<div>{e(r["record_status"])}</div>{flag_links(r["flags"])}',
+                src_links(r["sources"]),
+            ])
+        body += (
+            "<h2>Product-intent confirmation record (added 2026-11-17)</h2>"
+            f'<p class="muted">{e(INTENT_NOTE)}</p>'
+            + table(
+                ["Submitted link", "Register row", "Identifier shape", "Intended ASIN",
+                 "Intended official listing URL", "Confirmation date", "Confirmation source",
+                 "Observed destination (separate field — never merged)", "Record status", "Source"],
+                irows,
+            )
+            + '<p class="muted">Completing this record is an owner action, not an agent action: confirm the intended '
+              'ASIN inside the enrolled Associates workflow, then record the date and where the confirmation came '
+              'from. Until then every intended field renders as Unverified by design. The brief&rsquo;s rule — '
+              'intended and observed are two fields and are never merged — is enforced by the build: the renderer '
+              'reads the intended values only from the &ldquo;intended&rdquo; block of data/products.json and the '
+              'observed values only from the &ldquo;observed&rdquo; block.</p>'
+        )
     page("products.html", "Products", body,
          lead="The three product links from the brief, checked line by line against official Amazon pages. Nothing is shown as a verified product until its identifier resolves.")
 
@@ -1376,6 +1424,51 @@ def build_suggestions() -> None:
         'proposals were implemented, and no open question was answered by inference.</p></div>'
     )
 
+    # Dated review section (session 82372fd1, 2026-11-17). Rendered from
+    # data/suggestions.json['review_2026_11_17'] so the register and the page cannot drift.
+    rv = s.get("review_2026_11_17")
+    if rv:
+        body += (
+            f'<div class="callout ok"><p><strong>Review dated {e(rv["date"])} '
+            f'(session {e(rv["session"])}).</strong> {e(rv["note"])}</p></div>'
+        )
+        body += "<h2>Shipped since the last review</h2>" + table(
+            ["Item", "Where", "What changed", "Evidence (all in this repo)"],
+            [[e(x["item"]), e(x["where"]), e(x["what"]), e(x["evidence"])] for x in rv["shipped"]],
+        )
+        body += (
+            "<h2>Design paths — the brief for the polish, in reviewable options</h2>"
+            '<p class="small">Three paths, each written so the accepted one becomes a '
+            'building brief. They are ordered: C decides the surface, A decorates it, '
+            'B runs it; A and B combine freely. Nothing here is implemented by reading '
+            'it — record a choice on the <a href="decision-queue.html">review console</a>.</p>'
+        )
+        for x in rv["paths"]:
+            steps = "".join(f"<li>{e(st)}</li>" for st in x["steps"])
+            body += (
+                f'<div class="suggestion"><h3>{badge(x["id"], "info")} {e(x["name"])}</h3>'
+                f'<p><strong>Thesis.</strong> {e(x["thesis"])}</p>'
+                f'<ol class="findings">{steps}</ol>'
+                f'<p><strong>Resolves:</strong> {e(x["resolves"])} &middot; '
+                f'<strong>Effort:</strong> {e(x["effort"])} &middot; '
+                f'<strong>Risk:</strong> {e(x["risk"])}</p>'
+                f'<p class="muted"><strong>Do not:</strong> {e(x["do_not"])}</p></div>'
+            )
+        body += f'<h2>Publishing cadence (proposed)</h2><p>{e(rv["cadence"])}</p>'
+        body += (
+            "<h2>The ten owner questions, re-statused 2026-11-17 — plus two this review added</h2>"
+            + table(
+                ["Q", "Status at last review", "Status now", "What moved (with where it moves to)"],
+                [[f'<strong>{e(x["q"])}</strong>', e(x["was"]), e(x["now"]), e(x["change"])]
+                 for x in rv["restatus"]],
+            )
+            + '<p class="small">Q1-Q10 anchor the <a href="decision-queue.html">review console</a> queue; '
+              'Q11 and Q12 are new in the questions table below.</p>'
+        )
+        body += "<h2>How to choose</h2><ol class=\"findings\">" + "".join(
+            f"<li>{e(step)}</li>" for step in rv["how_to_choose"]
+        ) + "</ol>"
+
     body += "<h2>Verified basis</h2>" + '<p class="small">The facts the proposals rest on, re-verified 2026-11-15 and re-checked 2026-11-16 (session record: <a href="sessions/5a56c084/index.html">5a56c084</a>).</p>'
     rows = []
     for v in s["verified_basis"]:
@@ -1478,7 +1571,9 @@ def build_suggestions() -> None:
     page("suggestions.html", "Suggestions & decisions", body,
          lead="Design and marketing proposals for the affiliate site, the open questions that "
               "must be answered before any decision, and how to discover the missing "
-              "information. Proposals are labelled as proposals; every fact carries its "
+              "information. Updated 2026-11-17: a dated review adds three design paths, "
+              "what shipped since the last decision log, and two new questions the owner "
+              "brief exposed. Proposals are labelled as proposals; every fact carries its "
               "source; the decision log records what has been implemented, deferred or "
               "left blocked.")
 

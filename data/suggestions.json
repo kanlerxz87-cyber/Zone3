@@ -610,6 +610,24 @@
    "what_we_dont_know": "Whether the owner wants a formal legal review.",
    "why_it_matters": "Disclosure breaches are treated as a material breach of the agreement; placement decisions carry compliance weight.",
    "how_to_discover": "Owner decision; if yes, review the disclosure pattern on every page template before publishing."
+  },
+  {
+   "id": "Q11",
+   "question": "Do the two unregistered product links belong in the project at all — and what products do they stand for?",
+   "what_we_know": "The 2026-11-17 owner brief lists five link.amazon short links. data/products.json registered only three of them (B04G1MEwY, B02NbDxp3, B00hJ57DV, re-checked as S67-S69); a repo-wide search on 2026-11-17 found no register row, observation or flag for B0c8moW59 or B0f3GKalj before this session added the two 'not registered' rows to the intent record.",
+   "source": [],
+   "what_we_dont_know": "Whether the two links are live, what product each is meant to point at, and whether the owner still wants them promoted.",
+   "why_it_matters": "A shop page cannot sell a product whose identity is unrecorded; the comparison, the chooser and every CTA would silently cover three links while the brief promised five.",
+   "how_to_discover": "Owner confirms each of the two links in the enrolled Associates workflow (or withdraws it). Flag G82-F-03 tracks the gap; the new rows in the Product-intent confirmation record on products.html are where the answers land."
+  },
+  {
+   "id": "Q12",
+   "question": "Which reader layer becomes the canonical shop the owner shows buyers — site/, read/, or marketing/?",
+   "what_we_know": "Three reader-facing layers now cover the same three products with overlapping topics (the guide register's own duplication note and flag Z14-F-04 say so). The brief asks for 'one site to index'. Nothing in the repo records an owner choice.",
+   "source": [],
+   "what_we_dont_know": "Which brand voice wins (Air Fryer Field Notes vs The Crisp Report), and what happens to the losing layers (cross-link, archive or merge).",
+   "why_it_matters": "Near-duplicate pages across three layers are the strongest 'generated' tell left on the site, and they split any future organic traffic between them.",
+   "how_to_discover": "Answering this selects design path DP-C in the review below. No further data needed — it is a choice, not a fact to verify."
   }
  ],
  "discovery": [
@@ -676,6 +694,34 @@
     "S44",
     "S07"
    ]
+  },
+  {
+   "id": "D7",
+   "action": "In Associates Central, open the Special Links workflow for the enrolled account: paste or select each intended product, generate the Special Link, and paste the five final URLs here with the date. One owner, ten minutes, closes the loop the intake tool deliberately cannot.",
+   "discovers": "Q1 (tag confirmed in use), Q2 (intended products), Q11 (two unregistered links), and the four empty 'intended' fields of every row in the intent record on products.html.",
+   "source": [
+    "S02"
+   ]
+  },
+  {
+   "id": "D8",
+   "action": "Create and verify a Google Search Console property for kanlerxz87-cyber.github.io/Zone3 and submit the existing sitemap.xml and the new feed.xml; after four weeks, the query report picks the next guide topic (this is the 'measure whether anyone arrives' half of the cadence). (proposal; the console itself is owner-side — no repo change is blocked on it)",
+   "discovers": "Impressions and queries per guide page — the only input the campaign ledger should accept for 'search' rows, and the evidence base S-25 wants before any traffic claim.",
+   "source": []
+  },
+  {
+   "id": "D9",
+   "action": "Ask Associates support, through the case system of the enrolled account, whether the link.amazon/<code> short-link form is compliant as-is on a disclosure-bearing site. Record the written answer in the flagged register next to FLG-003.",
+   "discovers": "The one compliance question this project has deliberately left unresolved (FLG-003) rather than guessing at it.",
+   "source": [
+    "S02"
+   ]
+  },
+  {
+   "id": "D10",
+   "action": "Owner records one line in the decision export: 'canonical reader layer = …'. Then any session implements DP-C's cross-linking and the other two layers gain archive banners pointing at it.",
+   "discovers": "Q12; resolves Z14-F-04 and the duplication note; gives search engines one site to index, as the brief asks.",
+   "source": []
   }
  ],
  "workflow": [
@@ -684,5 +730,164 @@
   "3. For each suggestion, choose Accept, Reject or Defer, and record the choice and the reason in COORDINATION.md under this session's part.",
   "4. Only accepted suggestions are implemented, in a follow-up session that re-verifies the affected pages against official sources before publishing.",
   "5. Blocked suggestions (currently SUG-05) stay blocked until the named blocker is resolved; nothing on this page is implemented by this session."
- ]
+ ],
+ "review_2026_11_17": {
+  "date": "2026-11-17",
+  "session": "82372fd1",
+  "note": "Third review pass over this page, dated 2026-11-17 (session 82372fd1). It re-read the tree at main@fedc9f6 with all ten repo gates green, folded in the owner brief of 2026-11-17, and adds what was asked for: design-path options that read as a brief for the site's polish, a status move on the ten open questions, two new questions the brief itself exposed, and the discovery actions that close them. Everything below is labelled proposal or repo-fact; no traffic, popularity or ranking claim is made anywhere.",
+  "shipped": [
+   {
+    "item": "Mobile-first pass (S-20)",
+    "where": "site/ reader CSS, via its generator",
+    "what": "Tap targets: header nav and decision controls >=44px, source chips >=24px (the WCAG 2.2 target-size floor); prefers-reduced-motion guard added; mobile table padding widened the content column. Measured before changing: three rules were below the floor, the rest already passed.",
+    "evidence": "commit 2ca865e; flag G82-F-01; gates i2_gate/lint/verify PASS after rebuild"
+   },
+   {
+    "item": "Feed for the guide cadence",
+    "where": "feed.xml at the site root",
+    "what": "Atom feed generated from the live-guide register, head link in the two reader indexes, self-healing after any rebuild, --check wired as a build step. The brief's 'add each new guide to the existing sitemap and feed' item: sitemap half existed, feed half now does.",
+    "evidence": "tools/build_feed.py; commit a3c365b; README chain line; flag G82-F-02"
+   },
+   {
+    "item": "Product-intent confirmation record",
+    "where": "products.html, five rows",
+    "what": "Per-link intended fields (ASIN, official URL, confirmation date, source) stored empty-until-confirmed, with observed redirect targets in a separate field that the renderer never merges. Two of the brief's five links had no register row at all — now shown as such instead of being quietly dropped.",
+    "evidence": "data/products.json intent_records; flags FLG-001/002/035 and G82-F-03"
+   },
+   {
+    "item": "Guides + cadence status",
+    "where": "site/guides/",
+    "what": "Five question-shaped guides live (all four editorial hypotheses from the brief plus dual-basket); two held (one needs an experience claim, one needs the API), one rejected on policy. All five reach the feed now.",
+    "evidence": "data/cba81fa5/guides.json (register), site/guides/index.html plan table"
+   }
+  ],
+  "paths": [
+   {
+    "id": "DP-A",
+    "name": "Shopfront first, lab underneath",
+    "thesis": "A buyer decides in seconds at the shelf; the verification machinery stays one click away but never above the fold. The site stops reading like an audit by changing what is FIRST, not by adding decoration.",
+    "steps": [
+     "Open site/index.html with the three-question chooser already built for this purpose (decision D-23 in the brief's list) — move it above the product cards; every answer deep-links to the comparison row it affects.",
+     "Give each product card a 'fits you if / not for you if' pair of lines generated ONLY from quoted listing features — the generator already blocks any other sentence (i2_gate G6/G7), so catchiness comes from layout, not from invented claims.",
+     "Below the cards, one strip: 'New this week from the guides desk' fed by the same register that now backs feed.xml; dated, never ranked.",
+     "Disclosure strip stays exactly where it is (above the fold, every page, repeated in the footer) — the polish must not move it, and the lint enforces that it wasn't.",
+     "Keep every dashboard surface (flagged, sources, verification, decision pages) reachable from the footer and the single nav group — already true; do not add nav items, fold new ones in."
+    ],
+    "resolves": "The look half of SUG-01 and SUG-04; the brief's 'lead with the products' rule; consistent with S-17/S-19 as implemented.",
+    "effort": "One generator pass over site/ home + front-door region; no new data files; every gate already exists.",
+    "risk": "Low. Worst case the page reverts on a rebuild — the same self-healing pattern the feed uses now covers it.",
+    "do_not": "No prices, no star ratings, no review counts, no 'bestseller' badge until the API feed exists (2(b)/6(t)); no 'trending' without a dated first-party snapshot (the evidence rule already adopted)."
+   },
+   {
+    "id": "DP-B",
+    "name": "Magazine desk: voice and cadence carry it",
+    "thesis": "The fastest way to stop reading like AI slop is a real editorial calendar with a named human gate: one dated question per week, an author byline, and a 'what changed since last read' box that only a desk that re-reads sources can write.",
+    "steps": [
+     "Adopt the cadence in the review below: one guide per week, each new guide lands in sitemap + feed automatically because both are register-driven now.",
+     "Add a byline block ('Field Notes desk — reviewed by: <name>') once Q5 names the human reviewer; until then the reviewed_by line stating 'no human editor' stays (it is already there; polishing would mean removing it, which we will not do).",
+     "Two held topics become publishable ONLY with owner inputs: testing/first-hand use (Q6) or the API for figures (Q4); do not write them softer to ship them.",
+     "Keep titles question-shaped like the five live guides; the brief's own suggested titles are all published — the next topic should come from the D8 query report, not from instinct."
+    ],
+    "resolves": "SUG-02, SUG-03, SUG-10, S-07's cadence half, and the 'catchy trendy articles' ask — honestly: catchy within what the compliance gates allow.",
+    "effort": "Editorial continuity, not code: the machinery (register, lint, feed, sitemap) already carries a weekly page in under an hour.",
+    "risk": "Cadence decays without a named owner; the site must never ship a 'latest' widget that goes stale — the register dates everything for exactly this reason.",
+    "do_not": "No synthetic social proof, no 'most popular', no AI-author persona names."
+   },
+   {
+    "id": "DP-C",
+    "name": "Consolidate, then decorate",
+    "thesis": "Three parallel reader layers (site/, read/, marketing/) say near-the-same things about the same three products in three voices. That is both the strongest 'generated' tell and the reason search cannot pick a winner. One canonical layer fixes the findability ask and most of the slop feel at once.",
+    "steps": [
+     "Owner answers Q12 (choose the canonical layer). Recommendation recorded here: promote site/ (the layer with the working house lint and release gates) and mark read/ + marketing/ as companion research with cross-links, not duplicates.",
+     "One navigation, one feed (the new feed.xml grows to cover the layer chosen), one sitemap (already covers everything; consolidation is a link-and-banner change, not a build change).",
+     "Fold the surviving extras (photography once S-18 decides, any API data once Q4 clears) into the chosen layer only, so polish is not written three times."
+    ],
+    "resolves": "'One site to index and a reason to rank it' from the brief; Z14-F-04; the duplication note; most of Q7's brand-open residue.",
+    "effort": "Small edits, but touches the most shared files in the repo — must be ONE integration session (per the coordination protocol), not three parallel ones.",
+    "risk": "Link churn: internal cross-links and the sitemap shift. The gates in scripts/ catch every broken one before push.",
+    "do_not": "Do not delete the losing layers (history rule: archives stay); do not hand-merge the three feeds of copy into one without re-running every gate on the result."
+   }
+  ],
+  "cadence": "Proposed cadence (owner-adoptable, changes nothing until accepted): one guide per week from the register's held queue as soon as its blocker clears; each ship = register row + rebuild + gate run (all mechanical). Measure with D8; the ledger rule stands: timestamp, source, channel, eligible sessions, clicks and orders ONLY from authorized first-party reports, kept dated, no forecast. Until Search Console data exists, the next topic after the held queue is chosen by the brief's own question list, not by claimed search volume.",
+  "restatus": [
+   {
+    "q": "Q1",
+    "was": "open — no tag documented",
+    "now": "partly moved (2026-11-17)",
+    "change": "Owner brief of 2026-11-17 names the selected tracking ID; per Q1's own rule the value is recorded in the coordination log (COORDINATION.md, Part 82), not repeated on public pages. It cannot be verified from inside this repo (account-side), and the brief's workflow says to test ONE Special Link before scaling links; until that test is recorded, the site keeps evidence-mode links."
+   },
+   {
+    "q": "Q2",
+    "was": "open — intended products unconfirmed",
+    "now": "still open, now trackable",
+    "change": "The intent record on products.html is the place the answer goes, one column-set per link; three of five links keep dated redirect observations (S67-S69) that remain separate from intent by rule."
+   },
+   {
+    "q": "Q3",
+    "was": "open — which marketplace",
+    "now": "unchanged",
+    "change": "All recorded destinations are amazon.com; the owner's profile is SG. Nothing in the repo decides this; a .sg decision changes link targets, disclosure review and copy language together."
+   },
+   {
+    "q": "Q4",
+    "was": "open — enrollment + API",
+    "now": "unchanged",
+    "change": "Gates the held 'best value' guide, every figure, and the SUG-05 CTA. Owner-side; no repo action possible."
+   },
+   {
+    "q": "Q5",
+    "was": "open — who reviews, what cadence",
+    "now": "half addressed",
+    "change": "Cadence proposal + machinery (register-driven feed/sitemap) shipped this pass; the human reviewer is still unnamed, and pages say so honestly in the meantime."
+   },
+   {
+    "q": "Q6",
+    "was": "open — first-hand testing",
+    "now": "unchanged",
+    "change": "S-06 stays 'not adopted' per the recorded decision; guides keep their 'no invented experience' rule and it is enforced, not aspirational."
+   },
+   {
+    "q": "Q7",
+    "was": "open — brand direction",
+    "now": "moved by the repo itself",
+    "change": "site/ carries the 'Air Fryer Field Notes' brand + style guide + logo tile; the brand name is recorded as chosen in the brief (S-15). What is NOT decided is which layer owns the brand — see Q12/DP-C."
+   },
+   {
+    "q": "Q8",
+    "was": "open — analytics stack",
+    "now": "unchanged; options narrowed",
+    "change": "GitHub Pages serves static files only — a self-hosted endpoint cannot run on this host; the realistic first step is D8 (Search Console) + owner-side privacy-safe page analytics, each recorded in the ledger only when authorized reports exist. The ledger stays empty by design until then."
+   },
+   {
+    "q": "Q9",
+    "was": "open — research budget/tooling",
+    "now": "unchanged",
+    "change": "The brief lists no budget; the D8 query report is the free path, and the cadence section is written so it works on free inputs alone."
+   },
+   {
+    "q": "Q10",
+    "was": "open — counsel review",
+    "now": "unchanged",
+    "change": "No answer arrived; the shipped default (disclosure above the fold on every page + footer repeat + banner link) already meets the letter of S01 §5 and the FTC guidance cited in the register."
+   },
+   {
+    "q": "Q11",
+    "was": "— (new 2026-11-17)",
+    "now": "open — created by this review",
+    "change": "Two of the brief's five links have no register row; see flag G82-F-03 and the two 'not registered' rows in the intent record."
+   },
+   {
+    "q": "Q12",
+    "was": "— (new 2026-11-17)",
+    "now": "open — created by this review",
+    "change": "Which reader layer is canonical. The answer selects DP-C and settles the last brand question."
+   }
+  ],
+  "how_to_choose": [
+   "Use the Accept/Reject/Defer control on the review console (decision-queue.html) or the decision tools on site/decisions.html; either export becomes the record a later session implements from.",
+   "The paths are ordered: C decides the surface, A decorates it, B runs it. A is compatible with B on any layer choice; C is a prerequisite for 'one site to index', not a style opinion.",
+   "Nothing above is implemented by accepting it; an unblocked path (C's banners, A's copy) is one gate-green build away once a decision is recorded.",
+   "Blocked items stay blocked visibly (Q4-family): the site would rather show a gap than fill it with a guess — that IS the trust design."
+  ]
+ }
 }
