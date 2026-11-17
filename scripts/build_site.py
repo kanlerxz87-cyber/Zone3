@@ -502,7 +502,11 @@ def page(filename: str, title: str, body: str, lead: str = "",
         doc = _re.sub(r'(src=")([^"]+)"', _up, doc)
 
     (ROOT / filename).parent.mkdir(parents=True, exist_ok=True)
-    (ROOT / filename).write_text(doc, encoding="utf-8")
+    # session aebf0747 guard: the publication front page owns index.html (see sessions/aebf0747/build_pass.py)
+    _keep = (ROOT / filename).exists() and filename == "index.html" and \
+        "aebf0747-front" in (ROOT / filename).read_text(encoding="utf-8")
+    if not _keep:
+        (ROOT / filename).write_text(doc, encoding="utf-8")
 
 
 def css() -> str:

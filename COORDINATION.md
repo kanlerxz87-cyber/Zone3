@@ -7155,3 +7155,56 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 **Irregularities raised (published on `shop/flagged/`):** FLG-S01…FLG-S10 — see that page for severity, impact, sources and "claim not made".
 
 **PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/135 (`arena/974e366d-zone3` → `main`), opened 2026-11-17. Merge and Pages result to be recorded after the merge.
+
+---
+
+# PART D — Session `aebf0747` (branch `arena/aebf0747-zone3`) — claimed 2026-11-17 (UTC)
+
+> Appended additively. Nothing above was edited. This session's task IDs are `AE-Tn` and flag IDs are `AE-Fnn`; they are not the same items as `A:`, `B:`, `Z-`, `C-`, `FLG-`, `F65-` or `I2-`/`CBA-` IDs used elsewhere.
+
+## D Session registry
+
+| Session ID | Branch | Role | Status | Claimed (UTC) |
+|---|---|---|---|---|
+| `aebf0747` | `arena/aebf0747-zone3` | Publication pass: compliance strip and sponsored links on every published page, question-shaped guides, RSS feed, product-intent record, publication front page, flagged-for-review, integration, PR to `main`, merge, Pages check | in progress | 2026-11-17 |
+
+Scope: this session edits `sessions/aebf0747/**` and the new pages `guides/**`, `intent-record/**`, `publication-pass.html`, `feed.xml`, plus the root `index.html` (front page), `sitemap.xml`, `robots.txt` and the mechanical disclosure/sponsored/feed-link markup on every published HTML file. Nothing else is changed. Other sessions' data files (`data/*.json`, `data/z3/*`, `data/i2/*`, `data/cba81fa5/*`) are read, not edited.
+
+## D Task board
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| AE-T1 — Claim and coordination record | in progress | `COORDINATION.md` (Part D only) | This entry. |
+| AE-T2 — Source verification (Associates, FTC, Amazon listings, ASIN definition) | done 2026-11-17 (pending merge) | `sessions/aebf0747/verification.md` | Every row links an official page. |
+| AE-T3 — Disclosure strip under masthead and in footer; `rel="sponsored"` on outbound Amazon links; RSS autodiscovery on every published HTML page | done 2026-11-17 (pending merge) | all published `*.html` (mechanical markup only) | Idempotent script: `sessions/aebf0747/publish_pass.py`. |
+| AE-T4 — Question-shaped guides (4 working titles), guides hub, `feed.xml`, sitemap | done 2026-11-17 (pending merge) | `guides/**`, `feed.xml`, `sitemap.xml` | Facts only from verified official pages. |
+| AE-T5 — Product-intent confirmation record | done 2026-11-17 (pending merge) | `intent-record/index.html`, `sessions/aebf0747/intent-record.json` | Intended ASIN, official listing URL, confirmation date and source are kept apart from observed redirect targets. |
+| AE-T6 — Publication front page | done 2026-11-17 (pending merge; `index.html` now guarded, see log) | `index.html` (previous root kept at `dashboard-register.html`) | Products first; every dashboard surface in footer. |
+| AE-T7 — Click counter, self-hosted analytics endpoint, Search Console, Special Link validation | **blocked — needs decision/account** | `publication-pass.html` (status only) | Not implemented; see AE-F items. |
+| AE-T8 — Flagged for Review and executive summary | done 2026-11-17 (pending merge) | `publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md` | Published; non-blocking. |
+| AE-T9 — Integration, gates, PR to `main`, merge, Pages check | pending | this file (merge record) | |
+
+## D Log (session `aebf0747`)
+
+Entries are appended in time order. Nothing outside the lines listed below was edited.
+
+- **Shared-tool changes (other sessions' builders).** Two guards and one attribute change. Each is marked `aebf0747` in the source.
+  - `scripts/build_site.py`: will not overwrite `index.html` when it already carries the `aebf0747-front` marker.
+  - `tools/build_cba81fa5_site.py`: (a) does not re-inject the old root band when the marker is present; (b) new helper `_rel()` adds `sponsored` to Amazon product and short links (not to the Associates policy page). Without (b) the builder's `--check` and the lint report the publish-pass markup as stale.
+  - Required order from now on: `python3 tools/build_cba81fa5_site.py`, then `python3 sessions/aebf0747/publish_pass.py`, then the checks. Running `build_read.py`, `build_i2_site.py` or `build_site.py` later will drop `sponsored` from their own links; re-run `publish_pass.py` after them.
+- **Scope of the publish pass.** `docs/`, `sessions/` and `archive/` are excluded (the 83-page audit set). An earlier run edited them by mistake; those edits were reverted from `HEAD` before any commit. Set in `sessions/aebf0747/publish_pass.py` (`SKIP_TOP`).
+- **Baseline (corrected).** `sessions/aebf0747/audit-before.json` is re-measured on `fedc9f6` with the same definitions as the after-pass: 83 pages; disclosure under masthead 26; disclosure anywhere 78; in footer 60; description 77; RSS 0; product links 1,317 with 6 sponsored. An earlier figure of 2,309 outbound links came from a different counter and is superseded.
+- **After (91 pages, including the 8 new pages).** Disclosure under masthead 91/91; in footer 91/91; description 91/91; RSS 91/91; product links 1,373, all sponsored.
+- **Scope decision (meat thermometers).** `B0c8moW59` and `B0f3GKalj` are published, labelled "Meat thermometer · outside the air-fryer guides". Owner may remove them; the decision is on the Flagged page.
+- **Analytics (AE-T7, blocked).** Click counter, self-hosted endpoint, Search Console and Special Link validation are not built. The repo has no list of "five defined events"; that gap is flagged (AE-F-04/05), not filled.
+- **Cadence.** "One new guide every 14 days" is a working setting chosen in this session, not sourced from the repo or an official page. Owner decision (AE-F-11).
+- **Flag and verification IDs.** The `AE-F-nn` and `AE-V-nn` IDs appear on `publication-pass.html` and in `sessions/aebf0747/verification.md`. They are not Part D board items.
+- **Verification corrections (2026-11-17).** The FTC quotes are now exact ("hard to miss"; "likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE"). Program Content is quoted from Operating Agreement §1. The Asurion plan name is on the three air-fryer listings; the "Your Orders" terms sentence was removed as unverified. Titles of the 6 Qt, 8 Qt and 26 Qt listings were re-read on 2026-11-17 and match the text on the pages.
+- **Link checks.** Internal link check: 0 broken (91 pages). `scripts/check_all_links.py`: 169 HTML pages, 195 external URLs, 0 errors. `tools/cba81fa5_lint.py`: PASS, 0 new findings (22 inherited). `scripts/cba81fa5_test_no_repr_output.py`: PASS. `scripts/build_sitemap.py --check`: PASS.
+- **Open.** The short links remain unresolved (FLG-003); they are not described as invalid. Intended ASINs are not confirmed. Shared outputs (`index.html`, `sitemap.xml`) were changed in this session as its final integration step; any other session that rebuilds them must use the required order above.
+- **Merge conflicts (logged, nothing discarded).** `git pull --rebase origin main` met main at `f6f16a5` (PR #135, session `974e366d`). Two conflicts:
+  1. `COORDINATION.md` (AE-T1 claim commit): both sides appended at the end of the file. Resolved by keeping the `974e366d` section first, then Part D. An earlier attempt wrote conflict markers into a commit; the rebase was aborted and redone cleanly before any push.
+  2. `index.html` (AE-T6): main had added a "Shop" link (`shop/index.html`) to the old front-door navigation. Resolved by keeping the publication front page and adding the same Shop link to its navigation. The previous root page, including its Shop link, is kept unchanged at `dashboard-register.html`. `sessions/aebf0747/build_pass.py` carries the Shop link so a rebuild does not drop it.
+- **Shop section (PR #135) after merge.** `tools/build_shop.py --check` passes (11 pages). The publish pass added only additive markup to `shop/**` (55 lines, 0 removed): the stylesheet link, the feed link, and the shared footer. No shop content was changed.
+- **Gates after merge (102 pages, 134 with `shop/` and the other reader sets).** `tools/verify_site.py`: VERIFY PASS, 134 pages, V1 to V7. `scripts/check_all_links.py`: 180 HTML pages, 207 external URLs, 0 errors. Internal link check: 0 broken. `tools/cba81fa5_lint.py`: PASS. `scripts/build_sitemap.py --check`: PASS. Publish pass: idempotent. Audit after (102 pages): disclosure above masthead 102/102; footer 102/102; RSS 102/102; product links 1,422, all sponsored.
+- **Next (AE-T9).** Commit in steps, `git pull --rebase origin main`, push to `arena/aebf0747-zone3`, open the PR, merge with `gh pr merge --merge` when the checks pass, then confirm the Pages deploy with `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest`. Record the PR link and merge result here.
