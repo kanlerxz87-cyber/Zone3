@@ -7721,3 +7721,7 @@ verbatim, this session's parts re-appended. No other session's content edited. P
 | E84-T3 — Verify the modified output and complete integration | planned | `ed27e766` | claimed files only; this Part of `COORDINATION.md` | repository gates; no external product re-fetch planned | Any remaining infrastructure/owner-side dependency remains explicitly flagged |
 
 **Scope boundary:** no edits to root publication content, product/source/flag registers, shared analytics infrastructure, the five submitted links, `sitemap.xml`, `feed.xml`, or another session's verification records. No click-collection endpoint will be deployed or faked: the current Pages host is static; a separate runtime and its logging/retention behavior need evidence before activation. The five-event list will be labelled a proposal because the brief requests five definitions but does not name them.
+
+### E84 scope amendment (2026-11-17)
+
+The current Decision Center is the repository's browser-local choice UI, while `decision-queue.html` is a sourced review register. To make the new canonical-site and five-event proposals selectable without implying server-side storage, E84-T1 additionally includes `build_decision_center()` in `scripts/build_site.py` and its generated `decision-center.html`. The two new choices will be stored only in the visitor's browser, with an export/clear path already present; they are not sent to the site or treated as owner decisions. No other page or generator scope changes.
