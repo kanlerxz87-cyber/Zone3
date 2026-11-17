@@ -1,1185 +1,996 @@
 {
-  "retrieved": "2026-11-17",
-  "session": "757efebc; extended 2026-11-17 by cbb03ec7 (CBB-Q-01..03, CBB-D-01..02, CBB-M-01; additive only); extended 2026-11-17 by 0c4c4cb6 (0C4-Q-16..18, 0C4-S-01..03, Q1/757-M-01 answered, SUG-05/757-S-07/08 unblocked)",
-  "note": "The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. || The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. Updated 2026-11-17 by session 0c4c4cb6: Q1 answered (tag shopnow047c-20 recorded, validation pending 0C4-F-04), Q2 extended to five links, category-scope question added as 0C4-Q-16, SUG-05 unblocked to do-next, new rows 0C4-S-01..03 proposed.",
-  "states": {
-    "do-now": "Recommended for the first pass. Cheap, unblocked, and removes a visible defect.",
-    "do-next": "Recommended, but it depends on a decision or a design pass.",
-    "blocked": "Cannot be built until the named question is answered. The blocker is a policy gate, not a preference.",
-    "defer": "Worth doing later. Doing it now costs more than it returns.",
-    "do-not-do": "Proposed and rejected. The policy reason is recorded on the row."
+ "retrieved": "2026-11-17",
+ "session": "757efebc; extended 2026-11-17 by cbb03ec7 (CBB-Q-01..03, CBB-D-01..02, CBB-M-01; additive only); extended 2026-11-17 by 0c4c4cb6 (0C4-Q-16..18, 0C4-S-01..03, Q1/757-M-01 answered, SUG-05/757-S-07/08 unblocked)",
+ "note": "The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. || The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. Updated 2026-11-17 by session 0c4c4cb6: Q1 answered (tag shopnow047c-20 recorded, validation pending 0C4-F-04), Q2 extended to five links, category-scope question added as 0C4-Q-16, SUG-05 unblocked to do-next, new rows 0C4-S-01..03 proposed.",
+ "states": {
+  "do-now": "Recommended for the first pass. Cheap, unblocked, and removes a visible defect.",
+  "do-next": "Recommended, but it depends on a decision or a design pass.",
+  "blocked": "Cannot be built until the named question is answered. The blocker is a policy gate, not a preference.",
+  "defer": "Worth doing later. Doing it now costs more than it returns.",
+  "do-not-do": "Proposed and rejected. The policy reason is recorded on the row."
+ },
+ "columns_note": "Priority P1/P2/P3 is sequencing, not importance. Effort S/M/L is a rough sizing against a single focused pass. Risk is the compliance or trust exposure if the item is done badly.",
+ "suggestions": [
+  {
+   "id": "757-S-01",
+   "origin": "This session",
+   "title": "Split the site into a reader surface and an evidence surface",
+   "area": "Architecture",
+   "what": "Keep the audit build, but make it reachable from one link labelled How we verify. Build a separate reader-facing surface that leads with the buying decision.",
+   "recommendation": "Do now",
+   "priority": "P1",
+   "effort": "L",
+   "risk": "Low",
+   "blocked_by": [
+    "757-Q-11"
+   ],
+   "status": "do-now",
+   "src": [
+    "S02"
+   ]
   },
-  "columns_note": "Priority P1/P2/P3 is sequencing, not importance. Effort S/M/L is a rough sizing against a single focused pass. Risk is the compliance or trust exposure if the item is done badly.",
-  "suggestions": [
-    {
-      "id": "757-S-01",
-      "origin": "This session",
-      "title": "Split the site into a reader surface and an evidence surface",
-      "area": "Architecture",
-      "what": "Keep the audit build, but make it reachable from one link labelled How we verify. Build a separate reader-facing surface that leads with the buying decision.",
-      "recommendation": "Do now",
-      "priority": "P1",
-      "effort": "L",
-      "risk": "Low",
-      "blocked_by": [
-        "757-Q-11"
-      ],
-      "status": "do-now",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-S-02",
-      "origin": "This session",
-      "title": "Rename every navigation entry to a reader destination",
-      "area": "Navigation",
-      "what": "Replace process-named and session-named entries with Home, Reviews, Comparisons, Buying guides, How we verify. Four current entries are named after agent sessions.",
-      "recommendation": "Do now",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [],
-      "status": "do-now",
-      "repo": "scripts/build_site.py"
-    },
-    {
-      "id": "757-S-03",
-      "origin": "This session",
-      "title": "Move the audit counts out of the landing page hero",
-      "area": "Landing page",
-      "what": "Replace 0 of 3 prices verified and the running flag count as headline statistics with the buying decision; move the counts into an evidence bar.",
-      "recommendation": "Do now",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [],
-      "status": "do-now",
-      "repo": "index.html"
-    },
-    {
-      "id": "757-S-04",
-      "origin": "This session",
-      "title": "Adopt the design system in the brief",
-      "area": "Visual identity",
-      "what": "Warm palette, named display and body type pairing, one accent reserved for action, hairline borders, no drop shadows except on the primary CTA.",
-      "recommendation": "Do next",
-      "priority": "P2",
-      "effort": "M",
-      "risk": "Low",
-      "blocked_by": [
-        "Q7",
-        "757-Q-15"
-      ],
-      "status": "do-next",
-      "repo": "assets/style.css"
-    },
-    {
-      "id": "757-S-05",
-      "origin": "This session",
-      "title": "Publish How we verify as a real reader-facing page",
-      "area": "Trust",
-      "what": "Sources, blanks, flags and what is deliberately unknown, written for a reader rather than for the build team.",
-      "recommendation": "Do now",
-      "priority": "P1",
-      "effort": "M",
-      "risk": "Low",
-      "blocked_by": [
-        "757-Q-12"
-      ],
-      "status": "do-now",
-      "repo": "sources.html"
-    },
-    {
-      "id": "757-S-06",
-      "origin": "This session",
-      "title": "Ship the twelve-article cluster",
-      "area": "Editorial",
-      "what": "The twelve concepts in the design brief, each anchored to a listing-derived fact, each with a stated position.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "L",
-      "risk": "Medium",
-      "blocked_by": [
-        "Q5",
-        "Q6",
-        "Q2"
-      ],
-      "status": "blocked",
-      "src": [
-        "S02",
-        "S14"
-      ]
-    },
-    {
-      "id": "757-S-07",
-      "origin": "This session",
-      "title": "One canonical review page per product",
-      "area": "Editorial",
-      "what": "Replace the duplicated category mirror with three proper review pages and one comparison.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "L",
-      "risk": "Medium",
-      "blocked_by": [],
-      "status": "do-next",
-      "src": [
-        "S02"
-      ],
-      "note": "Tag arrived 2026-11-17; tagged links now on all five products."
-    },
-    {
-      "id": "757-S-08",
-      "origin": "This session",
-      "title": "Verdict above the fold plus a sticky comparison table",
-      "area": "Conversion",
-      "what": "One recommended sentence before any table; comparison table keeps its action column visible while scrolling.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "M",
-      "risk": "Medium",
-      "blocked_by": [],
-      "status": "do-next",
-      "src": [
-        "S02"
-      ],
-      "note": "Tag arrived 2026-11-17; no longer blocked by Q1."
-    },
-    {
-      "id": "757-S-09",
-      "origin": "This session",
-      "title": "Product imagery through Amazon-served Program Content",
-      "area": "Visual identity",
-      "what": "Use SiteStripe or the API for product images. Never store an Amazon image asset in the repository.",
-      "recommendation": "Do next",
-      "priority": "P2",
-      "effort": "S",
-      "risk": "Medium",
-      "blocked_by": [
-        "Q4"
-      ],
-      "status": "blocked",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-S-10",
-      "origin": "This session",
-      "title": "Retire the duplicated category mirror page",
-      "area": "Architecture",
-      "what": "One canonical category page. A near-identical second target splits ranking and confuses readers.",
-      "recommendation": "Do now",
-      "priority": "P3",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [],
-      "status": "do-now",
-      "repo": "category/air-fryers.html"
-    },
-    {
-      "id": "757-S-11",
-      "origin": "This session",
-      "title": "Deals or promotions page",
-      "area": "Traffic",
-      "what": "Rejected. Links to and mentions of a limited-time promotion must come down the moment the promotion ends, and nobody owns that step yet.",
-      "recommendation": "Do not do",
-      "priority": "P3",
-      "effort": "M",
-      "risk": "High",
-      "blocked_by": [
-        "757-Q-14"
-      ],
-      "status": "do-not-do",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-S-12",
-      "origin": "This session",
-      "title": "Price tracking or price-drop alerts",
-      "area": "Product",
-      "what": "Rejected outright. The site must not have price tracking or price alerting functionality unless Amazon agrees otherwise.",
-      "recommendation": "Do not do",
-      "priority": "P3",
-      "effort": "L",
-      "risk": "High",
-      "blocked_by": [],
-      "status": "do-not-do",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SUG-01",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Brand and hero treatment for the landing page",
-      "area": "Visual identity",
-      "what": "A marketing name, a one-line promise and a hero that leads with the three products and what the reader gets.",
-      "recommendation": "Do next",
-      "priority": "P2",
-      "effort": "M",
-      "risk": "Low",
-      "blocked_by": [
-        "Q7",
-        "757-Q-15"
-      ],
-      "status": "do-next",
-      "src": [
-        "S01"
-      ]
-    },
-    {
-      "id": "SUG-02",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Editorial article hub built from the verified topic plan",
-      "area": "Editorial",
-      "what": "An articles hub presenting the topic plan as published pieces rather than as an inventory table.",
-      "recommendation": "Do next",
-      "priority": "P2",
-      "effort": "M",
-      "risk": "Low",
-      "blocked_by": [
-        "Q5"
-      ],
-      "status": "do-next",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SUG-03",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Human-review gate to remove the AI-slop feel",
-      "area": "Process",
-      "what": "A named reviewer signs off each page before publication against the anti-slop checklist.",
-      "recommendation": "Do now",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [
-        "Q5"
-      ],
-      "status": "do-now",
-      "src": [
-        "S02",
-        "S44"
-      ]
-    },
-    {
-      "id": "SUG-04",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Comparison and buying-guide pages in marketing style",
-      "area": "Editorial",
-      "what": "Comparison and buying guide written as marketing pages rather than as data sheets.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "M",
-      "risk": "Medium",
-      "blocked_by": [
-        "Q1",
-        "Q2"
-      ],
-      "status": "blocked",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SUG-05",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Conversion calls to action with tagged Special Links",
-      "area": "Conversion",
-      "what": "Calls to action that carry the Associates tag. Already flagged blocked by that session.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "High",
-      "blocked_by": [],
-      "status": "do-next",
-      "src": [
-        "S02"
-      ],
-      "note": "Tag arrived 2026-11-17; CTAs shipped with SL1–SL5; validation pending (0C4-F-04)."
-    },
-    {
-      "id": "SUG-06",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Trust section explaining how the site stays accurate",
-      "area": "Trust",
-      "what": "A plain-language account of the sourcing rule and the deliberate blanks.",
-      "recommendation": "Do now",
-      "priority": "P2",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [],
-      "status": "do-now",
-      "src": [
-        "S01"
-      ]
-    },
-    {
-      "id": "SUG-07",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "SEO mechanics with honest meta descriptions",
-      "area": "Traffic",
-      "what": "Per-page titles and descriptions that state what the page actually contains.",
-      "recommendation": "Do now",
-      "priority": "P2",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [],
-      "status": "do-now",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SUG-08",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Trending-topics section anchored to official surfaces",
-      "area": "Editorial",
-      "what": "Any trend claim tied to a point-in-time read of an official Amazon surface, never to an inferred ranking.",
-      "recommendation": "Do next",
-      "priority": "P2",
-      "effort": "M",
-      "risk": "Medium",
-      "blocked_by": [
-        "Q4"
-      ],
-      "status": "do-next",
-      "src": [
-        "S43",
-        "S02"
-      ]
-    },
-    {
-      "id": "SUG-09",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Click and conversion tracking through Amazon reporting",
-      "area": "Measurement",
-      "what": "Use Amazon's own reports rather than a home-grown click counter.",
-      "recommendation": "Do next",
-      "priority": "P2",
-      "effort": "M",
-      "risk": "Medium",
-      "blocked_by": [
-        "Q1",
-        "Q8"
-      ],
-      "status": "blocked",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SUG-10",
-      "origin": "Carried from session 4f83ee7b",
-      "title": "Content cadence and a named editor before scaling",
-      "area": "Process",
-      "what": "Fix who publishes and how often before adding more articles.",
-      "recommendation": "Do now",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [
-        "Q5"
-      ],
-      "status": "do-now",
-      "src": [
-        "S01",
-        "S07"
-      ]
-    },
-    {
-      "id": "CBB-SUG-01",
-      "origin": "cbb03ec7",
-      "title": "Validate the supplied tracking ID, then tag one Special Link per product",
-      "area": "Monetisation",
-      "what": "Confirm shopnow047c-20 in the Associates console, build exactly one canonical /dp/ Special Link per product, test destination and tracking report for each, and only then scale tagged links across the site.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "High",
-      "blocked_by": [
-        "CBB-Q-01",
-        "SUG-05"
-      ],
-      "status": "blocked",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "CBB-SUG-02",
-      "origin": "cbb03ec7",
-      "title": "Resolve the two-category scope before the next content batch",
-      "area": "Editorial scope",
-      "what": "Owner chooses: (a) two-category site (air fryers + meat thermometers) with category pages and guides for both, or (b) air-fryer site that keeps the two thermometer links as observed-only rows.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "Medium",
-      "blocked_by": [
-        "CBB-Q-03"
-      ],
-      "status": "blocked",
-      "src": [
-        "S71",
-        "S74"
-      ]
-    },
-    {
-      "id": "CBB-SUG-03",
-      "origin": "cbb03ec7",
-      "title": "Stand up the measurement set-up the brief specifies (click counter + five events)",
-      "area": "Measurement",
-      "what": "Pick the analytics stack (Q8/DEC-03), deploy a privacy-preserving outbound-click counter and a self-hosted endpoint, and record the five defined events before more content is published. The five event definitions are not in this repository and must come from the owner.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "M",
-      "risk": "Low",
-      "blocked_by": [
-        "Q8"
-      ],
-      "status": "blocked",
-      "repo": "campaigns.html"
-    },
-    {
-      "id": "CBB-SUG-04",
-      "origin": "cbb03ec7",
-      "title": "Extend feed.xml to carry the Research Desk articles as well as the guides",
-      "area": "Feeds",
-      "what": "Add the four Research Desk articles to the shipped RSS feed alongside the four guides, through the feed's own owner generator (session aebf0747), and re-check autodiscovery after any generator run.",
-      "recommendation": "Do next",
-      "priority": "P2",
-      "effort": "S",
-      "risk": "Low",
-      "blocked_by": [],
-      "status": "proposed",
-      "repo": "feed.xml"
-    },
-    {
-      "id": "0C4-S-01",
-      "origin": "Session 0c4c4cb6 (analytics contract)",
-      "title": "Deploy the analytics endpoint and switch the tracker on",
-      "area": "Measurement",
-      "what": "Host tools/analytics_collector.py on owner infrastructure and set the endpoint URL in assets/track.js so the five events start landing.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "M",
-      "risk": "Low — payload contract is already frozen in data/analytics.json",
-      "blocked_by": [
-        "0C4-Q-17"
-      ],
-      "status": "do-next",
-      "repo": "data/analytics.json"
-    },
-    {
-      "id": "0C4-S-02",
-      "origin": "Session 0c4c4cb6 (intake of P4/P5)",
-      "title": "Rule on category scope for the meat thermometers",
-      "area": "Scope",
-      "what": "Decide air-fryer-only vs adjacent kitchen gadgets for P4/P5.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "Low — either answer is publishable; silence is not",
-      "blocked_by": [
-        "0C4-Q-16"
-      ],
-      "status": "blocked",
-      "repo": "data/special-links.json"
-    },
-    {
-      "id": "0C4-S-03",
-      "origin": "Session 0c4c4cb6 (SG-29 attempt)",
-      "title": "Supply the Search Console verification token and a capture processor",
-      "area": "Verification",
-      "what": "Owner supplies the verification method (token or DNS) and names where reader-capture submissions should be posted; sitemap is already published and ready for submission the same day.",
-      "recommendation": "Do next",
-      "priority": "P1",
-      "effort": "S",
-      "risk": "Low — no placeholder was shipped, nothing is faked",
-      "blocked_by": [
-        "0C4-Q-18"
-      ],
-      "status": "blocked",
-      "repo": "data/flags.json"
-    }
-  ],
-  "have": [
-    {
-      "id": "757-H-01",
-      "item": "The three submitted links, and the listing each one opens",
-      "value": "link.amazon/B04G1MEwY opens amazon.com/dp/B0CDY277D3; link.amazon/B02NbDxp3 opens amazon.com/dp/B09B7SB46R; link.amazon/B00hJ57DV opens amazon.com/dp/B08DKYBTPH. Re-verified by this session on 2026-11-16.",
-      "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
-    },
-    {
-      "id": "757-H-02",
-      "item": "The browse path of all three listings",
-      "value": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers, browse node 17659096011.",
-      "src": [
-        "S14",
-        "S43"
-      ]
-    },
-    {
-      "id": "757-H-03",
-      "item": "Listing-derived product attributes",
-      "value": "Product 1: two independent 3Qt dishwasher-safe baskets, Sync Finish, Hi-Fry, Easy View windows. Product 2: 26QT, French door, 24 one-touch presets, six accessories included. Product 3: 8 quart, 450F Hi-Fry, bake/dehydrate/frozen, XL dishwasher-safe basket, stainless steel.",
-      "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
-    },
-    {
-      "id": "757-H-04",
-      "item": "The ASIN format rule",
-      "value": "Creators API documents itemIdType with a default of ASIN and shows 10-character examples. The submitted tokens are 9 characters.",
-      "src": [
-        "S31",
-        "S06"
-      ]
-    },
-    {
-      "id": "757-H-05",
-      "item": "The exact disclosure sentence required",
-      "value": "As an Amazon Associate I earn from qualifying purchases. Required clearly and prominently on the site.",
-      "src": [
-        "S01"
-      ]
-    },
-    {
-      "id": "757-H-06",
-      "item": "The published commission rate table",
-      "value": "Table 1 lists Kitchen at 4.50% and All Other Categories at 4.00%, read publicly on 2026-11-16.",
-      "src": [
-        "S25"
-      ]
-    },
-    {
-      "id": "757-H-07",
-      "item": "What a monetisable link requires",
-      "value": "Special Links must use the assigned Associates ID; the tag must be a parameter in every link to an Amazon site; a purchase is disqualified if links are not properly formatted.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-H-08",
-      "item": "The gate on displaying price and ratings",
-      "value": "Prices and availability only if Amazon serves the link or the data comes from Creators API or PA API. Star ratings and reviews only if obtained through those APIs.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-H-09",
-      "item": "The original-content requirement",
-      "value": "Pages linking to product lists, search results or department pages must carry additional original content relevant to the link.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-H-10",
-      "item": "What paid acquisition is allowed",
-      "value": "Paid search that sends users to our own site is permitted. Bidding on amazon, kindle or any Amazon Mark is a Prohibited Paid Search Placement.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-H-11",
-      "item": "Feature scope limits already known",
-      "value": "No price tracking or alerting. No link shortener that hides the Amazon destination. No Amazon mark in the domain, tag or handles. Expired promotions must be removed.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-H-12",
-      "item": "The current state of the repository and site",
-      "value": "Two merged site generations, 51 registered sources, 78 open flags, navigation containing two entries named after agent sessions, accent colour #1f5eff.",
-      "repo": "COORDINATION.md"
-    }
-  ],
-  "missing": [
-    {
-      "id": "757-M-01",
-      "item": "The Associates tag value",
-      "needed_for": "Any link that can accrue commission. Without it, every CTA on the site is decorative.",
-      "severity": "Critical",
-      "how": "Answered 2026-11-17: the owner supplied the tag in the brief — shopnow047c-20 — recorded in data/special-links.json with five built Special Links. What is still needed from the account is click validation in Associates Central (0C4-F-04). The value is no longer missing; validation is the remaining gap.",
-      "src": [
-        "S02"
-      ],
-      "answer": "shopnow047c-20 (owner-supplied 2026-11-17; validation 0C4-F-04 pending)"
-    },
-    {
-      "id": "757-M-02",
-      "item": "Confirmation that the three opened listings are the intended products",
-      "needed_for": "Everything editorial. Writing about the wrong three products wastes the whole build.",
-      "severity": "Critical",
-      "how": "Ask the requester to confirm the three ASINs by name. A redirect shows where a link goes, not what was meant.",
-      "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
-    },
-    {
-      "id": "757-M-03",
-      "item": "Associates account enrolment and API eligibility",
-      "needed_for": "Lawful display of price, availability, ratings and reviews, and therefore the whole comparison-table concept.",
-      "severity": "Critical",
-      "how": "Read account status in the Associates dashboard; check the Creators API prerequisites on the official documentation page.",
-      "src": [
-        "S04",
-        "S02"
-      ]
-    },
-    {
-      "id": "757-M-04",
-      "item": "Per-product commission category and rate",
-      "needed_for": "Any earnings model, prioritisation logic, or product ranking by revenue potential.",
-      "severity": "High",
-      "how": "Not derivable from Table 1, which lists categories rather than products. The per-account schedule is the only place it appears.",
-      "src": [
-        "S25",
-        "S03"
-      ]
-    },
-    {
-      "id": "757-M-05",
-      "item": "Current price for each product",
-      "needed_for": "The single most common reason a reader clicks. Currently prohibited outside the two permitted paths.",
-      "severity": "High",
-      "how": "Only through Creators API or PA API once eligible, or by a link Amazon itself serves. Never scraped and never hard-coded.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-M-06",
-      "item": "Star rating and review count for each product",
-      "needed_for": "Social proof, and the standard comparison-table column.",
-      "severity": "High",
-      "how": "Only through Creators API or PA API. The rule bars displaying them from any other source.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-M-07",
-      "item": "Exterior dimensions and weight",
-      "needed_for": "The counter-space article and the fit checklist, which are among the strongest organic entry points.",
-      "severity": "Medium",
-      "how": "Through the API once eligible, or left blank and marked unverified. Not inferable from a listing title.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-M-08",
-      "item": "Any first-hand testing evidence",
-      "needed_for": "The opinionated verdict that separates a real review site from a listing rewrite.",
-      "severity": "High",
-      "how": "Decide whether the products will be bought and used. If not, every article must be written as an analysis of published information, never as a test.",
-      "src": [
-        "S07"
-      ]
-    },
-    {
-      "id": "757-M-09",
-      "item": "Search demand figures for any topic",
-      "needed_for": "Prioritising the twelve articles. Without it, sequencing is a guess.",
-      "severity": "Medium",
-      "how": "Use a non-Amazon keyword tool for prioritisation only, and never restate its metrics as Amazon data or publish them as facts.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-M-10",
-      "item": "Click and conversion history",
-      "needed_for": "Any optimisation loop. There is none, because the site has never carried a tagged link.",
-      "severity": "High",
-      "how": "Comes only after the tag exists and links are live. Amazon's own reports are the compliant source.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-M-11",
-      "item": "Best Sellers rank positions for the three products",
-      "needed_for": "A trend section, which is otherwise an invention.",
-      "severity": "Medium",
-      "how": "Read the official Best Sellers page for browse node 17659096011 on the day of publication and record the time. This session did not fetch it, so no rank appears anywhere in this build.",
-      "src": [
-        "S43"
-      ]
-    },
-    {
-      "id": "757-M-12",
-      "item": "Brand name, palette and voice decision",
-      "needed_for": "The design system. The current identity is an unreviewed default.",
-      "severity": "Medium",
-      "how": "A decision by the owner, constrained by the rule that Amazon marks cannot appear in the domain, tag or handles.",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-M-13",
-      "item": "A named editor and a publication cadence",
-      "needed_for": "The human-review gate that keeps the site from reading as generated.",
-      "severity": "High",
-      "how": "Assign a person. No tool can substitute for this one.",
-      "src": [
-        "S01",
-        "S07"
-      ]
-    },
-    {
-      "id": "CBB-M-01",
-      "item": "Verification that shopnow047c-20 is the tag assigned to this Associates account (the value itself was supplied 2026-11-17 - see CBB-Q-01)",
-      "needed_for": "Closing CBB-Q-01: verifying the tag is what lets any link on the site accrue commission (S02).",
-      "severity": "High",
-      "how": "Owner opens the Associates console and confirms that shopnow047c-20 is the tracking ID assigned to this account, then runs the one-link-per-product Special Link test and records the dated result.",
-      "src": [
-        "S02"
-      ]
-    }
-  ],
-  "questions": [
-    {
-      "id": "Q1",
-      "question": "What is the Associates tag to use on every Special Link?",
-      "have": "Special Links must use the assigned Associates ID, and the tag must appear as a URL parameter in every link to an Amazon site. A purchase is disqualified if links are not properly formatted.",
-      "missing": "The tag value itself. Nothing in this repository contains it. || RESOLVED 2026-11-17: the owner's brief supplied 'shopnow047c-20'; recorded in data/special-links.json and now on the five published Special Links. Remaining unknown: whether the tag is active and each click reports (0C4-F-04, Associates Central only).",
-      "why": "Blocks every conversion element on the site. Until it exists, no published link can earn.",
-      "how": "Read it from the Associates account or SiteStripe once enrolled. || Read it from the Associates account or SiteStripe once enrolled.",
-      "blocks": [
-        "SUG-05",
-        "757-S-07",
-        "757-S-08"
-      ],
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "Q2",
-      "question": "Are the three destination listings the products that were intended?",
-      "have": "Each short link opens a live listing, and each listing title was read today. The submitted tokens are 9 characters and Creators API documents ASINs as 10.",
-      "missing": "Confirmation date and source for EACH link, and the 10-character ASIN of the intended listing where the observed destination is not it. Update 2026-11-17: the set is now FIVE links — P4/B0c8moW59 (lands B0DHZTCNR5) and P5/B0f3GKalj (lands B0DZFD6R9Z) were added with the 2026-11-17 brief; their intent rows are blank on products.html waiting for confirmation.",
-      "why": "Everything editorial depends on it. Writing about the wrong three products wastes the build.",
-      "how": "Ask the requester to confirm the three ASINs by name.",
-      "blocks": [
-        "757-S-06",
-        "757-S-07",
-        "SUG-04"
-      ],
-      "src": [
-        "S14",
-        "S31"
-      ]
-    },
-    {
-      "id": "Q3",
-      "question": "Which Amazon marketplace is the site for?",
-      "have": "The Operating Agreement schedule lists the United States and amazon.com only, and all three links resolve on amazon.com.",
-      "missing": "A stated decision about target market and currency.",
-      "why": "Determines link format, commission schedule and which rate table applies.",
-      "how": "Decide the market, then confirm against the schedule attached to the Operating Agreement.",
-      "blocks": [],
-      "src": [
-        "S01"
-      ]
-    },
-    {
-      "id": "Q4",
-      "question": "Is the Associates account enrolled, and does it meet the API prerequisites?",
-      "have": "Creators API is the documented successor to PA-API 5, and it lists prerequisites including qualifying sales in a recent period.",
-      "missing": "The account's actual standing. This session did not re-read the prerequisites page and marks it as not re-read today.",
-      "why": "Gates price, availability, rating and review display, which gates the comparison table.",
-      "how": "Check standing in the Associates dashboard and read the Creators API prerequisites page directly.",
-      "blocks": [
-        "757-S-09",
-        "SUG-08"
-      ],
-      "src": [
-        "S04",
-        "S05"
-      ]
-    },
-    {
-      "id": "Q5",
-      "question": "Who reviews and publishes content, and how often?",
-      "have": "The site currently has no named reviewer and no cadence.",
-      "missing": "A person and a rhythm.",
-      "why": "The human-review gate is the only durable defence against the generated-content feel.",
-      "how": "Assign an owner and a cadence before any article is published.",
-      "blocks": [
-        "757-S-06",
-        "SUG-02",
-        "SUG-03",
-        "SUG-10"
-      ],
-      "src": [
-        "S01",
-        "S07"
-      ]
-    },
-    {
-      "id": "Q6",
-      "question": "Will the products be used and tested first-hand?",
-      "have": "No testing has taken place. Every product fact on the site comes from listing titles.",
-      "missing": "Any experiential evidence.",
-      "why": "Decides whether the site can publish reviews or only analyses of published information, and the FTC expects the difference to be honest.",
-      "how": "Decide whether to buy and test the three units.",
-      "blocks": [
-        "757-S-06"
-      ],
-      "src": [
-        "S07",
-        "S44"
-      ]
-    },
-    {
-      "id": "Q7",
-      "question": "What brand direction should the marketing site use?",
-      "have": "The current identity is a default UI blue and the system font stack.",
-      "missing": "A name, palette and voice decision.",
-      "why": "Blocks design work; a palette cannot be chosen by a build script.",
-      "how": "Owner decision against the design system in the brief.",
-      "blocks": [
-        "757-S-04",
-        "SUG-01"
-      ],
-      "src": [
-        "S01"
-      ]
-    },
-    {
-      "id": "Q8",
-      "question": "Which analytics and reporting stack will be used?",
-      "have": "Amazon's own reports are the compliant source for clicks and conversions.",
-      "missing": "Any site-side analytics decision, and any data at all.",
-      "why": "Determines whether an optimisation loop can exist.",
-      "how": "Pick a stack, then rely on Amazon reporting for anything commission-related.",
-      "blocks": [
-        "SUG-09"
-      ],
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "Q9",
-      "question": "What budget and tooling exist for keyword and topic research?",
-      "have": "Amazon data may not be restated as third-party metrics, and no Amazon-sourced demand figure exists.",
-      "missing": "Any demand data at all.",
-      "why": "Sets how the twelve articles are sequenced.",
-      "how": "Choose a research tool for prioritisation only, keeping its numbers out of published claims.",
-      "blocks": [],
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "Q10",
-      "question": "Should the disclosure placement be reviewed by counsel before launch?",
-      "have": "The Operating Agreement requires the disclosure clearly and prominently, and the FTC expects it where the endorsement appears.",
-      "missing": "A sign-off that the chosen placement satisfies both.",
-      "why": "Disclosure placement is the most common enforcement trigger in affiliate publishing.",
-      "how": "Have the template reviewed once, then reuse the pattern.",
-      "blocks": [],
-      "src": [
-        "S01",
-        "S44"
-      ]
-    },
-    {
-      "id": "757-Q-11",
-      "question": "Which surface is the front door: the reader site or the audit dashboard?",
-      "have": "Both exist today and share one navigation, which is a large part of why the site reads as a machine output.",
-      "missing": "A decision.",
-      "why": "It determines the entire information architecture and everything downstream of it.",
-      "how": "Decide from the two-surface recommendation in the brief, then restructure the navigation once.",
-      "blocks": [
-        "757-S-01"
-      ],
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-Q-12",
-      "question": "Does the evidence surface stay public?",
-      "have": "The audit build and the source register are public today and are the most unusual asset on the site.",
-      "missing": "A decision on whether it is a marketing asset or internal documentation.",
-      "why": "If public it is a differentiator and a link magnet; if internal it should not be in the reader nav at all.",
-      "how": "Decide, then either promote it to How we verify or remove it from the reader navigation.",
-      "blocks": [
-        "757-S-05"
-      ],
-      "src": [
-        "S01"
-      ]
-    },
-    {
-      "id": "757-Q-13",
-      "question": "Is the niche limited to these three products or expanded to the air-fryer category?",
-      "have": "Three products, all in the Air Fryers browse node, and one category page.",
-      "missing": "A decision on scope.",
-      "why": "Three products will not sustain a long-running content cluster, but expanding needs more sourcing capacity.",
-      "how": "Decide scope, then size the content plan to it rather than the other way round.",
-      "blocks": [
-        "757-S-06"
-      ],
-      "src": [
-        "S14",
-        "S43"
-      ]
-    },
-    {
-      "id": "757-Q-14",
-      "question": "Who owns removing expired promotions?",
-      "have": "Links to and mentions of a limited-time promotion must be removed as soon as the promotion ends on Amazon.",
-      "missing": "An owner for that step.",
-      "why": "Without an owner, a deals page becomes a standing compliance breach.",
-      "how": "Name an owner, or keep the deals page off the roadmap entirely.",
-      "blocks": [
-        "757-S-11"
-      ],
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-Q-15",
-      "question": "What publisher name will the site use?",
-      "have": "Amazon marks may not appear in the domain, subdomain, Associates tag or social handles.",
-      "missing": "A name.",
-      "why": "Blocks brand work and is expensive to change later, because every link carries the tag.",
-      "how": "Choose a name that contains no Amazon mark before the tag is issued.",
-      "blocks": [
-        "757-S-04",
-        "SUG-01"
-      ],
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "CBB-Q-01",
-      "question": "Is shopnow047c-20 the Associates tag assigned to this account, and has one Special Link per product been tested?",
-      "have": "The owner supplied the value on 2026-11-17 (Selected Tracking ID). It matches the repository's tag pattern and is recorded in config/platform.json and data/shop/config.json. No link on the site carries it (CBB-F-02).",
-      "missing": "Associates-console confirmation that the tag is assigned to this account, and the brief's own test: one Special Link per product with destination and tracking report confirmed.",
-      "why": "Program Policies require Special Links to use the assigned Associates ID as a URL parameter, and a purchase is disqualified when links were not properly formatted (S02). Monetisation and every conversion number depend on this one confirmation.",
-      "how": "Owner opens the Associates console, confirms the tag, builds one canonical /dp/ Special Link per product, clicks it once, and checks the reporting shows the click. Record the date and evidence on this board.",
-      "blocks": [
-        "SUG-05",
-        "CBB-SUG-01"
-      ],
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "CBB-Q-02",
-      "question": "Do the two new links (product 4 and product 5) open the products that were intended?",
-      "have": "Observed on 2026-11-17: link.amazon/B0c8moW59 -> amazon.com/dp/B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and link.amazon/B0f3GKalj -> amazon.com/dp/B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer), each confirmed by two fetches (S70-S75). Both tokens are 9 characters and /dp/<token> returns Page Not Found (S06, S72, S75).",
-      "missing": "The intended 10-character ASIN or official listing URL for each of the two links (owner input; cannot be inferred).",
-      "why": "Product identity is the load-bearing input for every product row, guide and comparison that mentions these links; the same open question already exists for the original three (Q2, FLG-002).",
-      "how": "Owner states the intended ASIN per link; record it in the intent record (intended ASIN, official listing URL, confirmation date, source) without merging it with the observed redirect fields.",
-      "blocks": [
-        "CBB-SUG-02"
-      ],
-      "src": [
-        "S06",
-        "S71",
-        "S74"
-      ]
-    },
-    {
-      "id": "CBB-Q-03",
-      "question": "Is the site's scope five products across two categories, or air fryers only?",
-      "have": "Two of the five observed destinations are meat thermometers in a different Amazon category (S71, S74); the guides, comparison and buying guide are air-fryer scoped; the shop surface already publishes both category pages.",
-      "missing": "An owner scope decision: (a) two-category site covering air fryers and meat thermometers, or (b) air-fryer site that records the thermometer links as observed-only rows.",
-      "why": "The scope decides the next content batch, the category pages, and how the commission category is framed; writing guides before the decision risks content the owner then has to remove.",
-      "how": "Owner picks (a) or (b) and records it on this board; the next publishing session implements only the chosen scope.",
-      "blocks": [
-        "CBB-SUG-02"
-      ],
-      "src": [
-        "S71",
-        "S74"
-      ]
-    },
-    {
-      "id": "0C4-Q-16",
-      "question": "Is Zone3 an air-fryer desk only, or does it cover adjacent kitchen gadgets (the two submitted meat thermometers, P4/P5)?",
-      "have": "Intake records both new links and their observed destinations; the site's niche, nav, guides and category tags are air-fryer-only; no document in the repository states a scope boundary.",
-      "missing": "The owner's ruling. Without it P4/P5 stay recorded-but-not-published as products, and the question-shaped guide cadence has no scope to grow inside.",
-      "why": "Decides whether the two thermometers become products, comparisons and guides — or an explicit out-of-scope note. Publishing them silently would redefine the niche; dropping them would break the intake contract (0C4-F-03).",
-      "how": "Owner states the category scope in the next brief; record the answer here and on products.html's product-intent rows.",
-      "blocks": [
-        "0C4-S-02"
-      ],
-      "src": [
-        "S70",
-        "S73"
-      ]
-    },
-    {
-      "id": "0C4-Q-17",
-      "question": "Where will the analytics endpoint (POST /e) be hosted?",
-      "have": "The contract, the reference server and the browser client are built and tested; the payload is frozen in data/analytics.json; nothing is deployed.",
-      "missing": "An owner-controlled host that can accept POST requests and persist a JSONL ledger (GitHub Pages cannot).",
-      "why": "Without it the five events never leave the browser, no topic-level evidence can accumulate, and the measured-topic question stays open (0C4-F-05).",
-      "how": "Owner names a host (small VM, serverless function, or a host with a worker); then 0C4-S-01 proceeds: deploy tools/analytics_collector.py, set the endpoint URL, rebuild.",
-      "blocks": [
-        "0C4-S-01"
-      ],
-      "src": []
-    },
-    {
-      "id": "0C4-Q-18",
-      "question": "Who supplies the Search Console verification token and where should reader capture submissions be posted?",
-      "have": "Sitemap is published (79 pages) and robots.txt is ready; verification method is an owner choice (token, DNS, HTML file); a capture endpoint contract can be defined the same way the analytics one was.",
-      "missing": "The verification token/DNS record itself, and the destination (and privacy terms) for reader-capture submissions — both are owner inputs (0C4-F-06, 0C4-F-07).",
-      "why": "SG-29 and SG-30 stay open until then; no placeholder meta tag and no dead form were shipped, so nothing on the site claims a verification that does not exist.",
-      "how": "Owner pastes the verification method into the next brief and names the capture destination; both pages can then be wired in one pass.",
-      "blocks": [
-        "0C4-S-03"
-      ],
-      "src": []
-    }
-  ],
-  "discovery": [
-    {
-      "id": "757-D-01",
-      "action": "Read the Associates tag from the Associates account or SiteStripe and record it in one configuration file",
-      "discovers": "Q1, and unblocks every conversion element on the site",
-      "effort": "Minutes, once the account exists",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-D-02",
-      "action": "Ask the requester to confirm the three intended ASINs by name, matched against the three observed destinations",
-      "discovers": "Q2, and settles whether any editorial work is aimed at the right products",
-      "effort": "One question",
-      "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
-    },
-    {
-      "id": "757-D-03",
-      "action": "Check account standing in the Associates dashboard and read the Creators API prerequisites page directly",
-      "discovers": "Q4, and whether price and rating data can lawfully be displayed",
-      "effort": "One session",
-      "src": [
-        "S04",
-        "S05"
-      ]
-    },
-    {
-      "id": "757-D-04",
-      "action": "Re-fetch the three short links on the day of publication and record the destination ASIN and listing title",
-      "discovers": "Whether the link-to-listing mapping still holds before content goes live",
-      "effort": "Minutes; already the method used by three earlier sessions",
-      "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
-    },
-    {
-      "id": "757-D-05",
-      "action": "Read the official Best Sellers page for browse node 17659096011 on publication day and record the position and time",
-      "discovers": "A genuine, sourced trend data point. This session did not fetch that page, so no rank appears anywhere in this build",
-      "effort": "Minutes per publication day",
-      "src": [
-        "S43"
-      ]
-    },
-    {
-      "id": "757-D-06",
-      "action": "Use a non-Amazon keyword tool to prioritise topics, keeping its numbers out of any published claim",
-      "discovers": "Sequencing for the twelve articles without breaching the no-invented-metrics rule",
-      "effort": "One research pass",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "757-D-07",
-      "action": "Name an editor and a cadence, and add a sign-off step against the anti-slop checklist",
-      "discovers": "Q5 and Q13, and the durable fix for the generated-content feel",
-      "effort": "One decision",
-      "src": [
-        "S01",
-        "S07"
-      ]
-    },
-    {
-      "id": "757-D-08",
-      "action": "Crawl the published site for references to expired promotions on a schedule, and assign the removal step",
-      "discovers": "Whether the promotion-removal duty is actually being met",
-      "effort": "Automatable, but the removal must be owned by a person",
-      "src": [
-        "S02"
-      ]
-    },
-    {
-      "id": "CBB-D-01",
-      "action": "Confirm shopnow047c-20 in the Associates console, then test one Special Link per product (destination + tracking report) and record the dated evidence before any tagged link is published.",
-      "blocks": [
-        "CBB-Q-01"
-      ],
-      "src": [
-        "S02"
-      ],
-      "discovers": "CBB-Q-01, and unblocks every tagged conversion element on the site",
-      "effort": "Minutes inside the Associates console, once the account exists; the one-per-product click test takes one click per product"
-    },
-    {
-      "id": "CBB-D-02",
-      "action": "Re-fetch all five submitted short links on the day any guide is published and record each destination beside its source ID, exactly as the three-link rounds did (S11-S13, S52-S54, S69).",
-      "blocks": [
-        "CBB-Q-02"
-      ],
-      "src": [
-        "S70",
-        "S71",
-        "S73",
-        "S74"
-      ],
-      "discovers": "CBB-Q-02 and any destination drift before a guide is published",
-      "effort": "One fetch round per publication day (five links), same as the three-link rounds"
-    }
-  ],
-  "workflow": [
-    "Start with the questions, not the proposals. Anything marked blocked cannot be built well, however good the design is.",
-    "Answer the three critical questions first: the tag (Q1), the intended products (Q2), and account standing (Q4). Everything else is downstream of those.",
-    "Work the do-now column next. Those items are cheap, unblocked, and remove the defects that make the site read as machine output.",
-    "Record accept, reject or defer against every row before writing any code, and record the person who decided.",
-    "Only then run the design brief's prompt against the accepted scope.",
-    "Re-run the release gate after every change. A page that cannot trace a claim to an official source does not ship."
-  ],
-  "relationship_note": "A parallel session shipped a reader-facing decision board at /site/decisions.html on 2026-11-16, with its own proposals, questions, discovery actions and prompt pack. This console is the audit-side counterpart: it consolidates all 22 proposals from both earlier sessions and this one into a single triage with sizing, and it splits the register into what is sourced and what is missing. Use either; the point of both is that a decision is recorded before anything is implemented; extended 2026-11-17 by 0c4c4cb6 (now 29 proposals, 0C4-Q-16..18 and 0C4-S-01..03 added)."
+  {
+   "id": "757-S-02",
+   "origin": "This session",
+   "title": "Rename every navigation entry to a reader destination",
+   "area": "Navigation",
+   "what": "Replace process-named and session-named entries with Home, Reviews, Comparisons, Buying guides, How we verify. Four current entries are named after agent sessions.",
+   "recommendation": "Do now",
+   "priority": "P1",
+   "effort": "S",
+   "risk": "Low",
+   "blocked_by": [],
+   "status": "do-now",
+   "repo": "scripts/build_site.py"
+  },
+  {
+   "id": "757-S-03",
+   "origin": "This session",
+   "title": "Move the audit counts out of the landing page hero",
+   "area": "Landing page",
+   "what": "Replace 0 of 3 prices verified and the running flag count as headline statistics with the buying decision; move the counts into an evidence bar.",
+   "recommendation": "Do now",
+   "priority": "P1",
+   "effort": "S",
+   "risk": "Low",
+   "blocked_by": [],
+   "status": "do-now",
+   "repo": "index.html"
+  },
+  {
+   "id": "757-S-04",
+   "origin": "This session",
+   "title": "Adopt the design system in the brief",
+   "area": "Visual identity",
+   "what": "Warm palette, named display and body type pairing, one accent reserved for action, hairline borders, no drop shadows except on the primary CTA.",
+   "recommendation": "Do next",
+   "priority": "P2",
+   "effort": "M",
+   "risk": "Low",
+   "blocked_by": [
+    "Q7",
+    "757-Q-15"
+   ],
+   "status": "do-next",
+   "repo": "assets/style.css"
+  },
+  {
+   "id": "757-S-05",
+   "origin": "This session",
+   "title": "Publish How we verify as a real reader-facing page",
+   "area": "Trust",
+   "what": "Sources, blanks, flags and what is deliberately unknown, written for a reader rather than for the build team.",
+   "recommendation": "Do now",
+   "priority": "P1",
+   "effort": "M",
+   "risk": "Low",
+   "blocked_by": [
+    "757-Q-12"
+   ],
+   "status": "do-now",
+   "repo": "sources.html"
+  },
+  {
+   "id": "757-S-06",
+   "origin": "This session",
+   "title": "Ship the twelve-article cluster",
+   "area": "Editorial",
+   "what": "The twelve concepts in the design brief, each anchored to a listing-derived fact, each with a stated position.",
+   "recommendation": "Do next",
+   "priority": "P1",
+   "effort": "L",
+   "risk": "Medium",
+   "blocked_by": [
+    "Q5",
+    "Q6",
+    "Q2"
+   ],
+   "status": "blocked",
+   "src": [
+    "S02",
+    "S14"
+   ]
+  },
+  {
+   "id": "757-S-07",
+   "origin": "This session",
+   "title": "One canonical review page per product",
+   "area": "Editorial",
+   "what": "Replace the duplicated category mirror with three proper review pages and one comparison.",
+   "recommendation": "Do next",
+   "priority": "P1",
+   "effort": "L",
+   "risk": "Medium",
+   "blocked_by": [
+    "Q1",
+    "Q2"
+   ],
+   "status": "blocked",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-S-08",
+   "origin": "This session",
+   "title": "Verdict above the fold plus a sticky comparison table",
+   "area": "Conversion",
+   "what": "One recommended sentence before any table; comparison table keeps its action column visible while scrolling.",
+   "recommendation": "Do next",
+   "priority": "P1",
+   "effort": "M",
+   "risk": "Medium",
+   "blocked_by": [
+    "Q1"
+   ],
+   "status": "blocked",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-S-09",
+   "origin": "This session",
+   "title": "Product imagery through Amazon-served Program Content",
+   "area": "Visual identity",
+   "what": "Use SiteStripe or the API for product images. Never store an Amazon image asset in the repository.",
+   "recommendation": "Do next",
+   "priority": "P2",
+   "effort": "S",
+   "risk": "Medium",
+   "blocked_by": [
+    "Q4"
+   ],
+   "status": "blocked",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-S-10",
+   "origin": "This session",
+   "title": "Retire the duplicated category mirror page",
+   "area": "Architecture",
+   "what": "One canonical category page. A near-identical second target splits ranking and confuses readers.",
+   "recommendation": "Do now",
+   "priority": "P3",
+   "effort": "S",
+   "risk": "Low",
+   "blocked_by": [],
+   "status": "do-now",
+   "repo": "category/air-fryers.html"
+  },
+  {
+   "id": "757-S-11",
+   "origin": "This session",
+   "title": "Deals or promotions page",
+   "area": "Traffic",
+   "what": "Rejected. Links to and mentions of a limited-time promotion must come down the moment the promotion ends, and nobody owns that step yet.",
+   "recommendation": "Do not do",
+   "priority": "P3",
+   "effort": "M",
+   "risk": "High",
+   "blocked_by": [
+    "757-Q-14"
+   ],
+   "status": "do-not-do",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-S-12",
+   "origin": "This session",
+   "title": "Price tracking or price-drop alerts",
+   "area": "Product",
+   "what": "Rejected outright. The site must not have price tracking or price alerting functionality unless Amazon agrees otherwise.",
+   "recommendation": "Do not do",
+   "priority": "P3",
+   "effort": "L",
+   "risk": "High",
+   "blocked_by": [],
+   "status": "do-not-do",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "SUG-01",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Brand and hero treatment for the landing page",
+   "area": "Visual identity",
+   "what": "A marketing name, a one-line promise and a hero that leads with the three products and what the reader gets.",
+   "recommendation": "Do next",
+   "priority": "P2",
+   "effort": "M",
+   "risk": "Low",
+   "blocked_by": [
+    "Q7",
+    "757-Q-15"
+   ],
+   "status": "do-next",
+   "src": [
+    "S01"
+   ]
+  },
+  {
+   "id": "SUG-02",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Editorial article hub built from the verified topic plan",
+   "area": "Editorial",
+   "what": "An articles hub presenting the topic plan as published pieces rather than as an inventory table.",
+   "recommendation": "Do next",
+   "priority": "P2",
+   "effort": "M",
+   "risk": "Low",
+   "blocked_by": [
+    "Q5"
+   ],
+   "status": "do-next",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "SUG-03",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Human-review gate to remove the AI-slop feel",
+   "area": "Process",
+   "what": "A named reviewer signs off each page before publication against the anti-slop checklist.",
+   "recommendation": "Do now",
+   "priority": "P1",
+   "effort": "S",
+   "risk": "Low",
+   "blocked_by": [
+    "Q5"
+   ],
+   "status": "do-now",
+   "src": [
+    "S02",
+    "S44"
+   ]
+  },
+  {
+   "id": "SUG-04",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Comparison and buying-guide pages in marketing style",
+   "area": "Editorial",
+   "what": "Comparison and buying guide written as marketing pages rather than as data sheets.",
+   "recommendation": "Do next",
+   "priority": "P1",
+   "effort": "M",
+   "risk": "Medium",
+   "blocked_by": [
+    "Q1",
+    "Q2"
+   ],
+   "status": "blocked",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "SUG-05",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Conversion calls to action with tagged Special Links",
+   "area": "Conversion",
+   "what": "Calls to action that carry the Associates tag. Already flagged blocked by that session.",
+   "recommendation": "Do next",
+   "priority": "P1",
+   "effort": "S",
+   "risk": "High",
+   "blocked_by": [
+    "Q1"
+   ],
+   "status": "blocked",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "SUG-06",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Trust section explaining how the site stays accurate",
+   "area": "Trust",
+   "what": "A plain-language account of the sourcing rule and the deliberate blanks.",
+   "recommendation": "Do now",
+   "priority": "P2",
+   "effort": "S",
+   "risk": "Low",
+   "blocked_by": [],
+   "status": "do-now",
+   "src": [
+    "S01"
+   ]
+  },
+  {
+   "id": "SUG-07",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "SEO mechanics with honest meta descriptions",
+   "area": "Traffic",
+   "what": "Per-page titles and descriptions that state what the page actually contains.",
+   "recommendation": "Do now",
+   "priority": "P2",
+   "effort": "S",
+   "risk": "Low",
+   "blocked_by": [],
+   "status": "do-now",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "SUG-08",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Trending-topics section anchored to official surfaces",
+   "area": "Editorial",
+   "what": "Any trend claim tied to a point-in-time read of an official Amazon surface, never to an inferred ranking.",
+   "recommendation": "Do next",
+   "priority": "P2",
+   "effort": "M",
+   "risk": "Medium",
+   "blocked_by": [
+    "Q4"
+   ],
+   "status": "do-next",
+   "src": [
+    "S43",
+    "S02"
+   ]
+  },
+  {
+   "id": "SUG-09",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Click and conversion tracking through Amazon reporting",
+   "area": "Measurement",
+   "what": "Use Amazon's own reports rather than a home-grown click counter.",
+   "recommendation": "Do next",
+   "priority": "P2",
+   "effort": "M",
+   "risk": "Medium",
+   "blocked_by": [
+    "Q1",
+    "Q8"
+   ],
+   "status": "blocked",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "SUG-10",
+   "origin": "Carried from session 4f83ee7b",
+   "title": "Content cadence and a named editor before scaling",
+   "area": "Process",
+   "what": "Fix who publishes and how often before adding more articles.",
+   "recommendation": "Do now",
+   "priority": "P1",
+   "effort": "S",
+   "risk": "Low",
+   "blocked_by": [
+    "Q5"
+   ],
+   "status": "do-now",
+   "src": [
+    "S01",
+    "S07"
+   ]
+  }
+ ],
+ "have": [
+  {
+   "id": "757-H-01",
+   "item": "The three submitted links, and the listing each one opens",
+   "value": "link.amazon/B04G1MEwY opens amazon.com/dp/B0CDY277D3; link.amazon/B02NbDxp3 opens amazon.com/dp/B09B7SB46R; link.amazon/B00hJ57DV opens amazon.com/dp/B08DKYBTPH. Re-verified by this session on 2026-11-16.",
+   "src": [
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  {
+   "id": "757-H-02",
+   "item": "The browse path of all three listings",
+   "value": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers, browse node 17659096011.",
+   "src": [
+    "S14",
+    "S43"
+   ]
+  },
+  {
+   "id": "757-H-03",
+   "item": "Listing-derived product attributes",
+   "value": "Product 1: two independent 3Qt dishwasher-safe baskets, Sync Finish, Hi-Fry, Easy View windows. Product 2: 26QT, French door, 24 one-touch presets, six accessories included. Product 3: 8 quart, 450F Hi-Fry, bake/dehydrate/frozen, XL dishwasher-safe basket, stainless steel.",
+   "src": [
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  {
+   "id": "757-H-04",
+   "item": "The ASIN format rule",
+   "value": "Creators API documents itemIdType with a default of ASIN and shows 10-character examples. The submitted tokens are 9 characters.",
+   "src": [
+    "S31",
+    "S06"
+   ]
+  },
+  {
+   "id": "757-H-05",
+   "item": "The exact disclosure sentence required",
+   "value": "As an Amazon Associate I earn from qualifying purchases. Required clearly and prominently on the site.",
+   "src": [
+    "S01"
+   ]
+  },
+  {
+   "id": "757-H-06",
+   "item": "The published commission rate table",
+   "value": "Table 1 lists Kitchen at 4.50% and All Other Categories at 4.00%, read publicly on 2026-11-16.",
+   "src": [
+    "S25"
+   ]
+  },
+  {
+   "id": "757-H-07",
+   "item": "What a monetisable link requires",
+   "value": "Special Links must use the assigned Associates ID; the tag must be a parameter in every link to an Amazon site; a purchase is disqualified if links are not properly formatted.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-H-08",
+   "item": "The gate on displaying price and ratings",
+   "value": "Prices and availability only if Amazon serves the link or the data comes from Creators API or PA API. Star ratings and reviews only if obtained through those APIs.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-H-09",
+   "item": "The original-content requirement",
+   "value": "Pages linking to product lists, search results or department pages must carry additional original content relevant to the link.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-H-10",
+   "item": "What paid acquisition is allowed",
+   "value": "Paid search that sends users to our own site is permitted. Bidding on amazon, kindle or any Amazon Mark is a Prohibited Paid Search Placement.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-H-11",
+   "item": "Feature scope limits already known",
+   "value": "No price tracking or alerting. No link shortener that hides the Amazon destination. No Amazon mark in the domain, tag or handles. Expired promotions must be removed.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-H-12",
+   "item": "The current state of the repository and site",
+   "value": "Two merged site generations, 51 registered sources, 78 open flags, navigation containing two entries named after agent sessions, accent colour #1f5eff.",
+   "repo": "COORDINATION.md"
+  },
+  {
+   "id": "929-H-13",
+   "item": "All five submitted short links, re-fetched 2026-11-17",
+   "value": "The brief lists five links. Links 1-3 open the three air fryers the register already records (B0CDY277D3, B09B7SB46R, B08DKYBTPH). Links 4 and 5 -- tokens B0c8moW59 and B0f3GKalj -- open two meat-thermometer listings (B0DHZTCNR5, B0DZFD6R9Z) that appear nowhere else in the repository. Every token is 9 characters and every direct /dp/ check serves Page Not Found, so no token is a 10-character ASIN. Observed destinations only; intent is not established (FLG-002).",
+   "src": [
+    "S70",
+    "S74",
+    "S71",
+    "S75"
+   ]
+  }
+ ],
+ "missing": [
+  {
+   "id": "757-M-01",
+   "item": "The Associates tag value",
+   "needed_for": "Any link that can accrue commission. Without it, every CTA on the site is decorative.",
+   "severity": "Critical",
+   "how": "Read it from the Associates account or from SiteStripe once enrolled. UPDATE 2026-11-17 (session 92988cd8): the owner supplied a Tracking ID in the brief (value in COORDINATION.md, Part session 92988cd8, not stored in public data files per suggestions Q1). What remains missing is validation: account approval, tag registration and marketplace match (929-F-02), then the one-link enrolled-workflow test the brief prescribes (S-03).",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-02",
+   "item": "Confirmation that the three opened listings are the intended products",
+   "needed_for": "Everything editorial. Writing about the wrong three products wastes the whole build.",
+   "severity": "Critical",
+   "how": "Ask the requester to confirm the three ASINs by name. A redirect shows where a link goes, not what was meant.",
+   "src": [
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  {
+   "id": "757-M-03",
+   "item": "Associates account enrolment and API eligibility",
+   "needed_for": "Lawful display of price, availability, ratings and reviews, and therefore the whole comparison-table concept.",
+   "severity": "Critical",
+   "how": "Read account status in the Associates dashboard; check the Creators API prerequisites on the official documentation page.",
+   "src": [
+    "S04",
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-04",
+   "item": "Per-product commission category and rate",
+   "needed_for": "Any earnings model, prioritisation logic, or product ranking by revenue potential.",
+   "severity": "High",
+   "how": "Not derivable from Table 1, which lists categories rather than products. The per-account schedule is the only place it appears.",
+   "src": [
+    "S25",
+    "S03"
+   ]
+  },
+  {
+   "id": "757-M-05",
+   "item": "Current price for each product",
+   "needed_for": "The single most common reason a reader clicks. Currently prohibited outside the two permitted paths.",
+   "severity": "High",
+   "how": "Only through Creators API or PA API once eligible, or by a link Amazon itself serves. Never scraped and never hard-coded.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-06",
+   "item": "Star rating and review count for each product",
+   "needed_for": "Social proof, and the standard comparison-table column.",
+   "severity": "High",
+   "how": "Only through Creators API or PA API. The rule bars displaying them from any other source.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-07",
+   "item": "Exterior dimensions and weight",
+   "needed_for": "The counter-space article and the fit checklist, which are among the strongest organic entry points.",
+   "severity": "Medium",
+   "how": "Through the API once eligible, or left blank and marked unverified. Not inferable from a listing title.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-08",
+   "item": "Any first-hand testing evidence",
+   "needed_for": "The opinionated verdict that separates a real review site from a listing rewrite.",
+   "severity": "High",
+   "how": "Decide whether the products will be bought and used. If not, every article must be written as an analysis of published information, never as a test.",
+   "src": [
+    "S07"
+   ]
+  },
+  {
+   "id": "757-M-09",
+   "item": "Search demand figures for any topic",
+   "needed_for": "Prioritising the twelve articles. Without it, sequencing is a guess.",
+   "severity": "Medium",
+   "how": "Use a non-Amazon keyword tool for prioritisation only, and never restate its metrics as Amazon data or publish them as facts.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-10",
+   "item": "Click and conversion history",
+   "needed_for": "Any optimisation loop. There is none, because the site has never carried a tagged link.",
+   "severity": "High",
+   "how": "Comes only after the tag exists and links are live. Amazon's own reports are the compliant source.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-11",
+   "item": "Best Sellers rank positions for the three products",
+   "needed_for": "A trend section, which is otherwise an invention.",
+   "severity": "Medium",
+   "how": "Read the official Best Sellers page for browse node 17659096011 on the day of publication and record the time. This session did not fetch it, so no rank appears anywhere in this build.",
+   "src": [
+    "S43"
+   ]
+  },
+  {
+   "id": "757-M-12",
+   "item": "Brand name, palette and voice decision",
+   "needed_for": "The design system. The current identity is an unreviewed default.",
+   "severity": "Medium",
+   "how": "A decision by the owner, constrained by the rule that Amazon marks cannot appear in the domain, tag or handles.",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-M-13",
+   "item": "A named editor and a publication cadence",
+   "needed_for": "The human-review gate that keeps the site from reading as generated.",
+   "severity": "High",
+   "how": "Assign a person. No tool can substitute for this one.",
+   "src": [
+    "S01",
+    "S07"
+   ]
+  },
+  {
+   "id": "929-M-14",
+   "item": "Intake decision for submitted links 4 and 5",
+   "needed_for": "Product tables, category pages and any editorial for the two thermometer destinations; also the site's category scope (air fryers only, or kitchen gadgets more widely).",
+   "severity": "High",
+   "how": "Owner confirms the two ASINs by name (question 929-Q-16). If in scope, an integration session adds P4/P5 rows with S70-S75 as sources and blank attribute cells; if not, record the decline. Do not infer intent from the redirects.",
+   "src": [
+    "S70",
+    "S71"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "question": "What is the Associates tag to use on every Special Link?",
+   "have": "Special Links must use the assigned Associates ID, and the tag must appear as a URL parameter in every link to an Amazon site. A purchase is disqualified if links are not properly formatted.",
+   "missing": "The tag value itself. UPDATE 2026-11-17 (session 92988cd8): the owner supplied a Tracking ID in the brief; its value is recorded in COORDINATION.md, Part session 92988cd8, and deliberately not duplicated into data files or rendered pages (see how_to_discover on suggestions question Q1). What is still missing: confirmation that the tag is registered to an approved Associates account, that the account is approved, and that the marketplace matches -- no public page can show any of that.",
+   "why": "Blocks every conversion element on the site. The value now exists (owner input, 2026-11-17), so the remaining gate is validation against an enrolled account, not discovery.",
+   "how": "Confirm the value in Associates Central or SiteStripe once enrolled, then test one tagged link per product in the enrolled Associates workflow -- destination plus tracking report -- before scaling. That is the sequence the brief itself prescribes (S-03). Format requirement: Participation Requirements 2(b), which re-reads the tag as appearing 'as XXXXX-##, or such other format as we may designate' (S02). Recorded as 929-F-02.",
+   "blocks": [
+    "SUG-05",
+    "757-S-07",
+    "757-S-08"
+   ],
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "Q2",
+   "question": "Are the three destination listings the products that were intended?",
+   "have": "Each short link opens a live listing, and each listing title was read today. The submitted tokens are 9 characters and Creators API documents ASINs as 10.",
+   "missing": "Any official statement of intent. A redirect shows where a link goes, not what was meant.",
+   "why": "Everything editorial depends on it. Writing about the wrong three products wastes the build.",
+   "how": "Ask the requester to confirm the three ASINs by name.",
+   "blocks": [
+    "757-S-06",
+    "757-S-07",
+    "SUG-04"
+   ],
+   "src": [
+    "S14",
+    "S31"
+   ]
+  },
+  {
+   "id": "Q3",
+   "question": "Which Amazon marketplace is the site for?",
+   "have": "The Operating Agreement schedule lists the United States and amazon.com only, and all three links resolve on amazon.com.",
+   "missing": "A stated decision about target market and currency.",
+   "why": "Determines link format, commission schedule and which rate table applies.",
+   "how": "Decide the market, then confirm against the schedule attached to the Operating Agreement.",
+   "blocks": [],
+   "src": [
+    "S01"
+   ]
+  },
+  {
+   "id": "Q4",
+   "question": "Is the Associates account enrolled, and does it meet the API prerequisites?",
+   "have": "Creators API is the documented successor to PA-API 5, and it lists prerequisites including qualifying sales in a recent period.",
+   "missing": "The account's actual standing. This session did not re-read the prerequisites page and marks it as not re-read today.",
+   "why": "Gates price, availability, rating and review display, which gates the comparison table.",
+   "how": "Check standing in the Associates dashboard and read the Creators API prerequisites page directly.",
+   "blocks": [
+    "757-S-09",
+    "SUG-08"
+   ],
+   "src": [
+    "S04",
+    "S05"
+   ]
+  },
+  {
+   "id": "Q5",
+   "question": "Who reviews and publishes content, and how often?",
+   "have": "The site currently has no named reviewer and no cadence.",
+   "missing": "A person and a rhythm.",
+   "why": "The human-review gate is the only durable defence against the generated-content feel.",
+   "how": "Assign an owner and a cadence before any article is published.",
+   "blocks": [
+    "757-S-06",
+    "SUG-02",
+    "SUG-03",
+    "SUG-10"
+   ],
+   "src": [
+    "S01",
+    "S07"
+   ]
+  },
+  {
+   "id": "Q6",
+   "question": "Will the products be used and tested first-hand?",
+   "have": "No testing has taken place. Every product fact on the site comes from listing titles.",
+   "missing": "Any experiential evidence.",
+   "why": "Decides whether the site can publish reviews or only analyses of published information, and the FTC expects the difference to be honest.",
+   "how": "Decide whether to buy and test the three units.",
+   "blocks": [
+    "757-S-06"
+   ],
+   "src": [
+    "S07",
+    "S44"
+   ]
+  },
+  {
+   "id": "Q7",
+   "question": "What brand direction should the marketing site use?",
+   "have": "The current identity is a default UI blue and the system font stack.",
+   "missing": "A name, palette and voice decision.",
+   "why": "Blocks design work; a palette cannot be chosen by a build script.",
+   "how": "Owner decision against the design system in the brief.",
+   "blocks": [
+    "757-S-04",
+    "SUG-01"
+   ],
+   "src": [
+    "S01"
+   ]
+  },
+  {
+   "id": "Q8",
+   "question": "Which analytics and reporting stack will be used?",
+   "have": "Amazon's own reports are the compliant source for clicks and conversions.",
+   "missing": "Any site-side analytics decision, and any data at all.",
+   "why": "Determines whether an optimisation loop can exist.",
+   "how": "Pick a stack, then rely on Amazon reporting for anything commission-related.",
+   "blocks": [
+    "SUG-09"
+   ],
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "Q9",
+   "question": "What budget and tooling exist for keyword and topic research?",
+   "have": "Amazon data may not be restated as third-party metrics, and no Amazon-sourced demand figure exists.",
+   "missing": "Any demand data at all.",
+   "why": "Sets how the twelve articles are sequenced.",
+   "how": "Choose a research tool for prioritisation only, keeping its numbers out of published claims.",
+   "blocks": [],
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "Q10",
+   "question": "Should the disclosure placement be reviewed by counsel before launch?",
+   "have": "The Operating Agreement requires the disclosure clearly and prominently, and the FTC expects it where the endorsement appears.",
+   "missing": "A sign-off that the chosen placement satisfies both.",
+   "why": "Disclosure placement is the most common enforcement trigger in affiliate publishing.",
+   "how": "Have the template reviewed once, then reuse the pattern.",
+   "blocks": [],
+   "src": [
+    "S01",
+    "S44"
+   ]
+  },
+  {
+   "id": "757-Q-11",
+   "question": "Which surface is the front door: the reader site or the audit dashboard?",
+   "have": "Both exist today and share one navigation, which is a large part of why the site reads as a machine output.",
+   "missing": "A decision.",
+   "why": "It determines the entire information architecture and everything downstream of it.",
+   "how": "Decide from the two-surface recommendation in the brief, then restructure the navigation once.",
+   "blocks": [
+    "757-S-01"
+   ],
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-Q-12",
+   "question": "Does the evidence surface stay public?",
+   "have": "The audit build and the source register are public today and are the most unusual asset on the site.",
+   "missing": "A decision on whether it is a marketing asset or internal documentation.",
+   "why": "If public it is a differentiator and a link magnet; if internal it should not be in the reader nav at all.",
+   "how": "Decide, then either promote it to How we verify or remove it from the reader navigation.",
+   "blocks": [
+    "757-S-05"
+   ],
+   "src": [
+    "S01"
+   ]
+  },
+  {
+   "id": "757-Q-13",
+   "question": "Is the niche limited to these three products or expanded to the air-fryer category?",
+   "have": "Three products, all in the Air Fryers browse node, and one category page.",
+   "missing": "A decision on scope.",
+   "why": "Three products will not sustain a long-running content cluster, but expanding needs more sourcing capacity.",
+   "how": "Decide scope, then size the content plan to it rather than the other way round.",
+   "blocks": [
+    "757-S-06"
+   ],
+   "src": [
+    "S14",
+    "S43"
+   ]
+  },
+  {
+   "id": "757-Q-14",
+   "question": "Who owns removing expired promotions?",
+   "have": "Links to and mentions of a limited-time promotion must be removed as soon as the promotion ends on Amazon.",
+   "missing": "An owner for that step.",
+   "why": "Without an owner, a deals page becomes a standing compliance breach.",
+   "how": "Name an owner, or keep the deals page off the roadmap entirely.",
+   "blocks": [
+    "757-S-11"
+   ],
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-Q-15",
+   "question": "What publisher name will the site use?",
+   "have": "Amazon marks may not appear in the domain, subdomain, Associates tag or social handles.",
+   "missing": "A name.",
+   "why": "Blocks brand work and is expensive to change later, because every link carries the tag.",
+   "how": "Choose a name that contains no Amazon mark before the tag is issued.",
+   "blocks": [
+    "757-S-04",
+    "SUG-01"
+   ],
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "929-Q-16",
+   "question": "Which products does this site actually promote? The 2026-11-17 brief lists five short links; the register and every editorial surface cover three air fryers.",
+   "have": "All five tokens were fetched on 2026-11-17 by session 92988cd8: three open the registered air fryers, two open meat-thermometer listings (B0DHZTCNR5, B0DZFD6R9Z) in Amazon's Thermometers & Timers > Meat browse path. All five tokens are 9 characters; all five direct /dp/ checks serve Page Not Found; none of the five destination URLs carries a tag= parameter.",
+   "missing": "Whether links 4 and 5 are intended products for this site at all, and if they are, whether the editorial scope expands from air fryers to kitchen thermometers. A redirect shows where a link goes, not what was meant (FLG-002).",
+   "why": "Determines two product rows, a category page and a whole article strand -- or their refusal. Writing air-fryer content for thermometer products would be the wrong build, and silently dropping two submitted links would be an incomplete intake.",
+   "how": "Owner confirms both listings by ASIN name, the same procedure as Q2. Then either intake (P4/P5 with blank attribute cells and sources S70-S75) or record the decline on this board.",
+   "blocks": [],
+   "src": [
+    "S70",
+    "S71",
+    "S31"
+   ]
+  }
+ ],
+ "discovery": [
+  {
+   "id": "757-D-01",
+   "action": "Read the Associates tag from the Associates account or SiteStripe and record it in one configuration file",
+   "discovers": "Q1, and unblocks every conversion element on the site",
+   "effort": "Minutes, once the account exists",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-D-02",
+   "action": "Ask the requester to confirm the three intended ASINs by name, matched against the three observed destinations",
+   "discovers": "Q2, and settles whether any editorial work is aimed at the right products",
+   "effort": "One question",
+   "src": [
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  {
+   "id": "757-D-03",
+   "action": "Check account standing in the Associates dashboard and read the Creators API prerequisites page directly",
+   "discovers": "Q4, and whether price and rating data can lawfully be displayed",
+   "effort": "One session",
+   "src": [
+    "S04",
+    "S05"
+   ]
+  },
+  {
+   "id": "757-D-04",
+   "action": "Re-fetch the three short links on the day of publication and record the destination ASIN and listing title",
+   "discovers": "Whether the link-to-listing mapping still holds before content goes live",
+   "effort": "Minutes; already the method used by three earlier sessions",
+   "src": [
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  {
+   "id": "757-D-05",
+   "action": "Read the official Best Sellers page for browse node 17659096011 on publication day and record the position and time",
+   "discovers": "A genuine, sourced trend data point. This session did not fetch that page, so no rank appears anywhere in this build",
+   "effort": "Minutes per publication day",
+   "src": [
+    "S43"
+   ]
+  },
+  {
+   "id": "757-D-06",
+   "action": "Use a non-Amazon keyword tool to prioritise topics, keeping its numbers out of any published claim",
+   "discovers": "Sequencing for the twelve articles without breaching the no-invented-metrics rule",
+   "effort": "One research pass",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "757-D-07",
+   "action": "Name an editor and a cadence, and add a sign-off step against the anti-slop checklist",
+   "discovers": "Q5 and Q13, and the durable fix for the generated-content feel",
+   "effort": "One decision",
+   "src": [
+    "S01",
+    "S07"
+   ]
+  },
+  {
+   "id": "757-D-08",
+   "action": "Crawl the published site for references to expired promotions on a schedule, and assign the removal step",
+   "discovers": "Whether the promotion-removal duty is actually being met",
+   "effort": "Automatable, but the removal must be owned by a person",
+   "src": [
+    "S02"
+   ]
+  },
+  {
+   "id": "929-D-09",
+   "action": "Ask the owner to confirm or decline the two new destinations by ASIN name (B0DHZTCNR5, B0DZFD6R9Z), exactly as for Q2",
+   "discovers": "Whether submitted links 4 and 5 are in scope for this site (929-Q-16, 929-M-14)",
+   "effort": "One question, answerable in a sentence; no tooling needed",
+   "src": [
+    "S70",
+    "S71"
+   ]
+  }
+ ],
+ "workflow": [
+  "Start with the questions, not the proposals. Anything marked blocked cannot be built well, however good the design is.",
+  "Answer the three critical questions first: the tag (Q1), the intended products (Q2), and account standing (Q4). Everything else is downstream of those.",
+  "Work the do-now column next. Those items are cheap, unblocked, and remove the defects that make the site read as machine output.",
+  "Record accept, reject or defer against every row before writing any code, and record the person who decided.",
+  "Only then run the design brief's prompt against the accepted scope.",
+  "Re-run the release gate after every change. A page that cannot trace a claim to an official source does not ship."
+ ],
+ "relationship_note": "A parallel session shipped a reader-facing decision board at /site/decisions.html on 2026-11-16, with its own proposals, questions, discovery actions and prompt pack. This console is the audit-side counterpart: it consolidates all 22 proposals from both earlier sessions and this one into a single triage with sizing, and it splits the register into what is sourced and what is missing. Use either; the point of both is that a decision is recorded before anything is implemented."
 }

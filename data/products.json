@@ -1,495 +1,722 @@
 {
-  "retrieved": "2026-11-13",
-  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038).",
-  "products": [
-    {
-      "id": "P1",
-      "label": "Product link 1",
-      "submitted_url": "https://link.amazon/B04G1MEwY",
-      "link_id": "B04G1MEwY",
-      "link_id_length": 9,
-      "asin": null,
-      "direct_check": {
-        "url": "https://www.amazon.com/dp/B04G1MEwY",
-        "result": "Page Not Found",
-        "source": "S08"
-      },
-      "redirect_observed": {
-        "final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
-        "page_id": "B0CDY277D3",
-        "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S11",
-        "title_source": "S14",
-        "brand": "CHEFMAN",
-        "capacity": "6 Quart",
-        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
-      },
-      "product_name": null,
-      "brand": null,
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "competitor_count": null,
-      "best_seller_rank": null,
-      "commission_rate": null,
-      "availability": null,
-      "clicks": null,
-      "conversions": null,
-      "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
-      "flags": [
-        "FLG-001",
-        "FLG-002",
-        "FLG-004",
-        "FLG-035",
-        "FLG-036"
-      ],
-      "sources": [
-        "S02",
-        "S08",
-        "S11",
-        "S14",
-        "S46",
-        "S52",
-        "S55"
-      ],
-      "observed_2026_11_14": {
-        "date": "2026-11-14",
-        "price": null,
-        "other_offers": null,
-        "rating": null,
-        "review_count": null,
-        "sales_note": null,
-        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
-        "sources": [
-          "S52",
-          "S46",
-          "S14"
-        ],
-        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029). AB-F-01 (2026-11-16, session ab3ed329): the observed price, other-offer, rating, review-count and sales-note values were removed from this public file under Program Policies 2(b) and 6(t). The dated observation is in git history; no value is displayed."
-      },
-      "value_sources_2026_11_14": {
-        "product_name": [
-          "S52",
-          "S46",
-          "S14"
-        ],
-        "brand": [
-          "S14"
-        ],
-        "price": [
-          "S46"
-        ],
-        "rating": [
-          "S46"
-        ],
-        "review_count": [
-          "S46"
-        ]
-      },
-      "product_intent": {
-        "intended_asin": null,
-        "intended_listing_url": null,
-        "confirmation_date": null,
-        "source": null,
-        "confirmed_by": null,
-        "status": "unconfirmed",
-        "recorded": "2026-11-17",
-        "recorded_by": "session 0c4c4cb6",
-        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
-      }
+ "retrieved": "2026-11-13",
+ "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038). Session 2f181cd9 (2026-11-17) appended P4 and P5 for the two links supplied in that session's brief (union by ID; nothing on main's side renumbered or removed).",
+ "products": [
+  {
+   "id": "P1",
+   "label": "Product link 1",
+   "submitted_url": "https://link.amazon/B04G1MEwY",
+   "link_id": "B04G1MEwY",
+   "link_id_length": 9,
+   "asin": null,
+   "direct_check": {
+    "url": "https://www.amazon.com/dp/B04G1MEwY",
+    "result": "Page Not Found",
+    "source": "S08"
+   },
+   "redirect_observed": {
+    "final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
+    "page_id": "B0CDY277D3",
+    "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+    "confirmed_as_submitted_product": false,
+    "source": "S11",
+    "title_source": "S14",
+    "brand": "CHEFMAN",
+    "capacity": "6 Quart",
+    "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+    "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+   },
+   "product_name": null,
+   "brand": null,
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "competitor_count": null,
+   "best_seller_rank": null,
+   "commission_rate": null,
+   "availability": null,
+   "clicks": null,
+   "conversions": null,
+   "associates_tag": null,
+   "status": "Link does not resolve to a product page under its own identifier",
+   "flags": [
+    "FLG-001",
+    "FLG-002",
+    "FLG-004",
+    "FLG-035",
+    "FLG-036"
+   ],
+   "sources": [
+    "S02",
+    "S08",
+    "S11",
+    "S14",
+    "S46",
+    "S52",
+    "S55"
+   ],
+   "observed_2026_11_14": {
+    "date": "2026-11-14",
+    "price": null,
+    "other_offers": null,
+    "rating": null,
+    "review_count": null,
+    "sales_note": null,
+    "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+    "sources": [
+     "S52",
+     "S46",
+     "S14"
+    ],
+    "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029). AB-F-01 (2026-11-16, session ab3ed329): the observed price, other-offer, rating, review-count and sales-note values were removed from this public file under Program Policies 2(b) and 6(t). The dated observation is in git history; no value is displayed."
+   },
+   "value_sources_2026_11_14": {
+    "product_name": [
+     "S52",
+     "S46",
+     "S14"
+    ],
+    "brand": [
+     "S14"
+    ],
+    "price": [
+     "S46"
+    ],
+    "rating": [
+     "S46"
+    ],
+    "review_count": [
+     "S46"
+    ]
+   },
+   "product_intent": {
+    "intended_asin": null,
+    "intended_listing_url": null,
+    "confirmation_date": null,
+    "source": null,
+    "confirmed_by": null,
+    "status": "unconfirmed",
+    "recorded": "2026-11-17",
+    "recorded_by": "session 0c4c4cb6",
+    "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
+   }
+  },
+  {
+   "id": "P2",
+   "label": "Product link 2",
+   "submitted_url": "https://link.amazon/B02NbDxp3",
+   "link_id": "B02NbDxp3",
+   "link_id_length": 9,
+   "asin": null,
+   "direct_check": {
+    "url": "https://www.amazon.com/dp/B02NbDxp3",
+    "result": "Page Not Found",
+    "source": "S09"
+   },
+   "redirect_observed": {
+    "final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
+    "page_id": "B09B7SB46R",
+    "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
+    "confirmed_as_submitted_product": false,
+    "source": "S12",
+    "title_source": "S15",
+    "brand": "Emeril Lagasse",
+    "capacity": "26QT",
+    "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+    "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+   },
+   "product_name": null,
+   "brand": null,
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "competitor_count": null,
+   "best_seller_rank": null,
+   "commission_rate": null,
+   "availability": null,
+   "clicks": null,
+   "conversions": null,
+   "associates_tag": null,
+   "status": "Link does not resolve to a product page under its own identifier",
+   "flags": [
+    "FLG-001",
+    "FLG-002",
+    "FLG-004",
+    "FLG-035",
+    "FLG-036"
+   ],
+   "sources": [
+    "S02",
+    "S09",
+    "S12",
+    "S15",
+    "S47",
+    "S53",
+    "S55"
+   ],
+   "observed_2026_11_14": {
+    "date": "2026-11-14",
+    "price": null,
+    "other_offers": null,
+    "rating": null,
+    "review_count": null,
+    "sales_note": null,
+    "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+    "sources": [
+     "S53",
+     "S47",
+     "S15"
+    ],
+    "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029). AB-F-01 (2026-11-16, session ab3ed329): the observed price, other-offer, rating, review-count and sales-note values were removed from this public file under Program Policies 2(b) and 6(t). The dated observation is in git history; no value is displayed."
+   },
+   "value_sources_2026_11_14": {
+    "product_name": [
+     "S53",
+     "S47",
+     "S15"
+    ],
+    "brand": [
+     "S15"
+    ],
+    "price": [
+     "S47"
+    ],
+    "rating": [
+     "S47"
+    ],
+    "review_count": [
+     "S47"
+    ]
+   },
+   "product_intent": {
+    "intended_asin": null,
+    "intended_listing_url": null,
+    "confirmation_date": null,
+    "source": null,
+    "confirmed_by": null,
+    "status": "unconfirmed",
+    "recorded": "2026-11-17",
+    "recorded_by": "session 0c4c4cb6",
+    "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
+   }
+  },
+  {
+   "id": "P3",
+   "label": "Product link 3",
+   "submitted_url": "https://link.amazon/B00hJ57DV",
+   "link_id": "B00hJ57DV",
+   "link_id_length": 9,
+   "asin": null,
+   "direct_check": {
+    "url": "https://www.amazon.com/dp/B00hJ57DV",
+    "result": "Page Not Found",
+    "source": "S10"
+   },
+   "redirect_observed": {
+    "final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
+    "page_id": "B08DKYBTPH",
+    "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+    "confirmed_as_submitted_product": false,
+    "source": "S13",
+    "title_source": "S23",
+    "brand": "Chefman",
+    "capacity": "8 Qt",
+    "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
+    "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+   },
+   "product_name": null,
+   "brand": null,
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "competitor_count": null,
+   "best_seller_rank": null,
+   "commission_rate": null,
+   "availability": null,
+   "clicks": null,
+   "conversions": null,
+   "associates_tag": null,
+   "status": "Link does not resolve to a product page under its own identifier",
+   "flags": [
+    "FLG-001",
+    "FLG-002",
+    "FLG-004",
+    "FLG-035",
+    "FLG-036"
+   ],
+   "sources": [
+    "S02",
+    "S10",
+    "S13",
+    "S16",
+    "S48",
+    "S54",
+    "S55"
+   ],
+   "observed_2026_11_14": {
+    "date": "2026-11-14",
+    "price": null,
+    "other_offers": null,
+    "rating": null,
+    "review_count": null,
+    "sales_note": null,
+    "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
+    "sources": [
+     "S54",
+     "S48",
+     "S23"
+    ],
+    "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029). AB-F-01 (2026-11-16, session ab3ed329): the observed price, other-offer, rating, review-count and sales-note values were removed from this public file under Program Policies 2(b) and 6(t). The dated observation is in git history; no value is displayed."
+   },
+   "value_sources_2026_11_14": {
+    "product_name": [
+     "S54",
+     "S48",
+     "S23"
+    ],
+    "brand": [
+     "S23"
+    ],
+    "price": [
+     "S48"
+    ],
+    "rating": [
+     "S48"
+    ],
+    "review_count": [
+     "S48"
+    ]
+   },
+   "product_intent": {
+    "intended_asin": null,
+    "intended_listing_url": null,
+    "confirmation_date": null,
+    "source": null,
+    "confirmed_by": null,
+    "status": "unconfirmed",
+    "recorded": "2026-11-17",
+    "recorded_by": "session 0c4c4cb6",
+    "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
+   }
+  },
+  {
+   "id": "P4",
+   "label": "Product link 4",
+   "submitted_url": "https://link.amazon/B0c8moW59",
+   "link_id": "B0c8moW59",
+   "link_id_length": 9,
+   "asin": null,
+   "direct_check": {
+    "url": "https://www.amazon.com/dp/B0c8moW59",
+    "result": "Page Not Found",
+    "source": "S74"
+   },
+   "redirect_observed": {
+    "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+    "page_id": "B0DHZTCNR5",
+    "page_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, +/-0.5F Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black",
+    "confirmed_as_submitted_product": false,
+    "source": "S70",
+    "title_source": "S72",
+    "brand": "ThermoMaven",
+    "capacity": "Not stated in the listing title",
+    "brand_capacity_note": "Read from the destination page title. Not confirmed as the submitted product (FLG-002, F-2F-02). This listing is a meat thermometer, not an air fryer (F-2F-01).",
+    "reverified": "2026-11-17, first observation by session 2f181cd9.",
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035, F-2F-01).",
+    "observed_on": "2026-11-17"
+   },
+   "category_observed": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+   "browse_node_observed": "289810",
+   "content_status": {
+    "brief": "Not written",
+    "comparison": "Not written",
+    "buying_guide": "Not written",
+    "note": "No brief, comparison or buying guide has been written for this link. The marketing section covers the three air-fryer listings only; extending it to this category is part of the scope decision in F-2F-01 and SUG-2F-01."
+   },
+   "product_name": null,
+   "brand": null,
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "competitor_count": null,
+   "best_seller_rank": null,
+   "commission_rate": null,
+   "availability": null,
+   "clicks": null,
+   "conversions": null,
+   "associates_tag": null,
+   "status": "Link opens a meat-thermometer listing, not an air fryer. Observed destination recorded; intent unconfirmed (F-2F-01). No Associates tag, so no Special Link exists (F-2F-03).",
+   "flags": [
+    "F-2F-01",
+    "F-2F-02",
+    "F-2F-03",
+    "FLG-001",
+    "FLG-002",
+    "FLG-035"
+   ],
+   "sources": [
+    "S80",
+    "S82",
+    "S74",
+    "S70",
+    "S72"
+   ],
+   "product_intent": {
+    "intended_asin": null,
+    "intended_listing_url": null,
+    "confirmation_date": null,
+    "source": null,
+    "confirmed_by": null,
+    "status": "unconfirmed",
+    "recorded": "2026-11-17",
+    "recorded_by": "session 0c4c4cb6",
+    "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
+   },
+   "observed_2026_11_17": {
+    "date": "2026-11-17",
+    "price": null,
+    "other_offers": null,
+    "rating": null,
+    "review_count": null,
+    "sales_note": null,
+    "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
+    "sources": [
+     "S70",
+     "S71"
+    ],
+    "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
+   },
+   "value_sources_2026_11_17": {
+    "product_name": [
+     "S71"
+    ],
+    "brand": [
+     "S71"
+    ],
+    "price": [],
+    "rating": [],
+    "review_count": []
+   }
+  },
+  {
+   "id": "P5",
+   "label": "Product link 5",
+   "submitted_url": "https://link.amazon/B0f3GKalj",
+   "link_id": "B0f3GKalj",
+   "link_id_length": 9,
+   "asin": null,
+   "direct_check": {
+    "url": "https://www.amazon.com/dp/B0f3GKalj",
+    "result": "Page Not Found",
+    "source": "S75"
+   },
+   "redirect_observed": {
+    "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+    "page_id": "B0DZFD6R9Z",
+    "page_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+    "confirmed_as_submitted_product": false,
+    "source": "S71",
+    "title_source": "S73",
+    "brand": "CHEF iQ",
+    "capacity": "Not stated in the listing title",
+    "brand_capacity_note": "Read from the destination page title. Not confirmed as the submitted product (FLG-002, F-2F-02). This listing is a meat thermometer, not an air fryer (F-2F-01).",
+    "reverified": "2026-11-17, first observation by session 2f181cd9.",
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035, F-2F-01).",
+    "observed_on": "2026-11-17"
+   },
+   "category_observed": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+   "browse_node_observed": "289810",
+   "content_status": {
+    "brief": "Not written",
+    "comparison": "Not written",
+    "buying_guide": "Not written",
+    "note": "No brief, comparison or buying guide has been written for this link. The marketing section covers the three air-fryer listings only; extending it to this category is part of the scope decision in F-2F-01 and SUG-2F-01."
+   },
+   "product_name": null,
+   "brand": null,
+   "price": null,
+   "rating": null,
+   "review_count": null,
+   "competitor_count": null,
+   "best_seller_rank": null,
+   "commission_rate": null,
+   "availability": null,
+   "clicks": null,
+   "conversions": null,
+   "associates_tag": null,
+   "status": "Link opens a meat-thermometer listing, not an air fryer. Observed destination recorded; intent unconfirmed (F-2F-01). No Associates tag, so no Special Link exists (F-2F-03).",
+   "flags": [
+    "F-2F-01",
+    "F-2F-02",
+    "F-2F-03",
+    "FLG-001",
+    "FLG-002",
+    "FLG-035"
+   ],
+   "sources": [
+    "S80",
+    "S82",
+    "S75",
+    "S71",
+    "S73"
+   ],
+   "product_intent": {
+    "intended_asin": null,
+    "intended_listing_url": null,
+    "confirmation_date": null,
+    "source": null,
+    "confirmed_by": null,
+    "status": "unconfirmed",
+    "recorded": "2026-11-17",
+    "recorded_by": "session 0c4c4cb6",
+    "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
+   },
+   "observed_2026_11_17": {
+    "date": "2026-11-17",
+    "price": null,
+    "other_offers": null,
+    "rating": null,
+    "review_count": null,
+    "sales_note": null,
+    "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
+    "sources": [
+     "S73",
+     "S74"
+    ],
+    "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
+   },
+   "value_sources_2026_11_17": {
+    "product_name": [
+     "S74"
+    ],
+    "brand": [
+     "S74"
+    ],
+    "price": [],
+    "rating": [],
+    "review_count": []
+   }
+  }
+ ],
+ "intent_records_note": "Intent confirmation record added 2026-11-17 (session 82372fd1) per the owner brief: for each submitted link, the intended ASIN, the intended official listing URL, the confirmation date and the confirmation source are stored as a record the owner can complete; observed redirect targets live in a strictly separate field and are never merged into it. Null means no one has confirmed the value yet — it is left empty, not inferred. The observed block quotes the dated readings already in this register (S11, S52-S55, S67-S69); this session re-ran no network checks. Reconciliation 2026-11-17 (session 73029680, G84-F-01): rows 4-5 still read 'not registered' even after session 2f181cd9's P4/P5 register rows landed, so the page disagreed with itself; session 73029680's own six fetches that day (S83-S88) confirmed both destinations, and the observed blocks now carry that dated observation. The intended blocks stay empty-by-design.",
+ "intent_records": [
+  {
+   "link_id": "B04G1MEwY",
+   "submitted_url": "https://link.amazon/B04G1MEwY",
+   "register_row": "P1",
+   "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+   "intended": {
+    "asin": null,
+    "official_listing_url": null,
+    "confirmation_date": null,
+    "confirmation_source": null
+   },
+   "observed": {
+    "direct_dp_check": {
+     "url": "https://www.amazon.com/dp/B04G1MEwY",
+     "result": "Page Not Found",
+     "source": "S08"
     },
-    {
-      "id": "P2",
-      "label": "Product link 2",
-      "submitted_url": "https://link.amazon/B02NbDxp3",
-      "link_id": "B02NbDxp3",
-      "link_id_length": 9,
-      "asin": null,
-      "direct_check": {
-        "url": "https://www.amazon.com/dp/B02NbDxp3",
-        "result": "Page Not Found",
-        "source": "S09"
-      },
-      "redirect_observed": {
-        "final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
-        "page_id": "B09B7SB46R",
-        "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S12",
-        "title_source": "S15",
-        "brand": "Emeril Lagasse",
-        "capacity": "26QT",
-        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
-      },
-      "product_name": null,
-      "brand": null,
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "competitor_count": null,
-      "best_seller_rank": null,
-      "commission_rate": null,
-      "availability": null,
-      "clicks": null,
-      "conversions": null,
-      "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
-      "flags": [
-        "FLG-001",
-        "FLG-002",
-        "FLG-004",
-        "FLG-035",
-        "FLG-036"
-      ],
-      "sources": [
-        "S02",
-        "S09",
-        "S12",
-        "S15",
-        "S47",
-        "S53",
-        "S55"
-      ],
-      "observed_2026_11_14": {
-        "date": "2026-11-14",
-        "price": null,
-        "other_offers": null,
-        "rating": null,
-        "review_count": null,
-        "sales_note": null,
-        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
-        "sources": [
-          "S53",
-          "S47",
-          "S15"
-        ],
-        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029). AB-F-01 (2026-11-16, session ab3ed329): the observed price, other-offer, rating, review-count and sales-note values were removed from this public file under Program Policies 2(b) and 6(t). The dated observation is in git history; no value is displayed."
-      },
-      "value_sources_2026_11_14": {
-        "product_name": [
-          "S53",
-          "S47",
-          "S15"
-        ],
-        "brand": [
-          "S15"
-        ],
-        "price": [
-          "S47"
-        ],
-        "rating": [
-          "S47"
-        ],
-        "review_count": [
-          "S47"
-        ]
-      },
-      "product_intent": {
-        "intended_asin": null,
-        "intended_listing_url": null,
-        "confirmation_date": null,
-        "source": null,
-        "confirmed_by": null,
-        "status": "unconfirmed",
-        "recorded": "2026-11-17",
-        "recorded_by": "session 0c4c4cb6",
-        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
-      }
+    "redirect_final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
+    "redirect_page_id": "B0CDY277D3",
+    "observed_on": "2026-11-13 (S11); re-read 2026-11-14 (S52-S55); re-check (S67-S69)",
+    "sources": [
+     "S11",
+     "S14",
+     "S08",
+     "S67"
+    ],
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+   },
+   "record_status": "open — intended product not yet confirmed by the owner in the enrolled workflow",
+   "flags": [
+    "FLG-001",
+    "FLG-002",
+    "FLG-004",
+    "FLG-035",
+    "FLG-036"
+   ],
+   "sources": [
+    "S31",
+    "S02",
+    "S11",
+    "S08",
+    "S67"
+   ]
+  },
+  {
+   "link_id": "B02NbDxp3",
+   "submitted_url": "https://link.amazon/B02NbDxp3",
+   "register_row": "P2",
+   "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+   "intended": {
+    "asin": null,
+    "official_listing_url": null,
+    "confirmation_date": null,
+    "confirmation_source": null
+   },
+   "observed": {
+    "direct_dp_check": {
+     "url": "https://www.amazon.com/dp/B02NbDxp3",
+     "result": "Page Not Found",
+     "source": "S09"
     },
-    {
-      "id": "P3",
-      "label": "Product link 3",
-      "submitted_url": "https://link.amazon/B00hJ57DV",
-      "link_id": "B00hJ57DV",
-      "link_id_length": 9,
-      "asin": null,
-      "direct_check": {
-        "url": "https://www.amazon.com/dp/B00hJ57DV",
-        "result": "Page Not Found",
-        "source": "S10"
-      },
-      "redirect_observed": {
-        "final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
-        "page_id": "B08DKYBTPH",
-        "page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S13",
-        "title_source": "S23",
-        "brand": "Chefman",
-        "capacity": "8 Qt",
-        "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
-        "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
-      },
-      "product_name": null,
-      "brand": null,
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "competitor_count": null,
-      "best_seller_rank": null,
-      "commission_rate": null,
-      "availability": null,
-      "clicks": null,
-      "conversions": null,
-      "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
-      "flags": [
-        "FLG-001",
-        "FLG-002",
-        "FLG-004",
-        "FLG-035",
-        "FLG-036"
-      ],
-      "sources": [
-        "S02",
-        "S10",
-        "S13",
-        "S16",
-        "S48",
-        "S54",
-        "S55"
-      ],
-      "observed_2026_11_14": {
-        "date": "2026-11-14",
-        "price": null,
-        "other_offers": null,
-        "rating": null,
-        "review_count": null,
-        "sales_note": null,
-        "category_path": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (breadcrumb on the product page)",
-        "sources": [
-          "S54",
-          "S48",
-          "S23"
-        ],
-        "note": "Dated observations read from Amazon.com pages on 2026-11-14 by session 9fef7647 (sources S46-S48, S52-S54) and re-confirmed by session b90c5685 (S55). Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05; FLG-022, FLG-029). AB-F-01 (2026-11-16, session ab3ed329): the observed price, other-offer, rating, review-count and sales-note values were removed from this public file under Program Policies 2(b) and 6(t). The dated observation is in git history; no value is displayed."
-      },
-      "value_sources_2026_11_14": {
-        "product_name": [
-          "S54",
-          "S48",
-          "S23"
-        ],
-        "brand": [
-          "S23"
-        ],
-        "price": [
-          "S48"
-        ],
-        "rating": [
-          "S48"
-        ],
-        "review_count": [
-          "S48"
-        ]
-      },
-      "product_intent": {
-        "intended_asin": null,
-        "intended_listing_url": null,
-        "confirmation_date": null,
-        "source": null,
-        "confirmed_by": null,
-        "status": "unconfirmed",
-        "recorded": "2026-11-17",
-        "recorded_by": "session 0c4c4cb6",
-        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
-      }
+    "redirect_final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
+    "redirect_page_id": "B09B7SB46R",
+    "observed_on": "2026-11-13 (S11); re-read 2026-11-14 (S52-S55); re-check (S67-S69)",
+    "sources": [
+     "S12",
+     "S15",
+     "S09",
+     "S68"
+    ],
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+   },
+   "record_status": "open — intended product not yet confirmed by the owner in the enrolled workflow",
+   "flags": [
+    "FLG-001",
+    "FLG-002",
+    "FLG-004",
+    "FLG-035",
+    "FLG-036"
+   ],
+   "sources": [
+    "S31",
+    "S02",
+    "S12",
+    "S09",
+    "S68"
+   ]
+  },
+  {
+   "link_id": "B00hJ57DV",
+   "submitted_url": "https://link.amazon/B00hJ57DV",
+   "register_row": "P3",
+   "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+   "intended": {
+    "asin": null,
+    "official_listing_url": null,
+    "confirmation_date": null,
+    "confirmation_source": null
+   },
+   "observed": {
+    "direct_dp_check": {
+     "url": "https://www.amazon.com/dp/B00hJ57DV",
+     "result": "Page Not Found",
+     "source": "S10"
     },
-    {
-      "id": "P4",
-      "label": "Product link 4",
-      "submitted_url": "https://link.amazon/B0c8moW59",
-      "link_id": "B0c8moW59",
-      "link_id_length": 9,
-      "asin": null,
-      "direct_check": {
-        "url": "https://www.amazon.com/dp/B0c8moW59",
-        "result": "Page Not Found",
-        "source": "S72"
-      },
-      "redirect_observed": {
-        "final_url": "https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&_encoding=UTF8&sp_csd=d2lkZ2V0TmFtZT1zcF9waG9uZV9ob21lcGFnZV9ibGVuZGVk&language=en_US&content-id=amzn1.sym.4582c56b-139d-4168-9db2-822c68889360&ie=UTF8&btn_ref=srctok-633f9dc54185b50f&channelId=500&plpRedirect=mhFallback",
-        "page_id": "B0DHZTCNR5",
-        "page_title": "Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S70",
-        "title_source": "S72",
-        "brand": "ThermoMaven",
-        "capacity": null,
-        "brand_capacity_note": "Brand read from the destination page title (S70, S72). No capacity is stated in that title, so the capacity cell stays blank. Not confirmed as the submitted product (0C4-F-02).",
-        "reverified": "2026-11-17: short link capture (S70) and independent direct fetch of the destination (S72), same title both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (0C4-F-02, FLG-002 class)."
-      },
-      "product_intent": {
-        "intended_asin": null,
-        "intended_listing_url": null,
-        "confirmation_date": null,
-        "source": null,
-        "confirmed_by": null,
-        "status": "unconfirmed",
-        "recorded": "2026-11-17",
-        "recorded_by": "session 0c4c4cb6",
-        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
-      },
-      "product_name": null,
-      "brand": null,
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "competitor_count": null,
-      "best_seller_rank": null,
-      "commission_rate": null,
-      "availability": null,
-      "clicks": null,
-      "conversions": null,
-      "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
-      "flags": [
-        "0C4-F-01",
-        "0C4-F-02",
-        "0C4-F-03",
-        "FLG-001",
-        "FLG-002",
-        "CBB-F-01",
-        "CBB-F-03",
-        "FLG-036"
-      ],
-      "sources": [
-        "S02",
-        "S31",
-        "S45",
-        "S70",
-        "S71",
-        "S72",
-        "S06"
-      ],
-      "observed_2026_11_17": {
-        "date": "2026-11-17",
-        "price": null,
-        "other_offers": null,
-        "rating": null,
-        "review_count": null,
-        "sales_note": null,
-        "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
-        "sources": [
-          "S70",
-          "S71"
-        ],
-        "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
-      },
-      "value_sources_2026_11_17": {
-        "product_name": [
-          "S71"
-        ],
-        "brand": [
-          "S71"
-        ],
-        "price": [],
-        "rating": [],
-        "review_count": []
-      }
+    "redirect_final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
+    "redirect_page_id": "B08DKYBTPH",
+    "observed_on": "2026-11-13 (S11); re-read 2026-11-14 (S52-S55); re-check (S67-S69)",
+    "sources": [
+     "S13",
+     "S23",
+     "S10",
+     "S69"
+    ],
+    "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+   },
+   "record_status": "open — intended product not yet confirmed by the owner in the enrolled workflow",
+   "flags": [
+    "FLG-001",
+    "FLG-002",
+    "FLG-004",
+    "FLG-035",
+    "FLG-036"
+   ],
+   "sources": [
+    "S31",
+    "S02",
+    "S13",
+    "S10",
+    "S69"
+   ]
+  },
+  {
+   "link_id": "B0c8moW59",
+   "submitted_url": "https://link.amazon/B0c8moW59",
+   "register_row": "P4",
+   "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+   "intended": {
+    "asin": null,
+    "official_listing_url": null,
+    "confirmation_date": null,
+    "confirmation_source": null
+   },
+   "observed": {
+    "direct_dp_check": {
+     "url": "https://www.amazon.com/dp/B0c8moW59",
+     "result": "Page Not Found",
+     "source": "S74"
     },
-    {
-      "id": "P5",
-      "label": "Product link 5",
-      "submitted_url": "https://link.amazon/B0f3GKalj",
-      "link_id": "B0f3GKalj",
-      "link_id_length": 9,
-      "asin": null,
-      "direct_check": {
-        "url": "https://www.amazon.com/dp/B0f3GKalj",
-        "result": "Page Not Found",
-        "source": "S75"
-      },
-      "redirect_observed": {
-        "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-101536bcd8e0be02&channelId=500&plpRedirect=mhFallback&th=1",
-        "page_id": "B0DZFD6R9Z",
-        "page_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
-        "confirmed_as_submitted_product": false,
-        "source": "S73",
-        "title_source": "S75",
-        "brand": "CHEF iQ",
-        "capacity": null,
-        "brand_capacity_note": "Brand read from the destination page title (S73, S75). No capacity is stated in that title, so the capacity cell stays blank. Not confirmed as the submitted product (0C4-F-02).",
-        "reverified": "2026-11-17: short link capture (S73) and independent direct fetch of the destination (S75), same title both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (0C4-F-02, FLG-002 class)."
-      },
-      "product_intent": {
-        "intended_asin": null,
-        "intended_listing_url": null,
-        "confirmation_date": null,
-        "source": null,
-        "confirmed_by": null,
-        "status": "unconfirmed",
-        "recorded": "2026-11-17",
-        "recorded_by": "session 0c4c4cb6",
-        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
-      },
-      "product_name": null,
-      "brand": null,
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "competitor_count": null,
-      "best_seller_rank": null,
-      "commission_rate": null,
-      "availability": null,
-      "clicks": null,
-      "conversions": null,
-      "associates_tag": null,
-      "status": "Link does not resolve to a product page under its own identifier",
-      "flags": [
-        "0C4-F-01",
-        "0C4-F-02",
-        "0C4-F-03",
-        "FLG-001",
-        "FLG-002",
-        "CBB-F-01",
-        "CBB-F-03",
-        "FLG-036"
-      ],
-      "sources": [
-        "S02",
-        "S31",
-        "S45",
-        "S73",
-        "S74",
-        "S75",
-        "S06"
-      ],
-      "observed_2026_11_17": {
-        "date": "2026-11-17",
-        "price": null,
-        "other_offers": null,
-        "rating": null,
-        "review_count": null,
-        "sales_note": null,
-        "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
-        "sources": [
-          "S73",
-          "S74"
-        ],
-        "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
-      },
-      "value_sources_2026_11_17": {
-        "product_name": [
-          "S74"
-        ],
-        "brand": [
-          "S74"
-        ],
-        "price": [],
-        "rating": [],
-        "review_count": []
-      }
-    }
-  ],
-  "intake_2026_11_17": "Two further product links arrived with the owner's 2026-11-17 brief (P4 link.amazon/B0c8moW59, P5 link.amazon/B0f3GKalj) and were added by session cbb03ec7. Both identifiers are 9 characters (not ASINs, S06); both direct /dp/ checks returned Page Not Found (S72, S75); both short links were observed resolving to live listings on 2026-11-17 (P4 -> B0DHZTCNR5 S70/S71, P5 -> B0DZFD6R9Z S73/S74). Identity, price, rating and commission cells stay null (Unverified) exactly as for P1-P3; intent is unconfirmed (CBB-F-01) and the two destinations sit in a different Amazon category from the site's air-fryer editorial coverage (CBB-F-03). The tracking ID shopnow047c-20 supplied in the same brief is recorded in config/platform.json and is not embedded in any link (CBB-F-02)."
+    "redirect_final_url": "https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-3fcbba70f075aae8&channelId=500&plpRedirect=mhFallback",
+    "redirect_page_id": "B0DHZTCNR5",
+    "observed_on": "2026-11-17",
+    "observed_title": "Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen",
+    "note": "Observed 2026-11-17 by session 73029680 (fetch of the submitted link, S84; title S87; direct 9-character check S83); kept separate from the intended record. Same destination as register row P4 (session 2f181cd9's fetches S70/S72/S74) and the shop register SHOP-04. Not confirmed as the submitted product (FLG-002, FLG-035). Re-observed 2026-11-17 by session 66964850 (Z1-V04, Z1-V09; sources S70, S74) — same destination, same Page-Not-Found direct check.",
+    "sources": [
+     "S70",
+     "S74"
+    ]
+   },
+   "record_status": "Reconciled 2026-11-17 (session 73029680, G84-F-01): this row was first written as 'not registered' (G82-F-03) and still said 'no observation on file' after session 2f181cd9's P4 row landed in the table above — the page contradicted itself. Session 73029680's own 2026-11-17 fetch (S83, S84, S87) confirmed the destination P4 already records; the observed block is now filled from that fetch and register_row points at P4. Intended fields remain empty pending owner confirmation.",
+   "flags": [
+    "G82-F-03",
+    "G84-F-01",
+    "F-2F-01"
+   ],
+   "sources": [
+    "S31",
+    "S02",
+    "S70",
+    "S72",
+    "S74"
+   ]
+  },
+  {
+   "link_id": "B0f3GKalj",
+   "submitted_url": "https://link.amazon/B0f3GKalj",
+   "register_row": "P5",
+   "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+   "intended": {
+    "asin": null,
+    "official_listing_url": null,
+    "confirmation_date": null,
+    "confirmation_source": null
+   },
+   "observed": {
+    "direct_dp_check": {
+     "url": "https://www.amazon.com/dp/B0f3GKalj",
+     "result": "Page Not Found",
+     "source": "S75"
+    },
+    "redirect_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-4b047e079f41545d&channelId=500&plpRedirect=mhFallback&th=1",
+    "redirect_page_id": "B0DZFD6R9Z",
+    "observed_on": "2026-11-17",
+    "observed_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3 : Home & Kitchen",
+    "note": "Observed 2026-11-17 by session 73029680 (fetch of the submitted link, S86; title S88; direct 9-character check S85); kept separate from the intended record. Same destination as register row P5 (session 2f181cd9's fetches S71/S73/S75) and the shop register SHOP-05. Not confirmed as the submitted product (FLG-002, FLG-035). Re-observed 2026-11-17 by session 66964850 (Z1-V05, Z1-V10; sources S71, S75) — same destination, same Page-Not-Found direct check.",
+    "sources": [
+     "S71",
+     "S75"
+    ]
+   },
+   "record_status": "Reconciled 2026-11-17 (session 73029680, G84-F-01): this row was first written as 'not registered' (G82-F-03) and still said 'no observation on file' after session 2f181cd9's P5 row landed in the table above — the page contradicted itself. Session 73029680's own 2026-11-17 fetch (S85, S86, S88) confirmed the destination P5 already records; the observed block is now filled from that fetch and register_row points at P5. Intended fields remain empty pending owner confirmation.",
+   "flags": [
+    "G82-F-03",
+    "G84-F-01",
+    "F-2F-01"
+   ],
+   "sources": [
+    "S31",
+    "S02",
+    "S71",
+    "S73",
+    "S75"
+   ]
+  }
+ ],
+ "intake_2026_11_17": "Two further product links arrived with the owner's 2026-11-17 brief (P4 link.amazon/B0c8moW59, P5 link.amazon/B0f3GKalj) and were added by session cbb03ec7. Both identifiers are 9 characters (not ASINs, S06); both direct /dp/ checks returned Page Not Found (S72, S75); both short links were observed resolving to live listings on 2026-11-17 (P4 -> B0DHZTCNR5 S70/S71, P5 -> B0DZFD6R9Z S73/S74). Identity, price, rating and commission cells stay null (Unverified) exactly as for P1-P3; intent is unconfirmed (CBB-F-01) and the two destinations sit in a different Amazon category from the site's air-fryer editorial coverage (CBB-F-03). The tracking ID shopnow047c-20 supplied in the same brief is recorded in config/platform.json and is not embedded in any link (CBB-F-02)."
 }
