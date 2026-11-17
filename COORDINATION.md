@@ -7826,3 +7826,97 @@ This session edits `COORDINATION.md` (**this Part only**), its own `sessions/5b4
 sessions and are not modified** — this session cross-links them. `COORDINATION.md` conflicts are resolved by
 keeping both sides in full (main's board verbatim, this Part appended); no line-start conflict marker is ever
 pushed. Nothing is marked verified without being checked against an official source, and that source is linked.
+
+### 5b-T1…T6 — completion record (session `5b443d02`, 2026-11-17)
+
+| Task | Status | What was done |
+|---|---|---|
+| 5b-T1 — Claim scope, repo review, baseline gate run | done | Scope claimed and pushed at `a809934` before any other edit. Baseline on `main@fedc9f6`: `check_site` OK 30/3/62/108, `verify_site` PASS 115 pages/1,923 rows. |
+| 5b-T2 — Verify `link.amazon/B0c8moW59` and `link.amazon/B0f3GKalj`; build the product-intent record | done | Both links fetched 2026-11-17. Neither token appears anywhere in `data/**` before this session (zero grep hits). Intended ASIN and observed destination are two tables and two fields, never merged; intended is blank on all five rows. |
+| 5b-T3 — Design-prompt suggestion pack | done | 19 suggestions (DS-01…DS-19), each with the prerequisite that gates it, plus 8 working article titles with the "not a popularity claim" caveat carried on the page. |
+| 5b-T4 — Open-questions / missing-information register | done | 14 questions (5B-Q01…Q14): what we already have / what is missing / how to discover it / what it blocks / the default if it stays unanswered. |
+| 5b-T5 — Review-before-implementation path chooser | done | Three paths compared on consequences, with a client-side record control that exports text and changes nothing. |
+| 5b-T6 — Executive summary update | done | `EXECUTIVE-SUMMARY.md`: counts recomputed from the registers, not carried over (67 sources / 114 flags / 34 pages); a 2026-11-17 section added with the five-link table. |
+
+**The finding that reframes the project.** The brief submits five links. Every data file, page and
+analysis in this repository was built on three of them. The two missing links are meat thermometers, in
+the Meat browse node (289810), not the Air Fryers node (17659096011) the site is organised around.
+Nothing about the site's shape can be decided honestly until the owner says whether both groups are in
+scope, so this session published the evidence and a three-path choice instead of picking one.
+
+| Submitted link | Observed destination | Browse node (leaf) | On record before? |
+|---|---|---|---|
+| [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) | Air Fryers (17659096011) | yes |
+| [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) | Air Fryers (17659096011) | yes |
+| [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) | Air Fryers (17659096011) | yes |
+| [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) | Meat (289810) | **no** |
+| [link.amazon/B0f3GKalj](https://link.amazon/B0f3GKalj) | [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) | Meat (289810) | **no** |
+
+**Sources read from the official pages on 2026-11-17** (registered as `5B-S01`–`5B-S21` in
+`data/5b443d02/sources.json`, and as shared `S70`–`S74` for the two new links):
+
+| What | Page | What it established |
+|---|---|---|
+| Operating Agreement (updated October 15, 2025) | [agreement](https://affiliate-program.amazon.com/help/operating/agreement) | §1 Special Links and the Program Content definition (which excludes product information from non-Amazon sites); §4 no representation as to traffic or commission income; §5 the disclosure, "clearly and prominently"; §6(a) breach of §5 is a material breach |
+| Program Policies (updated April 14, 2026) | [policies](https://affiliate-program.amazon.com/help/operating/policies) | Commission Income Statement §1: a Qualifying Purchase begins with a click through a Special Link; the session ends at 24 hours, or an order, or another Associate's Special Link |
+| Creators API GetItems | [GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | ASIN = "10-Character alphanumeric unique identifier assigned by Amazon"; `partnerTag` is required |
+
+Sources marked **inherited** in that register (`5B-S04`, `5B-S05`, `5B-S18`–`5B-S21`) are in the shared
+register, verified by earlier sessions, and were **not** re-read today. They are labelled inherited
+wherever they are used, and no new factual claim of this session rests on one.
+
+**Verification performed.** All five links fetched and their destination, served title and breadcrumb
+recorded. Every table row on every page this session built is checked by `tools/verify_site.py` V4 for
+a link to an official source, a flag, or an anchor to a file that exists on disk. No price, star
+rating, review count, sales rank or demand figure is emitted anywhere by this session's builder, and
+the builder's own audit fails the build if one appears.
+
+**Irregularities — six flags, all on the** [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) **page:**
+
+| Flag | Severity | Item |
+|---|---|---|
+| `5B-F-01` | High | Two of five links sit in a different browse node from the site's only category |
+| `5B-F-02` | High | Those two links appear in no data file in the repository before this session |
+| `5B-F-03` | Medium | Intended ASIN unknown for all five links; only observed destinations recorded |
+| `5B-F-04` | Low | `verify_site.py` V4 does not count Google Search Central as an official host (6 rows reported for review) |
+| `5B-F-05` | Medium | No validated Special Link and an unconfirmed tracking tag |
+| `5B-F-06` | Info | `check_site.py` reported same-page anchors on subdirectory pages as broken — **fixed** |
+
+**Shared outputs this session edited, each with its reason** (the final-integration role). Nothing was
+deleted and no other session's record was discarded:
+
+- **`data/sources.json`** — added `S70`–`S74` (the two previously unrecorded links, their destinations,
+  and the Meat browse node) and updated `id_reservation`, which instructs the next session to append
+  from `S75`. Needed so the flags can cite an official page, which `check_data` requires.
+- **`data/flags.json`** — added `5B-F-01`…`5B-F-06`. Unioned by ID; no existing flag rewritten.
+- **`scripts/build_site.py`** — three additive edits: one new navigation group (`Direction`), the
+  executive-summary bottom line corrected from "three" to "five" submitted links, and the landing-page
+  meta description corrected the same way. No existing nav entry, section or row was rewritten.
+- **`scripts/check_site.py`** — the four new pages registered in `PAGES`; and a genuine gate bug fixed:
+  a pure-fragment link (`href="#5B-Q07"`) on a subdirectory page resolved to `<dir>/<dir>/<page>` and
+  was reported broken. Reproduced before the change (5 failures), 0 after. Recorded as `5B-F-06`
+  because it edits a shared gate.
+- **`sitemap.xml`** — regenerated by `scripts/build_sitemap.py`, which walks the tree (82 pages).
+- **`EXECUTIVE-SUMMARY.md`** — counts recomputed from the registers, not copied from the earlier text.
+
+**Not touched.** `suggestions.html`, `decision-center.html`, `decision-queue.html`, `design-brief.html`,
+`site/decisions.html`, `site/answers.html` and their data files are owned by earlier sessions. This
+session cross-links them from `direction/questions.html` rather than rewriting them, even though they
+overlap in purpose — a seventh overlapping page would have been worse than a clearly-labelled one.
+
+**Gate results on the final tree** (all ten, run in one pass): `check_site` OK 34 pages / 3 products /
+67 sources / 114 flags · `verify_site` PASS 120 pages / 2,030 rows, every row sourced, flagged or
+anchored · `link_report --strict` exit 0 · `i2_gate` PASS 18 pages / 0 flagged · `cba81fa5_lint` PASS
+0 new findings · `cba81fa5_test_no_repr_output` PASS 120 pages · `build_cba81fa5_site --check` current ·
+`build_sitemap --check` 82 pages / 0 missing · full generator chain run twice → identical tree hash
+(`4ef6d4b523790e91`) · zero conflict markers in the tree.
+
+**Two advisories on this session's own pages, both by design.** `verify_site` reports 6 `V4-review`
+advisories on `direction/` and 2 on `sessions/5b443d02/`. They are rows whose support is a Google
+Search Central page or a file in this repository, neither of which `V4`'s official-host regex
+recognises. The rows are design judgements and repo-internal findings, so a repository anchor is the
+honest provenance; raising them as failures would mean inventing an official source for a row that has
+none. Recorded as `5B-F-04` so the next session does not read them as defects.
+
+**Records:** `sessions/5b443d02/index.html` · `direction/index.html` · `direction/products.html` ·
+`direction/questions.html` · `direction/choose.html`.
