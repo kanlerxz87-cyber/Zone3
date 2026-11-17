@@ -7298,3 +7298,26 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 | Pages deploy | `pages/builds/latest` for commit `5bc965a`: **`built`**. Configuration source `main` `/`, status `built`. |
 | Live checks (cache-busted, post-build) | **feed.xml** — union serves: 9 items (four /guides/ pages with aebf0747's exact pubDates, then five site/guides entries), channel copy correct. **products.html** — "Product-intent confirmation record (added 2026-11-17)" table live with intended fields Unverified and observed block separate. **flagged.html** — "113 entries: 3 critical, 19 high, 31 medium, 33 low, 27 info", matching the register exactly. Root front page nav (Flagged (register) + topbar token) live via the merge itself. (`.css` live fetch bounced off the preview proxy's own credential error, not a site error; the merged commit IS what Pages serves and the shipped rules are in `site/assets/site.css` at `5bc965a`.) |
 | Session status | G82-T1…T5 **done**. Records: `sessions/82372fd1/repo-review.md`, `mobile-audit.md`, `verification-2026-11-17.md`. Flags: G82-F-01…F-05 (four fixed, G82-F-03 needs owner — published on flagged.html). Tracking ID from the 2026-11-17 brief kept in this log only, per Q1's own rule. |
+---
+
+## Part 83 — session `59b2194c` (branch `arena/59b2194c-zone3`, base `5bc965a`, 2026-11-17)
+
+### 83 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 59b2194c | `arena/59b2194c-zone3` | Current-tree review and executive-summary reconciliation for the five-link brief; verify existing gates and record remaining owner/account-side blockers | done | 2026-11-17 |
+
+### 83 Task board (claimed before edits)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G83-T1 — Review current publication against the five-link brief, run release gates, reconcile top-level executive summary with the current shop register, and document verifiable remainder | done | 59b2194c | `EXECUTIVE-SUMMARY.md`, `sessions/59b2194c/**`, this Part of `COORDINATION.md` | `data/shop/products.json`, `data/shop/sources.json`, `data/shop/decisions.json`, GitHub Pages docs | stale three-product executive-summary baseline; analytics/Search Console and enrolled-account actions remain owner-side |
+
+### 83 Completion record (2026-11-17)
+
+- Reconciled the current 5-link shop register with the historical three-product summary; added the five observed destination ASINs as dated observations, explicitly not intent confirmations. Added a concise current status, working-scope decisions, and current versus unbuilt capability notes to `EXECUTIVE-SUMMARY.md`; preserved prior sections as audit history.
+- **Concurrent main update / conflict:** after PR #142 was opened, `main` moved from `5bc965a` to `d192053` (PR #141). Rebase of this branch conflicted in `COORDINATION.md` where both tails had appended. Resolved by retaining the complete Part 82 publish record from main followed by Part 83; no content discarded; line-start conflict-marker sweep returned 0. Rebased current work onto `d192053`.
+- No new Amazon observations were made. The current products/sources registers are the evidence for the dated 2026-11-17 observations (shop sources SH-S06–SH-S15); official ASIN definition is SH-S03. Unresolved intent, Special Link test, account/marketplace fit, endpoint/events, Search Console and product imagery remain on the shop decision/flag surfaces (DEC-01–DEC-07; FLG-S02–S08). The supplied short links are not described as invalid; exact compliance remains unresolved (FLG-003).
+- Review record: `sessions/59b2194c/repo-review.md`.
+- Gates: `check_site` OK 30/3/62/113; `verify_site` PASS 134 pages / 2,068 rows; strict link report 0; i2 gate PASS 18/164/148/16/0; cba lint PASS 0 new / 22 inherited; cba check current; feed check 9 entries; sitemap check 97 pages / 0 extras; all-links 180 pages / 207 external / 0 errors; shop build check 11 pages PASS.

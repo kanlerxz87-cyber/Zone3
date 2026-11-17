@@ -1,9 +1,48 @@
 # Executive summary — Zone3 AI-powered Amazon affiliate platform
 
-**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Final integration, compliance fix and re-verification:** session `3ead7ac8` · **Editorial topic plan and content-status correction:** session `3d359c23`
+**Prepared:** 2026-11-14 · **Current-status reconciliation:** 2026-11-17 (session `59b2194c`) · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Final integration, compliance fix and re-verification:** session `3ead7ac8` · **Editorial topic plan and content-status correction:** session `3d359c23`
 **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 **Verification log:** https://kanlerxz87-cyber.github.io/Zone3/verification.html
 **Flagged for review:** https://kanlerxz87-cyber.github.io/Zone3/flagged.html
+
+## Current executive summary — 2026-11-17
+
+> This current status reconciles the five-link brief with the earlier three-product analysis below. The older sections are retained as dated audit history; where their counts or product scope differ, use this update and the live [shop executive summary](https://kanlerxz87-cyber.github.io/Zone3/shop/executive-summary/) and [product-intent record](https://kanlerxz87-cyber.github.io/Zone3/intent-record/) as the current record.
+
+**Bottom line.** The publication front page and reader guides are live. The five supplied short links were observed to reach five Amazon listings on 2026-11-17. Those observed targets are recorded separately from intended ASINs: none of the five intended products has been confirmed by the requester. The submitted short links' exact Associates compliance and tracking status remain unresolved; this report does **not** call them invalid. The next safe monetization step is the documented one-link-per-product Special Link workflow, with destination and Associates report checked before scaling.
+
+| Submitted link | Observed listing (not an intent confirmation) | Listing source | Date |
+|---|---|---|---|
+| `link.amazon/B04G1MEwY` | CHEFMAN dual-basket air fryer · `B0CDY277D3` | [Amazon listing](https://www.amazon.com/dp/B0CDY277D3) · [dated shop source register](https://kanlerxz87-cyber.github.io/Zone3/shop/sources/) | 2026-11-17 |
+| `link.amazon/B02NbDxp3` | Emeril Lagasse French-door air-fryer oven · `B09B7SB46R` | [Amazon listing](https://www.amazon.com/dp/B09B7SB46R) · [dated shop source register](https://kanlerxz87-cyber.github.io/Zone3/shop/sources/) | 2026-11-17 |
+| `link.amazon/B00hJ57DV` | Chefman TurboFry basket air fryer · `B08DKYBTPH` | [Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) · [dated shop source register](https://kanlerxz87-cyber.github.io/Zone3/shop/sources/) | 2026-11-17 |
+| `link.amazon/B0c8moW59` | ThermoMaven digital meat thermometer · `B0DHZTCNR5` | [Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) · [dated shop source register](https://kanlerxz87-cyber.github.io/Zone3/shop/sources/) | 2026-11-17 |
+| `link.amazon/B0f3GKalj` | CHEF iQ Sense wireless meat thermometer · `B0DZFD6R9Z` | [Amazon listing](https://www.amazon.com/dp/B0DZFD6R9Z) · [dated shop source register](https://kanlerxz87-cyber.github.io/Zone3/shop/sources/) | 2026-11-17 |
+
+The source register records the submitted-link destinations (`SH-S06`–`SH-S10`) separately from the listing-title reads (`SH-S11`–`SH-S15`). Amazon's Creators API documentation defines an ASIN as a 10-character identifier ([official definition](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items)); the supplied tokens are not the observed listing ASINs. The fields for intended ASIN, official intended URL, confirmation date and confirmation source remain blank in the [intent record](https://kanlerxz87-cyber.github.io/Zone3/intent-record/), by design.
+
+### What is live, and what is not
+
+| Area | Current status | Decision-quality implication |
+|---|---|---|
+| Reader experience | Root is a publication front page with product cards, a visible affiliate disclosure, a guide collection and footer navigation to the dashboard surfaces. Product links carry `rel="sponsored"`; the shop build gate checks disclosure, sponsored attributes, provenance, sitemap coverage and local links. | Shop-first presentation is in place; dashboards and review material remain reachable without leading the buyer through audit workflow. |
+| Editorial | Four question-shaped air-fryer guides are live as working titles, not popularity claims. Two of the five products are meat thermometers, outside the current air-fryer cluster. | Choose whether to keep an air-fryer-only publication or add a separate thermometer category and guide cluster; do not imply one niche covers all five. |
+| Search and cadence | The sitemap and RSS feed are built and checked. No measured query or traffic evidence is recorded in the repo; Search Console is not configured here. | Continue treating topics as hypotheses. Do not label them trending or high-converting; select future topics from Search Console/query data only after a property is verified and data exists. |
+| Clicks and conversions | Campaign ledger is empty. No collection endpoint or live outbound-click counter is deployed; no Associates order report has been supplied. GitHub Pages is static hosting and GitHub states it logs visitor IP addresses for security ([GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)). | Do not claim privacy-preserving measurement or forecast revenue. A real collector needs a separate host, a reviewed privacy model, and event definitions; first-party Associates reports remain the source for reported orders. |
+| Analytics events | The brief references five events but does not enumerate them. The decision register leaves their definitions and endpoint host open. | Define the event names, payload minimization, retention and consent/legal basis before collection. Do not invent a hidden event taxonomy. |
+| Tracking | The selected tracking ID was supplied in the task, but account ownership, marketplace fit, placement in any tested Special Link, and reporting are not verified. No account credentials or report access are available to this repository. | Run the enrolled Associates test and confirm the tracking report before replacing links. See [open decisions](https://kanlerxz87-cyber.github.io/Zone3/shop/decisions/) and [flagged findings](https://kanlerxz87-cyber.github.io/Zone3/shop/flagged/). |
+| Product data | Current product pages leave price, rating, review count and conversion figures unpublished; the campaign ledger is blank. | Keep unsupported dynamic or performance values blank. Do not generate them from scraped pages or inference. |
+
+### Suggested decision order
+
+1. **Choose product scope** — accept the three-air-fryer cluster as the first editorial vertical, or approve a distinct meat-thermometer cluster. The two thermometer links are observed and registered; their intended match remains unconfirmed.
+2. **Confirm intent and link workflow** — in Associates Central, confirm each intended product, create a Special Link, and test destination plus report attribution; record the date and source in the intent record. Ask Associates support about the supplied short-link format if its status is still unclear ([Program Policies](https://affiliate-program.amazon.com/help/operating/policies); unresolved item [FLG-003](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-003)).
+3. **Set measurement up lawfully** — define the five events and choose a collection host before building a counter; set up and verify Search Console, submit the existing sitemap, and base the next topic on observed queries. Until then, keep the campaign ledger empty.
+4. **Review the proposals before broader changes** — use [Suggestions](https://kanlerxz87-cyber.github.io/Zone3/suggestions.html), the [decision queue](https://kanlerxz87-cyber.github.io/Zone3/decision-queue.html), and the [design brief](https://kanlerxz87-cyber.github.io/Zone3/design-brief.html). They separate verified facts, open questions, discovery actions and proposed visual paths; no proposal is evidence of popularity or product quality.
+
+**Release checks run on this checkout (2026-11-17):** shared site check passed (30 pages, 3 products in that legacy register, 62 sources, 113 flags); whole-tree verification passed (134 pages, 2,068 table rows); strict provenance report passed; reader gate passed (18 pages, 164 rows, 148 sourced, 16 explicit blanks); reader lint passed with 22 inherited advisory items and 0 new findings; feed check passed (9 entries); sitemap check passed (97 pages); link check passed (180 HTML files, 207 external URLs, 0 errors); shop check passed (11 shop pages). The three-product shared register is a separate legacy surface and is not the five-product shop register.
+
+---
 
 > The source-linked findings below include the original 2026-11-14 verification record, the
 > independent correction pass and the 2026-11-14 final integration pass. Redirect targets are treated as
