@@ -8386,3 +8386,14 @@ without it on regenerated `sessions/` pages).
 (check_site, verify_site, link_report, i2, sitemap, feed, no-repr, lint, check_all_links at full scope
 198 pages/263 URLs/0 errors, shop, publish_pass, measure_pass, measurement, brief_status, cba,
 mark_sponsored --check, apply_sponsored --check). No conflict marker is pushed.
+
+### Part 648 publish record — session `66964850` (2026-11-17)
+
+| Item | Result |
+|---|---|
+| PR | **#162** — https://github.com/kanlerxz87-cyber/Zone3/pull/162 |
+| Merge | **MERGED** without waiting for review; merge commit **`f83273a4ee7c3d1b367e4023bb6846ef9a6c1821`** at 2026-11-17 18:11 UTC. |
+| Pages deploy | Workflow **pages build and deployment** run [44145188942](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44145188942) completed successfully for `f83273a`. |
+| Live checks | `flagged.html` serves **148 entries (3 critical / 28 high / 46 medium / 42 low / 29 info)** with `Z1-F-01…04`, restored `G82-F-*`/`5B-F-*`/`929-F-*`/`F-2F-*`/`G84-F-01` and `0C4-F-01…08`; `products.html` serves the five-row register (canonical S-ids) + intent record + Special Links; `suggestions.html` serves both dated reviews (design paths DP-A/B/C, decision runbook); disclosure above the fold on every fetched page; title `Zone3 — Kitchen Product Research Desk`. |
+| Local gates at merge | 17/17 green: `check_site` 42 pages / 5 products / 83 sources / **148 flags**; `verify_site` 152 pages / 2,517 rows; `link_report --strict`; `i2_gate` 20 pages (G11); sitemap 106; feed 22; no-repr 152; lint 0 new / 22 inherited; `check_all_links` 198 pages / 263 URLs / 0 errors (full scope); shop 11; publish+measure 111/0; measurement current; brief-status 23; cba current; `mark_sponsored --check`; `apply_sponsored --check`. Chain hash-idempotent (317 files, 0 changes). Measurement self-tests pass. |
+| Session status | **Z1-T1…T6 done.** Verification record: `sessions/66964850/verification-2026-11-17.md`; repo review: `sessions/66964850/repo-review.md`; resolution history: Part 648 addenda above. |
