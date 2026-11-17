@@ -7321,3 +7321,42 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 - No new Amazon observations were made. The current products/sources registers are the evidence for the dated 2026-11-17 observations (shop sources SH-S06–SH-S15); official ASIN definition is SH-S03. Unresolved intent, Special Link test, account/marketplace fit, endpoint/events, Search Console and product imagery remain on the shop decision/flag surfaces (DEC-01–DEC-07; FLG-S02–S08). The supplied short links are not described as invalid; exact compliance remains unresolved (FLG-003).
 - Review record: `sessions/59b2194c/repo-review.md`.
 - Gates: `check_site` OK 30/3/62/113; `verify_site` PASS 134 pages / 2,068 rows; strict link report 0; i2 gate PASS 18/164/148/16/0; cba lint PASS 0 new / 22 inherited; cba check current; feed check 9 entries; sitemap check 97 pages / 0 extras; all-links 180 pages / 207 external / 0 errors; shop build check 11 pages PASS.
+---
+
+# Part: session `92988cd8` (2026-11-17) — independent verification round, brief-gap/suggestions review, final integration
+
+> Appended additively. Task IDs `Z3-Tn` (tasks) and irregularity IDs `929-F-nn` here are
+> **namespaced** and are not the same items as any `A:`, `B:`, `Z-`, `V-`, `F65-`, `CBA-`,
+> `D1-`, `757-`, `1dd-`, `81-` or `FLG-nnn` IDs used above. Nothing on the board above was
+> removed or rewritten. Branch: `arena/92988cd8-zone3` (Arena pins a session to one branch),
+> base `fedc9f6` (= `origin/main`, merge of PR #134) at claim time.
+
+## 929 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `92988cd8` | `arena/92988cd8-zone3` | Independent line-by-line re-verification (fresh official-source fetches, 2026-11-17); repo review; brief-gap check of the suggestions / questions-and-answers / executive-summary deliverables; any missing additive deliverable; final integration: gates → PR → `main` → merge → Pages confirm → record | in progress (Z3-T1) | 2026-11-17 |
+
+## 929 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope (non-overlapping) | Sources | Irregularities |
+|---|---|---|---|---|---|
+| Z3-T1 — Read the board, register session, claim tasks, push the claim immediately | **done (this commit)** | 92988cd8 | `COORDINATION.md` (this Part only) | — | — |
+| Z3-T2 — Independent live re-verification, dated 2026-11-17: three submitted short links, `/dp/<token>` controls, three destination listings, Operating Agreement §5, Program Policies 2(b)/6(t)/6(w)/6(y), Standard Commission Income Statement Table 1, Creators API ASIN rule, FTC Disclosures 101 | unclaimed → 92988cd8 | 92988cd8 | `sessions/92988cd8/**` (new, read-only fetches; existing source IDs in `data/sources.json` unless a URL is absent) | official pages only | as found |
+| Z3-T3 — Line-by-line repo review of the combined tree at `fedc9f6`: page inventory, gate status, duplicate registers, nav/sitemap coverage, disclosure coverage, broken-link risk | unclaimed → 92988cd8 | 92988cd8 | `sessions/92988cd8/**` (report) | repo files + GitHub API | as found |
+| Z3-T4 — Brief-gap check: the suggestions section, the questions/information/answers register, the decision-review section, the executive summary, the design-prompt deliverable — confirm each brief ask has a reviewable surface, and add any missing additive deliverable | unclaimed → 92988cd8 | 92988cd8 | additive new files only under `sessions/92988cd8/`; shared outputs only if a gate fails, logged with reason | as above | as found |
+| Z3-T5 — Final integration: all gates green on the final tree, PR → `main`, merge without waiting, confirm GitHub Pages deploy + live checks, record here | unclaimed → 92988cd8 | 92988cd8 | git + `gh` + this Part | GitHub Pages API | — |
+
+**Scope discipline.** This session edits `COORDINATION.md` (this Part only) and its own
+`sessions/92988cd8/**` records. Shared outputs (`data/*.json`, root generated pages,
+`scripts/*`, `tools/*`, `site/**`, `read/**`, `EXECUTIVE-SUMMARY.md`, `README.md`,
+`sitemap.xml`) are edited only under the final-integration role and only when a gate fails
+or a verified defect requires it; every such edit is logged here with its reason. Open PRs
+**#123** (`5a56c084` completion record) and **#109** (`a0ffcab0` close-out record) belong to
+other sessions and are **not touched**; both were last committed 2026-11-16 and are noted as
+stale under the 60-minute rule, but their scopes are record pages this session does not need,
+so no takeover is performed. Conflicts in `COORDINATION.md` are resolved by keeping both
+sides in full (main's board verbatim, this Part appended); no line-start conflict markers
+are ever pushed.
+
+**Claim pushed as this commit before any verification work, per protocol.**
