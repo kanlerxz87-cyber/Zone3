@@ -19,7 +19,7 @@
       "id": "S-04", "priority": "P1",
       "item": "Give every page its own title and meta description",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-04)",
-      "this_repo_shows": "All 102 published HTML pages (excluding archive/, docs/, sessions/) carry a <title> and a meta description. Measured 2026-11-17. Where a page had no description, the publish pass added a generic one built from the title (flag M38-F-05).",
+      "this_repo_shows": "All 104 published HTML pages (excluding archive/, docs/, sessions/) carry a <title> and a meta description. Measured 2026-11-17. Where a page had no description, the publish pass added a generic one built from the title (flag M38-F-05).",
       "our_status": "Verified here",
       "flag": "M38-F-05",
       "brief_link": "https://developers.google.com/search/docs/appearance/snippet"
@@ -28,7 +28,7 @@
       "id": "S-05", "priority": "P2",
       "item": "Mark affiliate links rel=\"sponsored\" without breaking the disclosure",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-05)",
-      "this_repo_shows": "1,444 links to amazon.* or link.amazon* on 102 pages; 0 without rel=\"sponsored\". The disclosure strip sits under the masthead on every page (checked by tools/verify_site.py, V1).",
+      "this_repo_shows": "1,447 links to amazon.* or link.amazon* on 104 pages; 0 without rel=\"sponsored\". The disclosure strip sits under the masthead on every page (checked by tools/verify_site.py, V1).",
       "our_status": "Verified here",
       "flag": "",
       "brief_link": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links"
@@ -55,7 +55,7 @@
       "id": "S-09", "priority": "P2",
       "item": "Ship a social preview image and structured data, then measure whether search traffic arrives",
       "brief_says": "Partly implemented 2026-11-16 (Zone4 D-09)",
-      "this_repo_shows": "og:image on 11 of 102 pages; JSON-LD structured data on 11 of 102 pages (the reader-site pages under read/). No search-traffic measurement exists (see SG-29).",
+      "this_repo_shows": "og:image on 11 of 104 pages; JSON-LD structured data on 11 of 104 pages (the reader-site pages under read/). No search-traffic measurement exists (see SG-29).",
       "our_status": "Partly here",
       "flag": "M38-F-07",
       "brief_link": "https://developers.google.com/search/docs/appearance/page-experience"

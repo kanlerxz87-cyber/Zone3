@@ -245,7 +245,7 @@
       "status": "Open - for review",
       "issue": "Where a page had no meta description, the publish pass added a generic one: '<title>. Published by Zone3; checked on the date shown in the page.' Six pages carry it.",
       "impact": "Search snippets for those six pages would show boilerplate rather than a description written for the page.",
-      "what_we_did": "Every page now has a description (S-04 is measured as met on 102 of 102 pages). The six generic descriptions were not rewritten.",
+      "what_we_did": "Every page now has a description (S-04 is measured as met on 104 of 104 pages). The six generic descriptions were not rewritten.",
       "sources": [
         {
           "label": "Google Search Central: write unique descriptions for each page",
@@ -273,7 +273,7 @@
       "id": "M38-F-07",
       "severity": "Medium",
       "status": "Open - for review",
-      "issue": "S-09: og:image and JSON-LD structured data appear on 11 of 102 published pages.",
+      "issue": "S-09: og:image and JSON-LD structured data appear on 11 of 104 published pages.",
       "impact": "Social previews and rich-result eligibility are present only on the reader-site pages.",
       "what_we_did": "Measured and recorded; no markup added in this session.",
       "sources": [
