@@ -640,6 +640,298 @@
     "The tag used matches the Associates ID supplied in the answer to Q1.",
     "The decision and the link format are recorded on this board when done."
    ]
+  },
+  {
+   "id": "D-16",
+   "title": "Measure before growing: a first-party ledger of five defined events",
+   "status": "implemented",
+   "status_note": "Implemented 2026-11-17 (session ded63349): assets/site.js records five events into one localStorage key; site/measure.html defines them, shows the device-side counts and exports CSV. No third-party script was added.",
+   "problem": "The brief asks for click and conversion measurement before anything else is written. The site had no counting at all, so the next guide topic could only be chosen by instinct, and no one could tell whether any guide was read.",
+   "proposal": "Record five events — page_view, outbound_product_click, comparison_open, guide_read_through, decision_open — in one localStorage key on the visitor's own device, capped at 500 rows, with no cookies, no identifiers, no referrer storage and no network call. The measurement page shows the device-side counts and exports CSV.",
+   "evidence": [
+    {
+     "term": "Official",
+     "claim": "Participation Requirements 6(s) bans artificially generated clicks or sessions; the ledger counts real clicks by a real visitor on this site's own pages and never creates an Amazon session.",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "term": "Official",
+     "claim": "2(b) bans associating a sub-tag or ID with a specific end user; the ledger stores no per-person identifier and never assigns per-user tags.",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "term": "Official",
+     "claim": "6(y) bars price tracking and alerting on an Associate's Site; the ledger records click events only.",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "term": "Editorial",
+     "claim": "The five event names and thresholds are this site's own definitions, chosen to answer one question per event; they are not a claim about traffic, demand or any official standard.",
+     "via": "Definition adopted on site/measure.html, 2026-11-17."
+    }
+   ],
+   "effort": "Small — one JS block, one page, no infrastructure.",
+   "expected_effect": "The next guide topic can be chosen from measured opens and read-throughs instead of instinct, and every later claim about the site's traffic has a defined, checkable meaning.",
+   "risks": "Device-side counts are per-browser and lost when a visitor clears storage; they are a floor, not a census. Nothing on the site presents them as site-wide numbers.",
+   "what_it_does_not_do": "It does not measure conversions (Amazon-side reports only, gated behind the account), does not identify anyone, and does not send data anywhere.",
+   "depends_on": [],
+   "acceptance": [
+    "assets/site.js contains exactly the five event names and no network call",
+    "site/measure.html states what is stored and what is never stored",
+    "check tools/i2_gate.py passes with the ledger in place"
+   ]
+  },
+  {
+   "id": "D-17",
+   "title": "Set a publishing cadence: one guide a fortnight, a monthly measurement review",
+   "status": "implemented",
+   "status_note": "Implemented 2026-11-17 (session ded63349): the cadence is published on site/measure.html and each new guide enters sitemap.xml and feed.xml automatically at build time.",
+   "problem": "Publishing without a rhythm stalls (nothing shipped between guides) or floods (many thin pages). Either one reads as generated, not published.",
+   "proposal": "One new question-shaped guide every two weeks, first slot 2026-12-01; a monthly measurement review on the first Monday that picks the next topic from the ledger (and, once available, measured queries); a quarterly compliance re-read of the programme documents before new page types ship.",
+   "evidence": [
+    {
+     "term": "Official",
+     "claim": "Enrollment rules require original content with significant commentary or analysis; a slow, sourced cadence is easier to keep original than a fast one.",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "term": "Editorial",
+     "claim": "The fortnightly rhythm and the slot dates are an editorial commitment of this site, not a fact about any external standard.",
+     "via": "Cadence table on site/measure.html, adopted 2026-11-17."
+    }
+   ],
+   "effort": "None to build — it is a policy plus the automation that already adds pages to the sitemap and feed.",
+   "expected_effect": "A predictable pipeline: each new guide is findable (sitemap, feed, internal links) and the next one is chosen from measured behaviour.",
+   "risks": "A cadence is easy to promise and miss; the monthly review is the mechanism that keeps it honest.",
+   "what_it_does_not_do": "It does not commit to any topic list, and it makes no claim about search demand for any question.",
+   "depends_on": [
+    "D-16"
+   ],
+   "acceptance": [
+    "site/measure.html carries the cadence table",
+    "tools/build_feed.py picks up new guide pages without hand-editing",
+    "scripts/build_sitemap.py lists new pages on the next run"
+   ]
+  },
+  {
+   "id": "D-18",
+   "title": "Ship an Atom feed so readers and crawlers can subscribe to new guides",
+   "status": "implemented",
+   "status_note": "Implemented 2026-11-17 (session ded63349): tools/build_feed.py writes feed.xml from the published pages and injects feed-discovery links into every site/ page and both article hubs.",
+   "problem": "New guides were findable only by crawling the sitemap; there was no subscribe mechanism, so repeat readers and aggregators had no way to see a new page.",
+   "proposal": "An Atom 1.0 feed at the repository root, generated from the published pages themselves (title from the page h1, summary from the meta description, updated from the facts-read date each page prints), with feed-discovery links in every site/ page head.",
+   "evidence": [
+    {
+     "term": "Editorial",
+     "claim": "Feed entries are derived from the pages themselves, so a new guide cannot be forgotten; nothing is listed by hand.",
+     "via": "tools/build_feed.py collects site/guides, site/articles, articles/ and read/ pages, 2026-11-17."
+    }
+   ],
+   "effort": "Small — one generator, run after the page generators and before the sitemap.",
+   "expected_effect": "New guides reach subscribers the day they ship, and search engines get another discovery path.",
+   "risks": "An unmaintained feed is worse than none; the --check mode fails the build if the feed goes stale.",
+   "what_it_does_not_do": "It does not syndicate content anywhere else and does not change any page's text.",
+   "depends_on": [],
+   "acceptance": [
+    "feed.xml validates as Atom with one entry per published article page",
+    "python3 tools/build_feed.py --check exits 0 on the built tree",
+    "every site/ page head carries the alternate link"
+   ]
+  },
+  {
+   "id": "D-19",
+   "title": "Mark every outbound product link rel=\"sponsored\", enforced by a gate",
+   "status": "implemented",
+   "status_note": "Implemented 2026-11-17 (session ded63349): tools/apply_sponsored.py marks /dp/, /gp/product/ and link.amazon links across the published pages, and tools/i2_gate.py G11 fails the build if any product link loses the mark.",
+   "problem": "The site's Amazon links were plain rel=\"noopener\" links. However they are labelled today, the site's purpose is Associates promotion, so every product link should already carry the relationship markup Google asks for on paid and affiliate links.",
+   "proposal": "A build step that adds rel=\"sponsored\" to every outbound product link (keeping noopener noreferrer), plus a gate check so a future template edit cannot silently drop it. Policy and documentation links stay unmarked.",
+   "evidence": [
+    {
+     "term": "Official",
+     "claim": "Participation Requirements 2(b) requires the Associates tag as a parameter on each link to an Amazon Site before it is a Special Link; the sponsored rel marks the intended relationship without implying a tag exists.",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "term": "Official",
+     "claim": "6(v) and 6(w) ban cloaking and unclear link placement; rel=\"sponsored\" adds machine-readable context while the destination stays fully visible.",
+     "sources": [
+      "I2-S02"
+     ]
+    },
+    {
+     "term": "Editorial",
+     "claim": "The choice to mark even the current untagged evidence links as sponsored is the conservative reading: when a tag arrives, no page edit is needed.",
+     "via": "Decision recorded in the coordination log, 2026-11-17."
+    }
+   ],
+   "effort": "Small — one post-processor with a --check mode plus one additive gate rule.",
+   "expected_effect": "Every product link on the site carries a consistent, machine-readable relationship marker from this build onward.",
+   "risks": "None identified — rel=\"sponsored\" is advisory metadata for crawlers and changes nothing for readers.",
+   "what_it_does_not_do": "It does not make a link a Special Link (no Associates tag exists yet) and does not assert that any submitted short link is valid or invalid.",
+   "depends_on": [],
+   "acceptance": [
+    "python3 tools/apply_sponsored.py --check exits 0 on the built tree",
+    "tools/i2_gate.py reports G11 pass on site/",
+    "the visible destinations of product links are unchanged"
+   ]
+  },
+  {
+   "id": "D-20",
+   "title": "Host a real analytics endpoint — blocked: GitHub Pages cannot run one",
+   "status": "blocked",
+   "status_note": "Blocked 2026-11-17: static hosting serves files only. The owner must choose the endpoint's home before this can exist; no third-party analytics script will be added as a substitute.",
+   "problem": "The brief asks for a self-hosted analytics endpoint, but GitHub Pages is static hosting: it serves files and runs nothing server-side. There is nowhere on the current host for an endpoint to live.",
+   "proposal": "When the owner can host one small component (any of: a serverless function beside the static site, a tiny service on existing infrastructure, or a self-hosted analytics appliance), the ledger gains a POST sink with no identifiers and the device-side ledger keeps working as fallback. Options are listed here so the decision is one line, not a project.",
+   "evidence": [
+    {
+     "term": "Observed",
+     "claim": "This repository is served by GitHub Pages from main /; Pages builds serve static files only.",
+     "via": "Pages configuration recorded as I2-S14, re-checked 2026-11-16."
+    },
+    {
+     "term": "Editorial",
+     "claim": "Adding a third-party analytics script would contradict the privacy rules the site publishes (no third parties); the endpoint therefore waits for hosting the owner controls.",
+     "via": "Decision recorded 2026-11-17."
+    }
+   ],
+   "effort": "Medium for the owner (one small component), small for this project once hosting exists.",
+   "expected_effect": "Site-wide counts instead of per-device ones; still privacy-preserving (no cookies, no identifiers, path-only payloads).",
+   "risks": "An endpoint is one more thing to secure and maintain; it must accept only well-formed, bounded payloads.",
+   "what_it_does_not_do": "It does not change what is recorded — the five events stay the five events.",
+   "depends_on": [
+    "Q14"
+   ],
+   "acceptance": [
+    "the owner names the hosting location in the coordination log",
+    "the endpoint accepts the same event schema the ledger already emits",
+    "no visitor data leaves the device before the owner records that decision"
+   ]
+  },
+  {
+   "id": "D-21",
+   "title": "Connect a Search Console property so topics are chosen from measured queries",
+   "status": "blocked",
+   "status_note": "Blocked 2026-11-17: property creation and verification are owner actions; no agent can verify ownership of the site for the owner.",
+   "problem": "The brief asks that the next topic be chosen from measured queries instead of instinct, but no query data exists until someone with site ownership verifies a Search Console property.",
+   "proposal": "The owner creates (or reuses) a Search Console property for this site, verifies it, and the sitemap is submitted from there; measured queries then join the monthly review from D-17.",
+   "evidence": [
+    {
+     "term": "Editorial",
+     "claim": "Search Console data is first-party to the site owner; until verification happens, no claim about queries is made anywhere on this site.",
+     "via": "Decision recorded 2026-11-17."
+    }
+   ],
+   "effort": "Small for the owner; none for this project until data exists.",
+   "expected_effect": "The topic pipeline gains the demand side it currently lacks — without ever printing a query number the site cannot source.",
+   "risks": "Query data must stay in the decision channel; it must never be published as product or demand claims.",
+   "what_it_does_not_do": "It does not move rankings or create demand; it only makes existing search behaviour visible to the owner.",
+   "depends_on": [
+    "Q15"
+   ],
+   "acceptance": [
+    "a verified property exists for this site",
+    "sitemap.xml is submitted and indexed",
+    "query data is used only in the decision log, not as site content"
+   ]
+  },
+  {
+   "id": "D-22",
+   "title": "Mobile-first pass: fluid type scale, 44px tap targets, sticky quick-compare bar",
+   "status": "implemented",
+   "status_note": "Implemented 2026-11-17 (session ded63349): CSS additions in the site layer (clamped heading sizes, 44px minimum targets on primary controls, roomier table cells below 720px) and a sticky quick-compare bar on guide pages.",
+   "problem": "Most reader traffic to a shopping-guide site arrives on phones; the site's fixed type scale and small nav targets made the reader layer clumsy on small screens.",
+   "proposal": "Clamp() type scales for headings, minimum 44px tap targets on nav and buttons below 720px, roomier table cells, and a sticky bar at the bottom of guide pages that puts the comparison one thumb-tap away.",
+   "evidence": [
+    {
+     "term": "Editorial",
+     "claim": "Layout-only change: no fact, table or claim changes; the gates run unchanged afterwards.",
+     "via": "CSS block added to the site layer, 2026-11-17."
+    }
+   ],
+   "effort": "Small — one CSS block and one sticky-bar markup addition per generated guide.",
+   "expected_effect": "The reader layer behaves like a polished marketing site on the devices readers actually use.",
+   "risks": "Sticky bars can feel naggy; it is shown only below 720px and holds two links.",
+   "what_it_does_not_do": "It does not alter the evidence rules, the tables or any claim.",
+   "depends_on": [],
+   "acceptance": [
+    "guides show the sticky bar on small screens only",
+    "primary controls are at least 44px tall below 720px",
+    "all gates still pass after the CSS change"
+   ]
+  },
+  {
+   "id": "D-23",
+   "title": "Publication front-page pass: lead with the desk, keep every dashboard surface in the footer",
+   "status": "implemented",
+   "status_note": "Implemented 2026-11-17 (session ded63349): the front door band gained the measurement links, and its operations label became a real footer navigation group listing every dashboard surface, generated from the flat generator's own nav lists so the two stay in sync.",
+   "problem": "The brief asks the landing page to read as a publication front page while every dashboard surface stays reachable from the footer in a single navigation group. The band led well but the audit surfaces were only in the dashboard's own navigation further down the page.",
+   "proposal": "One footer navigation group, right under the 'Operations' label of the front-door band, listing every dashboard surface; plus links to the measurement page, the intent record and the Atom feed. The band content itself is unchanged.",
+   "evidence": [
+    {
+     "term": "Editorial",
+     "claim": "The link list is imported from scripts/build_site.py's NAV lists rather than copied, so a surface added there appears here automatically.",
+     "via": "tools/build_cba81fa5_site.py dashboard_links(), 2026-11-17."
+    }
+   ],
+   "effort": "Small — one band edit and one import.",
+   "expected_effect": "A reader lands on the publication; a reviewer reaches every audit surface from the same screen.",
+   "risks": "A long footer group can get noisy; it sits under an explicit 'Operations' label, out of the reader's path.",
+   "what_it_does_not_do": "It does not remove or rewrite any dashboard page.",
+   "depends_on": [],
+   "acceptance": [
+    "every flat dashboard surface is linked from the root page's footer group",
+    "the band still carries the §5 disclosure above the fold",
+    "check_site.py's crawl finds no broken internal links"
+   ]
+  },
+  {
+   "id": "D-24",
+   "title": "Build the product-intent confirmation record the brief specifies",
+   "status": "implemented",
+   "status_note": "Implemented 2026-11-17 (session ded63349): site/intent-record.html plus the machine-readable copy at data/ded63349/intent_record.json. The intended-ASIN column is blank on every row, on purpose.",
+   "problem": "The brief asks for a per-link record with the intended ASIN, official listing URL, confirmation date and source, with observed redirect targets kept in a separate field. Until now those facts lived scattered across the register and the flags.",
+   "proposal": "One record per submitted link with the fields split as specified: intent fields (intended ASIN — blank until the owner supplies it) and observation fields (official listing URL, confirmation date, source, observed redirect target with its exact query parameters).",
+   "evidence": [
+    {
+     "term": "Official",
+     "claim": "An ASIN is a 10-character identifier; the Creators API documents itemIdType default ASIN with 10-character examples, so the submitted 9-character tokens are not ASINs and no intended ASIN can be derived from them.",
+     "sources": [
+      "I2-S03"
+     ]
+    },
+    {
+     "term": "Observed",
+     "claim": "The three submitted links were followed again on 2026-11-17 and landed on the same destinations with the same served titles as the 2026-11-16 register.",
+     "via": "Session ded63349 verification round, D6-V14..V17."
+    },
+    {
+     "term": "Editorial",
+     "claim": "The two field groups are never merged: a redirect proves where a link goes, not what someone meant.",
+     "via": "Rationale published on site/intent-record.html, 2026-11-17."
+    }
+   ],
+   "effort": "Small — one page, one JSON file, one generator untouched.",
+   "expected_effect": "Anyone reviewing the site can see, per link, what was confirmed, by whom it can be confirmed further, and what remains assumption-free.",
+   "risks": "The record is only as good as its re-observation dates; the quarterly compliance re-read (D-17) refreshes them.",
+   "what_it_does_not_do": "It does not claim the destinations are the intended products, and does not judge the submitted short links' compliance status.",
+   "depends_on": [
+    "Q2"
+   ],
+   "acceptance": [
+    "each row carries the intended ASIN (blank + reason), the official listing URL, the confirmation date and the source",
+    "the observed redirect target is a separate column",
+    "the JSON copy in the repository matches the table"
+   ]
   }
  ],
  "questions": [
@@ -883,6 +1175,55 @@
    "decides": [
     "D-15"
    ]
+  },
+  {
+   "id": "Q14",
+   "question": "Where will the measurement endpoint be hosted, if anywhere?",
+   "priority": "Medium",
+   "known": "GitHub Pages serves static files only, so the site as hosted has nowhere to run an endpoint.",
+   "known_sources": [
+    "I2-S14"
+   ],
+   "unknown": "Whether the account holder will provide any hosting (serverless function, small service, or self-hosted analytics appliance) for a privacy-preserving sink.",
+   "why_it_matters": "Decides whether measurement stays device-side (D-16 as shipped) or gains site-wide counts; without an answer the ledger stays per-device, which is honest but partial.",
+   "how_to_discover": "Owner decision; any choice is recorded as one line in the coordination log. Nothing to research — the constraint is ownership, not information.",
+   "if_unanswered": "The device-side ledger remains the measurement path; no third-party script is added as a substitute.",
+   "decides": [
+    "D-20"
+   ]
+  },
+  {
+   "id": "Q15",
+   "question": "Who will create and verify the Search Console property for this site?",
+   "priority": "Medium",
+   "known": "Property creation and ownership verification are done by the site's owner in Search Console; no official Amazon source plays a part.",
+   "known_sources": [
+    "I2-S14"
+   ],
+   "unknown": "Whether the account holder wants the property created at all, and under which account.",
+   "why_it_matters": "The brief asks for topics chosen from measured queries; query measurement is impossible until a verified property exists, and no agent can complete ownership verification.",
+   "how_to_discover": "Owner creates/verifies the property and records it; the sitemap is then submitted from Search Console.",
+   "if_unanswered": "Topic choice keeps using the on-site ledger only, and no query claim is made.",
+   "decides": [
+    "D-21"
+   ]
+  },
+  {
+   "id": "Q16",
+   "question": "Does the account holder approve the fortnightly cadence and the five-event definitions, or adjust them?",
+   "priority": "Medium",
+   "known": "The cadence (one guide per fortnight, monthly measurement review, quarterly compliance re-read) and the five events are this project's own editorial definitions, adopted 2026-11-17 so work could proceed on a stated default.",
+   "known_sources": [
+    "I2-S02"
+   ],
+   "unknown": "Whether the account holder prefers a different rhythm, different events, or a different privacy trade-off.",
+   "why_it_matters": "A cadence is a commitment made in the owner's name; the events define every future 'measured' statement. Both should be ratified, not just adopted.",
+   "how_to_discover": "Owner review of site/measure.html and decisions D-16/D-17, with the Accept/Reject/Defer controls; the recorded choice becomes the standing policy.",
+   "if_unanswered": "The adopted defaults stay in force, clearly labelled as adopted-by-default on the measurement page.",
+   "decides": [
+    "D-16",
+    "D-17"
+   ]
   }
  ],
  "discovery": [
@@ -987,6 +1328,39 @@
    "official_page": "https://affiliate-program.amazon.com/help/operating/agreement · https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
    "output": "A signed-off banner sentence and a near-CTA sentence.",
    "source": "I2-S01"
+  },
+  {
+   "id": "DA-10",
+   "action": "Record the hosting decision for a measurement endpoint: none, serverless function beside the static site, existing infrastructure, or a self-hosted analytics appliance",
+   "answers": [
+    "Q14"
+   ],
+   "who": "Account holder only — the endpoint runs on infrastructure only they control.",
+   "output": "One line in the coordination log naming the choice; if hosting is chosen, its URL and the payload rule (five events, no identifiers).",
+   "official_page": "https://github.com/kanlerxz87-cyber/Zone3",
+   "source": "I2-S14"
+  },
+  {
+   "id": "DA-11",
+   "action": "Create and verify a Search Console property for this site and submit sitemap.xml from it",
+   "answers": [
+    "Q15"
+   ],
+   "who": "Account holder only — ownership verification cannot be done by an agent.",
+   "output": "A verified property; measured queries available to the monthly review roughly a month later.",
+   "official_page": "https://search.google.com/search-console/about",
+   "source": "I2-S14"
+  },
+  {
+   "id": "DA-12",
+   "action": "Ratify or adjust the cadence and the five-event definitions on the measurement page",
+   "answers": [
+    "Q16"
+   ],
+   "who": "Account holder, using the Accept/Reject/Defer controls on the decision page.",
+   "output": "A recorded decision per proposal; the measurement page updated to match.",
+   "official_page": "https://kanlerxz87-cyber.github.io/Zone3/site/measure.html",
+   "source": "I2-S02"
   }
  ],
  "prompt_pack": [

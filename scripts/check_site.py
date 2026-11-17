@@ -243,7 +243,16 @@ def check_html(data: dict) -> None:
 
         if DISCLOSURE not in text:
             fail(f"{name}: Associates disclosure text missing")
-        if 'class="topbar"' not in text or "flagged.html" not in text:
+        # Navigation rule, 2026-11-17 (session cbb03ec7, logged as CBB-F-04): every page must
+        # carry a visible nav and reach the flagged-for-review surface. Two nav systems are now
+        # published: the flat template's .topbar (which links flagged.html) and the publication
+        # front page's .z3-nav shipped in PR #136 (which links flagged/index.html and
+        # publication-pass.html#flagged). The old rule only accepted the first, so check_site
+        # failed on main after PR #136 until this line. The requirement itself is unchanged.
+        flat_nav = 'class="topbar"' in text and "flagged.html" in text
+        front_nav = ('class="z3-nav"' in text
+                     and ("flagged/index.html" in text or "publication-pass.html#flagged" in text))
+        if not (flat_nav or front_nav):
             fail(f"{name}: navigation missing")
         full = "".join(p.text_chunks)
         # Python leakage (a bare None cell or None inside a literal), plus placeholder words

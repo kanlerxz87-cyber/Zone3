@@ -6,8 +6,10 @@
 <title>Suggestions &amp; decisions · Air Fryer Field Notes</title>
 <meta name="description" content="Proposals for improving this affiliate site, the evidence for each, the open questions that block them, and a control to accept, reject or defer.">
 <link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/site/decisions.html">
-<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Air Fryer Field Notes — new guides and field notes" href="../feed.xml">
 <link rel="stylesheet" href="assets/site.css">
+<!-- z3:css --><link rel="stylesheet" href="../assets/zone3-publication.css">
+<!-- z3:measure --><script src="../assets/measure-config.js"></script><script src="../assets/measure.js" defer></script><!-- /z3:measure -->
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -23,9 +25,12 @@
       <span class="mark" aria-hidden="true">AF</span>
       <span class="brand-text"><strong>Air Fryer Field Notes</strong><small>Three air fryers, checked line by line.</small></span>
     </a>
-    <nav aria-label="Main"><a href="index.html">Start here</a><a href="products.html">The three air fryers</a><a href="guides/index.html">Buying guides</a><a href="evidence.html">How we know</a><a href="decisions.html" class="on">Suggestions &amp; decisions</a></nav>
+    <nav aria-label="Main"><a href="index.html">Start here</a><a href="products.html">The three air fryers</a><a href="guides/index.html">Buying guides</a><a href="evidence.html">How we know</a><a href="measure.html">How we measure</a><a href="intent-record.html">Intent record</a><a href="decisions.html" class="on">Suggestions &amp; decisions</a></nav>
   </div>
-</header>
+</header><!-- z3:strip -->
+<div class="z3-strip" role="note" aria-label="Affiliate disclosure"><div class="z3-wrap"><p><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Links to Amazon are marked sponsored. <a href="../publication-pass.html#disclosure">How disclosure is handled</a></p></div></div>
+<!-- /z3:strip -->
+
 <main id="main" class="wrap">
 
 
@@ -45,7 +50,7 @@
   <div class="tools-row">
     <button type="button" id="exportBtn">Export my decisions</button>
     <button type="button" id="printBtn" style="background:#48505f">Print / save as PDF</button>
-    <span class="small" id="count">0 of 15 decided</span>
+    <span class="small" id="count">0 of 24 decided</span>
   </div>
   <textarea id="exportBox" readonly aria-label="Exported decisions" placeholder="Your export will appear here."></textarea>
 </div>
@@ -85,7 +90,7 @@
   <dl>
     <dt>The problem</dt><dd>&#x27;Catchy trendy articles&#x27; is the part of the brief that most easily turns into filler. The repository already has a verified topic plan with 12 working titles, but the published marketing pages are thin, and the thin ones are what read as AI-generated.</dd>
     <dt>What is proposed</dt><dd>Ship guides as a repeatable format: a real reader question, the listing facts that answer it, a table, a &#x27;what we cannot tell you&#x27; box, and a provenance footer. One question per page. No page without a verifiable answer.</dd>
-    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="Product detail page: B0CDY277D3 — read 2026-11-16">I2-S10</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer sponsored" title="Product detail page: B09B7SB46R — read 2026-11-16">I2-S11</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer sponsored" title="Product detail page: B08DKYBTPH — read 2026-11-16">I2-S12</a> Manufacturers&#x27; listing titles already carry concrete, checkable specifications for all three products (capacity, basket count, functions).</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> A claim about a product must not be inaccurate, overbroad, deceptive or misleading.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> You cannot describe first-hand experience with a product you have not tried.</li><li><span class="term t-observed">Observed</span>A 12-title topic plan with the fact behind each title already exists in this repository. <span class="small">(data/topics.json, read 2026-11-16.)</span></li></ul></dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="Product detail page: B0CDY277D3 — read 2026-11-16">I2-S10</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="sponsored noopener noreferrer" title="Product detail page: B09B7SB46R — read 2026-11-16">I2-S11</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="sponsored noopener noreferrer" title="Product detail page: B08DKYBTPH — read 2026-11-16">I2-S12</a> Manufacturers&#x27; listing titles already carry concrete, checkable specifications for all three products (capacity, basket count, functions).</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> A claim about a product must not be inaccurate, overbroad, deceptive or misleading.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener noreferrer" title="Disclosures 101 for Social Media Influencers — read 2026-11-16">I2-S06</a> You cannot describe first-hand experience with a product you have not tried.</li><li><span class="term t-observed">Observed</span>A 12-title topic plan with the fact behind each title already exists in this repository. <span class="small">(data/topics.json, read 2026-11-16.)</span></li></ul></dd>
     <dt>Effort</dt><dd>Medium — one guide is roughly a working day of drafting plus a source pass.</dd>
     <dt>Expected effect</dt><dd>Editorial: this is the only content type on the site that can earn organic search traffic without inventing numbers, because it answers a question using facts a search engine can also see.</dd>
     <dt>Risks</dt><dd>Volume temptation: publishing 40 thin variants would recreate the problem. The format gate below exists to prevent that.</dd>
@@ -163,7 +168,7 @@
   <dl>
     <dt>The problem</dt><dd>There is no Associates tag anywhere in this repository, and the live redirects of the three submitted links carry no tag parameter. Without it, nothing on the site can earn. The repository&#x27;s current answer is to publish no link at all, which leaves a marketing site with no commercial action.</dd>
     <dt>What is proposed</dt><dd>When the tag is supplied, build links with the tag parameter, label each one, and record the exact URL in data. Until then, show the listing as an &#x27;evidence link&#x27; that is clearly labelled as not earning.</dd>
-    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Every link to an Amazon Site must include the Associates ID or tag as a URL parameter.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> Special Links must properly use Amazon&#x27;s tagged link formats.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a> The live redirect of the first submitted link carries no tag parameter.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a> The Creators API response returns a detailPageURL that already carries tag=…</li></ul></dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Every link to an Amazon Site must include the Associates ID or tag as a URL parameter.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> Special Links must properly use Amazon&#x27;s tagged link formats.</li><li><span class="term t-official">Official</span><a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a> The live redirect of the first submitted link carries no tag parameter.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a> The Creators API response returns a detailPageURL that already carries tag=…</li></ul></dd>
     <dt>Effort</dt><dd>Low once the tag exists; zero before it.</dd>
     <dt>Expected effect</dt><dd>Turns the site from a research document into a monetisable one. No revenue is estimated.</dd>
     <dt>Risks</dt><dd>A tag used on the wrong marketplace earns nothing or is disqualified; this is why Q3 must be answered together with Q1. Paid search on Amazon trademark terms is a disqualified route even with a correct tag.</dd>
@@ -442,13 +447,247 @@
     <output for="D-15" data-out="D-15">No decision recorded yet</output>
     <textarea data-note="D-15" aria-label="Reason for the decision on D-15" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
   </div>
+</article><article class="prop" id="D-16">
+  <div class="prop-head"><h3>Measure before growing: a first-party ledger of five defined events</h3><span class="pid">D-16</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented 2026-11-17 (session ded63349): assets/site.js records five events into one localStorage key; site/measure.html defines them, shows the device-side counts and exports CSV. No third-party script was added.</p>
+  <dl>
+    <dt>The problem</dt><dd>The brief asks for click and conversion measurement before anything else is written. The site had no counting at all, so the next guide topic could only be chosen by instinct, and no one could tell whether any guide was read.</dd>
+    <dt>What is proposed</dt><dd>Record five events — page_view, outbound_product_click, comparison_open, guide_read_through, decision_open — in one localStorage key on the visitor&#x27;s own device, capped at 500 rows, with no cookies, no identifiers, no referrer storage and no network call. The measurement page shows the device-side counts and exports CSV.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Participation Requirements 6(s) bans artificially generated clicks or sessions; the ledger counts real clicks by a real visitor on this site&#x27;s own pages and never creates an Amazon session.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> 2(b) bans associating a sub-tag or ID with a specific end user; the ledger stores no per-person identifier and never assigns per-user tags.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> 6(y) bars price tracking and alerting on an Associate&#x27;s Site; the ledger records click events only.</li><li><span class="term t-editorial">Editorial</span>The five event names and thresholds are this site&#x27;s own definitions, chosen to answer one question per event; they are not a claim about traffic, demand or any official standard. <span class="small">(Definition adopted on site/measure.html, 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Small — one JS block, one page, no infrastructure.</dd>
+    <dt>Expected effect</dt><dd>The next guide topic can be chosen from measured opens and read-throughs instead of instinct, and every later claim about the site&#x27;s traffic has a defined, checkable meaning.</dd>
+    <dt>Risks</dt><dd>Device-side counts are per-browser and lost when a visitor clears storage; they are a floor, not a census. Nothing on the site presents them as site-wide numbers.</dd>
+    <dt>What it will not do</dt><dd>It does not measure conversions (Amazon-side reports only, gated behind the account), does not identify anyone, and does not send data anywhere.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>assets/site.js contains exactly the five event names and no network call</li><li>site/measure.html states what is stored and what is never stored</li><li>check tools/i2_gate.py passes with the ledger in place</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-16" value="Accept" data-pid="D-16"><span>Accept</span></label>
+        <label><input type="radio" name="D-16" value="Reject" data-pid="D-16"><span>Reject</span></label>
+        <label><input type="radio" name="D-16" value="Defer" data-pid="D-16"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-16" data-out="D-16">No decision recorded yet</output>
+    <textarea data-note="D-16" aria-label="Reason for the decision on D-16" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-17">
+  <div class="prop-head"><h3>Set a publishing cadence: one guide a fortnight, a monthly measurement review</h3><span class="pid">D-17</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented 2026-11-17 (session ded63349): the cadence is published on site/measure.html and each new guide enters sitemap.xml and feed.xml automatically at build time.</p>
+  <dl>
+    <dt>The problem</dt><dd>Publishing without a rhythm stalls (nothing shipped between guides) or floods (many thin pages). Either one reads as generated, not published.</dd>
+    <dt>What is proposed</dt><dd>One new question-shaped guide every two weeks, first slot 2026-12-01; a monthly measurement review on the first Monday that picks the next topic from the ledger (and, once available, measured queries); a quarterly compliance re-read of the programme documents before new page types ship.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Enrollment rules require original content with significant commentary or analysis; a slow, sourced cadence is easier to keep original than a fast one.</li><li><span class="term t-editorial">Editorial</span>The fortnightly rhythm and the slot dates are an editorial commitment of this site, not a fact about any external standard. <span class="small">(Cadence table on site/measure.html, adopted 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>None to build — it is a policy plus the automation that already adds pages to the sitemap and feed.</dd>
+    <dt>Expected effect</dt><dd>A predictable pipeline: each new guide is findable (sitemap, feed, internal links) and the next one is chosen from measured behaviour.</dd>
+    <dt>Risks</dt><dd>A cadence is easy to promise and miss; the monthly review is the mechanism that keeps it honest.</dd>
+    <dt>What it will not do</dt><dd>It does not commit to any topic list, and it makes no claim about search demand for any question.</dd>
+    <dt>Depends on</dt><dd><a href="#D-16">D-16</a></dd>
+    <dt>Done when</dt><dd><ul><li>site/measure.html carries the cadence table</li><li>tools/build_feed.py picks up new guide pages without hand-editing</li><li>scripts/build_sitemap.py lists new pages on the next run</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-17" value="Accept" data-pid="D-17"><span>Accept</span></label>
+        <label><input type="radio" name="D-17" value="Reject" data-pid="D-17"><span>Reject</span></label>
+        <label><input type="radio" name="D-17" value="Defer" data-pid="D-17"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-17" data-out="D-17">No decision recorded yet</output>
+    <textarea data-note="D-17" aria-label="Reason for the decision on D-17" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-18">
+  <div class="prop-head"><h3>Ship an Atom feed so readers and crawlers can subscribe to new guides</h3><span class="pid">D-18</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented 2026-11-17 (session ded63349): tools/build_feed.py writes feed.xml from the published pages and injects feed-discovery links into every site/ page and both article hubs.</p>
+  <dl>
+    <dt>The problem</dt><dd>New guides were findable only by crawling the sitemap; there was no subscribe mechanism, so repeat readers and aggregators had no way to see a new page.</dd>
+    <dt>What is proposed</dt><dd>An Atom 1.0 feed at the repository root, generated from the published pages themselves (title from the page h1, summary from the meta description, updated from the facts-read date each page prints), with feed-discovery links in every site/ page head.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-editorial">Editorial</span>Feed entries are derived from the pages themselves, so a new guide cannot be forgotten; nothing is listed by hand. <span class="small">(tools/build_feed.py collects site/guides, site/articles, articles/ and read/ pages, 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Small — one generator, run after the page generators and before the sitemap.</dd>
+    <dt>Expected effect</dt><dd>New guides reach subscribers the day they ship, and search engines get another discovery path.</dd>
+    <dt>Risks</dt><dd>An unmaintained feed is worse than none; the --check mode fails the build if the feed goes stale.</dd>
+    <dt>What it will not do</dt><dd>It does not syndicate content anywhere else and does not change any page&#x27;s text.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>feed.xml validates as Atom with one entry per published article page</li><li>python3 tools/build_feed.py --check exits 0 on the built tree</li><li>every site/ page head carries the alternate link</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-18" value="Accept" data-pid="D-18"><span>Accept</span></label>
+        <label><input type="radio" name="D-18" value="Reject" data-pid="D-18"><span>Reject</span></label>
+        <label><input type="radio" name="D-18" value="Defer" data-pid="D-18"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-18" data-out="D-18">No decision recorded yet</output>
+    <textarea data-note="D-18" aria-label="Reason for the decision on D-18" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-19">
+  <div class="prop-head"><h3>Mark every outbound product link rel=&quot;sponsored&quot;, enforced by a gate</h3><span class="pid">D-19</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented 2026-11-17 (session ded63349): tools/apply_sponsored.py marks /dp/, /gp/product/ and link.amazon links across the published pages, and tools/i2_gate.py G11 fails the build if any product link loses the mark.</p>
+  <dl>
+    <dt>The problem</dt><dd>The site&#x27;s Amazon links were plain rel=&quot;noopener&quot; links. However they are labelled today, the site&#x27;s purpose is Associates promotion, so every product link should already carry the relationship markup Google asks for on paid and affiliate links.</dd>
+    <dt>What is proposed</dt><dd>A build step that adds rel=&quot;sponsored&quot; to every outbound product link (keeping noopener noreferrer), plus a gate check so a future template edit cannot silently drop it. Policy and documentation links stay unmarked.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> Participation Requirements 2(b) requires the Associates tag as a parameter on each link to an Amazon Site before it is a Special Link; the sponsored rel marks the intended relationship without implying a tag exists.</li><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> 6(v) and 6(w) ban cloaking and unclear link placement; rel=&quot;sponsored&quot; adds machine-readable context while the destination stays fully visible.</li><li><span class="term t-editorial">Editorial</span>The choice to mark even the current untagged evidence links as sponsored is the conservative reading: when a tag arrives, no page edit is needed. <span class="small">(Decision recorded in the coordination log, 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Small — one post-processor with a --check mode plus one additive gate rule.</dd>
+    <dt>Expected effect</dt><dd>Every product link on the site carries a consistent, machine-readable relationship marker from this build onward.</dd>
+    <dt>Risks</dt><dd>None identified — rel=&quot;sponsored&quot; is advisory metadata for crawlers and changes nothing for readers.</dd>
+    <dt>What it will not do</dt><dd>It does not make a link a Special Link (no Associates tag exists yet) and does not assert that any submitted short link is valid or invalid.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>python3 tools/apply_sponsored.py --check exits 0 on the built tree</li><li>tools/i2_gate.py reports G11 pass on site/</li><li>the visible destinations of product links are unchanged</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-19" value="Accept" data-pid="D-19"><span>Accept</span></label>
+        <label><input type="radio" name="D-19" value="Reject" data-pid="D-19"><span>Reject</span></label>
+        <label><input type="radio" name="D-19" value="Defer" data-pid="D-19"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-19" data-out="D-19">No decision recorded yet</output>
+    <textarea data-note="D-19" aria-label="Reason for the decision on D-19" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-20">
+  <div class="prop-head"><h3>Host a real analytics endpoint — blocked: GitHub Pages cannot run one</h3><span class="pid">D-20</span>
+    <span class="badge b-bad">blocked</span></div>
+  <p class="small">Blocked 2026-11-17: static hosting serves files only. The owner must choose the endpoint&#x27;s home before this can exist; no third-party analytics script will be added as a substitute.</p>
+  <dl>
+    <dt>The problem</dt><dd>The brief asks for a self-hosted analytics endpoint, but GitHub Pages is static hosting: it serves files and runs nothing server-side. There is nowhere on the current host for an endpoint to live.</dd>
+    <dt>What is proposed</dt><dd>When the owner can host one small component (any of: a serverless function beside the static site, a tiny service on existing infrastructure, or a self-hosted analytics appliance), the ledger gains a POST sink with no identifiers and the device-side ledger keeps working as fallback. Options are listed here so the decision is one line, not a project.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-observed">Observed</span>This repository is served by GitHub Pages from main /; Pages builds serve static files only. <span class="small">(Pages configuration recorded as I2-S14, re-checked 2026-11-16.)</span></li><li><span class="term t-editorial">Editorial</span>Adding a third-party analytics script would contradict the privacy rules the site publishes (no third parties); the endpoint therefore waits for hosting the owner controls. <span class="small">(Decision recorded 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Medium for the owner (one small component), small for this project once hosting exists.</dd>
+    <dt>Expected effect</dt><dd>Site-wide counts instead of per-device ones; still privacy-preserving (no cookies, no identifiers, path-only payloads).</dd>
+    <dt>Risks</dt><dd>An endpoint is one more thing to secure and maintain; it must accept only well-formed, bounded payloads.</dd>
+    <dt>What it will not do</dt><dd>It does not change what is recorded — the five events stay the five events.</dd>
+    <dt>Depends on</dt><dd><a href="#Q14">Q14</a></dd>
+    <dt>Done when</dt><dd><ul><li>the owner names the hosting location in the coordination log</li><li>the endpoint accepts the same event schema the ledger already emits</li><li>no visitor data leaves the device before the owner records that decision</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-20" value="Accept" data-pid="D-20"><span>Accept</span></label>
+        <label><input type="radio" name="D-20" value="Reject" data-pid="D-20"><span>Reject</span></label>
+        <label><input type="radio" name="D-20" value="Defer" data-pid="D-20"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-20" data-out="D-20">No decision recorded yet</output>
+    <textarea data-note="D-20" aria-label="Reason for the decision on D-20" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-21">
+  <div class="prop-head"><h3>Connect a Search Console property so topics are chosen from measured queries</h3><span class="pid">D-21</span>
+    <span class="badge b-bad">blocked</span></div>
+  <p class="small">Blocked 2026-11-17: property creation and verification are owner actions; no agent can verify ownership of the site for the owner.</p>
+  <dl>
+    <dt>The problem</dt><dd>The brief asks that the next topic be chosen from measured queries instead of instinct, but no query data exists until someone with site ownership verifies a Search Console property.</dd>
+    <dt>What is proposed</dt><dd>The owner creates (or reuses) a Search Console property for this site, verifies it, and the sitemap is submitted from there; measured queries then join the monthly review from D-17.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-editorial">Editorial</span>Search Console data is first-party to the site owner; until verification happens, no claim about queries is made anywhere on this site. <span class="small">(Decision recorded 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Small for the owner; none for this project until data exists.</dd>
+    <dt>Expected effect</dt><dd>The topic pipeline gains the demand side it currently lacks — without ever printing a query number the site cannot source.</dd>
+    <dt>Risks</dt><dd>Query data must stay in the decision channel; it must never be published as product or demand claims.</dd>
+    <dt>What it will not do</dt><dd>It does not move rankings or create demand; it only makes existing search behaviour visible to the owner.</dd>
+    <dt>Depends on</dt><dd><a href="#Q15">Q15</a></dd>
+    <dt>Done when</dt><dd><ul><li>a verified property exists for this site</li><li>sitemap.xml is submitted and indexed</li><li>query data is used only in the decision log, not as site content</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-21" value="Accept" data-pid="D-21"><span>Accept</span></label>
+        <label><input type="radio" name="D-21" value="Reject" data-pid="D-21"><span>Reject</span></label>
+        <label><input type="radio" name="D-21" value="Defer" data-pid="D-21"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-21" data-out="D-21">No decision recorded yet</output>
+    <textarea data-note="D-21" aria-label="Reason for the decision on D-21" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-22">
+  <div class="prop-head"><h3>Mobile-first pass: fluid type scale, 44px tap targets, sticky quick-compare bar</h3><span class="pid">D-22</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented 2026-11-17 (session ded63349): CSS additions in the site layer (clamped heading sizes, 44px minimum targets on primary controls, roomier table cells below 720px) and a sticky quick-compare bar on guide pages.</p>
+  <dl>
+    <dt>The problem</dt><dd>Most reader traffic to a shopping-guide site arrives on phones; the site&#x27;s fixed type scale and small nav targets made the reader layer clumsy on small screens.</dd>
+    <dt>What is proposed</dt><dd>Clamp() type scales for headings, minimum 44px tap targets on nav and buttons below 720px, roomier table cells, and a sticky bar at the bottom of guide pages that puts the comparison one thumb-tap away.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-editorial">Editorial</span>Layout-only change: no fact, table or claim changes; the gates run unchanged afterwards. <span class="small">(CSS block added to the site layer, 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Small — one CSS block and one sticky-bar markup addition per generated guide.</dd>
+    <dt>Expected effect</dt><dd>The reader layer behaves like a polished marketing site on the devices readers actually use.</dd>
+    <dt>Risks</dt><dd>Sticky bars can feel naggy; it is shown only below 720px and holds two links.</dd>
+    <dt>What it will not do</dt><dd>It does not alter the evidence rules, the tables or any claim.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>guides show the sticky bar on small screens only</li><li>primary controls are at least 44px tall below 720px</li><li>all gates still pass after the CSS change</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-22" value="Accept" data-pid="D-22"><span>Accept</span></label>
+        <label><input type="radio" name="D-22" value="Reject" data-pid="D-22"><span>Reject</span></label>
+        <label><input type="radio" name="D-22" value="Defer" data-pid="D-22"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-22" data-out="D-22">No decision recorded yet</output>
+    <textarea data-note="D-22" aria-label="Reason for the decision on D-22" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-23">
+  <div class="prop-head"><h3>Publication front-page pass: lead with the desk, keep every dashboard surface in the footer</h3><span class="pid">D-23</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented 2026-11-17 (session ded63349): the front door band gained the measurement links, and its operations label became a real footer navigation group listing every dashboard surface, generated from the flat generator&#x27;s own nav lists so the two stay in sync.</p>
+  <dl>
+    <dt>The problem</dt><dd>The brief asks the landing page to read as a publication front page while every dashboard surface stays reachable from the footer in a single navigation group. The band led well but the audit surfaces were only in the dashboard&#x27;s own navigation further down the page.</dd>
+    <dt>What is proposed</dt><dd>One footer navigation group, right under the &#x27;Operations&#x27; label of the front-door band, listing every dashboard surface; plus links to the measurement page, the intent record and the Atom feed. The band content itself is unchanged.</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-editorial">Editorial</span>The link list is imported from scripts/build_site.py&#x27;s NAV lists rather than copied, so a surface added there appears here automatically. <span class="small">(tools/build_cba81fa5_site.py dashboard_links(), 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Small — one band edit and one import.</dd>
+    <dt>Expected effect</dt><dd>A reader lands on the publication; a reviewer reaches every audit surface from the same screen.</dd>
+    <dt>Risks</dt><dd>A long footer group can get noisy; it sits under an explicit &#x27;Operations&#x27; label, out of the reader&#x27;s path.</dd>
+    <dt>What it will not do</dt><dd>It does not remove or rewrite any dashboard page.</dd>
+    <dt>Depends on</dt><dd>Nothing — can be implemented now</dd>
+    <dt>Done when</dt><dd><ul><li>every flat dashboard surface is linked from the root page&#x27;s footer group</li><li>the band still carries the §5 disclosure above the fold</li><li>check_site.py&#x27;s crawl finds no broken internal links</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-23" value="Accept" data-pid="D-23"><span>Accept</span></label>
+        <label><input type="radio" name="D-23" value="Reject" data-pid="D-23"><span>Reject</span></label>
+        <label><input type="radio" name="D-23" value="Defer" data-pid="D-23"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-23" data-out="D-23">No decision recorded yet</output>
+    <textarea data-note="D-23" aria-label="Reason for the decision on D-23" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
+</article><article class="prop" id="D-24">
+  <div class="prop-head"><h3>Build the product-intent confirmation record the brief specifies</h3><span class="pid">D-24</span>
+    <span class="badge b-ok">implemented</span></div>
+  <p class="small">Implemented 2026-11-17 (session ded63349): site/intent-record.html plus the machine-readable copy at data/ded63349/intent_record.json. The intended-ASIN column is blank on every row, on purpose.</p>
+  <dl>
+    <dt>The problem</dt><dd>The brief asks for a per-link record with the intended ASIN, official listing URL, confirmation date and source, with observed redirect targets kept in a separate field. Until now those facts lived scattered across the register and the flags.</dd>
+    <dt>What is proposed</dt><dd>One record per submitted link with the fields split as specified: intent fields (intended ASIN — blank until the owner supplies it) and observation fields (official listing URL, confirmation date, source, observed redirect target with its exact query parameters).</dd>
+    <dt>Evidence</dt><dd><ul class="evidence"><li><span class="term t-official">Official</span><a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a> An ASIN is a 10-character identifier; the Creators API documents itemIdType default ASIN with 10-character examples, so the submitted 9-character tokens are not ASINs and no intended ASIN can be derived from them.</li><li><span class="term t-observed">Observed</span>The three submitted links were followed again on 2026-11-17 and landed on the same destinations with the same served titles as the 2026-11-16 register. <span class="small">(Session ded63349 verification round, D6-V14..V17.)</span></li><li><span class="term t-editorial">Editorial</span>The two field groups are never merged: a redirect proves where a link goes, not what someone meant. <span class="small">(Rationale published on site/intent-record.html, 2026-11-17.)</span></li></ul></dd>
+    <dt>Effort</dt><dd>Small — one page, one JSON file, one generator untouched.</dd>
+    <dt>Expected effect</dt><dd>Anyone reviewing the site can see, per link, what was confirmed, by whom it can be confirmed further, and what remains assumption-free.</dd>
+    <dt>Risks</dt><dd>The record is only as good as its re-observation dates; the quarterly compliance re-read (D-17) refreshes them.</dd>
+    <dt>What it will not do</dt><dd>It does not claim the destinations are the intended products, and does not judge the submitted short links&#x27; compliance status.</dd>
+    <dt>Depends on</dt><dd><a href="#Q2">Q2</a></dd>
+    <dt>Done when</dt><dd><ul><li>each row carries the intended ASIN (blank + reason), the official listing URL, the confirmation date and the source</li><li>the observed redirect target is a separate column</li><li>the JSON copy in the repository matches the table</li></ul></dd>
+  </dl>
+  <div class="decide">
+    <fieldset><legend>Your decision</legend>
+      <div class="seg">
+        <label><input type="radio" name="D-24" value="Accept" data-pid="D-24"><span>Accept</span></label>
+        <label><input type="radio" name="D-24" value="Reject" data-pid="D-24"><span>Reject</span></label>
+        <label><input type="radio" name="D-24" value="Defer" data-pid="D-24"><span>Defer</span></label>
+      </div>
+    </fieldset>
+    <output for="D-24" data-out="D-24">No decision recorded yet</output>
+    <textarea data-note="D-24" aria-label="Reason for the decision on D-24" placeholder="One sentence of reason (optional but useful to the next session)"></textarea>
+  </div>
 </article>
 
 <h2 id="questions">Open questions</h2>
 <p>These are the gaps that stop a decision from being made on the evidence alone. Each row states what is known (with a source), what is not known, why it matters, and how to find out. A question marked <span class="badge b-bad">Blocking</span> stops every commercial change until it is answered.</p>
 <div class="tablewrap"><table><caption>The questions that must be answered before the blocked work can start</caption><thead><tr><th>Question</th><th>What is known, and what is not</th><th>How to discover the answer</th><th>If it stays unanswered</th><th>Decides</th></tr></thead><tbody><tr id="Q1"><td class="lead-cell"><span class="mono">Q1</span><br><span class="badge b-bad">Blocking</span></td>
 <td><strong>What is the Amazon Associates tag (tracking ID) to put on every link?</strong>
-  <div class="small" style="margin-top:6px"><b>Known:</b> The tag must appear as a parameter in every link to an Amazon Site, in a XXXXX-## style format. The observed redirects of the three submitted links carry no tag. ANSWERED 2026-11-17 (owner, in the session brief): the Associates tag is &#x27;shopnow047c-20&#x27;. Recorded in data/special-links.json as owner-supplied and unvalidated; Special Links SL1-SL5 were built from it the same day. What remains unknown is whether the tag is active on an enrolled account — that check needs Associates Central (0C4-F-04). <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The tag must appear as a parameter in every link to an Amazon Site, in a XXXXX-## style format. The observed redirects of the three submitted links carry no tag. ANSWERED 2026-11-17 (owner, in the session brief): the Associates tag is &#x27;shopnow047c-20&#x27;. Recorded in data/special-links.json as owner-supplied and unvalidated; Special Links SL1-SL5 were built from it the same day. What remains unknown is whether the tag is active on an enrolled account — that check needs Associates Central (0C4-F-04). <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
   <div class="small" style="margin-top:4px"><b>Not known:</b> Whether shopnow047c-20 is the active Store ID on an enrolled amazon.com Associates account, and whether each Special Link&#x27;s click shows in the tracking report. The value itself is no longer unknown — it was supplied by the owner on 2026-11-17.</div>
   <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Without it nothing can earn, and a site with no earning action is not an affiliate site. It also decides whether the tag matches the marketplace, which changes the destination domain.</div>
 </td>
@@ -456,7 +695,7 @@
 <td class="small"><b>If unanswered:</b> Was: all buy actions stay disabled. State 2026-11-17: the value is answered, so buy actions are active; what is still unanswered is the account validation (0C4-F-04), which blocks scaling placement, not the buttons themselves.</td>
 <td><a href="#D-05">D-05</a>, <a href="#D-09">D-09</a>, <a href="#D-12">D-12</a></td></tr><tr id="Q2"><td class="lead-cell"><span class="mono">Q2</span><br><span class="badge b-bad">Blocking</span></td>
 <td><strong>Are the three listings the products you intended to promote?</strong>
-  <div class="small" style="margin-top:6px"><b>Known:</b> Each nine-character short link opened a live listing: CHEFMAN 6 Quart Dual Basket (B0CDY277D3), Emeril Lagasse 26QT French Door (B09B7SB46R), Chefman TurboFry 8 Qt (B08DKYBTPH). The nine-character tokens are not ASINs, and /dp/&lt;token&gt; returns Page Not Found. <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B02NbDxp3 — observed redirect — read 2026-11-16">I2-S08</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B00hJ57DV — observed redirect — read 2026-11-16">I2-S09</a> <a class="src" href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener noreferrer sponsored" title="Direct probe: amazon.com/dp/B04G1MEwY — read 2026-11-16">I2-S13</a> <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a></div>
+  <div class="small" style="margin-top:6px"><b>Known:</b> Each nine-character short link opened a live listing: CHEFMAN 6 Quart Dual Basket (B0CDY277D3), Emeril Lagasse 26QT French Door (B09B7SB46R), Chefman TurboFry 8 Qt (B08DKYBTPH). The nine-character tokens are not ASINs, and /dp/&lt;token&gt; returns Page Not Found. <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B02NbDxp3 — observed redirect — read 2026-11-16">I2-S08</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B00hJ57DV — observed redirect — read 2026-11-16">I2-S09</a> <a class="src" href="https://www.amazon.com/dp/B04G1MEwY" target="_blank" rel="noopener noreferrer sponsored" title="Direct probe: amazon.com/dp/B04G1MEwY — read 2026-11-16">I2-S13</a> <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" target="_blank" rel="noopener noreferrer" title="Creators API: GetItems operation — read 2026-11-16">I2-S03</a></div>
   <div class="small" style="margin-top:4px"><b>Not known:</b> Whether those three destinations are the intended products. No official page states intent; only the owner can.</div>
   <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Every product statement on the site is about the observed destination. If the intent was different, the site is promoting the wrong products — a costly and invisible error.</div>
 </td>
@@ -464,7 +703,7 @@
 <td class="small"><b>If unanswered:</b> The site keeps describing the observed destinations and labels identity as unconfirmed on every product card.</td>
 <td><a href="#D-02">D-02</a>, <a href="#D-05">D-05</a></td></tr><tr id="Q3"><td class="lead-cell"><span class="mono">Q3</span><br><span class="badge b-bad">Blocking</span></td>
 <td><strong>Which Amazon marketplace is the site built for?</strong>
-  <div class="small" style="margin-top:6px"><b>Known:</b> The Associates Program Operating Agreement read today lists marketplaces in Schedule 1, and the tag is marketplace-specific. The links resolve to amazon.com. <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The Associates Program Operating Agreement read today lists marketplaces in Schedule 1, and the tag is marketplace-specific. The links resolve to amazon.com. <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
   <div class="small" style="margin-top:4px"><b>Not known:</b> The marketplace the account is enrolled in, and whether the audience is US or elsewhere.</div>
   <div class="small" style="margin-top:4px"><b>Why it decides things:</b> A tag from one marketplace on a link to another earns nothing, and prices/currency differ by marketplace.</div>
 </td>
@@ -536,7 +775,7 @@
 <td class="small"><b>If unanswered:</b> No AI-drafted copy publishes; this build&#x27;s pages are written to be checkable line by line instead.</td>
 <td><a href="#D-02">D-02</a>, <a href="#D-06">D-06</a></td></tr><tr id="Q12"><td class="lead-cell"><span class="mono">Q12</span><br><span class="badge b-mute">Low</span></td>
 <td><strong>Will more products be added beyond these three?</strong>
-  <div class="small" style="margin-top:6px"><b>Known:</b> The site&#x27;s comparison is built on three specific listings. A fourth product changes the comparison, the guides and the category page. <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="Product detail page: B0CDY277D3 — read 2026-11-16">I2-S10</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="noopener noreferrer sponsored" title="Product detail page: B09B7SB46R — read 2026-11-16">I2-S11</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="noopener noreferrer sponsored" title="Product detail page: B08DKYBTPH — read 2026-11-16">I2-S12</a></div>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The site&#x27;s comparison is built on three specific listings. A fourth product changes the comparison, the guides and the category page. <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="Product detail page: B0CDY277D3 — read 2026-11-16">I2-S10</a> <a class="src" href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="sponsored noopener noreferrer" title="Product detail page: B09B7SB46R — read 2026-11-16">I2-S11</a> <a class="src" href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="sponsored noopener noreferrer" title="Product detail page: B08DKYBTPH — read 2026-11-16">I2-S12</a></div>
   <div class="small" style="margin-top:4px"><b>Not known:</b> Whether the catalogue is fixed at three, and how new products would be supplied.</div>
   <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Decides whether the data layer needs an intake process now or later.</div>
 </td>
@@ -544,13 +783,37 @@
 <td class="small"><b>If unanswered:</b> The site stays scoped to three products.</td>
 <td><a href="#D-02">D-02</a></td></tr><tr id="Q13"><td class="lead-cell"><span class="mono">Q13</span><br><span class="badge b-warn">High</span></td>
 <td><strong>Who owns the third-party attribution parameters (btn_ref=srctok-…, channelId=704) observed on the submitted short links — and are those links meant to earn Associates commission at all?</strong>
-  <div class="small" style="margin-top:6px"><b>Known:</b> The redirects observed on 2026-11-16 carry btn_ref=srctok-&lt;hex&gt; and channelId=704 on all three links and no Associates tag; Participation Requirements 2(b) requires the tag parameter on every link an Associate places to an Amazon Site; the Commission Income Limitations section warns against claiming commissions from two programs on the same traffic. FLG-010 and I2-F-03 already record the missing tag. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The redirects observed on 2026-11-16 carry btn_ref=srctok-&lt;hex&gt; and channelId=704 on all three links and no Associates tag; Participation Requirements 2(b) requires the tag parameter on every link an Associate places to an Amazon Site; the Commission Income Limitations section warns against claiming commissions from two programs on the same traffic. FLG-010 and I2-F-03 already record the missing tag. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></div>
   <div class="small" style="margin-top:4px"><b>Not known:</b> What service minted the three link.amazon URLs; what the srctok and channelId parameters credit and for whom; whether the owner intends these links as Associates links at all.</div>
   <div class="small" style="margin-top:4px"><b>Why it decides things:</b> A click through an untagged link earns nothing for this site, and attribution that also credits another program is called out by name in the April 2026 policies. Until this is answered, no earning link can be built safely.</div>
 </td>
 <td class="small"><b>How to find out:</b> Ask the person or tool that supplied the three link.amazon URLs what minted them; if an Associates account exists, use Associates Central&#x27;s link checker and click reports to see whether any clicks credit the account; then record the answer on this board.</td>
 <td class="small"><b>If unanswered:</b> The buy actions stay disabled and every Amazon link stays an evidence link that earns nothing — the current published state, which is safe.</td>
-<td><a href="#D-15">D-15</a></td></tr></tbody></table></div>
+<td><a href="#D-15">D-15</a></td></tr><tr id="Q14"><td class="lead-cell"><span class="mono">Q14</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>Where will the measurement endpoint be hosted, if anywhere?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> GitHub Pages serves static files only, so the site as hosted has nowhere to run an endpoint. <a class="src" href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer" title="Pages configuration and latest build for this repository — read 2026-11-16">I2-S14</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether the account holder will provide any hosting (serverless function, small service, or self-hosted analytics appliance) for a privacy-preserving sink.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> Decides whether measurement stays device-side (D-16 as shipped) or gains site-wide counts; without an answer the ledger stays per-device, which is honest but partial.</div>
+</td>
+<td class="small"><b>How to find out:</b> Owner decision; any choice is recorded as one line in the coordination log. Nothing to research — the constraint is ownership, not information.</td>
+<td class="small"><b>If unanswered:</b> The device-side ledger remains the measurement path; no third-party script is added as a substitute.</td>
+<td><a href="#D-20">D-20</a></td></tr><tr id="Q15"><td class="lead-cell"><span class="mono">Q15</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>Who will create and verify the Search Console property for this site?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> Property creation and ownership verification are done by the site&#x27;s owner in Search Console; no official Amazon source plays a part. <a class="src" href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer" title="Pages configuration and latest build for this repository — read 2026-11-16">I2-S14</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether the account holder wants the property created at all, and under which account.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> The brief asks for topics chosen from measured queries; query measurement is impossible until a verified property exists, and no agent can complete ownership verification.</div>
+</td>
+<td class="small"><b>How to find out:</b> Owner creates/verifies the property and records it; the sitemap is then submitted from Search Console.</td>
+<td class="small"><b>If unanswered:</b> Topic choice keeps using the on-site ledger only, and no query claim is made.</td>
+<td><a href="#D-21">D-21</a></td></tr><tr id="Q16"><td class="lead-cell"><span class="mono">Q16</span><br><span class="badge b-mute">Medium</span></td>
+<td><strong>Does the account holder approve the fortnightly cadence and the five-event definitions, or adjust them?</strong>
+  <div class="small" style="margin-top:6px"><b>Known:</b> The cadence (one guide per fortnight, monthly measurement review, quarterly compliance re-read) and the five events are this project&#x27;s own editorial definitions, adopted 2026-11-17 so work could proceed on a stated default. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></div>
+  <div class="small" style="margin-top:4px"><b>Not known:</b> Whether the account holder prefers a different rhythm, different events, or a different privacy trade-off.</div>
+  <div class="small" style="margin-top:4px"><b>Why it decides things:</b> A cadence is a commitment made in the owner&#x27;s name; the events define every future &#x27;measured&#x27; statement. Both should be ratified, not just adopted.</div>
+</td>
+<td class="small"><b>How to find out:</b> Owner review of site/measure.html and decisions D-16/D-17, with the Accept/Reject/Defer controls; the recorded choice becomes the standing policy.</td>
+<td class="small"><b>If unanswered:</b> The adopted defaults stay in force, clearly labelled as adopted-by-default on the measurement page.</td>
+<td><a href="#D-16">D-16</a>, <a href="#D-17">D-17</a></td></tr></tbody></table></div>
 
 <h2 id="discovery">How to discover the missing information</h2>
 <p>Nine concrete actions, each with the official page to read, the person who can do it, and the output that closes the question.</p>
@@ -560,7 +823,7 @@
 <td><a href="https://affiliate-program.amazon.com/" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr><tr id="DA-2"><td class="lead-cell"><span class="mono">DA-2</span></td>
 <td>Confirm intent by opening the three short links and comparing titles, or by supplying intended ASINs</td><td><a href="#Q2">Q2</a>, <a href="#Q12">Q12</a></td>
 <td class="small">Owner.</td><td class="small">A yes/no per link, recorded with the date. The three short-link tokens to open are B04G1MEwY, B02NbDxp3 and B00hJ57DV, prefixed link.amazon/ — typed into a browser, not linked from this site, because an outbound shortener link would obscure the Amazon destination (6(w), 6(v)).</td>
-<td><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored">official page</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener noreferrer sponsored" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></td></tr><tr id="DA-3"><td class="lead-cell"><span class="mono">DA-3</span></td>
+<td><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer">official page</a> <a class="src" href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored noopener noreferrer" title="link.amazon/B04G1MEwY — observed redirect — read 2026-11-16">I2-S07</a></td></tr><tr id="DA-3"><td class="lead-cell"><span class="mono">DA-3</span></td>
 <td>Read the qualifying-sales figure and Creators API eligibility in the Associates dashboard</td><td><a href="#Q4">Q4</a></td>
 <td class="small">Account holder.</td><td class="small">Eligible / not eligible, with the date, and — only once eligible — a decision to enable API-sourced price and rating display with the required timestamp and disclaimer.</td>
 <td><a href="https://affiliate-program.amazon.com/creatorsapi" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" target="_blank" rel="noopener noreferrer" title="Creators API: Welcome / Introduction — operations and prerequisites — read 2026-11-16">I2-S04</a></td></tr><tr id="DA-4"><td class="lead-cell"><span class="mono">DA-4</span></td>
@@ -581,7 +844,16 @@
 <td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr><tr id="DA-9"><td class="lead-cell"><span class="mono">DA-9</span></td>
 <td>Have the disclosure wording and placement reviewed against both the §5 text and the FTC placement guidance</td><td><a href="#Q10">Q10</a></td>
 <td class="small">Owner and reviewer.</td><td class="small">A signed-off banner sentence and a near-CTA sentence.</td>
-<td><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a></td></tr></tbody></table></div>
+<td><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener noreferrer" title="Associates Program Operating Agreement — read 2026-11-16">I2-S01</a></td></tr><tr id="DA-10"><td class="lead-cell"><span class="mono">DA-10</span></td>
+<td>Record the hosting decision for a measurement endpoint: none, serverless function beside the static site, existing infrastructure, or a self-hosted analytics appliance</td><td><a href="#Q14">Q14</a></td>
+<td class="small">Account holder only — the endpoint runs on infrastructure only they control.</td><td class="small">One line in the coordination log naming the choice; if hosting is chosen, its URL and the payload rule (five events, no identifiers).</td>
+<td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer" title="Pages configuration and latest build for this repository — read 2026-11-16">I2-S14</a></td></tr><tr id="DA-11"><td class="lead-cell"><span class="mono">DA-11</span></td>
+<td>Create and verify a Search Console property for this site and submit sitemap.xml from it</td><td><a href="#Q15">Q15</a></td>
+<td class="small">Account holder only — ownership verification cannot be done by an agent.</td><td class="small">A verified property; measured queries available to the monthly review roughly a month later.</td>
+<td><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/latest" target="_blank" rel="noopener noreferrer" title="Pages configuration and latest build for this repository — read 2026-11-16">I2-S14</a></td></tr><tr id="DA-12"><td class="lead-cell"><span class="mono">DA-12</span></td>
+<td>Ratify or adjust the cadence and the five-event definitions on the measurement page</td><td><a href="#Q16">Q16</a></td>
+<td class="small">Account holder, using the Accept/Reject/Defer controls on the decision page.</td><td class="small">A recorded decision per proposal; the measurement page updated to match.</td>
+<td><a href="https://kanlerxz87-cyber.github.io/Zone3/site/measure.html" target="_blank" rel="noopener noreferrer">official page</a> <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Agent Terms) — read 2026-11-16">I2-S02</a></td></tr></tbody></table></div>
 
 <h2 id="prompts">Prompt pack</h2>
 <p>If you take these decisions to a design or content session, paste these. Each one is written to produce work that can be checked, and each carries its guardrails with it.</p>
@@ -646,7 +918,9 @@
     <p class="foot-small"><a href="evidence.html">How we know — sources and verification log</a> · <a href="answers.html">Open questions</a><a href="style-guide.html">Our rules</a><a href="decisions.html">Suggestions &amp; decisions</a> · <a href="front-door.html">Front door (audit dashboard)</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
   </div>
 </footer>
-<script src="assets/site.js" defer></script>
 <script src="../assets/track.js" defer></script>
+<!-- z3:footer -->
+<footer class="z3-foot" role="contentinfo"><div class="z3-wrap"><p class="z3-disc">As an Amazon Associate I earn from qualifying purchases.</p><p class="z3-foot-small">Links to Amazon are marked sponsored. This site is not operated by Amazon. Titles, ASINs and breadcrumbs are as observed on the dates shown; no price, rating or forecast is published here.</p><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px"><div><h4>Read</h4><nav aria-label="Read"><a href="../index.html">Front page</a><a href="../guides/index.html">Guides</a><a href="../articles/index.html">Research Desk articles</a><a href="../read/index.html">The Crisp Report</a><a href="../site/index.html">Reader site</a></nav></div><div><h4>Products and pricing</h4><nav aria-label="Products and pricing"><a href="../intent-record/index.html">Product-intent record</a><a href="../products/index.html">Products</a><a href="../pricing/index.html">Pricing</a><a href="../commission/index.html">Commission</a><a href="../reviews/index.html">Reviews</a><a href="../niches/index.html">Niches</a></nav></div><div><h4>Governance</h4><nav aria-label="Governance"><a href="../publication-pass.html">This pass and flagged for review</a><a href="../measurement/index.html">Measurement (counter off)</a><a href="../brief-status/index.html">Brief status</a><a href="../executive-summary/index.html">Executive summary</a><a href="../compliance/index.html">Compliance</a><a href="../agent-terms/index.html">Agent terms</a><a href="../methodology/index.html">Methodology</a><a href="../requirements/index.html">Requirements</a><a href="../sources/index.html">Sources</a><a href="../verification.html">Verification log</a><a href="../flagged/index.html">Flagged (all items)</a></nav></div><div><h4>Dashboards</h4><nav aria-label="Dashboards"><a href="../dashboard/index.html">Dashboard</a><a href="../dashboard-register.html">Register (previous front page)</a><a href="../campaigns/index.html">Campaigns</a><a href="../content/index.html">Content</a><a href="../repo-review/index.html">Repo review</a><a href="../suggestions.html">Suggestions</a><a href="../decision-queue.html">Decision queue</a><a href="../design-brief.html">Design brief</a></nav></div><div><h4>Feeds</h4><nav aria-label="Feeds"><a href="../feed.xml">RSS feed</a><a href="../sitemap.xml">Sitemap</a></nav></div></div></div></footer>
+<!-- /z3:footer -->
 </body>
 </html>

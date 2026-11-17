@@ -1,7 +1,7 @@
 {
-  "retrieved": "2026-11-16",
-  "session": "757efebc",
-  "note": "The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. Updated 2026-11-17 by session 0c4c4cb6: Q1 answered (tag shopnow047c-20 recorded, validation pending 0C4-F-04), Q2 extended to five links, category-scope question added as 0C4-Q-16, SUG-05 unblocked to do-next, new rows 0C4-S-01..03 proposed.",
+  "retrieved": "2026-11-17",
+  "session": "757efebc; extended 2026-11-17 by cbb03ec7 (CBB-Q-01..03, CBB-D-01..02, CBB-M-01; additive only); extended 2026-11-17 by 0c4c4cb6 (0C4-Q-16..18, 0C4-S-01..03, Q1/757-M-01 answered, SUG-05/757-S-07/08 unblocked)",
+  "note": "The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. || The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. Updated 2026-11-17 by session 0c4c4cb6: Q1 answered (tag shopnow047c-20 recorded, validation pending 0C4-F-04), Q2 extended to five links, category-scope question added as 0C4-Q-16, SUG-05 unblocked to do-next, new rows 0C4-S-01..03 proposed.",
   "states": {
     "do-now": "Recommended for the first pass. Cheap, unblocked, and removes a visible defect.",
     "do-next": "Recommended, but it depends on a decision or a design pass.",
@@ -393,6 +393,74 @@
       ]
     },
     {
+      "id": "CBB-SUG-01",
+      "origin": "cbb03ec7",
+      "title": "Validate the supplied tracking ID, then tag one Special Link per product",
+      "area": "Monetisation",
+      "what": "Confirm shopnow047c-20 in the Associates console, build exactly one canonical /dp/ Special Link per product, test destination and tracking report for each, and only then scale tagged links across the site.",
+      "recommendation": "Do next",
+      "priority": "P1",
+      "effort": "S",
+      "risk": "High",
+      "blocked_by": [
+        "CBB-Q-01",
+        "SUG-05"
+      ],
+      "status": "blocked",
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "CBB-SUG-02",
+      "origin": "cbb03ec7",
+      "title": "Resolve the two-category scope before the next content batch",
+      "area": "Editorial scope",
+      "what": "Owner chooses: (a) two-category site (air fryers + meat thermometers) with category pages and guides for both, or (b) air-fryer site that keeps the two thermometer links as observed-only rows.",
+      "recommendation": "Do next",
+      "priority": "P1",
+      "effort": "S",
+      "risk": "Medium",
+      "blocked_by": [
+        "CBB-Q-03"
+      ],
+      "status": "blocked",
+      "src": [
+        "S71",
+        "S74"
+      ]
+    },
+    {
+      "id": "CBB-SUG-03",
+      "origin": "cbb03ec7",
+      "title": "Stand up the measurement set-up the brief specifies (click counter + five events)",
+      "area": "Measurement",
+      "what": "Pick the analytics stack (Q8/DEC-03), deploy a privacy-preserving outbound-click counter and a self-hosted endpoint, and record the five defined events before more content is published. The five event definitions are not in this repository and must come from the owner.",
+      "recommendation": "Do next",
+      "priority": "P1",
+      "effort": "M",
+      "risk": "Low",
+      "blocked_by": [
+        "Q8"
+      ],
+      "status": "blocked",
+      "repo": "campaigns.html"
+    },
+    {
+      "id": "CBB-SUG-04",
+      "origin": "cbb03ec7",
+      "title": "Extend feed.xml to carry the Research Desk articles as well as the guides",
+      "area": "Feeds",
+      "what": "Add the four Research Desk articles to the shipped RSS feed alongside the four guides, through the feed's own owner generator (session aebf0747), and re-check autodiscovery after any generator run.",
+      "recommendation": "Do next",
+      "priority": "P2",
+      "effort": "S",
+      "risk": "Low",
+      "blocked_by": [],
+      "status": "proposed",
+      "repo": "feed.xml"
+    },
+    {
       "id": "0C4-S-01",
       "origin": "Session 0c4c4cb6 (analytics contract)",
       "title": "Deploy the analytics endpoint and switch the tracker on",
@@ -679,6 +747,16 @@
         "S01",
         "S07"
       ]
+    },
+    {
+      "id": "CBB-M-01",
+      "item": "Verification that shopnow047c-20 is the tag assigned to this Associates account (the value itself was supplied 2026-11-17 - see CBB-Q-01)",
+      "needed_for": "Closing CBB-Q-01: verifying the tag is what lets any link on the site accrue commission (S02).",
+      "severity": "High",
+      "how": "Owner opens the Associates console and confirms that shopnow047c-20 is the tracking ID assigned to this account, then runs the one-link-per-product Special Link test and records the dated result.",
+      "src": [
+        "S02"
+      ]
     }
   ],
   "questions": [
@@ -686,9 +764,9 @@
       "id": "Q1",
       "question": "What is the Associates tag to use on every Special Link?",
       "have": "Special Links must use the assigned Associates ID, and the tag must appear as a URL parameter in every link to an Amazon site. A purchase is disqualified if links are not properly formatted.",
-      "missing": "RESOLVED 2026-11-17: the owner's brief supplied 'shopnow047c-20'; recorded in data/special-links.json and now on the five published Special Links. Remaining unknown: whether the tag is active and each click reports (0C4-F-04, Associates Central only).",
+      "missing": "The tag value itself. Nothing in this repository contains it. || RESOLVED 2026-11-17: the owner's brief supplied 'shopnow047c-20'; recorded in data/special-links.json and now on the five published Special Links. Remaining unknown: whether the tag is active and each click reports (0C4-F-04, Associates Central only).",
       "why": "Blocks every conversion element on the site. Until it exists, no published link can earn.",
-      "how": "Read it from the Associates account or SiteStripe once enrolled.",
+      "how": "Read it from the Associates account or SiteStripe once enrolled. || Read it from the Associates account or SiteStripe once enrolled.",
       "blocks": [
         "SUG-05",
         "757-S-07",
@@ -696,8 +774,7 @@
       ],
       "src": [
         "S02"
-      ],
-      "answered": "shopnow047c-20 — owner-supplied 2026-11-17 (brief), recorded same day; public identifier by design, not a credential."
+      ]
     },
     {
       "id": "Q2",
@@ -904,6 +981,52 @@
       ]
     },
     {
+      "id": "CBB-Q-01",
+      "question": "Is shopnow047c-20 the Associates tag assigned to this account, and has one Special Link per product been tested?",
+      "have": "The owner supplied the value on 2026-11-17 (Selected Tracking ID). It matches the repository's tag pattern and is recorded in config/platform.json and data/shop/config.json. No link on the site carries it (CBB-F-02).",
+      "missing": "Associates-console confirmation that the tag is assigned to this account, and the brief's own test: one Special Link per product with destination and tracking report confirmed.",
+      "why": "Program Policies require Special Links to use the assigned Associates ID as a URL parameter, and a purchase is disqualified when links were not properly formatted (S02). Monetisation and every conversion number depend on this one confirmation.",
+      "how": "Owner opens the Associates console, confirms the tag, builds one canonical /dp/ Special Link per product, clicks it once, and checks the reporting shows the click. Record the date and evidence on this board.",
+      "blocks": [
+        "SUG-05",
+        "CBB-SUG-01"
+      ],
+      "src": [
+        "S02"
+      ]
+    },
+    {
+      "id": "CBB-Q-02",
+      "question": "Do the two new links (product 4 and product 5) open the products that were intended?",
+      "have": "Observed on 2026-11-17: link.amazon/B0c8moW59 -> amazon.com/dp/B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and link.amazon/B0f3GKalj -> amazon.com/dp/B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer), each confirmed by two fetches (S70-S75). Both tokens are 9 characters and /dp/<token> returns Page Not Found (S06, S72, S75).",
+      "missing": "The intended 10-character ASIN or official listing URL for each of the two links (owner input; cannot be inferred).",
+      "why": "Product identity is the load-bearing input for every product row, guide and comparison that mentions these links; the same open question already exists for the original three (Q2, FLG-002).",
+      "how": "Owner states the intended ASIN per link; record it in the intent record (intended ASIN, official listing URL, confirmation date, source) without merging it with the observed redirect fields.",
+      "blocks": [
+        "CBB-SUG-02"
+      ],
+      "src": [
+        "S06",
+        "S71",
+        "S74"
+      ]
+    },
+    {
+      "id": "CBB-Q-03",
+      "question": "Is the site's scope five products across two categories, or air fryers only?",
+      "have": "Two of the five observed destinations are meat thermometers in a different Amazon category (S71, S74); the guides, comparison and buying guide are air-fryer scoped; the shop surface already publishes both category pages.",
+      "missing": "An owner scope decision: (a) two-category site covering air fryers and meat thermometers, or (b) air-fryer site that records the thermometer links as observed-only rows.",
+      "why": "The scope decides the next content batch, the category pages, and how the commission category is framed; writing guides before the decision risks content the owner then has to remove.",
+      "how": "Owner picks (a) or (b) and records it on this board; the next publishing session implements only the chosen scope.",
+      "blocks": [
+        "CBB-SUG-02"
+      ],
+      "src": [
+        "S71",
+        "S74"
+      ]
+    },
+    {
       "id": "0C4-Q-16",
       "question": "Is Zone3 an air-fryer desk only, or does it cover adjacent kitchen gadgets (the two submitted meat thermometers, P4/P5)?",
       "have": "Intake records both new links and their observed destinations; the site's niche, nav, guides and category tags are air-fryer-only; no document in the repository states a scope boundary.",
@@ -1021,6 +1144,33 @@
       "src": [
         "S02"
       ]
+    },
+    {
+      "id": "CBB-D-01",
+      "action": "Confirm shopnow047c-20 in the Associates console, then test one Special Link per product (destination + tracking report) and record the dated evidence before any tagged link is published.",
+      "blocks": [
+        "CBB-Q-01"
+      ],
+      "src": [
+        "S02"
+      ],
+      "discovers": "CBB-Q-01, and unblocks every tagged conversion element on the site",
+      "effort": "Minutes inside the Associates console, once the account exists; the one-per-product click test takes one click per product"
+    },
+    {
+      "id": "CBB-D-02",
+      "action": "Re-fetch all five submitted short links on the day any guide is published and record each destination beside its source ID, exactly as the three-link rounds did (S11-S13, S52-S54, S69).",
+      "blocks": [
+        "CBB-Q-02"
+      ],
+      "src": [
+        "S70",
+        "S71",
+        "S73",
+        "S74"
+      ],
+      "discovers": "CBB-Q-02 and any destination drift before a guide is published",
+      "effort": "One fetch round per publication day (five links), same as the three-link rounds"
     }
   ],
   "workflow": [
@@ -1031,5 +1181,5 @@
     "Only then run the design brief's prompt against the accepted scope.",
     "Re-run the release gate after every change. A page that cannot trace a claim to an official source does not ship."
   ],
-  "relationship_note": "A parallel session shipped a reader-facing decision board at /site/decisions.html on 2026-11-16, with its own proposals, questions, discovery actions and prompt pack. This console is the audit-side counterpart: it consolidates all 25 proposals from the earlier sessions and this one into a single triage with sizing, and it splits the register into what is sourced and what is missing. Use either; the point of both is that a decision is recorded before anything is implemented."
+  "relationship_note": "A parallel session shipped a reader-facing decision board at /site/decisions.html on 2026-11-16, with its own proposals, questions, discovery actions and prompt pack. This console is the audit-side counterpart: it consolidates all 22 proposals from both earlier sessions and this one into a single triage with sizing, and it splits the register into what is sourced and what is missing. Use either; the point of both is that a decision is recorded before anything is implemented; extended 2026-11-17 by 0c4c4cb6 (now 29 proposals, 0C4-Q-16..18 and 0C4-S-01..03 added)."
 }

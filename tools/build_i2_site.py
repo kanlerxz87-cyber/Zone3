@@ -23,8 +23,8 @@ from __future__ import annotations
 
 import html
 import json
-import pathlib
 import re
+import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "i2"
@@ -101,8 +101,13 @@ NAV = [
     ("products.html", "The three air fryers"),
     ("guides/index.html", "Buying guides"),
     ("evidence.html", "How we know"),
+    ("measure.html", "How we measure"),
+    ("intent-record.html", "Intent record"),
     ("decisions.html", "Suggestions &amp; decisions"),
 ]
+# Added by session ded63349 (2026-11-17): measure.html and intent-record.html implement the
+# brief's measurement, cadence, feed and product-intent priorities. They live in this list so
+# every generated page carries them in the single reader navigation group.
 
 # Pages live at two depths: site/*.html and site/guides/*.html
 DEPTH = {}
@@ -132,7 +137,7 @@ def page(path: str, title: str, body: str, lead: str = "", description: str = ""
 <title>{e(title)} · {e(SITE_NAME)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/site/{e(path)}">
-<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Air Fryer Field Notes — new guides and field notes" href="{rel('../feed.xml')}">
 <link rel="stylesheet" href="{rel('assets/site.css')}">
 </head>
 <body>
@@ -169,7 +174,37 @@ def page(path: str, title: str, body: str, lead: str = "", description: str = ""
 """
     target = OUT / path
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(doc, encoding="utf-8")
+    target.write_text(mark_sponsored(doc), encoding="utf-8")
+
+
+
+# ---------------------------------------------------------------------------
+# Sponsored rel (session ded63349, 2026-11-17; proposal D-19). Every outbound
+# product link this generator emits carries rel="sponsored" at write time, so
+# the emitted pages already satisfy tools/apply_sponsored.py --check and the
+# G11 rule in tools/i2_gate.py without a second rewriting pass over site/.
+# tools/apply_sponsored.py remains the canonical enforcer for the pages other
+# generators own; the pattern here must match the one defined there.
+MARK_PRODUCT_HREF = re.compile(
+    r'https?://[^\"\']*link\.amazon/[^\"\']*'
+    r'|https?://[^\"\']*amazon\.[a-z]{2,3}(?:/[^\"\']*)?/(?:dp/[A-Z0-9]{10}|gp/product/[A-Z0-9]{10})[^\"\']*', re.I)
+MARK_ANCHOR_RE = re.compile(r'<a\b[^>]*>', re.I)
+
+
+def mark_sponsored(html: str) -> str:
+    def fix(m):
+        tag = m.group(0)
+        href = re.search(r'href="([^"]*)"', tag)
+        if not href or not MARK_PRODUCT_HREF.search(href.group(1)):
+            return tag
+        rel = re.search(r'rel="([^"]*)"', tag)
+        if rel:
+            if "sponsored" in rel.group(1).split():
+                return tag
+            tokens = [t for t in ("sponsored",) if t not in rel.group(1).split()]
+            return tag[:rel.start(1)] + " ".join(tokens + rel.group(1).split()) + tag[rel.end(1):]
+        return tag[:-1].rstrip() + ' rel="sponsored noopener noreferrer">'
+    return MARK_ANCHOR_RE.sub(fix, html)
 
 
 # --------------------------------------------------------------------------- css
@@ -187,6 +222,7 @@ CSS = r"""
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--paper-2);color:var(--ink);font:16px/1.6 var(--sans);font-variant-numeric:tabular-nums}
 a{color:var(--accent-ink);text-underline-offset:2px}
 a:hover{color:var(--accent-2)}
@@ -209,7 +245,7 @@ a:hover{color:var(--accent-2)}
 .brand-text strong{font-family:var(--serif);font-size:18px;letter-spacing:-.2px}
 .brand-text small{color:var(--ink-3);font-size:12px}
 .top nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
-.top nav a{padding:8px 12px;border-radius:8px;color:var(--ink-2);text-decoration:none;font-size:14.5px;font-weight:520}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:8px;color:var(--ink-2);text-decoration:none;font-size:14.5px;font-weight:520}
 .top nav a:hover{background:var(--paper-3);color:var(--ink)}
 .top nav a.on{background:var(--accent);color:#fff}
 
@@ -267,7 +303,7 @@ th{background:var(--paper-3);font-size:11.5px;text-transform:uppercase;letter-sp
 tbody tr:hover{background:#fbfcfe}
 tbody tr:last-child td{border-bottom:0}
 td.lead-cell{font-weight:600;color:var(--ink)}
-.src{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent-ink);background:var(--accent-wash);border:1px solid #cfe8de;border-radius:6px;padding:1px 6px;text-decoration:none;white-space:nowrap;margin:1px 2px 1px 0}
+.src{display:inline-flex;align-items:center;min-height:24px;font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent-ink);background:var(--accent-wash);border:1px solid #cfe8de;border-radius:6px;padding:1px 6px;text-decoration:none;white-space:nowrap;margin:1px 2px 1px 0}
 .src:hover{background:#d9efe7;color:var(--accent-ink)}
 .blank{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:650;color:var(--amber);background:var(--amber-wash);border:1px solid var(--amber-line);border-radius:999px;padding:1px 9px}
 .blank-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);display:inline-block}
@@ -310,7 +346,7 @@ td.lead-cell{font-weight:600;color:var(--ink)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--paper)}
 .seg label{position:relative}
 .seg input{position:absolute;opacity:0;width:1px;height:1px}
-.seg span{display:inline-block;padding:7px 13px;font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;border-right:1px solid var(--line)}
+.seg span{display:inline-flex;align-items:center;min-height:44px;padding:7px 13px;font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;border-right:1px solid var(--line)}
 .seg label:last-child span{border-right:0}
 .seg input:checked + span{background:var(--accent);color:#fff}
 .seg input:focus-visible + span{outline:2px solid var(--accent-2);outline-offset:-2px}
@@ -335,11 +371,34 @@ td.lead-cell{font-weight:600;color:var(--ink)}
   .top-in{gap:10px;min-height:0;padding:10px 16px}
   .top nav{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
   .top nav a{white-space:nowrap}
+  th,td{padding:9px 10px}
+  .tablewrap{border-radius:12px}
+  .btn{min-height:44px}
   main{padding:22px 0 50px}
   .wrap{padding:0 16px}
   .disclose-bar .wrap{padding:9px 16px}
 }
 @media print{.disclose-bar,.top nav,.decide,.decision-tools{display:none}body{background:#fff}}
+/* ---- Mobile-first pass (session ded63349, 2026-11-17; proposal D-22): fluid type
+   scale, 44px tap targets on primary controls, comfortable table cells on small
+   screens, and a sticky quick-compare bar on guide pages. ---- */
+h1{font-size:clamp(1.7rem,4.2vw,2.35rem)}
+h2{font-size:clamp(1.25rem,2.6vw,1.6rem)}
+@media(max-width:720px){
+  h1{font-size:clamp(1.55rem,6vw,2.1rem)}
+  h2{font-size:clamp(1.18rem,4.6vw,1.45rem)}
+  .top nav a,.btn,a.btn,.fd-btn,button,input[type="submit"],input[type="radio"]+span,.msticky a{min-height:44px}
+  .top nav a,.btn,a.btn,.fd-btn,button,.msticky a{display:inline-flex;align-items:center}
+  td,th{padding:.72rem .6rem}
+  table{font-size:.94rem}
+  .card,.prop{padding:16px}
+}
+.msticky{display:none}
+@media(max-width:720px){
+  .msticky{display:flex;position:sticky;bottom:0;z-index:9;gap:10px;background:#fff;border-top:2px solid var(--line);padding:10px 2px;margin-top:30px}
+  .msticky a{flex:1;text-align:center;font-weight:700;font-size:.92rem;border:1.6px solid var(--line);border-radius:999px;padding:12px 10px;background:var(--accent);color:#fff;border-color:var(--accent)}
+  .msticky a+a{background:#fff;color:var(--ink);border-color:var(--line)}
+}
 """
 
 
@@ -381,7 +440,7 @@ def product_card(p, cta_state="disabled") -> str:
   <ul class="facts">{facts}</ul>
   <div class="card-foot">
     {cta}
-    <p class="prov">Read from the <a href="{e(p['destination_url'])}" target="_blank" rel="noopener noreferrer">Amazon listing {e(p['destination_asin'])}</a> on {e(BUILT)}. {srcs(p['sources'])}</p>
+    <p class="prov">Read from the <a href="{e(p['destination_url'])}" data-ref="{e(p['ref'])}" target="_blank" rel="noopener noreferrer">Amazon listing {e(p['destination_asin'])}</a> on {e(BUILT)}. {srcs(p['sources'])}</p>
   </div>
 </article>"""
 
@@ -529,7 +588,7 @@ def build_products():
 {comm_table}
 
 <h2>How to read the rest of this site</h2>
-<p>Start with the <a href="{rel('guides/index.html')}">buying guides</a>, which answer one question at a time using only the specifications above. The <a href="{rel('evidence.html')}">evidence page</a> holds the source register, the line-by-line verification log and the open items. The <a href="{rel('decisions.html')}">decisions page</a> holds every proposal for improving this site, with a control to accept, reject or defer each one.</p>
+<p>Start with the <a href="{rel('guides/index.html')}">buying guides</a>, which answer one question at a time using only the specifications above. The <a href="{rel('evidence.html')}">evidence page</a> holds the source register, the line-by-line verification log and the open items. The <a href="{rel('decisions.html')}">decisions page</a> holds every proposal for improving this site, with a control to accept, reject or defer each one. The <a href="{rel('intent-record.html')}">product-intent record</a> states, link by link, what was confirmed about each submitted URL and what only the owner can confirm. The <a href="{rel('measure.html')}">measurement page</a> defines the five events counted on this site and states what is never recorded.</p>
 """
     page("products.html", "The three air fryers",
          body, lead="Everything this site knows about the three products, and nothing it does not.",
@@ -629,19 +688,27 @@ def build_guides():
               f'<thead><tr><th>Fact</th><th>P1 · CHEFMAN dual basket</th><th>P2 · Emeril Lagasse oven</th>'
               f'<th>P3 · Chefman single basket</th><th>Source</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
 
-    body = GUIDE["body"]
-    body = body.replace("[TABLE]", gtable)
-    body = body.replace("[SRC-P1-P3]", srcs(["I2-S10", "I2-S11", "I2-S12"]))
-    body = body.replace("[SRC-FTC]", srcs(["I2-S06"]))
-    body = body.replace("[SRC-2b]", srcs(["I2-S02"]))
-    body = body.replace("[SRC-6t]", srcs(["I2-S02"]))
-
     header = f"""
 <p class="small"><a href="index.html">Buying guides</a> › Dual-basket vs single-basket</p>
 <h1>{e(GUIDE['title'])}</h1>
 <p class="lede">{e(GUIDE['short'])}</p>
 <p class="small">Published {e(BUILT)} · Written and fact-checked against the listings on {e(BUILT)} · No first-hand testing claimed</p>
 """
+    # Mobile quick-compare bar (D-22): sticky on small screens so a reader partway
+    # through a guide is one tap from the comparison it rests on.
+    # Guide pages always live at site/guides/ (depth 1), so the prefixes are fixed;
+    # rel() cannot be used here because DEPTH is set by page() at render time.
+    msticky = ('<nav class="msticky" aria-label="Quick compare">'
+               '<a href="../products.html">Compare the three</a>'
+               '<a href="index.html">More guides</a></nav>')
+    body = GUIDE["body"]
+    body = body.replace("[TABLE]", gtable)
+    body = body.replace("[SRC-P1-P3]", srcs(["I2-S10", "I2-S11", "I2-S12"]))
+    body = body.replace("[SRC-FTC]", srcs(["I2-S06"]))
+    body = body.replace("[SRC-2b]", srcs(["I2-S02"]))
+    body = body.replace("[SRC-6t]", srcs(["I2-S02"]))
+    body = body + msticky
+
     page("guides/" + GUIDE["slug"], GUIDE["title"], header + body,
          description="Dual-basket versus single-basket air fryers compared on what the listings state, with the unknowns named.",
          depth=1)
@@ -1091,6 +1158,67 @@ JS = r"""
   if (print) print.addEventListener('click', function(){ window.print(); });
 
   refreshOutputs();
+})();
+
+/* ---- First-party event ledger (session ded63349, 2026-11-17; proposal D-16) ----
+   Five defined events, recorded on this device only: no cookies, no third-party
+   requests, no identifiers, no referrer storage — just event name, UTC timestamp,
+   page path and (for product clicks) which product card. Participation Requirements
+   6(s) bans artificial clicks or sessions: this ledger counts real clicks made by a
+   real visitor on this site's own pages, and never touches Amazon sessions. */
+(function(){
+  var KEY = 'z3-events-v1', MAX = 500;
+  var EVENTS = { page_view:1, outbound_product_click:1, comparison_open:1, guide_read_through:1, decision_open:1 };
+  function load(){ try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e){ return []; } }
+  function save(a){ try { localStorage.setItem(KEY, JSON.stringify(a.slice(-MAX))); } catch(e){} }
+  function rec(name, data){
+    if (!EVENTS[name]) return;
+    var a = load();
+    a.push({ t: new Date().toISOString(), e: name,
+             p: location.pathname.replace(/^\/Zone3/, ''),
+             r: (data && data.ref) ? data.ref : null });
+    save(a);
+    try { document.dispatchEvent(new CustomEvent('z3-event', { detail: { name: name } })); } catch(e){}
+  }
+  rec('page_view');
+  document.addEventListener('click', function(ev){
+    var t = ev.target;
+    var a = t && t.closest ? t.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('/dp/') > -1 || href.indexOf('link.amazon') > -1) {
+      rec('outbound_product_click', { ref: a.getAttribute('data-ref') || '' });
+    } else if (href.indexOf('compare') > -1 || (a.textContent || '').toLowerCase().indexOf('compare') > -1
+               || href.indexOf('products.html') > -1) {
+      rec('comparison_open');
+    } else if (href.indexOf('decisions.html') > -1 || href.indexOf('answers.html') > -1) {
+      rec('decision_open');
+    }
+  }, true);
+  if (location.pathname.indexOf('/guides/') > -1) {
+    var readFired = false;
+    window.addEventListener('scroll', function(){
+      if (readFired) return;
+      var d = document.documentElement;
+      var total = (d.scrollHeight || 1) - (d.clientHeight || 1);
+      var progress = (d.scrollTop || document.body.scrollTop || 0) / (total || 1);
+      if (progress > 0.92) { readFired = true; rec('guide_read_through'); }
+    }, { passive: true });
+  }
+  window.z3Ledger = {
+    events: Object.keys(EVENTS),
+    all: load,
+    record: rec,
+    clear: function(){ try { localStorage.removeItem(KEY); } catch(e){} },
+    csv: function(){
+      var rows = ['timestamp,event,path,product'];
+      load().forEach(function(x){
+        var cells = [x.t, x.e, x.p, x.r || ''];
+        rows.push(cells.map(function(v){ return '"' + String(v).replace(/"/g, '""') + '"'; }).join(','));
+      });
+      return rows.join('\n');
+    }
+  };
 })();
 """
 

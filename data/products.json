@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-17 — five submitted links: P1-P3 from the original brief (re-verified through 2026-11-16) plus P4/P5 added by session 0c4c4cb6 from the 2026-11-17 brief (S70-S75). Every product now carries a product_intent block (owner-confirmation fields, all blank) separate from redirect_observed.",
+  "retrieved": "2026-11-13",
   "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038).",
   "products": [
     {
@@ -312,7 +312,7 @@
       "direct_check": {
         "url": "https://www.amazon.com/dp/B0c8moW59",
         "result": "Page Not Found",
-        "source": "S71"
+        "source": "S72"
       },
       "redirect_observed": {
         "final_url": "https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&_encoding=UTF8&sp_csd=d2lkZ2V0TmFtZT1zcF9waG9uZV9ob21lcGFnZV9ibGVuZGVk&language=en_US&content-id=amzn1.sym.4582c56b-139d-4168-9db2-822c68889360&ie=UTF8&btn_ref=srctok-633f9dc54185b50f&channelId=500&plpRedirect=mhFallback",
@@ -356,7 +356,10 @@
         "0C4-F-02",
         "0C4-F-03",
         "FLG-001",
-        "FLG-002"
+        "FLG-002",
+        "CBB-F-01",
+        "CBB-F-03",
+        "FLG-036"
       ],
       "sources": [
         "S02",
@@ -364,7 +367,8 @@
         "S45",
         "S70",
         "S71",
-        "S72"
+        "S72",
+        "S06"
       ],
       "observed_2026_11_17": {
         "date": "2026-11-17",
@@ -376,16 +380,16 @@
         "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
         "sources": [
           "S70",
-          "S72"
+          "S71"
         ],
         "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
       },
       "value_sources_2026_11_17": {
         "product_name": [
-          "S72"
+          "S71"
         ],
         "brand": [
-          "S72"
+          "S71"
         ],
         "price": [],
         "rating": [],
@@ -402,7 +406,7 @@
       "direct_check": {
         "url": "https://www.amazon.com/dp/B0f3GKalj",
         "result": "Page Not Found",
-        "source": "S74"
+        "source": "S75"
       },
       "redirect_observed": {
         "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-101536bcd8e0be02&channelId=500&plpRedirect=mhFallback&th=1",
@@ -446,7 +450,10 @@
         "0C4-F-02",
         "0C4-F-03",
         "FLG-001",
-        "FLG-002"
+        "FLG-002",
+        "CBB-F-01",
+        "CBB-F-03",
+        "FLG-036"
       ],
       "sources": [
         "S02",
@@ -454,7 +461,8 @@
         "S45",
         "S73",
         "S74",
-        "S75"
+        "S75",
+        "S06"
       ],
       "observed_2026_11_17": {
         "date": "2026-11-17",
@@ -466,21 +474,22 @@
         "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
         "sources": [
           "S73",
-          "S75"
+          "S74"
         ],
         "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
       },
       "value_sources_2026_11_17": {
         "product_name": [
-          "S75"
+          "S74"
         ],
         "brand": [
-          "S75"
+          "S74"
         ],
         "price": [],
         "rating": [],
         "review_count": []
       }
     }
-  ]
+  ],
+  "intake_2026_11_17": "Two further product links arrived with the owner's 2026-11-17 brief (P4 link.amazon/B0c8moW59, P5 link.amazon/B0f3GKalj) and were added by session cbb03ec7. Both identifiers are 9 characters (not ASINs, S06); both direct /dp/ checks returned Page Not Found (S72, S75); both short links were observed resolving to live listings on 2026-11-17 (P4 -> B0DHZTCNR5 S70/S71, P5 -> B0DZFD6R9Z S73/S74). Identity, price, rating and commission cells stay null (Unverified) exactly as for P1-P3; intent is unconfirmed (CBB-F-01) and the two destinations sit in a different Amazon category from the site's air-fryer editorial coverage (CBB-F-03). The tracking ID shopnow047c-20 supplied in the same brief is recorded in config/platform.json and is not embedded in any link (CBB-F-02)."
 }

@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-<title>Zone3 — Air Fryer Research Desk</title>
-<link>https://kanlerxz87-cyber.github.io/Zone3/</link>
-<description>Question-shaped air-fryer guides, comparisons and research articles, each claim linked to the official page it came from. As an Amazon Associate we earn from qualifying purchases.</description>
-<language>en-us</language>
-<lastBuildDate>Mon, 16 Nov 2026 00:00:00 +0000</lastBuildDate>
-<atom:link href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml" rel="self" type="application/rss+xml"/>
+<rss version="2.0"><channel><title>Zone3 guides</title>
+<link>https://kanlerxz87-cyber.github.io/Zone3/guides/index.html</link>
+<description>Question-shaped buyer guides from both desks of this site — the four /guides/ pages, the Air Fryer Field Notes buying guides, the Research Desk articles and The Crisp Report field notes. Working titles; every quoted listing title is checked on the date shown; no price, rating or review count is reproduced and no traffic or ranking claim is made.</description>
+<language>en</language>
+<lastBuildDate>Tue, 17 Nov 2026 09:00:00 +0000</lastBuildDate>
+<item>
+<title>Questions to ask before buying a multi-function kitchen appliance</title>
+<link>https://kanlerxz87-cyber.github.io/Zone3/guides/multi-function-questions.html</link>
+<guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/guides/multi-function-questions.html</guid>
+<pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+<description>Multi-function claims are easy to count and hard to test. Ask what each number refers to and what is in the box.</description>
+</item>
+<item>
+<title>How to assess cleanup and counter-space trade-offs</title>
+<link>https://kanlerxz87-cyber.github.io/Zone3/guides/cleanup-and-counter-space.html</link>
+<guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/guides/cleanup-and-counter-space.html</guid>
+<pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+<description>Dishwasher-safe wording is in two of the three titles. Counter space is in none of them. Here is how to check both.</description>
+</item>
+<item>
+<title>A no-hype checklist for comparing air fryer capacity</title>
+<link>https://kanlerxz87-cyber.github.io/Zone3/guides/capacity-checklist.html</link>
+<guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/guides/capacity-checklist.html</guid>
+<pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+<description>Capacity numbers on listings can measure different things. Check what the number measures before you compare two.</description>
+</item>
+<item>
+<title>Basket or oven-style air fryer: what should you compare?</title>
+<link>https://kanlerxz87-cyber.github.io/Zone3/guides/basket-or-oven-style.html</link>
+<guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/guides/basket-or-oven-style.html</guid>
+<pubDate>Tue, 17 Nov 2026 09:00:00 +0000</pubDate>
+<description>Start with the form, then check what the title says about compartments, presets and accessories.</description>
+</item>
 <item>
 <title>What “4-in-1” actually names — and what a listing leaves out</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/guides/what-four-in-one-means.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/guides/what-four-in-one-means.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Buying guides</category>
 <description>Counted claims read closely, the temperature that is worth checking, and a two-minute test you can run on any listing.</description>
 </item>
 <item>
@@ -20,7 +44,6 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/guides/dual-basket-vs-single-basket.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/guides/dual-basket-vs-single-basket.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Buying guides</category>
 <description>Two 3QT baskets are not one 6QT with a divider — what the layout changes at dinnertime, and when the single big basket wins.</description>
 </item>
 <item>
@@ -28,7 +51,6 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/guides/dishwasher-safe-baskets.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/guides/dishwasher-safe-baskets.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Buying guides</category>
 <description>The claim is about a basket, not a machine. What each listing states, and the one place the care section beats the title.</description>
 </item>
 <item>
@@ -36,7 +58,6 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/guides/capacity-maths.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/guides/capacity-maths.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Buying guides</category>
 <description>The quart figures quoted from each listing, the ratios shown as our arithmetic, and the four checks to run before you pick.</description>
 </item>
 <item>
@@ -44,31 +65,27 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/guides/air-fryer-oven-vs-basket.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/guides/air-fryer-oven-vs-basket.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Buying guides</category>
 <description>What doors, a convection cavity and six included accessories change — and why Amazon files this machine under Air Fryers, not Air Fryer Ovens.</description>
 </item>
 <item>
-<title>What Sync Finish actually does — and who a dual-basket fryer is for</title>
+<title>What Sync Finish actually does — and who a dual-basket fryer is for · Air Fryer Field Notes</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/articles/sync-finish-dual-basket.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/articles/sync-finish-dual-basket.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Field notes</category>
 <description>Sync Finish on a dual-basket air fryer explained: what the CHEFMAN listing states, what it does not, and how to tell whether the two-basket layout fits your kitchen.</description>
 </item>
 <item>
-<title>450°F Hi-Fry: what the listings promise, and what they leave out</title>
+<title>450°F Hi-Fry: what the listings promise, and what they leave out · Air Fryer Field Notes</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/articles/hi-fry-450.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/articles/hi-fry-450.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Field notes</category>
 <description>Two air fryer listings name the same Hi-Fry feature; only one states a temperature. What a high-heat finish setting is for, and how to read air-fryer titles literally.</description>
 </item>
 <item>
-<title>French-door air fryer ovens: five questions before you choose the 26-quart format</title>
+<title>French-door air fryer ovens: five questions before you choose the 26-quart format · Air Fryer Field Notes</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/site/articles/french-door-26qt.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/site/articles/french-door-26qt.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Field notes</category>
 <description>The Emeril Lagasse 26QT French Door listing states 24 presets, convection cooking and six included accessories. Five questions to decide whether the oven format fits your kitchen.</description>
 </item>
 <item>
@@ -76,7 +93,6 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/read/listing-titles.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/read/listing-titles.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>The Crisp Report</category>
 <description>Sixty characters of marketing, written to be skimmed. Five habits that turn a title into actual information.</description>
 </item>
 <item>
@@ -84,23 +100,20 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/read/getting-paid.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/read/getting-paid.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>The Crisp Report</category>
-<description>The commission rate, the click window, the payment lag and the rules about which numbers we are even allowed to print. No vague 'we may earn a commission'. Actual terms.</description>
+<description>The commission rate, the click window, the payment lag and the rules about which numbers we are even allowed to print. No vague &#x27;we may earn a commission&#x27;. Actual terms.</description>
 </item>
 <item>
 <title>French doors, Sync Finish and a 450°F button</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/read/features.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/read/features.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>The Crisp Report</category>
-<description>Three listings, twenty-odd named features, and one honest category: the ones that change what you can cook, and the ones that just change the price of the word 'multi'.</description>
+<description>Three listings, twenty-odd named features, and one honest category: the ones that change what you can cook, and the ones that just change the price of the word &#x27;multi&#x27;.</description>
 </item>
 <item>
-<title>'Dishwasher-safe' describes a part, not a machine</title>
+<title>&#x27;Dishwasher-safe&#x27; describes a part, not a machine</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/read/cleaning.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/read/cleaning.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>The Crisp Report</category>
 <description>All three listings promise it. None of them promises what most people mean by it. Here is the exact wording, and the two questions to ask instead.</description>
 </item>
 <item>
@@ -108,23 +121,20 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/read/capacity.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/read/capacity.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>The Crisp Report</category>
 <description>Quartage is the first thing printed on an air fryer listing and the least useful thing to compare. Here is the arithmetic the box skips, using three real listings.</description>
 </item>
 <item>
-<title>One of these three is on Amazon's best-seller list today</title>
+<title>One of these three is on Amazon&#x27;s best-seller list today</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/read/bestseller.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/read/bestseller.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>The Crisp Report</category>
 <description>Not the one most people would guess. What the list is, what a rank means on the day you read it, and why we publish the date.</description>
 </item>
 <item>
-<title>Where air fryers sit in Amazon's category tree - and why the category decides the commission</title>
+<title>Where air fryers sit in Amazon&#x27;s category tree - and why the category decides the commission</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/articles/where-air-fryers-sit-in-amazons-category-tree.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/articles/where-air-fryers-sit-in-amazons-category-tree.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Research Desk</category>
 <description>One breadcrumb, one row of a public rate table: how the 4.50% Kitchen rate attaches to the three listings this site tracks, and when the money actually arrives.</description>
 </item>
 <item>
@@ -132,24 +142,20 @@
 <link>https://kanlerxz87-cyber.github.io/Zone3/articles/what-you-can-say-about-a-product-you-have-not-used.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/articles/what-you-can-say-about-a-product-you-have-not-used.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Research Desk</category>
-<description>The FTC's one-line rule on experience claims, Amazon's accuracy clause, and the editorial standard this desk follows instead of fake hands-on reviews.</description>
+<description>The FTC&#x27;s one-line rule on experience claims, Amazon&#x27;s accuracy clause, and the editorial standard this desk follows instead of fake hands-on reviews.</description>
 </item>
 <item>
 <title>What an Amazon affiliate link has to look like - and why a short link can earn nothing</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/articles/what-an-amazon-affiliate-link-has-to-look-like.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/articles/what-an-amazon-affiliate-link-has-to-look-like.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Research Desk</category>
-<description>The tag rule, the link-shortener rule and the redirect rule, read from Amazon's own policy pages - plus the audit this project ran on the three links it was handed.</description>
+<description>The tag rule, the link-shortener rule and the redirect rule, read from Amazon&#x27;s own policy pages - plus the audit this project ran on the three links it was handed.</description>
 </item>
 <item>
-<title>The 24-hour window: how Amazon's shopping session actually pays</title>
+<title>The 24-hour window: how Amazon&#x27;s shopping session actually pays</title>
 <link>https://kanlerxz87-cyber.github.io/Zone3/articles/the-24-hour-window-how-amazons-cookie-pays.html</link>
 <guid isPermaLink="true">https://kanlerxz87-cyber.github.io/Zone3/articles/the-24-hour-window-how-amazons-cookie-pays.html</guid>
 <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
-<category>Research Desk</category>
 <description>24 hours, 89 days, 180 days - the three clocks inside every qualifying purchase, read from the Commission Income Statement, plus the things that quietly cancel a commission.</description>
 </item>
-</channel>
-</rss>
+</channel></rss>

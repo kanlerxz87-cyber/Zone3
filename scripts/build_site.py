@@ -88,12 +88,19 @@ def repo_link(path: str, label: str) -> str:
 
 
 def basis(rec: dict) -> str:
-    """Evidence cell for a row: official sources first, then the repository reference."""
+    """Evidence cell for a row: official sources first, then the repository reference.
+
+    Session cbb03ec7 (2026-11-17): the label is ``repo:<path>`` (no space after the colon),
+    matching the z3 build's convention, because tools/verify_site.py's V4 provenance rule
+    anchors on the literal pattern ``repo:<path>``. The previous label ("this repo: <path>")
+    rendered correctly but was never credited by the gate, so rows that only describe
+    repository state always counted as uncited.
+    """
     parts = []
     if rec.get("src"):
         parts.append(src_links(rec["src"]))
     if rec.get("repo"):
-        parts.append(repo_link(rec["repo"], "this repo: " + rec["repo"]))
+        parts.append(repo_link(rec["repo"], "repo:" + rec["repo"]))
     return " &middot; ".join(parts) or '<span class="muted">no source</span>'
 
 
@@ -514,7 +521,11 @@ def page(filename: str, title: str, body: str, lead: str = "",
         doc = _re.sub(r'(src=")([^"]+)"', _up, doc)
 
     (ROOT / filename).parent.mkdir(parents=True, exist_ok=True)
-    (ROOT / filename).write_text(doc, encoding="utf-8")
+    # session aebf0747 guard: the publication front page owns index.html (see sessions/aebf0747/build_pass.py)
+    _keep = (ROOT / filename).exists() and filename == "index.html" and \
+        "aebf0747-front" in (ROOT / filename).read_text(encoding="utf-8")
+    if not _keep:
+        (ROOT / filename).write_text(doc, encoding="utf-8")
 
 
 def css() -> str:
@@ -1009,7 +1020,7 @@ def build_exec() -> None:
     body = f"""
 <section class="card">
   <h2>Bottom line</h2>
-  <p><strong>Headline:</strong> the three submitted short links each open a live Amazon product page. Their nine-character codes are not ASINs, and the destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}. Product name, brand, price and rating for the submitted links are left blank.</p>
+  <p><strong>Headline:</strong> all five submitted short links open a live Amazon product page. Their nine-character codes are not ASINs, and the destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027', 'CBB-F-01'])}. Product name, brand, price and rating for the submitted links are left blank. A tracking ID (<code>shopnow047c-20</code>) was supplied on 2026-11-17 but is unverified and appears in no link {flag_links(['CBB-F-02'])}.</p>
   <p>Price display, API-derived reviews, link-model-specific earnings, traffic, clicks, conversions and niche profitability are not represented as live or established. Point-in-time observations are kept in the research log. Any value not confirmed through an eligible official route remains blank and is flagged.</p>
 </section>
 
@@ -1017,6 +1028,8 @@ def build_exec() -> None:
   <h2>Key findings</h2>
   <ul class="findings">
     <li><strong>The three short links each open a live Amazon product page.</strong> The destinations were read on 2026-11-13 and 2026-11-14 {src_links(['S11', 'S12', 'S13', 'S14', 'S15', 'S16'])}. The nine-character codes are not in the 10-character ASIN form {src_links(['S06'])}, and the direct amazon.com/dp pages for them return Page Not Found {src_links(['S08', 'S09', 'S10'])}. The destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}.</li>
+    <li><strong>Two further short links, added to the brief on 2026-11-17, behave the same way.</strong> <code>link.amazon/B0c8moW59</code> opens amazon.com/dp/B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and <code>link.amazon/B0f3GKalj</code> opens amazon.com/dp/B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer), each confirmed by two fetches on 2026-11-17 {src_links(['S70', 'S71', 'S73', 'S74'])}. Both codes are 9 characters {src_links(['S06'])} and both direct /dp/ checks return Page Not Found {src_links(['S72', 'S75'])}. Intent is unconfirmed {flag_links(['CBB-F-01'])}, and both destinations sit in a different Amazon category from the site's air-fryer coverage {flag_links(['CBB-F-03'])}.</li>
+    <li><strong>A tracking ID was supplied but is not yet usable.</strong> The owner's 2026-11-17 brief names <code>shopnow047c-20</code> as the Selected Tracking ID; it is recorded in <code>config/platform.json</code> and matches the repository's tag pattern, but assignment to an Associates account cannot be confirmed without a logged-in Associates console, and no link on the site carries it {flag_links(['CBB-F-02'])} {src_links(['S02'])}.</li>
     <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches on 2026-11-13 and again on 2026-11-14. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
     <li><strong>Applying the shortener rules to link.amazon needs a judgement call.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), a link must not be cloaked or obscured (6(v)), and purchases through a link that sends users on indirectly, without an affirmative click, are disqualified as a Redirecting Link {src_links(['S30'])} (CIS 2(e)). No document names <code>link.amazon</code>; what its redirects actually do is a behaviour observation, and it has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
     <li><strong>Category rates are public; per-product rates are not assignable.</strong> Amazon&rsquo;s Standard Commission Income Statement, Table 1, is readable without a sign-in (Kitchen 4.50&nbsp;%, Home 3.00&nbsp;%, All Other Categories 4.00&nbsp;%) {src_links(['S25', 'S26'])}, and was re-read on 2026-11-14. The per-product rate cannot be stated, because the listing&rsquo;s category is unverified and the account-specific rate card route redirects to sign-in {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
@@ -1046,7 +1059,7 @@ def build_exec() -> None:
   <ul class="findings">
     <li><strong>Product research, niche identification, competition and commission-potential analysis.</strong> These need product data, which needs verified identifiers (FLG-001) and Creators API access (FLG-006). Nothing was estimated.</li>
     <li><strong>SEO articles, comparisons and buying guides.</strong> Product claims must be accurate (PF-10), and the first-hand experience the FTC describes (PF-21) has not happened. These are blocked (FLG-012).</li>
-    <li><strong>Click and conversion tracking.</strong> Figures come from the owner&rsquo;s Associates reports. No tag has been supplied (FLG-010), and no reports were available (FLG-011).</li>
+    <li><strong>Click and conversion tracking.</strong> Figures come from the owner&rsquo;s Associates reports. A tag value was supplied on 2026-11-17 but is unverified and appears in no link (CBB-F-02, FLG-010), and no reports were available (FLG-011).</li>
     <li><strong>Automated optimisation.</strong> There is no data to optimise. The generator can rebuild the site once verified data is added.</li>
   </ul>
 </section>
@@ -1054,10 +1067,11 @@ def build_exec() -> None:
 <section class="card">
   <h2>Owner items (flagged; they do not block the merge)</h2>
   <ul class="findings">
-    <li>Give the intended product URL or 10-character ASIN for each of the five products (FLG-001, 0C4-F-01); the product-intent record on <a href="products.html">Products</a> is where the confirmation lands.</li>
+    <li>Give the intended product URL or 10-character ASIN for each of the five products (FLG-001, CBB-F-01, 0C4-F-01); the product-intent record on <a href="products.html">Products</a> is where the confirmation lands.</li>
     <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003, 0C4-F-02).</li>
-    <li>Confirm which Amazon product category each of the five listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021, 0C4-F-03). The category rates themselves are already published and verified.</li>
-    <li>Confirm Associates enrolment, and confirm the supplied Associates tag is the one active on the account (FLG-010; tag received 2026-11-17, validation pending).</li>
+    <li>Confirm <code>shopnow047c-20</code> is the tag assigned to this Associates account, then run one Special Link per product before scaling (CBB-F-02, decision-queue CBB-Q-01, 0C4-F-04); the tag value is now on file but unverified, not a password or token (FLG-010).</li>
+    <li>Confirm which Amazon product category each of the five listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021; breadcrumbs are observed on S14&ndash;S16, S60&ndash;S62, S71, S74 but the commission-category assignment stays open). The category rates themselves are already published and verified.</li>
+    <li>Decide the site scope: five products across two categories, or air fryers only (CBB-Q-03, 0C4-F-03 / 0C4-Q-16).</li>
   </ul>
 </section>
 """
@@ -1112,10 +1126,11 @@ def build_products() -> None:
 <section class="card">
   <h2>How to read this table</h2>
   <ul class="findings">
-    <li>Each row is one product link from the brief (five as of 2026-11-17). An identifier is counted only when a product page under that identifier exists and matches it.</li>
-    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened on the date recorded in that row's source (2026-11-13 for links 1&ndash;3, 2026-11-17 for links 4&ndash;5). It is not treated as the submitted product, because the submitted identifier does not resolve to it.</li>
+    <li>Each row is one product link from the brief. An identifier is counted only when a product page under that identifier exists and matches it.</li>
+    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened on its observation date (products 1&ndash;3: 2026-11-13 and re-checked 2026-11-16; products 4&ndash;5, added to the brief on 2026-11-17: fetched twice that day, S70&ndash;S75). It is not treated as the submitted product, because the submitted identifier does not resolve to it.</li>
     <li>The <strong>product-intent confirmation record</strong> above is where an owner confirmation is stored: intended ASIN, official listing URL, confirmation date and source, one block per submitted link. Every cell is blank until that confirmation arrives, and the observed redirect is never copied into it &mdash; an observation is not evidence of intent (FLG-002, 0C4-F-02).</li>
     <li>Product name, brand, price, rating and availability are blank because they cannot be confirmed (see <a href="pricing.html">Pricing</a> and <a href="reviews.html">Reviews</a>).</li>
+    <li>Products 4 and 5 open meat-thermometer listings in a different Amazon category from the site's air-fryer coverage; the scope question is open (<a href="flagged.html#CBB-F-03">CBB-F-03</a>).</li>
   </ul>
 </section>
 """
@@ -1462,11 +1477,20 @@ def build_suggestions() -> None:
         comp = "<ul class=\"findings\">" + "".join(
             f"<li>{e(c['text'])} {src_links(c['source'])}</li>" for c in g["compliance"]
         ) + "</ul>"
+        # Session cbb03ec7 (2026-11-17): rows that describe repository state (a shipped feed,
+        # a sitemap, the front-page nav) carry a repo: anchor instead of an official source,
+        # so tools/verify_site.py's V4 provenance rule can credit them the same way it credits
+        # the z3 build's repo anchors. Only rendered when the row sets "repo".
+        repo_line = (
+            f'<div class="small"><a href="{REPO}/blob/main/{e(g["repo"])}" target="_blank" '
+            f'rel="noopener noreferrer">repo:{e(g["repo"])}</a></div>'
+            if g.get("repo") else ""
+        )
         sug_rows.append([
             e(g["id"]),
             f'<strong>{e(g["title"])}</strong>',
             f'<div>{e(g["what"])}</div>{blocker}',
-            f'<div>{e(g["why"])}</div>{comp}',
+            f'<div>{e(g["why"])}</div>{comp}{repo_line}',
             badge("Proposal", "info") if g["status"] == "proposed"
             else badge("Blocked", "warn") if g["status"] == "blocked"
             else badge("Accepted", "ok"),
@@ -2022,6 +2046,20 @@ VERIFY_ROWS: list[tuple[str, str, str, str, list[str]]] = [
     ("FTC: disclosure must be hard to miss", "Content & compliance",
      "\u201cPlace it so it\u2019s hard to miss.\u201d and \u201cYou can\u2019t talk about your experience with a product you haven\u2019t tried.\u201d (Disclosures 101, dated November 2019)",
      "Verbatim", ["S07"]),
+    # Added by session cbb03ec7 (2026-11-17): the two links the owner's 2026-11-17
+    # brief added to the project (P4, P5). Each row states its own observation date.
+    ("Submitted link 4 resolves", "Products",
+     "https://link.amazon/B0c8moW59 lands on amazon.com/dp/B0DHZTCNR5 \u2014 \u201cThermoMaven 1 Sec Professional Digital Meat Thermometer\u2026\u201d (fetched 2026-11-17)",
+     "Observed", ["S70", "S71"]),
+    ("Submitted link 5 resolves", "Products",
+     "https://link.amazon/B0f3GKalj lands on amazon.com/dp/B0DZFD6R9Z \u2014 \u201cCHEF iQ Sense | Smart Wireless Meat Thermometer\u2026\u201d (fetched 2026-11-17)",
+     "Observed", ["S73", "S74"]),
+    ("Direct /dp/<id> for links 4 and 5", "Products, Pricing",
+     "amazon.com/dp/B0c8moW59 and amazon.com/dp/B0f3GKalj each return Amazon\u2019s \u201cPage Not Found\u201d page (fetched 2026-11-17)",
+     "Observed", ["S72", "S75"]),
+    ("Category breadcrumb of the two new destinations", "Products, Flagged (CBB-F-03)",
+     "Home & Kitchen (1055398) \u203a Kitchen & Dining (284507) \u203a Kitchen Utensils & Gadgets (289754) \u203a Thermometers & Timers (289807) \u203a Meat (289810), read on both destination pages on 2026-11-17",
+     "Observed", ["S71", "S74"]),
 ]
 
 
@@ -2037,25 +2075,31 @@ def build_verification() -> None:
         "<strong>2026-11-14</strong> by the final integration session <code>edbd56a1</code>, "
         "independently of the sessions that first recorded it. A row is here because the quoted "
         "text or the observed response was on the page when it was fetched. Nothing is inferred, "
-        "and no value that could not be confirmed is filled in.</p>"
+        "and no value that could not be confirmed is filled in. The final four rows were added on "
+        "<strong>2026-11-17</strong> by session <code>cbb03ec7</code> for the two links the owner's "
+        "brief added that day; their observation dates are written into the row text.</p>"
         "<h2>How to read the Result column</h2>"
         "<ul>"
         "<li><strong>Verbatim</strong> \u2014 the text in the \u201cwhat the official page says\u201d column is copied from the page.</li>"
         "<li><strong>Observed</strong> \u2014 a live page result recorded as it was returned (a redirect destination, a title, or a Page Not Found). It is a fact about the response, not proof about the submitted product.</li>"
         "<li><strong>Negative evidence</strong> \u2014 the page could not be read, so nothing is taken from it.</li>"
         "</ul>"
-        + table(["#", "Claim", "Where it is used on this site", "What the official page says (2026-11-14)",
+        + table(["#", "Claim", "Where it is used on this site", "What the official page says",
                  "Result", "Source"], rows, "verify")
         + "<h2>Coverage and limits</h2>"
         "<ul>"
         "<li>Every policy fact in <code>data/policy_facts.json</code> was re-checked against its source page in this session; the rows above are the ones the site actually renders.</li>"
-        "<li>All three submitted links were re-fetched, and all three direct <code>/dp/&lt;id&gt;</code> checks were re-run. The results are unchanged from 2026-11-13.</li>"
+        "<li>All three original submitted links were re-fetched, and all three direct <code>/dp/&lt;id&gt;</code> checks were re-run. The results are unchanged from 2026-11-13.</li>"
+        "<li>On 2026-11-17, session <code>cbb03ec7</code> fetched the two additional links the owner's brief added "
+        "(<code>B0c8moW59</code>, <code>B0f3GKalj</code>): each direct <code>/dp/&lt;id&gt;</code> check returned "
+        "Page Not Found and each short link resolved to a live listing \u2014 products 4 and 5 in the register, "
+        "with sources S70\u2013S75.</li>"
         "<li>Prices, star ratings and review counts are deliberately absent from every page, so there is no row for them (FLG-022).</li>"
         "<li>The sandbox this site is built in can reach only github.com, npm and PyPI directly, so official pages were read through the fetch tool rather than by an automated HTTP client. No source was checked with <code>--online</code>.</li>"
         "</ul>"
     )
     page("verification.html", "Verification log", body,
-         lead="Line-by-line re-verification of every claim this site publishes, against the official source that backs it. Read on 2026-11-14 by the final integration session.")
+         lead="Line-by-line re-verification of every claim this site publishes, against the official source that backs it. Read on 2026-11-14 by the final integration session; the two links added to the brief on 2026-11-17 were verified by session cbb03ec7 and appear as the final four rows.")
 
 
 def build_legacy_stubs() -> None:
