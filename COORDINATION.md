@@ -7694,3 +7694,33 @@ Retired as duplicates (kept in tree as `--check`-only verifiers, both PASS on th
 
 `main` moved again (PR #147, session 2f181cd9 publish record); same recipe applied: main's board
 verbatim, this session's parts re-appended. No other session's content edited. PR: #149.
+---
+
+# PART 84 — Session 73029680 (2026-11-17, later)
+
+Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73029680-zone3`.
+
+> **Renumbering note:** this Part was first written as "Part 83", which collided with session 59b2194c's Part 83 already merged on main (PRs #142/#143). On rebase the collision was resolved by the standing convention — main's Part 83 kept verbatim, this Part renumbered 84; nothing discarded.
+
+### 84 Coordination check before claiming
+
+- `main` at claim: `d192053`. No open PRs (`gh pr list` empty at claim). All prior Parts' sessions are merged/done.
+- Gate snapshot at `d192053`, all green before any edit: `check_site` OK 30/3/62/113 · `link_report --strict` 0 · `i2_gate` PASS 18/164/148/16/0 · `cba81fa5_lint` PASS 0 new/22 inherited · `verify_site` PASS 134 pages/2,068 rows · `build_feed --check` current (9) · `build_sitemap --check` 97/0 · `check_all_links` 0 errors (180 pages/207 URLs) · `build_shop` OK 11 pages.
+
+### 84 Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G84-T1 — Repo review at the claimed base; gate snapshot; irregularity sweep | in progress | 73029680 | read-only; record in `sessions/73029680/repo-review.md` | repo registers | G84-F-01 raised |
+| G84-T2 — Reconcile the two product-intent confirmation records for links 4–5 (B0c8moW59, B0f3GKalj): own dated observations (six fetches), register rows P4/P5 added to `data/products.json`, observed blocks filled (intended fields stay empty), flag raised and documented | in progress | 73029680 | `data/products.json`, `data/sources.json` (S70–S76), `data/flags.json` (+G84-F-01), `scripts/build_site.py` (one stale static sentence in `build_products`), `sessions/73029680/**` | S70–S75 (own fetches 2026-11-17), S31, S02 | G84-F-01 |
+| G84-T3 — Suggestions review #3, dated 2026-11-17 late: design-prompt refresh proposals, official-calendar seasonal hooks (OPM), decision runbook (order that unblocks the rest), rendered by extending `build_suggestions()` | in progress | 73029680 | `data/suggestions.json` (`review_2026_11_17_late`), `scripts/build_site.py` (`build_suggestions` renderer extension only), `suggestions.html` (generated) | S76 (OPM federal holidays); existing S01–S69 for all other facts | — |
+| G84-T4 — EXECUTIVE-SUMMARY.md live counts recomputed from the register after G84-F-01 | planned | 73029680 | `EXECUTIVE-SUMMARY.md` | register counts | — |
+| G84-T5 — Final integration for this Part: rebuild ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check | planned | 73029680 | this Part only | gate outputs | — |
+
+### 84 Rules I follow
+
+- Intended and observed stay two disjoint blocks (the brief's rule, enforced by the existing renderer). The owner's intent fields remain empty — only observations are filled, each dated and sourced to my own 2026-11-17 fetches.
+- No price, rating, review count or availability figure is copied out of any fetched page (2(b)/6(t) display rules; same convention as S62's status_note).
+- Seasonal calendar rows carry only federal-holiday dates read from OPM (official); they carry no demand, popularity or "trending" claim — topic priority still comes from D8's query report.
+- No change to `data/design-brief.json` (session 757efebc's scope): the design-prompt refresh is published as proposals in the suggestions review, with the change request logged here.
+
