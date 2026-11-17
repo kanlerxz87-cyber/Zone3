@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decisions and suggestions — choose the path</title>
+<meta name="description" content="Options for each open decision, the questions still unanswered, and what information would settle them.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/shop/decisions/">
+<link rel="stylesheet" href="../assets/shop.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="../index.html">Zone3 Kitchen (working name)</a>
+    <span class="tagline">Kitchen products, linked to Amazon and checked against their listings</span>
+  </div>
+  <nav class="wrap topnav" aria-label="Main">
+    <a href="../index.html">Shop home</a>
+<a href="../air-fryers/index.html">Air fryers</a>
+<a href="../meat-thermometers/index.html">Meat thermometers</a>
+<a href="../products/index.html">All products</a>
+<a href="../findings/index.html">Findings</a>
+<a href="../decisions/index.html" class="active" aria-current="page">Decisions</a>
+<a href="../flagged/index.html">Flagged for review</a>
+<a href="../sources/index.html">Sources</a>
+<a href="../executive-summary/index.html">Executive summary</a>
+<a href="../campaigns/index.html">Campaign ledger</a>
+<a href="../disclosure/index.html">Disclosure</a>
+  </nav>
+</header>
+<aside class="disclosure disclosure-top" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Affiliate disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Links marked <em>Sponsored</em> go to Amazon.</div>
+</aside>
+<main id="main" class="wrap">
+<section class="page-head">
+  <p class="kicker"><a href="../index.html">Shop home</a> / Suggestions</p>
+  <h1>Decisions and suggestions</h1>
+  <p class="lede">Choose a path for each item. Suggestions are labelled as suggestions. Nothing here has been carried out beyond what the findings page records.</p>
+</section>
+<section class="block">
+  <h2>Decisions</h2>
+  <div class="table-wrap">
+  <table class="data">
+    <thead><tr><th>ID</th><th>Question</th><th>Options</th><th>Suggested</th><th>Needs</th><th>Source</th></tr></thead>
+    <tbody>
+<tr>
+  <td>DEC-01</td><td>How should the five submitted links be replaced or confirmed?</td><td><ol class="opts"><li>A. Create one Special Link per product in the Associates account, click it once, and check the destination and the tracking report before using it on the site. Suggested, because it is the only route to a checkable tracking record.</li><li>B. Keep the submitted short links as supplied, but still run the test in option A on at least one link.</li><li>C. Remove any product whose intended ASIN is not confirmed (see DEC-02).</li></ol></td>
+  <td>A, then B until A succeeds.</td><td>Access to the Associates account. The requester must run or approve the test.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Commission Income Statement, Section 2(g) (SH-S02)</a></td>
+</tr>
+<tr>
+  <td>DEC-02</td><td>What is the intended ASIN for each submitted link?</td><td><ol class="opts"><li>A. The requester supplies the 10-character ASIN for each link. The build then checks the official listing and records the confirmation date and source.</li><li>B. Accept the observed redirect target as intended. Not suggested: the brief asks for intent, and a redirect is not an intent record.</li><li>C. Leave the intended field blank and publish the observed target only.</li></ol></td>
+  <td>A.</td><td>The requester&#x27;s statement for each link.</td><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items">Creators API ItemIdType ASIN (SH-S03)</a></td>
+</tr>
+<tr>
+  <td>DEC-03</td><td>How should clicks and conversions be measured?</td><td><ol class="opts"><li>A. Use the Associates reports as the first-party source. No new code is needed. Rows enter the campaign ledger only from those reports.</li><li>B. Add a privacy-preserving outbound-click counter. This needs a collection endpoint on a host outside GitHub Pages, plus the five event definitions.</li><li>C. Both A and B.</li></ol></td>
+  <td>A now; B only after the five events are defined and a host is chosen.</td><td>The five event definitions and a choice of hosting for any endpoint. Neither is in the brief.</td><td><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Docs: What is GitHub Pages? (SH-S16)</a></td>
+</tr>
+<tr>
+  <td>DEC-04</td><td>What is the site&#x27;s name?</td><td><ol class="opts"><li>A. Keep &#x27;Zone3 Kitchen&#x27; as a working name.</li><li>B. Choose another name that has been cleared for use.</li></ol></td>
+  <td>A until a name is chosen.</td><td>The requester&#x27;s choice.</td><td><span class="muted">No external source applies.</span></td>
+</tr>
+<tr>
+  <td>DEC-05</td><td>Which images, if any, should appear?</td><td><ol class="opts"><li>A. Text only (current).</li><li>B. Product images supplied through an approved Associates data feed, with attribution.</li><li>C. Images from the manufacturer, only with written permission.</li></ol></td>
+  <td>A until B is available.</td><td>Confirmation of the approved data path under the Operating Agreement.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement, Section 1 (SH-S01)</a></td>
+</tr>
+<tr>
+  <td>DEC-06</td><td>How often should new guides be published?</td><td><ol class="opts"><li>A. Monthly, one guide a month.</li><li>B. Quarterly, four guides a year.</li><li>C. Only when a measured question justifies a guide.</li></ol></td>
+  <td>C, after the first measurement window has data.</td><td>A measured source of search or on-site questions. None exists yet.</td><td><span class="muted">No external source applies.</span></td>
+</tr>
+<tr>
+  <td>DEC-07</td><td>Which guide topic should come first?</td><td><ol class="opts"><li>A. &#x27;Basket or oven-style air fryer: what should you compare?&#x27;</li><li>B. &#x27;A no-hype checklist for comparing air fryer capacity&#x27;</li><li>C. &#x27;How to assess cleanup and counter-space trade-offs&#x27;</li><li>D. &#x27;Questions to ask before buying a multi-function kitchen appliance&#x27;</li><li>E. A thermometer guide (not yet proposed)</li></ol></td>
+  <td>Hold until DEC-06 has data. These are working titles, not claims about popularity, search volume or product quality.</td><td>Measured queries (none yet).</td><td><span class="muted">No external source applies.</span></td>
+</tr>
+<tr>
+  <td>DEC-08</td><td>Which disclosure wording should appear?</td><td><ol class="opts"><li>A. The exact sentence in Operating Agreement Section 5 (in use).</li><li>B. A paraphrase.</li></ol></td>
+  <td>A. Section 5 asks for the exact sentence or a substantially similar statement.</td><td>None.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement, Section 5 (SH-S01)</a></td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+<section class="block">
+  <h2>Questions and information still missing</h2>
+  <p class="small muted">Written from what the repository and the five links already show, against what is still missing.</p>
+  <div class="table-wrap">
+  <table class="data">
+    <thead><tr><th>Question</th><th>What we have</th><th>What is missing</th><th>How to find it</th><th>Source</th></tr></thead>
+    <tbody>
+<tr>
+  <td>Which ASIN was intended for each link?</td><td>The observed redirect target for each link.</td><td>The requester&#x27;s statement of intent.</td>
+  <td>Ask the requester (DEC-02). Then check each ASIN on its official listing.</td><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items">Creators API ItemIdType (SH-S03)</a></td>
+</tr>
+<tr>
+  <td>Does each link produce a tracked click under the requester&#x27;s Associates ID?</td><td>Nothing. No Associates report was available.</td><td>The Associates report.</td>
+  <td>Run the DEC-01 test in the Associates workflow and read the tracking report.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Commission Income Statement Section 2(g) (SH-S02)</a></td>
+</tr>
+<tr>
+  <td>Does shopnow047c-20 belong to the requester&#x27;s Associates account, for the marketplace the links point to?</td><td>The requester&#x27;s statement of the value.</td><td>Account and marketplace check.</td>
+  <td>Check the account settings in the Associates account.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement, Section 1 (SH-S01)</a></td>
+</tr>
+<tr>
+  <td>Which marketplace should the site serve? The links point to amazon.com. The site&#x27;s location is Singapore.</td><td>amazon.com redirects for all five links.</td><td>The requester&#x27;s choice of marketplace, and the matching Associates country.</td>
+  <td>Confirm the account country and the Schedule 1 marketplace list in the Operating Agreement.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement (Schedule 1 marketplaces) (SH-S01)</a></td>
+</tr>
+<tr>
+  <td>What are the five events to record?</td><td>Nothing defined in the brief.</td><td>The event list.</td>
+  <td>Requester supplies the list (DEC-03).</td><td><span class="muted">No external source applies.</span></td>
+</tr>
+<tr>
+  <td>Which price, availability and review figures, if any, may appear on the site, and from which source?</td><td>A reason not to show them (FLG-S07).</td><td>Confirmed approved data path and the current wording of Participation Requirement 2(b), which this build did not re-read.</td>
+  <td>Re-read the Program Policies Participation Requirements and check the approved data path in the Associates account.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Program Policies (SH-S02)</a></td>
+</tr>
+<tr>
+  <td>Is there any measured search or on-site question data to choose the next topic?</td><td>None.</td><td>Search Console data and on-site search logs.</td>
+  <td>Connect Search Console for the site once it is live (DEC-03 for the analytics path).</td><td><span class="muted">No external source applies.</span></td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <aside class="disclosure disclosure-footer" role="note" aria-label="Affiliate disclosure">
+      <strong>Affiliate disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Links marked <em>Sponsored</em> go to Amazon.
+    </aside>
+    <div class="foot-grid">
+      <div>
+        <p class="foot-title">Zone3 Kitchen (working name)</p>
+        <p class="muted">Product facts are taken from the linked Amazon pages and their checked dates. Unverified values are left blank and flagged. Working name. The brand name is an open decision (see decisions page, DEC-04).</p>
+      </div>
+      <div>
+        <p class="foot-title">All pages</p>
+        <ul class="foot-links"><li><a href="../index.html">Shop home</a></li><li><a href="../air-fryers/index.html">Air fryers</a></li><li><a href="../meat-thermometers/index.html">Meat thermometers</a></li><li><a href="../products/index.html">All products</a></li><li><a href="../findings/index.html">Findings</a></li><li><a href="../decisions/index.html">Decisions</a></li><li><a href="../flagged/index.html">Flagged for review</a></li><li><a href="../sources/index.html">Sources</a></li><li><a href="../executive-summary/index.html">Executive summary</a></li><li><a href="../campaigns/index.html">Campaign ledger</a></li><li><a href="../disclosure/index.html">Disclosure</a></li></ul>
+      </div>
+      <div>
+        <p class="foot-title">Related</p>
+        <ul class="foot-links">
+          <li><a href="../../index.html">Repository front page</a></li>
+          <li><a href="https://github.com/kanlerxz87-cyber/Zone3">Source repository</a></li>
+        </ul>
+        <p class="muted small">Last checked 17 Nov 2026.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

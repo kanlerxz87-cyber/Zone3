@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "title": "Campaign ledger",
+    "status": "Empty by design. No rows.",
+    "created_on": "2026-11-17",
+    "rule": "A row is added only from an authorized first-party report (for example the Associates Commission Income Statement or Reports) or from a first-party counter whose definition has been approved. Nothing is estimated, inferred or copied from third parties.",
+    "no_forecast": "No conversion score, click estimate or revenue forecast is presented on this site.",
+    "source_of_truth": "Associates account reports (not obtained in this build)"
+  },
+  "columns": [
+    {"key": "timestamp_utc", "meaning": "When the report was pulled or the counter was read"},
+    {"key": "source", "meaning": "Name of the authorized first-party report or approved counter"},
+    {"key": "channel", "meaning": "Where the link appeared (page path)"},
+    {"key": "eligible_sessions", "meaning": "Sessions as reported by the source; blank if not reported"},
+    {"key": "clicks", "meaning": "Clicks as reported by the source; blank if not reported"},
+    {"key": "reported_orders", "meaning": "Orders as reported by the source; blank if not reported"},
+    {"key": "provenance_url", "meaning": "Official page or report used"}
+  ],
+  "rows": []
+}
