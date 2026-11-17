@@ -157,6 +157,11 @@ def emit(filename: str, title: str, body: str, lead: str = "", description: str 
         path.write_text(raw, encoding="utf-8")
 
 
+# The Creators API sentence, cleaned once so the rendered cell carries the
+# definition without the surrounding quotation marks from the JSON source.
+ASIN_DEF = (PRODUCTS["policy_basis"]["asin_definition_text"]
+            .split(":", 1)[1].strip().strip('"\'').strip().rstrip("."))
+
 STATE_KIND = {
     "blocked": "warn",
     "proposed": "info",
@@ -358,7 +363,7 @@ def build_products() -> str:
             f'<code>{e(r["token"])}</code>',
             str(r["token_length"]),
             '<span class="badge bad">No</span>',
-            f'An ASIN is defined as a {e(policy["asin_definition_text"].split(":")[1].strip())}',
+            f'An ASIN is defined as {e(ASIN_DEF)},',
             slinks([policy["asin_definition"]]),
         ])
     tokens = table(
