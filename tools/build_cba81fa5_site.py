@@ -276,7 +276,7 @@ def frontdoor_block() -> str:
         f'  <p class="fd-fine">How this site counts visits and clicks: '
         f'<a href="site/measure.html">How we measure</a> &middot; '
         f'<a href="site/intent-record.html">Product-intent record</a> &middot; '
-        f'<a href="feed.xml">Atom feed</a></p>\n'
+        f'<a href="feed.xml">RSS feed</a></p>\n'
         '</section>\n\n'
         '<p class="fd-ops" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
         'font-weight:700;color:#767f8d;margin:28px 0 6px">Operations &middot; the audit behind the front door</p>\n'
@@ -460,10 +460,14 @@ def main() -> int:
                                 '<link rel="stylesheet" href="assets/style.css">\n'
                                 '<link rel="stylesheet" href="assets/front-door.css">')
         # ded63349 (2026-11-17): feed discovery on the publication front page.
-        if 'application/atom+xml' not in want:
+        # Merge reconciliation 2026-11-17: canonical feed is the union RSS 2.0 feed.xml
+        # (session 82372fd1); discovery links are type application/rss+xml, and this
+        # injects only when no feed link of either type is present, so it never
+        # duplicates the link sessions/aebf0747/publish_pass.py already adds.
+        if 'application/atom+xml' not in want and 'application/rss+xml' not in want:
             want = want.replace('</head>',
-                                '<link rel="alternate" type="application/atom+xml" '
-                                'title="Air Fryer Field Notes — new guides and field notes" href="feed.xml">\n</head>', 1)
+                                '<link rel="alternate" type="application/rss+xml" '
+                                'title="Air Fryer Field Notes \u2014 new guides and field notes" href="feed.xml">\n</head>', 1)
         if "Air Fryer Field Notes" not in want.split("<title>")[1].split("</title>")[0]:
             want = re.sub(r"<title>[^<]*</title>",
                           "<title>Air Fryer Field Notes — three air fryers, checked line by line</title>",
