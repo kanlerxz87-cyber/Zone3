@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for review — shop build</title>
+<meta name="description" content="10 items flagged for review, each with its source link and what this build did not claim.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/shop/flagged/">
+<link rel="stylesheet" href="../assets/shop.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="../index.html">Zone3 Kitchen (working name)</a>
+    <span class="tagline">Kitchen products, linked to Amazon and checked against their listings</span>
+  </div>
+  <nav class="wrap topnav" aria-label="Main">
+    <a href="../index.html">Shop home</a>
+<a href="../air-fryers/index.html">Air fryers</a>
+<a href="../meat-thermometers/index.html">Meat thermometers</a>
+<a href="../products/index.html">All products</a>
+<a href="../findings/index.html">Findings</a>
+<a href="../decisions/index.html">Decisions</a>
+<a href="../flagged/index.html" class="active" aria-current="page">Flagged for review</a>
+<a href="../sources/index.html">Sources</a>
+<a href="../executive-summary/index.html">Executive summary</a>
+<a href="../campaigns/index.html">Campaign ledger</a>
+<a href="../disclosure/index.html">Disclosure</a>
+  </nav>
+</header>
+<aside class="disclosure disclosure-top" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Affiliate disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Links marked <em>Sponsored</em> go to Amazon.</div>
+</aside>
+<main id="main" class="wrap">
+<section class="page-head">
+  <p class="kicker"><a href="../index.html">Shop home</a> / Review</p>
+  <h1>Flagged for review</h1>
+  <p class="lede">Items that could not be confirmed or that need a decision. Flags do not block publishing. Each one has its source link, so the owner can review it and request changes.</p>
+</section>
+<section class="block">
+  <div class="table-wrap">
+  <table class="data" data-rule="source">
+    <thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>Issue</th><th>Impact</th><th>What was done</th><th>Sources</th><th>Claim not made</th></tr></thead>
+    <tbody>
+<tr>
+  <td>FLG-S01</td><td>High</td><td>Open - for review</td>
+  <td>Each of the five submitted codes is a 9-character short-link token, not a 10-character ASIN. For example, B04G1MEwY has 9 characters.</td><td>An intended ASIN cannot be read from any submitted link, so the intended-ASIN field is blank for all five products.</td><td>Left intended_asin blank. Recorded the redirect target separately as observed_redirect_asin.</td>
+  <td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items">Creators API GetItems: ItemIdType ASIN = 10 characters (SH-S03)</a></td><td>This build does not say the short links are invalid. Their compliance status is an open question.</td>
+</tr>
+<tr>
+  <td>FLG-S02</td><td>High</td><td>Open - for review</td>
+  <td>The requester has not stated the intended ASIN for any of the five links, and no intent confirmation has been recorded.</td><td>Every row in the intent record is &#x27;Unverified&#x27;. Redirect targets (observed) are not treated as intended products.</td><td>All intended_* and official_listing_url fields are blank. See DEC-02 on the decisions page.</td>
+  <td><a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener" target="_blank">Observed redirects (SH-S06 to SH-S10)</a></td><td>No claim is made that the observed products are the intended ones.</td>
+</tr>
+<tr>
+  <td>FLG-S03</td><td>Medium</td><td>Open - for review</td>
+  <td>SHOP-04 and SHOP-05 are meat thermometers. The repository&#x27;s existing catalogue covers air fryers only, and it had no record of these two listings before this build.</td><td>The category scope is larger than the repository&#x27;s earlier research. Neither product has been compared with others or checked for specifications.</td><td>Added a separate Meat thermometers category. Only the title and the redirect target were recorded.</td>
+  <td><a href="https://www.amazon.com/dp/B0DHZTCNR5" rel="sponsored noopener" target="_blank">Listing B0DHZTCNR5 (SH-S14)</a><br><a href="https://www.amazon.com/dp/B0DZFD6R9Z" rel="sponsored noopener" target="_blank">Listing B0DZFD6R9Z (SH-S15)</a></td><td>No comparison, ranking or &#x27;best&#x27; claim is made for either product.</td>
+</tr>
+<tr>
+  <td>FLG-S04</td><td>High</td><td>Open - for review (test not run)</td>
+  <td>The Special Link test was not run. This sandbox has no Associates account access, so no link was generated, clicked in the Associates workflow, or reported.</td><td>The submitted short links are used as supplied. The tracking ID shopnow047c-20 is not embedded in any link. Under Commission Income Statement Section 2(g), purchases are disqualified when links are not properly formatted, so the test must happen before the links are scaled.</td><td>Recorded the test as a decision (DEC-01) and as an open item on this page.</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/policies">Commission Income Statement, Section 2(e) and 2(g) (SH-S02)</a></td><td>No link is described as validated, Special, or tracked.</td>
+</tr>
+<tr>
+  <td>FLG-S05</td><td>Medium</td><td>Open - for review</td>
+  <td>The tracking ID shopnow047c-20 was supplied by the requester. Account ownership and marketplace were not verified.</td><td>If the ID belongs to another account, or to a marketplace other than the one the links point to, reports will not match.</td><td>Stored in config.json with the status &#x27;user-selected, not verified&#x27;. Not embedded in any link.</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement, Section 1 (Special Links use the tagged link formats Amazon provides) (SH-S01)</a></td><td>No claim is made that the ID is the requester&#x27;s account.</td>
+</tr>
+<tr>
+  <td>FLG-S06</td><td>High</td><td>Open - decision needed</td>
+  <td>The privacy-preserving outbound-click counter and the self-hosted analytics endpoint were not built. GitHub Pages serves static files only, so it cannot host a collection endpoint. The five events to record were not defined in the brief.</td><td>No click or conversion measurement is live. GitHub Pages is a static host and cannot run a collection endpoint (SH-S16). The host also logs visitor IP addresses for security (SH-S16), so no page can claim that the site collects nothing.</td><td>Created an empty ledger with a provenance rule (campaigns page). Asked for a decision on the hosting path and the five event definitions (DEC-03).</td>
+  <td><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Docs: What is GitHub Pages? (SH-S16)</a><br><a href="https://affiliate-program.amazon.com/help/operating/policies">Commission Income Statement (basis for commission records) (SH-S02)</a></td><td>No click, order or conversion figure is shown.</td>
+</tr>
+<tr>
+  <td>FLG-S07</td><td>Medium</td><td>Open - for review</td>
+  <td>Price, star rating and review counts are not shown. The reason is Program Policies Participation Requirement 2(b), which is cited from earlier sessions&#x27; records and was NOT re-read on 2026-11-17.</td><td>Readers cannot compare prices on this site. Any future price display must come from an approved source.</td><td>Did not display prices, ratings or review counts anywhere on the site.</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/policies">Program Policies (SH-S02; 2(b) not re-read today)</a></td><td>No price, rating or review figure is shown or implied.</td>
+</tr>
+<tr>
+  <td>FLG-S08</td><td>Medium</td><td>Open - decision needed</td>
+  <td>No product photography is used. Images are Program Content under the Operating Agreement, and the decision on which image source to use is open.</td><td>Listings are text-only. Generated or copied images are not used.</td><td>Did not add any image. See DEC-05.</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement, Section 1 (Program Content includes images) (SH-S01)</a></td><td>No image is claimed as official or as the product photo.</td>
+</tr>
+<tr>
+  <td>FLG-S09</td><td>Low</td><td>Open - for review</td>
+  <td>The brand name &#x27;Zone3 Kitchen&#x27; is a working placeholder. Any final name must comply with the Associates Program Trademark Guidelines, which the Operating Agreement incorporates by reference.</td><td>The name may change.</td><td>Marked the name as a placeholder in config.json and on the decisions page.</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Operating Agreement, introduction (Associates Program Trademark Guidelines are incorporated by reference) (SH-S01)</a></td><td>No trademark or brand-clearance claim is made.</td>
+</tr>
+<tr>
+  <td>FLG-S10</td><td>Medium</td><td>Open - for review</td>
+  <td>Repository irregularity: the repository root and subfolders hold several overlapping sites and registers (root, site/, read/, docs/, sessions/, archive/). COORDINATION.md is about 7,000 lines. Earlier root claims include &#x27;Three air fryers&#x27;, which no longer matches the five submitted links.</td><td>Readers and reviewers may see conflicting counts or claims across pages.</td><td>Did not edit other sites. Added one navigation link from the root page to this shop. The conflicts are listed here for the owner.</td>
+  <td><a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">Repository COORDINATION.md (github.com)</a><br><a href="https://github.com/kanlerxz87-cyber/Zone3">Repository front page (github.com)</a></td><td>This build does not resolve the earlier registers.</td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <aside class="disclosure disclosure-footer" role="note" aria-label="Affiliate disclosure">
+      <strong>Affiliate disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Links marked <em>Sponsored</em> go to Amazon.
+    </aside>
+    <div class="foot-grid">
+      <div>
+        <p class="foot-title">Zone3 Kitchen (working name)</p>
+        <p class="muted">Product facts are taken from the linked Amazon pages and their checked dates. Unverified values are left blank and flagged. Working name. The brand name is an open decision (see decisions page, DEC-04).</p>
+      </div>
+      <div>
+        <p class="foot-title">All pages</p>
+        <ul class="foot-links"><li><a href="../index.html">Shop home</a></li><li><a href="../air-fryers/index.html">Air fryers</a></li><li><a href="../meat-thermometers/index.html">Meat thermometers</a></li><li><a href="../products/index.html">All products</a></li><li><a href="../findings/index.html">Findings</a></li><li><a href="../decisions/index.html">Decisions</a></li><li><a href="../flagged/index.html">Flagged for review</a></li><li><a href="../sources/index.html">Sources</a></li><li><a href="../executive-summary/index.html">Executive summary</a></li><li><a href="../campaigns/index.html">Campaign ledger</a></li><li><a href="../disclosure/index.html">Disclosure</a></li></ul>
+      </div>
+      <div>
+        <p class="foot-title">Related</p>
+        <ul class="foot-links">
+          <li><a href="../../index.html">Repository front page</a></li>
+          <li><a href="https://github.com/kanlerxz87-cyber/Zone3">Source repository</a></li>
+        </ul>
+        <p class="muted small">Last checked 17 Nov 2026.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "title": "Shop source register (official sources only)",
+    "checked_on": "2026-11-17",
+    "admitted_publishers": "amazon.com, affiliate-program.amazon.com, developers.google.com, ftc.gov (the Amazon listing pages and the short-link redirects are included as observed records)",
+    "note": "Each row says what was read and what it supports. Clauses that were not re-read on 2026-11-17 are marked as such."
+  },
+  "sources": [
+    {
+      "id": "SH-S01",
+      "publisher": "Amazon Associates Program (affiliate-program.amazon.com)",
+      "title": "Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "checked_on": "2026-11-17",
+      "read": "Page header 'Updated: October 15, 2025'. Section 1 (Program Content includes data, images, text; Special Links defined). Section 5 (disclosure sentence). Section 6 (a violation of Section 5 is a material breach).",
+      "supports": "Disclosure wording and placement; images are Program Content (see DEC-05)."
+    },
+    {
+      "id": "SH-S02",
+      "publisher": "Amazon Associates Program (affiliate-program.amazon.com)",
+      "title": "Associates Program Policies: Commission Income Statement",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "checked_on": "2026-11-17",
+      "read": "Section 2(e): purchases referred through a link that sends users indirectly via an intermediate site are disqualified. Section 2(g): purchases not correctly tracked because links are not properly formatted are disqualified. Read: chunk 1 of 11 only.",
+      "supports": "Why Special Link format must be tested before scaling (FLG-S04). Participation Requirements 2(b) and 6(t)/6(v)/6(w) are NOT re-read on 2026-11-17; they are cited from prior sessions' records and are marked as such in the findings."
+    },
+    {
+      "id": "SH-S03",
+      "publisher": "Amazon Associates Program (affiliate-program.amazon.com)",
+      "title": "Creators API documentation: GetItems, ItemIdType parameter",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "checked_on": "2026-11-17",
+      "read": "ItemIdType ASIN: '10-Character alphanumeric unique identifier assigned by Amazon'.",
+      "supports": "A 9-character submitted token cannot be an ASIN (FLG-S01)."
+    },
+    {
+      "id": "SH-S04",
+      "publisher": "Google Search Central",
+      "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "checked_on": "2026-11-17",
+      "read": "rel=\"sponsored\": 'Mark links that are advertisements or paid placements'. Page 'Last updated 2025-12-10 UTC'. Multiple rel values may be space-separated.",
+      "supports": "rel=\"sponsored noopener\" on every outbound product link."
+    },
+    {
+      "id": "SH-S05",
+      "publisher": "U.S. Federal Trade Commission",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "checked_on": "2026-11-17",
+      "read": "'Place it so it's hard to miss.' 'The disclosure should be placed with the endorsement message itself.' Disclosures 'are likely to be missed if they appear only on an ABOUT ME or profile page ... or anywhere that requires a person to click MORE.' Guide dated November 2019.",
+      "supports": "Disclosure strip under the masthead and repeated next to each product table (not only on a disclosure page)."
+    },
+    {
+      "id": "SH-S06",
+      "publisher": "Amazon.com (short link)",
+      "title": "https://link.amazon/B04G1MEwY (submitted link 1)",
+      "url": "https://link.amazon/B04G1MEwY",
+      "checked_on": "2026-11-17",
+      "read": "Final URL after redirect: https://www.amazon.com/dp/B0CDY277D3 (page title recorded in products.json).",
+      "supports": "Observed redirect target only. Not evidence of the requester's intent."
+    },
+    {
+      "id": "SH-S07",
+      "publisher": "Amazon.com (short link)",
+      "title": "https://link.amazon/B02NbDxp3 (submitted link 2)",
+      "url": "https://link.amazon/B02NbDxp3",
+      "checked_on": "2026-11-17",
+      "read": "Final URL after redirect: https://www.amazon.com/dp/B09B7SB46R.",
+      "supports": "Observed redirect target only."
+    },
+    {
+      "id": "SH-S08",
+      "publisher": "Amazon.com (short link)",
+      "title": "https://link.amazon/B00hJ57DV (submitted link 3)",
+      "url": "https://link.amazon/B00hJ57DV",
+      "checked_on": "2026-11-17",
+      "read": "Final URL after redirect: https://www.amazon.com/dp/B08DKYBTPH.",
+      "supports": "Observed redirect target only."
+    },
+    {
+      "id": "SH-S09",
+      "publisher": "Amazon.com (short link)",
+      "title": "https://link.amazon/B0c8moW59 (submitted link 4)",
+      "url": "https://link.amazon/B0c8moW59",
+      "checked_on": "2026-11-17",
+      "read": "Final URL after redirect: https://www.amazon.com/dp/B0DHZTCNR5. Not previously recorded in this repository.",
+      "supports": "Observed redirect target only. Category differs from the repository's existing air-fryer scope (FLG-S03)."
+    },
+    {
+      "id": "SH-S10",
+      "publisher": "Amazon.com (short link)",
+      "title": "https://link.amazon/B0f3GKalj (submitted link 5)",
+      "url": "https://link.amazon/B0f3GKalj",
+      "checked_on": "2026-11-17",
+      "read": "Final URL after redirect: https://www.amazon.com/dp/B0DZFD6R9Z. Not previously recorded in this repository.",
+      "supports": "Observed redirect target only. Category differs from the repository's existing air-fryer scope (FLG-S03)."
+    },
+    {
+      "id": "SH-S11",
+      "publisher": "Amazon.com (listing page)",
+      "title": "Listing page https://www.amazon.com/dp/B0CDY277D3",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "checked_on": "2026-11-17",
+      "read": "Page title as recorded in products.json (SHOP-01).",
+      "supports": "Product title only. Price, rating and review figures are not used."
+    },
+    {
+      "id": "SH-S12",
+      "publisher": "Amazon.com (listing page)",
+      "title": "Listing page https://www.amazon.com/dp/B09B7SB46R",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "checked_on": "2026-11-17",
+      "read": "Page title as recorded in products.json (SHOP-02).",
+      "supports": "Product title only."
+    },
+    {
+      "id": "SH-S13",
+      "publisher": "Amazon.com (listing page)",
+      "title": "Listing page https://www.amazon.com/dp/B08DKYBTPH",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "checked_on": "2026-11-17",
+      "read": "Page title as recorded in products.json (SHOP-03).",
+      "supports": "Product title only."
+    },
+    {
+      "id": "SH-S14",
+      "publisher": "Amazon.com (listing page)",
+      "title": "Listing page https://www.amazon.com/dp/B0DHZTCNR5",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "checked_on": "2026-11-17",
+      "read": "Page title as recorded in products.json (SHOP-04).",
+      "supports": "Product title only."
+    },
+    {
+      "id": "SH-S15",
+      "publisher": "Amazon.com (listing page)",
+      "title": "Listing page https://www.amazon.com/dp/B0DZFD6R9Z",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "checked_on": "2026-11-17",
+      "read": "Page title as recorded in products.json (SHOP-05).",
+      "supports": "Product title only."
+    },
+    {
+      "id": "SH-S16",
+      "publisher": "GitHub Docs",
+      "title": "What is GitHub Pages?",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+      "checked_on": "2026-11-17",
+      "read": "'GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository.' 'When a GitHub Pages site is visited, the visitor's IP address is logged and stored for security purposes.'",
+      "supports": "The site cannot host a click-collection endpoint, and visitor IP logging by the host limits any privacy-preserving claim (FLG-S06)."
+    }
+  ]
+}

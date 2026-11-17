@@ -1,0 +1,171 @@
+{
+  "_meta": {
+    "title": "Flagged for review (shop build)",
+    "raised_on": "2026-11-17",
+    "note": "Flags do not block the merge. Each item is published on the Flagged for review page with its source links, so it can be reviewed after the site is live."
+  },
+  "flags": [
+    {
+      "id": "FLG-S01",
+      "severity": "High",
+      "status": "Open - for review",
+      "issue": "Each of the five submitted codes is a 9-character short-link token, not a 10-character ASIN. For example, B04G1MEwY has 9 characters.",
+      "impact": "An intended ASIN cannot be read from any submitted link, so the intended-ASIN field is blank for all five products.",
+      "what_we_did": "Left intended_asin blank. Recorded the redirect target separately as observed_redirect_asin.",
+      "sources": [
+        {
+          "label": "Creators API GetItems: ItemIdType ASIN = 10 characters (SH-S03)",
+          "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
+        }
+      ],
+      "claim_not_made": "This build does not say the short links are invalid. Their compliance status is an open question."
+    },
+    {
+      "id": "FLG-S02",
+      "severity": "High",
+      "status": "Open - for review",
+      "issue": "The requester has not stated the intended ASIN for any of the five links, and no intent confirmation has been recorded.",
+      "impact": "Every row in the intent record is 'Unverified'. Redirect targets (observed) are not treated as intended products.",
+      "what_we_did": "All intended_* and official_listing_url fields are blank. See DEC-02 on the decisions page.",
+      "sources": [
+        {
+          "label": "Observed redirects (SH-S06 to SH-S10)",
+          "url": "https://link.amazon/B04G1MEwY"
+        }
+      ],
+      "claim_not_made": "No claim is made that the observed products are the intended ones."
+    },
+    {
+      "id": "FLG-S03",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "SHOP-04 and SHOP-05 are meat thermometers. The repository's existing catalogue covers air fryers only, and it had no record of these two listings before this build.",
+      "impact": "The category scope is larger than the repository's earlier research. Neither product has been compared with others or checked for specifications.",
+      "what_we_did": "Added a separate Meat thermometers category. Only the title and the redirect target were recorded.",
+      "sources": [
+        {
+          "label": "Listing B0DHZTCNR5 (SH-S14)",
+          "url": "https://www.amazon.com/dp/B0DHZTCNR5"
+        },
+        {
+          "label": "Listing B0DZFD6R9Z (SH-S15)",
+          "url": "https://www.amazon.com/dp/B0DZFD6R9Z"
+        }
+      ],
+      "claim_not_made": "No comparison, ranking or 'best' claim is made for either product."
+    },
+    {
+      "id": "FLG-S04",
+      "severity": "High",
+      "status": "Open - for review (test not run)",
+      "issue": "The Special Link test was not run. This sandbox has no Associates account access, so no link was generated, clicked in the Associates workflow, or reported.",
+      "impact": "The submitted short links are used as supplied. The tracking ID shopnow047c-20 is not embedded in any link. Under Commission Income Statement Section 2(g), purchases are disqualified when links are not properly formatted, so the test must happen before the links are scaled.",
+      "what_we_did": "Recorded the test as a decision (DEC-01) and as an open item on this page.",
+      "sources": [
+        {
+          "label": "Commission Income Statement, Section 2(e) and 2(g) (SH-S02)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ],
+      "claim_not_made": "No link is described as validated, Special, or tracked."
+    },
+    {
+      "id": "FLG-S05",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "The tracking ID shopnow047c-20 was supplied by the requester. Account ownership and marketplace were not verified.",
+      "impact": "If the ID belongs to another account, or to a marketplace other than the one the links point to, reports will not match.",
+      "what_we_did": "Stored in config.json with the status 'user-selected, not verified'. Not embedded in any link.",
+      "sources": [
+        {
+          "label": "Operating Agreement, Section 1 (Special Links use the tagged link formats Amazon provides) (SH-S01)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        }
+      ],
+      "claim_not_made": "No claim is made that the ID is the requester's account."
+    },
+    {
+      "id": "FLG-S06",
+      "severity": "High",
+      "status": "Open - decision needed",
+      "issue": "The privacy-preserving outbound-click counter and the self-hosted analytics endpoint were not built. GitHub Pages serves static files only, so it cannot host a collection endpoint. The five events to record were not defined in the brief.",
+      "impact": "No click or conversion measurement is live. GitHub Pages is a static host and cannot run a collection endpoint (SH-S16). The host also logs visitor IP addresses for security (SH-S16), so no page can claim that the site collects nothing.",
+      "what_we_did": "Created an empty ledger with a provenance rule (campaigns page). Asked for a decision on the hosting path and the five event definitions (DEC-03).",
+      "sources": [
+        {
+          "label": "GitHub Docs: What is GitHub Pages? (SH-S16)",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+        },
+        {
+          "label": "Commission Income Statement (basis for commission records) (SH-S02)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ],
+      "claim_not_made": "No click, order or conversion figure is shown."
+    },
+    {
+      "id": "FLG-S07",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "Price, star rating and review counts are not shown. The reason is Program Policies Participation Requirement 2(b), which is cited from earlier sessions' records and was NOT re-read on 2026-11-17.",
+      "impact": "Readers cannot compare prices on this site. Any future price display must come from an approved source.",
+      "what_we_did": "Did not display prices, ratings or review counts anywhere on the site.",
+      "sources": [
+        {
+          "label": "Program Policies (SH-S02; 2(b) not re-read today)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ],
+      "claim_not_made": "No price, rating or review figure is shown or implied."
+    },
+    {
+      "id": "FLG-S08",
+      "severity": "Medium",
+      "status": "Open - decision needed",
+      "issue": "No product photography is used. Images are Program Content under the Operating Agreement, and the decision on which image source to use is open.",
+      "impact": "Listings are text-only. Generated or copied images are not used.",
+      "what_we_did": "Did not add any image. See DEC-05.",
+      "sources": [
+        {
+          "label": "Operating Agreement, Section 1 (Program Content includes images) (SH-S01)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        }
+      ],
+      "claim_not_made": "No image is claimed as official or as the product photo."
+    },
+    {
+      "id": "FLG-S09",
+      "severity": "Low",
+      "status": "Open - for review",
+      "issue": "The brand name 'Zone3 Kitchen' is a working placeholder. Any final name must comply with the Associates Program Trademark Guidelines, which the Operating Agreement incorporates by reference.",
+      "impact": "The name may change.",
+      "what_we_did": "Marked the name as a placeholder in config.json and on the decisions page.",
+      "sources": [
+        {
+          "label": "Operating Agreement, introduction (Associates Program Trademark Guidelines are incorporated by reference) (SH-S01)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        }
+      ],
+      "claim_not_made": "No trademark or brand-clearance claim is made."
+    },
+    {
+      "id": "FLG-S10",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "Repository irregularity: the repository root and subfolders hold several overlapping sites and registers (root, site/, read/, docs/, sessions/, archive/). COORDINATION.md is about 7,000 lines. Earlier root claims include 'Three air fryers', which no longer matches the five submitted links.",
+      "impact": "Readers and reviewers may see conflicting counts or claims across pages.",
+      "what_we_did": "Did not edit other sites. Added one navigation link from the root page to this shop. The conflicts are listed here for the owner.",
+      "sources": [
+        {
+          "label": "Repository COORDINATION.md (github.com)",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md"
+        },
+        {
+          "label": "Repository front page (github.com)",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3"
+        }
+      ],
+      "claim_not_made": "This build does not resolve the earlier registers."
+    }
+  ]
+}
