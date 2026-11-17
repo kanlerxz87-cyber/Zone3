@@ -1042,10 +1042,10 @@ def build_exec() -> None:
 <section class="card">
   <h2>Owner items (flagged; they do not block the merge)</h2>
   <ul class="findings">
-    <li>Give the intended product URL or 10-character ASIN for each of the three products (FLG-001).</li>
-    <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
-    <li>Confirm which Amazon product category each of the three listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021). The category rates themselves are already published and verified.</li>
-    <li>Confirm Associates enrolment and supply the Associates tag, not a password or token (FLG-010).</li>
+    <li>Give the intended product URL or 10-character ASIN for each of the five products (FLG-001, 0C4-F-01); the product-intent record on <a href="products.html">Products</a> is where the confirmation lands.</li>
+    <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003, 0C4-F-02).</li>
+    <li>Confirm which Amazon product category each of the five listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021, 0C4-F-03). The category rates themselves are already published and verified.</li>
+    <li>Confirm Associates enrolment, and confirm the supplied Associates tag is the one active on the account (FLG-010; tag received 2026-11-17, validation pending).</li>
   </ul>
 </section>
 """
@@ -1075,18 +1075,39 @@ def build_products() -> None:
         ["#", "Submitted link", "Identifier (length)", "ASIN", "amazon.com/dp check", "Observed redirect (not used as this product)", "Product name", "Status", "Flags", "Source"],
         rows,
     )
+
+    # Product-intent confirmation record (2026-11-17 brief): intended identifier fields are
+    # stored per submitted link and kept strictly separate from redirect_observed above.
+    # They render blank (Unverified) until the owner supplies a confirmation with a source.
+    intent_rows = []
+    for p in PRODUCTS:
+        pi = p.get("product_intent") or {}
+        intent_rows.append([
+            e(p["label"]),
+            val(pi.get("intended_asin")),
+            val(pi.get("intended_listing_url")),
+            val(pi.get("confirmation_date")),
+            val(pi.get("source")),
+            e(pi.get("status", "unconfirmed")),
+            src_links(p["sources"]),
+        ])
+    body += table(
+        ["#", "Submitted link", "Intended ASIN", "Intended official listing URL", "Confirmation date", "Confirmation source", "Intent status", "Source"],
+        intent_rows,
+    )
     body += f"""
 <section class="card">
   <h2>How to read this table</h2>
   <ul class="findings">
-    <li>Each row is one product link from the brief. An identifier is counted only when a product page under that identifier exists and matches it.</li>
-    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened on 2026-11-13. It is not treated as the submitted product, because the submitted identifier does not resolve to it.</li>
+    <li>Each row is one product link from the brief (five as of 2026-11-17). An identifier is counted only when a product page under that identifier exists and matches it.</li>
+    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened on the date recorded in that row's source (2026-11-13 for links 1&ndash;3, 2026-11-17 for links 4&ndash;5). It is not treated as the submitted product, because the submitted identifier does not resolve to it.</li>
+    <li>The <strong>product-intent confirmation record</strong> below the main table is where an owner confirmation is stored: intended ASIN, official listing URL, confirmation date and source, one block per submitted link. Every cell is blank until that confirmation arrives, and the observed redirect is never copied into it &mdash; an observation is not evidence of intent (FLG-002, 0C4-F-02).</li>
     <li>Product name, brand, price, rating and availability are blank because they cannot be confirmed (see <a href="pricing.html">Pricing</a> and <a href="reviews.html">Reviews</a>).</li>
   </ul>
 </section>
 """
     page("products.html", "Products", body,
-         lead="The three product links from the brief, checked line by line against official Amazon pages. Nothing is shown as a verified product until its identifier resolves.")
+         lead="The five product links from the brief, checked line by line against official Amazon pages. Nothing is shown as a verified product until its identifier resolves.")
 
 
 # ------------------------------------------------------------- Pricing

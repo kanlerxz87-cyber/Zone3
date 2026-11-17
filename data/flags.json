@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-14",
+  "retrieved": "2026-11-17 — union: earlier sessions' register through F65-F-06 plus session 0c4c4cb6's 0C4-F-01..03 (P4/P5 intake)",
   "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge).",
   "flags": [
     {
@@ -1428,6 +1428,60 @@
       "session": "f65d393b",
       "status": "fixed",
       "repo_evidence": "tools/i2_gate.py STAR_RE before/after in this session's diff; post-change gate run reports 18 pages, 0 flagged"
+    },
+    {
+      "id": "0C4-F-01",
+      "severity": "High",
+      "category": "Product identifiers",
+      "item": "The two additional submitted identifiers (B0c8moW59, B0f3GKalj) are 9 characters and are not ASINs",
+      "detail": "The 2026-11-17 brief added two more product links. Each carries a 9-character token. Amazon's Creators API documents the ASIN as a 10-character identifier (S31), corroborated by Amazon's own seller-education blog (S45), and amazon.com/dp/<token> returned Amazon's 'Page Not Found' page for both tokens on 2026-11-17 (S71, S74). This extends the class already recorded as FLG-001 for the first three submitted links; it is registered separately so the original flag's history is untouched.",
+      "action": "Owner: provide the intended product page URL or 10-character ASIN for products 4 and 5. This session cannot infer it from the redirects.",
+      "sources": [
+        "S31",
+        "S45",
+        "S71",
+        "S74",
+        "S70",
+        "S73"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-02",
+      "severity": "High",
+      "category": "Redirect behaviour",
+      "item": "Products 4 and 5 open listings that are not confirmed as the intended products",
+      "detail": "link.amazon/B0c8moW59 opened amazon.com/dp/B0DHZTCNR5 (ThermoMaven 1 s meat thermometer) and link.amazon/B0f3GKalj opened amazon.com/dp/B0DZFD6R9Z (CHEF iQ Sense meat thermometer) on 2026-11-17 (S70, S73); each destination page was then fetched directly and served the same title (S72, S75). Whether those listings are the products the owner meant is not documented by any source read — the same gap recorded for products 1-3 as FLG-002. The intended-ASIN and observed-redirect fields are kept separate in data/products.json (product_intent vs redirect_observed) and are not merged.",
+      "action": "Owner: confirm in writing which listing each of the five submitted links is meant to promote; record the confirmation date in the product_intent block.",
+      "sources": [
+        "S70",
+        "S72",
+        "S73",
+        "S75"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-03",
+      "severity": "Medium",
+      "category": "Category scope",
+      "item": "Products 4 and 5 are meat thermometers, outside the air-fryer cluster the site's content targets",
+      "detail": "Both new destination pages serve the breadcrumb Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (S72, S75). Every published guide, comparison and article on this site is written about air fryers, whose breadcrumb is Small Appliances > Fryers > Air Fryers (S14-S16). The CHEF iQ listing title does mention 'Air Fryer' as one use scenario, but the listing category is Thermometers. This is a content-scope decision, not a data error: it answers open question 757-Q-13 (three products vs the air-fryer category) with a third option — a kitchen-gadgets scope — that the owner has not ruled on.",
+      "action": "Owner decision needed before marketing copy for products 4-5 is written: keep the site air-fryer-only (then products 4-5 need their own surface or stay listed-but-unpromoted), or widen the editorial scope to kitchen gadgets. Do not silently fold meat thermometers into the air-fryer guides.",
+      "sources": [
+        "S72",
+        "S75",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
     }
   ]
 }
