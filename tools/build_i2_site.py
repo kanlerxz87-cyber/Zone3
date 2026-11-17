@@ -1102,11 +1102,15 @@ def build_js():
 def inject_js():
     for p in OUT.rglob("*.html"):
         text = p.read_text(encoding="utf-8")
-        if "site.js" in text:
-            continue
         depth = len(p.relative_to(OUT).parts) - 1
-        src = ("../" * depth) + "assets/site.js"
-        text = text.replace("</body>", f'<script src="{src}" defer></script>\n</body>')
+        # site.js first, then the shared measurement client (0C4-T4): it lives in the
+        # repository's root assets/, one level above site/, so the prefix is depth+1.
+        if "site.js" not in text:
+            src = ("../" * depth) + "assets/site.js"
+            text = text.replace("</body>", f'<script src="{src}" defer></script>\n</body>')
+        if "track.js" not in text:
+            tsrc = ("../" * (depth + 1)) + "assets/track.js"
+            text = text.replace("</body>", f'<script src="{tsrc}" defer></script>\n</body>')
         p.write_text(text, encoding="utf-8")
 
 

@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-17 — union: earlier sessions' register through F65-F-06 plus session 0c4c4cb6's 0C4-F-01..03 (P4/P5 intake); 0C4-F-04 added 2026-11-17 (Special Link validation pending)",
+  "retrieved": "2026-11-17 — union: earlier sessions' register through F65-F-06 plus session 0c4c4cb6's 0C4-F-01..03 (P4/P5 intake); 0C4-F-04 added 2026-11-17 (Special Link validation pending); 0C4-F-05..07 added 2026-11-17 (measurement layer states)",
   "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge).",
   "flags": [
     {
@@ -1494,6 +1494,42 @@
         "S02",
         "S01"
       ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-05",
+      "severity": "Medium",
+      "category": "Measurement",
+      "item": "The self-hosted analytics endpoint is specified and shipped, but not deployed — zero events are recorded",
+      "detail": "The 2026-11-17 brief asks for a privacy-preserving outbound-click counter and a self-hosted analytics endpoint recording five defined events. Both are built: data/analytics.json (schema and contract), assets/track.js (client), tools/analytics_collector.py (reference endpoint). GitHub Pages is static and cannot host the endpoint, and this session has no host to deploy to, so window.ZONE3_ANALYTICS_ENDPOINT ships as null and the client sends nothing. The site works exactly as before; it simply measures nothing yet. No count is displayed anywhere, because there is no count to display.",
+      "action": "Owner: deploy tools/analytics_collector.py (or any endpoint speaking the same contract) on a host, set window.ZONE3_ANALYTICS_ENDPOINT on the page templates to that URL, then confirm one test event arrives at GET /stats. Only then can measured queries choose the next topic.",
+      "repo_evidence": "data/analytics.json (endpoint.deployment_state='not deployed'); assets/track.js (ENDPOINT null); tools/analytics_collector.py",
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-06",
+      "severity": "Low",
+      "category": "Search visibility",
+      "item": "Search Console verification (SG-29) is blocked on an owner-generated token",
+      "detail": "Site verification for Google Search Console requires a token created in the owner's account and then either a meta tag on every page or a DNS TXT record. This session cannot create either: it has no access to the owner's Search Console account or DNS. No placeholder token is shipped — a fake verification tag would look configured while verifying nothing. The sitemap is published at /sitemap.xml and ready for submission the moment verification completes.",
+      "action": "Owner: in Google Search Console, add the property, generate the HTML meta token, and paste it to the session; it will be added to the page templates and this flag closes.",
+      "repo_evidence": "no google-site-verification meta tag in any page template; sitemap.xml published",
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-07",
+      "severity": "Low",
+      "category": "Reader capture",
+      "item": "Reader capture (SG-30) is not connected — no form is shipped, deliberately",
+      "detail": "The brief lists reader capture as a publication-polish pass. A capture form needs a processor (an email list service or a /subscribe route on the analytics endpoint) and consent wording; neither has been supplied. Shipping a form that posts nowhere would collect nothing while appearing to work, which is worse than not shipping one. data/analytics.json records the state as 'not connected' with what is needed to change it.",
+      "action": "Owner: choose a processor and supply the endpoint address plus the consent sentence; the form and its wiring are a small follow-up.",
+      "repo_evidence": "data/analytics.json reader_capture.state='not connected'; no capture form in any page template",
       "date": "2026-11-17",
       "session": "0c4c4cb6",
       "status": "open"

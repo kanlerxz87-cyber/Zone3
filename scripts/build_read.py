@@ -162,6 +162,7 @@ def page(rel: str, title: str, desc: str, body: str, *, canonical_slug: str,
     <p class="small muted">Built by <code>scripts/build_read.py</code> from <code>data/editorial.json</code> and <code>data/sources.json</code>. Editorial opinions are the site's own; the facts are Amazon's.</p>
   </div>
 </footer>
+<script src="{up}assets/track.js" defer></script>
 </body>
 </html>
 """

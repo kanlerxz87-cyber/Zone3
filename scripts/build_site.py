@@ -44,6 +44,9 @@ QUEUE = load("decision-queue.json")
 # Added by session 0c4c4cb6 (2026-11-17): the Special Link registry built from the
 # owner-supplied Associates tag (0C4-T3). Rendered on products.html.
 SPECIAL = load("special-links.json")
+# Added by session 0c4c4cb6 (2026-11-17): the measurement-layer schema (0C4-T4).
+# Rendered on measurement.html.
+ANALYTICS = load("analytics.json")
 
 
 def e(value) -> str:
@@ -392,6 +395,9 @@ NAV_MORE = [
         ("design-brief.html", "Design brief"),
         ("decision-queue.html", "Review console"),
         ("campaigns.html", "Campaigns & tracking"),
+        # Added by session 0c4c4cb6 (2026-11-17): the measurement layer — five events,
+        # privacy contract, self-hosted endpoint state (0C4-T4).
+        ("measurement.html", "Measurement"),
         ("sources.html", "Sources"),
         ("verification.html", "Verification log"),
         ("sessions/3ead7ac8/index.html", "Verification (3ead7ac8)"),
@@ -479,6 +485,7 @@ def page(filename: str, title: str, body: str, lead: str = "",
   </div>
   <p class="small foot-note">Data verified as of {BUILT} (re-verified 2026-11-14 and 2026-11-16; per-session records under <code>sessions/</code>). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> and <code>scripts/build_5a56c084.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
 </footer>
+<script src="assets/track.js" defer></script>
 </body>
 </html>
 """
@@ -2184,6 +2191,113 @@ def build_decision_center() -> None:
          lead="A sourced decision brief: current answers, missing information, discovery steps, editorial suggestions and paths to review before implementation.")
 
 
+# ------------------------------------------------------------ Measurement layer
+def build_measurement() -> None:
+    """0C4-T4 (session 0c4c4cb6, 2026-11-17): the five defined events, the
+    privacy rules, the self-hosted endpoint contract and the live state of every
+    measurement component. Schema of record: data/analytics.json."""
+    ana = ANALYTICS
+    repo = REPO
+    ev_rows = []
+    for ev in ana["events"]:
+        ev_rows.append([
+            f'<code>{e(ev["id"])}</code>',
+            e(ev["when"]),
+            e(ev["purpose"]),
+            f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> '
+            '<span class="muted">&mdash; design record in data/analytics.json</span>',
+        ])
+    state_rows = [
+        ["Outbound-click counter (browser)",
+         badge("Shipped; sending disabled", "warn"),
+         "assets/track.js is on every page, but the endpoint URL ships null, so nothing is sent. "
+         "Set window.ZONE3_ANALYTICS_ENDPOINT after deploying the endpoint.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-05"])}'],
+        ["Self-hosted analytics endpoint",
+         badge("Shipped; not deployed", "warn"),
+         "Run tools/analytics_collector.py on any host the owner controls (GitHub Pages cannot host it), "
+         "then point the client at it. Contract: POST /e, GET /stats, no cookies, five event ids only.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-05"])}'],
+        ["Five-event schema",
+         badge("Defined", "ok"),
+         "page_view, guide_view, product_click, special_link_click, nav_click — data/analytics.json is "
+         "the schema of record; the client and the collector both validate against it.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a>'],
+        ["Tagged Special Links",
+         badge("Built; validation pending", "warn"),
+         "SL1–SL5 carry the owner-supplied tag and rel=sponsored; one link per product must still be tested "
+         "in the enrolled Associates workflow before placement scales.",
+         src_links(["S02"]) + " " + flag_links(["0C4-F-04"])],
+        ["Conversion data",
+         badge("Amazon reports only", "info"),
+         "Amazon Associates reporting is aggregated by tag and date, never per click. Conversions join to this "
+         "ledger only at tag × date × channel granularity, recorded in the campaign ledger.",
+         src_links(["S02"])],
+        ["Search Console verification (SG-29)",
+         badge("Blocked on owner token", "warn"),
+         "A verification token from the owner's Search Console account is required; no placeholder tag is shipped.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-06"])}'],
+        ["Reader capture (SG-30)",
+         badge("Not connected", "warn"),
+         "No processor or consent wording has been supplied; a form that posts nowhere would fake the feature. "
+         "State and requirements are in data/analytics.json.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-07"])}'],
+    ]
+    body = table(["Component", "State", "What it means / what is needed", "Source"], state_rows)
+    body += """
+<section class="card">
+  <h2>The five events</h2>
+  <p>Exactly five events are defined. Nothing else is emitted by this site's own code, and the collector
+  rejects any other event id, so the set cannot drift quietly.</p>
+</section>
+"""
+    body += table(["Event", "When it fires", "Why it exists", "Source"], ev_rows)
+    body += """
+<section class="card">
+  <h2>Privacy rules, in force in the code</h2>
+  <ul class="findings">
+    <li>No cookies, no localStorage profiles, no fingerprinting, no cross-site identifiers &mdash; the browser
+    sends no user identifier at all.</li>
+    <li>Do Not Track and Global Privacy Control switch the tracker off completely; Save-Data switches it off too.</li>
+    <li>Only the URL path is sent. Query strings and fragments are stripped on the client and re-stripped by the
+    collector, because query strings can carry tokens.</li>
+    <li>The referrer is reduced to a host name. The endpoint sets no cookies and retains raw lines no longer than
+    24 hours, after which only daily aggregates remain.</li>
+    <li>While the endpoint is unset the client sends nothing at all: the site works exactly as it does today,
+    minus measurement. No count is displayed anywhere, because there is no count.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>How conversions actually join</h2>
+  <p>Amazon's Associates report is aggregated by tag and date; it exposes no per-click identifier. The honest
+  join is therefore <strong>tag &times; date &times; channel</strong>: this ledger's special_link_click counts on
+  one side, the owner's authorised Associates report on the other, matched in the
+  <a href="campaigns.html">campaign ledger</a>. This page never claims per-visitor attribution, and no
+  conversion score or revenue forecast is derived here.</p>
+</section>
+
+<section class="card">
+  <h2>Turning it on</h2>
+  <ol class="findings">
+    <li>Deploy <code>tools/analytics_collector.py</code> behind HTTPS on a host you control.</li>
+    <li>Set <code>window.ZONE3_ANALYTICS_ENDPOINT = "https://your-host/e";</code> on the page templates
+    (one line; the shipped value is <code>null</code>).</li>
+    <li>Load any page, open <code>GET /stats</code>, and confirm the test <code>page_view</code> arrived.
+    Only then does measured data start choosing the next topic.</li>
+  </ol>
+  <p class="muted">States above are also flagged for review: 0C4-F-05 (endpoint), 0C4-F-06 (Search Console),
+  0C4-F-07 (reader capture), 0C4-F-04 (Special Link validation).</p>
+</section>
+"""
+    page("measurement.html", "Measurement", body,
+         lead="What this site measures, what it refuses to measure, and the live state of every measurement "
+              "component — five events, a privacy contract, and a self-hosted endpoint that is shipped but not "
+              "yet deployed.",
+         description="The five defined events, the privacy rules and the self-hosted analytics endpoint "
+                     "contract behind Zone3's outbound-click counter, with the current deployment state.")
+
+
 
 def main() -> None:
     build_assets()
@@ -2211,6 +2325,7 @@ def main() -> None:
     import build_5a56c084
     build_design_brief()
     build_decision_queue()
+    build_measurement()
     build_5a56c084.main()
     print("built site in", ROOT)
 

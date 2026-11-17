@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurement | Zone3 — Air Fryer Research Desk</title>
+<meta name="description" content="The five defined events, the privacy rules and the self-hosted analytics endpoint contract behind Zone3&#x27;s outbound-click counter, with the current deployment state.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/measurement.html">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="index.html">Zone3</a><span>Air Fryer Research Desk</span></div>
+  <nav><a href="index.html">Home</a><a href="marketing/comparison.html">Compare</a><a href="marketing/buying-guide.html">Buying guide</a><a href="articles/index.html">Research Desk</a><a href="decision-center.html">Decision Center</a><a href="read/index.html">The Crisp Report</a><details class="nav-more"><summary>More pages</summary><div class="nav-menu"><div class="nav-group"><b>Guides & research</b><a href="marketing/index.html">Marketing hub</a><a href="marketing/briefs.html">Marketing briefs</a><a href="products.html">Products</a><a href="air-fryers.html">Category: Air Fryers</a><a href="pricing.html">Pricing & commission</a><a href="reviews.html">Reviews & competition</a><a href="content-topics.html">Content topics</a><a href="content.html">Content & compliance</a></div><div class="nav-group"><b>Governance</b><a href="executive-summary.html">Executive summary</a><a href="suggestions.html">Suggestions & decisions</a><a href="design-brief.html">Design brief</a><a href="decision-queue.html">Review console</a><a href="campaigns.html">Campaigns & tracking</a><a href="measurement.html" class="active">Measurement</a><a href="sources.html">Sources</a><a href="verification.html">Verification log</a><a href="sessions/3ead7ac8/index.html">Verification (3ead7ac8)</a><a href="sessions/25513d33/index.html">Verification (25513d33)</a><a href="sessions/5a56c084/index.html">Verification (2026-11-16)</a><a href="sessions/ab3ed329/index.html">Verification (session ab3ed329)</a><a href="sessions/ab3ed329/index.html">Verification (ab3ed329)</a><a href="sessions/5b425c74/index.html">Verification (5b425c74)</a><a href="flagged.html">Flagged for review</a><a href="docs/index.html">Reference (/docs/)</a><a href="dashboard/index.html">Full audit (16 pages)</a></div></div></details></nav>
+</header>
+<div class="disclose"><p><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p></div>
+<main>
+<h1>Measurement</h1>
+<p class="lead">What this site measures, what it refuses to measure, and the live state of every measurement component — five events, a privacy contract, and a self-hosted endpoint that is shipped but not yet deployed.</p>
+<div class="table-wrap"><table class=""><thead><tr><th>Component</th><th>State</th><th>What it means / what is needed</th><th>Source</th></tr></thead><tbody><tr><td>Outbound-click counter (browser)</td><td><span class="badge warn">Shipped; sending disabled</span></td><td>assets/track.js is on every page, but the endpoint URL ships null, so nothing is sent. Set window.ZONE3_ANALYTICS_ENDPOINT after deploying the endpoint.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <a class="flagid" href="flagged.html#0C4-F-05">0C4-F-05</a></td></tr><tr><td>Self-hosted analytics endpoint</td><td><span class="badge warn">Shipped; not deployed</span></td><td>Run tools/analytics_collector.py on any host the owner controls (GitHub Pages cannot host it), then point the client at it. Contract: POST /e, GET /stats, no cookies, five event ids only.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <a class="flagid" href="flagged.html#0C4-F-05">0C4-F-05</a></td></tr><tr><td>Five-event schema</td><td><span class="badge ok">Defined</span></td><td>page_view, guide_view, product_click, special_link_click, nav_click — data/analytics.json is the schema of record; the client and the collector both validate against it.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a></td></tr><tr><td>Tagged Special Links</td><td><span class="badge warn">Built; validation pending</span></td><td>SL1–SL5 carry the owner-supplied tag and rel=sponsored; one link per product must still be tested in the enrolled Associates workflow before placement scales.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Amazon Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement)">S02</a> <a class="flagid" href="flagged.html#0C4-F-04">0C4-F-04</a></td></tr><tr><td>Conversion data</td><td><span class="badge info">Amazon reports only</span></td><td>Amazon Associates reporting is aggregated by tag and date, never per click. Conversions join to this ledger only at tag × date × channel granularity, recorded in the campaign ledger.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Amazon Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement)">S02</a></td></tr><tr><td>Search Console verification (SG-29)</td><td><span class="badge warn">Blocked on owner token</span></td><td>A verification token from the owner's Search Console account is required; no placeholder tag is shipped.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <a class="flagid" href="flagged.html#0C4-F-06">0C4-F-06</a></td></tr><tr><td>Reader capture (SG-30)</td><td><span class="badge warn">Not connected</span></td><td>No processor or consent wording has been supplied; a form that posts nowhere would fake the feature. State and requirements are in data/analytics.json.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <a class="flagid" href="flagged.html#0C4-F-07">0C4-F-07</a></td></tr></tbody></table></div>
+<section class="card">
+  <h2>The five events</h2>
+  <p>Exactly five events are defined. Nothing else is emitted by this site's own code, and the collector
+  rejects any other event id, so the set cannot drift quietly.</p>
+</section>
+<div class="table-wrap"><table class=""><thead><tr><th>Event</th><th>When it fires</th><th>Why it exists</th><th>Source</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>Once per page load, after DOM ready.</td><td>The denominator: how many page loads each page gets. Nothing else in this layer is interpretable without it.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">&mdash; design record in data/analytics.json</span></td></tr><tr><td><code>guide_view</code></td><td>On an article or guide page, once, when the reader scrolls past the halfway point of the main content.</td><td>Distinguishes a landed page from a read page, so the next topic is chosen from content that held attention, not only from clicks that bounced.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">&mdash; design record in data/analytics.json</span></td></tr><tr><td><code>product_click</code></td><td>Click on any outbound link to an Amazon product page (amazon.com /dp/ or /gp/product/, or a link.amazon short link).</td><td>Interest in a product, wherever it appears — evidence links, comparison tables, cards. Counts every outbound product link, sponsored or not, so disclosure-adjacent behaviour stays visible.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">&mdash; design record in data/analytics.json</span></td></tr><tr><td><code>special_link_click</code></td><td>The subset of product_click whose href carries a tag= parameter — a tagged Special Link.</td><td>The revenue-eligible click. This is the event that can be compared against Amazon&#x27;s own Associates report, which is aggregated by tag and date — never per click (0C4-F-05 explains the join limitation).</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">&mdash; design record in data/analytics.json</span></td></tr><tr><td><code>nav_click</code></td><td>Click on an internal navigation link (site nav, front-door card, .acts button pair).</td><td>Which path readers take towards the comparison and the guides; correlated with product_click it shows which routes lead to action.</td><td><a href="https://github.com/kanlerxz87-cyber/Zone3" target="_blank" rel="noopener noreferrer">repo</a> <span class="muted">&mdash; design record in data/analytics.json</span></td></tr></tbody></table></div>
+<section class="card">
+  <h2>Privacy rules, in force in the code</h2>
+  <ul class="findings">
+    <li>No cookies, no localStorage profiles, no fingerprinting, no cross-site identifiers &mdash; the browser
+    sends no user identifier at all.</li>
+    <li>Do Not Track and Global Privacy Control switch the tracker off completely; Save-Data switches it off too.</li>
+    <li>Only the URL path is sent. Query strings and fragments are stripped on the client and re-stripped by the
+    collector, because query strings can carry tokens.</li>
+    <li>The referrer is reduced to a host name. The endpoint sets no cookies and retains raw lines no longer than
+    24 hours, after which only daily aggregates remain.</li>
+    <li>While the endpoint is unset the client sends nothing at all: the site works exactly as it does today,
+    minus measurement. No count is displayed anywhere, because there is no count.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>How conversions actually join</h2>
+  <p>Amazon's Associates report is aggregated by tag and date; it exposes no per-click identifier. The honest
+  join is therefore <strong>tag &times; date &times; channel</strong>: this ledger's special_link_click counts on
+  one side, the owner's authorised Associates report on the other, matched in the
+  <a href="campaigns.html">campaign ledger</a>. This page never claims per-visitor attribution, and no
+  conversion score or revenue forecast is derived here.</p>
+</section>
+
+<section class="card">
+  <h2>Turning it on</h2>
+  <ol class="findings">
+    <li>Deploy <code>tools/analytics_collector.py</code> behind HTTPS on a host you control.</li>
+    <li>Set <code>window.ZONE3_ANALYTICS_ENDPOINT = "https://your-host/e";</code> on the page templates
+    (one line; the shipped value is <code>null</code>).</li>
+    <li>Load any page, open <code>GET /stats</code>, and confirm the test <code>page_view</code> arrived.
+    Only then does measured data start choosing the next topic.</li>
+  </ol>
+  <p class="muted">States above are also flagged for review: 0C4-F-05 (endpoint), 0C4-F-06 (Search Console),
+  0C4-F-07 (reader capture), 0C4-F-04 (Special Link validation).</p>
+</section>
+
+</main>
+<footer>
+  <div class="foot-grid">
+    <div>
+      <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+      <p class="foot-disclaimer">CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
+      <p class="muted">Zone3 is independent and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
+    </div>
+    <div class="foot-links">
+      <a href="articles/index.html">Research Desk</a><a href="sources.html">Sources</a><a href="flagged.html">Flagged for review</a><a href="verification.html">Verification log</a><a href="suggestions.html">Suggestions &amp; decisions</a><a href="landing-prior.html">Previous landing page</a><a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a>
+    </div>
+  </div>
+  <p class="small foot-note">Data verified as of 2026-11-16 (re-verified 2026-11-14 and 2026-11-16; per-session records under <code>sessions/</code>). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> and <code>scripts/build_5a56c084.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
+</footer>
+<script src="assets/track.js" defer></script>
+</body>
+</html>

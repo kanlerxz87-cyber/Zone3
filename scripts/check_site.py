@@ -35,6 +35,8 @@ DATA = ROOT / "data"
 PAGES = [
     "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
     "content.html", "campaigns.html", "flagged.html", "sources.html", "air-fryers.html",
+    # Added by session 0c4c4cb6 (2026-11-17): the measurement layer page (0C4-T4).
+    "measurement.html",
     # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan. Every
     # topic row must carry a source link to an official page, like every other data table.
     "content-topics.html",
@@ -65,7 +67,11 @@ PAGES = [
 ]
 TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
                "campaigns.html", "flagged.html", "sources.html", "verification.html",
-               "content-topics.html"}
+               "content-topics.html",
+               # Added by session 0c4c4cb6 (2026-11-17): the measurement page's state and
+               # event tables carry a Source column like every other data table; design-row
+               # sources are the repository itself (github.com is an official host here).
+               "measurement.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
     # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);
