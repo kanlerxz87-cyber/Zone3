@@ -68,7 +68,8 @@ the RSS feed is live with 18 items. All gates pass on the final tree.
   facts · 115 flags (3 critical, 21 high, 33 medium, 33 low, 25 informational) · 31 pages in the shared
   gate · 79 pages in the sitemap. Seven new flags: 0C4-F-01…07, all published on the Flagged for
   review page; none blocks the merge.
-- **Gates on the final tree:** `check_site` OK (31/5/68/115) · `mark_sponsored --check` OK ·
+- **Gates on the final tree** (full record: [session 0c4c4cb6](https://kanlerxz87-cyber.github.io/Zone3/sessions/0c4c4cb6/index.html)):
+  `check_site` OK (31/5/68/115) · `mark_sponsored --check` OK ·
   `build_feed --check` OK · `verify_site` PASS (116 pages, 1,972 rows) · `link_report --strict` 0 ·
   `check_all_links` 0 errors · `build_sitemap --check` 79 pages · `i2_gate` PASS (18 pages, 0 flagged) ·
   `cba81fa5_lint` PASS (0 new) · `build_cba81fa5 --check` current.

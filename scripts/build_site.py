@@ -411,6 +411,7 @@ NAV_MORE = [
         # Added by session 5b425c74 (2026-11-16): independent re-fetch of the three links,
         # both commission tables and the policy pages (5B42 Part on the board).
         ("sessions/5b425c74/index.html", "Verification (5b425c74)"),
+        ("sessions/0c4c4cb6/index.html", "Session record (0c4c4cb6)"),
         ("flagged.html", "Flagged for review"),
         ("docs/index.html", "Reference (/docs/)"),
         ("dashboard/index.html", "Full audit (16 pages)"),

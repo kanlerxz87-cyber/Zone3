@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 0c4c4cb6 record | Zone3</title>
+<meta name="description" content="Session 0c4c4cb6 record: two new submitted links, the owner-supplied Associates tag, sponsored-link enforcement, the measurement layer, the RSS feed, register updates and the full gate run. 2026-11-17.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/sessions/0c4c4cb6/index.html">
+<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><a href="../../index.html">Zone3</a><span>Air Fryer Research Desk</span></div>
+  <nav><a href="../../index.html">Home</a><a href="../../products.html">Products</a><a href="../../executive-summary.html">Executive summary</a><a href="../../suggestions.html">Suggestions &amp; decisions</a><a href="../../decision-queue.html">Review console</a><a href="../../measurement.html">Measurement</a><a href="../../flagged.html">Flagged for review</a><a href="../../verification.html">Verification log</a></nav>
+</header>
+<div class="disclose"><p><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p></div>
+<main>
+<h1>Session 0c4c4cb6 &mdash; record</h1>
+<p class="lead">Branch <code>arena/0c4c4cb6-zone3</code>, worked from <code>fedc9f6</code> (main after PR #134), 2026-11-17. This page records what the session built, what it verified by fetching and by running every gate, and &mdash; explicitly &mdash; what it did not verify.</p>
+
+<div class="callout ok">
+  <p><strong>Result.</strong> Two new product links (P4, P5) were intake-verified with four live fetches; the owner-supplied Associates tag <code>shopnow047c-20</code> was recorded and put on five published Special Links; every outbound product link on the site now carries <code>rel="sponsored"</code> behind a build gate; the measurement layer (five events, privacy contract, self-hosted endpoint, smoke-tested) shipped with its endpoint deliberately undeployed; the RSS feed shipped with 18 items; the executive summary and both decision registers were updated with recomputed counts. Every gate in the suite passes on the final tree. Seven new flags (0C4-F-01&hellip;07) record what remains open; none blocks the merge.</p>
+</div>
+
+<h2>What this session did</h2>
+<ol class="findings">
+  <li><strong>Intake of two new product links (0C4-T2).</strong> <code>link.amazon/B0c8moW59</code> and <code>link.amazon/B0f3GKalj</code> were fetched on 2026-11-17, each observed to open one destination listing, each raw token re-checked against <code>amazon.com/dp/&lt;token&gt;</code> (Amazon's <em>Page Not Found</em> page in both cases), and each destination independently fetched to confirm title and category breadcrumb. Prices and star ratings visible on those pages were <strong>deliberately not recorded</strong> (Program Policies 2(b)/6(t)). Six sources (S70&ndash;S75) carry the observations.</li>
+  <li><strong>Product-intent record.</strong> Every one of the five submitted links now carries <code>product_intent</code> (intended ASIN, intended listing URL, confirmation date, source) &mdash; all blank until the owner confirms &mdash; strictly separated from the observed redirect target, published on <a href="../../products.html">Products</a>.</li>
+  <li><strong>Special Links from the owner's tag (0C4-T3).</strong> <code>data/special-links.json</code> records <code>shopnow047c-20</code> as owner-supplied and unvalidated; SL1&ndash;SL5 were built from the observed destinations and published. The tag is a public identifier by design (it must appear in every published link); no credentials are stored anywhere in this repository.</li>
+  <li><strong>Sponsored-link enforcement (0C4-T3).</strong> <code>scripts/mark_sponsored.py</code> adds <code>rel="sponsored"</code> to every outbound product anchor, runs as the last build step before the sitemap, and <code>--check</code> fails when a rebuild has dropped the marks; <code>scripts/check_site.py</code> check #10 fails when any <code>/dp/</code> anchor lacks the attribute. The reader site's buy buttons switched from inactive to active tagged links with plain-language disclosure; I2-F-03 and Q1 were updated to match.</li>
+  <li><strong>Measurement layer (0C4-T4).</strong> Five defined events, a privacy contract (<code>data/analytics.json</code>), the browser client <code>assets/track.js</code> (DNT/GPC/Save-Data off-switch, payload <code>{e,p,r,t}</code>, no cookies, no identifiers) wired into all three page layers, a self-hosted reference endpoint <code>tools/analytics_collector.py</code>, and the <a href="../../measurement.html">Measurement</a> page. The endpoint is <strong>not deployed</strong> (0C4-F-05) and the tracker sends nothing until an owner-controlled host exists.</li>
+  <li><strong>RSS feed (0C4-T5).</strong> <code>scripts/build_feed.py</code> builds <code>feed.xml</code> &mdash; 18 items across Research Desk (4), buying guides (5), field notes (3) and The Crisp Report (6) &mdash; with a <code>--check</code> gate; <code>&lt;link rel="alternate"&gt;</code> discovery is in every page head, the footer links the feed, robots.txt carries the <code>Feed:</code> hint.</li>
+  <li><strong>Register updates (0C4-T6).</strong> The <a href="../../executive-summary.html">executive summary</a> carries a dated update for this session and recomputed counts (68 sources &middot; 55 policy facts &middot; 115 flags &middot; 31 gate pages &middot; 79 sitemap pages at that pass); Q1/757-M-01 are answered with the tag; SUG-05 moved from blocked to shipped-pending-validation; SUG-11&hellip;15 were published as proposals; questions 0C4-Q-16&hellip;18 and proposals 0C4-S-01&hellip;03 were added to the <a href="../../decision-queue.html">Review console</a>.</li>
+</ol>
+
+<h2>Fetch observations (performed 2026-11-17 in this session)</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>ID</th><th>Claim tested</th><th>What was served</th><th>Result</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td><strong>0C4-V01</strong></td><td><code>link.amazon/B0c8moW59</code> opens <code>amazon.com/dp/B0DHZTCNR5</code></td><td>Landed on <code>https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&amp;btn_type=ss&amp;gaOptInStatus=true&amp;btn_ref=srctok-...&amp;channelId=704&amp;plpRedirect=mhFallback</code>. Title: &ldquo;Amazon.com: ThermoMaven 1 Second Instant Read Meat Thermometer, Waterproof Digital Cooking Food Thermometer with...&rdquo;. Breadcrumb: Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Kitchen Thermometers (node 1732614011).</td><td><span class="badge ok">Recorded as observed</span></td><td><a href="https://link.amazon/B0c8moW59" target="_blank" rel="noopener noreferrer sponsored" title="P4 short link (redirect result)">S70</a> &middot; <a href="https://www.amazon.com/dp/B0DHZTCNR5" target="_blank" rel="noopener noreferrer sponsored" title="P4 observed destination">S72</a></td></tr>
+    <tr><td><strong>0C4-V02</strong></td><td><code>amazon.com/dp/B0c8moW59</code> returns Page Not Found</td><td>Amazon's error page: title &ldquo;Page Not Found&rdquo;, body &ldquo;Sorry! We couldn't find that page...&rdquo; &mdash; the raw 9-character token is not an ASIN (S06 defines the 10-character form).</td><td><span class="badge ok">Matches the pattern of FLG-001</span></td><td><a href="https://www.amazon.com/dp/B0c8moW59" target="_blank" rel="noopener noreferrer sponsored" title="P4 direct /dp/ token check">S71</a></td></tr>
+    <tr><td><strong>0C4-V03</strong></td><td><code>link.amazon/B0f3GKalj</code> opens <code>amazon.com/dp/B0DZFD6R9Z</code></td><td>Landed on <code>https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&amp;btn_type=ss&amp;gaOptInStatus=true&amp;btn_ref=srctok-...&amp;channelId=704&amp;plpRedirect=mhFallback</code>. Title: &ldquo;Amazon.com: CHEF iQ Sense - Bluetooth Wireless Digital Kitchen Cooking Food Thermometer&rdquo;. Breadcrumb: Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Kitchen Thermometers (node 1732614011).</td><td><span class="badge ok">Recorded as observed</span></td><td><a href="https://link.amazon/B0f3GKalj" target="_blank" rel="noopener noreferrer sponsored" title="P5 short link (redirect result)">S73</a> &middot; <a href="https://www.amazon.com/dp/B0DZFD6R9Z" target="_blank" rel="noopener noreferrer sponsored" title="P5 observed destination">S75</a></td></tr>
+    <tr><td><strong>0C4-V04</strong></td><td><code>amazon.com/dp/B0f3GKalj</code> returns Page Not Found</td><td>Same Amazon error page as 0C4-V02 for the second raw token.</td><td><span class="badge ok">Matches the pattern of FLG-001</span></td><td><a href="https://www.amazon.com/dp/B0f3GKalj" target="_blank" rel="noopener noreferrer sponsored" title="P5 direct /dp/ token check">S74</a></td></tr>
+    <tr><td><strong>0C4-V05</strong></td><td>Independent confirmation of both destinations</td><td>Each destination <code>/dp/&lt;ASIN&gt;</code> was fetched a second time directly (not via the short link) and served the same title and breadcrumb as the redirect landed on, one request each.</td><td><span class="badge ok">Confirmed</span></td><td><a href="https://www.amazon.com/dp/B0DHZTCNR5" target="_blank" rel="noopener noreferrer sponsored" title="P4 destination re-fetch">S72</a> &middot; <a href="https://www.amazon.com/dp/B0DZFD6R9Z" target="_blank" rel="noopener noreferrer sponsored" title="P5 destination re-fetch">S75</a></td></tr>
+  </tbody>
+</table></div>
+
+<h2>What was reviewed, line by line</h2>
+<p>The brief asks for a line-by-line review of the repository. This is the honest scope of what was read in full or exercised in full during this session:</p>
+<ul class="findings">
+  <li><strong>Every generator and gate that renders or checks the pages this session touched:</strong> <code>scripts/build_site.py</code> (nav, page chrome, products, special-links, measurement, suggestions, decision-queue renderers), <code>scripts/check_site.py</code> (all checks incl. the new #10), <code>scripts/build_read.py</code>, <code>scripts/build_marketing.py</code>, <code>scripts/build_5a56c084.py</code>, <code>scripts/build_sitemap.py</code>, <code>scripts/build_feed.py</code>, <code>scripts/mark_sponsored.py</code>, <code>tools/build_i2_site.py</code>, <code>tools/build_cba81fa5_site.py</code>, <code>tools/build_site.py</code>, <code>tools/verify_site.py</code>, <code>tools/i2_gate.py</code>, <code>tools/cba81fa5_lint.py</code>, <code>tools/link_report.py</code>, <code>scripts/check_all_links.py</code>.</li>
+  <li><strong>Every data register this session changed or read for correctness:</strong> <code>data/products.json</code>, <code>data/sources.json</code>, <code>data/special-links.json</code>, <code>data/analytics.json</code>, <code>data/flags.json</code>, <code>data/suggestions.json</code>, <code>data/decision-queue.json</code>, <code>data/i2/catalog.json</code>, <code>data/i2/decisions.json</code>, <code>data/cba81fa5/guides.json</code>, <code>robots.txt</code>, <code>.gitignore</code>.</li>
+  <li><strong>The new code written this session, read again after writing:</strong> <code>assets/track.js</code> (parsed with <code>node --check</code>), <code>tools/analytics_collector.py</code> (smoke-tested end to end: 204 for valid events, 400 for unknown id/field/path, query stripped, referrer reduced to a host, aggregates only), <code>scripts/mark_sponsored.py</code>, <code>scripts/build_feed.py</code>.</li>
+  <li><strong>Rendering paths exercised by rebuilding everything</strong> and running the full gate suite after every change batch (results below).</li>
+</ul>
+
+<h2>What this session did <em>not</em> verify</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Item</th><th>Why it is not verified</th><th>Where it is recorded</th></tr></thead>
+  <tbody>
+    <tr><td>Whether <code>shopnow047c-20</code> is active and each SL click reports</td><td>Requires the owner's Associates Central session; no API or account access exists in this repository.</td><td>0C4-F-04 &middot; <a href="../../flagged.html">Flagged</a></td></tr>
+    <tr><td>Whether P4/P5's observed destinations are the intended products</td><td>Intent is the owner's to confirm; redirect observation does not establish it (same rule as FLG-027 for links 1&ndash;3).</td><td>0C4-F-02 &middot; product-intent rows on <a href="../../products.html">Products</a></td></tr>
+    <tr><td>Whether the meat thermometers are in scope for this site</td><td>No document in the repository states a category boundary; the owner has not ruled.</td><td>0C4-F-03 &middot; 0C4-Q-16 on <a href="../../decision-queue.html">Review console</a></td></tr>
+    <tr><td>Analytics events actually reaching a ledger in production</td><td>The endpoint is shipped and smoke-tested locally but deliberately not deployed; GitHub Pages cannot host it. Nothing is sent and no count is displayed.</td><td>0C4-F-05 &middot; <a href="../../measurement.html">Measurement</a></td></tr>
+    <tr><td>Search Console verification (SG-29) and reader capture (SG-30)</td><td>No verification token and no capture destination were supplied; no placeholder meta tag and no dead form were shipped.</td><td>0C4-F-06, 0C4-F-07 &middot; 0C4-Q-18</td></tr>
+    <tr><td>Prices, ratings and review counts on the P4/P5 pages</td><td>They were visible on the fetched pages and were deliberately not recorded or published (Program Policies 2(b)/6(t)); no approved data path exists.</td><td>FLG-022 &middot; <a href="../../pricing.html">Pricing</a></td></tr>
+    <tr><td>Whether <code>link.amazon</code> is a compliant Redirecting Link under CIS 2(e)</td><td>Testable only in a logged-in Associates account; predates this session.</td><td>FLG-003 (unchanged)</td></tr>
+    <tr><td>The lead claims S-01&hellip;S-05 on <code>index.html</code> and <code>content.html</code></td><td>Never verified from an official source in any session, including this one. This session did not restate them as verified.</td><td>Existing unverified-claims list</td></tr>
+    <tr><td>Pre-existing compliance exposure outside this session's edits: <code>/docs/</code> observed prices (A0-F-01), archive snapshots (A0-F-02, AB-F-01, 1dd-F-01), the <code>COORDINATION.md</code> historical ledger (1dd-F-01)</td><td>Logged as change requests for their owners; this session did not edit other sessions' records or archives.</td><td>Existing flags (unchanged)</td></tr>
+    <tr><td>Line-by-line reading of <code>docs/</code>, <code>archive/</code>, <code>research/</code> and other sessions' code</td><td>Out of this session's scope: those trees belong to their records. This session read only the render paths it exercised. The claim &ldquo;reviewed every line&rdquo; is made nowhere on this page beyond the scope stated above.</td><td>This section</td></tr>
+    <tr><td>Live behaviour of the merged site on GitHub Pages</td><td>This branch had not been merged at the time of this record; the final merge and Pages deployment are the closing task.</td><td>Board task T8</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Gate results (final run on this branch)</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Gate</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td><code>scripts/check_site.py</code></td><td>OK &mdash; 31 pages, 5 products, 68 sources, 115 flags (incl. check #10: every <code>/dp/</code> anchor carries <code>rel="sponsored"</code>)</td></tr>
+    <tr><td><code>scripts/mark_sponsored.py --check</code></td><td>OK &mdash; every outbound product link already carries <code>rel="sponsored"</code></td></tr>
+    <tr><td><code>scripts/build_feed.py --check</code></td><td>OK &mdash; feed.xml current (18 items)</td></tr>
+    <tr><td><code>tools/verify_site.py</code></td><td>PASS &mdash; 117 pages, 2,012 table rows, 1,738 with official source, 389 with flag, 66 with repo anchor</td></tr>
+    <tr><td><code>tools/i2_gate.py</code></td><td>PASS &mdash; 18 pages, 164 rows, 148 sourced, 16 explicit blanks, 0 flagged</td></tr>
+    <tr><td><code>tools/cba81fa5_lint.py</code></td><td>PASS &mdash; 0 new findings, 22 inherited (advisory)</td></tr>
+    <tr><td><code>tools/build_cba81fa5_site.py --check</code></td><td>OK &mdash; already current</td></tr>
+    <tr><td><code>tools/link_report.py --strict</code></td><td>0 errors &mdash; 163 pages, 198 distinct external URLs</td></tr>
+    <tr><td><code>scripts/check_all_links.py</code></td><td>0 errors</td></tr>
+    <tr><td><code>scripts/build_sitemap.py --check</code></td><td>OK &mdash; every live page covered (<code>sessions/</code> is excluded from the sitemap on purpose, as audit snapshots, per the standing 81bc99d0 decision)</td></tr>
+    <tr><td><code>node --check assets/track.js</code></td><td>OK</td></tr>
+    <tr><td>Analytics collector smoke test</td><td>PASS &mdash; 204 for valid events; 400 for unknown event id, non-<code>/</code> path and unknown field; query stripped; referrer reduced to host; <code>GET /stats</code> aggregates only</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Method</h2>
+<p>Every observation in the fetch table was produced by fetching the page named in the row during this session on 2026-11-17 and reading what was served. Nothing in that table is copied from an earlier session's capture. The intake script is kept at <code>sessions/0c4c4cb6/intake_p4_p5.py</code>. Register writes used the repository's own conventions (source IDs link only to official hosts; flag IDs anchor to the Flagged page; JSON re-dumped with each file's own indent style). Gates were run after every change batch, and the numbers in the gate table are from the final run on this branch.</p>
+
+<h2>Conclusion</h2>
+<p>The five-link record, the tag, the sponsored-link enforcement, the measurement layer, the feed and the registers are built, gated and honest about their gaps: validation, intent, scope, endpoint hosting and verification tokens are owner inputs, recorded as such rather than filled in. The site states what it cannot yet prove.</p>
+<p class="small">Board entry: <a href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md">COORDINATION.md</a>, Part 0C4. Flags: <a href="../../flagged.html">0C4-F-01&hellip;07</a>. Sources: <a href="../../sources.html">S70&ndash;S75</a>.</p>
+</main>
+<footer>
+  <div class="foot-grid">
+    <div>
+      <p class="disclosure"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+      <p class="foot-disclaimer">CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</p>
+      <p class="muted">Zone3 is independent and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
+    </div>
+    <div class="foot-links">
+      <a href="../../articles/index.html">Research Desk</a><a href="../../sources.html">Sources</a><a href="../../flagged.html">Flagged for review</a><a href="../../verification.html">Verification log</a><a href="../../suggestions.html">Suggestions &amp; decisions</a><a href="../../feed.xml">RSS feed</a><a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a>
+    </div>
+  </div>
+  <p class="small foot-note">Session record, 2026-11-17. A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Source IDs (S01 and so on) link to the official page; see the <a href="../../sources.html">Sources</a> page.</p>
+</footer>
+<script src="../../assets/track.js" defer></script>
+</body>
+</html>
