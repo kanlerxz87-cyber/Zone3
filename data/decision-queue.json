@@ -1,7 +1,7 @@
 {
-  "retrieved": "2026-11-16",
-  "session": "757efebc",
-  "note": "The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything.",
+  "retrieved": "2026-11-17",
+  "session": "ed27e766",
+  "note": "Current review queue refreshed for the five submitted links, two observed product categories, owner-supplied tracking-ID status, canonical reader-layer decision and the repository's disabled/unhosted measurement prototype. Recommendations are not owner decisions; account, product intent and runtime status remain unverified where stated.",
   "states": {
     "do-now": "Recommended for the first pass. Cheap, unblocked, and removes a visible defect.",
     "do-next": "Recommended, but it depends on a decision or a design pass.",
@@ -48,7 +48,7 @@
       "origin": "This session",
       "title": "Move the audit counts out of the landing page hero",
       "area": "Landing page",
-      "what": "Replace 0 of 3 prices verified and the running flag count as headline statistics with the buying decision; move the counts into an evidence bar.",
+      "what": "An earlier draft used '0 of 3 prices verified' and a running flag count as headline statistics. The current root front page now presents five observed listing cards with volatile values omitted. Keep any future status counts in the evidence area and base them on the current five-link register.",
       "recommendation": "Do now",
       "priority": "P1",
       "effort": "S",
@@ -93,9 +93,9 @@
     {
       "id": "757-S-06",
       "origin": "This session",
-      "title": "Ship the twelve-article cluster",
+      "title": "Question-led guide cluster for the current product scope",
       "area": "Editorial",
-      "what": "The twelve concepts in the design brief, each anchored to a listing-derived fact, each with a stated position.",
+      "what": "Develop useful question-led guides for the five-link scope: keep three observed air-fryer listings and two meat-thermometer listings in separate category clusters until the owner confirms broader publication scope. Titles are hypotheses, not measured search demand.",
       "recommendation": "Do next",
       "priority": "P1",
       "effort": "L",
@@ -107,16 +107,20 @@
       ],
       "status": "blocked",
       "src": [
-        "S02",
-        "S14"
-      ]
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-S-07",
       "origin": "This session",
       "title": "One canonical review page per product",
       "area": "Editorial",
-      "what": "Replace the duplicated category mirror with three proper review pages and one comparison.",
+      "what": "One product-intent record per submitted link. Keep intended ASIN/listing/date/source blank until confirmed; store the dated observed redirect target separately. This does not make the submitted short links invalid.",
       "recommendation": "Do next",
       "priority": "P1",
       "effort": "L",
@@ -127,8 +131,14 @@
       ],
       "status": "blocked",
       "src": [
-        "S02"
-      ]
+        "SH-S03",
+        "SH-S06",
+        "SH-S07",
+        "SH-S08",
+        "SH-S09",
+        "SH-S10"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-S-08",
@@ -153,7 +163,7 @@
       "origin": "This session",
       "title": "Product imagery through Amazon-served Program Content",
       "area": "Visual identity",
-      "what": "Use SiteStripe or the API for product images. Never store an Amazon image asset in the repository.",
+      "what": "Use only an owner-approved, permitted source for volatile product fields. Account enrollment, API access and intended-product identity are not verified; current public pages leave price, rating and review fields out.",
       "recommendation": "Do next",
       "priority": "P2",
       "effort": "S",
@@ -163,8 +173,11 @@
       ],
       "status": "blocked",
       "src": [
-        "S02"
-      ]
+        "S02",
+        "S04",
+        "S05"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-S-10",
@@ -219,7 +232,7 @@
       "origin": "Carried from session 4f83ee7b",
       "title": "Brand and hero treatment for the landing page",
       "area": "Visual identity",
-      "what": "A marketing name, a one-line promise and a hero that leads with the three products and what the reader gets.",
+      "what": "Keep a reader-first publication front page with two category entry points and the five observed listings clearly labelled as observations. No unsupported recommendation, winner, or assumed owner intent.",
       "recommendation": "Do next",
       "priority": "P2",
       "effort": "M",
@@ -231,14 +244,15 @@
       "status": "do-next",
       "src": [
         "S01"
-      ]
+      ],
+      "repo": "index.html"
     },
     {
       "id": "SUG-02",
       "origin": "Carried from session 4f83ee7b",
-      "title": "Editorial article hub built from the verified topic plan",
+      "title": "Question-led editorial hub for two observed categories",
       "area": "Editorial",
-      "what": "An articles hub presenting the topic plan as published pieces rather than as an inventory table.",
+      "what": "Maintain one guide hub for the twelve working title hypotheses in the current design brief. Keep air-fryer and thermometer questions in separate category clusters until scope is confirmed. Each published guide needs official sources, human review and explicit limits; titles do not prove popularity or search demand.",
       "recommendation": "Do next",
       "priority": "P2",
       "effort": "M",
@@ -248,8 +262,14 @@
       ],
       "status": "do-next",
       "src": [
-        "S02"
-      ]
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "why": "A question-led hub can organize useful, source-backed explanations without implying measured demand or product testing. Use a dated query report for later topic prioritization when available.",
+      "repo": "data/design-brief.json"
     },
     {
       "id": "SUG-03",
@@ -275,7 +295,7 @@
       "origin": "Carried from session 4f83ee7b",
       "title": "Comparison and buying-guide pages in marketing style",
       "area": "Editorial",
-      "what": "Comparison and buying guide written as marketing pages rather than as data sheets.",
+      "what": "Keep comparison and buyer-guide content limited to facts verified from the relevant official listing; distinguish listing claims from independent testing. Cover the current five observed links by two categories only after product intent is confirmed.",
       "recommendation": "Do next",
       "priority": "P1",
       "effort": "M",
@@ -286,26 +306,35 @@
       ],
       "status": "blocked",
       "src": [
-        "S02"
-      ]
+        "S02",
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "SUG-05",
       "origin": "Carried from session 4f83ee7b",
-      "title": "Conversion calls to action with tagged Special Links",
+      "title": "Test one Associates Special Link per confirmed intended product before scaling",
       "area": "Conversion",
-      "what": "Calls to action that carry the Associates tag. Already flagged blocked by that session.",
+      "what": "The requester supplied shopnow047c-20, but it is not account-verified. In the enrolled workflow, create one Special Link for each confirmed intended product, verify the destination and report attribution, and only then scale. Keep supplied short links unchanged and unresolved.",
       "recommendation": "Do next",
       "priority": "P1",
       "effort": "S",
       "risk": "High",
       "blocked_by": [
-        "Q1"
+        "Q1",
+        "Q2"
       ],
       "status": "blocked",
       "src": [
-        "S02"
-      ]
+        "SH-S02",
+        "SH-S03"
+      ],
+      "repo": "data/shop/config.json"
     },
     {
       "id": "SUG-06",
@@ -361,21 +390,22 @@
     {
       "id": "SUG-09",
       "origin": "Carried from session 4f83ee7b",
-      "title": "Click and conversion tracking through Amazon reporting",
+      "title": "Keep the proposed measurement schema OFF until host review",
       "area": "Measurement",
-      "what": "Use Amazon's own reports rather than a home-grown click counter.",
+      "what": "A five-event prototype proposal and collector script exist in the repository; the browser config is disabled and endpoint_url is empty. No collector runtime is hosted and no events are collected. Keep Amazon links direct and conversions report-sourced; review actual host/network logs, IP handling, retention and privacy notice before activation.",
       "recommendation": "Do next",
       "priority": "P2",
       "effort": "M",
       "risk": "Medium",
       "blocked_by": [
-        "Q1",
         "Q8"
       ],
       "status": "blocked",
       "src": [
-        "S02"
-      ]
+        "SH-S02",
+        "SH-S16"
+      ],
+      "repo": "data/shop/measurement.json"
     },
     {
       "id": "SUG-10",
@@ -395,45 +425,134 @@
         "S01",
         "S07"
       ]
+    },
+    {
+      "id": "SUG-11",
+      "origin": "ed27e766",
+      "title": "Choose one canonical buyer-facing page set before more route work",
+      "area": "Reader architecture",
+      "what": "Recommended default: root publication + /shop/ category/product pages + /guides/ question-led articles on the same host. Inventory unique content and inbound links in /site/, /read/, /marketing/ and /articles/ before any merge, archive, redirect or noindex change.",
+      "recommendation": "do-next",
+      "priority": "P1",
+      "effort": "M",
+      "risk": "Medium: route changes can strand links or unique evidence.",
+      "blocked_by": [
+        "757-Q-11",
+        "757-Q-13",
+        "Q2"
+      ],
+      "status": "do-next",
+      "src": [
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/design-brief.json",
+      "repo_paths": [
+        "index.html",
+        "shop/index.html",
+        "guides/index.html"
+      ]
+    },
+    {
+      "id": "SUG-12",
+      "origin": "ed27e766",
+      "title": "Review the proposed five events and host evidence before collecting anything",
+      "area": "Measurement boundary",
+      "what": "The five event definitions in data/shop/measurement.json are a repository proposal, not owner-approved or live. The config is OFF with an empty endpoint URL; the collector script is unhosted. Do not enable until an actual runtime and its logging, IP handling, retention, access controls and applicable notice/consent requirements are reviewed.",
+      "recommendation": "blocked",
+      "priority": "P1",
+      "effort": "M",
+      "risk": "High if a host collects identifiers or is described as privacy-safe without evidence.",
+      "blocked_by": [
+        "Q8"
+      ],
+      "status": "blocked",
+      "src": [
+        "SH-S02",
+        "SH-S16"
+      ],
+      "repo": "data/shop/measurement.json",
+      "repo_paths": [
+        "assets/measure-config.js",
+        "tools/analytics_endpoint.py"
+      ]
+    },
+    {
+      "id": "SUG-13",
+      "origin": "ed27e766",
+      "title": "Adopt a human-reviewed cadence only after editor and query baseline are real",
+      "area": "Editorial operations",
+      "what": "A 14-day guide interval is a proposal, not a commitment. Name a real editor, record human sign-off, and use dated search/query evidence before making popularity claims or choosing a measured-demand topic. Keep the twelve supplied working titles labelled as hypotheses.",
+      "recommendation": "do-next",
+      "priority": "P2",
+      "effort": "M",
+      "risk": "Medium if a fictional byline or unsupported demand claim is published.",
+      "blocked_by": [
+        "Q5",
+        "Q9"
+      ],
+      "status": "do-next",
+      "src": [
+        "S07",
+        "S24"
+      ],
+      "repo": "data/design-brief.json"
     }
   ],
   "have": [
     {
       "id": "757-H-01",
-      "item": "The three submitted links, and the listing each one opens",
-      "value": "link.amazon/B04G1MEwY opens amazon.com/dp/B0CDY277D3; link.amazon/B02NbDxp3 opens amazon.com/dp/B09B7SB46R; link.amazon/B00hJ57DV opens amazon.com/dp/B08DKYBTPH. Re-verified by this session on 2026-11-16.",
+      "item": "Five submitted links and their dated observed destination listings",
+      "value": "The 2026-11-17 shop register records: B04G1MEwY → B0CDY277D3; B02NbDxp3 → B09B7SB46R; B00hJ57DV → B08DKYBTPH; B0c8moW59 → B0DHZTCNR5; B0f3GKalj → B0DZFD6R9Z. Observed destinations do not establish intended products or link compliance.",
       "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
+        "SH-S06",
+        "SH-S07",
+        "SH-S08",
+        "SH-S09",
+        "SH-S10",
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-H-02",
-      "item": "The browse path of all three listings",
-      "value": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers, browse node 17659096011.",
+      "item": "The five observed listings divide into two product categories",
+      "value": "The dated listing records place three observed listings in Air fryers and two in Meat thermometers. This is a repository category grouping, not an owner decision about the publication niche.",
       "src": [
-        "S14",
-        "S43"
-      ]
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-H-03",
-      "item": "Listing-derived product attributes",
-      "value": "Product 1: two independent 3Qt dishwasher-safe baskets, Sync Finish, Hi-Fry, Easy View windows. Product 2: 26QT, French door, 24 one-touch presets, six accessories included. Product 3: 8 quart, 450F Hi-Fry, bake/dehydrate/frozen, XL dishwasher-safe basket, stainless steel.",
+      "item": "Official listing titles recorded for five observed destinations",
+      "value": "The five shop rows retain the title observed on each Amazon listing on 2026-11-17. A title is not independent testing, a comparative verdict, or confirmation that the requester intended that product.",
       "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-H-04",
       "item": "The ASIN format rule",
-      "value": "Creators API documents itemIdType with a default of ASIN and shows 10-character examples. The submitted tokens are 9 characters.",
+      "value": "The official Creators API reference defines ASIN identifiers as 10-character values. The five submitted tokens are 9 characters. This shape comparison alone does not determine whether a submitted short link is valid or compliant.",
       "src": [
-        "S31",
-        "S06"
+        "SH-S03"
       ]
     },
     {
@@ -441,7 +560,7 @@
       "item": "The exact disclosure sentence required",
       "value": "As an Amazon Associate I earn from qualifying purchases. Required clearly and prominently on the site.",
       "src": [
-        "S01"
+        "SH-S01"
       ]
     },
     {
@@ -457,7 +576,7 @@
       "item": "What a monetisable link requires",
       "value": "Special Links must use the assigned Associates ID; the tag must be a parameter in every link to an Amazon site; a purchase is disqualified if links are not properly formatted.",
       "src": [
-        "S02"
+        "SH-S02"
       ]
     },
     {
@@ -473,7 +592,7 @@
       "item": "The original-content requirement",
       "value": "Pages linking to product lists, search results or department pages must carry additional original content relevant to the link.",
       "src": [
-        "S02"
+        "SH-S02"
       ]
     },
     {
@@ -494,33 +613,82 @@
     },
     {
       "id": "757-H-12",
-      "item": "The current state of the repository and site",
-      "value": "Two merged site generations, 51 registered sources, 78 open flags, navigation containing two entries named after agent sessions, accent colour #1f5eff.",
-      "repo": "COORDINATION.md"
+      "item": "Current reader and governance surfaces in the repository",
+      "value": "The current tree contains a root publication, /shop/ and /guides/ reader pages, and overlapping retained layers including /site/, /read/, /marketing/ and /articles/, plus decision and evidence records. This is a repository inventory, not an owner-approved route decision.",
+      "repo": "COORDINATION.md",
+      "src": [],
+      "repo_paths": [
+        "index.html",
+        "shop/index.html",
+        "guides/index.html",
+        "site/index.html",
+        "read/index.html",
+        "marketing/index.html",
+        "articles/index.html"
+      ]
+    },
+    {
+      "id": "E84-H-01",
+      "item": "Requester-supplied Associates tracking-ID value",
+      "value": "data/shop/config.json records shopnow047c-20 as user-selected. Account ownership, marketplace association and report attribution remain unverified; this is not an account verification.",
+      "src": [
+        "SH-S01",
+        "SH-S02"
+      ],
+      "repo": "data/shop/config.json"
+    },
+    {
+      "id": "E84-H-02",
+      "item": "Five intended-product fields remain unconfirmed",
+      "value": "Each row has an observed redirect target but an empty intended_asin, official_listing_url, confirmation date and source. Do not copy observed ASINs into intended fields.",
+      "src": [
+        "SH-S03"
+      ],
+      "repo": "data/shop/products.json"
+    },
+    {
+      "id": "E84-H-03",
+      "item": "Measurement prototype is disabled and unhosted",
+      "value": "The repository records five proposed events; enabled is false, endpoint_url is empty, and the collector is a local script, not a hosted runtime. No live site event or conversion data is recorded.",
+      "src": [
+        "SH-S16",
+        "SH-S02"
+      ],
+      "repo": "data/shop/measurement.json",
+      "repo_paths": [
+        "assets/measure-config.js",
+        "tools/analytics_endpoint.py",
+        "data/shop/campaign-ledger.json"
+      ]
     }
   ],
   "missing": [
     {
       "id": "757-M-01",
-      "item": "The Associates tag value",
-      "needed_for": "Any link that can accrue commission. Without it, every CTA on the site is decorative.",
+      "item": "Verified Associates ID ownership/marketplace and Special Link report tests",
+      "needed_for": "Commission-eligible links for each confirmed intended product; the value shopnow047c-20 is recorded as requester-supplied but not verified.",
       "severity": "Critical",
-      "how": "Read it from the Associates account or from SiteStripe once enrolled. No document in this repository contains it.",
+      "how": "In the enrolled account, verify the tag and marketplace. After intended ASINs are owner-confirmed, generate one Special Link per product and check destination plus report attribution before scaling.",
       "src": [
-        "S02"
-      ]
+        "SH-S02"
+      ],
+      "repo": "data/shop/config.json"
     },
     {
       "id": "757-M-02",
-      "item": "Confirmation that the three opened listings are the intended products",
-      "needed_for": "Everything editorial. Writing about the wrong three products wastes the whole build.",
+      "item": "Owner-confirmed intended ASIN and official listing URL for each of five submitted links",
+      "needed_for": "All product-specific recommendations, comparison claims and product CTAs; observed redirects do not establish intent.",
       "severity": "Critical",
-      "how": "Ask the requester to confirm the three ASINs by name. A redirect shows where a link goes, not what was meant.",
+      "how": "Ask the requester to identify each intended listing, then record ASIN, official URL, confirmation date and source in the intent fields.",
       "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
+        "SH-S03",
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-M-03",
@@ -576,111 +744,157 @@
     },
     {
       "id": "757-M-08",
-      "item": "Any first-hand testing evidence",
-      "needed_for": "The opinionated verdict that separates a real review site from a listing rewrite.",
+      "item": "Any first-hand testing evidence for the five products",
+      "needed_for": "Review/testimonials or product experience claims; otherwise pages must remain listing-based and explicitly limited.",
       "severity": "High",
-      "how": "Decide whether the products will be bought and used. If not, every article must be written as an analysis of published information, never as a test.",
+      "how": "If a real reviewer tests units, record person, unit, dates, protocol and results; otherwise do not say “we tested” or imply experience.",
       "src": [
-        "S07"
-      ]
+        "S07",
+        "S24"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-M-09",
-      "item": "Search demand figures for any topic",
-      "needed_for": "Prioritising the twelve articles. Without it, sequencing is a guess.",
+      "item": "Dated search/query data for either category",
+      "needed_for": "Choosing a later topic based on measured reader demand; no ranking/popularity claim is supported now.",
       "severity": "Medium",
-      "how": "Use a non-Amazon keyword tool for prioritisation only, and never restate its metrics as Amazon data or publish them as facts.",
-      "src": [
-        "S02"
+      "how": "After choosing and verifying the canonical property, obtain a dated Search Console query export; treat all current titles as hypotheses until then.",
+      "src": [],
+      "repo_paths": [
+        "data/shop/brief-status.json",
+        "data/design-brief.json"
       ]
     },
     {
       "id": "757-M-10",
-      "item": "Click and conversion history",
-      "needed_for": "Any optimisation loop. There is none, because the site has never carried a tagged link.",
+      "item": "Validated outbound-click history and authorized conversion reports",
+      "needed_for": "Any optimization loop or performance statement. The prototype is OFF/unhosted; the campaign ledger is empty.",
       "severity": "High",
-      "how": "Comes only after the tag exists and links are live. Amazon's own reports are the compliant source.",
+      "how": "Do not activate a counter until host/runtime logs, IP handling, retention and notice/consent are reviewed; import orders only from authorized Associates reports.",
       "src": [
-        "S02"
+        "SH-S02",
+        "SH-S16"
+      ],
+      "repo": "data/shop/measurement.json",
+      "repo_paths": [
+        "data/shop/campaign-ledger.json"
       ]
     },
     {
       "id": "757-M-11",
-      "item": "Best Sellers rank positions for the three products",
-      "needed_for": "A trend section, which is otherwise an invention.",
+      "item": "Dated category-specific evidence for any popularity/trend claim",
+      "needed_for": "Any “trending” or popular section; one category or one timestamp cannot establish a cross-category trend.",
       "severity": "Medium",
-      "how": "Read the official Best Sellers page for browse node 17659096011 on the day of publication and record the time. This session did not fetch it, so no rank appears anywhere in this build.",
+      "how": "Keep topic labels as hypotheses. If a popularity claim is considered, gather a dated, relevant official category source and human review first.",
       "src": [
-        "S43"
-      ]
+        "S02"
+      ],
+      "repo": "data/suggestions.json"
     },
     {
       "id": "757-M-12",
-      "item": "Brand name, palette and voice decision",
-      "needed_for": "The design system. The current identity is an unreviewed default.",
+      "item": "Owner decision on publisher name, category scope and canonical route set",
+      "needed_for": "A durable information architecture and any route consolidation; current names and layers overlap.",
       "severity": "Medium",
-      "how": "A decision by the owner, constrained by the rule that Amazon marks cannot appear in the domain, tag or handles.",
-      "src": [
-        "S02"
-      ]
+      "how": "Choose one public route set, then map unique content and inbound links before moving, archiving, redirecting or noindexing pages.",
+      "src": [],
+      "repo": "data/design-brief.json"
     },
     {
       "id": "757-M-13",
-      "item": "A named editor and a publication cadence",
-      "needed_for": "The human-review gate that keeps the site from reading as generated.",
+      "item": "A named human editor and an owner-approved cadence",
+      "needed_for": "Human bylines, first-person claims and repeat publishing; the 14-day interval is only a proposal.",
       "severity": "High",
-      "how": "Assign a person. No tool can substitute for this one.",
+      "how": "Name the real editor and agree a sustainable cadence; require that person to review and sign off before a byline or experience claim appears.",
       "src": [
-        "S01",
-        "S07"
+        "S07",
+        "S24"
+      ],
+      "repo": "data/suggestions.json"
+    },
+    {
+      "id": "E84-M-01",
+      "item": "Runtime host and evidence for logs, IP handling and retention",
+      "needed_for": "Any live browser counter or collector; static GitHub Pages cannot receive the proposed collection POSTs.",
+      "severity": "High",
+      "how": "Keep OFF. Select a runtime only after official host documentation and actual staging/network logs, retention, access controls and notice/consent requirements are reviewed.",
+      "src": [
+        "SH-S16",
+        "SH-S02"
+      ],
+      "repo": "data/shop/measurement.json",
+      "repo_paths": [
+        "tools/analytics_endpoint.py"
       ]
+    },
+    {
+      "id": "E84-M-02",
+      "item": "Canonical route/content map and owner choice",
+      "needed_for": "Changing route, redirect, archive or noindex behavior for overlapping reader layers.",
+      "severity": "Medium",
+      "how": "Inventory unique content and inbound links across root, shop, guides, site, read, marketing and articles; obtain owner choice before changes.",
+      "src": [],
+      "repo": "data/design-brief.json"
     }
   ],
   "questions": [
     {
       "id": "Q1",
-      "question": "What is the Associates tag to use on every Special Link?",
-      "have": "Special Links must use the assigned Associates ID, and the tag must appear as a URL parameter in every link to an Amazon site. A purchase is disqualified if links are not properly formatted.",
-      "missing": "The tag value itself. Nothing in this repository contains it.",
+      "question": "Is shopnow047c-20 the enrolled Associates ID for the intended marketplace, and does each intended product pass a Special Link report test?",
+      "have": "The repository records shopnow047c-20 as requester-supplied in data/shop/config.json; ownership, marketplace association and report attribution are not verified.",
+      "missing": "Account verification and one Associates-generated Special Link per owner-confirmed intended product, with the destination and report attribution checked.",
       "why": "Blocks every conversion element on the site. Until it exists, no published link can earn.",
-      "how": "Read it from the Associates account or SiteStripe once enrolled.",
+      "how": "Verify the account/tag and marketplace; after intent confirmation, test one link per product in the enrolled Associates workflow before scaling. Keep submitted links as supplied and do not call them invalid.",
       "blocks": [
         "SUG-05",
         "757-S-07",
         "757-S-08"
       ],
       "src": [
-        "S02"
-      ]
+        "SH-S02"
+      ],
+      "repo": "data/shop/config.json"
     },
     {
       "id": "Q2",
-      "question": "Are the three destination listings the products that were intended?",
-      "have": "Each short link opens a live listing, and each listing title was read today. The submitted tokens are 9 characters and Creators API documents ASINs as 10.",
-      "missing": "Any official statement of intent. A redirect shows where a link goes, not what was meant.",
-      "why": "Everything editorial depends on it. Writing about the wrong three products wastes the build.",
-      "how": "Ask the requester to confirm the three ASINs by name.",
+      "question": "Are the five observed destination listings the five products the requester intended?",
+      "have": "Five dated short-link-to-listing observations are recorded; all five intended ASIN fields are blank.",
+      "missing": "The requester’s intended ASIN and official listing URL for each of the five submitted links.",
+      "why": "Product recommendations, comparisons and CTA destinations depend on intent; a redirect only records where a link opened.",
+      "how": "Ask the requester to confirm each intended listing, then record the official URL, date and source separately from the observed redirect. Do not label the submitted short links invalid.",
       "blocks": [
         "757-S-06",
         "757-S-07",
         "SUG-04"
       ],
       "src": [
-        "S14",
-        "S31"
-      ]
+        "SH-S03",
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "Q3",
       "question": "Which Amazon marketplace is the site for?",
-      "have": "The Operating Agreement schedule lists the United States and amazon.com only, and all three links resolve on amazon.com.",
-      "missing": "A stated decision about target market and currency.",
+      "have": "All five dated observed destinations are Amazon.com pages. This does not establish the intended audience, target country, currency or Associates marketplace.",
+      "missing": "The owner’s chosen audience and marketplace, and a matching enrolled account.",
       "why": "Determines link format, commission schedule and which rate table applies.",
-      "how": "Decide the market, then confirm against the schedule attached to the Operating Agreement.",
+      "how": "Obtain the owner’s choice and verify the account marketplace in Associates Central; do not infer it from the observed Amazon.com destination or the requester’s location.",
       "blocks": [],
       "src": [
-        "S01"
-      ]
+        "SH-S01",
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/config.json"
     },
     {
       "id": "Q4",
@@ -701,8 +915,8 @@
     {
       "id": "Q5",
       "question": "Who reviews and publishes content, and how often?",
-      "have": "The site currently has no named reviewer and no cadence.",
-      "missing": "A person and a rhythm.",
+      "have": "No real human reviewer is named in the current records; the existing generated desk/byline label is not treated as a person. A 14-day interval is only a proposal.",
+      "missing": "A real editor/reviewer, their authority, review time and an owner-approved cadence.",
       "why": "The human-review gate is the only durable defence against the generated-content feel.",
       "how": "Assign an owner and a cadence before any article is published.",
       "blocks": [
@@ -712,24 +926,26 @@
         "SUG-10"
       ],
       "src": [
-        "S01",
-        "S07"
-      ]
+        "S07",
+        "S24"
+      ],
+      "repo": "guides/index.html"
     },
     {
       "id": "Q6",
-      "question": "Will the products be used and tested first-hand?",
-      "have": "No testing has taken place. Every product fact on the site comes from listing titles.",
-      "missing": "Any experiential evidence.",
+      "question": "Have any of the five products been used or tested first-hand?",
+      "have": "The repository contains listing observations and no first-hand test record for any of the five products.",
+      "missing": "Whether anyone will obtain/test the five products and, if so, the reviewer, method, dates and recorded results.",
       "why": "Decides whether the site can publish reviews or only analyses of published information, and the FTC expects the difference to be honest.",
-      "how": "Decide whether to buy and test the three units.",
+      "how": "If testing occurs, record the actual reviewer, units, dates, protocol and observations; otherwise keep statements to source-backed listing facts and explicit limits.",
       "blocks": [
         "757-S-06"
       ],
       "src": [
         "S07",
-        "S44"
-      ]
+        "S24"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "Q7",
@@ -748,28 +964,37 @@
     },
     {
       "id": "Q8",
-      "question": "Which analytics and reporting stack will be used?",
-      "have": "Amazon's own reports are the compliant source for clicks and conversions.",
-      "missing": "Any site-side analytics decision, and any data at all.",
-      "why": "Determines whether an optimisation loop can exist.",
-      "how": "Pick a stack, then rely on Amazon reporting for anything commission-related.",
+      "question": "What analytics/reporting route is wanted, and where can a runtime be hosted with verified logging and retention?",
+      "have": "The repository includes five proposed event definitions and an unhosted collector prototype; enabled=false, endpoint_url empty, ledger empty. GitHub Pages is static and its docs state visitor IPs are logged.",
+      "missing": "Owner approval/revision of the proposal; a runtime host; actual network/access logging, IP handling, retention, controls, applicable notice/consent review and authorized Associates reports.",
+      "why": "A local collector script is not a deployed service. No site events or Amazon conversion data are evidenced, and “privacy-preserving” cannot be claimed without host evidence.",
+      "how": "Keep collection OFF. Review the proposed schema and host’s official docs; inspect actual staging logs/retention before activation. Use authorized Associates reports for orders, not a browser conversion event.",
       "blocks": [
         "SUG-09"
       ],
       "src": [
-        "S02"
+        "SH-S02",
+        "SH-S16"
+      ],
+      "repo": "data/shop/measurement.json",
+      "repo_paths": [
+        "assets/measure-config.js",
+        "tools/analytics_endpoint.py",
+        "data/shop/campaign-ledger.json"
       ]
     },
     {
       "id": "Q9",
       "question": "What budget and tooling exist for keyword and topic research?",
-      "have": "Amazon data may not be restated as third-party metrics, and no Amazon-sourced demand figure exists.",
+      "have": "No Search Console query export or measured reader-query dataset is recorded; the current titles are editorial hypotheses.",
       "missing": "Any demand data at all.",
       "why": "Sets how the twelve articles are sequenced.",
       "how": "Choose a research tool for prioritisation only, keeping its numbers out of published claims.",
       "blocks": [],
-      "src": [
-        "S02"
+      "src": [],
+      "repo_paths": [
+        "data/shop/brief-status.json",
+        "data/design-brief.json"
       ]
     },
     {
@@ -787,16 +1012,24 @@
     },
     {
       "id": "757-Q-11",
-      "question": "Which surface is the front door: the reader site or the audit dashboard?",
-      "have": "Both exist today and share one navigation, which is a large part of why the site reads as a machine output.",
-      "missing": "A decision.",
-      "why": "It determines the entire information architecture and everything downstream of it.",
-      "how": "Decide from the two-surface recommendation in the brief, then restructure the navigation once.",
+      "question": "Which reader-facing page set is canonical, and how should overlapping pages be handled?",
+      "have": "The current tree has root, /shop/ and /guides/ reader pages plus overlapping /site/, /read/, /marketing/ and /articles/ layers. Root + shop + guides is a recommendation, not an owner choice.",
+      "missing": "The accepted canonical page set, final publisher name, and a map of unique content and inbound links before routes change.",
+      "why": "A clear reader route is needed, but unreviewed consolidation could strand inbound links or lose unique evidence.",
+      "how": "Review the proposed root + /shop/ + /guides/ default, inventory unique content/links, and record an owner decision before any redirect/archive/noindex.",
       "blocks": [
-        "757-S-01"
+        "757-S-01",
+        "SUG-11"
       ],
-      "src": [
-        "S02"
+      "src": [],
+      "repo_paths": [
+        "index.html",
+        "shop/index.html",
+        "guides/index.html",
+        "site/index.html",
+        "read/index.html",
+        "marketing/index.html",
+        "articles/index.html"
       ]
     },
     {
@@ -815,18 +1048,23 @@
     },
     {
       "id": "757-Q-13",
-      "question": "Is the niche limited to these three products or expanded to the air-fryer category?",
-      "have": "Three products, all in the Air Fryers browse node, and one category page.",
-      "missing": "A decision on scope.",
-      "why": "Three products will not sustain a long-running content cluster, but expanding needs more sourcing capacity.",
-      "how": "Decide scope, then size the content plan to it rather than the other way round.",
+      "question": "Should the three air-fryer and two meat-thermometer listings share one publication, and what category structure should readers see?",
+      "have": "The dated shop register groups three observed listings as air fryers and two as meat thermometers; this is not owner-confirmed niche scope.",
+      "missing": "Whether the owner intends one broader kitchen publication or distinct niche sites/category clusters.",
+      "why": "The five observed listings are split across two categories (three air fryers and two meat thermometers); the listing count alone does not establish owner intent or reader demand. Expanding either content cluster also requires sourcing capacity.",
+      "how": "Keep the two categories distinct pending owner decision. Use the route/content inventory to choose the reader structure; do not infer audience or demand from the links.",
       "blocks": [
-        "757-S-06"
+        "757-S-06",
+        "SUG-11"
       ],
       "src": [
-        "S14",
-        "S43"
-      ]
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-Q-14",
@@ -861,44 +1099,61 @@
   "discovery": [
     {
       "id": "757-D-01",
-      "action": "Read the Associates tag from the Associates account or SiteStripe and record it in one configuration file",
-      "discovers": "Q1, and unblocks every conversion element on the site",
+      "action": "In the enrolled Associates account, verify requester-supplied shopnow047c-20 and the target marketplace; do not treat the value in config as account verification.",
+      "discovers": "Q1: account ownership/marketplace status and whether the supplied value matches the enrolled account.",
       "effort": "Minutes, once the account exists",
       "src": [
-        "S02"
-      ]
+        "SH-S01",
+        "SH-S02"
+      ],
+      "repo": "data/shop/config.json"
     },
     {
       "id": "757-D-02",
-      "action": "Ask the requester to confirm the three intended ASINs by name, matched against the three observed destinations",
-      "discovers": "Q2, and settles whether any editorial work is aimed at the right products",
+      "action": "After owner confirmation of each intended ASIN, generate one Special Link per product in the enrolled Associates workflow; verify each destination and report attribution before scaling. Keep each supplied short link unchanged and its compliance status unresolved.",
+      "discovers": "Q1/Q2: per-product intent, destination and reporting; a redirect observation alone does not establish intent or compliance.",
       "effort": "One question",
       "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
+        "SH-S02",
+        "SH-S03",
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-D-03",
-      "action": "Check account standing in the Associates dashboard and read the Creators API prerequisites page directly",
+      "action": "Check account/API eligibility only in the enrolled Associates workflow and the current official Creators API prerequisites; keep volatile fields blank until an approved path exists.",
       "discovers": "Q4, and whether price and rating data can lawfully be displayed",
       "effort": "One session",
       "src": [
         "S04",
-        "S05"
-      ]
+        "S05",
+        "S02"
+      ],
+      "repo": "data/shop/config.json"
     },
     {
       "id": "757-D-04",
-      "action": "Re-fetch the three short links on the day of publication and record the destination ASIN and listing title",
-      "discovers": "Whether the link-to-listing mapping still holds before content goes live",
+      "action": "Re-fetch all five submitted links and official target listings on publication day; record observed target/date/source separately, and do not convert that observation into intended ASIN.",
+      "discovers": "Whether the recorded observations still match on the day of publication; not owner intent.",
       "effort": "Minutes; already the method used by three earlier sessions",
       "src": [
-        "S14",
-        "S15",
-        "S16"
-      ]
+        "SH-S06",
+        "SH-S07",
+        "SH-S08",
+        "SH-S09",
+        "SH-S10",
+        "SH-S11",
+        "SH-S12",
+        "SH-S13",
+        "SH-S14",
+        "SH-S15"
+      ],
+      "repo": "data/shop/products.json"
     },
     {
       "id": "757-D-05",
@@ -936,15 +1191,47 @@
       "src": [
         "S02"
       ]
+    },
+    {
+      "id": "E84-D-01",
+      "action": "Review the recommended root + /shop/ + /guides/ structure and inventory unique content/inbound links in every overlapping reader layer before any route action.",
+      "discovers": "The owner-selected canonical page set and a safe route/content map.",
+      "effort": "One route-map pass; owner decision required.",
+      "src": [],
+      "repo": "data/design-brief.json",
+      "repo_paths": [
+        "index.html",
+        "shop/index.html",
+        "guides/index.html",
+        "site/index.html",
+        "read/index.html",
+        "marketing/index.html",
+        "articles/index.html"
+      ]
+    },
+    {
+      "id": "E84-D-02",
+      "action": "Keep the measurement prototype OFF; inspect the chosen runtime’s official docs and actual staging/network logs, IP handling, retention and access controls before a live test.",
+      "discovers": "Whether any proposed event collection can run with documented operational and privacy controls.",
+      "effort": "Owner host selection and privacy review.",
+      "src": [
+        "SH-S02",
+        "SH-S16"
+      ],
+      "repo": "data/shop/measurement.json",
+      "repo_paths": [
+        "tools/analytics_endpoint.py"
+      ]
     }
   ],
   "workflow": [
-    "Start with the questions, not the proposals. Anything marked blocked cannot be built well, however good the design is.",
-    "Answer the three critical questions first: the tag (Q1), the intended products (Q2), and account standing (Q4). Everything else is downstream of those.",
-    "Work the do-now column next. Those items are cheap, unblocked, and remove the defects that make the site read as machine output.",
-    "Record accept, reject or defer against every row before writing any code, and record the person who decided.",
-    "Only then run the design brief's prompt against the accepted scope.",
-    "Re-run the release gate after every change. A page that cannot trace a claim to an official source does not ship."
+    "Resolve the blocking owner/account questions before monetized product claims: five intended ASINs, target marketplace and the requester-supplied tracking ID status.",
+    "In the enrolled Associates workflow, test one generated Special Link per owner-confirmed intended product; verify destination and report attribution before scaling. Do not call the submitted short links invalid.",
+    "Keep intended identity and observed redirect records separate; leave unconfirmed intended fields blank.",
+    "Review the recommended root + /shop/ + /guides/ architecture and map unique content and inbound links before any route, archive, redirect or noindex change.",
+    "Review the repository’s five event definitions as a proposal only. The config is OFF and the collector unhosted; select no runtime until logs, IP handling, retention, access controls and applicable notice/consent requirements are evidenced.",
+    "Name a real human editor and define the testing/image-rights rules before using human bylines or product experience claims.",
+    "Use dated query/report data for later topic selection and performance claims; otherwise keep supplied titles as hypotheses and metric cells blank."
   ],
-  "relationship_note": "A parallel session shipped a reader-facing decision board at /site/decisions.html on 2026-11-16, with its own proposals, questions, discovery actions and prompt pack. This console is the audit-side counterpart: it consolidates all 22 proposals from both earlier sessions and this one into a single triage with sizing, and it splits the register into what is sourced and what is missing. Use either; the point of both is that a decision is recorded before anything is implemented."
+  "relationship_note": "This audit-side review console sits beside the reader publication, shop decisions and browser-local Decision Center. Recommended default: root + /shop/ + /guides/ on one host; group evidence/decision pages under one nav/footer item. This remains a proposal until the owner chooses it and unique content/inbound links are mapped. The Choice UI stores only in the current browser; it does not record an owner decision."
 }

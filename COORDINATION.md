@@ -7708,7 +7708,7 @@ verbatim, this session's parts re-appended. No other session's content edited. P
 ### 84 Coordination check
 
 - Read the current board through Part 83. The preceding G82 and G83 work is merged (PRs #140–#143); no open PRs were returned by `gh pr list` when this claim was made.
-- Current branch was fast-forwarded to `origin/main` at `c67596a` before the claim. The earlier shallow-boundary rebase conflict was aborted without editing or losing work; after fetching ancestry, `git pull --rebase origin main` fast-forwarded cleanly. No other branch is being used.
+- The branch was initially fast-forwarded to `origin/main` at `c67596a` after the earlier shallow-boundary issue. While E84 was in progress, `main` advanced to `6ef32c4` (PR #150); the session claim commits were rebased onto it. The append-only `COORDINATION.md` conflict was resolved by retaining the complete upstream board and appending Part 84. Work-in-progress files were stashed/restored around the rebase. No other branch was used.
 - G82's suggestions files were already merged and are not considered an active claim. This is a follow-up consistency pass after the five-product register and executive-summary reconciliation in Part 83, not a takeover of another active task.
 - No new product observation, policy interpretation, user identity, account state, or audience fact will be invented. The five observed destination records are dated 2026-11-17 in `data/shop/products.json` and `data/shop/sources.json`; intended-ASIN fields remain blank by rule. The tracking ID in the current request is an owner-provided value, not account-verified evidence.
 
@@ -7716,12 +7716,38 @@ verbatim, this session's parts re-appended. No other session's content edited. P
 
 | Task | Status | Owner | Files in scope | Sources / basis | Irregularities |
 |---|---|---|---|---|---|
-| E84-T1 — Refresh current suggestions/questions (including the supplied tracking-ID status, five products/two categories, canonical reader layer, endpoint constraints and discovery actions) | in progress | `ed27e766` | `data/suggestions.json`; `data/decision-queue.json`; `data/shop/decisions.json`; `scripts/build_site.py` (source resolver and only the relevant design-brief/suggestions/queue renderers); generated `suggestions.html`, `decision-queue.html`, `shop/decisions/index.html` | Existing official registers `data/sources.json` and `data/shop/sources.json`; `data/shop/products.json`; user brief (owner inputs only) | Existing Q1/Q2/Q11/Q12 and DEC-03 text may be stale; do not describe supplied short links as invalid |
-| E84-T2 — Reconcile the copy-paste design prompt with current scope and publish a current-state summary/addendum | in progress | `ed27e766` | `data/design-brief.json`; generated `design-brief.html`; `sessions/ed27e766/**` | Existing official sources linked in the prompt register; product listing records SH-S11–SH-S15 | Product imagery, human byline, brand, audience, and account-dependent recommendations remain gated |
-| E84-T3 — Verify the modified output and complete integration | planned | `ed27e766` | claimed files only; this Part of `COORDINATION.md` | repository gates; no external product re-fetch planned | Any remaining infrastructure/owner-side dependency remains explicitly flagged |
+| E84-T1 — Refresh current suggestions/questions (including the supplied tracking-ID status, five products/two categories, canonical reader layer, endpoint constraints and discovery actions) | done | `ed27e766` | `data/suggestions.json`; `data/decision-queue.json`; `data/shop/decisions.json`; `scripts/build_site.py` (source resolver and only the relevant design-brief/suggestions/queue renderers); generated `suggestions.html`, `decision-queue.html`, `shop/decisions/index.html` | Existing official registers `data/sources.json` and `data/shop/sources.json`; `data/shop/products.json`; user brief (owner inputs only) | Existing Q1/Q2/Q11/Q12 and DEC-03 text refreshed; supplied short links remain unresolved, not declared invalid |
+| E84-T2 — Reconcile the copy-paste design prompt with current scope and publish a current-state summary/addendum | done | `ed27e766` | `data/design-brief.json`; generated `design-brief.html`; `sessions/ed27e766/**` | Existing official sources linked in the prompt register; product listing records SH-S11–SH-S15 | Product imagery, human byline, brand, audience, and account-dependent recommendations remain gated |
+| E84-T3 — Verify the modified output and complete integration | in progress | `ed27e766` | claimed files only; this Part of `COORDINATION.md` | repository gates; no external product re-fetch planned | Gates pass; PR and remote check pending |
 
 **Scope boundary:** no edits to root publication content, product/source/flag registers, shared analytics infrastructure, the five submitted links, `sitemap.xml`, `feed.xml`, or another session's verification records. No click-collection endpoint will be deployed or faked: the current Pages host is static; a separate runtime and its logging/retention behavior need evidence before activation. The five-event list will be labelled a proposal because the brief requests five definitions but does not name them.
 
 ### E84 scope amendment (2026-11-17)
 
-The current Decision Center is the repository's browser-local choice UI, while `decision-queue.html` is a sourced review register. To make the new canonical-site and five-event proposals selectable without implying server-side storage, E84-T1 additionally includes `build_decision_center()` in `scripts/build_site.py` and its generated `decision-center.html`. The two new choices will be stored only in the visitor's browser, with an export/clear path already present; they are not sent to the site or treated as owner decisions. No other page or generator scope changes.
+The current Decision Center is the repository's browser-local choice UI, while `decision-queue.html` is a sourced review register. To make the new canonical-site and five-event proposals selectable without implying server-side storage, E84-T1 additionally includes `build_decision_center()` in `scripts/build_site.py` and its generated `decision-center.html`. The two new choices will be stored only in the visitor's browser; the existing clear control remains available, there is no export feature, and choices are not sent to the site or treated as owner decisions. No other page or generator scope changes.
+
+### E84 implementation and verification (2026-11-17)
+
+- Refreshed the current suggestions, queue, shop decision record and design prompt for five submitted links across two observed categories. The root + `/shop/` + `/guides/` structure remains a recommendation; no routes, product links, intended-ASIN fields, measurement configuration or collector hosting were changed.
+- The requester-supplied `shopnow047c-20` value remains unverified. No enrolled account access, Special Link/report test, fresh Amazon listing fetch, owner-intent confirmation, query export, deployment log or privacy review is claimed.
+- The existing five-event definitions remain a proposal. `enabled=false`, `endpoint_url` empty, collector unhosted. The collector/client tests below are offline test suites, not deployment or collection evidence.
+- Resolved source-label ambiguity: Decision Center SH-S11–SH-S15 now read as observed listing sources, and DEC-07 links all five individual listing pages plus the separate repository register. Refreshed queue language that previously referred to the old “0 of 3” hero metric and clarified the three-air-fryer/two-thermometer rationale without implying market demand.
+- The documented full README build chain had completed successfully. After the last data edits, the affected site/shop renderers and publication/measurement/feed/sitemap passes were rerun, followed by the strict checks below.
+
+| Gate on final E84 outputs | Result |
+|---|---|
+| `scripts/check_site.py` | PASS — 36 pages, 5 products, 75 sources, 123 flags |
+| `tools/verify_site.py` | PASS — 144 pages, 2,279 table rows; inherited provenance advisories are non-blocking |
+| `tools/link_report.py --strict` | PASS — 232 rows; no dangling source/flag references |
+| `tools/i2_gate.py` | PASS — 20 pages, 186 rows, 170 sourced, 16 explicit blanks, 0 flagged |
+| `tools/cba81fa5_lint.py` | PASS — 20 pages, 0 new findings, 22 inherited advisory findings |
+| `scripts/cba81fa5_test_no_repr_output.py` | PASS — 144 pages, 0 repr-shaped text |
+| `tools/build_shop.py` | PASS — 11 pages; disclosure, sponsored links, sources and local-link checks |
+| `tools/build_feed.py --check` | PASS — 9 current entries |
+| `scripts/build_sitemap.py --check` | PASS — 101 pages, 0 extra entries |
+| `scripts/check_all_links.py` | PASS — 190 HTML pages, 255 distinct external URLs, 0 errors |
+| Sponsored/disclosure checks | PASS — all product links marked sponsored; disclosure above the fold |
+| Collector `--self-test` and client measurement tests | PASS — offline validation only; does not imply a hosted service or live event data |
+| Edited JSON, `py_compile`, `git diff --check` | PASS |
+
+The detailed session log is `sessions/ed27e766/review.md`. No PR, merge or Pages deployment has yet been performed.

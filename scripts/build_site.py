@@ -31,6 +31,11 @@ def load(name: str):
 
 SRC = load("sources.json")
 SOURCES = {s["id"]: s for s in SRC["sources"]}
+# The newer shop register has its own, namespaced official-source IDs. Merge them into
+# the link resolver so review/design pages can cite those records directly; the flat
+# Sources page remains a view of data/sources.json, while /shop/sources/ renders SH-*.
+SHOP_SRC = load("shop/sources.json")
+SOURCES.update({s["id"]: s for s in SHOP_SRC["sources"]})
 PRODUCTS = load("products.json")["products"]
 # Intent confirmation records (session 82372fd1, 2026-11-17). The owner brief asks for a
 # per-link record of the *intended* product (ASIN, official listing URL, confirmation date,
@@ -92,53 +97,52 @@ def repo_link(path: str, label: str) -> str:
 def basis(rec: dict) -> str:
     """Evidence cell for a row: official sources first, then the repository reference."""
     parts = []
-    if rec.get("src"):
-        parts.append(src_links(rec["src"]))
+    ids = rec.get("src") or rec.get("source") or []
+    if ids:
+        parts.append(src_links(ids))
     if rec.get("repo"):
         parts.append(repo_link(rec["repo"], "this repo: " + rec["repo"]))
+    if rec.get("repo_paths"):
+        parts.extend(repo_link(p, "this repo: " + p) for p in rec["repo_paths"])
     return " &middot; ".join(parts) or '<span class="muted">no source</span>'
 
 
 def build_design_brief() -> None:
-    """The redesign brief and prompt pack (session 757efebc, 2026-11-16).
+    """Render the current five-link design brief and copy-paste prompt.
 
-    The concrete answer to "it reads like AI slop": a critique of what the site does now,
-    a copy-and-paste prompt for the redesign, a design system, a twelve-article editorial
-    plan, a traffic architecture, a conversion architecture and an anti-slop checklist.
-    Every factual row links the official page it was read from, or the file in this
-    repository it describes. Published for review; nothing here is implemented.
+    Repository observations, owner inputs and design proposals are separated; the current
+    measurement prototype is documented as OFF and unhosted rather than as live service.
     """
     d = DESIGN
     body = (
-        '<div class="callout"><p><strong>What this page is.</strong> The redesign brief for '
-        'this site. It names what makes the current pages read as machine output, then gives '
-        'a copy-and-paste prompt, a design system, a twelve-article editorial plan, a traffic '
-        'architecture and an anti-slop checklist. Every factual row carries the official source '
-        'it rests on, or the file in this repository it describes. <strong>Nothing on this page '
-        'is implemented</strong>: it exists so the path is chosen before anything is built. '
-        'The reviewable version of every proposal is on the '
-        '<a href="decision-queue.html">Review console</a>. This session&rsquo;s verification log '
-        'and repository review are in the '
-        '<a href="sessions/757efebc/index.html">session record</a>.</p></div>'
-        + '<div class="suggestion"><h3>How this relates to the /site/ marketing site</h3>'
+        '<div class="callout"><p><strong>What this page is.</strong> The current redesign brief '
+        'for the five-link, two-category publication. It contains a copy-and-paste prompt, a design '
+        'system, question-led topic hypotheses, a traffic/measurement plan and an anti-slop checklist. '
+        'Facts link to the official source or repository record they describe; user inputs and proposals '
+        'are labelled separately. <strong>This page does not validate account access or activate analytics</strong>: '
+        'it exists so the remaining decisions and infrastructure gates are visible before changes are made. '
+        'Use the <a href="suggestions.html">Suggestions &amp; decisions</a> page and '
+        '<a href="decision-queue.html">Review console</a> to record a path.</p></div>'
+        + '<div class="suggestion"><h3>Current reader surfaces and recommended direction</h3>'
         f'<p>{e(d["relationship_note"])}</p>'
-        '<p><a href="site/index.html">Marketing site</a> &middot; '
-        '<a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a></p></div>'
+        '<p><a href="index.html">Publication front page</a> &middot; '
+        '<a href="shop/index.html">Shop categories</a> &middot; '
+        '<a href="guides/index.html">Buyer guides</a> &middot; '
+        '<a href="site/index.html">Retained reader layer</a></p></div>'
     )
 
     rows = [[e(r["id"]), f'<strong>{e(r["point"])}</strong>', e(r["detail"]), basis(r)]
             for r in d["executive_summary"]]
-    body += ("<h2>Executive summary</h2>"
-             '<p class="small">The eight things that decide everything else, each with the '
-             "source it rests on.</p>") + table(
+    body += ("<h2>Executive summary — current state</h2>"
+             '<p class="small">Eight points, with official sources or repository records. '
+             "Owner inputs and unverified values are explicitly labelled.</p>") + table(
         ["ID", "Point", "Detail", "Source"], rows)
 
     rows = [[e(c["id"]), f'<strong>{e(c["area"])}</strong>', e(c["observed"]),
              e(c["slop"]), e(c["fix"]), basis(c)] for c in d["critique"]]
-    body += ("<h2>Why it reads as generated: ten findings</h2>"
-             '<p class="small">Each row names something actually present in this repository '
-             "today, why it reads the way it does, and the fix. The observations are about "
-             "this site's own files, so they cite the file.</p>") + table(
+    body += (f'<h2>Current design risks: {len(d["critique"])} findings</h2>'
+             '<p class="small">Each repository observation is separated from its proposed fix; '
+             "official-source links are shown where a policy or product fact is involved.</p>") + table(
         ["ID", "Area", "What is there now", "Why it reads as generated", "Fix", "Basis"], rows)
 
     blocks = [f'{b["label"].upper()}\n\n{b["text"]}' for b in d["prompt"]]
@@ -171,9 +175,9 @@ def build_design_brief() -> None:
         rows.append([e(r["id"]), badge(e(r["surface"]), "info" if r["surface"] == "Reader" else "muted"),
                      f'<strong>{e(r["page"])}</strong>', e(r["job"]), e(r["cta"]),
                      badge(e(r["status"]), STATE_KIND.get(r["status"], "muted")), basis(r)])
-    body += ("<h2>Information architecture</h2>"
-             '<p class="small">Two surfaces: the reader site, and the evidence layer that '
-             "makes it trustworthy. They are linked by one page, How we verify.</p>") + table(
+    body += ("<h2>Recommended one-site information architecture</h2>"
+             '<p class="small">One canonical reader publication on one host, with product categories, '
+             "question-led guides and a grouped evidence/decision area. This is a proposal; route changes wait for review.</p>") + table(
         ["ID", "Surface", "Page", "Job", "Primary action", "State", "Basis"], rows)
 
     rows = []
@@ -181,39 +185,35 @@ def build_design_brief() -> None:
         rows.append([e(r["id"]), f'<strong>{e(r["title"])}</strong>',
                      f'<div>{e(r["hook"])}</div><div class="muted">{e(r["angle"])}</div>',
                      e(r["format"]), e(r["fact"]), e(r["rule"]), basis(r)])
-    body += ("<h2>Editorial plan: twelve articles</h2>"
-             '<p class="small">Catchy, shareable titles, each anchored to a fact read from '
-             "the live listing and each with the thing it must not claim. No article may "
-             "state a price, a rating or a test result.</p>") + table(
+    body += (f'<h2>Question-led topic hypotheses: {len(d["editorial"])} proposals</h2>'
+             '<p class="small">These are working titles, not search-volume or popularity claims. '
+             "Each row names a listing fact and the limit the article must respect.</p>") + table(
         ["ID", "Working title", "Hook and angle", "Format", "Verified fact it rests on",
          "What it must not say", "Source"], rows)
 
     rows = [[e(r["id"]), f'<strong>{e(r["action"])}</strong>', e(r["what"]), e(r["why"]),
              e(r["constraint"]), basis(r)] for r in d["traffic"]]
-    body += ("<h2>Organic traffic architecture</h2>"
-             '<p class="small">How the site earns visitors, and the programme rules that '
-             "bound each move.</p>") + table(
+    body += ("<h2>Organic discovery plan — no ranking promise</h2>"
+             '<p class="small">Proposed steps to make useful pages discoverable and measure real queries; '
+             "they do not guarantee traffic or ranking.</p>") + table(
         ["ID", "Move", "What it is", "Why it works", "Constraint", "Source"], rows)
 
     rows = [[e(r["id"]), f'<strong>{e(r["element"])}</strong>', e(r["spec"]), e(r["why"]),
              basis(r)] for r in d["conversion"]]
-    body += ("<h2>Conversion architecture</h2>"
-             '<p class="small">Where the money is made, lawfully.</p>') + table(
+    body += ("<h2>Conversion and measurement gates</h2>"
+             '<p class="small">Recommendations for direct links and report-sourced measurement; nothing here activates account access or an endpoint.</p>') + table(
         ["ID", "Element", "Specification", "Why", "Basis"], rows)
 
     rows = [[e(r["id"]), e(r["tell"]), e(r["fix"]), basis(r)] for r in d["anti_slop"]]
     body += ("<h2>Anti-slop checklist</h2>"
-             '<p class="small">Ten tells, and what to do instead. Run a page against this '
-             "before it ships.</p>") + table(
+             '<p class="small">Run each new page against these editorial checks before it ships.</p>') + table(
         ["ID", "The tell", "What to do instead", "Basis"], rows)
 
     body += "<h2>How to use this brief</h2><ol class=\"findings\">" + "".join(
         f"<li>{e(step)}</li>" for step in d["workflow"]) + "</ol>"
 
     page("design-brief.html", "Design brief", body,
-         lead="Why the site reads as generated, and the prompt, design system, editorial plan "
-              "and checklists to fix it. Proposals only, each with its source. Nothing here is "
-              "implemented yet.")
+         lead="A current five-link design prompt, editorial plan and measurement boundary. Proposals are labelled; route, account and endpoint changes are not made by reading this page.")
 
 
 def build_decision_queue() -> None:
@@ -225,19 +225,18 @@ def build_decision_queue() -> None:
     """
     q = QUEUE
     body = (
-        '<div class="callout"><p><strong>What this page is.</strong> The section to review '
-        'before anything is implemented. Every proposal from this session and from session '
-        '4f83ee7b sits in one queue with a recommendation and a decision state. Below it is '
-        'the information this project already has, the information it does not have, and the '
-        'actions that would get it. Nothing on this page implements anything: the point is to '
-        'choose the path first. The design rationale behind these rows is on the '
-        '<a href="design-brief.html">Design brief</a>. This session&rsquo;s verification log '
-        'and repository review are in the '
-        '<a href="sessions/757efebc/index.html">session record</a>.</p></div>'
-        + '<div class="suggestion"><h3>How this relates to /site/decisions.html</h3>'
+        '<div class="callout"><p><strong>What this page is.</strong> The current decision queue '
+        'for the five-link, two-category publication. Each proposal has a status, recommendation, '
+        'effort, risk and blocking question. Official claims link to the source register; repository '
+        'state and requester inputs are labelled and linked separately. The choice controls elsewhere '
+        'are browser-local only. Reading this page does not change a route, product link, account or '
+        'analytics setting. The <a href="design-brief.html">current design brief</a> and '
+        '<a href="suggestions.html">Suggestions &amp; decisions</a> carry the current recommendation.</p></div>'
+        + '<div class="suggestion"><h3>Decision surfaces in the current tree</h3>'
         f'<p>{e(q["relationship_note"])}</p>'
-        '<p><a href="site/decisions.html">Marketing site: suggestions &amp; decisions</a> &middot; '
-        '<a href="site/index.html">Marketing site home</a></p></div>'
+        '<p><a href="suggestions.html">Suggestions &amp; decisions</a> &middot; '
+        '<a href="decision-center.html">Browser-local Decision Center</a> &middot; '
+        '<a href="shop/decisions/index.html">Shop decisions</a></p></div>'
     )
 
     # Rendered as a definition list, not a table. This site's rule is that every *table* row
@@ -271,7 +270,7 @@ def build_decision_queue() -> None:
             basis(s),
         ])
     body += ("<h2>The queue</h2>"
-             '<p class="small">22 proposals. Blocked-by links jump to the question that '
+             f'<p class="small">{len(q["suggestions"])} proposals. Blocked-by links jump to the question that '
              "unblocks the row.</p>") + table(
         ["ID and origin", "Proposal", "What it is", "Recommendation and sizing",
          "Blocked by", "State", "Basis"], rows)
@@ -279,8 +278,8 @@ def build_decision_queue() -> None:
     rows = [[e(r["id"]), f'<strong>{e(r["item"])}</strong>', e(r["value"]), basis(r)]
             for r in q["have"]]
     body += ("<h2>What we already have</h2>"
-             '<p class="small">Everything on this list was read from the official page named '
-             "in its Source cell. Nothing here is inferred.</p>") + table(
+             '<p class="small">Official claims link to their official page. Repository facts and '
+             "requester-supplied values are identified as such and linked to the relevant record; no inference fills a gap.</p>") + table(
         ["ID", "Information", "What it says", "Source"], rows)
 
     rows = []
@@ -288,10 +287,7 @@ def build_decision_queue() -> None:
         rows.append([e(r["id"]), f'<strong>{e(r["item"])}</strong>', e(r["needed_for"]),
                      sev(e(r["severity"])), e(r["how"]), basis(r)])
     body += ("<h2>What we do not have</h2>"
-             '<p class="small">Every gap that stands between this repository and a working '
-             "affiliate site, with the way to close it. No value on this page is filled in "
-             "from anywhere but an official source, so these cells stay empty until one "
-             "exists.</p>") + table(
+             '<p class="small">Each gap has a discovery path. Unknown owner/account inputs remain blank or flagged; links support the governing rule or repository-status claim, not an invented answer.</p>') + table(
         ["ID", "Missing information", "What it blocks", "Severity", "How to get it", "Source"], rows)
 
     rows = []
@@ -1431,53 +1427,114 @@ def build_topics() -> None:
 
 # --------------------------------------------------------- Suggestions & decisions
 def build_suggestions() -> None:
-    """The suggestions and decision framework (session 4f83ee7b, 2026-11-15).
+    """Render the current review, historical decisions, questions and discovery actions.
 
-    Published for review before any change: design and marketing proposals to make the
-    site read like a polished marketing affiliate website, the open questions that must
-    be answered before a decision, and the ways to discover missing information. Every
-    factual row links the official page it was read from; every proposal is labelled as
-    a proposal.
-
-    Session 5a56c084 (2026-11-16): a Decision log section is now rendered from each
-    suggestion's "implementation" record. Only proposals whose decision is
-    "implemented" appear as implemented; blocked proposals stay blocked; open
-    questions Q1-Q10 remain unanswered by inference - the log records implementation
-    decisions, it does not invent owner inputs.
+    Owner input is not account verification; repository prototypes are not live services;
+    historical implementation records are kept separate from current blockers.
     """
     s = SUGGESTIONS
+
+    def suggestion_basis(rec: dict) -> str:
+        parts = []
+        if rec.get("source"):
+            parts.append(src_links(rec["source"]))
+        if rec.get("repo"):
+            parts.append(repo_link(rec["repo"], "repo: " + rec["repo"]))
+        for path in rec.get("repo_paths", []):
+            parts.append(repo_link(path, "repo: " + path))
+        if rec.get("owner_input"):
+            parts.append(f'<span class="muted">{e(rec["owner_input"])}</span>')
+        return " &middot; ".join(parts) or '<span class="muted">proposal / no external fact claimed</span>'
+
     body = (
-        '<div class="callout"><p><strong>What this page is.</strong> Design and marketing '
-        'proposals for making this site read like a polished marketing affiliate website — '
-        'catchy, topic-driven articles, honest trend sections and conversion-ready pages — '
-        'together with the questions that must be answered, and the ways to discover the '
-        'missing information, before any proposal is implemented. Every statement of fact '
-        'below links the official page it was read from; every proposal is labelled '
-        '<span class="badge info">Proposal</span> and is not a verified fact. '
-        'Session 4f83ee7b published this page for review before any change. The '
-        '<strong>Decision log</strong> below records what the follow-up session '
-        '(5a56c084, 2026-11-16) implemented, deferred or left blocked: only unblocked '
-        'proposals were implemented, and no open question was answered by inference.</p></div>'
+        '<div class="callout"><p><strong>What this page is.</strong> A decision desk for a polished, '
+        'reader-first affiliate publication: current product evidence, options, open questions and '
+        'specific ways to discover what is missing. Official facts link to their sources; repository '
+        'state links to its file; owner input is labelled; proposals are not verified facts. '
+        'This page makes no Amazon account changes, does not rewrite product links and does not activate '
+        'analytics. The current review below supersedes stale three-product wording from earlier drafts. '
+        'Choose or defer proposals in the <a href="decision-queue.html">Review console</a>; nothing is '
+        'implemented by reading this page.</p></div>'
     )
 
-    # Dated review section (session 82372fd1, 2026-11-17). Rendered from
-    # data/suggestions.json['review_2026_11_17'] so the register and the page cannot drift.
+    current = s.get("review_2026_11_17_ed27e766")
+    if current:
+        rec = current["recommended_path"]
+        body += (
+            f'<div class="callout ok"><p><strong>Current review · {e(current["date"])} · '
+            f'{e(current["session"])}.</strong> {e(current["note"])}</p></div>'
+            f'<h2 id="recommended-path">Recommended default: {e(rec["name"])}</h2>'
+            f'<div class="suggestion"><p><strong>{e(rec["status"])}</strong></p>'
+            f'<p>{e(rec["summary"])}</p><p>{e(rec["why"])}</p>'
+            '<p>Record Accept / Reject / Defer against '
+            '<a href="decision-queue.html#SUG-11">SUG-11 in the review console</a> before changing routes.</p></div>'
+        )
+        body += '<h2>Three reviewable design paths</h2><p class="small">DP-C is the recommended default for the “one site to index” requirement. DP-A is the visual pass; DP-B is the editorial operating rhythm. These can be combined, but none changes the live pages by itself.</p>'
+        for x in current["paths"]:
+            steps = "".join(f"<li>{e(st)}</li>" for st in x["steps"])
+            body += (
+                f'<div class="suggestion"><h3>{badge(x["id"], "info")} {e(x["name"])}</h3>'
+                f'<p><strong>Thesis.</strong> {e(x["thesis"])}</p>'
+                f'<ol class="findings">{steps}</ol>'
+                f'<p><strong>Resolves:</strong> {e(x["resolves"])} &middot; '
+                f'<strong>Effort:</strong> {e(x["effort"])} &middot; '
+                f'<strong>Risk:</strong> {e(x["risk"])}</p>'
+                f'<p class="muted"><strong>Do not:</strong> {e(x["do_not"])}</p></div>'
+            )
+        analytics = current["analytics"]
+        analytics_basis = src_links(analytics["sources"])
+        for path in [analytics.get("repo"), *analytics.get("repo_paths", [])]:
+            if path:
+                analytics_basis += ' &middot; ' + repo_link(path, 'repo: ' + path)
+        event_rows = [[
+            f'<code>{e(ev["name"])}</code>', e(ev["when"]), e(ev["fields"]), e(ev["purpose"]),
+            '<span class="badge info">Proposal</span> ' + analytics_basis
+        ] for ev in analytics["events"]]
+        body += (
+            '<h2 id="measurement-events">Five proposed measurement events — not active</h2>'
+            f'<p><strong>Status:</strong> {e(analytics["status"])}</p>'
+            f'<p>{e(analytics["note"])}</p>'
+            + table(["Event", "When", "Minimum fields", "Purpose and limit", "Status / policy boundary"], event_rows)
+            + '<h3>Privacy and deployment gates</h3><ul class="findings">'
+            + "".join(f'<li>{e(rule)}</li>' for rule in analytics["privacy_rules"])
+            + f'</ul><div class="callout warn"><p><strong>Not live.</strong> {e(analytics["deployment_gate"])} '
+            'Review <a href="decision-queue.html#SUG-12">SUG-12</a> before any endpoint work.</p></div>'
+        )
+        cadence = current["cadence"]
+        body += (
+            '<h2>Publishing cadence and seasonal topic hypotheses</h2>'
+            f'<p><strong>Proposed cadence:</strong> {e(cadence["proposal"])}</p>'
+            f'<p>{e(cadence["topic_rule"])}</p>'
+            '<ul class="findings">' + "".join(f'<li>{e(x)}</li>' for x in cadence["seasonal_hypotheses"])
+            + f'</ul><p class="small">{e(cadence["note"])}</p>'
+        )
+        body += '<h2>Decision gates: known, missing and next</h2>'
+        for gate in current["decision_gates"]:
+            body += (
+                f'<div class="suggestion"><h3>{badge(gate["status"], "warn" if gate["status"] == "Open" else "info")} '
+                f'{e(gate["gate"])}</h3><p>{e(gate["answer"])}</p></div>'
+            )
+        body += '<h2>How to choose</h2><ol class="findings">' + "".join(
+            f'<li>{e(step)}</li>' for step in current["how_to_choose"]
+        ) + '</ol>'
+
+    # Historical review from session 82372fd1 (2026-11-17). Retained for provenance;
+    # the current review above reconciles the merged five-product register.
     rv = s.get("review_2026_11_17")
     if rv:
         body += (
-            f'<div class="callout ok"><p><strong>Review dated {e(rv["date"])} '
-            f'(session {e(rv["session"])}).</strong> {e(rv["note"])}</p></div>'
+            f'<div class="callout"><p><strong>Historical review dated {e(rv["date"])} '
+            f'(session {e(rv["session"])}).</strong> {e(rv["historical_note"])} '
+            f'{e(rv["note"])}</p></div>'
         )
-        body += "<h2>Shipped since the last review</h2>" + table(
+        body += "<h2>What the previous review shipped</h2>" + table(
             ["Item", "Where", "What changed", "Evidence (all in this repo)"],
             [[e(x["item"]), e(x["where"]), e(x["what"]), e(x["evidence"])] for x in rv["shipped"]],
         )
         body += (
-            "<h2>Design paths — the brief for the polish, in reviewable options</h2>"
-            '<p class="small">Three paths, each written so the accepted one becomes a '
-            'building brief. They are ordered: C decides the surface, A decorates it, '
-            'B runs it; A and B combine freely. Nothing here is implemented by reading '
-            'it — record a choice on the <a href="decision-queue.html">review console</a>.</p>'
+            "<h2>Previous design-path draft (historical)</h2>"
+            '<p class="small">These paths were drafted against the earlier tree. See the current recommendation above; record any choice on the '
+            '<a href="decision-queue.html">review console</a>.</p>'
         )
         for x in rv["paths"]:
             steps = "".join(f"<li>{e(st)}</li>" for st in x["steps"])
@@ -1490,31 +1547,31 @@ def build_suggestions() -> None:
                 f'<strong>Risk:</strong> {e(x["risk"])}</p>'
                 f'<p class="muted"><strong>Do not:</strong> {e(x["do_not"])}</p></div>'
             )
-        body += f'<h2>Publishing cadence (proposed)</h2><p>{e(rv["cadence"])}</p>'
+        body += f'<h2>Prior cadence proposal (historical)</h2><p>{e(rv["cadence"])}</p>'
         body += (
-            "<h2>The ten owner questions, re-statused 2026-11-17 — plus two this review added</h2>"
+            "<h2>Prior question-status snapshot (historical, superseded where noted)</h2>"
             + table(
                 ["Q", "Status at last review", "Status now", "What moved (with where it moves to)"],
                 [[f'<strong>{e(x["q"])}</strong>', e(x["was"]), e(x["now"]), e(x["change"])]
                  for x in rv["restatus"]],
             )
-            + '<p class="small">Q1-Q10 anchor the <a href="decision-queue.html">review console</a> queue; '
-              'Q11 and Q12 are new in the questions table below.</p>'
+            + '<p class="small">This was the status register at that pass. The current 14-question register appears below and supersedes earlier statements where the merged five-product data changed them.</p>'
         )
-        body += "<h2>How to choose</h2><ol class=\"findings\">" + "".join(
+        body += "<h2>Previous review's choice notes</h2><ol class=\"findings\">" + "".join(
             f"<li>{e(step)}</li>" for step in rv["how_to_choose"]
         ) + "</ol>"
 
-    body += "<h2>Verified basis</h2>" + '<p class="small">The facts the proposals rest on, re-verified 2026-11-15 and re-checked 2026-11-16 (session record: <a href="sessions/5a56c084/index.html">5a56c084</a>).</p>'
+    body += "<h2>Current verified basis and labelled inputs</h2>" + '<p class="small">Dated observations are not current availability checks. Owner inputs and repository state are not presented as externally verified facts.</p>'
     rows = []
     for v in s["verified_basis"]:
+        note = f'<div class="small muted">{e(v["note"])}</div>' if v.get("note") else ""
         rows.append([
             e(v["id"]),
             f'<strong>{e(v["item"])}</strong>',
-            e(v["value"]),
-            src_links(v["source"]),
+            e(v["value"]) + note,
+            basis(v),
         ])
-    body += table(["ID", "Verified fact", "What the official source says", "Source"], rows)
+    body += table(["ID", "Evidence item", "What is recorded", "Evidence / provenance"], rows)
 
     sug_rows = []
     impl_rows = []
@@ -1562,14 +1619,7 @@ def build_suggestions() -> None:
 
     if impl_rows:
         body += (
-            '<div class="callout ok"><p><strong>Decision log.</strong> For each proposal '
-            '(SUG-01 to SUG-10) the implementing sessions recorded accept / defer / hold with a '
-            'reason, exactly as the workflow below asks. Every implemented item respects its '
-            'compliance basis: no tagged conversion CTAs (SUG-05 stays blocked pending Q1), '
-            'no price or rating display (2(b)/6(t)), no invented metrics anywhere. Two sessions '
-            'worked this page in parallel (5a56c084 and f132f462) and both records are kept; '
-            'change requests that touch another session&#8217;s scope are logged in '
-            'COORDINATION.md instead of acted on.</p></div>'
+            '<div class="callout ok"><p><strong>Decision log.</strong> Earlier sessions recorded decisions for SUG-01 to SUG-10. The current entries add SUG-11 to SUG-13 as proposals, not as implemented work. SUG-05 remains blocked on account/marketplace verification and the one-link test; SUG-09 is blocked on a separately hosted endpoint and privacy/logging review. No live click or conversion data is fabricated, and no product link is rewritten by this review.</p></div>'
         )
         body += "<h2>Decision log (recorded 2026-11-16, sessions 5a56c084 and f132f462)</h2>" + table(
             ["ID", "Proposal", "Decided by", "Decision", "What was done / why it waits", "Recorded", "Evidence on this site", "Basis"],
@@ -1580,7 +1630,7 @@ def build_suggestions() -> None:
         q_rows.append([
             e(q["id"]),
             f'<strong>{e(q["question"])}</strong>',
-            e(q["what_we_know"]) + f" {src_links(q['source'])}",
+            e(q["what_we_know"]) + f" {suggestion_basis(q)}",
             e(q["what_we_dont_know"]),
             e(q["why_it_matters"]),
             e(q["how_to_discover"]),
@@ -1595,7 +1645,7 @@ def build_suggestions() -> None:
             e(d["id"]),
             f'<strong>{e(d["action"])}</strong>',
             e(d["discovers"]),
-            src_links(d["source"]),
+            suggestion_basis(d),
         ])
     body += "<h2>Suggestions for discovering the missing information</h2>" + table(
         ["ID", "Action", "What it discovers", "Source"], d_rows)
@@ -1605,13 +1655,7 @@ def build_suggestions() -> None:
     ) + "</ol>"
 
     page("suggestions.html", "Suggestions & decisions", body,
-         lead="Design and marketing proposals for the affiliate site, the open questions that "
-              "must be answered before any decision, and how to discover the missing "
-              "information. Updated 2026-11-17: a dated review adds three design paths, "
-              "what shipped since the last decision log, and two new questions the owner "
-              "brief exposed. Proposals are labelled as proposals; every fact carries its "
-              "source; the decision log records what has been implemented, deferred or "
-              "left blocked.")
+         lead="A current review of the five-link, two-category publication: what is known, what remains unverified, the recommended one-site design path, a proposed five-event measurement schema, and how to discover missing information. Proposals are labelled; account, author, image-rights and endpoint facts are not inferred.")
 
 
 # ------------------------------------------------------------- Campaigns
@@ -2154,6 +2198,8 @@ def build_decision_center() -> None:
     api = src_links(["S04", "S05"])
     rates = src_links(["S03", "S25", "S26"])
     disclosure = src_links(["S01", "S07", "S24"])
+    measurement = src_links(["SH-S02", "SH-S16"])
+    shop_products = src_links(["SH-S11", "SH-S12", "SH-S13", "SH-S14", "SH-S15"])
     body = f"""
 <style>
 .decision-intro{{background:linear-gradient(120deg,#0f2f22,#17402e);color:#fff;border-radius:16px;padding:26px clamp(18px,4vw,38px);margin:8px 0 20px}}
@@ -2177,18 +2223,18 @@ def build_decision_center() -> None:
 .pill{{display:inline-block;border-radius:999px;background:#e7f2ec;color:#1e5c3f;padding:3px 9px;font-size:12px;font-weight:700}}
 </style>
 <section class="decision-intro">
-  <p class="eyebrow">Decision Center · prepared 2026-11-15</p>
-  <h2>Decide what to verify before the next page goes live.</h2>
-  <p>This is a sourced decision brief, not a claim that every automation feature is already built. It separates known facts from missing inputs, ranks practical next steps, and offers a review queue. The factual source register was last re-verified on 2026-11-14; this page does not claim a fresh live re-check of Amazon data.</p>
+  <p class="eyebrow">Decision Center · refreshed 2026-11-17</p>
+  <h2>Review the five-link scope and unresolved gates before the next change.</h2>
+  <p>This is a sourced decision brief, not an owner decision or a claim that every automation feature is live. It separates official-source facts, repository records, requester inputs and proposals. The shop register contains dated 2026-11-17 observations; this page makes no fresh live re-check of Amazon listings.</p>
   <p><a href="executive-summary.html" style="color:#fff">Executive summary</a> · <a href="flagged.html" style="color:#fff">All flagged items</a> · <a href="sources.html" style="color:#fff">Official source register</a></p>
 </section>
 
 <section class="decision-section">
   <h2>Executive readout</h2>
   <div class="question-grid">
-    <article class="question"><span class="pill">Known</span><h3>Three supplied links; product intent is not confirmed</h3><p>The project register records three short-link tokens and leaves product identity for the submitted identifiers unconfirmed. Amazon's API reference defines ASINs as ten-character identifiers. {asin} See <a href="products.html">Products</a> and <a href="flagged.html#FLG-001">FLG-001 / FLG-002</a>.</p></article>
-    <article class="question"><span class="pill">Blocked input</span><h3>API and performance data are not connected</h3><p>Amazon's Creators API documentation states an eligibility prerequisite of at least 10 qualifying sales in the past 30 days; the repository has no verified account eligibility or live account report. {api} See <a href="campaigns.html">Campaigns &amp; tracking</a> and <a href="flagged.html#FLG-006">FLG-006</a>.</p></article>
-    <article class="question"><span class="pill">Recommendation</span><h3>Keep product-specific monetized claims on hold</h3><p>Publish useful evergreen buying education now; do not turn observed redirect destinations into assumed product intent. Reopen product-specific recommendations after the intended ASINs and permitted tracking links have been confirmed. This is a risk-control recommendation, not an Amazon quote.</p></article>
+    <article class="question"><span class="pill">Observed, not intended</span><h3>Five links span two product categories</h3><p>The shop register records three air-fryer listings and two meat-thermometer listings. Each intended ASIN remains blank; the observed destination is not confirmation of owner intent. The supplied links are unresolved, not declared invalid. See <a href="shop/products/index.html">Five-link shop register</a> and <a href="shop/decisions/index.html">shop decisions</a>.</p></article>
+    <article class="question"><span class="pill">Owner input, not verified</span><h3>shopnow047c-20 is recorded but not account-checked</h3><p>The configuration labels this value requester-supplied. Account ownership, marketplace fit and one Associates Special Link destination/report check per intended product remain open. No link was changed by this review.</p></article>
+    <article class="question"><span class="pill">OFF / unhosted</span><h3>Measurement code is a prototype, not a live endpoint</h3><p>The repository lists five proposed event names, but the counter is disabled, endpoint_url is empty and the collector script is not hosted. No event or conversion data is claimed. See <a href="measurement/index.html">measurement status</a> and <a href="shop/decisions/index.html">DEC-03</a>.</p></article>
   </div>
 </section>
 
@@ -2196,13 +2242,13 @@ def build_decision_center() -> None:
   <h2>What we know, what is missing, and how to discover it</h2>
   <p>Answers below are limited to the repository's sourced record and official program documents. “Unknown” means the current evidence does not settle it; it is not a guess.</p>
   <div class="question-grid">
-    <article class="question"><h3>1 · Which exact three products should be promoted?</h3><p class="answer"><strong>Known:</strong> The supplied link codes are nine characters; the official Amazon API reference describes ASIN identifiers as ten characters. {asin}</p><p class="missing"><strong>Missing:</strong> Owner-confirmed intended listing / ASIN mapping. Redirect observations do not establish intent. <a href="flagged.html#FLG-001">FLG-001</a> · <a href="flagged.html#FLG-002">FLG-002</a></p><p><strong>Discovery:</strong> Resolve the short-link owner/source, obtain the intended Amazon product URLs directly from the campaign brief, and compare each to the intended product before writing product-specific claims.</p></article>
+    <article class="question"><h3>1 · Which five products were intended?</h3><p class="answer"><strong>Known:</strong> The shop register records five submitted links, five observed Amazon destinations and blank intended-ASIN fields. The Creators API reference defines ASIN identifiers as ten characters, but a token-shape comparison does not determine whether a supplied short link is valid or compliant. {asin}</p><p class="missing"><strong>Missing:</strong> Owner-confirmed intended listing / ASIN mapping for all five links. Redirect observations do not establish intent. <a href="shop/products/index.html">Shop intent record</a></p><p><strong>Discovery:</strong> Ask the requester to confirm each intended product and official listing, then record its ASIN/URL/date/source separately from the observed redirect before making product-specific claims.</p></article>
     <article class="question"><h3>2 · Can the platform fetch product content automatically?</h3><p class="answer"><strong>Known:</strong> Creators API documentation lists eligibility prerequisites, including at least 10 qualifying sales in the prior 30 days. The PA-API 5 deprecation notice and Creators API introduction are in the source register. {api}</p><p class="missing"><strong>Missing:</strong> Associates enrollment, qualifying-sales status, API access approval, marketplace, credentials and an authorized data-use path. <a href="flagged.html#FLG-006">FLG-006</a></p><p><strong>Discovery:</strong> Check Associates Central eligibility and API access; use a secrets manager for credentials. Never place keys in this public static repository. The answer is not assumed by this build.</p></article>
     <article class="question"><h3>3 · Which facts may appear beside affiliate links?</h3><p class="answer"><strong>Known:</strong> Amazon policy sets conditions for displaying price/availability and customer ratings/reviews; see sections 2(b) and 6(t) in the policies. {policy}</p><p class="missing"><strong>Missing:</strong> An approved data route for each live product and a verified match between each fact and the intended ASIN. <a href="pricing.html">Pricing</a> · <a href="reviews.html">Reviews</a></p><p><strong>Discovery:</strong> Keep volatile price, rating, review count and rank fields blank until the exact product and policy-permitted source path are verified. Do not convert old screenshots or snapshots into live offers.</p></article>
-    <article class="question"><h3>4 · Are the submitted links suitable for affiliate attribution?</h3><p class="answer"><strong>Known:</strong> Amazon policy says links must not obscure that they lead to Amazon; the commission statement defines “Redirecting Link” and its consequence. {policy}</p><p class="missing"><strong>Missing:</strong> Whether these particular short links meet the applicable link and attribution requirements, and whether a valid Associates tracking tag is attached. <a href="flagged.html#FLG-003">FLG-003</a></p><p><strong>Discovery:</strong> Prefer tested Special Links generated in Associates Central; validate destination clarity and tracked-click reporting before publication. This is a prudent recommendation; applicability of policy to the given links remains flagged.</p></article>
+    <article class="question"><h3>4 · Are the submitted links suitable for affiliate attribution?</h3><p class="answer"><strong>Known:</strong> Amazon policy describes Special Link and attribution requirements. {policy}</p><p class="missing"><strong>Missing:</strong> Whether each submitted link meets the applicable requirements, whether shopnow047c-20 belongs to the enrolled account/marketplace, and whether the resulting Special Links receive report attribution. <a href="flagged.html#FLG-003">FLG-003</a></p><p><strong>Discovery:</strong> After confirming intended products, generate and test one Associates Special Link per product in the enrolled workflow; verify each destination and report before scaling. The supplied short links remain unresolved, not declared invalid.</p></article>
     <article class="question"><h3>5 · What commission and revenue can be forecast?</h3><p class="answer"><strong>Known:</strong> Amazon publishes standard and onsite category tables, while the account schedule is a separate source. The current record does not assign a per-product rate. {rates}</p><p class="missing"><strong>Missing:</strong> Confirmed product category, account-specific rate, eligible sessions, qualifying orders, cancellations and actual commission reports. <a href="flagged.html#FLG-005">FLG-005</a> · <a href="campaigns.html">Campaign ledger</a></p><p><strong>Discovery:</strong> Obtain the rate applicable to the intended ASIN and a date-bounded performance report. Do not fabricate a “potential earnings” number from category averages.</p></article>
     <article class="question"><h3>6 · Which niche or article is actually trending?</h3><p class="answer"><strong>Known:</strong> No verified trend or search-volume evidence is included in this project's approved inputs. An article title is an editorial hypothesis, not demand proof.</p><p class="missing"><strong>Missing:</strong> Audience geography, first-party queries, search impressions/clicks, seasonality window, competitor set and conversion performance.</p><p><strong>Discovery:</strong> Connect the publisher's own search-performance export and Associates reports, date and preserve each measurement, then rank topics against observed demand. No score is assigned while inputs are absent.</p></article>
-    <article class="question"><h3>7 · Which commission marketplace and disclosure apply?</h3><p class="answer"><strong>Known:</strong> Operating Agreement Schedule 1 lists United States / Amazon.com for its listed program entity. The Associates disclosure statement and FTC endorsement resources are in the cited register. {disclosure}</p><p class="missing"><strong>Missing:</strong> Publisher location, audience locations, enrolled marketplace(s), legal entity and channel-specific disclosure placement.</p><p><strong>Discovery:</strong> Confirm those account and audience details before expanding beyond Amazon.com. Keep the Associate disclosure clear and proximate to recommendations; confirm local legal requirements for each market.</p></article>
+    <article class="question"><h3>7 · Which marketplace and disclosure apply?</h3><p class="answer"><strong>Known:</strong> All five dated observations point to Amazon.com pages. That does not establish the target country, reader audience or Associates marketplace. The Associates disclosure statement and FTC endorsement resources are in the cited register. {disclosure}</p><p class="missing"><strong>Missing:</strong> Owner confirmation of audience and enrolled marketplace(s), plus any applicable channel-specific disclosure review.</p><p><strong>Discovery:</strong> Confirm audience and marketplace in the owner's account before localizing links. Keep the Associate disclosure clear and proximate to recommendations; do not infer target market from observed destinations or the requester's location.</p></article>
     <article class="question"><h3>8 · What can safely publish before inputs arrive?</h3><p class="answer"><strong>Known:</strong> Source-backed buying education can explain comparison criteria without asserting unsupported product performance. Amazon policy and FTC resources remain the relevant compliance anchors. {policy} {disclosure}</p><p class="missing"><strong>Missing:</strong> First-party audience evidence to validate which topic deserves priority.</p><p><strong>Discovery:</strong> Publish an evergreen checklist only after editorial review; record impressions and clicks once a compliant measurement route exists. Product-specific price/rating copy stays out until the evidence gate passes.</p></article>
   </div>
 </section>
@@ -2224,8 +2270,10 @@ def build_decision_center() -> None:
   <div class="choice-grid">
     <article class="choice"><h3>A · Product content gate</h3><p><strong>Recommended:</strong> confirm the intended ASINs first; publish category-level evergreen content in the meantime.</p><label for="path-products">Path for review</label><select id="path-products" data-choice><option value="">No choice yet</option><option value="confirm">Confirm exact products, then write product-specific copy</option><option value="evergreen">Publish only general buying education until confirmed</option><option value="hold">Hold all new marketing pages</option></select><p>Evidence: ASIN definition {asin} · open item <a href="flagged.html#FLG-001">FLG-001</a>.</p></article>
     <article class="choice"><h3>B · Product data source</h3><p><strong>Recommended:</strong> verify API eligibility and approved access before building automated product-data refresh.</p><label for="path-data">Path for review</label><select id="path-data" data-choice><option value="">No choice yet</option><option value="api">Check eligibility and pursue Creators API access</option><option value="editorial">Keep product fields blank; use sourced static editorial claims</option><option value="reports">First connect the publisher's approved campaign reports</option></select><p>Evidence: Creators API prerequisites {api} · open item <a href="flagged.html#FLG-006">FLG-006</a>.</p></article>
-    <article class="choice"><h3>C · Affiliate links</h3><p><strong>Recommended:</strong> validate and test Associates-generated Special Links before publishing conversion CTAs.</p><label for="path-links">Path for review</label><select id="path-links" data-choice><option value="">No choice yet</option><option value="special">Use tested Associates-generated Special Links</option><option value="investigate">Investigate current links before deciding</option><option value="hold">Hold outbound CTAs pending review</option></select><p>Evidence: Amazon link clarity and redirecting-link policy {policy} · open item <a href="flagged.html#FLG-003">FLG-003</a>.</p></article>
-    <article class="choice"><h3>D · Editorial launch</h3><p><strong>Recommended:</strong> start with one evergreen comparison checklist, then review first-party performance before expanding.</p><label for="path-editorial">Path for review</label><select id="path-editorial" data-choice><option value="">No choice yet</option><option value="checklist">One evergreen comparison checklist</option><option value="guide">A category buying guide plus topic cluster</option><option value="wait">Wait for audience and search data first</option></select><p>These are proposed workflows, not measured performance claims.</p></article>
+    <article class="choice"><h3>C · Affiliate links</h3><p><strong>Recommended:</strong> the requester supplied shopnow047c-20, but account ownership/marketplace and one Special Link report test per intended product are not verified. Do not rewrite the supplied links or call them invalid.</p><label for="path-links">Path for review</label><select id="path-links" data-choice><option value="">No choice yet</option><option value="special">After intent confirmation, test one generated Special Link per product</option><option value="investigate">Keep supplied links recorded as-is while verifying account status</option><option value="hold">Hold product-specific monetized CTAs pending review</option></select><p>Evidence: Amazon policies {policy} · <a href="shop/products/index.html">five-link intent register</a> · open item <a href="flagged.html#FLG-003">FLG-003</a>.</p></article>
+    <article class="choice"><h3>D · Editorial launch</h3><p><strong>Recommended:</strong> keep air-fryer and thermometer questions in separate category clusters; publish only after a real human editor reviews the guide.</p><label for="path-editorial">Path for review</label><select id="path-editorial" data-choice><option value="">No choice yet</option><option value="checklist">Start with one source-led air-fryer checklist</option><option value="guide">Add a separately sourced thermometer guide after scope confirmation</option><option value="wait">Wait for editor and query evidence before selecting cadence</option></select><p>Working titles are editorial hypotheses, not claims of popularity or search demand.</p></article>
+    <article class="choice"><h3>E · Canonical reader architecture</h3><p><strong>Recommended default, not an owner decision:</strong> root publication + /shop/ categories + /guides/ question-led articles. Map unique material and inbound links in /site/, /read/, /marketing/ and /articles/ before route changes.</p><label for="path-architecture">Path for review</label><select id="path-architecture" data-choice><option value="">No choice yet</option><option value="recommended">Use root + shop + guides after mapping unique content and links</option><option value="retain">Retain current layers temporarily and group navigation</option><option value="defer">Defer route consolidation until the owner reviews the inventory</option></select><p>Observed listing sources: {shop_products} · <a href="shop/products/index.html">repository intent register</a> · <a href="design-brief.html">route recommendation and limits</a>. No route, redirect or noindex change is made by selecting this option.</p></article>
+    <article class="choice"><h3>F · Measurement and host</h3><p><strong>Recommended:</strong> keep collection OFF. The existing five event definitions are a repository proposal; the endpoint URL is empty and the collector script is not hosted. No host logging or retention is verified.</p><label for="path-measurement">Path for review</label><select id="path-measurement" data-choice><option value="">No choice yet</option><option value="reports">Use authorized Associates reports only for conversions</option><option value="review-proposal">Review the five proposed events and host requirements; keep OFF</option><option value="host-review">Consider site-side collection only after runtime logs, IP handling, retention and privacy review</option></select><p>Evidence: GitHub Pages and Associates policy sources {measurement} · <a href="measurement/index.html">measurement status</a> · <a href="decision-queue.html#SUG-12">SUG-12</a>.</p></article>
   </div>
 </section>
 
