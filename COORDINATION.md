@@ -7792,3 +7792,37 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 | Pages deploy | `pages/builds/latest` for `2868a3a`: **`built`** (was `building` at first check, `built` 45s later). Configuration source `main` `/`. |
 | Live checks (post-build) | **products.html** — P4/P5 rows live with observed destinations, "Not confirmed as submitted" badges, sourced to their own dated captures. **suggestions.html** — "Review dated 2026-11-17 (late) (session 73029680)" live: reconciliation row, DP-P-01..05 proposals, seasonal calendar (OPM S89), decision runbook. **flagged.html** — G84-F-01 in the register (124 entries). |
 | Session status | G84-T1…T5 **done**. Records: `sessions/73029680/repo-review.md`. Flags: G84-F-01 (reconciled/fixed). |
+
+---
+
+## Part — session `5b443d02` (2026-11-17) · branch `arena/5b443d02-zone3`
+
+> **Namespaced register.** Items below are `5b-*`. They are not the same items as `A:S01…`, `B:SRC-01…`, `F65-F-*`, `SUG-*`, `Z14-*`, `CBA-*`, `757-*`, `f132-*` or `I2-*`.
+
+### Session registry (this session)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `5b443d02` | `arena/5b443d02-zone3` | (1) Intake + official-source verification of the **two submitted links not present anywhere in the repo** (`link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`) as a product-intent confirmation record with intended-ASIN and observed-redirect fields kept separate; (2) a design-prompt suggestion pack for a polished marketing affiliate site (trendy editorial topics, organic-traffic mechanics, anti-"AI slop"); (3) an open-questions / missing-information register with discovery method per gap; (4) a review-before-implementation path chooser; (5) executive summary; (6) final integration, PR, merge, Pages confirm. | in progress | 2026-11-17 |
+
+### Task board — session `5b443d02`
+
+| Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|
+| 5b-T1 — Claim scope, repo review, baseline gate run | in progress | `5b443d02` | `COORDINATION.md` (this Part only) | Baseline recorded below |
+| 5b-T2 — Verify `link.amazon/B0c8moW59` and `link.amazon/B0f3GKalj` against official Amazon surfaces; build the product-intent confirmation record (intended ASIN / official listing URL / confirmation date / source; observed redirect target in a **separate** field, never merged) | in progress | `5b443d02` | `sessions/5b443d02/**` | No `data/` file in the repo contains either token (grepped `data/**` — zero hits) |
+| 5b-T3 — Design-prompt suggestion pack: polished marketing affiliate direction, editorial topic engine, organic-traffic mechanics, anti-AI-slop guardrails | pending | `5b443d02` | `data/5b443d02/design-suggestions.json`, generated page | Additive; supersedes nothing |
+| 5b-T4 — Open-questions / missing-information register (have · don't have · how to discover · what it blocks · default if unanswered) | pending | `5b443d02` | `data/5b443d02/open-questions.json`, generated page | Cross-links existing `suggestions.html` Q1–Q10 and `site/answers.html`; does not rewrite them |
+| 5b-T5 — Review-before-implementation path chooser | pending | `5b443d02` | generated page | Choices held client-side; nothing applied by reading |
+| 5b-T6 — Executive summary update | pending | `5b443d02` | `sessions/5b443d02/EXECUTIVE-SUMMARY.md`, `EXECUTIVE-SUMMARY.md` (final-integration role only) | Counts recomputed from registers, never carried over |
+| 5b-T7 — Gates, PR to `main`, merge, Pages deploy confirm | pending | `5b443d02` | branch only | Final-integration role |
+
+### Scope discipline
+
+This session edits `COORDINATION.md` (**this Part only**), its own `sessions/5b443d02/**` directory, its own
+`data/5b443d02/*.json` datasets, and its own generator `scripts/build_5b443d02.py`. `suggestions.html`,
+`decision-center.html`, `decision-queue.html`, `design-brief.html`, `site/decisions.html`, `site/answers.html`,
+`data/suggestions.json`, `data/decision-queue.json` and `data/design-brief.json` are **owned by earlier
+sessions and are not modified** — this session cross-links them. `COORDINATION.md` conflicts are resolved by
+keeping both sides in full (main's board verbatim, this Part appended); no line-start conflict marker is ever
+pushed. Nothing is marked verified without being checked against an official source, and that source is linked.
