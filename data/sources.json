@@ -713,7 +713,8 @@
    "publisher": "Amazon.com (official retailer)",
    "status": "observed",
    "status_note": "Fetched 2026-11-17 by session 73029680 by requesting https://www.amazon.com/dp/B0c8moW59 (no parameters). Result: Amazon's 'Sorry! We couldn't find that page' error page, title 'Page Not Found'. Same result class as S08-S10 for the other submitted codes: a 9-character token is not an ASIN and has no detail page under its own identifier (FLG-001). Independent of session 2f181cd9's S70: two sessions, same result, same day.",
-   "used_for": "Re-verification capture for register row P4's direct check; intent-record reconciliation (G84-F-01)."
+   "used_for": "Re-verification capture for register row P4's direct check; intent-record reconciliation (G84-F-01).",
+   "id": "S83"
   },
   {
    "title": "Observation 2026-11-17: link.amazon/B0c8moW59 resolves to amazon.com/dp/B0DHZTCNR5",
@@ -721,7 +722,8 @@
    "publisher": "Link as submitted by the owner",
    "status": "observed",
    "status_note": "Fetched 2026-11-17 by session 73029680. Final URL https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-3fcbba70f075aae8&channelId=500&plpRedirect=mhFallback; the page title read on arrival is the ThermoMaven listing (S87). Same destination as register row P4 (session 2f181cd9, S70/S72/S74) and the shop register row SHOP-04. The submitted code is 9 characters, so it is not an ASIN (FLG-001). A link observation, not proof of owner intent (FLG-002, FLG-035).",
-   "used_for": "Re-verification capture of P4's destination; fills the intent-record row's observed block (G84-F-01)."
+   "used_for": "Re-verification capture of P4's destination; fills the intent-record row's observed block (G84-F-01).",
+   "id": "S84"
   },
   {
    "title": "Direct-URL check 2026-11-17: amazon.com/dp/B0f3GKalj returns Page Not Found",
@@ -729,7 +731,8 @@
    "publisher": "Amazon.com (official retailer)",
    "status": "observed",
    "status_note": "Fetched 2026-11-17 by session 73029680 by requesting https://www.amazon.com/dp/B0f3GKalj (no parameters). Result: Amazon's 'Sorry! We couldn't find that page' error page, title 'Page Not Found'. Same result class as S08-S10 (FLG-001). Independent of session 2f181cd9's S71: two sessions, same result, same day.",
-   "used_for": "Re-verification capture for register row P5's direct check; intent-record reconciliation (G84-F-01)."
+   "used_for": "Re-verification capture for register row P5's direct check; intent-record reconciliation (G84-F-01).",
+   "id": "S85"
   },
   {
    "title": "Observation 2026-11-17: link.amazon/B0f3GKalj resolves to amazon.com/dp/B0DZFD6R9Z",
@@ -737,7 +740,8 @@
    "publisher": "Link as submitted by the owner",
    "status": "observed",
    "status_note": "Fetched 2026-11-17 by session 73029680. Final URL https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-4b047e079f41545d&channelId=500&plpRedirect=mhFallback&th=1; the page title read on arrival is the CHEF iQ Sense listing (S88). Same destination as register row P5 (session 2f181cd9, S71/S73/S75) and the shop register row SHOP-05. The submitted code is 9 characters, so it is not an ASIN (FLG-001). A link observation, not proof of owner intent (FLG-002, FLG-035).",
-   "used_for": "Re-verification capture of P5's destination; fills the intent-record row's observed block (G84-F-01)."
+   "used_for": "Re-verification capture of P5's destination; fills the intent-record row's observed block (G84-F-01).",
+   "id": "S86"
   },
   {
    "title": "Listing title served for B0DHZTCNR5 on 2026-11-17 (session 73029680 read)",
@@ -745,7 +749,8 @@
    "publisher": "Amazon.com (official listing)",
    "status": "observed",
    "status_note": "Served page title: “Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen”. Read on arrival from link.amazon/B0c8moW59 (S84) and re-read at the direct listing URL on 2026-11-17; identical wording to session 2f181cd9's title capture (S72). Breadcrumb: Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t).",
-   "used_for": "Second dated title capture for P4 (a meat thermometer — outside the air-fryer guide set)."
+   "used_for": "Second dated title capture for P4 (a meat thermometer — outside the air-fryer guide set).",
+   "id": "S87"
   },
   {
    "title": "Listing title served for B0DZFD6R9Z on 2026-11-17 (session 73029680 read)",
@@ -753,7 +758,8 @@
    "publisher": "Amazon.com (official listing)",
    "status": "observed",
    "status_note": "Served page title: “Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3 : Home & Kitchen”. Read on arrival from link.amazon/B0f3GKalj (S86) and re-read at the direct listing URL on 2026-11-17; identical wording to session 2f181cd9's title capture (S73). Breadcrumb: Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t).",
-   "used_for": "Second dated title capture for P5 (a meat thermometer — outside the air-fryer guide set)."
+   "used_for": "Second dated title capture for P5 (a meat thermometer — outside the air-fryer guide set).",
+   "id": "S88"
   },
   {
    "title": "U.S. Office of Personnel Management: Federal Holidays schedule (2026 and 2027 tables)",
@@ -761,7 +767,8 @@
    "publisher": "U.S. Office of Personnel Management (official .gov)",
    "status": "observed",
    "status_note": "Fetched 2026-11-17 by session 73029680. Dates read from the page's own 2026 and 2027 tables: Thanksgiving Day Thursday 2026-11-26; Christmas Day Friday 2026-12-25; New Year's Day Friday 2027-01-01; Birthday of Martin Luther King, Jr. Monday 2027-01-18; Washington's Birthday Monday 2027-02-15; Memorial Day Monday 2027-05-31; Independence Day observed Monday 2027-07-05 (July 4 falls on a Sunday); Labor Day Monday 2027-09-06; Veterans Day Thursday 2027-11-11; Thanksgiving Day Thursday 2027-11-25; Christmas Day observed Friday 2027-12-24. Calendar facts only: the page says nothing about shopping demand, and this register makes no such claim either.",
-   "used_for": "Seasonal-calendar rows in the suggestions review dated 2026-11-17 (late) — dates only, never demand claims."
+   "used_for": "Seasonal-calendar rows in the suggestions review dated 2026-11-17 (late) — dates only, never demand claims.",
+   "id": "S89"
   }
  ],
  "id_reservation": "S01-S59 are held by earlier sessions (main@110). S60-S69 are claimed by session 145b8df7 for its 2026-11-16 re-verification captures. S70-S82 are claimed by session 2f181cd9 (2026-11-17) for the five-link intake and policy re-reads. All three ranges are NOT free: a session rebasing onto an older main must append from S83, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
