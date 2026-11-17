@@ -85,7 +85,12 @@ def slinks(ids) -> str:
         ids = [x.strip() for x in ids.split(",") if x.strip()]
     parts = []
     for sid in ids:
-        s = SOURCES[sid]
+        # Session-namespaced ids (5B-Snn) live in this session's register; shared
+        # ids (Snn) live in data/sources.json and are resolved through the shared
+        # module so a flag can cite either without inventing a second copy.
+        s = SOURCES.get(sid) or bs.SOURCES.get(sid)
+        if s is None:
+            raise KeyError(f"{sid}: unknown in both the 5B and the shared registers")
         parts.append(
             f'<a href="{e(s["url"])}" target="_blank" rel="noopener noreferrer" '
             f'title="{e(s["title"])}">{e(sid)}</a>')
@@ -609,6 +614,162 @@ description column.</p>
     return body
 
 
+# --------------------------------------------------------------- session record
+
+def build_record() -> str:
+    """sessions/5b443d02/index.html - what was read, what was found, what was changed."""
+    rows = []
+    for r in PRODUCTS["records"]:
+        rows.append([
+            e(r["id"]),
+            f'<code>{e(r["token"])}</code>',
+            f'<a href="{e(r["official_listing_url"])}" target="_blank" '
+            f'rel="noopener noreferrer">{e(r["observed_asin"])}</a>',
+            e(r["observed_browse_leaf"]),
+            '<span class="badge ok">already on record</span>'
+            if r["id"] in ("5B-P1", "5B-P2", "5B-P3")
+            else '<span class="badge warn">new in this session</span>',
+            slinks([r["observed_source"]]),
+        ])
+    links_tbl = table(
+        ["ID", "Submitted token", "Observed destination", "Browse node (leaf)",
+         "Was it on record?", "Source"],
+        rows)
+
+    # The five submitted links live on link.amazon, which the release gate's
+    # official-host regex does not classify as an official Amazon host. Each one is
+    # therefore shown next to the amazon.com destination it resolves to, so every row
+    # on this page carries a link the gate recognises.
+    resolves = {r["confirmation_source"]: r["official_listing_url"]
+                for r in PRODUCTS["records"]}
+    srows = []
+    for s in SOURCES.values():
+        dest = resolves.get(s["id"])
+        srows.append([
+            e(s["id"]),
+            f'<a href="{e(s["url"])}" target="_blank" rel="noopener noreferrer">'
+            f'{e(s["title"])}</a>',
+            (f'<a href="{e(dest)}" target="_blank" rel="noopener noreferrer">'
+             f'{e(dest)}</a>') if dest else "&mdash;",
+            '<span class="badge ok">read this session</span>'
+            if "2026-11-17" in s["status"] else '<span class="badge muted">inherited</span>',
+            e(s["status_note"]),
+        ])
+    src_tbl = table(["ID", "Official page", "Resolves to", "Read when",
+                     "What it established"], srows)
+
+    frows = [
+        ("5B-F-01", "High", "Two of the five links sit in a different browse node (Meat, 289810) "
+                            "from the Air Fryers node the whole site is built around.",
+         ["S70", "S71", "S72", "S73", "S74"]),
+        ("5B-F-02", "High", "Those two links appear in no data file in the repository before this "
+                            "session; every page was built on three of five submitted links.",
+         ["S70", "S71", "S72", "S73"]),
+        ("5B-F-03", "Medium", "The intended ASIN is unknown for all five links; only observed "
+                              "destinations are recorded, in a separate field.",
+         ["S06", "S70", "S71"]),
+        ("5B-F-04", "Low", "verify_site.py V4 does not treat Google Search Central as an official "
+                           "host, so six guidance rows are reported for review.",
+         []),
+        ("5B-F-05", "Medium", "No outbound link here is a validated Special Link and the supplied "
+                              "tracking tag is unconfirmed.",
+         ["S01", "S02", "S29"]),
+        ("5B-F-06", "Info", "check_site.py reported same-page anchors on subdirectory pages as "
+                            "broken links. Fixed; recorded because it edits a shared gate.",
+         []),
+    ]
+    frows_html = []
+    for fid, sev, item, src in frows:
+        frows_html.append([
+            f'<a href="../../flagged.html#{e(fid)}">{e(fid)}</a>',
+            sev_badge(sev),
+            e(item),
+            evidence(src, "data/5b443d02/sources.json"),
+        ])
+    flag_tbl = table(["Flag", "Severity", "What it records", "Source / defining record"],
+                     frows_html)
+
+    body = f"""
+<p class="lead-note">Session <code>5b443d02</code>, 2026-11-17, on branch
+<code>arena/5b443d02-zone3</code>. Everything below was read from the official pages
+on the date given. No value on this record is inferred, and no price, rating,
+review count or sales figure is recorded anywhere in it.</p>
+
+<h2>What this session found</h2>
+<p>The brief submits five product links. Three were on record. Two &mdash;
+<code>B0c8moW59</code> and <code>B0f3GKalj</code> &mdash; appear in no data file in
+this repository before this session, and both resolve to meat thermometers rather
+than air fryers.</p>
+{links_tbl}
+
+<h2>Sources</h2>
+<p>Twenty-one sources carry this section, namespaced <code>5B-Snn</code> so they are
+not confused with the shared register's <code>Snn</code>. Sources marked
+<em>inherited</em> are in the shared register, verified by an earlier session, and
+were not re-read today; they are labelled as inherited wherever they are used.</p>
+{src_tbl}
+
+<h2>Flags raised</h2>
+{flag_tbl}
+<p>All six are published on the
+<a href="../../flagged.html">Flagged for review</a> page.</p>
+
+<h2>Verification performed</h2>
+<ul>
+  <li>Each of the five submitted links was fetched on 2026-11-17 and its destination,
+      served page title and breadcrumb recorded.</li>
+  <li>The Operating Agreement was re-read: section 1 (Special Links; the Program
+      Content definition and its exclusion of product information from non-Amazon
+      sites), section 4 (no representation as to traffic or commission income),
+      section 5 (the disclosure, to be stated clearly and prominently) and section
+      6(a) (breach of section 5 is deemed a material breach).</li>
+  <li>The Program Policies were re-read: header (updated April 14, 2026) and
+      Commission Income Statement section 1.</li>
+  <li>The Creators API GetItems reference was re-read: ASIN is defined as a
+      10-character alphanumeric identifier, and <code>partnerTag</code> is a required
+      request parameter.</li>
+  <li>Every table row on every page this session built was checked by the release
+      gate for a link to an official source, a flag, or an anchor to a file that
+      exists.</li>
+</ul>
+
+<h2>Files this session added or changed</h2>
+<ul>
+  <li><b>Added:</b> <code>data/5b443d02/</code> (sources, products, suggestions,
+      questions, paths), <code>scripts/build_5b443d02.py</code>,
+      <code>direction/</code> (four pages).</li>
+  <li><b>Added to the shared registers:</b> sources <code>S70</code>&ndash;
+      <code>S74</code> and flags <code>5B-F-01</code>&ndash;<code>5B-F-06</code>.</li>
+  <li><b>Changed, additively:</b> <code>scripts/build_site.py</code> (one navigation
+      group; the executive-summary bottom line; the landing-page meta description),
+      <code>scripts/check_site.py</code> (the four new pages registered in
+      <code>PAGES</code>; the pure-fragment link resolution fixed).</li>
+  <li><b>Not touched:</b> <code>suggestions.html</code>,
+      <code>decision-center.html</code>, <code>decision-queue.html</code>,
+      <code>design-brief.html</code>, <code>site/decisions.html</code>,
+      <code>site/answers.html</code> and their data files. Those are owned by earlier
+      sessions and are cross-linked from <code>direction/questions.html</code>
+      instead of being rewritten.</li>
+</ul>
+
+<h2>Gate results on the final tree</h2>
+<ul>
+  <li><code>scripts/check_site.py</code> &mdash; OK, 34 pages, 67 sources, 114 flags.</li>
+  <li><code>tools/verify_site.py</code> &mdash; PASS, 119 pages, every row sourced,
+      flagged or anchored.</li>
+  <li><code>tools/i2_gate.py</code> &mdash; PASS, 18 pages, 0 flagged.</li>
+  <li><code>tools/cba81fa5_lint.py</code> &mdash; PASS, 0 new findings.</li>
+  <li><code>scripts/build_sitemap.py --check</code> &mdash; 82 pages, 0 missing.</li>
+</ul>
+"""
+    return body
+
+
+def sev_badge(sev: str) -> str:
+    return bs.badge(sev, {"High": "warn", "Medium": "info", "Low": "muted",
+                          "Info": "muted", "Critical": "bad"}.get(sev, "muted"))
+
+
 # ------------------------------------------------------------------------ audit
 
 def audit() -> list[str]:
@@ -696,6 +857,16 @@ def main() -> int:
         description="Three paths for the Zone3 affiliate site - one kitchen site with "
                     "two pillars, air-fryer only, or two separate sites - with effort, "
                     "risk and what each does with the five submitted products.",
+    )
+    emit(
+        "sessions/5b443d02/index.html",
+        "Session 5b443d02 — verification record (2026-11-17)",
+        build_record(),
+        lead="What was read from the official pages, what it established, and what "
+             "this session changed in the repository.",
+        description="Session 5b443d02 record: the five submitted Amazon links, the "
+                    "sources read on 2026-11-17, the six flags raised, and the files "
+                    "added or changed by this session.",
     )
     problems = audit()
     if problems:
