@@ -7354,3 +7354,9 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 **Scope note:** Prior Parts record completed work, not live ownership. This claim does not edit the publication root, product records, archived sessions, site layer, or other sessions' code. It will not generate a server endpoint on GitHub Pages or change affiliate URLs without the enrolled-account workflow test.
 
 **Claim rebase note (2026-11-17):** `origin/main` advanced from `d192053` to `0fbe95e` while this claim was being pushed. `git pull --rebase origin main` found an append/append conflict in this file. Both the complete Part 83 record from `main` and this Part E claim were retained in order; no content was discarded.
+
+### E Scope refinement after the `0fbe95e` base update
+
+- Part 83 (`59b2194c`) had already reconciled the five-link executive summary before this claim could be rebased. E-T3 is therefore narrowed to add only the missing AI/analytics runtime-status clarification and the proposed-not-live event contract; it will not duplicate or rewrite the current five-link table.
+- E-T1 is a focused supplement to `sessions/59b2194c/repo-review.md`: verify the claimed AI/automation capabilities against the actual code/config, and align the README's stale 2026-11-14 introduction/status with the current static publication. `README.md` is added to E-T3 scope.
+- **Cross-scope change request (not applied):** `publication-pass.html` is owned by the completed publication pass (`aebf0747`). If this session publishes proposed event names in the suggestions register, its statement that the repository contains no event list will need a wording update clarifying that a draft proposal exists but is not approved or active. Per the file-scope rule, this session will not edit that page; the request is logged for its owner/integration review.
