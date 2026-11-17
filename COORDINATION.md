@@ -7739,3 +7739,36 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 - Seasonal calendar rows carry only federal-holiday dates read from OPM (official); they carry no demand, popularity or "trending" claim — topic priority still comes from D8's query report.
 - No change to `data/design-brief.json` (session 757efebc's scope): the design-prompt refresh is published as proposals in the suggestions review, with the change request logged here.
 
+
+---
+
+# Part 0B2 — session `0b2ffabd` (branch `arena/0b2ffabd-zone3`, base `d192053` (main at claim), 2026-11-17)
+
+## 0B2 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 0b2ffabd | `arena/0b2ffabd-zone3` | Design-prompt consolidation for the marketing-affiliate look, the decision-readiness ledger (what must be known, by whom, and what each answer unblocks), dated refresh of the suggestions register against the 2026-11-17 owner brief, flag register additions, final integration PR to `main` | in progress | 2026-11-17 |
+
+## 0B2 Coordination check before claiming
+
+- `main` at claim: `d192053` (merge of PR #141, session `82372fd1`). `gh pr list --state open` returned no open PRs, so no other session is mid-flight against this base.
+- Gates re-run on the claimed base before any edit, all green: `check_site` OK 30/3/62/113 · `verify_site` PASS 134/2,068/1,769 · `link_report --strict` 0 · `i2_gate` PASS 18/164/148/16/0 · `cba81fa5_lint` PASS 0 new / 22 inherited · `build_cba81fa5 --check` current · `build_feed --check` current (9 entries) · `publish_pass --check` 102 pages / 0 changed · `build_shop --check` OK 11 pages · `build_sitemap --check` 97/0 · `cba81fa5_test_no_repr_output` PASS 134.
+- Files owned by other sessions that this Part will **not** edit: `index.html` + `sessions/aebf0747/**` (publication front page), `shop/**` + `tools/build_shop.py`, `site/**` + `tools/build_i2_site.py`/`tools/build_cba81fa5_site.py`, `read/**` + `scripts/build_read.py`, `feed.xml` + `tools/build_feed.py`, `data/products.json`, `data/decision-queue.json`, all gate scripts.
+
+## 0B2 Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G0B2-T1 — Repo review at the claimed base: gate snapshot, live-Pages spot check, measured inventory of the reader-facing surfaces | in progress | 0b2ffabd | read-only; record in `sessions/0b2ffabd/repo-review.md` | repo registers | any drift found → `G0B2-F-*` |
+| G0B2-T2 — Dated re-verification of the load-bearing official facts the suggestions layer cites (disclosure wording, sponsored-rel guidance, ASIN definition, participation requirements, snippet/description guidance) | in progress | 0b2ffabd | `sessions/0b2ffabd/verification.md`, `data/sources.json` (append S70+ only) | official pages | — |
+| G0B2-T3 — Design prompt for the polished affiliate look: `DESIGN_PROMPT.md` assembled only from decisions already recorded in this repo, labelled a draft awaiting a path choice | in progress | 0b2ffabd | `DESIGN_PROMPT.md` (new) | `data/suggestions.json`, `data/flags.json` | — |
+| G0B2-T4 — Suggestions register, dated 2026-11-17 (this session): decision-readiness ledger, corrected reader-layer inventory (measured), design-prompt pointer, new questions + discovery actions, and source links on the rows `verify_site` V4 reported as uncited | in progress | 0b2ffabd | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | `data/sources.json` S01–S74 | — |
+| G0B2-T5 — Final integration: flags unioned + counts recomputed in `EXECUTIVE-SUMMARY.md`, full chain ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check, this Part completed | planned | 0b2ffabd | `data/flags.json`, `flagged.html`/`suggestions.html` (regenerated), `README.md`, this Part | gate outputs | — |
+
+## 0B2 Rules I follow
+
+- Nothing on the suggestions page is implemented by accepting it: this Part writes reviewable options and the evidence state, not a redesign. Shared surfaces are left exactly as their owners built them.
+- No invented metric, price, rating, review count or popularity claim; no generated or copied product photography (S-18 is still "needs a decision").
+- Every factual row links an official source ID from `data/sources.json`; every proposal keeps the `Proposal` label.
+- Gates run through the documented build order; generated output is never hand-edited.
