@@ -181,6 +181,7 @@ CSS = r"""
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--paper-2);color:var(--ink);font:16px/1.6 var(--sans);font-variant-numeric:tabular-nums}
 a{color:var(--accent-ink);text-underline-offset:2px}
 a:hover{color:var(--accent-2)}
@@ -203,7 +204,7 @@ a:hover{color:var(--accent-2)}
 .brand-text strong{font-family:var(--serif);font-size:18px;letter-spacing:-.2px}
 .brand-text small{color:var(--ink-3);font-size:12px}
 .top nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
-.top nav a{padding:8px 12px;border-radius:8px;color:var(--ink-2);text-decoration:none;font-size:14.5px;font-weight:520}
+.top nav a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:8px;color:var(--ink-2);text-decoration:none;font-size:14.5px;font-weight:520}
 .top nav a:hover{background:var(--paper-3);color:var(--ink)}
 .top nav a.on{background:var(--accent);color:#fff}
 
@@ -261,7 +262,7 @@ th{background:var(--paper-3);font-size:11.5px;text-transform:uppercase;letter-sp
 tbody tr:hover{background:#fbfcfe}
 tbody tr:last-child td{border-bottom:0}
 td.lead-cell{font-weight:600;color:var(--ink)}
-.src{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent-ink);background:var(--accent-wash);border:1px solid #cfe8de;border-radius:6px;padding:1px 6px;text-decoration:none;white-space:nowrap;margin:1px 2px 1px 0}
+.src{display:inline-flex;align-items:center;min-height:24px;font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--accent-ink);background:var(--accent-wash);border:1px solid #cfe8de;border-radius:6px;padding:1px 6px;text-decoration:none;white-space:nowrap;margin:1px 2px 1px 0}
 .src:hover{background:#d9efe7;color:var(--accent-ink)}
 .blank{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:650;color:var(--amber);background:var(--amber-wash);border:1px solid var(--amber-line);border-radius:999px;padding:1px 9px}
 .blank-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);display:inline-block}
@@ -304,7 +305,7 @@ td.lead-cell{font-weight:600;color:var(--ink)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--paper)}
 .seg label{position:relative}
 .seg input{position:absolute;opacity:0;width:1px;height:1px}
-.seg span{display:inline-block;padding:7px 13px;font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;border-right:1px solid var(--line)}
+.seg span{display:inline-flex;align-items:center;min-height:44px;padding:7px 13px;font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;border-right:1px solid var(--line)}
 .seg label:last-child span{border-right:0}
 .seg input:checked + span{background:var(--accent);color:#fff}
 .seg input:focus-visible + span{outline:2px solid var(--accent-2);outline-offset:-2px}
@@ -329,6 +330,9 @@ td.lead-cell{font-weight:600;color:var(--ink)}
   .top-in{gap:10px;min-height:0;padding:10px 16px}
   .top nav{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
   .top nav a{white-space:nowrap}
+  th,td{padding:9px 10px}
+  .tablewrap{border-radius:12px}
+  .btn{min-height:44px}
   main{padding:22px 0 50px}
   .wrap{padding:0 16px}
   .disclose-bar .wrap{padding:9px 16px}
