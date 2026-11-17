@@ -504,9 +504,9 @@
       "value": "The brief lists five links. Links 1-3 open the three air fryers the register already records (B0CDY277D3, B09B7SB46R, B08DKYBTPH). Links 4 and 5 -- tokens B0c8moW59 and B0f3GKalj -- open two meat-thermometer listings (B0DHZTCNR5, B0DZFD6R9Z) that appear nowhere else in the repository. Every token is 9 characters and every direct /dp/ check serves Page Not Found, so no token is a 10-character ASIN. Observed destinations only; intent is not established (FLG-002).",
       "src": [
         "S70",
+        "S74",
         "S71",
-        "S73",
-        "S74"
+        "S75"
       ]
     }
   ],
@@ -654,7 +654,7 @@
       "how": "Owner confirms the two ASINs by name (question 929-Q-16). If in scope, an integration session adds P4/P5 rows with S70-S75 as sources and blank attribute cells; if not, record the decline. Do not infer intent from the redirects.",
       "src": [
         "S70",
-        "S73"
+        "S71"
       ]
     }
   ],
@@ -889,7 +889,7 @@
       "blocks": [],
       "src": [
         "S70",
-        "S73",
+        "S71",
         "S31"
       ]
     }
@@ -980,7 +980,7 @@
       "effort": "One question, answerable in a sentence; no tooling needed",
       "src": [
         "S70",
-        "S73"
+        "S71"
       ]
     }
   ],

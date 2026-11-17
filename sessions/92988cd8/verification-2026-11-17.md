@@ -20,10 +20,10 @@ Rendered version of this record: `sessions/92988cd8/index.html`.
 | V05 | `https://www.amazon.com/dp/B02NbDxp3` | **Page Not Found** | [S09](https://www.amazon.com/dp/B02NbDxp3) |
 | V06 | `https://www.amazon.com/dp/B00hJ57DV` | **Page Not Found** | [S10](https://www.amazon.com/dp/B00hJ57DV) |
 | V07 | `https://link.amazon/B0c8moW59` **(new)** | Landed on `amazon.com/dp/B0DHZTCNR5` — ThermoMaven 1 Sec Professional Digital Meat Thermometer…; breadcrumb Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › **Meat** (node 289810); **no `tag=`**; token absent from every file in the repository before this session | [S70](https://link.amazon/B0c8moW59), [S72](https://www.amazon.com/dp/B0DHZTCNR5) |
-| V08 | `https://link.amazon/B0f3GKalj` **(new)** | Landed on `amazon.com/dp/B0DZFD6R9Z` — CHEF iQ Sense \| Smart Wireless Meat Thermometer \| 3 Ultra-Thin Probes…; same Meat browse path (node 289810); **no `tag=`**; token absent from every file before this session | [S73](https://link.amazon/B0f3GKalj), [S75](https://www.amazon.com/dp/B0DZFD6R9Z) |
-| V09 | `https://www.amazon.com/dp/B0c8moW59` **(new)** | **Page Not Found** — the new token is a short-link ID, not a 10-character ASIN | [S71](https://www.amazon.com/dp/B0c8moW59) |
-| V10 | `https://www.amazon.com/dp/B0f3GKalj` **(new)** | **Page Not Found** — same conclusion | [S74](https://www.amazon.com/dp/B0f3GKalj) |
-| V11 | All five destination URLs, parameters read | Each carries only Amazon's own routing parameters (`srctok`, `channelId`, `lv`, `plpRedirect`, `th`, `sbo`, `language`, encoding). **No `tag=` on any of the five** — a click through any link as published attributes nothing (corroborates FLG-010) | S11, S12, S13, S70, S73 |
+| V08 | `https://link.amazon/B0f3GKalj` **(new)** | Landed on `amazon.com/dp/B0DZFD6R9Z` — CHEF iQ Sense \| Smart Wireless Meat Thermometer \| 3 Ultra-Thin Probes…; same Meat browse path (node 289810); **no `tag=`**; token absent from every file before this session | [S71](https://link.amazon/B0f3GKalj), [S73](https://www.amazon.com/dp/B0DZFD6R9Z) |
+| V09 | `https://www.amazon.com/dp/B0c8moW59` **(new)** | **Page Not Found** — the new token is a short-link ID, not a 10-character ASIN | [S74](https://www.amazon.com/dp/B0c8moW59) |
+| V10 | `https://www.amazon.com/dp/B0f3GKalj` **(new)** | **Page Not Found** — same conclusion | [S75](https://www.amazon.com/dp/B0f3GKalj) |
+| V11 | All five destination URLs, parameters read | Each carries only Amazon's own routing parameters (`srctok`, `channelId`, `lv`, `plpRedirect`, `th`, `sbo`, `language`, encoding). **No `tag=` on any of the five** — a click through any link as published attributes nothing (corroborates FLG-010) | S11, S12, S13, S70, S71 |
 
 Character counts (counted here): `B04G1MEwY`=9, `B02NbDxp3`=9, `B00hJ57DV`=9, `B0c8moW59`=9,
 `B0f3GKalj`=9. ASIN rule: "Amazon Standard Identification Number: 10-Character alphanumeric unique

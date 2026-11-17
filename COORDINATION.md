@@ -7481,4 +7481,264 @@ out of `data/*.json` and every rendered page, per suggestions question Q1's own 
 |---|---|---|
 | 2026-11-17 | `main` was at `fedc9f6` (= PR #134) at claim time and had not moved when this session pushed; open PRs #123 and #109 belong to other sessions and were not touched | none required |
 | 2026-11-17 | Generated pages rebuilt from the unioned registers after the data edits; no generated file was hand-merged | chain re-run twice, byte-identical |
+| 2026-11-17 | **Source-ID collision with session 2f181cd9** (recorded as the fourth on this board): both sessions independently appended S70-S75 for the *same six* 2026-11-17 captures of links 4 and 5, in *different* ID-to-URL order (their S71 = link 5, this session's S71 = the /dp/ control for link 4). Their PRs (#143/#146) merged first, so `data/sources.json` carries **their** numbering (S70-S82, next free S83) and this session's duplicate six entries were dropped by the union | **Adopted 2f181cd9's numbering; remapped every 929 reference by URL** (session page 17 anchors, verification log 5 refs, decision-queue 4 rows, 929-F-01 detail pair); set-level citations ("sources S70-S75") are unchanged because both numberings cover the same six URLs; no shared ID renumbered |
 
+
+### 83 Publish record
+
+| Item | Result |
+|---|---|
+| Pull request | **#142** — https://github.com/kanlerxz87-cyber/Zone3/pull/142 (executive-summary reconciliation against the five-product shop register) |
+| Merge | **MERGED** at 2026-11-17T16:34:18Z; merge commit **`0fbe95e58b508651e1e8861348a7b3ccedd7ec52`**. |
+| Pages deploy | GitHub Pages build `1378384894` for `0fbe95e58b508651e1e8861348a7b3ccedd7ec52`: **`built`** at 2026-11-17T16:34:42Z. |
+| Post-merge checks | The release-gate suite was rerun after rebasing on PR #141's `d192053` and before the merge; all gates recorded above passed. |
+
+---
+
+## Part 38 — session `38650305` (branch `arena/38650305-zone3`, base `d192053` (main at claim), 2026-11-17)
+
+### 38 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 38650305 | `arena/38650305-zone3` | Measurement layer (privacy-preserving outbound-click counter, five event definitions, self-hosted collector script, OFF until an endpoint host exists); brief-status register (S-04…S-25, SG-27…SG-30 checked against this repo); flags for the blocked items; executive summary update; integration, PR to `main`, merge, Pages check | in progress | 2026-11-17 |
+
+### 38 Coordination check before claiming
+
+- Branch was behind `main`: fast-forwarded to `d192053` (PR #141, session `82372fd1`). Shallow clone unshallowed to find the merge base. No other session has an `in progress` row touching the files below; `aebf0747` (AE-T7, click counter / endpoint / Search Console / Special Link validation) is recorded `blocked` and is taken over here **only for the parts that can be built without an owner account**. The blocked parts stay blocked.
+- Scope (this session edits only): `assets/measure.js`, `assets/measure-config.js` (generated), `data/shop/measurement.json`, `data/shop/brief-status.json`, `data/shop/flags.json` (appended), `tools/measure_pass.py`, `tools/build_measurement.py`, `tools/analytics_endpoint.py`, `tools/build_brief_status.py`, `measurement/**`, `brief-status/**`, `sessions/38650305/**`, the footer group list in `sessions/aebf0747/publish_pass.py`, `EXECUTIVE-SUMMARY.md` (dated section), `README.md` (build-chain lines), `sitemap.xml` (regenerated), and the new script tags on published pages (mechanical, via `tools/measure_pass.py`).
+
+### 38 Task board (claimed before any other work)
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| M38-T1 — Claim and coordination record | done (this commit) | `COORDINATION.md` (Part 38 only) | — |
+| M38-T2 — Source verification of the measurement rules (Participation Requirements 2(a)/2(b), GitHub Pages data-collection statement) | in progress | `sessions/38650305/verification.md` | Every row links the official page; fetched 2026-11-17. |
+| M38-T3 — Privacy-preserving outbound-click counter and five event definitions (client) | in progress | `assets/measure.js`, `assets/measure-config.js`, `data/shop/measurement.json`, `tools/measure_pass.py` | Off unless an endpoint is set. No cookies, no storage, no visitor ID; honours GPC and Do Not Track. |
+| M38-T4 — Self-hosted analytics collector (aggregate daily counts; no IP, user agent or referrer stored) | in progress | `tools/analytics_endpoint.py` | Stdlib only; `--self-test` tests the allowlist, the aggregate store and the no-identifier rule. Not hosted: GitHub Pages is static. |
+| M38-T5 — Measurement page | in progress | `tools/build_measurement.py`, `measurement/index.html` | States exactly what is and is not collected, and that counting is OFF. |
+| M38-T6 — Brief-status register (S-04…S-25, SG-27…SG-30) | in progress | `data/shop/brief-status.json`, `tools/build_brief_status.py`, `brief-status/index.html` | Each row says what this repo shows, what was checked and what is only claimed. |
+| M38-T7 — Flags for blocked items | in progress | `data/shop/flags.json` (append) | Special Link validation, Search Console, endpoint host, reader capture, imagery, the five events, cadence. |
+| M38-T8 — Integration: gates, build chain, sitemap, executive summary, PR to `main`, merge, Pages check | planned | as above | Merge only after every gate passes; no broken links. |
+
+### 38 Blocked, not built (by design)
+
+- **Special Link validation (brief: "test one link per product in the enrolled Associates workflow").** Needs a logged-in Associates account. This sandbox has no account access and no permission to act in one. Not done. Short links kept as supplied; not described as invalid (FLG-003).
+- **Search Console.** Needs the owner's Google account to verify ownership. Not done.
+- **Reader capture (SG-30).** No provider, privacy notice or decision exists. Not done.
+- **Hosting for the collector.** GitHub Pages cannot run the endpoint. The collector ships as a script the owner can run on a host of their choice; the counter stays OFF until that host and its URL are set.
+
+### 38 Task status (2026-11-17)
+
+| Task | Status | Record |
+|---|---|---|
+| M38-T1 — Claim and coordination record | done | this Part, first commit `c00182a` |
+| M38-T2 — Source verification (Participation Requirements 2(a)/2(b); GitHub Pages docs; Search Console sign-in) | done | `sessions/38650305/verification.md` §1 |
+| M38-T3 — Privacy-preserving outbound-click counter and five proposed events (client) | done, OFF | `assets/measure.js`, `assets/measure-config.js`, `data/shop/measurement.json`; tests `sessions/38650305/test_measure.js` (16 checks, Node, stubbed browser) |
+| M38-T4 — Self-hosted collector (aggregate daily totals; no IP, user agent, referrer or request log) | done, not hosted | `tools/analytics_endpoint.py` (`--self-test`, 10 checks; live HTTP checks recorded in verification §3) |
+| M38-T5 — Measurement page | done | `measurement/index.html` (generated by `tools/build_measurement.py`) |
+| M38-T6 — Brief-status register (S-04…S-25, SG-27…SG-30) | done | `data/shop/brief-status.json`, `brief-status/index.html`; counts 23 rows |
+| M38-T7 — Flags for blocked and unverified items | done | `data/shop/flags.json` M38-F-01…M38-F-16 (published on the shop Flagged page) |
+| M38-T8 — Integration, gates, PR, merge, Pages check | in progress | see the publish record below |
+
+**Brief rows measured here (2026-11-17):** S-04 met (104/104); S-05 met (1,447 links, 0 unmarked); S-09 partly (11/104); S-17 met (live front page); SG-28 met (RSS current). **Not found here:** S-14 (DESIGN_PROMPT.md), S-19 (chooser), S-23 (per-cm analysis). **Conflicts:** S-15 (brand still working name, DEC-04), S-18 (illustrations, not photography). **Blocked (owner):** S-25 and SG-29 (Search Console), SG-30 (reader capture), Special Link validation (M38-F-01). The rest are partly or not measured. Full table with reasons: `brief-status/index.html`.
+
+**Shared-tool changes (logged):** `tools/build_shop.py` — `search.google.com` added to `OFFICIAL_HOSTS` (the gate rejected the Search Console sign-in page cited in M38-F-03; the page was fetched 2026-11-17). `sessions/aebf0747/publish_pass.py` — two footer links (measurement, brief status). Required order is now written in `README.md`: `build_shop` → `publish_pass` → `measure_pass` → `build_sitemap`.
+
+**Irregularities found during the session (fixed where possible):**
+- The first chain printed the exit code of `tail`, not of the gate, so a failing `build_shop --check` looked green. Caught by a fresh clone of the pushed branch; fixed by adding the host and correcting one flag source. Every gate is now re-run with its own exit code.
+- The publish pass and the measure pass both inserted before `</body>`, so their outputs flipped each other on rerun. Fixed by placing the measurement script in `<head>`.
+- Two flag sources cited the owner's Zone4 record, which is not an official source. Replaced with an official Google page; the Zone4 labels are quoted, not linked as evidence (M38-F-16).
+- The brief's S-14 and S-15 cite files and a settled brand name that this repo does not contain.
+
+Pending: merge record and Pages check (below).
+
+### 38 Publish record (M38-T8)
+
+| Item | Result |
+|---|---|
+| Pull request #144 | https://github.com/kanlerxz87-cyber/Zone3/pull/144 — `arena/38650305-zone3` → `main`, `mergeStateStatus` CLEAN, merged with `gh pr merge 144 --merge` at 2026-11-17 16:39 UTC, merge commit `52df5aa`. |
+| Pages | Legacy build for `52df5aa`: `built` (16:39:42 UTC). Source `main` `/`. |
+| Live checks (cache-busted fetch, 2026-11-17) | `/measurement/` shows "Measurement · status: OFF"; `/assets/measure-config.js` reads `enabled: false`, endpoint empty; `/brief-status/` loads with the register and footer disclosure. |
+| Correction found after merge | The live brief-status page quoted 102 pages and 1,444 links. Those were the counts before the two new pages were added; the measured tree has 104 pages and 1,447 links. Fixed in `data/shop/brief-status.json` and `data/shop/flags.json` (M38-F-05, M38-F-07), regenerated, all gates re-run. Shipped as a follow-up PR (number and merge result: GitHub, PR titled "Session 38650305 — correct page counts in brief-status register"). |
+| Clean checkout | Fresh clone of `arena/38650305-zone3` at `e97afc7` ran every gate. One failure (`build_shop --check`, `search.google.com` not allow-listed) was fixed in `5ada925`; the clean clone was then re-run at the commit above with every gate passing. |
+| Rebase | `main` moved to `c67596a` (PR #143, session `59b2194c`) during this work. Rebased; the one conflict in `COORDINATION.md` (both sides appended) was resolved by keeping both sides in full. `EXECUTIVE-SUMMARY.md` merged cleanly; both sessions' sections are present. |
+| Session status | M38-T1…T8 **done**. Blocked, not built, each flagged: Special Link validation (M38-F-01), Search Console (M38-F-03), reader capture (M38-F-14), collector hosting (M38-F-04, M38-F-15), the five events (M38-F-04), the image decision (M38-F-10), the brand name (M38-F-09). |
+# Part: session `2f181cd9` (2026-11-17) — five-link intake (two new links), design-direction pack, decision lab, final integration
+
+## Session registry (this part)
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| 2f181cd9 | `arena/2f181cd9-zone3` | `fedc9f66` (main, PR #134 merged) | Five-link intake re-verified live; the two newly submitted links (`link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`) resolved and recorded; design-direction pack for a non-"AI slop" marketing site; the Decision Lab (suggestions review console + open-questions register with discovery routes); repo review; final integration, PR, merge, Pages deploy. | in progress (2F-T1 claimed) | 2026-11-17 |
+
+### Coordination check performed before claiming (2026-11-17)
+
+- `git log origin/main` → `fedc9f6` ("Merge pull request #134 from kanlerxz87-cyber/arena/f65d393b-zone3"), the base this branch was cut from. No newer commit on `main` at claim time.
+- Open PRs at claim: **#109** (`arena/a0ffcab0-zone3`, created 2026-11-16T18:49:48Z) and **#123** (`arena/5a56c084-zone3`, created 2026-11-16T19:05:55Z). Both are completion-record PRs whose sessions last committed on 2026-11-16; both claims are far older than the 60-minute takeover window, so this session logs them as **stale, not taken over and not edited** (they touch only their own session directories and `COORDINATION.md`; `COORDINATION.md` conflict policy here is append-only, so no conflict is possible). No other session is marked `in progress` on a branch newer than 2026-11-16.
+- ID namespaces claimed by this session (non-overlapping): sources **S70–S79**, flags **F-2F-01…**, suggestions **SUG-2F-01…**, questions **Q2F-01…**. Source IDs S01–S59 and S60–S69 are reserved by earlier sessions per the `id_reservation` note in `data/sources.json`; this session appends from S70.
+- File scope (all additive, no other session's file edited): `sessions/2f181cd9/**`, `data/2f/*.json`, `scripts/build_2f181cd9.py`, and — as the final integration session for this round — the shared surfaces `index.html` (one nav group + one front-door card), `sitemap.xml`, `data/products.json`, `data/sources.json`, `data/flags.json` (unioned by ID, nothing renumbered or removed).
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 2F-T1 — claim | done | 2f181cd9 | `COORDINATION.md` (append only) | — | none |
+| 2F-T2 — live re-verification of all five submitted links | in progress | 2f181cd9 | `data/2f/verification.json`, `sessions/2f181cd9/verification.md` | S70–S78 | F-2F-01… |
+| 2F-T3 — repo review, line by line | pending | 2f181cd9 | `sessions/2f181cd9/repo-review.md` | — | — |
+| 2F-T4 — five-product intake register (products 4 and 5) | pending | 2f181cd9 | `data/2f/intake.json`, `sessions/2f181cd9/product-4-*.html`, `sessions/2f181cd9/product-5-*.html` | S70–S75 | F-2F-0x |
+| 2F-T5 — Decision Lab: suggestions review console + open-questions register | pending | 2f181cd9 | `data/2f/decision-lab.json`, `sessions/2f181cd9/decision-lab.html`, `sessions/2f181cd9/questions.html` | S01, S02, S70–S78 | — |
+| 2F-T6 — design-direction pack (non-"AI slop" marketing site) + design prompt | pending | 2f181cd9 | `data/2f/design-direction.json`, `sessions/2f181cd9/design-direction.html` | S01, S02, S07, S24 | — |
+| 2F-T7 — executive summary for the five-link state | pending | 2f181cd9 | `sessions/2f181cd9/executive-summary.html` | S70–S78, S01, S02 | — |
+| 2F-T8 — final integration: gates, PR to `main`, merge, Pages deploy | pending | 2f181cd9 | shared surfaces listed above | — | — |
+
+### 2F-T1 addendum — source ID range (corrected 2026-11-17)
+
+The claim above reserved S70–S79. The work needed thirteen source IDs, so the reserved
+range is **S70–S82**, and `data/sources.json`'s `id_reservation` note now says so: the
+next session appends from **S83**. Flag IDs are **F-2F-01…F-2F-10**, suggestions
+**SUG-2F-01…13**, questions **Q2F-01…12**.
+
+## 2F records (session `2f181cd9`, filled in after the claim above)
+
+### 2F-T2 — live re-verification (done, 2026-11-17)
+
+All five submitted links were fetched live. Three open air-fryer listings and the two
+links added in this session's brief open meat-thermometer listings — see the table in
+`research/2f181cd9-verification-log.md` and the register on
+`sessions/2f181cd9/intake.html`. All five direct `/dp/<identifier>` checks return Page
+Not Found, and all five identifiers are nine characters against Amazon's ten-character
+ASIN definition (S82).
+
+Policy pages re-read verbatim this session: Operating Agreement §5 and §6 (S79);
+Participation Requirements 1, 2(b), 6(t), 6(v), 6(w), 6(y) (S80); Standard Commission
+Income Statement Table 1 (S81); Creators API GetItems ItemIdType (S82). Every quote is
+stored in `data/2f/verification.json` and rendered on `sessions/2f181cd9/index.html`.
+
+**Method note (also F-2F-10):** command-line fetches to amazon.com and link.amazon were
+refused at the connection layer in this session's sandbox, so every observation is a
+page-fetch tool result. Each names the exact URL fetched, so it can be repeated by hand.
+Earlier sessions recorded the same restriction, so this is a difference in tooling, not
+in rigour.
+
+### 2F-T3 — repo review (done, 2026-11-17)
+
+`research/2f181cd9-repo-review.md` holds the ten findings. The three that matter: the
+product register held three of five links (fixed here by adding P4 and P5); no link
+carries an Associates tag, so nothing can earn; and `rel="sponsored"` is applied to six
+outbound links out of more than two thousand, so the same class of link is marked two
+different ways depending on which generator built the page (F-2F-05, cross-scope change
+request, not actioned here).
+
+### 2F-T4 — five-link intake register (done, 2026-11-17)
+
+`data/2f/intake.json` and `sessions/2f181cd9/intake.html`. The intended-product columns
+(intended ASIN, intended listing URL, confirmation date, source) are separate fields from
+the observed-destination columns (final URL, page ID, page title, fetch date, source) and
+the two are never merged, per the brief. The intended columns are empty and flagged: only
+the owner can fill them.
+
+Shared register: P4 and P5 were added to `data/products.json` so `products.html`,
+`pricing.html`, `reviews.html`, `campaigns.html` and `content.html` cover all five links.
+They carry the same null values as P1–P3, plus a `content_status` block stating that no
+brief, comparison or buying guide exists for them, so `content.html` does not claim
+content that was never written.
+
+### 2F-T5 — Decision Lab (done, 2026-11-17)
+
+`data/2f/decision-lab.json`, `sessions/2f181cd9/decision-lab.html` and
+`sessions/2f181cd9/questions.html`. Thirteen suggestions, each with the paths available,
+the question that gates it, the trade-off per path, the effort, the risk, how we would
+know it worked, and the official source for the constraint it must respect. Twelve
+questions, each with what is in hand (sourced), what is missing, what it blocks and the
+concrete route to closing it, plus an empty dated answer slot. Plus the
+information-we-have and information-we-missing tables.
+
+**Nothing on either page is implemented by publishing it.** Every suggestion is `ready`,
+`blocked` or `proposed`, and the page says so. The brief asked for a section where
+someone can review suggestions and choose the best path before anything changes; that is
+what this is, so a blocked item stays blocked until the named question is answered.
+
+### 2F-T6 — design direction and prompt pack (done, 2026-11-17)
+
+`data/2f/design-direction.json` and `sessions/2f181cd9/design-direction.html`. A
+diagnosis of why the site reads as generated (four visual languages, dashboard-first
+information architecture, no photography, large repeated boilerplate), five principles,
+one design system (type, colour, grid, imagery), five page templates, copy rules, a
+fifteen-phrase banned list, a ten-point anti-slop checklist, a what-not-to-do list, and a
+single ready-to-paste prompt. The six hard constraints the design must work inside are
+quoted from the official pages with their source IDs, and taste calls are labelled as
+judgements rather than dressed up as rules.
+
+### 2F-T7 — executive summary (done, 2026-11-17)
+
+`sessions/2f181cd9/executive-summary.html`: the six counts that define the state of the
+project, eight sourced key findings, the blocking questions with the route to each, and
+an explicit statement of what this session did and did not change.
+
+### 2F-T8 — integration, gates, PR, merge (recorded after the merge)
+
+| Item | Result |
+|---|---|
+| Pull before push | `git pull --rebase origin main` before every push |
+| Gates on the final tree (after the merge above) | `check_site` **OK 36 pages / 5 products / 75 sources / 123 flags** · `check_all_links` **0 errors (186 pages, 215 external URLs)** · `build_sitemap --check` **97 pages, 0 extras** · `verify_site` **PASS 140 pages / 2,188 rows** |
+| Shared files touched | `data/sources.json` (S70–S82 appended), `data/flags.json` (F-2F-01…10 appended), `data/products.json` (P4, P5 appended), `scripts/build_site.py` (19 asserted string replacements + 1 nav group + 1 site-map group, patch script kept at `scripts/_patch_2f181cd9.py`), `scripts/check_site.py` (this session's six pages added to `PAGES` and `TABLE_PAGES`), `sitemap.xml` (regenerated; `/sessions/` stays excluded by the documented rule) |
+| Files this session owns | `sessions/2f181cd9/**`, `data/2f/*.json`, `scripts/build_2f181cd9.py`, `scripts/update_data_2f181cd9.py`, `scripts/_patch_2f181cd9.py`, `research/2f181cd9-*.md`, this Part of `COORDINATION.md` |
+| Deliberately not indexed | This session's six pages are under `/sessions/`, which `scripts/build_sitemap.py` excludes by the rule added by session 81bc99d0. They are linked from the navigation on every page, so they are reachable; they are decision-support pages, not reader guides. If the owner wants the Decision Lab in the index, that is a scoped exception to the rule (SUG-2F-10). |
+| Irregularities raised | F-2F-01…F-2F-10, all published on `flagged.html`. None blocks the merge. |
+| Cross-scope change requests (not actioned) | (1) `rel="sponsored"` on every outbound product link, generator by generator (F-2F-05). (2) The "three" copy still on the injected front-door band, `/read/`, `/site/` and `/marketing/` (F-2F-09). (3) One token set instead of four stylesheets (F-2F-07). |
+
+### 2F-T8 addendum — mid-session merge with the parallel five-link shop work (2026-11-17)
+
+`main` moved while this session was working: `fedc9f6` → `c67596a`, through PRs #140, #141,
+#142 and #143 from sessions `82372fd1`, `59b2194c` and `974e366d`. Those sessions built
+`/shop/` (a five-product publication site with `shop/air-fryers/` and
+`shop/meat-thermometers/` category pages, `shop/decisions/`, `shop/intent-record/`, a
+`feed.xml` and a publication front page) and took over `index.html` — `scripts/build_site.py`
+now carries a guard from session `aebf0747`: if `index.html` contains `aebf0747-front`, the
+flat-page generator does not overwrite it.
+
+**Their independent finding agrees with this session's:** `shop/index.html` publishes all
+five destinations, including B0DHZTCNR5 and B0DZFD6R9Z for the two links added in this
+session's brief. Two sessions, working from different branches on the same day, resolved the
+same two links to the same two listings. That corroboration is recorded here because it is
+worth more than either session's single observation.
+
+**How the merge was resolved (generated output was not hand-merged):**
+
+| File | Resolution |
+|---|---|
+| `index.html`, `flagged.html`, `products.html`, `pricing.html`, `reviews.html`, `sources.html`, `verification.html`, `executive-summary.html`, `air-fryers.html` | Resolved to `main`'s side, then **regenerated** from the unioned data by `scripts/build_site.py` |
+| `data/flags.json` | Union by ID: main's 113 entries kept in order, this session's F-2F-01…10 appended → 123 |
+| `data/products.json` | Union by ID: main's P1–P3 kept, P4 and P5 appended → 5 products |
+| `data/sources.json` | Auto-merged: S70–S82 appended to main's S01–S69 → 75 |
+| `scripts/build_site.py`, `scripts/check_site.py` | Auto-merged (this session's 19 asserted replacements and nav/site-map groups, plus main's `aebf0747` guard and token rule) |
+| `COORDINATION.md` | `main`'s board kept verbatim, this session's Part appended after it; no conflict marker on any line (verified before commit) |
+
+`index.html` therefore keeps session `aebf0747`'s publication front page, and this session's
+navigation group appears on every page the flat generator writes (products, flagged, sources,
+pricing, reviews, content, campaigns, articles, air-fryers, verification and the reader
+pages). Because the front page is reachable-to-reachable (it links `flagged.html`, which
+carries the group), this session's pages are never more than two clicks from the front door.
+
+**Change request, not actioned (cross-scope):** add a link to
+`sessions/2f181cd9/decision-lab.html` from `shop/decisions/` or the publication front page,
+so the Decision Lab and the design pack are reachable from the shop's own navigation. The
+file belongs to another session's scope.
+
+**Gate results on the merged tree:** `check_site` OK 36 pages / 5 products / 75 sources /
+123 flags · `check_all_links` 0 errors (186 pages, 215 external URLs) · `build_sitemap --check`
+97 pages, 0 extras · `verify_site` PASS 140 pages / 2,188 rows.
+
+### 2F-T8 — publish record (done, 2026-11-17)
+
+| Item | Result |
+|---|---|
+| Pull before push | `git pull origin main` / `git merge origin/main` before every push; two merge rounds (`c67596a`, then the round that produced the merge base for PR #146). Every conflict resolved by keeping **every side in full**: generated HTML was resolved to main's side and then **regenerated** from the unioned registers; `data/flags.json` and `data/products.json` were unioned by ID; `COORDINATION.md` keeps main's board verbatim with this session's Part appended. No line-start conflict marker was ever committed (checked before every continue and every push). |
+| PR | **#146** — https://github.com/kanlerxz87-cyber/Zone3/pull/146 ("Zone3: session 2f181cd9 — five-link intake (two new links), Decision Lab, design-direction pack, final integration"). |
+| Merge | **MERGED** without waiting for review, per the brief — merge commit **`213516e`**, state `MERGED`, merged at 2026-11-17T16:42:25Z. |
+| Pages deploy | Pages API `repos/kanlerxz87-cyber/Zone3/pages/builds/latest` for commit `213516e` reported **`built`** (created 2026-11-17T16:42:27Z); site configuration source `main` `/`. |
+| Live checks (cache-busted, after `built`) | **`/sessions/2f181cd9/intake.html?2f=livecheck`** — the register renders all five rows, disclosure strip under the masthead, intended columns marked `Unverified` with the reason, P4 and P5 showing the Thermometers & Timers > Meat breadcrumb and the F-2F-01/02/03 chips. **`products.html?2f=livecheck`** — five product rows now (P4 and P5 present with the thermometer status), lead reads "three open air-fryer listings and two open meat-thermometer listings", the breadcrumb sentence names both branches, and every row carries its source links. |
+| Cross-session corroboration | Sessions `82372fd1` / `59b2194c` / `974e366d` built `/shop/` from the same brief and mapped the same two links to B0DHZTCNR5 and B0DZFD6R9Z independently. Two sessions, same day, same destinations, recorded in the merge addendum above. |
+| Session status | 2F-T1…T8 **done**. Records: `research/2f181cd9-verification-log.md`, `research/2f181cd9-repo-review.md`, `sessions/2f181cd9/*.html`. Flags raised: F-2F-01…F-2F-10, all published on `flagged.html`. Suggestions: SUG-2F-01…13, all published **proposed / ready / blocked** — none scheduled, none implemented, which is the point of the console. |
+| One follow-up applied here | The generated page title still read "Zone3 — Air Fryer Research Desk" on every flat page after P4 and P5 were added. Changed to "Zone3 — Kitchen Product Research Desk" in `scripts/build_site.py` so the title stops contradicting the register. The brand name itself remains an owner decision (Q2F-05, SUG-2F-12). |

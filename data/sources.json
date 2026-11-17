@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-16 — union: earlier sessions' dated entries plus session 145b8df7's S60-S68 re-verification captures (S59 is the FTC Consumer Reviews and Testimonials Rule Q&A, added by session 1f1b8bd2)",
+  "retrieved": "2026-11-16 — union: earlier sessions' dated entries plus session 145b8df7's S60-S68 re-verification captures (S59 is the FTC Consumer Reviews and Testimonials Rule Q&A, added by session 1f1b8bd2) | 2026-11-17: session 2f181cd9 appended S70-S82 (the two new submitted links, their destinations and direct-identifier checks, the three original links re-fetched, and the Operating Agreement, Program Policies, Table 1 and the ASIN definition re-read).",
   "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration. Integrated with session 9fef7647 (PR #26) by session b90c5685 on 2026-11-14.",
   "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45). RENUMBERING (2026-11-14, session b90c5685): PR #26's unique sources are kept as S46-S54 and this session's re-fetch as S55, because PR #26 had used S30-S32 and S33-S38 for pages main already assigns other IDs to.",
   "sources": [
@@ -579,58 +579,134 @@
     },
     {
       "id": "S70",
-      "title": "Submitted product link 4: link.amazon/B0c8moW59 (redirect result)",
+      "title": "Submitted product link 4: link.amazon/B0c8moW59 — first observation by any session (2026-11-17)",
       "url": "https://link.amazon/B0c8moW59",
-      "publisher": "Link as submitted by the owner",
+      "publisher": "Amazon (official)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-17 by session 92988cd8. Final URL: https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-633f9dc54185b50f&channelId=500&plpRedirect=mhFallback . Page title read: 'Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, +/-0.5 F Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen'. Breadcrumb: Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat. No tag= parameter in the destination URL. This token appeared nowhere in this repository before this session (929-F-01). Price, rating and review-count values present in the served page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
-      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002). New intake candidate 4 (929-F-01, 929-Q-16)."
+      "status_note": "Served a product page for ASIN B0DHZTCNR5. No Associates tag is present in the URL, so the click is not attributable (S02, Participation Requirements 2(b)).",
+      "used_for": "Redirect destination of the fourth submitted link, observed 2026-11-17.",
+      "session": "2f181cd9"
     },
     {
       "id": "S71",
-      "title": "Amazon.com product page check: amazon.com/dp/B0c8moW59",
-      "url": "https://www.amazon.com/dp/B0c8moW59",
-      "publisher": "Amazon.com (official retailer)",
+      "title": "Submitted product link 5: link.amazon/B0f3GKalj — first observation by any session (2026-11-17)",
+      "url": "https://link.amazon/B0f3GKalj",
+      "publisher": "Amazon (official)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-17 by session 92988cd8: title 'Page Not Found'; page text 'Sorry! We couldn't find that page. Try searching or go to Amazon's home page.' Consistent with the 9-character token being a short-link ID and not a 10-character ASIN (S31).",
-      "used_for": "Direct-identifier check for submitted link 4 (929-F-01)."
+      "status_note": "Served a product page for ASIN B0DZFD6R9Z. No Associates tag is present in the URL.",
+      "used_for": "Redirect destination of the fifth submitted link, observed 2026-11-17.",
+      "session": "2f181cd9"
     },
     {
       "id": "S72",
-      "title": "Observed redirect target: amazon.com/dp/B0DHZTCNR5 (page title)",
+      "title": "Destination listing for link 4: amazon.com/dp/B0DHZTCNR5 (page title and breadcrumb, read 2026-11-17)",
       "url": "https://www.amazon.com/dp/B0DHZTCNR5",
-      "publisher": "Amazon.com (official retailer)",
+      "publisher": "Amazon (official)",
       "status": "observed",
-      "status_note": "Reached 2026-11-17 via link.amazon/B0c8moW59 (S70). Page title and breadcrumb read from that fetch. Listing sits in Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (node 289810), not in Air Fryers (node 17659096011). Price, rating and review-count values on the page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
-      "used_for": "Title and breadcrumb of destination 4 only, shown on the session record page and the Flagged for Review page."
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Product title and category breadcrumb of the fourth destination listing.",
+      "session": "2f181cd9"
     },
     {
       "id": "S73",
-      "title": "Submitted product link 5: link.amazon/B0f3GKalj (redirect result)",
-      "url": "https://link.amazon/B0f3GKalj",
-      "publisher": "Link as submitted by the owner",
+      "title": "Destination listing for link 5: amazon.com/dp/B0DZFD6R9Z (page title and breadcrumb, read 2026-11-17)",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "publisher": "Amazon (official)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-17 by session 92988cd8. Final URL: https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-101536bcd8e0be02&channelId=500&plpRedirect=mhFallback&th=1 . Page title read: 'Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000 F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen'. Breadcrumb: Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat. No tag= parameter in the destination URL. This token appeared nowhere in this repository before this session (929-F-01). Price, rating and review-count values present in the served page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
-      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002). New intake candidate 5 (929-F-01, 929-Q-16)."
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Product title and category breadcrumb of the fifth destination listing.",
+      "session": "2f181cd9"
     },
     {
       "id": "S74",
-      "title": "Amazon.com product page check: amazon.com/dp/B0f3GKalj",
-      "url": "https://www.amazon.com/dp/B0f3GKalj",
-      "publisher": "Amazon.com (official retailer)",
+      "title": "Direct identifier check for link 4: amazon.com/dp/B0c8moW59 (2026-11-17)",
+      "url": "https://www.amazon.com/dp/B0c8moW59",
+      "publisher": "Amazon (official)",
       "status": "observed",
-      "status_note": "Fetched 2026-11-17 by session 92988cd8: title 'Page Not Found'; page text 'Sorry! We couldn't find that page. Try searching or go to Amazon's home page.' Consistent with the 9-character token being a short-link ID and not a 10-character ASIN (S31).",
-      "used_for": "Direct-identifier check for submitted link 5 (929-F-01)."
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Shows the nine-character token is not an ASIN: the direct /dp/ URL returns Amazon's Page Not Found page.",
+      "session": "2f181cd9"
     },
     {
       "id": "S75",
-      "title": "Observed redirect target: amazon.com/dp/B0DZFD6R9Z (page title)",
-      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-      "publisher": "Amazon.com (official retailer)",
+      "title": "Direct identifier check for link 5: amazon.com/dp/B0f3GKalj (2026-11-17)",
+      "url": "https://www.amazon.com/dp/B0f3GKalj",
+      "publisher": "Amazon (official)",
       "status": "observed",
-      "status_note": "Reached 2026-11-17 via link.amazon/B0f3GKalj (S73). Page title and breadcrumb read from that fetch. Listing sits in Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (node 289810), not in Air Fryers (node 17659096011). Price, rating and review-count values on the page are deliberately not recorded (Program Policies 2(b) and 6(t)).",
-      "used_for": "Title and breadcrumb of destination 5 only, shown on the session record page and the Flagged for Review page."
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Shows the nine-character token is not an ASIN: the direct /dp/ URL returns Amazon's Page Not Found page.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S76",
+      "title": "Re-check 2026-11-17: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Stability re-check of the first submitted link. Same destination as recorded on 2026-11-13, 2026-11-14 and 2026-11-16.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S77",
+      "title": "Re-check 2026-11-17: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Stability re-check of the second submitted link. Same destination as on every earlier capture.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S78",
+      "title": "Re-check 2026-11-17: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Stability re-check of the third submitted link. Same destination as on every earlier capture.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S79",
+      "title": "Associates Program Operating Agreement, Sections 5 and 6, re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Verbatim disclosure sentence and the material-breach clause, re-read this session.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S80",
+      "title": "Associates Program Policies, Participation Requirements 1, 2(b), 6(t), 6(v), 6(w), 6(y), re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Original-content requirement, the price-display rule, the star-rating rule, the cloaking rule, the link-shortener rule and the price-tracking rule, all re-read verbatim this session.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S81",
+      "title": "Associates Program Standard Commission Income Statement, Table 1, re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Category rates for the standard programme: Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S82",
+      "title": "Creators API GetItems, ItemIdType parameter (ASIN definition), re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Amazon's own definition of an ASIN as a 10-character alphanumeric identifier.",
+      "session": "2f181cd9"
     }
   ],
-  "id_reservation": "S01-S59 are held by earlier sessions. S60-S69 are claimed by session 145b8df7 (its 2026-11-16 re-verification captures). S70-S75 are claimed by session 92988cd8 for its 2026-11-17 captures of the two newly submitted short links, their /dp/ controls and their destination listings. A session appending after 92988cd8 must start at S76, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
+  "id_reservation": "S01-S59 are held by earlier sessions (main@110). S60-S69 are claimed by session 145b8df7 for its 2026-11-16 re-verification captures. S70-S82 are claimed by session 2f181cd9 (2026-11-17) for the five-link intake and policy re-reads. All three ranges are NOT free: a session rebasing onto an older main must append from S83, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
 }

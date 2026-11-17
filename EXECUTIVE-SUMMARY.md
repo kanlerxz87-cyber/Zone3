@@ -51,6 +51,20 @@ The source register records the submitted-link destinations (`SH-S06`–`SH-S10`
 
 ---
 
+## Update 2026-11-17 — session 38650305 (measurement layer, brief-status register, publication pass)
+
+**Bottom line.** Click and page-event measurement is built, and it is **off**. Nothing is sent until someone hosts the collector and sets its address, because GitHub Pages cannot run one. Several rows of the brief cannot be matched to anything in this repository, and three items need the owner: an Associates account (Special Link test), a Google account (Search Console) and a collector host.
+
+- **Built.** A privacy-preserving outbound-click and page-event counter (`assets/measure.js`): no cookies, no storage, no visitor ID, nothing sent under Global Privacy Control or Do Not Track. A self-hosted collector (`tools/analytics_endpoint.py`, standard library) that keeps daily totals only. A measurement page at `measurement/index.html`. Five event names are **proposed**, because the brief asks for five defined events without naming them (flag M38-F-04).
+- **Built.** A brief-status register (`brief-status/index.html`) that shows what the brief says and what this repository shows, in separate columns, for S-04…S-25 and SG-27…SG-30.
+- **Verified here (2026-11-17).** 104 of 104 published pages have a title and meta description. 1,447 links to Amazon hosts, none without `rel="sponsored"`. `feed.xml` is current. The live front page lists the five products before the guides.
+- **Not found here.** The three-question chooser (S-19), the counter-space per-centimetre analysis (S-23), and `DESIGN_PROMPT.md` (S-14). Structured data and og:image appear on 11 of 104 pages (S-09, partly).
+- **Conflicts.** The brand is still the working name, though the brief says it was settled (S-15, DEC-04). The site uses a generated-style kitchen illustration, which the brief rules out (S-18, M38-F-10).
+- **Blocked, not built.** Special Link validation (needs the Associates account; short links kept as supplied, not called invalid), Search Console (needs the Google account), reader capture (needs a decision and a privacy notice), and hosting for the collector.
+- **Flags.** Sixteen new items, M38-F-01…M38-F-16, on the shop Flagged page. The main register of 113 is unchanged.
+- **Record.** `sessions/38650305/verification.md`. Official sources read: Associates Program Policies 2(a)/2(b) (no sub-tag or ID may be tied to a specific end user), GitHub Pages documentation (static hosting; GitHub logs visitor IPs), and the Search Console sign-in page.
+- **Shared-tool changes (logged).** `search.google.com` added to the shop gate's official-host list; two footer links added to the publish pass; the build order is now fixed in the README.
+
 ## Update 2026-11-16 — session a0ffcab0 (repo review, live re-check, restricted-value scan)
 
 **Bottom line.** The repository builds and every gate passes on `main` (check_site, verify_site, link_report --strict, check_all_links, sitemap check, i2_gate). The live re-check of the three submitted short links and the policy text reproduces the record: the links open B0CDY277D3, B09B7SB46R and B08DKYBTPH, and `amazon.com/dp/B04G1MEwY` returns Page Not Found. The record is [research/a0ffcab0-record.md](https://github.com/kanlerxz87-cyber/Zone3/blob/main/research/a0ffcab0-record.md).

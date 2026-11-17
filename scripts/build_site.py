@@ -414,6 +414,16 @@ NAV_MORE = [
         ("docs/index.html", "Reference (/docs/)"),
         ("dashboard/index.html", "Full audit (16 pages)"),
     ]),
+    # Added by session 2f181cd9 (2026-11-17): one group for the five-link review, so the
+    # intake, the questions and the suggestions console are reachable from every page.
+    ("Five links (2026-11-17)", [
+        ("sessions/2f181cd9/index.html", "Session summary"),
+        ("sessions/2f181cd9/intake.html", "Intake register"),
+        ("sessions/2f181cd9/questions.html", "Open questions"),
+        ("sessions/2f181cd9/decision-lab.html", "Decision Lab"),
+        ("sessions/2f181cd9/design-direction.html", "Design direction"),
+        ("sessions/2f181cd9/executive-summary.html", "Executive summary"),
+    ]),
 ]
 
 
@@ -455,7 +465,7 @@ def page(filename: str, title: str, body: str, lead: str = "",
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(title)} | Zone3 — Air Fryer Research Desk</title>
+<title>{e(title)} | Zone3 — Kitchen Product Research Desk</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{canonical}">
 <link rel="stylesheet" href="assets/style.css">
@@ -848,6 +858,15 @@ SITEMAP_GROUPS = [
         ("sessions/3c886b62/index.html", "Session 3c886b62 archive"),
         ("sessions/03bbd050/index.html", "Session 03bbd050 archive"),
     ]),
+    # Added by session 2f181cd9 (2026-11-17): the five-link review set.
+    ("Five links (2026-11-17)", [
+        ("sessions/2f181cd9/index.html", "Session summary: five links, two categories"),
+        ("sessions/2f181cd9/intake.html", "Five-link intake register"),
+        ("sessions/2f181cd9/questions.html", "Open questions and missing information"),
+        ("sessions/2f181cd9/decision-lab.html", "Decision Lab: choose a path"),
+        ("sessions/2f181cd9/design-direction.html", "Design direction and prompt"),
+        ("sessions/2f181cd9/executive-summary.html", "Executive summary"),
+    ]),
 ]
 
 
@@ -889,11 +908,19 @@ def build_index() -> None:
         "P1": "marketing/product-1-chefman-6-quart-dual-basket.html",
         "P2": "marketing/product-2-emeril-lagasse-26qt-french-door.html",
         "P3": "marketing/product-3-chefman-8-quart-turbofry.html",
+        # Added by session 2f181cd9 (2026-11-17): P4 and P5 have no product brief yet. They point at
+        # the intake register row, which is the only page that states what is known about them.
+        "P4": "sessions/2f181cd9/intake.html#P4",
+        "P5": "sessions/2f181cd9/intake.html#P5",
     }
     one_lines = {
         "P1": "Two independent 3-quart baskets with a sync-finish control, auto shutoff and easy-view windows, in a 6-quart dual-basket oven format.",
         "P2": "A 26-quart french-door multi-function oven: air fryer and convection cooking with 24 one-touch presets and six accessories included.",
         "P3": "An 8-quart single-basket fryer with a TurboFry 4-in-1 function set (air fry, bake, dehydrate, frozen) and an XL nonstick dishwasher-safe basket.",
+        # Added by session 2f181cd9 (2026-11-17). Both lines are read from the destination listing
+        # title only; no specification beyond the title is claimed.
+        "P4": "An instant-read digital meat thermometer with NIST and NSF certification, an auto-rotating bright LED screen and a waterproof body, in the Thermometers and Timers category.",
+        "P5": "A smart wireless meat thermometer with three ultra-thin probes, WiFi unlimited range and five sensors, sold as the CHEF iQ Sense Gen3.",
     }
     product_cards = []
     for p in PRODUCTS:
@@ -911,7 +938,7 @@ def build_index() -> None:
             f'target="_blank" rel="noopener noreferrer">Official listing</a>'
             f"</div>"
             f'<p class="small">Observed destination of {e(p["submitted_url"])}, re-fetched '
-            f'2026-11-16 ({src_links([ro["source"]])} &middot; {src_links([ro.get("title_source", ro["source"])])}). '
+            f'{e(ro.get("observed_on", "2026-11-16"))} ({src_links([ro["source"]])} &middot; {src_links([ro.get("title_source", ro["source"])])}). '
             'Not confirmed as the submitted product <a class="flagid" href="flagged.html#FLG-002">FLG-002</a>. '
             'Price, rating and review cells are blank by policy until an approved Amazon data path is connected.</p>'
             f"</div>"
@@ -938,17 +965,17 @@ def build_index() -> None:
   <h2>Air-fryer research you can actually check.</h2>
   <p>Three Amazon listings, every published claim traced to the official page it came from, and every gap marked instead of papered over. Browse the comparison, read the Research Desk, and see exactly what was verified &mdash; and what was not.</p>
   <div class="hero-actions">
-    <a href="marketing/comparison.html">Compare the three listings</a>
+    <a href="marketing/comparison.html">Compare the air-fryer listings</a>
     <a href="articles/index.html">Read the Research Desk</a>
     <a href="verification.html">How we verify</a>
   </div>
 </section>
 <div class="callout">
-  <p><strong>Research status (re-verified 2026-11-16):</strong> all three supplied Amazon short links resolve to live product listings. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links, and whether they match the requester's intent remains open for the owner (<a class="flagid" href="flagged.html#FLG-002">FLG-002</a>). Static price offers and unverified analytics are not published.</p>
+  <p><strong>Research status (re-verified 2026-11-17):</strong> all five supplied Amazon short links resolve to live product listings. Three open air fryers; the two added on 2026-11-17 open meat thermometers, so the site's air-fryer framing is now narrower than the link set (<a class="flagid" href="flagged.html#F-2F-01">F-2F-01</a>) and the scope is published as an owner decision on <a href="sessions/2f181cd9/decision-lab.html">the Decision Lab</a>. The nine-character tokens are short-link IDs, not ASINs; direct /dp/&lt;token&gt; Page Not Found responses are expected and do not indicate short-link failure. Product identities are documented with official listing links, and whether they match the requester's intent remains open for the owner (<a class="flagid" href="flagged.html#FLG-002">FLG-002</a>). Static price offers and unverified analytics are not published.</p>
 </div>
 <div class="grid">{stat_html}</div>
 
-<h2>The three listings this site tracks</h2>
+<h2>The five listings this site tracks</h2>
 <p class="small">Each card is the observed destination of one submitted link, with the attribute brief built from its listing title. Every Amazon link on this page is a labelled source link: no conversion-oriented CTA is published while the Associates tag every Special Link must carry is unknown (open question Q1 on the Decision Center).</p>
 <div class="product-cards">{"".join(product_cards)}</div>
 
@@ -961,7 +988,7 @@ def build_index() -> None:
     <p class="eyebrow">In the kitchen now</p>
     <h2>What the category's official shelf looks like.</h2>
     <p>Amazon publishes one official popularity surface for this category: the Best Sellers page for Air Fryers, browse node 17659096011. Our benchmark is a point-in-time read of that page &mdash; six positions, captured 2026-11-14 &mdash; with the date attached, because ranks move and a rank without a date is decoration, not data.</p>
-    <p class="small">Category breadcrumb as served by the three destination listings (captured 2026-11-16 by session f132f462, kept from their trending section): Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers &middot; node 17659096011 &middot; {src_links(["S14", "S15", "S16"])}</p>
+    <p class="small">Category breadcrumb as served by the three air-fryer destinations (captured 2026-11-16 by session f132f462): Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers &middot; node 17659096011 &middot; {src_links(["S14", "S15", "S16"])}. The two links added on 2026-11-17 sit in a different branch: Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Kitchen Utensils &amp; Gadgets &gt; Thermometers &amp; Timers &gt; Meat &middot; node 289810 &middot; {src_links(["S72", "S73"])} (<a class="flagid" href="flagged.html#F-2F-01">F-2F-01</a>).</p>
   </div>
   <a class="btn" href="air-fryers.html">See the dated benchmark</a>
 </section>
@@ -993,7 +1020,7 @@ they are <a href="flagged.html#I-F-02">flagged for review</a>.</p>
 </details>
 
 <h2>Re-verification record</h2>
-<p>Every load-bearing claim on the flat pages was checked again against the official page it cites &mdash; on 2026-11-14 by session b8beb448, and the three submitted links, the three destinations and the policy pages again on 2026-11-16 by session <a href="sessions/5a56c084/index.html">5a56c084</a>. The result, per claim, is below. Nothing in this table was inferred; each row links the page that was read.</p>
+<p>Every load-bearing claim on the flat pages was checked again against the official page it cites &mdash; on 2026-11-14 by session b8beb448, and the three submitted links, the three destinations and the policy pages again on 2026-11-16 by session <a href="sessions/5a56c084/index.html">5a56c084</a>, and all five links, both new destinations and the policy pages again on 2026-11-17 by session <a href="sessions/2f181cd9/index.html">2f181cd9</a>. The result, per claim, is below. Nothing in this table was inferred; each row links the page that was read.</p>
 {reverify_html}
 <p class="small">Where a row says <em>corrected</em>, the earlier text on this site was wrong or overstated and has
 been rewritten in the same commit that added the row. Corrections are listed on the
@@ -1001,7 +1028,7 @@ been rewritten in the same commit that added the row. Corrections are listed on 
 """
     page("index.html", "Home", body,
          lead=f"Status as of {BUILT}. The site shows verified data only. Blank cells are unverified and listed on the Flagged for review page.",
-         description="Zone3 Air Fryer Research Desk: comparisons, buying guides and affiliate-programme research for three Amazon air-fryer listings, with every published claim linked to the official page it came from. Prices and ratings stay blank until an approved Amazon data path is connected.")
+         description="Zone3 Air Fryer Research Desk: comparisons, buying guides and affiliate-programme research for five Amazon listings (three air fryers and two kitchen thermometers), with every published claim linked to the official page it came from. Prices and ratings stay blank until an approved Amazon data path is connected.")
 
 
 # ---------------------------------------------------------- Executive summary
@@ -1009,14 +1036,14 @@ def build_exec() -> None:
     body = f"""
 <section class="card">
   <h2>Bottom line</h2>
-  <p><strong>Headline:</strong> the three submitted short links each open a live Amazon product page. Their nine-character codes are not ASINs, and the destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}. Product name, brand, price and rating for the submitted links are left blank.</p>
+  <p><strong>Headline:</strong> all five submitted short links each open a live Amazon product page, three of them air fryers and two of them meat thermometers. Their nine-character codes are not ASINs, and the destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}. Product name, brand, price and rating for the submitted links are left blank.</p>
   <p>Price display, API-derived reviews, link-model-specific earnings, traffic, clicks, conversions and niche profitability are not represented as live or established. Point-in-time observations are kept in the research log. Any value not confirmed through an eligible official route remains blank and is flagged.</p>
 </section>
 
 <section class="card">
   <h2>Key findings</h2>
   <ul class="findings">
-    <li><strong>The three short links each open a live Amazon product page.</strong> The destinations were read on 2026-11-13 and 2026-11-14 {src_links(['S11', 'S12', 'S13', 'S14', 'S15', 'S16'])}. The nine-character codes are not in the 10-character ASIN form {src_links(['S06'])}, and the direct amazon.com/dp pages for them return Page Not Found {src_links(['S08', 'S09', 'S10'])}. The destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}.</li>
+    <li><strong>All five short links each open a live Amazon product page.</strong> The first three destinations were read on 2026-11-13 and 2026-11-14 {src_links(['S11', 'S12', 'S13', 'S14', 'S15', 'S16'])} and re-read on 2026-11-17 {src_links(['S76', 'S77', 'S78'])}; the two links added on 2026-11-17 were read that day {src_links(['S70', 'S71', 'S72', 'S73'])} and open meat thermometers rather than air fryers {flag_links(['F-2F-01'])}. The nine-character codes are not in the 10-character ASIN form {src_links(['S06'])}, and the direct amazon.com/dp pages for them return Page Not Found {src_links(['S08', 'S09', 'S10'])}. The destinations are not confirmed as the submitted products {flag_links(['FLG-001', 'FLG-002', 'FLG-027'])}.</li>
     <li><strong>The short links resolve to other products.</strong> Each link ended on a different product page, with the parameters <code>lv=shuf</code> and <code>plpRedirect=mhFallback</code>. The mapping was the same on two fetches on 2026-11-13 and again on 2026-11-14. These are recorded as observed only {flag_links(['FLG-002'])} {src_links(['S11', 'S12', 'S13'])}.</li>
     <li><strong>Applying the shortener rules to link.amazon needs a judgement call.</strong> The policies say a shortener must not make the Amazon destination unclear {src_links(['S02'])} (PF-06), a link must not be cloaked or obscured (6(v)), and purchases through a link that sends users on indirectly, without an affirmative click, are disqualified as a Redirecting Link {src_links(['S30'])} (CIS 2(e)). No document names <code>link.amazon</code>; what its redirects actually do is a behaviour observation, and it has to be tested in a logged-in Associates account {flag_links(['FLG-003'])}.</li>
     <li><strong>Category rates are public; per-product rates are not assignable.</strong> Amazon&rsquo;s Standard Commission Income Statement, Table 1, is readable without a sign-in (Kitchen 4.50&nbsp;%, Home 3.00&nbsp;%, All Other Categories 4.00&nbsp;%) {src_links(['S25', 'S26'])}, and was re-read on 2026-11-14. The per-product rate cannot be stated, because the listing&rsquo;s category is unverified and the account-specific rate card route redirects to sign-in {src_links(['S03'])} {flag_links(['FLG-005'])}.</li>
@@ -1054,9 +1081,9 @@ def build_exec() -> None:
 <section class="card">
   <h2>Owner items (flagged; they do not block the merge)</h2>
   <ul class="findings">
-    <li>Give the intended product URL or 10-character ASIN for each of the three products (FLG-001).</li>
+    <li>Give the intended product URL or 10-character ASIN for each of the five products (FLG-001), and confirm whether the two meat-thermometer links were meant to be part of this site at all (F-2F-01). The register to fill in is on <a href="sessions/2f181cd9/intake.html">the five-link intake page</a>.</li>
     <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
-    <li>Confirm which Amazon product category each of the three listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021). The category rates themselves are already published and verified.</li>
+    <li>Confirm which Amazon product category each of the five listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021, F-2F-04). The category rates themselves are already published and verified; what is missing is the mapping from a listing's browse node to a Table 1 category.</li>
     <li>Confirm Associates enrolment and supply the Associates tag, not a password or token (FLG-010).</li>
   </ul>
 </section>
@@ -1092,7 +1119,7 @@ def build_products() -> None:
   <h2>How to read this table</h2>
   <ul class="findings">
     <li>Each row is one product link from the brief. An identifier is counted only when a product page under that identifier exists and matches it.</li>
-    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened on 2026-11-13. It is not treated as the submitted product, because the submitted identifier does not resolve to it.</li>
+    <li>&ldquo;Observed redirect&rdquo; is the page the short link opened when it was fetched. It is not treated as the submitted product, because the submitted identifier does not resolve to it. The intended product is a separate field and stays empty until the owner confirms it: see <a href="sessions/2f181cd9/intake.html">the five-link intake register</a>.</li>
     <li>Product name, brand, price, rating and availability are blank because they cannot be confirmed (see <a href="pricing.html">Pricing</a> and <a href="reviews.html">Reviews</a>).</li>
   </ul>
 </section>
@@ -1138,7 +1165,7 @@ def build_products() -> None:
               'observed values only from the &ldquo;observed&rdquo; block.</p>'
         )
     page("products.html", "Products", body,
-         lead="The three product links from the brief, checked line by line against official Amazon pages. Nothing is shown as a verified product until its identifier resolves.")
+         lead="The five product links from the brief, checked line by line against official Amazon pages: three open air-fryer listings and two open meat-thermometer listings. Nothing is shown as a verified product until its identifier resolves, and the intended product is recorded separately from the observed destination.")
 
 
 # ------------------------------------------------------------- Pricing
@@ -1232,7 +1259,7 @@ def build_benchmark() -> str:
         "Same data as the <a href=\"air-fryers.html\">Air Fryers category page</a>, read "
         f'2026-11-14 from Amazon&rsquo;s official Best Sellers page {src_links(["S43"])}; an earlier '
         "2026-11-13 capture ordered positions 2&ndash;3 differently, so ranks are dated observations "
-        f'({flag_links(["FLG-025"])}). This is the category of the three <em>observed redirect targets</em>, '
+        f'({flag_links(["FLG-025"])}). This is the category of the three air-fryer <em>observed redirect targets</em> '
         "which are not confirmed as the submitted products "
         f'{flag_links(["FLG-002"])} &middot; {src_links(["S11"])}&ndash;{src_links(["S13"])}. '
         "Prices, star ratings and review counts are withheld by policy (Program Policies 2(b) and PF-05) "
@@ -1251,11 +1278,20 @@ def build_content() -> None:
     rows = []
     for p in PRODUCTS:
         pid = p["id"]
+        # Session 2f181cd9 (2026-11-17): P4 and P5 were added to the register without any marketing
+        # content, so the status is read from the product record instead of being hard-coded as
+        # published. Adding a product must not silently claim content that does not exist.
+        cs = p.get("content_status") or {
+            "brief": "Published", "comparison": "Published", "buying_guide": "Published",
+        }
+        def _cell(state: str, href: str, label: str) -> str:
+            kind = "ok" if state == "Published" else "warn"
+            return badge(state, kind) + (f' <a href="{href}">{label}</a>' if state == "Published" else "")
         rows.append([
             e(p["label"]),
-            badge("Published", "ok") + ' <a href="marketing/briefs.html">brief</a>',
-            badge("Published", "ok") + ' <a href="marketing/comparison.html">comparison</a>',
-            badge("Published", "ok") + ' <a href="marketing/buying-guide.html">buying guide</a>',
+            _cell(cs["brief"], "marketing/briefs.html", "brief"),
+            _cell(cs["comparison"], "marketing/comparison.html", "comparison"),
+            _cell(cs["buying_guide"], "marketing/buying-guide.html", "buying guide"),
             "The copy describes the listing this link currently opens, not a product the submitted "
             "code is documented to identify. Product name, price, rating and review count stay "
             "blank (FLG-001, FLG-002, FLG-004).",
@@ -1807,7 +1843,7 @@ def build_marketing() -> None:
             + comp
             + guide)
     page("marketing/briefs.html", "Marketing content: product briefs", body,
-         lead="SEO product briefs, a comparison and a buying guide for the three listings the submitted links open. Written from verified listing facts only.")
+         lead="SEO product briefs, a comparison and a buying guide for the three air-fryer listings the submitted links open. The two links added on 2026-11-17 open meat thermometers and are not covered here; they are recorded on the five-link intake register instead. Written from verified listing facts only.")
 
 
 
@@ -2078,7 +2114,7 @@ def build_verification() -> None:
         + "<h2>Coverage and limits</h2>"
         "<ul>"
         "<li>Every policy fact in <code>data/policy_facts.json</code> was re-checked against its source page in this session; the rows above are the ones the site actually renders.</li>"
-        "<li>All three submitted links were re-fetched, and all three direct <code>/dp/&lt;id&gt;</code> checks were re-run. The results are unchanged from 2026-11-13.</li>"
+        "<li>All five submitted links were re-fetched, and all five direct <code>/dp/&lt;id&gt;</code> checks were re-run: the first three on 2026-11-14 and 2026-11-16, all five on 2026-11-17. The results are unchanged from 2026-11-13.</li>"
         "<li>Prices, star ratings and review counts are deliberately absent from every page, so there is no row for them (FLG-022).</li>"
         "<li>The sandbox this site is built in can reach only github.com, npm and PyPI directly, so official pages were read through the fetch tool rather than by an automated HTTP client. No source was checked with <code>--online</code>.</li>"
         "</ul>"
