@@ -7155,3 +7155,11 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 **Irregularities raised (published on `shop/flagged/`):** FLG-S01…FLG-S10 — see that page for severity, impact, sources and "claim not made".
 
 **PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/135 (`arena/974e366d-zone3` → `main`), opened 2026-11-17. Merge and Pages result to be recorded after the merge.
+
+### 974e-T1 — merge and deploy record (2026-11-17)
+
+- **PR #135** merged into `main` with a merge commit, `f6f16a5` (`gh pr merge 135 --merge`; state `MERGED`, merged 2026-11-17T16:09:35Z).
+- **GitHub Pages:** build for `f6f16a5` reported `built` (legacy, `main` `/`).
+- **Live checks (cache-busted):** `https://kanlerxz87-cyber.github.io/Zone3/shop/` (products first, five cards, sponsored links, status block); `/shop/air-fryers/` (3 rows, intended ASIN "Unverified", disclosure); `/shop/flagged/` (FLG-S01…S10 with source links).
+- **Still open (not blocking, flagged):** FLG-S01…S10; decisions DEC-01…DEC-08. Requires the requester: intended ASINs, Associates account access for the Special Link test, five event definitions, tracking-ID confirmation.
+- **Board status:** T-974 done (merged). Shared index and navigation: one link added to the root `index.html`; other pages unchanged.
