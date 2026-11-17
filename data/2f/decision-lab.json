@@ -1,0 +1,882 @@
+{
+  "session": "2f181cd9",
+  "built": "2026-11-17",
+  "purpose": "A review console for the owner. Nothing here is implemented by publishing it: each suggestion is a proposal with the paths available, the question that must be answered before a path can be chosen, and the source that makes the constraint real. An item moves from proposed to scheduled only when the owner records a decision.",
+  "statuses": {
+    "proposed": "Published for review. Not implemented. No work starts until the owner picks a path.",
+    "ready": "No open blocker. Can be scheduled as soon as the owner says go; the path still needs choosing where more than one exists.",
+    "blocked": "Cannot start. The blocking question is named in the row, and the row names how to unblock it.",
+    "rejected": "Considered and not taken. The reason is recorded so it is not re-proposed next session."
+  },
+  "workflow": [
+    "Read the questions page first: it says what is known, what is not, and how to find out what is missing.",
+    "Pick a path on each suggestion that offers more than one. A suggestion with an unanswered blocking question cannot be scheduled.",
+    "Record the decision (suggestion id, path id, date, who decided) in the coordination log. The suggestion then moves to scheduled.",
+    "Only then is it implemented, and the implementation row is filled in with the evidence pages that changed.",
+    "Anything that cannot be verified from an official source stays blank and is published on the Flagged for review page instead of being filled with a guess."
+  ],
+  "suggestions": [
+    {
+      "id": "SUG-2F-01",
+      "title": "Decide what this site is about now that five links span two categories",
+      "area": "Scope",
+      "status": "blocked",
+      "status_reason": "Needs the owner to confirm the intended product set (Q2F-01). Two of five links open meat thermometers, not air fryers.",
+      "what": "Three submitted links open air-fryer listings (browse node 17659096011); the two new links open meat-thermometer listings (browse node 289810). The site's name, category pages, comparison tables and article plan are all written for air fryers only. Pick a scope before writing anything else, because every downstream page inherits it.",
+      "why": "A site whose navigation says 'Air Fryer Field Notes' and whose newest two products are thermometers reads as incoherent to a visitor and gives search engines no clear topic to rank.",
+      "evidence": [
+        {
+          "quote": "Observed breadcrumbs, read 2026-11-17: the two new destinations sit under Kitchen Utensils & Gadgets > Thermometers & Timers > Meat, while the first three sit under Small Appliances > Fryers > Air Fryers.",
+          "source": [
+            "S72",
+            "S73",
+            "S76",
+            "S77",
+            "S78"
+          ],
+          "section": "amazon.com product pages, category breadcrumb"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "One publication, two category hubs",
+          "detail": "Keep one domain and one brand; add a second category hub (Kitchen Thermometers) beside the air-fryer hub, each with its own comparison and buying guide. Shared navigation: Shop, Guides, Compare, About.",
+          "tradeoff": "Cheapest to run and keeps one domain's authority, but the brand name must stop naming a single appliance."
+        },
+        {
+          "id": "B",
+          "label": "Two microsites",
+          "detail": "Split the thermometers onto their own domain with their own name and sitemap.",
+          "tradeoff": "Cleanest topical signal for search, but doubles the publishing work and splits an already thin content base."
+        },
+        {
+          "id": "C",
+          "label": "Air fryers only, for now",
+          "detail": "Keep the site as it is and hold the two thermometer links in the intake register, unpublished, until the owner confirms they were meant to be included.",
+          "tradeoff": "Zero rework and no risk of promoting an unintended product, but leaves two submitted links unserved."
+        }
+      ],
+      "depends_on": [
+        "Q2F-01"
+      ],
+      "effort": "A: medium. B: large. C: none.",
+      "risk": "Publishing thermometers under an air-fryer brand without an owner decision would promote products that may not have been intended.",
+      "verification": "A dated owner decision recorded in COORDINATION.md, plus the scope statement appearing on the site's About page."
+    },
+    {
+      "id": "SUG-2F-02",
+      "title": "Lead with the products; demote every dashboard surface to one footer group",
+      "area": "Information architecture",
+      "status": "ready",
+      "status_reason": "No external blocker. It is an editing job on shared files, so it waits for the owner to pick a path rather than for a missing fact.",
+      "what": "The root page currently opens with a marketing band and then a full operations dashboard: source registers, flag counts, session archives. Move the whole audit behind one footer column and one collapsed navigation group, and make the front page product cards, guides and a comparison entry point.",
+      "why": "The brief asks for a shop that a buyer can act on, with the evidence reachable rather than leading. The audit is a trust asset; it is not the shop window.",
+      "evidence": [
+        {
+          "quote": "CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.",
+          "source": [
+            "S01"
+          ],
+          "section": "Operating Agreement, Program Content requirements"
+        },
+        {
+          "quote": "Your Site(s) must contain original content and be publicly available via the website address provided in the application.",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 1"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Single nav group plus footer column",
+          "detail": "Five top-level items (Shop, Guides, Compare, How we know, About) and one footer group titled Evidence & audit holding every register page.",
+          "tradeoff": "One afternoon of editing; keeps every page reachable, which the brief requires."
+        },
+        {
+          "id": "B",
+          "label": "Separate subdomain for the audit",
+          "detail": "Publish the registers under a different host and keep the shop root clean.",
+          "tradeoff": "Cleanest reader experience, but splits the domain and needs DNS the owner has not supplied."
+        }
+      ],
+      "depends_on": [],
+      "effort": "A: small. B: medium plus DNS.",
+      "risk": "Low. Every page stays published and linked, so nothing becomes unreachable.",
+      "verification": "Front page above-the-fold area contains only product and guide content; every audit page still linked from the footer."
+    },
+    {
+      "id": "SUG-2F-03",
+      "title": "One design system, not four competing ones",
+      "area": "Design",
+      "status": "ready",
+      "status_reason": "All four stylesheets are in this repository, so the work is internal. It is blocked in practice only by the brand decision if the palette is meant to change with the name.",
+      "what": "The published site carries four separate visual languages: the audit stylesheet, the front-door band, the reader theme and the second marketing build. Collapse them to one token set (colour, type scale, spacing, radius, elevation) with thin per-section accents.",
+      "why": "Four palettes and two type stacks on one domain is the single strongest signal that a site was assembled rather than designed.",
+      "evidence": [
+        {
+          "quote": "Google Search Central guidance on providing a great page experience is the standard this is written to; the visual inconsistency is an observation about this repository, not a claim from that source.",
+          "source": [],
+          "section": "Observation, no source claim"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Extend the reader theme to everything",
+          "detail": "Adopt the reader site's palette and type scale as the house style and rewrite the audit pages to it.",
+          "tradeoff": "Fastest route to a consistent site; audit tables get slightly less dense."
+        },
+        {
+          "id": "B",
+          "label": "New token set, applied everywhere",
+          "detail": "Define a fresh palette and type scale from the brand decision and rebuild all four surfaces against it.",
+          "tradeoff": "Best result, largest job, and it should wait for the brand decision (Q2F-05)."
+        }
+      ],
+      "depends_on": [
+        "Q2F-05"
+      ],
+      "effort": "A: medium. B: large.",
+      "risk": "Low. Pages are generated, so a token change is a stylesheet change plus a rebuild.",
+      "verification": "A stylesheet audit showing one token file and no hard-coded colours in page templates."
+    },
+    {
+      "id": "SUG-2F-04",
+      "title": "Real product imagery only, served by Amazon or shot by the owner",
+      "area": "Design and compliance",
+      "status": "blocked",
+      "status_reason": "Needs the Associates tag and a decision on image sourcing (Q2F-02, Q2F-11).",
+      "what": "Product pages currently have no photography. Fill them with images obtained through Amazon's own link and image tools, or with photographs the owner takes, and never with generated or copied images.",
+      "why": "Generated kitchen photography is the fastest way to make a site look synthetic, and copying a listing image sits outside what the Operating Agreement licenses.",
+      "evidence": [
+        {
+          "quote": "Program Content is defined in the Operating Agreement as data, images, text, link formats and widgets made available to Associates for use on their sites; images outside that grant are not licensed by it.",
+          "source": [
+            "S79"
+          ],
+          "section": "Operating Agreement, Section 1 definitions and the Program Content licence"
+        },
+        {
+          "quote": "You will not, without our express prior written approval, access or use Creators API, PA API or Data Feeds for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content or in connection with any software or other application intended for use by persons or entities that ...",
+          "source": [
+            "S80"
+          ],
+          "section": "IP License and Usage Requirements 2(e) (quoted in full in data/policy_facts.json, PF-55)"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Amazon-served image links",
+          "detail": "Use image URLs obtained through the Associates link tools or the Creators API Images resource, so the image is served by Amazon and refreshed by Amazon.",
+          "tradeoff": "Compliant and always current, but requires the tag and API access first."
+        },
+        {
+          "id": "B",
+          "label": "Own photography",
+          "detail": "Photograph the actual units and publish the owner's own images, with a caption stating the date taken.",
+          "tradeoff": "Most trustworthy and best looking, but requires owning the products."
+        },
+        {
+          "id": "C",
+          "label": "No imagery until A or B is available",
+          "detail": "Keep product cards typographic: a specification block instead of a picture.",
+          "tradeoff": "Honest and shippable today; weaker commercial pull."
+        }
+      ],
+      "depends_on": [
+        "Q2F-02",
+        "Q2F-11"
+      ],
+      "effort": "A: small once access exists. B: large. C: none.",
+      "risk": "High if skipped: invented or copied imagery is both a trust failure and a licence question.",
+      "verification": "Every product image on the site either carries an Amazon-served URL or an owner-photograph caption with a date."
+    },
+    {
+      "id": "SUG-2F-05",
+      "title": "Turn on measurement before writing another article",
+      "area": "Measurement",
+      "status": "blocked",
+      "status_reason": "Needs an owner answer on what analytics is acceptable and where it runs (Q2F-08). GitHub Pages serves static files only, so an event endpoint has to live somewhere.",
+      "what": "Add a privacy-preserving outbound-click counter and a self-hosted analytics endpoint, record the five defined events, and keep the campaign ledger empty until real first-party reports exist.",
+      "why": "The brief puts measurement ahead of content: the next topic should be chosen from measured queries, not instinct. Right now there are no numbers at all.",
+      "evidence": [
+        {
+          "quote": "We will use commercially reasonable efforts to accurately and comprehensively track Qualifying Purchases for the purposes of our internal tracking, and creating and distributing to you our reports summarizing Standard Commission Income and Special Commission Income earned by you during that month.",
+          "source": [
+            "S80"
+          ],
+          "section": "Commission Income Statement 6 (read 2026-11-17)"
+        },
+        {
+          "quote": "You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 6(s) (read 2026-11-17)"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Self-hosted collector",
+          "detail": "A tiny endpoint the owner controls, receiving five named events with no cross-site identifiers and no cookies.",
+          "tradeoff": "Full control and privacy-preserving, but needs a host and someone to run it."
+        },
+        {
+          "id": "B",
+          "label": "Hosted privacy-first analytics product",
+          "detail": "Buy a cookieless analytics product and put its script on the pages.",
+          "tradeoff": "Zero maintenance, but a third party receives the traffic data and it costs money."
+        },
+        {
+          "id": "C",
+          "label": "Server log analysis only",
+          "detail": "No client script; derive pageviews from host logs and count outbound clicks with a redirect endpoint.",
+          "tradeoff": "Most private and cheapest, but gives the least detail about reader behaviour."
+        }
+      ],
+      "depends_on": [
+        "Q2F-08"
+      ],
+      "effort": "A: medium. B: small. C: small.",
+      "risk": "Low if the campaign ledger stays empty until real first-party reports exist; the real risk would be publishing a number that was never measured.",
+      "verification": "Five named events recorded end to end in the owner's own dashboard, and a dated first entry in the campaign ledger."
+    },
+    {
+      "id": "SUG-2F-06",
+      "title": "Replace every ambiguous outbound link with a validated Special Link",
+      "area": "Compliance and revenue",
+      "status": "blocked",
+      "status_reason": "Needs the Associates tag (Q2F-02) and account access to test one link per product.",
+      "what": "Test one link per product inside the enrolled Associates workflow, confirm the destination and that the tracking report shows the click, then scale to the rest. Until then, keep the two registers separate: intended product on one side, observed destination on the other.",
+      "why": "Without a tag no link can earn, and the brief requires the intent record and the observed redirect to stay in separate fields.",
+      "evidence": [
+        {
+          "quote": "you must include your Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 2(b) (read 2026-11-17)"
+        },
+        {
+          "quote": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 6(w) (read 2026-11-17)"
+        },
+        {
+          "quote": "Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
+          "source": [
+            "S82"
+          ],
+          "section": "Creators API GetItems, ItemIdType parameter (read 2026-11-17)"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "One-product pilot then scale",
+          "detail": "Validate one link end to end, confirm it reports, then convert the remaining four and re-check each one.",
+          "tradeoff": "Slowest and safest, and it is the path the brief specifies."
+        },
+        {
+          "id": "B",
+          "label": "Convert all five at once",
+          "detail": "Build all five tagged links and watch the reports for a week.",
+          "tradeoff": "Faster, but a systematic mistake repeats five times before it is noticed."
+        }
+      ],
+      "depends_on": [
+        "Q2F-02",
+        "Q2F-03"
+      ],
+      "effort": "A: small per product. B: small in total.",
+      "risk": "Medium: a mistagged link earns nothing and is invisible until someone checks the reports.",
+      "verification": "A dated record per product: tagged URL, destination confirmed, and a tracking report showing the test click."
+    },
+    {
+      "id": "SUG-2F-07",
+      "title": "Mark every outbound product link rel=\"sponsored\"",
+      "area": "Compliance",
+      "status": "ready",
+      "status_reason": "Nothing external blocks it. Six outbound links currently carry the attribute; the rest of the site does not.",
+      "what": "Add rel=\"sponsored noopener noreferrer\" to every outbound link that exists to send a reader to a retailer, in every page family, and keep the disclosure above the fold on the same pages.",
+      "why": "The brief requires it, and it is the machine-readable half of the disclosure that the FTC and Amazon both ask for.",
+      "evidence": [
+        {
+          "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: \"As an Amazon Associate I earn from qualifying purchases.\"",
+          "source": [
+            "S79"
+          ],
+          "section": "Operating Agreement, Section 5 (read 2026-11-17)"
+        },
+        {
+          "quote": "Google's guidance on qualifying outbound links is the standard being applied here; the observation that only six links on this site carry the attribute is a repository finding, not a claim from that source.",
+          "source": [],
+          "section": "Observation, no source claim"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Generator-level fix",
+          "detail": "Change the link helper in each build script so every outbound product link gets the attribute, then rebuild.",
+          "tradeoff": "One change per generator, survives future edits."
+        },
+        {
+          "id": "B",
+          "label": "Page-level patch",
+          "detail": "Patch the generated HTML in place.",
+          "tradeoff": "Quick, but the next rebuild undoes it."
+        }
+      ],
+      "depends_on": [],
+      "effort": "A: small. B: small but fragile.",
+      "risk": "Low.",
+      "verification": "A link audit reporting zero outbound product links without rel=\"sponsored\"."
+    },
+    {
+      "id": "SUG-2F-08",
+      "title": "Publish question-shaped guides on a fixed cadence, and wire each one into sitemap and feed",
+      "area": "Editorial",
+      "status": "ready",
+      "status_reason": "Publishing needs no external access. The next topic should ideally come from measured queries (SUG-2F-05), but the cadence can be agreed now.",
+      "what": "Adopt a weekly cadence: one question-shaped guide per week, each added to the sitemap and the feed on the day it ships, each with a dated evidence box and a standing 'what we could not verify' block.",
+      "why": "The brief asks for question-shaped pages and for measurement of whether anyone arrives. A cadence is what turns that from an intention into a publishing operation.",
+      "evidence": [
+        {
+          "quote": "When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link.",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 2(b) (read 2026-11-17)"
+        },
+        {
+          "quote": "Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 1 (read 2026-11-17)"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "One guide per week",
+          "detail": "Ship every seven days, alternate between the two category hubs, review topics monthly against measured queries.",
+          "tradeoff": "Steady accumulation; demands a reliable writing slot."
+        },
+        {
+          "id": "B",
+          "label": "One guide per fortnight",
+          "detail": "Half the cadence, with each guide going deeper and carrying original photography or measurement.",
+          "tradeoff": "More sustainable for one person; slower to build topical coverage."
+        }
+      ],
+      "depends_on": [
+        "Q2F-12"
+      ],
+      "effort": "A: one long-form page per week. B: one every two weeks.",
+      "risk": "Low.",
+      "verification": "A dated publication log, and each new guide appearing in sitemap.xml and the feed within a day of shipping."
+    },
+    {
+      "id": "SUG-2F-09",
+      "title": "Adopt a written house style, and enforce it with a banned-phrase check",
+      "area": "Editorial",
+      "status": "ready",
+      "status_reason": "Internal editing job.",
+      "what": "Write down the voice rules (short sentences, one concrete fact per paragraph, no unverified superlatives, no invented experience) and add an automated check that fails a build when a banned phrase or an unsourced number appears.",
+      "why": "The owner's complaint is that the site reads as generated. Generated prose is recognisable by its habits, and habits can be banned.",
+      "evidence": [
+        {
+          "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices.",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 2(b) (read 2026-11-17)"
+        },
+        {
+          "quote": "FTC guidance on endorsements requires that an endorsement reflect the honest experience of the endorser; that is the reason the house style forbids invented first-hand claims.",
+          "source": [
+            "S24"
+          ],
+          "section": "FTC Endorsements, Influencers, and Reviews (topic hub)"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Rules plus a lint check",
+          "detail": "A banned-phrase list in the repository, checked by the build script.",
+          "tradeoff": "Enforced automatically from then on."
+        },
+        {
+          "id": "B",
+          "label": "Rules document only",
+          "detail": "Publish the house style and rely on review.",
+          "tradeoff": "Cheaper, and it drifts."
+        }
+      ],
+      "depends_on": [],
+      "effort": "A: small. B: small.",
+      "risk": "Low.",
+      "verification": "The build fails when a test page containing a banned phrase is added."
+    },
+    {
+      "id": "SUG-2F-10",
+      "title": "Consolidate what search engines are asked to index",
+      "area": "Search",
+      "status": "ready",
+      "status_reason": "Internal editing job, but it needs the canonical-domain answer from Q2F-09 before it can be finished.",
+      "what": "Decide which host is canonical, publish the sitemap there, and keep session archives and superseded builds out of the index with a robots rule or a noindex header.",
+      "why": "The brief asks for one site to index. Right now the published set includes per-session archives, prior design builds and documentation copies of the same content.",
+      "evidence": [
+        {
+          "quote": "Google's guidance on canonicalisation and on unique titles and descriptions per page is the standard being applied; the observation about duplicated page sets is a repository finding, not a claim from that source.",
+          "source": [],
+          "section": "Observation, no source claim"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Keep github.io canonical, noindex the archives",
+          "detail": "One canonical host, archives excluded with noindex and kept out of sitemap.xml.",
+          "tradeoff": "Works today with no DNS."
+        },
+        {
+          "id": "B",
+          "label": "Custom domain canonical",
+          "detail": "Point a domain at the site, make it canonical, redirect the github.io host to it.",
+          "tradeoff": "Better brand and cleaner search presence, needs the domain from the owner."
+        }
+      ],
+      "depends_on": [
+        "Q2F-09"
+      ],
+      "effort": "A: small. B: small plus DNS.",
+      "risk": "Low. Nothing is deleted; archives stay published and reachable.",
+      "verification": "sitemap.xml lists only current reader pages, and a site: query returns one host."
+    },
+    {
+      "id": "SUG-2F-11",
+      "title": "Put the compliance gate inside the publishing workflow",
+      "area": "Compliance",
+      "status": "ready",
+      "status_reason": "Internal editing job.",
+      "what": "A pre-publish checklist that runs before any page ships: disclosure above the fold and in the footer, rel=sponsored on outbound product links, no price or star rating displayed unless it came from an Amazon-served link or the API, no first-hand experience claim, no popularity claim without a dated source.",
+      "why": "The brief asks for a gate in front of the parts that cannot be automated. This is that gate.",
+      "evidence": [
+        {
+          "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API ...",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 2(b) (read 2026-11-17)"
+        },
+        {
+          "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API ...",
+          "source": [
+            "S80"
+          ],
+          "section": "Participation Requirements 6(t) (read 2026-11-17)"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Automated gate in the build",
+          "detail": "Extend the existing checker with the compliance items, so a failing page cannot be published.",
+          "tradeoff": "Enforced every time; needs the rules written precisely."
+        },
+        {
+          "id": "B",
+          "label": "Manual checklist on the page",
+          "detail": "Publish the checklist and require a dated sign-off before merge.",
+          "tradeoff": "Human judgement, and humans skip steps."
+        }
+      ],
+      "depends_on": [],
+      "effort": "A: small. B: small.",
+      "risk": "Low.",
+      "verification": "The gate rejects a deliberately non-compliant test page."
+    },
+    {
+      "id": "SUG-2F-12",
+      "title": "Give the site one name, one promise and one byline",
+      "area": "Brand",
+      "status": "blocked",
+      "status_reason": "Needs the brand answer (Q2F-05) and the author answer (Q2F-06).",
+      "what": "Pick a name that can hold both categories if scope path A is chosen, write a one-line promise, and publish a real byline with a dated author note.",
+      "why": "Anonymous, nameless sites are the default signature of generated content. A name and a person are the cheapest trust signals available.",
+      "evidence": [
+        {
+          "quote": "FTC guidance on disclosures and endorsements is the standard being applied to the byline and disclosure placement.",
+          "source": [
+            "S07",
+            "S24"
+          ],
+          "section": "FTC Disclosures 101 and the Endorsements topic hub"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Neutral kitchen-publication name",
+          "detail": "A name that covers appliances and tools, with the promise stated as a question the site answers.",
+          "tradeoff": "Survives a category expansion."
+        },
+        {
+          "id": "B",
+          "label": "Keep Zone3 and add a descriptive strapline",
+          "detail": "Reuse the existing brand and state the promise underneath it.",
+          "tradeoff": "Zero migration work; the name stays meaningless to a stranger."
+        }
+      ],
+      "depends_on": [
+        "Q2F-05",
+        "Q2F-06"
+      ],
+      "effort": "A: medium. B: small.",
+      "risk": "Low.",
+      "verification": "Name, promise and byline appear on every page, and the About page states who writes it and on what evidence."
+    },
+    {
+      "id": "SUG-2F-13",
+      "title": "Put the evidence where it sells instead of where it audits",
+      "area": "Editorial",
+      "status": "ready",
+      "status_reason": "Internal editing job.",
+      "what": "Keep the verification habit but change its presentation: a short dated evidence box on each guide ('read from the listing on 2026-11-17, linked here') and a two-line 'what we could not verify' block, instead of flags, registers and session counts in the reader's path.",
+      "why": "Honesty is a selling point when it is short and specific, and a credibility problem when it reads as an internal audit report.",
+      "evidence": [
+        {
+          "quote": "We do not make any representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time in connection with the Associates Program, and we will not be liable for any actions you undertake based on your expectations.",
+          "source": [
+            "S79"
+          ],
+          "section": "Operating Agreement, Section 4 (read 2026-11-17)"
+        }
+      ],
+      "paths": [
+        {
+          "id": "A",
+          "label": "Evidence box on every guide",
+          "detail": "Two compact blocks per page: sources with dates, and what is unverified.",
+          "tradeoff": "Keeps the trust signal at the point of decision."
+        },
+        {
+          "id": "B",
+          "label": "Evidence box on product pages only",
+          "detail": "Guides read as pure editorial; the evidence lives on the product and comparison pages.",
+          "tradeoff": "Cleaner prose, less transparency on the guides."
+        }
+      ],
+      "depends_on": [],
+      "effort": "A: small. B: small.",
+      "risk": "Low.",
+      "verification": "Every guide page carries a dated source line and an explicit unverified line."
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q2F-01",
+      "question": "Are these five links the product set the site is meant to sell, and are two categories intended?",
+      "priority": "blocking",
+      "what_we_have": "All five links open live Amazon listings. Three are air fryers (browse node 17659096011); the two links added in this session's brief are meat thermometers (browse node 289810). Each mapping has now been observed on at least one date, and the first three on four separate dates.",
+      "have_sources": [
+        "S70",
+        "S71",
+        "S72",
+        "S73",
+        "S76",
+        "S77",
+        "S78"
+      ],
+      "what_we_do_not_have": "Any statement of intent from the owner. No document read in this project connects a short-link token to a product the owner meant to promote.",
+      "why_it_blocks": "Scope, brand, navigation and the whole editorial plan depend on it. Blocks SUG-2F-01.",
+      "how_to_discover": "Owner reply: list the five intended ASINs with a confirmation date, or say which links to drop. Record it in the intake register, in the intended_* fields only.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-02",
+      "question": "What is the Associates tag to use on every Special Link?",
+      "priority": "blocking",
+      "what_we_have": "Amazon states the rule: every link to an Amazon site must carry the tag as a URL parameter. No tag value exists in any document read in this project.",
+      "have_sources": [
+        "S80"
+      ],
+      "what_we_do_not_have": "The tag value itself, and whether sub-tags are wanted per product or per page.",
+      "why_it_blocks": "Without it no link can earn. Blocks SUG-2F-04 and SUG-2F-06.",
+      "how_to_discover": "Owner copies it from Associates Central. Keep it out of public files; store it in the coordination log or a private config, and never commit it to the public repository.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-03",
+      "question": "Is the account enrolled and approved, and has Creators API access been granted?",
+      "priority": "blocking",
+      "what_we_have": "Public documentation of both: the programme rules, the API prerequisites and the rule that star ratings and prices may be shown only from API data or an Amazon-served link.",
+      "have_sources": [
+        "S80",
+        "S82"
+      ],
+      "what_we_do_not_have": "The account's own state. Application status, API credentials and rate-card values are behind the login, which no session in this project has.",
+      "why_it_blocks": "Determines whether prices and ratings can ever be shown, and whether the API path is available at all. Blocks SUG-2F-04 and SUG-2F-06.",
+      "how_to_discover": "Owner signs in and reports: approved or pending, API access granted or not, and the first report date once sales exist.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-04",
+      "question": "Which Table 1 category rate applies to each of the five listings?",
+      "priority": "important",
+      "what_we_have": "The published rates: Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%. Also the browse node each listing sits in, observed from the served breadcrumbs.",
+      "have_sources": [
+        "S81",
+        "S72",
+        "S73"
+      ],
+      "what_we_do_not_have": "An official mapping from browse node to Table 1 category. The rate table names categories but not the nodes inside them, so the per-product rate stays blank.",
+      "why_it_blocks": "Blocks any revenue model, and any page that states a rate for a specific product.",
+      "how_to_discover": "Either read the classification back through the Creators API (BrowseNodeInfo and classifications resources) once access exists, or wait for the first Associates reports and read the realised rate per order from the owner's own report.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-05",
+      "question": "What is the site called, and which name must survive a second category?",
+      "priority": "important",
+      "what_we_have": "The site currently publishes as Zone3 with 'Air Fryer Field Notes' and 'The Crisp Report' used on different page families. Existing generator files hard-code those names.",
+      "have_sources": [],
+      "what_we_do_not_have": "An owner decision on the name, and whether the palette and type should change with it.",
+      "why_it_blocks": "Blocks SUG-2F-03 (design system) and SUG-2F-12 (brand).",
+      "how_to_discover": "Owner picks from the paths in SUG-2F-12. Check the name is not an Amazon trademark and is not already in the trademark table Amazon publishes.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-06",
+      "question": "Who is the author, and may the site say 'we'?",
+      "priority": "important",
+      "what_we_have": "FTC guidance requires an endorsement to reflect the honest experience of the endorser, and Amazon bars misleading product claims. The site currently publishes no byline at all.",
+      "have_sources": [
+        "S07",
+        "S24",
+        "S80"
+      ],
+      "what_we_do_not_have": "A named author or a pen name, and a decision on whether any first-hand testing has actually happened (it has not, in this project).",
+      "why_it_blocks": "Blocks SUG-2F-12. Also determines what the guides may claim: this project has handled none of these products.",
+      "how_to_discover": "Owner supplies a byline and confirms no hands-on testing has been done. Until testing happens, copy must describe what listings state, never how the product performs.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-07",
+      "question": "Will the site display prices and availability at all?",
+      "priority": "important",
+      "what_we_have": "The rule: prices may be shown only if Amazon serves the link in which they appear, or if they come from Creators API or PA API under the licence terms. Price tracking and price alerting are barred outright.",
+      "have_sources": [
+        "S80"
+      ],
+      "what_we_do_not_have": "A decision on which route to use, and API access to use route two.",
+      "why_it_blocks": "Determines whether the comparison table can ever carry a price column, and therefore how the comparison is designed.",
+      "how_to_discover": "Owner decides: pursue API access, use Amazon-served widgets, or keep prices out and link out for the current price.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-08",
+      "question": "What analytics is acceptable, and where will the endpoint live?",
+      "priority": "important",
+      "what_we_have": "The pages are static files on GitHub Pages, so any event collector has to be somewhere else. The brief asks for a privacy-preserving counter and a self-hosted endpoint with five defined events.",
+      "have_sources": [],
+      "what_we_do_not_have": "A host, an owner preference on third-party analytics, and the final list of five events if it differs from the brief's.",
+      "why_it_blocks": "Blocks SUG-2F-05, which the brief puts ahead of all further content work.",
+      "how_to_discover": "Owner picks a path in SUG-2F-05 and supplies a host or a product account.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-09",
+      "question": "Which host is canonical for search?",
+      "priority": "important",
+      "what_we_have": "The site is live at kanlerxz87-cyber.github.io/Zone3/ with a sitemap that lists 78 pages, including session archives and prior builds.",
+      "have_sources": [],
+      "what_we_do_not_have": "A custom domain, and a decision on whether archives should be excluded from the index.",
+      "why_it_blocks": "Blocks finishing SUG-2F-10.",
+      "how_to_discover": "Owner supplies a domain or confirms the github.io host is canonical.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-10",
+      "question": "Which market are the readers in, and which Amazon site should the links target?",
+      "priority": "important",
+      "what_we_have": "The Operating Agreement's Schedule 1 lists the United States Amazon Site for this programme, and all five observed destinations are amazon.com listings.",
+      "have_sources": [
+        "S79",
+        "S70",
+        "S71",
+        "S76",
+        "S77",
+        "S78"
+      ],
+      "what_we_do_not_have": "The intended reader geography. The person running this project is located in Singapore, which is a different Amazon marketplace with a different programme.",
+      "why_it_blocks": "Determines whether links should stay on amazon.com or be localised, and what the shipping and currency notes on the site should say.",
+      "how_to_discover": "Owner states the target market. If it is not the United States, the whole link set needs re-doing against that marketplace's programme.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-11",
+      "question": "Where does product imagery come from?",
+      "priority": "important",
+      "what_we_have": "The Operating Agreement licenses Program Content, which includes images, for use on an Associate's site; IP Licence terms restrict aggregating, analysing and repurposing Product Advertising Content without written approval.",
+      "have_sources": [
+        "S79",
+        "S80"
+      ],
+      "what_we_do_not_have": "Access to Amazon's image-serving tools (needs the tag), and a decision on whether the owner will photograph the products.",
+      "why_it_blocks": "Blocks SUG-2F-04, which is the single biggest visual upgrade available.",
+      "how_to_discover": "Owner picks a path: Amazon-served images once the tag exists, own photography if the units are on hand, or none.",
+      "answer": null,
+      "answered_on": null
+    },
+    {
+      "id": "Q2F-12",
+      "question": "What is the publishing cadence, and who approves a page before it ships?",
+      "priority": "useful",
+      "what_we_have": "A topic plan exists with twelve planned topics and an evidence rule for popularity claims written by an earlier session.",
+      "have_sources": [],
+      "what_we_do_not_have": "A cadence decision, or a named approver.",
+      "why_it_blocks": "Blocks SUG-2F-08 from being scheduled.",
+      "how_to_discover": "Owner picks weekly or fortnightly and names the approver who runs the compliance gate.",
+      "answer": null,
+      "answered_on": null
+    }
+  ],
+  "have": [
+    {
+      "item": "Five live destination listings, each with a served title and breadcrumb",
+      "sources": [
+        "S70",
+        "S71",
+        "S72",
+        "S73",
+        "S76",
+        "S77",
+        "S78"
+      ]
+    },
+    {
+      "item": "The exact disclosure sentence Amazon requires, read verbatim",
+      "sources": [
+        "S79"
+      ]
+    },
+    {
+      "item": "The rules on prices, star ratings, link shorteners, cloaking and price tracking",
+      "sources": [
+        "S80"
+      ]
+    },
+    {
+      "item": "The published category rates for the standard programme",
+      "sources": [
+        "S81"
+      ]
+    },
+    {
+      "item": "Amazon's own definition of an ASIN as a 10-character identifier",
+      "sources": [
+        "S82"
+      ]
+    },
+    {
+      "item": "A generated site that builds cleanly, with 78 indexed pages, no broken links and no placeholder text",
+      "sources": []
+    }
+  ],
+  "missing": [
+    {
+      "item": "The Associates tag",
+      "blocks": [
+        "SUG-2F-04",
+        "SUG-2F-06"
+      ],
+      "route": "Owner copies it from Associates Central (Q2F-02)."
+    },
+    {
+      "item": "Owner confirmation of the five intended products",
+      "blocks": [
+        "SUG-2F-01"
+      ],
+      "route": "Owner lists the intended ASINs with a date (Q2F-01)."
+    },
+    {
+      "item": "Account approval state and API access",
+      "blocks": [
+        "SUG-2F-04",
+        "SUG-2F-06"
+      ],
+      "route": "Owner signs in and reports (Q2F-03)."
+    },
+    {
+      "item": "Browse-node to rate-category mapping",
+      "blocks": [
+        "SUG-2F-04"
+      ],
+      "route": "Creators API classifications, or first Associates reports (Q2F-04)."
+    },
+    {
+      "item": "Any traffic, click or order figure",
+      "blocks": [
+        "SUG-2F-05"
+      ],
+      "route": "Turn on measurement, then read first-party reports only (Q2F-08)."
+    },
+    {
+      "item": "Product photography rights",
+      "blocks": [
+        "SUG-2F-04"
+      ],
+      "route": "Amazon-served images or owner's own photographs (Q2F-11)."
+    },
+    {
+      "item": "A brand name and a byline",
+      "blocks": [
+        "SUG-2F-12"
+      ],
+      "route": "Owner decision (Q2F-05, Q2F-06)."
+    },
+    {
+      "item": "Canonical host decision",
+      "blocks": [
+        "SUG-2F-10"
+      ],
+      "route": "Owner supplies a domain or confirms github.io (Q2F-09)."
+    },
+    {
+      "item": "Target market",
+      "blocks": [
+        "SUG-2F-01"
+      ],
+      "route": "Owner states the reader geography (Q2F-10)."
+    },
+    {
+      "item": "Publishing cadence and approver",
+      "blocks": [
+        "SUG-2F-08"
+      ],
+      "route": "Owner decision (Q2F-12)."
+    }
+  ]
+}

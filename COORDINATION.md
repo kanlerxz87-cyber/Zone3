@@ -7402,3 +7402,168 @@ Pending: merge record and Pages check (below).
 | Clean checkout | Fresh clone of `arena/38650305-zone3` at `e97afc7` ran every gate. One failure (`build_shop --check`, `search.google.com` not allow-listed) was fixed in `5ada925`; the clean clone was then re-run at the commit above with every gate passing. |
 | Rebase | `main` moved to `c67596a` (PR #143, session `59b2194c`) during this work. Rebased; the one conflict in `COORDINATION.md` (both sides appended) was resolved by keeping both sides in full. `EXECUTIVE-SUMMARY.md` merged cleanly; both sessions' sections are present. |
 | Session status | M38-T1…T8 **done**. Blocked, not built, each flagged: Special Link validation (M38-F-01), Search Console (M38-F-03), reader capture (M38-F-14), collector hosting (M38-F-04, M38-F-15), the five events (M38-F-04), the image decision (M38-F-10), the brand name (M38-F-09). |
+# Part: session `2f181cd9` (2026-11-17) — five-link intake (two new links), design-direction pack, decision lab, final integration
+
+## Session registry (this part)
+
+| Session ID | Branch | Base | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|---|
+| 2f181cd9 | `arena/2f181cd9-zone3` | `fedc9f66` (main, PR #134 merged) | Five-link intake re-verified live; the two newly submitted links (`link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`) resolved and recorded; design-direction pack for a non-"AI slop" marketing site; the Decision Lab (suggestions review console + open-questions register with discovery routes); repo review; final integration, PR, merge, Pages deploy. | in progress (2F-T1 claimed) | 2026-11-17 |
+
+### Coordination check performed before claiming (2026-11-17)
+
+- `git log origin/main` → `fedc9f6` ("Merge pull request #134 from kanlerxz87-cyber/arena/f65d393b-zone3"), the base this branch was cut from. No newer commit on `main` at claim time.
+- Open PRs at claim: **#109** (`arena/a0ffcab0-zone3`, created 2026-11-16T18:49:48Z) and **#123** (`arena/5a56c084-zone3`, created 2026-11-16T19:05:55Z). Both are completion-record PRs whose sessions last committed on 2026-11-16; both claims are far older than the 60-minute takeover window, so this session logs them as **stale, not taken over and not edited** (they touch only their own session directories and `COORDINATION.md`; `COORDINATION.md` conflict policy here is append-only, so no conflict is possible). No other session is marked `in progress` on a branch newer than 2026-11-16.
+- ID namespaces claimed by this session (non-overlapping): sources **S70–S79**, flags **F-2F-01…**, suggestions **SUG-2F-01…**, questions **Q2F-01…**. Source IDs S01–S59 and S60–S69 are reserved by earlier sessions per the `id_reservation` note in `data/sources.json`; this session appends from S70.
+- File scope (all additive, no other session's file edited): `sessions/2f181cd9/**`, `data/2f/*.json`, `scripts/build_2f181cd9.py`, and — as the final integration session for this round — the shared surfaces `index.html` (one nav group + one front-door card), `sitemap.xml`, `data/products.json`, `data/sources.json`, `data/flags.json` (unioned by ID, nothing renumbered or removed).
+
+## Task board (this part)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 2F-T1 — claim | done | 2f181cd9 | `COORDINATION.md` (append only) | — | none |
+| 2F-T2 — live re-verification of all five submitted links | in progress | 2f181cd9 | `data/2f/verification.json`, `sessions/2f181cd9/verification.md` | S70–S78 | F-2F-01… |
+| 2F-T3 — repo review, line by line | pending | 2f181cd9 | `sessions/2f181cd9/repo-review.md` | — | — |
+| 2F-T4 — five-product intake register (products 4 and 5) | pending | 2f181cd9 | `data/2f/intake.json`, `sessions/2f181cd9/product-4-*.html`, `sessions/2f181cd9/product-5-*.html` | S70–S75 | F-2F-0x |
+| 2F-T5 — Decision Lab: suggestions review console + open-questions register | pending | 2f181cd9 | `data/2f/decision-lab.json`, `sessions/2f181cd9/decision-lab.html`, `sessions/2f181cd9/questions.html` | S01, S02, S70–S78 | — |
+| 2F-T6 — design-direction pack (non-"AI slop" marketing site) + design prompt | pending | 2f181cd9 | `data/2f/design-direction.json`, `sessions/2f181cd9/design-direction.html` | S01, S02, S07, S24 | — |
+| 2F-T7 — executive summary for the five-link state | pending | 2f181cd9 | `sessions/2f181cd9/executive-summary.html` | S70–S78, S01, S02 | — |
+| 2F-T8 — final integration: gates, PR to `main`, merge, Pages deploy | pending | 2f181cd9 | shared surfaces listed above | — | — |
+
+### 2F-T1 addendum — source ID range (corrected 2026-11-17)
+
+The claim above reserved S70–S79. The work needed thirteen source IDs, so the reserved
+range is **S70–S82**, and `data/sources.json`'s `id_reservation` note now says so: the
+next session appends from **S83**. Flag IDs are **F-2F-01…F-2F-10**, suggestions
+**SUG-2F-01…13**, questions **Q2F-01…12**.
+
+## 2F records (session `2f181cd9`, filled in after the claim above)
+
+### 2F-T2 — live re-verification (done, 2026-11-17)
+
+All five submitted links were fetched live. Three open air-fryer listings and the two
+links added in this session's brief open meat-thermometer listings — see the table in
+`research/2f181cd9-verification-log.md` and the register on
+`sessions/2f181cd9/intake.html`. All five direct `/dp/<identifier>` checks return Page
+Not Found, and all five identifiers are nine characters against Amazon's ten-character
+ASIN definition (S82).
+
+Policy pages re-read verbatim this session: Operating Agreement §5 and §6 (S79);
+Participation Requirements 1, 2(b), 6(t), 6(v), 6(w), 6(y) (S80); Standard Commission
+Income Statement Table 1 (S81); Creators API GetItems ItemIdType (S82). Every quote is
+stored in `data/2f/verification.json` and rendered on `sessions/2f181cd9/index.html`.
+
+**Method note (also F-2F-10):** command-line fetches to amazon.com and link.amazon were
+refused at the connection layer in this session's sandbox, so every observation is a
+page-fetch tool result. Each names the exact URL fetched, so it can be repeated by hand.
+Earlier sessions recorded the same restriction, so this is a difference in tooling, not
+in rigour.
+
+### 2F-T3 — repo review (done, 2026-11-17)
+
+`research/2f181cd9-repo-review.md` holds the ten findings. The three that matter: the
+product register held three of five links (fixed here by adding P4 and P5); no link
+carries an Associates tag, so nothing can earn; and `rel="sponsored"` is applied to six
+outbound links out of more than two thousand, so the same class of link is marked two
+different ways depending on which generator built the page (F-2F-05, cross-scope change
+request, not actioned here).
+
+### 2F-T4 — five-link intake register (done, 2026-11-17)
+
+`data/2f/intake.json` and `sessions/2f181cd9/intake.html`. The intended-product columns
+(intended ASIN, intended listing URL, confirmation date, source) are separate fields from
+the observed-destination columns (final URL, page ID, page title, fetch date, source) and
+the two are never merged, per the brief. The intended columns are empty and flagged: only
+the owner can fill them.
+
+Shared register: P4 and P5 were added to `data/products.json` so `products.html`,
+`pricing.html`, `reviews.html`, `campaigns.html` and `content.html` cover all five links.
+They carry the same null values as P1–P3, plus a `content_status` block stating that no
+brief, comparison or buying guide exists for them, so `content.html` does not claim
+content that was never written.
+
+### 2F-T5 — Decision Lab (done, 2026-11-17)
+
+`data/2f/decision-lab.json`, `sessions/2f181cd9/decision-lab.html` and
+`sessions/2f181cd9/questions.html`. Thirteen suggestions, each with the paths available,
+the question that gates it, the trade-off per path, the effort, the risk, how we would
+know it worked, and the official source for the constraint it must respect. Twelve
+questions, each with what is in hand (sourced), what is missing, what it blocks and the
+concrete route to closing it, plus an empty dated answer slot. Plus the
+information-we-have and information-we-missing tables.
+
+**Nothing on either page is implemented by publishing it.** Every suggestion is `ready`,
+`blocked` or `proposed`, and the page says so. The brief asked for a section where
+someone can review suggestions and choose the best path before anything changes; that is
+what this is, so a blocked item stays blocked until the named question is answered.
+
+### 2F-T6 — design direction and prompt pack (done, 2026-11-17)
+
+`data/2f/design-direction.json` and `sessions/2f181cd9/design-direction.html`. A
+diagnosis of why the site reads as generated (four visual languages, dashboard-first
+information architecture, no photography, large repeated boilerplate), five principles,
+one design system (type, colour, grid, imagery), five page templates, copy rules, a
+fifteen-phrase banned list, a ten-point anti-slop checklist, a what-not-to-do list, and a
+single ready-to-paste prompt. The six hard constraints the design must work inside are
+quoted from the official pages with their source IDs, and taste calls are labelled as
+judgements rather than dressed up as rules.
+
+### 2F-T7 — executive summary (done, 2026-11-17)
+
+`sessions/2f181cd9/executive-summary.html`: the six counts that define the state of the
+project, eight sourced key findings, the blocking questions with the route to each, and
+an explicit statement of what this session did and did not change.
+
+### 2F-T8 — integration, gates, PR, merge (recorded after the merge)
+
+| Item | Result |
+|---|---|
+| Pull before push | `git pull --rebase origin main` before every push |
+| Gates on the final tree (after the merge above) | `check_site` **OK 36 pages / 5 products / 75 sources / 123 flags** · `check_all_links` **0 errors (186 pages, 215 external URLs)** · `build_sitemap --check` **97 pages, 0 extras** · `verify_site` **PASS 140 pages / 2,188 rows** |
+| Shared files touched | `data/sources.json` (S70–S82 appended), `data/flags.json` (F-2F-01…10 appended), `data/products.json` (P4, P5 appended), `scripts/build_site.py` (19 asserted string replacements + 1 nav group + 1 site-map group, patch script kept at `scripts/_patch_2f181cd9.py`), `scripts/check_site.py` (this session's six pages added to `PAGES` and `TABLE_PAGES`), `sitemap.xml` (regenerated; `/sessions/` stays excluded by the documented rule) |
+| Files this session owns | `sessions/2f181cd9/**`, `data/2f/*.json`, `scripts/build_2f181cd9.py`, `scripts/update_data_2f181cd9.py`, `scripts/_patch_2f181cd9.py`, `research/2f181cd9-*.md`, this Part of `COORDINATION.md` |
+| Deliberately not indexed | This session's six pages are under `/sessions/`, which `scripts/build_sitemap.py` excludes by the rule added by session 81bc99d0. They are linked from the navigation on every page, so they are reachable; they are decision-support pages, not reader guides. If the owner wants the Decision Lab in the index, that is a scoped exception to the rule (SUG-2F-10). |
+| Irregularities raised | F-2F-01…F-2F-10, all published on `flagged.html`. None blocks the merge. |
+| Cross-scope change requests (not actioned) | (1) `rel="sponsored"` on every outbound product link, generator by generator (F-2F-05). (2) The "three" copy still on the injected front-door band, `/read/`, `/site/` and `/marketing/` (F-2F-09). (3) One token set instead of four stylesheets (F-2F-07). |
+
+### 2F-T8 addendum — mid-session merge with the parallel five-link shop work (2026-11-17)
+
+`main` moved while this session was working: `fedc9f6` → `c67596a`, through PRs #140, #141,
+#142 and #143 from sessions `82372fd1`, `59b2194c` and `974e366d`. Those sessions built
+`/shop/` (a five-product publication site with `shop/air-fryers/` and
+`shop/meat-thermometers/` category pages, `shop/decisions/`, `shop/intent-record/`, a
+`feed.xml` and a publication front page) and took over `index.html` — `scripts/build_site.py`
+now carries a guard from session `aebf0747`: if `index.html` contains `aebf0747-front`, the
+flat-page generator does not overwrite it.
+
+**Their independent finding agrees with this session's:** `shop/index.html` publishes all
+five destinations, including B0DHZTCNR5 and B0DZFD6R9Z for the two links added in this
+session's brief. Two sessions, working from different branches on the same day, resolved the
+same two links to the same two listings. That corroboration is recorded here because it is
+worth more than either session's single observation.
+
+**How the merge was resolved (generated output was not hand-merged):**
+
+| File | Resolution |
+|---|---|
+| `index.html`, `flagged.html`, `products.html`, `pricing.html`, `reviews.html`, `sources.html`, `verification.html`, `executive-summary.html`, `air-fryers.html` | Resolved to `main`'s side, then **regenerated** from the unioned data by `scripts/build_site.py` |
+| `data/flags.json` | Union by ID: main's 113 entries kept in order, this session's F-2F-01…10 appended → 123 |
+| `data/products.json` | Union by ID: main's P1–P3 kept, P4 and P5 appended → 5 products |
+| `data/sources.json` | Auto-merged: S70–S82 appended to main's S01–S69 → 75 |
+| `scripts/build_site.py`, `scripts/check_site.py` | Auto-merged (this session's 19 asserted replacements and nav/site-map groups, plus main's `aebf0747` guard and token rule) |
+| `COORDINATION.md` | `main`'s board kept verbatim, this session's Part appended after it; no conflict marker on any line (verified before commit) |
+
+`index.html` therefore keeps session `aebf0747`'s publication front page, and this session's
+navigation group appears on every page the flat generator writes (products, flagged, sources,
+pricing, reviews, content, campaigns, articles, air-fryers, verification and the reader
+pages). Because the front page is reachable-to-reachable (it links `flagged.html`, which
+carries the group), this session's pages are never more than two clicks from the front door.
+
+**Change request, not actioned (cross-scope):** add a link to
+`sessions/2f181cd9/decision-lab.html` from `shop/decisions/` or the publication front page,
+so the Decision Lab and the design pack are reachable from the shop's own navigation. The
+file belongs to another session's scope.
+
+**Gate results on the merged tree:** `check_site` OK 36 pages / 5 products / 75 sources /
+123 flags · `check_all_links` 0 errors (186 pages, 215 external URLs) · `build_sitemap --check`
+97 pages, 0 extras · `verify_site` PASS 140 pages / 2,188 rows.
