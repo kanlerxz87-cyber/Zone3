@@ -1,0 +1,45 @@
+{
+  "retrieved": "2026-11-17",
+  "session": "5b443d02",
+  "how_to_read": "Three complete answers to 'what should this site be?'. Choosing one is an owner decision; nothing on this page changes the site when it is read. Each path names what it does with all five submitted products so the choice can be made on the consequences, not on the description.",
+  "repo_anchor": "data/5b443d02/paths.json",
+  "paths": [
+    {
+      "id": "PATH-A",
+      "name": "One kitchen site, two pillars",
+      "what": "A single site about countertop kitchen gear. Two category pillars: Air Fryers, holding the three air-fryer products, and Kitchen Thermometers, holding the two thermometer products. Shared brand, shared navigation, shared verification rules.",
+      "effort": "Medium. Two pillar pages, two clusters, one front door, one comparison per pillar.",
+      "needs": "5B-Q02 answered as 'both are in scope'. Nothing else blocks it beyond the confirmations already listed.",
+      "risk": "Two topics under one brand is less sharply topical than a single-niche site. The honest bridge between the pillars is narrow: one thermometer listing names 'Air Fryer' among its use contexts.",
+      "consequence": "All five submitted products stay on the site. Nothing submitted is discarded.",
+      "recommended_for": "The case where all five links were submitted on purpose.",
+      "src": ["5B-S16", "5B-S17", "5B-S15"],
+      "state": "default"
+    },
+    {
+      "id": "PATH-B",
+      "name": "Air-fryer site only",
+      "what": "Keep the three air-fryer products and drop the two thermometers. Deepen one niche: more comparison angles, more cluster articles around one pillar, sharper topical focus.",
+      "effort": "Lowest of the three. The site already exists in this shape.",
+      "needs": "Confirmation that the two thermometer links were submitted by mistake.",
+      "risk": "If they were not a mistake, this discards two fifths of the submitted products and the reason they were included stays unexplained.",
+      "consequence": "5B-P4 and 5B-P5 are recorded in the product-intent page as out of scope, with their observed destinations still shown. Nothing is silently deleted.",
+      "recommended_for": "The case where the thermometer links were a copy-paste error.",
+      "src": ["5B-S16", "5B-S11", "5B-S12", "5B-S13"],
+      "state": "option"
+    },
+    {
+      "id": "PATH-C",
+      "name": "Two separate sites",
+      "what": "One air-fryer site and one kitchen-thermometer site, each with its own brand, navigation and content plan.",
+      "effort": "Highest. Two brands, two sets of pages, two disclosure and compliance surfaces to keep correct, two things to maintain.",
+      "needs": "A second domain or subdomain, and an owner willing to maintain both.",
+      "risk": "Doubles the maintenance surface for compliance. Every disclosure, sitemap and gate has to hold on both sites, and the failure mode is one site quietly drifting out of compliance.",
+      "consequence": "All five products are published, each on the site that matches its browse node.",
+      "recommended_for": "The case where the two categories are genuinely separate businesses with separate audiences.",
+      "src": ["5B-S16", "5B-S17", "5B-S01"],
+      "state": "option"
+    }
+  ],
+  "decision_control_note": "The control below records a choice in the browser only. It exports text you can paste into a message or a commit. It does not change any file, and no page on this site is rebuilt because it was used."
+}
