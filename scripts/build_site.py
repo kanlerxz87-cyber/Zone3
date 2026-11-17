@@ -465,7 +465,7 @@ def page(filename: str, title: str, body: str, lead: str = "",
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{e(title)} | Zone3 — Air Fryer Research Desk</title>
+<title>{e(title)} | Zone3 — Kitchen Product Research Desk</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{canonical}">
 <link rel="stylesheet" href="assets/style.css">
