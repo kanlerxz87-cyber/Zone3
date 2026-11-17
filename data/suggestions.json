@@ -855,11 +855,14 @@
   {
    "id": "Q11",
    "question": "Do the two unregistered product links belong in the project at all — and what products do they stand for?",
-   "what_we_know": "The 2026-11-17 owner brief lists five link.amazon short links. data/products.json registered only three of them (B04G1MEwY, B02NbDxp3, B00hJ57DV, re-checked as S67-S69); a repo-wide search on 2026-11-17 found no register row, observation or flag for B0c8moW59 or B0f3GKalj before this session added the two 'not registered' rows to the intent record.",
-   "source": [],
+   "what_we_know": "The 2026-11-17 owner brief lists five link.amazon short links. All five now have register rows: the three original links in data/products.json (P1-P3, re-checked as S67-S69) and both extra links in the shop register (SHOP-04/SHOP-05, observed 2026-11-17 by session 974e366d) plus observed blocks in the product-intent record filled by session 66964850 the same day (independent re-resolution Z1-V04/V05 and direct /dp/ checks Z1-V09/V10, sources S70-S73). Both short links are live and open meat thermometers: B0c8moW59 -> dp/B0DHZTCNR5 (ThermoMaven 1 Sec Professional), B0f3GKalj -> dp/B0DZFD6R9Z (CHEF iQ Sense Gen3).",
+   "source": [
+    "S70",
+    "S71"
+   ],
    "what_we_dont_know": "Whether the two links are live, what product each is meant to point at, and whether the owner still wants them promoted.",
    "why_it_matters": "A shop page cannot sell a product whose identity is unrecorded; the comparison, the chooser and every CTA would silently cover three links while the brief promised five.",
-   "how_to_discover": "Owner confirms each of the two links in the enrolled Associates workflow (or withdraws it). Flag G82-F-03 tracks the gap; the new rows in the Product-intent confirmation record on products.html are where the answers land."
+   "how_to_discover": "Owner confirms each of the two links in the enrolled Associates workflow (or withdraws it) — the answer lands in the intended block of the Product-intent confirmation record on products.html. Flag G82-F-03 now tracks only that intent half; its observed half was closed 2026-11-17 (session 66964850)."
   },
   {
    "id": "Q12",
@@ -1114,8 +1117,8 @@
    {
     "q": "Q11",
     "was": "— (new 2026-11-17)",
-    "now": "open — created by this review",
-    "change": "Two of the brief's five links have no register row; see flag G82-F-03 and the two 'not registered' rows in the intent record."
+    "now": "observed half closed 2026-11-17; intent half still open",
+    "change": "Both links now have register rows and observed destinations: shop SHOP-04/SHOP-05 plus the intent record's observed blocks (S70-S73, re-observed by session 66964850 as Z1-V04/V05/V09/V10). What remains is the owner's intent confirmation (G82-F-03, AE-F-03)."
    },
    {
     "q": "Q12",

@@ -150,9 +150,12 @@ def check(root: pathlib.Path):
                 # 81bc99d0 (2026-11-16): an Amazon/FTC link is the only support that counts as an
                 # official source for a factual row. A row whose only support is a GitHub/repo link
                 # (no Amazon/FTC, no flag) is reported for review instead of being credited as sourced.
+                # Session 66964850 (2026-11-17): developers.google.com / search.google.com are
+                # official Google policy hosts (S90). Adding them closes the gap session
+                # 5b443d02 recorded as 5B-F-04 (Google Search Central not counted as official).
                 amazon_ftc = re.search(
                     r'href="https?://[^"]*'
-                    r'(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov)'
+                    r'(amazon\.com|amazon\.[a-z]{2,3}|ftc\.gov|developers\.google\.com|search\.google\.com)'
                     r'[^"]*"', tr)
                 if amazon_ftc:
                     prov["amazon_ftc"] += 1

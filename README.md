@@ -26,8 +26,8 @@ publish any value that cannot be traced to an official source.
 | Submitted tokens that are ASINs | **0 of 5** (they are short-link tokens) |
 | Observed redirect destination listings | **5 of 5** |
 | Product-attribute cells blank in the audit sheet | **45** (9 unavailable fields × 5 observed listings) |
-| Official sources cited | 22 in `data/z3/`; 68 in the flat-site register (S60–S69 added 2026-11-16; S70–S75 added 2026-11-17) |
-| Open items published for review | 112 (flat-site register, `data/flags.json`; `CBB-F-01`…`CBB-F-04` added 2026-11-17) · 29 (audit build) |
+| Official sources cited | 22 in `data/z3/`; 83 in the flat-site register (S60–S69 added 2026-11-16; S70–S75, S83–S88 added 2026-11-17; S90 = Google Search Central) |
+| Open items published for review | 140 (flat-site register, `data/flags.json`; restored union after PR #158 dropped 24 — `5B-F-*`, `929-F-*`, `F-2F-*`, `G82-F-*`, `G84-F-01` back in, plus `CBB-F-01`…`CBB-F-04` and `Z1-F-01`…`Z1-F-04` added 2026-11-17) · 29 (audit build) |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks; `scripts/build_read.py` additionally refuses to emit an uncited table row, a price pattern, a star-rating pattern or a stored Amazon image, and `read/**` is listed in `scripts/check_site.py`'s `PAGES` so the shared gate covers it too |
 | Reader-facing marketing layers | **two, in parallel** — `/read/` (The Crisp Report, 11 pages, sessions `145b8df7`/`d18303ca`) and `/site/` (Air Fryer Field Notes, 18 pages, sessions `59d84c55` + `cba81fa5`). The repository root now opens on a front-door band that leads to both, and the overlap is recorded as `Z14-F-04` and `CBA-F-03` for the owner to resolve |
 
@@ -142,6 +142,7 @@ python3 sessions/aebf0747/build_pass.py         # publication front page, /guide
 python3 sessions/aebf0747/publish_pass.py       # mechanical pass: disclosure strip, sponsored rel, head links (markers; idempotent)
 python3 tools/measure_pass.py              # analytics script tags on every published page (markers; idempotent; session 38650305)
 python3 tools/build_feed.py               # feed.xml = UNION of both guide registers; runs after every HTML generator, --check gates drift (session 82372fd1)
+python3 scripts/mark_sponsored.py         # rel="sponsored" on every outbound product link, whole tree incl. sessions/ (0C4-T3; added to the chain by session 66964850 after the PR #161 union — without it check_site rule 10 fails on regenerated session pages)
 python3 scripts/build_sitemap.py          # sitemap for the whole published tree
 
 # Measurement self-tests (session 38650305):

@@ -8343,3 +8343,46 @@ Branch: `arena/0c4c4cb6-zone3`, branched from `fedc9f667c19ad1825967029ef6a1c09e
 - No price, star rating, review count, sales rank or Amazon-hosted image is published by any edit of this session (Program Policies 2(b)/6(t); the reader gates' G6-family rules).
 - Outbound product links keep `rel="sponsored"` and the disclosure strip stays above the fold; this session does not move either.
 - The selected tracking ID appears in this coordination log only, per Q1's own rule; where other sessions have published it, that is raised as a flag for the owner, not silently edited away.
+
+### Part 648 addendum — conflict resolution on rebase onto `95e9990` (session `66964850`, 2026-11-17)
+
+While session `66964850` worked, main advanced through PRs #145–#159 (sessions `38650305`, `2f181cd9`, `92988cd8`, `ded63349`, `73029680`, `5b443d02`, `cbb03ec7`). The rebase conflicted in 14 files, and inspection showed **PR #158 (`cbb03ec7`) had resolved its own integration conflicts by taking its side wholesale from a branch based before #146**, dropping on merge:
+
+- **24 flags** from `data/flags.json` (132 → 112): `5B-F-01…06`, `929-F-01/02`, `F-2F-01…10`, `G82-F-01…05`, `G84-F-01`;
+- **14 sources** `S76`–`S89` (82 → 68), including `73029680`'s OPM calendar row `S89`;
+- `intent_records` (5 rows) from `data/products.json`;
+- from `scripts/build_site.py`: the Direction + Five-links nav groups, the P4/P5 product cards, the five-listing hero/copy, the product-intent renderer, **both** dated-review renderers (`review_2026_11_17` design paths and `review_2026_11_17_late` runbook), and the five-link verification rows;
+- gate coverage in `scripts/check_site.py` (11 published pages removed from `PAGES`, `TABLE_PAGES` entries removed, and `5b443d02`'s pure-fragment link fix reverted) plus an unnecessary `sessions/`+`archive/` exclusion in `scripts/check_all_links.py`;
+- exec-summary sections by `59b2194c` and `38650305`; `929-*` rows from `data/decision-queue.json`.
+
+**Resolution (union, nothing discarded):** shared registers rebuilt from the pre-#158 state (`951bdce^`) ∪ `cbb03ec7`'s intentional additions (`CBB-F-01…04`, the `repo:<path>` provenance label, the tracking-ID copy, their four verification rows, `config/platform.json`) ∪ this session's `Z1-F-01…04` + Google source `S90`. Source IDs follow the **first-merged numbering** (`2f181cd9`'s: `S70`=link 4, `S71`=link 5, `S72`/`S73`=listings, `S74`/`S75`=direct checks), per the collision rule session `92988cd8` already recorded; `cbb03ec7`'s duplicate six rows were dropped and their source-id references remapped by URL (flags, exec §14 table, verification rows). Gates restored to full coverage: `check_all_links` passes at **full scope** (196 pages, 256 URLs, 0 errors), so #158's exclusion was unnecessary. Logged gate change (M38 precedent): `tools/verify_site.py` official-host rule now also credits `developers.google.com` / `search.google.com`, closing the gap session `5b443d02` recorded as `5B-F-04`.
+
+**Final merged counts:** 83 sources (`S01`–`S90`, next `S91`) · 140 flags (3 critical / 26 high / 42 medium / 40 low / 29 info) · 5 products · 41 shared-gate pages. All 15 gates green; generator chain hash-idempotent (312 files, 0 changes across a full re-run); measurement self-tests pass. No conflict marker is pushed.
+
+### Part 648 addendum 2 — second rebase onto `d19e7bf` (PR #161 union, session `66964850`, 2026-11-17)
+
+PR #161 (session `0c4c4cb6`) merged while this session was resolving the first rebase. Its own union
+recovered some of what #158 dropped (intent records, products deduped to five) but not the flags
+`5B-F-*`/`929-F-*`/`F-2F-*`/`G82-F-*`/`G84-F-01`, not sources `S76`–`S89`, and not `build_site.py`'s
+Direction/Five-links navs, intent renderer or dated-review renderers — and it added a second
+measurement layer (`assets/track.js`, `tools/analytics_collector.py`, `measurement.html`), Special
+Links SL1–SL5 with the owner tag rendered on `products.html`, a `rel="sponsored"` build gate
+(check_site rule 10), `scripts/mark_sponsored.py`, and unified the feed into `tools/build_feed.py`
+(22 entries; `scripts/build_feed.py` retired).
+
+**Resolution (same union discipline):** registers re-unioned by ID — flags **148** (3/28/46/42/29;
++`0C4-F-01…08`, `Z1-F-03` extended with the tagged-link development, both sides left on the record per
+the no-stripping rule), products = intent_records + intake note + their `product_intent` /
+`observed_2026_11_17` extras, decision-queue unioned, sources stay the recovered 83 (`S01`–`S90`).
+`scripts/build_site.py` and `scripts/check_site.py` three-way merged (their sponsored gate +
+measurement page + Special Links + track.js/RSS/page() additions kept; their duplicate blank
+product-intent table render deduplicated in favour of the richer `intent_records` table — their data
+untouched; owner-items and how-to-read bullets unioned with their mis-remapped source ids corrected to
+the canonical numbering). Their exec Update section ported with source-id remap. `mark_sponsored.py`
+added to the documented build chain (it was missing from README's block; check_site rule 10 fails
+without it on regenerated `sessions/` pages).
+
+**Final counts: 83 sources · 148 flags · 5 products · 42 shared-gate pages.** 17 gates green
+(check_site, verify_site, link_report, i2, sitemap, feed, no-repr, lint, check_all_links at full scope
+198 pages/263 URLs/0 errors, shop, publish_pass, measure_pass, measurement, brief_status, cba,
+mark_sponsored --check, apply_sponsored --check). No conflict marker is pushed.
