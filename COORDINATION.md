@@ -7726,11 +7726,11 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| G84-T1 — Repo review at the claimed base; gate snapshot; irregularity sweep | in progress | 73029680 | read-only; record in `sessions/73029680/repo-review.md` | repo registers | G84-F-01 raised |
-| G84-T2 — Reconcile the two product-intent confirmation records for links 4–5 (B0c8moW59, B0f3GKalj): own dated observations (six fetches), intent-record rows for links 4-5 reconciled (register_row P4/P5, observed blocks filled from own fetches; session 2f181cd9's P4/P5 register rows kept as-is), flag raised and documented | in progress | 73029680 | `data/products.json`, `data/sources.json` (S83–S89), `data/flags.json` (+G84-F-01), `scripts/build_site.py` (`build_suggestions` renderer extension only; the stale sentence this Part originally flagged was fixed on main by session 2f181cd9), `sessions/73029680/**` | S83–S88 (own fetches 2026-11-17), S31, S02 | G84-F-01 |
-| G84-T3 — Suggestions review #3, dated 2026-11-17 late: design-prompt refresh proposals, official-calendar seasonal hooks (OPM), decision runbook (order that unblocks the rest), rendered by extending `build_suggestions()` | in progress | 73029680 | `data/suggestions.json` (`review_2026_11_17_late`), `scripts/build_site.py` (`build_suggestions` renderer extension only), `suggestions.html` (generated) | S89 (OPM federal holidays); existing S01–S82 for all other facts | — |
-| G84-T4 — EXECUTIVE-SUMMARY.md live counts recomputed from the register after G84-F-01 | planned | 73029680 | `EXECUTIVE-SUMMARY.md` | register counts | — |
-| G84-T5 — Final integration for this Part: rebuild ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check | planned | 73029680 | this Part only | gate outputs | — |
+| G84-T1 — Repo review at the claimed base; gate snapshot; irregularity sweep | done | 73029680 | read-only; record in `sessions/73029680/repo-review.md` | repo registers | G84-F-01 raised |
+| G84-T2 — Reconcile the two product-intent confirmation records for links 4–5 (B0c8moW59, B0f3GKalj): own dated observations (six fetches), intent-record rows for links 4-5 reconciled (register_row P4/P5, observed blocks filled from own fetches; session 2f181cd9's P4/P5 register rows kept as-is), flag raised and documented | done | 73029680 | `data/products.json`, `data/sources.json` (S83–S89), `data/flags.json` (+G84-F-01), `scripts/build_site.py` (`build_suggestions` renderer extension only; the stale sentence this Part originally flagged was fixed on main by session 2f181cd9), `sessions/73029680/**` | S83–S88 (own fetches 2026-11-17), S31, S02 | G84-F-01 |
+| G84-T3 — Suggestions review #3, dated 2026-11-17 late: design-prompt refresh proposals, official-calendar seasonal hooks (OPM), decision runbook (order that unblocks the rest), rendered by extending `build_suggestions()` | done | 73029680 | `data/suggestions.json` (`review_2026_11_17_late`), `scripts/build_site.py` (`build_suggestions` renderer extension only), `suggestions.html` (generated) | S89 (OPM federal holidays); existing S01–S82 for all other facts | — |
+| G84-T4 — EXECUTIVE-SUMMARY.md live counts recomputed from the register after G84-F-01 | done | 73029680 | `EXECUTIVE-SUMMARY.md` | register counts | — |
+| G84-T5 — Final integration for this Part: rebuild ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check | done | 73029680 | this Part only | gate outputs | — |
 
 ### 84 Rules I follow
 
@@ -7739,3 +7739,56 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 - Seasonal calendar rows carry only federal-holiday dates read from OPM (official); they carry no demand, popularity or "trending" claim — topic priority still comes from D8's query report.
 - No change to `data/design-brief.json` (session 757efebc's scope): the design-prompt refresh is published as proposals in the suggestions review, with the change request logged here.
 
+
+
+### 84 Completion record (T1–T4, 2026-11-17)
+
+- **T1 repo review** — `sessions/73029680/repo-review.md`. Gates green at claim (`d192053`).
+  Irregularity raised: **G84-F-01** (Medium, reconciled this session — see below). Two observations
+  recorded without new flags: the tracking ID appears as guarded text on five public pages
+  (same observation Part 82 made for `publication-pass.html`; owner may prefer redaction), and the
+  three-product shared register vs five-product shop register mismatch, which this session's P4/P5
+  registration closed.
+- **T2 reconciliation (G84-F-01)** — `products.html` contradicted itself: session 2f181cd9's P4/P5
+  rows showed observed destinations while 82372fd1's intent rows below said "No observation on
+  file" for the same links. Six own fetches on 2026-11-17 (S83–S88) confirmed both destinations
+  (B0DHZTCNR5 ThermoMaven; B0DZFD6R9Z CHEF iQ Sense; both 9-char direct URLs Page Not Found).
+  `data/products.json` intent rows now point at P4/P5 and carry the observed block; intended
+  fields stay empty (the two-field rule is unchanged and structurally enforced by the renderer).
+  Sources renumbered **S83–S89** per session 2f181cd9's own convention ("next session appends
+  from S83"). No price, rating or availability value copied out (2(b)/6(t)).
+- **T3 suggestions review #3** — `data/suggestions.json['review_2026_11_17_late']`, rendered by a
+  `build_suggestions()` extension. Contains: the reconciliation row (G84-F-01); design-prompt
+  refresh proposals DP-P-01..05 (proposals only; `data/design-brief.json` untouched — change
+  request logged here per the scope rule); the seasonal calendar with OPM-read federal-holiday
+  dates (S89) and an explicit "must not claim" column; and the decision runbook ordering
+  Q1–Q12/D1–D10 by what unblocks what. This answers the owner's 2026-11-17 ask for suggestions
+  feeding the design prompt, a review-before-implement section, and a clear list of
+  questions/information/answers needed before decisions.
+- **T4** — `EXECUTIVE-SUMMARY.md` live counts recomputed twice (after the union with session
+  2f181cd9's register and after session ded63349's pages landed): final 36 pages / 5 products /
+  82 sources / 124 flags / 144 pages / 2,279 rows / 101 sitemap pages / 190 HTML files /
+  235 external URLs.
+- **T5 gate state at final push** — `check_site` OK 36/5/82/124 · `verify_site` PASS 144 pages /
+  2,279 rows / 1,927 sourced · `link_report --strict` 0 · `i2_gate` PASS · `cba81fa5_lint` PASS
+  0 new / 22 inherited · no-repr PASS 144 · `build_feed --check` current (9) · `build_sitemap
+  --check` 101/0 · `check_all_links` 0 errors (190/235) · aebf0747 `audit` missing_sponsored 0 ·
+  `link_check` 0 · `measure_pass` idempotent · `analytics_endpoint --self-test` PASS · chain ×2
+  idempotent (md5 over the tree).
+- **Main movements absorbed (five)**: `d192053` → `c67596a` (PRs #142/#143, 59b2194c — first
+  rebase; this Part renumbered 83→84 after a heading collision) → `213516e` (PR #146, 2f181cd9 —
+  second rebase; S70–S82 taken, my sources renumbered S83–S89; conflicts resolved by taking
+  main's data files and re-applying my delta) → `6ef32c4` (PRs #149/#150 — third rebase) →
+  `dbba41c` (PR #151 — merge, not rebase, per the 03bbd050 precedent; `git diff origin/main..HEAD
+  -- COORDINATION.md` → 0 deletions from main's side). Every resolution kept every side in full;
+  conflict-marker sweeps clean before every commit.
+
+### 84 Publish record (done, 2026-11-17)
+
+| Item | Result |
+|---|---|
+| Pull request | **#152** — https://github.com/kanlerxz87-cyber/Zone3/pull/152 ("Session 73029680 — Part 84: intent-record reconciliation (P4/P5), sources S83–S89 (incl. OPM calendar), suggestions review #3") |
+| Merge | **MERGED** without waiting for review, per the brief — merge commit **`2868a3ab07fbd70249004ffc5b66d31ffe007b82`**, state `MERGED` (2026-11-17T16:51Z). |
+| Pages deploy | `pages/builds/latest` for `2868a3a`: **`built`** (was `building` at first check, `built` 45s later). Configuration source `main` `/`. |
+| Live checks (post-build) | **products.html** — P4/P5 rows live with observed destinations, "Not confirmed as submitted" badges, sourced to their own dated captures. **suggestions.html** — "Review dated 2026-11-17 (late) (session 73029680)" live: reconciliation row, DP-P-01..05 proposals, seasonal calendar (OPM S89), decision runbook. **flagged.html** — G84-F-01 in the register (124 entries). |
+| Session status | G84-T1…T5 **done**. Records: `sessions/73029680/repo-review.md`. Flags: G84-F-01 (reconciled/fixed). |
