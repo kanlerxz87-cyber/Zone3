@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "title": "Measurement configuration — outbound clicks and page events",
+    "session": "38650305",
+    "prepared_on": "2026-11-17",
+    "note": "This file is the single source for assets/measure-config.js and measurement/index.html (tools/build_measurement.py). Counting stays OFF while endpoint_url is empty. The five events below are PROPOSED by this build: the brief names five events but does not list them (flag M38-F-04)."
+  },
+  "enabled": false,
+  "endpoint_url": "",
+  "endpoint_status": "Not configured. GitHub Pages serves static files and cannot receive POST requests, so no collector is hosted for this site. The owner must host tools/analytics_endpoint.py on a host of their choice and set endpoint_url here.",
+  "event_definitions_status": "Proposed by build 38650305. The brief asks for 'the five defined events' but does not name them. Owner confirmation required (DEC-03 in data/shop/decisions.json).",
+  "events": [
+    {
+      "name": "page_view",
+      "when": "Every page load.",
+      "sends": "event name, page path (no query string, no hash), UTC day, protocol version.",
+      "does_not_send": "visitor ID, IP address, user agent, referrer, cookies, screen or device data."
+    },
+    {
+      "name": "outbound_click",
+      "when": "A click on any link marked rel=\"sponsored\" (every link to amazon.com or link.amazon).",
+      "sends": "event name, page path, link host, and the link's last path segment when it is a 4 to 20 character letter-or-digit code (the short-link token or ASIN as written in the link).",
+      "does_not_send": "the destination's query string, any tag value beyond what is in the path, or anything that identifies a person."
+    },
+    {
+      "name": "guide_view",
+      "when": "Load of a guide page: /guides/<name>.html or /site/guides/<name>.html, excluding the index pages.",
+      "sends": "event name, page path, UTC day.",
+      "does_not_send": "anything beyond the page path."
+    },
+    {
+      "name": "intent_view",
+      "when": "Load of the product-intent confirmation record (/intent-record/).",
+      "sends": "event name, page path, UTC day.",
+      "does_not_send": "anything beyond the page path."
+    },
+    {
+      "name": "flag_view",
+      "when": "Load of the flagged-for-review page or the publication pass page.",
+      "sends": "event name, page path, UTC day.",
+      "does_not_send": "anything beyond the page path."
+    }
+  ],
+  "browser_rules": [
+    "No cookies, localStorage or sessionStorage are written by the counter.",
+    "No visitor identifier is generated or sent.",
+    "If navigator.globalPrivacyControl is true, or Do Not Track is '1', nothing is sent.",
+    "If endpoint_url is empty or enabled is false, nothing is sent and no network request is made.",
+    "Sends use navigator.sendBeacon with a text/plain body, so the browser does not read any response."
+  ],
+  "collector_rules": [
+    "Accepts only the five event names above; anything else returns 400.",
+    "Stores daily totals per event, page path and link token. It does not store IP addresses, user agents, referrers or request logs.",
+    "The server clock sets the day. Client-supplied dates are ignored.",
+    "Read access to totals requires a token set in the environment (Z3_ANALYTICS_READ_TOKEN). Without it, the read endpoint is disabled."
+  ],
+  "sources": [
+    {
+      "label": "Associates Program Participation Requirements 2(b): no sub-tag or reporting may be associated with a specific end user of the site",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "label": "GitHub Docs: What is GitHub Pages? (static hosting; GitHub logs visitor IP addresses)",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+      "checked_on": "2026-11-17"
+    },
+    {
+      "label": "Associates Program Operating Agreement Section 5 (disclosure sentence)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "checked_on": "2026-11-17"
+    }
+  ]
+}

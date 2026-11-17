@@ -166,6 +166,258 @@
         }
       ],
       "claim_not_made": "This build does not resolve the earlier registers."
+    },
+    {
+      "id": "M38-F-01",
+      "severity": "High",
+      "status": "Open - blocked (needs Associates account)",
+      "issue": "Special Link validation was not run. The brief asks for one link per product to be tested in the enrolled Associates workflow, and checked for destination and tracking report, before scaling.",
+      "impact": "No product link on the site has been confirmed to record a tracked click under the requester's Associates ID.",
+      "what_we_did": "Short links kept as supplied (not replaced). Nothing is described as invalid. The test is listed as the first decision in data/shop/decisions.json (DEC-01). This build has no access to the Associates account.",
+      "sources": [
+        {
+          "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "Associates Program Operating Agreement (Section 5 disclosure)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        }
+      ],
+      "claim_not_made": "This build does not say the short links are invalid, and does not create any Special Link."
+    },
+    {
+      "id": "M38-F-02",
+      "severity": "Medium",
+      "status": "Open - decision needed",
+      "issue": "The selected tracking ID shopnow047c-20 is not embedded in any link. Ownership of the ID for the marketplace the links point to is not verified.",
+      "impact": "Under Participation Requirement 2(a)-(b), links to Amazon must carry the Associates ID. Until the ID is confirmed, the links cannot be shown to carry the requester's ID.",
+      "what_we_did": "The ID is recorded in data/shop/config.json as a user-selected value. It was not added to any URL, to avoid writing a tag into links that have not been validated.",
+      "sources": [
+        {
+          "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "Associates Program Operating Agreement (Section 5 disclosure)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        }
+      ],
+      "claim_not_made": "This build does not say the tracking ID belongs to the requester, or that any sale would be credited to it."
+    },
+    {
+      "id": "M38-F-03",
+      "severity": "High",
+      "status": "Open - blocked (needs owner Google account)",
+      "issue": "Search Console is not connected. Ownership verification needs the owner's Google sign-in, which this build cannot use. The brief's organic-traffic rows (S-25, SG-29) therefore have no data.",
+      "impact": "No search query, impression or click data exists, so no article topic can be chosen from measured queries.",
+      "what_we_did": "sitemap.xml is current and lists every published page, ready for submission by the owner. Search Console setup is listed in data/shop/decisions.json.",
+      "sources": [
+        {
+          "label": "Google Search Console (sign-in required to verify a property)",
+          "url": "https://search.google.com/search-console/about"
+        }
+      ],
+      "claim_not_made": "This build does not say any page ranks, or that search traffic exists."
+    },
+    {
+      "id": "M38-F-04",
+      "severity": "High",
+      "status": "Open - decision needed",
+      "issue": "The brief asks for 'the five defined events' but does not name them. The five events on measurement/index.html were proposed by this build, not taken from the brief.",
+      "impact": "The counter cannot be treated as the owner's agreed measurement until the owner confirms or replaces the five events.",
+      "what_we_did": "Proposed five (page_view, outbound_click, guide_view, intent_view, flag_view) and built them as the only events the collector accepts. Counting is OFF.",
+      "sources": [
+        {
+          "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "GitHub Docs: What is GitHub Pages? (static hosting; visitor IP logged by GitHub)",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+        }
+      ],
+      "claim_not_made": "The five events are not presented as the brief's definitions."
+    },
+    {
+      "id": "M38-F-05",
+      "severity": "Low",
+      "status": "Open - for review",
+      "issue": "Where a page had no meta description, the publish pass added a generic one: '<title>. Published by Zone3; checked on the date shown in the page.' Six pages carry it.",
+      "impact": "Search snippets for those six pages would show boilerplate rather than a description written for the page.",
+      "what_we_did": "Every page now has a description (S-04 is measured as met on 104 of 104 pages). The six generic descriptions were not rewritten.",
+      "sources": [
+        {
+          "label": "Google Search Central: write unique descriptions for each page",
+          "url": "https://developers.google.com/search/docs/appearance/snippet"
+        }
+      ],
+      "claim_not_made": "The generic descriptions are not presented as written copy."
+    },
+    {
+      "id": "M38-F-06",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "S-06 (first-hand 'what it is like to live with' testing) is not adopted, and no search-query data exists for S-07 (one page per question). The four question-shaped guides use working titles, not measured queries.",
+      "impact": "The guides are not evidence of demand for any question.",
+      "what_we_did": "Guides labelled as working titles on the guides index. No demand claim made.",
+      "sources": [
+        {
+          "label": "Google Search Central: helpful, people-first content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        }
+      ],
+      "claim_not_made": "No claim that any guide answers a question people search for."
+    },
+    {
+      "id": "M38-F-07",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "S-09: og:image and JSON-LD structured data appear on 11 of 104 published pages.",
+      "impact": "Social previews and rich-result eligibility are present only on the reader-site pages.",
+      "what_we_did": "Measured and recorded; no markup added in this session.",
+      "sources": [
+        {
+          "label": "Google Search Central: structured data introduction",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data"
+        }
+      ],
+      "claim_not_made": "No claim that structured data makes any page eligible for rich results."
+    },
+    {
+      "id": "M38-F-08",
+      "severity": "Medium",
+      "status": "Open - decision needed",
+      "issue": "S-13 asks for eight articles. This repository has four articles (articles/, excluding the index) and four question-shaped guides (guides/).",
+      "impact": "The 'eight' target is not met under either count.",
+      "what_we_did": "Counts recorded on brief-status/index.html. No article added.",
+      "sources": [
+        {
+          "label": "Google Search Central: helpful, people-first content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        }
+      ],
+      "claim_not_made": "No claim that the eight-article calendar was approved."
+    },
+    {
+      "id": "M38-F-09",
+      "severity": "High",
+      "status": "Open - decision needed",
+      "issue": "S-14 cites DESIGN_PROMPT.md 'in this repository', but the file is not in this checkout. S-15 says the brand name was settled, but the site still uses the working name 'Zone3 Kitchen', and data/shop/config.json marks the name as an open decision (DEC-04).",
+      "impact": "The design brief the visual overhaul depends on cannot be confirmed here, and the brand is not settled.",
+      "what_we_did": "Recorded as Not found here and Conflict on brief-status/index.html. The name was not changed.",
+      "sources": [
+        {
+          "label": "Google Search Central: helpful, people-first content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        }
+      ],
+      "claim_not_made": "No brand name is presented as cleared for use."
+    },
+    {
+      "id": "M38-F-10",
+      "severity": "High",
+      "status": "Open - decision needed",
+      "issue": "S-18 says 'never generated or copied photography', and 'needs a decision first'. The three images in assets/img/ are not product photographs: hero-kitchen.jpg is a generated-style kitchen illustration, and capacity.jpg is captioned 'Our own illustration'.",
+      "impact": "The site shows imagery the brief rules out, unless the owner decides the illustrations are acceptable.",
+      "what_we_did": "Images left in place and recorded. No product photograph was added. The source of the illustrations is not recorded in the repo.",
+      "sources": [
+        {
+          "label": "Associates Program Operating Agreement (Section 5 disclosure)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        }
+      ],
+      "claim_not_made": "No claim that the images are photographs, or that they were copied from Amazon."
+    },
+    {
+      "id": "M38-F-11",
+      "severity": "High",
+      "status": "Open - for review",
+      "issue": "The brief says S-19 (a three-question chooser above the comparison table) and S-23 (capacity per centimetre of counter depth) are implemented. Neither appears on any published page (measured 2026-11-17).",
+      "impact": "Two claimed deliverables are absent from this site.",
+      "what_we_did": "Recorded as Not found here on brief-status/index.html. Not built in this session, because the brief's source for S-23's measurements is the listing's dimensions, which the repo records only as observed text.",
+      "sources": [
+        {
+          "label": "Google Search Central: helpful, people-first content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        }
+      ],
+      "claim_not_made": "No claim that the chooser or the per-centimetre analysis exists."
+    },
+    {
+      "id": "M38-F-12",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "S-24 asks that every article reach the comparison, the buying guide and its category pillar. The five pages in articles/ link to them. The four question guides in guides/ do not link to a buying guide or a category pillar.",
+      "impact": "The question guides are dead ends for a reader who wants to compare or buy.",
+      "what_we_did": "Recorded as Partly here. No link added.",
+      "sources": [
+        {
+          "label": "Google Search Central: helpful, people-first content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        }
+      ],
+      "claim_not_made": "No claim that the internal linking is complete."
+    },
+    {
+      "id": "M38-F-13",
+      "severity": "Low",
+      "status": "Open - for review",
+      "issue": "SG-27 (nav labels) is named in the brief with no definition. No SG-27 register exists in this checkout.",
+      "impact": "Navigation labels cannot be checked against an agreed list.",
+      "what_we_did": "Recorded as Not measured on brief-status/index.html.",
+      "sources": [
+        {
+          "label": "Google Search Central: helpful, people-first content",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        }
+      ],
+      "claim_not_made": "No claim that navigation labels meet the brief."
+    },
+    {
+      "id": "M38-F-14",
+      "severity": "Medium",
+      "status": "Open - blocked (needs owner decision and privacy notice)",
+      "issue": "SG-30 (reader capture) is not built. There is no provider, no privacy notice and no decision on what would be captured.",
+      "impact": "No reader contact channel exists.",
+      "what_we_did": "Not built. The measurement page states that no reader data is captured.",
+      "sources": [
+        {
+          "label": "FTC: Disclosures 101 for social media influencers (disclosure placement)",
+          "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers"
+        }
+      ],
+      "claim_not_made": "No claim that reader capture is planned or approved."
+    },
+    {
+      "id": "M38-F-15",
+      "severity": "Low",
+      "status": "Open - for review",
+      "issue": "GitHub Pages logs the visitor IP address for security purposes, regardless of the site's own counter. The counter cannot change that.",
+      "impact": "Readers' IP addresses reach GitHub whatever the site does; the measurement page says so.",
+      "what_we_did": "Stated on measurement/index.html with the GitHub Docs link.",
+      "sources": [
+        {
+          "label": "GitHub Docs: What is GitHub Pages? (static hosting; visitor IP logged by GitHub)",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+        }
+      ],
+      "claim_not_made": "No claim that the counter is anonymous to GitHub."
+    },
+    {
+      "id": "M38-F-16",
+      "severity": "Low",
+      "status": "Open - for review",
+      "issue": "The brief's status labels for S-04…S-25 cite the owner's Zone4 decision log, a separate repository that is not an official source. Its individual rows were not re-read line by line in this session.",
+      "impact": "The 'Brief says' column is quoted, not verified.",
+      "what_we_did": "Kept in a separate column from the measured column on brief-status/index.html.",
+      "sources": [
+        {
+          "label": "Google Search Central: helpful, people-first content (the standard the brief cites for its rows)",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        }
+      ],
+      "claim_not_made": "No claim that the Zone4 statuses are correct."
     }
   ]
 }

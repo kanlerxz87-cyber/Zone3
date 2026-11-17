@@ -39,8 +39,8 @@ CHECKED = CFG["checked_on"]
 CHECKED_HUMAN = "17 Nov 2026"
 OFFICIAL_HOSTS = {
     "affiliate-program.amazon.com", "www.amazon.com", "amazon.com", "link.amazon",
-    "developers.google.com", "www.ftc.gov", "ftc.gov", "github.com", "docs.github.com",
-}
+    "developers.google.com", "search.google.com", "www.ftc.gov", "ftc.gov", "github.com", "docs.github.com",
+}  # search.google.com added in session 38650305 (Google Search Console sign-in page, fetched 2026-11-17)
 SPONSORED_HOSTS = {"www.amazon.com", "amazon.com", "link.amazon"}
 
 NAV = [

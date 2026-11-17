@@ -7331,7 +7331,77 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 | Pages deploy | GitHub Pages build `1378384894` for `0fbe95e58b508651e1e8861348a7b3ccedd7ec52`: **`built`** at 2026-11-17T16:34:42Z. |
 | Post-merge checks | The release-gate suite was rerun after rebasing on PR #141's `d192053` and before the merge; all gates recorded above passed. |
 
+---
 
+## Part 38 — session `38650305` (branch `arena/38650305-zone3`, base `d192053` (main at claim), 2026-11-17)
+
+### 38 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 38650305 | `arena/38650305-zone3` | Measurement layer (privacy-preserving outbound-click counter, five event definitions, self-hosted collector script, OFF until an endpoint host exists); brief-status register (S-04…S-25, SG-27…SG-30 checked against this repo); flags for the blocked items; executive summary update; integration, PR to `main`, merge, Pages check | in progress | 2026-11-17 |
+
+### 38 Coordination check before claiming
+
+- Branch was behind `main`: fast-forwarded to `d192053` (PR #141, session `82372fd1`). Shallow clone unshallowed to find the merge base. No other session has an `in progress` row touching the files below; `aebf0747` (AE-T7, click counter / endpoint / Search Console / Special Link validation) is recorded `blocked` and is taken over here **only for the parts that can be built without an owner account**. The blocked parts stay blocked.
+- Scope (this session edits only): `assets/measure.js`, `assets/measure-config.js` (generated), `data/shop/measurement.json`, `data/shop/brief-status.json`, `data/shop/flags.json` (appended), `tools/measure_pass.py`, `tools/build_measurement.py`, `tools/analytics_endpoint.py`, `tools/build_brief_status.py`, `measurement/**`, `brief-status/**`, `sessions/38650305/**`, the footer group list in `sessions/aebf0747/publish_pass.py`, `EXECUTIVE-SUMMARY.md` (dated section), `README.md` (build-chain lines), `sitemap.xml` (regenerated), and the new script tags on published pages (mechanical, via `tools/measure_pass.py`).
+
+### 38 Task board (claimed before any other work)
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| M38-T1 — Claim and coordination record | done (this commit) | `COORDINATION.md` (Part 38 only) | — |
+| M38-T2 — Source verification of the measurement rules (Participation Requirements 2(a)/2(b), GitHub Pages data-collection statement) | in progress | `sessions/38650305/verification.md` | Every row links the official page; fetched 2026-11-17. |
+| M38-T3 — Privacy-preserving outbound-click counter and five event definitions (client) | in progress | `assets/measure.js`, `assets/measure-config.js`, `data/shop/measurement.json`, `tools/measure_pass.py` | Off unless an endpoint is set. No cookies, no storage, no visitor ID; honours GPC and Do Not Track. |
+| M38-T4 — Self-hosted analytics collector (aggregate daily counts; no IP, user agent or referrer stored) | in progress | `tools/analytics_endpoint.py` | Stdlib only; `--self-test` tests the allowlist, the aggregate store and the no-identifier rule. Not hosted: GitHub Pages is static. |
+| M38-T5 — Measurement page | in progress | `tools/build_measurement.py`, `measurement/index.html` | States exactly what is and is not collected, and that counting is OFF. |
+| M38-T6 — Brief-status register (S-04…S-25, SG-27…SG-30) | in progress | `data/shop/brief-status.json`, `tools/build_brief_status.py`, `brief-status/index.html` | Each row says what this repo shows, what was checked and what is only claimed. |
+| M38-T7 — Flags for blocked items | in progress | `data/shop/flags.json` (append) | Special Link validation, Search Console, endpoint host, reader capture, imagery, the five events, cadence. |
+| M38-T8 — Integration: gates, build chain, sitemap, executive summary, PR to `main`, merge, Pages check | planned | as above | Merge only after every gate passes; no broken links. |
+
+### 38 Blocked, not built (by design)
+
+- **Special Link validation (brief: "test one link per product in the enrolled Associates workflow").** Needs a logged-in Associates account. This sandbox has no account access and no permission to act in one. Not done. Short links kept as supplied; not described as invalid (FLG-003).
+- **Search Console.** Needs the owner's Google account to verify ownership. Not done.
+- **Reader capture (SG-30).** No provider, privacy notice or decision exists. Not done.
+- **Hosting for the collector.** GitHub Pages cannot run the endpoint. The collector ships as a script the owner can run on a host of their choice; the counter stays OFF until that host and its URL are set.
+
+### 38 Task status (2026-11-17)
+
+| Task | Status | Record |
+|---|---|---|
+| M38-T1 — Claim and coordination record | done | this Part, first commit `c00182a` |
+| M38-T2 — Source verification (Participation Requirements 2(a)/2(b); GitHub Pages docs; Search Console sign-in) | done | `sessions/38650305/verification.md` §1 |
+| M38-T3 — Privacy-preserving outbound-click counter and five proposed events (client) | done, OFF | `assets/measure.js`, `assets/measure-config.js`, `data/shop/measurement.json`; tests `sessions/38650305/test_measure.js` (16 checks, Node, stubbed browser) |
+| M38-T4 — Self-hosted collector (aggregate daily totals; no IP, user agent, referrer or request log) | done, not hosted | `tools/analytics_endpoint.py` (`--self-test`, 10 checks; live HTTP checks recorded in verification §3) |
+| M38-T5 — Measurement page | done | `measurement/index.html` (generated by `tools/build_measurement.py`) |
+| M38-T6 — Brief-status register (S-04…S-25, SG-27…SG-30) | done | `data/shop/brief-status.json`, `brief-status/index.html`; counts 23 rows |
+| M38-T7 — Flags for blocked and unverified items | done | `data/shop/flags.json` M38-F-01…M38-F-16 (published on the shop Flagged page) |
+| M38-T8 — Integration, gates, PR, merge, Pages check | in progress | see the publish record below |
+
+**Brief rows measured here (2026-11-17):** S-04 met (104/104); S-05 met (1,447 links, 0 unmarked); S-09 partly (11/104); S-17 met (live front page); SG-28 met (RSS current). **Not found here:** S-14 (DESIGN_PROMPT.md), S-19 (chooser), S-23 (per-cm analysis). **Conflicts:** S-15 (brand still working name, DEC-04), S-18 (illustrations, not photography). **Blocked (owner):** S-25 and SG-29 (Search Console), SG-30 (reader capture), Special Link validation (M38-F-01). The rest are partly or not measured. Full table with reasons: `brief-status/index.html`.
+
+**Shared-tool changes (logged):** `tools/build_shop.py` — `search.google.com` added to `OFFICIAL_HOSTS` (the gate rejected the Search Console sign-in page cited in M38-F-03; the page was fetched 2026-11-17). `sessions/aebf0747/publish_pass.py` — two footer links (measurement, brief status). Required order is now written in `README.md`: `build_shop` → `publish_pass` → `measure_pass` → `build_sitemap`.
+
+**Irregularities found during the session (fixed where possible):**
+- The first chain printed the exit code of `tail`, not of the gate, so a failing `build_shop --check` looked green. Caught by a fresh clone of the pushed branch; fixed by adding the host and correcting one flag source. Every gate is now re-run with its own exit code.
+- The publish pass and the measure pass both inserted before `</body>`, so their outputs flipped each other on rerun. Fixed by placing the measurement script in `<head>`.
+- Two flag sources cited the owner's Zone4 record, which is not an official source. Replaced with an official Google page; the Zone4 labels are quoted, not linked as evidence (M38-F-16).
+- The brief's S-14 and S-15 cite files and a settled brand name that this repo does not contain.
+
+Pending: merge record and Pages check (below).
+
+### 38 Publish record (M38-T8)
+
+| Item | Result |
+|---|---|
+| Pull request #144 | https://github.com/kanlerxz87-cyber/Zone3/pull/144 — `arena/38650305-zone3` → `main`, `mergeStateStatus` CLEAN, merged with `gh pr merge 144 --merge` at 2026-11-17 16:39 UTC, merge commit `52df5aa`. |
+| Pages | Legacy build for `52df5aa`: `built` (16:39:42 UTC). Source `main` `/`. |
+| Live checks (cache-busted fetch, 2026-11-17) | `/measurement/` shows "Measurement · status: OFF"; `/assets/measure-config.js` reads `enabled: false`, endpoint empty; `/brief-status/` loads with the register and footer disclosure. |
+| Correction found after merge | The live brief-status page quoted 102 pages and 1,444 links. Those were the counts before the two new pages were added; the measured tree has 104 pages and 1,447 links. Fixed in `data/shop/brief-status.json` and `data/shop/flags.json` (M38-F-05, M38-F-07), regenerated, all gates re-run. Shipped as a follow-up PR (number and merge result: GitHub, PR titled "Session 38650305 — correct page counts in brief-status register"). |
+| Clean checkout | Fresh clone of `arena/38650305-zone3` at `e97afc7` ran every gate. One failure (`build_shop --check`, `search.google.com` not allow-listed) was fixed in `5ada925`; the clean clone was then re-run at the commit above with every gate passing. |
+| Rebase | `main` moved to `c67596a` (PR #143, session `59b2194c`) during this work. Rebased; the one conflict in `COORDINATION.md` (both sides appended) was resolved by keeping both sides in full. `EXECUTIVE-SUMMARY.md` merged cleanly; both sessions' sections are present. |
+| Session status | M38-T1…T8 **done**. Blocked, not built, each flagged: Special Link validation (M38-F-01), Search Console (M38-F-03), reader capture (M38-F-14), collector hosting (M38-F-04, M38-F-15), the five events (M38-F-04), the image decision (M38-F-10), the brand name (M38-F-09). |
 # Part: session `2f181cd9` (2026-11-17) — five-link intake (two new links), design-direction pack, decision lab, final integration
 
 ## Session registry (this part)

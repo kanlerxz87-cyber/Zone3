@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurement — what is counted on this site, and what is not</title>
+<meta name="description" content="The five page and click events proposed for Zone3, the privacy rules the counter follows, and the status: counting is off until an endpoint is hosted.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/measurement/">
+<link rel="stylesheet" href="../assets/zone3-publication.css">
+<!-- z3:rss --><link rel="alternate" type="application/rss+xml" title="Zone3 guides" href="../feed.xml">
+<!-- z3:measure --><script src="../assets/measure-config.js"></script><script src="../assets/measure.js" defer></script><!-- /z3:measure -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <a class="brand" href="../index.html">Zone3 Kitchen (working name)</a>
+    <span class="tagline">Measurement</span>
+  </div>
+</header><!-- z3:strip -->
+<div class="z3-strip" role="note" aria-label="Affiliate disclosure"><div class="z3-wrap"><p><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Links to Amazon are marked sponsored. <a href="../publication-pass.html#disclosure">How disclosure is handled</a></p></div></div>
+<!-- /z3:strip -->
+
+<main id="main" class="wrap">
+<p class="eyebrow">Measurement · status: OFF</p>
+<h1>What is counted here, and what is not</h1>
+<p class="lede">The site has an outbound-click and page-event counter. It is built, and it is <strong>off</strong>: it sends nothing until someone hosts the collector and sets its address. Until then, Amazon's own Associates reports are the only click and order data this project has.</p>
+
+<h2>Status</h2>
+<ul>
+  <li><strong>Counter in the browser:</strong> built (<code>assets/measure.js</code>). Current setting: <strong>OFF</strong>.</li>
+  <li><strong>Collector:</strong> built as <code>tools/analytics_endpoint.py</code> and self-tested. <strong>Not hosted.</strong> GitHub Pages serves static files only, and GitHub's own documentation says it logs visitor IP addresses for security (the counter does not add to that log, and cannot remove it).</li>
+  <li><strong>Event names:</strong> five are proposed below. The brief asks for five defined events but does not name them; the owner must confirm or replace them (flag M38-F-04).</li>
+  <li><strong>Conversions:</strong> not measured here. Orders and commissions come only from the Associates reports; the campaign ledger stays empty until those reports are entered with their dates.</li>
+</ul>
+
+<h2>The five events (proposed)</h2>
+<div class="table-wrap"><table class="data">
+<thead><tr><th scope="col">Event</th><th scope="col">When it fires</th><th scope="col">What is sent</th><th scope="col">What is never sent</th></tr></thead>
+<tbody><tr><td><code>page_view</code></td><td>Every page load.</td><td>event name, page path (no query string, no hash), UTC day, protocol version.</td><td>visitor ID, IP address, user agent, referrer, cookies, screen or device data.</td></tr><tr><td><code>outbound_click</code></td><td>A click on any link marked rel=&quot;sponsored&quot; (every link to amazon.com or link.amazon).</td><td>event name, page path, link host, and the link&#x27;s last path segment when it is a 4 to 20 character letter-or-digit code (the short-link token or ASIN as written in the link).</td><td>the destination&#x27;s query string, any tag value beyond what is in the path, or anything that identifies a person.</td></tr><tr><td><code>guide_view</code></td><td>Load of a guide page: /guides/&lt;name&gt;.html or /site/guides/&lt;name&gt;.html, excluding the index pages.</td><td>event name, page path, UTC day.</td><td>anything beyond the page path.</td></tr><tr><td><code>intent_view</code></td><td>Load of the product-intent confirmation record (/intent-record/).</td><td>event name, page path, UTC day.</td><td>anything beyond the page path.</td></tr><tr><td><code>flag_view</code></td><td>Load of the flagged-for-review page or the publication pass page.</td><td>event name, page path, UTC day.</td><td>anything beyond the page path.</td></tr></tbody>
+</table></div>
+
+<h2>Rules the counter follows</h2>
+<ul><li>No cookies, localStorage or sessionStorage are written by the counter.</li><li>No visitor identifier is generated or sent.</li><li>If navigator.globalPrivacyControl is true, or Do Not Track is &#x27;1&#x27;, nothing is sent.</li><li>If endpoint_url is empty or enabled is false, nothing is sent and no network request is made.</li><li>Sends use navigator.sendBeacon with a text/plain body, so the browser does not read any response.</li></ul>
+<h2>Rules the collector follows</h2>
+<ul><li>Accepts only the five event names above; anything else returns 400.</li><li>Stores daily totals per event, page path and link token. It does not store IP addresses, user agents, referrers or request logs.</li><li>The server clock sets the day. Client-supplied dates are ignored.</li><li>Read access to totals requires a token set in the environment (Z3_ANALYTICS_READ_TOKEN). Without it, the read endpoint is disabled.</li></ul>
+
+<h2>Why no visitor-level tracking</h2>
+<p>Associates Program Participation Requirement 2(b) says that under no circumstances may any sub-tag, other ID or reporting provided in connection with the Associates Program be associated with a specific end user of the site. The counter therefore stores only daily totals per page and per link, never a visitor identifier. Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">Associates Program Policies, Participation Requirements 2(b)</a>.</p>
+
+<h2>Sources</h2>
+<ul><li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">Associates Program Participation Requirements 2(b): no sub-tag or reporting may be associated with a specific end user of the site</a> <span class="muted">(checked 2026-11-17)</span></li><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener">GitHub Docs: What is GitHub Pages? (static hosting; GitHub logs visitor IP addresses)</a> <span class="muted">(checked 2026-11-17)</span></li><li><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener">Associates Program Operating Agreement Section 5 (disclosure sentence)</a> <span class="muted">(checked 2026-11-17)</span></li></ul>
+
+<p class="muted">Generated by <code>tools/build_measurement.py</code> from <code>data/shop/measurement.json</code>. Flags: <a href="../shop/flagged/index.html">Flagged for review</a> (M38-F-01…M38-F-04).</p>
+</main>
+<!-- z3:footer -->
+<footer class="z3-foot" role="contentinfo"><div class="z3-wrap"><p class="z3-disc">As an Amazon Associate I earn from qualifying purchases.</p><p class="z3-foot-small">Links to Amazon are marked sponsored. This site is not operated by Amazon. Titles, ASINs and breadcrumbs are as observed on the dates shown; no price, rating or forecast is published here.</p><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px"><div><h4>Read</h4><nav aria-label="Read"><a href="../index.html">Front page</a><a href="../guides/index.html">Guides</a><a href="../articles/index.html">Research Desk articles</a><a href="../read/index.html">The Crisp Report</a><a href="../site/index.html">Reader site</a></nav></div><div><h4>Products and pricing</h4><nav aria-label="Products and pricing"><a href="../intent-record/index.html">Product-intent record</a><a href="../products/index.html">Products</a><a href="../pricing/index.html">Pricing</a><a href="../commission/index.html">Commission</a><a href="../reviews/index.html">Reviews</a><a href="../niches/index.html">Niches</a></nav></div><div><h4>Governance</h4><nav aria-label="Governance"><a href="../publication-pass.html">This pass and flagged for review</a><a href="../measurement/index.html">Measurement (counter off)</a><a href="../brief-status/index.html">Brief status</a><a href="../executive-summary/index.html">Executive summary</a><a href="../compliance/index.html">Compliance</a><a href="../agent-terms/index.html">Agent terms</a><a href="../methodology/index.html">Methodology</a><a href="../requirements/index.html">Requirements</a><a href="../sources/index.html">Sources</a><a href="../verification.html">Verification log</a><a href="../flagged/index.html">Flagged (all items)</a></nav></div><div><h4>Dashboards</h4><nav aria-label="Dashboards"><a href="../dashboard/index.html">Dashboard</a><a href="../dashboard-register.html">Register (previous front page)</a><a href="../campaigns/index.html">Campaigns</a><a href="../content/index.html">Content</a><a href="../repo-review/index.html">Repo review</a><a href="../suggestions.html">Suggestions</a><a href="../decision-queue.html">Decision queue</a><a href="../design-brief.html">Design brief</a></nav></div><div><h4>Feeds</h4><nav aria-label="Feeds"><a href="../feed.xml">RSS feed</a><a href="../sitemap.xml">Sitemap</a></nav></div></div></div></footer>
+<!-- /z3:footer -->
+</body>
+</html>
