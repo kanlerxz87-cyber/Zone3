@@ -1457,7 +1457,11 @@ def build_suggestions() -> None:
         'Session 4f83ee7b published this page for review before any change. The '
         '<strong>Decision log</strong> below records what the follow-up session '
         '(5a56c084, 2026-11-16) implemented, deferred or left blocked: only unblocked '
-        'proposals were implemented, and no open question was answered by inference.</p></div>'
+        'proposals were implemented, and no open question was answered by inference. '
+        'The pass of 2026-11-17 (session 0b2ffabd) adds the design prompt itself, a '
+        'decision-readiness ledger that says what each decision still needs before it can '
+        'be made reasonably, four new proposals (SUG-11 to SUG-14) and four new questions '
+        '(Q13 to Q16); it implements none of them.</p></div>'
     )
 
     # Dated review section (session 82372fd1, 2026-11-17). Rendered from
@@ -1470,7 +1474,8 @@ def build_suggestions() -> None:
         )
         body += "<h2>Shipped since the last review</h2>" + table(
             ["Item", "Where", "What changed", "Evidence (all in this repo)"],
-            [[e(x["item"]), e(x["where"]), e(x["what"]), e(x["evidence"])] for x in rv["shipped"]],
+            [[e(x["item"]), e(x["where"]), e(x["what"]), e(x["evidence"]) + " "
+              + repo_link("COORDINATION.md", "repo:COORDINATION.md")] for x in rv["shipped"]],
         )
         body += (
             "<h2>Design paths — the brief for the polish, in reviewable options</h2>"
@@ -1495,7 +1500,8 @@ def build_suggestions() -> None:
             "<h2>The ten owner questions, re-statused 2026-11-17 — plus two this review added</h2>"
             + table(
                 ["Q", "Status at last review", "Status now", "What moved (with where it moves to)"],
-                [[f'<strong>{e(x["q"])}</strong>', e(x["was"]), e(x["now"]), e(x["change"])]
+                [[f'<strong>{e(x["q"])}</strong>', e(x["was"]), e(x["now"]), e(x["change"]) + " "
+                  + repo_link("data/suggestions.json", "repo:data/suggestions.json")]
                  for x in rv["restatus"]],
             )
             + '<p class="small">Q1-Q10 anchor the <a href="decision-queue.html">review console</a> queue; '
@@ -1565,6 +1571,74 @@ def build_suggestions() -> None:
             f"<li>{e(step)}</li>" for step in rv2["reading_order"]
         ) + "</ol>"
 
+
+    # Second review of 2026-11-17 (session 0b2ffabd): the design prompt itself, the
+    # decision-readiness ledger and the measured state of the reader surfaces. Rendered from
+    # data/suggestions.json['review_2026_11_17b'] so the page and the register cannot drift.
+    # Placed after session 73029680's late review so the page reads in the order the reviews
+    # were written; the three reviews share no keys, and none of them edits another's rows.
+    rv3 = s.get("review_2026_11_17b")
+    if rv3:
+        body += (
+            f'<div class="callout ok"><p><strong>Design prompt and decision-readiness review, '
+            f'{e(rv3["date"])} (session {e(rv3["session"])}).</strong> {e(rv3["note"])}</p></div>'
+        )
+        body += (
+            "<h2>State of the reader surfaces, measured " + e(rv3["date"]) + "</h2>"
+            + table(
+                ["Surface", "Brand", "Pages", "With canonical", "With og:image + JSON-LD", "Built by"],
+                [[f'<code>{e(x["surface"])}</code>', e(x["name"]), str(x["pages"]), str(x["canonical"]),
+                  str(x["social_and_schema"]),
+                  e(x["owner"]) + " " + repo_link("sessions/0b2ffabd/repo-review.md", "repo:sessions/0b2ffabd/repo-review.md")]
+                 for x in rv3["layers"]],
+            )
+            + f'<p class="small">{e(rv3["layers_note"])}</p>'
+        )
+
+        pr = rv3["prompt"]
+        body += (
+            "<h2>The design prompt (what a polish pass would be built from)</h2>"
+            f'<p class="small">{e(pr["intro"])}</p>'
+            + '<h3>What it must feel like</h3><ul class="findings">'
+            + "".join(f"<li>{e(x)}</li>" for x in pr["feel"]) + "</ul>"
+            + "<h3>Rails: the rule, the source, and what it does to the layout</h3>"
+            + table(
+                ["Constraint", "What the official page says", "Source", "What it means for the design"],
+                [[f'<strong>{e(x["rail"])}</strong>', e(x["rule"]), src_links(x["source"]), e(x["meaning"])]
+                 for x in pr["rails"]],
+            )
+            + "<h3>Section by section</h3><ul class=\"findings\">"
+            + "".join(f'<li><strong>{e(x["name"])}</strong> {e(x["spec"])}</li>' for x in pr["sections"])
+            + "</ul>"
+            + "<h3>Not to be done, in any path</h3><ul class=\"findings\">"
+            + "".join(f"<li>{e(x)}</li>" for x in pr["avoid"]) + "</ul>"
+        )
+
+        body += (
+            "<h2>Decision-readiness ledger: what has to be known before a decision is reasonable</h2>"
+            '<p class="small">One row per decision. The "Answer" column is the form of the answer, not '
+            'an answer; the "Default" column is what the site ships while it stays blank. repo anchors '
+            "name the file a later session reads.</p>"
+            + table(
+                ["Decision", "The answer, in the form it needs", "Who can supply it",
+                 "What it unblocks", "Default if it stays unanswered", "Where to record it", "Evidence in this repo"],
+                [[f'<strong>{e(x["decision"])}</strong>', e(x["answer"]), e(x["who"]), e(x["unblocks"]),
+                  e(x["default"]), e(x["where"]), repo_link("sessions/0b2ffabd/repo-review.md", "repo:sessions/0b2ffabd/repo-review.md")]
+                 for x in rv3["decision_readiness"]],
+            )
+        )
+        body += (
+            "<h2>What each design path costs now</h2>"
+            + table(["Path", "What this review changes about it", "Cost as measured today", "Evidence"],
+                    [[f'<strong>{e(x["id"])}</strong>', e(x["changed"]), e(x["cost_now"]),
+                      repo_link("sessions/0b2ffabd/repo-review.md", "repo:sessions/0b2ffabd/repo-review.md")]
+                     for x in rv3["paths_status"]])
+        )
+        body += f"<h2>Findability numbers behind every claim on this page</h2><p>{e(rv3['measurement'])}</p>"
+        body += "<h2>How to choose (updated " + e(rv3["date"]) + ")</h2><ol class=\"findings\">" + "".join(
+            f"<li>{e(step)}</li>" for step in rv3["how_to_choose"]
+        ) + "</ol>"
+
     body += "<h2>Verified basis</h2>" + '<p class="small">The facts the proposals rest on, re-verified 2026-11-15 and re-checked 2026-11-16 (session record: <a href="sessions/5a56c084/index.html">5a56c084</a>).</p>'
     rows = []
     for v in s["verified_basis"]:
@@ -1585,10 +1659,14 @@ def build_suggestions() -> None:
         comp = "<ul class=\"findings\">" + "".join(
             f"<li>{e(c['text'])} {src_links(c['source'])}</li>" for c in g["compliance"]
         ) + "</ul>"
+        # 2026-11-17 (session 0b2ffabd): a proposal that rests on the design brief links the
+        # brief, which is also provenance the row gate counts (tools/verify_site.py V4).
+        brief = (" " + repo_link(g["prompt_ref"], "repo:" + g["prompt_ref"])
+                 if g.get("prompt_ref") else "")
         sug_rows.append([
             e(g["id"]),
             f'<strong>{e(g["title"])}</strong>',
-            f'<div>{e(g["what"])}</div>{blocker}',
+            f'<div>{e(g["what"])}</div>{blocker}{brief}',
             f'<div>{e(g["why"])}</div>{comp}',
             badge("Proposal", "info") if g["status"] == "proposed"
             else badge("Blocked", "warn") if g["status"] == "blocked"
@@ -1624,7 +1702,9 @@ def build_suggestions() -> None:
         body += (
             '<div class="callout ok"><p><strong>Decision log.</strong> For each proposal '
             '(SUG-01 to SUG-10) the implementing sessions recorded accept / defer / hold with a '
-            'reason, exactly as the workflow below asks. Every implemented item respects its '
+            'reason, exactly as the workflow asks. SUG-11 to SUG-14, added by the 2026-11-17 '
+            'review above this log, carry no decision yet and are published as proposals. '
+            'Every implemented item respects its '
             'compliance basis: no tagged conversion CTAs (SUG-05 stays blocked pending Q1), '
             'no price or rating display (2(b)/6(t)), no invented metrics anywhere. Two sessions '
             'worked this page in parallel (5a56c084 and f132f462) and both records are kept; '
@@ -1637,13 +1717,18 @@ def build_suggestions() -> None:
 
     q_rows = []
     for q in s["questions"]:
+        # Session 0b2ffabd (2026-11-17): a question whose answer is an owner choice has no
+        # official page to cite, so it carries a repo anchor instead - which is provenance the
+        # row-provenance gate (tools/verify_site.py V4) counts, rather than a fake source.
+        q_tail = (" " + repo_link(q["repo_evidence"], "repo:" + q["repo_evidence"])
+                  if q.get("repo_evidence") else "")
         q_rows.append([
             e(q["id"]),
             f'<strong>{e(q["question"])}</strong>',
             e(q["what_we_know"]) + f" {src_links(q['source'])}",
             e(q["what_we_dont_know"]),
             e(q["why_it_matters"]),
-            e(q["how_to_discover"]),
+            e(q["how_to_discover"]) + q_tail,
         ])
     body += "<h2>Open questions: what must be answered before a decision</h2>" + table(
         ["ID", "Question", "What we already know (sourced)", "What we do not know",
@@ -1655,7 +1740,9 @@ def build_suggestions() -> None:
             e(d["id"]),
             f'<strong>{e(d["action"])}</strong>',
             e(d["discovers"]),
-            src_links(d["source"]),
+            src_links(d["source"])
+            + (" " + repo_link(d["repo_evidence"], "repo:" + d["repo_evidence"])
+               if d.get("repo_evidence") else ""),
         ])
     body += "<h2>Suggestions for discovering the missing information</h2>" + table(
         ["ID", "Action", "What it discovers", "Source"], d_rows)
@@ -1669,9 +1756,12 @@ def build_suggestions() -> None:
               "must be answered before any decision, and how to discover the missing "
               "information. Updated 2026-11-17: a dated review adds three design paths, "
               "what shipped since the last decision log, and two new questions the owner "
-              "brief exposed. Proposals are labelled as proposals; every fact carries its "
-              "source; the decision log records what has been implemented, deferred or "
-              "left blocked.")
+              "brief exposed; a second pass the same day adds the design prompt itself, the "
+              "decision-readiness ledger, four findability and measurement proposals "
+              "(SUG-11 to SUG-14) and four new owner questions (Q13 to Q16), and replaces "
+              "the register's 'three reader layers' with the six measured today. Proposals are "
+              "labelled as proposals; every fact carries its source; the decision log "
+              "records what has been implemented, deferred or left blocked.")
 
 
 # ------------------------------------------------------------- Campaigns

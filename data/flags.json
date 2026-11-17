@@ -1,5 +1,5 @@
 {
- "retrieved": "2026-11-14",
+ "retrieved": "2026-11-17 — F-2F-01…F-2F-10 and G84-F-01 (sessions 2f181cd9 / 73029680) plus G0B2-F-01…G0B2-F-11 (session 0b2ffabd) added; no earlier entry edited, only appended. The G0B2 rows were rewritten against the merged tree (main@2868a3a) before publication, so they state what is true at merge, not what was true of the older base the session started from.",
  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10 (union by ID over main's board).",
  "flags": [
   {
@@ -1674,6 +1674,182 @@
     "S87",
     "S88"
    ]
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-01",
+   "severity": "Medium",
+   "category": "Owner privacy / register convention",
+   "item": "The selected tracking ID is printed on five published files although Q1's recorded rule keeps the value in COORDINATION.md only",
+   "detail": "The 2026-11-17 owner brief names the tracking ID to be used, and Part 82 recorded the owner rule: the value lives in the coordination log, not on public pages. Measured with grep on main@d192053 and again on the merged tree before this record was published, the value string appears in exactly the same five published HTML files: publication-pass.html, intent-record/index.html, shop/decisions/index.html, shop/findings/index.html and shop/flagged/index.html. Those are other sessions' pages, so this session changed none of them. The point is not that a tracking ID is secret - it ships in every Special Link URL and is visible in the address bar of any Amazon destination - but that the project now has two written conventions about the same value, and the register is the one the owner reads when deciding Q1.",
+   "action": "Owner picks one: (a) redact the value from those five files and keep it only in COORDINATION.md, or (b) amend Q1's rule to allow the ID on governance pages (not on reader pages), and record where it may appear. Either way the Special-Link rewrite itself stays gated on the one-link test in S02/S80 (Participation Requirements 2(a)-(b)) and is not done by this decision.",
+   "sources": [
+    "S80"
+   ],
+   "repo_evidence": "grep for the value string across the published tree at d192053; sessions/0b2ffabd/repo-review.md section 5.1"
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-02",
+   "severity": "Low",
+   "category": "Register accuracy (fixed)",
+   "item": "Q12 and the design paths describe the duplication problem as three reader layers; the tree now carries six, and one of them grew again on 2026-11-17",
+   "detail": "data/suggestions.json said 'Three parallel reader layers (site/, read/, marketing/)'. Measured on the merged tree (main@2868a3a plus this pass) with find/grep: site/ 20 HTML pages (18 at this session's base; sessions ded63349 and 73029680 added site/measure.html and site/intent-record.html), read/ 11, shop/ 11, marketing/ 7, guides/ 5, articles/ 5, plus 25 root pages. 190 HTML pages in the published tree overall. So the owner's Q12 choice is 'which of six', and DP-C's 'small edits' effort estimate understates the consolidation: the layers grew once per session, in parallel, exactly as the coordination protocol allows. Nothing here is a defect in another session's work; the register's prose had simply not followed the tree.",
+   "action": "Fixed in the register by this pass: review_2026_11_17b carries the measured six-surface inventory (re-measured after the rebase) and restates Q12 as a choice among six. The decision itself is unchanged in substance: name one canonical reader layer and mark the rest companion research with cross-links rather than duplicates. Session 73029680's runbook item 2 asks the same question in the same words; one answer settles both.",
+   "sources": [],
+   "repo_evidence": "sessions/0b2ffabd/repo-review.md section 3 (find/grep counts); data/suggestions.json questions Q12 and review_2026_11_17 paths DP-C"
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-03",
+   "severity": "Medium",
+   "category": "Provenance (partly closed)",
+   "item": "The two meat-thermometer listings published on the front page had no capture in the canonical source register at this session's base; two later sessions captured them the same day",
+   "detail": "At main@d192053, index.html, intent-record/index.html and the shop layer stated that link.amazon/B0c8moW59 opens B0DHZTCNR5 and link.amazon/B0f3GKalj opens B0DZFD6R9Z, while grep over data/sources.json and data/products.json found no such capture in the canonical registers - the observations lived only in data/shop/sources.json and sessions/aebf0747/intent-record.json. This session fetched both links itself on 2026-11-17 and the destinations and served titles match. The merged tree now carries that capture twice more: session 2f181cd9 added S70-S73 and the P4/P5 product rows, and session 73029680 added S83-S88 after fetching all six URLs; this pass's own capture agrees with both, so the front-page claim is backed three ways by same-day reads. What is still open is the owner half of G82-F-03: whether those two links belong to this project at all, and whether either listing is the product that was intended (products.json sets confirmed_as_submitted_product to false for both, and the intended fields stay empty).",
+   "action": "Owner: confirm or withdraw each of the two links (G82-F-03, F-2F-01, F-2F-02). If confirmed, an integration session fills the intended ASIN/listing-URL/date/source fields from Associates Central and the thermometer cluster enters the topic calendar; if withdrawn, the front-page rows and the shop layer lose them in one pass. No editorial content about either product should be written before that, because a brief would have to describe a product the register says is unconfirmed (Q16).",
+   "sources": [
+    "S70",
+    "S71",
+    "S72",
+    "S73"
+   ],
+   "repo_evidence": "sessions/0b2ffabd/verification.md section 6; data/products.json P4/P5 (sessions 2f181cd9 and 73029680)"
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-04",
+   "severity": "Info",
+   "category": "Gate hygiene (fixed)",
+   "item": "Four rows on suggestions.html (Q11, Q12, D8, D10) carried no source and were reported by verify_site V4; they are fixed, and the page's remaining advisories belong to another review",
+   "detail": "The V4 row-provenance check had been printing, for the inherited page suggestions.html: rows 'Q12', 'D8' and 'D10' carry no link to an official source, no flag and no repo anchor (Q11 likewise rendered 'no source'). The cause was in the data: those four rows had an empty source list, and the renderer prints 'no source' when it does. The rows state facts (a captured redirect, a measured coverage number) or an owner-only choice, and both cases have a legitimate provenance - an official page or a repo anchor - it was just never recorded. Re-measured after the rebase: verify_site reports 0 V4 advisories on any row this pass added to suggestions.html — none on the design-prompt, layers, decision-readiness, path-cost, question or discovery tables. Three of this session's own rows are nevertheless reported on flagged.html (G0B2-F-06, -08, -09), for a structural reason recorded there and not patched away: that table prints only item, detail, action and its Source column, no repo anchor, and verify_site's own host list does not credit developers.google.com. suggestions.html does carry 14 V4 advisories from the tables session 73029680 added the same day (its eight seasonal-calendar rows and six runbook rows) - see G0B2-F-11 - plus 43 V4-review notes across the page, which are the advisory grade for rows deliberately sourced from this repository rather than from Amazon or the FTC.",
+   "action": "Fixed in this pass: Q11 and Q12 cite the same-day link captures (S70, S71) and the measured review, D8 cites Google's sitemap and What's-new pages (S92, S93) with a Search Console property note, and the owner-only rows carry a repo anchor, which V4 counts as provenance. No HTML was hand-patched to achieve that: the fix is in data/suggestions.json and the anchors are emitted by build_suggestions().",
+   "sources": [],
+   "repo_evidence": "tools/verify_site.py V4 rule; data/suggestions.json questions and discovery entries updated by this session"
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-05",
+   "severity": "Info",
+   "category": "Policy coverage (fixed)",
+   "item": "Six Participation Requirements clauses the marketing design depends on were quoted nowhere in policy_facts.json",
+   "detail": "The site's own compliance claims rest on: no bookmarking of Special Links; 'All Special Links must be accessed directly from your Site'; the ban on associating a sub-tag or program reporting with a specific end user; the requirement of additional original content relevant to the Special Link when linking to Product lists; the duty to remove limited-time-promotion references as soon as the promotion ends; and the condition that triggers a lowest-new/lowest-used display in a price comparison. Grep over data/policy_facts.json for 'sub-tag', 'bookmark', 'limited time promotion', 'Product lists' and the comparison wording returned zero hits before this pass, so the design prompt would have cited the rules from recollection rather than from a record.",
+   "action": "Fixed: the six clauses were read verbatim on 2026-11-17 from the live Program Policies page (chunk 3 of 11) and appended as PF-57 to PF-62, each with S80 as its source. DESIGN_PROMPT.md cites those records, which is what makes the rails checkable instead of decorative.",
+   "sources": [
+    "S80"
+   ],
+   "repo_evidence": "data/policy_facts.json PF-57..PF-62; sessions/0b2ffabd/verification.md section 2.2"
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-06",
+   "severity": "Low",
+   "category": "Findability (needs owner / needs an integration session)",
+   "item": "Sitemap hygiene items measured this session, deliberately not fixed in a review-only pass",
+   "detail": "Three mechanical items, each verified against Google's own sitemap documentation (S92): (1) sitemap.xml lists 101 URLs (97 at this session's base) and still has zero <lastmod> elements - Google says it uses lastmod when it is consistently and verifiably accurate, and a build-time 'today' stamp would be the wrong fix, a per-file git commit date is the verifiable one; (2) 404.html is in the sitemap although Google's guidance is to include the URLs you want to see in search results; (3) social preview and structured data coverage is 11 of 144 pages (all of read/), with a canonical link on 102 of the 190 HTML pages in the tree - og:image and JSON-LD exist nowhere in site/, shop/, guides/ or articles/. Each fix touches a file two generators already write (sitemap.xml is written by both scripts/build_sitemap.py and tools/build_site.py, which is why the coverage-not-bytes check exists), and the head-link fix belongs to other sessions' generators.",
+   "action": "Owner to accept the sequencing, then ONE integration session implements: lastmod from git dates in scripts/build_sitemap.py; 404.html removed from the sitemap collect() list; og:title/og:image via each layer's own generator using this repository's own artwork only (no Program Content imagery, S-18 undecided). Until then no page is hand-edited. SUG-11 and SUG-12 in the suggestions register carry the same content as proposals.",
+   "sources": [
+    "S92"
+   ],
+   "repo_evidence": "scripts/build_sitemap.py; grep counts in sessions/0b2ffabd/repo-review.md section 4"
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-07",
+   "severity": "Low",
+   "category": "Source conflict (owner choice recorded)",
+   "item": "Google's meta-description guidance invites a price into the description; Amazon's 2(b) forbids displaying one",
+   "detail": "Google's snippet documentation says a product page's 'key bits of information-price, age, manufacturer' can be brought together in a good meta description (S91). Amazon's Participation Requirements 2(b) says a Site may show prices and availability only if Amazon serves the link containing that data, or it comes from Creators API / PA API (S80, PF-04/PF-44/PF-54). This site has no API access, so the two documents point in opposite directions for the one field that most affiliate sites put in the description tag.",
+   "action": "No change needed from the owner - the recorded resolution is the safe one and is now written down: page-level descriptions stay specific about what the page checked (which listing, which claim, which date) and never state a price, availability or rating. If the owner later obtains API credentials (Q4), the descriptions can gain price with the adjacent date/time stamp the license requires (PF-27), and that becomes a rebuild, not a copy edit.",
+   "sources": [
+    "S80",
+    "S91"
+   ],
+   "repo_evidence": "DESIGN_PROMPT.md rails section; data/policy_facts.json PF-27, PF-44, PF-54"
+  },
+  {
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "open",
+   "id": "G0B2-F-08",
+   "severity": "Info",
+   "category": "Anti-pattern avoided (recorded)",
+   "item": "No FAQ rich result exists to chase, so the question-shaped guides are justified on reader value only",
+   "detail": "The URL that used to document the FAQ rich result (developers.google.com/search/docs/appearance/structured-data/faqpage) now serves Google's Search Central 'What's new' page at the June 2026 entry 'Removing documentation for the FAQ rich result feature' (S93). Several sessions here have written question-shaped guides, and an obvious next step would be to add FAQPage JSON-LD to them for rich results.",
+   "action": "Recorded so nobody spends a build on it: no FAQPage schema is added to any page. The guides keep their question-shaped titles because readers type questions, and any future SEO claim about their performance has to come from a Search Console property (D8), not from markup.",
+   "sources": [
+    "S93"
+   ],
+   "repo_evidence": "sessions/0b2ffabd/verification.md section 2.8"
+  },
+  {
+   "id": "G0B2-F-09",
+   "severity": "Info",
+   "category": "Gate change (made in this pass)",
+   "item": "scripts/check_site.py OFFICIAL_HOSTS now includes developers.google.com, so Google Search Central can be cited as an official source",
+   "detail": "The register previously cited no Google documentation at all (grep: 0 sources on that host), yet the site implements Google-guided items -- rel=\"sponsored\" on every outbound product link (S-05) and unique per-page titles and descriptions (S-04) -- and the shared gate rejects a table row whose Source column links a host outside OFFICIAL_HOSTS. Without the entry, an honest citation of Google's own page fails the build while a citation of a weaker page passes. The host list already treats the FTC and Amazon's documentation hosts as official, and it was widened once before for the same reason (sell.amazon.com, added 2026-11-14 by session ecbfe91b for S31). No existing row changed status: no page in this repository cited developers.google.com before today. The same asymmetry has one visible consequence: the three rows on flagged.html whose only links are Google pages (this flag, G0B2-F-06 and G0B2-F-08) are reported by tools/verify_site.py as rows without an official source, because that checker keeps its own host list and the flagged table renders no repo anchor — no flag in the register anywhere uses one. Left as an advisory rather than tuned away in either direction.",
+   "action": "Made by this session (one line plus this comment). tools/verify_site.py's V4 pattern was deliberately NOT widened: it counts an 'official source' row differently and changing it would silently re-score other sessions' pages. tools/verify_site.py keeps its own host list, so developers.google.com links are still counted as ordinary sources on sources.html and show there as V4 advisories - the inherited-page advisory grade, not a failure. If the owner prefers the previous behaviour, revert the one line in scripts/check_site.py and the three Google-cited rows in data/flags.json and the suggestions register fall back to repo anchors.",
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "status": "fixed",
+   "sources": [
+    "S90",
+    "S91",
+    "S92"
+   ],
+   "repo_evidence": "scripts/check_site.py OFFICIAL_HOSTS; sessions/0b2ffabd/repo-review.md section 4"
+  },
+  {
+   "id": "G0B2-F-10",
+   "severity": "Info",
+   "category": "Register hygiene",
+   "status": "fixed",
+   "item": "This session's twelve source rows were renumbered and eight deleted on rebase, because S70-S81 had already been claimed the same day",
+   "detail": "Session 0b2ffabd wrote its 2026-11-17 captures as S70-S81 against main@d192053, where the register ended at S69. While that work was open, main gained S70-S82 (session 2f181cd9) and S83-S89 (session 73029680) on the same day, so the ids collided with rows pointing at different documents. The register's own reservation note warned of exactly this and says an id-existence check cannot catch it. On rebase: the four Google Search Central pages, which the register did not hold at all, became S90-S93; the other eight rows were deleted as duplicates and their citations re-pointed at the existing rows for the same documents - S79 (Operating Agreement §5/§6, re-read 2026-11-17), S80 (Program Policies Participation Requirements, re-read 2026-11-17), S30 (Commission Income Statement 2(e)), S07 (FTC Disclosures 101), S70 and S71 (the two submitted short links, first observed 2026-11-17) and S72 and S73 (the two destination listings). Nothing was lost: this session's own dated read notes, including the clauses those rows do not quote, stay in sessions/0b2ffabd/verification.md, and PF-57…PF-62 carry the verbatim quotations with S80 as their source.",
+   "action": "Made by this session; no owner action needed. If the owner prefers each session to hold its own row per page read, the eight deleted rows can be restored as S94-S101 - but then the register carries two rows for the same document on the same date, which is how the numbering drift started. Recorded here because a future session reading 'S77/S78' in an older file of this session's will find those ids belonging to different captures: read them as the same-day links, S70/S71.",
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "sources": [
+    "S79",
+    "S80",
+    "S30",
+    "S07",
+    "S70",
+    "S71",
+    "S72",
+    "S73",
+    "S90",
+    "S91",
+    "S92",
+    "S93"
+   ],
+   "repo_evidence": "data/sources.json id_reservation; sessions/0b2ffabd/verification.md section 7"
+  },
+  {
+   "id": "G0B2-F-11",
+   "severity": "Low",
+   "category": "Gate advisory, other session's rows",
+   "status": "open",
+   "item": "14 V4 advisories on suggestions.html come from the tables session 73029680 added the same day; fix requested, not applied here",
+   "detail": "After the merge, tools/verify_site.py reports 14 rows on suggestions.html with no official source, no flag and no repo anchor: eight rows of 'Seasonal calendar hooks' (each date row carries the OPM citation inside the sentence 'Thanksgiving Day — OPM 2026 table (S89)' rather than as a link) and six rows of 'The decision runbook' (whose 'Already in the register' and 'Still missing' columns are prose). The cause is structural, not careless: build_suggestions() renders those two tables with e(x['fact']) and plain cells, so even a row that names S89 in words gets no link element for V4 to count. This session deliberately edited neither the other review's data rows nor its renderer block, because a register row or a render path another session wrote is theirs to change.",
+   "action": "Change request, logged in COORDINATION.md Part 0B2: give each seasonal_calendar row a source list (['S89']) and render it with src_links(); do the same for decision_runbook rows against data/suggestions.json and COORDINATION.md via repo_link(). That is a nine-line change in build_suggestions() plus twelve small data fields, and it would take suggestions.html to zero hard V4 advisories. Any session may take it; it is not done here so that this pass's diff stays confined to the rows it added.",
+   "date": "2026-11-17",
+   "session": "0b2ffabd",
+   "sources": [],
+   "repo_evidence": "sessions/0b2ffabd/repo-review.md section 4; scripts/build_site.py build_suggestions()"
   }
  ]
 }

@@ -7742,13 +7742,13 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 
 ---
 
-# Part 0B2 — session `0b2ffabd` (branch `arena/0b2ffabd-zone3`, base `d192053` (main at claim), 2026-11-17)
+# Part 0B2 — session `0b2ffabd` (branch `arena/0b2ffabd-zone3`, base `d192053` (main at claim), published on `2868a3a`, 2026-11-17)
 
 ## 0B2 Session registry
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 0b2ffabd | `arena/0b2ffabd-zone3` | Design-prompt consolidation for the marketing-affiliate look, the decision-readiness ledger (what must be known, by whom, and what each answer unblocks), dated refresh of the suggestions register against the 2026-11-17 owner brief, flag register additions, final integration PR to `main` | in progress → publishing now | 2026-11-17 |
+| 0b2ffabd | `arena/0b2ffabd-zone3` | Design-prompt consolidation for the marketing-affiliate look, the decision-readiness ledger (what must be known, by whom, and what each answer unblocks), dated refresh of the suggestions register against the 2026-11-17 owner brief, flag register additions, final integration PR to `main` | done 2026-11-17 — rebased onto `2868a3a`, all gates green ×2, PR opened and admin-merged in this session | 2026-11-17 |
 
 ## 0B2 Coordination check before claiming
 
@@ -7761,9 +7761,9 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
 | G0B2-T1 — Repo review at the claimed base: gate snapshot, live-Pages spot check, measured inventory of the reader-facing surfaces | done 2026-11-17 | 0b2ffabd | read-only; record in `sessions/0b2ffabd/repo-review.md` | repo registers | any drift found → `G0B2-F-*` |
-| G0B2-T2 — Dated re-verification of the load-bearing official facts the suggestions layer cites (disclosure wording, sponsored-rel guidance, ASIN definition, participation requirements, snippet/description guidance) | done 2026-11-17 | 0b2ffabd | `sessions/0b2ffabd/verification.md`, `data/sources.json` (append S70+ only) | official pages | — |
+| G0B2-T2 — Dated re-verification of the load-bearing official facts the suggestions layer cites (disclosure wording, sponsored-rel guidance, ASIN definition, participation requirements, snippet/description guidance) | done 2026-11-17 | 0b2ffabd | `sessions/0b2ffabd/verification.md`, `data/sources.json` (appended as S70–S81 at the base; renumbered to S90–S93 on rebase, with eight duplicates re-pointed onto existing rows — `G0B2-F-10`) | official pages | — |
 | G0B2-T3 — Design prompt for the polished affiliate look: `DESIGN_PROMPT.md` assembled only from decisions already recorded in this repo, labelled a draft awaiting a path choice | done 2026-11-17 | 0b2ffabd | `DESIGN_PROMPT.md` (new) | `data/suggestions.json`, `data/flags.json` | — |
-| G0B2-T4 — Suggestions register, dated 2026-11-17 (this session): decision-readiness ledger, corrected reader-layer inventory (measured), design-prompt pointer, new questions + discovery actions, and source links on the rows `verify_site` V4 reported as uncited | done 2026-11-17 | 0b2ffabd | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | `data/sources.json` S01–S74 | — |
+| G0B2-T4 — Suggestions register, dated 2026-11-17 (this session): decision-readiness ledger, corrected reader-layer inventory (measured), design-prompt pointer, new questions + discovery actions, and source links on the rows `verify_site` V4 reported as uncited | done 2026-11-17 | 0b2ffabd | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | `data/sources.json` S01–S93 | — |
 | G0B2-T5 — Final integration: flags unioned + counts recomputed in `EXECUTIVE-SUMMARY.md`, full chain ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check, this Part completed | done 2026-11-17 | 0b2ffabd | `data/flags.json`, `flagged.html`/`suggestions.html` (regenerated), `README.md`, this Part | gate outputs | — |
 
 ## 0B2 Rules I follow
@@ -7776,12 +7776,13 @@ Claimed at 2026-11-17 (UTC), base `d192053` (merge of PR #141). Branch `arena/73
 ## 0B2 completion record (2026-11-17)
 
 **G0B2-T1 — repo review (done).** `sessions/0b2ffabd/repo-review.md`. Eleven gates green on the claimed base
-(snapshot in the file); live Pages spot check confirms the deployed `suggestions.html` matches the tree; the
-reader-surface inventory is measured, not inherited (`site/` 18, `read/` 11, `shop/` 11, `marketing/` 7,
-`guides/` 5, `articles/` 5, root 25) and contradicts the register's "three layers" wording — recorded as
+(snapshot in the file, plus §1b for the merged tree); live Pages spot check confirms the deployed `suggestions.html`
+matches the tree; the reader-surface inventory is measured, not inherited (`site/` 20, `read/` 11, `shop/` 11,
+`marketing/` 7, `guides/` 5, `articles/` 5, root 25 — 136 HTML pages outside `docs/`/`archive/`) and contradicts the register's "three layers" wording — recorded as
 `G0B2-F-02` and corrected in the data.
 
-**G0B2-T2 — dated verification (done).** `sessions/0b2ffabd/verification.md` + sources **S70–S81**: Operating
+**G0B2-T2 — dated verification (done).** `sessions/0b2ffabd/verification.md` §1–§7, sources **S90–S93** added and
+eight re-reads re-pointed at the existing rows S79, S80, S30, S07, S70, S71, S72, S73 (see `G0B2-F-10`): Operating
 Agreement §5/§6 (chunk 1 of 4), Program Policies Participation Requirements 2(a)/2(b) (chunk 3 of 11) and
 Commission Income Statement §2 (chunk 1 of 11), FTC *Disclosures 101* (whole page), Google Search Central on
 `rel="sponsored"`, snippets and sitemaps, the FAQ-removal notice, and this session's own captures of the two
@@ -7809,16 +7810,17 @@ carry real provenance (official links or repo anchors), which cleared all 19 `ve
 `scripts/check_site.py` gained one line — `developers.google.com` in `OFFICIAL_HOSTS` — recorded as `G0B2-F-09`
 rather than left implicit.
 
-**G0B2-T5 — flags and integration.** Nine flags added (`G0B2-F-01`…`G0B2-F-09`); register 113 → **122**
-(3 critical, 19 high, 33 medium, 36 low, 31 info), `flagged.html` regenerated from it and the counts in
+**G0B2-T5 — flags and integration.** Eleven flags added (`G0B2-F-01`…`G0B2-F-11`); register 124 → **135** on the
+merged tree (3 critical, 21 high, 38 medium, 40 low, 33 info), `flagged.html` regenerated from it and the counts in
 `EXECUTIVE-SUMMARY.md` (§2 and §6) and `README.md` recomputed from the register. Three of the nine need the
 owner: the tracking-ID convention conflict (`G0B2-F-01`), the two unregistered links' owner half
 (`G0B2-F-03`, which this pass partly closed by capturing both links), and the index-surface decision
 (`G0B2-F-06`). `DESIGN_PROMPT.md`'s meta-description resolution against 2(b) is recorded as `G0B2-F-07`; the
 FAQ rich-result removal as `G0B2-F-08`.
 
-**Gates after the pass.** `check_site` OK 30/3/74/122 · `verify_site` PASS 134 pages / 2,127 rows / 1,839
-official-source / 116 repo-anchored, 0 V4 advisories on `suggestions.html` · `i2_gate` PASS · `cba81fa5_lint`
+**Gates after the pass (merged tree).** `check_site` OK 36/5/86/135 · `verify_site` PASS 144 pages / 2,332 rows /
+1,993 official-source / 116 repo-anchored; 0 V4 advisories on any row this pass added to `suggestions.html` (14 on
+`73029680`'s tables → `G0B2-F-11`; 3 on this pass's own `flagged.html` rows → `G0B2-F-09`) · `i2_gate` PASS · `cba81fa5_lint`
 PASS 0 new / 22 inherited · `link_report --strict` exit 0 · `build_cba81fa5 --check` current ·
 `build_feed --check` current (9 entries) · `publish_pass --check` 102 pages / 0 changed · `build_shop --check`
 OK 11 pages · `build_sitemap --check` 97/0 · `check_all_links` 0 errors (180 pages / 214 URLs) ·
@@ -7826,12 +7828,61 @@ OK 11 pages · `build_sitemap --check` 97/0 · `check_all_links` 0 errors (180 p
 idempotent.
 
 **Side effects on other sessions' files, stated plainly.** Nothing outside the scope list was edited.
-`publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md` and `sessions/aebf0747/audit-after.json`
-changed because **their own generators re-measured the tree** after this pass added links (Amazon link count
-1445 → 1457, sponsored coverage still 100%, `missing_sponsored` 0). The other reader layers, `feed.xml`,
-`sitemap.xml` and `index.html` are byte-identical to the claimed base.
+`publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md`, `sessions/aebf0747/audit-after.json` and
+`read/method.html` changed because **their own generators re-measured the tree** after this pass added links and
+four source rows (Amazon link count 1,445 → 1,558 with the merged tree's pages, sponsored coverage still 100%,
+`missing_sponsored` 0; `method.html` prints the source-register count). `feed.xml`, `sitemap.xml` and `index.html`
+are unchanged from the merged tree.
 
-**Scope discipline / conflicts.** No other session was active against this base (`gh pr list --state open` empty
-at claim and at publish). `main` did not move during this work — verified by `git pull --rebase origin main`
+**Scope discipline / conflicts.** `gh pr list --state open` was empty at claim; by publish time PR **#148**
+(session `92988cd8`) was open against the same shared files, and this pass touched **none** of its scope — it is
+listed here so the owner knows a second branch is waiting to rebase onto this merge. `main` did not move during this work — verified by `git pull --rebase origin main`
 before the push. Source IDs S70–S81 and flag IDs `G0B2-F-*` are this session's namespace; the reservation note
 in `data/sources.json` was updated to hand S82+ to the next session.
+
+## 0B2 Merge reconciliation (2026-11-17)
+
+**What moved.** `git pull --rebase origin main` during the final push surfaced two new merge bases in sequence:
+`2868a3a` (PR #152, sessions `59b2194c`/`73029680`) which itself carried PR #151 (`ded63349`). Resolution, per
+the protocol: `COORDINATION.md` kept **both sides in full** (the only textual conflict on the claim commit), and
+every register and generated page was taken from main and then **re-applied from the merged data**, never copied
+over. Twelve files conflicted; none was resolved by discarding another session's content.
+
+**The collision that mattered: source ids.** This pass had written its 2026-11-17 captures as S70–S81 when the
+register ended at S69. Main had meanwhile assigned S70–S82 to session `2f181cd9` and S83–S89 to session
+`73029680`. The register's own `id_reservation` note says an id-existence check cannot catch this, so every
+reference target was read back: the four Google Search Central pages became **S90–S93** (the register held no
+Google documentation at all), and the other eight rows were **deleted as duplicates**, their citations re-pointed
+at the existing rows for the same documents (S79 Agreement §5/§6; S80 Program Policies; S30 CIS 2(e); S07 FTC;
+S70/S71 the two submitted links; S72/S73 the two destination listings). Flag `G0B2-F-10` carries the table, and
+`sessions/0b2ffabd/verification.md` §7 has the row-by-row arithmetic. Nothing was lost: this session's own dated
+quotes remain in its verification file and in PF-57…PF-62.
+
+**Facts that the merge overtook, corrected rather than left stale.** `G0B2-F-02`'s `site/` count 18 → 20
+(sessions `ded63349`/`73029680` added `site/measure.html` and `site/intent-record.html`); `G0B2-F-03`'s "no
+canonical capture and no product row for either thermometer link" is now "three same-day captures and rows P4/P5
+exist, with `confirmed_as_submitted_product: false`", so only the owner's intent answer remains open;
+`G0B2-F-06`'s sitemap count 97 → 101 and page set 134 → 136; `G0B2-F-04`'s "0 V4 advisories on
+`suggestions.html`" is narrowed to "0 on the rows this pass added", because the page now also carries another
+session's tables (see the change request below). SUG-13 was re-statused in its own words: an aggregate-only
+collector and a counter that ships **off** already exist in this repository, so what waits is hosting and the
+owner's confirmation of five event names (`M38-F-04`, in `data/shop/flags.json`), not a new build.
+
+**Method finding for the next session, learned the hard way.** The chain has to be run **twice**. One pass
+leaves ~30 layer pages without their injected `z3:css` / `z3:rss` / `z3:strip` / `z3:measure` blocks, because
+the layer generators rewrite pages the publish/measure/front-door passes post-process. The second pass
+converges; `git status` was then stable across a further full rebuild. Recorded here so nobody debugs it twice.
+
+**Change requests to other sessions' scope (not applied here).**
+1. `suggestions.html` carries 14 hard V4 advisories from session `73029680`'s tables: eight `seasonal_calendar`
+   rows name `S89` inside a sentence and six `decision_runbook` rows cite registers in prose. Fix is nine lines in
+   `build_suggestions()` (render both tables through `src_links()`/`repo_link()`) plus a `source` list on twelve
+   data rows. Filed as `G0B2-F-11`; any session may take it — this one did not edit another's rows or blocks.
+2. `data/design-brief.json`'s 2026-11-16 prompt pack still says "three products … one surface". Session
+   `73029680` published exact replacement lines (`DP-P-01`…) for it; whoever owns that file should apply or
+   reject them together with `DESIGN_PROMPT.md`'s rails, which cite the clauses.
+3. `tools/verify_site.py` keeps its own official-host list, so `developers.google.com` links count as ordinary
+   sources there and `sources.html` shows the four new rows as V4 advisories. Widening it is that file's owner's
+   call, not this pass's; `G0B2-F-09` says which line to revert if the owner prefers the old behaviour.
+4. The five pages that print the selected tracking ID (`G0B2-F-01`) are other sessions' files. No redaction was
+   performed here; the owner has to pick the convention first.

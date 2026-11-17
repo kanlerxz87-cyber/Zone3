@@ -184,3 +184,27 @@ on which a thermometer guide may be linked to the air-fryer cluster; anything be
 Creators API `GetItems` / `ItemIdType` (S06, S31), the Standard and Onsite commission tables (S25, S26), the
 enrolment and dormancy help topics (S28, S29), and the three air-fryer short links (S11–S13 / S52–S55 / S63–S69).
 Those rows keep their own dates; nothing in this record restates them as a 2026-11-17 observation.
+## 7. Rebase reconciliation (added when this pass was merged onto main@2868a3a)
+
+This file's §1–§6 were written against main@d192053, where the source register ended at S69, and they name the
+captures of this session's own reads as **S70–S81**. Between the claim commit and this push, main gained
+**S70–S82** (session `2f181cd9`, five-link intake plus policy re-reads) and **S83–S89** (session `73029680`,
+its own link re-checks and the OPM holiday schedule) — the same id block, different documents. The register's own
+`id_reservation` note warns that an id-existence check cannot detect this, so the reconciliation was done by
+reading every reference target, not by trusting the numbering:
+
+| Cited in this file as | Now resolves to | Why |
+|---|---|---|
+| S70 — Operating Agreement §5/§6, read 2026-11-17 | **S79** | Same document, same date, already in the register; my read is a second capture of it. |
+| S71 — Program Policies, Participation Requirements 2(a)/2(b) | **S80** | Same document; the register row's note now names the four clauses this file quotes that it did not carry before. |
+| S72 — Commission Income Statement 2(e)/2(g)/2(c) | **S30** | The row this project already held for the 2(e) definition; the 2(g) and 2(c) quotations stay in §3 of this file rather than becoming a duplicate row, and the six clauses appended as PF-57…PF-62 all come from Participation Requirements 2(a)/2(b), not from the income statement. |
+| S73, S74, S75, S79 — the four Google Search Central pages | **S90, S91, S92, S93** | Genuinely new: the register had zero Google documentation before this pass, which is why `check_site.py` needed one line (`G0B2-F-09`). |
+| S76 — FTC *Disclosures 101* | **S07** | Same page, held since 2026-11-13; this file keeps the verbatim 2026-11-17 re-read quotes. |
+| S77, S78 — the two `link.amazon` captures | **S70, S71** | Same two URLs, captured by two sessions on the same day; the destinations agree. |
+| S80, S81 — the two `amazon.com/dp/` listing reads | **S72, S73** | Same two listing pages; the breadcrumb and title this file records are what S72/S73 describe. |
+
+Nothing was dropped for convenience: every quotation in §1–§6 stays verbatim in this file, the six clauses never
+quoted anywhere before remain as `data/policy_facts.json` PF-57…PF-62 with their own dated note, and the
+renumbering is published as flag `G0B2-F-10` so a later reader who finds "S77/S78" in an older draft of this
+session's files knows what those ids meant before the merge. No source row was invented to preserve a citation —
+where the register already held the document, this pass cites the existing row.

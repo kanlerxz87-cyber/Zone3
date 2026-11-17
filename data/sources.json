@@ -1,775 +1,811 @@
 {
- "retrieved": "2026-11-16 — union: earlier sessions' dated entries plus session 145b8df7's S60-S68 re-verification captures (S59 is the FTC Consumer Reviews and Testimonials Rule Q&A, added by session 1f1b8bd2) | 2026-11-17: session 2f181cd9 appended S70-S82 (the two new submitted links, their destinations and direct-identifier checks, the three original links re-fetched, and the Operating Agreement, Program Policies, Table 1 and the ASIN definition re-read).",
- "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration. Integrated with session 9fef7647 (PR #26) by session b90c5685 on 2026-11-14.",
- "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45). RENUMBERING (2026-11-14, session b90c5685): PR #26's unique sources are kept as S46-S54 and this session's re-fetch as S55, because PR #26 had used S30-S32 and S33-S38 for pages main already assigns other IDs to.",
- "sources": [
-  {
-   "id": "S01",
-   "title": "Amazon Associates Program Operating Agreement",
-   "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'. Re-verified 2026-11-14 (session ecbfe91b): Section 5 wording re-read verbatim in the Agreement body (disclosure sentence present).",
-   "used_for": "Section 5 disclosure wording; Section 6 (breach of Section 5 is material); Section 1 Special Links; Schedule 1 lists only the United States Amazon Site (amazon.com) (see FLG-015).",
-   "alias_of_26634cd5": "S7"
-  },
-  {
-   "id": "S02",
-   "title": "Amazon Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement)",
-   "url": "https://affiliate-program.amazon.com/help/operating/policies",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-13. Page header reads 'Updated: April 14, 2026'. Read in 11 chunks; the sections cited in policy_facts.json were read in full.",
-   "used_for": "Special Link and tag rules; price/review display rules; link shortener rule (section 6(w)); Redirecting Link disqualifier (Commission Income Statement section 2(e)); offline-use prohibition (section 4).",
-   "alias_of_26634cd5": "S8"
-  },
-  {
-   "id": "S03",
-   "title": "Associates Program Commission Schedule (Appendix: Standard Commission Income)",
-   "url": "https://affiliate-program.amazon.com/help/operating/schedule",
-   "publisher": "Amazon Associates (official)",
-   "status": "not-accessible",
-   "status_note": "On 2026-11-13 AND again on 2026-11-14 this URL redirected to an Amazon sign-in page (ap/signin), return_to=.../home/account/payment/customratecard. That is a per-Account custom rate card, not the public table. No rate value was read from it. The public Standard Commission Income Statement IS readable without a sign-in at S25 (re-verified 2026-11-14); rates on the site come from S25/S26, never from this URL.",
-   "used_for": "Negative evidence only: confirms the customratecard route is sign-in gated (FLG-005, V-F1). Not used for any value.",
-   "alias_of_26634cd5": "S9"
-  },
-  {
-   "id": "S04",
-   "title": "Creators API documentation: Welcome / Introduction (Prerequisites)",
-   "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-13. Lists prerequisites: enrolment, 'at least 10 qualifying sales within the past 30 days', and API credentials.",
-   "used_for": "Data-access prerequisite for product, price and review data (FLG-006)."
-  },
-  {
-   "id": "S05",
-   "title": "PA-API 5 Deprecation Notice",
-   "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-13. States PA-API 5 'has been deprecated and is being replaced by the Creators API'.",
-   "used_for": "Data-source choice (Creators API, not PA-API 5). Contradicts a claim on another session branch (FLG-007)."
-  },
-  {
-   "id": "S06",
-   "title": "Creators API: GetItems operation",
-   "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-13. The itemIds parameter is documented as ASINs; the documented examples are 'B0199980K4' and 'B000HZD168' (10 characters each).",
-   "used_for": "Identifier format used to look up products (10-character ASIN examples)."
-  },
-  {
-   "id": "S07",
-   "title": "FTC: Disclosures 101 for Social Media Influencers",
-   "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-   "publisher": "U.S. Federal Trade Commission (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-13. Brochure dated November 2019 on the page. Re-verified 2026-11-14 (session ecbfe91b): page re-read; still dated November 2019 on the page.",
-   "used_for": "Disclosure placement and content honesty rules for the content section.",
-   "alias_of_26634cd5": "S10"
-  },
-  {
-   "id": "S08",
-   "title": "Amazon.com product page check: amazon.com/dp/B04G1MEwY",
-   "url": "https://www.amazon.com/dp/B04G1MEwY",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-13: title 'Page Not Found'; page text 'Sorry! We couldn't find that page.' Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
-   "used_for": "Direct-identifier check for product link 1."
-  },
-  {
-   "id": "S09",
-   "title": "Amazon.com product page check: amazon.com/dp/B02NbDxp3",
-   "url": "https://www.amazon.com/dp/B02NbDxp3",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-13: title 'Page Not Found'. Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
-   "used_for": "Direct-identifier check for product link 2."
-  },
-  {
-   "id": "S10",
-   "title": "Amazon.com product page check: amazon.com/dp/B00hJ57DV",
-   "url": "https://www.amazon.com/dp/B00hJ57DV",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-13: title 'Page Not Found'. Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
-   "used_for": "Direct-identifier check for product link 3."
-  },
-  {
-   "id": "S11",
-   "title": "Submitted product link 1: link.amazon/B04G1MEwY (redirect result)",
-   "url": "https://link.amazon/B04G1MEwY",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Price, rating and availability not in the text returned. Short link re-followed 2026-11-14 (session ecbfe91b): same target B0CDY277D3 as on 2026-11-13 — mapping stable across days and sessions.",
-   "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
-   "alias_of_26634cd5": "S1"
-  },
-  {
-   "id": "S12",
-   "title": "Submitted product link 2: link.amazon/B02NbDxp3 (redirect result)",
-   "url": "https://link.amazon/B02NbDxp3",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen\". Price, rating and availability not in the text returned.",
-   "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
-   "alias_of_26634cd5": "S2"
-  },
-  {
-   "id": "S13",
-   "title": "Submitted product link 3: link.amazon/B00hJ57DV (redirect result)",
-   "url": "https://link.amazon/B00hJ57DV",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Price, rating and availability not in the text returned.",
-   "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
-   "alias_of_26634cd5": "S3"
-  },
-  {
-   "id": "S14",
-   "title": "Observed redirect target: amazon.com/dp/B0CDY277D3 (page title)",
-   "url": "https://www.amazon.com/dp/B0CDY277D3",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B0CDY277D3 (no parameters). Page title read: CHEFMAN 6 Quart. Price, rating and availability not in the text returned. Control product page re-checked 2026-11-14 (session ecbfe91b): still resolves with the same page title.",
-   "used_for": "Title only, shown in the Flagged for Review page.",
-   "alias_of_26634cd5": "S4"
-  },
-  {
-   "id": "S15",
-   "title": "Observed redirect target: amazon.com/dp/B09B7SB46R (page title)",
-   "url": "https://www.amazon.com/dp/B09B7SB46R",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B09B7SB46R (no parameters). The tool returned the Emeril Lagasse 26QT title with the URL https://www.amazon.com/dp/B09B7SB46R?lv=shuf&channelId=500&plpRedirect=mhFallback. Price, rating and availability not in the text returned.",
-   "used_for": "Title only, shown in the Flagged for Review page.",
-   "alias_of_26634cd5": "S5"
-  },
-  {
-   "id": "S16",
-   "title": "Amazon.com product page check: amazon.com/dp/B08DKYBTPH (direct)",
-   "url": "https://www.amazon.com/dp/B08DKYBTPH",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B08DKYBTPH (no parameters). Returned the 'To continue, please click the Continue shopping button' interstitial, page title 'Amazon.com'. No product text was readable from this URL.",
-   "used_for": "Direct-URL check for product 3 (interstitial only). The product title is taken from S13 and S23.",
-   "alias_of_26634cd5": "S6"
-  },
-  {
-   "id": "S17",
-   "title": "linktw.in: 'link.amazon vs LinkTwin' (third-party competitor article)",
-   "url": "https://linktw.in/link-amazon-vs-linktwin",
-   "publisher": "LinkTwin (commercial competitor; NOT an Amazon source)",
-   "status": "third-party",
-   "status_note": "Claims link.amazon forwards clicks to amzlinks.in (a domain it says is operated by a third party). Not verified against any Amazon page. Used only to raise FLG-003.",
-   "used_for": "Flag only (FLG-003). Not used as a fact."
-  },
-  {
-   "id": "S18",
-   "title": "Seller Central help: ASIN definition (G200481490)",
-   "url": "https://sellercentral.amazon.com/help/hub/reference/external/G200481490",
-   "publisher": "Amazon Seller Central (official)",
-   "status": "not-accessible",
-   "status_note": "Fetched 2026-11-13: returned 'There was an error displaying this topic.' No content read.",
-   "used_for": "Nothing. The 10-character ASIN point rests on S06 and on the three resolved product URLs (S14-S16)."
-  },
-  {
-   "id": "S19",
-   "title": "Amazon.com footer link 'Become an Affiliate'",
-   "url": "https://affiliate-program.amazon.com/",
-   "publisher": "Amazon.com (official)",
-   "status": "verified",
-   "status_note": "Link text found in the amazon.com footer on the product-page fetches (S11-S13), 2026-11-13. The Associates site itself was reached through S01, S02, S04 and S05.",
-   "used_for": "Confirms affiliate-program.amazon.com is Amazon's Associates site."
-  },
-  {
-   "id": "S20",
-   "title": "Repository commit ed1a796 (initial commit, main)",
-   "url": "https://github.com/kanlerxz87-cyber/Zone3/commit/ed1a796dc01f52669864e98a72b9a521a3b7161b",
-   "publisher": "GitHub (repository host of record)",
-   "status": "observed",
-   "status_note": "Checked 2026-11-13 with git ls-remote origin: refs/heads/main points at this commit. Before this session, the commit contained only README.md ('# Zone3', 7 bytes).",
-   "used_for": "Repository baseline (FLG-009)."
-  },
-  {
-   "id": "S21",
-   "title": "Repository branches (remote refs)",
-   "url": "https://github.com/kanlerxz87-cyber/Zone3/branches",
-   "publisher": "GitHub (repository host of record)",
-   "status": "observed",
-   "status_note": "Checked 2026-11-13 with git ls-remote and git fetch. Remote branches include arena/26634cd5-zone3, arena/3c6cba43-zone3, arena/a9cafea1-zone3 and arena/7f84fea4-zone3. Other branches were read only, never edited.",
-   "used_for": "Parallel-session overlap (FLG-008)."
-  },
-  {
-   "id": "S22",
-   "title": "GitHub Pages configuration (REST API)",
-   "url": "https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages",
-   "publisher": "GitHub REST API (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-13 with gh api: status 'built', build_type 'legacy', source branch 'main' path '/', public true.",
-   "used_for": "Pages is enabled on main at / (no build step). Site files are at the repo root."
-  },
-  {
-   "id": "S23",
-   "title": "Destination page for product 3, reached through link.amazon/B00hJ57DV",
-   "url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Read 2026-11-13 through the short link. Page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Price, rating and availability not in the text returned.",
-   "used_for": "Title, brand, capacity and category of the product 3 destination (see S16 for the direct-URL interstitial).",
-   "alias_of_26634cd5": "S3 (destination page)"
-  },
-  {
-   "id": "S24",
-   "title": "FTC: Endorsements, Influencers, and Reviews (topic hub)",
-   "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
-   "publisher": "U.S. Federal Trade Commission (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-13. States that the Endorsement Guides were 'revised in 2023' and links the Consumer Reviews and Testimonials Rule (16 CFR Part 465) and the Consumer Review Fairness Act.",
-   "used_for": "Current FTC guidance pointers (FLG-017). The 2019 brochure (S07) is older than the 2023 Endorsement Guides revision."
-  },
-  {
-   "id": "S25",
-   "title": "Associates Program Standard Commission Income Statement: Table 1 (fixed rates by category)",
-   "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
-   "publisher": "Amazon Associates Central (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-13. Table 1 row: 'Physical Books, Kitchen, Automotive | 4.50%'. Also 'All Other Categories | 4.00%' and 'Toys, Furniture, Home, ... | 3.00%'. The page does not show a revision date in the text read. The rate applies to Qualifying Revenue for the listed category. Table 1 re-read 2026-11-14 (session ecbfe91b): rates unchanged (Kitchen 4.50%; Home 3.00%; All Other 4.00%); page publicly readable without sign-in.",
-   "used_for": "Category reference rate for Kitchen (PF-38). Not a product value: whether the listings are in the Kitchen category is not verified (FLG-021).",
-   "alias_of_26634cd5": "S11 (66a80e53 session)"
-  },
-  {
-   "id": "S26",
-   "title": "Onsite Associates Program Commission Income Statement: Table A (Onsite Content rates)",
-   "url": "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA",
-   "publisher": "Amazon Associates Central (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-13. Table A row: 'Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive | 1.25%'. The text says Onsite Commission Income applies to Onsite Content (Publisher or Influencer Content used by Amazon within the Amazon Site).",
-   "used_for": "Shown to prevent a wrong reading: the 1.25% Kitchen rate is for Onsite Content, not for Special Links on this site (FLG-021).",
-   "alias_of_26634cd5": "S12 (66a80e53 session)"
-  },
-  {
-   "id": "S27",
-   "title": "Control lookup: Amazon's documented example ASIN B00005N5PF (Monopoly)",
-   "url": "https://www.amazon.com/dp/B00005N5PF",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-13 (session 33226b37-zone3): served a 'Continue shopping' checkpoint interstitial, NOT the 'Page Not Found' error returned by S08-S10. B00005N5PF is Amazon's own published example ASIN (Monopoly) in Amazon help documentation.",
-   "used_for": "Control test: proves a cataloged ASIN does not return the Page-Not-Found error, so the S08-S10 results for the submitted identifiers are meaningful and not an automated-retrieval artifact.",
-   "alias_of_33226b37": "S15 (session-33226b37-zone3 registry)"
-  },
-  {
-   "id": "S28",
-   "title": "Associates Help: Account Dormancy (180 days to refer a sale)",
-   "url": "https://affiliate-program.amazon.com/help/node/topic/G7MJTPEP9NC3YKMG",
-   "publisher": "Amazon Associates Central (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-13 (session 33226b37-zone3): 'you have 180 days to refer a sale through one of your Associates links... Your application can be withdrawn if there were not enough qualifying sales for 180 days after your application was submitted.'",
-   "used_for": "Campaign ramp planning: new-account survival gate (PF-41).",
-   "alias_of_33226b37": "S19 (session-33226b37-zone3 registry)"
-  },
-  {
-   "id": "S29",
-   "title": "Associates Help: What is the application review process?",
-   "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
-   "publisher": "Amazon Associates Central (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-13 (session 33226b37-zone3): 'we require at least three [qualifying sales] within the first 180 days. Please note that personal orders do not qualify.' and 'All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.'",
-   "used_for": "Campaign ramp planning and content-feasibility bar (PF-40).",
-   "alias_of_33226b37": "S20 (session-33226b37-zone3 registry)"
-  },
-  {
-   "id": "S30",
-   "title": "Associates Program: Commission Income Statement 2(e) — Redirecting Link definition",
-   "url": "https://affiliate-program.amazon.com/help/operating/policies",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \"Redirecting Link\")'.",
-   "used_for": "Why a link.amazon/<code> short link must not be published as the Special Link (see commission/index.html and FLG-003)."
-  },
-  {
-   "id": "S31",
-   "title": "Creators API: GetItems — ItemIdType parameter (ASIN definition)",
-   "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.'",
-   "used_for": "The 10-character ASIN rule used in the intake gate (FLG-001). Independent of S06/S08."
-  },
-  {
-   "id": "S32",
-   "title": "Amazon product detail: Chefman 8 Qt TurboFry",
-   "url": "https://www.amazon.com/dp/B08DKYBTPH",
-   "publisher": "Amazon.com",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-14; resolved short-link target and listing details.",
-   "used_for": "Resolved listing identity; dated research only."
-  },
-  {
-   "id": "S40",
-   "title": "Amazon.com results page for ASIN B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven)",
-   "url": "https://www.amazon.com/s?k=B0CDY277D3",
-   "publisher": "Amazon.com (official marketplace page)",
-   "status": "observed",
-   "status_note": "Read 2026-11-14T09:45:06Z (qid 1794649506, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
-   "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 1."
-  },
-  {
-   "id": "S41",
-   "title": "Amazon.com results page for ASIN B09B7SB46R (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven)",
-   "url": "https://www.amazon.com/s?k=B09B7SB46R",
-   "publisher": "Amazon.com (official marketplace page)",
-   "status": "observed",
-   "status_note": "Read 2026-11-14T09:45:12Z (qid 1794649512, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
-   "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 2."
-  },
-  {
-   "id": "S42",
-   "title": "Amazon.com results page for ASIN B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry 4-in-1)",
-   "url": "https://www.amazon.com/s?k=B08DKYBTPH",
-   "publisher": "Amazon.com (official marketplace page)",
-   "status": "observed",
-   "status_note": "Read 2026-11-14T09:45:17Z (qid 1794649517). The exact ASIN is the first result. Price, list price, rating, rating count and 'other offers' figures were read from this page.",
-   "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 3."
-  },
-  {
-   "id": "S43",
-   "title": "Amazon Best Sellers: Best Air Fryers (browse node 17659096011)",
-   "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
-   "publisher": "Amazon.com (official marketplace page)",
-   "status": "observed",
-   "status_note": "Read 2026-11-14. Ranks 1-6 were read in full. The page header reads: 'Our most popular products based on sales. Updated frequently.' The page lists its breadcrumb nodes (Kitchen & Dining, Small Appliances, Fryers, Air Fryers). Positions 7+ were not used for any claim.",
-   "used_for": "Category competition benchmark: what a buyer sees above the fold in the verified category, with star ratings, exact rating counts and prices."
-  },
-  {
-   "id": "S44",
-   "title": "FTC's Endorsement Guides: What People Are Asking (includes the affiliate-marketing section)",
-   "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
-   "publisher": "U.S. Federal Trade Commission",
-   "status": "verified",
-   "status_note": "Read 2026-11-14 (chunks 0, 8, 9, 10 of 12). The section 'What About Affiliate or Network Marketing?' was read in full. It says the disclosure must be 'clear and conspicuous', that the closer to the recommendation the better, and that 'affiliate link' or a 'buy now' button alone is not adequate.",
-   "used_for": "Affiliate disclosure wording and placement guidance; review-integrity constraints."
-  },
-  {
-   "id": "S45",
-   "title": "Sell on Amazon: Understanding ASIN numbers (official Amazon seller education)",
-   "url": "https://sell.amazon.com/blog/what-is-an-asin",
-   "publisher": "Amazon.com (official; Sell on Amazon blog)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-14 (session ecbfe91b). States an ASIN is “a unique 10-character alphanumeric code assigned to every product listed in the Amazon store” and that a typical ASIN looks like “B07FZ8S74R”.",
-   "used_for": "The identifier-length rule behind FLG-001 (the three submitted codes are 9 characters, not 10). (Added as S45 on merge: main's S30/S31 were already taken.)"
-  },
-  {
-   "id": "S46",
-   "title": "Amazon.com search results for B0CDY277D3 (price, rating, review count observed 2026-11-14)",
-   "url": "https://www.amazon.com/s?k=B0CDY277D3",
-   "publisher": "Amazon.com",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B0CDY277D3 are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
-   "used_for": "Product 1 observed price, rating, review count, sales note."
-  },
-  {
-   "id": "S47",
-   "title": "Amazon.com search results for B09B7SB46R (price, rating, review count observed 2026-11-14)",
-   "url": "https://www.amazon.com/s?k=B09B7SB46R",
-   "publisher": "Amazon.com",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B09B7SB46R are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
-   "used_for": "Product 2 observed price, rating, review count, sales note."
-  },
-  {
-   "id": "S48",
-   "title": "Amazon.com search results for B08DKYBTPH (price, rating, review count observed 2026-11-14)",
-   "url": "https://www.amazon.com/s?k=B08DKYBTPH",
-   "publisher": "Amazon.com",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B08DKYBTPH are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
-   "used_for": "Product 3 observed price, rating, review count, sales note."
-  },
-  {
-   "id": "S49",
-   "title": "Re-check 2026-11-14: Associates Program Operating Agreement (Section 5 disclosure wording)",
-   "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-   "publisher": "Amazon Associates",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-14. Page states: Updated October 15, 2025. Section 5 read in full and compared to the PF-01 quote in data/policy_facts.json: identical wording (\"As an Amazon Associate I earn from qualifying purchases.\"). [Kept from PR #26 (session 9fef7647) and renumbered from S36 on integration by session b90c5685, because S36 already names a different page on main.]",
-   "used_for": "Re-verification of PF-01, PF-02, PF-35 wording."
-  },
-  {
-   "id": "S50",
-   "title": "Re-check 2026-11-14: Associates Program Policies",
-   "url": "https://affiliate-program.amazon.com/help/operating/policies",
-   "publisher": "Amazon Associates",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-14. Page states: Updated April 14, 2026. Commission Income Statement Section 1 read and compared to PF-12/PF-13: identical (24-hour session; 89-day cart completion; 180-day ship/pay). [Kept from PR #26 (session 9fef7647) and renumbered from S37 on integration by session b90c5685, because S37 already names a different page on main.]",
-   "used_for": "Re-verification of PF-03 to PF-15 session and price/rating display rules."
-  },
-  {
-   "id": "S51",
-   "title": "Re-check 2026-11-14: FTC Disclosures 101 for Social Media Influencers",
-   "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-   "publisher": "U.S. Federal Trade Commission",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-14. Page dated November 2019. \"When to Disclose\" and \"How to Disclose\" sections compared to PF-19/PF-20: identical wording. [Kept from PR #26 (session 9fef7647) and renumbered from S38 on integration by session b90c5685, because S38 already names a different page on main.]",
-   "used_for": "Re-verification of PF-19, PF-20, PF-21 wording."
-  },
-  {
-   "id": "S52",
-   "title": "Re-check 2026-11-14: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
-   "url": "https://link.amazon/B04G1MEwY",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-1e229870efde5acf). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1e229870efde5acf&channelId=704&plpRedirect=mhFallback . Title of the destination page as served: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Same destination as S11 (2026-11-13). [Kept from PR #26 (session 9fef7647) and renumbered from S30 on integration by session b90c5685, because S30 already names a different page on main. It is a repeat observation of the same three short links recorded here as S11-S13.]",
-   "used_for": "Product 1 identity: the listing this submitted link opens (FLG-022)."
-  },
-  {
-   "id": "S53",
-   "title": "Re-check 2026-11-14: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
-   "url": "https://link.amazon/B02NbDxp3",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-534f5e7952f396b2). Final URL: https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-534f5e7952f396b2&channelId=704&plpRedirect=mhFallback . Title of the destination page as served: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen\". Same destination as S12 (2026-11-13). [Kept from PR #26 (session 9fef7647) and renumbered from S31 on integration by session b90c5685, because S31 already names a different page on main. It is a repeat observation of the same three short links recorded here as S11-S13.]",
-   "used_for": "Product 2 identity: the listing this submitted link opens (FLG-022)."
-  },
-  {
-   "id": "S54",
-   "title": "Re-check 2026-11-14: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
-   "url": "https://link.amazon/B00hJ57DV",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-76c3adaeb8708b44). Final URL: https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-76c3adaeb8708b44&channelId=704&plpRedirect=mhFallback&th=1 . Title of the destination page as served: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Same destination as S13/S23 (2026-11-13). [Kept from PR #26 (session 9fef7647) and renumbered from S32 on integration by session b90c5685, because S32 already names a different page on main. It is a repeat observation of the same three short links recorded here as S11-S13.]",
-   "used_for": "Product 3 identity: the listing this submitted link opens (FLG-022)."
-  },
-  {
-   "id": "S55",
-   "title": "Independent re-fetch, 2026-11-14: the three submitted short links and their destination product pages",
-   "url": "https://link.amazon/B04G1MEwY",
-   "publisher": "Amazon.com (official live pages)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-14 by session b90c5685. link.amazon/B04G1MEwY -> amazon.com/dp/B0CDY277D3 (title: 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven ... - Black'); link.amazon/B02NbDxp3 -> amazon.com/dp/B09B7SB46R (title: 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven ...'); link.amazon/B00hJ57DV -> amazon.com/dp/B08DKYBTPH (title: 'Chefman Air Fryer 8 Qt | TurboFry 4-in-1 ...'). A direct GET of amazon.com/dp/B04G1MEwY returned Amazon's 'Page Not Found' page. The direct GETs of /dp/B0CDY277D3 and /dp/B08DKYBTPH both carried lv=shuf and plpRedirect=mhFallback with no short link involved, which corroborates FLG-026.",
-   "used_for": "Corroborates S11-S16 and S52-S54 on where each submitted link opens; confirms FLG-026 control observation. Not used as product identity."
-  },
-  {
-   "id": "S56",
-   "title": "This repository's published sitemap.xml (main branch)",
-   "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/sitemap.xml",
-   "publisher": "This repository (GitHub)",
-   "status": "verified",
-   "status_note": "Read in the working tree at e8e3e9d and again at cb2dc1d/62c5c6a by session 21acd3c0 on 2026-11-14; entries compared against the page file set.",
-   "used_for": "21-F-02, 21-F-03, 21-F-04"
-  },
-  {
-   "id": "S57",
-   "title": "This repository's COORDINATION.md task board (main branch)",
-   "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md",
-   "publisher": "This repository (GitHub)",
-   "status": "verified",
-   "status_note": "Read line-by-line by session 21acd3c0 on 2026-11-14; duplicated Parts observed at the file tail (see 21-F-01).",
-   "used_for": "21-F-01"
-  },
-  {
-   "id": "S58",
-   "title": "Redirect stub categories/home-kitchen-air-fryers.html (main branch)",
-   "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/categories/home-kitchen-air-fryers.html",
-   "publisher": "This repository (GitHub)",
-   "status": "verified",
-   "status_note": "File exists in the tree (redirect stub) but has no sitemap entry; observed by session 21acd3c0 on 2026-11-14.",
-   "used_for": "21-F-03"
-  },
-  {
-   "id": "S59",
-   "title": "FTC: The Consumer Reviews and Testimonials Rule: Questions and Answers",
-   "url": "https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers",
-   "publisher": "U.S. Federal Trade Commission (official)",
-   "status": "verified",
-   "status_note": "Fetched 2026-11-16 (session 1f1b8bd2). Page states the Rule on the Use of Consumer Reviews and Testimonials 'went into effect on October 21, 2024'; quotes sections 465.2, 465.4, 465.6, 465.7 and 465.8; states the rule's disclosure requirements relate to company insiders and that influencer relationship disclosures remain under the FTC Act / Endorsement Guides.",
-   "used_for": "1F-F-01"
-  },
-  {
-   "id": "S60",
-   "title": "Listing title and breadcrumb served for B0CDY277D3 on 2026-11-16",
-   "url": "https://www.amazon.com/dp/B0CDY277D3",
-   "publisher": "Amazon.com (official listing)",
-   "status": "observed",
-   "status_note": "Served page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Breadcrumb nodes read from the page: Home & Kitchen (1055398) > Kitchen & Dining (284507) > Small Appliances (289913) > Fryers (17659095011) > Air Fryers (17659096011). Title text identical to S14. [Id renumbered from S59 on integration onto main, where that id already names a different document.]",
-   "used_for": "Every capacity, feature and cleaning statement about product 1 in data/editorial.json; the category breadcrumb on the Air Fryers hub."
-  },
-  {
-   "id": "S61",
-   "title": "Listing title served for B09B7SB46R on 2026-11-16",
-   "url": "https://www.amazon.com/dp/B09B7SB46R",
-   "publisher": "Amazon.com (official listing)",
-   "status": "observed",
-   "status_note": "Served page title: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen\". The title wording differs from the 2026-11-13/14 captures (S15, S53), which rendered \"26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie\". Same ASIN and destination; Amazon listing titles are edited over time. Recorded so the drift is visible rather than smoothed (4f83-F-01). [Id renumbered from S60 on integration onto main, where that id already names a different document.]",
-   "used_for": "Every statement about product 2; the title-drift example in the best-seller and listing-title articles."
-  },
-  {
-   "id": "S62",
-   "title": "Listing title served for B08DKYBTPH on 2026-11-16",
-   "url": "https://www.amazon.com/dp/B08DKYBTPH",
-   "publisher": "Amazon.com (official listing)",
-   "status": "observed",
-   "status_note": "Served page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel\". Identical wording to S16. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t). [Id renumbered from S61 on integration onto main, where that id already names a different document.]",
-   "used_for": "Every statement about product 3, including the 450°F Hi-Fry figure quoted in the feature article."
-  },
-  {
-   "id": "S63",
-   "title": "Amazon Best Sellers in Air Fryers, captured 2026-11-16",
-   "url": "https://www.amazon.com/gp/bestsellers/kitchen/17659096011",
-   "publisher": "Amazon.com (official list)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-16. Page states: \"Amazon Best Sellers - Our most popular products based on sales. Updated frequently.\" Positions 1-6 as served: 1 Ninja AF141 5Qt (B0CSZ7WBYW); 2 bella Fits-anywhere Slim 4qt (B0CYJDVT31); 3 Cosori TurboBlaze 6 Qt (B0C33CHG99); 4 Chefman 4 QT (B0CNY1F31S); 5 Cuisinart TOA-55 (B0GVVJZDQV); 6 Emeril Lagasse 26QT (B09B7SB46R). Position 7 was partially visible (Chefman 6-in-1 XL 14-Quart, B0GTBN7CS2). Star ratings and prices appear on this page and are deliberately not republished (FLG-022). [Id renumbered from S62 on integration onto main, where that id already names a different document.]",
-   "used_for": "The single rank statement in the best-seller article and the comparison row (product 2 at position 6, 2026-11-16); ranks are dated observations, not quality claims."
-  },
-  {
-   "id": "S64",
-   "title": "Air Fryers browse-node taxonomy, read from the best-seller page on 2026-11-16",
-   "url": "https://www.amazon.com/gp/bestsellers/kitchen/17659096011",
-   "publisher": "Amazon.com (official browse node)",
-   "status": "observed",
-   "status_note": "Node chain printed on the page: Any Department > Kitchen & Dining > Small Appliances (289913) > Fryers (17659095011) > Air Fryers (17659096011, current), with siblings Air Fryer Ovens (224479505011) and Deep Fryers (289918). Node ids read from the hrefs of those breadcrumb links. [Id renumbered from S63 on integration onto main, where that id already names a different document.]",
-   "used_for": "The category table on read/category/air-fryers.html: node ids and sibling categories, used to state where the niche sits and nothing else."
-  },
-  {
-   "id": "S65",
-   "title": "Standard Commission Income Statement Table 1 and Bounty table, re-read 2026-11-16",
-   "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-16 by session 145b8df7, chunk 0 of 3. Table 1 rows as printed: 'Luxury Beauty, Luxury Stores Beauty, Amazon Explore - 10.00%'; 'Digital Music, Physical Music, Handmade, Digital Videos - 5.00%'; 'Physical Books, Kitchen, Automotive - 4.50%'; 'All Other Categories - 4.00%'; the zero-rate row includes Gift Cards, Wireless Service Plans and Alcoholic Beverages. Bounty rates: Prime Free Trial $12.00, Prime Paid Membership $12.00, Prime Video Free Trial $2.00, Prime Video First Stream $5.00, Prime Video Stream $0.25. Consistent with S25 (2026-11-13). [Id renumbered from S64 on integration onto main, where that id already names a different document.]",
-   "used_for": "The rate table in read/getting-paid.html, quoted as the published standard table only; no rate is attributed to any product or to this account."
-  },
-  {
-   "id": "S66",
-   "title": "Associates Program Policies, header and Commission Income Statement SS1 re-read 2026-11-16",
-   "url": "https://affiliate-program.amazon.com/help/operating/policies",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-16 by session 145b8df7, chunk 0 of 11. Header reads 'Updated: April 14, 2026', matching S02/S50. CIS SS1 as read today: a Qualifying Purchase requires a click on a Special Link; a Session ends on the first of 24 hours elapsing, an order for a Product, or a click through another Associate's Special Link; a cart purchase counts if completed no later than 89 days after the click-through; and within 180 days of purchase the Product must be shipped/streamed/downloaded and paid for. Chunks 1-10 were not re-read today; the SS2(b)/6(t)/6(w)/6(y) wording quoted on the site is the wording recorded at S02 and S50. [Id renumbered from S65 on integration onto main, where that id already names a different document.]",
-   "used_for": "The 'clock' list in read/getting-paid.html (24 hours, 89 days, 180 days) and the current header date of the policies page."
-  },
-  {
-   "id": "S67",
-   "title": "Re-check 2026-11-16: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
-   "url": "https://link.amazon/B04G1MEwY",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-16 by session 145b8df7 with a fresh redirect token (srctok-68884e8aa630b24a). Final URL https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-68884e8aa630b24a&channelId=704&plpRedirect=mhFallback. Same destination as S11 (2026-11-13) and S52 (2026-11-14): a deterministic mapping across five captures by four sessions. The submitted code is 9 characters, so it is not an ASIN (FLG-001). [Id renumbered from S66 on integration onto main, where that id already names a different document.]",
-   "used_for": "Product 1 destination for the editorial layer; the '9 characters, not 10' count in read/listing-titles.html. A link observation, not proof of owner intent (FLG-002)."
-  },
-  {
-   "id": "S68",
-   "title": "Re-check 2026-11-16: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
-   "url": "https://link.amazon/B02NbDxp3",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-16 by session 145b8df7 (srctok-662480f5bd825c83). Final URL https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-662480f5bd825c83&channelId=704&plpRedirect=mhFallback. Same destination as S12 (2026-11-13) and S53 (2026-11-14). The submitted code is 9 characters, so it is not an ASIN (FLG-001), and the destination is an observation, not proof of owner intent (FLG-002). [Id renumbered from S67 on integration onto main, where that id already names a different document.]",
-   "used_for": "Product 2 destination for the editorial layer."
-  },
-  {
-   "id": "S69",
-   "title": "Re-check 2026-11-16: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
-   "url": "https://link.amazon/B00hJ57DV",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-16 by session 145b8df7 (srctok-38bef00eb1e962ef). Final URL https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-38bef00eb1e962ef&channelId=704&plpRedirect=mhFallback&th=1. Same destination as S13 (2026-11-13) and S54 (2026-11-14). The submitted code is 9 characters, so it is not an ASIN (FLG-001), and the destination is an observation, not proof of owner intent (FLG-002). [Id renumbered from S68 on integration onto main, where that id already names a different document.]",
-   "used_for": "Product 3 destination for the editorial layer."
-  },
-  {
-   "id": "S70",
-   "title": "Submitted product link 4: link.amazon/B0c8moW59 — first observation by any session (2026-11-17)",
-   "url": "https://link.amazon/B0c8moW59",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Served a product page for ASIN B0DHZTCNR5. No Associates tag is present in the URL, so the click is not attributable (S02, Participation Requirements 2(b)).",
-   "used_for": "Redirect destination of the fourth submitted link, observed 2026-11-17.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S71",
-   "title": "Submitted product link 5: link.amazon/B0f3GKalj — first observation by any session (2026-11-17)",
-   "url": "https://link.amazon/B0f3GKalj",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Served a product page for ASIN B0DZFD6R9Z. No Associates tag is present in the URL.",
-   "used_for": "Redirect destination of the fifth submitted link, observed 2026-11-17.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S72",
-   "title": "Destination listing for link 4: amazon.com/dp/B0DHZTCNR5 (page title and breadcrumb, read 2026-11-17)",
-   "url": "https://www.amazon.com/dp/B0DHZTCNR5",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Product title and category breadcrumb of the fourth destination listing.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S73",
-   "title": "Destination listing for link 5: amazon.com/dp/B0DZFD6R9Z (page title and breadcrumb, read 2026-11-17)",
-   "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Product title and category breadcrumb of the fifth destination listing.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S74",
-   "title": "Direct identifier check for link 4: amazon.com/dp/B0c8moW59 (2026-11-17)",
-   "url": "https://www.amazon.com/dp/B0c8moW59",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Shows the nine-character token is not an ASIN: the direct /dp/ URL returns Amazon's Page Not Found page.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S75",
-   "title": "Direct identifier check for link 5: amazon.com/dp/B0f3GKalj (2026-11-17)",
-   "url": "https://www.amazon.com/dp/B0f3GKalj",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Shows the nine-character token is not an ASIN: the direct /dp/ URL returns Amazon's Page Not Found page.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S76",
-   "title": "Re-check 2026-11-17: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
-   "url": "https://link.amazon/B04G1MEwY",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Stability re-check of the first submitted link. Same destination as recorded on 2026-11-13, 2026-11-14 and 2026-11-16.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S77",
-   "title": "Re-check 2026-11-17: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
-   "url": "https://link.amazon/B02NbDxp3",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Stability re-check of the second submitted link. Same destination as on every earlier capture.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S78",
-   "title": "Re-check 2026-11-17: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
-   "url": "https://link.amazon/B00hJ57DV",
-   "publisher": "Amazon (official)",
-   "status": "observed",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Stability re-check of the third submitted link. Same destination as on every earlier capture.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S79",
-   "title": "Associates Program Operating Agreement, Sections 5 and 6, re-read 2026-11-17",
-   "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Verbatim disclosure sentence and the material-breach clause, re-read this session.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S80",
-   "title": "Associates Program Policies, Participation Requirements 1, 2(b), 6(t), 6(v), 6(w), 6(y), re-read 2026-11-17",
-   "url": "https://affiliate-program.amazon.com/help/operating/policies",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Original-content requirement, the price-display rule, the star-rating rule, the cloaking rule, the link-shortener rule and the price-tracking rule, all re-read verbatim this session.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S81",
-   "title": "Associates Program Standard Commission Income Statement, Table 1, re-read 2026-11-17",
-   "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Category rates for the standard programme: Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%.",
-   "session": "2f181cd9"
-  },
-  {
-   "id": "S82",
-   "title": "Creators API GetItems, ItemIdType parameter (ASIN definition), re-read 2026-11-17",
-   "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
-   "publisher": "Amazon Associates (official)",
-   "status": "verified",
-   "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Amazon's own definition of an ASIN as a 10-character alphanumeric identifier.",
-   "session": "2f181cd9"
-  },
-  {
-   "title": "Direct-URL check 2026-11-17: amazon.com/dp/B0c8moW59 returns Page Not Found",
-   "url": "https://www.amazon.com/dp/B0c8moW59",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-17 by session 73029680 by requesting https://www.amazon.com/dp/B0c8moW59 (no parameters). Result: Amazon's 'Sorry! We couldn't find that page' error page, title 'Page Not Found'. Same result class as S08-S10 for the other submitted codes: a 9-character token is not an ASIN and has no detail page under its own identifier (FLG-001). Independent of session 2f181cd9's S70: two sessions, same result, same day.",
-   "used_for": "Re-verification capture for register row P4's direct check; intent-record reconciliation (G84-F-01).",
-   "id": "S83"
-  },
-  {
-   "title": "Observation 2026-11-17: link.amazon/B0c8moW59 resolves to amazon.com/dp/B0DHZTCNR5",
-   "url": "https://link.amazon/B0c8moW59",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-17 by session 73029680. Final URL https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-3fcbba70f075aae8&channelId=500&plpRedirect=mhFallback; the page title read on arrival is the ThermoMaven listing (S87). Same destination as register row P4 (session 2f181cd9, S70/S72/S74) and the shop register row SHOP-04. The submitted code is 9 characters, so it is not an ASIN (FLG-001). A link observation, not proof of owner intent (FLG-002, FLG-035).",
-   "used_for": "Re-verification capture of P4's destination; fills the intent-record row's observed block (G84-F-01).",
-   "id": "S84"
-  },
-  {
-   "title": "Direct-URL check 2026-11-17: amazon.com/dp/B0f3GKalj returns Page Not Found",
-   "url": "https://www.amazon.com/dp/B0f3GKalj",
-   "publisher": "Amazon.com (official retailer)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-17 by session 73029680 by requesting https://www.amazon.com/dp/B0f3GKalj (no parameters). Result: Amazon's 'Sorry! We couldn't find that page' error page, title 'Page Not Found'. Same result class as S08-S10 (FLG-001). Independent of session 2f181cd9's S71: two sessions, same result, same day.",
-   "used_for": "Re-verification capture for register row P5's direct check; intent-record reconciliation (G84-F-01).",
-   "id": "S85"
-  },
-  {
-   "title": "Observation 2026-11-17: link.amazon/B0f3GKalj resolves to amazon.com/dp/B0DZFD6R9Z",
-   "url": "https://link.amazon/B0f3GKalj",
-   "publisher": "Link as submitted by the owner",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-17 by session 73029680. Final URL https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-4b047e079f41545d&channelId=500&plpRedirect=mhFallback&th=1; the page title read on arrival is the CHEF iQ Sense listing (S88). Same destination as register row P5 (session 2f181cd9, S71/S73/S75) and the shop register row SHOP-05. The submitted code is 9 characters, so it is not an ASIN (FLG-001). A link observation, not proof of owner intent (FLG-002, FLG-035).",
-   "used_for": "Re-verification capture of P5's destination; fills the intent-record row's observed block (G84-F-01).",
-   "id": "S86"
-  },
-  {
-   "title": "Listing title served for B0DHZTCNR5 on 2026-11-17 (session 73029680 read)",
-   "url": "https://www.amazon.com/dp/B0DHZTCNR5",
-   "publisher": "Amazon.com (official listing)",
-   "status": "observed",
-   "status_note": "Served page title: “Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen”. Read on arrival from link.amazon/B0c8moW59 (S84) and re-read at the direct listing URL on 2026-11-17; identical wording to session 2f181cd9's title capture (S72). Breadcrumb: Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t).",
-   "used_for": "Second dated title capture for P4 (a meat thermometer — outside the air-fryer guide set).",
-   "id": "S87"
-  },
-  {
-   "title": "Listing title served for B0DZFD6R9Z on 2026-11-17 (session 73029680 read)",
-   "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-   "publisher": "Amazon.com (official listing)",
-   "status": "observed",
-   "status_note": "Served page title: “Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3 : Home & Kitchen”. Read on arrival from link.amazon/B0f3GKalj (S86) and re-read at the direct listing URL on 2026-11-17; identical wording to session 2f181cd9's title capture (S73). Breadcrumb: Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t).",
-   "used_for": "Second dated title capture for P5 (a meat thermometer — outside the air-fryer guide set).",
-   "id": "S88"
-  },
-  {
-   "title": "U.S. Office of Personnel Management: Federal Holidays schedule (2026 and 2027 tables)",
-   "url": "https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/",
-   "publisher": "U.S. Office of Personnel Management (official .gov)",
-   "status": "observed",
-   "status_note": "Fetched 2026-11-17 by session 73029680. Dates read from the page's own 2026 and 2027 tables: Thanksgiving Day Thursday 2026-11-26; Christmas Day Friday 2026-12-25; New Year's Day Friday 2027-01-01; Birthday of Martin Luther King, Jr. Monday 2027-01-18; Washington's Birthday Monday 2027-02-15; Memorial Day Monday 2027-05-31; Independence Day observed Monday 2027-07-05 (July 4 falls on a Sunday); Labor Day Monday 2027-09-06; Veterans Day Thursday 2027-11-11; Thanksgiving Day Thursday 2027-11-25; Christmas Day observed Friday 2027-12-24. Calendar facts only: the page says nothing about shopping demand, and this register makes no such claim either.",
-   "used_for": "Seasonal-calendar rows in the suggestions review dated 2026-11-17 (late) — dates only, never demand claims.",
-   "id": "S89"
-  }
- ],
- "id_reservation": "S01-S59 are held by earlier sessions (main@110). S60-S69 are claimed by session 145b8df7 for its 2026-11-16 re-verification captures. S70-S82 are claimed by session 2f181cd9 (2026-11-17) for the five-link intake and policy re-reads. All three ranges are NOT free: a session rebasing onto an older main must append from S83, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
+  "retrieved": "2026-11-17 — union: earlier sessions' dated entries, session 2f181cd9's S70-S82 and session 73029680's S83-S89 five-link captures, plus session 0b2ffabd's four Google Search Central captures (S90-S93). Session 0b2ffabd's own same-day re-reads of the Operating Agreement, the Program Policies, the Commission Income Statement and the FTC page are recorded against the existing rows S79, S80, S30 and S07 rather than as duplicate entries; its dated read notes are in `sessions/0b2ffabd/verification.md`.",
+  "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration. Integrated with session 9fef7647 (PR #26) by session b90c5685 on 2026-11-14.",
+  "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45). RENUMBERING (2026-11-14, session b90c5685): PR #26's unique sources are kept as S46-S54 and this session's re-fetch as S55, because PR #26 had used S30-S32 and S33-S38 for pages main already assigns other IDs to.",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Amazon Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: October 15, 2025'. Re-verified 2026-11-14 (session ecbfe91b): Section 5 wording re-read verbatim in the Agreement body (disclosure sentence present).",
+      "used_for": "Section 5 disclosure wording; Section 6 (breach of Section 5 is material); Section 1 Special Links; Schedule 1 lists only the United States Amazon Site (amazon.com) (see FLG-015).",
+      "alias_of_26634cd5": "S7"
+    },
+    {
+      "id": "S02",
+      "title": "Amazon Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Page header reads 'Updated: April 14, 2026'. Read in 11 chunks; the sections cited in policy_facts.json were read in full.",
+      "used_for": "Special Link and tag rules; price/review display rules; link shortener rule (section 6(w)); Redirecting Link disqualifier (Commission Income Statement section 2(e)); offline-use prohibition (section 4).",
+      "alias_of_26634cd5": "S8"
+    },
+    {
+      "id": "S03",
+      "title": "Associates Program Commission Schedule (Appendix: Standard Commission Income)",
+      "url": "https://affiliate-program.amazon.com/help/operating/schedule",
+      "publisher": "Amazon Associates (official)",
+      "status": "not-accessible",
+      "status_note": "On 2026-11-13 AND again on 2026-11-14 this URL redirected to an Amazon sign-in page (ap/signin), return_to=.../home/account/payment/customratecard. That is a per-Account custom rate card, not the public table. No rate value was read from it. The public Standard Commission Income Statement IS readable without a sign-in at S25 (re-verified 2026-11-14); rates on the site come from S25/S26, never from this URL.",
+      "used_for": "Negative evidence only: confirms the customratecard route is sign-in gated (FLG-005, V-F1). Not used for any value.",
+      "alias_of_26634cd5": "S9"
+    },
+    {
+      "id": "S04",
+      "title": "Creators API documentation: Welcome / Introduction (Prerequisites)",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Lists prerequisites: enrolment, 'at least 10 qualifying sales within the past 30 days', and API credentials.",
+      "used_for": "Data-access prerequisite for product, price and review data (FLG-006)."
+    },
+    {
+      "id": "S05",
+      "title": "PA-API 5 Deprecation Notice",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. States PA-API 5 'has been deprecated and is being replaced by the Creators API'.",
+      "used_for": "Data-source choice (Creators API, not PA-API 5). Contradicts a claim on another session branch (FLG-007)."
+    },
+    {
+      "id": "S06",
+      "title": "Creators API: GetItems operation",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. The itemIds parameter is documented as ASINs; the documented examples are 'B0199980K4' and 'B000HZD168' (10 characters each).",
+      "used_for": "Identifier format used to look up products (10-character ASIN examples)."
+    },
+    {
+      "id": "S07",
+      "title": "FTC: Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "publisher": "U.S. Federal Trade Commission (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. Brochure dated November 2019 on the page. Re-verified 2026-11-14 (session ecbfe91b): page re-read; still dated November 2019 on the page.",
+      "used_for": "Disclosure placement and content honesty rules for the content section. Re-read in full 2026-11-17 by session 0b2ffabd (with the November 2019 page date); the 'hard to miss', ABOUT-page and 'product you haven't tried' passages it cites are quoted in `sessions/0b2ffabd/verification.md` §4.",
+      "alias_of_26634cd5": "S10"
+    },
+    {
+      "id": "S08",
+      "title": "Amazon.com product page check: amazon.com/dp/B04G1MEwY",
+      "url": "https://www.amazon.com/dp/B04G1MEwY",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'; page text 'Sorry! We couldn't find that page.' Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
+      "used_for": "Direct-identifier check for product link 1."
+    },
+    {
+      "id": "S09",
+      "title": "Amazon.com product page check: amazon.com/dp/B02NbDxp3",
+      "url": "https://www.amazon.com/dp/B02NbDxp3",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'. Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
+      "used_for": "Direct-identifier check for product link 2."
+    },
+    {
+      "id": "S10",
+      "title": "Amazon.com product page check: amazon.com/dp/B00hJ57DV",
+      "url": "https://www.amazon.com/dp/B00hJ57DV",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13: title 'Page Not Found'. Page Not Found re-confirmed 2026-11-14 (session ecbfe91b).",
+      "used_for": "Direct-identifier check for product link 3."
+    },
+    {
+      "id": "S11",
+      "title": "Submitted product link 1: link.amazon/B04G1MEwY (redirect result)",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Price, rating and availability not in the text returned. Short link re-followed 2026-11-14 (session ecbfe91b): same target B0CDY277D3 as on 2026-11-13 — mapping stable across days and sessions.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
+      "alias_of_26634cd5": "S1"
+    },
+    {
+      "id": "S12",
+      "title": "Submitted product link 2: link.amazon/B02NbDxp3 (redirect result)",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
+      "alias_of_26634cd5": "S2"
+    },
+    {
+      "id": "S13",
+      "title": "Submitted product link 3: link.amazon/B00hJ57DV (redirect result)",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Re-fetched 2026-11-13 (two fetches earlier, one more on integration). Final URL: https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback . Page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "used_for": "Observed redirect target only; not confirmed as the submitted product (FLG-002).",
+      "alias_of_26634cd5": "S3"
+    },
+    {
+      "id": "S14",
+      "title": "Observed redirect target: amazon.com/dp/B0CDY277D3 (page title)",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B0CDY277D3 (no parameters). Page title read: CHEFMAN 6 Quart. Price, rating and availability not in the text returned. Control product page re-checked 2026-11-14 (session ecbfe91b): still resolves with the same page title.",
+      "used_for": "Title only, shown in the Flagged for Review page.",
+      "alias_of_26634cd5": "S4"
+    },
+    {
+      "id": "S15",
+      "title": "Observed redirect target: amazon.com/dp/B09B7SB46R (page title)",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B09B7SB46R (no parameters). The tool returned the Emeril Lagasse 26QT title with the URL https://www.amazon.com/dp/B09B7SB46R?lv=shuf&channelId=500&plpRedirect=mhFallback. Price, rating and availability not in the text returned.",
+      "used_for": "Title only, shown in the Flagged for Review page.",
+      "alias_of_26634cd5": "S5"
+    },
+    {
+      "id": "S16",
+      "title": "Amazon.com product page check: amazon.com/dp/B08DKYBTPH (direct)",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13 by requesting https://www.amazon.com/dp/B08DKYBTPH (no parameters). Returned the 'To continue, please click the Continue shopping button' interstitial, page title 'Amazon.com'. No product text was readable from this URL.",
+      "used_for": "Direct-URL check for product 3 (interstitial only). The product title is taken from S13 and S23.",
+      "alias_of_26634cd5": "S6"
+    },
+    {
+      "id": "S17",
+      "title": "linktw.in: 'link.amazon vs LinkTwin' (third-party competitor article)",
+      "url": "https://linktw.in/link-amazon-vs-linktwin",
+      "publisher": "LinkTwin (commercial competitor; NOT an Amazon source)",
+      "status": "third-party",
+      "status_note": "Claims link.amazon forwards clicks to amzlinks.in (a domain it says is operated by a third party). Not verified against any Amazon page. Used only to raise FLG-003.",
+      "used_for": "Flag only (FLG-003). Not used as a fact."
+    },
+    {
+      "id": "S18",
+      "title": "Seller Central help: ASIN definition (G200481490)",
+      "url": "https://sellercentral.amazon.com/help/hub/reference/external/G200481490",
+      "publisher": "Amazon Seller Central (official)",
+      "status": "not-accessible",
+      "status_note": "Fetched 2026-11-13: returned 'There was an error displaying this topic.' No content read.",
+      "used_for": "Nothing. The 10-character ASIN point rests on S06 and on the three resolved product URLs (S14-S16)."
+    },
+    {
+      "id": "S19",
+      "title": "Amazon.com footer link 'Become an Affiliate'",
+      "url": "https://affiliate-program.amazon.com/",
+      "publisher": "Amazon.com (official)",
+      "status": "verified",
+      "status_note": "Link text found in the amazon.com footer on the product-page fetches (S11-S13), 2026-11-13. The Associates site itself was reached through S01, S02, S04 and S05.",
+      "used_for": "Confirms affiliate-program.amazon.com is Amazon's Associates site."
+    },
+    {
+      "id": "S20",
+      "title": "Repository commit ed1a796 (initial commit, main)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/commit/ed1a796dc01f52669864e98a72b9a521a3b7161b",
+      "publisher": "GitHub (repository host of record)",
+      "status": "observed",
+      "status_note": "Checked 2026-11-13 with git ls-remote origin: refs/heads/main points at this commit. Before this session, the commit contained only README.md ('# Zone3', 7 bytes).",
+      "used_for": "Repository baseline (FLG-009)."
+    },
+    {
+      "id": "S21",
+      "title": "Repository branches (remote refs)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/branches",
+      "publisher": "GitHub (repository host of record)",
+      "status": "observed",
+      "status_note": "Checked 2026-11-13 with git ls-remote and git fetch. Remote branches include arena/26634cd5-zone3, arena/3c6cba43-zone3, arena/a9cafea1-zone3 and arena/7f84fea4-zone3. Other branches were read only, never edited.",
+      "used_for": "Parallel-session overlap (FLG-008)."
+    },
+    {
+      "id": "S22",
+      "title": "GitHub Pages configuration (REST API)",
+      "url": "https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages",
+      "publisher": "GitHub REST API (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-13 with gh api: status 'built', build_type 'legacy', source branch 'main' path '/', public true.",
+      "used_for": "Pages is enabled on main at / (no build step). Site files are at the repo root."
+    },
+    {
+      "id": "S23",
+      "title": "Destination page for product 3, reached through link.amazon/B00hJ57DV",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Read 2026-11-13 through the short link. Page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Price, rating and availability not in the text returned.",
+      "used_for": "Title, brand, capacity and category of the product 3 destination (see S16 for the direct-URL interstitial).",
+      "alias_of_26634cd5": "S3 (destination page)"
+    },
+    {
+      "id": "S24",
+      "title": "FTC: Endorsements, Influencers, and Reviews (topic hub)",
+      "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+      "publisher": "U.S. Federal Trade Commission (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-13. States that the Endorsement Guides were 'revised in 2023' and links the Consumer Reviews and Testimonials Rule (16 CFR Part 465) and the Consumer Review Fairness Act.",
+      "used_for": "Current FTC guidance pointers (FLG-017). The 2019 brochure (S07) is older than the 2023 Endorsement Guides revision."
+    },
+    {
+      "id": "S25",
+      "title": "Associates Program Standard Commission Income Statement: Table 1 (fixed rates by category)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13. Table 1 row: 'Physical Books, Kitchen, Automotive | 4.50%'. Also 'All Other Categories | 4.00%' and 'Toys, Furniture, Home, ... | 3.00%'. The page does not show a revision date in the text read. The rate applies to Qualifying Revenue for the listed category. Table 1 re-read 2026-11-14 (session ecbfe91b): rates unchanged (Kitchen 4.50%; Home 3.00%; All Other 4.00%); page publicly readable without sign-in.",
+      "used_for": "Category reference rate for Kitchen (PF-38). Not a product value: whether the listings are in the Kitchen category is not verified (FLG-021).",
+      "alias_of_26634cd5": "S11 (66a80e53 session)"
+    },
+    {
+      "id": "S26",
+      "title": "Onsite Associates Program Commission Income Statement: Table A (Onsite Content rates)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13. Table A row: 'Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive | 1.25%'. The text says Onsite Commission Income applies to Onsite Content (Publisher or Influencer Content used by Amazon within the Amazon Site).",
+      "used_for": "Shown to prevent a wrong reading: the 1.25% Kitchen rate is for Onsite Content, not for Special Links on this site (FLG-021).",
+      "alias_of_26634cd5": "S12 (66a80e53 session)"
+    },
+    {
+      "id": "S27",
+      "title": "Control lookup: Amazon's documented example ASIN B00005N5PF (Monopoly)",
+      "url": "https://www.amazon.com/dp/B00005N5PF",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-13 (session 33226b37-zone3): served a 'Continue shopping' checkpoint interstitial, NOT the 'Page Not Found' error returned by S08-S10. B00005N5PF is Amazon's own published example ASIN (Monopoly) in Amazon help documentation.",
+      "used_for": "Control test: proves a cataloged ASIN does not return the Page-Not-Found error, so the S08-S10 results for the submitted identifiers are meaningful and not an automated-retrieval artifact.",
+      "alias_of_33226b37": "S15 (session-33226b37-zone3 registry)"
+    },
+    {
+      "id": "S28",
+      "title": "Associates Help: Account Dormancy (180 days to refer a sale)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G7MJTPEP9NC3YKMG",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13 (session 33226b37-zone3): 'you have 180 days to refer a sale through one of your Associates links... Your application can be withdrawn if there were not enough qualifying sales for 180 days after your application was submitted.'",
+      "used_for": "Campaign ramp planning: new-account survival gate (PF-41).",
+      "alias_of_33226b37": "S19 (session-33226b37-zone3 registry)"
+    },
+    {
+      "id": "S29",
+      "title": "Associates Help: What is the application review process?",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
+      "publisher": "Amazon Associates Central (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-13 (session 33226b37-zone3): 'we require at least three [qualifying sales] within the first 180 days. Please note that personal orders do not qualify.' and 'All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.'",
+      "used_for": "Campaign ramp planning and content-feasibility bar (PF-40).",
+      "alias_of_33226b37": "S20 (session-33226b37-zone3 registry)"
+    },
+    {
+      "id": "S30",
+      "title": "Associates Program: Commission Income Statement 2(e) — Redirecting Link definition",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \"Redirecting Link\")'.",
+      "used_for": "Why a link.amazon/<code> short link must not be published as the Special Link (see commission/index.html and FLG-003). Re-read 2026-11-17 by session 0b2ffabd, which added 2(g) (malformed or untracked links) and 2(c) (Prohibited Paid Search Placement) beside 2(e); record `sessions/0b2ffabd/verification.md` §3."
+    },
+    {
+      "id": "S31",
+      "title": "Creators API: GetItems — ItemIdType parameter (ASIN definition)",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.'",
+      "used_for": "The 10-character ASIN rule used in the intake gate (FLG-001). Independent of S06/S08."
+    },
+    {
+      "id": "S32",
+      "title": "Amazon product detail: Chefman 8 Qt TurboFry",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon.com",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14; resolved short-link target and listing details.",
+      "used_for": "Resolved listing identity; dated research only."
+    },
+    {
+      "id": "S40",
+      "title": "Amazon.com results page for ASIN B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven)",
+      "url": "https://www.amazon.com/s?k=B0CDY277D3",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:06Z (qid 1794649506, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 1."
+    },
+    {
+      "id": "S41",
+      "title": "Amazon.com results page for ASIN B09B7SB46R (Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven)",
+      "url": "https://www.amazon.com/s?k=B09B7SB46R",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:12Z (qid 1794649512, decoded from Unix epoch). One result for the ASIN, with price, list price, star rating, rating count and the alternative offer.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 2."
+    },
+    {
+      "id": "S42",
+      "title": "Amazon.com results page for ASIN B08DKYBTPH (Chefman Air Fryer 8 Qt TurboFry 4-in-1)",
+      "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14T09:45:17Z (qid 1794649517). The exact ASIN is the first result. Price, list price, rating, rating count and 'other offers' figures were read from this page.",
+      "used_for": "Price, list price, star rating, rating count, demand signal and lowest alternative offer for product 3."
+    },
+    {
+      "id": "S43",
+      "title": "Amazon Best Sellers: Best Air Fryers (browse node 17659096011)",
+      "url": "https://www.amazon.com/Best-Sellers-Kitchen-Dining-Air-Fryers/zgbs/kitchen/17659096011/",
+      "publisher": "Amazon.com (official marketplace page)",
+      "status": "observed",
+      "status_note": "Read 2026-11-14. Ranks 1-6 were read in full. The page header reads: 'Our most popular products based on sales. Updated frequently.' The page lists its breadcrumb nodes (Kitchen & Dining, Small Appliances, Fryers, Air Fryers). Positions 7+ were not used for any claim.",
+      "used_for": "Category competition benchmark: what a buyer sees above the fold in the verified category, with star ratings, exact rating counts and prices."
+    },
+    {
+      "id": "S44",
+      "title": "FTC's Endorsement Guides: What People Are Asking (includes the affiliate-marketing section)",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "publisher": "U.S. Federal Trade Commission",
+      "status": "verified",
+      "status_note": "Read 2026-11-14 (chunks 0, 8, 9, 10 of 12). The section 'What About Affiliate or Network Marketing?' was read in full. It says the disclosure must be 'clear and conspicuous', that the closer to the recommendation the better, and that 'affiliate link' or a 'buy now' button alone is not adequate.",
+      "used_for": "Affiliate disclosure wording and placement guidance; review-integrity constraints."
+    },
+    {
+      "id": "S45",
+      "title": "Sell on Amazon: Understanding ASIN numbers (official Amazon seller education)",
+      "url": "https://sell.amazon.com/blog/what-is-an-asin",
+      "publisher": "Amazon.com (official; Sell on Amazon blog)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14 (session ecbfe91b). States an ASIN is “a unique 10-character alphanumeric code assigned to every product listed in the Amazon store” and that a typical ASIN looks like “B07FZ8S74R”.",
+      "used_for": "The identifier-length rule behind FLG-001 (the three submitted codes are 9 characters, not 10). (Added as S45 on merge: main's S30/S31 were already taken.)"
+    },
+    {
+      "id": "S46",
+      "title": "Amazon.com search results for B0CDY277D3 (price, rating, review count observed 2026-11-14)",
+      "url": "https://www.amazon.com/s?k=B0CDY277D3",
+      "publisher": "Amazon.com",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B0CDY277D3 are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
+      "used_for": "Product 1 observed price, rating, review count, sales note."
+    },
+    {
+      "id": "S47",
+      "title": "Amazon.com search results for B09B7SB46R (price, rating, review count observed 2026-11-14)",
+      "url": "https://www.amazon.com/s?k=B09B7SB46R",
+      "publisher": "Amazon.com",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B09B7SB46R are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
+      "used_for": "Product 2 observed price, rating, review count, sales note."
+    },
+    {
+      "id": "S48",
+      "title": "Amazon.com search results for B08DKYBTPH (price, rating, review count observed 2026-11-14)",
+      "url": "https://www.amazon.com/s?k=B08DKYBTPH",
+      "publisher": "Amazon.com",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 (observed). Price, rating, review-count and sales values for B08DKYBTPH are withheld from this public register under Program Policies 2(b) and 6(t) (AB-F-01; FLG-023). The page URL is the source.",
+      "used_for": "Product 3 observed price, rating, review count, sales note."
+    },
+    {
+      "id": "S49",
+      "title": "Re-check 2026-11-14: Associates Program Operating Agreement (Section 5 disclosure wording)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14. Page states: Updated October 15, 2025. Section 5 read in full and compared to the PF-01 quote in data/policy_facts.json: identical wording (\"As an Amazon Associate I earn from qualifying purchases.\"). [Kept from PR #26 (session 9fef7647) and renumbered from S36 on integration by session b90c5685, because S36 already names a different page on main.]",
+      "used_for": "Re-verification of PF-01, PF-02, PF-35 wording."
+    },
+    {
+      "id": "S50",
+      "title": "Re-check 2026-11-14: Associates Program Policies",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14. Page states: Updated April 14, 2026. Commission Income Statement Section 1 read and compared to PF-12/PF-13: identical (24-hour session; 89-day cart completion; 180-day ship/pay). [Kept from PR #26 (session 9fef7647) and renumbered from S37 on integration by session b90c5685, because S37 already names a different page on main.]",
+      "used_for": "Re-verification of PF-03 to PF-15 session and price/rating display rules."
+    },
+    {
+      "id": "S51",
+      "title": "Re-check 2026-11-14: FTC Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "publisher": "U.S. Federal Trade Commission",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-14. Page dated November 2019. \"When to Disclose\" and \"How to Disclose\" sections compared to PF-19/PF-20: identical wording. [Kept from PR #26 (session 9fef7647) and renumbered from S38 on integration by session b90c5685, because S38 already names a different page on main.]",
+      "used_for": "Re-verification of PF-19, PF-20, PF-21 wording."
+    },
+    {
+      "id": "S52",
+      "title": "Re-check 2026-11-14: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-1e229870efde5acf). Final URL: https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1e229870efde5acf&channelId=704&plpRedirect=mhFallback . Title of the destination page as served: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Same destination as S11 (2026-11-13). [Kept from PR #26 (session 9fef7647) and renumbered from S30 on integration by session b90c5685, because S30 already names a different page on main. It is a repeat observation of the same three short links recorded here as S11-S13.]",
+      "used_for": "Product 1 identity: the listing this submitted link opens (FLG-022)."
+    },
+    {
+      "id": "S53",
+      "title": "Re-check 2026-11-14: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-534f5e7952f396b2). Final URL: https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-534f5e7952f396b2&channelId=704&plpRedirect=mhFallback . Title of the destination page as served: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | 26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie for easy family meals. : Home & Kitchen\". Same destination as S12 (2026-11-13). [Kept from PR #26 (session 9fef7647) and renumbered from S31 on integration by session b90c5685, because S31 already names a different page on main. It is a repeat observation of the same three short links recorded here as S11-S13.]",
+      "used_for": "Product 2 identity: the listing this submitted link opens (FLG-022)."
+    },
+    {
+      "id": "S54",
+      "title": "Re-check 2026-11-14: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 with a fresh redirect token (srctok-76c3adaeb8708b44). Final URL: https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-76c3adaeb8708b44&channelId=704&plpRedirect=mhFallback&th=1 . Title of the destination page as served: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen\". Same destination as S13/S23 (2026-11-13). [Kept from PR #26 (session 9fef7647) and renumbered from S32 on integration by session b90c5685, because S32 already names a different page on main. It is a repeat observation of the same three short links recorded here as S11-S13.]",
+      "used_for": "Product 3 identity: the listing this submitted link opens (FLG-022)."
+    },
+    {
+      "id": "S55",
+      "title": "Independent re-fetch, 2026-11-14: the three submitted short links and their destination product pages",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Amazon.com (official live pages)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-14 by session b90c5685. link.amazon/B04G1MEwY -> amazon.com/dp/B0CDY277D3 (title: 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven ... - Black'); link.amazon/B02NbDxp3 -> amazon.com/dp/B09B7SB46R (title: 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven ...'); link.amazon/B00hJ57DV -> amazon.com/dp/B08DKYBTPH (title: 'Chefman Air Fryer 8 Qt | TurboFry 4-in-1 ...'). A direct GET of amazon.com/dp/B04G1MEwY returned Amazon's 'Page Not Found' page. The direct GETs of /dp/B0CDY277D3 and /dp/B08DKYBTPH both carried lv=shuf and plpRedirect=mhFallback with no short link involved, which corroborates FLG-026.",
+      "used_for": "Corroborates S11-S16 and S52-S54 on where each submitted link opens; confirms FLG-026 control observation. Not used as product identity."
+    },
+    {
+      "id": "S56",
+      "title": "This repository's published sitemap.xml (main branch)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/sitemap.xml",
+      "publisher": "This repository (GitHub)",
+      "status": "verified",
+      "status_note": "Read in the working tree at e8e3e9d and again at cb2dc1d/62c5c6a by session 21acd3c0 on 2026-11-14; entries compared against the page file set.",
+      "used_for": "21-F-02, 21-F-03, 21-F-04"
+    },
+    {
+      "id": "S57",
+      "title": "This repository's COORDINATION.md task board (main branch)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md",
+      "publisher": "This repository (GitHub)",
+      "status": "verified",
+      "status_note": "Read line-by-line by session 21acd3c0 on 2026-11-14; duplicated Parts observed at the file tail (see 21-F-01).",
+      "used_for": "21-F-01"
+    },
+    {
+      "id": "S58",
+      "title": "Redirect stub categories/home-kitchen-air-fryers.html (main branch)",
+      "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/categories/home-kitchen-air-fryers.html",
+      "publisher": "This repository (GitHub)",
+      "status": "verified",
+      "status_note": "File exists in the tree (redirect stub) but has no sitemap entry; observed by session 21acd3c0 on 2026-11-14.",
+      "used_for": "21-F-03"
+    },
+    {
+      "id": "S59",
+      "title": "FTC: The Consumer Reviews and Testimonials Rule: Questions and Answers",
+      "url": "https://www.ftc.gov/business-guidance/resources/consumer-reviews-testimonials-rule-questions-answers",
+      "publisher": "U.S. Federal Trade Commission (official)",
+      "status": "verified",
+      "status_note": "Fetched 2026-11-16 (session 1f1b8bd2). Page states the Rule on the Use of Consumer Reviews and Testimonials 'went into effect on October 21, 2024'; quotes sections 465.2, 465.4, 465.6, 465.7 and 465.8; states the rule's disclosure requirements relate to company insiders and that influencer relationship disclosures remain under the FTC Act / Endorsement Guides.",
+      "used_for": "1F-F-01"
+    },
+    {
+      "id": "S60",
+      "title": "Listing title and breadcrumb served for B0CDY277D3 on 2026-11-16",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "publisher": "Amazon.com (official listing)",
+      "status": "observed",
+      "status_note": "Served page title: \"Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen\". Breadcrumb nodes read from the page: Home & Kitchen (1055398) > Kitchen & Dining (284507) > Small Appliances (289913) > Fryers (17659095011) > Air Fryers (17659096011). Title text identical to S14. [Id renumbered from S59 on integration onto main, where that id already names a different document.]",
+      "used_for": "Every capacity, feature and cleaning statement about product 1 in data/editorial.json; the category breadcrumb on the Air Fryers hub."
+    },
+    {
+      "id": "S61",
+      "title": "Listing title served for B09B7SB46R on 2026-11-16",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "publisher": "Amazon.com (official listing)",
+      "status": "observed",
+      "status_note": "Served page title: \"Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen\". The title wording differs from the 2026-11-13/14 captures (S15, S53), which rendered \"26QT air fryer oven with French doors, 24 cooking functions, dual-speed fan and rotisserie\". Same ASIN and destination; Amazon listing titles are edited over time. Recorded so the drift is visible rather than smoothed (4f83-F-01). [Id renumbered from S60 on integration onto main, where that id already names a different document.]",
+      "used_for": "Every statement about product 2; the title-drift example in the best-seller and listing-title articles."
+    },
+    {
+      "id": "S62",
+      "title": "Listing title served for B08DKYBTPH on 2026-11-16",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "publisher": "Amazon.com (official listing)",
+      "status": "observed",
+      "status_note": "Served page title: \"Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel\". Identical wording to S16. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t). [Id renumbered from S61 on integration onto main, where that id already names a different document.]",
+      "used_for": "Every statement about product 3, including the 450°F Hi-Fry figure quoted in the feature article."
+    },
+    {
+      "id": "S63",
+      "title": "Amazon Best Sellers in Air Fryers, captured 2026-11-16",
+      "url": "https://www.amazon.com/gp/bestsellers/kitchen/17659096011",
+      "publisher": "Amazon.com (official list)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-16. Page states: \"Amazon Best Sellers - Our most popular products based on sales. Updated frequently.\" Positions 1-6 as served: 1 Ninja AF141 5Qt (B0CSZ7WBYW); 2 bella Fits-anywhere Slim 4qt (B0CYJDVT31); 3 Cosori TurboBlaze 6 Qt (B0C33CHG99); 4 Chefman 4 QT (B0CNY1F31S); 5 Cuisinart TOA-55 (B0GVVJZDQV); 6 Emeril Lagasse 26QT (B09B7SB46R). Position 7 was partially visible (Chefman 6-in-1 XL 14-Quart, B0GTBN7CS2). Star ratings and prices appear on this page and are deliberately not republished (FLG-022). [Id renumbered from S62 on integration onto main, where that id already names a different document.]",
+      "used_for": "The single rank statement in the best-seller article and the comparison row (product 2 at position 6, 2026-11-16); ranks are dated observations, not quality claims."
+    },
+    {
+      "id": "S64",
+      "title": "Air Fryers browse-node taxonomy, read from the best-seller page on 2026-11-16",
+      "url": "https://www.amazon.com/gp/bestsellers/kitchen/17659096011",
+      "publisher": "Amazon.com (official browse node)",
+      "status": "observed",
+      "status_note": "Node chain printed on the page: Any Department > Kitchen & Dining > Small Appliances (289913) > Fryers (17659095011) > Air Fryers (17659096011, current), with siblings Air Fryer Ovens (224479505011) and Deep Fryers (289918). Node ids read from the hrefs of those breadcrumb links. [Id renumbered from S63 on integration onto main, where that id already names a different document.]",
+      "used_for": "The category table on read/category/air-fryers.html: node ids and sibling categories, used to state where the niche sits and nothing else."
+    },
+    {
+      "id": "S65",
+      "title": "Standard Commission Income Statement Table 1 and Bounty table, re-read 2026-11-16",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-16 by session 145b8df7, chunk 0 of 3. Table 1 rows as printed: 'Luxury Beauty, Luxury Stores Beauty, Amazon Explore - 10.00%'; 'Digital Music, Physical Music, Handmade, Digital Videos - 5.00%'; 'Physical Books, Kitchen, Automotive - 4.50%'; 'All Other Categories - 4.00%'; the zero-rate row includes Gift Cards, Wireless Service Plans and Alcoholic Beverages. Bounty rates: Prime Free Trial $12.00, Prime Paid Membership $12.00, Prime Video Free Trial $2.00, Prime Video First Stream $5.00, Prime Video Stream $0.25. Consistent with S25 (2026-11-13). [Id renumbered from S64 on integration onto main, where that id already names a different document.]",
+      "used_for": "The rate table in read/getting-paid.html, quoted as the published standard table only; no rate is attributed to any product or to this account."
+    },
+    {
+      "id": "S66",
+      "title": "Associates Program Policies, header and Commission Income Statement SS1 re-read 2026-11-16",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-16 by session 145b8df7, chunk 0 of 11. Header reads 'Updated: April 14, 2026', matching S02/S50. CIS SS1 as read today: a Qualifying Purchase requires a click on a Special Link; a Session ends on the first of 24 hours elapsing, an order for a Product, or a click through another Associate's Special Link; a cart purchase counts if completed no later than 89 days after the click-through; and within 180 days of purchase the Product must be shipped/streamed/downloaded and paid for. Chunks 1-10 were not re-read today; the SS2(b)/6(t)/6(w)/6(y) wording quoted on the site is the wording recorded at S02 and S50. [Id renumbered from S65 on integration onto main, where that id already names a different document.]",
+      "used_for": "The 'clock' list in read/getting-paid.html (24 hours, 89 days, 180 days) and the current header date of the policies page."
+    },
+    {
+      "id": "S67",
+      "title": "Re-check 2026-11-16: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-16 by session 145b8df7 with a fresh redirect token (srctok-68884e8aa630b24a). Final URL https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-68884e8aa630b24a&channelId=704&plpRedirect=mhFallback. Same destination as S11 (2026-11-13) and S52 (2026-11-14): a deterministic mapping across five captures by four sessions. The submitted code is 9 characters, so it is not an ASIN (FLG-001). [Id renumbered from S66 on integration onto main, where that id already names a different document.]",
+      "used_for": "Product 1 destination for the editorial layer; the '9 characters, not 10' count in read/listing-titles.html. A link observation, not proof of owner intent (FLG-002)."
+    },
+    {
+      "id": "S68",
+      "title": "Re-check 2026-11-16: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-16 by session 145b8df7 (srctok-662480f5bd825c83). Final URL https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-662480f5bd825c83&channelId=704&plpRedirect=mhFallback. Same destination as S12 (2026-11-13) and S53 (2026-11-14). The submitted code is 9 characters, so it is not an ASIN (FLG-001), and the destination is an observation, not proof of owner intent (FLG-002). [Id renumbered from S67 on integration onto main, where that id already names a different document.]",
+      "used_for": "Product 2 destination for the editorial layer."
+    },
+    {
+      "id": "S69",
+      "title": "Re-check 2026-11-16: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-16 by session 145b8df7 (srctok-38bef00eb1e962ef). Final URL https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-38bef00eb1e962ef&channelId=704&plpRedirect=mhFallback&th=1. Same destination as S13 (2026-11-13) and S54 (2026-11-14). The submitted code is 9 characters, so it is not an ASIN (FLG-001), and the destination is an observation, not proof of owner intent (FLG-002). [Id renumbered from S68 on integration onto main, where that id already names a different document.]",
+      "used_for": "Product 3 destination for the editorial layer."
+    },
+    {
+      "id": "S70",
+      "title": "Submitted product link 4: link.amazon/B0c8moW59 — first observation by any session (2026-11-17)",
+      "url": "https://link.amazon/B0c8moW59",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Served a product page for ASIN B0DHZTCNR5. No Associates tag is present in the URL, so the click is not attributable (S02, Participation Requirements 2(b)).",
+      "used_for": "Redirect destination of the fourth submitted link, observed 2026-11-17. Independently captured on the same day (2026-11-17) by session 0b2ffabd; both captures agree on the destination. Record `sessions/0b2ffabd/verification.md` §6.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S71",
+      "title": "Submitted product link 5: link.amazon/B0f3GKalj — first observation by any session (2026-11-17)",
+      "url": "https://link.amazon/B0f3GKalj",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Served a product page for ASIN B0DZFD6R9Z. No Associates tag is present in the URL.",
+      "used_for": "Redirect destination of the fifth submitted link, observed 2026-11-17. Independently captured on the same day (2026-11-17) by session 0b2ffabd; both captures agree on the destination. Record `sessions/0b2ffabd/verification.md` §6.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S72",
+      "title": "Destination listing for link 4: amazon.com/dp/B0DHZTCNR5 (page title and breadcrumb, read 2026-11-17)",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Product title and category breadcrumb of the fourth destination listing. Re-read 2026-11-17 by session 0b2ffabd, which also recorded the Home & Kitchen breadcrumb; no price, rating or review figure was transcribed (2(b)/6(t)).",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S73",
+      "title": "Destination listing for link 5: amazon.com/dp/B0DZFD6R9Z (page title and breadcrumb, read 2026-11-17)",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Product title and category breadcrumb of the fifth destination listing. Re-read 2026-11-17 by session 0b2ffabd, which also recorded the Home & Kitchen breadcrumb; no price, rating or review figure was transcribed (2(b)/6(t)).",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S74",
+      "title": "Direct identifier check for link 4: amazon.com/dp/B0c8moW59 (2026-11-17)",
+      "url": "https://www.amazon.com/dp/B0c8moW59",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Shows the nine-character token is not an ASIN: the direct /dp/ URL returns Amazon's Page Not Found page.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S75",
+      "title": "Direct identifier check for link 5: amazon.com/dp/B0f3GKalj (2026-11-17)",
+      "url": "https://www.amazon.com/dp/B0f3GKalj",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Shows the nine-character token is not an ASIN: the direct /dp/ URL returns Amazon's Page Not Found page.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S76",
+      "title": "Re-check 2026-11-17: link.amazon/B04G1MEwY resolves to amazon.com/dp/B0CDY277D3",
+      "url": "https://link.amazon/B04G1MEwY",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Stability re-check of the first submitted link. Same destination as recorded on 2026-11-13, 2026-11-14 and 2026-11-16.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S77",
+      "title": "Re-check 2026-11-17: link.amazon/B02NbDxp3 resolves to amazon.com/dp/B09B7SB46R",
+      "url": "https://link.amazon/B02NbDxp3",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Stability re-check of the second submitted link. Same destination as on every earlier capture.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S78",
+      "title": "Re-check 2026-11-17: link.amazon/B00hJ57DV resolves to amazon.com/dp/B08DKYBTPH",
+      "url": "https://link.amazon/B00hJ57DV",
+      "publisher": "Amazon (official)",
+      "status": "observed",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Stability re-check of the third submitted link. Same destination as on every earlier capture.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S79",
+      "title": "Associates Program Operating Agreement, Sections 5 and 6, re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Verbatim disclosure sentence and the material-breach clause, re-read this session. Also cited by session 0b2ffabd (2026-11-17) for the Section 5 disclosure sentence and Section 6's material-breach consequence; its dated read record is `sessions/0b2ffabd/verification.md` §1.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S80",
+      "title": "Associates Program Policies, Participation Requirements 1, 2(b), 6(t), 6(v), 6(w), 6(y), re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Original-content requirement, the price-display rule, the star-rating rule, the cloaking rule, the link-shortener rule and the price-tracking rule, all re-read verbatim this session. Also cited by session 0b2ffabd (2026-11-17) for Participation Requirements 2(a)/2(b) clauses quoted nowhere before: no-bookmark and direct-access, the sub-tag/end-user ban, product-list originality, and limited-time-promotion removal; re-read record `sessions/0b2ffabd/verification.md` §2.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S81",
+      "title": "Associates Program Standard Commission Income Statement, Table 1, re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXZ",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Category rates for the standard programme: Kitchen 4.50%, Home 3.00%, All Other Categories 4.00%.",
+      "session": "2f181cd9"
+    },
+    {
+      "id": "S82",
+      "title": "Creators API GetItems, ItemIdType parameter (ASIN definition), re-read 2026-11-17",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "publisher": "Amazon Associates (official)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 2f181cd9.",
+      "used_for": "Amazon's own definition of an ASIN as a 10-character alphanumeric identifier.",
+      "session": "2f181cd9"
+    },
+    {
+      "title": "Direct-URL check 2026-11-17: amazon.com/dp/B0c8moW59 returns Page Not Found",
+      "url": "https://www.amazon.com/dp/B0c8moW59",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 73029680 by requesting https://www.amazon.com/dp/B0c8moW59 (no parameters). Result: Amazon's 'Sorry! We couldn't find that page' error page, title 'Page Not Found'. Same result class as S08-S10 for the other submitted codes: a 9-character token is not an ASIN and has no detail page under its own identifier (FLG-001). Independent of session 2f181cd9's S70: two sessions, same result, same day.",
+      "used_for": "Re-verification capture for register row P4's direct check; intent-record reconciliation (G84-F-01).",
+      "id": "S83"
+    },
+    {
+      "title": "Observation 2026-11-17: link.amazon/B0c8moW59 resolves to amazon.com/dp/B0DHZTCNR5",
+      "url": "https://link.amazon/B0c8moW59",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 73029680. Final URL https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-3fcbba70f075aae8&channelId=500&plpRedirect=mhFallback; the page title read on arrival is the ThermoMaven listing (S87). Same destination as register row P4 (session 2f181cd9, S70/S72/S74) and the shop register row SHOP-04. The submitted code is 9 characters, so it is not an ASIN (FLG-001). A link observation, not proof of owner intent (FLG-002, FLG-035).",
+      "used_for": "Re-verification capture of P4's destination; fills the intent-record row's observed block (G84-F-01).",
+      "id": "S84"
+    },
+    {
+      "title": "Direct-URL check 2026-11-17: amazon.com/dp/B0f3GKalj returns Page Not Found",
+      "url": "https://www.amazon.com/dp/B0f3GKalj",
+      "publisher": "Amazon.com (official retailer)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 73029680 by requesting https://www.amazon.com/dp/B0f3GKalj (no parameters). Result: Amazon's 'Sorry! We couldn't find that page' error page, title 'Page Not Found'. Same result class as S08-S10 (FLG-001). Independent of session 2f181cd9's S71: two sessions, same result, same day.",
+      "used_for": "Re-verification capture for register row P5's direct check; intent-record reconciliation (G84-F-01).",
+      "id": "S85"
+    },
+    {
+      "title": "Observation 2026-11-17: link.amazon/B0f3GKalj resolves to amazon.com/dp/B0DZFD6R9Z",
+      "url": "https://link.amazon/B0f3GKalj",
+      "publisher": "Link as submitted by the owner",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 73029680. Final URL https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-4b047e079f41545d&channelId=500&plpRedirect=mhFallback&th=1; the page title read on arrival is the CHEF iQ Sense listing (S88). Same destination as register row P5 (session 2f181cd9, S71/S73/S75) and the shop register row SHOP-05. The submitted code is 9 characters, so it is not an ASIN (FLG-001). A link observation, not proof of owner intent (FLG-002, FLG-035).",
+      "used_for": "Re-verification capture of P5's destination; fills the intent-record row's observed block (G84-F-01).",
+      "id": "S86"
+    },
+    {
+      "title": "Listing title served for B0DHZTCNR5 on 2026-11-17 (session 73029680 read)",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "publisher": "Amazon.com (official listing)",
+      "status": "observed",
+      "status_note": "Served page title: “Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen”. Read on arrival from link.amazon/B0c8moW59 (S84) and re-read at the direct listing URL on 2026-11-17; identical wording to session 2f181cd9's title capture (S72). Breadcrumb: Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t).",
+      "used_for": "Second dated title capture for P4 (a meat thermometer — outside the air-fryer guide set).",
+      "id": "S87"
+    },
+    {
+      "title": "Listing title served for B0DZFD6R9Z on 2026-11-17 (session 73029680 read)",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "publisher": "Amazon.com (official listing)",
+      "status": "observed",
+      "status_note": "Served page title: “Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3 : Home & Kitchen”. Read on arrival from link.amazon/B0f3GKalj (S86) and re-read at the direct listing URL on 2026-11-17; identical wording to session 2f181cd9's title capture (S73). Breadcrumb: Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat. Prices and ratings were present in the rendered page and were NOT copied out, per Program Policies 2(b) and 6(t).",
+      "used_for": "Second dated title capture for P5 (a meat thermometer — outside the air-fryer guide set).",
+      "id": "S88"
+    },
+    {
+      "title": "U.S. Office of Personnel Management: Federal Holidays schedule (2026 and 2027 tables)",
+      "url": "https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/",
+      "publisher": "U.S. Office of Personnel Management (official .gov)",
+      "status": "observed",
+      "status_note": "Fetched 2026-11-17 by session 73029680. Dates read from the page's own 2026 and 2027 tables: Thanksgiving Day Thursday 2026-11-26; Christmas Day Friday 2026-12-25; New Year's Day Friday 2027-01-01; Birthday of Martin Luther King, Jr. Monday 2027-01-18; Washington's Birthday Monday 2027-02-15; Memorial Day Monday 2027-05-31; Independence Day observed Monday 2027-07-05 (July 4 falls on a Sunday); Labor Day Monday 2027-09-06; Veterans Day Thursday 2027-11-11; Thanksgiving Day Thursday 2027-11-25; Christmas Day observed Friday 2027-12-24. Calendar facts only: the page says nothing about shopping demand, and this register makes no such claim either.",
+      "used_for": "Seasonal-calendar rows in the suggestions review dated 2026-11-17 (late) — dates only, never demand claims.",
+      "id": "S89"
+    },
+    {
+      "id": "S90",
+      "title": "Google Search Central: Qualify your outbound links to Google (rel=\"sponsored\")",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "publisher": "Google (official documentation)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 0b2ffabd, whole page (1 of 1 content chunk returned; page footer states 'Last updated 2025-12-10 UTC'). Verbatim: “Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value” and “Links marked with these rel attributes will generally not be followed.”",
+      "used_for": "The basis for S-05 (rel=\"sponsored\" on every outbound product link) and for the sponsored-rel row in DESIGN_PROMPT.md."
+    },
+    {
+      "id": "S91",
+      "title": "Google Search Central: Control your snippets in search results (page-level titles and meta descriptions)",
+      "url": "https://developers.google.com/search/docs/appearance/snippet",
+      "publisher": "Google (official documentation)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 0b2ffabd, chunks 0-1 of 3; page footer states 'Last updated 2026-04-20 UTC'. Verbatim: “Identical or similar descriptions on every page of a site aren't helpful when individual pages appear in search results. Wherever possible, create descriptions that accurately describe the specific page.” and “meta descriptions comprised of long strings of keywords don't give users a clear idea of the page's content, and are less likely to be displayed as a snippet.” Google's own product-page example invites a price into the description; Program Policies 2(b) (S71) forbids displaying one without an Amazon-served link or API data, so the rule this site adopts is page-level specificity without price.",
+      "used_for": "S-04 (unique title and description per page) and the measured coverage row in the 2026-11-17 review."
+    },
+    {
+      "id": "S92",
+      "title": "Google Search Central: Build and submit a sitemap (size limits, root placement, lastmod accuracy, feed as sitemap)",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+      "publisher": "Google (official documentation)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 0b2ffabd, chunks 0-1 of 4. Verbatim: “All formats limit a single sitemap to 50MB (uncompressed) or 50,000 URLs.”; “unless you submit your sitemap through Search Console, a sitemap affects only descendants of the parent directory”; “Include the URLs in your sitemap that you want to see in Google's search results.”; “Google ignores <priority> and <changefreq> values.”; “Google uses the <lastmod> value if it's consistently and verifiably (for example by comparing to the last modification of the page) accurate.”; “Google accepts RSS 2.0 and Atom 1.0 feeds.”",
+      "used_for": "The findability rows of the 2026-11-17 review; SUG-11 (sitemap and Search Console hygiene)."
+    },
+    {
+      "id": "S93",
+      "title": "Google Search Central: What's new (June 2026, \"Removing documentation for the FAQ rich result feature\") and the FAQPage doc redirect",
+      "url": "https://developers.google.com/search/updates",
+      "publisher": "Google (official documentation)",
+      "status": "verified",
+      "status_note": "Read 2026-11-17 by session 0b2ffabd. Requesting https://developers.google.com/search/docs/appearance/structured-data/faqpage serves this updates page anchored at #removing-faq-rich-result, whose June 2026 entry is titled “Removing documentation for the FAQ rich result feature”. Only the entry title and the redirect were observed; the removal paragraph's body text was not read, so no body wording is quoted anywhere on this site. Consequence recorded in the register: question-shaped guides are justified by reader value, not by a FAQ rich result, and no FAQPage JSON-LD is to be added.",
+      "used_for": "The 'measure whether anyone arrives' item and the anti-pattern note in DESIGN_PROMPT.md."
+    }
+  ],
+  "id_reservation": "S01-S59 are held by earlier sessions (main@110). S60-S69 are claimed by session 145b8df7 for its 2026-11-16 re-verification captures. S70-S82 are claimed by session 2f181cd9 (2026-11-17) for the five-link intake and policy re-reads. S83-S89 are claimed by session 73029680 (2026-11-17) for its own link re-checks and the OPM holiday schedule. S90-S93 are claimed by session 0b2ffabd (2026-11-17) for the four Google Search Central pages behind the design prompt; that session first filed twelve rows as S70-S81 against an older main, and on rebase renumbered the four genuinely new pages into S90-S93 and re-pointed the other eight at the existing rows S79, S80, S30, S07, S70, S71, S72 and S73 instead of duplicating them (flag G0B2-F-10). All ranges are NOT free: a session rebasing onto an older main must append from S94, or renumber its own entries and then read back every reference target -- an id-existence check will not catch a collision, because both ids exist and point at different documents."
 }
