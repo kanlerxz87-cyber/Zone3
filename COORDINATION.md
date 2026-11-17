@@ -7155,3 +7155,19 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 **Irregularities raised (published on `shop/flagged/`):** FLG-S01…FLG-S10 — see that page for severity, impact, sources and "claim not made".
 
 **PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/135 (`arena/974e366d-zone3` → `main`), opened 2026-11-17. Merge and Pages result to be recorded after the merge.
+
+## Session registry (Part: 29692d14)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 29692d14 | `arena/29692d14-zone3` | Independent continuation: ship reader RSS, a privacy-minimal first-party event endpoint prototype, Search Console onboarding and reader-follow path; do not duplicate the merged `/shop/` work | in progress (T2) | 2026-11-17 |
+
+### 29692d14 task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 29692d14-T1 — five-link shop / intent register integration | superseded by merged PR #135 before implementation | 29692d14 | claim-only; no shop/product-intent files edited | PR #135 sources and records | During the required rebase before push, `origin/main` advanced to `f6f16a5` and contained the already-merged work from session 974e366d. Its `/shop/` scope and all five redirect observations cover this task. The duplicate scope is released; peer files and records are preserved unchanged. |
+| 29692d14-T2 — RSS and readership/measurement foundation, with explicit production-hosting limits | in progress (this claim) | 29692d14 | `COORDINATION.md` (this Part), `sessions/29692d14/**`, `scripts/build_feed.py`, `scripts/build_root_redirect.py`, `scripts/build_sitemap.py`, `tools/analytics-server.mjs`, `assets/analytics.js`, `assets/analytics-config.js`, `tools/build_shop.py`, `shop/measurement/**`, `shop/measurement.html`, `feed.xml`, `index.html`, `robots.txt`, `sitemap.xml`, `.gitignore`, `README.md`, `EXECUTIVE-SUMMARY.md` | Google Search Central Search Console / sitemap / canonicalization / people-first / `rel=sponsored` docs; GitHub Pages docs; Amazon policy/Agreement; FTC disclosures | Search Console ownership cannot be verified without an authenticated owner; GitHub Pages is static and cannot run the Node endpoint. These are recorded as blockers, not claimed as live. No mailing-list provider or subscriber data is configured; reader follow is RSS-only and no email is collected. |
+
+**Conflict resolution / handoff (2026-11-17).** `git pull --rebase origin main` found a new merge commit `f6f16a5` for PR #135 while replaying the claim-only commit. The `COORDINATION.md` conflict was resolved additively: the complete upstream 974e366d record is retained verbatim, the duplicate T1 claim is released, and the disjoint T2 task is claimed here. No code or content from `/shop/` was edited by this session.
+
