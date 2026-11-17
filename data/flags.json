@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-17 — union: earlier sessions' register through F65-F-06 plus session 0c4c4cb6's 0C4-F-01..03 (P4/P5 intake)",
+  "retrieved": "2026-11-17 — union: earlier sessions' register through F65-F-06 plus session 0c4c4cb6's 0C4-F-01..03 (P4/P5 intake); 0C4-F-04 added 2026-11-17 (Special Link validation pending)",
   "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge).",
   "flags": [
     {
@@ -1478,6 +1478,21 @@
         "S14",
         "S15",
         "S16"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-04",
+      "severity": "Medium",
+      "category": "Special Links / validation",
+      "item": "Five tagged Special Links are built and published, but none has been validated in the enrolled Associates workflow",
+      "detail": "The owner supplied the Associates tag shopnow047c-20 in the 2026-11-17 brief. Session 0c4c4cb6 constructed one Special Link per product (data/special-links.json, SL1-SL5: https://www.amazon.com/dp/<destination>?tag=shopnow047c-20) from the observed destination listings and marked them rel=sponsored. The brief's own instruction is to test one link per product in the enrolled Associates workflow and confirm destination and tracking report before scaling. This session has no Associates login, so that test has not been run: whether the tag is active on an enrolled account, whether each link reports correctly, and whether the destinations are the owner's intended products (FLG-002, 0C4-F-02) are all unconfirmed. The supplied short links are NOT claimed invalid; their compliance status remains unresolved (FLG-003).",
+      "action": "Owner: in Associates Central, open each of SL1-SL5 (or mint the equivalent link with the link builder), confirm it lands on the intended listing and that a test click appears in the tracking report, then record the confirmation date in data/special-links.json and this flag can close.",
+      "sources": [
+        "S02",
+        "S01"
       ],
       "date": "2026-11-17",
       "session": "0c4c4cb6",

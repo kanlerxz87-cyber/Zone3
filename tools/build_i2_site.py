@@ -47,6 +47,11 @@ CATALOG = load("catalog.json")
 VERIFY = load("verification.json")
 DECISIONS = load("decisions.json")
 PRODUCTS = CATALOG["products"]
+# 0C4-T3 (session 0c4c4cb6, 2026-11-17): the Special Link registry in the repository's
+# root data/ holds the owner-supplied Associates tag. The reader site reads the tag from
+# there so exactly one file is the source of truth for it.
+SPECIAL = json.loads((ROOT / "data" / "special-links.json").read_text(encoding="utf-8"))
+SPECIAL_TAG = SPECIAL["tag"]["value"]
 
 
 def e(v) -> str:
@@ -345,7 +350,24 @@ def build_css():
 # --------------------------------------------------------------------------- pages
 def product_card(p, cta_state="disabled") -> str:
     facts = "".join(f"<li>{e(f)}</li>" for f in p["title_facts"][:4])
-    if cta_state == "disabled":
+    # 0C4-T3 (session 0c4c4cb6, 2026-11-17): the owner supplied the Associates tag
+    # (shopnow047c-20) in the brief, so the buy action switches from the disabled
+    # placeholder to a tagged Special Link on the observed destination listing,
+    # marked rel=sponsored. Validation in Associates Central is still pending
+    # (0C4-F-04) and intent is still unconfirmed (Q2 / I2-F-04) — both stated in
+    # the small print next to the button, per the D-07 "plain-language version
+    # next to each buy action" proposal.
+    if cta_state == "active":
+        tag = SPECIAL_TAG
+        sl_url = f"https://www.amazon.com/dp/{p['destination_asin']}?tag={tag}"
+        cta = (f'<a class="btn btn-primary" href="{e(sl_url)}" target="_blank" '
+               f'rel="sponsored noopener noreferrer">View on Amazon</a>'
+               f'<span class="small">Sponsored link — opens the listing this site verified the submitted '
+               f'link targets on {e(BUILT)}. Whether it is the product you intended is still unconfirmed '
+               f'(<a href="{rel("decisions.html")}#Q2">Q2</a>); tag validation in Associates Central is '
+               f'pending (<a href="{rel("flagged.html")}#I2-F-03">I2-F-03</a>). '
+               f'As an Amazon Associate I earn from qualifying purchases.</span>')
+    elif cta_state == "disabled":
         cta = (f'<span class="btn btn-disabled" aria-disabled="true">View on Amazon — link not active yet</span>'
                f'<span class="small">No tracking tag is available yet, so a click could not be credited to this site. '
                f'<a href="{rel("decisions.html")}#Q1">What is needed</a>.</span>')
@@ -364,7 +386,7 @@ def product_card(p, cta_state="disabled") -> str:
 
 
 def build_index():
-    cards = "".join(product_card(p) for p in PRODUCTS)
+    cards = "".join(product_card(p, p.get("buy_cta", "disabled")) for p in PRODUCTS)
     rows = []
     for r in CATALOG["comparison"]["rows"]:
         is_blank = any(r.get(k) is None for k in ("p1", "p2", "p3"))
@@ -767,8 +789,8 @@ OPEN_ITEMS = [
      "Blocked on Q4 (API eligibility). Until then the cells stay blank with an explanation on every page.",
      ["I2-S02", "I2-S04"]),
     ("I2-F-03", "The submitted links carry no tracking tag", "High",
-     "None of the three submitted short links resolves to a URL carrying an Associates tag, and no tag exists anywhere in this repository. Program Policies 2(b) require the tag parameter on every link to an Amazon Site.",
-     "Blocked on Q1 and Q3. Every buy action on this site is disabled and labelled until a tag is supplied.",
+     "None of the three submitted short links resolves to a URL carrying an Associates tag (still true after the 2026-11-17 re-check: the redirects carry btn_ref/srctok parameters and no tag). Program Policies 2(b) require the tag parameter on every link to an Amazon Site. Correction, 2026-11-17 (session 0c4c4cb6): a tag now exists in this repository — the owner supplied shopnow047c-20 in the brief, recorded in data/special-links.json — so the earlier sentence 'no tag exists anywhere in this repository' is no longer true and is superseded by this wording.",
+     "Partly resolved 2026-11-17: buy actions on this site now carry tagged Special Links to the observed destinations (rel=sponsored), because Q1 is answered and the owner asked for the products to be marketed. Still open: (a) the submitted short links themselves stay untagged evidence links and are not claimed invalid (FLG-003); (b) each Special Link must be validated in the enrolled Associates workflow before placement scales (0C4-F-04); (c) Q13 — who mints the srctok/channelId attribution — is unanswered.",
      ["I2-S02", "I2-S07"]),
     ("I2-F-04", "Product identity is unconfirmed", "High",
      "Each nine-character short link opens a live listing, and those listings are documented. Whether they are the products the owner intended to promote is not established by any official source.",

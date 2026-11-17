@@ -647,17 +647,17 @@
    "id": "Q1",
    "question": "What is the Amazon Associates tag (tracking ID) to put on every link?",
    "priority": "Blocking",
-   "known": "The tag must appear as a parameter in every link to an Amazon Site, in a XXXXX-## style format. The observed redirects of the three submitted links carry no tag.",
+   "known": "The tag must appear as a parameter in every link to an Amazon Site, in a XXXXX-## style format. The observed redirects of the three submitted links carry no tag. ANSWERED 2026-11-17 (owner, in the session brief): the Associates tag is 'shopnow047c-20'. Recorded in data/special-links.json as owner-supplied and unvalidated; Special Links SL1-SL5 were built from it the same day. What remains unknown is whether the tag is active on an enrolled account — that check needs Associates Central (0C4-F-04).",
    "known_sources": [
     "I2-S02",
     "I2-S01",
     "I2-S07"
    ],
-   "unknown": "The actual tag value. It is account-specific and cannot be derived from any public page.",
+   "unknown": "Whether shopnow047c-20 is the active Store ID on an enrolled amazon.com Associates account, and whether each Special Link's click shows in the tracking report. The value itself is no longer unknown — it was supplied by the owner on 2026-11-17.",
    "why_it_matters": "Without it nothing can earn, and a site with no earning action is not an affiliate site. It also decides whether the tag matches the marketplace, which changes the destination domain.",
    "how_to_discover": "Sign in to Associates Central, open Account Settings, and read the Store ID / Associate ID. Alternatively generate one storefront text link and copy the tag parameter out of it. Do not paste credentials — only the tag is needed.",
    "discovery_id": "DA-1",
-   "if_unanswered": "All buy actions stay disabled and labelled as not earning. Nothing else is blocked.",
+   "if_unanswered": "Was: all buy actions stay disabled. State 2026-11-17: the value is answered, so buy actions are active; what is still unanswered is the account validation (0C4-F-04), which blocks scaling placement, not the buttons themselves.",
    "decides": [
     "D-05",
     "D-09",

@@ -41,6 +41,9 @@ SUGGESTIONS = load("suggestions.json")
 ARTICLES = load("articles.json")
 DESIGN = load("design-brief.json")
 QUEUE = load("decision-queue.json")
+# Added by session 0c4c4cb6 (2026-11-17): the Special Link registry built from the
+# owner-supplied Associates tag (0C4-T3). Rendered on products.html.
+SPECIAL = load("special-links.json")
 
 
 def e(value) -> str:
@@ -1095,19 +1098,56 @@ def build_products() -> None:
         ["#", "Submitted link", "Intended ASIN", "Intended official listing URL", "Confirmation date", "Confirmation source", "Intent status", "Source"],
         intent_rows,
     )
+    tag_val = SPECIAL["tag"]["value"]
     body += f"""
 <section class="card">
   <h2>How to read this table</h2>
   <ul class="findings">
     <li>Each row is one product link from the brief (five as of 2026-11-17). An identifier is counted only when a product page under that identifier exists and matches it.</li>
     <li>&ldquo;Observed redirect&rdquo; is the page the short link opened on the date recorded in that row's source (2026-11-13 for links 1&ndash;3, 2026-11-17 for links 4&ndash;5). It is not treated as the submitted product, because the submitted identifier does not resolve to it.</li>
-    <li>The <strong>product-intent confirmation record</strong> below the main table is where an owner confirmation is stored: intended ASIN, official listing URL, confirmation date and source, one block per submitted link. Every cell is blank until that confirmation arrives, and the observed redirect is never copied into it &mdash; an observation is not evidence of intent (FLG-002, 0C4-F-02).</li>
+    <li>The <strong>product-intent confirmation record</strong> above is where an owner confirmation is stored: intended ASIN, official listing URL, confirmation date and source, one block per submitted link. Every cell is blank until that confirmation arrives, and the observed redirect is never copied into it &mdash; an observation is not evidence of intent (FLG-002, 0C4-F-02).</li>
     <li>Product name, brand, price, rating and availability are blank because they cannot be confirmed (see <a href="pricing.html">Pricing</a> and <a href="reviews.html">Reviews</a>).</li>
   </ul>
 </section>
 """
+    # Special Links registry (0C4-T3): the tagged links built from the owner-supplied
+    # Associates tag on 2026-11-17, marked rel=sponsored, validation pending.
+    sl_rows = []
+    for sl in SPECIAL["links"]:
+        sl_rows.append([
+            e(sl["id"]),
+            f'<a href="{e(sl["url"])}" target="_blank" rel="sponsored noopener noreferrer">{e(sl["url"])}</a>',
+            f'<a href="https://www.amazon.com/dp/{e(sl["destination_asin"])}" target="_blank" rel="sponsored noopener noreferrer">{e(sl["destination_asin"])}</a>',
+            e(sl["destination_basis"]),
+            badge("Pending validation in the enrolled workflow", "warn"),
+            src_links(sl["sources"]),
+        ])
+    body += table(
+        ["#", "Special Link (tagged, rel=sponsored)", "Destination listing", "Destination basis", "Validation", "Source"],
+        sl_rows,
+    )
+    body += f"""
+<section class="card">
+  <h2>Special Links: the tagged links this site would earn on</h2>
+  <p>Each Special Link is a direct <code>amazon.com/dp</code> URL carrying the Associates tag
+  <strong>{e(tag_val)}</strong> {src_links(["S02"])} &mdash; supplied by the owner on 2026-11-17 and recorded in
+  <code>data/special-links.json</code>. They are marked <code>rel="sponsored"</code> wherever they render, and
+  every page keeps the Associates disclosure above the fold.</p>
+  <ul class="findings">
+    <li><strong>Validation is pending, deliberately.</strong> One link per product must be opened in the enrolled
+    Associates workflow and its destination and tracking report confirmed before placement scales
+    {flag_links(["0C4-F-04"])}. This session has no Associates login, so that confirmation is the owner's step.</li>
+    <li><strong>The submitted short links are untouched.</strong> <code>link.amazon/...</code> URLs stay exactly as
+    submitted and are used as evidence links only; their compliance status is unresolved, not declared invalid
+    {flag_links(["FLG-003"])}. These Special Links are built from the observed destination listings, because owner
+    intent is still unconfirmed {flag_links(["FLG-002", "0C4-F-02"])}.</li>
+    <li><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. The same sentence sits
+    above the fold on this page and in the footer.</li>
+  </ul>
+</section>
+"""
     page("products.html", "Products", body,
-         lead="The five product links from the brief, checked line by line against official Amazon pages. Nothing is shown as a verified product until its identifier resolves.")
+         lead="The five product links from the brief, checked line by line against official Amazon pages, plus the tagged Special Links built from the owner-supplied Associates tag. Nothing is shown as a verified product until its identifier resolves.")
 
 
 # ------------------------------------------------------------- Pricing
