@@ -1,0 +1,99 @@
+{
+  "_meta": {
+    "title": "Shop product-intent confirmation record",
+    "checked_on": "2026-11-17",
+    "method": "Each submitted link was opened with a direct HTTPS request on 2026-11-17. The final URL after redirect and the page <title> were recorded as observed values. Intended-ASIN fields were NOT filled: the requester has not stated an intended ASIN, and a redirect is not evidence of intent.",
+    "rules": [
+      "intended_* fields are only filled from a requester statement plus an official Amazon listing check. None is filled in this build.",
+      "observed_* fields are what the submitted link resolved to on the check date. They are kept separate from intended_* and are never copied into them.",
+      "A submitted token is a short-link code. It is not an ASIN unless it is 10 characters (Creators API, ItemIdType=ASIN)."
+    ]
+  },
+  "products": [
+    {
+      "id": "SHOP-01",
+      "category": "air-fryers",
+      "submitted_link": "https://link.amazon/B04G1MEwY",
+      "submitted_token": "B04G1MEwY",
+      "intended_asin": "",
+      "intended_asin_status": "Unverified - not supplied by requester",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "observed_redirect_asin": "B0CDY277D3",
+      "observed_redirect_listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "observed_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "observed_on": "2026-11-17",
+      "source_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "source_publisher": "Amazon.com (listing page reached by the submitted short link)"
+    },
+    {
+      "id": "SHOP-02",
+      "category": "air-fryers",
+      "submitted_link": "https://link.amazon/B02NbDxp3",
+      "submitted_token": "B02NbDxp3",
+      "intended_asin": "",
+      "intended_asin_status": "Unverified - not supplied by requester",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "observed_redirect_asin": "B09B7SB46R",
+      "observed_redirect_listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "observed_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+      "observed_on": "2026-11-17",
+      "source_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "source_publisher": "Amazon.com (listing page reached by the submitted short link)"
+    },
+    {
+      "id": "SHOP-03",
+      "category": "air-fryers",
+      "submitted_link": "https://link.amazon/B00hJ57DV",
+      "submitted_token": "B00hJ57DV",
+      "intended_asin": "",
+      "intended_asin_status": "Unverified - not supplied by requester",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "observed_redirect_asin": "B08DKYBTPH",
+      "observed_redirect_listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "observed_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "observed_on": "2026-11-17",
+      "source_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "source_publisher": "Amazon.com (listing page reached by the submitted short link)"
+    },
+    {
+      "id": "SHOP-04",
+      "category": "meat-thermometers",
+      "submitted_link": "https://link.amazon/B0c8moW59",
+      "submitted_token": "B0c8moW59",
+      "intended_asin": "",
+      "intended_asin_status": "Unverified - not supplied by requester",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "observed_redirect_asin": "B0DHZTCNR5",
+      "observed_redirect_listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black",
+      "observed_on": "2026-11-17",
+      "source_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "source_publisher": "Amazon.com (listing page reached by the submitted short link)"
+    },
+    {
+      "id": "SHOP-05",
+      "category": "meat-thermometers",
+      "submitted_link": "https://link.amazon/B0f3GKalj",
+      "submitted_token": "B0f3GKalj",
+      "intended_asin": "",
+      "intended_asin_status": "Unverified - not supplied by requester",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "observed_redirect_asin": "B0DZFD6R9Z",
+      "observed_redirect_listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "observed_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+      "observed_on": "2026-11-17",
+      "source_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "source_publisher": "Amazon.com (listing page reached by the submitted short link)"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10: the five-link intake (two links open a second category), the missing Associates tag, the unverifiable per-product commission rate, the rel=sponsored inconsistency, the information-architecture and design findings, and a method note. All are published on flagged.html; none blocks the merge.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10 (union by ID over main's board).",
   "flags": [
     {
       "id": "FLG-001",
@@ -1428,6 +1428,71 @@
       "session": "f65d393b",
       "status": "fixed",
       "repo_evidence": "tools/i2_gate.py STAR_RE before/after in this session's diff; post-change gate run reports 18 pages, 0 flagged"
+    },
+    {
+      "id": "G82-F-01",
+      "severity": "Low",
+      "category": "Accessibility (fixed)",
+      "item": "Reader site (site/) shipped three tap targets below the usable floor: source chips ~22px tall, header nav and decision controls ~33-39px",
+      "detail": "S-20 asked for a mobile-first pass; the audit measured the CSS in tools/build_i2_site.py rather than assuming. Found: viewport meta, text-size-adjust, clamp() type scale, sticky header and overflow:auto table wrappers were already in place (credit to the i2 layer); the gaps were box-model ones — .src chips (font 11px, padding 1px 6px → ~22px rendered height, below the WCAG 2.2 SC 2.5.8 24×24 AA floor, and under 24px of separating space so the spacing exception did not apply), .top nav a (~39px) and the Accept/Reject/Defer .seg spans (~33px). Fixed 2026-11-17 by session 82372fd1 in the generator: min-height 24px on .src, 44px on .top nav a, .seg span and .btn (mobile block), mobile table cell padding 9px 10px to reclaim width, and a prefers-reduced-motion guard for scroll-behavior:smooth. Deliberately did NOT shrink table font on mobile (would fight 1.4.4-style resize expectations).",
+      "action": "No owner action. Measurements are box-model computations from the checked-in CSS (documented in sessions/82372fd1/mobile-audit.md), not browser renders; a human can spot-check on a phone at any time.",
+      "date": "2026-11-17",
+      "session": "82372fd1",
+      "status": "fixed",
+      "repo_evidence": "tools/build_i2_site.py commit 2ca865e; site/assets/site.css regenerated; gates i2_gate/lint/verify_site PASS on the rebuilt tree"
+    },
+    {
+      "id": "G82-F-02",
+      "severity": "Info",
+      "category": "Build",
+      "item": "The publishing brief asks each new guide to reach 'the existing sitemap and feed' — the sitemap half existed, the feed half did not; feed.xml now ships, with a maintenance rule",
+      "detail": "A repo-wide search on 2026-11-17 found no RSS/Atom implementation anywhere (only the brief text asking for one). Session 82372fd1 added tools/build_feed.py: feed.xml is generated strictly from data/cba81fa5/guides.json (the register the guide surfaces already read), entries = live guides only, dates come from the register (output is deterministic), and the same prohibited-figure rules the reader gates use are enforced at feed build time. Head <link rel=alternate> injections in site/index.html and site/guides/index.html live inside a self-healing sentinel region: after any reader-site rebuild run python3 tools/build_feed.py (the README chain lists it as the last step but one); python3 tools/build_feed.py --check fails when the region is missing or the feed drifted. Verified this session: i2 rebuild drops the region, --check reports drift with exit 1, re-run restores and all gates pass.",
+      "action": "None — mechanical. Any future session that rebuilds site/ must keep the chain order in README.md.",
+      "date": "2026-11-17",
+      "session": "82372fd1",
+      "status": "fixed",
+      "repo_evidence": "tools/build_feed.py; feed.xml; README build-order block; commit a3c365b"
+    },
+    {
+      "id": "G82-F-03",
+      "severity": "Medium",
+      "category": "Register gap (needs owner)",
+      "item": "Two of the five product links in the 2026-11-17 owner brief (link.amazon/B0c8moW59, link.amazon/B0f3GKalj) had no register row, no observation and no flag anywhere in the repo",
+      "detail": "data/products.json carries the three links the earlier sessions received and re-checked (S67-S69 cover B04G1MEwY, B02NbDxp3, B00hJ57DV). A full-tree search for B0c8moW59 and B0f3GKalj found nothing before 2026-11-17: the site has been presenting three products while the brief lists five. This session did NOT resolve or probe those links (no observation claims). They are now represented honestly as two 'not registered' rows in the product-intent confirmation record on products.html, with every intended field Unverified and observed field empty by design, and as question Q11 with discovery action D7 on the suggestions page.",
+      "action": "Owner: confirm what each of the two links is supposed to point at (or withdraw it), via D7. After that, a later session can open register rows for them through the intake tool and the same verification path the first three went through.",
+      "date": "2026-11-17",
+      "session": "82372fd1",
+      "sources": [
+        "S02",
+        "S31",
+        "S67",
+        "S68",
+        "S69"
+      ]
+    },
+    {
+      "id": "G82-F-04",
+      "severity": "Info",
+      "category": "Build (fixed)",
+      "item": "Two sessions shipped a feed at the same root path feed.xml on 2026-11-17; the merge keeps both content sets in one union feed",
+      "detail": "Session aebf0747 (PRs #136/#137) published an RSS 2.0 feed.xml listing the four /guides/ pages; this session built an Atom feed.xml from the live rows of data/cba81fa5/guides.json (reader guides under site/guides/). Both head links, both footer links and both sitemaps point at the single path feed.xml with type=application/rss+xml, so the union ships as RSS 2.0: entries are the verbatim re-home of aebf0747's four items (snapshot register data/feed/entries-shop.json, provenance to ad99ca8) plus every live row of the guide register, sorted by date. aebf0747's build_pass.py keeps writing its own feed.xml; tools/build_feed.py runs AFTER it in the chain and overwrites with the union — documented in the README chain. The snapshot means a future /guides/ addition must update data/feed/entries-shop.json too; the feed builder fails loudly on any missing page, date mismatch or prohibited figure instead of drifting.",
+      "action": "Fixed by this session. Owner note: to retire the dual-writer entirely, remove the feed write in sessions/aebf0747/build_pass.py once its session is no longer rebuilt — not done here because it is that session's file and the chain order makes it harmless.",
+      "date": "2026-11-17",
+      "session": "82372fd1",
+      "status": "fixed",
+      "repo_evidence": "tools/build_feed.py; data/feed/entries-shop.json; sessions/aebf0747/build_pass.py line 661 (their writer, kept); README chain"
+    },
+    {
+      "id": "G82-F-05",
+      "severity": "Low",
+      "category": "Gate defect (fixed)",
+      "item": "main arrived failing its own shared gate: scripts/check_site.py 'navigation missing' on the publication front page index.html",
+      "detail": "Reproduced on ad99ca8 in a clean worktree: check_site requires the exact substring 'class=\"topbar\"' on every PAGES entry, but the front page (aebf0747, PRs #136/#137) carries its masthead as class=\"z3-mast topbar\" and has no link named flagged.html — the page is compliant by design (own nav + publication-pass.html#flagged), the gate just predates the template. Under the brief's never-merge-a-broken-site rule this session fixed it from both ends: (a) the generator sessions/aebf0747/build_pass.py NAV gains a 'Flagged (register)' link to flagged.html and the masthead keeps the topbar token — additive; (b) scripts/check_site.py matches the token 'topbar' instead of the exact attribute, with the flagged.html requirement unchanged. After the change check_site passes and no page lost its governance link.",
+      "action": "Fixed by this session (both edits are one-liners with their comments in place). A later integration may fold the token rule into a proper nav-shape check.",
+      "date": "2026-11-17",
+      "session": "82372fd1",
+      "status": "fixed",
+      "repo_evidence": "scripts/check_site.py nav rule; sessions/aebf0747/build_pass.py NAV + masthead; reproduction: git worktree at ad99ca8 → 'FAILED: 1 problem(s) - index.html: navigation missing'"
     },
     {
       "id": "F-2F-01",

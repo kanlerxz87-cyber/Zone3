@@ -1,0 +1,23 @@
+{
+  "site_name": "Zone3 Kitchen (working name)",
+  "site_name_status": "Working name. The brand name is an open decision (see decisions page, DEC-04).",
+  "base_path": "/Zone3/shop/",
+  "site_origin": "https://kanlerxz87-cyber.github.io",
+  "checked_on": "2026-11-17",
+  "associates_disclosure": "As an Amazon Associate I earn from qualifying purchases.",
+  "associates_disclosure_source": "https://affiliate-program.amazon.com/help/operating/agreement",
+  "associates_tracking_id": "shopnow047c-20",
+  "tracking_id_status": "User-selected value. This build does not verify account ownership. The ID is NOT embedded in any link, because the submitted short links were used as supplied and Special Link validation has not been run.",
+  "categories": [
+    {
+      "slug": "air-fryers",
+      "title": "Air fryers",
+      "blurb": "Three listings for air fryers, air fryer ovens and dual-basket models, as they appear on their Amazon pages."
+    },
+    {
+      "slug": "meat-thermometers",
+      "title": "Meat thermometers",
+      "blurb": "Two listings for digital and wireless meat thermometers, as they appear on their Amazon pages."
+    }
+  ]
+}

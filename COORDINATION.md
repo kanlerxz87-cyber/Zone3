@@ -5620,7 +5620,10 @@ Board read (all parts, through line 5279). Claim pushed as this commit **before*
 | GitHub Pages build for `2c66e24` | **built** (2026-11-16T18:47:24Z). Latest build status after merge: `built`, error none. |
 | Live checks (fetched 2026-11-16 after the build) | Flagged page at `/flagged.html` reports **92 entries** with the severity counts that the PR's gates produced (3 critical, 16 high, 24 medium, 29 low, 20 info). The last chunk shows the Observed redirect-targets table (see A0-F-07). |
 | Post-merge finding | **A0-F-07 (Medium)**: the redirect-target table says "No: not the submitted product" for each short link. Published as a flag; wording change requested. Added in follow-up PR (below). |
-| Follow-up PR — A0-F-07 flag, counts 92 → 93, this publish record | PR number and merge result recorded in the GitHub PR log for this branch (`gh pr view` on `arena/a0ffcab0-zone3`). The repository's flags, record and summary all report 93. |
+| Follow-up PR **#108** — `arena/a0ffcab0-zone3` → `main`: A0-F-07 flag, counts 92 → 93, PR #107 publish record | **MERGED** 2026-11-16T18:48:58Z via `gh pr merge 108 --merge`. Merge commit `a1ff535c0309c4a42480137247e28e67590697bf`. |
+| GitHub Pages build for `a1ff535` | **built** (2026-11-16T18:49:28Z); repo Pages status `built`. |
+| Live checks after #108 (fetched 2026-11-16, cache-busted query string) | `/flagged.html` reports **93 entries: 3 critical, 16 high, 25 medium, 29 low, 20 info**; A0-F-01…A0-F-07 all present in the published table. `/docs/sources.html` still shows the restricted values (A0-F-01) — open, owner decision, as logged. |
+| Close-out | A0-T6 **done**. This record is the close-out; any later merge of this record is visible in the PR log for this branch. |
 
 **Open items after this session (none blocks the merge; all published):** A0-F-01 and A0-F-02 — owner decisions on restricted values in `/docs/`, `sessions/`, `archive/`, `research/` and root data snapshots; A0-F-03 — V4 gate change; A0-F-07 — wording change; A0-F-05 — intended-product confirmation, FLG-002.
 
@@ -7121,6 +7124,214 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 | Live checks (cache-busted, after `built`) | **Root** `/?f65=livecheck` — front-door band with the exact §5 disclosure in-banner, both reader-desk CTAs, three product cards with labelled source links, "62 Official sources cited" KPI, status date 2026-11-16. **`flagged.html`** — banner disclosure + **"108 entries: 3 critical, 19 high, 30 medium, 31 low, 25 info"**, matching the register exactly. **`site/flagged.html`** — reader-site disclosure banner, I2/CBA flag tables intact. (I2-F-13's edge-cache lesson applied: cache-busting query on every fetch; first fetch post-`built` already served the new revision.) |
 | Session status | F65-T1…T5 **done**. Records: `sessions/f65d393b/verification-2026-11-16.md`, `sessions/f65d393b/repo-review.md`. Flags raised: F65-F-01…F65-F-06, all `status: fixed`, all published on `flagged.html`. |
 
+## 974e366d — Session registry and claim (branch `arena/974e366d-zone3`)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 974e366d | `arena/974e366d-zone3` | Shop site for the five submitted Amazon links (`/shop/`): product intent record, category pages, disclosure strip, `rel="sponsored"` on every outbound product link, Flagged for review, decisions/suggestions page, executive summary, empty campaign ledger; final integration, PR to `main`, merge, Pages check | in progress (T-974) | 2026-11-17 |
+
+### 974e-T1 — Shop site build (claimed 2026-11-17, in progress)
+
+- **Scope (files this session may edit):** `shop/**`, `data/shop/**`, `tools/build_shop.py`, `sitemap.xml` (append `/shop/` URLs only), `index.html` (one navigation link to `shop/index.html`), this section of `COORDINATION.md`.
+- **Not touched:** every other page, `data/*.json` (flat register), `data/z3/**`, `site/**`, `read/**`, `sessions/**`, `archive/**`, `scripts/**`.
+- **Submitted tracking ID (user-selected):** `shopnow047c-20`. It is recorded in `data/shop/config.json`. It is **not** embedded in any link in this build, because the submitted short links were supplied as-is and Special Link validation needs an Associates account test that this session cannot perform.
+- **Sources for this claim:** Operating Agreement §5 (disclosure sentence), Creators API GetItems ItemIdType (ASIN = 10 characters), Google Search Central `rel="sponsored"`, and the five submitted short links resolved on 2026-11-17.
+- **Stale claims noted:** `7f84fea4` (T6, 2026-11-13) and `3c886b62` (T7, 2026-11-13) are listed as in progress with no activity in this checkout. Their scopes do not overlap with this claim, so they are not taken over.
+
+### 974e-T1 — record (done, pending PR; 2026-11-17)
+
+**Built (on `arena/974e366d-zone3`):** `shop/` (11 pages: landing, Air fryers, Meat thermometers, All products, Findings, Decisions, Flagged for review, Sources, Executive summary, Campaign ledger, Disclosure), `data/shop/*.json` (config, product intent record, sources, flags, decisions, empty campaign ledger), `tools/build_shop.py` (generator and publishing gate), `sitemap.xml` (11 `/shop/` URLs appended), `index.html` (one "Shop" navigation link).
+
+**Sources read on 2026-11-17 (see `shop/sources/` and `data/shop/sources.json`):**
+- Operating Agreement, `https://affiliate-program.amazon.com/help/operating/agreement`: header "Updated: October 15, 2025"; §1 Special Links and Program Content; §5 disclosure sentence (verbatim: "As an Amazon Associate I earn from qualifying purchases."); §6 §5 violation = material breach.
+- Commission Income Statement (Program Policies), `https://affiliate-program.amazon.com/help/operating/policies`: chunk 1 of 11; §2(e) redirecting links and §2(g) improperly formatted links are disqualifying. Participation Requirements 2(b) and 6(t)/6(v)/6(w) were **not** re-read today.
+- Creators API GetItems, `https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items`: ItemIdType ASIN = "10-Character alphanumeric unique identifier".
+- Google Search Central, `https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links`: rel="sponsored" (page last updated 2025-12-10 UTC).
+- FTC, `https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`: placement "hard to miss", with the endorsement itself (guide dated November 2019).
+- GitHub Docs, `https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages`: "static site hosting service"; visitor IP addresses are logged.
+- Observed: `https://link.amazon/B04G1MEwY`→`B0CDY277D3`; `B02NbDxp3`→`B09B7SB46R`; `B00hJ57DV`→`B08DKYBTPH`; `B0c8moW59`→`B0DHZTCNR5`; `B0f3GKalj`→`B0DZFD6R9Z` (each on 2026-11-17; listing pages at `https://www.amazon.com/dp/<ASIN>`).
+
+**Verification performed:** `python3 tools/build_shop.py --check` passes (11 pages). The gate checks: disclosure sentence ≥2× per page; every amazon.com/link.amazon link `rel="sponsored noopener"`; no price/star/rating pattern; every data-table row has an https source link; every internal link resolves; no tracking tag embedded; all shop URLs in `sitemap.xml`; each submitted token is 9 characters; intended-ASIN fields blank. Negative tests confirmed the gate fails on an unmarked Amazon link, on a price string, and on a missing disclosure. `scripts/check_all_links.py`: 172 pages, 0 errors. `scripts/check_site.py`: pass.
+
+**Not done (each is a flag or decision on the site):** intended ASIN for any of the five links (FLG-S02, DEC-02); Special Link test in an Associates account (FLG-S04, DEC-01); tracking-ID ownership (FLG-S05); outbound click counter and self-hosted endpoint (FLG-S06, DEC-03); price/rating display (FLG-S07); product images (FLG-S08, DEC-05); brand name (FLG-S09, DEC-04); repository overlap (FLG-S10); publishing cadence (DEC-06); RSS feed (none added; no guides published yet).
+
+**Irregularities raised (published on `shop/flagged/`):** FLG-S01…FLG-S10 — see that page for severity, impact, sources and "claim not made".
+
+**PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/135 (`arena/974e366d-zone3` → `main`), opened 2026-11-17. Merge and Pages result to be recorded after the merge.
+
+---
+
+# PART D — Session `aebf0747` (branch `arena/aebf0747-zone3`) — claimed 2026-11-17 (UTC)
+
+> Appended additively. Nothing above was edited. This session's task IDs are `AE-Tn` and flag IDs are `AE-Fnn`; they are not the same items as `A:`, `B:`, `Z-`, `C-`, `FLG-`, `F65-` or `I2-`/`CBA-` IDs used elsewhere.
+
+## D Session registry
+
+| Session ID | Branch | Role | Status | Claimed (UTC) |
+|---|---|---|---|---|
+| `aebf0747` | `arena/aebf0747-zone3` | Publication pass: compliance strip and sponsored links on every published page, question-shaped guides, RSS feed, product-intent record, publication front page, flagged-for-review, integration, PR to `main`, merge, Pages check | merged (PR #136, merge `5f07d3b`); record PR open | 2026-11-17 |
+
+Scope: this session edits `sessions/aebf0747/**` and the new pages `guides/**`, `intent-record/**`, `publication-pass.html`, `feed.xml`, plus the root `index.html` (front page), `sitemap.xml`, `robots.txt` and the mechanical disclosure/sponsored/feed-link markup on every published HTML file. Nothing else is changed. Other sessions' data files (`data/*.json`, `data/z3/*`, `data/i2/*`, `data/cba81fa5/*`) are read, not edited.
+
+## D Task board
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| AE-T1 — Claim and coordination record | in progress | `COORDINATION.md` (Part D only) | This entry. |
+| AE-T2 — Source verification (Associates, FTC, Amazon listings, ASIN definition) | done 2026-11-17 (merged, PR #136) | `sessions/aebf0747/verification.md` | Every row links an official page. |
+| AE-T3 — Disclosure strip under masthead and in footer; `rel="sponsored"` on outbound Amazon links; RSS autodiscovery on every published HTML page | done 2026-11-17 (merged, PR #136) | all published `*.html` (mechanical markup only) | Idempotent script: `sessions/aebf0747/publish_pass.py`. |
+| AE-T4 — Question-shaped guides (4 working titles), guides hub, `feed.xml`, sitemap | done 2026-11-17 (merged, PR #136) | `guides/**`, `feed.xml`, `sitemap.xml` | Facts only from verified official pages. |
+| AE-T5 — Product-intent confirmation record | done 2026-11-17 (merged, PR #136) | `intent-record/index.html`, `sessions/aebf0747/intent-record.json` | Intended ASIN, official listing URL, confirmation date and source are kept apart from observed redirect targets. |
+| AE-T6 — Publication front page | done 2026-11-17 (merged, PR #136; `index.html` guarded, see log) | `index.html` (previous root kept at `dashboard-register.html`) | Products first; every dashboard surface in footer. |
+| AE-T7 — Click counter, self-hosted analytics endpoint, Search Console, Special Link validation | **blocked — needs decision/account** | `publication-pass.html` (status only) | Not implemented; see AE-F items. |
+| AE-T8 — Flagged for Review and executive summary | done 2026-11-17 (merged, PR #136) | `publication-pass.html`, `sessions/aebf0747/EXECUTIVE-SUMMARY.md` | Published; non-blocking. |
+| AE-T9 — Integration, gates, PR to `main`, merge, Pages check | done 2026-11-17 | this file (merge record) | PR #136 merged 2026-11-17 16:16 UTC at `5f07d3b`. Pages build for `5f07d3b`: `built`. Live front page and `feed.xml` checked. |
+
+## D Log (session `aebf0747`)
+
+Entries are appended in time order. Nothing outside the lines listed below was edited.
+
+- **Shared-tool changes (other sessions' builders).** Two guards and one attribute change. Each is marked `aebf0747` in the source.
+  - `scripts/build_site.py`: will not overwrite `index.html` when it already carries the `aebf0747-front` marker.
+  - `tools/build_cba81fa5_site.py`: (a) does not re-inject the old root band when the marker is present; (b) new helper `_rel()` adds `sponsored` to Amazon product and short links (not to the Associates policy page). Without (b) the builder's `--check` and the lint report the publish-pass markup as stale.
+  - Required order from now on: `python3 tools/build_cba81fa5_site.py`, then `python3 sessions/aebf0747/publish_pass.py`, then the checks. Running `build_read.py`, `build_i2_site.py` or `build_site.py` later will drop `sponsored` from their own links; re-run `publish_pass.py` after them.
+- **Scope of the publish pass.** `docs/`, `sessions/` and `archive/` are excluded (the 83-page audit set). An earlier run edited them by mistake; those edits were reverted from `HEAD` before any commit. Set in `sessions/aebf0747/publish_pass.py` (`SKIP_TOP`).
+- **Baseline (corrected).** `sessions/aebf0747/audit-before.json` is re-measured on `fedc9f6` with the same definitions as the after-pass: 83 pages; disclosure under masthead 26; disclosure anywhere 78; in footer 60; description 77; RSS 0; product links 1,317 with 6 sponsored. An earlier figure of 2,309 outbound links came from a different counter and is superseded.
+- **After (91 pages, including the 8 new pages).** Disclosure under masthead 91/91; in footer 91/91; description 91/91; RSS 91/91; product links 1,373, all sponsored.
+- **Scope decision (meat thermometers).** `B0c8moW59` and `B0f3GKalj` are published, labelled "Meat thermometer · outside the air-fryer guides". Owner may remove them; the decision is on the Flagged page.
+- **Analytics (AE-T7, blocked).** Click counter, self-hosted endpoint, Search Console and Special Link validation are not built. The repo has no list of "five defined events"; that gap is flagged (AE-F-04/05), not filled.
+- **Cadence.** "One new guide every 14 days" is a working setting chosen in this session, not sourced from the repo or an official page. Owner decision (AE-F-11).
+- **Flag and verification IDs.** The `AE-F-nn` and `AE-V-nn` IDs appear on `publication-pass.html` and in `sessions/aebf0747/verification.md`. They are not Part D board items.
+- **Verification corrections (2026-11-17).** The FTC quotes are now exact ("hard to miss"; "likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE"). Program Content is quoted from Operating Agreement §1. The Asurion plan name is on the three air-fryer listings; the "Your Orders" terms sentence was removed as unverified. Titles of the 6 Qt, 8 Qt and 26 Qt listings were re-read on 2026-11-17 and match the text on the pages.
+- **Link checks.** Internal link check: 0 broken (91 pages). `scripts/check_all_links.py`: 169 HTML pages, 195 external URLs, 0 errors. `tools/cba81fa5_lint.py`: PASS, 0 new findings (22 inherited). `scripts/cba81fa5_test_no_repr_output.py`: PASS. `scripts/build_sitemap.py --check`: PASS.
+- **Open.** The short links remain unresolved (FLG-003); they are not described as invalid. Intended ASINs are not confirmed. Shared outputs (`index.html`, `sitemap.xml`) were changed in this session as its final integration step; any other session that rebuilds them must use the required order above.
+- **Merge conflicts (logged, nothing discarded).** `git pull --rebase origin main` met main at `f6f16a5` (PR #135, session `974e366d`). Two conflicts:
+  1. `COORDINATION.md` (AE-T1 claim commit): both sides appended at the end of the file. Resolved by keeping the `974e366d` section first, then Part D. An earlier attempt wrote conflict markers into a commit; the rebase was aborted and redone cleanly before any push.
+  2. `index.html` (AE-T6): main had added a "Shop" link (`shop/index.html`) to the old front-door navigation. Resolved by keeping the publication front page and adding the same Shop link to its navigation. The previous root page, including its Shop link, is kept unchanged at `dashboard-register.html`. `sessions/aebf0747/build_pass.py` carries the Shop link so a rebuild does not drop it.
+- **Shop section (PR #135) after merge.** `tools/build_shop.py --check` passes (11 pages). The publish pass added only additive markup to `shop/**` (55 lines, 0 removed): the stylesheet link, the feed link, and the shared footer. No shop content was changed.
+- **Gates after merge (102 pages, 134 with `shop/` and the other reader sets).** `tools/verify_site.py`: VERIFY PASS, 134 pages, V1 to V7. `scripts/check_all_links.py`: 180 HTML pages, 207 external URLs, 0 errors. Internal link check: 0 broken. `tools/cba81fa5_lint.py`: PASS. `scripts/build_sitemap.py --check`: PASS. Publish pass: idempotent. Audit after (102 pages): disclosure above masthead 102/102; footer 102/102; RSS 102/102; product links 1,422, all sponsored.
+- **Integration and merge record (AE-T9).** PR #136 (`arena/aebf0747-zone3` into `main`) opened after the gates above and merged with a merge commit at `5f07d3b` (2026-11-17 16:16 UTC). GitHub Pages: legacy build for `5f07d3b` finished `built`. Live checks: front page shows the disclosure, the five products and the four guides; `feed.xml` lists the four guides. The branch was force-pushed once with a lease (`e2d559c` to `24e3418`) to replace the unmerged claim commit with its rebased version; no other branch was touched. This record is committed after the merge and merged in a small follow-up PR.
+- **Later merges (AE-T8 addendum).** PR #137 recorded the merge above on `main`. PR #138 added the options and suggested default for each open decision ("Suggestions for choosing a path") to the Flagged page; merged at `b5c26fc`; Pages build for `b5c26fc`: `built`. All gates were re-run before merge.
+- **Next (AE-T9).** Done (see above). Nothing else is open on this session.
+
+---
+
+## Part 82 — session `82372fd1` (branch `arena/82372fd1-zone3`, base `fedc9f6` (main at claim), 2026-11-17)
+
+### 82 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 82372fd1 | `arena/82372fd1-zone3` | Feed publication for the reader guides (feeds+sitemap item of the S-07 cadence), S-20 mobile-first audit, dated refresh of the suggestions/decision layer (design paths + open questions re-statused 2026-11-17), flag register additions, final integration PR to `main` | in progress | 2026-11-17 |
+
+### 82 Coordination check before claiming
+
+- `main` at claim: `fedc9f6` (merge of PR #134, session f65d393b). No open PRs from other sessions seen moving against this base at claim time; all prior Parts' session statuses are merged or done.
+- Rebased scope discipline: no edits to `scripts/check_site.py`, `tools/i2_gate.py`, `tools/cba81fa5_lint*.py/json`, `tools/verify_site.py`, `data/decision-queue.json`, `data/i2/*.json`, `data/cba81fa5/sources.json` beyond what a rebuild regenerates. `tools/build_i2_site.py` may be touched **only** for the S-20 CSS audit, recorded with before/after evidence in a `G82-F-*` flag (precedent: F65 shared-tool repairs).
+- Gates on the claimed base re-run before any edit: `check_site` OK 30/3/62/108 · `link_report --strict` 0 · `i2_gate` PASS 18/164/148/16/0 · `cba81fa5_lint` PASS 0 new / 22 inherited · `build_cba81fa5 --check` current · `build_sitemap --check` 78/0 · `check_all_links` 0 errors (161 pages/180 URLs). All green at `fedc9f6`.
+
+### 82 Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G82-T1 — Repo review at the claimed base; gate snapshot; live-Pages spot check | in progress | 82372fd1 | read-only; record in `sessions/82372fd1/repo-review.md` | repo registers | — |
+| G82-T2 — Ship an Atom feed for the reader guides (`feed.xml`), self-healing `<link rel="alternate">` in the two reader index heads, `--check` gate; closes the "add each new guide to the sitemap and feed" item of the publishing-cadence brief for the guide set | in progress | 82372fd1 | `tools/build_feed.py` (new), `feed.xml` (new), `site/index.html` + `site/guides/index.html` head regions (injected only, never hand-edited), `scripts/check_all_links.py` untouched (already checks local targets) | `data/cba81fa5/guides.json`, site registers | — |
+| G82-T3 — S-20 mobile-first pass: audit `site/` reader CSS against tap-target, type-scale, sticky-bar and table-scroll criteria; fix only where measured deficient, via `tools/build_i2_site.py` CSS (regenerated, not hand-edited) | in progress | 82372fd1 | `tools/build_i2_site.py` (CSS constant only, if needed), `site/**` via generator, audit in `sessions/82372fd1/mobile-audit.md` | WCAG 2.2 Target Size (Minimum) 2.5.8; site CSS measurement | any deficiency found → `G82-F-*` flag |
+| G82-T4 — Suggestions layer, dated 2026-11-17: new "Design paths" section (three costed paths for the polished-affiliate-look goal) + re-statused open questions + discovery actions added where stale; rendered by extending `build_suggestions()`; regenerated `suggestions.html` | in progress | 82372fd1 | `data/suggestions.json`, `scripts/build_site.py` (`build_suggestions` renderer only), `suggestions.html` (generated) | existing `data/sources.json` S01–S62; no new external facts claimed | — |
+| G82-T5 — Final integration: flags unioned + counts recomputed in `EXECUTIVE-SUMMARY.md`, full chain ×2 idempotency, all gates green, PR to `main`, merge, Pages deploy + live check | planned | 82372fd1 | `data/flags.json`, `flagged.html`/`executive-summary.html`/`index.html` (regenerated), `sitemap.xml` (re-check; no new HTML page expected), this Part | gate outputs | — |
+
+### 82 Rules I follow
+
+- Every feed entry derives from the checked-in registers; the script **refuses** to emit any price, star-rating, review-count or Amazon-image pattern (same G6-family patterns the reader gates use).
+- Nothing is claimed as trending/popular; the feed is a publication log, not a ranking.
+- Shared outputs are touched only through their owning generators or the documented registers, per the board note above.
+
+
+### 82 completion record (T1–T4, 2026-11-17)
+
+- **T1 repo review** — `sessions/82372fd1/repo-review.md`. Gates green at claim (`fedc9f6`);
+  three new irregularities raised (G82-F-01/02/03); no external observations made this session.
+- **T2 feed** — `tools/build_feed.py` → `feed.xml` (5 live-guide entries from
+  `data/cba81fa5/guides.json`) + self-healing `<link rel="alternate">` in the two reader
+  index heads; README chain updated; `--check` fails on drift (verified: i2 rebuild drops the
+  region, exit 1; re-run restores; i2_gate/lint/verify_site/check_all_links green). Commits
+  `a3c365b` + follow-ups. Flag G82-F-02 (Info, fixed).
+- **T3 S-20 mobile pass** — measured audit `sessions/82372fd1/mobile-audit.md`: viewport,
+  text-size-adjust, clamp scale, sticky header and overflow tables already present (i2 layer);
+  deficient: `.src` chips ~22px (< WCAG 2.2 SC 2.5.8 24px floor), nav ~39px, seg controls
+  ~33px, unguarded smooth scroll. Fixed in `tools/build_i2_site.py` CSS (the generator,
+  output rebuilt never hand-edited): 24/44px min-heights, `prefers-reduced-motion` guard,
+  mobile table padding. Table font deliberately not shrunk. Commit `2ca865e`. Flag G82-F-01.
+- **T4 suggestions layer, dated 2026-11-17** — `data/suggestions.json`: `review_2026_11_17`
+  (shipped-since table, design paths DP-A shopfront-first / DP-B magazine-desk / DP-C
+  consolidate-first, proposed cadence, Q1–Q10 re-status + how-to-choose), new questions
+  **Q11** (two of the five brief links — `B0c8moW59`, `B0f3GKalj` — had no register row
+  anywhere: flag **G82-F-03, Medium, needs owner**) and **Q12** (which reader layer is
+  canonical — selects DP-C; closes Z14-F-04's owner half); discovery **D7–D10** added.
+  Product-intent confirmation record (intended ASIN/URL/date/source stored empty-until-
+  confirmed, observed redirects in a disjoint block, two unregistered links shown as such)
+  rendered on `products.html` from `data/products.json:intent_records`. Flags +3 (108→111);
+  `EXECUTIVE-SUMMARY.md` live counts recomputed (3/19/31/32/26). Owner brief input recorded
+  per Q1's rule: selected tracking ID **shopnow047c-20** lives in this log only, not on
+  public pages; link rewrite stays gated on the one-test-first workflow (S02).
+- Gate state at final run: `check_site` OK 30/3/62/111 · `verify_site` PASS 115/1,953/1,690 ·
+  `link_report --strict` 0 · `i2_gate` PASS · lint PASS 0 new · `cba --check` current ·
+  `feed --check` current · `build_sitemap --check` 78/0 · `check_all_links` 0 errors (161/182) ·
+  no-repr test PASS · 3c886b62 check OK · chain ×2 idempotent (hash-verified).
+
+### 82 rebase + cross-session integration record (2026-11-17)
+
+- **`main` moved during this work**: `fedc9f6` → `f6f16a5` (PR #135, session `974e366d`, `/shop/` layer) → `5f07d3b` + `ad99ca8` (PRs #136/#137, session `aebf0747`, publication front page, root `/guides/` pages, its RSS feed, intent-record page, campaign ledger). Rebase of this branch onto `ad99ca8` hit the three expected conflict classes; all resolved keeping **every side in full**: `COORDINATION.md` (both tails + this Part — note: one intermediate claim commit briefly carried conflict markers after an aborted resolve attempt; the follow-up merge removed them and a line-start marker sweep ran before every push — 0 markers at publish), `feed.xml` (superseded by the union, flag `G82-F-04`), generated `site/*` + `flagged.html`/`suggestions.html` (taken from main's side, then REGENERATED from the merged data/code).
+- **Feed collision (G82-F-04)**: two feeds, one path. Resolution: `feed.xml` is now RSS 2.0 (the format every already-published head/footer link declares) containing the union — aebf0747's four `/guides/` items re-homed verbatim into `data/feed/entries-shop.json` (provenance: `ad99ca8`, captured byte-for-byte incl. their pubDates) + the live rows of `data/cba81fa5/guides.json`. `tools/build_feed.py` runs after `sessions/aebf0747/build_pass.py` (whose own feed write is now a draft that the union overwrites) and after `publish_pass.py`; `--check` fails on drift; a backstop head link is ensured only where the publish pass has not placed one. Their gates (build_shop, audit.py, link_check.py) do not assert feed content, so the union does not move them.
+- **main's own gate was failing (G82-F-05)**: reproduced `scripts/check_site.py` failing on `index.html` at clean `ad99ca8` (exact-string nav rule vs the new publication template). Fixed from both ends per the never-merge-a-broken-site rule: additive nav entry + `topbar` token in `sessions/aebf0747/build_pass.py`, token match in `scripts/check_site.py` with the `flagged.html` requirement intact.
+- **Overlap with the other sessions, left as-is deliberately**: their `/intent-record/index.html` and this session's `products.html` confirmation table cover the same owner-brief requirement from two surfaces — kept both (different readers: shop vs register), cross-linked in the review; `read/`+`marketing/`+`site/`+`shop/`+`guides/` = now FIVE reader-facing surfaces answering Q12/DP-C — that is an owner decision, not a fourth parallel rewrite. Their `publication-pass.html` line 583 prints the tracking ID value; Q1's register rule says public files shouldn't — recorded as an observation for owner review (their page, their session's convention; this session did not edit their page).
+- **Flag register after all of the above**: 113 entries (3/19/31/33/27), EXECUTIVE-SUMMARY.md live counts recomputed from the register.
+
+### 82 publish record (done, 2026-11-17)
+
+| Item | Result |
+|---|---|
+| Pull/push discipline | `git pull --rebase origin main` before every push; three `main` movements absorbed during work (`fedc9f6` → `ad99ca8` → `30446a5`); every conflict resolved keeping every side in full (board tails concatenated; generated pages taken from main then REGENERATED from merged data; flag registers kept whole). Line-start conflict-marker sweep = 0 before each push. Remote branch needed one `--force-with-lease` after the rebases rewrote this session's own unmerged commits; force limited to `arena/82372fd1-zone3`, no other ref. |
+| Pull request | **#140** — https://github.com/kanlerxz87-cyber/Zone3/pull/140 ("Session 82372fd1 — feed union + mobile-first pass + intent record + 2026-11-17 suggestions review"). |
+| Merge | **MERGED** without waiting for review, per the brief — merge commit **`5bc965a`**, state `MERGED` (2026-11-17T16:27:31Z). |
+| Gates at final push (rebased tree, post-#109/#139) | `check_site` OK 30/3/62/113 · `verify_site` PASS 134 pages / 2,068 rows / 1,769 official-source · `link_report --strict` 0 · `i2_gate` PASS · `cba81fa5_lint` PASS 0 new / 22 inherited · `build_cba81fa5 --check` current · `build_feed --check` current (9 entries) · `publish_pass --check` 0 changed · `build_shop` OK 11 pages · `build_sitemap --check` 97/0 · `check_all_links` 0 errors (180 pages/207 URLs) · no-repr PASS 134 · aebf0747 `audit` missing_sponsored 0 + `link_check` 0 · chain ×2 idempotent. |
+| Pages deploy | `pages/builds/latest` for commit `5bc965a`: **`built`**. Configuration source `main` `/`, status `built`. |
+| Live checks (cache-busted, post-build) | **feed.xml** — union serves: 9 items (four /guides/ pages with aebf0747's exact pubDates, then five site/guides entries), channel copy correct. **products.html** — "Product-intent confirmation record (added 2026-11-17)" table live with intended fields Unverified and observed block separate. **flagged.html** — "113 entries: 3 critical, 19 high, 31 medium, 33 low, 27 info", matching the register exactly. Root front page nav (Flagged (register) + topbar token) live via the merge itself. (`.css` live fetch bounced off the preview proxy's own credential error, not a site error; the merged commit IS what Pages serves and the shipped rules are in `site/assets/site.css` at `5bc965a`.) |
+| Session status | G82-T1…T5 **done**. Records: `sessions/82372fd1/repo-review.md`, `mobile-audit.md`, `verification-2026-11-17.md`. Flags: G82-F-01…F-05 (four fixed, G82-F-03 needs owner — published on flagged.html). Tracking ID from the 2026-11-17 brief kept in this log only, per Q1's own rule. |
+---
+
+## Part 83 — session `59b2194c` (branch `arena/59b2194c-zone3`, base `5bc965a`, 2026-11-17)
+
+### 83 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 59b2194c | `arena/59b2194c-zone3` | Current-tree review and executive-summary reconciliation for the five-link brief; verify existing gates and record remaining owner/account-side blockers | done | 2026-11-17 |
+
+### 83 Task board (claimed before edits)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G83-T1 — Review current publication against the five-link brief, run release gates, reconcile top-level executive summary with the current shop register, and document verifiable remainder | done | 59b2194c | `EXECUTIVE-SUMMARY.md`, `sessions/59b2194c/**`, this Part of `COORDINATION.md` | `data/shop/products.json`, `data/shop/sources.json`, `data/shop/decisions.json`, GitHub Pages docs | stale three-product executive-summary baseline; analytics/Search Console and enrolled-account actions remain owner-side |
+
+### 83 Completion record (2026-11-17)
+
+- Reconciled the current 5-link shop register with the historical three-product summary; added the five observed destination ASINs as dated observations, explicitly not intent confirmations. Added a concise current status, working-scope decisions, and current versus unbuilt capability notes to `EXECUTIVE-SUMMARY.md`; preserved prior sections as audit history.
+- **Concurrent main update / conflict:** after PR #142 was opened, `main` moved from `5bc965a` to `d192053` (PR #141). Rebase of this branch conflicted in `COORDINATION.md` where both tails had appended. Resolved by retaining the complete Part 82 publish record from main followed by Part 83; no content discarded; line-start conflict-marker sweep returned 0. Rebased current work onto `d192053`.
+- No new Amazon observations were made. The current products/sources registers are the evidence for the dated 2026-11-17 observations (shop sources SH-S06–SH-S15); official ASIN definition is SH-S03. Unresolved intent, Special Link test, account/marketplace fit, endpoint/events, Search Console and product imagery remain on the shop decision/flag surfaces (DEC-01–DEC-07; FLG-S02–S08). The supplied short links are not described as invalid; exact compliance remains unresolved (FLG-003).
+- Review record: `sessions/59b2194c/repo-review.md`.
+- Gates: `check_site` OK 30/3/62/113; `verify_site` PASS 134 pages / 2,068 rows; strict link report 0; i2 gate PASS 18/164/148/16/0; cba lint PASS 0 new / 22 inherited; cba check current; feed check 9 entries; sitemap check 97 pages / 0 extras; all-links 180 pages / 207 external / 0 errors; shop build check 11 pages PASS.
+
+### 83 Publish record
+
+| Item | Result |
+|---|---|
+| Pull request | **#142** — https://github.com/kanlerxz87-cyber/Zone3/pull/142 (executive-summary reconciliation against the five-product shop register) |
+| Merge | **MERGED** at 2026-11-17T16:34:18Z; merge commit **`0fbe95e58b508651e1e8861348a7b3ccedd7ec52`**. |
+| Pages deploy | GitHub Pages build `1378384894` for `0fbe95e58b508651e1e8861348a7b3ccedd7ec52`: **`built`** at 2026-11-17T16:34:42Z. |
+| Post-merge checks | The release-gate suite was rerun after rebasing on PR #141's `d192053` and before the merge; all gates recorded above passed. |
+
+
 # Part: session `2f181cd9` (2026-11-17) — five-link intake (two new links), design-direction pack, decision lab, final integration
 
 ## Session registry (this part)
@@ -7238,9 +7449,51 @@ an explicit statement of what this session did and did not change.
 | Item | Result |
 |---|---|
 | Pull before push | `git pull --rebase origin main` before every push |
-| Gates on the final tree | `check_site` **OK 36 pages / 5 products / 75 sources / 118 flags** · `check_all_links` **0 errors (167 pages, 192 external URLs)** · `build_sitemap --check` **78 pages, 0 extras** · `verify_site` **PASS 121 pages / 2,043 rows** |
+| Gates on the final tree (after the merge above) | `check_site` **OK 36 pages / 5 products / 75 sources / 123 flags** · `check_all_links` **0 errors (186 pages, 215 external URLs)** · `build_sitemap --check` **97 pages, 0 extras** · `verify_site` **PASS 140 pages / 2,188 rows** |
 | Shared files touched | `data/sources.json` (S70–S82 appended), `data/flags.json` (F-2F-01…10 appended), `data/products.json` (P4, P5 appended), `scripts/build_site.py` (19 asserted string replacements + 1 nav group + 1 site-map group, patch script kept at `scripts/_patch_2f181cd9.py`), `scripts/check_site.py` (this session's six pages added to `PAGES` and `TABLE_PAGES`), `sitemap.xml` (regenerated; `/sessions/` stays excluded by the documented rule) |
 | Files this session owns | `sessions/2f181cd9/**`, `data/2f/*.json`, `scripts/build_2f181cd9.py`, `scripts/update_data_2f181cd9.py`, `scripts/_patch_2f181cd9.py`, `research/2f181cd9-*.md`, this Part of `COORDINATION.md` |
 | Deliberately not indexed | This session's six pages are under `/sessions/`, which `scripts/build_sitemap.py` excludes by the rule added by session 81bc99d0. They are linked from the navigation on every page, so they are reachable; they are decision-support pages, not reader guides. If the owner wants the Decision Lab in the index, that is a scoped exception to the rule (SUG-2F-10). |
 | Irregularities raised | F-2F-01…F-2F-10, all published on `flagged.html`. None blocks the merge. |
 | Cross-scope change requests (not actioned) | (1) `rel="sponsored"` on every outbound product link, generator by generator (F-2F-05). (2) The "three" copy still on the injected front-door band, `/read/`, `/site/` and `/marketing/` (F-2F-09). (3) One token set instead of four stylesheets (F-2F-07). |
+
+### 2F-T8 addendum — mid-session merge with the parallel five-link shop work (2026-11-17)
+
+`main` moved while this session was working: `fedc9f6` → `c67596a`, through PRs #140, #141,
+#142 and #143 from sessions `82372fd1`, `59b2194c` and `974e366d`. Those sessions built
+`/shop/` (a five-product publication site with `shop/air-fryers/` and
+`shop/meat-thermometers/` category pages, `shop/decisions/`, `shop/intent-record/`, a
+`feed.xml` and a publication front page) and took over `index.html` — `scripts/build_site.py`
+now carries a guard from session `aebf0747`: if `index.html` contains `aebf0747-front`, the
+flat-page generator does not overwrite it.
+
+**Their independent finding agrees with this session's:** `shop/index.html` publishes all
+five destinations, including B0DHZTCNR5 and B0DZFD6R9Z for the two links added in this
+session's brief. Two sessions, working from different branches on the same day, resolved the
+same two links to the same two listings. That corroboration is recorded here because it is
+worth more than either session's single observation.
+
+**How the merge was resolved (generated output was not hand-merged):**
+
+| File | Resolution |
+|---|---|
+| `index.html`, `flagged.html`, `products.html`, `pricing.html`, `reviews.html`, `sources.html`, `verification.html`, `executive-summary.html`, `air-fryers.html` | Resolved to `main`'s side, then **regenerated** from the unioned data by `scripts/build_site.py` |
+| `data/flags.json` | Union by ID: main's 113 entries kept in order, this session's F-2F-01…10 appended → 123 |
+| `data/products.json` | Union by ID: main's P1–P3 kept, P4 and P5 appended → 5 products |
+| `data/sources.json` | Auto-merged: S70–S82 appended to main's S01–S69 → 75 |
+| `scripts/build_site.py`, `scripts/check_site.py` | Auto-merged (this session's 19 asserted replacements and nav/site-map groups, plus main's `aebf0747` guard and token rule) |
+| `COORDINATION.md` | `main`'s board kept verbatim, this session's Part appended after it; no conflict marker on any line (verified before commit) |
+
+`index.html` therefore keeps session `aebf0747`'s publication front page, and this session's
+navigation group appears on every page the flat generator writes (products, flagged, sources,
+pricing, reviews, content, campaigns, articles, air-fryers, verification and the reader
+pages). Because the front page is reachable-to-reachable (it links `flagged.html`, which
+carries the group), this session's pages are never more than two clicks from the front door.
+
+**Change request, not actioned (cross-scope):** add a link to
+`sessions/2f181cd9/decision-lab.html` from `shop/decisions/` or the publication front page,
+so the Decision Lab and the design pack are reachable from the shop's own navigation. The
+file belongs to another session's scope.
+
+**Gate results on the merged tree:** `check_site` OK 36 pages / 5 products / 75 sources /
+123 flags · `check_all_links` 0 errors (186 pages, 215 external URLs) · `build_sitemap --check`
+97 pages, 0 extras · `verify_site` PASS 140 pages / 2,188 rows.

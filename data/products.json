@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-13",
-  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038). INTEGRATION (2026-11-17, session 2f181cd9): P4 and P5 added for the two links supplied in this session's brief. Both open meat-thermometer listings, so the register now spans two categories - see F-2F-01. Intended ASIN, product name, brand, price, rating, review count, rank, commission rate and availability stay null for them exactly as for P1-P3: no official source ties those values to a submitted nine-character token.",
+  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038). Session 2f181cd9 (2026-11-17) appended P4 and P5 for the two links supplied in that session's brief (union by ID; nothing on main's side renumbered or removed).",
   "products": [
     {
       "id": "P1",
@@ -25,8 +25,7 @@
         "capacity": "6 Quart",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
         "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035).",
-        "observed_on": "2026-11-17"
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
       },
       "product_name": null,
       "brand": null,
@@ -115,8 +114,7 @@
         "capacity": "26QT",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
         "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035).",
-        "observed_on": "2026-11-17"
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
       },
       "product_name": null,
       "brand": null,
@@ -205,8 +203,7 @@
         "capacity": "8 Qt",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
         "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035).",
-        "observed_on": "2026-11-17"
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
       },
       "product_name": null,
       "brand": null,
@@ -396,6 +393,183 @@
         "S75",
         "S71",
         "S73"
+      ]
+    }
+  ],
+  "intent_records_note": "Intent confirmation record added 2026-11-17 (session 82372fd1) per the owner brief: for each submitted link, the intended ASIN, the intended official listing URL, the confirmation date and the confirmation source are stored as a record the owner can complete; observed redirect targets live in a strictly separate field and are never merged into it. Null means no one has confirmed the value yet — it is left empty, not inferred. The observed block quotes the dated readings already in this register (S11, S52-S55, S67-S69); this session re-ran no network checks.",
+  "intent_records": [
+    {
+      "link_id": "B04G1MEwY",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "register_row": "P1",
+      "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+      "intended": {
+        "asin": null,
+        "official_listing_url": null,
+        "confirmation_date": null,
+        "confirmation_source": null
+      },
+      "observed": {
+        "direct_dp_check": {
+          "url": "https://www.amazon.com/dp/B04G1MEwY",
+          "result": "Page Not Found",
+          "source": "S08"
+        },
+        "redirect_final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2cef40d2904c29d8&channelId=704&plpRedirect=mhFallback",
+        "redirect_page_id": "B0CDY277D3",
+        "observed_on": "2026-11-13 (S11); re-read 2026-11-14 (S52-S55); re-check (S67-S69)",
+        "sources": [
+          "S11",
+          "S14",
+          "S08",
+          "S67"
+        ],
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+      },
+      "record_status": "open — intended product not yet confirmed by the owner in the enrolled workflow",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
+      ],
+      "sources": [
+        "S31",
+        "S02",
+        "S11",
+        "S08",
+        "S67"
+      ]
+    },
+    {
+      "link_id": "B02NbDxp3",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "register_row": "P2",
+      "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+      "intended": {
+        "asin": null,
+        "official_listing_url": null,
+        "confirmation_date": null,
+        "confirmation_source": null
+      },
+      "observed": {
+        "direct_dp_check": {
+          "url": "https://www.amazon.com/dp/B02NbDxp3",
+          "result": "Page Not Found",
+          "source": "S09"
+        },
+        "redirect_final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-53e3b570a691d5f4&channelId=704&plpRedirect=mhFallback",
+        "redirect_page_id": "B09B7SB46R",
+        "observed_on": "2026-11-13 (S11); re-read 2026-11-14 (S52-S55); re-check (S67-S69)",
+        "sources": [
+          "S12",
+          "S15",
+          "S09",
+          "S68"
+        ],
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+      },
+      "record_status": "open — intended product not yet confirmed by the owner in the enrolled workflow",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
+      ],
+      "sources": [
+        "S31",
+        "S02",
+        "S12",
+        "S09",
+        "S68"
+      ]
+    },
+    {
+      "link_id": "B00hJ57DV",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "register_row": "P3",
+      "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+      "intended": {
+        "asin": null,
+        "official_listing_url": null,
+        "confirmation_date": null,
+        "confirmation_source": null
+      },
+      "observed": {
+        "direct_dp_check": {
+          "url": "https://www.amazon.com/dp/B00hJ57DV",
+          "result": "Page Not Found",
+          "source": "S10"
+        },
+        "redirect_final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-163f96418fd4b89d&channelId=704&plpRedirect=mhFallback",
+        "redirect_page_id": "B08DKYBTPH",
+        "observed_on": "2026-11-13 (S11); re-read 2026-11-14 (S52-S55); re-check (S67-S69)",
+        "sources": [
+          "S13",
+          "S23",
+          "S10",
+          "S69"
+        ],
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+      },
+      "record_status": "open — intended product not yet confirmed by the owner in the enrolled workflow",
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004",
+        "FLG-035",
+        "FLG-036"
+      ],
+      "sources": [
+        "S31",
+        "S02",
+        "S13",
+        "S10",
+        "S69"
+      ]
+    },
+    {
+      "link_id": "B0c8moW59",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "register_row": null,
+      "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+      "intended": {
+        "asin": null,
+        "official_listing_url": null,
+        "confirmation_date": null,
+        "confirmation_source": null
+      },
+      "observed": null,
+      "record_status": "not registered — the 2026-11-17 owner brief lists this link, but no register row, observation or flag for it existed before 2026-11-17; this session made no network check of it, so both fields stay empty",
+      "flags": [
+        "G82-F-03"
+      ],
+      "sources": [
+        "S31",
+        "S02"
+      ]
+    },
+    {
+      "link_id": "B0f3GKalj",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "register_row": null,
+      "identifier_shape": "9 characters — not the 10-character ASIN shape (S31)",
+      "intended": {
+        "asin": null,
+        "official_listing_url": null,
+        "confirmation_date": null,
+        "confirmation_source": null
+      },
+      "observed": null,
+      "record_status": "not registered — the 2026-11-17 owner brief lists this link, but no register row, observation or flag for it existed before 2026-11-17; this session made no network check of it, so both fields stay empty",
+      "flags": [
+        "G82-F-03"
+      ],
+      "sources": [
+        "S31",
+        "S02"
       ]
     }
   ]
