@@ -889,5 +889,206 @@
    "Nothing above is implemented by accepting it; an unblocked path (C's banners, A's copy) is one gate-green build away once a decision is recorded.",
    "Blocked items stay blocked visibly (Q4-family): the site would rather show a gap than fill it with a guess — that IS the trust design."
   ]
+ },
+ "review_2026_11_17_late": {
+  "date": "2026-11-17 (late)",
+  "session": "73029680",
+  "note": "Third review published today. The earlier ones (4f83ee7b 11-15; 5a56c084 and f132f462 11-16; 82372fd1's morning review; 59b2194c's executive reconciliation) already cover the suggestion backlog, the ten re-statused questions and the three design paths, so this review adds only what they do not have: (1) the register reconciliation — all five submitted links are now observed in every register, and the two confirmation records that disagreed are fixed (G84-F-01); (2) design-prompt refresh proposals — exact replacement lines for the 2026-11-16 prompt pack, which went stale when the project grew from three to five products and from one surface to five; (3) an official-calendar seasonal hook table — federal-holiday dates read from OPM (S89), usable as editorial moments with no demand claim attached; and (4) the decision runbook — the open questions (Q1-Q12) and discovery actions (D1-D10) ordered by what unblocks what, so the owner can close everything closable in one sitting. This is the page's answer to the owner's ask for 'a clear list of questions, informations and answers that need to be addressed before any decision can be reasonably made': the questions table above holds the questions, this runbook gives the order, the answer-holder and what is still missing.",
+  "reconciled": [
+   {
+    "item": "The two confirmation records that disagreed about links 4-5 now agree",
+    "what": "products.html contradicted itself: session 2f181cd9's product table carried P4/P5 rows with observed destinations, while the intent-record table below still said 'No observation on file' for the same two links (session 82372fd1's rows, written before any observation existed — G82-F-03). Session 73029680 fetched all six URLs itself on 2026-11-17: the short links open B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer, Black) and B0DZFD6R9Z (CHEF iQ Sense, Gen3), and both 9-character direct URLs stay Page Not Found — same-day captures by three sessions now agree. The intent rows point at P4/P5 and carry the dated observation; intended fields stay empty, exactly as the brief's two-field rule requires.",
+    "source": [
+     "S83",
+     "S84",
+     "S85",
+     "S86",
+     "S87",
+     "S88"
+    ],
+    "flag": "G84-F-01"
+   }
+  ],
+  "prompt_updates": [
+   {
+    "id": "DP-P-01",
+    "replaces": "Prompt P-2 (“Only three products exist. Do not invent others.”)",
+    "proposal": "Five registered products in two categories: three air fryers (observed destinations B0CDY277D3, B09B7SB46R, B08DKYBTPH) and two meat thermometers (observed destinations B0DHZTCNR5, B0DZFD6R9Z). Do not invent others. Thermometer content links to the air-fryer guides as a companion (doneness checks for air-fried food), not as a separate niche, until the owner decides the scope — decision order item 1 of the current executive summary.",
+    "why": "The prompt predates the two thermometer links; a designer following P-2 verbatim would build for the wrong product set.",
+    "source": [
+     "S84",
+     "S86",
+     "S87",
+     "S88"
+    ]
+   },
+   {
+    "id": "DP-P-02",
+    "replaces": "Prompt P-5's page list (assumes one reader surface)",
+    "proposal": "Keep the page list, but anchor it on the canonical layer once Q12/DP-C is decided: Home, one review page per registered product, one comparison, one buying guide, How we verify, About and contact. Until then the root publication front page is the front door and the other layers cross-link to it; no layer gets a redesign that assumes it won.",
+    "why": "P-5 was written when the repo had one reader surface; it now has five (site/, read/, marketing/, shop/, guides/). Design work done before Q12 is answered risks being done twice.",
+    "source": []
+   },
+   {
+    "id": "DP-P-03",
+    "replaces": "(new line — anti-slop rule applied to the five-product front page)",
+    "proposal": "Every product card answers three things in the first screen: what the listing says it is (its title, dated), who it fits (listing facts only), and what is still unconfirmed (the blank fields, shown as blanks). No statistic about the site's own verification process above the fold — that stays one click away under 'How we verify'.",
+    "why": "This is prompt P-11 (anti-slop) made concrete for the card grid that now leads the site; it is what keeps the page readable to a buyer rather than to an auditor.",
+    "source": []
+   },
+   {
+    "id": "DP-P-04",
+    "replaces": "(new line — seasonal cadence)",
+    "proposal": "One guide refresh per federal-holiday cooking moment, dated from the OPM schedule (S89), starting Thanksgiving 2026-11-26. The date is a calendar fact; the content stays listing-derived and question-shaped. Never present the calendar as demand data, and never state the retail-event framing of a holiday (for example 'Presidents Day sales') as if the source said it.",
+    "why": "Gives the publishing cadence concrete, verifiable hooks instead of invented trend claims (the S-16 evidence rule), and gives each guide a dated 'what changed' block to return to (the DP-B pattern).",
+    "source": [
+     "S89"
+    ]
+   },
+   {
+    "id": "DP-P-05",
+    "replaces": "(new line — measurement loop)",
+    "proposal": "After the Search Console property is verified (D8), the query report — not instinct — picks the next guide topic. Until the first report exists, the cadence register picks topics and every title stays a working title with no popularity wording.",
+    "why": "Turns S-09's 'measure whether anyone arrives' into the topic-selection rule, and keeps S-25 ('grow organic traffic on the verification angle, not on volume') honest.",
+    "source": []
+   }
+  ],
+  "seasonal_calendar": [
+   {
+    "date": "2026-11-26 (Thursday)",
+    "fact": "Thanksgiving Day — OPM 2026 table (S89)",
+    "hook": "Doneness, not guesswork: pairing an instant-read or wireless thermometer with air-fried mains; dual-basket timing for sides — all from listing titles.",
+    "serves": "P1, P4, P5",
+    "must_not_claim": "No demand, popularity or 'busy season' claims; no prices or ratings (2(b)/6(t))."
+   },
+   {
+    "date": "2026-12-25 (Friday)",
+    "fact": "Christmas Day — OPM 2026 table (S89)",
+    "hook": "Hosting scale: what the listing's capacity numbers do and do not promise for a crowd; the 26QT oven-style as a second-oven question.",
+    "serves": "P2, P3",
+    "must_not_claim": "No 'holiday bestseller' framing; capacity wording only as the listing states it."
+   },
+   {
+    "date": "2027-01-01 (Friday)",
+    "fact": "New Year's Day — OPM 2027 table (S89)",
+    "hook": "The cleanup reset: what dishwasher-safe wording covers, and the counter-space trade-off (the shipped counter-space analysis).",
+    "serves": "P1, P3",
+    "must_not_claim": "No resolution-season or demand claims; the guide's checklist stays listing-derived."
+   },
+   {
+    "date": "2027-02-15 (Monday)",
+    "fact": "Washington's Birthday — OPM 2027 table (S89)",
+    "hook": "Multi-function, one function at a time: asking what each preset number refers to before paying for it.",
+    "serves": "P2",
+    "must_not_claim": "OPM names the holiday Washington's Birthday; the retail-event framing is not in the source and must not be stated as fact."
+   },
+   {
+    "date": "2027-05-31 (Monday)",
+    "fact": "Memorial Day — OPM 2027 table (S89)",
+    "hook": "Outdoor season: wireless range, probe count and waterproofing exactly as listed, and what each means at the grill.",
+    "serves": "P4, P5",
+    "must_not_claim": "No 'grilling season is here' trend claims; listed specs only."
+   },
+   {
+    "date": "2027-07-05 (Monday, observed)",
+    "fact": "Independence Day (July 4 falls on a Sunday; OPM shows the observed date) — OPM 2027 table (S89)",
+    "hook": "Heat management: listed maximum temperature and sensor counts as comparison facts between the oven-style and the basket style.",
+    "serves": "P2, P4, P5",
+    "must_not_claim": "State the observed-date nuance if the date is printed; no performance claims beyond the listing."
+   },
+   {
+    "date": "2027-09-06 (Monday)",
+    "fact": "Labor Day — OPM 2027 table (S89)",
+    "hook": "Back-to-routine: capacity per centimetre of counter depth — the shipped counter-space analysis re-read against the listings.",
+    "serves": "P1, P2, P3",
+    "must_not_claim": "No back-to-school demand claims."
+   },
+   {
+    "date": "2027-11-25 (Thursday)",
+    "fact": "Thanksgiving Day — OPM 2027 table (S89)",
+    "hook": "One-year re-check: what changed on the five listings since the first observations, dated row by row.",
+    "serves": "All five",
+    "must_not_claim": "No anniversary sales framing; a dated re-verification log entry, not a promo."
+   }
+  ],
+  "decision_runbook": [
+   {
+    "order": 1,
+    "decision": "Run the Special Link workflow for all five links",
+    "closes": "Q1, Q2, Q11 (intent half); fills the intent record's four intended fields per link",
+    "answered_by": "Owner, in Associates Central (D7) — about ten minutes",
+    "unblocks": "SUG-05 CTAs; tagged links; per-product commission rows once each listing's category is confirmed (Q3); honest wording on FLG-003",
+    "have": "Every link now has at least two same-day dated captures: S11-S13/S52-S55/S67-S69 for links 1-3; session 2f181cd9's S70-S75 and session 73029680's S83-S88 for links 4-5; the shop register SHOP-01..05 agrees",
+    "missing": "The owner's intended ASIN per link, plus one tested Special Link whose tracking report shows the tag"
+   },
+   {
+    "order": 2,
+    "decision": "Record the canonical reader layer",
+    "closes": "Q12",
+    "answered_by": "Owner, one line in the decision export (D10)",
+    "unblocks": "DP-C consolidation, then DP-A decoration and DP-B cadence on one surface; resolves Z14-F-04 and the duplication note; gives search engines one site to index",
+    "have": "The layer map and duplication note in the morning review, plus this register",
+    "missing": "The one-line choice"
+   },
+   {
+    "order": 3,
+    "decision": "Verify Search Console; submit sitemap.xml and feed.xml",
+    "closes": "The measurement half of the publishing cadence",
+    "answered_by": "Owner property + verification (D8); the repo side needs nothing",
+    "unblocks": "Topic selection from measured queries (S-25, S-09); Q9's free path",
+    "have": "sitemap.xml gate-checked at 97 pages/0 extras; feed.xml at 9 entries (union feed)",
+    "missing": "The verified property, then roughly four weeks of query data"
+   },
+   {
+    "order": 4,
+    "decision": "Ask Associates support about the link.amazon/<code> link form",
+    "closes": "FLG-003 — the one compliance question this project deliberately left unresolved",
+    "answered_by": "A written answer via the enrolled account's case system (D9)",
+    "unblocks": "Compliance wording on every page that links out; the keep-or-replace decision on the supplied short links",
+    "have": "Six dated captures of the redirect behaviour (S11-S13, S52-S55, S67-S69, session 2f181cd9's S70-S75, plus session 73029680's S84/S86)",
+    "missing": "The written answer"
+   },
+   {
+    "order": 5,
+    "decision": "Confirm enrollment and API eligibility",
+    "closes": "Q4",
+    "answered_by": "Owner, Associates Central (D2)",
+    "unblocks": "Price/rating cells under 2(b)/6(t); the held 'best value' guide; SUG-09 reporting",
+    "have": "The official prerequisite texts (S04, S29; PF-40/41: three qualifying sales in 180 days; ≈10 posts of original content)",
+    "missing": "The account's actual status"
+   },
+   {
+    "order": 6,
+    "decision": "Name the reviewer and confirm the cadence",
+    "closes": "Q5",
+    "answered_by": "Owner (the cadence proposal and its machinery already shipped)",
+    "unblocks": "Scaling the article hub (SUG-10); DP-B's byline pattern",
+    "have": "Feed, sitemap and register-driven guide list, all gate-checked",
+    "missing": "A name"
+   },
+   {
+    "order": 7,
+    "decision": "Decide first-hand testing",
+    "closes": "Q6",
+    "answered_by": "Owner",
+    "unblocks": "Experience claims (FTC, S07); until then S-06 stays 'not adopted' and guides keep the no-invented-experience rule",
+    "have": "The rule and its enforcement in the reader gates",
+    "missing": "The decision"
+   },
+   {
+    "order": 8,
+    "decision": "Preference decisions: marketplace (Q3), brand voice (Q7), analytics stack (Q8), research budget (Q9), counsel review (Q10)",
+    "closes": "The remaining owner preferences",
+    "answered_by": "Owner, whenever convenient",
+    "unblocks": "Nothing is blocked on them today; they shape scope, tone and tooling",
+    "have": "Q7's brand is half-answered on the site/ layer ('Air Fryer Field Notes') and collapses into Q12's answer",
+    "missing": "The choices, recorded in the decision export"
+   }
+  ],
+  "reading_order": [
+   "Decide in runbook order: each step's 'unblocks' column names what the next decision opens.",
+   "The runbook reuses existing register IDs only (Q1-Q12, D1-D10, SUG-01..SUG-10, FLG-003, Z14-F-04, S-25): nothing new is asserted on this page except the reconciled observations (S83-S88) and the OPM calendar (S89).",
+   "Steps 1-3 are one sitting for the owner; steps 4-5 depend on Amazon's response times; steps 6-8 are preferences that shape, not gate."
+  ]
  }
 }

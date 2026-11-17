@@ -54,6 +54,35 @@ def _rel(url: str) -> str:
             return "noopener noreferrer sponsored"
     return "noopener noreferrer"
 
+
+# ---------------------------------------------------------------------------
+# Sponsored rel (session ded63349, 2026-11-17; proposal D-19). The regions this
+# integrator writes contain product links (the fd-card listings); they are marked
+# here so a cba rebuild equals the post-pass tree that tools/apply_sponsored.py
+# --check and tools/i2_gate.py G11 expect. The pattern below is copied verbatim
+# from tools/apply_sponsored.py, which stays the canonical enforcer.
+MARK_PRODUCT_HREF = re.compile(
+    r'https?://[^\"\']*link\.amazon/[^\"\']*'
+    r'|https?://[^\"\']*amazon\.[a-z]{2,3}(?:/[^\"\']*)?/(?:dp/[A-Z0-9]{10}|gp/product/[A-Z0-9]{10})[^\"\']*', re.I)
+MARK_ANCHOR_RE = re.compile(r'<a\b[^>]*>', re.I)
+
+
+def mark_sponsored(html: str) -> str:
+    def fix(m):
+        tag = m.group(0)
+        href = re.search(r'href="([^"]*)"', tag)
+        if not href or not MARK_PRODUCT_HREF.search(href.group(1)):
+            return tag
+        rel = re.search(r'rel="([^"]*)"', tag)
+        if rel:
+            if "sponsored" in rel.group(1).split():
+                return tag
+            tokens = [t for t in ("sponsored",) if t not in rel.group(1).split()]
+            return tag[:rel.start(1)] + " ".join(tokens + rel.group(1).split()) + tag[rel.end(1):]
+        return tag[:-1].rstrip() + ' rel="sponsored noopener noreferrer">'
+    return MARK_ANCHOR_RE.sub(fix, html)
+
+
 def is_short_link(url: str) -> bool:
     """The three submitted link.amazon tokens: evidence to quote, never to click.
 
@@ -171,6 +200,43 @@ def products_for_band():
     return out
 
 
+def dashboard_links() -> list[tuple[str, str]]:
+    """Every flat dashboard surface, from the flat generator's own nav lists.
+
+    Session ded63349 (2026-11-17): the brief asks that the publication front page keep
+    'every dashboard surface reachable from the footer and a single navigation group'.
+    The list is imported from scripts/build_site.py's NAV_PRIMARY/NAV_MORE (the canonical
+    register of those surfaces) instead of being copied, so the two stay in sync. If the
+    import fails, the band still builds with the core surfaces listed by hand.
+    """
+    try:
+        import sys as _sys
+        scripts_dir = str(ROOT / "scripts")
+        if scripts_dir not in _sys.path:
+            _sys.path.insert(0, scripts_dir)
+        import build_site as flat  # module-level code only reads data files
+        links: list[tuple[str, str]] = []
+        for href, label in flat.NAV_PRIMARY:
+            if href not in ("index.html",):
+                links.append((href, label))
+        for _group, items in flat.NAV_MORE:
+            links.extend(items)
+        if not any(h == "flagged.html" for h, _ in links):
+            links.append(("flagged.html", "Flagged for review"))
+        return links
+    except Exception as exc:  # pragma: no cover - fallback keeps the band renderable
+        print(f"build_cba81fa5_site: dashboard link import failed ({exc}); using fallback list")
+        return [
+            ("marketing/index.html", "Marketing hub"),
+            ("products.html", "Products"),
+            ("pricing.html", "Pricing & commission"),
+            ("executive-summary.html", "Executive summary"),
+            ("sources.html", "Sources"),
+            ("flagged.html", "Flagged for review"),
+            ("dashboard/index.html", "Full audit (16 pages)"),
+        ]
+
+
 def frontdoor_block() -> str:
     fd = GUIDES["front_door"]
     cards = "\n".join(
@@ -207,9 +273,16 @@ def frontdoor_block() -> str:
         f'  <p class="fd-fine">{fd["fine"]} '
         f'<a href="{SRC["CBA-S09"]["url"]}" target="_blank" rel="noopener noreferrer" '
         f'title="{SRC["CBA-S09"]["title"]}">CBA-S09</a></p>\n'
+        f'  <p class="fd-fine">How this site counts visits and clicks: '
+        f'<a href="site/measure.html">How we measure</a> &middot; '
+        f'<a href="site/intent-record.html">Product-intent record</a> &middot; '
+        f'<a href="feed.xml">RSS feed</a></p>\n'
         '</section>\n\n'
         '<p class="fd-ops" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;'
         'font-weight:700;color:#767f8d;margin:28px 0 6px">Operations &middot; the audit behind the front door</p>\n'
+        '<nav class="fd-ops-nav" aria-label="Dashboard surfaces" style="display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 14px">\n'
+        + "".join(f'<a href="{h}">{html_escape(lab)}</a>' for h, lab in dashboard_links())
+        + '\n</nav>\n'
         f'{FD_END}'
     )
 
@@ -359,7 +432,10 @@ def main() -> int:
     ]
     changed = []
     for path, start, end, new, back in targets:
-        want = patch(path, start, end, new, back)
+        # ded63349: compare like with like — the write applies mark_sponsored, so the
+        # expected text must be marked before the comparison (otherwise --check always
+        # reports a stale region on pages whose regions contain product links).
+        want = mark_sponsored(patch(path, start, end, new, back))
         have = path.read_text(encoding="utf-8")
         if want != have:
             changed.append(path.relative_to(ROOT).as_posix())
@@ -372,7 +448,9 @@ def main() -> int:
         raw = root_index.read_text(encoding="utf-8")
         band = render_frontdoor(raw)
         if FD_START in raw:
-            want = patch_text(raw, FD_START, FD_END, band, include_end=True)
+            # ded63349: mark before compare — the file on disk is post-sponsored, so the
+            # expected text must be too (otherwise --check always reports a stale region).
+            want = mark_sponsored(patch_text(raw, FD_START, FD_END, band, include_end=True))
         elif "<main>" in raw:
             want = raw.replace("<main>", "<main>\n" + band, 1)
         else:
@@ -381,6 +459,15 @@ def main() -> int:
             want = want.replace('<link rel="stylesheet" href="assets/style.css">',
                                 '<link rel="stylesheet" href="assets/style.css">\n'
                                 '<link rel="stylesheet" href="assets/front-door.css">')
+        # ded63349 (2026-11-17): feed discovery on the publication front page.
+        # Merge reconciliation 2026-11-17: canonical feed is the union RSS 2.0 feed.xml
+        # (session 82372fd1); discovery links are type application/rss+xml, and this
+        # injects only when no feed link of either type is present, so it never
+        # duplicates the link sessions/aebf0747/publish_pass.py already adds.
+        if 'application/atom+xml' not in want and 'application/rss+xml' not in want:
+            want = want.replace('</head>',
+                                '<link rel="alternate" type="application/rss+xml" '
+                                'title="Air Fryer Field Notes \u2014 new guides and field notes" href="feed.xml">\n</head>', 1)
         if "Air Fryer Field Notes" not in want.split("<title>")[1].split("</title>")[0]:
             want = re.sub(r"<title>[^<]*</title>",
                           "<title>Air Fryer Field Notes — three air fryers, checked line by line</title>",
@@ -399,7 +486,7 @@ def main() -> int:
         raw = fl.read_text(encoding="utf-8")
         start = '<a id="cba81fa5-flagged"' if '<a id="cba81fa5-flagged"' in raw else None
         if start:
-            want = patch_text(raw, start, "</main>", flagged_block())
+            want = mark_sponsored(patch_text(raw, start, "</main>", flagged_block()))
         elif "</main>" in raw and "Raised on 2026-11-16 by the second-source desk" not in raw:
             want = raw.replace("</main>", flagged_block() + "</main>", 1)
         else:

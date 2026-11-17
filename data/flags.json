@@ -1656,6 +1656,121 @@
       "repo_evidence": "sessions/2f181cd9/index.html"
     },
     {
+      "id": "G84-F-01",
+      "severity": "Medium",
+      "category": "Register self-contradiction (reconciled by this session)",
+      "item": "products.html contradicted itself about submitted links 4-5 (B0c8moW59, B0f3GKalj): the product table carried session 2f181cd9's P4/P5 rows with observed destinations, while the intent-record table below still said 'No observation on file' for the same links",
+      "detail": "Session 82372fd1 wrote the shared-register intent rows before any observation existed (G82-F-03). Session 2f181cd9 later added register rows P4/P5 with observed destinations (S70-S75 on main), but the intent rows kept their 'not registered — no register row, observation or flag for it existed' status, so one published page showed the same two links as both observed (top table) and never observed (bottom table). Session aebf0747's /intent-record/ and the shop register (SHOP-04/SHOP-05) showed the observations too. Session 73029680 re-fetched all six URLs itself on 2026-11-17 (S83-S88): both short links open exactly the destinations P4/P5 record (B0DHZTCNR5 ThermoMaven; B0DZFD6R9Z CHEF iQ Sense), and both 9-character direct URLs stay Page Not Found — the mapping now has same-day captures by three sessions. The intent rows now point at P4/P5 and carry the observed block; intended fields stay empty-by-design.",
+      "action": "Reconciled by session 73029680 on 2026-11-17 (additive: the observed blocks were filled from this session's own fetches; sessions 82372fd1's and 2f181cd9's records are carried forward in the row status text; nothing deleted). G82-F-03's 'no observation anywhere' premise is thereby superseded; that flag stays as history.",
+      "date": "2026-11-17",
+      "session": "73029680",
+      "status": "fixed",
+      "repo_evidence": "data/products.json intent_records rows 4-5 + P4/P5 rows; sessions/aebf0747/intent-record.json rows 4-5; data/shop/products.json SHOP-04/SHOP-05",
+      "sources": [
+        "S83",
+        "S84",
+        "S85",
+        "S86",
+        "S87",
+        "S88"
+      ]
+    },
+    {
+      "id": "5B-F-01",
+      "severity": "High",
+      "category": "Scope and information architecture",
+      "item": "Two of the five submitted links land in a different Amazon browse node than the site's only category",
+      "detail": "The brief submits five links. Fetched 2026-11-17: B04G1MEwY -> B0CDY277D3, B02NbDxp3 -> B09B7SB46R and B00hJ57DV -> B08DKYBTPH all sit in Air Fryers (node 17659096011). B0c8moW59 -> B0DHZTCNR5 and B0f3GKalj -> B0DZFD6R9Z sit in Meat, under Thermometers & Timers (node 289810) - they are meat thermometers, not air fryers. Every published page on this site assumes a single air-fryer category (category/air-fryers.html, read/category/air-fryers.html, the niche scoring, the commission category reference). The five products therefore cannot all be published under the existing information architecture without a scope decision first. The only listing-stated connection between the two groups is that one thermometer listing names 'Air Fryer' among its use contexts; that is a use case, not a category.",
+      "action": "Decide which of the three paths on direction/choose.html this site follows: one kitchen site with two pillars, air-fryer only, or two separate sites. Logged as open question 5B-Q02; the default if unanswered is Path A (two pillars).",
+      "sources": [
+        "S70",
+        "S71",
+        "S72",
+        "S73",
+        "S60",
+        "S61",
+        "S62"
+      ],
+      "session": "5b443d02",
+      "date": "2026-11-17"
+    },
+    {
+      "id": "5B-F-02",
+      "severity": "High",
+      "category": "Product intake",
+      "item": "Two of the five submitted links were absent from every data file in the repository",
+      "detail": "Grepping data/** for B0c8moW59 and B0f3GKalj returned zero hits before this session. The site's product register (data/products.json, three products), the niche and commission analysis, the editorial plans and every generated page were all built on three of the five links in the brief. Any conclusion drawn from 'the products' was drawn from 60% of them. Both links were fetched and recorded on 2026-11-17.",
+      "action": "Re-read any conclusion that generalises across 'the products' - the commission category reference, the niche decision, the comparison table - now that the fifth and fourth products are known to be in a different category. Registered as S70-S74.",
+      "sources": [
+        "S70",
+        "S71",
+        "S72",
+        "S73"
+      ],
+      "session": "5b443d02",
+      "date": "2026-11-17"
+    },
+    {
+      "id": "5B-F-03",
+      "severity": "Medium",
+      "category": "Product identifiers",
+      "item": "The intended ASIN is unknown for all five submitted links; only observed destinations are recorded",
+      "detail": "All five submitted tokens are 9 characters. The Creators API GetItems reference, read 2026-11-17, defines an ASIN as a '10-Character alphanumeric unique identifier assigned by Amazon', so no submitted token is itself the ASIN. The intended product behind each link can be stated only by the person who submitted it. Where a link goes when fetched is an observation and is not evidence of intent, which is why the product-intent record on direction/products.html keeps the two facts in separate tables and never merges them.",
+      "action": "The account owner states the intended ASIN - or at least the intended product - for each of the five links. Until then the Intended ASIN field stays blank on every row. Open question 5B-Q01.",
+      "sources": [
+        "S06",
+        "S70",
+        "S71",
+        "S72",
+        "S73",
+        "S60",
+        "S61",
+        "S62"
+      ],
+      "session": "5b443d02",
+      "date": "2026-11-17"
+    },
+    {
+      "id": "5B-F-04",
+      "severity": "Low",
+      "category": "Release gate",
+      "item": "verify_site.py V4 does not count Google Search Central as an official source host",
+      "detail": "V4's provenance regex recognises amazon.com, amazon.<tld>, ftc.gov and github.com as official hosts. Google Search Central (developers.google.com) is not on that list, even though the brief cites it as the standard for findability, unique titles, rel=sponsored and thin affiliation. A table row whose only support is Google guidance is therefore reported as 'sourced only by a repository/GitHub link'. On this session's pages that is 6 rows: suggestions DS-07, DS-09, DS-15 and DS-16, and questions 5B-Q11 and 5B-Q12. The rows are advisory, not failing, and the classification is arguably correct - those rows are design judgements, not facts about a product. It is recorded so the next session does not read the advisory as a defect.",
+      "action": "Decide whether V4 should recognise developers.google.com as an official host for guidance rows. Not urgent: the correct behaviour today is to report them for review.",
+      "sources": [],
+      "repo_evidence": "tools/verify_site.py (the `official` and `amazon_ftc` regexes in check()); data/5b443d02/suggestions.json and data/5b443d02/questions.json (the six rows).",
+      "session": "5b443d02",
+      "date": "2026-11-17"
+    },
+    {
+      "id": "5B-F-05",
+      "severity": "Medium",
+      "category": "Compliance gate",
+      "item": "No outbound link on this site is a validated Special Link, and the supplied tracking tag is unconfirmed",
+      "detail": "The Operating Agreement (section 1, read 2026-11-17) requires links to 'properly use the special tagged link formats we provide', and the Commission Income Statement pays on purchases made through a Special Link. No link on this site has been generated or tested inside an enrolled Associates account, and the tracking tag given in the brief has not been confirmed against the account. Whether an intermediate link.amazon hop counts as the Associate's Special Link, or as a redirect that ends the qualifying session, is determined by Amazon's systems and cannot be settled by reading the policy text. The compliance status of the supplied short links is therefore recorded as unresolved rather than asserted either way.",
+      "action": "In the enrolled Associates account: generate one Special Link for one product, confirm where it lands and that it reports, before scaling to the rest. Open questions 5B-Q03, 5B-Q04, 5B-Q05 and 5B-Q06.",
+      "sources": [
+        "S01",
+        "S02",
+        "S29"
+      ],
+      "session": "5b443d02",
+      "date": "2026-11-17"
+    },
+    {
+      "id": "5B-F-06",
+      "severity": "Info",
+      "category": "Release gate",
+      "item": "check_site.py reported same-page anchor links on subdirectory pages as broken (fixed)",
+      "detail": "A pure-fragment link such as href=\"#5B-Q07\" has an empty path. The internal-link resolution fell back to the page's site-relative name and joined it to the page's own directory, so a page at direction/questions.html resolved '#5B-Q07' to direction/direction/questions.html and reported a broken link for an anchor that exists on the page being checked. Reproduced 2026-11-17: 5 failures on direction/questions.html and direction/choose.html. Fixed by resolving a pure-fragment link against the page itself (base = the repository root when the path is empty). After the fix: 0 failures, and the whole gate passes on 34 pages. The bug would have affected any subdirectory page with same-page anchors.",
+      "action": "None. Recorded because the fix edits a shared gate, so the change is reviewable.",
+      "sources": [],
+      "repo_evidence": "scripts/check_site.py (internal link resolution in check_html); direction/questions.html; direction/choose.html.",
+      "status": "fixed",
+      "session": "5b443d02",
+      "date": "2026-11-17"
+    },
+    {
       "id": "929-F-01",
       "severity": "High",
       "category": "Intake gap",

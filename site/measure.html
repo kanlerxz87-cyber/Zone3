@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we measure — the five events, the ledger and the publishing cadence · Air Fryer Field Notes</title>
+<meta name="description" content="The five events this site counts, the privacy rules the counter follows, and the publishing cadence each new guide enters. No third-party scripts, no cookies, no server yet.">
+<link rel="canonical" href="https://kanlerxz87-cyber.github.io/Zone3/site/measure.html">
+
+<link rel="stylesheet" href="assets/site.css">
+
+
+
+<link rel="alternate" type="application/rss+xml" title="Air Fryer Field Notes — new guides and field notes" href="../feed.xml">
+<!-- z3:css --><link rel="stylesheet" href="../assets/zone3-publication.css">
+<!-- z3:measure --><script src="../assets/measure-config.js"></script><script src="../assets/measure.js" defer></script><!-- /z3:measure -->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="disclose-bar" role="note">
+  <div class="wrap">
+    <strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.
+    <span class="disclose-more">Links to Amazon on this site are evidence links while a tracking tag is unavailable, so they earn nothing yet. <a href="evidence.html#disclosure">Why this is stated twice</a>.</span>
+  </div>
+</div>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">AF</span>
+      <span class="brand-text"><strong>Air Fryer Field Notes</strong><small>Three air fryers, checked line by line.</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html">Start here</a><a href="products.html">The three air fryers</a><a href="guides/index.html">Buying guides</a><a href="evidence.html">How we know</a><a href="measure.html" class="on">How we measure</a><a href="intent-record.html">Intent record</a><a href="answers.html">Open questions</a><a href="style-guide.html">Our rules</a><a href="decisions.html">Suggestions &amp; decisions</a></nav>
+  </div>
+</header><!-- z3:strip -->
+<div class="z3-strip" role="note" aria-label="Affiliate disclosure"><div class="z3-wrap"><p><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Links to Amazon are marked sponsored. <a href="../publication-pass.html#disclosure">How disclosure is handled</a></p></div></div>
+<!-- /z3:strip -->
+
+<main id="main" class="wrap">
+
+<p class="small">How we know › How we measure</p>
+<h1>How we measure — five events, one ledger, no third parties</h1>
+<p class="lede">Before this site grows, it measures. This page defines the five events the site counts, states exactly what the counter stores and never stores, and sets the publishing cadence each new guide enters. The counting machinery is deliberately small and it lives on your device — this page can be checked line by line, like everything else here.</p>
+<p class="small">Adopted 2026-11-17 · policy facts the rules below quote were read on 2026-11-16 · implemented as proposals <a href="decisions.html#D-16">D-16</a>, <a href="decisions.html#D-17">D-17</a> and <a href="decisions.html#D-22">D-22</a></p>
+
+<h2 id="five-events">The five defined events</h2>
+<p>The five events are <strong>this site's own definitions</strong> — an editorial choice, not a fact about any official standard, and not a claim about how much traffic the site receives. Amazon publishes no traffic, conversion or popularity endpoint an affiliate site could cite, so none is claimed here. What each event is for:</p>
+<div class="tablewrap"><table>
+<caption>The five events, what each records, and the rule each stays inside</caption>
+<thead><tr><th>Event</th><th>What it records</th><th>Why it exists</th><th>The rule it follows</th></tr></thead>
+<tbody>
+<tr><td><span class="mono">page_view</span></td><td>That one page was opened, once per page load.</td><td>The base count: which guides are actually opened. Topic decisions move from instinct to measurement only after this exists.</td><td><a href="#privacy">Privacy rules on this page</a> — path only, nothing per-person. The ledger never touches Amazon; its outer limit is the programme's rule against artificial clicks or sessions <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a></td></tr>
+<tr><td><span class="mono">outbound_product_click</span></td><td>A click on a link to an Amazon listing, with which product card it came from (P1, P2 or P3).</td><td>The only event that could ever correlate with a purchase; today it measures interest in each listing.</td><td>Participation Requirements 6(s) bans artificial clicks and sessions; the ledger counts real clicks by a real visitor on this site's own pages and never creates an Amazon session. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a></td></tr>
+<tr><td><span class="mono">comparison_open</span></td><td>A click that opens the three-way comparison.</td><td>Tells whether guides push readers toward the comparison, not away from it.</td><td>Internal navigation only — no Amazon session is created, which is the boundary the programme's click rule draws <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a>. <a href="#privacy">Privacy rules on this page</a></td></tr>
+<tr><td><span class="mono">guide_read_through</span></td><td>That a guide page was scrolled past the 92% mark, fired once per page.</td><td>Distinguishes a page that was read from a page that was bounced off — the difference between a useful guide and filler.</td><td><a href="#privacy">Privacy rules on this page</a> — a threshold trigger, not a scroll tracker; position is never stored. The event stays entirely on this site, inside the programme's click rule <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a></td></tr>
+<tr><td><span class="mono">decision_open</span></td><td>A click on the decision console or the open-questions register.</td><td>Counts reviewers, not shoppers — how many people exercise the governance the site publishes.</td><td><a href="#privacy">Privacy rules on this page</a> — internal navigation only, no Amazon session created <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="privacy">What the ledger stores, and what it never stores</h2>
+<p>The ledger is a few lines of JavaScript in <span class="mono">assets/site.js</span>, on this device only. Stored per event: the event name, a UTC timestamp, the page path, and — for product clicks — which product card (P1–P3). Kept to the most recent 500 events.</p>
+<div class="tablewrap"><table>
+<caption>Privacy rules — what is stored and what is deliberately absent</caption>
+<thead><tr><th>Never stored</th><th>Why</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>No cookies, ever</td><td>Storage is one <span class="mono">localStorage</span> key on your own device; nothing is set or read cross-site.</td><td>With no cookies and no cross-site storage, the programme's duty to disclose cookie and technology use is met by this page stating the fact <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a>, Participation Requirements 3(e)</td></tr>
+<tr><td>No per-person identifiers, and no per-user tags</td><td>Associates policy bans assigning sub-tags to individual users as they arrive; the ledger would not work that way even if it could.</td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies 2(b), sub-tag rule — read 2026-11-16">I2-S02</a></td></tr>
+<tr><td>No referrer, no scroll positions, no form contents, no IP addresses</td><td>The page path and a threshold flag answer the topic questions; more than that would be surveillance, not measurement.</td><td>The code is the statement: <a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/tools/build_i2_site.py" target="_blank" rel="noopener noreferrer" title="The ledger source in this repository — event names and limits">ledger source</a></td></tr>
+<tr><td>No price tracking and no alerting</td><td>Associates policy 6(y) bars price tracking and alerting on an Associate's site; the ledger records click events only.</td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies 6(y) — read 2026-11-16">I2-S02</a></td></tr>
+<tr><td>No third-party analytics script</td><td>Adding one would contradict the privacy rules above; see <a href="decisions.html#D-20">D-20</a> for the endpoint options that do not.</td><td>Editorial privacy rule — <a href="#privacy">see the privacy rules</a>; the endpoint options live in decision D-20, recorded in the <a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/i2/decisions.json" target="_blank" rel="noopener noreferrer" title="The decision register in this repository — proposal D-16">decision register</a></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="ledger">The ledger on this device</h2>
+<p>Because there is no server yet (see <a href="decisions.html#D-20">D-20</a>), the counts below are yours, not the site's: they were recorded in your browser on your visits, and nobody else can read them. The buttons export or clear exactly what this page's script stores — nothing else.</p>
+<div class="card" style="max-width:640px">
+  <p class="kicker">z3-ledger · localStorage key <span class="mono">z3-events-v1</span></p>
+  <ul class="facts" id="ledgerCounts"><li>Press “Show the counts” to read the ledger on this device.</li></ul>
+  <div class="card-foot">
+    <button id="ledgerShow" class="btn">Show the counts</button>
+    <button id="ledgerCsv" class="btn btn-ghost">Copy CSV</button>
+    <button id="ledgerClear" class="btn btn-ghost">Clear this device</button>
+    <p class="small" id="ledgerNote">Nothing here leaves your browser. The CSV is built in the page and copied to your clipboard.</p>
+  </div>
+</div>
+
+<h2 id="cadence">The publishing cadence</h2>
+<p>The cadence is an editorial policy adopted on 2026-11-17 (<a href="decisions.html#D-17">D-17</a>) — a commitment this site makes to itself, not a fact quoted from any external page. Each new guide enters the sitemap and the RSS feed automatically at build time; nothing is listed by hand.</p>
+<div class="tablewrap"><table>
+<caption>The cadence each new page enters</caption>
+<thead><tr><th>Slot</th><th>Rhythm</th><th>What ships</th><th>Decision it serves</th></tr></thead>
+<tbody>
+<tr><td>New question-shaped guide</td><td>One every two weeks; first slot 2026-12-01</td><td>A page that answers one buyer question using only what the listings state, auto-added to <a class="src" href="https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml" title="The site sitemap, regenerated at every build">sitemap.xml</a> and <a class="src" href="https://kanlerxz87-cyber.github.io/Zone3/feed.xml" title="The site RSS feed, rebuilt at every build">feed.xml</a> — the cadence itself is this site's policy — <a href="#cadence">defined on this page</a>, decision <a href="decisions.html#D-17">D-17</a> — chosen because the programme's original-content rule is easier to keep at a slow cadence <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a></td></tr>
+<tr><td>Measurement review</td><td>Monthly, first Monday</td><td>The next guide is chosen from the ledger's measured opens and read-throughs, not from instinct — once Search Console data arrives (see <a href="decisions.html#D-21">D-21</a>), measured queries join it. The review rhythm is this site's policy — <a href="#cadence">defined on this page</a>, decision <a href="decisions.html#D-16">D-16</a>, recorded in the <a class="src" href="https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/i2/decisions.json" target="_blank" rel="noopener noreferrer" title="The decision register in this repository — proposal D-16">decision register</a></td></tr>
+<tr><td>Compliance re-read</td><td>Quarterly, and before every new page type</td><td>The Operating Agreement, the Participation Requirements and the FTC guidance are re-read; the disclosure and link rules re-checked. The rhythm is this site's policy — <a href="#cadence">defined on this page</a>, decision <a href="decisions.html#D-19">D-19</a>; the documents re-read are the programme's own <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a></td></tr>
+</tbody>
+</table></div>
+
+<h2 id="not-yet">What measurement cannot do yet</h2>
+<ul class="findings">
+<li><strong>Conversions cannot be measured from this site.</strong> Reported orders exist only in Amazon's Associates reports for the account holder, behind a sign-in no agent can reach. When a tracking ID exists, reported orders are transcribed into the campaign ledger from those first-party reports, dated and sourced — never forecast.</li>
+<li><strong>No server-side endpoint exists.</strong> GitHub Pages is static hosting; it cannot run an endpoint. Hosting one is the owner's infrastructure decision — recorded, with the options, as <a href="decisions.html#D-20">D-20</a>. Until then the ledger is device-side by design, which is also why it is privacy-preserving by construction.</li>
+<li><strong>Search queries are not visible yet.</strong> Connecting the site to a Search Console property needs the owner's verification, recorded as <a href="decisions.html#D-21">D-21</a>. Until then, no claim is made about which queries bring readers here.</li>
+<li><strong>No traffic, trend or popularity claim appears anywhere on this site.</strong> Amazon publishes no such data to affiliates, and every number this site does not have stays blank on purpose. <a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener noreferrer" title="Associates Program Policies — read 2026-11-16">I2-S02</a></li>
+</ul>
+
+<h2>Where this is implemented</h2>
+<p>The ledger lives in <span class="mono">assets/site.js</span> (build source: <span class="mono">tools/build_i2_site.py</span>, event names and limits visible in the source); this page is <span class="mono">site/measure.html</span>; the cadence is recorded in the decision console as <a href="decisions.html#D-17">D-17</a> and in the repository's coordination log. The <a href="intent-record.html">product-intent record</a> is the companion register for the links themselves.</p>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-disclose"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases.</p>
+    <p class="foot-small">Air Fryer Field Notes is independent and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates. Product information shown on this site comes from Amazon pages; the policy rules quoted here come from Amazon's programme documents, read on the dates shown.</p>
+    <p class="foot-small"><a href="evidence.html">How we know — sources and verification log</a> · <a href="measure.html">How we measure</a> · <a href="intent-record.html">Intent record</a> · <a href="decisions.html">Suggestions &amp; decisions</a> · <a href="front-door.html">Front door (audit dashboard)</a> · <a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a></p>
+  </div>
+</footer>
+<script src="assets/site.js" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', function(){
+  var showBtn = document.getElementById('ledgerShow');
+  var csvBtn = document.getElementById('ledgerCsv');
+  var clearBtn = document.getElementById('ledgerClear');
+  var list = document.getElementById('ledgerCounts');
+  var note = document.getElementById('ledgerNote');
+  function fmt(n){ return n === 1 ? '1 event' : n + ' events'; }
+  if (showBtn) showBtn.addEventListener('click', function(){
+    var L = window.z3Ledger; if (!L) return;
+    var all = L.all();
+    var counts = {};
+    L.events.forEach(function(e){ counts[e] = 0; });
+    all.forEach(function(x){ if (counts[x.e] !== undefined) counts[x.e] += 1; });
+    list.innerHTML = '';
+    L.events.forEach(function(e){
+      var li = document.createElement('li');
+      li.textContent = e + ' — ' + fmt(counts[e]);
+      list.appendChild(li);
+    });
+    var li = document.createElement('li');
+    li.textContent = 'Total — ' + fmt(all.length);
+    list.appendChild(li);
+    if (note) note.textContent = all.length ? 'Counts above are from this device only. Last event: ' + all[all.length-1].e + '.' : 'The ledger on this device is empty.';
+  });
+  if (csvBtn) csvBtn.addEventListener('click', function(){
+    var L = window.z3Ledger; if (!L) return;
+    var csv = L.csv();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(csv).then(function(){
+        if (note) note.textContent = 'CSV copied to the clipboard (' + (L.all().length) + ' rows).';
+      }, function(){ if (note) note.textContent = 'Copy failed — select the text from the browser console instead.'; });
+    } else if (note) note.textContent = 'This browser has no clipboard API — the CSV stays in the page script.';
+  });
+  if (clearBtn) clearBtn.addEventListener('click', function(){
+    var L = window.z3Ledger; if (!L) return;
+    L.clear();
+    list.innerHTML = '<li>Ledger cleared on this device.</li>';
+    if (note) note.textContent = 'The localStorage key z3-events-v1 has been removed.';
+  });
+});
+</script>
+<!-- z3:footer -->
+<footer class="z3-foot" role="contentinfo"><div class="z3-wrap"><p class="z3-disc">As an Amazon Associate I earn from qualifying purchases.</p><p class="z3-foot-small">Links to Amazon are marked sponsored. This site is not operated by Amazon. Titles, ASINs and breadcrumbs are as observed on the dates shown; no price, rating or forecast is published here.</p><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px"><div><h4>Read</h4><nav aria-label="Read"><a href="../index.html">Front page</a><a href="../guides/index.html">Guides</a><a href="../articles/index.html">Research Desk articles</a><a href="../read/index.html">The Crisp Report</a><a href="../site/index.html">Reader site</a></nav></div><div><h4>Products and pricing</h4><nav aria-label="Products and pricing"><a href="../intent-record/index.html">Product-intent record</a><a href="../products/index.html">Products</a><a href="../pricing/index.html">Pricing</a><a href="../commission/index.html">Commission</a><a href="../reviews/index.html">Reviews</a><a href="../niches/index.html">Niches</a></nav></div><div><h4>Governance</h4><nav aria-label="Governance"><a href="../publication-pass.html">This pass and flagged for review</a><a href="../measurement/index.html">Measurement (counter off)</a><a href="../brief-status/index.html">Brief status</a><a href="../executive-summary/index.html">Executive summary</a><a href="../compliance/index.html">Compliance</a><a href="../agent-terms/index.html">Agent terms</a><a href="../methodology/index.html">Methodology</a><a href="../requirements/index.html">Requirements</a><a href="../sources/index.html">Sources</a><a href="../verification.html">Verification log</a><a href="../flagged/index.html">Flagged (all items)</a></nav></div><div><h4>Dashboards</h4><nav aria-label="Dashboards"><a href="../dashboard/index.html">Dashboard</a><a href="../dashboard-register.html">Register (previous front page)</a><a href="../campaigns/index.html">Campaigns</a><a href="../content/index.html">Content</a><a href="../repo-review/index.html">Repo review</a><a href="../suggestions.html">Suggestions</a><a href="../decision-queue.html">Decision queue</a><a href="../design-brief.html">Design brief</a></nav></div><div><h4>Feeds</h4><nav aria-label="Feeds"><a href="../feed.xml">RSS feed</a><a href="../sitemap.xml">Sitemap</a></nav></div></div></div></footer>
+<!-- /z3:footer -->
+</body>
+</html>

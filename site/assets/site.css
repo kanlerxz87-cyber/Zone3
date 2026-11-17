@@ -168,3 +168,23 @@ td.lead-cell{font-weight:600;color:var(--ink)}
   .disclose-bar .wrap{padding:9px 16px}
 }
 @media print{.disclose-bar,.top nav,.decide,.decision-tools{display:none}body{background:#fff}}
+/* ---- Mobile-first pass (session ded63349, 2026-11-17; proposal D-22): fluid type
+   scale, 44px tap targets on primary controls, comfortable table cells on small
+   screens, and a sticky quick-compare bar on guide pages. ---- */
+h1{font-size:clamp(1.7rem,4.2vw,2.35rem)}
+h2{font-size:clamp(1.25rem,2.6vw,1.6rem)}
+@media(max-width:720px){
+  h1{font-size:clamp(1.55rem,6vw,2.1rem)}
+  h2{font-size:clamp(1.18rem,4.6vw,1.45rem)}
+  .top nav a,.btn,a.btn,.fd-btn,button,input[type="submit"],input[type="radio"]+span,.msticky a{min-height:44px}
+  .top nav a,.btn,a.btn,.fd-btn,button,.msticky a{display:inline-flex;align-items:center}
+  td,th{padding:.72rem .6rem}
+  table{font-size:.94rem}
+  .card,.prop{padding:16px}
+}
+.msticky{display:none}
+@media(max-width:720px){
+  .msticky{display:flex;position:sticky;bottom:0;z-index:9;gap:10px;background:#fff;border-top:2px solid var(--line);padding:10px 2px;margin-top:30px}
+  .msticky a{flex:1;text-align:center;font-weight:700;font-size:.92rem;border:1.6px solid var(--line);border-radius:999px;padding:12px 10px;background:var(--accent);color:#fff;border-color:var(--accent)}
+  .msticky a+a{background:#fff;color:var(--ink);border-color:var(--line)}
+}

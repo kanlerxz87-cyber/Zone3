@@ -40,7 +40,7 @@ The source register records the submitted-link destinations (`SH-S06`–`SH-S10`
 3. **Set measurement up lawfully** — define the five events and choose a collection host before building a counter; set up and verify Search Console, submit the existing sitemap, and base the next topic on observed queries. Until then, keep the campaign ledger empty.
 4. **Review the proposals before broader changes** — use [Suggestions](https://kanlerxz87-cyber.github.io/Zone3/suggestions.html), the [decision queue](https://kanlerxz87-cyber.github.io/Zone3/decision-queue.html), and the [design brief](https://kanlerxz87-cyber.github.io/Zone3/design-brief.html). They separate verified facts, open questions, discovery actions and proposed visual paths; no proposal is evidence of popularity or product quality.
 
-**Release checks run on this checkout (2026-11-17):** shared site check passed (30 pages, 3 products in that legacy register, 62 sources, 113 flags); whole-tree verification passed (134 pages, 2,068 table rows); strict provenance report passed; reader gate passed (18 pages, 164 rows, 148 sourced, 16 explicit blanks); reader lint passed with 22 inherited advisory items and 0 new findings; feed check passed (9 entries); sitemap check passed (97 pages); link check passed (180 HTML files, 207 external URLs, 0 errors); shop check passed (11 shop pages). The three-product shared register is a separate legacy surface and is not the five-product shop register.
+**Release checks run on this checkout (2026-11-17):** shared site check passed (36 pages, 5 products, 82 sources, 124 flags); whole-tree verification passed (144 pages, 2,279 table rows); strict provenance report passed; reader gate passed (18 pages, 164 rows, 148 sourced, 16 explicit blanks); reader lint passed with 22 inherited advisory items and 0 new findings; feed check passed (9 entries); sitemap check passed (101 pages); link check passed (190 HTML files, 235 external URLs, 0 errors); shop check passed (11 shop pages); measurement self-tests passed (collector field filter and aggregate-only store). The shared register carries the same five links the shop register carries — session `73029680` reconciled the two surfaces and the confirmation-record self-contradiction on `products.html` ([G84-F-01](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#G84-F-01)); they remain separate builds by design.
 
 ---
 
@@ -165,7 +165,8 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-62 official sources · 55 policy facts · 113 flags · 30 pages in the shared gate, a 16-page audit build, a `/docs/`
+82 official sources · 55 policy facts · 132 flags · 41 pages in the shared gate (counts recomputed
+2026-11-17, session `73029680`, after the rebase onto session 2f181cd9's tree), a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -259,8 +260,9 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-113 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 19 high, 31 medium, 33 low, 27 informational (informational entries record a correction
+124 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 21 high, 36 medium, 36 low, 28 informational (counts recomputed from the register on
+2026-11-17 by session `73029680` after G84-F-01 and session 2f181cd9's F-2F-01…10; informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
@@ -787,3 +789,121 @@ plus tracking report) as the closing action. SUG-05 stays blocked until that pas
 `build_cba81fa5_site --check`, `test_manifest_regression`, `cba81fa5_test_no_repr_output`,
 `build_read --check`, `sessions/3c886b62/tools/check_links.py`. Brief-gap verdict for every ask in
 the current brief — served, or served-but-blocked — is the brief-gap matrix on the session page.
+---
+
+## Session ded63349 pass (2026-11-17) — measurement machinery, intent record, sponsored-rel gate, decision console (updated after merge reconciliation)
+
+Scope: the brief's measurement, cadence, disclosure-placement, sponsored-rel and product-intent
+priorities, implemented on the reader layer without changing any registered fact. Independent
+verification round: `sessions/ded63349/verification-2026-11-17.md` (D6-V01..V18 — every load-bearing
+official page re-read on 2026-11-17; all match the register).
+
+**What this session shipped (present in the merged tree):**
+
+| Item | Result |
+|---|---|
+| Five defined events | `page_view`, `outbound_product_click`, `comparison_open`, `guide_read_through`, `decision_open` — defined on `site/measure.html` (D-16), recorded device-side in `site/assets/site.js`; no cookies, no identifiers, no third-party calls, no server (static hosting — recorded as blocked D-20) |
+| Publishing cadence | one guide per fortnight from 2026-12-01, monthly measurement review, quarterly compliance re-read (D-17); new guides enter sitemap + feed automatically |
+| Product-intent record | `site/intent-record.html` + `data/ded63349/intent_record.json` (D-24): intended ASIN blank by design (owner-only, Q2), official listing URL, confirmation dates 2026-11-16 (re-observed 2026-11-17), observed redirect targets in a separate field. The dashboard's intent table on `products.html` (session 82372fd1) is the complementary dashboard view |
+| Sponsored-rel gate | i2_gate **G11** (D-19): every `/dp/`, `/gp/product/` and `link.amazon` anchor must carry `rel="sponsored"`; marking itself is done by the site generators and `sessions/aebf0747/publish_pass.py`, and `tools/apply_sponsored.py --check` runs as a redundant verifier |
+| Disclosure-placement check | `tools/add_disclosure_banner.py --check` verifies the §5 sentence sits above the fold on every published page (complements `publish_pass.py`'s strip; on the merged tree every page already passes) |
+| Mobile + front door | fluid type scale, 44px tap targets and a sticky quick-compare bar on guide pages (D-22); front door gained the dashboard footer nav group generated from `scripts/build_site.py`'s nav lists (D-23) plus measure/intent/feed links |
+| Decision console | D-16..D-24, Q14..Q16, DA-10..DA-12 appended — 24 proposals, 16 questions, 12 discovery actions |
+
+**Merge reconciliation (same day).** While this session worked, `main` absorbed sessions 974e366d
+(shop layer), aebf0747 (publication pass: disclosure strip, sponsored rel, head links) and 82372fd1
+(mobile pass, union feed, dashboard intent record, suggestions review). The rebase kept every
+session's work and retired only this session's *duplicate* machinery: its Atom-format feed
+variant and its standalone banner-insertion pass. The canonical feed is the **union RSS 2.0
+`feed.xml`** (session 82372fd1, both guide registers); all feed-discovery links and labels were
+normalized to `application/rss+xml`, and `tools/build_cba81fa5_site.py`'s front-page feed-link
+backstop now injects RSS only when no feed link of either type exists. Conflicts (COORDINATION.md
+add/add; `tools/build_feed.py` add/add; generated pages) were resolved by taking `main`'s version
+and re-applying only the deltas this session owns. Logged in COORDINATION.md's reconciliation record.
+
+**Gates on the final merged tree (all exit 0; full chain run twice, identical tree hash):**
+`i2_gate` PASS — 20 pages · 186 rows · 170 sourced · 16 explicit blanks · 0 flagged (checks G1–G11) ·
+`cba81fa5_lint` PASS (0 new findings) · `cba81fa5_test_no_repr_output` PASS · `check_site` OK
+(30 pages / 3 products / 62 sources / 113 flags) · `verify_site` PASS (136 pages · 2,090 rows ·
+1,791 sourced) · `link_report --strict` 0 · `check_all_links` 0 errors · `apply_sponsored --check`
+PASS · `add_disclosure_banner --check` PASS · `build_feed --check` PASS · `build_shop --check` PASS ·
+`publish_pass --check` PASS · `build_cba81fa5_site --check` current · `build_sitemap --check` current.
+
+**Still blocked, unchanged:** Associates tag (Q1), intended ASINs (Q2), Creators API credentials (Q4),
+human editor review (Q5/D-10), the analytics endpoint's host (Q14/D-20), Search Console verification
+(Q15/D-21), and the Special Links test that only the account holder can run.
+
+**Parallel measurement layer (session 38650305, merged the same day).** On top of the five-event
+device ledger above, the merged tree carries a second, endpoint-bound counter: `assets/measure.js`
++ `assets/measure-config.js` generated from `data/shop/measurement.json` (counting **OFF** until
+`endpoint_url` is set), injected site-wide by `tools/measure_pass.py`, with an aggregate-only
+collector (`tools/analytics_endpoint.py`, self-test PASS). Known divergence, flagged for review:
+`measurement.json` proposes five event ids (`page_view, outbound_click, guide_view, intent_view,
+flag_view`) that differ from D-16's five (`page_view, outbound_product_click, comparison_open,
+guide_read_through, decision_open`) on the same page — both sessions derived "five events" from a
+brief that names no list (flag M38-F-04). The owner decision that unifies them is recorded on
+`site/decisions.html` (Q14/D-20 for the endpoint; the event list needs a ratification choice).
+
+
+## Update 2026-11-17 — session 5b443d02 (five-link intake, Direction section, final integration)
+
+**Bottom line.** The brief submits **five** product links. Every data file, page and analysis in this
+repository had been built on **three** of them. The two missing links were fetched from the official
+Amazon pages on 2026-11-17 and they do not belong to the site's only category: they are **meat
+thermometers**, not air fryers. That single fact invalidates the site's information architecture
+before any redesign work starts, so this session published a product-intent confirmation record, a
+design-suggestion pack, an open-questions register and a three-path chooser under
+[`/direction/`](https://kanlerxz87-cyber.github.io/Zone3/direction/) rather than changing the site's
+shape unilaterally.
+
+**All five submitted links, fetched 2026-11-17.** Every token is 9 characters; the
+[Creators API GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items)
+defines an ASIN as a *"10-Character alphanumeric unique identifier"*, so no submitted token is itself
+the ASIN, and the intended product can only be stated by the person who submitted the link.
+
+| Submitted link | Observed destination | Listing title as served | Browse node (leaf) |
+|---|---|---|---|
+| [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) | Chefman 6 Quart Dual Basket Air Fryer Oven | Air Fryers (17659096011) |
+| [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) | Emeril Lagasse 26QT French Door Air Fryer Toaster Oven | Air Fryers (17659096011) |
+| [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) | Chefman Air Fryer 8 Qt TurboFry 4-in-1 | Air Fryers (17659096011) |
+| [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) | ThermoMaven 1 Sec Professional Digital Meat Thermometer | Meat (289810) |
+| [link.amazon/B0f3GKalj](https://link.amazon/B0f3GKalj) | [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) | Chef iQ Sense Smart Wireless Meat Thermometer, Gen3 | Meat (289810) |
+
+**Records this session published.** [Product intent](https://kanlerxz87-cyber.github.io/Zone3/direction/products.html)
+keeps the intended ASIN and the observed destination in two separate tables and never merges them;
+the intended field is blank on all five rows and stays blank until the owner confirms it.
+[Direction](https://kanlerxz87-cyber.github.io/Zone3/direction/) carries 19 design and editorial
+suggestions, each with the prerequisite that gates it, plus 8 working article titles.
+[Open questions](https://kanlerxz87-cyber.github.io/Zone3/direction/questions.html) carries 14
+decision-blocking questions, each with what is already established, what is missing, the action that
+would close it, what it blocks and the default if it stays unanswered.
+[Choose a path](https://kanlerxz87-cyber.github.io/Zone3/direction/choose.html) sets out three
+complete answers and records a choice without applying it.
+
+**Re-read from the official pages on 2026-11-17:** the
+[Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+(updated October 15, 2025 — §1 Special Links and the Program Content definition, §4 no representation
+as to traffic or commission income, §5 the disclosure, §6(a) breach of §5 is a material breach), the
+[Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (updated April 14,
+2026 — Commission Income Statement §1 qualifying purchases), and the
+[Creators API GetItems reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items)
+(ASIN, 10 characters; `partnerTag` required).
+
+**Flags raised:** six — 5B-F-01 (two of five links are in a different browse node, High), 5B-F-02 (two
+links were absent from every data file, High), 5B-F-03 (intended ASIN unknown for all five, Medium),
+5B-F-04 (the release gate does not count Google Search Central as an official host, Low), 5B-F-05 (no
+validated Special Link and an unconfirmed tracking tag, Medium), 5B-F-06 (a same-page anchor bug in the
+shared gate, fixed, Info). All are on the
+[Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page.
+
+**Independent corroboration.** Session `2f181cd9`, working in parallel on 2026-11-17, reached the same two previously unrecorded links and registered them in the shared source register as `S70`–`S75`; session `82372fd1` flagged the same two links as `G82-F-03` and added rows for them that still have empty observed fields. Three sessions finding the same gap independently is corroboration of the finding. This session's contribution is the destinations, the browse-node mismatch, and the decision records that follow from it.
+
+**Owner decisions needed.** (1) Which of the three paths this site follows — one kitchen site with two
+pillars is the default. (2) The intended product or ASIN behind each of the five links. (3) Associates
+account status, the tracking tag and the Special Link format. (4) Whether two of the five products are
+in scope at all.
+
+---
+
+82 official sources · 55 policy facts · 132 flags in the shared gate, a 16-page audit build, a `/docs/`
+
