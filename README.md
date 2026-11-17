@@ -22,22 +22,26 @@ publish any value that cannot be traced to an official source.
 
 | | |
 | --- | --- |
-| Products submitted | 3 |
-| Submitted tokens that are ASINs | **0 of 3** (they are short-link tokens) |
-| Observed redirect destination listings | **3 of 3** |
-| Product-attribute cells blank in the audit sheet | **27** (9 unavailable fields × 3 observed listings) |
-| Official sources cited | 22 in `data/z3/`; 62 in the flat-site register (S60–S69 added 2026-11-16) |
-| Open items published for review | 97 (flat-site register: `Z14-F-01`…`Z14-F-04` added 2026-11-16, plus `A0-F-*`/`F1-F-*` from PR #110) · 29 (audit build) |
+| Products submitted | 5 (three on 2026-11-13; two more added by the owner's brief on 2026-11-17, session `cbb03ec7`) |
+| Submitted tokens that are ASINs | **0 of 5** (they are short-link tokens) |
+| Observed redirect destination listings | **5 of 5** |
+| Product-attribute cells blank in the audit sheet | **45** (9 unavailable fields × 5 observed listings) |
+| Official sources cited | 22 in `data/z3/`; 68 in the flat-site register (S60–S69 added 2026-11-16; S70–S75 added 2026-11-17) |
+| Open items published for review | 112 (flat-site register, `data/flags.json`; `CBB-F-01`…`CBB-F-04` added 2026-11-17) · 29 (audit build) |
 | Compliance rules enforced in the build | 25 prohibitions + 5 mandatory text blocks; `scripts/build_read.py` additionally refuses to emit an uncited table row, a price pattern, a star-rating pattern or a stored Amazon image, and `read/**` is listed in `scripts/check_site.py`'s `PAGES` so the shared gate covers it too |
 | Reader-facing marketing layers | **two, in parallel** — `/read/` (The Crisp Report, 11 pages, sessions `145b8df7`/`d18303ca`) and `/site/` (Air Fryer Field Notes, 18 pages, sessions `59d84c55` + `cba81fa5`). The repository root now opens on a front-door band that leads to both, and the overlap is recorded as `Z14-F-04` and `CBA-F-03` for the owner to resolve |
 
-The three submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
-`link.amazon/B00hJ57DV`) carry **9-character short-link tokens**, not ASINs. Amazon defines an
-ASIN as 10 characters, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page
-for all three tokens. Following each short link was observed to land on a live listing: CHEFMAN
-6 Qt dual basket (B0CDY277D3), Emeril Lagasse 26QT (B09B7SB46R), and Chefman 8 Qt TurboFry
-(B08DKYBTPH). These observed destinations are documented; whether they match the requester's intent
-is not established by an official source.
+The five submitted links (`link.amazon/B04G1MEwY`, `link.amazon/B02NbDxp3`,
+`link.amazon/B00hJ57DV`, `link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`) carry **9-character
+short-link tokens**, not ASINs. Amazon defines an ASIN as 10 characters, and
+`https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page for all five tokens.
+Following each short link was observed to land on a live listing: CHEFMAN 6 Qt dual basket
+(B0CDY277D3), Emeril Lagasse 26QT (B09B7SB46R), Chefman 8 Qt TurboFry (B08DKYBTPH), ThermoMaven
+1 Sec Professional Digital Meat Thermometer (B0DHZTCNR5, observed 2026-11-17) and CHEF iQ Sense
+Smart Wireless Meat Thermometer (B0DZFD6R9Z, observed 2026-11-17). These observed destinations are
+documented; whether they match the requester's intent is not established by an official source.
+The Selected Tracking ID `shopnow047c-20` from the same brief is recorded in `config/platform.json`
+with status **unverified** and is embedded in no link (CBB-F-02).
 
 > **Correction, session `588693c9`, 2026-11-14.** This paragraph previously ended
 > "…through Amazon's `plpRedirect=mhFallback` route, which confirms the identifiers select

@@ -8225,3 +8225,30 @@ does not edit that file, because another session owns it.
 | Gates at merge | `check_site` OK 40 pages / 5 products / 82 sources / 130 flags · `verify_site` PASS 149 pages / 2,381 rows · `i2_gate` PASS 20 pages / 0 flagged · `cba81fa5_lint` PASS 0 new · `build_feed --check` OK 9 entries · `build_sitemap --check` 105 pages / 0 extra · `link_report --strict` exit 0 · `no_repr` PASS 149 pages · 0 conflict markers. |
 | Session status | `5b-T1`…`5b-T7` **done**. |
 | Follow-up | One cosmetic fix after merge: the ASIN-definition cell carried stray quotation marks from the JSON source. Fixed in `scripts/build_5b443d02.py` (the sentence is cleaned once, at module level) and regenerated. |
+
+---
+
+## Part: session `cbb03ec7` (2026-11-17) — five-product intake, tracking-ID record, brief gap audit, final integration
+
+### CB Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| cbb03ec7 | `arena/cbb03ec7-zone3` | (CB-T1) claim; (CB-T2) line-by-line brief gap audit + repo review; (CB-T3) intake of the two unregistered product links (`link.amazon/B0c8moW59`, `link.amazon/B0f3GKalj`) and the owner-supplied tracking ID `shopnow047c-20`; (CB-T4) suggestions/decision-queue additions for this brief; (CB-T5) final integration: all gates, PR → `main`, merge, Pages deploy confirmation | in progress (CB-T1) | 2026-11-17 |
+
+### CB Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| CB-T1 — Read board, claim tasks, push claim | in progress | cbb03ec7 | `COORDINATION.md` (this Part only, append) | — | — |
+| CB-T2 — Brief line-by-line gap audit + repo review | unclaimed → claimed | cbb03ec7 | `sessions/cbb03ec7/**` | existing S-register | to be recorded |
+| CB-T3 — Intake P4/P5 short links + tracking ID `shopnow047c-20` | unclaimed → claimed | cbb03ec7 | `data/products.json`, `data/sources.json`, `data/flags.json`, `config/platform.json`, generated pages via the generator chain | new S70+ (live fetches 2026-11-17) | to be recorded |
+| CB-T4 — Suggestions + decision-queue additions for this brief's open items | unclaimed → claimed | cbb03ec7 | `data/suggestions.json`, `data/decision-queue.json` | existing register | — |
+| CB-T5 — Final integration: gates, PR → `main`, merge, Pages confirm, record | unclaimed → claimed | cbb03ec7 | this Part of `COORDINATION.md` only | — | — |
+
+### CB Scope and non-overlap notes (cbb03ec7)
+
+- `scripts/build_site.py` and `index.html` were claimed by session `5a56c084` (task T-5a56c084-B/C, PR #123). That claim is **more than 60 minutes old with no commits** (last commit 2026-11-16T19:05:52Z; board read 2026-11-17) and its one-line fix (joining `product_cards`) **already landed on `main`** via session `cba81fa5` (CBA-F-06, `scripts/build_site.py` line ~941). Handoff taken over per the >60-minute rule; PR #123 closed as superseded, with a comment on the PR. Any edit this session makes to `build_index` copy is recorded here.
+- PR #109 (session `a0ffcab0`, COORDINATION.md publish record, open since 2026-11-16T18:49Z, stale) was **merged first**, before this claim was pushed, so their record is preserved and this Part appends cleanly.
+- Shared outputs (generated pages, sitemap, executive-summary counts) are changed only by this session as the final integration session for this round, and each change is logged in this Part.
+- All live observations below are fetches performed by this session on **2026-11-17** through the platform's page-fetch tool; the fetched URLs and titles are recorded verbatim in `data/sources.json` (new IDs S70+) and `sessions/cbb03ec7/`.
