@@ -7298,3 +7298,18 @@ Entries are appended in time order. Nothing outside the lines listed below was e
 | Pages deploy | `pages/builds/latest` for commit `5bc965a`: **`built`**. Configuration source `main` `/`, status `built`. |
 | Live checks (cache-busted, post-build) | **feed.xml** — union serves: 9 items (four /guides/ pages with aebf0747's exact pubDates, then five site/guides entries), channel copy correct. **products.html** — "Product-intent confirmation record (added 2026-11-17)" table live with intended fields Unverified and observed block separate. **flagged.html** — "113 entries: 3 critical, 19 high, 31 medium, 33 low, 27 info", matching the register exactly. Root front page nav (Flagged (register) + topbar token) live via the merge itself. (`.css` live fetch bounced off the preview proxy's own credential error, not a site error; the merged commit IS what Pages serves and the shipped rules are in `site/assets/site.css` at `5bc965a`.) |
 | Session status | G82-T1…T5 **done**. Records: `sessions/82372fd1/repo-review.md`, `mobile-audit.md`, `verification-2026-11-17.md`. Flags: G82-F-01…F-05 (four fixed, G82-F-03 needs owner — published on flagged.html). Tracking ID from the 2026-11-17 brief kept in this log only, per Q1's own rule. |
+---
+
+## Part 83 — session `59b2194c` (branch `arena/59b2194c-zone3`, base `5bc965a`, 2026-11-17)
+
+### 83 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 59b2194c | `arena/59b2194c-zone3` | Current-tree review and executive-summary reconciliation for the five-link brief; verify existing gates and record remaining owner/account-side blockers | in progress | 2026-11-17 |
+
+### 83 Task board (claimed before edits)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| G83-T1 — Review current publication against the five-link brief, run release gates, reconcile top-level executive summary with the current shop register, and document verifiable remainder | in progress | 59b2194c | `EXECUTIVE-SUMMARY.md`, `sessions/59b2194c/**`, this Part of `COORDINATION.md` | `data/shop/products.json`, `data/shop/sources.json`, `data/shop/decisions.json`, GitHub Pages docs | stale three-product executive-summary baseline; analytics/Search Console and enrolled-account actions remain owner-side |
