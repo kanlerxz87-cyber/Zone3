@@ -786,3 +786,14 @@ PASS · `add_disclosure_banner --check` PASS · `build_feed --check` PASS · `bu
 **Still blocked, unchanged:** Associates tag (Q1), intended ASINs (Q2), Creators API credentials (Q4),
 human editor review (Q5/D-10), the analytics endpoint's host (Q14/D-20), Search Console verification
 (Q15/D-21), and the Special Links test that only the account holder can run.
+
+**Parallel measurement layer (session 38650305, merged the same day).** On top of the five-event
+device ledger above, the merged tree carries a second, endpoint-bound counter: `assets/measure.js`
++ `assets/measure-config.js` generated from `data/shop/measurement.json` (counting **OFF** until
+`endpoint_url` is set), injected site-wide by `tools/measure_pass.py`, with an aggregate-only
+collector (`tools/analytics_endpoint.py`, self-test PASS). Known divergence, flagged for review:
+`measurement.json` proposes five event ids (`page_view, outbound_click, guide_view, intent_view,
+flag_view`) that differ from D-16's five (`page_view, outbound_product_click, comparison_open,
+guide_read_through, decision_open`) on the same page — both sessions derived "five events" from a
+brief that names no list (flag M38-F-04). The owner decision that unifies them is recorded on
+`site/decisions.html` (Q14/D-20 for the endpoint; the event list needs a ratification choice).
