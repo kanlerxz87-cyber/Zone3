@@ -49,6 +49,15 @@ PAGES = [
     "articles/where-air-fryers-sit-in-amazons-category-tree.html",
     "articles/the-24-hour-window-how-amazons-cookie-pays.html",
     "sessions/5a56c084/index.html",
+    # Added by session 2f181cd9 (2026-11-17): the five-link intake register, the open-questions
+    # register, the Decision Lab, the design direction and this session's summary. Same gates as
+    # every other page, so a future edit cannot drop a disclosure or leave an uncited row.
+    "sessions/2f181cd9/index.html",
+    "sessions/2f181cd9/intake.html",
+    "sessions/2f181cd9/questions.html",
+    "sessions/2f181cd9/decision-lab.html",
+    "sessions/2f181cd9/design-direction.html",
+    "sessions/2f181cd9/executive-summary.html",
     # Added by integration session edbd56a1 (2026-11-14): line-by-line verification log.
     "verification.html",
 
@@ -63,7 +72,13 @@ PAGES = [
 ]
 TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
                "campaigns.html", "flagged.html", "sources.html", "verification.html",
-               "content-topics.html"}
+               "content-topics.html",
+               # Added by session 2f181cd9 (2026-11-17): every table on these pages is a register,
+               # so each row carries a Source column linking to the page it was read from.
+               "sessions/2f181cd9/index.html", "sessions/2f181cd9/intake.html",
+               "sessions/2f181cd9/questions.html", "sessions/2f181cd9/decision-lab.html",
+               "sessions/2f181cd9/design-direction.html",
+               "sessions/2f181cd9/executive-summary.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
     # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);

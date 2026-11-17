@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge).",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10: the five-link intake (two links open a second category), the missing Associates tag, the unverifiable per-product commission rate, the rel=sponsored inconsistency, the information-architecture and design findings, and a method note. All are published on flagged.html; none blocks the merge.",
   "flags": [
     {
       "id": "FLG-001",
@@ -1428,6 +1428,167 @@
       "session": "f65d393b",
       "status": "fixed",
       "repo_evidence": "tools/i2_gate.py STAR_RE before/after in this session's diff; post-change gate run reports 18 pages, 0 flagged"
+    },
+    {
+      "id": "F-2F-01",
+      "severity": "High",
+      "category": "Scope (owner decision)",
+      "item": "Two of the five submitted links open listings in a category the site is not written for",
+      "detail": "The brief for this session supplies five product links. Three open air-fryer listings under Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (browse node 17659096011). The two added this session, link.amazon/B0c8moW59 and link.amazon/B0f3GKalj, open meat-thermometer listings under Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (browse node 289810): B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer) and B0DZFD6R9Z (CHEF iQ Sense Smart Wireless Meat Thermometer, Gen3). The site name, navigation, category pages, comparison and article plan are all air-fryer specific. No source read in this project states the owner's intent for any of the five links, so this is published as a decision for the owner (SUG-2F-01 on sessions/2f181cd9/decision-lab.html) rather than acted on.",
+      "action": "Owner decision: pick one of the three scope paths in SUG-2F-01 (one publication with two category hubs, two microsites, or air fryers only with the two thermometer links held unpublished), and record the intended ASIN for each link with a confirmation date in the intake register.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S70",
+        "S71",
+        "S72",
+        "S73",
+        "S76",
+        "S77",
+        "S78"
+      ],
+      "repo_evidence": "sessions/2f181cd9/intake.html — the five-link intake register, intended and observed columns separate"
+    },
+    {
+      "id": "F-2F-02",
+      "severity": "Medium",
+      "category": "Product identity",
+      "item": "Both new identifiers are nine characters, so neither is an ASIN, and both direct /dp/ checks return Page Not Found",
+      "detail": "Amazon defines an ASIN as a 10-character alphanumeric unique identifier (Creators API GetItems, ItemIdType table, read 2026-11-17). B0c8moW59 and B0f3GKalj are nine characters, and amazon.com/dp/B0c8moW59 and amazon.com/dp/B0f3GKalj each return Amazon's Page Not Found page, exactly as the first three identifiers do. The nine-character tokens are short-link identifiers, and the listing they open is an observed destination, not a confirmed identity.",
+      "action": "No action by the site. Fill the intended_* columns of the intake register when the owner confirms the five ASINs.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S74",
+        "S75",
+        "S82"
+      ],
+      "repo_evidence": "sessions/2f181cd9/intake.html"
+    },
+    {
+      "id": "F-2F-03",
+      "severity": "High",
+      "category": "Revenue",
+      "item": "No link on the site carries an Associates tag, including the two new links",
+      "detail": "Participation Requirements 2(b) requires the Associates tag as a URL parameter on every link to an Amazon Site. The two new submitted links contain no tag, and no tag has been supplied for the site, so five of five links can be clicked without earning anything.",
+      "action": "Supply the tag, build one Special Link per product, test one end to end, then scale (SUG-2F-06).",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S80"
+      ],
+      "repo_evidence": "sessions/2f181cd9/intake.html and data/2f/intake.json"
+    },
+    {
+      "id": "F-2F-04",
+      "severity": "Medium",
+      "category": "Commission",
+      "item": "No commission rate can be stated for any of the five listings",
+      "detail": "The published Standard Commission Income Statement Table 1 (read 2026-11-17) gives Kitchen 4.50%, Home 3.00% and All Other Categories 4.00%. No official page read in this project maps a browse node to a Table 1 category, and the two new listings sit in a different part of the tree from the first three, so the question is now sharper rather than answered: the same table may or may not apply to both groups.",
+      "action": "Read the classification back through the Creators API once access exists, or take the realised rate from the owner's own Associates reports. Do not publish a per-product rate until then.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S81",
+        "S72",
+        "S73"
+      ],
+      "repo_evidence": "sessions/2f181cd9/questions.html#Q2F-04"
+    },
+    {
+      "id": "F-2F-05",
+      "severity": "Medium",
+      "category": "Compliance",
+      "item": "Outbound product links are marked rel=\"sponsored\" on 6 links and not on the rest of the site",
+      "detail": "A repository-wide scan on 2026-11-17 counted 6 outbound links carrying rel=sponsored against more than 2,300 that do not, so the same class of link is marked two different ways depending on which generator built the page. The brief requires every outbound product link to be marked as sponsored. This session's own pages mark every outbound Amazon link with rel=\"sponsored noopener noreferrer\".",
+      "action": "Cross-scope change request: change the link helper in each generator so every outbound product link carries rel=\"sponsored\", then rebuild. Suggestion SUG-2F-07 on sessions/2f181cd9/decision-lab.html.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S79",
+        "S80"
+      ],
+      "repo_evidence": "grep -c 'rel=\"[^\"]*sponsored' across the published pages, run 2026-11-17"
+    },
+    {
+      "id": "F-2F-06",
+      "severity": "Medium",
+      "category": "Information architecture",
+      "item": "The reader's path runs through an operations dashboard, and the page set is large",
+      "detail": "The root page opens with a hero and then a status callout, statistics about the verification process, and a site map listing 78 pages including per-session archives and superseded builds. The brief asks for a publication front page with every dashboard surface reachable from the footer and a single navigation group.",
+      "action": "Owner decision between the two paths in SUG-2F-02; then consolidate the page set as in SUG-2F-10.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S79"
+      ],
+      "repo_evidence": "index.html at the base commit, and the design diagnosis on sessions/2f181cd9/design-direction.html"
+    },
+    {
+      "id": "F-2F-07",
+      "severity": "Low",
+      "category": "Design",
+      "item": "Four visual languages are published on one domain",
+      "detail": "assets/style.css, assets/front-door.css, assets/read.css and site/assets each define their own palette, type stack and card shape, so following an internal link can arrive at a page that looks like a different website.",
+      "action": "Adopt one token set and rebuild every surface against it (SUG-2F-03).",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S79"
+      ],
+      "repo_evidence": "the four stylesheets in this repository, and the diagnosis table on sessions/2f181cd9/design-direction.html"
+    },
+    {
+      "id": "F-2F-08",
+      "severity": "Low",
+      "category": "Editorial",
+      "item": "Product pages carry no photography",
+      "detail": "Every product block is typographic. Imagery is the single largest visual upgrade available, and it is constrained: images must be Amazon-served Program Content or the owner's own photographs. Generated or copied photography is not an option.",
+      "action": "Pick a path in SUG-2F-04 once the tag or the products are available.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S79",
+        "S80"
+      ],
+      "repo_evidence": "marketing/product-*.html at the base commit"
+    },
+    {
+      "id": "F-2F-09",
+      "severity": "Low",
+      "category": "Content accuracy (cross-scope)",
+      "item": "Copy that says 'three air fryers' remains on surfaces this session does not own",
+      "detail": "This session updated the shared copy in scripts/build_site.py so that products.html, pricing.html, reviews.html, campaigns.html, content.html and the executive summary read correctly for five links. Surfaces owned by other generators still say three, including the front-door band injected into index.html by tools/build_cba81fa5_site.py ('Which of these three air fryers fits your kitchen?'), the /read/ pages built by scripts/build_read.py, the /site/ pages built by tools/build_i2_site.py and tools/build_cba81fa5_site.py, and the marketing pages under /marketing/ that compare three listings. Left as written rather than half-updated: the marketing comparison genuinely covers three air fryers, and the front-door band is an injected region this session does not generate.",
+      "action": "Change request for the owner or the next integration session: decide the scope (F-2F-01) and then regenerate or re-word those surfaces in one pass, so the site never mixes 'three' and 'five'.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [
+        "S72",
+        "S73"
+      ],
+      "repo_evidence": "grep -rn 'three air fryers|three listings' across the generated pages, run 2026-11-17"
+    },
+    {
+      "id": "F-2F-10",
+      "severity": "Info",
+      "category": "Method",
+      "item": "This session's sandbox could only reach the network through the page-fetch tool",
+      "detail": "Command-line fetches to amazon.com and link.amazon were refused at the connection layer in this session's sandbox, so every observation was taken through the page-fetch tool instead. Each observation names the exact URL that was fetched, so it can be repeated by hand. This is recorded because it is a difference in method from earlier sessions, which used command-line fetches.",
+      "action": "No action. Noted so a reviewer knows how the observations were taken.",
+      "date": "2026-11-17",
+      "session": "2f181cd9",
+      "status": "open",
+      "sources": [],
+      "repo_evidence": "sessions/2f181cd9/index.html"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-13",
-  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038).",
+  "note": "Null means UNVERIFIED: the value could not be confirmed from an official source and is intentionally blank. Nothing has been inferred. A non-null value must carry a source ID (checked by scripts/check_site.py). INTEGRATION (2026-11-14, session b90c5685): PR #26 (session 9fef7647) filled product_name, brand, price, rating and review_count from the redirect destinations. The submitted code is not an ASIN, so no official source ties those values to the submitted link (FLG-001, FLG-002, FLG-035). The identity/price cells stay blank. PR #26's readings are preserved verbatim under observed_2026_11_14 / value_sources_2026_11_14 so nothing is lost, and are not rendered as product facts (FLG-038). INTEGRATION (2026-11-17, session 2f181cd9): P4 and P5 added for the two links supplied in this session's brief. Both open meat-thermometer listings, so the register now spans two categories - see F-2F-01. Intended ASIN, product name, brand, price, rating, review count, rank, commission rate and availability stay null for them exactly as for P1-P3: no official source ties those values to a submitted nine-character token.",
   "products": [
     {
       "id": "P1",
@@ -25,7 +25,8 @@
         "capacity": "6 Quart",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
         "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035).",
+        "observed_on": "2026-11-17"
       },
       "product_name": null,
       "brand": null,
@@ -114,7 +115,8 @@
         "capacity": "26QT",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
         "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035).",
+        "observed_on": "2026-11-17"
       },
       "product_name": null,
       "brand": null,
@@ -203,7 +205,8 @@
         "capacity": "8 Qt",
         "brand_capacity_note": "Read from the destination page title (S11-S13 and the title sources). Not confirmed as the submitted product (FLG-002).",
         "reverified": "2026-11-14, twice: PR #26 (S52-S54) and session b90c5685 (S55); same destination both times.",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035)."
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035).",
+        "observed_on": "2026-11-17"
       },
       "product_name": null,
       "brand": null,
@@ -268,6 +271,132 @@
           "S48"
         ]
       }
+    },
+    {
+      "id": "P4",
+      "label": "Product link 4",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "link_id": "B0c8moW59",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B0c8moW59",
+        "result": "Page Not Found",
+        "source": "S74"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "page_id": "B0DHZTCNR5",
+        "page_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, +/-0.5F Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black",
+        "confirmed_as_submitted_product": false,
+        "source": "S70",
+        "title_source": "S72",
+        "brand": "ThermoMaven",
+        "capacity": "Not stated in the listing title",
+        "brand_capacity_note": "Read from the destination page title. Not confirmed as the submitted product (FLG-002, F-2F-02). This listing is a meat thermometer, not an air fryer (F-2F-01).",
+        "reverified": "2026-11-17, first observation by session 2f181cd9.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035, F-2F-01).",
+        "observed_on": "2026-11-17"
+      },
+      "category_observed": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+      "browse_node_observed": "289810",
+      "content_status": {
+        "brief": "Not written",
+        "comparison": "Not written",
+        "buying_guide": "Not written",
+        "note": "No brief, comparison or buying guide has been written for this link. The marketing section covers the three air-fryer listings only; extending it to this category is part of the scope decision in F-2F-01 and SUG-2F-01."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link opens a meat-thermometer listing, not an air fryer. Observed destination recorded; intent unconfirmed (F-2F-01). No Associates tag, so no Special Link exists (F-2F-03).",
+      "flags": [
+        "F-2F-01",
+        "F-2F-02",
+        "F-2F-03",
+        "FLG-001",
+        "FLG-002",
+        "FLG-035"
+      ],
+      "sources": [
+        "S80",
+        "S82",
+        "S74",
+        "S70",
+        "S72"
+      ]
+    },
+    {
+      "id": "P5",
+      "label": "Product link 5",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "link_id": "B0f3GKalj",
+      "link_id_length": 9,
+      "asin": null,
+      "direct_check": {
+        "url": "https://www.amazon.com/dp/B0f3GKalj",
+        "result": "Page Not Found",
+        "source": "S75"
+      },
+      "redirect_observed": {
+        "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "page_id": "B0DZFD6R9Z",
+        "page_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+        "confirmed_as_submitted_product": false,
+        "source": "S71",
+        "title_source": "S73",
+        "brand": "CHEF iQ",
+        "capacity": "Not stated in the listing title",
+        "brand_capacity_note": "Read from the destination page title. Not confirmed as the submitted product (FLG-002, F-2F-02). This listing is a meat thermometer, not an air fryer (F-2F-01).",
+        "reverified": "2026-11-17, first observation by session 2f181cd9.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, FLG-035, F-2F-01).",
+        "observed_on": "2026-11-17"
+      },
+      "category_observed": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+      "browse_node_observed": "289810",
+      "content_status": {
+        "brief": "Not written",
+        "comparison": "Not written",
+        "buying_guide": "Not written",
+        "note": "No brief, comparison or buying guide has been written for this link. The marketing section covers the three air-fryer listings only; extending it to this category is part of the scope decision in F-2F-01 and SUG-2F-01."
+      },
+      "product_name": null,
+      "brand": null,
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "competitor_count": null,
+      "best_seller_rank": null,
+      "commission_rate": null,
+      "availability": null,
+      "clicks": null,
+      "conversions": null,
+      "associates_tag": null,
+      "status": "Link opens a meat-thermometer listing, not an air fryer. Observed destination recorded; intent unconfirmed (F-2F-01). No Associates tag, so no Special Link exists (F-2F-03).",
+      "flags": [
+        "F-2F-01",
+        "F-2F-02",
+        "F-2F-03",
+        "FLG-001",
+        "FLG-002",
+        "FLG-035"
+      ],
+      "sources": [
+        "S80",
+        "S82",
+        "S75",
+        "S71",
+        "S73"
+      ]
     }
   ]
 }

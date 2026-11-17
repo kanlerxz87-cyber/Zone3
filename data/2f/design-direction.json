@@ -1,0 +1,109 @@
+{
+ "session": "2f181cd9",
+ "built": "2026-11-17",
+ "purpose": "The design direction and prompt pack for turning this repository from an audit dashboard into a publication that reads as designed. Every constraint that comes from a rule is quoted with its source; every constraint that comes from taste is labelled as a judgement, not as a fact.",
+ "constraint_line": "The design has to work inside three hard rules: the disclosure must be clear and prominent on every page; prices and star ratings may appear only through an Amazon-served link or the API; and the site must contain original content with real commentary or transformation. Anything else is a taste call the owner can overrule.",
+ "hard_rules": [
+  {"rule": "The Associates disclosure must be clearly and prominently stated on the site.", "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content", "source": ["S79"], "section": "Operating Agreement, Section 5", "design_consequence": "Disclosure strip directly under the masthead on every page, repeated in the footer. Not a tooltip, not a link, not below the fold."},
+  {"rule": "Prices and availability may be shown only if Amazon serves the link, or via the API.", "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API", "source": ["S80"], "section": "Participation Requirements 2(b)", "design_consequence": "Design the product card to look finished without a price. The card's commercial element is a labelled button ('See today's price on Amazon'), not a number."},
+  {"rule": "Customer reviews and star ratings may be shown only through the API.", "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API", "source": ["S80"], "section": "Participation Requirements 6(t)", "design_consequence": "No star widgets until access exists. Design the trust block around dated, sourced facts instead of ratings."},
+  {"rule": "Link placement must make clear that the reader is going to Amazon.", "quote": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.", "source": ["S80"], "section": "Participation Requirements 6(w)", "design_consequence": "Every outbound button names the destination in its own label. No bare arrows, no unlabelled icons."},
+  {"rule": "The site must be original content with real analysis or transformation.", "quote": "Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.", "source": ["S80"], "section": "Participation Requirements 1", "design_consequence": "Every product block carries something the listing does not say: a comparison, a caveat, a 'who this is not for' line."},
+  {"rule": "Links to product lists need relevant original content alongside them.", "quote": "When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link.", "source": ["S80"], "section": "Participation Requirements 2(b)", "design_consequence": "Category hubs are written pages, not grids of links."}
+ ],
+ "diagnosis": [
+  {"finding": "Four visual languages on one domain", "detail": "The audit pages, the front-door band, the reader theme and the second marketing build each set their own palette, type stack and card shape. A visitor who follows one internal link arrives somewhere that looks like a different website.", "evidence": "assets/style.css, assets/front-door.css, assets/read.css and site/assets each define their own tokens.", "severity": "high"},
+  {"finding": "The reader path starts with an operations dashboard", "detail": "The root page opens with a hero, then a status callout about verification, then rows of statistics about sources and flags, then a site map listing 78 pages.", "evidence": "index.html as published at the base commit.", "severity": "high"},
+  {"finding": "Boilerplate is repeated at scale", "detail": "The same footer paragraph about how the site was built appears on 23 pages; the same status sentence appears on 18. Repetition at that volume is what makes a site feel templated.", "evidence": "Sentence-frequency scan of all 115 published HTML pages, run 2026-11-17 by this session.", "severity": "medium"},
+  {"finding": "Product pages have no photography", "detail": "Every product block is typographic. Without imagery the pages read as spec sheets even when the writing is good.", "evidence": "marketing/product-*.html and the front-door cards at the base commit.", "severity": "high"},
+  {"finding": "The product set and the brand disagree", "detail": "Two of the five submitted links open meat thermometers while the brand, navigation and article plan are all air-fryer specific.", "evidence": "F-2F-01 and the intake register on this session's pages.", "severity": "high"},
+  {"finding": "Outbound links are not marked as sponsored", "detail": "Six outbound links carry rel=sponsored against more than two thousand that do not, so the same class of link is marked two different ways depending on which generator built the page.", "evidence": "Repository-wide link scan, run 2026-11-17 by this session.", "severity": "medium"}
+ ],
+ "principles": [
+  "One voice, one palette, one grid. If a section needs to feel different, it gets a different accent inside the same system, not a new system.",
+  "Lead with the product and the reader's question. Evidence is a supporting block, never the opening argument.",
+  "Every number on the page is dated and sourced, and every gap is stated in one plain sentence instead of being filled.",
+  "Photography is real or absent. There is no third option.",
+  "The page should answer one question completely and then get out of the way."
+ ],
+ "design_system": {
+  "type": {
+   "display": "One serif for headlines only (Iowan Old Style / Palatino / Georgia stack, already in use). Sizes: 40/32/26/22 px on a 1.08-1.2 line height.",
+   "body": "One sans for everything else (system stack, already in use). 16.5 px body, 1.65 line height, 68-74 character measure.",
+   "weights": "Two only: regular and 650. No light, no black.",
+   "rule": "No letter-spacing on body text. Uppercase only on 12 px eyebrows, at 0.16em."
+  },
+  "colour": {
+   "ink": "#14181f on #ffffff paper, with a warm off-white #faf7f0 for page wash",
+   "accent": "One deep green #0b6b53 for actions and active states, one warm copper #b35a2a for prices and dated stamps only",
+   "surfaces": "One border colour #e6e2d8, one shadow: 0 10px 30px -14px rgba(15,23,42,.30)",
+   "semantics": "Green for verified, amber for unverified, red for blocked. Used as chips and left borders, never as page backgrounds.",
+   "rule": "No gradients behind text. Gradients are allowed only inside a hero band with a solid overlay."
+  },
+  "grid": {
+   "max_width": "1180 px content, 22 px gutters, 8 px spacing scale (8/16/24/40/64)",
+   "cards": "repeat(auto-fit, minmax(268px, 1fr)) with 12-16 px gaps",
+   "radius": "14 px cards, 10 px buttons, 8 px chips. One radius family.",
+   "mobile": "Single column below 720 px, tap targets 44 px minimum, sticky comparison bar on comparison pages only."
+  },
+  "imagery": {
+   "rule": "Amazon-served image URLs or photographs taken by the owner. Nothing generated, nothing copied from a search result.",
+   "ratio": "4:3 product cards, 16:9 hero, 1:1 avatars. Every image has alt text that names the product.",
+   "caption": "Any owner photograph carries a caption with the date it was taken."
+  }
+ },
+ "templates": [
+  {"page": "Front page", "blocks": ["Masthead with name and one-line promise", "Disclosure strip", "Hero: one question, one sentence of promise, one primary action", "Product strip: five cards, each with real image, one-line verdict, one labelled outbound button", "Latest three guides", "Two category hubs", "Evidence strip: three dated facts and one 'what we could not verify' line", "Footer with the audit links in one group"]},
+  {"page": "Category hub", "blocks": ["Question-shaped headline", "Two-sentence answer box", "Chooser: three questions that filter the products", "Product cards", "Comparison entry point", "Dated evidence box", "Footer"]},
+  {"page": "Product page", "blocks": ["Image left, specification block right", "'Who this is for' and 'who this is not for', two bullets each", "What the listing states, with a date and a link", "What we could not verify", "Labelled outbound button", "Footer"]},
+  {"page": "Comparison", "blocks": ["Attribute table with sticky header on mobile", "One row per attribute, blanks marked unverified rather than filled", "Labelled outbound buttons per product", "Method note with dates", "Footer"]},
+  {"page": "Guide", "blocks": ["Question as the headline", "Answer in the first 60 words", "Sections with concrete specifics", "Dated evidence box", "What we could not verify", "Footer"]}
+ ],
+ "copy_rules": [
+  "Lead with the answer, not with the context. The first sentence of any page should be usable on its own.",
+  "One concrete fact per paragraph. A paragraph with no specific number, name or date is a paragraph to cut.",
+  "Write to one reader. 'You' is allowed; 'users', 'consumers' and 'individuals' are not.",
+  "Every claim about a product is either quoted from a listing with a date, or absent.",
+  "No claim of hands-on experience. This project has not handled any of these products, and saying otherwise is an FTC problem, not a style problem.",
+  "No popularity claim without a dated source. 'Best seller' is only allowed with the date it was observed and a link to the page.",
+  "Say what is missing in one sentence, plainly. A gap stated honestly reads as competence; a gap papered over reads as generated."
+ ],
+ "banned_phrases": [
+  "In today's fast-paced world",
+  "When it comes to",
+  "It is important to note that",
+  "Look no further",
+  "Game-changer",
+  "Elevate your cooking",
+  "Whether you're a seasoned pro or just starting out",
+  "Let's dive in",
+  "At the end of the day",
+  "Rest assured",
+  "Unleash the full potential",
+  "Carefully curated",
+  "Cutting-edge technology",
+  "Seamlessly",
+  "Revolutionise"
+ ],
+ "anti_slop_checklist": [
+  "Does the page open with a specific question a real person would type?",
+  "Is there at least one number or name in the first two sentences?",
+  "Is every image either Amazon-served or an owner photograph with a date?",
+  "Does every outbound button name its destination?",
+  "Is the disclosure visible without scrolling?",
+  "Is there a one-sentence statement of what could not be verified?",
+  "Are there more than two different page backgrounds on this page? (Should be no.)",
+  "Does any sentence appear verbatim on more than three other pages?",
+  "Is there a byline or an author note with a date?",
+  "Would the page still be useful if every adjective were deleted?"
+ ],
+ "what_not_to_do": [
+  "Do not add a star-rating widget before API access exists.",
+  "Do not invent testimonials, reviewer quotes or reader questions.",
+  "Do not generate product photography or lifestyle scenes.",
+  "Do not put a countdown, a stock counter or a 'trending now' badge on the page: there is no data behind it, and a fake urgency signal is the fastest way to lose a reader.",
+  "Do not hide the outbound destination behind a shortened URL or an unlabelled button.",
+  "Do not build a fifth visual language for a new section."
+ ],
+ "prompt": "You are designing the visual and editorial system for a small Amazon Associates publication that reviews and compares kitchen appliances and tools.\n\nWHAT IT IS\nA reader-facing shop and guide site. Five products: three air fryers and two meat thermometers. Each product page must lead with the product, state what the Amazon listing actually says with a date and a link, and state plainly what could not be verified. Evidence is a supporting block, never the headline.\n\nHARD CONSTRAINTS (these come from Amazon's Operating Agreement and Program Policies, and cannot be designed around)\n1. The sentence \"As an Amazon Associate I earn from qualifying purchases.\" must be clearly and prominently visible on every page, above the fold, and repeated in the footer.\n2. No price and no star rating may be displayed unless Amazon serves the link that shows it, or it comes from the Creators API. Design the product card to look complete without a price: the commercial element is a labelled button that names the destination, for example \"See today's price on Amazon\".\n3. Every outbound link must make it obvious that it goes to Amazon, and carries rel=\"sponsored\".\n4. No generated or stock-styled product photography: images are Amazon-served URLs or photographs the owner took, with a date caption.\n5. Every page must contain original commentary, analysis or transformation, not a restatement of listing copy.\n\nTHE LOOK\nEditorial, calm, physical. Warm off-white paper, near-black ink, one deep green accent for actions, one warm copper accent reserved for dated stamps and prices. One serif for headlines, one sans for body, two weights only. 14px card radius, one shadow, one border colour. 1180px content width, an 8px spacing scale, generous white space, no decorative gradients behind text. It should look like a well-made independent kitchen publication, not a template and not a dashboard.\n\nTHE PAGES\n1. Front page: masthead, disclosure strip, one hero question, five product cards with real imagery, three latest guides, two category hubs, a three-line dated evidence strip, footer with the audit links tucked into one group.\n2. Category hub: question-shaped headline, two-sentence answer, a three-question chooser, product cards, comparison entry point, dated evidence box.\n3. Product page: image beside a specification block, \"who this is for\" and \"who this is not for\", what the listing states with date and link, what could not be verified, labelled outbound button.\n4. Comparison: attribute table, sticky header on mobile, blanks marked unverified rather than filled, method note with dates.\n5. Guide: the question as the headline, the answer inside the first sixty words, concrete specifics throughout, dated evidence box.\n\nTHE WRITING\nShort sentences. One concrete fact per paragraph. No claims of hands-on experience: nobody here has used these products. Banned: \"in today's fast-paced world\", \"when it comes to\", \"look no further\", \"game-changer\", \"elevate your cooking\", \"let's dive in\", \"seamlessly\", \"cutting-edge\", \"carefully curated\", and any popularity claim without a dated source. State what is missing in one plain sentence instead of filling it.\n\nWHAT IT MUST NOT LOOK LIKE\nNot a dashboard: no KPI tiles, no status callouts, no source-count statistics, no site map in the reader's path. Not a template: no emoji bullets, no gradient hero with three floating cards, no generic illustrated characters. Not AI-generated: no symmetrical three-column feature grid with icons, no \"why choose us\" section, no invented testimonials.\n\nDELIVER\nA single design system in CSS custom properties, the five page templates as HTML with real copy for one air fryer and one thermometer, a type and colour scale, and a one-page written specification that a developer can build from without asking questions."
+}
