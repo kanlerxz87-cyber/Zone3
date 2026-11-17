@@ -40,7 +40,7 @@ The source register records the submitted-link destinations (`SH-S06`–`SH-S10`
 3. **Set measurement up lawfully** — define the five events and choose a collection host before building a counter; set up and verify Search Console, submit the existing sitemap, and base the next topic on observed queries. Until then, keep the campaign ledger empty.
 4. **Review the proposals before broader changes** — use [Suggestions](https://kanlerxz87-cyber.github.io/Zone3/suggestions.html), the [decision queue](https://kanlerxz87-cyber.github.io/Zone3/decision-queue.html), and the [design brief](https://kanlerxz87-cyber.github.io/Zone3/design-brief.html). They separate verified facts, open questions, discovery actions and proposed visual paths; no proposal is evidence of popularity or product quality.
 
-**Release checks run on this checkout (2026-11-17):** shared site check passed (30 pages, 3 products in that legacy register, 62 sources, 113 flags); whole-tree verification passed (134 pages, 2,068 table rows); strict provenance report passed; reader gate passed (18 pages, 164 rows, 148 sourced, 16 explicit blanks); reader lint passed with 22 inherited advisory items and 0 new findings; feed check passed (9 entries); sitemap check passed (97 pages); link check passed (180 HTML files, 207 external URLs, 0 errors); shop check passed (11 shop pages). The three-product shared register is a separate legacy surface and is not the five-product shop register.
+**Release checks run on this checkout (2026-11-17):** shared site check passed (30 pages, 5 products after session `73029680` registered links 4–5 as `P4`/`P5`, 69 sources, 114 flags); whole-tree verification passed (134 pages, 2,107 table rows); strict provenance report passed; reader gate passed (18 pages, 164 rows, 148 sourced, 16 explicit blanks); reader lint passed with 22 inherited advisory items and 0 new findings; feed check passed (9 entries); sitemap check passed (97 pages); link check passed (180 HTML files, 212 external URLs, 0 errors); shop check passed (11 shop pages). The shared register now carries the same five links the shop register carries — session `73029680` reconciled the two surfaces and the two confirmation records that disagreed ([G84-F-01](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#G84-F-01)); they remain separate builds by design.
 
 ---
 
@@ -165,7 +165,8 @@ listings are not the intended products. These conditions are listed in §5.
 
 ## 2. What is verified, and where it is published
 
-62 official sources · 55 policy facts · 113 flags · 30 pages in the shared gate, a 16-page audit build, a `/docs/`
+69 official sources · 55 policy facts · 114 flags · 30 pages in the shared gate (counts recomputed
+2026-11-17, session `73029680`), a 16-page audit build, a `/docs/`
 reference set, a marketing section and three retained session sub-sites. Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
@@ -259,8 +260,9 @@ Until item 1 arrives, the honest answer to "which product is this and is it wort
 
 ## 6. Irregularities published for your review
 
-113 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 19 high, 31 medium, 33 low, 27 informational (informational entries record a correction
+114 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 19 high, 32 medium, 33 low, 27 informational (counts recomputed from the register on
+2026-11-17 by session `73029680` after G84-F-01; informational entries record a correction
 made to this site, not a defect in a product). None of them blocks the merge; each carries its
 evidence source links and the action needed.
 
