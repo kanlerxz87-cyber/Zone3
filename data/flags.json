@@ -1481,6 +1481,132 @@
       "detail": "Session aebf0747's publication front page (index.html, merged 2026-11-17 in PR #136) uses the z3-mast/z3-nav header and reaches the flagged surface via flagged/index.html and publication-pass.html#flagged. scripts/check_site.py required class=\"topbar\" plus the literal string flagged.html on every page, so the shared gate reported 'index.html: navigation missing' on main from that merge onward until this pass. The failure was reproduced by session cbb03ec7 on the merged tree before any edit. The nav requirement itself is unchanged; the rule now accepts either published nav system when the page reaches the flagged surface.",
       "action": "Fixed 2026-11-17 by session cbb03ec7 in scripts/check_site.py (both nav patterns accepted). Re-run scripts/check_site.py after any future nav redesign so the two systems cannot drift apart again.",
       "repo_evidence": "scripts/check_site.py (navigation rule); index.html (z3-nav, flagged/index.html link); git history: check_site last changed at fedc9f6, front page added at 9b99990 (PR #136)."
+    },
+    {
+      "id": "0C4-F-01",
+      "severity": "High",
+      "category": "Product identifiers",
+      "item": "The two additional submitted identifiers (B0c8moW59, B0f3GKalj) are 9 characters and are not ASINs",
+      "detail": "The 2026-11-17 brief added two more product links. Each carries a 9-character token. Amazon's Creators API documents the ASIN as a 10-character identifier (S31), corroborated by Amazon's own seller-education blog (S45), and amazon.com/dp/<token> returned Amazon's 'Page Not Found' page for both tokens on 2026-11-17 (S72, S75). This extends the class already recorded as FLG-001 for the first three submitted links; it is registered separately so the original flag's history is untouched.",
+      "action": "Owner: provide the intended product page URL or 10-character ASIN for products 4 and 5. This session cannot infer it from the redirects.",
+      "sources": [
+        "S31",
+        "S45",
+        "S72",
+        "S75",
+        "S70",
+        "S73"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-02",
+      "severity": "High",
+      "category": "Redirect behaviour",
+      "item": "Products 4 and 5 open listings that are not confirmed as the intended products",
+      "detail": "link.amazon/B0c8moW59 opened amazon.com/dp/B0DHZTCNR5 (ThermoMaven 1 s meat thermometer) and link.amazon/B0f3GKalj opened amazon.com/dp/B0DZFD6R9Z (CHEF iQ Sense meat thermometer) on 2026-11-17 (S70, S73); each destination page was then fetched directly and served the same title (S71, S74). Whether those listings are the products the owner meant is not documented by any source read — the same gap recorded for products 1-3 as FLG-002. The intended-ASIN and observed-redirect fields are kept separate in data/products.json (product_intent vs redirect_observed) and are not merged.",
+      "action": "Owner: confirm in writing which listing each of the five submitted links is meant to promote; record the confirmation date in the product_intent block.",
+      "sources": [
+        "S70",
+        "S71",
+        "S73",
+        "S74"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-03",
+      "severity": "Medium",
+      "category": "Category scope",
+      "item": "Products 4 and 5 are meat thermometers, outside the air-fryer cluster the site's content targets",
+      "detail": "Both new destination pages serve the breadcrumb Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (S71, S74). Every published guide, comparison and article on this site is written about air fryers, whose breadcrumb is Small Appliances > Fryers > Air Fryers (S14-S16). The CHEF iQ listing title does mention 'Air Fryer' as one use scenario, but the listing category is Thermometers. This is a content-scope decision, not a data error: it answers open question 757-Q-13 (three products vs the air-fryer category) with a third option — a kitchen-gadgets scope — that the owner has not ruled on.",
+      "action": "Owner decision needed before marketing copy for products 4-5 is written: keep the site air-fryer-only (then products 4-5 need their own surface or stay listed-but-unpromoted), or widen the editorial scope to kitchen gadgets. Do not silently fold meat thermometers into the air-fryer guides.",
+      "sources": [
+        "S71",
+        "S74",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-04",
+      "severity": "Medium",
+      "category": "Special Links / validation",
+      "item": "Five tagged Special Links are built and published, but none has been validated in the enrolled Associates workflow",
+      "detail": "The owner supplied the Associates tag shopnow047c-20 in the 2026-11-17 brief. Session 0c4c4cb6 constructed one Special Link per product (data/special-links.json, SL1-SL5: https://www.amazon.com/dp/<destination>?tag=shopnow047c-20) from the observed destination listings and marked them rel=sponsored. The brief's own instruction is to test one link per product in the enrolled Associates workflow and confirm destination and tracking report before scaling. This session has no Associates login, so that test has not been run: whether the tag is active on an enrolled account, whether each link reports correctly, and whether the destinations are the owner's intended products (FLG-002, 0C4-F-02) are all unconfirmed. The supplied short links are NOT claimed invalid; their compliance status remains unresolved (FLG-003).",
+      "action": "Owner: in Associates Central, open each of SL1-SL5 (or mint the equivalent link with the link builder), confirm it lands on the intended listing and that a test click appears in the tracking report, then record the confirmation date in data/special-links.json and this flag can close.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-05",
+      "severity": "Medium",
+      "category": "Measurement",
+      "item": "The self-hosted analytics endpoint is specified and shipped, but not deployed — zero events are recorded",
+      "detail": "The 2026-11-17 brief asks for a privacy-preserving outbound-click counter and a self-hosted analytics endpoint recording five defined events. Both are built: data/analytics.json (schema and contract), assets/track.js (client), tools/analytics_collector.py (reference endpoint). GitHub Pages is static and cannot host the endpoint, and this session has no host to deploy to, so window.ZONE3_ANALYTICS_ENDPOINT ships as null and the client sends nothing. The site works exactly as before; it simply measures nothing yet. No count is displayed anywhere, because there is no count to display.",
+      "action": "Owner: deploy tools/analytics_collector.py (or any endpoint speaking the same contract) on a host, set window.ZONE3_ANALYTICS_ENDPOINT on the page templates to that URL, then confirm one test event arrives at GET /stats. Only then can measured queries choose the next topic.",
+      "repo_evidence": "data/analytics.json (endpoint.deployment_state='not deployed'); assets/track.js (ENDPOINT null); tools/analytics_collector.py",
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-06",
+      "severity": "Low",
+      "category": "Search visibility",
+      "item": "Search Console verification (SG-29) is blocked on an owner-generated token",
+      "detail": "Site verification for Google Search Console requires a token created in the owner's account and then either a meta tag on every page or a DNS TXT record. This session cannot create either: it has no access to the owner's Search Console account or DNS. No placeholder token is shipped — a fake verification tag would look configured while verifying nothing. The sitemap is published at /sitemap.xml and ready for submission the moment verification completes.",
+      "action": "Owner: in Google Search Console, add the property, generate the HTML meta token, and paste it to the session; it will be added to the page templates and this flag closes.",
+      "repo_evidence": "no google-site-verification meta tag in any page template; sitemap.xml published",
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-07",
+      "severity": "Low",
+      "category": "Reader capture",
+      "item": "Reader capture (SG-30) is not connected — no form is shipped, deliberately",
+      "detail": "The brief lists reader capture as a publication-polish pass. A capture form needs a processor (an email list service or a /subscribe route on the analytics endpoint) and consent wording; neither has been supplied. Shipping a form that posts nowhere would collect nothing while appearing to work, which is worse than not shipping one. data/analytics.json records the state as 'not connected' with what is needed to change it.",
+      "action": "Owner: choose a processor and supply the endpoint address plus the consent sentence; the form and its wiring are a small follow-up.",
+      "repo_evidence": "data/analytics.json reader_capture.state='not connected'; no capture form in any page template",
+      "date": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open"
+    },
+    {
+      "id": "0C4-F-08",
+      "severity": "Medium",
+      "category": "Measurement",
+      "item": "Two measurement stacks ship on the merged tree, both disabled; the owner must enable at most one",
+      "detail": "The 2026-11-17 merge with main brought session 38650305's measurement stack (assets/measure.js + measure-config.js, five different event names, tools/analytics_endpoint.py, README chain position via tools/measure_pass.py) alongside session 0c4c4cb6's stack (assets/track.js with the brief's five events, data/analytics.json endpoint contract, tools/analytics_collector.py, root measurement.html). Both are inert by default (no endpoint configured anywhere), so no page sends anything today. Keeping both keeps every session's work in full; enabling both with the same endpoint would double-count events.",
+      "action": "Owner: pick ONE stack. The README chain position makes the 38650305 measure stack the default; if the brief's five-event names (page_view, guide_view, product_click, special_link_click, nav_click) are preferred, set them in data/shop/measurement.json and retire track.js. Until then both stay off.",
+      "raised": "2026-11-17",
+      "session": "0c4c4cb6",
+      "status": "open",
+      "repo_evidence": [
+        "assets/track.js",
+        "assets/measure.js",
+        "data/analytics.json",
+        "data/shop/measurement.json",
+        "tools/measure_pass.py",
+        "tools/analytics_collector.py",
+        "tools/analytics_endpoint.py"
+      ],
+      "sources": []
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
  "retrieved": "2026-11-17",
- "session": "4f83ee7b",
- "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log. MERGE (2026-11-17): session cbb03ec7 added CBB-SUG-01..04 and the brief's parallel-pass rows SG-27..SG-30 (nav labels, RSS feed, Search Console, reader capture) as proposals only; nothing on this page is implemented by that session either.",
+ "session": "4f83ee7b; extended 2026-11-17 by 0c4c4cb6 (SUG-11..15, Q1 answer, SUG-05 unblocked; additive)",
+ "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log. MERGE (2026-11-17): session cbb03ec7 added CBB-SUG-01..04 and the brief's parallel-pass rows SG-27..SG-30 (nav labels, RSS feed, Search Console, reader capture) as proposals only; nothing on this page is implemented by that session either. || 0c4c4cb6: Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log.",
  "statuses": {
   "proposed": "Published here for review. Not implemented. Implementation starts only after a decision is recorded.",
   "blocked": "Cannot proceed until a specific verified prerequisite or owner input exists. The blocker is named in the row."
@@ -276,8 +276,8 @@
      ]
     }
    ],
-   "status": "blocked",
-   "blocker": "The Associates tag is not known to this session (FLG-010). Implementation waits on owner input Q1.",
+   "status": "accepted",
+   "blocker": "Cleared 2026-11-17: the tag arrived with the owner's brief (Q1 answered). Residual: click validation in Associates Central is pending (0C4-F-04); until then the CTAs are live but their reporting is unproven.",
    "implementation": [
     {
      "status": "blocked",
@@ -292,6 +292,30 @@
      ],
      "basis": [
       "S02"
+     ]
+    },
+    {
+     "status": "shipped",
+     "by": "0c4c4cb6",
+     "date": "2026-11-17",
+     "note": "Five tagged Special Links (SL1–SL5) built from the observed destinations with shopnow047c-20 and published on products.html, each CTA's rel=sponsored and disclosure adjacent. The reader site's buy buttons switched from inactive to active tagged links with plain-language disclosure. Validation pending: 0C4-F-04.",
+     "evidence": [
+      [
+       "data/special-links.json",
+       "tag record and the five Special Links"
+      ],
+      [
+       "site/products.html",
+       "CTA table with tag and disclosure"
+      ],
+      [
+       "read/index.html",
+       "active buy buttons with disclosure"
+      ]
+     ],
+     "basis": [
+      "S02",
+      "S44"
      ]
     }
    ]
@@ -626,6 +650,85 @@
    "note": "Parallel-pass row added by session cbb03ec7, 2026-11-17, per the brief's SG-30.",
    "repo": "index.html",
    "blocker": "No form endpoint exists; GitHub Pages cannot handle form posts (Q5, Q8)."
+  },
+  {
+   "id": "SUG-11",
+   "title": "Deploy the analytics endpoint and switch the tracker on",
+   "what": "Host tools/analytics_collector.py on infrastructure the owner controls, put its URL in assets/track.js, confirm events arrive in the ledger, then add the five-event dashboard strip to the measurement page.",
+   "why": "The measurement layer is built and inert; until the endpoint exists the site sends nothing and the 'does topic X convert' question stays unanswerable (S-02).",
+   "compliance": [
+    {
+     "text": "House contract, not an Amazon rule: the payload stays path + event + referrer host only; no cookies, no identifiers — data/analytics.json must not be widened at deployment (record 0C4-T4, flag 0C4-F-05).",
+     "source": []
+    },
+    {
+     "text": "The DNT/GPC/Save-Data off-switch must stay in the deployed tracker (0C4-T4).",
+     "source": []
+    }
+   ],
+   "status": "proposed",
+   "blocker": "Needs an owner-controlled host; GitHub Pages cannot serve POST /e (0C4-F-05)."
+  },
+  {
+   "id": "SUG-12",
+   "title": "Rule on category scope for the two meat thermometers (P4/P5)",
+   "what": "Decide whether Zone3 stays an air-fryer desk or covers adjacent kitchen gadgets; the answer sets whether P4/P5 become products, comparison pages and guides — or are recorded as out of scope with reasons.",
+   "why": "Both new links open meat thermometers. Publishing them as products without a scope ruling would quietly redefine the site's niche; burying them would break the intake contract that records what was submitted.",
+   "compliance": [
+    {
+     "text": "Either way the intake record keeps intended and observed separate, and the intent confirmation fields stay blank until the owner fills them (FLG-027, 0C4-F-02, 0C4-F-03).",
+     "source": []
+    }
+   ],
+   "status": "proposed",
+   "blocker": "Owner decision — no document in the repository states the niche boundary (0C4-F-03)."
+  },
+  {
+   "id": "SUG-13",
+   "title": "Mobile-first pass: type scale, tap targets, sticky comparison bar",
+   "what": "Address the three open UX debts in one pass: fluid type scale, 44px minimum tap targets on CTAs and cards, and a sticky comparison bar on product pages.",
+   "why": "Mobile traffic is the majority for shopping queries (S-20); the current build was not tuned for it and the open item was never taken up by a session.",
+   "compliance": [
+    {
+     "text": "Any restyle keeps the disclosure adjacent to every CTA and never reintroduces restricted values.",
+     "source": [
+      "S20",
+      "S02",
+      "S44"
+     ]
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "id": "SUG-14",
+   "title": "Question-shaped guide cadence: one page per open question",
+   "what": "Grow The Crisp Report from five live guides on a stated cadence, each new guide built as one answerable question, added to the sitemap and the RSS feed on publish.",
+   "why": "S-07's one-page-per-question rule and S-10's cadence are written down but the desk has only five guides; the feed and sitemap now make each publish instantly distributed.",
+   "compliance": [
+    {
+     "text": "Every new claim on a new page needs a link to the official page it came from — check_site and the row rules apply unchanged.",
+     "source": [
+      "S07",
+      "S10",
+      "S02"
+     ]
+    }
+   ],
+   "status": "proposed"
+  },
+  {
+   "id": "SUG-15",
+   "title": "Verification-led internal linking (the trust angle S-25 asks for)",
+   "what": "Link every guide and product page to verification.html and flagged.html in-context ('how each claim was checked'), and answer search queries with the verification angle rather than price or rank angles that cannot be published.",
+   "why": "S-25's organic-growth suggestion pivots on being findable for trust queries; internal links are the only lever available before Search Console data exists.",
+   "compliance": [
+    {
+     "text": "Claims about what is verified must match the verification log exactly — no unverified 'verified' language (house rule after FLG-016).",
+     "source": []
+    }
+   ],
+   "status": "proposed"
   }
  ],
  "questions": [
@@ -636,9 +739,10 @@
    "source": [
     "S02"
    ],
-   "what_we_dont_know": "UPDATE 2026-11-17 (session 92988cd8): the owner supplied a Tracking ID in the brief. Its value is recorded in COORDINATION.md, Part session 92988cd8, and deliberately not stored in data files or pages -- this register's own rule for Q1 is to record owner answers in the coordination log and keep the tag out of public files. Still unknown: whether the tag is registered to an approved Associates account, whether the account is approved, and whether the marketplace matches (Schedule 1 lists the United States / amazon.com only, S01). No public page can settle any of that.",
+   "what_we_dont_know": "UPDATE 2026-11-17 (session 92988cd8): the owner supplied a Tracking ID in the brief. Its value is recorded in COORDINATION.md, Part session 92988cd8, and deliberately not stored in data files or pages -- this register's own rule for Q1 is to record owner answers in the coordination log and keep the tag out of public files. Still unknown: whether the tag is registered to an approved Associates account, whether the account is approved, and whether the marketplace matches (Schedule 1 lists the United States / amazon.com only, S01). No public page can settle any of that. || UPDATE 2026-11-17 (session 0c4c4cb6): the value is also recorded in data/special-links.json and is carried by the five published Special Links on products.html — a Special Link without the tag cannot earn, so the brief's instruction to build the links requires it to appear in the href. Still unknown: whether each link's click reports in Associates Central (0C4-F-04).",
    "why_it_matters": "Blocks SUG-05 (CTAs) and every commission-earning link on the site.",
-   "how_to_discover": "Validate rather than discover: (1) confirm the value in Associates Central or SiteStripe after enrolment; (2) test one tagged link per product in the enrolled Associates workflow and confirm destination plus tracking report -- the brief's own S-03 sequence; (3) only then append the tag to outbound links and switch on measurement. Until all three pass, SUG-05 stays blocked. Format requirement read verbatim 2026-11-17: Participation Requirements 2(b), tag appearing 'as XXXXX-##, or such other format as we may designate' (S02). Recorded as 929-F-02."
+   "how_to_discover": "Validate rather than discover: (1) confirm the value in Associates Central or SiteStripe after enrolment; (2) test one tagged link per product in the enrolled Associates workflow and confirm destination plus tracking report -- the brief's own S-03 sequence; (3) only then append the tag to outbound links and switch on measurement. Until all three pass, SUG-05 stays blocked. Format requirement read verbatim 2026-11-17: Participation Requirements 2(b), tag appearing 'as XXXXX-##, or such other format as we may designate' (S02). Recorded as 929-F-02. || Value recorded 2026-11-17 by 0c4c4cb6 in data/special-links.json (owner-supplied, unvalidated); validation sequence above still applies.",
+   "answer": "shopnow047c-20 — supplied by the owner in the 2026-11-17 brief and recorded in data/special-links.json the same day. Not a secret: the tag must appear in every published Special Link. Validation of click-throughs in Associates Central is outstanding (0C4-F-04)."
   },
   {
    "id": "Q2",

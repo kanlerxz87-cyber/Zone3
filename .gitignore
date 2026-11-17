@@ -9,3 +9,5 @@ data/niche-ranking.generated.json
 .env.*
 *.local.json
 .DS_Store
+# analytics collector ledger — local runtime data, never committed (0C4-F-05)
+data/analytics-ledger.jsonl

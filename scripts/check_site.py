@@ -15,6 +15,8 @@ Checks, all of which must pass before a merge:
      (sources.html rows must contain their own source link, whatever its host).
   8. HTML: no table cell is empty; no bare 'None', 'undefined', 'TODO' or 'lorem' appears.
   9. HTML: the first Key findings list on the executive summary has a source link in every item.
+ 10. HTML: every outbound product link (link.amazon, amazon.com /dp/, /gp/product/) carries
+      rel="sponsored" (added by scripts/mark_sponsored.py as the last build step).
 Exit code 0 means every check passed. Any failure prints the item and exits 1.
 """
 from __future__ import annotations
@@ -33,6 +35,8 @@ DATA = ROOT / "data"
 PAGES = [
     "index.html", "executive-summary.html", "products.html", "pricing.html", "reviews.html",
     "content.html", "campaigns.html", "flagged.html", "sources.html", "air-fryers.html",
+    # Added by session 0c4c4cb6 (2026-11-17): the measurement layer page (0C4-T4).
+    "measurement.html",
     # Added by integration session 3d359c23 (2026-11-14): the editorial topic plan. Every
     # topic row must carry a source link to an official page, like every other data table.
     "content-topics.html",
@@ -63,7 +67,11 @@ PAGES = [
 ]
 TABLE_PAGES = {"air-fryers.html", "products.html", "pricing.html", "reviews.html", "content.html",
                "campaigns.html", "flagged.html", "sources.html", "verification.html",
-               "content-topics.html"}
+               "content-topics.html",
+               # Added by session 0c4c4cb6 (2026-11-17): the measurement page's state and
+               # event tables carry a Source column like every other data table; design-row
+               # sources are the repository itself (github.com is an official host here).
+               "measurement.html"}
 OFFICIAL_HOSTS = {
     "amazon.com", "www.amazon.com", "affiliate-program.amazon.com", "sellercentral.amazon.com",
     # sell.amazon.com is Amazon-operated official seller education (Sell on Amazon blog);
@@ -263,6 +271,28 @@ def check_html(data: dict) -> None:
                 fail(f"{name}: non-https link {href}")
             if parts.scheme == "https" and parts.hostname is None:
                 fail(f"{name}: malformed https link {href}")
+
+        # 0C4-T3 (session 0c4c4cb6): every outbound product link (link.amazon, or an
+        # amazon.com /dp/ or /gp/product/ URL) must carry rel="sponsored". Google's
+        # outbound-links guidance marks affiliate links this way; the brief requires it
+        # on every outbound product link. scripts/mark_sponsored.py adds the token as
+        # the last build step — this check stops a generator rebuild from dropping it.
+        for m in re.finditer(r"<a\b[^>]*>", text, re.I):
+            tag = m.group(0)
+            hm = re.search(r'href="([^"]+)"', tag)
+            if not hm:
+                continue
+            href = hm.group(1)
+            parts2 = urlparse(href)
+            host = parts2.hostname or ""
+            is_product = href.startswith("https://link.amazon/") or (
+                host in ("www.amazon.com", "amazon.com")
+                and ("/dp/" in parts2.path or "/gp/product/" in parts2.path)
+            )
+            if is_product:
+                rm = re.search(r'\brel="([^"]*)"', tag)
+                if not rm or "sponsored" not in rm.group(1).split():
+                    fail(f"{name}: outbound product link missing rel=sponsored -> {href}")
 
         if name in TABLE_PAGES:
             for ti, tbl in enumerate(p.tables):

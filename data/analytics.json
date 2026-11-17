@@ -1,0 +1,69 @@
+{
+ "retrieved": "2026-11-17",
+ "retrieved_by": "Session 0c4c4cb6 (branch arena/0c4c4cb6-zone3), task 0C4-T4.",
+ "note": "Measurement layer for the 2026-11-17 brief: a privacy-preserving outbound-click counter, a self-hosted analytics endpoint contract, and the five defined events. This file is the schema of record; assets/track.js implements it in the browser; tools/analytics_collector.py is the reference self-hosted endpoint. Nothing here reports a measured number: the endpoint is not deployed yet (0C4-F-05), so no event has been recorded and no page displays any count.",
+ "privacy": {
+  "principles": [
+   "No cookies, no localStorage profiles, no fingerprinting, no cross-site identifiers.",
+   "The browser sends no user identifier at all: no IP handling on the client, no session id, no user id.",
+   "Do Not Track and Global Privacy Control switch the tracker off entirely; Save-Data also switches it off.",
+   "Only the URL path is sent — query strings and fragments are stripped before dispatch (query strings can carry tokens).",
+   "The referrer is reduced to its host name; full referrer paths are not sent.",
+   "The endpoint must not set cookies, must not serve third-party scripts, and must aggregate rather than profile: raw request data is kept no longer than 24 hours, then only daily aggregates remain (documented retention for the reference collector)."
+  ],
+  "authority": "Design record of this repository. The FTC's guidance on disclosures and Amazon's Operating Agreement do not regulate analytics design; these rules are this site's own commitment, published so a reader can check the code against them."
+ },
+ "events": [
+  {
+   "id": "page_view",
+   "when": "Once per page load, after DOM ready.",
+   "fields": {"e": "page_view", "p": "URL path, no query, no fragment", "r": "referrer host or empty", "t": "ISO-8601 UTC timestamp"},
+   "purpose": "The denominator: how many page loads each page gets. Nothing else in this layer is interpretable without it.",
+   "measured_by": "assets/track.js"
+  },
+  {
+   "id": "guide_view",
+   "when": "On an article or guide page, once, when the reader scrolls past the halfway point of the main content.",
+   "fields": {"e": "guide_view", "p": "URL path", "r": "referrer host or empty", "t": "ISO-8601 UTC timestamp"},
+   "purpose": "Distinguishes a landed page from a read page, so the next topic is chosen from content that held attention, not only from clicks that bounced.",
+   "measured_by": "assets/track.js"
+  },
+  {
+   "id": "product_click",
+   "when": "Click on any outbound link to an Amazon product page (amazon.com /dp/ or /gp/product/, or a link.amazon short link).",
+   "fields": {"e": "product_click", "p": "page path where the click happened", "r": "destination host", "t": "ISO-8601 UTC timestamp"},
+   "purpose": "Interest in a product, wherever it appears — evidence links, comparison tables, cards. Counts every outbound product link, sponsored or not, so disclosure-adjacent behaviour stays visible.",
+   "measured_by": "assets/track.js"
+  },
+  {
+   "id": "special_link_click",
+   "when": "The subset of product_click whose href carries a tag= parameter — a tagged Special Link.",
+   "fields": {"e": "special_link_click", "p": "page path", "r": "destination host", "t": "ISO-8601 UTC timestamp"},
+   "purpose": "The revenue-eligible click. This is the event that can be compared against Amazon's own Associates report, which is aggregated by tag and date — never per click (0C4-F-05 explains the join limitation).",
+   "measured_by": "assets/track.js"
+  },
+  {
+   "id": "nav_click",
+   "when": "Click on an internal navigation link (site nav, front-door card, .acts button pair).",
+   "fields": {"e": "nav_click", "p": "page path", "r": "target path", "t": "ISO-8601 UTC timestamp"},
+   "purpose": "Which path readers take towards the comparison and the guides; correlated with product_click it shows which routes lead to action.",
+   "measured_by": "assets/track.js"
+  }
+ ],
+ "endpoint": {
+  "contract": "POST a single JSON object to the configured endpoint path, Content-Type: application/json, body exactly the event fields above. Respond 204 on accept, 400 on a schema violation, 429 when rate-limited. The endpoint sets no cookies, sends no credentials, and must not require an account.",
+  "reference_implementation": "tools/analytics_collector.py (standard library only): validates against this file's event ids and field rules, appends to a JSONL ledger outside the web root, serves GET /stats as aggregate counts only.",
+  "client_config": "assets/track.js reads window.ZONE3_ANALYTICS_ENDPOINT. While that is null the client sends nothing and no error is raised — the site works exactly as it does today, minus measurement.",
+  "deployment_state": "not deployed",
+  "deployment_state_note": "GitHub Pages is static and cannot host the endpoint. The reference collector must run on any host the owner controls (a small VM, a container, a serverless function that speaks the same contract). Until it is deployed and the endpoint URL is set on the pages, zero events are recorded — deliberately, rather than counting into the void (0C4-F-05).",
+  "conversion_join": "Amazon Associates reporting is aggregated by tag and date; it does not expose per-click identifiers. Conversions therefore join to this ledger only at tag x date x channel granularity, through the campaign ledger on campaigns.html. This layer never claims a per-visitor conversion attribution."
+ },
+ "reader_capture": {
+  "state": "not connected",
+  "note": "Reader capture (SG-30) needs a processor the owner chooses (an email list tool or the same self-hosted endpoint with a /subscribe route). No address, processor or consent wording has been supplied, so no form is shipped: a form that goes nowhere would be a dark pattern, not a feature (0C4-F-07)."
+ },
+ "search_console": {
+  "state": "blocked on owner token",
+  "note": "SG-29: site verification for Google Search Console requires a token generated in the owner's Search Console account and either a meta tag or a DNS record this session cannot create. When the token arrives it goes into a <meta name=\"google-site-verification\"> tag on every page template (0C4-F-06). The sitemap is already published at /sitemap.xml for submission on day one."
+ }
+}

@@ -15,22 +15,22 @@
     "result": "pass"
   },
   "files": {
-    "agent-terms": "94cb0fee17a9",
-    "campaigns": "a10d623ef096",
-    "commission": "20be3704ace7",
-    "compliance": "3f81af965f25",
-    "content": "1a5f0f5b0199",
-    "executive-summary": "2fb9558c9fe7",
-    "flagged": "72e7f57f2a2a",
-    "index": "4e1e5d971bf6",
-    "methodology": "5bf3ccee36f3",
-    "niches": "f551917e6deb",
-    "pricing": "f505f45be5ca",
-    "products": "a6f30f61ed38",
-    "repo-review": "d7682ef2e868",
-    "requirements": "eb26b38be5b7",
-    "reviews": "e287786124f3",
-    "sources": "0db2f47d32d2"
+    "agent-terms": "33329a4c65b1",
+    "campaigns": "d02e79257cf5",
+    "commission": "4f70aa093212",
+    "compliance": "6f26110720a5",
+    "content": "d95ced72c465",
+    "executive-summary": "354fe2b9a7d2",
+    "flagged": "9340fbbeba68",
+    "index": "62ad0a533f38",
+    "methodology": "14bb46a2018e",
+    "niches": "bbb393c0cf7b",
+    "pricing": "29451aed6847",
+    "products": "69ece671f722",
+    "repo-review": "476414ab2298",
+    "requirements": "1ceb66476678",
+    "reviews": "23e110f40d8c",
+    "sources": "7adfd9331c19"
   },
   "paths": {
     "agent-terms": "agent-terms/index.html",
@@ -50,6 +50,6 @@
     "reviews": "reviews/index.html",
     "sources": "sources/index.html"
   },
-  "content_digest": "7690d7784c17874f",
+  "content_digest": "e7e165c95246ae50",
   "built_utc_note": "deliberately absent: no build timestamp is recorded, so that a no-op rebuild is byte-identical and the tree stays clean. Use the commit date of the file for 'when', and content_digest for 'what'."
 }

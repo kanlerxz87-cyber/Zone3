@@ -3,7 +3,8 @@
   "title": "I2 product register — only facts that were read on the live Amazon page on 2026-11-16",
   "rule": "A field is populated only if it was read in this session from the official listing (I2-S07…I2-S13). Anything not read stays null and is rendered as 'Not published'. No value is carried over from another session's capture, because those captures are dated observations that Program Policies 2(b) and 6(t) do not allow this site to display.",
   "identity_caveat": "The three links were supplied as nine-character link.amazon short-link tokens. Each was followed and opened a live listing. Nothing official establishes that the listing is the product the owner meant to promote, so identity is recorded as an observation and the question is published as Q2 in the decision board.",
-  "tag_caveat": "The observed redirects carry no Associates tag. Program Policies 2(b) require the tag parameter on every link to an Amazon Site, so this site publishes no tagged buy link yet and every 'buy' action is disabled and labelled. The link that IS shown is labelled an evidence link and earns nothing."
+  "tag_caveat": "The observed redirects carry no Associates tag. Program Policies 2(b) require the tag parameter on every link to an Amazon Site, so this site published no tagged buy link and every 'buy' action was disabled and labelled. UPDATE 2026-11-17 (session 0c4c4cb6): the owner supplied the tag shopnow047c-20 in the brief; buy actions now render tagged Special Links to the observed destination listings, marked rel=sponsored, with validation in Associates Central pending (0C4-F-04). The evidence links are unchanged and still earn nothing.",
+  "cta_state_2026_11_17": "Session 0c4c4cb6 switched buy_cta from 'disabled' to 'active' after the owner supplied the Associates tag in the 2026-11-17 brief. The disabled placeholder remains in tools/build_i2_site.py for any future product whose tag state regresses."
  },
  "products": [
   {
@@ -44,8 +45,8 @@
     "I2-F-03",
     "I2-F-04"
    ],
-   "buy_cta": "disabled",
-   "buy_cta_reason": "No Associates tag is available, and the destination is not confirmed as the intended product (Q1, Q2).",
+   "buy_cta": "active",
+   "buy_cta_reason": "Tag supplied by the owner 2026-11-17 (shopnow047c-20; data/special-links.json). CTA is a tagged Special Link to the observed destination listing, rel=sponsored. Validation in Associates Central pending (0C4-F-04); intent still unconfirmed (Q2, I2-F-04).",
    "short_title": "CHEFMAN 6 Quart Dual Basket"
   },
   {
@@ -83,8 +84,8 @@
     "I2-F-03",
     "I2-F-04"
    ],
-   "buy_cta": "disabled",
-   "buy_cta_reason": "No Associates tag is available, and the destination is not confirmed as the intended product (Q1, Q2).",
+   "buy_cta": "active",
+   "buy_cta_reason": "Tag supplied by the owner 2026-11-17 (shopnow047c-20; data/special-links.json). CTA is a tagged Special Link to the observed destination listing, rel=sponsored. Validation in Associates Central pending (0C4-F-04); intent still unconfirmed (Q2, I2-F-04).",
    "short_title": "Emeril Lagasse 26QT French Door"
   },
   {
@@ -122,8 +123,8 @@
     "I2-F-03",
     "I2-F-04"
    ],
-   "buy_cta": "disabled",
-   "buy_cta_reason": "No Associates tag is available, and the destination is not confirmed as the intended product (Q1, Q2).",
+   "buy_cta": "active",
+   "buy_cta_reason": "Tag supplied by the owner 2026-11-17 (shopnow047c-20; data/special-links.json). CTA is a tagged Special Link to the observed destination listing, rel=sponsored. Validation in Associates Central pending (0C4-F-04); intent still unconfirmed (Q2, I2-F-04).",
    "short_title": "Chefman TurboFry 8 Qt"
   }
  ],

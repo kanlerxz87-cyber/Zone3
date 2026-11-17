@@ -41,6 +41,12 @@ SUGGESTIONS = load("suggestions.json")
 ARTICLES = load("articles.json")
 DESIGN = load("design-brief.json")
 QUEUE = load("decision-queue.json")
+# Added by session 0c4c4cb6 (2026-11-17): the Special Link registry built from the
+# owner-supplied Associates tag (0C4-T3). Rendered on products.html.
+SPECIAL = load("special-links.json")
+# Added by session 0c4c4cb6 (2026-11-17): the measurement-layer schema (0C4-T4).
+# Rendered on measurement.html.
+ANALYTICS = load("analytics.json")
 
 
 def e(value) -> str:
@@ -270,8 +276,8 @@ def build_decision_queue() -> None:
             basis(s),
         ])
     body += ("<h2>The queue</h2>"
-             '<p class="small">22 proposals. Blocked-by links jump to the question that '
-             "unblocks the row.</p>") + table(
+             f'<p class="small">{len(q["suggestions"])} proposals. Blocked-by links jump to the '
+             "question that unblocks the row.</p>") + table(
         ["ID and origin", "Proposal", "What it is", "Recommendation and sizing",
          "Blocked by", "State", "Basis"], rows)
 
@@ -396,6 +402,9 @@ NAV_MORE = [
         ("design-brief.html", "Design brief"),
         ("decision-queue.html", "Review console"),
         ("campaigns.html", "Campaigns & tracking"),
+        # Added by session 0c4c4cb6 (2026-11-17): the measurement layer — five events,
+        # privacy contract, self-hosted endpoint state (0C4-T4).
+        ("measurement.html", "Measurement"),
         ("sources.html", "Sources"),
         ("verification.html", "Verification log"),
         ("sessions/3ead7ac8/index.html", "Verification (3ead7ac8)"),
@@ -409,6 +418,7 @@ NAV_MORE = [
         # Added by session 5b425c74 (2026-11-16): independent re-fetch of the three links,
         # both commission tables and the policy pages (5B42 Part on the board).
         ("sessions/5b425c74/index.html", "Verification (5b425c74)"),
+        ("sessions/0c4c4cb6/index.html", "Session record (0c4c4cb6)"),
         ("flagged.html", "Flagged for review"),
         ("docs/index.html", "Reference (/docs/)"),
         ("dashboard/index.html", "Full audit (16 pages)"),
@@ -457,6 +467,7 @@ def page(filename: str, title: str, body: str, lead: str = "",
 <title>{e(title)} | Zone3 — Air Fryer Research Desk</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{canonical}">
+<link rel="alternate" type="application/rss+xml" title="Zone3 — Air Fryer Research Desk feed" href="feed.xml">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -478,11 +489,12 @@ def page(filename: str, title: str, body: str, lead: str = "",
       <p class="muted">Zone3 is independent and is not affiliated with, endorsed or sponsored by Amazon. Amazon, Amazon Associates and ASIN are trademarks of Amazon.com, Inc. or its affiliates.</p>
     </div>
     <div class="foot-links">
-      <a href="articles/index.html">Research Desk</a><a href="sources.html">Sources</a><a href="flagged.html">Flagged for review</a><a href="verification.html">Verification log</a><a href="suggestions.html">Suggestions &amp; decisions</a><a href="landing-prior.html">Previous landing page</a><a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a>
+      <a href="articles/index.html">Research Desk</a><a href="sources.html">Sources</a><a href="flagged.html">Flagged for review</a><a href="verification.html">Verification log</a><a href="suggestions.html">Suggestions &amp; decisions</a><a href="feed.xml">RSS feed</a><a href="landing-prior.html">Previous landing page</a><a href="https://github.com/kanlerxz87-cyber/Zone3">Repository</a>
     </div>
   </div>
   <p class="small foot-note">Data verified as of {BUILT} (re-verified 2026-11-14 and 2026-11-16; per-session records under <code>sessions/</code>). A cell marked <span class="badge unv">Unverified</span> has no official source yet and is left blank on purpose. Built by <code>scripts/build_site.py</code> and <code>scripts/build_5a56c084.py</code> from <code>data/*.json</code>. Source IDs (S01 and so on) link to the official page; see the <a href="sources.html">Sources</a> page.</p>
 </footer>
+<script src="assets/track.js" defer></script>
 </body>
 </html>
 """
@@ -1055,12 +1067,11 @@ def build_exec() -> None:
 <section class="card">
   <h2>Owner items (flagged; they do not block the merge)</h2>
   <ul class="findings">
-    <li>Give the intended product URL or 10-character ASIN for each of the five products (FLG-001, CBB-F-01).</li>
-    <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003).</li>
-    <li>Confirm <code>shopnow047c-20</code> is the tag assigned to this Associates account, then run one Special Link per product before scaling (CBB-F-02, decision-queue CBB-Q-01).</li>
+    <li>Give the intended product URL or 10-character ASIN for each of the five products (FLG-001, CBB-F-01, 0C4-F-01); the product-intent record on <a href="products.html">Products</a> is where the confirmation lands.</li>
+    <li>Test each submitted link in a logged-in Associates account and report whether clicks are tracked (FLG-002, FLG-003, 0C4-F-02).</li>
+    <li>Confirm <code>shopnow047c-20</code> is the tag assigned to this Associates account, then run one Special Link per product before scaling (CBB-F-02, decision-queue CBB-Q-01, 0C4-F-04); the tag value is now on file but unverified, not a password or token (FLG-010).</li>
     <li>Confirm which Amazon product category each of the five listings is in, so the public Table 1 rate can be applied to it (FLG-005, FLG-021; breadcrumbs are observed on S14&ndash;S16, S60&ndash;S62, S71, S74 but the commission-category assignment stays open). The category rates themselves are already published and verified.</li>
-    <li>Decide the site scope: five products across two categories, or air fryers only (CBB-Q-03).</li>
-    <li>Confirm Associates enrolment; the tag value is now on file but unverified, not a password or token (FLG-010, CBB-F-02).</li>
+    <li>Decide the site scope: five products across two categories, or air fryers only (CBB-Q-03, 0C4-F-03 / 0C4-Q-16).</li>
   </ul>
 </section>
 """
@@ -1090,19 +1101,77 @@ def build_products() -> None:
         ["#", "Submitted link", "Identifier (length)", "ASIN", "amazon.com/dp check", "Observed redirect (not used as this product)", "Product name", "Status", "Flags", "Source"],
         rows,
     )
+
+    # Product-intent confirmation record (2026-11-17 brief): intended identifier fields are
+    # stored per submitted link and kept strictly separate from redirect_observed above.
+    # They render blank (Unverified) until the owner supplies a confirmation with a source.
+    intent_rows = []
+    for p in PRODUCTS:
+        pi = p.get("product_intent") or {}
+        intent_rows.append([
+            e(p["label"]),
+            val(pi.get("intended_asin")),
+            val(pi.get("intended_listing_url")),
+            val(pi.get("confirmation_date")),
+            val(pi.get("source")),
+            e(pi.get("status", "unconfirmed")),
+            src_links(p["sources"]),
+        ])
+    body += table(
+        ["#", "Submitted link", "Intended ASIN", "Intended official listing URL", "Confirmation date", "Confirmation source", "Intent status", "Source"],
+        intent_rows,
+    )
+    tag_val = SPECIAL["tag"]["value"]
     body += f"""
 <section class="card">
   <h2>How to read this table</h2>
   <ul class="findings">
     <li>Each row is one product link from the brief. An identifier is counted only when a product page under that identifier exists and matches it.</li>
     <li>&ldquo;Observed redirect&rdquo; is the page the short link opened on its observation date (products 1&ndash;3: 2026-11-13 and re-checked 2026-11-16; products 4&ndash;5, added to the brief on 2026-11-17: fetched twice that day, S70&ndash;S75). It is not treated as the submitted product, because the submitted identifier does not resolve to it.</li>
+    <li>The <strong>product-intent confirmation record</strong> above is where an owner confirmation is stored: intended ASIN, official listing URL, confirmation date and source, one block per submitted link. Every cell is blank until that confirmation arrives, and the observed redirect is never copied into it &mdash; an observation is not evidence of intent (FLG-002, 0C4-F-02).</li>
     <li>Product name, brand, price, rating and availability are blank because they cannot be confirmed (see <a href="pricing.html">Pricing</a> and <a href="reviews.html">Reviews</a>).</li>
     <li>Products 4 and 5 open meat-thermometer listings in a different Amazon category from the site's air-fryer coverage; the scope question is open (<a href="flagged.html#CBB-F-03">CBB-F-03</a>).</li>
   </ul>
 </section>
 """
+    # Special Links registry (0C4-T3): the tagged links built from the owner-supplied
+    # Associates tag on 2026-11-17, marked rel=sponsored, validation pending.
+    sl_rows = []
+    for sl in SPECIAL["links"]:
+        sl_rows.append([
+            e(sl["id"]),
+            f'<a href="{e(sl["url"])}" target="_blank" rel="sponsored noopener noreferrer">{e(sl["url"])}</a>',
+            f'<a href="https://www.amazon.com/dp/{e(sl["destination_asin"])}" target="_blank" rel="sponsored noopener noreferrer">{e(sl["destination_asin"])}</a>',
+            e(sl["destination_basis"]),
+            badge("Pending validation in the enrolled workflow", "warn"),
+            src_links(sl["sources"]),
+        ])
+    body += table(
+        ["#", "Special Link (tagged, rel=sponsored)", "Destination listing", "Destination basis", "Validation", "Source"],
+        sl_rows,
+    )
+    body += f"""
+<section class="card">
+  <h2>Special Links: the tagged links this site would earn on</h2>
+  <p>Each Special Link is a direct <code>amazon.com/dp</code> URL carrying the Associates tag
+  <strong>{e(tag_val)}</strong> {src_links(["S02"])} &mdash; supplied by the owner on 2026-11-17 and recorded in
+  <code>data/special-links.json</code>. They are marked <code>rel="sponsored"</code> wherever they render, and
+  every page keeps the Associates disclosure above the fold.</p>
+  <ul class="findings">
+    <li><strong>Validation is pending, deliberately.</strong> One link per product must be opened in the enrolled
+    Associates workflow and its destination and tracking report confirmed before placement scales
+    {flag_links(["0C4-F-04"])}. This session has no Associates login, so that confirmation is the owner's step.</li>
+    <li><strong>The submitted short links are untouched.</strong> <code>link.amazon/...</code> URLs stay exactly as
+    submitted and are used as evidence links only; their compliance status is unresolved, not declared invalid
+    {flag_links(["FLG-003"])}. These Special Links are built from the observed destination listings, because owner
+    intent is still unconfirmed {flag_links(["FLG-002", "0C4-F-02"])}.</li>
+    <li><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. The same sentence sits
+    above the fold on this page and in the footer.</li>
+  </ul>
+</section>
+"""
     page("products.html", "Products", body,
-         lead="The five product links from the brief, checked line by line against official Amazon pages. Nothing is shown as a verified product until its identifier resolves.")
+         lead="The five product links from the brief, checked line by line against official Amazon pages, plus the tagged Special Links built from the owner-supplied Associates tag. Nothing is shown as a verified product until its identifier resolves.")
 
 
 # ------------------------------------------------------------- Pricing
@@ -2168,6 +2237,113 @@ def build_decision_center() -> None:
          lead="A sourced decision brief: current answers, missing information, discovery steps, editorial suggestions and paths to review before implementation.")
 
 
+# ------------------------------------------------------------ Measurement layer
+def build_measurement() -> None:
+    """0C4-T4 (session 0c4c4cb6, 2026-11-17): the five defined events, the
+    privacy rules, the self-hosted endpoint contract and the live state of every
+    measurement component. Schema of record: data/analytics.json."""
+    ana = ANALYTICS
+    repo = REPO
+    ev_rows = []
+    for ev in ana["events"]:
+        ev_rows.append([
+            f'<code>{e(ev["id"])}</code>',
+            e(ev["when"]),
+            e(ev["purpose"]),
+            f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> '
+            '<span class="muted">&mdash; design record in data/analytics.json</span>',
+        ])
+    state_rows = [
+        ["Outbound-click counter (browser)",
+         badge("Shipped; sending disabled", "warn"),
+         "assets/track.js is on every page, but the endpoint URL ships null, so nothing is sent. "
+         "Set window.ZONE3_ANALYTICS_ENDPOINT after deploying the endpoint.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-05"])}'],
+        ["Self-hosted analytics endpoint",
+         badge("Shipped; not deployed", "warn"),
+         "Run tools/analytics_collector.py on any host the owner controls (GitHub Pages cannot host it), "
+         "then point the client at it. Contract: POST /e, GET /stats, no cookies, five event ids only.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-05"])}'],
+        ["Five-event schema",
+         badge("Defined", "ok"),
+         "page_view, guide_view, product_click, special_link_click, nav_click — data/analytics.json is "
+         "the schema of record; the client and the collector both validate against it.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a>'],
+        ["Tagged Special Links",
+         badge("Built; validation pending", "warn"),
+         "SL1–SL5 carry the owner-supplied tag and rel=sponsored; one link per product must still be tested "
+         "in the enrolled Associates workflow before placement scales.",
+         src_links(["S02"]) + " " + flag_links(["0C4-F-04"])],
+        ["Conversion data",
+         badge("Amazon reports only", "info"),
+         "Amazon Associates reporting is aggregated by tag and date, never per click. Conversions join to this "
+         "ledger only at tag × date × channel granularity, recorded in the campaign ledger.",
+         src_links(["S02"])],
+        ["Search Console verification (SG-29)",
+         badge("Blocked on owner token", "warn"),
+         "A verification token from the owner's Search Console account is required; no placeholder tag is shipped.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-06"])}'],
+        ["Reader capture (SG-30)",
+         badge("Not connected", "warn"),
+         "No processor or consent wording has been supplied; a form that posts nowhere would fake the feature. "
+         "State and requirements are in data/analytics.json.",
+         f'<a href="{repo}" target="_blank" rel="noopener noreferrer">repo</a> {flag_links(["0C4-F-07"])}'],
+    ]
+    body = table(["Component", "State", "What it means / what is needed", "Source"], state_rows)
+    body += """
+<section class="card">
+  <h2>The five events</h2>
+  <p>Exactly five events are defined. Nothing else is emitted by this site's own code, and the collector
+  rejects any other event id, so the set cannot drift quietly.</p>
+</section>
+"""
+    body += table(["Event", "When it fires", "Why it exists", "Source"], ev_rows)
+    body += """
+<section class="card">
+  <h2>Privacy rules, in force in the code</h2>
+  <ul class="findings">
+    <li>No cookies, no localStorage profiles, no fingerprinting, no cross-site identifiers &mdash; the browser
+    sends no user identifier at all.</li>
+    <li>Do Not Track and Global Privacy Control switch the tracker off completely; Save-Data switches it off too.</li>
+    <li>Only the URL path is sent. Query strings and fragments are stripped on the client and re-stripped by the
+    collector, because query strings can carry tokens.</li>
+    <li>The referrer is reduced to a host name. The endpoint sets no cookies and retains raw lines no longer than
+    24 hours, after which only daily aggregates remain.</li>
+    <li>While the endpoint is unset the client sends nothing at all: the site works exactly as it does today,
+    minus measurement. No count is displayed anywhere, because there is no count.</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>How conversions actually join</h2>
+  <p>Amazon's Associates report is aggregated by tag and date; it exposes no per-click identifier. The honest
+  join is therefore <strong>tag &times; date &times; channel</strong>: this ledger's special_link_click counts on
+  one side, the owner's authorised Associates report on the other, matched in the
+  <a href="campaigns.html">campaign ledger</a>. This page never claims per-visitor attribution, and no
+  conversion score or revenue forecast is derived here.</p>
+</section>
+
+<section class="card">
+  <h2>Turning it on</h2>
+  <ol class="findings">
+    <li>Deploy <code>tools/analytics_collector.py</code> behind HTTPS on a host you control.</li>
+    <li>Set <code>window.ZONE3_ANALYTICS_ENDPOINT = "https://your-host/e";</code> on the page templates
+    (one line; the shipped value is <code>null</code>).</li>
+    <li>Load any page, open <code>GET /stats</code>, and confirm the test <code>page_view</code> arrived.
+    Only then does measured data start choosing the next topic.</li>
+  </ol>
+  <p class="muted">States above are also flagged for review: 0C4-F-05 (endpoint), 0C4-F-06 (Search Console),
+  0C4-F-07 (reader capture), 0C4-F-04 (Special Link validation).</p>
+</section>
+"""
+    page("measurement.html", "Measurement", body,
+         lead="What this site measures, what it refuses to measure, and the live state of every measurement "
+              "component — five events, a privacy contract, and a self-hosted endpoint that is shipped but not "
+              "yet deployed.",
+         description="The five defined events, the privacy rules and the self-hosted analytics endpoint "
+                     "contract behind Zone3's outbound-click counter, with the current deployment state.")
+
+
 
 def main() -> None:
     build_assets()
@@ -2195,6 +2371,7 @@ def main() -> None:
     import build_5a56c084
     build_design_brief()
     build_decision_queue()
+    build_measurement()
     build_5a56c084.main()
     print("built site in", ROOT)
 

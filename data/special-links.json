@@ -1,0 +1,99 @@
+{
+  "retrieved": "2026-11-17",
+  "retrieved_by": "Session 0c4c4cb6 (branch arena/0c4c4cb6-zone3), task 0C4-T3.",
+  "note": "Special Link registry built from the owner-supplied Associates tag in the 2026-11-17 brief. A Special Link here is a direct amazon.com product URL carrying the tag parameter, marked rel=sponsored wherever it renders. The submitted link.amazon short links are NOT modified and remain evidence links (their compliance status is unresolved: FLG-003). Nothing in this file is validated against Associates Central: this session has no login, so destination-and-tracking validation per link is the owner's step (0C4-F-04). Observed redirect destinations are the basis of these links because owner intent is still unconfirmed (FLG-002, 0C4-F-02); the intended-ASIN record on data/products.json stays separate and blank.",
+  "tag": {
+    "value": "shopnow047c-20",
+    "supplied": "2026-11-17",
+    "supplied_by": "Owner, in the tasking brief for this session (\"Selected Tracking ID: shopnow047c-20\")",
+    "status": "owner-supplied, unvalidated",
+    "status_note": "Recorded as the owner's input, the same way the submitted links were recorded. It has not been checked against Associates Central, so no page states that this tag is active on an enrolled account. Program Policies 2(b) require the Associates ID or tag parameter on every link an Associate places to an Amazon Site; the requirement is sourced (S02), the account match is not (0C4-F-04).",
+    "pattern_note": "The value matches the store-ID shape commonly used on amazon.com (name + marketplace suffix -20). That shape is recorded as an observation only; this session did not read an official public page documenting the format, so the pattern is not cited as a fact.",
+    "marketplace_note": "The -20 suffix is consistent with the amazon.com marketplace the rest of the site targets (Schedule 1 lists only the United States Amazon Site, S01). The marketplace itself is not separately confirmed for this tag (0C4-F-04)."
+  },
+  "format": {
+    "url_pattern": "https://www.amazon.com/dp/<destination-ASIN>?tag=<Associates tag>",
+    "rule_source": "S02 (Program Policies: Associates ID / tag parameter required on every link to an Amazon Site)",
+    "built": "2026-11-17",
+    "built_by": "session 0c4c4cb6, from the observed destination ASINs in data/products.json (redirect_observed.page_id)",
+    "validation": "pending — one link per product must be opened in the enrolled Associates workflow and its destination and tracking report confirmed before scaling (owner step; 0C4-F-04)"
+  },
+  "links": [
+    {
+      "id": "SL1",
+      "product": "P1",
+      "destination_asin": "B0CDY277D3",
+      "destination_basis": "observed redirect of https://link.amazon/B04G1MEwY (S11, S67); intent unconfirmed (FLG-002)",
+      "url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
+      "built": "2026-11-17",
+      "rel": "sponsored",
+      "validation_status": "pending",
+      "sources": [
+        "S02",
+        "S11",
+        "S67"
+      ]
+    },
+    {
+      "id": "SL2",
+      "product": "P2",
+      "destination_asin": "B09B7SB46R",
+      "destination_basis": "observed redirect of https://link.amazon/B02NbDxp3 (S12, S68); intent unconfirmed (FLG-002)",
+      "url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
+      "built": "2026-11-17",
+      "rel": "sponsored",
+      "validation_status": "pending",
+      "sources": [
+        "S02",
+        "S12",
+        "S68"
+      ]
+    },
+    {
+      "id": "SL3",
+      "product": "P3",
+      "destination_asin": "B08DKYBTPH",
+      "destination_basis": "observed redirect of https://link.amazon/B00hJ57DV (S13, S69); intent unconfirmed (FLG-002)",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
+      "built": "2026-11-17",
+      "rel": "sponsored",
+      "validation_status": "pending",
+      "sources": [
+        "S02",
+        "S13",
+        "S69"
+      ]
+    },
+    {
+      "id": "SL4",
+      "product": "P4",
+      "destination_asin": "B0DHZTCNR5",
+      "destination_basis": "observed redirect of https://link.amazon/B0c8moW59 (S70); intent unconfirmed (0C4-F-02)",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
+      "built": "2026-11-17",
+      "rel": "sponsored",
+      "validation_status": "pending",
+      "sources": [
+        "S02",
+        "S70",
+        "S71"
+      ]
+    },
+    {
+      "id": "SL5",
+      "product": "P5",
+      "destination_asin": "B0DZFD6R9Z",
+      "destination_basis": "observed redirect of https://link.amazon/B0f3GKalj (S73); intent unconfirmed (0C4-F-02)",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
+      "built": "2026-11-17",
+      "rel": "sponsored",
+      "validation_status": "pending",
+      "sources": [
+        "S02",
+        "S73",
+        "S74"
+      ]
+    }
+  ],
+  "scaling_rule": "Do not scale placement of these links until one link per product has been opened in the enrolled Associates workflow and its destination and tracking report confirmed (0C4-F-04). Do not claim the supplied short links are invalid: their compliance status is unresolved (FLG-003)."
+}

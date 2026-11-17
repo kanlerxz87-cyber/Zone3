@@ -11,8 +11,11 @@ collision is recorded as flag G82-F-04. The merge keeps BOTH content sets:
     published tree already points at feed.xml declares type="application/rss+xml";
   * entries: the union of
       (a) data/feed/entries-shop.json — aebf0747's four /guides/ items, re-homed verbatim
-          with its published dates, and
-      (b) data/cba81fa5/guides.json — the reader guides with status "live";
+          with its published dates,
+      (b) data/cba81fa5/guides.json — the reader guides with status "live",
+      (c) data/articles.json — Research Desk articles under /articles/ (0c4c4cb6),
+      (d) site/articles/*.html — field-note features with a stated Published date (0c4c4cb6), and
+      (e) data/editorial.json — The Crisp Report articles under /read/ (0c4c4cb6);
     so no session's published page silently loses its feed entry;
   * determinism: dates come from the registers, never from "today" — so --check is a real
     gate (it fails when a rebuild would change anything);
@@ -109,8 +112,67 @@ def union_entries() -> list[dict]:
         elif status not in ("held", "rejected", "planned"):
             fail(f"guide {g.get('href') or g.get('title')!r} has unknown status {status!r}")
 
+    # (c) Research Desk articles — root articles/ from data/articles.json (session 0c4c4cb6,
+    # unioned 2026-11-17 so no desk's published page silently loses its feed entry).
+    arts_path = ROOT / "data" / "articles.json"
+    if arts_path.exists():
+        arts = json.loads(arts_path.read_text(encoding="utf-8"))
+        cohort = arts.get("published")  # desk-level publish date; per-article override if present
+        for a in arts.get("articles", []):
+            slug = a.get("slug")
+            published = a.get("published") or a.get("date") or cohort
+            if not slug or not published or not a.get("title"):
+                fail(f"research-desk article {a.get('title') or slug!r} is missing slug/published/title")
+            if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(published)):
+                fail(f"research-desk article {slug} has a non-ISO date {published!r}")
+            page = ROOT / "articles" / slug
+            if not page.exists():
+                fail(f"research-desk article {slug!r} is not on disk at articles/{slug}")
+            out.append({"date": str(published), "sort_key": str(published),
+                        "rfc": rfc822(str(published)), "title": a["title"],
+                        "link": f"{BASE}/articles/{slug}",
+                        "description": re.sub(r"<[^>]+>", "", a.get("dek") or a.get("description") or a.get("blurb") or "")})
+
+    # (d) Field-note feature articles — site/articles/*.html parsed from the page itself
+    # (title, description and the stated "Published YYYY-MM-DD"; no stated date = skip, never guess).
+    art_dir = ROOT / "site" / "articles"
+    if art_dir.exists():
+        pub_re = re.compile(r"Published\s+(\d{4}-\d{2}-\d{2})")
+        for page in sorted(art_dir.glob("*.html")):
+            if page.name == "index.html":
+                continue
+            raw = page.read_text(encoding="utf-8", errors="replace")
+            tm = re.search(r"<title>(.*?)</title>", raw, re.S)
+            dm = re.search(r'<meta name="description" content="([^"]*)"', raw)
+            pm = pub_re.search(raw)
+            if not (tm and pm):
+                continue
+            out.append({"date": pm.group(1), "sort_key": pm.group(1),
+                        "rfc": rfc822(pm.group(1)), "title": html.unescape(tm.group(1)).split(" |")[0].strip(),
+                        "link": f"{BASE}/site/articles/{page.name}",
+                        "description": html.unescape(dm.group(1)) if dm else ""})
+
+    # (e) The Crisp Report — read/ from data/editorial.json (session 0c4c4cb6 union).
+    ed_path = ROOT / "data" / "editorial.json"
+    if ed_path.exists():
+        ed = json.loads(ed_path.read_text(encoding="utf-8"))
+        for a in ed.get("articles", []):
+            slug = a.get("slug")
+            date = a.get("date")
+            if not slug or not date or not a.get("title"):
+                fail(f"crisp-report article {a.get('title') or slug!r} is missing slug/date/title")
+            if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(date)):
+                fail(f"crisp-report article {slug} has a non-ISO date {date!r}")
+            page = ROOT / "read" / f"{slug}.html"
+            if not page.exists():
+                fail(f"crisp-report article {slug!r} is not on disk at read/{slug}.html")
+            out.append({"date": str(date), "sort_key": str(date),
+                        "rfc": rfc822(str(date)), "title": a["title"],
+                        "link": f"{BASE}/read/{slug}.html",
+                        "description": re.sub(r"<[^>]+>", "", a.get("dek") or a.get("summary") or a.get("description") or "")})
+
     if not out:
-        fail("both registers empty — a feed with no entries would misrepresent the site")
+        fail("all registers empty — a feed with no entries would misrepresent the site")
     out.sort(key=lambda e: (e["date"], e["link"], e["title"]), reverse=True)
     return out
 
@@ -128,10 +190,10 @@ def build_feed() -> str:
     x.append('<rss version="2.0"><channel><title>Zone3 guides</title>')
     x.append(f'<link>{BASE}/guides/index.html</link>')
     x.append(
-        "<description>Question-shaped buyer guides from both desks of this site: the four /guides/ pages "
-        "and the Air Fryer Field Notes buying guides. Working titles; every quoted listing title is checked "
-        "on the date shown; no price, rating or review count is reproduced and no traffic or ranking claim "
-        "is made.</description>"
+        "<description>Question-shaped buyer guides from both desks of this site — the four /guides/ pages, "
+        "the Air Fryer Field Notes buying guides, the Research Desk articles and The Crisp Report field notes. "
+        "Working titles; every quoted listing title is checked on the date shown; no price, rating or review "
+        "count is reproduced and no traffic or ranking claim is made.</description>"
     )
     x.append("<language>en</language>")
     x.append(f"<lastBuildDate>{entries[0]['rfc']}</lastBuildDate>")

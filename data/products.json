@@ -89,6 +89,17 @@
         "review_count": [
           "S46"
         ]
+      },
+      "product_intent": {
+        "intended_asin": null,
+        "intended_listing_url": null,
+        "confirmation_date": null,
+        "source": null,
+        "confirmed_by": null,
+        "status": "unconfirmed",
+        "recorded": "2026-11-17",
+        "recorded_by": "session 0c4c4cb6",
+        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
       }
     },
     {
@@ -178,6 +189,17 @@
         "review_count": [
           "S47"
         ]
+      },
+      "product_intent": {
+        "intended_asin": null,
+        "intended_listing_url": null,
+        "confirmation_date": null,
+        "source": null,
+        "confirmed_by": null,
+        "status": "unconfirmed",
+        "recorded": "2026-11-17",
+        "recorded_by": "session 0c4c4cb6",
+        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
       }
     },
     {
@@ -267,6 +289,17 @@
         "review_count": [
           "S48"
         ]
+      },
+      "product_intent": {
+        "intended_asin": null,
+        "intended_listing_url": null,
+        "confirmation_date": null,
+        "source": null,
+        "confirmed_by": null,
+        "status": "unconfirmed",
+        "recorded": "2026-11-17",
+        "recorded_by": "session 0c4c4cb6",
+        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
       }
     },
     {
@@ -287,12 +320,23 @@
         "page_title": "Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black : Home & Kitchen",
         "confirmed_as_submitted_product": false,
         "source": "S70",
-        "title_source": "S71",
+        "title_source": "S72",
         "brand": "ThermoMaven",
-        "capacity": "",
-        "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the listing page)",
-        "reverified": "2026-11-17 (two fetches: the short link S70 and the bare listing URL S71; same title both times).",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, CBB-F-01)."
+        "capacity": null,
+        "brand_capacity_note": "Brand read from the destination page title (S70, S72). No capacity is stated in that title, so the capacity cell stays blank. Not confirmed as the submitted product (0C4-F-02).",
+        "reverified": "2026-11-17: short link capture (S70) and independent direct fetch of the destination (S72), same title both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (0C4-F-02, FLG-002 class)."
+      },
+      "product_intent": {
+        "intended_asin": null,
+        "intended_listing_url": null,
+        "confirmation_date": null,
+        "source": null,
+        "confirmed_by": null,
+        "status": "unconfirmed",
+        "recorded": "2026-11-17",
+        "recorded_by": "session 0c4c4cb6",
+        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
       },
       "product_name": null,
       "brand": null,
@@ -308,17 +352,49 @@
       "associates_tag": null,
       "status": "Link does not resolve to a product page under its own identifier",
       "flags": [
-        "CBB-F-01",
+        "0C4-F-01",
+        "0C4-F-02",
+        "0C4-F-03",
+        "FLG-001",
         "FLG-002",
+        "CBB-F-01",
         "CBB-F-03",
         "FLG-036"
       ],
       "sources": [
-        "S06",
+        "S02",
+        "S31",
+        "S45",
         "S70",
         "S71",
-        "S72"
-      ]
+        "S72",
+        "S06"
+      ],
+      "observed_2026_11_17": {
+        "date": "2026-11-17",
+        "price": null,
+        "other_offers": null,
+        "rating": null,
+        "review_count": null,
+        "sales_note": null,
+        "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
+        "sources": [
+          "S70",
+          "S71"
+        ],
+        "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
+      },
+      "value_sources_2026_11_17": {
+        "product_name": [
+          "S71"
+        ],
+        "brand": [
+          "S71"
+        ],
+        "price": [],
+        "rating": [],
+        "review_count": []
+      }
     },
     {
       "id": "P5",
@@ -338,12 +414,23 @@
         "page_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
         "confirmed_as_submitted_product": false,
         "source": "S73",
-        "title_source": "S74",
+        "title_source": "S75",
         "brand": "CHEF iQ",
-        "capacity": "",
-        "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the listing page)",
-        "reverified": "2026-11-17 (two fetches: the short link S73 and the bare listing URL S74; same title both times).",
-        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (FLG-002, CBB-F-01)."
+        "capacity": null,
+        "brand_capacity_note": "Brand read from the destination page title (S73, S75). No capacity is stated in that title, so the capacity cell stays blank. Not confirmed as the submitted product (0C4-F-02).",
+        "reverified": "2026-11-17: short link capture (S73) and independent direct fetch of the destination (S75), same title both times.",
+        "note": "Recorded only as the page the submitted link opens. Whether the owner intended that product is not documented by any source read (0C4-F-02, FLG-002 class)."
+      },
+      "product_intent": {
+        "intended_asin": null,
+        "intended_listing_url": null,
+        "confirmation_date": null,
+        "source": null,
+        "confirmed_by": null,
+        "status": "unconfirmed",
+        "recorded": "2026-11-17",
+        "recorded_by": "session 0c4c4cb6",
+        "note": "Product-intent confirmation record. These four fields (intended ASIN, official listing URL, confirmation date, source) are filled ONLY by an owner confirmation and stay blank until then. The page this link currently opens is recorded separately in redirect_observed and must never be merged into this block: an observed redirect is not evidence of intent (FLG-002, 0C4-F-02)."
       },
       "product_name": null,
       "brand": null,
@@ -359,17 +446,49 @@
       "associates_tag": null,
       "status": "Link does not resolve to a product page under its own identifier",
       "flags": [
-        "CBB-F-01",
+        "0C4-F-01",
+        "0C4-F-02",
+        "0C4-F-03",
+        "FLG-001",
         "FLG-002",
+        "CBB-F-01",
         "CBB-F-03",
         "FLG-036"
       ],
       "sources": [
-        "S06",
+        "S02",
+        "S31",
+        "S45",
         "S73",
         "S74",
-        "S75"
-      ]
+        "S75",
+        "S06"
+      ],
+      "observed_2026_11_17": {
+        "date": "2026-11-17",
+        "price": null,
+        "other_offers": null,
+        "rating": null,
+        "review_count": null,
+        "sales_note": null,
+        "category_path": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (breadcrumb on the product page)",
+        "sources": [
+          "S73",
+          "S74"
+        ],
+        "note": "Dated observation read from Amazon.com pages on 2026-11-17 by session 0c4c4cb6. Kept as research evidence only. NOT used as product identity and NOT displayed as price, rating or review facts on any page: Participation Requirements 2(b) and 6(t) bar that without an Amazon-served link or API data (PF-04, PF-05). Price and rating were visible on the fetched pages and were deliberately not copied into this file."
+      },
+      "value_sources_2026_11_17": {
+        "product_name": [
+          "S74"
+        ],
+        "brand": [
+          "S74"
+        ],
+        "price": [],
+        "rating": [],
+        "review_count": []
+      }
     }
   ],
   "intake_2026_11_17": "Two further product links arrived with the owner's 2026-11-17 brief (P4 link.amazon/B0c8moW59, P5 link.amazon/B0f3GKalj) and were added by session cbb03ec7. Both identifiers are 9 characters (not ASINs, S06); both direct /dp/ checks returned Page Not Found (S72, S75); both short links were observed resolving to live listings on 2026-11-17 (P4 -> B0DHZTCNR5 S70/S71, P5 -> B0DZFD6R9Z S73/S74). Identity, price, rating and commission cells stay null (Unverified) exactly as for P1-P3; intent is unconfirmed (CBB-F-01) and the two destinations sit in a different Amazon category from the site's air-fryer editorial coverage (CBB-F-03). The tracking ID shopnow047c-20 supplied in the same brief is recorded in config/platform.json and is not embedded in any link (CBB-F-02)."

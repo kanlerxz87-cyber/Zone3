@@ -29,6 +29,20 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 DATA = ROOT / "data" / "cba81fa5"
 
+# 0C4-T3 (session 0c4c4cb6, 2026-11-17): generated regions must already carry
+# rel="sponsored" on outbound product links, exactly as scripts/mark_sponsored.py
+# would mark them. If they did not, the post-pass would rewrite this session's
+# regions and --check would report them stale for ever. One implementation, imported.
+import importlib.util as _ilu
+
+_ms_spec = _ilu.spec_from_file_location("zone3_mark_sponsored", ROOT / "scripts" / "mark_sponsored.py")
+_ms = _ilu.module_from_spec(_ms_spec)
+_ms_spec.loader.exec_module(_ms)
+
+
+def sponsored(html: str) -> str:
+    return _ms.process(html)[0]
+
 GUIDES = json.loads((DATA / "guides.json").read_text(encoding="utf-8"))
 SOURCES = json.loads((DATA / "sources.json").read_text(encoding="utf-8"))
 SRC = {s["id"]: s for s in SOURCES["sources"]}
@@ -425,10 +439,10 @@ def main() -> int:
     a = ap.parse_args()
 
     targets = [
-        (SITE / "index.html", "<h2>Buying guides</h2>", "<h2>Side by side</h2>", landing_block(), None),
+        (SITE / "index.html", "<h2>Buying guides</h2>", "<h2>Side by side</h2>", sponsored(landing_block()), None),
         (SITE / "guides" / "index.html",
          '<a id="cba81fa5-guide-plan"' if '<a id="cba81fa5-guide-plan"' in (SITE / "guides" / "index.html").read_text(encoding="utf-8") else "<caption>The guide plan</caption>",
-         "</main>", guides_index_block(), '<div class="tablewrap">'),
+         "</main>", sponsored(guides_index_block()), '<div class="tablewrap">'),
     ]
     changed = []
     for path, start, end, new, back in targets:
@@ -446,7 +460,7 @@ def main() -> int:
     # session aebf0747 guard: the publication front page owns index.html; do not re-inject the old band
     if root_index.exists() and "aebf0747-front" not in root_index.read_text(encoding="utf-8"):
         raw = root_index.read_text(encoding="utf-8")
-        band = render_frontdoor(raw)
+        band = sponsored(render_frontdoor(raw))
         if FD_START in raw:
             # ded63349: mark before compare — the file on disk is post-sponsored, so the
             # expected text must be too (otherwise --check always reports a stale region).
@@ -488,7 +502,7 @@ def main() -> int:
         if start:
             want = mark_sponsored(patch_text(raw, start, "</main>", flagged_block()))
         elif "</main>" in raw and "Raised on 2026-11-16 by the second-source desk" not in raw:
-            want = raw.replace("</main>", flagged_block() + "</main>", 1)
+            want = raw.replace("</main>", sponsored(flagged_block()) + "</main>", 1)
         else:
             want = raw
         if want != raw:
