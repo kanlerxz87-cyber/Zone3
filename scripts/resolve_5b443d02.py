@@ -99,90 +99,78 @@ def resolve_coordination() -> None:
           f"from this session's Part")
 
 
-def union_by_id(path: pathlib.Path, key: str, mine_ids: list[str],
-                renumber_from: list[str] | None = None) -> dict[str, str]:
-    """Union two JSON registers that hold a list of records with unique ids.
+def stage(path: str, which: int) -> str:
+    """`git show :2:<path>` is main's side of a rebase conflict, `:3:` is this
+    branch's. Using the staged blobs is the only reliable way to union a JSON
+    register: the conflict inside a JSON array splits mid-structure, so neither
+    side parses on its own."""
+    try:
+        return git("show", f":{which}:{path}")
+    except subprocess.CalledProcessError:
+        return ""
 
-    Returns a map of renumbered ids (old -> new) when renumbering is needed.
-    """
-    raw = path.read_text(encoding="utf-8")
-    blocks = mine = None
-    resolved, mine_blocks = split_conflict(raw)
-    if not mine_blocks:
+
+def resolve_register(path: str, list_key: str) -> dict[str, str]:
+    """Union a register by id: main's records in main's order, then this
+    branch's records whose ids main does not already use."""
+    main_txt, mine_txt = stage(path, 2), stage(path, 3)
+    if not main_txt or not mine_txt:
+        git("checkout", "--ours", path)
+        print(f"{path}: only one side available; kept this branch's version")
         return {}
-    # HEAD's side has already been written into `resolved`; parse it, then add
-    # this session's records that are not already present.
-    head_doc = json.loads(resolved)
-    head_ids = {r[key] for r in head_doc}
+    main_doc = json.loads(main_txt)
+    mine_doc = json.loads(mine_txt)
+    main_list = main_doc.setdefault(list_key, [])
+    have = {r["id"] for r in main_list}
     renumber: dict[str, str] = {}
-    added = 0
-    for block in mine_blocks:
-        try:
-            mine_doc = json.loads(block)
-        except json.JSONDecodeError:
-            # A conflict inside a JSON file is often not a whole-document split;
-            # fall back to reading this branch's committed version of the file.
+    added = []
+    for rec in mine_doc.get(list_key, []):
+        rid = rec.get("id")
+        if rid is None or rid in have:
             continue
-        for rec in mine_doc:
-            rid = rec[key]
-            if rid in head_ids:
-                continue
-            if renumber_from and rid in renumber_from:
-                # main won this id and points it at a different document; take the
-                # first free id instead of overwriting theirs.
-                n = 1
-                while f"S{n}" in head_ids or f"S{n}" in renumber.values():
-                    n += 1
-                new_id = f"S{n}"
-                renumber[rid] = new_id
-                rec[key] = new_id
-                rid = new_id
-            head_doc["sources" if "sources" in head_doc else key].append(rec)
-            head_ids.add(rid)
-            added += 1
-    path.write_text(json.dumps(head_doc, indent=2) + "\n", encoding="utf-8")
-    print(f"{path.name}: unioned by {key}; {added} record(s) from this session added")
+        if rid in MINE_SOURCES:
+            # main already uses this id and points it at a different document.
+            # Take the first free id instead of overwriting theirs.
+            n = 1
+            while f"S{n}" in have or f"S{n}" in renumber.values():
+                n += 1
+            new_id = f"S{n}"
+            renumber[rid] = new_id
+            rec["id"] = new_id
+            rid = new_id
+        main_list.append(rec)
+        have.add(rid)
+        added.append(rid)
+    # keep the reservation note truthful for the next session
+    if list_key == "sources" and added:
+        n = 1
+        while f"S{n}" in have or f"S{n}" in renumber.values():
+            n += 1
+        main_doc["id_reservation"] = (
+            main_doc.get("id_reservation", "").rstrip()
+            + f" Session 5b443d02 (2026-11-17) appended {added[0]}-{added[-1]}. "
+            + f"Append from S{n}.")
+    (ROOT / path).write_text(json.dumps(main_doc, indent=2) + "\n", encoding="utf-8")
+    print(f"{path}: main's {len(main_list) - len(added)} record(s) kept, "
+          f"{len(added)} of this branch's added {added}")
     return renumber
 
 
-def resolve_register(path: pathlib.Path, list_key: str) -> dict[str, str]:
-    """Union a register file by id, using the branch's own version for my records."""
-    raw = path.read_text(encoding="utf-8")
-    if not MARKER.search(raw):
-        return {}
-    resolved, mine_blocks = split_conflict(raw)
-    head_doc = json.loads(resolved)
-    head_list = head_doc[list_key]
-    head_ids = {r["id"] for r in head_list}
-    renumber: dict[str, str] = {}
-    added = 0
-    for block in mine_blocks:
-        try:
-            mine_doc = json.loads(block)
-        except json.JSONDecodeError:
-            continue
-        for rec in mine_doc.get(list_key, []):
-            rid = rec["id"]
-            if rid in head_ids:
-                continue
-            if rid in MINE_SOURCES:
-                n = 1
-                while f"S{n}" in head_ids or f"S{n}" in renumber.values():
-                    n += 1
-                new_id = f"S{n}"
-                renumber[rid] = new_id
-                rec["id"] = new_id
-                rid = new_id
-            head_list.append(rec)
-            head_ids.add(rid)
-            added += 1
-    path.write_text(json.dumps(head_doc, indent=2) + "\n", encoding="utf-8")
-    print(f"{path.name}: unioned by id; {added} of this session's record(s) added")
-    return renumber
+def resolve_append_only(path: str) -> None:
+    """An append-only document (the board, the executive summary): main's text
+    verbatim, then this branch's added block re-appended at the end."""
+    p = ROOT / path
+    resolved, mine = split_conflict(p.read_text(encoding="utf-8"))
+    if not resolved.endswith("\n"):
+        resolved += "\n"
+    for block in mine:
+        resolved += "\n" + block.strip("\n") + "\n"
+    p.write_text(resolved, encoding="utf-8")
+    print(f"{path}: main's text kept, {len(mine)} block(s) from this branch re-appended")
 
 
 def rewrite_ids(renumber: dict[str, str]) -> None:
-    """Point every reference inside this session's own files at the new ids."""
+    """Point every reference inside this branch's own files at the new ids."""
     if not renumber:
         return
     targets: list[pathlib.Path] = []
@@ -197,7 +185,7 @@ def rewrite_ids(renumber: dict[str, str]) -> None:
         text = p.read_text(encoding="utf-8")
         original = text
         for old, new in renumber.items():
-            # quoted id references only, so prose that mentions a number is untouched
+            # quoted id references only, so prose mentioning a number is untouched
             text = re.sub(rf'"{re.escape(old)}"', f'"{new}"', text)
         if text != original:
             p.write_text(text, encoding="utf-8")
@@ -213,16 +201,18 @@ def main() -> int:
     print("conflicted:", ", ".join(files))
     renumber: dict[str, str] = {}
     for f in files:
-        path = ROOT / f
-        if f == "COORDINATION.md":
-            resolve_coordination()
+        if f in ("COORDINATION.md", "EXECUTIVE-SUMMARY.md"):
+            resolve_append_only(f)
         elif f == "data/flags.json":
-            union_by_id(path, "id", MINE_FLAGS)
+            resolve_register(f, "flags")
         elif f == "data/sources.json":
-            renumber = resolve_register(path, "sources")
+            renumber = resolve_register(f, "sources")
         else:
-            git("checkout", "--ours", f)
-            print(f"{f}: kept this branch's version (regenerated by the builders)")
+            # Generated output. main's side is kept; the whole tree is rebuilt from
+            # the merged data and the merged generators once the rebase finishes.
+            git("checkout", "--theirs", f) if False else git("checkout", "--ours", f)
+            print(f"{f}: generated page - kept this branch's version, "
+                  f"to be regenerated from the merged data")
     rewrite_ids(renumber)
     if renumber:
         print("renumbering map:", renumber)
