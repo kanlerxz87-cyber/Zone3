@@ -269,8 +269,8 @@ def build_decision_queue() -> None:
             basis(s),
         ])
     body += ("<h2>The queue</h2>"
-             '<p class="small">22 proposals. Blocked-by links jump to the question that '
-             "unblocks the row.</p>") + table(
+             f'<p class="small">{len(q["suggestions"])} proposals. Blocked-by links jump to the '
+             "question that unblocks the row.</p>") + table(
         ["ID and origin", "Proposal", "What it is", "Recommendation and sizing",
          "Blocked by", "State", "Basis"], rows)
 

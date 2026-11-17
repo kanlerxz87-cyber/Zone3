@@ -1,7 +1,7 @@
 {
   "retrieved": "2026-11-16",
   "session": "757efebc",
-  "note": "The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything.",
+  "note": "The review console the brief asks for: every proposal in one place with a recommendation, a priority, an effort estimate, a risk, the question that blocks it, and a decision state; then the information we already have, the information we do not have, and how to go and get it. Nothing here implements anything. Updated 2026-11-17 by session 0c4c4cb6: Q1 answered (tag shopnow047c-20 recorded, validation pending 0C4-F-04), Q2 extended to five links, category-scope question added as 0C4-Q-16, SUG-05 unblocked to do-next, new rows 0C4-S-01..03 proposed.",
   "states": {
     "do-now": "Recommended for the first pass. Cheap, unblocked, and removes a visible defect.",
     "do-next": "Recommended, but it depends on a decision or a design pass.",
@@ -121,14 +121,12 @@
       "priority": "P1",
       "effort": "L",
       "risk": "Medium",
-      "blocked_by": [
-        "Q1",
-        "Q2"
-      ],
-      "status": "blocked",
+      "blocked_by": [],
+      "status": "do-next",
       "src": [
         "S02"
-      ]
+      ],
+      "note": "Tag arrived 2026-11-17; tagged links now on all five products."
     },
     {
       "id": "757-S-08",
@@ -140,13 +138,12 @@
       "priority": "P1",
       "effort": "M",
       "risk": "Medium",
-      "blocked_by": [
-        "Q1"
-      ],
-      "status": "blocked",
+      "blocked_by": [],
+      "status": "do-next",
       "src": [
         "S02"
-      ]
+      ],
+      "note": "Tag arrived 2026-11-17; no longer blocked by Q1."
     },
     {
       "id": "757-S-09",
@@ -299,13 +296,12 @@
       "priority": "P1",
       "effort": "S",
       "risk": "High",
-      "blocked_by": [
-        "Q1"
-      ],
-      "status": "blocked",
+      "blocked_by": [],
+      "status": "do-next",
       "src": [
         "S02"
-      ]
+      ],
+      "note": "Tag arrived 2026-11-17; CTAs shipped with SL1–SL5; validation pending (0C4-F-04)."
     },
     {
       "id": "SUG-06",
@@ -395,6 +391,54 @@
         "S01",
         "S07"
       ]
+    },
+    {
+      "id": "0C4-S-01",
+      "origin": "Session 0c4c4cb6 (analytics contract)",
+      "title": "Deploy the analytics endpoint and switch the tracker on",
+      "area": "Measurement",
+      "what": "Host tools/analytics_collector.py on owner infrastructure and set the endpoint URL in assets/track.js so the five events start landing.",
+      "recommendation": "Do next",
+      "priority": "P1",
+      "effort": "M",
+      "risk": "Low — payload contract is already frozen in data/analytics.json",
+      "blocked_by": [
+        "0C4-Q-17"
+      ],
+      "status": "do-next",
+      "repo": "data/analytics.json"
+    },
+    {
+      "id": "0C4-S-02",
+      "origin": "Session 0c4c4cb6 (intake of P4/P5)",
+      "title": "Rule on category scope for the meat thermometers",
+      "area": "Scope",
+      "what": "Decide air-fryer-only vs adjacent kitchen gadgets for P4/P5.",
+      "recommendation": "Do next",
+      "priority": "P1",
+      "effort": "S",
+      "risk": "Low — either answer is publishable; silence is not",
+      "blocked_by": [
+        "0C4-Q-16"
+      ],
+      "status": "blocked",
+      "repo": "data/special-links.json"
+    },
+    {
+      "id": "0C4-S-03",
+      "origin": "Session 0c4c4cb6 (SG-29 attempt)",
+      "title": "Supply the Search Console verification token and a capture processor",
+      "area": "Verification",
+      "what": "Owner supplies the verification method (token or DNS) and names where reader-capture submissions should be posted; sitemap is already published and ready for submission the same day.",
+      "recommendation": "Do next",
+      "priority": "P1",
+      "effort": "S",
+      "risk": "Low — no placeholder was shipped, nothing is faked",
+      "blocked_by": [
+        "0C4-Q-18"
+      ],
+      "status": "blocked",
+      "repo": "data/flags.json"
     }
   ],
   "have": [
@@ -505,10 +549,11 @@
       "item": "The Associates tag value",
       "needed_for": "Any link that can accrue commission. Without it, every CTA on the site is decorative.",
       "severity": "Critical",
-      "how": "Read it from the Associates account or from SiteStripe once enrolled. No document in this repository contains it.",
+      "how": "Answered 2026-11-17: the owner supplied the tag in the brief — shopnow047c-20 — recorded in data/special-links.json with five built Special Links. What is still needed from the account is click validation in Associates Central (0C4-F-04). The value is no longer missing; validation is the remaining gap.",
       "src": [
         "S02"
-      ]
+      ],
+      "answer": "shopnow047c-20 (owner-supplied 2026-11-17; validation 0C4-F-04 pending)"
     },
     {
       "id": "757-M-02",
@@ -641,7 +686,7 @@
       "id": "Q1",
       "question": "What is the Associates tag to use on every Special Link?",
       "have": "Special Links must use the assigned Associates ID, and the tag must appear as a URL parameter in every link to an Amazon site. A purchase is disqualified if links are not properly formatted.",
-      "missing": "The tag value itself. Nothing in this repository contains it.",
+      "missing": "RESOLVED 2026-11-17: the owner's brief supplied 'shopnow047c-20'; recorded in data/special-links.json and now on the five published Special Links. Remaining unknown: whether the tag is active and each click reports (0C4-F-04, Associates Central only).",
       "why": "Blocks every conversion element on the site. Until it exists, no published link can earn.",
       "how": "Read it from the Associates account or SiteStripe once enrolled.",
       "blocks": [
@@ -651,13 +696,14 @@
       ],
       "src": [
         "S02"
-      ]
+      ],
+      "answered": "shopnow047c-20 — owner-supplied 2026-11-17 (brief), recorded same day; public identifier by design, not a credential."
     },
     {
       "id": "Q2",
       "question": "Are the three destination listings the products that were intended?",
       "have": "Each short link opens a live listing, and each listing title was read today. The submitted tokens are 9 characters and Creators API documents ASINs as 10.",
-      "missing": "Any official statement of intent. A redirect shows where a link goes, not what was meant.",
+      "missing": "Confirmation date and source for EACH link, and the 10-character ASIN of the intended listing where the observed destination is not it. Update 2026-11-17: the set is now FIVE links — P4/B0c8moW59 (lands B0DHZTCNR5) and P5/B0f3GKalj (lands B0DZFD6R9Z) were added with the 2026-11-17 brief; their intent rows are blank on products.html waiting for confirmation.",
       "why": "Everything editorial depends on it. Writing about the wrong three products wastes the build.",
       "how": "Ask the requester to confirm the three ASINs by name.",
       "blocks": [
@@ -856,6 +902,45 @@
       "src": [
         "S02"
       ]
+    },
+    {
+      "id": "0C4-Q-16",
+      "question": "Is Zone3 an air-fryer desk only, or does it cover adjacent kitchen gadgets (the two submitted meat thermometers, P4/P5)?",
+      "have": "Intake records both new links and their observed destinations; the site's niche, nav, guides and category tags are air-fryer-only; no document in the repository states a scope boundary.",
+      "missing": "The owner's ruling. Without it P4/P5 stay recorded-but-not-published as products, and the question-shaped guide cadence has no scope to grow inside.",
+      "why": "Decides whether the two thermometers become products, comparisons and guides — or an explicit out-of-scope note. Publishing them silently would redefine the niche; dropping them would break the intake contract (0C4-F-03).",
+      "how": "Owner states the category scope in the next brief; record the answer here and on products.html's product-intent rows.",
+      "blocks": [
+        "0C4-S-02"
+      ],
+      "src": [
+        "S70",
+        "S73"
+      ]
+    },
+    {
+      "id": "0C4-Q-17",
+      "question": "Where will the analytics endpoint (POST /e) be hosted?",
+      "have": "The contract, the reference server and the browser client are built and tested; the payload is frozen in data/analytics.json; nothing is deployed.",
+      "missing": "An owner-controlled host that can accept POST requests and persist a JSONL ledger (GitHub Pages cannot).",
+      "why": "Without it the five events never leave the browser, no topic-level evidence can accumulate, and the measured-topic question stays open (0C4-F-05).",
+      "how": "Owner names a host (small VM, serverless function, or a host with a worker); then 0C4-S-01 proceeds: deploy tools/analytics_collector.py, set the endpoint URL, rebuild.",
+      "blocks": [
+        "0C4-S-01"
+      ],
+      "src": []
+    },
+    {
+      "id": "0C4-Q-18",
+      "question": "Who supplies the Search Console verification token and where should reader capture submissions be posted?",
+      "have": "Sitemap is published (79 pages) and robots.txt is ready; verification method is an owner choice (token, DNS, HTML file); a capture endpoint contract can be defined the same way the analytics one was.",
+      "missing": "The verification token/DNS record itself, and the destination (and privacy terms) for reader-capture submissions — both are owner inputs (0C4-F-06, 0C4-F-07).",
+      "why": "SG-29 and SG-30 stay open until then; no placeholder meta tag and no dead form were shipped, so nothing on the site claims a verification that does not exist.",
+      "how": "Owner pastes the verification method into the next brief and names the capture destination; both pages can then be wired in one pass.",
+      "blocks": [
+        "0C4-S-03"
+      ],
+      "src": []
     }
   ],
   "discovery": [
@@ -946,5 +1031,5 @@
     "Only then run the design brief's prompt against the accepted scope.",
     "Re-run the release gate after every change. A page that cannot trace a claim to an official source does not ship."
   ],
-  "relationship_note": "A parallel session shipped a reader-facing decision board at /site/decisions.html on 2026-11-16, with its own proposals, questions, discovery actions and prompt pack. This console is the audit-side counterpart: it consolidates all 22 proposals from both earlier sessions and this one into a single triage with sizing, and it splits the register into what is sourced and what is missing. Use either; the point of both is that a decision is recorded before anything is implemented."
+  "relationship_note": "A parallel session shipped a reader-facing decision board at /site/decisions.html on 2026-11-16, with its own proposals, questions, discovery actions and prompt pack. This console is the audit-side counterpart: it consolidates all 25 proposals from the earlier sessions and this one into a single triage with sizing, and it splits the register into what is sourced and what is missing. Use either; the point of both is that a decision is recorded before anything is implemented."
 }

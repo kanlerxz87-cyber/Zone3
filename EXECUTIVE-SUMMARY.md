@@ -1,6 +1,6 @@
 # Executive summary — Zone3 AI-powered Amazon affiliate platform
 
-**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Final integration, compliance fix and re-verification:** session `3ead7ac8` · **Editorial topic plan and content-status correction:** session `3d359c23`
+**Prepared:** 2026-11-14 · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Final integration, compliance fix and re-verification:** session `3ead7ac8` · **Editorial topic plan and content-status correction:** session `3d359c23` · **2026-11-17 pass (two new links, the Associates tag, sponsored links, measurement, feed):** session `0c4c4cb6`
 **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
 **Verification log:** https://kanlerxz87-cyber.github.io/Zone3/verification.html
 **Flagged for review:** https://kanlerxz87-cyber.github.io/Zone3/flagged.html
@@ -9,6 +9,69 @@
 > independent correction pass and the 2026-11-14 final integration pass. Redirect targets are treated as
 > observed destinations, not as proof of requester intent. Unavailable or policy-restricted values remain
 > blank and flagged.
+
+---
+
+## Update 2026-11-17 — session 0c4c4cb6 (two new submitted links, the owner-supplied tag, sponsored links, measurement layer, RSS feed)
+
+**Bottom line.** The 2026-11-17 brief added two product links and the Associates tag. Both new links were
+intake-verified the same day, the tag is recorded and now sits on live Special Links, every outbound
+product link on the site is marked `rel="sponsored"` behind a build gate, the measurement layer (five
+events, privacy contract, self-hosted endpoint) is shipped with its endpoint deliberately undeployed, and
+the RSS feed is live with 18 items. All gates pass on the final tree.
+
+- **Two new submitted links, P4 and P5.** `link.amazon/B0c8moW59` was observed to open
+  `amazon.com/dp/B0DHZTCNR5` (ThermoMaven 1 s meat thermometer) and `link.amazon/B0f3GKalj` opened
+  `amazon.com/dp/B0DZFD6R9Z` (CHEF iQ Sense meat thermometer), each on 2026-11-17, with an independent
+  direct fetch of each destination serving the same title ([S70](https://link.amazon/B0c8moW59) ·
+  [S71](https://www.amazon.com/dp/B0c8moW59) · [S72](https://www.amazon.com/dp/B0DHZTCNR5) ·
+  [S73](https://link.amazon/B0f3GKalj) · [S74](https://www.amazon.com/dp/B0f3GKalj) ·
+  [S75](https://www.amazon.com/dp/B0DZFD6R9Z)). Both tokens are 9 characters and both `/dp/<token>`
+  controls returned Amazon's *Page Not Found* — the same class as FLG-001, recorded as **0C4-F-01**;
+  intent is unconfirmed as with products 1–3 (**0C4-F-02**). Both destinations sit in the
+  **Meat Thermometers** category, outside the site's air-fryer cluster — a content-scope decision the
+  owner has not ruled on (**0C4-F-03**). Price and rating were visible on those pages and were
+  deliberately not recorded (Program Policies 2(b)/6(t)).
+- **Product-intent confirmation record.** Every one of the five submitted links now carries a
+  `product_intent` block — intended ASIN, intended official listing URL, confirmation date, source —
+  all blank until the owner confirms, strictly separate from the observed redirect target, on
+  [Products](https://kanlerxz87-cyber.github.io/Zone3/products.html).
+- **The Associates tag arrived.** The owner supplied `shopnow047c-20` in the brief (answering Q1 /
+  757-M-01). It is recorded in `data/special-links.json` as owner-supplied and unvalidated; five tagged
+  Special Links (SL1–SL5) were built from the observed destinations and are published on the Products
+  page. The tag is a public identifier by design — it must appear in every published link; no
+  credentials are stored anywhere in this repository. What remains unvalidated is whether the tag is
+  active on an enrolled account and whether each link's click reports (**0C4-F-04**), which needs the
+  owner's Associates Central session. The submitted short links themselves are untouched and not
+  declared invalid (FLG-003 stands).
+- **Every outbound product link is now marked `rel="sponsored"`.** 1,552 links across 85 pages on the
+  first pass, enforced thereafter by a new check in `scripts/check_site.py` and applied by
+  `scripts/mark_sponsored.py` as the last build step — a generator rebuild without the mark now fails
+  the gate. The reader site's buy buttons switched from "link not active yet" to active tagged
+  Special Links with plain-language disclosure beside each button; I2-F-03 and Q1 were updated to match.
+- **Measurement layer shipped, endpoint deliberately not deployed.** Five defined events
+  (`page_view`, `guide_view`, `product_click`, `special_link_click`, `nav_click`), a privacy contract
+  (no cookies, no identifiers, DNT/GPC off-switch, path-only payloads), a browser client on all three
+  page layers, and a self-hosted reference endpoint (`tools/analytics_collector.py`) that was
+  smoke-tested end to end: valid events 204, bad ids/fields 400, queries stripped, referrer reduced to
+  a host, aggregates only. GitHub Pages cannot host the endpoint, so nothing is sent yet and no count
+  is displayed anywhere (**0C4-F-05**). Full documentation: [Measurement](https://kanlerxz87-cyber.github.io/Zone3/measurement.html).
+- **Search Console (SG-29) and reader capture (SG-30) are blocked on owner input**, not faked:
+  no verification token and no capture processor were supplied, so no placeholder meta tag and no
+  dead form were shipped (**0C4-F-06**, **0C4-F-07**). The sitemap is published and ready for
+  submission the day verification completes.
+- **RSS feed shipped.** `feed.xml` aggregates 18 items across four sections (Research Desk 4, buying
+  guides 5, field notes 3, The Crisp Report 6), generated by `scripts/build_feed.py` with a `--check`
+  gate; `<link rel="alternate">` discovery is in every page head, the footer links it, and robots.txt
+  carries the `Feed:` hint.
+- **Counts at this pass (recomputed from the registers, not copied):** 68 official sources · 55 policy
+  facts · 115 flags (3 critical, 21 high, 33 medium, 33 low, 25 informational) · 31 pages in the shared
+  gate · 79 pages in the sitemap. Seven new flags: 0C4-F-01…07, all published on the Flagged for
+  review page; none blocks the merge.
+- **Gates on the final tree:** `check_site` OK (31/5/68/115) · `mark_sponsored --check` OK ·
+  `build_feed --check` OK · `verify_site` PASS (116 pages, 1,972 rows) · `link_report --strict` 0 ·
+  `check_all_links` 0 errors · `build_sitemap --check` 79 pages · `i2_gate` PASS (18 pages, 0 flagged) ·
+  `cba81fa5_lint` PASS (0 new) · `build_cba81fa5 --check` current.
 
 ---
 
@@ -83,13 +146,15 @@ in the repository, with official source links and flag references preserved on e
 
 ## 1. The bottom line
 
-**The three submitted short links were observed to open real Amazon listings; the requester's intended product match remains unconfirmed.** Each submitted token is **9 characters**, not a 10-character ASIN, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page for the raw token — reproduced again on 2026-11-14:
+**The five submitted short links were observed to open real Amazon listings; the requester's intended product match remains unconfirmed.** Each submitted token is **9 characters**, not a 10-character ASIN, and `https://www.amazon.com/dp/<token>` returns Amazon's *Page Not Found* page for the raw token — reproduced again on 2026-11-14 for links 1–3 and on 2026-11-17 for links 4–5:
 
 | Submitted link | Code (length) | `amazon.com/dp/<code>` | Where the short link actually lands | Source |
 |---|---|---|---|---|
 | https://link.amazon/B04G1MEwY | `B04G1MEwY` (9) | Page Not Found | `amazon.com/dp/B0CDY277D3` — CHEFMAN 6 Qt dual-basket air fryer | [S08](https://www.amazon.com/dp/B04G1MEwY) · [S11](https://link.amazon/B04G1MEwY) · [S14](https://www.amazon.com/dp/B0CDY277D3) |
 | https://link.amazon/B02NbDxp3 | `B02NbDxp3` (9) | Page Not Found | `amazon.com/dp/B09B7SB46R` — Emeril Lagasse 26QT French-door air fryer oven | [S09](https://www.amazon.com/dp/B02NbDxp3) · [S12](https://link.amazon/B02NbDxp3) · [S15](https://www.amazon.com/dp/B09B7SB46R) |
 | https://link.amazon/B00hJ57DV | `B00hJ57DV` (9) | Page Not Found | `amazon.com/dp/B08DKYBTPH` — Chefman TurboFry 8 Qt air fryer | [S10](https://www.amazon.com/dp/B00hJ57DV) · [S13](https://link.amazon/B00hJ57DV) · [S23](https://www.amazon.com/dp/B08DKYBTPH) |
+| https://link.amazon/B0c8moW59 | `B0c8moW59` (9) | Page Not Found | `amazon.com/dp/B0DHZTCNR5` — ThermoMaven 1 s meat thermometer (added 2026-11-17) | [S71](https://www.amazon.com/dp/B0c8moW59) · [S70](https://link.amazon/B0c8moW59) · [S72](https://www.amazon.com/dp/B0DHZTCNR5) |
+| https://link.amazon/B0f3GKalj | `B0f3GKalj` (9) | Page Not Found | `amazon.com/dp/B0DZFD6R9Z` — CHEF iQ Sense meat thermometer (added 2026-11-17) | [S74](https://www.amazon.com/dp/B0f3GKalj) · [S73](https://link.amazon/B0f3GKalj) · [S75](https://www.amazon.com/dp/B0DZFD6R9Z) |
 
 Two official Amazon sources define the identifier as 10 characters: the
 [Creators API `GetItems` reference](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items#itemidtype-parameter)
@@ -104,16 +169,18 @@ failed lookup; a direct valid-ASIN control also carried that parameter. Price, r
 rank, commission and performance values remain blank unless obtained through an approved, current data
 path — see §3 and FLG-022/027.
 
-**The platform itself is built, published and passing its current checks.** The unresolved operating
-inputs are an Associates tag, eligible API access, and confirmation only if the observed destination
-listings are not the intended products. These conditions are listed in §5.
+**The platform itself is built, published and passing its current checks.** The Associates tag arrived
+on 2026-11-17 and now sits on live Special Links; the unresolved operating inputs are account
+validation of that tag, eligible API access, and confirmation of which products are intended — including
+whether the two meat thermometers are in scope at all. These conditions are listed in §5.
 
 ---
 
 ## 2. What is verified, and where it is published
 
-62 official sources · 55 policy facts · 108 flags · 30 pages in the shared gate, a 16-page audit build, a `/docs/`
-reference set, a marketing section and three retained session sub-sites. Every fact and all three
+68 official sources · 55 policy facts · 115 flags · 31 pages in the shared gate, a 16-page audit build, a `/docs/`
+reference set, a marketing section and three retained session sub-sites (counts recomputed 2026-11-17 by
+session `0c4c4cb6` from the registers themselves). Every fact and all three
 submitted links were re-read from the official pages on 2026-11-14; the row-by-row records are the
 [Verification log](https://kanlerxz87-cyber.github.io/Zone3/verification.html),
 [session 3ead7ac8's record](https://kanlerxz87-cyber.github.io/Zone3/sessions/3ead7ac8/),
@@ -192,24 +259,29 @@ explicitly documented blank. The legacy snapshot exposure is flagged separately 
 
 ## 5. Three items that unblock everything
 
-1. **Confirm the observed destinations only if they are not the intended products.** The live target
-   ASINs are already recorded in the product table; no replacement input is needed if those are intended.
-2. **Your Associates tag** (the `xxxxx-20` parameter — not a password or API secret), plus
-   confirmation that the account is active. Without it no link on the site can earn.
+1. **Confirm the intended products for all five links** — or confirm that the observed destinations are
+   the intended ones. The live target ASINs are already recorded in the product table and the
+   product-intent record on the Products page is waiting for the confirmation date and source. This now
+   covers the two meat thermometers as well: confirm they are in scope, or say the site stays
+   air-fryer-only (0C4-F-03).
+2. **Validate the Associates tag now on the site** (`shopnow047c-20`, supplied 2026-11-17). The links are
+   built and live; what is missing is one test per product inside Associates Central — open SL1–SL5,
+   confirm the destination, confirm the click appears in the tracking report (0C4-F-04). Not a password
+   or API secret; the tag is meant to be public.
 3. **Enrolment status and API access.** Creators API needs ≥10 qualifying sales in 30 days; until
    then price and rating display is impossible under 2(b)/6(t), however the data is obtained.
 
 Until item 1 arrives, the honest answer to "which product is this and is it worth promoting" is
-*unknown*, and the site says so rather than filling the gap.
+*unknown* for each unconfirmed link, and the site says so rather than filling the gap.
 
 ---
 
 ## 6. Irregularities published for your review
 
-108 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
-3 critical, 19 high, 30 medium, 31 low, 25 informational (informational entries record a correction
-made to this site, not a defect in a product). None of them blocks the merge; each carries its
-evidence source links and the action needed.
+115 entries on the [Flagged for review](https://kanlerxz87-cyber.github.io/Zone3/flagged.html) page —
+3 critical, 21 high, 33 medium, 33 low, 25 informational (informational entries record a correction
+made to this site, not a defect in a product; count recomputed 2026-11-17). None of them blocks the
+merge; each carries its evidence source links and the action needed.
 
 **Read these first:**
 
@@ -217,7 +289,7 @@ evidence source links and the action needed.
 |---|---|---|
 | [FLG-001](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-001) | Critical | The 9-character tokens are not ASINs, but their short links were observed to open live listings. The destination listings are documented; whether they match intent remains open. |
 | [FLG-003](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-003) | Critical | `link.amazon` is Amazon-served but not documented in the policies. Whether its redirect counts as a Redirecting Link (disqualified under CIS 2(e)) has to be tested in a logged-in Associates account. Publish canonical `/dp/ASIN` URLs with your tag instead. |
-| [FLG-010](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-010) | High | No Associates tag in any supplied link → nothing is trackable yet. |
+| [FLG-010](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-010) | High | No Associates tag in any *supplied* link. Update 2026-11-17: the owner's tag `shopnow047c-20` is now on the site's own Special Links (0C4-F-04 — validation in Associates Central still pending); the submitted short links remain untagged. |
 | [FLG-015](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-015) | High | Schedule 1 lists the **United States / amazon.com** only. A non-US operator's eligibility for the US programme is not established by the text read. |
 | [FLG-016](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-016) | High | Automated *analysis* of Amazon product data needs Amazon's prior written approval. This constrains the "AI-powered analysis" part of the brief directly — it is a permission problem, not a technical one. |
 | [FLG-022](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-022) | High | Prices, ratings and review counts cannot be displayed without an approved data path, so they are blank by policy, not by omission. |
