@@ -1505,6 +1505,66 @@ def build_suggestions() -> None:
             f"<li>{e(step)}</li>" for step in rv["how_to_choose"]
         ) + "</ol>"
 
+    # Dated review section (session 73029680, 2026-11-17 late). Rendered from
+    # data/suggestions.json['review_2026_11_17_late'] so the register and the page
+    # cannot drift. Adds only what the morning review does not have: the register
+    # reconciliation, design-prompt refresh proposals, the OPM-sourced seasonal
+    # calendar, and the decision runbook.
+    rv2 = s.get("review_2026_11_17_late")
+    if rv2:
+        body += (
+            f'<div class="callout ok"><p><strong>Review dated {e(rv2["date"])} '
+            f'(session {e(rv2["session"])}).</strong> {e(rv2["note"])}</p></div>'
+        )
+        body += "<h2>What this late review reconciled</h2>" + table(
+            ["Item", "What changed", "Evidence", "Flag"],
+            [[e(x["item"]), e(x["what"]), src_links(x["source"]), flag_links([x["flag"]])]
+             for x in rv2["reconciled"]],
+        )
+        body += (
+            "<h2>Design-prompt refresh — proposals for the 2026-11-16 prompt pack</h2>"
+            '<p class="small">The prompt pack in the <a href="design-brief.html">design brief</a> '
+            '(session 757efebc) predates the five-product register and the five reader layers. '
+            'The lines below are <span class="badge info">Proposals</span> for its next revision — '
+            'they are not applied to data/design-brief.json, and implementing them waits for the '
+            'runbook decisions below (the change request is logged in COORDINATION.md, Part 84).</p>'
+        )
+        for x in rv2["prompt_updates"]:
+            srcs = src_links(x["source"]) if x.get("source") else "&mdash;"
+            body += (
+                f'<div class="suggestion"><h3>{badge(x["id"], "info")} {e(x["replaces"])}</h3>'
+                f'<p><strong>Proposed line.</strong> {e(x["proposal"])}</p>'
+                f'<p><strong>Why.</strong> {e(x["why"])} &middot; <strong>Basis:</strong> {srcs}</p></div>'
+            )
+        body += (
+            "<h2>Seasonal calendar hooks — official dates only, never demand claims</h2>"
+            '<p class="small">Federal-holiday dates read from the U.S. Office of Personnel Management '
+            'schedule (S89, official .gov). A date is a calendar fact; the hook is a proposal for which '
+            'existing guide it could refresh. None of this asserts search demand, popularity or a buying '
+            'season — topic priority still comes from D8&#8217;s query report once it exists.</p>'
+        )
+        body += table(
+            ["Date", "Calendar fact (source)", "Hook (proposal)", "Serves", "Must not claim"],
+            [[f'<strong>{e(x["date"])}</strong>', e(x["fact"]), e(x["hook"]), e(x["serves"]), e(x["must_not_claim"])]
+             for x in rv2["seasonal_calendar"]],
+        )
+        body += (
+            "<h2>The decision runbook — the order that unblocks the rest</h2>"
+            '<p class="small">The open questions (Q1-Q12) and discovery actions (D1-D10) already '
+            'live in the tables below; this runbook adds what they do not have on their own: the '
+            '<em>order</em>, who answers each one, and what each answer unlocks. It is the page&#8217;s '
+            'answer to &ldquo;what has to be addressed before any decision can reasonably be made&rdquo;.</p>'
+        )
+        body += table(
+            ["#", "Decision", "Closes", "Answered by", "Unblocks", "Already in the register", "Still missing"],
+            [[f'<strong>{x["order"]}</strong>', f'<strong>{e(x["decision"])}</strong>', e(x["closes"]),
+              e(x["answered_by"]), e(x["unblocks"]), e(x["have"]), e(x["missing"])]
+             for x in rv2["decision_runbook"]],
+        )
+        body += "<h2>How to read the runbook</h2><ol class=\"findings\">" + "".join(
+            f"<li>{e(step)}</li>" for step in rv2["reading_order"]
+        ) + "</ol>"
+
     body += "<h2>Verified basis</h2>" + '<p class="small">The facts the proposals rest on, re-verified 2026-11-15 and re-checked 2026-11-16 (session record: <a href="sessions/5a56c084/index.html">5a56c084</a>).</p>'
     rows = []
     for v in s["verified_basis"]:
