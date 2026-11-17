@@ -408,13 +408,13 @@
       "id": "M38-F-16",
       "severity": "Low",
       "status": "Open - for review",
-      "issue": "The brief's status labels for S-04…S-25 cite the owner's Zone4 decision log, which is a different repository. Its individual rows were not re-read line by line in this session.",
+      "issue": "The brief's status labels for S-04…S-25 cite the owner's Zone4 decision log, a separate repository that is not an official source. Its individual rows were not re-read line by line in this session.",
       "impact": "The 'Brief says' column is quoted, not verified.",
       "what_we_did": "Kept in a separate column from the measured column on brief-status/index.html.",
       "sources": [
         {
-          "label": "Zone4 decision log (owner's record, not an official source)",
-          "url": "https://kanlerxz87-cyber.github.io/Zone4/docs/decisions.html"
+          "label": "Google Search Central: helpful, people-first content (the standard the brief cites for its rows)",
+          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
         }
       ],
       "claim_not_made": "No claim that the Zone4 statuses are correct."

@@ -1,0 +1,13 @@
+published html pages (excl archive/docs/sessions): 104
+title 104 desc 104 og:image 11 ld+json 11
+no-title [] no-desc []
+product links 1447 not sponsored 0 []
+img srcs: [('../assets/img/capacity.jpg', 1), ('../assets/img/counter.jpg', 1), ('../assets/img/hero-kitchen.jpg', 1)]
+'which one is for you' 1 ['brief-status/index.html']
+'per centimet' 2 ['shop/flagged/index.html', 'brief-status/index.html']
+'per cm' 1 ['brief-status/index.html']
+'cm of counter' 0 []
+'trending' 17 ['content-topics.html', 'dashboard-register.html', 'decision-center.html', 'decision-queue.html', 'suggestions.html', 'dashboard/index.html']
+'Which one is for you' 1 ['brief-status/index.html']
+'counter-space' 9 ['decision-center.html', 'decision-queue.html', 'index.html', 'guides/basket-or-oven-style.html', 'guides/index.html', 'guides/cleanup-and-counter-space.html']
+'counter space' 7 ['design-brief.html', 'index.html', 'guides/index.html', 'guides/cleanup-and-counter-space.html', 'marketing/buying-guide.html', 'site/articles/french-door-26qt.html']
