@@ -7153,3 +7153,5 @@ registers (not from any earlier statement). No line-start conflict marker was ev
 **Not done (each is a flag or decision on the site):** intended ASIN for any of the five links (FLG-S02, DEC-02); Special Link test in an Associates account (FLG-S04, DEC-01); tracking-ID ownership (FLG-S05); outbound click counter and self-hosted endpoint (FLG-S06, DEC-03); price/rating display (FLG-S07); product images (FLG-S08, DEC-05); brand name (FLG-S09, DEC-04); repository overlap (FLG-S10); publishing cadence (DEC-06); RSS feed (none added; no guides published yet).
 
 **Irregularities raised (published on `shop/flagged/`):** FLG-S01…FLG-S10 — see that page for severity, impact, sources and "claim not made".
+
+**PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/135 (`arena/974e366d-zone3` → `main`), opened 2026-11-17. Merge and Pages result to be recorded after the merge.
