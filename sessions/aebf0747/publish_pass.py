@@ -62,6 +62,8 @@ FOOTER_GROUPS = [
     ]),
     ("Governance", [
         ("publication-pass.html", "This pass and flagged for review"),
+        ("measurement/index.html", "Measurement (counter off)"),
+        ("brief-status/index.html", "Brief status"),
         ("executive-summary/index.html", "Executive summary"),
         ("compliance/index.html", "Compliance"),
         ("agent-terms/index.html", "Agent terms"),
