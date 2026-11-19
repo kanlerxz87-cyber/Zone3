@@ -426,8 +426,12 @@
       "status": "Open - decision needed (owner)",
       "issue": "The Zone4 decision log (cited by ID; not an official source) records D-01 as recorded option A: the site's outbound product links 'are published as tagged Special Links - https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20 - in place of the short-link hrefs'. This repository does not do that. Its product links are the supplied short links, unchanged (FLG-003), and the Special Link test is not run.",
       "impact": "Two repositories describe the same links differently. A reader or reviewer who reads the Zone4 log would expect tagged URLs that do not exist here.",
-      "what_we_did": "Kept the supplied short links as published here. Did not replace them and did not append a tag. Logged the conflict; the owner must choose one path.",
+      "what_we_did": "Kept the supplied short links as published here. Did not replace them and did not append a tag. Logged the conflict; the owner must choose one path. The Operating Agreement (Section 1) requires the special tagged link formats; whether the supplied short links meet that is the open question that FLG-003 already records.",
       "sources": [
+        {
+          "label": "Associates Program Operating Agreement, Section 1 (updated October 15, 2025): links “must properly use the special “tagged” link formats we provide” (Special Links)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        },
         {
           "label": "Amazon Associates Program Policies (Special Links, participation requirements)",
           "url": "https://affiliate-program.amazon.com/help/operating/policies"

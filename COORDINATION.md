@@ -8967,7 +8967,7 @@ Full rebuild and gate/browser verification of the merged tree follow in the publ
 
 **Zone4 rows read.** Public repo `kanlerxz87-cyber/Zone4` was shallow-cloned at `main` and `docs/decisions.html` was read: 45 decision headers (D-01…D-45), 12 open, 33 recorded. The brief's cited D-numbers were checked against recorded or open status. Agreement on the brief's status labels for S-04, S-05, S-06, S-09, S-10, S-11, S-13, S-14, S-16, S-17, S-18, S-19, S-20, S-25. Conflicts are the entries listed below. The Zone4 log is a cited owner record, not an official source; no Zone4 claim was adopted as verified.
 
-**Verification performed:** `python3 tools/publish.py` (full chain: 16 builders, 25 checks) → 41 of 41 PASS; a second run left no changes (deterministic). `python3 tools/build_brief_status.py --check` → current, 23 rows. `python3 tools/publish.py --check` → 25 of 25 PASS. The 2 Amazon-host policy pages and Google guidance cited by the flags were **not** re-fetched this session; they remain as registered.
+**Verification performed:** `python3 tools/publish.py` (full chain: 16 builders, 25 checks) → 41 of 41 PASS; a second run left no changes (deterministic). `python3 tools/build_brief_status.py --check` → current, 23 rows. `python3 tools/publish.py --check` → 25 of 25 PASS. Re-fetched this session: the Associates Operating Agreement (header: updated October 15, 2025; Section 1 says links "must properly use the special 'tagged' link formats we provide") and the Associates Program Policies (header: updated April 14, 2026). Both headers are consistent with the register. The Google guidance cited by the flags was not re-fetched.
 
 **Irregularities (flagged; none blocks the merge):**
 
