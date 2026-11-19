@@ -5,6 +5,8 @@
 **Deliverable:** [Zone3 publication front page](../../index.html)  
 **Public URL:** https://kanlerxz87-cyber.github.io/Zone3/
 
+**Published:** PR [#167](https://github.com/kanlerxz87-cyber/Zone3/pull/167) merged at `b0f63f2`; GitHub Pages build `1383153250` reached `built`.
+
 ## What this pass did
 
 The C3 publication page shipped in PR #164 was preserved—including its dated listing cards, four question-shaped guides, decision table, evidence links and C3-F-01 provenance flag. This follow-up keeps the merged product-led reader flow—**observed product listings before the buyer guides**—and makes the reader navigation and shared dashboard directory consistent with that flow. The page title, description and social-preview metadata are shopper-facing and consistent; no unverified product claims were added.
