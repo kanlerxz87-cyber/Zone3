@@ -9150,3 +9150,44 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
 | Nothing implemented | Review-only round: choices stay local and implement nothing; no price, rating, availability, traffic, demand, trend, conversion or revenue claim; intended-ASIN fields blank; FLG-003 unresolved and untouched |
 
 **Session status: B38-T1…T6 done.** Reviewer inputs that would unblock the most: DS-01 (first guide from the slates), DS-02 (imagery route), B38-Q1 (budget — zero-budget is a valid answer), B38-Q2 (accountable publisher name/contact), and the standing owner gates (Search Console, durable host, enrolled-workflow Special Link test).
+
+# Part — session `222cfe13` (2026-11-19) — brief-alignment review and measurement provenance
+
+> Branch fixed by Arena: `arena/222cfe13-zone3`; base at claim: `6eb8c18e` (`main`).
+> This is an append-only claim. It does not take over or edit another session's scope.
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) | Sources / artifacts |
+|---|---|---|---|---|---|
+| `222cfe13` | `arena/222cfe13-zone3` | Review the current site against the supplied brief; correct verified README counts; label the inactive analytics stack as historical; document current state, official-source records, checks and blockers. No changes to the canonical publication register, product data, generated pages, front-page navigation or affiliate destinations. | in progress (release pending) | 2026-11-19 | [Review artifact](sessions/222cfe13/repo-review-2026-11-19.md); [publication register](data/publication.json) |
+
+## Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 222-T1 — Current-brief alignment and reproducible repo review | in progress (release pending) | `222cfe13` | `README.md`, `data/analytics.json`, `assets/track.js`, `tools/analytics_collector.py`, `sessions/222cfe13/**`, this Part only | [Product-link verification](sessions/6b68afc8/verification-2026-11-19.md); [policy verification](sessions/b9008684/verification-2026-11-19.md); [manual official-source links](sessions/222cfe13/repo-review-2026-11-19.md#official-references-for-manual-review) | No account-side Special Link test, Search Console token, or production analytics host. The old `0C4-F-08` row in [the shared flag register](data/flags.json) needs a final-integrator status review; open [PR #160](https://github.com/kanlerxz87-cyber/Zone3/pull/160) includes that shared register, so this session logs a request and does not edit it. |
+
+## Scope guard
+
+The current site and suggestions desk already implement the brief's reader-facing design and decision workflow. This pass is limited to documentation/provenance clarity and a fresh local gate run. It will not claim new traffic or product facts, change supplied links, enable measurement, or edit `data/flags.json`, `data/publication.json`, `index.html`, shared navigation, or generated HTML.
+
+### 222-T1 validation record — 2026-11-19
+
+**Implementation and validation: done; PR/Pages release pending.** This session verified that the reader-facing publication, suggestion/decision desk, disclosure shell, product-intent record, guide feed/sitemap, measurement status page and flagged register already exist on current `main`; it did not duplicate those surfaces or edit the shared publication/index registers.
+
+| Work | Result | Sources / evidence |
+|---|---|---|
+| README consistency | Corrected the front-page guide count from 6 to the register's 8, fixed the adjacent list formatting, and linked the session review. The initial baseline had 11 prompt blocks; PR #182 added block 12 and the later B38 batch in PR #190 added block 13, so the latest rebase retained main's current 13-block count. | [README](README.md); [publication register](data/publication.json); [review record](sessions/222cfe13/repo-review-2026-11-19.md) |
+| Analytics provenance | Marked `data/analytics.json`, `assets/track.js` and `tools/analytics_collector.py` as superseded/legacy only. Kept the old schema and test behavior; the active `data/shop/measurement.json` → `assets/measure.js` → `tools/analytics_endpoint.py` stack remains selected and production-disabled. No event or conversion is claimed. | [legacy schema](data/analytics.json); [legacy client](assets/track.js); [legacy collector](tools/analytics_collector.py); [current configuration](data/shop/measurement.json); [current runtime](assets/measure.js); [current collector](tools/analytics_endpoint.py) |
+| Review deliverable | `sessions/222cfe13/repo-review-2026-11-19.md` maps the brief to current pages, links dated official-source records, states the current product/traffic/analytics limits, gives the next decision path, and lists inherited provenance advisories. It reflects the `c8533cd` register state: 8 guides, 6 paths, 26 proposals, 36 questions and a 13-block prompt. | [Review document](sessions/222cfe13/repo-review-2026-11-19.md); [current publication register](data/publication.json); [design brief](DESIGN_PROMPT.md) |
+| Baseline/rebase | Claim began on `6eb8c18` and was first rebased/pushed on `2a854c1` after PRs #181/#184. Main then advanced to `b5454e9` through #182/#183/#185/#186 and to `c8533cd` through #187–#191. Rebased onto `c8533cd`, preserving the complete upstream `COORDINATION.md` tail and this session's claim across the append/append conflict. The earlier README conflict retained the 12-block value over this branch's 11-block snapshot; on the latest rebase the current upstream 13-block value flowed through, while this branch retained its corrected 8-guide count, review link and list formatting. No upstream text or claim was discarded; historical marker text in older upstream records was preserved verbatim, and no active Git conflict remains. | [PR #181](https://github.com/kanlerxz87-cyber/Zone3/pull/181); [PR #182](https://github.com/kanlerxz87-cyber/Zone3/pull/182); [PR #190](https://github.com/kanlerxz87-cyber/Zone3/pull/190); [current main commit `c8533cd`](https://github.com/kanlerxz87-cyber/Zone3/commit/c8533cd61ade505638fbf4f7866312b838b20eb7) |
+| Verification | `python3 tools/publish.py`: **41 commands, 0 failures**; JSON parse, `node --check assets/track.js`, `python3 -m py_compile tools/analytics_collector.py`, `scripts/check_all_links.py`: **207 HTML files / 293 external URLs / 0 errors**; `tools/verify_site.py`: **161 pages / 2,620 rows**, with **218 uncited historical rows** still reported and **577 inherited, non-blocking provenance advisories**; `link_report.py --strict`: 232 rows, no dangling source/flag references or uncited sources; Markdown link/source audit: passed; `git diff --check` clean. | [full release/check chain](tools/publish.py); [external-link check](scripts/check_all_links.py); [site verifier](tools/verify_site.py); [strict link report](tools/link_report.py); [sitemap check](scripts/build_sitemap.py); [feed check](tools/build_feed.py) |
+| External verification scope | No official external page was freshly fetched in this pass. Product and policy statements point to the same-day dated records; this pass did not upgrade their evidence or claim a new fact-check. | [product-link verification](sessions/6b68afc8/verification-2026-11-19.md); [policy verification](sessions/b9008684/verification-2026-11-19.md); [official-source URLs](sessions/222cfe13/repo-review-2026-11-19.md#official-references-for-manual-review) |
+| Not completed / not possible from repository access | Associates enrollment and Special Link test/report, Search Console ownership token, owner-controlled production analytics host, product-image permissions, and named human review remain open. `FLG-003` is unresolved; the supplied short links are not called invalid. | [flag register](data/flags.json); [product-intent record](data/shop/products.json); [measurement configuration](data/shop/measurement.json); [campaign ledger](data/shop/campaign-ledger.json); [FLG-003](flagged.html#FLG-003) |
+
+### 222-T1 change request — shared flag register not edited
+
+`CH-222-T1-01` asks the next final integrator to reconcile `data/flags.json` flag `0C4-F-08`: its text says two stacks await an owner choice, while the current measurement configuration and templates select/inject one canonical runtime and retain `track.js` only as historical code. The old endpoint is still unhosted (`0C4-F-05` remains valid). This session did not edit `data/flags.json` because open PR #160 includes that shared file in its scope; the request is recorded here rather than resolved by editing another session's register.
+
+**Publish record:** pending the current-branch PR and post-merge Pages/check confirmation.

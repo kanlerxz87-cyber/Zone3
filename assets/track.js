@@ -1,20 +1,14 @@
-/* Zone3 measurement layer — the five defined events, privacy-preserving.
+/* Legacy Zone3 measurement runtime — retained for provenance and self-tests only.
  *
- * Schema of record: data/analytics.json (0C4-T4, session 0c4c4cb6, 2026-11-17).
- * Reference endpoint: tools/analytics_collector.py.
+ * Historical schema: data/analytics.json (session 0c4c4cb6, 2026-11-17).
+ * Historical collector: tools/analytics_collector.py. Neither is the current stack.
+ * Current canonical runtime/config/collector: assets/measure.js,
+ * assets/measure-config.js, data/shop/measurement.json and
+ * tools/analytics_endpoint.py. Current page templates do not inject this file.
  *
- * What this file does:
- *   page_view            once per page load
- *   guide_view           once, when an article/guide scrolls past halfway
- *   product_click        on any outbound Amazon product link
- *   special_link_click   on a product link whose href carries tag=
- *   nav_click            on internal navigation links
- *
- * What it deliberately does NOT do: no cookies, no storage, no identifiers,
- * no query strings, no full referrer paths. Do Not Track / Global Privacy
- * Control / Save-Data switch it off completely. While
- * window.ZONE3_ANALYTICS_ENDPOINT is null (the shipped state) nothing is
- * sent at all — the site works exactly as before, minus measurement.
+ * Do not configure window.ZONE3_ANALYTICS_ENDPOINT or deploy this client together
+ * with the canonical runtime; the event names and endpoint contracts differ and
+ * enabling both could double-count. This file remains testable as historical code.
  */
 (function () {
   "use strict";
