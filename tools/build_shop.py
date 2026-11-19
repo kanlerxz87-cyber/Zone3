@@ -10,6 +10,16 @@ Only data/shop/*.json is read as content. Every page carries the Associates disc
 amazon.com or link.amazon is marked rel="sponsored". Table rows for products, findings,
 sources and flags must each contain an https source link. No price, star rating or review
 figure is written anywhere in the section.
+
+Buy buttons (session 4b0e3c7e, 2026-11-19). A product's action link is its observed
+amazon.com/dp/<ASIN> listing, carrying the owner-supplied Associates tag, so Program Policies
+Participation Requirements 2(b) ("you must include your Associates ID or "tag" ... as a
+parameter in the URL of each link you place on your Site to an Amazon Site", read live
+2026-11-19) is met and 6(v)/6(w) (no Redirecting Links, no unclear shortening) are respected.
+The submitted link.amazon short links are kept as the observed record and are not called
+invalid (FLG-003); they are no longer the destination of a buy button (FLG-S11).
+tools/attach_associates_tag.py applies the tag to the rest of the built tree; this module
+builds it into the links it generates so a bare generator run is compliant on its own.
 """
 from __future__ import annotations
 
@@ -31,6 +41,8 @@ SOURCES = json.loads((DATA / "sources.json").read_text(encoding="utf-8"))
 FLAGS = json.loads((DATA / "flags.json").read_text(encoding="utf-8"))
 DECISIONS = json.loads((DATA / "decisions.json").read_text(encoding="utf-8"))
 LEDGER = json.loads((DATA / "campaign-ledger.json").read_text(encoding="utf-8"))
+LINKREG = json.loads((ROOT / "data" / "links" / "associates-links.json").read_text(encoding="utf-8"))
+TAG = LINKREG["tag"]["value"]
 
 DISCLOSURE = CFG["associates_disclosure"]
 ORIGIN = CFG["site_origin"].rstrip("/")
@@ -154,24 +166,43 @@ def render(path: str, rec: dict) -> str:
 
 # ---------- link helpers -------------------------------------------------
 
-TAG = CFG["associates_tracking_id"]
+PRODUCT_HREF_RE = re.compile(r"/(?:dp|gp/product)/([A-Za-z0-9]{9,10})(?:[/?#]|$)")
 
 
-def with_tag(url: str) -> str:
-    """Attach the Associates tag at render time (5D4-F01).
+def apply_tag(url: str) -> str:
+    """Put the owner-supplied Associates tag on a product-detail link (Program Policies 2(b)).
 
-    tools/attach_tag.py runs the same rewrite as a post-pass over every page, so a page
-    that escapes this helper is still caught and the build stays deterministic.
+    Only /dp/ and /gp/product/ links with a 10-character ASIN are tagged. A 9-character
+    token is a submission token, not an ASIN, and those links are the page-not-found
+    evidence; a link that already carries a tag is left alone.
     """
-    if any(h in url for h in ("link.amazon/", "/dp/", "/gp/product/")) and "tag=" not in url:
-        return url + ("&" if "?" in url else "?") + "tag=" + TAG
-    return url
+    m = PRODUCT_HREF_RE.search(url)
+    if not m or len(m.group(1)) != 10:
+        return url
+    if re.search(r"[?&]tag=", url):
+        return url
+    return f"{url}&tag={TAG}" if "?" in url else f"{url}?tag={TAG}"
 
 
 def sponsored(url: str, text: str, extra_cls: str = "") -> str:
     cls = f' class="{extra_cls}"' if extra_cls else ""
-    return (f'<a{cls} href="{e(with_tag(url))}" rel="sponsored noopener" target="_blank">'
+    return (f'<a{cls} href="{e(apply_tag(url))}" rel="sponsored noopener" target="_blank">'
             f'{e(text)}</a>')
+
+
+def tagged(url: str) -> str:
+    """Product URL with the owner-supplied Associates tag as a URL parameter."""
+    if "?" in url:
+        return f"{url}&tag={TAG}"
+    return f"{url}?tag={TAG}"
+
+
+def product_action(p: dict, text: str, extra_cls: str = "", target: bool = False) -> str:
+    """The link a reader acts on: the observed product page, tagged, sponsored, and labelled."""
+    cls = f' class="{extra_cls}"' if extra_cls else ""
+    tgt = ' target="_blank"' if target else ""
+    return (f'<a{cls} href="{e(tagged(p["observed_redirect_listing_url"]))}" '
+            f'rel="sponsored noopener"{tgt}>{e(text)}</a>')
 
 
 def plain(url: str, text: str) -> str:
@@ -222,7 +253,8 @@ def build_pages() -> None:
   <p class="kicker">{e(CAT_TITLE[p["category"]])}</p>
   <h3>{e(p["observed_title"])}</h3>
   <p class="meta">Observed ASIN <code>{e(p["observed_redirect_asin"])}</code> · checked {e(CHECKED_HUMAN)}</p>
-  <p class="card-cta">{sponsored(p["submitted_link"], "View on Amazon", "btn")} <span class="sponsored-tag">Sponsored</span></p>
+  <p class="card-cta">{product_action(p, "View on Amazon", "btn")} <span class="sponsored-tag">Sponsored</span></p>
+  <p class="meta small">Submitted as <a href="{e(p["submitted_link"])}" rel="sponsored noopener">{e(product_short_token(p))}</a> · {sponsored(p["observed_redirect_listing_url"], "official listing")} · ASIN <code>{e(p["observed_redirect_asin"])}</code></p>
 </article>""")
     cat_tiles = []
     for c in CFG["categories"]:
@@ -235,7 +267,7 @@ def build_pages() -> None:
     landing = f"""<section class="hero">
   <p class="kicker">Front page · {n_products} listings · {len(CFG["categories"])} categories</p>
   <h1>Air fryers and meat thermometers, each linked to its Amazon listing</h1>
-  <p class="lede">Every product below opens its Amazon page through the submitted link. The title and ASIN shown are what that page reported when we checked it on {e(CHECKED_HUMAN)}. Anything we could not confirm is left blank and marked.</p>
+  <p class="lede">Every product below opens its Amazon page directly, with our Associates tag in the link. The title and ASIN shown are what that page reported when we checked it on {e(CHECKED_HUMAN)}. The link you were given is shown underneath as the submitted record. Anything we could not confirm is left blank and marked.</p>
 </section>
 <section class="block" aria-labelledby="products-h">
   <h2 id="products-h">The products</h2>
@@ -269,7 +301,7 @@ def build_pages() -> None:
         rows = []
         for p in [x for x in PRODUCTS["products"] if x["category"] == c["slug"]]:
             rows.append(f"""<tr>
-  <td>{sponsored(p["submitted_link"], p["observed_title"])}<br><span class="muted small">{e(p["id"])} · submitted {e(product_short_token(p))}</span></td>
+  <td>{product_action(p, p["observed_title"], target=True)}<br><span class="muted small">{e(p["id"])} · submitted <a href="{e(p["submitted_link"])}" rel="sponsored noopener">{e(product_short_token(p))}</a></span></td>
   <td>{sponsored(p["observed_redirect_listing_url"], p["observed_redirect_asin"])}</td>
   <td>{unverified_cell()}</td>
   <td>{sponsored(p["source_url"], "Amazon listing")}</td>
@@ -349,7 +381,8 @@ def build_pages() -> None:
         ("F7", "No price, star rating or review count is shown anywhere in this section.", "Design decision. Participation Requirement 2(b) is cited from earlier records and was not re-read on this date", "FLG-S07", "https://affiliate-program.amazon.com/help/operating/policies"),
         ("F8", "Commission Income Statement Sections 2(e) and 2(g) disqualify purchases referred by redirecting links or links not properly formatted.", "Verified (chunk 1 of 11 read)", "SH-S02", "https://affiliate-program.amazon.com/help/operating/policies"),
         ("F9", "The Special Link test (one link per product in the Associates workflow) has not been run.", "Not done (no account access)", "FLG-S04", "https://affiliate-program.amazon.com/help/operating/policies"),
-        ("F10", "The tracking ID shopnow047c-20 is recorded as user-selected and is not embedded in any link.", "Recorded; ownership unverified", "FLG-S05", "https://affiliate-program.amazon.com/help/operating/agreement"),
+        ("F10", f"The tracking ID shopnow047c-20 is carried as ?tag= on every product-detail link; buy buttons go to the Amazon product page directly, not through the submitted short link.", "Built; checked by the build gate and tools/attach_associates_tag.py --check. Account ownership still unverified (FLG-S05); short-link status still unresolved (FLG-003, FLG-S11)", "FLG-S05", "https://affiliate-program.amazon.com/help/operating/policies"),
+        ("F14", "Research citations to Amazon browse, search, Best Sellers and help pages are not tagged, because they are citations rather than product promotions.", "Recorded boundary; owner may change it (FLG-S12)", "FLG-S12", "https://affiliate-program.amazon.com/help/operating/policies"),
         ("F11", "No click counter or self-hosted analytics endpoint is live. The host logs visitor IP addresses for security, so 'privacy-preserving' cannot be claimed for the host itself.", "Not built (decision needed)", "SH-S16", "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"),
         ("F12", "The campaign ledger is empty. No authorized first-party report has been obtained.", "Done (empty by design)", "SH-S02", "https://affiliate-program.amazon.com/help/operating/policies"),
         ("F13", "No product photography is used.", "Decision open", "FLG-S08", "https://affiliate-program.amazon.com/help/operating/agreement"),
@@ -503,7 +536,7 @@ def build_pages() -> None:
   <h2>What is not verified or not done</h2>
   <ul>
     <li>Intended ASIN: {n_intended} of {n_products} confirmed. The rest are blank.</li>
-    <li>Special Link test: not run. No account access. The tracking ID is not embedded in any link.</li>
+    <li>Special Link test: not run. No account access. The tracking ID is embedded in every product-detail link, but no account or tracking report has confirmed it.</li>
     <li>Click counter and self-hosted analytics endpoint: not built. GitHub Pages cannot host a collection endpoint, and the five events were not defined in the brief.</li>
     <li>Prices, ratings and review counts: not shown.</li>
     <li>Campaign ledger: empty. No conversion or revenue figure is shown, and none is forecast.</li>
@@ -791,17 +824,13 @@ def check_all(paths: list[str]) -> list[str]:
                 problems.append(f"{path}: Amazon link without noopener: {href}")
             if href.startswith("http") and host not in OFFICIAL_HOSTS:
                 problems.append(f"{path}: outbound link to non-official host: {href}")
-            # 5D4-F01 (2026-11-19): the earlier rule refused any tag= in a link, which left every
-            # Amazon destination unattributed. Program Policies Participation Requirements 2(b)
-            # requires the Associates tag on each link to an Amazon Site, so the rule is inverted:
-            # an Amazon product link must carry the selected tracking ID, and a foreign tag is a
-            # conflict that must be raised rather than silently shipped.
-            if host in SPONSORED_HOSTS and ("/dp/" in href or "/gp/product/" in href or "link.amazon/" in href):
-                tag_params = re.findall(r"[?&](?:amp;)?tag=([^&\"]+)", href)
-                if not tag_params:
-                    problems.append(f"{path}: Amazon product link without the Associates tag: {href}")
-                elif any(t != CFG["associates_tracking_id"] for t in tag_params):
-                    problems.append(f"{path}: Amazon product link carries a foreign tag: {href}")
+            if re.search(r"/(?:dp|gp/product)/([A-Za-z0-9]{9,10})(?:[/?#]|$)", href):
+                m = re.search(r"/(?:dp|gp/product)/([A-Za-z0-9]{9,10})(?:[/?#]|$)", href)
+                token = m.group(1)
+                if len(token) == 10 and f"tag={TAG}" not in href:
+                    problems.append(f"{path}: product link missing tag={TAG} (Participation Requirements 2(b)): {href}")
+                if len(token) != 10 and f"tag={TAG}" in href:
+                    problems.append(f"{path}: 9-character token link must not carry the Associates tag: {href}")
             # internal links resolve
             if not href.startswith(("http", "mailto:", "#")):
                 target = (SHOP / path).parent / href.split("#")[0]

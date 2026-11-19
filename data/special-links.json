@@ -1,7 +1,7 @@
 {
   "retrieved": "2026-11-17",
   "retrieved_by": "Session 0c4c4cb6 (branch arena/0c4c4cb6-zone3), task 0C4-T3.",
-  "note": "Special Link registry built from the owner-supplied Associates tag in the 2026-11-17 brief. A Special Link here is a direct amazon.com product URL carrying the tag parameter, marked rel=sponsored wherever it renders. The submitted link.amazon short links are NOT modified and remain evidence links (their compliance status is unresolved: FLG-003). Nothing in this file is validated against Associates Central: this session has no login, so destination-and-tracking validation per link is the owner's step (0C4-F-04). Observed redirect destinations are the basis of these links because owner intent is still unconfirmed (FLG-002, 0C4-F-02); the intended-ASIN record on data/products.json stays separate and blank.",
+  "note": "Special Link registry built from the owner-supplied Associates tag. Update 2026-11-19 (session 4b0e3c7e): every product-detail link on the site now carries this tag (tools/attach_associates_tag.py), and the five public buy buttons point at the observed amazon.com/dp/<ASIN> product pages with the tag in the URL, replacing the supplied link.amazon short links as the action link (Program Policies 2(b), 6(v), 6(w); FLG-S11). The submitted short links are unchanged and remain the observed record; their compliance status is still unresolved and they are NOT called invalid (FLG-003). Nothing here is validated against Associates Central: no login was used, so destination-and-tracking validation per link is still the owner's step (0C4-F-04). Observed redirect destinations remain the basis of these links because owner intent is still unconfirmed (FLG-002, 0C4-F-02); the intended-ASIN record stays separate and blank.",
   "tag": {
     "value": "shopnow047c-20",
     "supplied": "2026-11-17",
@@ -16,7 +16,8 @@
     "rule_source": "S02 (Program Policies: Associates ID / tag parameter required on every link to an Amazon Site)",
     "built": "2026-11-17",
     "built_by": "session 0c4c4cb6, from the observed destination ASINs in data/products.json (redirect_observed.page_id)",
-    "validation": "pending — one link per product must be opened in the enrolled Associates workflow and its destination and tracking report confirmed before scaling (owner step; 0C4-F-04)"
+    "validation": "pending - link format now meets Program Policies 2(b) (tag present in the URL of every link to an Amazon product page) and no longer depends on a redirect token, but one link per product must still be opened in the enrolled Associates workflow and its destination and tracking report confirmed before scaling (owner step; 0C4-F-04, FLG-S05).",
+    "applied_to": "every /dp/ or /gp/product/ link with a 10-character ASIN, site-wide, by tools/attach_associates_tag.py (2026-11-19)"
   },
   "links": [
     {
@@ -27,7 +28,7 @@
       "url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
       "built": "2026-11-17",
       "rel": "sponsored",
-      "validation_status": "pending",
+      "validation_status": "format meets 2(b); account/tracking validation pending (FLG-S05)",
       "sources": [
         "S02",
         "S11",
@@ -42,7 +43,7 @@
       "url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
       "built": "2026-11-17",
       "rel": "sponsored",
-      "validation_status": "pending",
+      "validation_status": "format meets 2(b); account/tracking validation pending (FLG-S05)",
       "sources": [
         "S02",
         "S12",
@@ -57,7 +58,7 @@
       "url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
       "built": "2026-11-17",
       "rel": "sponsored",
-      "validation_status": "pending",
+      "validation_status": "format meets 2(b); account/tracking validation pending (FLG-S05)",
       "sources": [
         "S02",
         "S13",
@@ -72,7 +73,7 @@
       "url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
       "built": "2026-11-17",
       "rel": "sponsored",
-      "validation_status": "pending",
+      "validation_status": "format meets 2(b); account/tracking validation pending (FLG-S05)",
       "sources": [
         "S02",
         "S70",
@@ -87,7 +88,7 @@
       "url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
       "built": "2026-11-17",
       "rel": "sponsored",
-      "validation_status": "pending",
+      "validation_status": "format meets 2(b); account/tracking validation pending (FLG-S05)",
       "sources": [
         "S02",
         "S73",

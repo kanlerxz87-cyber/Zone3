@@ -108,6 +108,12 @@ a.p26-product-cta{display:flex;align-items:center;justify-content:space-between;
 .p26-card-source details p{font-size:10px;line-height:1.8;padding:12px 0 0;text-align:left;max-width:310px;word-break:normal}
 .p26-card-source code{font-size:9px;overflow-wrap:anywhere}
 .p26-fine{font-size:10px!important;line-height:1.8!important;color:var(--p26-muted)!important}
+.p26-dims{font-size:11px!important;line-height:1.6!important;color:var(--p26-body)!important;margin:0 0 12px!important;padding-top:10px;border-top:1px solid var(--p26-line)}
+.p26-dims strong{font-weight:600;color:var(--p26-ink);white-space:nowrap}
+.p26-dims span{display:block;font-size:10px!important;color:var(--p26-muted)!important;margin-top:4px}
+.p26-dims-empty{color:var(--p26-muted)!important;font-style:italic}
+.p26-unknown{color:var(--p26-muted);font-size:10px;font-style:italic}
+
 .p26-product-footnote{max-width:880px;margin:22px 0 0!important}.p26-fine a{text-underline-offset:3px}
 .p26-start{background:#e8eddf;padding:57px 0 61px;overflow:hidden}
 .p26-start-grid{display:grid;grid-template-columns:1fr 1.23fr;gap:100px;align-items:center}

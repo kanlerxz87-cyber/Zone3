@@ -93,6 +93,15 @@ MARK_PRODUCT_HREF = re.compile(
 MARK_ANCHOR_RE = re.compile(r'<a\b[^>]*>', re.I)
 
 
+def _tag_pass(html: str) -> str:
+    """4B0-T2: the release chain also tags product links; mirror it so --check is exact."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("attach_tag_cba", ROOT / "tools" / "attach_associates_tag.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.apply_to_text(html)
+
+
 def mark_sponsored(html: str) -> str:
     """Add rel=sponsored AND the Associates tag to every product anchor (5D4-F01).
 
@@ -473,7 +482,7 @@ def main() -> int:
         # ded63349: compare like with like — the write applies mark_sponsored, so the
         # expected text must be marked before the comparison (otherwise --check always
         # reports a stale region on pages whose regions contain product links).
-        want = mark_sponsored(patch(path, start, end, new, back))
+        want = _tag_pass(mark_sponsored(patch(path, start, end, new, back)))
         have = path.read_text(encoding="utf-8")
         if want != have:
             changed.append(path.relative_to(ROOT).as_posix())
@@ -488,7 +497,7 @@ def main() -> int:
         if FD_START in raw:
             # ded63349: mark before compare — the file on disk is post-sponsored, so the
             # expected text must be too (otherwise --check always reports a stale region).
-            want = mark_sponsored(patch_text(raw, FD_START, FD_END, band, include_end=True))
+            want = _tag_pass(mark_sponsored(patch_text(raw, FD_START, FD_END, band, include_end=True)))
         elif "<main>" in raw:
             want = raw.replace("<main>", "<main>\n" + band, 1)
         else:
@@ -524,7 +533,7 @@ def main() -> int:
         raw = fl.read_text(encoding="utf-8")
         start = '<a id="cba81fa5-flagged"' if '<a id="cba81fa5-flagged"' in raw else None
         if start:
-            want = mark_sponsored(patch_text(raw, start, "</main>", flagged_block()))
+            want = _tag_pass(mark_sponsored(patch_text(raw, start, "</main>", flagged_block())))
         elif "</main>" in raw and "Raised on 2026-11-16 by the second-source desk" not in raw:
             want = raw.replace("</main>", sponsored(flagged_block()) + "</main>", 1)
         else:

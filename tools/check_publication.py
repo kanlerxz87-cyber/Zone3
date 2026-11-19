@@ -21,8 +21,14 @@ import publication_chrome as chrome
 import build_publication
 
 OFFICIAL = {'www.amazon.com', 'amazon.com', 'affiliate-program.amazon.com', 'www.ftc.gov',
-            'developers.google.com', 'docs.github.com', 'www.foodsafety.gov', 'github.com'}
+            'developers.google.com', 'docs.github.com', 'www.foodsafety.gov', 'www.fsis.usda.gov', 'github.com'}
 SKIP = {'.git', 'archive', 'docs', 'sessions', 'node_modules', '.preview', '.local', '__pycache__'}
+
+# Current-publication pages that document the house-style rules rather than sell to a reader:
+# they quote the banned hype/trend register as the rule they enforce, so the phrase-pattern
+# rules are relaxed on them (structural rules still apply in full). Mirrors the RELAXED set in
+# tools/cba81fa5_lint.py for the site/ archive.
+PUB_RELAXED = {'suggestions/index.html'}
 
 
 class Page(HTMLParser):
@@ -247,6 +253,29 @@ def check() -> list[str]:
         text = ' '.join(parsed.text)
         for pattern in (r'\$\s*\d', r'\d(?:\.\d)?\s*(?:stars|out of 5)', r'\b\d[\d,]*\s+(?:reviews|ratings)\b', r'\bwe tested\b', r'\bin our test kitchen\b'):
             need(not re.search(pattern, text, re.I), f'{rel}: prohibited unsupported figure/claim ({pattern})')
+        # House-style anti-slop: the banned hype/trend register published at site/style-guide.html
+        # (enforced on the site/ archive by tools/cba81fa5_lint.py) is now enforced on the live
+        # publication too. A phrase inside quotation marks is a mention — the page is discussing
+        # the construction, not asserting it about a product — and is exempt, the same rule the
+        # archive lint uses. The decision-desk page quotes the banned register as the rule it
+        # enforces, so it is relaxed for the phrase rules (the structural rules below still apply
+        # to it in full), mirroring the archive lint's RELAXED set.
+        def _mentioned(t: str, i: int, j: int) -> bool:
+            before, after = t[max(0, i - 1):i], t[j:j + 1]
+            return before in ('"', "'", '\u201c', '\u201d') and after in ('"', "'", '\u201c', '\u201d')
+
+        if rel not in PUB_RELAXED:
+            for rx, name, why in (
+                (re.compile(r'\b(?:game[- ]changer?|game changer|elevate\w*|seamless\w*|unlock\w*|revolutioni[sz]\w*|must-have|must have|delve\w*|unparalleled|cutting-edge|state-of-the-art|say goodbye to|look no further|in today.s (?:busy|fast-paced|world)|take your \w+ to the next level|indulge in|curated selection|a testament to|obsessed|top-rated|we loved)\b', re.I),
+                 'STYLE:hype', 'filler register from the published house style; replaces information, does not provide it'),
+                (re.compile(r'\b(?:trending|viral|flying off the shelves|hot item|in demand|best[- ]selling (?:machine|product|air fryer))\b|(?:\b#\s?\d+\s+(?:bestseller|best seller))\b', re.I),
+                 'STYLE:unsupported-trend', 'a trend or demand claim needs a dated official surface, cited as a snapshot'),
+            ):
+                for m in rx.finditer(text):
+                    if _mentioned(text, m.start(), m.end()):
+                        continue
+                    snippet = text[max(0, m.start() - 70):m.end() + 70].strip()
+                    need(False, f'{rel}: {name} ({why}) -> {snippet!r}')
         for row in parsed.rows:
             row_count += 1
             need(any(urlsplit(h).scheme == 'https' and urlsplit(h).hostname in OFFICIAL for h in row), f'{rel}: each current table row needs an official HTTPS source')

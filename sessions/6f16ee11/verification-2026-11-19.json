@@ -1,0 +1,69 @@
+{
+  "session": "6f16ee11",
+  "date": "2026-11-19",
+  "branch": "arena/6f16ee11-zone3",
+  "base": "0273fb400165d231261fd675431ce88f9fe54769",
+  "method": "live fetch_page against the official host for each load-bearing claim; no product fact beyond listing wording re-asserted",
+  "fetches": [
+    {
+      "id": "V1",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "read": "Operating Agreement, chunks 0-1. Header 'Updated: October 15, 2025'. §1 Special Links = tagged link formats. §4 no traffic/income representation. §5 'clearly and prominently' + required sentence. §6 §5 violation = material breach.",
+      "confirms_register": ["amazon-agreement", "S95"]
+    },
+    {
+      "id": "V2",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "read": "Program Policies, chunks 0-5. Header 'Updated: April 14, 2026'. PR 1(f)/1(g); 2(a) Special Links use assigned Associates ID; 2(b) tag as URL parameter, no bookmarking inducement, sub-tag not tied to end user, original content, promotion removal, no misleading claims, price via Amazon-served link or Creators/PA API; 6(t) no reviews/ratings without API; 6(v) no obscuring Special Link URL via Redirecting Links; 6(w) no link-shortening that obscures Amazon destination.",
+      "confirms_register": ["amazon-policies"]
+    },
+    {
+      "id": "V3",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "read": "FTC Disclosures 101. Disclosure 'hard to miss', placed with the endorsement; no experience talk about an untried product; dated November 2019.",
+      "confirms_register": ["ftc"]
+    },
+    {
+      "id": "V4",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "read": "Google qualify outbound links. rel=\"sponsored\" marks advertisements/paid placements; marked links generally not followed; last updated 2025-12-10.",
+      "confirms_register": ["google-links"]
+    },
+    {
+      "id": "V5",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+      "read": "GitHub Pages limits. Not for online business / e-commerce / commercial-transaction sites; 1 GB published site; soft 100 GB/month; soft 10 builds/hour.",
+      "confirms_register": ["github-limits"]
+    }
+  ],
+  "claims": [
+    {"claim": "disclosure sentence + clearly and prominently", "source": "amazon-agreement", "result": "verified"},
+    {"claim": "section 5 violation is a material breach", "source": "amazon-agreement", "result": "verified"},
+    {"claim": "no traffic or income representation", "source": "amazon-agreement", "result": "verified"},
+    {"claim": "special links use the assigned associates id", "source": "amazon-policies", "result": "verified"},
+    {"claim": "each amazon link carries the tag as a url parameter", "source": "amazon-policies", "result": "verified"},
+    {"claim": "no amazon trademark in domain/tag/username", "source": "amazon-policies", "result": "verified"},
+    {"claim": "no reviews/ratings without creators/pa api", "source": "amazon-policies", "result": "verified"},
+    {"claim": "no obscuring special link url via redirecting links", "source": "amazon-policies", "result": "verified"},
+    {"claim": "ftc disclosure hard to miss, with endorsement, no untried experience", "source": "ftc", "result": "verified"},
+    {"claim": "paid/product links marked rel=sponsored", "source": "google-links", "result": "verified"},
+    {"claim": "github pages is not a commercial hosting surface", "source": "github-limits", "result": "verified"}
+  ],
+  "irregularities": [
+    {
+      "id": "IRR-01",
+      "severity": "high",
+      "kind": "compliance",
+      "detail": "Live product links render without the required tag= URL parameter (Policies 2(b)). Cross-scope: PR #192 (session 5d460e79) owns the fix via tools/attach_tag.py. This session independently confirms the clause and logs a coordination note; does not edit the tagging task. FLG-003 stays unresolved.",
+      "blocks": "none for this session; revenue-adjacent statements remain owner-gated"
+    },
+    {
+      "id": "IRR-02",
+      "severity": "medium",
+      "kind": "machinery",
+      "detail": "The published anti-slop lint (tools/cba81fa5_lint.py) scanned only the site/ archive; the live publication was not scanned for banned hype/trend phrases. Two genuine hits on about.html ('must-have list', 'trending status') fixed in tools/build_publication.py; HYPE+TREND scan added to tools/check_publication.py with the use/mention distinction.",
+      "blocks": "none; fixed this session"
+    }
+  ],
+  "not_claimed": "No price, rating, review count, availability, traffic, demand, trend, conversion or revenue value. Intended ASINs remain blank. FLG-003 unresolved."
+}

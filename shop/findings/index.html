@@ -68,8 +68,12 @@
   <td><a href="https://affiliate-program.amazon.com/help/operating/policies">FLG-S04</a></td>
 </tr>
 <tr>
-  <td>F10</td><td>The tracking ID shopnow047c-20 is recorded as user-selected and is not embedded in any link.</td><td>Recorded; ownership unverified</td>
-  <td><a href="https://affiliate-program.amazon.com/help/operating/agreement">FLG-S05</a></td>
+  <td>F10</td><td>The tracking ID shopnow047c-20 is carried as ?tag= on every product-detail link; buy buttons go to the Amazon product page directly, not through the submitted short link.</td><td>Built; checked by the build gate and tools/attach_associates_tag.py --check. Account ownership still unverified (FLG-S05); short-link status still unresolved (FLG-003, FLG-S11)</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/policies">FLG-S05</a></td>
+</tr>
+<tr>
+  <td>F14</td><td>Research citations to Amazon browse, search, Best Sellers and help pages are not tagged, because they are citations rather than product promotions.</td><td>Recorded boundary; owner may change it (FLG-S12)</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/policies">FLG-S12</a></td>
 </tr>
 <tr>
   <td>F11</td><td>No click counter or self-hosted analytics endpoint is live. The host logs visitor IP addresses for security, so &#x27;privacy-preserving&#x27; cannot be claimed for the host itself.</td><td>Not built (decision needed)</td>

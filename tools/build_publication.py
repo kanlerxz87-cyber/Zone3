@@ -25,6 +25,7 @@ DATA = json.loads((ROOT / 'data/publication.json').read_text(encoding='utf-8'))
 PRODUCTS = {p['id']: p for p in DATA['products']}
 GUIDES = {g['slug']: g for g in DATA['guides']}
 SOURCES = {s['id']: s for s in DATA['sources']}
+QUESTIONS = {q['id'] for q in DATA['questions']}
 REVERIFIED = DATA['meta']['reverified']
 esc = chrome.esc
 icon = chrome.icon
@@ -136,6 +137,21 @@ def guide_art(kind: str) -> str:
     return f'<div class="p26-guide-art p26-art-{esc(kind)}"><svg viewBox="0 0 320 220" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{artwork[kind]}</svg><span>THE ZONE3 FIELD GUIDE</span></div>'
 
 
+def dimension_note(p: dict) -> str:
+    """The exterior size the listing itself prints, with its read date.
+
+    This exists because the guide used to say none of the listing titles gave a dimension, which
+    stopped being true once the detail table was read. Only the published value is shown: no
+    conversion to usable space, no derived "fits your counter" verdict.
+    """
+    ld = p.get('listing_dimensions') or {}
+    if not ld.get('as_listed'):
+        return (f'<p class="p26-dims p26-dims-empty">Exterior size: not published in this listing’s '
+                f'detail table. <a href="{esc(ld.get("source_url", p["observed_listing_url"]))}" rel="sponsored noopener">Check the listing</a></p>')
+    return (f'<p class="p26-dims">Exterior size as listed: <strong>{esc(ld["as_listed"])}</strong> '
+            f'<span>· Capacity as listed: {esc(ld["capacity_as_listed"])} · read {human_date(ld["observed_on"])}</span></p>')
+
+
 def product_teaser(p: dict) -> str:
     """The front page's shortlist: one line per product, pointing at the full card.
 
@@ -173,14 +189,30 @@ def fits_block(p: dict) -> str:
             '<p class="p26-ask">' + esc(d['ask']) + '</p></div>')
 
 
+ASSOCIATES = json.loads((ROOT / 'data' / 'links' / 'associates-links.json').read_text(encoding='utf-8'))
+ASSOCIATES_TAG = ASSOCIATES['tag']['value']
+
+
+def associates_url(url: str) -> str:
+    """Product URL carrying the owner-supplied Associates tag (Program Policies 2(b)).
+
+    Buy buttons point at the product page itself with ?tag=..., so the reader can see the
+    destination in the link; the supplied link.amazon short links stay on the page as the
+    observed record only (FLG-003, FLG-S11). tools/attach_associates_tag.py enforces this
+    site-wide, and this keeps the generator's own output compliant on its own.
+    """
+    return f'{url}&tag={ASSOCIATES_TAG}' if '?' in url else f'{url}?tag={ASSOCIATES_TAG}'
+
+
 def product_card(p: dict, prefix: str = '', compare: bool = False) -> str:
-    # All external product destinations are unchanged supplied links, not claimed validated links.
+    # The buy button goes to the product page with the Associates tag (Program Policies 2(b));
+    # the supplied short link stays in the card's source note as the observed record.
     chips = ''.join(f'<span>{esc(x)}</span>' for x in p['features'])
     return f'''<article class="p26-product-card" id="{p['id']}" data-product-card data-category="{p['category']}">
 <div class="p26-product-art p26-art-{p['format']}"><span class="p26-product-kind">{esc('Air fryer' if p['category']=='air-fryers' else 'Meat thermometer')}</span>{format_art(p['format'])}<span class="p26-art-caption">FORMAT ILLUSTRATION</span></div>
-<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p><div class="p26-features">{chips}</div>{fits_block(p)}
-<a class="p26-product-cta" href="{esc(chrome.tagged(p['observed_listing_url']))}" rel="sponsored noopener">View on Amazon {icon('external')}</a>
-<div class="p26-card-source"><span>Sponsored</span><details><summary>Listing & source</summary><p>Title and destination observed <time datetime="{p['observed_on']}">{human_date(REVERIFIED)}</time>. {source_link(p['id'], 'Official Amazon listing')} · ASIN <code>{p['observed_asin']}</code>. Features above are listing wording, not test results. Intended product and attribution remain unconfirmed: <a href="{prefix}intent-record/index.html">intent record</a> · <a href="{prefix}flagged.html#FLG-003">link review</a>.</p></details></div></div></article>'''
+<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p>{dimension_note(p)}<div class="p26-features">{chips}</div>{fits_block(p)}
+<a class="p26-product-cta" href="{associates_url(p['observed_listing_url'])}" rel="sponsored noopener">View on Amazon {icon('external')}</a>
+<div class="p26-card-source"><span>Sponsored</span><details><summary>Listing & source</summary><p>Title and destination observed <time datetime="{p['observed_on']}">{human_date(REVERIFIED)}</time>. {source_link(p['id'], 'Official Amazon listing')} · ASIN <code>{p['observed_asin']}</code>. Features above are listing wording, not test results. Submitted link <a href="{p['submitted_link']}" rel="sponsored noopener">{esc(p['submitted_link'].rsplit('/', 1)[-1])}</a>, used as the observed record only. Intended product and account attribution remain unconfirmed: <a href="{prefix}intent-record/index.html">intent record</a> · <a href="{prefix}flagged.html#FLG-003">link review</a>.</p></details></div></div></article>'''
 
 
 def guide_card(g: dict, prefix: str = '', art: bool = True, compact: bool = False) -> str:
@@ -252,7 +284,7 @@ def guide_page(g: dict) -> str:
     product_rows = ''.join(f'<tr><th scope="row">{esc(PRODUCTS[x]["brand"] + " " + PRODUCTS[x]["name"])}</th><td>{esc(PRODUCTS[x]["format_text"])}</td><td><a href="{esc(chrome.tagged(PRODUCTS[x]["observed_listing_url"]))}" rel="sponsored noopener">Amazon listing</a><br><small>{READ_ON} · title only</small></td></tr>' for x in g['products'])
     unknowns = ''.join(f'<li>{esc(x)}</li>' for x in g['unknowns'])
     related = ''.join(guide_card(GUIDES[x], '../', art=False) for x in g['related'])
-    body = f'''<div class="p26-container"><nav class="p26-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">The edit</a><span>/</span><a href="index.html">Buying guides</a><span>/</span>{esc(g['category'])}</nav><header class="p26-article-heading"><p class="p26-overline">{esc(g['category'])} <span> / </span> {esc(g['type'])}</p><h1>{esc(g['title'])}</h1><p class="p26-article-dek">{esc(g['dek'])}</p><div class="p26-byline"><span class="p26-author-avatar">z3.</span><p>By <a href="../about.html#authorship">Zone3 Editorial</a><br><span>Published {human_date(g['published'])} · Updated {READ_ON} · Sources re-checked {human_date(REVERIFIED)}</span></p><span class="p26-byline-kind">Listing-based guide<br>Not a hands-on review</span></div></header><div class="p26-article-layout"><aside class="p26-article-aside"><p class="p26-overline">IN THIS GUIDE</p>{''.join(toc)}<a href="#the-shortlist"><span>04</span>The relevant shortlist</a><p class="p26-aside-note">AI-assisted, source-linked editorial. No independent product testing is claimed.</p></aside><article class="p26-article"><div class="p26-takeaway"><p class="p26-overline">THE SHORT ANSWER</p><p>{esc(g['takeaway'])}</p></div>{''.join(sections)}<section id="the-shortlist"><h2>The listings behind the questions.</h2><p>These are title-based introductions, not recommendations based on testing. Every row links its official listing.</p><div class="p26-table-scroll" role="region" aria-label="Relevant product listings" tabindex="0"><table class="p26-table"><thead><tr><th scope="col">Product</th><th scope="col">Format named in listing</th><th scope="col">Source</th></tr></thead><tbody>{product_rows}</tbody></table></div><a class="p26-button" href="../shop/{g['category_slug'] if g['category_slug'] != 'everyday-kitchen' else 'products'}/index.html">Explore the shortlist {icon('arrow')}</a> <a class="p26-text-link" href="../shop/products/index.html#comparison">Compare all {numeral(PRODUCT_N).lower()} listings in one table {icon('arrow')}</a></section><section class="p26-unknowns"><h2>What we haven’t established.</h2><ul>{unknowns}</ul><p>We leave unsupported values out rather than filling the gaps. <a href="../flagged.html">See the review register</a> or <a href="../intent-record/index.html">the product-intent record</a>.</p></section></article></div><section class="p26-section"><div class="p26-section-heading"><div><p class="p26-overline">KEEP THE GOOD QUESTIONS COMING</p><h2>Next on your reading list.</h2></div></div><div class="p26-guides-grid">{related}</div></section>{follow('../')}</div>'''
+    body = f'''<div class="p26-container"><nav class="p26-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">The edit</a><span>/</span><a href="index.html">Buying guides</a><span>/</span>{esc(g['category'])}</nav><header class="p26-article-heading"><p class="p26-overline">{esc(g['category'])} <span> / </span> {esc(g['type'])}</p><h1>{esc(g['title'])}</h1><p class="p26-article-dek">{esc(g['dek'])}</p><div class="p26-byline"><span class="p26-author-avatar">z3.</span><p>By <a href="../about.html#authorship">Zone3 Editorial</a><br><span>Published {human_date(g['published'])} · Updated {READ_ON} · Sources re-checked {human_date(REVERIFIED)}</span></p><span class="p26-byline-kind">Listing-based guide<br>Not a hands-on review</span></div></header><div class="p26-article-layout"><aside class="p26-article-aside"><p class="p26-overline">IN THIS GUIDE</p>{''.join(toc)}<a href="#the-shortlist"><span>0{len(g['sections']) + 1}</span>The relevant shortlist</a><p class="p26-aside-note">AI-assisted, source-linked editorial. No independent product testing is claimed.</p></aside><article class="p26-article"><div class="p26-takeaway"><p class="p26-overline">THE SHORT ANSWER</p><p>{esc(g['takeaway'])}</p></div>{''.join(sections)}<section id="the-shortlist"><h2>The listings behind the questions.</h2><p>These are title-based introductions, not recommendations based on testing. Every row links its official listing.</p><div class="p26-table-scroll" role="region" aria-label="Relevant product listings" tabindex="0"><table class="p26-table"><thead><tr><th scope="col">Product</th><th scope="col">Format named in listing</th><th scope="col">Source</th></tr></thead><tbody>{product_rows}</tbody></table></div><a class="p26-button" href="../shop/{g['category_slug'] if g['category_slug'] != 'everyday-kitchen' else 'products'}/index.html">Explore the shortlist {icon('arrow')}</a> <a class="p26-text-link" href="../shop/products/index.html#comparison">Compare all {numeral(PRODUCT_N).lower()} listings in one table {icon('arrow')}</a></section><section class="p26-unknowns"><h2>What we haven’t established.</h2><ul>{unknowns}</ul><p>We leave unsupported values out rather than filling the gaps. <a href="../flagged.html">See the review register</a> or <a href="../intent-record/index.html">the product-intent record</a>.</p></section></article></div><section class="p26-section"><div class="p26-section-heading"><div><p class="p26-overline">KEEP THE GOOD QUESTIONS COMING</p><h2>Next on your reading list.</h2></div></div><div class="p26-guides-grid">{related}</div></section>{follow('../')}</div>'''
     return shell(f'guides/{g["slug"]}.html', g['title'], g['dek'], body, article=g)
 
 
@@ -260,12 +292,15 @@ def comparison_table(products: list[dict], prefix: str, sticky: bool = False) ->
     rows = []
     for p in products:
         clean = esc(p['cleanup_title_wording']) if p['cleanup_title_wording'] else ''
-        rows.append(f'<tr><th scope="row">{esc(p["brand"] + " " + p["name"])}</th><td>{esc(p["format_text"])}</td><td>{clean}</td><td class="blank" aria-label="Unverified: no independent testing"></td><td><span class="p26-status">Listing only · untested</span><br><a href="{prefix}flagged.html#P26-F04">Evidence gap</a></td><td>{source_link(p["id"], "Amazon listing")}<br><small>{human_date(REVERIFIED)}</small></td></tr>')
+        ld = p.get('listing_dimensions') or {}
+        dims = (esc(ld['as_listed']) + f'<br><small>{esc(ld["capacity_as_listed"])}</small>') if ld.get('as_listed') \
+            else '<span class="p26-unknown">Not published</span>'
+        rows.append(f'<tr><th scope="row">{esc(p["brand"] + " " + p["name"])}</th><td>{esc(p["format_text"])}</td><td>{dims}</td><td>{clean}</td><td class="blank" aria-label="Unverified: no independent testing"></td><td><span class="p26-status">Listing only · untested</span><br><a href="{prefix}flagged.html#P26-F04">Evidence gap</a></td><td>{source_link(p["id"], "Amazon listing")}<br><small>{human_date(REVERIFIED)}</small></td></tr>')
     hint = ('<p class="p26-fine p26-scroll-hint">On a phone this table scrolls sideways, and the product '
             'column stays with you. Blank cells are left blank on purpose: they are unverified, not zero.</p>') if sticky else ''
     body = ('<div class="p26-table-scroll" role="region" aria-label="Source-linked product comparison" tabindex="0"><table class="p26-table">'
-            '<caption>Listing wording, not a performance ranking. Blank cells are unverified; source checks are limited to title and destination.</caption>'
-            '<thead><tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Cleanup wording in title</th>'
+            '<caption>Listing wording, not a performance ranking. Blank cells are unverified; source checks cover the title, the destination and the detail table.</caption>'
+            '<thead><tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Listed size</th><th scope="col">Cleanup wording in title</th>'
             '<th scope="col">Tested performance</th><th scope="col">Evidence status</th><th scope="col">Official source</th></tr></thead>'
             '<tbody>' + ''.join(rows) + '</tbody></table></div>')
     return (f'<div class="p26-compare">{body}{hint}</div>' if sticky else body)
@@ -431,11 +466,19 @@ def review_round_html() -> str:
 def suggestions() -> str:
     cards = []
     for p in DATA['proposals']:
-        refs = ' · '.join(f'<a href="#{qid}">{qid}</a>' for qid in p['evidence_needed'])
+        # A proposal's evidence_needed may name a question (render an in-page link) or an official
+        # source (render the source itself). Linking a source id to a fragment that does not exist
+        # produced a broken anchor; the reference is what the reader actually needs.
+        # A source id renders as the official page. Neither a question id nor an internal
+        # reference (DS-01, DS-03) has an anchor on this page, so neither becomes a link.
+        refs = ' · '.join(
+            source_link(qid) if qid in SOURCES else (f'<a href="#{qid}">{qid}</a>' if qid in QUESTIONS else esc(qid))
+            for qid in p['evidence_needed'])
+        evidence_label = f' · Evidence to close: {refs}' if refs else ''
         need_owner = ('<span class="p26-status p26-status-owner">Needs your input</span>' if p.get('owner_input_needed')
                       else '<span class="p26-status">Agent can proceed</span>')
         discovers = ''.join(f'<li>{esc(x)}</li>' for x in p.get('discoveries', []))
-        cards.append(f'''<article class="p26-proposal" data-proposal data-priority="{p['priority']}"><div class="p26-proposal-top"><span class="p26-status">{esc(p['priority'])} · {esc(p['area'])}</span><span>{p['id']}</span></div><h3>{esc(p['title'])}</h3><p>{esc(p['why'])}</p><p><strong>Next discovery step:</strong> {esc(p['next'])}</p><p><strong>If you say go, this is exactly what happens:</strong> {esc(p.get('next_action', ''))}</p><details class="p26-proposal-extra"><summary>What it would tell us</summary><ul>{discovers}</ul></details><p class="p26-fine">{need_owner} · Evidence to close: {refs}<br>Basis: {source_link(p['source'])}</p><label for="decision-{p['id']}">Your review <span>(does not implement changes)</span></label><select id="decision-{p['id']}" data-decision-id="{p['id']}"><option value="unreviewed">Not reviewed</option><option value="shortlist">Shortlist for next review</option><option value="defer">Defer until evidence arrives</option><option value="reject">Do not pursue</option></select></article>''')
+        cards.append(f'''<article class="p26-proposal" data-proposal data-priority="{p['priority']}"><div class="p26-proposal-top"><span class="p26-status">{esc(p['priority'])} · {esc(p['area'])}</span><span>{p['id']}</span></div><h3>{esc(p['title'])}</h3><p>{esc(p['why'])}</p><p><strong>Next discovery step:</strong> {esc(p['next'])}</p><p><strong>If you say go, this is exactly what happens:</strong> {esc(p.get('next_action', ''))}</p><details class="p26-proposal-extra"><summary>What it would tell us</summary><ul>{discovers}</ul></details><p class="p26-fine">{need_owner}{evidence_label}<br>Basis: {source_link(p['source'])}</p><label for="decision-{p['id']}">Your review <span>(does not implement changes)</span></label><select id="decision-{p['id']}" data-decision-id="{p['id']}"><option value="unreviewed">Not reviewed</option><option value="shortlist">Shortlist for next review</option><option value="defer">Defer until evidence arrives</option><option value="reject">Do not pursue</option></select></article>''')
 
     paths = []
     for p in DATA['paths']:
@@ -531,7 +574,7 @@ def suggestions() -> str:
 
 
 def about() -> str:
-    return shell('about.html', 'Useful beats breathless: our editorial approach', 'Who publishes Zone3 Kitchen, how we use AI, what our guides do and do not establish, and how affiliate links work.', f'''<div class="p26-container p26-narrow"><div class="p26-page-intro"><p class="p26-overline">ABOUT ZONE3 KITCHEN</p><h1>Useful beats<br><em>breathless.</em></h1><p>A small kitchen publication built around a simple idea: a better shopping question is more useful than another must-have list.</p></div><div class="p26-prose"><section id="authorship"><h2>Who is speaking?</h2><p><strong>Zone3 Editorial</strong> is the publisher byline for this site, not a fictional named reviewer. The guides are AI-assisted and based on the official pages linked in the text. We have not performed hands-on product testing or claimed professional credentials.</p><p>Publication byline, source capture date and the limits of the evidence appear on each guide. A listing claim remains a listing claim. It is not independent confirmation of accuracy, durability, certification, cooking results or suitability.</p></section><section><h2>What you can expect from a guide.</h2><ul><li>A real buying question, not a manufactured urgency.</li><li>The product format and features the linked listing actually names.</li><li>Practical prompts for the measurements, manuals and trade-offs you should check.</li><li>Visible unknowns rather than invented values, prices or review scores.</li><li>A useful next read, and permission not to buy.</li></ul><p>Google’s <a href="{SOURCES['google-reviews']['url']}">review guidance</a> calls for original evidence and support for “best” recommendations. Until such evidence exists, we publish buying questions—not tested rankings.</p></section><section id="disclosure"><h2>Our affiliate relationship, plainly.</h2><p><strong>{chrome.DISCLOSURE}</strong></p><p>We may earn a commission if a qualifying purchase follows an eligible Amazon link. Outbound product links are labelled sponsored and identify Amazon as the destination. This website is not operated, sponsored or endorsed by Amazon.</p><p>The selected tracking ID, <code>shopnow047c-20</code>, was supplied in the brief. We have not verified its account assignment or attribution. The exact compliance status of the submitted short links remains <a href="flagged.html#FLG-003">unresolved (FLG-003)</a>; we do not call them invalid. Intended ASINs remain separate from observed redirect destinations in the <a href="intent-record/index.html">confirmation record</a>.</p><p>Official references: {source_link('amazon-agreement')} · {source_link('amazon-policies')} · {source_link('ftc')}.</p></section><section id="imagery"><h2>The pictures are context, not proof.</h2><p>The kitchen still life is an AI-generated editorial image. The format drawings are original generic diagrams. Neither depicts evidence from product testing or promises the exact appearance of a listed model. No Amazon product photograph is scraped or republished in this publication.</p></section><section><h2>How the next topic is chosen.</h2><p>{esc(DATA['meta']['cadence'])} Search demand, trending status, conversions and revenue are unverified. The next topics are editorial hypotheses until dated authorized reports exist.</p><p><a href="suggestions/index.html">Review the proposed next steps</a> · <a href="privacy.html">Privacy & measurement</a> · <a href="sources.html">The full source register</a>.</p></section></div>{follow()}</div>''')
+    return shell('about.html', 'Useful beats breathless: our editorial approach', 'Who publishes Zone3 Kitchen, how we use AI, what our guides do and do not establish, and how affiliate links work.', f'''<div class="p26-container p26-narrow"><div class="p26-page-intro"><p class="p26-overline">ABOUT ZONE3 KITCHEN</p><h1>Useful beats<br><em>breathless.</em></h1><p>A small kitchen publication built around a simple idea: a better shopping question is more useful than another list of things you are told you need.</p></div><div class="p26-prose"><section id="authorship"><h2>Who is speaking?</h2><p><strong>Zone3 Editorial</strong> is the publisher byline for this site, not a fictional named reviewer. The guides are AI-assisted and based on the official pages linked in the text. We have not performed hands-on product testing or claimed professional credentials.</p><p>Publication byline, source capture date and the limits of the evidence appear on each guide. A listing claim remains a listing claim. It is not independent confirmation of accuracy, durability, certification, cooking results or suitability.</p></section><section><h2>What you can expect from a guide.</h2><ul><li>A real buying question, not a manufactured urgency.</li><li>The product format and features the linked listing actually names.</li><li>Practical prompts for the measurements, manuals and trade-offs you should check.</li><li>Visible unknowns rather than invented values, prices or review scores.</li><li>A useful next read, and permission not to buy.</li></ul><p>Google’s <a href="{SOURCES['google-reviews']['url']}">review guidance</a> calls for original evidence and support for “best” recommendations. Until such evidence exists, we publish buying questions—not tested rankings.</p></section><section id="disclosure"><h2>Our affiliate relationship, plainly.</h2><p><strong>{chrome.DISCLOSURE}</strong></p><p>We may earn a commission if a qualifying purchase follows an eligible Amazon link. Outbound product links are labelled sponsored and identify Amazon as the destination. This website is not operated, sponsored or endorsed by Amazon.</p><p>The selected tracking ID, <code>shopnow047c-20</code>, was supplied in the brief and is carried as a <code>tag=</code> parameter on every product-detail link, as Participation Requirements 2(b) asks. We have not verified its account assignment, enrolment or attribution. The exact compliance status of the submitted short links remains <a href="flagged.html#FLG-003">unresolved (FLG-003)</a>; we do not call them invalid. Intended ASINs remain separate from observed redirect destinations in the <a href="intent-record/index.html">confirmation record</a>.</p><p>Official references: {source_link('amazon-agreement')} · {source_link('amazon-policies')} · {source_link('ftc')}.</p></section><section id="imagery"><h2>The pictures are context, not proof.</h2><p>The kitchen still life is an AI-generated editorial image. The format drawings are original generic diagrams. Neither depicts evidence from product testing or promises the exact appearance of a listed model. No Amazon product photograph is scraped or republished in this publication.</p></section><section><h2>How the next topic is chosen.</h2><p>{esc(DATA['meta']['cadence'])} Search demand, popularity status, conversions and revenue are unverified. The next topics are editorial hypotheses until dated authorized reports exist.</p><p><a href="suggestions/index.html">Review the proposed next steps</a> · <a href="privacy.html">Privacy & measurement</a> · <a href="sources.html">The full source register</a>.</p></section></div>{follow()}</div>''')
 
 
 def privacy() -> str:
@@ -635,9 +678,13 @@ def outputs() -> dict[str, str]:
     existing = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file()} | set(pages)
     pp = load_module('sessions/aebf0747/publish_pass.py', 'publication_postprocess')
     mp = load_module('tools/measure_pass.py', 'publication_measure')
+    tagger = load_module('tools/attach_associates_tag.py', 'publication_tag')
     for rel in pages:
         pages[rel], missing = pp.apply(pages[rel], rel, existing)
         pages[rel] = mp.apply(pages[rel], rel)
+        # 4B0-T2: the release chain tags product links after every builder; mirror it so
+        # --check compares like with like.
+        pages[rel] = tagger.apply_to_text(pages[rel])
         if missing:
             raise ValueError('Missing workspace destinations: ' + ', '.join(missing))
     search = [{'title': g['title'], 'description': g['dek'], 'kind': g['category'], 'path': f'guides/{g["slug"]}.html'} for g in DATA['guides']]

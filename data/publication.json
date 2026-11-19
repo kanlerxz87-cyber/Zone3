@@ -14,8 +14,8 @@
       "scope": "Generic food and kitchen scene; no advertised product, test meal or testing evidence is depicted."
     },
     "reverified": "2026-11-19",
-    "reverified_by": "sessions b580d790 and d3493182 (arena/d3493182-zone3)",
-    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. Session d3493182 (2026-11-19) re-opened all five short links and re-read Agreement Sections 1, 4, 5 and 6, Policies Participation Requirements 2(a)-(b), the FTC guide, and Google helpful-content and outbound-link guidance; observed ASINs, titles and breadcrumbs were unchanged (one thermometer title variant noted in the session record). No price, rating, review count or performance claim is made anywhere on the site.",
+    "reverified_by": "sessions b580d790, d3493182 (arena/d3493182-zone3) and 0a48cfda",
+    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. Session d3493182 (2026-11-19) re-opened all five short links and re-read Agreement Sections 1, 4, 5 and 6, Policies Participation Requirements 2(a)-(b), the FTC guide, and Google helpful-content and outbound-link guidance; observed ASINs, titles and breadcrumbs were unchanged (one thermometer title variant noted in the session record). No price, rating, review count or performance claim is made anywhere on the site. Session 0a48cfda (2026-11-19) re-read all five official listing detail tables: titles and breadcrumbs unchanged, exterior dimensions found and recorded for three listings, none published for the two thermometers.",
     "reverification_evidence": "S95",
     "reporting_month_note": "Publication months are editorial labels. The current edition date is 19 November 2026.",
     "decision_desk": {
@@ -137,6 +137,13 @@
       "url": "https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety",
       "checked_on": "2026-11-19",
       "scope": "Read 2026-11-19 (session cdb0a5ac): Cook-step wording used by the probe guide — use a food thermometer; when you think the food is done, place it in the thickest part of the food, making sure not to touch bone, fat, or gristle; hot-hold 140°F (60°C) or above; microwave 165°F (74°C) or above."
+    },
+    {
+      "id": "fsis-thermometers",
+      "title": "USDA FSIS Food Thermometers (calibration: ice-water and boiling-water methods)",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "checked_on": "2026-11-19",
+      "scope": "Re-read 19 Nov 2026 (session 787a3aab): Calibration section — ice-water method (fill a large glass with ice cubes, add drinking water, stir well, immerse the stem a minimum of 2 inches touching neither the sides nor the bottom, wait a minimum of 30 seconds, check without removing the stem; should read 32 degrees F; adjust per manufacturer instructions) and boiling-water method (at least 2 inches, at least 30 seconds, 212 degrees F at sea level, altitude caveat). Also: most thermometers give an accurate reading within 2 to 4 degrees F when placed correctly; place in the thickest part away from bone, fat or gristle; follow manufacturer instructions for insertion depth. Page last updated Mar 21, 2025."
     }
   ],
   "products": [
@@ -160,6 +167,20 @@
       "listing_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
       "submitted_link": "https://link.amazon/B04G1MEwY",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "label_on_listing": "Product Dimensions",
+        "as_listed": "13.38\"D x 11.81\"W x 10.63\"H",
+        "depth_in": "13.38",
+        "width_in": "11.81",
+        "height_in": "10.63",
+        "capacity_as_listed": "6 liters",
+        "capacity_note": "The title says “6 Quart”; the detail table says “Capacity: 6 liters”. Six US quarts is about 5.7 L, so the two listing fields do not agree with each other.",
+        "status": "verified against the official listing page, 2026-11-19",
+        "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -190,6 +211,20 @@
       "listing_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
       "submitted_link": "https://link.amazon/B02NbDxp3",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "label_on_listing": "Product Dimensions",
+        "as_listed": "16.9\"D x 15.8\"W x 14.8\"H",
+        "depth_in": "16.9",
+        "width_in": "15.8",
+        "height_in": "14.8",
+        "capacity_as_listed": "24.6 liters",
+        "capacity_note": "The title says “26QT”; the detail table says “Capacity: 24.6 liters”, which is 26 US quarts.",
+        "status": "verified against the official listing page, 2026-11-19",
+        "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -220,6 +255,20 @@
       "listing_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
       "submitted_link": "https://link.amazon/B00hJ57DV",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "label_on_listing": "Product Dimensions",
+        "as_listed": "12.75\"D x 13.5\"W x 10\"H",
+        "depth_in": "12.75",
+        "width_in": "13.5",
+        "height_in": "10",
+        "capacity_as_listed": "8 quarts",
+        "capacity_note": "The title and the detail table both say 8 quarts for this size.",
+        "status": "verified against the official listing page, 2026-11-19",
+        "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -250,6 +299,20 @@
       "listing_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black",
       "submitted_link": "https://link.amazon/B0c8moW59",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "label_on_listing": "",
+        "as_listed": "",
+        "depth_in": "",
+        "width_in": "",
+        "height_in": "",
+        "capacity_as_listed": "",
+        "capacity_note": "",
+        "status": "unverified — the detail table on this listing has no Product Dimensions row",
+        "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -280,6 +343,20 @@
       "listing_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
       "submitted_link": "https://link.amazon/B0f3GKalj",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "label_on_listing": "",
+        "as_listed": "",
+        "depth_in": "",
+        "width_in": "",
+        "height_in": "",
+        "capacity_as_listed": "",
+        "capacity_note": "",
+        "status": "unverified — the detail table on this listing has no Product Dimensions row",
+        "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -447,8 +524,20 @@
         {
           "heading": "An appliance needs working space, not just a parking space.",
           "paragraphs": [
-            "Mark out the place you would put it. Check whether a drawer can pull out fully or a door can open without meeting another appliance. Read the model-specific manual for ventilation and operating clearances. We have not verified those measurements for these products.",
-            "None of the three listing titles gives width, depth or height. Do not turn a photograph or capacity number into a dimension."
+            "Mark out the place you would put it. Check whether a drawer can pull out fully or a door can open without meeting another appliance. Read the model-specific manual for ventilation and operating clearances. We have not verified those clearances for these products.",
+            "Three of the five listings do publish an exterior size in their detail table, and that is now on each card: the 6-quart Chefman at 13.38\"D x 11.81\"W x 10.63\"H, the Emeril Lagasse oven at 16.9\"D x 15.8\"W x 14.8\"H, and the 8-quart Chefman at 12.75\"D x 13.5\"W x 10\"H. The two thermometers publish none. An exterior size is not the same as the space a door needs in front of it, and it says nothing about usable interior space."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Two of these listings disagree with themselves on capacity.",
+          "paragraphs": [
+            "The 6-quart Chefman title says “6 Quart”. Its own detail table says “Capacity: 6 liters”, and six US quarts is about 5.7 litres. The Emeril Lagasse title says “26QT”; its detail table says “Capacity: 24.6 liters”, which is 26 US quarts. The 8-quart Chefman agrees with itself.",
+            "We print both figures rather than choosing one. If a litre figure and a quart figure on the same page point at different amounts, the number is worth checking against the model manual before you decide it means enough space for your meals."
           ],
           "source_ids": [
             "SHOP-01",
@@ -485,7 +574,8 @@
         }
       ],
       "unknowns": [
-        "External dimensions, ventilation clearances and cord lengths.",
+        "Usable interior and basket dimensions, and how much food actually fits. Only exterior sizes are published, and only for three of the five listings.",
+        "Ventilation clearances, cord lengths, door swing and the space needed in front of an oven-style unit.",
         "Care requirements for all accessories; coating durability.",
         "Hands-on cleaning time."
       ],
@@ -964,6 +1054,73 @@
         "how-do-you-know-its-done",
         "air-fryer-label-words"
       ]
+    },
+    {
+      "slug": "thermometer-ice-water-check",
+      "title": "Is your thermometer still telling the truth? The ice-water check",
+      "short_title": "The 30-second ice-water check.",
+      "dek": "Before you trust a reading, check the tool against ice water. USDA's method in plain steps — and what to do if it reads off.",
+      "category": "Meat thermometers",
+      "category_slug": "meat-thermometers",
+      "type": "The accuracy check",
+      "art": "thermometer",
+      "published": "2026-11-19",
+      "products": [
+        "SHOP-04",
+        "SHOP-05"
+      ],
+      "takeaway": "A thermometer is only as useful as its last check. Ice water should read 32°F; if yours does not, follow the manufacturer's instructions to adjust it — or replace it — before you cook to a number.",
+      "sections": [
+        {
+          "heading": "Why check the tool before you trust the reading.",
+          "paragraphs": [
+            "USDA's Food Safety and Inspection Service puts it plainly: most food thermometers will give an accurate reading within 2 to 4 degrees F — but only if the thermometer is placed in the proper location of the food. Calibration, in FSIS's words, is the process of checking the accuracy of a food thermometer. It is a check on the tool, done before the tool is asked to judge the food.",
+            "That order matters. A probe in the thickest part of the food, away from bone, fat or gristle, still reports through a sensing device that can drift. The ice-water check tests the device against a known reference — melting ice and water — instead of asking you to trust the display because it looks precise."
+          ],
+          "source_ids": [
+            "fsis-thermometers"
+          ]
+        },
+        {
+          "heading": "The ice-water check, step by step.",
+          "paragraphs": [
+            "FSIS calls the ice-water method best for most thermometers. Fill a large glass with ice cubes, add drinking water and stir well. Immerse the thermometer stem a minimum of 2 inches into the mixture, touching neither the sides nor the bottom of the glass. Wait a minimum of 30 seconds and check the reading without removing the stem from the water. It should read 32 degrees F; if it does, the thermometer is calibrated."
+          ],
+          "checklist": [
+            "Ice cubes plus drinking water in a large glass, stirred well.",
+            "Stem at least 2 inches in — touching neither side nor bottom.",
+            "Wait at least 30 seconds; read without removing the stem.",
+            "Should read 32°F. If not, adjust according to the manufacturer's instructions (some thermometers have a calibration nut or dial).",
+            "If the thermometer does not allow manual calibration, FSIS's boiling-water guidance says you may need to replace it."
+          ],
+          "source_ids": [
+            "fsis-thermometers"
+          ]
+        },
+        {
+          "heading": "What the check does not tell you.",
+          "paragraphs": [
+            "The ice-water check verifies the tool at one reference point. It does not verify where a probe should go in a whole bird, how a wireless probe reports across a long roast, or whether any figure in a listing title — a response time, a tolerance, a certification mention — was measured the way you would measure it. Those stay open questions, listed below, until the exact model's own instructions are in front of you.",
+            "It also does not replace the temperature target. When the tool passes its check, the number you cook toward still comes from the published safe-minimum chart for that food — poultry 165°F, ground meat 160°F, steaks and roasts 145°F with a 3-minute rest — not from a feature list. Check the tool, then check the food against the chart."
+          ],
+          "source_ids": [
+            "SHOP-04",
+            "SHOP-05",
+            "food-safety",
+            "fsis-thermometers"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Whether either listed thermometer model can be calibrated, and how — that is in each model's own instructions, not verified here.",
+        "The insertion depth each listed model's instructions require for an accurate reading.",
+        "The accuracy of either listed thermometer — no accuracy measurement is held on this site."
+      ],
+      "related": [
+        "where-does-the-probe-go",
+        "thermometer-numbers-on-the-label",
+        "instant-read-or-wireless-thermometer"
+      ]
     }
   ],
   "questions": [
@@ -1035,7 +1192,7 @@
     {
       "id": "P26-Q6",
       "question": "Can we publish product imagery, prices or ratings?",
-      "known": "No Amazon imagery, price, rating or review count is used by the new publication. Art is labelled illustrative.",
+      "known": "No Amazon image, price, rating or review count is reproduced anywhere on the reader pages. Exterior dimensions and the listed capacity ARE reproduced verbatim from three official listing detail tables with a read date (noted 2026-11-19); prices and ratings stay empty because Amazon requires the link we serve or the Creators API for those fields.",
       "missing": "Authorized API access, applicable usage requirements, approved assets and refresh rules.",
       "default": "No scraped prices or reviews; no invented product photographs or test results.",
       "discovery": "Confirm authorized Creators/PA API access and current license conditions before building a refresh job.",
@@ -1418,13 +1575,14 @@
     {
       "id": "E41-Q1",
       "question": "Where do the interior and footprint dimensions come from for each of the five listings?",
-      "known": "No product register in this repository holds a dimension value; the guide copy only asks readers to check dimensions themselves. The capacity wording quoted on the site comes from listing titles.",
-      "missing": "A dated, authorized source for footprint and interior dimensions per product — an API response the account is entitled to, or the brand's own published specification page — plus the units and the measurement method.",
+      "known": "Partly answered 2026-11-19. Three of the five listings publish an exterior size in their detail table: the 6-quart Chefman 13.38\"D x 11.81\"W x 10.63\"H, the Emeril Lagasse 16.9\"D x 15.8\"W x 14.8\"H and the 8-quart Chefman 12.75\"D x 13.5\"W x 10\"H. The two thermometer listings publish no dimensions row at all. Usable interior size, ventilation clearance, cord length and door swing are still not published.",
+      "missing": "Interior or usable basket dimensions, required ventilation clearance, cord length and door swing, for every product that has one of those open. The two thermometers have no published dimensions of any kind.",
       "discovery": "Capture the dimensions for one product from the chosen authorized source, store them with the capture date and the source URL, and see whether the number is a usable figure or marketing rounding.",
-      "default": "The per-centimetre analysis stays unwritten. No dimension is estimated from a photo, a title or a sibling model.",
+      "default": "Show only the listed exterior size, with its read date, and leave every other measurement blank.",
       "blocks": "S-23 counter-space analysis; any 'fits your counter' claim",
       "source": "amazon-agreement",
-      "owner_input_needed": true
+      "owner_input_needed": true,
+      "answer_by": "Owner · listing pages, then manufacturer documentation"
     },
     {
       "id": "E41-Q2",
@@ -1988,15 +2146,15 @@
       "priority": "Next",
       "area": "Evidence capture",
       "title": "Get the two measurements the counter-space analysis needs — from an authorized source.",
-      "why": "The brief asks for capacity per centimetre of counter depth. Every register in this repository holds the capacity wording and none holds a footprint or interior dimension, so the arithmetic cannot be published without inventing a number.",
+      "why": "The brief asks for capacity per centimetre of counter depth. Until 2026-11-19 no register held a footprint, so the arithmetic could not be published without inventing a number. Three listings’ detail tables have since been read and their exterior sizes recorded, which is enough to state a footprint but not enough to divide capacity by it: the capacity fields disagree with their own titles on two products (FLG-S33), and no interior measurement exists.",
       "next": "For each of the five listings, capture the footprint and interior dimensions from an authorized source (the Product Advertising API response or the brand's own published specification page), date each capture, and store them in the product register. Only then does the per-centimetre article get written.",
       "evidence_needed": [
         "E41-Q1"
       ],
       "source": "amazon-agreement",
-      "status": "Proposed",
+      "status": "Partly shipped 2026-11-19 (exterior sizes captured; interior sizes still absent)",
       "owner_input_needed": true,
-      "next_action": "Decide which authorized source may supply dimensions, capture them dated, and add them to data/publication.json products; this pass deliberately left the analysis unpublished instead of estimating.",
+      "next_action": "Decide whether a per-centimetre figure computed from listed capacity and listed exterior depth is worth publishing given FLG-S33, or wait for interior dimensions. Either way the arithmetic must name which capacity figure it divided.",
       "discoveries": [
         "Whether an authorized response carries usable interior dimensions at all",
         "Which capacity-to-footprint comparison the captured numbers actually support for each of the five"
@@ -2020,6 +2178,44 @@
         "How much table width the sticky column takes at the narrowest tested viewport",
         "Whether every comparison column remains reachable by thumb without a second scroll region"
       ]
+    },
+    {
+      "id": "0A4-P1",
+      "priority": "Next",
+      "area": "Product content",
+      "title": "Publish the capacity figure the listing itself prints, next to the one in its title.",
+      "why": "Two of the three air-fryer listings print a capacity in the detail table that does not match the number in the title: “6 Quart” against “Capacity: 6 liters”, and “26QT” against “Capacity: 24.6 liters”. The site now shows only the title wording in its feature chips, so a buyer comparing quarts between two products is reading a field that disagrees with the same page’s own table.",
+      "next": "Show both printed figures on the card and the comparison row, each labelled with the field it came from, and link FLG-S33. Do not convert either into servings.",
+      "evidence_needed": [
+        "E41-Q1"
+      ],
+      "source": "amazon-agreement",
+      "status": "Proposed — evidence already captured for three of five products",
+      "owner_input_needed": false,
+      "next_action": "Approve the card copy, then render capacity_as_listed beside the existing feature chips. The data is already in the register.",
+      "discoveries": [
+        "Whether the discrepancy is a labelling convention or a genuine mismatch, which only the manuals settle",
+        "Whether a buyer-facing caveat reads as helpful or as noise on a card"
+      ]
+    },
+    {
+      "id": "0A4-P2",
+      "priority": "Next",
+      "area": "On-page navigation",
+      "title": "Give the guide contents block a number that matches how many sections the guide has.",
+      "why": "The in-guide contents list adds a hand-written fourth entry (“04 The relevant shortlist”) on top of the generated section list. The counter-space guide now has four sections, so its contents block numbers the shortlist a second time as 04 and never reaches it.",
+      "next": "Derive the shortlist entry number from the section count in the renderer instead of typing it, then re-check every guide.",
+      "evidence_needed": [
+        "google-page-experience"
+      ],
+      "source": "google-page-experience",
+      "status": "Proposed",
+      "owner_input_needed": false,
+      "next_action": "Replace the literal “04” in the contents template with the computed next number and add a gate assertion that contents entries are unique.",
+      "discoveries": [
+        "Whether any other guide has a section count that collides with the typed number",
+        "Whether a duplicated contents number affects keyboard or screen-reader order"
+      ]
     }
   ],
   "indexable_pages": [
@@ -2040,7 +2236,8 @@
     "guides/air-fryer-label-words.html",
     "guides/how-do-you-know-its-done.html",
     "guides/where-does-the-probe-go.html",
-    "guides/thermometer-numbers-on-the-label.html"
+    "guides/thermometer-numbers-on-the-label.html",
+    "guides/thermometer-ice-water-check.html"
   ],
   "paths": [
     {

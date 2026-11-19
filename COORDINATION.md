@@ -9521,6 +9521,251 @@ The merged register after PR #194 has 16 scoped official references, 9 guides, 2
 
 ---
 
+# Part 0A4 — session `0a48cfda` (branch `arena/0a48cfda-zone3`, base `0273fb4` = `main` at claim) — 2026-11-19
+
+Branch note: Arena fixes this session to `arena/0a48cfda-zone3`; the brief's `session-<id>/<task>` shape is
+recorded here as a task-ID scope on the fixed branch (same resolution as Parts 7f84fea4, CDB and 4d7fe998).
+
+Read the board through 4D7-T5 before claiming. This session's brief repeats the standing requests
+(shop-not-audit, suggestions section, questions/answers register, five-product marketing, executive
+summary) and asks again for line-by-line verification against official sources. Those surfaces already
+exist in the tree; this pass therefore audits **evidence**, not layout, and changes only what an official
+source can support.
+
+## Session registry (Part 0A4)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 0a48cfda | `arena/0a48cfda-zone3` | Evidence audit of the five listings against their official pages; close or re-scope register fields an official source can now support; record what remains owner-gated; run the full gate; integrate. | in progress | 2026-11-19 22:00 |
+
+## Task board (Part 0A4)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 0A4-T1 — Claim, read board, re-run the 25-command gate on the untouched tree | done | 0a48cfda | `COORDINATION.md` (this Part only) | board through 4D7-T5 | none — gate 25/25 on `0273fb4` |
+| 0A4-T2 — Re-read each of the five official listing pages and record only what the page itself publishes (title, breadcrumb, listed dimensions, listed capacity, format) | done | 0a48cfda | `sessions/0a48cfda/**` | `amazon.com/dp/<ASIN>` ×5, read 2026-11-19 | F-1: the guide claimed no dimension was published, but three detail tables publish one. F-2: two listings' capacity fields contradict their own titles → FLG-S33. F-4: a dangling in-page anchor caught by `check_all_links`. |
+| 0A4-T3 — Reconcile the "supplied short links vs. tagged Special Links" contradiction against Program Policies 2(b), and record it as a reader-facing flag rather than silently swapping links | done (resolved as: do not swap) | 0a48cfda | `sessions/0a48cfda/verification-2026-11-19.md`; `EXECUTIVE-SUMMARY.md` current opening | Program Policies 2(a)–(b), read 2026-11-19, chunk 3 of 11 | The clause permits "such other format as we may designate", and only an enrolled account shows what Amazon designates. Links left exactly as supplied; FLG-003 stays open; the tagged URLs in `data/special-links.json` were not promoted because their destinations are redirects, not confirmed intent. |
+| 0A4-T4 — Fill the counter-space dimension gap only where the listing publishes a dimension; leave the rest blank and flagged | done | 0a48cfda | `data/publication.json` (`products[].listing_dimensions`), `guides/cleanup-and-counter-space.html`, `tools/build_publication.py`, `assets/publication.css` | listings ×5, read 2026-11-19 | Three filled, two left blank with the reason stated. No interior size, clearance, cord length or door swing is published by any listing, so the per-centimetre arithmetic stays unpublished (E41-P1 re-scoped). |
+| 0A4-T5 — Canonical chain twice, link/disclosure/sponsored checks, PR, merge, Pages confirmation | done | 0a48cfda | this branch only | `tools/publish.py` 41/41 twice before and after the rebase; 25/25 baseline before edits; live read-back after the deploy | No browser was installable in this environment (pinned Chromium needs system NSS libs; only the six allowed hosts are reachable), so the rendered check is structural plus live HTML read-back, not a screenshot. Recorded as a limitation, not a pass. |
+
+## Part 0A4 — release record (2026-11-19)
+
+**PR [#202](https://github.com/kanlerxz87-cyber/Zone3/pull/202) merged into `main` as `393ab9c` at
+2026-11-19T21:59:12Z.** CI check *Build, provenance, links and privacy* passed (21s, run
+`44624054277`). GitHub Pages reported `status: built` for `393ab9c` at 21:59:13Z.
+
+Live read-back after the deploy (cache-busted with `?revision=393ab9c`):
+
+- `/shop/products/` — comparison table carries the new **Listed size** column; the three air fryers
+  show `13.38"D x 11.81"W x 10.63"H / 6 liters`, `16.9"D x 15.8"W x 14.8"H / 24.6 liters` and
+  `12.75"D x 13.5"W x 10"H / 8 quarts`; both thermometers show **Not published**.
+- `/guides/cleanup-and-counter-space.html` — the false sentence about the titles is gone, the
+  verified sizes are in the body, the new capacity-disagreement section is present, and the
+  "What we haven't established" list now names interior size and clearances.
+- `/` — product cards carry the size line with its read date.
+
+**Rebase record.** `main` advanced eight commits (PRs #199–#201, including guide #11) while this
+branch was open. `git pull --rebase` conflicted twice, both append-only or generated-output
+conflicts: `COORDINATION.md` (resolved by keeping the complete upstream file and re-appending Part
+0A4 once; the in-progress claim rows in that file were superseded by the final rows above), and the
+generated `executive-brief.html`, `suggestions/index.html`, `publication-pass.html`,
+`sessions/aebf0747/*` (resolved by taking this branch's side and re-running the canonical chain, which
+is the only writer of those files). No upstream `data/` content was dropped: the merged register
+carries upstream's eleventh guide alongside this pass's dimension fields and two proposals
+(**11 guides, 30 proposals, 38 questions, 19 sitemap URLs, 29 feed items**). The chain then passed
+**41/41 twice** on the rebased tree with a stable working tree.
+
+**Flagged irregularities (published, non-blocking):** FLG-S33 (new — capacity fields that contradict
+their own titles); FLG-003 (unchanged, open); E41-Q1 and E41-P1 re-scoped rather than closed because
+no listing publishes an interior size, clearance, cord length or door swing.
+
+## Part 0A4 — post-merge amendment (2026-11-19, PR #205)
+
+`E41-B02` still read "no product register holds a footprint or interior dimension for any of the five
+listings", which stopped being true once PR #202 merged. Following the board's amend-don't-rewrite
+convention, that row now carries a dated amendment: exterior sizes exist for three of five, the
+analysis is still unwritten, and the blocker has changed from missing dimensions to an unresolved
+capacity figure (`FLG-S33`) plus absent interior measurements. The earlier text is retained.
+
+## Part 6f16ee11 — independent verification + live-publication anti-slop gate (2026-11-19)
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 6f16ee11 | `arena/6f16ee11-zone3` | Independent line-by-line re-verification of the load-bearing policy claims against live official sources; close the anti-slop machinery gap on the live publication; record irregularities | done (PR merged; Pages verified) | 2026-11-19 |
+
+### Coordination and scope
+
+- Original task base: `0273fb400165d231261fd675431ce88f9fe54769` (tip of `main` at session start).
+- Claimed a non-overlapping scope before implementing. Reviewed the open PRs first: PR #192
+  (session `5d460e79`) owns product-link tagging + count derivation + index distinctness;
+  PR #160 (`0b2ffabd`) owns the design prompt + decision-readiness ledger; PR #157 (`ed27e766`)
+  owns the five-link decision/design refresh. None of them touch `tools/build_publication.py`,
+  `tools/check_publication.py`, or `about.html`, so this session worked only there plus the
+  additive session record.
+- File scope: `tools/check_publication.py`, `tools/build_publication.py`, the regenerated
+  `about.html`, `sessions/6f16ee11/**`, and this appended Part of `COORDINATION.md`. Shared
+  register, navigation, index, feed and product data are unchanged.
+
+### Task board
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| 6F1-T1 — Read the board, check scope conflicts, register and push the claim before implementation | done | 6f16ee11 | this Part only | board; PRs #192/#160/#157; `git log` at `0273fb4` | none |
+| 6F1-T2 — Independent line-by-line re-verification of every load-bearing policy claim against the live official page it cites | done | 6f16ee11 | `sessions/6f16ee11/verification-2026-11-19.md`, `verification-2026-11-19.json` | live `fetch_page`: Operating Agreement, Program Policies, FTC Disclosures 101, Google qualify-outbound-links, GitHub Pages limits | IRR-01 (tag parameter, cross-scope) |
+| 6F1-T3 — Close the anti-slop machinery gap: the published house-style lint covered only the `site/` archive, not the live publication | done | 6f16ee11 | `tools/check_publication.py`, `tools/build_publication.py`, `about.html` | `site/style-guide.html` (published house style); `tools/cba81fa5_lint.py` (archive lint, same regexes + use/mention rule) | IRR-02 (fixed) |
+| 6F1-T4 — Run the canonical build and full release checks; prove the new gate fires; record the result | done | 6f16ee11 | generated outputs only through the existing chain; `sessions/6f16ee11/repo-review.md` | `tools/publish.py` (41/41); `tools/check_publication.py`; negative test on the new scan | none |
+| 6F1-T5 — Open PR from this branch, merge without waiting if checks pass, verify Pages deployment and record the result | done | 6f16ee11 | current branch; this Part | GitHub Actions/Pages and cache-busted live read-back | none |
+
+### Verification performed (session 6f16ee11, 2026-11-19)
+
+Live official fetches, each read against the register's recorded wording (full per-claim table in
+`sessions/6f16ee11/verification-2026-11-19.md`):
+
+- **Operating Agreement** (`https://affiliate-program.amazon.com/help/operating/agreement`,
+  "Updated: October 15, 2025"): §1 Special Links = tagged link formats; §4 no traffic/income
+  representation; §5 "clearly and prominently" + the required sentence; §6 §5 violation =
+  material breach. **Confirmed.**
+- **Program Policies** (`https://affiliate-program.amazon.com/help/operating/policies`,
+  "Updated: April 14, 2026"): PR 1(f)/1(g); 2(a) Special Links use the assigned Associates ID;
+  2(b) tag as a URL parameter, no bookmarking inducement, sub-tag not tied to an end user,
+  original content, promotion removal, no misleading claims, price via Amazon-served link or
+  Creators/PA API; 6(t) no reviews/ratings without API; 6(v) no obscuring the Special Link URL
+  via Redirecting Links; 6(w) no link-shortening that obscures the Amazon destination.
+  **Confirmed.**
+- **FTC Disclosures 101** (`https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`,
+  November 2019): disclosure "hard to miss", placed with the endorsement; no experience talk
+  about an untried product. **Confirmed.**
+- **Google qualify outbound links** (`https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links`,
+  last updated 2025-12-10): `rel="sponsored"` marks advertisements/paid placements. **Confirmed.**
+- **GitHub Pages limits** (`https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits`):
+  not for online business / e-commerce / commercial-transaction sites; 1 GB; soft 100 GB/month;
+  soft 10 builds/hour. **Confirmed.**
+
+Eleven checked claims, all verified. No product fact beyond listing wording re-asserted; no
+price, rating, review count, traffic, demand, trend, conversion or revenue value claimed.
+
+### Irregularities raised by this session
+
+- **IRR-01 (high, compliance — cross-scope, logged not fixed).** Program Policies 2(b), read
+  live, requires the Associates ID/"tag" as a URL parameter on each link to an Amazon Site. The
+  live product links render without `tag=`. PR #192 (session `5d460e79`) owns the fix via
+  `tools/attach_tag.py`; per the board's cross-scope rule this session did not edit it and
+  logged the coordination note instead. FLG-003 stays unresolved; no claim that the supplied
+  short links are valid or invalid is made.
+- **IRR-02 (medium, machinery — fixed this session).** The published house style
+  (`site/style-guide.html`) forbids a banned hype/trend register and states a script fails the
+  build when a page slips. The enforcing script (`tools/cba81fa5_lint.py`) scanned only the
+  `site/` archive; the live publication was scanned for price/rating/experience but not for the
+  banned hype/trend phrases. A scan found two genuine uses on `about.html` ("must-have list",
+  "trending status"). Fixed in `tools/build_publication.py` and closed with a new HYPE + TREND
+  scan in `tools/check_publication.py` (with the same use/mention distinction and a `PUB_RELAXED`
+  set for the decision-desk page that quotes the register as its rule). The gate was proved to
+  fire on the pre-fix hits and passes after; a negative test confirms a reintroduced use is
+  flagged and a quoted mention is exempt.
+
+### Release and deploy record
+
+- **Release gate:** `python3 tools/publish.py` → **41/41 PASS**. `tools/check_publication.py` →
+  **PASS** (122 current HTML pages, 20 rendered reader/workspace pages, 104 official-source
+  table rows, 18 indexable URLs, 28 feed entries). Diff is three files plus the session record;
+  no shared data, navigation, index, feed or count changed.
+- **PR:** [#199](https://github.com/kanlerxz87-cyber/Zone3/pull/199) — *Session 6f16ee11:
+  independent policy re-verification + live-publication anti-slop gate*.
+- **Merged:** at the merge commit recorded below, no approval wait, per the standing brief.
+- **Pages:** GitHub Pages build status verified `built` after the merge; cache-busted live
+  read-back confirmed `about.html` no longer carries the two banned phrases and the publication
+  gate is green on the deployed tree.
+
+## Part 4b0e3c7e — session `arena/4b0e3c7e-zone3` (2026-11-19) — Associates ID on every product link, feed/sitemap alignment, destination-consistent CTAs
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 4b0e3c7e | `arena/4b0e3c7e-zone3` (base `0273fb4` = current `main`) | Audit the shipped tree against the current brief; close two measurable, policy-grounded defects (Associates ID missing from every product link; feed advertising pages the sitemap excludes); bring the public Special Link CTAs in line with the site's own no-embedded-tag statement; run all gates; PR to `main`, merge, verify Pages | in progress | 2026-11-19T21:51Z |
+
+### Coordination and scope
+
+- Read the board through the `4d7fe998` Part. Two other sessions hold claims on nearby files and both were checked against the board's stale-claim rule before this claim was written (below).
+- **PR #192 (`arena/5d460e79-zone3`) — taken over for the unshipped defect only.** Its last commit is `2026-11-19T13:01:06Z`, so at this claim it is 8 h 50 min stale against the board's 60-minute rule, and GitHub reports it `CONFLICTING` against `main` with no checks reported. Its own PR body records the same first defect this session measured independently: **no product link carried the Associates ID**. Only that defect and the feed/sitemap one are re-implemented here, from the current tree. Its broader rewrites (front-page redesign, 8 new gates, `attach_tag.py`, suggestions decision-record) are **not** adopted or evaluated by this session and remain available on that branch for review.
+- **PR #199 (`arena/a4f9ee45-zone3`) — read, not merged.** It is a coordination-only claim (one file, append-only). It claims `index.html`, `shop/`, `guides/`, `assets/`, `sitemap.xml`, `feed.xml`, `data/sources.json`, `data/products.json`, `data/flags.json` and `data/policy_facts.json`. This session therefore **does not edit any of those files**. Its Part also records a live reading of Program Policies **updated April 14, 2026**, which this session independently re-read and confirmed (see `sessions/4b0e3c7e/verification-2026-11-19.md`).
+- File scope for this session: `data/special-links.json`, new `data/links/associates-links.json`, new `tools/attach_associates_tag.py` (and its test), `tools/publish.py` (chain + gate registration only), `tools/build_feed.py`, `tools/build_shop.py` (link building + the one `tag=` assertion that contradicts the verified policy), regenerated `*.html`, `feed.xml`, `sitemap.xml` (by their existing builders), `data/shop/flags.json` (new flags only), new `sessions/4b0e3c7e/**`, and this appended Part.
+- Every changed number of files is produced by the existing generators; nothing is hand-edited into generated HTML except through the new idempotent post-processor.
+
+### Verification performed (all read live on 2026-11-19)
+
+- **Amazon Associates Program Policies — "Updated: April 14, 2026"** (`https://affiliate-program.amazon.com/help/operating/policies`), Participation Requirements **2(b)**, verbatim: "All Special Links must be accessed directly from your Site. For example, you must include your Associates ID or "tag" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site."
+- Same section, verbatim: "Special Links must use the Associates ID we have assigned to you." (`2(a)`) and the `XXXXX-##` shape this session's `shopnow047c-20` matches. Recorded as an observed shape match only; **account assignment is not verified** (FLG-003 stands).
+- Same page, Commission Income Statement **2(e)/(f)/(g)** context (tracking must not be routed through an intermediate site; malformed links are disqualified) — read in earlier chunks and already registered as `SH-S02`.
+- **FTC "Disclosures 101 for Social Media Influencers"** (`https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`) — disclosure must be hard to miss and travel with the endorsement; the site's strip is unchanged by this session.
+- **Google Search Central, "Qualify your outbound links to Google"** (`https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links`) — `rel="sponsored"`; every link this session touches keeps it.
+- The three facts above were read through the session's page fetch, not inferred from this repository's own registers. Source text and quotations: `sessions/4b0e3c7e/verification-2026-11-19.md`.
+
+### Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 4B0-T1 — Register and push this claim before implementation | done (`b016ba2`) | 4b0e3c7e | this Part only | board; PR #192, PR #199; `gh api .../commits` | Stale-claim takeover of 5D4's unshipped link defect is logged above; no branch of another session was force-pushed or merged |
+| 4B0-T2 — Give every Amazon product-detail link the owner-supplied Associates ID, keeping intended/observed fields separate and keeping `rel="sponsored"` | done (`b44da8d`) | 4b0e3c7e | `data/links/associates-links.json`, `tools/attach_associates_tag.py`, `scripts/test_attach_associates_tag.py`, `tools/publish.py`, `tools/build_shop.py`, `tools/build_publication.py`, `tools/build_brief_status.py`, `tools/build_cba81fa5_site.py`, regenerated HTML | Program Policies **2(a)** and **2(b)**, page stamped "Updated: April 14, 2026", read live 2026-11-19 (verbatim quotes in `sessions/4b0e3c7e/verification-2026-11-19.md`) | Tag is owner-supplied; account assignment, enrolment and marketplace **unverified** (FLG-S05). Boundary decisions published as FLG-S12 (citations) and FLG-S13 (9-character tokens) |
+| 4B0-T3 — Stop the feed advertising pages the sitemap excludes | done (`b44da8d`) | 4b0e3c7e | `tools/build_feed.py`, `feed.xml` | `sitemap.xml` (the site's own indexable set); pages' own `noindex` and retired notices | 18 of 28 items pointed at `noindex,follow` archive pages; feed now 10 items, newest guide retained |
+| 4B0-T4 — Make the public CTAs match the site's own statement that the tag is "NOT embedded in any link" | done (`b44da8d`) | 4b0e3c7e | `tools/build_shop.py`, `data/shop/config.json`, `data/special-links.json` (status fields only), `data/shop/flags.json` (FLG-S05 edit and three new rows), regenerated `shop/**` | Program Policies 2(b), 6(v), 6(w); the build's own prose | Buy buttons now go to the tagged product page; the supplied short links stay as the observed record and are **not** called invalid (FLG-003, new FLG-S11) |
+| 4B0-T5 — Full release run twice, PR, merge, Pages read-back, record result | **done** | 4b0e3c7e | this branch; this Part | `tools/publish.py` 44/44 twice on the final tree; GitHub Actions run on `780171d` **passed**; Pages API; live fetch of `/shop/products/` | See the release record below |
+
+### 4B0 measurement record (2026-11-19, this tree)
+
+- Baseline: `tools/publish.py` 41/41. After: **44/44**, twice, byte-identical rebuild (same
+  `git status --porcelain` SHA-256); `--check` only: 27/27.
+- Product-detail links carrying `?tag=shopnow047c-20`: **8 → 1,111**; missing the tag: **1,483 → 0**.
+- 9-character `/dp/` token links tagged: **0** (must stay 0). Browse/search/help citations tagged:
+  **0** (recorded boundary, FLG-S12). Submitted `link.amazon` anchors preserved: **414**.
+  Foreign tags found and preserved: **0**. Double tags **0**; malformed `?&tag=` **0**.
+- `feed.xml`: **28 → 10** entries, all in `sitemap.xml`, newest guide (19 Nov 2026) retained.
+- `tools/attach_associates_tag.py --check`: "every product-detail link carries
+  tag=shopnow047c-20 (21,873 links inspected; foreign tags: 0)".
+- Nothing was verified against an Associates account, and no page claims it was.
+
+### Direct conflict with session `0a48cfda`'s A4 O-T3 — recorded, not silently overridden
+
+Session `0a48cfda` (merged upstream as `393ab9c`, PR #202) recorded a decision **not to tag links**:
+"Links left exactly as supplied; FLG-003 stays open; the tagged URLs in `data/special-links.json`
+were not promoted." Its reasoning is in its Part and in `sessions/0a48cfda/verification-2026-11-19.md`.
+
+This session reached the opposite conclusion from the same clause and the same live reading of it.
+Both sessions quote Participation Requirements 2(b) correctly; the difference is what it asks for:
+
+| Question | `0a48cfda` | `4b0e3c7e` (this Part) |
+|---|---|---|
+| Does 2(b) require a tag on a link to a product page? | Not settled for these links, because "such other format as we may designate" is only shown inside an enrolled account | Yes — the sentence "you must include your Associates ID or "tag" ... as a parameter in the URL of each link you place on your Site to an Amazon Site" is a requirement with an example, not an option |
+| Does the unresolved status of the submitted short links (FLG-003) block adding a tag elsewhere? | It was read as blocking promotion of the tagged URLs | No: the short links stay exactly as supplied, untouched, and the tag is added only to links that already point at a product page |
+| Outcome | nothing tagged; 1,483 product links untagged | 1,111 product-detail links tagged; the 5 short links and 5 nine-character token links untouched |
+
+**Neither reading is verified by Amazon**, because verifying it needs account access this build does
+not have. The owner should treat this as a real open question, not a settled one: it is published as
+`FLG-S05` (tag now present, account unverified) and `FLG-S11` (buy buttons no longer route through the
+short links). If the `0a48cfda` reading is the correct one for this account, reverting this Part is a
+single-file change: delete the two entries this session added to `tools/publish.py`, and the site
+returns to the supplied links with no other edit. That reversibility is deliberate.
+
+### 4B0 release record (2026-11-19)
+
+- **PR [#203](https://github.com/kanlerxz87-cyber/Zone3/pull/203)** — "Associates ID on every product-detail link, buy buttons direct, feed limited to indexable pages".
+- **Merged** at `2026-11-19T22:08:52Z` as **`ec7d98e77cb9c6957fb481232004a13fdce61395`**.
+- **Publication check passed** on the final head (`780171d`): run `44625642002`, job `135918605084`, 34 s. The workflow's `git diff --exit-code` step passed, which is the independent proof that a clean checkout rebuilds byte-identically.
+- **Pages:** `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest` → `status: built`, `commit: ec7d98e…`, no error.
+- **Live read-back** (cache-busted `?rev=ec7d98e`):
+  - `/shop/products/` — all five rows' source links are `amazon.com/dp/<ASIN>?tag=shopnow047c-20`; upstream's *Listed size* column (13.38"D x 11.81"W x 10.63"H etc.) and the "Not published" cells for the two thermometers are intact; blank performance cells unchanged.
+  - `/index.html` — buy buttons carry the tag; the card source note shows "Submitted link B04G1MEwY, used as the observed record only"; eleven guides in "Just added to this edition"; the disclosure strip renders above the fold.
+  - `/sitemap.xml` 19 URLs, `/feed.xml` 11 items, all indexable.
+- **Rebase history (6 rebases, no upstream work lost):** `0273fb4` → `30746b2` (guide #11) → `393ab9c` (dimensions + FLG-S33) → `20e2862` → `08faae5` (FLG-S33 amendment) → `9ce02c6` (anti-hype gate). Conflicts were append-only `COORDINATION.md` tails plus generated pages, resolved by keeping the full upstream file and re-appending this Part; three generated files were taken from upstream and rebuilt; `tools/build_publication.py` was merged by hand so both upstream's `dimension_note()`/copy edits and this session's CTA and source-note changes survived (checked: both are present in the merged file). A Python `os`-level marker scan confirmed no conflict marker line survived.
+- **Correction made during the rebase:** upstream replaced "must-have list" in the about page (anti-slop gate). This session's about-page sentence still said the tag's assignment was unverified without saying the tag was now used, so it was corrected to: the ID "is carried as a `tag=` parameter on every product-detail link, as Participation Requirements 2(b) asks. We have not verified its account assignment, enrolment or attribution."
+- **Disagreement left visible, not resolves:** see the table above on session `0a48cfda`'s opposite reading. Both readings are recorded; the owner decides. Reverting is two lines in `tools/publish.py`.
+
+---
+
+---
+
 ## Part ee10b024 — session `ee10b024` (branch `arena/ee10b024-zone3`, base `0273fb4` = `main` at claim) — 2026-11-19
 
 Branch note: Arena fixes this session to `arena/ee10b024-zone3`; the brief's `session-<id>/<task>` branch shape is recorded as task-ID scope on the fixed branch (same resolution as earlier parts).
@@ -9539,8 +9784,8 @@ Branch note: Arena fixes this session to `arena/ee10b024-zone3`; the brief's `se
 | EE-T2 — Triage open PRs #157/#160/#192 (all CONFLICTING with `main`); stale-claim rule applied (>60 min, last commits 2026-11-17/19) | **done** | ee10b024 | triage only; PR refs fetched to `refs/tmp/pr{157,160,192}` | merge-base + `merge-tree` conflict sets | none |
 | EE-T3 — Union-merge accepted PR content without discarding any session's work; log every conflict resolution | **done** (45 conflicted paths across 3 merges) | ee10b024 | whole tree (integration only) | remap protocol + zero-loss assertions | none |
 | EE-T4 — Line-by-line re-verification of combined load-bearing claims against live official sources | **done** (OA §5/§6(a), PR 2(a)/2(b)/6(t)/(v)/(w), Google rel=sponsored, FTC Disclosures 101 read live 2026-11-19) | ee10b024 | `sessions/ee10b024/verification-2026-11-19.md` | official sources only | none |
-| EE-T5 — Full gate chain ×2 (idempotency), link check, broken-link fixes | **done** — `tools/publish.py` 46/46 twice; 6 same-day stale measurements + 1 false intent line fixed (`EE-F-01/02`) | ee10b024 | registers + generated outputs via canonical chain | local gates | none |
-| EE-T6 — PR → `main`, merge without waiting if gates green, Pages deploy confirmation, live read-back, publish record appended here | unclaimed | ee10b024 | current branch; this Part | gh/git | — |
+| EE-T5 — Full gate chain ×2 (idempotency), link check, broken-link fixes | **done** — `tools/publish.py` 49/49 twice on the final merged tree (46 after PR #192, plus main's stale-claim gate); 6 same-day stale measurements + 1 false intent line fixed (`EE-F-01/02`) | ee10b024 | registers + generated outputs via canonical chain | local gates | none |
+| EE-T6 — PR → `main`, merge without waiting if gates green, Pages deploy confirmation, live read-back, publish record appended here | in progress — PR [#207](https://github.com/kanlerxz87-cyber/Zone3/pull/207) opened; `origin/main` advanced to `f912a92` (PRs #199–#206) during review, merged into this branch in one union pass (56 conflicted paths) and gates re-ran 49/49 twice; merge retry pending | ee10b024 | current branch; this Part | gh/git | — |
 
 
 ---

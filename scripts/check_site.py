@@ -113,7 +113,7 @@ OFFICIAL_HOSTS = {
     "developers.google.com",
     "www.ftc.gov", "github.com", "api.github.com",
     # Read from these official publishers in the 2026-11-19 publication pass.
-    "docs.github.com", "developers.google.com", "www.foodsafety.gov",
+    "docs.github.com", "developers.google.com", "www.foodsafety.gov", "www.fsis.usda.gov",
 }
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 
