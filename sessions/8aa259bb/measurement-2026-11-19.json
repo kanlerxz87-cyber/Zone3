@@ -1,0 +1,187 @@
+{
+ "published_pages": 120,
+ "pages_missing_title": [],
+ "pages_missing_meta_description": [],
+ "amazon_anchor_links": 3005,
+ "pages_with_amazon_links": 106,
+ "amazon_links_without_rel_sponsored": 1217,
+ "amazon_links_without_rel_sponsored_pages": [
+  "about.html",
+  "agent-terms/index.html",
+  "air-fryers.html",
+  "articles/index.html",
+  "articles/the-24-hour-window-how-amazons-cookie-pays.html",
+  "articles/what-an-amazon-affiliate-link-has-to-look-like.html",
+  "articles/what-you-can-say-about-a-product-you-have-not-used.html",
+  "articles/where-air-fryers-sit-in-amazons-category-tree.html",
+  "brief-status/index.html",
+  "campaigns.html",
+  "campaigns/index.html",
+  "category/air-fryers.html",
+  "category/kitchen.html",
+  "commission/index.html",
+  "compliance/index.html",
+  "content-topics.html",
+  "content.html",
+  "content/index.html",
+  "dashboard-register.html",
+  "decision-center.html"
+ ],
+ "pages_with_disclosure_sentence": 120,
+ "pages_with_og_image": 29,
+ "pages_with_json_ld": 29,
+ "pages_mentioning_trending": 20,
+ "pages_with_which_one_is_for_you": 4,
+ "pages_with_per_centimetre_or_per_cm": [
+  "brief-status/index.html",
+  "shop/flagged/index.html",
+  "suggestions.html"
+ ],
+ "pages_with_working_name": 3,
+ "guides_question_led_pages": [
+  "guides/air-fryer-label-words.html",
+  "guides/basket-or-oven-style.html",
+  "guides/capacity-checklist.html",
+  "guides/cleanup-and-counter-space.html",
+  "guides/holiday-kitchen-checklist.html",
+  "guides/how-do-you-know-its-done.html",
+  "guides/instant-read-or-wireless-thermometer.html",
+  "guides/multi-function-questions.html"
+ ],
+ "articles_pages": [
+  "articles/the-24-hour-window-how-amazons-cookie-pays.html",
+  "articles/what-an-amazon-affiliate-link-has-to-look-like.html",
+  "articles/what-you-can-say-about-a-product-you-have-not-used.html",
+  "articles/where-air-fryers-sit-in-amazons-category-tree.html"
+ ],
+ "guide_to_shop_or_category_links": {
+  "guides/air-fryer-label-words.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "guides/basket-or-oven-style.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "guides/capacity-checklist.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "guides/cleanup-and-counter-space.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "guides/holiday-kitchen-checklist.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html",
+   "../shop/products/index.html"
+  ],
+  "guides/how-do-you-know-its-done.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html",
+   "../shop/products/index.html"
+  ],
+  "guides/instant-read-or-wireless-thermometer.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "guides/multi-function-questions.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "articles/the-24-hour-window-how-amazons-cookie-pays.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "articles/what-an-amazon-affiliate-link-has-to-look-like.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "articles/what-you-can-say-about-a-product-you-have-not-used.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ],
+  "articles/where-air-fryers-sit-in-amazons-category-tree.html": [
+   "../products.html",
+   "../products/index.html",
+   "../shop/air-fryers/index.html",
+   "../shop/meat-thermometers/index.html"
+  ]
+ },
+ "feed_items": 26,
+ "sitemap_urls": 16,
+ "design_prompt_md_exists": true,
+ "design_prompt_md_bracket_placeholders": 2,
+ "ai_generated_image_labels": [
+  "about.html",
+  "brief-status/index.html",
+  "content/index.html",
+  "executive-brief.html",
+  "flagged/index.html",
+  "guides/air-fryer-label-words.html",
+  "guides/basket-or-oven-style.html",
+  "guides/capacity-checklist.html",
+  "guides/cleanup-and-counter-space.html",
+  "guides/holiday-kitchen-checklist.html",
+  "guides/how-do-you-know-its-done.html",
+  "guides/index.html",
+  "guides/instant-read-or-wireless-thermometer.html",
+  "guides/multi-function-questions.html",
+  "index.html",
+  "privacy.html",
+  "reviews/index.html",
+  "shop/air-fryers/index.html",
+  "shop/index.html",
+  "shop/meat-thermometers/index.html",
+  "shop/products/index.html",
+  "site/decisions.html",
+  "suggestions/index.html"
+ ],
+ "ai_generated_pages_count": 23,
+ "assets_img": [
+  "capacity.jpg",
+  "counter.jpg",
+  "hero-kitchen.jpg",
+  "publication-kitchen.jpg"
+ ],
+ "chooser_mentions": [
+  "brief-status/index.html",
+  "direction/choose.html",
+  "direction/index.html",
+  "direction/products.html",
+  "direction/questions.html",
+  "shop/air-fryers/index.html",
+  "shop/flagged/index.html",
+  "shop/index.html",
+  "shop/meat-thermometers/index.html",
+  "suggestions.html",
+  "suggestions/index.html"
+ ],
+ "question_router_or_chooser_ids": [
+  "shop/air-fryers/index.html",
+  "shop/index.html",
+  "shop/meat-thermometers/index.html"
+ ]
+}

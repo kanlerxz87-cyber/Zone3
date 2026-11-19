@@ -2,7 +2,8 @@
   "_meta": {
     "title": "Flagged for review (shop build)",
     "raised_on": "2026-11-17",
-    "note": "Flags do not block the merge. Each item is published on the Flagged for review page with its source links, so it can be reviewed after the site is live."
+    "note": "Flags do not block the merge. Each item is published on the Flagged for review page with its source links, so it can be reviewed after the site is live.",
+    "remeasured_on": "2026-11-19 (session 8aa259bb: M38-F-05, -07, -09, -11, -12, -16 annotated; 8AA-F-01 and -02 added)"
   },
   "flags": [
     {
@@ -243,7 +244,7 @@
       "id": "M38-F-05",
       "severity": "Low",
       "status": "Open - for review",
-      "issue": "Where a page had no meta description, the publish pass added a generic one: '<title>. Published by Zone3; checked on the date shown in the page.' Six pages carry it.",
+      "issue": "Where a page had no meta description, the publish pass added a generic one: '<title>. Published by Zone3; checked on the date shown in the page.' Six pages carry it. Re-measured 2026-11-19 (session 8aa259bb): two pages carry the generic text, not six.",
       "impact": "Search snippets for those six pages would show boilerplate rather than a description written for the page.",
       "what_we_did": "Every page now has a description (S-04 is measured as met on 104 of 104 pages). The six generic descriptions were not rewritten.",
       "sources": [
@@ -273,7 +274,7 @@
       "id": "M38-F-07",
       "severity": "Medium",
       "status": "Open - for review",
-      "issue": "S-09: og:image and JSON-LD structured data appear on 11 of 104 published pages.",
+      "issue": "S-09: og:image and JSON-LD structured data appear on 11 of 104 published pages. Re-measured 2026-11-19: 29 of 120 published pages, not 11 of 104.",
       "impact": "Social previews and rich-result eligibility are present only on the reader-site pages.",
       "what_we_did": "Measured and recorded; no markup added in this session.",
       "sources": [
@@ -302,8 +303,8 @@
     {
       "id": "M38-F-09",
       "severity": "High",
-      "status": "Open - decision needed",
-      "issue": "S-14 cites DESIGN_PROMPT.md 'in this repository', but the file is not in this checkout. S-15 says the brand name was settled, but the site still uses the working name 'Zone3 Kitchen', and data/shop/config.json marks the name as an open decision (DEC-04).",
+      "status": "Open - decision needed (brand name only)",
+      "issue": "S-14 cites DESIGN_PROMPT.md 'in this repository', but the file is not in this checkout. S-15 says the brand name was settled, but the site still uses the working name 'Zone3 Kitchen', and data/shop/config.json marks the name as an open decision (DEC-04). Superseded 2026-11-19: DESIGN_PROMPT.md is present at the root. The brand conflict stands: the working name is on 3 pages, and Zone4 D-18 says the name is still to be chosen.",
       "impact": "The design brief the visual overhaul depends on cannot be confirmed here, and the brand is not settled.",
       "what_we_did": "Recorded as Not found here and Conflict on brief-status/index.html. The name was not changed.",
       "sources": [
@@ -332,8 +333,8 @@
     {
       "id": "M38-F-11",
       "severity": "High",
-      "status": "Open - for review",
-      "issue": "The brief says S-19 (a three-question chooser above the comparison table) and S-23 (capacity per centimetre of counter depth) are implemented. Neither appears on any published page (measured 2026-11-17).",
+      "status": "Open - for review (S-23 only)",
+      "issue": "The brief says S-19 (a three-question chooser above the comparison table) and S-23 (capacity per centimetre of counter depth) are implemented. Neither appears on any published page (measured 2026-11-17). Superseded 2026-11-19 for S-19: the three-step chooser is on the shop pages. S-23 (per-cm analysis) is still absent.",
       "impact": "Two claimed deliverables are absent from this site.",
       "what_we_did": "Recorded as Not found here on brief-status/index.html. Not built in this session, because the brief's source for S-23's measurements is the listing's dimensions, which the repo records only as observed text.",
       "sources": [
@@ -347,8 +348,8 @@
     {
       "id": "M38-F-12",
       "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "S-24 asks that every article reach the comparison, the buying guide and its category pillar. The five pages in articles/ link to them. The four question guides in guides/ do not link to a buying guide or a category pillar.",
+      "status": "Open - for review (partly superseded)",
+      "issue": "S-24 asks that every article reach the comparison, the buying guide and its category pillar. The five pages in articles/ link to them. The four question guides in guides/ do not link to a buying guide or a category pillar. Superseded 2026-11-19: all four articles and all eight guides link to the comparison and category pages. No build check enforces the rule (Zone4 D-27 describes one).",
       "impact": "The question guides are dead ends for a reader who wants to compare or buy.",
       "what_we_did": "Recorded as Partly here. No link added.",
       "sources": [
@@ -407,8 +408,8 @@
     {
       "id": "M38-F-16",
       "severity": "Low",
-      "status": "Open - for review",
-      "issue": "The brief's status labels for S-04…S-25 cite the owner's Zone4 decision log, a separate repository that is not an official source. Its individual rows were not re-read line by line in this session.",
+      "status": "Open - for review (Zone4 rows re-read 2026-11-19)",
+      "issue": "The brief's status labels for S-04…S-25 cite the owner's Zone4 decision log, a separate repository that is not an official source. Its individual rows were not re-read line by line in this session. Partly resolved 2026-11-19: session 8aa259bb read the public Zone4 decision log (docs/decisions.html at main) and checked each cited D-number against its recorded or open status. Two conflicts are logged as 8AA-F-01 and 8AA-F-02. The Zone4 log is still not an official source.",
       "impact": "The 'Brief says' column is quoted, not verified.",
       "what_we_did": "Kept in a separate column from the measured column on brief-status/index.html.",
       "sources": [
@@ -418,6 +419,36 @@
         }
       ],
       "claim_not_made": "No claim that the Zone4 statuses are correct."
+    },
+    {
+      "id": "8AA-F-01",
+      "severity": "High",
+      "status": "Open - decision needed (owner)",
+      "issue": "The Zone4 decision log (cited by ID; not an official source) records D-01 as recorded option A: the site's outbound product links 'are published as tagged Special Links - https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20 - in place of the short-link hrefs'. This repository does not do that. Its product links are the supplied short links, unchanged (FLG-003), and the Special Link test is not run.",
+      "impact": "Two repositories describe the same links differently. A reader or reviewer who reads the Zone4 log would expect tagged URLs that do not exist here.",
+      "what_we_did": "Kept the supplied short links as published here. Did not replace them and did not append a tag. Logged the conflict; the owner must choose one path.",
+      "sources": [
+        {
+          "label": "Amazon Associates Program Policies (Special Links, participation requirements)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ],
+      "claim_not_made": "No claim that the short links are invalid or that tagged links would work. The Associates-account test has not been run."
+    },
+    {
+      "id": "8AA-F-02",
+      "severity": "High",
+      "status": "Open - decision needed (owner)",
+      "issue": "The Zone4 decision log's open decision D-40 (cited by ID; not an official source) recommends option A: none of the two newly added short links should be added to the shop until intended identity and destination are confirmed. This repository's shop publishes all five supplied links (SHOP-01 to SHOP-05).",
+      "impact": "The site and the open recommendation disagree about which links are live. Intended products are unconfirmed for all five (FLG-S01, FLG-002).",
+      "what_we_did": "Did not remove any link. The brief asks for all five products to be shown. Logged the conflict for the owner.",
+      "sources": [
+        {
+          "label": "Amazon Associates Program Policies (Special Links)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ],
+      "claim_not_made": "No claim that either short link is invalid. Each product is shown with its observed listing and no confirmed intent."
     }
   ]
 }

@@ -3,7 +3,7 @@
     "title": "Brief status register — S-04…S-25 and SG-27…SG-30",
     "session": "38650305",
     "prepared_on": "2026-11-17",
-    "measured_on": "2026-11-17",
+    "measured_on": "2026-11-17 (initial); re-measured 2026-11-19",
     "method": "Each row has two columns that are never merged. 'Brief says' is copied from the brief. 'This repo shows' is what was measured or read in this checkout (branch arena/38650305-zone3). Rows marked 'Not found' have no matching text or file here, whatever the brief says. The brief's status labels cite the owner's Zone4 decision log (https://kanlerxz87-cyber.github.io/Zone4/docs/decisions.html); that log was reachable on 2026-11-17 but its individual S-rows were not re-read line by line, so 'Brief says' is not independently verified.",
     "status_vocabulary": {
       "Verified here": "Measured or read in this checkout on the date shown.",
@@ -12,65 +12,105 @@
       "Conflict": "The repo does something the brief rules out.",
       "Blocked (owner)": "Needs an account, a decision or a host that this build cannot reach.",
       "Not measured": "No measurement was made this session."
-    }
+    },
+    "remeasured_on": "2026-11-19",
+    "remeasured_by": "session 8aa259bb (COORDINATION Part 8aa259bb)",
+    "remeasure_method": "sessions/8aa259bb/measure_brief_rows.py (read-only). Rows that changed keep the 2026-11-17 text in 'prior_2026_11_17'. The 'brief_says' column is still quoted from the brief; the Zone4 decision rows were re-read on 2026-11-19 from a shallow clone of kanlerxz87-cyber/Zone4 (main) and checked against their recorded or open status."
   },
   "rows": [
     {
-      "id": "S-04", "priority": "P1",
+      "id": "S-04",
+      "priority": "P1",
       "item": "Give every page its own title and meta description",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-04)",
-      "this_repo_shows": "All 104 published HTML pages (excluding archive/, docs/, sessions/) carry a <title> and a meta description. Measured 2026-11-17. Where a page had no description, the publish pass added a generic one built from the title (flag M38-F-05).",
+      "this_repo_shows": "Measured 2026-11-19 by sessions/8aa259bb/measure_brief_rows.py: all 120 published HTML pages (excluding archive/, docs/, sessions/) carry a non-empty <title> and a meta description. Two pages carry the generic description the publish pass added (flag M38-F-05; the 2026-11-17 figure of six is superseded). Whether the wording is right is a separate open question (Zone4 D-04, recorded option A: keep and review the wording).",
       "our_status": "Verified here",
       "flag": "M38-F-05",
-      "brief_link": "https://developers.google.com/search/docs/appearance/snippet"
+      "brief_link": "https://developers.google.com/search/docs/appearance/snippet",
+      "prior_2026_11_17": {
+        "our_status": "Verified here",
+        "this_repo_shows": "All 104 published HTML pages (excluding archive/, docs/, sessions/) carry a <title> and a meta description. Measured 2026-11-17. Where a page had no description, the publish pass added a generic one built from the title (flag M38-F-05).",
+        "flag": "M38-F-05"
+      }
     },
     {
-      "id": "S-05", "priority": "P2",
+      "id": "S-05",
+      "priority": "P2",
       "item": "Mark affiliate links rel=\"sponsored\" without breaking the disclosure",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-05)",
-      "this_repo_shows": "1,447 links to amazon.* or link.amazon* on 104 pages; 0 without rel=\"sponsored\". The disclosure strip sits under the masthead on every page (checked by tools/verify_site.py, V1).",
+      "this_repo_shows": "Measured 2026-11-19: 414 affiliate short-link anchors (link.amazon) and 1,374 other Amazon product or shop-host anchors; all 1,788 carry rel=\"sponsored\". The 1,215 anchors to affiliate-program.amazon.com are policy and agreement citations, not product links, and carry no rel by design. The disclosure sentence appears on 120 of 120 pages. The 2026-11-17 figures (1,447 links, 104 pages) are superseded.",
       "our_status": "Verified here",
       "flag": "",
-      "brief_link": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links"
+      "brief_link": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "prior_2026_11_17": {
+        "our_status": "Verified here",
+        "this_repo_shows": "1,447 links to amazon.* or link.amazon* on 104 pages; 0 without rel=\"sponsored\". The disclosure strip sits under the masthead on every page (checked by tools/verify_site.py, V1).",
+        "flag": ""
+      }
     },
     {
-      "id": "S-06", "priority": "P2",
+      "id": "S-06",
+      "priority": "P2",
       "item": "Add what the appliance is like to live with (original testing)",
       "brief_says": "Not adopted - see the recorded decision (Zone4 D-06)",
-      "this_repo_shows": "No original testing or first-hand use data exists in this checkout. Consistent with 'not adopted'.",
-      "our_status": "Not measured",
+      "this_repo_shows": "Not adopted (Zone4 D-06, recorded option B: a specification and decision tool). Measured 2026-11-19: no experience claim is published. Ten pages contain phrases such as 'we tested', each inside a disclaimer or prohibition. No testing data exists in this checkout.",
+      "our_status": "Verified here",
       "flag": "M38-F-06",
-      "brief_link": "https://developers.google.com/search/docs/essentials/spam-policies"
+      "brief_link": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "prior_2026_11_17": {
+        "our_status": "Not measured",
+        "this_repo_shows": "No original testing or first-hand use data exists in this checkout. Consistent with 'not adopted'.",
+        "flag": "M38-F-06"
+      }
     },
     {
-      "id": "S-07", "priority": "P2",
+      "id": "S-07",
+      "priority": "P2",
       "item": "Answer the questions people actually type, one page per question",
       "brief_says": "No status label in the brief",
-      "this_repo_shows": "Four question-shaped guides are published under guides/ (working titles). No search-query data exists in this checkout, so no question was chosen from measured queries.",
+      "this_repo_shows": "Eight question-led guides are published under guides/ (working titles, listed in the sitemap and the feed). No search-query data exists in this checkout, so no question was chosen from measured queries. Zone4 D-07 (recorded option A) approved a small set of distinct question pages.",
       "our_status": "Partly here",
       "flag": "M38-F-06",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "prior_2026_11_17": {
+        "our_status": "Partly here",
+        "this_repo_shows": "Four question-shaped guides are published under guides/ (working titles). No search-query data exists in this checkout, so no question was chosen from measured queries.",
+        "flag": "M38-F-06"
+      }
     },
     {
-      "id": "S-09", "priority": "P2",
+      "id": "S-09",
+      "priority": "P2",
       "item": "Ship a social preview image and structured data, then measure whether search traffic arrives",
       "brief_says": "Partly implemented 2026-11-16 (Zone4 D-09)",
-      "this_repo_shows": "og:image on 11 of 104 pages; JSON-LD structured data on 11 of 104 pages (the reader-site pages under read/). No search-traffic measurement exists (see SG-29).",
+      "this_repo_shows": "Measured 2026-11-19: og:image and JSON-LD structured data appear on 29 of 120 published pages (the 2026-11-17 figure of 11 of 104 is superseded). No search-traffic measurement exists (SG-29).",
       "our_status": "Partly here",
       "flag": "M38-F-07",
-      "brief_link": "https://developers.google.com/search/docs/appearance/page-experience"
+      "brief_link": "https://developers.google.com/search/docs/appearance/page-experience",
+      "prior_2026_11_17": {
+        "our_status": "Partly here",
+        "this_repo_shows": "og:image on 11 of 104 pages; JSON-LD structured data on 11 of 104 pages (the reader-site pages under read/). No search-traffic measurement exists (see SG-29).",
+        "flag": "M38-F-07"
+      }
     },
     {
-      "id": "S-10", "priority": "P3",
+      "id": "S-10",
+      "priority": "P3",
       "item": "Bring the documentation in line with the code; every published check runs from a clean checkout",
       "brief_says": "Partly implemented 2026-11-16 (Zone4 D-10)",
-      "this_repo_shows": "Gates run green on this branch (verify_site, check_site, i2_gate, cba81fa5_lint, build_shop --check, build_feed --check, build_sitemap --check, check_all_links). A clean-checkout run is recorded in sessions/38650305/verification.md.",
+      "this_repo_shows": "Gates: tools/publish.py (16 builders and 25 checks, 41 commands) returned 41 of 41 PASS on this branch on 2026-11-19, and a second run left no changes. ENGINE.md, the file the brief links to, is not in this repository (it is in the Zone4 repository). The clean-checkout rule is enforced by .github/workflows/publication-check.yml, which rebuilds and requires a clean git diff.",
       "our_status": "Partly here",
       "flag": "",
-      "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/ENGINE.md"
+      "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/ENGINE.md",
+      "prior_2026_11_17": {
+        "our_status": "Partly here",
+        "this_repo_shows": "Gates run green on this branch (verify_site, check_site, i2_gate, cba81fa5_lint, build_shop --check, build_feed --check, build_sitemap --check, check_all_links). A clean-checkout run is recorded in sessions/38650305/verification.md.",
+        "flag": ""
+      }
     },
     {
-      "id": "S-11", "priority": "P3",
+      "id": "S-11",
+      "priority": "P3",
       "item": "Fix one wrong flag cross-reference; split open, resolved and historical items on the review page",
       "brief_says": "Partly implemented 2026-11-16 (Zone4 D-11)",
       "this_repo_shows": "flagged.html carries 'resolved' and 'historical' labels. The shop flag page (shop/flagged/) carries a status on each item. The cross-reference fix was not re-audited in this session.",
@@ -79,7 +119,8 @@
       "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/data/sources.json"
     },
     {
-      "id": "S-12", "priority": "P2",
+      "id": "S-12",
+      "priority": "P2",
       "item": "Decide the site's voice, and rewrite the articles to it once",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-12)",
       "this_repo_shows": "A house-style page exists (site/style-guide.html). The voice decision record and the rewrite were not re-read in this session.",
@@ -88,106 +129,173 @@
       "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
     },
     {
-      "id": "S-13", "priority": "P2",
+      "id": "S-13",
+      "priority": "P2",
       "item": "Approve a format-first topic calendar: eight catchy, spec-backed articles",
       "brief_says": "Partly implemented 2026-11-16 (Zone4 D-17)",
-      "this_repo_shows": "Four articles in articles/ (excluding the index) and four question-shaped guides in guides/. The eight-article target is not met as articles. Topic plan: content-topics.html.",
+      "this_repo_shows": "Measured 2026-11-19: four articles in articles/ (excluding the index) and eight question-led guides in guides/. The eight-article target is not met as articles. Zone4 D-17 (recorded) chose four foundational pieces first.",
       "our_status": "Partly here",
       "flag": "M38-F-08",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "prior_2026_11_17": {
+        "our_status": "Partly here",
+        "this_repo_shows": "Four articles in articles/ (excluding the index) and four question-shaped guides in guides/. The eight-article target is not met as articles. Topic plan: content-topics.html.",
+        "flag": "M38-F-08"
+      }
     },
     {
-      "id": "S-14", "priority": "P2",
+      "id": "S-14",
+      "priority": "P2",
       "item": "Adopt the prepared design-prompt draft as the brief for the visual overhaul",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-20); cites DESIGN_PROMPT.md 'in this repository'",
-      "this_repo_shows": "No DESIGN_PROMPT.md exists in this checkout. A design-brief page exists (design-brief.html, generated from data/design-brief.json). The brief's link points to the Zone4 repository, not this one.",
-      "our_status": "Not found here",
+      "this_repo_shows": "DESIGN_PROMPT.md is present at the repository root (measured 2026-11-19). It has no unfilled bracketed picks. The 2026-11-17 statement that the file is missing is superseded. Adoption is recorded in the Zone4 log (D-20, recorded option A); the Zone4 text was not re-read line by line here.",
+      "our_status": "Verified here",
       "flag": "M38-F-09",
-      "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/DESIGN_PROMPT.md"
+      "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/DESIGN_PROMPT.md",
+      "prior_2026_11_17": {
+        "our_status": "Not found here",
+        "this_repo_shows": "No DESIGN_PROMPT.md exists in this checkout. A design-brief page exists (design-brief.html, generated from data/design-brief.json). The brief's link points to the Zone4 repository, not this one.",
+        "flag": "M38-F-09"
+      }
     },
     {
-      "id": "S-15", "priority": "P2",
+      "id": "S-15",
+      "priority": "P2",
       "item": "Choose the visual direction and settle the brand name",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-18)",
-      "this_repo_shows": "The brand is still the working name 'Zone3 Kitchen (working name)'. data/shop/config.json states that the brand name is an open decision (DEC-04).",
+      "this_repo_shows": "The brand is still the working name 'Zone3 Kitchen' (measured 2026-11-19 on 3 pages). The Zone4 log says the name is still to be chosen (D-18, recorded option A: 'name to be chosen'). The brief's 'settle the brand name' is therefore not met, by this repository or by the Zone4 record.",
       "our_status": "Conflict",
       "flag": "M38-F-09",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "prior_2026_11_17": {
+        "our_status": "Conflict",
+        "this_repo_shows": "The brand is still the working name 'Zone3 Kitchen (working name)'. data/shop/config.json states that the brand name is an open decision (DEC-04).",
+        "flag": "M38-F-09"
+      }
     },
     {
-      "id": "S-16", "priority": "P2",
+      "id": "S-16",
+      "priority": "P2",
       "item": "Adopt a written evidence rule for 'trending' and popularity claims",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-19)",
-      "this_repo_shows": "The evidence rule is written in README.md and in data/suggestions.json (rendered on suggestions.html). The word 'trending' appears on 16 pages, mostly dashboards and analysis pages. Enforcement by a gate was not measured.",
+      "this_repo_shows": "The evidence rule is written in README.md and data/suggestions.json. 'Trending' appears on 20 published pages (16 on 2026-11-17), mostly dashboards and analysis pages. Zone4 D-19 (recorded option A) adopted dated official snapshots as the rule. Enforcement by a gate was not measured.",
       "our_status": "Partly here",
       "flag": "",
-      "brief_link": "https://www.amazon.com/Air-Fryers/b/ref=dp_bc_5?ie=UTF8&node=17659096011"
+      "brief_link": "https://www.amazon.com/Air-Fryers/b/ref=dp_bc_5?ie=UTF8&node=17659096011",
+      "prior_2026_11_17": {
+        "our_status": "Partly here",
+        "this_repo_shows": "The evidence rule is written in README.md and in data/suggestions.json (rendered on suggestions.html). The word 'trending' appears on 16 pages, mostly dashboards and analysis pages. Enforcement by a gate was not measured.",
+        "flag": ""
+      }
     },
     {
-      "id": "S-17", "priority": "P2",
+      "id": "S-17",
+      "priority": "P2",
       "item": "Rebuild the front page as an editorial homepage: hero, featured articles, category tiles, then the data",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-21)",
-      "this_repo_shows": "The live front page (index.html, read 2026-11-17) opens with the five products, then the four guides, then what is not confirmed, then how each page is checked. The category tile for the shop is on shop/index.html.",
+      "this_repo_shows": "Measured 2026-11-19: index.html places the shortlist section (id=products, five products) before the guides section (id=guides). Zone4 D-21 (recorded option A) keeps the editorial design.",
       "our_status": "Verified here",
       "flag": "",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "prior_2026_11_17": {
+        "our_status": "Verified here",
+        "this_repo_shows": "The live front page (index.html, read 2026-11-17) opens with the five products, then the four guides, then what is not confirmed, then how each page is checked. The category tile for the shop is on shop/index.html.",
+        "flag": ""
+      }
     },
     {
-      "id": "S-18", "priority": "P2",
+      "id": "S-18",
+      "priority": "P2",
       "item": "Add real product photography, and never generated or copied photography",
       "brief_says": "Needs a decision first",
-      "this_repo_shows": "Three images are in assets/img/: hero-kitchen.jpg, capacity.jpg and counter.jpg. The hero image is a generated-style kitchen illustration (read 2026-11-17), and capacity.jpg's caption says 'Our own illustration'. No product photograph is used. The brief rules out generated imagery.",
+      "this_repo_shows": "Measured 2026-11-19: 22 published pages carry an 'AI-generated' label, including the front-page image assets/img/publication-kitchen.jpg ('AI-generated editorial still life'). No product photograph is used. The brief says 'never generated or copied photography'. Zone4 D-22 is open and awaiting the owner.",
       "our_status": "Conflict",
       "flag": "M38-F-10",
-      "brief_link": "https://affiliate-program.amazon.com/help/operating/agreement"
+      "brief_link": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "prior_2026_11_17": {
+        "our_status": "Conflict",
+        "this_repo_shows": "Three images are in assets/img/: hero-kitchen.jpg, capacity.jpg and counter.jpg. The hero image is a generated-style kitchen illustration (read 2026-11-17), and capacity.jpg's caption says 'Our own illustration'. No product photograph is used. The brief rules out generated imagery.",
+        "flag": "M38-F-10"
+      }
     },
     {
-      "id": "S-19", "priority": "P2",
+      "id": "S-19",
+      "priority": "P2",
       "item": "Add a three-question 'which one is for you' chooser above the comparison table",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-23)",
-      "this_repo_shows": "The phrase 'which one is for you' appears on no published page (measured 2026-11-17).",
-      "our_status": "Not found here",
-      "flag": "M38-F-11",
-      "brief_link": "https://www.amazon.com/dp/B0CDY277D3"
+      "this_repo_shows": "Measured 2026-11-19: the 'Which one is for you?' chooser, with three steps ('THREE QUESTIONS, NO SCORE'), is on shop/index.html, shop/air-fryers/index.html and shop/meat-thermometers/index.html. On shop/air-fryers it sits before the comparison section (id=chooser precedes id=comparison). The 2026-11-17 'not found' result is superseded. Zone4 D-23 (recorded option A) is consistent with this.",
+      "our_status": "Verified here",
+      "flag": "",
+      "brief_link": "https://www.amazon.com/dp/B0CDY277D3",
+      "prior_2026_11_17": {
+        "our_status": "Not found here",
+        "this_repo_shows": "The phrase 'which one is for you' appears on no published page (measured 2026-11-17).",
+        "flag": "M38-F-11"
+      }
     },
     {
-      "id": "S-20", "priority": "P2",
+      "id": "S-20",
+      "priority": "P2",
       "item": "Mobile-first pass: type scale, tap targets, sticky comparison bar",
       "brief_says": "No status label in the brief",
-      "this_repo_shows": "The measured mobile pass for the reader site is recorded in sessions/82372fd1/mobile-audit.md (merged in PR #140). Not re-measured in this session.",
+      "this_repo_shows": "The mobile audit is recorded in sessions/82372fd1/mobile-audit.md (merged in PR #140) and was not re-measured this session. Zone4 D-24 (recorded option A) states the mobile pass is done.",
       "our_status": "Partly here",
       "flag": "",
-      "brief_link": "https://developers.google.com/search/docs/appearance/page-experience"
+      "brief_link": "https://developers.google.com/search/docs/appearance/page-experience",
+      "prior_2026_11_17": {
+        "our_status": "Partly here",
+        "this_repo_shows": "The measured mobile pass for the reader site is recorded in sessions/82372fd1/mobile-audit.md (merged in PR #140). Not re-measured in this session.",
+        "flag": ""
+      }
     },
     {
-      "id": "S-23", "priority": "P2",
+      "id": "S-23",
+      "priority": "P2",
       "item": "Publish the counter-space analysis: capacity per centimetre of counter depth",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-26)",
-      "this_repo_shows": "No 'per centimetre' or 'per cm' analysis appears on any published page (measured 2026-11-17). The counter-space guide (guides/cleanup-and-counter-space.html) does not compute capacity per centimetre.",
+      "this_repo_shows": "Measured 2026-11-19: no per-centimetre or per-cm capacity analysis appears on any reader page. The only matches are in this register, the shop flag page and the suggestions page, which describe the missing analysis. Zone4 D-26 (recorded option A) approved publishing it with the arithmetic shown; the arithmetic is not in this repository.",
       "our_status": "Not found here",
       "flag": "M38-F-11",
-      "brief_link": "https://www.amazon.com/dp/B0CDY277D3"
+      "brief_link": "https://www.amazon.com/dp/B0CDY277D3",
+      "prior_2026_11_17": {
+        "our_status": "Not found here",
+        "this_repo_shows": "No 'per centimetre' or 'per cm' analysis appears on any published page (measured 2026-11-17). The counter-space guide (guides/cleanup-and-counter-space.html) does not compute capacity per centimetre.",
+        "flag": "M38-F-11"
+      }
     },
     {
-      "id": "S-24", "priority": "P2",
+      "id": "S-24",
+      "priority": "P2",
       "item": "Complete the internal linking: every article reaches the comparison, the buying guide and its category pillar",
       "brief_says": "Implemented 2026-11-16 (Zone4 D-27)",
-      "this_repo_shows": "The five pages in articles/ link to a buying page and a category page (string match). The four question guides in guides/ do not link to a buying guide or a category pillar.",
+      "this_repo_shows": "Measured 2026-11-19: all four articles and all eight guides link to the comparison page (products/index.html) and to the category pillar (shop/air-fryers/index.html); the articles also link to the guides index. The 'buying guide' link target is the guides index; no separate buying-guide page is linked from the articles. No build check enforces this rule, although Zone4 D-27 (recorded option A) describes one. The 2026-11-17 statement that the guides had no links is superseded.",
       "our_status": "Partly here",
       "flag": "M38-F-12",
-      "brief_link": "https://affiliate-program.amazon.com/help/operating/policies"
+      "brief_link": "https://affiliate-program.amazon.com/help/operating/policies",
+      "prior_2026_11_17": {
+        "our_status": "Partly here",
+        "this_repo_shows": "The five pages in articles/ link to a buying page and a category page (string match). The four question guides in guides/ do not link to a buying guide or a category pillar.",
+        "flag": "M38-F-12"
+      }
     },
     {
-      "id": "S-25", "priority": "P2",
+      "id": "S-25",
+      "priority": "P2",
       "item": "Grow organic traffic on the verification angle, not on volume",
       "brief_says": "No status label in the brief",
-      "this_repo_shows": "No traffic data exists. Search Console is not connected (SG-29), so no organic result can be measured.",
+      "this_repo_shows": "No traffic data exists. Search Console is not connected (SG-29), so no organic result can be measured. Zone4 D-28 (recorded option A) sets the growth rule: the verification angle, not volume.",
       "our_status": "Blocked (owner)",
       "flag": "M38-F-03",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "prior_2026_11_17": {
+        "our_status": "Blocked (owner)",
+        "this_repo_shows": "No traffic data exists. Search Console is not connected (SG-29), so no organic result can be measured.",
+        "flag": "M38-F-03"
+      }
     },
     {
-      "id": "SG-27", "priority": "—",
+      "id": "SG-27",
+      "priority": "—",
       "item": "Nav labels",
       "brief_says": "Named as a parallel pass row; no definition given",
       "this_repo_shows": "The brief defines no SG-27 text, and no SG-27 register exists in this checkout. Navigation labels were not audited against any definition.",
@@ -196,25 +304,38 @@
       "brief_link": ""
     },
     {
-      "id": "SG-28", "priority": "—",
+      "id": "SG-28",
+      "priority": "—",
       "item": "Shipped RSS feed",
       "brief_says": "Named as a parallel pass row",
-      "this_repo_shows": "feed.xml is RSS 2.0 with 9 entries (the four /guides/ pages and five reader guides). tools/build_feed.py --check reports it current. Every published page links to it (autodiscovery).",
+      "this_repo_shows": "feed.xml is RSS 2.0 (<rss version=\"2.0\">) with 26 items, measured 2026-11-19 (the 2026-11-17 figure of 9 entries is superseded). tools/build_feed.py --check is one of the release gates.",
       "our_status": "Verified here",
       "flag": "",
-      "brief_link": ""
+      "brief_link": "",
+      "prior_2026_11_17": {
+        "our_status": "Verified here",
+        "this_repo_shows": "feed.xml is RSS 2.0 with 9 entries (the four /guides/ pages and five reader guides). tools/build_feed.py --check reports it current. Every published page links to it (autodiscovery).",
+        "flag": ""
+      }
     },
     {
-      "id": "SG-29", "priority": "—",
+      "id": "SG-29",
+      "priority": "—",
       "item": "Search Console",
       "brief_says": "Named as a parallel pass row",
-      "this_repo_shows": "Not connected. Verifying ownership needs the owner's Google account, which this build cannot access. sitemap.xml exists and is current, ready for submission by the owner.",
+      "this_repo_shows": "Not connected. Verifying ownership needs the owner's Google account, which this build cannot access. sitemap.xml lists 16 URLs (measured 2026-11-19) and is ready for the owner to submit. Zone4 D-42 (open) asks who verifies the property and submits the sitemap.",
       "our_status": "Blocked (owner)",
       "flag": "M38-F-03",
-      "brief_link": "https://search.google.com/search-console/about"
+      "brief_link": "https://search.google.com/search-console/about",
+      "prior_2026_11_17": {
+        "our_status": "Blocked (owner)",
+        "this_repo_shows": "Not connected. Verifying ownership needs the owner's Google account, which this build cannot access. sitemap.xml exists and is current, ready for submission by the owner.",
+        "flag": "M38-F-03"
+      }
     },
     {
-      "id": "SG-30", "priority": "—",
+      "id": "SG-30",
+      "priority": "—",
       "item": "Reader capture",
       "brief_says": "Named as a parallel pass row",
       "this_repo_shows": "Not built. No provider, privacy notice or decision on what to capture exists. Capturing reader email would need a privacy notice first.",
