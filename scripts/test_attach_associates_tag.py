@@ -107,9 +107,41 @@ check("nameless anchor", out, '<a name="x">y</a>')
 out, _ = one('<A HREF="https://www.amazon.com/dp/B0DZFD6R9Z">x</A>')
 check("uppercase anchor", f'tag={TAG}' in out, True)
 
+# 15. The stale-claim gate must fire on a page that says the tag is absent, in each of the
+#     phrasings this repository has actually published, and must not fire on the corrected
+#     wording (session 4b0e3c7e; the defect below shipped live once before the gate existed).
+import tempfile
+
+STALE = [
+    "The tracking ID shopnow047c-20 is not embedded in any link.",
+    "The selected tracking ID shopnow047c-20 was, until 2026-11-19, not embedded in any link.",
+    "The tag is NOT embedded in any link, because the links were used as supplied.",
+    "The tracking ID was not added to any URL, to avoid writing a tag into unvalidated links.",
+]
+FINE = [
+    "Until 2026-11-19 the tracking ID appeared in no link on this site. From that date it is carried by every product-detail link.",
+    "Every product-detail link carries tag=shopnow047c-20. Account ownership is not verified.",
+]
+
+
+def _stale_for(html: str) -> list[str]:
+    with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, dir=ROOT) as fh:
+        fh.write(f"<html><body><p>{html}</p></body></html>")
+        name = fh.name
+    try:
+        return aat.stale_claims(Path(name))
+    finally:
+        Path(name).unlink()
+
+
+for phrase in STALE:
+    check(f"stale claim caught: {phrase[:40]!r}", bool(_stale_for(phrase)), True)
+for phrase in FINE:
+    check(f"corrected wording allowed: {phrase[:40]!r}", _stale_for(phrase), [])
+
 if FAILS:
     print("FAIL")
     for f in FAILS:
         print("  " + f)
     sys.exit(1)
-print("OK: 14 rules, all attach_associates_tag cases pass")
+print("OK: 15 rules, all attach_associates_tag cases pass (incl. the stale-claim gate)")

@@ -134,6 +134,29 @@ def apply_to_text(text: str, tag: str | None = None) -> str:
     return process(text, tag or load_tag(), {})
 
 
+# A page that tells the reader the tag is absent, after the tag has been added everywhere,
+# is a false statement about the site's own conduct. These are checked in the text of the
+# built pages, not in the data, because a generated page is what a reader sees.
+STALE_CLAIM_PATTERNS = [
+    (re.compile(r"(?:tracking ID|tag|Associates ID)[^.<]{0,80}(?:is|was|are|were)[^.<]{0,40}embedded in any link", re.I),
+     "says the Associates ID is not embedded in any link, but it is on every product-detail link"),
+    (re.compile(r"(?:tag|tracking ID|Associates ID)[^.<]{0,80}(?:was not|is not|never) added to any URL", re.I),
+     "says the tag was not added to any URL, but it is on every product-detail link"),
+]
+
+
+def stale_claims(path: Path) -> list[str]:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    out = []
+    for rx, why in STALE_CLAIM_PATTERNS:
+        m = rx.search(text)
+        if m:
+            out.append(f"{path.relative_to(ROOT)}: {why} — {m.group(0)[:90]!r}")
+    return out
+
+
 def iter_pages() -> list[Path]:
     pages = []
     for path in sorted(ROOT.rglob("*.html")):
@@ -165,6 +188,14 @@ def main(argv: list[str]) -> int:
                 if ex and ex.group(1) != tag:
                     foreign.append(f"{path.relative_to(ROOT)}: {h.group(1)}")
     tagged = stats.get("tagged", 0)
+    stale: list[str] = []
+    for path in iter_pages():
+        stale.extend(stale_claims(path))
+    if stale:
+        print(f"FAIL: {len(stale)} page(s) still describe the tag as absent:")
+        for line in stale[:20]:
+            print("  - " + line)
+        return 1
     if check_only:
         if tagged:
             print(f"FAIL: {tagged} product link(s) across {changed_files} page(s) are missing tag={tag}")

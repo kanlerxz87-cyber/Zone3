@@ -60,8 +60,8 @@
       "severity": "High",
       "status": "Open - for review (test not run)",
       "issue": "The Special Link test was not run. This sandbox has no Associates account access, so no link was generated, clicked in the Associates workflow, or reported.",
-      "impact": "The submitted short links are used as supplied. The tracking ID shopnow047c-20 is not embedded in any link. Under Commission Income Statement Section 2(g), purchases are disqualified when links are not properly formatted, so the test must happen before the links are scaled.",
-      "what_we_did": "Recorded the test as a decision (DEC-01) and as an open item on this page.",
+      "impact": "The submitted short links are used as supplied and are no longer the destination of a buy button. Every product-detail link now carries the Associates ID (Program Policies 2(b)). Under Commission Income Statement 2(g), purchases are disqualified when links are not properly formatted, and only the enrolled-workflow test shows whether the ID actually tracks, so the test must still happen before spend is scaled.",
+      "what_we_did": "Recorded the test as a decision (DEC-01) and as an open item on this page. Separately, the ID was put on every product-detail link and the buy buttons were pointed at those tagged product pages, so the format 2(b) asks for is in place while the tracking test stays open.",
       "sources": [
         {
           "label": "Commission Income Statement, Section 2(e) and 2(g) (SH-S02)",
@@ -177,8 +177,8 @@
       "severity": "High",
       "status": "Open - blocked (needs Associates account)",
       "issue": "Special Link validation was not run. The brief asks for one link per product to be tested in the enrolled Associates workflow, and checked for destination and tracking report, before scaling.",
-      "impact": "No product link on the site has been confirmed to record a tracked click under the requester's Associates ID.",
-      "what_we_did": "Short links kept as supplied (not replaced). Nothing is described as invalid. The test is listed as the first decision in data/shop/decisions.json (DEC-01). This build has no access to the Associates account.",
+      "impact": "No product link on the site has been confirmed to record a tracked click under the requester's Associates ID. From 2026-11-19 every product-detail link does carry that ID as a URL parameter (Program Policies 2(b)), but a link format is not proof of attribution: only the enrolled-workflow test confirms that.",
+      "what_we_did": "Short links kept as supplied (not replaced, not called invalid). The tag is now on every product-detail link, and the buy buttons point at the tagged product page. The destination-and-tracking test in the enrolled workflow is still listed as the first decision in data/shop/decisions.json (DEC-01); this build has no account access.",
       "sources": [
         {
           "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
@@ -189,15 +189,15 @@
           "url": "https://affiliate-program.amazon.com/help/operating/agreement"
         }
       ],
-      "claim_not_made": "This build does not say the short links are invalid, and does not create any Special Link."
+      "claim_not_made": "This build does not say the short links are invalid, does not claim attribution is proven, and does not claim the workflow test has been run."
     },
     {
       "id": "M38-F-02",
       "severity": "Medium",
-      "status": "Open - decision needed",
-      "issue": "The selected tracking ID shopnow047c-20 is not embedded in any link. Ownership of the ID for the marketplace the links point to is not verified.",
-      "impact": "Under Participation Requirement 2(a)-(b), links to Amazon must carry the Associates ID. Until the ID is confirmed, the links cannot be shown to carry the requester's ID.",
-      "what_we_did": "The ID is recorded in data/shop/config.json as a user-selected value. It was not added to any URL, to avoid writing a tag into links that have not been validated.",
+      "status": "Addressed in part - for review",
+      "issue": "Until 2026-11-19 the selected tracking ID shopnow047c-20 appeared in no link on this site. From that date it is carried by every product-detail link (tools/attach_associates_tag.py). Ownership of the ID for the marketplace the links point to is still not verified.",
+      "impact": "Under Program Policies Participation Requirements 2(a)-(b) a link to an Amazon Site must carry the Associates ID, which the link format now does. Because the account match is unverified, no page can say a click or sale would be credited to the requester.",
+      "what_we_did": "Added ?tag=shopnow047c-20 to every /dp/ and /gp/product/ link with a 10-character ASIN, with a 14-rule test and a release-chain check. The supplied short links were left exactly as supplied, and no account, login or report was used, so the ID remains a user-selected value whose assignment is unverified.",
       "sources": [
         {
           "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
