@@ -9136,3 +9136,17 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
 **Scope statement.** Review-only batch: nothing here implements a suggestion, and no price, rating, review-count, availability, traffic, demand, trend, conversion or revenue value was introduced. Intended-ASIN fields remain blank; FLG-003 remains unresolved and was neither claimed nor implied either way.
 
 **Rebase reconciliation with session `d3493182` (PRs #182/#183), logged 2026-11-19.** Both sessions appended a "batch 3" to the same register and rebased over each other mid-flight (this session's claim also crossed PRs #181/#184/#185). Conflict replay: `main`'s versions of `data/publication.json`, `suggestions/index.html`, `executive-brief.html`, `README.md` and `EXECUTIVE-SUMMARY.md` were taken as base at each stop and this session's additive delta re-applied on top; nothing of any session's rows was dropped or edited. Session `d3493182` added `D34-P1…P6`, `D34-Q1…Q8`, path `P34-P1` and prompt block `d34-polish`; this session adds `B38-P1…P5`, `B38-Q1…Q4` and prompt block `b38-batch3`. Union totals after reconciliation: 15 sources / 26 proposals / 36 questions / 13 prompt blocks / 6 paths / 8 guides. Thematic overlaps are noted for the reviewer, not merged: B38-P1 (style page + automated banned-phrase lint) pairs with D34-P5/D34-Q3 (written voice rules); B38-P2 (visible evidence badges) overlaps part of D34-P4's decision aids; B38-P3's four concrete working titles extend D34-P2's generic slate; B38-P5 corrects DS-03's stale FAQPage premise, which the D34 batch does not touch. No gate or rule was relaxed; the full chain was re-run on the union.
+
+**B38 publish result (recorded after merge, 2026-11-19).**
+
+| Item | Result |
+|---|---|
+| Pull request | [#190](https://github.com/kanlerxz87-cyber/Zone3/pull/190) — `arena/b3e82b38-zone3` → `main` |
+| Pre-merge CI | "Build, provenance, links and privacy" — **pass** (run 44528748824, 22 s) |
+| Merge | **MERGED** without waiting for review, per the brief — 2026-11-19, merge commit **`eb60ee0`** |
+| GitHub Pages | Build for `eb60ee0cfa71478800fc90d3915f2cb929911936`: **`built`**, error null (Pages API `builds/latest`, checked 2026-11-19) |
+| Live checks (cache-busted `?revision=eb60ee0`) | `suggestions/index.html` serves 6 paths, all 26 proposals including `B38-P1…P5` with basis links, evidence anchors and review selects, the 36-question decision-readiness table and the 13-block design brief; `executive-brief.html` strip reads 5/8/36/0 and its decision-desk row names 6 paths / 26 proposals / 36 questions / 13 blocks — all register-derived |
+| Register totals on `main` | 15 sources / 26 proposals / 36 questions / 13 prompt blocks / 6 paths / 8 guides |
+| Nothing implemented | Review-only round: choices stay local and implement nothing; no price, rating, availability, traffic, demand, trend, conversion or revenue claim; intended-ASIN fields blank; FLG-003 unresolved and untouched |
+
+**Session status: B38-T1…T6 done.** Reviewer inputs that would unblock the most: DS-01 (first guide from the slates), DS-02 (imagery route), B38-Q1 (budget — zero-budget is a valid answer), B38-Q2 (accountable publisher name/contact), and the standing owner gates (Search Console, durable host, enrolled-workflow Special Link test).
