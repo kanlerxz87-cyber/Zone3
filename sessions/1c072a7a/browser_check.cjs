@@ -165,7 +165,9 @@ async function launch() {
     await ctx.grantPermissions(['clipboard-read', 'clipboard-write']);
     await page.locator('[data-copy-prompt]').click();
     await page.waitForFunction(() => document.getElementById('p26-copy-status').textContent.includes('copied'));
-    assert((await page.evaluate(() => navigator.clipboard.readText())).startsWith('Design Zone3 Kitchen'));
+    const brief = await page.evaluate(() => navigator.clipboard.readText());
+    assert(brief.includes(data.design_prompt.blocks[0].heading), 'whole-brief copy includes the first block heading');
+    assert(brief.includes(data.design_prompt.blocks.at(-1).heading), 'whole-brief copy includes the last block heading');
   });
   await check('Project-site /Zone3/ links, search and real five-event delivery; no Amazon navigation', async () => {
     await goto(page, '', '/Zone3');
@@ -272,7 +274,7 @@ async function launch() {
     const isolated = await context({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } }, false);
     const p = await isolated.newPage(); await goto(p);
     assert.equal(await p.locator('.p26-nav').isVisible(), true); assert.equal(await p.locator('[data-product-card]:visible').count(), 5);
-    await p.locator('.p26-nav a[href="guides/index.html"]').click(); assert.equal(await p.locator('.p26-guide-card').count(), 6);
+    await p.locator('.p26-nav a[href="guides/index.html"]').click(); assert.equal(await p.locator('.p26-guide-card').count(), data.guides.length);
     await goto(p, 'suggestions/index.html'); assert.equal(await p.locator('.p26-question-table tbody tr').count(), data.questions.length + (data.review_b9008684 ? data.review_b9008684.decision_rows.length : 0));
     await isolated.close();
   });

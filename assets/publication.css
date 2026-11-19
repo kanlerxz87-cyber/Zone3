@@ -316,3 +316,6 @@ a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
 .p26-answer textarea{display:block;width:100%;min-height:64px;padding:11px 9px;border:1px solid #bfc7b4;border-radius:2px;background:var(--p26-paper);font:11px/1.7 var(--p26-sans);color:var(--p26-ink);resize:vertical}
 .p26-answer textarea:focus-visible{outline:2px solid var(--p26-ink);outline-offset:1px}
 @media(max-width:760px){.p26-answers{grid-template-columns:1fr}}
+/* E61 a11y fix: muted fine print inside the prompt block falls to 4.18:1 on the block background;
+   use the body tone there so basis links meet WCAG AA contrast (scoped, no global restyle) */
+.p26-prompt .p26-fine,.p26-prompt .p26-fine a{color:var(--p26-body)!important}
