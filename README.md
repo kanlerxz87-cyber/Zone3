@@ -18,7 +18,7 @@ that reads this file.
 | Indexable reader URLs | 19 | `data/publication.json → indexable_pages` |
 | Supplied product links | 5 | `data/publication.json → products` |
 | Open decision-readiness questions | 38 | `data/publication.json → questions` |
-| Suggestions on the desk | 28 | `data/publication.json → proposals` |
+| Suggestions on the desk | 30 | `data/publication.json → proposals` |
 | Paths a reviewer can choose | 6 | `data/publication.json → paths` |
 | Design-brief blocks | 13 | `data/publication.json → design_prompt` |
 | Scoped official references | 17 | `data/publication.json → sources` |

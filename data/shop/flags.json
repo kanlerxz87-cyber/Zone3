@@ -3,7 +3,7 @@
     "title": "Flagged for review (shop build)",
     "raised_on": "2026-11-17",
     "note": "Flags do not block the merge. Each item is published on the Flagged for review page with its source links, so it can be reviewed after the site is live.",
-    "remeasured_on": "2026-11-19 (session 8aa259bb: M38-F-05, -07, -09, -11, -12, -16 annotated; 8AA-F-01 and -02 added)"
+    "remeasured_on": "2026-11-19 (session 8aa259bb: M38-F-05, -07, -09, -11, -12, -16 annotated; 8AA-F-01 and -02 added); 2026-11-19 (session 0a48cfda: FLG-S33 added — listing capacity fields disagree)"
   },
   "flags": [
     {
@@ -513,6 +513,29 @@
         }
       ],
       "claim_not_made": "No claim that a floating bar would improve conversion or use."
+    },
+    {
+      "id": "FLG-S33",
+      "severity": "High",
+      "status": "Open - for review",
+      "issue": "Two of the three air-fryer listings contradict themselves on capacity. The 6-quart Chefman title says “6 Quart” while its own detail table says “Capacity: 6 liters” (6 US quarts is about 5.7 L). The Emeril Lagasse title says “26QT” while its detail table says “Capacity: 24.6 liters”, which is 26 US quarts. Both figures sit on the same official page, so neither the title nor the table can be treated as the single capacity a buyer is getting.",
+      "impact": "A page that repeats one of these numbers as “the” capacity without also showing the other is picking a side of an unresolved listing discrepancy. Until this pass the site avoided the problem by publishing no dimensions or capacity figures at all, which also made it less useful than the listing it links to.",
+      "what_we_did": "Recorded both figures for each product, naming the field each came from, under data/publication.json → products[].listing_dimensions.capacity_as_listed and .capacity_note, with the read date 2026-11-19. The guides may show the listed capacity only alongside that note, and no page converts capacity into servings, portions or “family size”.",
+      "sources": [
+        {
+          "label": "Amazon listing B0CDY277D3 — title says 6 Quart, detail table says Capacity: 6 liters (read 2026-11-19)",
+          "url": "https://www.amazon.com/dp/B0CDY277D3"
+        },
+        {
+          "label": "Amazon listing B09B7SB46R — title says 26QT, detail table says Capacity: 24.6 liters (read 2026-11-19)",
+          "url": "https://www.amazon.com/dp/B09B7SB46R"
+        },
+        {
+          "label": "Amazon listing B08DKYBTPH — title and detail table agree on 8 quarts (read 2026-11-19)",
+          "url": "https://www.amazon.com/dp/B08DKYBTPH"
+        }
+      ],
+      "claim_not_made": "This does not say which number is correct, that either listing is inaccurate, or that the containers are measured to a different standard. It records only that the two printed fields disagree, so a buyer should check the model manual before treating either as usable capacity."
     }
   ]
 }
