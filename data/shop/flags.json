@@ -1,458 +1,477 @@
 {
-  "_meta": {
-    "title": "Flagged for review (shop build)",
-    "raised_on": "2026-11-17",
-    "note": "Flags do not block the merge. Each item is published on the Flagged for review page with its source links, so it can be reviewed after the site is live.",
-    "remeasured_on": "2026-11-19 (session 8aa259bb: M38-F-05, -07, -09, -11, -12, -16 annotated; 8AA-F-01 and -02 added)"
-  },
-  "flags": [
+ "_meta": {
+  "title": "Flagged for review (shop build)",
+  "raised_on": "2026-11-17",
+  "note": "Flags do not block the merge. Each item is published on the Flagged for review page with its source links, so it can be reviewed after the site is live.",
+  "remeasured_on": "2026-11-19 (session 8aa259bb: M38-F-05, -07, -09, -11, -12, -16 annotated; 8AA-F-01 and -02 added)"
+ },
+ "flags": [
+  {
+   "id": "FLG-S01",
+   "severity": "High",
+   "status": "Open - for review",
+   "issue": "Each of the five submitted codes is a 9-character short-link token, not a 10-character ASIN. For example, B04G1MEwY has 9 characters.",
+   "impact": "An intended ASIN cannot be read from any submitted link, so the intended-ASIN field is blank for all five products.",
+   "what_we_did": "Left intended_asin blank. Recorded the redirect target separately as observed_redirect_asin.",
+   "sources": [
     {
-      "id": "FLG-S01",
-      "severity": "High",
-      "status": "Open - for review",
-      "issue": "Each of the five submitted codes is a 9-character short-link token, not a 10-character ASIN. For example, B04G1MEwY has 9 characters.",
-      "impact": "An intended ASIN cannot be read from any submitted link, so the intended-ASIN field is blank for all five products.",
-      "what_we_did": "Left intended_asin blank. Recorded the redirect target separately as observed_redirect_asin.",
-      "sources": [
-        {
-          "label": "Creators API GetItems: ItemIdType ASIN = 10 characters (SH-S03)",
-          "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
-        }
-      ],
-      "claim_not_made": "This build does not say the short links are invalid. Their compliance status is an open question."
-    },
-    {
-      "id": "FLG-S02",
-      "severity": "High",
-      "status": "Open - for review",
-      "issue": "The requester has not stated the intended ASIN for any of the five links, and no intent confirmation has been recorded.",
-      "impact": "Every row in the intent record is 'Unverified'. Redirect targets (observed) are not treated as intended products.",
-      "what_we_did": "All intended_* and official_listing_url fields are blank. See DEC-02 on the decisions page.",
-      "sources": [
-        {
-          "label": "Observed redirects (SH-S06 to SH-S10)",
-          "url": "https://link.amazon/B04G1MEwY"
-        }
-      ],
-      "claim_not_made": "No claim is made that the observed products are the intended ones."
-    },
-    {
-      "id": "FLG-S03",
-      "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "SHOP-04 and SHOP-05 are meat thermometers. The repository's existing catalogue covers air fryers only, and it had no record of these two listings before this build.",
-      "impact": "The category scope is larger than the repository's earlier research. Neither product has been compared with others or checked for specifications.",
-      "what_we_did": "Added a separate Meat thermometers category. Only the title and the redirect target were recorded.",
-      "sources": [
-        {
-          "label": "Listing B0DHZTCNR5 (SH-S14)",
-          "url": "https://www.amazon.com/dp/B0DHZTCNR5"
-        },
-        {
-          "label": "Listing B0DZFD6R9Z (SH-S15)",
-          "url": "https://www.amazon.com/dp/B0DZFD6R9Z"
-        }
-      ],
-      "claim_not_made": "No comparison, ranking or 'best' claim is made for either product."
-    },
-    {
-      "id": "FLG-S04",
-      "severity": "High",
-      "status": "Open - for review (test not run)",
-      "issue": "The Special Link test was not run. This sandbox has no Associates account access, so no link was generated, clicked in the Associates workflow, or reported.",
-      "impact": "The submitted short links are used as supplied. The tracking ID shopnow047c-20 is not embedded in any link. Under Commission Income Statement Section 2(g), purchases are disqualified when links are not properly formatted, so the test must happen before the links are scaled.",
-      "what_we_did": "Recorded the test as a decision (DEC-01) and as an open item on this page.",
-      "sources": [
-        {
-          "label": "Commission Income Statement, Section 2(e) and 2(g) (SH-S02)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ],
-      "claim_not_made": "No link is described as validated, Special, or tracked."
-    },
-    {
-      "id": "FLG-S05",
-      "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "The tracking ID shopnow047c-20 was supplied by the requester. Account ownership and marketplace were not verified.",
-      "impact": "If the ID belongs to another account, or to a marketplace other than the one the links point to, reports will not match.",
-      "what_we_did": "Stored in config.json with the status 'user-selected, not verified'. Not embedded in any link.",
-      "sources": [
-        {
-          "label": "Operating Agreement, Section 1 (Special Links use the tagged link formats Amazon provides) (SH-S01)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ],
-      "claim_not_made": "No claim is made that the ID is the requester's account."
-    },
-    {
-      "id": "FLG-S06",
-      "severity": "High",
-      "status": "Open - decision needed",
-      "issue": "The privacy-preserving outbound-click counter and the self-hosted analytics endpoint were not built. GitHub Pages serves static files only, so it cannot host a collection endpoint. The five events to record were not defined in the brief.",
-      "impact": "No click or conversion measurement is live. GitHub Pages is a static host and cannot run a collection endpoint (SH-S16). The host also logs visitor IP addresses for security (SH-S16), so no page can claim that the site collects nothing.",
-      "what_we_did": "Created an empty ledger with a provenance rule (campaigns page). Asked for a decision on the hosting path and the five event definitions (DEC-03).",
-      "sources": [
-        {
-          "label": "GitHub Docs: What is GitHub Pages? (SH-S16)",
-          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
-        },
-        {
-          "label": "Commission Income Statement (basis for commission records) (SH-S02)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ],
-      "claim_not_made": "No click, order or conversion figure is shown."
-    },
-    {
-      "id": "FLG-S07",
-      "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "Price, star rating and review counts are not shown. The reason is Program Policies Participation Requirement 2(b), which is cited from earlier sessions' records and was NOT re-read on 2026-11-17.",
-      "impact": "Readers cannot compare prices on this site. Any future price display must come from an approved source.",
-      "what_we_did": "Did not display prices, ratings or review counts anywhere on the site.",
-      "sources": [
-        {
-          "label": "Program Policies (SH-S02; 2(b) not re-read today)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ],
-      "claim_not_made": "No price, rating or review figure is shown or implied."
-    },
-    {
-      "id": "FLG-S08",
-      "severity": "Medium",
-      "status": "Open - decision needed",
-      "issue": "No product photography is used. Images are Program Content under the Operating Agreement, and the decision on which image source to use is open.",
-      "impact": "Listings are text-only. Generated or copied images are not used.",
-      "what_we_did": "Did not add any image. See DEC-05.",
-      "sources": [
-        {
-          "label": "Operating Agreement, Section 1 (Program Content includes images) (SH-S01)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ],
-      "claim_not_made": "No image is claimed as official or as the product photo."
-    },
-    {
-      "id": "FLG-S09",
-      "severity": "Low",
-      "status": "Open - for review",
-      "issue": "The brand name 'Zone3 Kitchen' is a working placeholder. Any final name must comply with the Associates Program Trademark Guidelines, which the Operating Agreement incorporates by reference.",
-      "impact": "The name may change.",
-      "what_we_did": "Marked the name as a placeholder in config.json and on the decisions page.",
-      "sources": [
-        {
-          "label": "Operating Agreement, introduction (Associates Program Trademark Guidelines are incorporated by reference) (SH-S01)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ],
-      "claim_not_made": "No trademark or brand-clearance claim is made."
-    },
-    {
-      "id": "FLG-S10",
-      "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "Repository irregularity: the repository root and subfolders hold several overlapping sites and registers (root, site/, read/, docs/, sessions/, archive/). COORDINATION.md is about 7,000 lines. Earlier root claims include 'Three air fryers', which no longer matches the five submitted links.",
-      "impact": "Readers and reviewers may see conflicting counts or claims across pages.",
-      "what_we_did": "Did not edit other sites. Added one navigation link from the root page to this shop. The conflicts are listed here for the owner.",
-      "sources": [
-        {
-          "label": "Repository COORDINATION.md (github.com)",
-          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md"
-        },
-        {
-          "label": "Repository front page (github.com)",
-          "url": "https://github.com/kanlerxz87-cyber/Zone3"
-        }
-      ],
-      "claim_not_made": "This build does not resolve the earlier registers."
-    },
-    {
-      "id": "M38-F-01",
-      "severity": "High",
-      "status": "Open - blocked (needs Associates account)",
-      "issue": "Special Link validation was not run. The brief asks for one link per product to be tested in the enrolled Associates workflow, and checked for destination and tracking report, before scaling.",
-      "impact": "No product link on the site has been confirmed to record a tracked click under the requester's Associates ID.",
-      "what_we_did": "Short links kept as supplied (not replaced). Nothing is described as invalid. The test is listed as the first decision in data/shop/decisions.json (DEC-01). This build has no access to the Associates account.",
-      "sources": [
-        {
-          "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        },
-        {
-          "label": "Associates Program Operating Agreement (Section 5 disclosure)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ],
-      "claim_not_made": "This build does not say the short links are invalid, and does not create any Special Link."
-    },
-    {
-      "id": "M38-F-02",
-      "severity": "Medium",
-      "status": "Open - decision needed",
-      "issue": "The selected tracking ID shopnow047c-20 is not embedded in any link. Ownership of the ID for the marketplace the links point to is not verified.",
-      "impact": "Under Participation Requirement 2(a)-(b), links to Amazon must carry the Associates ID. Until the ID is confirmed, the links cannot be shown to carry the requester's ID.",
-      "what_we_did": "The ID is recorded in data/shop/config.json as a user-selected value. It was not added to any URL, to avoid writing a tag into links that have not been validated.",
-      "sources": [
-        {
-          "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        },
-        {
-          "label": "Associates Program Operating Agreement (Section 5 disclosure)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ],
-      "claim_not_made": "This build does not say the tracking ID belongs to the requester, or that any sale would be credited to it."
-    },
-    {
-      "id": "M38-F-03",
-      "severity": "High",
-      "status": "Open - blocked (needs owner Google account)",
-      "issue": "Search Console is not connected. Ownership verification needs the owner's Google sign-in, which this build cannot use. The brief's organic-traffic rows (S-25, SG-29) therefore have no data.",
-      "impact": "No search query, impression or click data exists, so no article topic can be chosen from measured queries.",
-      "what_we_did": "sitemap.xml is current and lists every published page, ready for submission by the owner. Search Console setup is listed in data/shop/decisions.json.",
-      "sources": [
-        {
-          "label": "Google Search Console (sign-in required to verify a property)",
-          "url": "https://search.google.com/search-console/about"
-        }
-      ],
-      "claim_not_made": "This build does not say any page ranks, or that search traffic exists."
-    },
-    {
-      "id": "M38-F-04",
-      "severity": "High",
-      "status": "Open - decision needed",
-      "issue": "The brief asks for 'the five defined events' but does not name them. The five events on measurement/index.html were proposed by this build, not taken from the brief.",
-      "impact": "The counter cannot be treated as the owner's agreed measurement until the owner confirms or replaces the five events.",
-      "what_we_did": "Proposed five (page_view, outbound_click, guide_view, intent_view, flag_view) and built them as the only events the collector accepts. Counting is OFF.",
-      "sources": [
-        {
-          "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        },
-        {
-          "label": "GitHub Docs: What is GitHub Pages? (static hosting; visitor IP logged by GitHub)",
-          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
-        }
-      ],
-      "claim_not_made": "The five events are not presented as the brief's definitions."
-    },
-    {
-      "id": "M38-F-05",
-      "severity": "Low",
-      "status": "Open - for review",
-      "issue": "Where a page had no meta description, the publish pass added a generic one: '<title>. Published by Zone3; checked on the date shown in the page.' Six pages carry it. Re-measured 2026-11-19 (session 8aa259bb): two pages carry the generic text, not six.",
-      "impact": "Search snippets for those six pages would show boilerplate rather than a description written for the page.",
-      "what_we_did": "Every page now has a description (S-04 is measured as met on 104 of 104 pages). The six generic descriptions were not rewritten.",
-      "sources": [
-        {
-          "label": "Google Search Central: write unique descriptions for each page",
-          "url": "https://developers.google.com/search/docs/appearance/snippet"
-        }
-      ],
-      "claim_not_made": "The generic descriptions are not presented as written copy."
-    },
-    {
-      "id": "M38-F-06",
-      "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "S-06 (first-hand 'what it is like to live with' testing) is not adopted, and no search-query data exists for S-07 (one page per question). The four question-shaped guides use working titles, not measured queries.",
-      "impact": "The guides are not evidence of demand for any question.",
-      "what_we_did": "Guides labelled as working titles on the guides index. No demand claim made.",
-      "sources": [
-        {
-          "label": "Google Search Central: helpful, people-first content",
-          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
-        }
-      ],
-      "claim_not_made": "No claim that any guide answers a question people search for."
-    },
-    {
-      "id": "M38-F-07",
-      "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "S-09: og:image and JSON-LD structured data appear on 11 of 104 published pages. Re-measured 2026-11-19: 29 of 120 published pages, not 11 of 104.",
-      "impact": "Social previews and rich-result eligibility are present only on the reader-site pages.",
-      "what_we_did": "Measured and recorded; no markup added in this session.",
-      "sources": [
-        {
-          "label": "Google Search Central: structured data introduction",
-          "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data"
-        }
-      ],
-      "claim_not_made": "No claim that structured data makes any page eligible for rich results."
-    },
-    {
-      "id": "M38-F-08",
-      "severity": "Medium",
-      "status": "Open - decision needed",
-      "issue": "S-13 asks for eight articles. This repository has four articles (articles/, excluding the index) and four question-shaped guides (guides/).",
-      "impact": "The 'eight' target is not met under either count.",
-      "what_we_did": "Counts recorded on brief-status/index.html. No article added.",
-      "sources": [
-        {
-          "label": "Google Search Central: helpful, people-first content",
-          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
-        }
-      ],
-      "claim_not_made": "No claim that the eight-article calendar was approved."
-    },
-    {
-      "id": "M38-F-09",
-      "severity": "High",
-      "status": "Open - decision needed (brand name only)",
-      "issue": "S-14 cites DESIGN_PROMPT.md 'in this repository', but the file is not in this checkout. S-15 says the brand name was settled, but the site still uses the working name 'Zone3 Kitchen', and data/shop/config.json marks the name as an open decision (DEC-04). Superseded 2026-11-19: DESIGN_PROMPT.md is present at the root. The brand conflict stands: the working name is on 3 pages, and Zone4 D-18 says the name is still to be chosen.",
-      "impact": "The design brief the visual overhaul depends on cannot be confirmed here, and the brand is not settled.",
-      "what_we_did": "Recorded as Not found here and Conflict on brief-status/index.html. The name was not changed.",
-      "sources": [
-        {
-          "label": "Google Search Central: helpful, people-first content",
-          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
-        }
-      ],
-      "claim_not_made": "No brand name is presented as cleared for use."
-    },
-    {
-      "id": "M38-F-10",
-      "severity": "High",
-      "status": "Open - decision needed",
-      "issue": "S-18 says 'never generated or copied photography', and 'needs a decision first'. The three images in assets/img/ are not product photographs: hero-kitchen.jpg is a generated-style kitchen illustration, and capacity.jpg is captioned 'Our own illustration'.",
-      "impact": "The site shows imagery the brief rules out, unless the owner decides the illustrations are acceptable.",
-      "what_we_did": "Images left in place and recorded. No product photograph was added. The source of the illustrations is not recorded in the repo.",
-      "sources": [
-        {
-          "label": "Associates Program Operating Agreement (Section 5 disclosure)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        }
-      ],
-      "claim_not_made": "No claim that the images are photographs, or that they were copied from Amazon."
-    },
-    {
-      "id": "M38-F-11",
-      "severity": "High",
-      "status": "Open - for review (S-23 only)",
-      "issue": "The brief says S-19 (a three-question chooser above the comparison table) and S-23 (capacity per centimetre of counter depth) are implemented. Neither appears on any published page (measured 2026-11-17). Superseded 2026-11-19 for S-19: the three-step chooser is on the shop pages. S-23 (per-cm analysis) is still absent.",
-      "impact": "Two claimed deliverables are absent from this site.",
-      "what_we_did": "Recorded as Not found here on brief-status/index.html. Not built in this session, because the brief's source for S-23's measurements is the listing's dimensions, which the repo records only as observed text.",
-      "sources": [
-        {
-          "label": "Google Search Central: helpful, people-first content",
-          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
-        }
-      ],
-      "claim_not_made": "No claim that the chooser or the per-centimetre analysis exists."
-    },
-    {
-      "id": "M38-F-12",
-      "severity": "Medium",
-      "status": "Open - for review (partly superseded)",
-      "issue": "S-24 asks that every article reach the comparison, the buying guide and its category pillar. The five pages in articles/ link to them. The four question guides in guides/ do not link to a buying guide or a category pillar. Superseded 2026-11-19: all four articles and all eight guides link to the comparison and category pages. No build check enforces the rule (Zone4 D-27 describes one).",
-      "impact": "The question guides are dead ends for a reader who wants to compare or buy.",
-      "what_we_did": "Recorded as Partly here. No link added.",
-      "sources": [
-        {
-          "label": "Google Search Central: helpful, people-first content",
-          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
-        }
-      ],
-      "claim_not_made": "No claim that the internal linking is complete."
-    },
-    {
-      "id": "M38-F-13",
-      "severity": "Low",
-      "status": "Open - for review",
-      "issue": "SG-27 (nav labels) is named in the brief with no definition. No SG-27 register exists in this checkout.",
-      "impact": "Navigation labels cannot be checked against an agreed list.",
-      "what_we_did": "Recorded as Not measured on brief-status/index.html.",
-      "sources": [
-        {
-          "label": "Google Search Central: helpful, people-first content",
-          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
-        }
-      ],
-      "claim_not_made": "No claim that navigation labels meet the brief."
-    },
-    {
-      "id": "M38-F-14",
-      "severity": "Medium",
-      "status": "Open - blocked (needs owner decision and privacy notice)",
-      "issue": "SG-30 (reader capture) is not built. There is no provider, no privacy notice and no decision on what would be captured.",
-      "impact": "No reader contact channel exists.",
-      "what_we_did": "Not built. The measurement page states that no reader data is captured.",
-      "sources": [
-        {
-          "label": "FTC: Disclosures 101 for social media influencers (disclosure placement)",
-          "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers"
-        }
-      ],
-      "claim_not_made": "No claim that reader capture is planned or approved."
-    },
-    {
-      "id": "M38-F-15",
-      "severity": "Low",
-      "status": "Open - for review",
-      "issue": "GitHub Pages logs the visitor IP address for security purposes, regardless of the site's own counter. The counter cannot change that.",
-      "impact": "Readers' IP addresses reach GitHub whatever the site does; the measurement page says so.",
-      "what_we_did": "Stated on measurement/index.html with the GitHub Docs link.",
-      "sources": [
-        {
-          "label": "GitHub Docs: What is GitHub Pages? (static hosting; visitor IP logged by GitHub)",
-          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
-        }
-      ],
-      "claim_not_made": "No claim that the counter is anonymous to GitHub."
-    },
-    {
-      "id": "M38-F-16",
-      "severity": "Low",
-      "status": "Open - for review (Zone4 rows re-read 2026-11-19)",
-      "issue": "The brief's status labels for S-04…S-25 cite the owner's Zone4 decision log, a separate repository that is not an official source. Its individual rows were not re-read line by line in this session. Partly resolved 2026-11-19: session 8aa259bb read the public Zone4 decision log (docs/decisions.html at main) and checked each cited D-number against its recorded or open status. Two conflicts are logged as 8AA-F-01 and 8AA-F-02. The Zone4 log is still not an official source.",
-      "impact": "The 'Brief says' column is quoted, not verified.",
-      "what_we_did": "Kept in a separate column from the measured column on brief-status/index.html.",
-      "sources": [
-        {
-          "label": "Google Search Central: helpful, people-first content (the standard the brief cites for its rows)",
-          "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
-        }
-      ],
-      "claim_not_made": "No claim that the Zone4 statuses are correct."
-    },
-    {
-      "id": "8AA-F-01",
-      "severity": "High",
-      "status": "Open - decision needed (owner)",
-      "issue": "The Zone4 decision log (cited by ID; not an official source) records D-01 as recorded option A: the site's outbound product links 'are published as tagged Special Links - https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20 - in place of the short-link hrefs'. This repository does not do that. Its product links are the supplied short links, unchanged (FLG-003), and the Special Link test is not run.",
-      "impact": "Two repositories describe the same links differently. A reader or reviewer who reads the Zone4 log would expect tagged URLs that do not exist here.",
-      "what_we_did": "Kept the supplied short links as published here. Did not replace them and did not append a tag. Logged the conflict; the owner must choose one path. The Operating Agreement (Section 1) requires the special tagged link formats; whether the supplied short links meet that is the open question that FLG-003 already records.",
-      "sources": [
-        {
-          "label": "Associates Program Operating Agreement, Section 1 (updated October 15, 2025): links “must properly use the special “tagged” link formats we provide” (Special Links)",
-          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
-        },
-        {
-          "label": "Amazon Associates Program Policies (Special Links, participation requirements)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ],
-      "claim_not_made": "No claim that the short links are invalid or that tagged links would work. The Associates-account test has not been run."
-    },
-    {
-      "id": "8AA-F-02",
-      "severity": "High",
-      "status": "Open - decision needed (owner)",
-      "issue": "The Zone4 decision log's open decision D-40 (cited by ID; not an official source) recommends option A: none of the two newly added short links should be added to the shop until intended identity and destination are confirmed. This repository's shop publishes all five supplied links (SHOP-01 to SHOP-05).",
-      "impact": "The site and the open recommendation disagree about which links are live. Intended products are unconfirmed for all five (FLG-S01, FLG-002).",
-      "what_we_did": "Did not remove any link. The brief asks for all five products to be shown. Logged the conflict for the owner.",
-      "sources": [
-        {
-          "label": "Amazon Associates Program Policies (Special Links)",
-          "url": "https://affiliate-program.amazon.com/help/operating/policies"
-        }
-      ],
-      "claim_not_made": "No claim that either short link is invalid. Each product is shown with its observed listing and no confirmed intent."
+     "label": "Creators API GetItems: ItemIdType ASIN = 10 characters (SH-S03)",
+     "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
     }
-  ]
+   ],
+   "claim_not_made": "This build does not say the short links are invalid. Their compliance status is an open question."
+  },
+  {
+   "id": "FLG-S02",
+   "severity": "High",
+   "status": "Open - for review",
+   "issue": "The requester has not stated the intended ASIN for any of the five links, and no intent confirmation has been recorded.",
+   "impact": "Every row in the intent record is 'Unverified'. Redirect targets (observed) are not treated as intended products.",
+   "what_we_did": "All intended_* and official_listing_url fields are blank. See DEC-02 on the decisions page.",
+   "sources": [
+    {
+     "label": "Observed redirects (SH-S06 to SH-S10)",
+     "url": "https://link.amazon/B04G1MEwY"
+    }
+   ],
+   "claim_not_made": "No claim is made that the observed products are the intended ones."
+  },
+  {
+   "id": "FLG-S03",
+   "severity": "Medium",
+   "status": "Open - for review",
+   "issue": "SHOP-04 and SHOP-05 are meat thermometers. The repository's existing catalogue covers air fryers only, and it had no record of these two listings before this build.",
+   "impact": "The category scope is larger than the repository's earlier research. Neither product has been compared with others or checked for specifications.",
+   "what_we_did": "Added a separate Meat thermometers category. Only the title and the redirect target were recorded.",
+   "sources": [
+    {
+     "label": "Listing B0DHZTCNR5 (SH-S14)",
+     "url": "https://www.amazon.com/dp/B0DHZTCNR5"
+    },
+    {
+     "label": "Listing B0DZFD6R9Z (SH-S15)",
+     "url": "https://www.amazon.com/dp/B0DZFD6R9Z"
+    }
+   ],
+   "claim_not_made": "No comparison, ranking or 'best' claim is made for either product."
+  },
+  {
+   "id": "FLG-S04",
+   "severity": "High",
+   "status": "Open - for review (test not run)",
+   "issue": "The Special Link test was not run. This sandbox has no Associates account access, so no link was generated, clicked in the Associates workflow, or reported.",
+   "impact": "The submitted short links are used as supplied. The tracking ID shopnow047c-20 is not embedded in any link. Under Commission Income Statement Section 2(g), purchases are disqualified when links are not properly formatted, so the test must happen before the links are scaled.",
+   "what_we_did": "Recorded the test as a decision (DEC-01) and as an open item on this page.",
+   "sources": [
+    {
+     "label": "Commission Income Statement, Section 2(e) and 2(g) (SH-S02)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ],
+   "claim_not_made": "No link is described as validated, Special, or tracked."
+  },
+  {
+   "id": "FLG-S05",
+   "severity": "Medium",
+   "status": "Open - for review",
+   "issue": "The tracking ID shopnow047c-20 was supplied by the requester. Account ownership and marketplace were not verified.",
+   "impact": "If the ID belongs to another account, or to a marketplace other than the one the links point to, reports will not match.",
+   "what_we_did": "Stored in config.json with the status 'user-selected, not verified'. Not embedded in any link.",
+   "sources": [
+    {
+     "label": "Operating Agreement, Section 1 (Special Links use the tagged link formats Amazon provides) (SH-S01)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ],
+   "claim_not_made": "No claim is made that the ID is the requester's account."
+  },
+  {
+   "id": "FLG-S06",
+   "severity": "High",
+   "status": "Open - decision needed",
+   "issue": "The privacy-preserving outbound-click counter and the self-hosted analytics endpoint were not built. GitHub Pages serves static files only, so it cannot host a collection endpoint. The five events to record were not defined in the brief.",
+   "impact": "No click or conversion measurement is live. GitHub Pages is a static host and cannot run a collection endpoint (SH-S16). The host also logs visitor IP addresses for security (SH-S16), so no page can claim that the site collects nothing.",
+   "what_we_did": "Created an empty ledger with a provenance rule (campaigns page). Asked for a decision on the hosting path and the five event definitions (DEC-03).",
+   "sources": [
+    {
+     "label": "GitHub Docs: What is GitHub Pages? (SH-S16)",
+     "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+    },
+    {
+     "label": "Commission Income Statement (basis for commission records) (SH-S02)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ],
+   "claim_not_made": "No click, order or conversion figure is shown."
+  },
+  {
+   "id": "FLG-S07",
+   "severity": "Medium",
+   "status": "Open - for review",
+   "issue": "Price, star rating and review counts are not shown. The reason is Program Policies Participation Requirement 2(b), which is cited from earlier sessions' records and was NOT re-read on 2026-11-17.",
+   "impact": "Readers cannot compare prices on this site. Any future price display must come from an approved source.",
+   "what_we_did": "Did not display prices, ratings or review counts anywhere on the site.",
+   "sources": [
+    {
+     "label": "Program Policies (SH-S02; 2(b) not re-read today)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ],
+   "claim_not_made": "No price, rating or review figure is shown or implied."
+  },
+  {
+   "id": "FLG-S08",
+   "severity": "Medium",
+   "status": "Open - decision needed",
+   "issue": "No product photography is used. Images are Program Content under the Operating Agreement, and the decision on which image source to use is open.",
+   "impact": "Listings are text-only. Generated or copied images are not used.",
+   "what_we_did": "Did not add any image. See DEC-05.",
+   "sources": [
+    {
+     "label": "Operating Agreement, Section 1 (Program Content includes images) (SH-S01)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ],
+   "claim_not_made": "No image is claimed as official or as the product photo."
+  },
+  {
+   "id": "FLG-S09",
+   "severity": "Low",
+   "status": "Open - for review",
+   "issue": "The brand name 'Zone3 Kitchen' is a working placeholder. Any final name must comply with the Associates Program Trademark Guidelines, which the Operating Agreement incorporates by reference.",
+   "impact": "The name may change.",
+   "what_we_did": "Marked the name as a placeholder in config.json and on the decisions page.",
+   "sources": [
+    {
+     "label": "Operating Agreement, introduction (Associates Program Trademark Guidelines are incorporated by reference) (SH-S01)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ],
+   "claim_not_made": "No trademark or brand-clearance claim is made."
+  },
+  {
+   "id": "FLG-S10",
+   "severity": "Medium",
+   "status": "Open - for review",
+   "issue": "Repository irregularity: the repository root and subfolders hold several overlapping sites and registers (root, site/, read/, docs/, sessions/, archive/). COORDINATION.md is about 7,000 lines. Earlier root claims include 'Three air fryers', which no longer matches the five submitted links.",
+   "impact": "Readers and reviewers may see conflicting counts or claims across pages.",
+   "what_we_did": "Did not edit other sites. Added one navigation link from the root page to this shop. The conflicts are listed here for the owner.",
+   "sources": [
+    {
+     "label": "Repository COORDINATION.md (github.com)",
+     "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/COORDINATION.md"
+    },
+    {
+     "label": "Repository front page (github.com)",
+     "url": "https://github.com/kanlerxz87-cyber/Zone3"
+    }
+   ],
+   "claim_not_made": "This build does not resolve the earlier registers."
+  },
+  {
+   "id": "M38-F-01",
+   "severity": "High",
+   "status": "Open - blocked (needs Associates account)",
+   "issue": "Special Link validation was not run. The brief asks for one link per product to be tested in the enrolled Associates workflow, and checked for destination and tracking report, before scaling.",
+   "impact": "No product link on the site has been confirmed to record a tracked click under the requester's Associates ID.",
+   "what_we_did": "Short links kept as supplied (not replaced). Nothing is described as invalid. The test is listed as the first decision in data/shop/decisions.json (DEC-01). This build has no access to the Associates account.",
+   "sources": [
+    {
+     "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    },
+    {
+     "label": "Associates Program Operating Agreement (Section 5 disclosure)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ],
+   "claim_not_made": "This build does not say the short links are invalid, and does not create any Special Link."
+  },
+  {
+   "id": "M38-F-02",
+   "severity": "Medium",
+   "status": "Open - decision needed",
+   "issue": "The selected tracking ID shopnow047c-20 is not embedded in any link. Ownership of the ID for the marketplace the links point to is not verified.",
+   "impact": "Under Participation Requirement 2(a)-(b), links to Amazon must carry the Associates ID. Until the ID is confirmed, the links cannot be shown to carry the requester's ID.",
+   "what_we_did": "The ID is recorded in data/shop/config.json as a user-selected value. It was not added to any URL, to avoid writing a tag into links that have not been validated.",
+   "sources": [
+    {
+     "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    },
+    {
+     "label": "Associates Program Operating Agreement (Section 5 disclosure)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ],
+   "claim_not_made": "This build does not say the tracking ID belongs to the requester, or that any sale would be credited to it."
+  },
+  {
+   "id": "M38-F-03",
+   "severity": "High",
+   "status": "Open - blocked (needs owner Google account)",
+   "issue": "Search Console is not connected. Ownership verification needs the owner's Google sign-in, which this build cannot use. The brief's organic-traffic rows (S-25, SG-29) therefore have no data.",
+   "impact": "No search query, impression or click data exists, so no article topic can be chosen from measured queries.",
+   "what_we_did": "sitemap.xml is current and lists every published page, ready for submission by the owner. Search Console setup is listed in data/shop/decisions.json.",
+   "sources": [
+    {
+     "label": "Google Search Console (sign-in required to verify a property)",
+     "url": "https://search.google.com/search-console/about"
+    }
+   ],
+   "claim_not_made": "This build does not say any page ranks, or that search traffic exists."
+  },
+  {
+   "id": "M38-F-04",
+   "severity": "High",
+   "status": "Open - decision needed",
+   "issue": "The brief asks for 'the five defined events' but does not name them. The five events on measurement/index.html were proposed by this build, not taken from the brief.",
+   "impact": "The counter cannot be treated as the owner's agreed measurement until the owner confirms or replaces the five events.",
+   "what_we_did": "Proposed five (page_view, outbound_click, guide_view, intent_view, flag_view) and built them as the only events the collector accepts. Counting is OFF.",
+   "sources": [
+    {
+     "label": "Associates Program Policies, Participation Requirements 2(b) (sub-tags and end users)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    },
+    {
+     "label": "GitHub Docs: What is GitHub Pages? (static hosting; visitor IP logged by GitHub)",
+     "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+    }
+   ],
+   "claim_not_made": "The five events are not presented as the brief's definitions."
+  },
+  {
+   "id": "M38-F-05",
+   "severity": "Low",
+   "status": "Open - for review",
+   "issue": "Where a page had no meta description, the publish pass added a generic one: '<title>. Published by Zone3; checked on the date shown in the page.' Six pages carry it. Re-measured 2026-11-19 (session 8aa259bb): two pages carry the generic text, not six.",
+   "impact": "Search snippets for those six pages would show boilerplate rather than a description written for the page.",
+   "what_we_did": "Every page now has a description (S-04 is measured as met on 104 of 104 pages). The six generic descriptions were not rewritten.",
+   "sources": [
+    {
+     "label": "Google Search Central: write unique descriptions for each page",
+     "url": "https://developers.google.com/search/docs/appearance/snippet"
+    }
+   ],
+   "claim_not_made": "The generic descriptions are not presented as written copy."
+  },
+  {
+   "id": "M38-F-06",
+   "severity": "Medium",
+   "status": "Open - for review",
+   "issue": "S-06 (first-hand 'what it is like to live with' testing) is not adopted, and no search-query data exists for S-07 (one page per question). The four question-shaped guides use working titles, not measured queries.",
+   "impact": "The guides are not evidence of demand for any question.",
+   "what_we_did": "Guides labelled as working titles on the guides index. No demand claim made.",
+   "sources": [
+    {
+     "label": "Google Search Central: helpful, people-first content",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    }
+   ],
+   "claim_not_made": "No claim that any guide answers a question people search for."
+  },
+  {
+   "id": "M38-F-07",
+   "severity": "Medium",
+   "status": "Open - for review",
+   "issue": "S-09: og:image and JSON-LD structured data appear on 11 of 104 published pages. Re-measured 2026-11-19: 29 of 120 published pages, not 11 of 104.",
+   "impact": "Social previews and rich-result eligibility are present only on the reader-site pages.",
+   "what_we_did": "Measured and recorded; no markup added in this session.",
+   "sources": [
+    {
+     "label": "Google Search Central: structured data introduction",
+     "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data"
+    }
+   ],
+   "claim_not_made": "No claim that structured data makes any page eligible for rich results."
+  },
+  {
+   "id": "M38-F-08",
+   "severity": "Medium",
+   "status": "Open - decision needed",
+   "issue": "S-13 asks for eight articles. This repository has four articles (articles/, excluding the index) and four question-shaped guides (guides/).",
+   "impact": "The 'eight' target is not met under either count.",
+   "what_we_did": "Counts recorded on brief-status/index.html. No article added.",
+   "sources": [
+    {
+     "label": "Google Search Central: helpful, people-first content",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    }
+   ],
+   "claim_not_made": "No claim that the eight-article calendar was approved."
+  },
+  {
+   "id": "M38-F-09",
+   "severity": "High",
+   "status": "Open - decision needed (brand name only)",
+   "issue": "S-14 cites DESIGN_PROMPT.md 'in this repository', but the file is not in this checkout. S-15 says the brand name was settled, but the site still uses the working name 'Zone3 Kitchen', and data/shop/config.json marks the name as an open decision (DEC-04). Superseded 2026-11-19: DESIGN_PROMPT.md is present at the root. The brand conflict stands: the working name is on 3 pages, and Zone4 D-18 says the name is still to be chosen.",
+   "impact": "The design brief the visual overhaul depends on cannot be confirmed here, and the brand is not settled.",
+   "what_we_did": "Recorded as Not found here and Conflict on brief-status/index.html. The name was not changed.",
+   "sources": [
+    {
+     "label": "Google Search Central: helpful, people-first content",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    }
+   ],
+   "claim_not_made": "No brand name is presented as cleared for use."
+  },
+  {
+   "id": "M38-F-10",
+   "severity": "High",
+   "status": "Open - decision needed",
+   "issue": "S-18 says 'never generated or copied photography', and 'needs a decision first'. The three images in assets/img/ are not product photographs: hero-kitchen.jpg is a generated-style kitchen illustration, and capacity.jpg is captioned 'Our own illustration'.",
+   "impact": "The site shows imagery the brief rules out, unless the owner decides the illustrations are acceptable.",
+   "what_we_did": "Images left in place and recorded. No product photograph was added. The source of the illustrations is not recorded in the repo.",
+   "sources": [
+    {
+     "label": "Associates Program Operating Agreement (Section 5 disclosure)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ],
+   "claim_not_made": "No claim that the images are photographs, or that they were copied from Amazon."
+  },
+  {
+   "id": "M38-F-11",
+   "severity": "High",
+   "status": "Open - for review (S-23 only)",
+   "issue": "The brief says S-19 (a three-question chooser above the comparison table) and S-23 (capacity per centimetre of counter depth) are implemented. Neither appears on any published page (measured 2026-11-17). Superseded 2026-11-19 for S-19: the three-step chooser is on the shop pages. S-23 (per-cm analysis) is still absent.",
+   "impact": "Two claimed deliverables are absent from this site.",
+   "what_we_did": "Recorded as Not found here on brief-status/index.html. Not built in this session, because the brief's source for S-23's measurements is the listing's dimensions, which the repo records only as observed text.",
+   "sources": [
+    {
+     "label": "Google Search Central: helpful, people-first content",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    }
+   ],
+   "claim_not_made": "No claim that the chooser or the per-centimetre analysis exists."
+  },
+  {
+   "id": "M38-F-12",
+   "severity": "Medium",
+   "status": "Open - for review (partly superseded)",
+   "issue": "S-24 asks that every article reach the comparison, the buying guide and its category pillar. The five pages in articles/ link to them. The four question guides in guides/ do not link to a buying guide or a category pillar. Superseded 2026-11-19: all four articles and all eight guides link to the comparison and category pages. No build check enforces the rule (Zone4 D-27 describes one).",
+   "impact": "The question guides are dead ends for a reader who wants to compare or buy.",
+   "what_we_did": "Recorded as Partly here. No link added.",
+   "sources": [
+    {
+     "label": "Google Search Central: helpful, people-first content",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    }
+   ],
+   "claim_not_made": "No claim that the internal linking is complete."
+  },
+  {
+   "id": "M38-F-13",
+   "severity": "Low",
+   "status": "Open - for review",
+   "issue": "SG-27 (nav labels) is named in the brief with no definition. No SG-27 register exists in this checkout.",
+   "impact": "Navigation labels cannot be checked against an agreed list.",
+   "what_we_did": "Recorded as Not measured on brief-status/index.html.",
+   "sources": [
+    {
+     "label": "Google Search Central: helpful, people-first content",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    }
+   ],
+   "claim_not_made": "No claim that navigation labels meet the brief."
+  },
+  {
+   "id": "M38-F-14",
+   "severity": "Medium",
+   "status": "Open - blocked (needs owner decision and privacy notice)",
+   "issue": "SG-30 (reader capture) is not built. There is no provider, no privacy notice and no decision on what would be captured.",
+   "impact": "No reader contact channel exists.",
+   "what_we_did": "Not built. The measurement page states that no reader data is captured.",
+   "sources": [
+    {
+     "label": "FTC: Disclosures 101 for social media influencers (disclosure placement)",
+     "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers"
+    }
+   ],
+   "claim_not_made": "No claim that reader capture is planned or approved."
+  },
+  {
+   "id": "M38-F-15",
+   "severity": "Low",
+   "status": "Open - for review",
+   "issue": "GitHub Pages logs the visitor IP address for security purposes, regardless of the site's own counter. The counter cannot change that.",
+   "impact": "Readers' IP addresses reach GitHub whatever the site does; the measurement page says so.",
+   "what_we_did": "Stated on measurement/index.html with the GitHub Docs link.",
+   "sources": [
+    {
+     "label": "GitHub Docs: What is GitHub Pages? (static hosting; visitor IP logged by GitHub)",
+     "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+    }
+   ],
+   "claim_not_made": "No claim that the counter is anonymous to GitHub."
+  },
+  {
+   "id": "M38-F-16",
+   "severity": "Low",
+   "status": "Open - for review (Zone4 rows re-read 2026-11-19)",
+   "issue": "The brief's status labels for S-04…S-25 cite the owner's Zone4 decision log, a separate repository that is not an official source. Its individual rows were not re-read line by line in this session. Partly resolved 2026-11-19: session 8aa259bb read the public Zone4 decision log (docs/decisions.html at main) and checked each cited D-number against its recorded or open status. Two conflicts are logged as 8AA-F-01 and 8AA-F-02. The Zone4 log is still not an official source.",
+   "impact": "The 'Brief says' column is quoted, not verified.",
+   "what_we_did": "Kept in a separate column from the measured column on brief-status/index.html.",
+   "sources": [
+    {
+     "label": "Google Search Central: helpful, people-first content (the standard the brief cites for its rows)",
+     "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+    }
+   ],
+   "claim_not_made": "No claim that the Zone4 statuses are correct."
+  },
+  {
+   "id": "8AA-F-01",
+   "severity": "High",
+   "status": "Open - decision needed (owner)",
+   "issue": "The Zone4 decision log (cited by ID; not an official source) records D-01 as recorded option A: the site's outbound product links 'are published as tagged Special Links - https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20 - in place of the short-link hrefs'. This repository does not do that. Its product links are the supplied short links, unchanged (FLG-003), and the Special Link test is not run.",
+   "impact": "Two repositories describe the same links differently. A reader or reviewer who reads the Zone4 log would expect tagged URLs that do not exist here.",
+   "what_we_did": "Kept the supplied short links as published here. Did not replace them and did not append a tag. Logged the conflict; the owner must choose one path. The Operating Agreement (Section 1) requires the special tagged link formats; whether the supplied short links meet that is the open question that FLG-003 already records.",
+   "sources": [
+    {
+     "label": "Associates Program Operating Agreement, Section 1 (updated October 15, 2025): links “must properly use the special “tagged” link formats we provide” (Special Links)",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    },
+    {
+     "label": "Amazon Associates Program Policies (Special Links, participation requirements)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ],
+   "claim_not_made": "No claim that the short links are invalid or that tagged links would work. The Associates-account test has not been run."
+  },
+  {
+   "id": "8AA-F-02",
+   "severity": "High",
+   "status": "Open - decision needed (owner)",
+   "issue": "The Zone4 decision log's open decision D-40 (cited by ID; not an official source) recommends option A: none of the two newly added short links should be added to the shop until intended identity and destination are confirmed. This repository's shop publishes all five supplied links (SHOP-01 to SHOP-05).",
+   "impact": "The site and the open recommendation disagree about which links are live. Intended products are unconfirmed for all five (FLG-S01, FLG-002).",
+   "what_we_did": "Did not remove any link. The brief asks for all five products to be shown. Logged the conflict for the owner.",
+   "sources": [
+    {
+     "label": "Amazon Associates Program Policies (Special Links)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+   ],
+   "claim_not_made": "No claim that either short link is invalid. Each product is shown with its observed listing and no confirmed intent."
+  },
+  {
+   "id": "5D4-F-01",
+   "severity": "High",
+   "status": "Open - attribution question (agent reported, owner review)",
+   "issue": "The submitted https://link.amazon short links resolve to Amazon through a THIRD-PARTY redirect chain. The observed redirect target recorded in this repository carries a linktw.in click token (btn_ref=srctok-...), and the flagged.html and sources.html pages cite linktw.in as the shortener's operator. Program Policies Participation Requirements 2(b) requires that the Associates ID or tag be a parameter in the URL of each link placed on the site to an Amazon Site, and 6(v) forbids obscuring the URL of the site containing Special Links by use of Redirecting Links.",
+   "impact": "If the supplied short links are redirected through a third-party shortener, a click may not be attributable to this Associates account even though it reaches the right listing. That is the difference between a click that earns and a click that does not. It is separate from, and not resolved by, this session's decision to tag every link the site itself emits.",
+   "what_we_did": "Did not alter, delete or re-host the supplied short links; they are not declared invalid (FLG-003 stays unresolved, as the brief instructs). Every outbound product link the site emits itself now goes directly to amazon.com/dp/<ASIN>?tag=shopnow047c-20, so the site's own destinations can be attributed and are not routed through any shortener. Logged here for the owner to confirm with Associates Central which destination actually credits the account.",
+   "sources": [
+    {
+     "label": "Amazon Associates Program Policies - Participation Requirements 2(b) and 6(v)",
+     "url": "https://affiliate-program.amazon.com/help/operating/policies"
+    },
+    {
+     "label": "Amazon Associates Program Operating Agreement",
+     "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+    }
+   ],
+   "claim_not_made": "No claim that link.amazon or linktw.in is prohibited, invalid, or non-compliant. The ownership and attribution behaviour of the redirect chain was not tested and is not asserted. Only the dated observation (the redirect target carries a linktw.in token) and the applicable policy text are recorded."
+  }
+ ]
 }
