@@ -34,9 +34,11 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
 ## Current publication ownership
 
 - **Content and dates:** [`data/publication.json`](data/publication.json). It contains five dated
-  redirect/title observations, six guides, ten scoped official references, six proposals and
-  nine decision-readiness questions. Intended ASINs/URLs/dates/sources remain distinct from
-  observed destinations. Prices, ratings, review totals and tested performance remain empty.
+  redirect/title observations, eight guides, ten scoped official references, six proposals, five
+  decision paths and sixteen decision-readiness questions. Intended ASINs/URLs/dates/sources remain
+  distinct from observed destinations. Prices, ratings, review totals and tested performance remain
+  empty. Reader-facing counts and check dates are derived from this file by the renderer, so a
+  refresh of the register cannot leave a page asserting a stale number or date (`P27-F02`, `P27-F04`).
 - **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
   retained publication entry point in the canonical chain. Do not hand-edit its output.
 - **One shared shell:** [`tools/publication_chrome.py`](tools/publication_chrome.py) and
@@ -44,15 +46,23 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
   the masthead and repeated in the footer. All dashboards stay accessible through one **Behind
   the site** group and the footer directory. The previous C3/C17 shopper edition is retained at
   [`publication-prior.html`](publication-prior.html), not silently discarded.
-- **Findability:** 14 canonical reader URLs in the sitemap; six question-led guides; local search;
-  24 RSS entries retaining the other editorial desks. Research/duplicate editions remain reachable
+- **Findability:** 16 canonical reader URLs in the sitemap; eight question-led guides; local search;
+  26 RSS entries retaining the other editorial desks. Research/duplicate editions remain reachable
   with their own canonical URL and `noindex,follow`, rather than competing as new front doors.
   One guide review every 14 days is an operating plan, not a demand or ranking claim.
 - **Art and authorship:** labelled generated kitchen context and original generic format diagrams,
   not model photography or test evidence. Zone3 Editorial is a disclosed publisher byline,
   not a fabricated human expert.
-- **Suggestions:** local Save / Clear, JSON export and a reusable design prompt. Saving a choice
-  never implements it, activates analytics, changes an account or spends money.
+- **Decision desk:** [`suggestions/index.html`](suggestions/index.html) holds the paths (what each
+  one changes, needs, unblocks and still cannot claim), the individual proposals, the register of
+  open questions with the answer owner and the discovery action for each, the intake shape a new
+  suggestion has to take, and a ten-block design brief with per-block copy. Local Save / Clear,
+  JSON export: choosing a path never implements it, activates analytics, changes an account or
+  spends money.
+- **Design brief:** [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) is the paste-ready version — rails R1–R12
+  each quoting the official clause and its source row, the measured page inventory, the
+  allowed/forbidden component table, the copy rules, and a definition of done keyed to the gates as
+  they run today. It decides nothing on its own; where it needs an answer, it names the question.
 
 ## Measurement and account boundaries
 

@@ -8683,6 +8683,59 @@ Independent line-by-line re-verification of the five supplied product links (one
 - **Flagged irregularities remain published** (they do not block, by the brief's rule): B79-F-01 (fixed and gated), B79-F-02 (no Associates tag in the supplied URLs), B79-F-03 (prices need an Amazon-served link or API data), B79-F-04 (truncated token and cross-repo reference in the supplied input). Unchanged from earlier: FLG-002, FLG-003, FLG-035, P26-F02, P26-F04, C3-F-01.
 - **Account-dependent work remains unperformed and is not claimed:** Associates enrollment, Special Link generation, tracking-report checks, a durable analytics host, Search Console, authorized Associates reports. Production measurement stays **off**; the campaign ledger stays empty; no visitor, order, conversion or traffic figure is invented anywhere.
 - **Status:** `done` for T9. Task board row below.
+
+# Part P27 — session `6b68afc8` (branch `arena/6b68afc8-zone3`, base `825f5132` = `main` at claim, 2026-11-19)
+
+## P27 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `6b68afc8` | `arena/6b68afc8-zone3` | Decision-desk pass on the canonical publication: reviewable path chooser (choose-a-path before implementing), cross-register decision-readiness (who can answer, what form the answer takes), a structured copy-ready design brief, two new question-led guides, dated source re-verification, gate run, PR → merge → Pages confirm | in progress | 2026-11-19 ~09:05 |
+
+## P27 Board read before claiming
+
+- `main` at claim: `825f513` (merge of PR #172, session `1c072a7a`, 2026-11-19T06:35Z). This branch starts from that commit; `git log origin/main..HEAD` is empty, so nothing here is ahead yet.
+- Baseline gates run **before any edit** on this checkout: `python3 tools/publish.py --check` → **25 commands, 0 failures**. No rebuild was needed to reach a clean tree; `git status --porcelain` was empty.
+- `gh pr list --state open` returns two stale PRs from other sessions, both unmerged for ~46 hours: **#160** (`arena/0b2ffabd-zone3`, design prompt + decision-readiness ledger + `G0B2-F-01…11`) and **#157** (`arena/ed27e766-zone3`, five-link decision/design refresh). Their `G0B2-*` IDs are **not present anywhere in this tree** (grepped `data/`, `*.md`, `*.py`; zero hits outside their own branches) and `DESIGN_PROMPT.md` does not exist at the root, so none of that work is live. This session does **not** merge another session's branch; it re-measures the same questions against today's tree, publishes its own dated pass, and flags the unmerged PRs so the owner can review them (P27-F01).
+- Earlier `in progress` rows on this board (0c4c4cb6, 66964850, c3be74f2, 5b443d02, 3c886b62) are historical records whose own publish sections report completion or a stale claim; none of them is editing the canonical publication renderer today. `tools/build_publication.py`, `tools/publication_chrome.py`, `tools/check_publication.py` and `data/publication.json` carry no live non-stale claim, so P27 works on them under the integration rule and changes nothing else's history.
+
+## P27 Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| P27-1 — Board read, baseline gate run, repo review of the current reader surfaces | **shipped** | `6b68afc8` | read-only + `sessions/6b68afc8/repo-review-2026-11-19.md` | local gates | → `P27-F*` |
+| P27-2 — Dated re-verification of the official pages this pass cites (Amazon agreement/policies, Google, FTC, FoodSafety.gov, GitHub Pages) | **shipped** | `6b68afc8` | `sessions/6b68afc8/verification-2026-11-19.md`, `data/sources.json` (append S95+ only; no existing row edited) | official pages | blank cells stay blank |
+| P27-3 — Decision desk on the canonical suggestions page: reviewable path chooser, answer-owner column, new open questions, structured design brief blocks | **shipped** | `6b68afc8` | `data/publication.json` (append `paths`, `design_prompt`, question rows, guide rows), `tools/build_publication.py`, `assets/publication.css`, `assets/publication.js` | S95+ and existing rows | — |
+| P27-4 — Two additional question-led guides in the cluster, listing-wording only | **shipped** | `6b68afc8` | `data/publication.json`, generated `guides/*.html`, `sitemap.xml`, `feed.xml` (register-driven) | listings + `food-safety` | unverified fields stay blank |
+| P27-5 — `DESIGN_PROMPT.md` at the repo root: paste-ready brief measured against today's tree | **shipped** | `6b68afc8` | `DESIGN_PROMPT.md` (new), `README.md` (one row) | P27-2 record | — |
+| P27-6 — Flags for what this pass found, then full chain ×2 (idempotency), PR → merge without waiting → Pages build → live check, records | **shipped** | `6b68afc8` | `data/flags.json` (append), `flagged.html` (generated), `EXECUTIVE-SUMMARY.md` (additive section), this Part | gate outputs | P27-F01… |
+
+## P27 Rules this session follows
+
+- Nothing on the suggestions page implements itself: a path choice is saved in the reviewer's browser and never publishes, spends, or changes an account.
+- No invented price, star rating, review count, popularity/trending claim, order, conversion score or revenue forecast. No generated or copied product photography; no Amazon Program Content asset is stored locally.
+- Intended-ASIN/confirmation fields stay separate from observed redirect targets. `FLG-003` (submitted short-link compliance) stays unresolved; they are not called invalid.
+- Every table row on a current reader/review page keeps an official HTTPS source; anything that cannot be confirmed stays blank and is flagged.
+- Generated HTML is never hand-edited: `python3 tools/publish.py` owns the tree, and the release requires a second run to change no tracked file.
+
+## P27 Release record
+
+| Item | Value |
+|---|---|
+| Commits | `60c0cd9` (claim) · `a659bce` (the pass) · `fcd8661` (idempotency recheck) · this record's commit |
+| Gate | `python3 tools/publish.py` → **41 commands checked; 0 failed** (16 builders + 25 checks), run three times across the rebase; the second and third runs changed **0** tracked files and left `git status --porcelain` empty |
+| Machine-readable | `sessions/6b68afc8/release-checks-2026-11-19.json`, `sessions/6b68afc8/idempotency-2026-11-19.json` (294 files hashed, `changed_files: []`) |
+| Rebase at push time | `origin/main` moved `825f513 → 530d9d9` (PRs **#173 #174 #175 #176**, 130 files). Five renderer conflict regions, resolved as recorded in `sessions/6b68afc8/repo-review-2026-11-19.md` §6. The JSON registers were **not** line-merged: the branch was reconstructed on the new base by re-running the guarded additive migration, appending the CSS/JS, and re-applying only the renderer diff |
+| Gate caught after rebase | `tools/check_publication.py` (from #175/#176) requires `owner_input_needed` on every question row; the four prose-complete `P27-Q` rows failed once. Fixed in the data; the gate was not loosened |
+| Registers touched | `data/publication.json` (+478/−19: paths, brief blocks, intake, 7 questions, 2 guides, owner fields on all 16, six source `scope` re-read lines, one count-neutral proposal fix) · `data/flags.json` (158 → 164, `P27-F01…06`, note appended; no existing row rewritten) · `data/sources.json` untouched (a duplicate row per re-read was the pattern `G0B2-F-10` complained about; freshness is recorded in `publication.json` scopes and in this session's verification file) |
+| Pages generated | 19 by `tools/build_publication.py`, incl. `guides/air-fryer-label-words.html`, `guides/how-do-you-know-its-done.html`; sitemap 16 URLs; feed 26 entries; search index 13 rows |
+| Overlapping open items, named rather than deduplicated | `P27-F05` ↔ `B79-F-02` (same supplied-link/tag problem, policy side vs account side); `P27-F01` ↔ the two still-open PRs **#160 / #157**, which this pass reviewed but did **not** merge |
+| PR / merge | see the merge log below |
+
+Handoff notes for the next session, in one line each: `sessions/6b68afc8/update_publication_p27.py` is one-shot and guarded — it raises if replayed, so never run it twice on one base; new questions go after `P27-Q7`, paths after `P27-P5`, flags after `P27-F06`, sources after **S95**; every current table row needs an official HTTPS link, so intake-style content renders as a `<dl>`; reader-facing dates must come from `meta.updated` / `meta.reverified`, never a literal; do not merge **#160** or **#157** without rebasing them and re-checking their counts.
+
+## P27 Merge log
+
 ---
 
 ## Part: session `b9008684` (2026-11-19) — suggestions review round: design-prompt feed, article slate, organic-traffic mechanics, decision-support register

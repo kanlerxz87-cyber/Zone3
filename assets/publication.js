@@ -160,11 +160,29 @@
       status.textContent = 'Review exported. The download is not an implementation request.';
     });
   }
-  var copy = document.querySelector('[data-copy-prompt]');
-  if (copy) copy.addEventListener('click', function () {
-    var text = document.getElementById('p26-design-prompt').textContent;
-    var message = document.getElementById('p26-copy-status');
-    if (!navigator.clipboard || !navigator.clipboard.writeText) { message.textContent = ' Select the prompt text above to copy it.'; return; }
-    navigator.clipboard.writeText(text).then(function () { message.textContent = ' Prompt copied.'; }).catch(function () { message.textContent = ' Copy was blocked. Select the prompt text above to copy it.'; });
+  // Copy the brief — whole, or one block at a time — without dragging the button labels into it.
+  function plainText(element) {
+    var clone = element.cloneNode(true);
+    Array.prototype.forEach.call(clone.querySelectorAll('button'), function (b) { b.remove(); });
+    return clone.textContent.replace(/[ \t]+/g, ' ').replace(/ ?\n ?/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  }
+  var message = document.getElementById('p26-copy-status');
+  function copyTo(target, label) {
+    var text = plainText(target);
+    if (!navigator.clipboard || !navigator.clipboard.writeText) { if (message) message.textContent = ' Clipboard is unavailable. Select the ' + label + ' text to copy it.'; return; }
+    navigator.clipboard.writeText(text).then(function () {
+      if (message) message.textContent = ' ' + (label === 'brief' ? 'Whole brief copied.' : 'Block copied.') + ' Nothing was published or changed.';
+    }, function () { if (message) message.textContent = ' Copy was blocked. Select the ' + label + ' text to copy it.'; });
+  }
+  var whole = document.querySelector('[data-copy-prompt]');
+  if (whole) whole.addEventListener('click', function () {
+    var block = document.getElementById('p26-design-prompt');
+    if (block) copyTo(block, 'brief');
+  });
+  all('[data-copy-from]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var block = document.getElementById(button.getAttribute('data-copy-from'));
+      if (block) copyTo(block, 'block');
+    });
   });
 })();

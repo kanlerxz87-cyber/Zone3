@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-11-14",
-  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10 (union by ID over main's board). MERGE (2026-11-17, session 66964850): union after PR #158 dropped 24 flags (5B-F-01..06, 929-F-01/02, F-2F-01..10, G82-F-01..05, G84-F-01) — all restored from pre-#158 state; CBB-F-01..04 kept (source ids remapped to the first-merged numbering per the 92988cd8 collision rule); Z1-F-01..04 added; G82-F-03 carries the observed/re-observed addendum. UNION (2026-11-17, session 66964850, rebase onto d19e7bf): +0C4-F-01..08 from PR #161. | 2026-11-19 (session b580d790): added B79-F-01…F-03; B79-F-01 is the one item in this pass that was found and fixed, the other two state unresolved limits.",
+  "note": "Flags do not block the merge (per owner instruction). Each flag lists its evidence source IDs (see sources.json) and the manual action needed. Flags FLG-015 to FLG-020 were added on 2026-11-13 by the integration with session 26634cd5 (see COORDINATION.md for the mapping of their F1 to F8). Updated 2026-11-14 by session 51fcb80d: FLG-017 and FLG-021 revised on the official pages read that day; FLG-022 to FLG-026 added. FLG-005 keeps the 2026-11-14 rewrite by session b8beb448. FLG-027 added 2026-11-14 by session 51fcb80d to record a cross-session disagreement on submitted-product identity and a duplicate source-ID meaning. Folded in on merge of session ecbfe91b (2026-11-14): FLG-016 widened with the verbatim Program Policies §5 clause (see COORDINATION.md Part E). Its own proposed FLG-022 was dropped as a duplicate of this register's FLG-022; its S31 source became S45. INTEGRATION (2026-11-14, session b90c5685): PR #26's findings are kept as FLG-035/036/037 (renumbered from its FLG-022/023/024) and this session's integration finding as FLG-038, because main had meanwhile assigned those IDs to different findings. That is the third recorded ID collision on this board (see FLG-027, E-F-01). E-F-01, E-F-02, E-F-04..07 added 2026-11-14 by session edbd56a1 (final integration): corrections made in that session and items left for the owner. 2026-11-14, session c79eb5d9: I-F-01 and I-F-02 added after an independent live re-read of Participation Requirements 2(b) and 6(t). I-F-01 is fixed in this branch for the category page; I-F-02 is a publish-scope request logged for the owner. INTEGRATION (2026-11-14, session 3ead7ac8): flags 3E-F-01..09 merged in alongside this register's own findings; no existing flag was rewritten. 2026-11-14, session 3d359c23: FLG-012 corrected (the long-form articles are not written, but the briefs, comparison and buying guide are published); 3D-F-01 to 3D-F-03 added. INTEGRATION 2026-11-14 (session 54ce6a2b): appended 54C-F-01…54C-F-06 (6 flags) after a line-by-line repo review and an independent live re-verification of the load-bearing claims. No existing flag was modified, reworded or removed. 54C-F-03 is already fixed and is recorded for traceability; 54C-F-01 and 54C-F-04 required no change (both were resolved on main before this merge). Session 2f181cd9 (2026-11-17) added F-2F-01 to F-2F-10 (union by ID over main's board). MERGE (2026-11-17, session 66964850): union after PR #158 dropped 24 flags (5B-F-01..06, 929-F-01/02, F-2F-01..10, G82-F-01..05, G84-F-01) — all restored from pre-#158 state; CBB-F-01..04 kept (source ids remapped to the first-merged numbering per the 92988cd8 collision rule); Z1-F-01..04 added; G82-F-03 carries the observed/re-observed addendum. UNION (2026-11-17, session 66964850, rebase onto d19e7bf): +0C4-F-01..08 from PR #161. | 2026-11-19 (session b580d790): added B79-F-01…F-03; B79-F-01 is the one item in this pass that was found and fixed, the other two state unresolved limits. P27 (2026-11-19, session 6b68afc8): appended P27-F01…P27-F06 after the decision-desk pass — two hygiene findings fixed in the renderer, one shop-layer duplication left to its owner, the 2(b) policy half of B79-F-02 quoted verbatim, the stale-PR coordination item, and the rejected sitemap <lastmod> with its reasoning. No existing flag was rewritten, reworded or removed.",
   "flags": [
     {
       "id": "FLG-001",
@@ -2182,6 +2182,107 @@
       "sources": [
         "S02"
       ]
+    },
+    {
+      "id": "P27-F01",
+      "severity": "High",
+      "category": "Coordination",
+      "item": "Two 2026-11-17 pull requests are still open and unmerged; their registers and pages are not on the live site",
+      "detail": "PR #160 (session 0b2ffabd: a root DESIGN_PROMPT.md brief, a decision-readiness ledger, review_2026_11_17b, SUG-11…SUG-14, Q13…Q16, flags G0B2-F-01…11, sources S90–S93 renumbered) and PR #157 (session ed27e766: five-link decision and design refresh for decision-queue/design-brief/shop decisions) were both last updated 2026-11-17 and remain OPEN at the 2026-11-19 claim. Measured on this checkout: no `G0B2` identifier appears anywhere in `data/`, `scripts/` or the markdown registers, `DESIGN_PROMPT.md` did not exist at the repository root, and `data/suggestions.json` carries only the `review_2026_11_17` and `review_2026_11_17_late` rounds. So the work is not merely unstyled — it is unpublished, and its own numbers are two days stale against a tree consolidated onto `tools/build_publication.py`. This pass therefore wrote a fresh root brief rather than reviving theirs.",
+      "action": "Owner decision per PR, in one line each: (a) re-land — ask a session to rebase it onto current `main`, re-run `python3 tools/publish.py`, and fix the counts its tables assert; (b) supersede — close it, since this pass re-measured the same questions and published a current decision desk and a root design brief; or (c) cherry-pick — take named files only. This pass deliberately merged neither branch: silently re-applying a stale JSON register onto a consolidated data layer is how two sessions end up publishing a third, unintended set of numbers.",
+      "sources": [],
+      "repo_evidence": [
+        "COORDINATION.md",
+        "sessions/6b68afc8/repo-review-2026-11-19.md",
+        "data/suggestions.json"
+      ],
+      "raised": "2026-11-19",
+      "session": "6b68afc8",
+      "status": "needs review"
+    },
+    {
+      "id": "P27-F02",
+      "severity": "Medium",
+      "category": "Build (fixed)",
+      "status": "fixed",
+      "item": "Reader-facing “read on” dates were typed into the publication renderer instead of derived from the register",
+      "detail": "`tools/build_publication.py` carried four hard-coded literals (“Read 19 Nov 2026”, “Updated 19 Nov 2026”, “19 Nov 2026 · title only”, and the product-card `<time>` label). They matched `data/publication.json` only because that file happened to be refreshed the same day; any later refresh of `meta.updated` or `meta.reverified` would have made live pages assert a check date that no longer matched their own data. Fixed in this pass: every reader-facing date is derived — re-check dates from `meta.reverified`, edition and guide dates from `meta.updated` and `guides[].published`. Output is unchanged while the register says 2026-11-19, which is what the second, no-diff rebuild proves.",
+      "action": "No further action unless a future edit re-introduces a literal date. A gate could fail any `\\d{1,2} \\w+ 20\\d\\d` string in the renderer if the pattern ever comes back.",
+      "sources": [],
+      "repo_evidence": [
+        "tools/build_publication.py",
+        "sessions/6b68afc8/release-checks-2026-11-19.json"
+      ],
+      "raised": "2026-11-19",
+      "session": "6b68afc8"
+    },
+    {
+      "id": "P27-F03",
+      "severity": "Low",
+      "category": "Build",
+      "status": "needs review",
+      "item": "The /shop/ surface hard-codes its “last checked” sentence, duplicating a value the register already owns",
+      "detail": "`tools/build_shop.py` sets `CHECKED_HUMAN = \"17 Nov 2026\"` while `data/shop/config.json` carries `checked_on: 2026-11-17`. The two agree today, so nothing published is wrong — but nothing enforces the agreement either: refreshing the shop register would leave `/shop/` pages stating the previous date, and `/shop/` (17 Nov) and the reader publication (19 Nov) already show different check dates for the same five links because they are two registers with two honest observation dates. The date difference is correct; the duplicated literal is not.",
+      "action": "Either derive the human date from `CFG[\"checked_on\"]` the way the reader layer now does, or add one line to each register explaining that the shop page dates the register-wide check and the reader page dates the link re-open. Left to the surface owner rather than edited from this scope.",
+      "sources": [],
+      "repo_evidence": [
+        "tools/build_shop.py",
+        "data/shop/config.json",
+        "data/shop/products.json"
+      ],
+      "raised": "2026-11-19",
+      "session": "6b68afc8"
+    },
+    {
+      "id": "P27-F04",
+      "severity": "Low",
+      "category": "Content accuracy (fixed)",
+      "status": "fixed",
+      "item": "A proposal row asserted a guide count that a data file owns",
+      "detail": "Proposal `P26-S3` read “Use the six linked guides as the initial cluster” while the cluster size lives in the same file’s `guides[]`. Adding two guides would have turned that prose into a false statement on a live page, and no gate checks prose counts. Reader-facing counts (“Eight practical, question-led guides”, the executive-brief strip and rows) are now derived from the register, and the proposal text was made count-neutral. One deliberate exception: the two new guides are reachable from the index, the feed and the sitemap; the front-page hero still leads with the basket-or-oven question, which is an editorial choice, not a count.",
+      "action": "When a number appears in prose, decide whether the register owns it. If it does, derive it; if the prose is a dated historical record, leave it and label it as such.",
+      "sources": [],
+      "repo_evidence": [
+        "data/publication.json",
+        "tools/build_publication.py"
+      ],
+      "raised": "2026-11-19",
+      "session": "6b68afc8"
+    },
+    {
+      "id": "P27-F05",
+      "severity": "High",
+      "category": "Affiliate compliance",
+      "status": "needs review",
+      "item": "Participation Requirements 2(b) was re-read verbatim today; the submitted short links still cannot be judged from public text",
+      "detail": "Program Policies, chunk 3 of 11, read 2026-11-19: “You must not encourage customers to bookmark your Special Links. All Special Links must be accessed directly from your Site. … you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.” The five links on the reader pages are the supplied `https://link.amazon/<nine-character-id>` forms, which carry no visible tag parameter. `B79-F-02` records the same finding from the link-supply side (the tag was never in the link, and one token arrived truncated); this row is not a duplicate of it but its policy half — the clause quoted in full, because the decision on how to answer it should be made against the wording and not a summary. Whether Amazon’s own short form satisfies 2(b) is not determinable from published text: the clause names “such other format as we may designate”, and only the enrolled account can show what it designates. `FLG-003` therefore stays unresolved, and neither row calls the supplied links invalid. The same clause carries two constraints this pass checked the site against: no bookmarking encouragement, and Special Links to product lists require additional original content on the page.",
+      "action": "In the enrolled Associates workflow: create one Special Link per product, confirm the destination matches the intended listing and that the assigned tag appears in the URL, and record a dated line per product in the intent register (confirmation date and source kept separate from the observed redirect). Scale to the other four only after the first one checks out. Do not paste account screenshots into the repository: they carry identifiers.",
+      "sources": [],
+      "repo_evidence": [
+        "sessions/6b68afc8/verification-2026-11-19.md",
+        "data/shop/products.json",
+        "data/flags.json"
+      ],
+      "raised": "2026-11-19",
+      "session": "6b68afc8"
+    },
+    {
+      "id": "P27-F06",
+      "severity": "Info",
+      "category": "Findability",
+      "status": "needs review",
+      "item": "A `<lastmod>` in the sitemap was considered and rejected on build-determinism grounds, not on SEO grounds",
+      "detail": "Measured on this tree, 2026-11-19: 120 HTML pages outside `docs/`, `sessions/` and `archive/`; `rel=canonical` on 120 of 120; `og:image` on 29; a meta description of 60+ characters on 115 — the five exceptions are the meta-refresh stubs (`analysis/disclosure/flagged-for-review/marketing/categories/home-kitchen-air-fryers`), all titled “Moved” and all excluded from `sitemap.xml` on purpose, which is why that duplication is not a defect. `sitemap.xml` carries 16 URLs and 0 `<lastmod>`. Google does use a `<lastmod>` when it is consistently and verifiably accurate, which argues for one. The release chain argues against a git-derived value: CI rebuilds the site and then requires `git diff --exit-code` on a shallow checkout, where a file’s commit date is whatever the CI fetch happened to contain, so the same tree could produce two different sitemaps.",
+      "action": "If the owner wants modification dates, take them from a dated register in `data/` that the builder consumes (so the value is reproducible and auditable), never from `git log` or the build clock, and update `tools/publish.py` plus the gate that reads the sitemap in the same change.",
+      "sources": [],
+      "repo_evidence": [
+        "scripts/build_sitemap.py",
+        "tools/publish.py",
+        "sitemap.xml",
+        ".github/workflows/publication-check.yml"
+      ],
+      "raised": "2026-11-19",
+      "session": "6b68afc8"
     }
   ]
 }

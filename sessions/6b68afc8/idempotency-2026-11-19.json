@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-19T11:20:13Z",
+  "session": "6b68afc8",
+  "method": "full tools/publish.py chain re-run; sha256 over every non-ignored file outside archive/docs/sessions",
+  "context": "second rebase, this time onto main@7600f25 (PRs #177/#179 from session b9008684 were merged between my first push and this push)",
+  "files_compared": 294,
+  "changed_files": [],
+  "final_chain_tail": "41 commands checked; 0 failed. Structural checks do not verify every historical factual claim.",
+  "git_diff_exit_code": 1,
+  "git_status_porcelain_unstaged": [
+    "AM sessions/6b68afc8/release-checks-2026-11-19.json",
+    " M suggestions/index.html"
+  ]
+}

@@ -1,5 +1,36 @@
 # Executive summary — Zone3 Kitchen
 
+## Decision desk, two more guides and a dated brief — 2026-11-19 · session `6b68afc8` (most recent)
+
+**Bottom line.** The site now has a place to *decide*, not only to record. The suggestions surface
+carries five reviewable paths (each with what it changes, what it needs first, what it unblocks and
+what it still cannot claim), sixteen open questions with a named answer owner and the shape a
+complete answer would take, the intake form a new suggestion has to fill, and a ten-block design
+brief with per-block copy. Two more question-led guides joined the cluster, and
+[`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) is now the paste-ready brief with the official clause behind
+every rail. The section below this one stays accurate as the record of the 2026-11-19 consolidation;
+where its counts differ, this pass's numbers are the current ones.
+
+**Important details.**
+
+| Area | Position after this pass | Basis |
+|---|---|---|
+| Reader layer | 8 guides, 16 canonical/indexable URLs, 26 feed entries, one shared shell with the disclosure under the masthead on every page; the merged chooser and two-sided fit notes now sit on the same surfaces as the desk | `data/publication.json`, `sitemap.xml`, `feed.xml` measured 2026-11-19 |
+| Products | 5 submitted links; three listing titles re-opened directly on 2026-11-19 and matched the recorded text (one row's transcription differs by a `®` glyph — noted, not corrected silently) | `sessions/6b68afc8/verification-2026-11-19.md` |
+| Attribution | unchanged and unresolved: `FLG-003` stays open, `shopnow047c-20` stays unverified, and 2(b)'s tag-parameter clause is now quoted verbatim in the register (`P27-F05`) | Program Policies, re-read 2026-11-19 |
+| Measurement | production still off; campaign ledger still empty; no visitor, order, conversion or revenue figure was invented | `data/shop/measurement.json`, `data/shop/campaign-ledger.json` |
+| Governance | two 2026-11-17 pull requests (#160, #157) are still open and unpublished; this pass re-measured their questions rather than merging a stale register (`P27-F01`) | `gh pr list`, `data/` greps on this checkout |
+| Flags | register 158 → 164 rows after the rebase: three of the six new rows are fixed-by-this-pass hygiene findings, three are owner items; `B79-F-02` (opened by the merged PR #176) and `P27-F05` are the same open item from two sides, and each row says so | `data/flags.json` → [`flagged.html`](flagged.html) |
+
+**Deliberately not done.** No merge of another session's branch; no `og:image` or `<lastmod>` change
+(the deterministic-build gate explains the rejection in `P27-F06`); no photography, price, rating or
+"trending" claim; no email capture; no change to the shopper edition or any historical register.
+
+**Recommended order, from the paths, not from instinct:** tighten the shop (needs nothing external) →
+prove the money path (blocked on the Associates account) → turn on the lights (blocked on a durable
+host and Search Console) → then decide about testing and automation, both of which need evidence and
+budget rather than CSS.
+
 ## Current publication build — 2026-11-19 · session 1c072a7a
 
 **Bottom line:** the repository now has one buyer-first kitchen publication, not another parallel
