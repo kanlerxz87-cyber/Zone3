@@ -126,6 +126,21 @@ def guide_art(kind: str) -> str:
     return f'<div class="p26-guide-art p26-art-{esc(kind)}"><svg viewBox="0 0 320 220" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{artwork[kind]}</svg><span>THE ZONE3 FIELD GUIDE</span></div>'
 
 
+def dimension_note(p: dict) -> str:
+    """The exterior size the listing itself prints, with its read date.
+
+    This exists because the guide used to say none of the listing titles gave a dimension, which
+    stopped being true once the detail table was read. Only the published value is shown: no
+    conversion to usable space, no derived "fits your counter" verdict.
+    """
+    ld = p.get('listing_dimensions') or {}
+    if not ld.get('as_listed'):
+        return (f'<p class="p26-dims p26-dims-empty">Exterior size: not published in this listing’s '
+                f'detail table. <a href="{esc(ld.get("source_url", p["observed_listing_url"]))}" rel="sponsored noopener">Check the listing</a></p>')
+    return (f'<p class="p26-dims">Exterior size as listed: <strong>{esc(ld["as_listed"])}</strong> '
+            f'<span>· Capacity as listed: {esc(ld["capacity_as_listed"])} · read {human_date(ld["observed_on"])}</span></p>')
+
+
 def fits_block(p: dict) -> str:
     """Two-sided fit note. Each side names the format fact and then asks the buyer to check it.
 
@@ -143,7 +158,7 @@ def product_card(p: dict, prefix: str = '', compare: bool = False) -> str:
     chips = ''.join(f'<span>{esc(x)}</span>' for x in p['features'])
     return f'''<article class="p26-product-card" id="{p['id']}" data-product-card data-category="{p['category']}">
 <div class="p26-product-art p26-art-{p['format']}"><span class="p26-product-kind">{esc('Air fryer' if p['category']=='air-fryers' else 'Meat thermometer')}</span>{format_art(p['format'])}<span class="p26-art-caption">FORMAT ILLUSTRATION</span></div>
-<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p><div class="p26-features">{chips}</div>{fits_block(p)}
+<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p>{dimension_note(p)}<div class="p26-features">{chips}</div>{fits_block(p)}
 <a class="p26-product-cta" href="{p['submitted_link']}" rel="sponsored noopener">View on Amazon {icon('external')}</a>
 <div class="p26-card-source"><span>Sponsored</span><details><summary>Listing & source</summary><p>Title and destination observed <time datetime="{p['observed_on']}">{human_date(REVERIFIED)}</time>. {source_link(p['id'], 'Official Amazon listing')} · ASIN <code>{p['observed_asin']}</code>. Features above are listing wording, not test results. Intended product and attribution remain unconfirmed: <a href="{prefix}intent-record/index.html">intent record</a> · <a href="{prefix}flagged.html#FLG-003">link review</a>.</p></details></div></div></article>'''
 
@@ -223,12 +238,15 @@ def comparison_table(products: list[dict], prefix: str, sticky: bool = False) ->
     rows = []
     for p in products:
         clean = esc(p['cleanup_title_wording']) if p['cleanup_title_wording'] else ''
-        rows.append(f'<tr><th scope="row">{esc(p["brand"] + " " + p["name"])}</th><td>{esc(p["format_text"])}</td><td>{clean}</td><td class="blank" aria-label="Unverified: no independent testing"></td><td><span class="p26-status">Listing only · untested</span><br><a href="{prefix}flagged.html#P26-F04">Evidence gap</a></td><td>{source_link(p["id"], "Amazon listing")}<br><small>{human_date(REVERIFIED)}</small></td></tr>')
+        ld = p.get('listing_dimensions') or {}
+        dims = (esc(ld['as_listed']) + f'<br><small>{esc(ld["capacity_as_listed"])}</small>') if ld.get('as_listed') \
+            else '<span class="p26-unknown">Not published</span>'
+        rows.append(f'<tr><th scope="row">{esc(p["brand"] + " " + p["name"])}</th><td>{esc(p["format_text"])}</td><td>{dims}</td><td>{clean}</td><td class="blank" aria-label="Unverified: no independent testing"></td><td><span class="p26-status">Listing only · untested</span><br><a href="{prefix}flagged.html#P26-F04">Evidence gap</a></td><td>{source_link(p["id"], "Amazon listing")}<br><small>{human_date(REVERIFIED)}</small></td></tr>')
     hint = ('<p class="p26-fine p26-scroll-hint">On a phone this table scrolls sideways, and the product '
             'column stays with you. Blank cells are left blank on purpose: they are unverified, not zero.</p>') if sticky else ''
     body = ('<div class="p26-table-scroll" role="region" aria-label="Source-linked product comparison" tabindex="0"><table class="p26-table">'
-            '<caption>Listing wording, not a performance ranking. Blank cells are unverified; source checks are limited to title and destination.</caption>'
-            '<thead><tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Cleanup wording in title</th>'
+            '<caption>Listing wording, not a performance ranking. Blank cells are unverified; source checks cover the title, the destination and the detail table.</caption>'
+            '<thead><tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Listed size</th><th scope="col">Cleanup wording in title</th>'
             '<th scope="col">Tested performance</th><th scope="col">Evidence status</th><th scope="col">Official source</th></tr></thead>'
             '<tbody>' + ''.join(rows) + '</tbody></table></div>')
     return (f'<div class="p26-compare">{body}{hint}</div>' if sticky else body)

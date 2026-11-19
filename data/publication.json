@@ -14,8 +14,8 @@
       "scope": "Generic food and kitchen scene; no advertised product, test meal or testing evidence is depicted."
     },
     "reverified": "2026-11-19",
-    "reverified_by": "sessions b580d790 and d3493182 (arena/d3493182-zone3)",
-    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. Session d3493182 (2026-11-19) re-opened all five short links and re-read Agreement Sections 1, 4, 5 and 6, Policies Participation Requirements 2(a)-(b), the FTC guide, and Google helpful-content and outbound-link guidance; observed ASINs, titles and breadcrumbs were unchanged (one thermometer title variant noted in the session record). No price, rating, review count or performance claim is made anywhere on the site.",
+    "reverified_by": "sessions b580d790, d3493182 (arena/d3493182-zone3) and 0a48cfda",
+    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. Session d3493182 (2026-11-19) re-opened all five short links and re-read Agreement Sections 1, 4, 5 and 6, Policies Participation Requirements 2(a)-(b), the FTC guide, and Google helpful-content and outbound-link guidance; observed ASINs, titles and breadcrumbs were unchanged (one thermometer title variant noted in the session record). No price, rating, review count or performance claim is made anywhere on the site. Session 0a48cfda (2026-11-19) re-read all five official listing detail tables: titles and breadcrumbs unchanged, exterior dimensions found and recorded for three listings, none published for the two thermometers.",
     "reverification_evidence": "S95",
     "reporting_month_note": "Publication months are editorial labels. The current edition date is 19 November 2026.",
     "decision_desk": {
@@ -167,6 +167,20 @@
       "listing_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
       "submitted_link": "https://link.amazon/B04G1MEwY",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "label_on_listing": "Product Dimensions",
+        "as_listed": "13.38\"D x 11.81\"W x 10.63\"H",
+        "depth_in": "13.38",
+        "width_in": "11.81",
+        "height_in": "10.63",
+        "capacity_as_listed": "6 liters",
+        "capacity_note": "The title says “6 Quart”; the detail table says “Capacity: 6 liters”. Six US quarts is about 5.7 L, so the two listing fields do not agree with each other.",
+        "status": "verified against the official listing page, 2026-11-19",
+        "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -197,6 +211,20 @@
       "listing_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
       "submitted_link": "https://link.amazon/B02NbDxp3",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "label_on_listing": "Product Dimensions",
+        "as_listed": "16.9\"D x 15.8\"W x 14.8\"H",
+        "depth_in": "16.9",
+        "width_in": "15.8",
+        "height_in": "14.8",
+        "capacity_as_listed": "24.6 liters",
+        "capacity_note": "The title says “26QT”; the detail table says “Capacity: 24.6 liters”, which is 26 US quarts.",
+        "status": "verified against the official listing page, 2026-11-19",
+        "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -227,6 +255,20 @@
       "listing_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
       "submitted_link": "https://link.amazon/B00hJ57DV",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "label_on_listing": "Product Dimensions",
+        "as_listed": "12.75\"D x 13.5\"W x 10\"H",
+        "depth_in": "12.75",
+        "width_in": "13.5",
+        "height_in": "10",
+        "capacity_as_listed": "8 quarts",
+        "capacity_note": "The title and the detail table both say 8 quarts for this size.",
+        "status": "verified against the official listing page, 2026-11-19",
+        "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -257,6 +299,20 @@
       "listing_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black",
       "submitted_link": "https://link.amazon/B0c8moW59",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "label_on_listing": "",
+        "as_listed": "",
+        "depth_in": "",
+        "width_in": "",
+        "height_in": "",
+        "capacity_as_listed": "",
+        "capacity_note": "",
+        "status": "unverified — the detail table on this listing has no Product Dimensions row",
+        "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -287,6 +343,20 @@
       "listing_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
       "submitted_link": "https://link.amazon/B0f3GKalj",
       "observed_on": "2026-11-19",
+      "listing_dimensions": {
+        "observed_on": "2026-11-19",
+        "observed_by": "session 0a48cfda",
+        "source_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "label_on_listing": "",
+        "as_listed": "",
+        "depth_in": "",
+        "width_in": "",
+        "height_in": "",
+        "capacity_as_listed": "",
+        "capacity_note": "",
+        "status": "unverified — the detail table on this listing has no Product Dimensions row",
+        "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
+      },
       "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
       "intended_asin": "",
       "official_listing_url": "",
@@ -454,8 +524,20 @@
         {
           "heading": "An appliance needs working space, not just a parking space.",
           "paragraphs": [
-            "Mark out the place you would put it. Check whether a drawer can pull out fully or a door can open without meeting another appliance. Read the model-specific manual for ventilation and operating clearances. We have not verified those measurements for these products.",
-            "None of the three listing titles gives width, depth or height. Do not turn a photograph or capacity number into a dimension."
+            "Mark out the place you would put it. Check whether a drawer can pull out fully or a door can open without meeting another appliance. Read the model-specific manual for ventilation and operating clearances. We have not verified those clearances for these products.",
+            "Three of the five listings do publish an exterior size in their detail table, and that is now on each card: the 6-quart Chefman at 13.38\"D x 11.81\"W x 10.63\"H, the Emeril Lagasse oven at 16.9\"D x 15.8\"W x 14.8\"H, and the 8-quart Chefman at 12.75\"D x 13.5\"W x 10\"H. The two thermometers publish none. An exterior size is not the same as the space a door needs in front of it, and it says nothing about usable interior space."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Two of these listings disagree with themselves on capacity.",
+          "paragraphs": [
+            "The 6-quart Chefman title says “6 Quart”. Its own detail table says “Capacity: 6 liters”, and six US quarts is about 5.7 litres. The Emeril Lagasse title says “26QT”; its detail table says “Capacity: 24.6 liters”, which is 26 US quarts. The 8-quart Chefman agrees with itself.",
+            "We print both figures rather than choosing one. If a litre figure and a quart figure on the same page point at different amounts, the number is worth checking against the model manual before you decide it means enough space for your meals."
           ],
           "source_ids": [
             "SHOP-01",
@@ -492,7 +574,8 @@
         }
       ],
       "unknowns": [
-        "External dimensions, ventilation clearances and cord lengths.",
+        "Usable interior and basket dimensions, and how much food actually fits. Only exterior sizes are published, and only for three of the five listings.",
+        "Ventilation clearances, cord lengths, door swing and the space needed in front of an oven-style unit.",
         "Care requirements for all accessories; coating durability.",
         "Hands-on cleaning time."
       ],
@@ -1109,7 +1192,7 @@
     {
       "id": "P26-Q6",
       "question": "Can we publish product imagery, prices or ratings?",
-      "known": "No Amazon imagery, price, rating or review count is used by the new publication. Art is labelled illustrative.",
+      "known": "No Amazon image, price, rating or review count is reproduced anywhere on the reader pages. Exterior dimensions and the listed capacity ARE reproduced verbatim from three official listing detail tables with a read date (noted 2026-11-19); prices and ratings stay empty because Amazon requires the link we serve or the Creators API for those fields.",
       "missing": "Authorized API access, applicable usage requirements, approved assets and refresh rules.",
       "default": "No scraped prices or reviews; no invented product photographs or test results.",
       "discovery": "Confirm authorized Creators/PA API access and current license conditions before building a refresh job.",
@@ -1492,13 +1575,14 @@
     {
       "id": "E41-Q1",
       "question": "Where do the interior and footprint dimensions come from for each of the five listings?",
-      "known": "No product register in this repository holds a dimension value; the guide copy only asks readers to check dimensions themselves. The capacity wording quoted on the site comes from listing titles.",
-      "missing": "A dated, authorized source for footprint and interior dimensions per product — an API response the account is entitled to, or the brand's own published specification page — plus the units and the measurement method.",
+      "known": "Partly answered 2026-11-19. Three of the five listings publish an exterior size in their detail table: the 6-quart Chefman 13.38\"D x 11.81\"W x 10.63\"H, the Emeril Lagasse 16.9\"D x 15.8\"W x 14.8\"H and the 8-quart Chefman 12.75\"D x 13.5\"W x 10\"H. The two thermometer listings publish no dimensions row at all. Usable interior size, ventilation clearance, cord length and door swing are still not published.",
+      "missing": "Interior or usable basket dimensions, required ventilation clearance, cord length and door swing, for every product that has one of those open. The two thermometers have no published dimensions of any kind.",
       "discovery": "Capture the dimensions for one product from the chosen authorized source, store them with the capture date and the source URL, and see whether the number is a usable figure or marketing rounding.",
-      "default": "The per-centimetre analysis stays unwritten. No dimension is estimated from a photo, a title or a sibling model.",
+      "default": "Show only the listed exterior size, with its read date, and leave every other measurement blank.",
       "blocks": "S-23 counter-space analysis; any 'fits your counter' claim",
       "source": "amazon-agreement",
-      "owner_input_needed": true
+      "owner_input_needed": true,
+      "answer_by": "Owner · listing pages, then manufacturer documentation"
     },
     {
       "id": "E41-Q2",

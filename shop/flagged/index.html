@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flagged for review — shop build</title>
-<meta name="description" content="32 items flagged for review, each with its source link and what this build did not claim.">
+<meta name="description" content="33 items flagged for review, each with its source link and what this build did not claim.">
 <link rel="stylesheet" href="../assets/shop.css">
 <!-- z3:css --><link rel="stylesheet" href="../../assets/zone3-publication.css">
 <!-- z3:rss --><link rel="alternate" type="application/rss+xml" title="Zone3 Kitchen guides" href="../../feed.xml">
@@ -190,6 +190,11 @@
   <td>E41-B04</td><td>Low</td><td>Open - decision needed (owner)</td>
   <td>The brief&#x27;s S-20 asks for a &#x27;sticky comparison bar&#x27;. This repository ships a sticky product column inside the comparison table&#x27;s own scroll region plus a scroll note, which is the part a table can support without data.</td><td>If a floating bottom bar was intended, the row is not done, and adding one costs viewport height on the smallest phones.</td><td>Named what was built in the register row instead of reusing the brief&#x27;s phrase, and put the choice to the owner as `E41-Q2`.</td>
   <td><a href="https://developers.google.com/search/docs/appearance/page-experience">Google Search Central: page experience</a></td><td>No claim that a floating bar would improve conversion or use.</td>
+</tr>
+<tr>
+  <td>FLG-S33</td><td>High</td><td>Open - for review</td>
+  <td>Two of the three air-fryer listings contradict themselves on capacity. The 6-quart Chefman title says “6 Quart” while its own detail table says “Capacity: 6 liters” (6 US quarts is about 5.7 L). The Emeril Lagasse title says “26QT” while its detail table says “Capacity: 24.6 liters”, which is 26 US quarts. Both figures sit on the same official page, so neither the title nor the table can be treated as the single capacity a buyer is getting.</td><td>A page that repeats one of these numbers as “the” capacity without also showing the other is picking a side of an unresolved listing discrepancy. Until this pass the site avoided the problem by publishing no dimensions or capacity figures at all, which also made it less useful than the listing it links to.</td><td>Recorded both figures for each product, naming the field each came from, under data/publication.json → products[].listing_dimensions.capacity_as_listed and .capacity_note, with the read date 2026-11-19. The guides may show the listed capacity only alongside that note, and no page converts capacity into servings, portions or “family size”.</td>
+  <td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener" target="_blank">Amazon listing B0CDY277D3 — title says 6 Quart, detail table says Capacity: 6 liters (read 2026-11-19)</a><br><a href="https://www.amazon.com/dp/B09B7SB46R" rel="sponsored noopener" target="_blank">Amazon listing B09B7SB46R — title says 26QT, detail table says Capacity: 24.6 liters (read 2026-11-19)</a><br><a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener" target="_blank">Amazon listing B08DKYBTPH — title and detail table agree on 8 quarts (read 2026-11-19)</a></td><td>This does not say which number is correct, that either listing is inaccurate, or that the containers are measured to a different standard. It records only that the two printed fields disagree, so a buyer should check the model manual before treating either as usable capacity.</td>
 </tr>
     </tbody>
   </table>
