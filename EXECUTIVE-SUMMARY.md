@@ -1,6 +1,75 @@
 # Executive summary — Zone3 Kitchen
 
-## Current status — publication audit and decision readiness · 2026-11-19 · session `4d7fe998`
+## Current status — listing evidence re-read, register corrected · 2026-11-19 · session `0a48cfda`
+
+**Bottom line.** The reader-facing publication was already built, so this pass spent its time on the
+question a buyer actually tests: is what the pages say about these five products still true of the
+official listings? Re-reading all five `amazon.com/dp/<ASIN>` pages on 2026-11-19 found three things
+worth acting on and one worth publishing as a flag.
+
+1. **The site was withholding a fact it already had.** The counter-space guide said that none of the
+   listing titles gave a width, depth or height. The *detail tables* on three of the five listings do
+   publish an exterior size, and now so does the site: the 6-quart Chefman at 13.38"D x 11.81"W x
+   10.63"H, the Emeril Lagasse oven at 16.9"D x 15.8"W x 14.8"H and the 8-quart Chefman at
+   12.75"D x 13.5"W x 10"H. The two thermometer listings publish no dimensions at all and say so
+   rather than showing a blank. Usable interior size, ventilation clearance, cord length and door
+   swing are still nowhere on those pages and remain absent here.
+2. **Two listings disagree with themselves on capacity.** The 6-quart Chefman title says "6 Quart";
+   its own detail table says "Capacity: 6 liters". The Emeril Lagasse title says "26QT"; its table
+   says "Capacity: 24.6 liters" (which *is* 26 US quarts). The 8-quart Chefman is consistent. Both
+   printed figures are now recorded and both are published, side by side, because choosing one would
+   be an editorial guess dressed as a fact. Published as [FLG-S33](shop/flagged/index.html).
+3. **Two build defects were found and fixed while verifying.** The in-guide contents list typed a
+   literal `04` for its last entry, so a four-section guide numbered that entry twice and a
+   three-section guide numbered it wrong; the number is now derived from the section count. A
+   proposal whose "evidence to close" named a source rendered `#google-page-experience`, an anchor
+   that does not exist on the page; a source id now renders as its official page instead.
+
+**What did not change, and why.** The five outbound product buttons are still the supplied
+`link.amazon` short links. Program Policies 2(b), re-read verbatim this pass, requires "your
+Associates ID or 'tag' … as a parameter in the URL of each link you place on your Site to an Amazon
+Site", and the same clause allows "such other format as we may designate"
+([Program Policies](https://affiliate-program.amazon.com/help/operating/policies)). Whether Amazon's
+own short form is such a designated format can only be shown from inside an enrolled account, so
+[FLG-003](flagged.html#FLG-003) stays unresolved and the links are neither swapped nor called
+invalid. Prices, ratings and review counts stay empty for the same policy reason: Amazon allows a
+site to show them only when Amazon serves the link or the data arrives through the Creators API.
+Nothing here is a conversion, traffic or revenue claim; the campaign ledger still has zero rows.
+
+| Area | Current state after this pass | Decision boundary | Basis |
+|---|---|---|---|
+| Listing evidence | All five official listings re-opened 2026-11-19. Titles and breadcrumbs unchanged. Exterior size captured for three; capacity captured for all three air fryers. | A listing's own detail table is the source, quoted with its read date. It is not our measurement and not a claim about usable space. | [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) · [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) · [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) · [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) · [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) |
+| Capacity discrepancy | Both printed figures published together for the two products whose fields disagree. Published as FLG-S33. | Which figure is right is a manufacturer question. The site does not pick one and does not convert either into servings. | [FLG-S33](shop/flagged/index.html) · `data/publication.json → products[].listing_dimensions` |
+| Reader pages | 10 question-led guides, 18 canonical URLs, 28 RSS entries, 5 product cards, 6 paths and 30 proposals against 38 open questions. Guide contents numbering now derived, not typed. | The page set and its navigation were not redesigned in this pass; only evidence and the two defects changed. | [sitemap](sitemap.xml) · [feed](feed.xml) · [suggestions](suggestions/index.html) |
+| Link attribution | Unchanged: five supplied short links on the buttons. Intent fields remain blank for all five. | Program Policies 2(b) requires the tag in each link; the acceptable short form is an account-level answer this session cannot obtain. FLG-003 stays open. | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) · [intent record](intent-record/index.html) |
+| Pricing and ratings | Still absent everywhere, deliberately. | Amazon permits these fields only via a served link or the Creators API, which needs account access. | [Program Policies, 2(b)](https://affiliate-program.amazon.com/help/operating/policies) |
+| Measurement | Production collection still OFF; five-event runtime unchanged; ledger empty. | No Search Console property and no authorized Associates report exist, so no traffic or conversion statement can be made. | [measurement](measurement/index.html) · [campaign ledger](data/shop/campaign-ledger.json) |
+| Release | Canonical chain green twice: 41/41 commands, working tree stable, no generated drift. | A structural gate is not fact verification of historical sentences. | [session record](sessions/0a48cfda/verification-2026-11-19.md) |
+
+**Questions that must be answered before the next decision, and who holds the answer.** Each row is a
+question this pass could not settle from a public source, the single fact that would settle it, and
+what the site does in the meantime. The full register is on the
+[suggestions page](suggestions/index.html#questions).
+
+| Question | What is genuinely unknown | One action that would settle it | Default until then |
+|---|---|---|---|
+| Are these the five products that were intended? | The short links resolve to five specific ASINs, but nothing supplied states that those ASINs are the intended ones. | One dated confirmation per product from the owner, naming the intended ASIN and official URL. | Both intent fields stay blank; the observed redirect is kept separate. |
+| Does each button attribute to `shopnow047c-20` on an enrolled account? | Whether the tag is active and whether Amazon's short form carries or adds it. | Open one link per product inside the enrolled workflow and read the tracking report. | FLG-003 open; the links are left exactly as supplied. |
+| Which capacity figure is correct where the listing disagrees with itself? | Whether "6 liters" or "6 Quart" (and "24.6 liters" or "26QT") describes the container a buyer receives. | The manufacturer's manual or specification sheet for that model. | Both figures shown; no conversion, no ranking. |
+| What is the usable interior size and the clearance needed? | Interior dimensions, ventilation clearance, cord length, door swing: published nowhere on the five listings. | The model manual, or an authorized data feed. | Exterior size only, labelled as such; the counter-space arithmetic stays unpublished. |
+| May prices and ratings be shown? | Whether Creators API access exists for this account. | Confirm account and API access, then apply the licence conditions. | No price, rating or review count anywhere. |
+| Where will production measurement run, and is GitHub Pages suitable for commercial use? | The durable host, and GitHub's position on commercial affiliate hosting. | Deploy the shipped collector on reviewed hosting; resolve Pages limits with GitHub. | Collection off; ledger empty; no traffic claim. |
+
+**Scope and verification.** Changed in this pass: `data/publication.json` (listing dimensions,
+two questions updated, two proposals added, one proposal re-scoped, the counter-space guide copy),
+`data/shop/flags.json` (FLG-S33), `tools/build_publication.py`, `assets/publication.css`, the
+regenerated reader pages and this opening. Record:
+[`sessions/0a48cfda/verification-2026-11-19.md`](sessions/0a48cfda/verification-2026-11-19.md).
+Historical sections below keep their original dates and scope and were not re-checked line by line.
+
+---
+
+## Dated snapshot — publication audit and decision readiness · 2026-11-19 · session `4d7fe998`
 
 **Bottom line.** The live buyer-facing publication has five submitted product links in two categories, nine question-led guides, 17 canonical/indexable sitemap URLs and 27 RSS entries. The current register has 16 scoped official references. The decision desk holds six paths, 26 reviewable proposals, 36 open readiness questions, eight decision-support rows and a 13-block design brief. The latest guide, “Where does the probe go?”, was shipped upstream under PR #194 from a review-only default and cites FoodSafety.gov; it is not a product test. Choices remain review-only and implement nothing. Dated snapshots below retain their original scope and counts.
 
