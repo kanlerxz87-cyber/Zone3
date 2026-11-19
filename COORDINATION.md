@@ -9518,3 +9518,27 @@ The first `git pull --rebase origin main` fetched `2a854c1` and stopped on an ap
 The merged register after PR #194 has 16 scoped official references, 9 guides, 26 proposals, 36 decision-readiness questions, 13 design-prompt blocks, 6 paths, 17 indexable URLs and 27 RSS entries. PR #181 made executive-brief counts register-driven; PR #190 and PR #194 added guide/register batches. This session reconciles only the current-status opening of the root Markdown summary and preserves the full dated CDB, 6b and earlier history. PR #191/#193/#194 coordination records are retained.
 
 **Release status:** PR [#196](https://github.com/kanlerxz87-cyber/Zone3/pull/196) merged at `2026-11-19T13:32:02Z` as `1623c1c2b6c4b04d526130a316dd6d9344985bdd`; publication check `44534254715` passed and GitHub Pages reported `built` at `2026-11-19T13:32:31Z`. Cache-busted live read-back at `?revision=1623c1c` confirmed the current brief, nine-guide index and probe guide, and 17-URL sitemap. PR #160 and #157 remain open and out of scope. Account, owner-intent, reporting and commercial-hosting questions remain unverified or owner/platform-dependent.
+
+---
+
+## Part ee10b024 — session `ee10b024` (branch `arena/ee10b024-zone3`, base `0273fb4` = `main` at claim) — 2026-11-19
+
+Branch note: Arena fixes this session to `arena/ee10b024-zone3`; the brief's `session-<id>/<task>` branch shape is recorded as task-ID scope on the fixed branch (same resolution as earlier parts).
+
+### Session registry (Part ee10b024)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| ee10b024 | `arena/ee10b024-zone3` | Final integration for the 2026-11-19 evening round: triage and union-merge the three open conflicting PRs (#157, #160, #192), line-by-line re-verify the combined tree, gates, PR → `main`, merge, Pages deploy confirmation, records. | in progress | 2026-11-19 21:49 |
+
+### Task board (Part ee10b024)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| EE-T1 — Board read, claim, push | in progress | ee10b024 | `COORDINATION.md` (this Part only) | — | — |
+| EE-T2 — Triage open PRs #157/#160/#192 (all CONFLICTING with `main`); stale-claim rule applied (>60 min, last commits 2026-11-17/19) | unclaimed → ee10b024 | ee10b024 | integration merges into this branch | board history | — |
+| EE-T3 — Union-merge accepted PR content without discarding any session's work; log every conflict resolution | unclaimed | ee10b024 | whole tree (integration only) | — | — |
+| EE-T4 — Line-by-line re-verification of combined load-bearing claims against live official sources | unclaimed | ee10b024 | `sessions/ee10b024/**` | official sources only | — |
+| EE-T5 — Full gate chain ×2 (idempotency), link check, broken-link fixes | unclaimed | ee10b024 | generated outputs via canonical chain | local gates | — |
+| EE-T6 — PR → `main`, merge without waiting if gates green, Pages deploy confirmation, live read-back, publish record appended here | unclaimed | ee10b024 | current branch; this Part | gh/git | — |
+
