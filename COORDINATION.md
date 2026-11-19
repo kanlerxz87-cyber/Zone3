@@ -8613,8 +8613,9 @@ Independent line-by-line re-verification of the five supplied product links (one
 - Sitemap 14 URLs = 14 `indexable_pages`; feed 24 entries. Flagged items and unverified values remain published on the Flagged for Review page with source links.
 - No broken links; no unsupported figures; disclosure above the fold and in footer on all pages; every Amazon outbound link `rel="sponsored"` (enforced by the strict gates).
 
-### CD-T3 publish record (pending → filled after PR/merge)
+### CD-T3 publish record (done, 2026-11-19)
 
-- PR: (filled after creation)
-- Merge: (filled after merge)
-- GitHub Pages deploy: (filled after live-fetch confirmation)
+- **PR:** [#173](https://github.com/kanlerxz87-cyber/Zone3/pull/173) — "Final integration: independent link re-verification and publish record (session cd746460)", base `main`, head `arena/cd746460-zone3`.
+- **Merge:** merged without approval at 2026-11-19T10:52:05Z; merge commit `f0de3bae6cfbf5684acdf7e1546ca2bd020fb0bc` (`Merge pull request #173 from kanlerxz87-cyber/arena/cd746460-zone3`). State: MERGED.
+- **GitHub Pages deploy:** confirmed live after merge. Live fetches on 2026-11-19 succeeded for the publication front page (`https://kanlerxz87-cyber.github.io/Zone3/`, title "A more considered kitchen starts here | Zone3 Kitchen", masthead + disclosure + hero + five product cards + guides), the Flagged for Review page (154 entries with source links), the Suggestions & Decisions page (6 proposals + decision-readiness table), and `sitemap.xml` (14 canonical URLs matching the 14 indexable pages).
+- **Final state:** all tasks CD-T1, CD-T2, CD-T3 done. Flagged irregularities and unverified items were published on the Flagged for Review page and did not block the merge. The site builds clean with no broken links; the canonical publish chain is green (41/41 checks).
