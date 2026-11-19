@@ -319,3 +319,22 @@ a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
 /* E61 a11y fix: muted fine print inside the prompt block falls to 4.18:1 on the block background;
    use the body tone there so basis links meet WCAG AA contrast (scoped, no global restyle) */
 .p26-prompt .p26-fine,.p26-prompt .p26-fine a{color:var(--p26-body)!important}
+
+/* 5D4-F04 (2026-11-19): the front page's shortlist is a teaser list, not a second copy of
+   the catalogue's product cards. One row per product, format + the question that matters. */
+.p26-teasers{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--p26-line)}
+.p26-teaser{display:grid;grid-template-columns:110px minmax(0,1.1fr) minmax(0,.9fr) minmax(0,1.4fr) auto;gap:18px;align-items:center;padding:19px 0;border-bottom:1px solid var(--p26-line)}
+.p26-teaser-kind{font:600 9px/1.2 var(--p26-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--p26-muted)}
+.p26-teaser-name{font:400 17px/1.35 var(--p26-serif);color:var(--p26-ink)}
+.p26-teaser-name strong{font-weight:600}
+.p26-teaser-format{font:400 13px/1.5 var(--p26-sans);color:var(--p26-muted)}
+.p26-teaser-ask{font:400 13px/1.55 var(--p26-sans);color:var(--p26-ink)}
+.p26-teaser-link{font:600 10px/1.2 var(--p26-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--p26-ink);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px;white-space:nowrap}
+.p26-teaser-link:hover,.p26-teaser-link:focus-visible{color:var(--p26-accent)}
+@media(max-width:1180px){.p26-teaser{grid-template-columns:96px minmax(0,1fr) minmax(0,1.2fr) auto}.p26-teaser-format{display:none}}
+@media(max-width:760px){.p26-teaser{grid-template-columns:1fr auto;gap:7px 14px;padding:17px 0}.p26-teaser-kind{grid-column:1/-1}.p26-teaser-ask{grid-column:1/-1;font-size:12px}.p26-teaser-link{grid-column:2;grid-row:2;align-self:start}}
+.p26-teaser-actions{display:flex;flex-direction:column;gap:9px;align-items:flex-start}
+.p26-teaser-cta{display:inline-flex;align-items:center;gap:7px;font:600 10px/1.2 var(--p26-sans);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--p26-ink);text-decoration:none;padding:10px 14px;min-height:40px}
+.p26-teaser-cta:hover,.p26-teaser-cta:focus-visible{background:var(--p26-accent)}
+.p26-teaser-cta .p26-icon{width:13px;height:13px}
+@media(max-width:760px){.p26-teaser-actions{grid-column:2;grid-row:2;align-self:start}.p26-teaser-cta{min-height:44px}}

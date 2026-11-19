@@ -45,6 +45,9 @@ scan = re.sub(r'NUMERALS = \{.*?\}', '', source, flags=re.S)
 scan = re.sub(r'def numeral\(.*?\n\n', '', scan, flags=re.S)
 scan = re.sub(r'^\s*#.*$', '', scan, flags=re.M)
 scan = re.sub(r'="[^"]*"', '=""', scan)
+# SVG path/diagram data is geometry, not prose: 'm-88 28h88' contains sequences the
+# word-numeral rule would otherwise read as text. Strip SVG bodies entirely.
+scan = re.sub(r'<svg\b.*?</svg>', '', scan, flags=re.S)
 
 COUNTED_NOUNS = (r'guides?|questions?|proposals?|products?|ways|titles|paths|sources?'
                  r'|rows?|pages?|events?|listings?|categories|blocks?|steps?')
@@ -100,6 +103,69 @@ if sugg.exists():
         stated = int(word) if word.isdigit() else words.get(word)
         if stated != len(DATA['guides']):
             failures.append(f'suggestions/index.html: says "current {word} guides", register holds {len(DATA["guides"])}')
+
+# --- 4. the two indexable "front" URLs must not be near-duplicates -----------------
+# 5D4-F04: index.html and shop/index.html were 65% the same words, both index,follow and
+# both in sitemap.xml. 0.40 is well clear of a normal shared masthead/footer.
+import difflib
+
+
+def _visible(path: Path) -> list[str]:
+    if not path.exists():
+        return []
+    t = path.read_text(encoding='utf-8')
+    for pat in (r'<header.*?</header>', r'<footer.*?</footer>', r'<nav.*?</nav>',
+                r'<script.*?</script>', r'<style.*?</style>'):
+        t = re.sub(pat, '', t, flags=re.S)
+    return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', t)).lower().split()
+
+
+_home, _shop = _visible(ROOT / 'index.html'), _visible(ROOT / 'shop' / 'index.html')
+if _home and _shop:
+    ratio = difflib.SequenceMatcher(None, _home, _shop).ratio()
+    if ratio > 0.40:
+        failures.append(f'index.html and shop/index.html are {ratio:.0%} the same words; '
+                        f'they must do different jobs (threshold 40%)')
+
+# --- 5. every indexable page must be reachable, and the comparison well-linked ------
+# 5D4-F05 (corrected): shop/products/index.html is not an orphan — it is linked from the
+# catalogue, both category pages and the masthead. What the check below enforces is the
+# weaker, true property: no indexable page may have zero inbound internal links.
+
+def _inbound(rel: str) -> int:
+    needle = rel
+    count = 0
+    for f in ROOT.rglob('*.html'):
+        if f.relative_to(ROOT).parts[0] in {'archive', 'sessions', 'docs', 'node_modules', '.git'}:
+            continue
+        if f.relative_to(ROOT).as_posix() == rel:
+            continue
+        if needle in f.read_text(encoding='utf-8', errors='replace'):
+            count += 1
+    return count
+
+
+for _rel in DATA['indexable_pages']:
+    if _rel in {'index.html'}:
+        continue
+    _n = _inbound(_rel)
+    if _n == 0:
+        failures.append(f'{_rel} is indexable but no other page links to it')
+
+# --- 6. the front page must keep a direct, tagged route to every product -----------
+# Caught during this session: removing the duplicated product cards to fix 5D4-F04
+# stripped every Amazon link from the front page, leaving the site's main entry point
+# with no conversion path at all. Distinctness must never be bought with reachability.
+_home_text = (ROOT / 'index.html').read_text(encoding='utf-8') if (ROOT / 'index.html').exists() else ''
+if _home_text:
+    _tagged = set(re.findall(r'href="https://www\.amazon\.com/dp/([A-Z0-9]{10})\?tag=' + re.escape(
+        json.loads((ROOT / 'data' / 'shop' / 'config.json').read_text(encoding='utf-8'))['associates_tracking_id']), _home_text))
+    _want = {p['observed_asin'] for p in DATA['products']}
+    _missing = _want - _tagged
+    if _missing:
+        failures.append(f'index.html is missing a tagged product link for: {", ".join(sorted(_missing))}')
+    if 'rel="sponsored' not in _home_text:
+        failures.append('index.html product links are not marked rel=sponsored')
 
 if failures:
     print(f'FAIL: {len(failures)} count/drift problem(s)')

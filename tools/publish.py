@@ -63,6 +63,7 @@ CHECKS = [
     ['python3', 'tools/attach_tag.py', '--check'],
     ['python3', 'sessions/5d460e79/test_attach_tag.py'],
     ['python3', 'sessions/5d460e79/test_counts.py'],
+    ['python3', 'sessions/5d460e79/test_decision_record.py'],
     ['python3', 'tools/analytics_endpoint.py', '--self-test'],
     ['python3', 'sessions/1c072a7a/test_collector.py'],
     ['node', 'sessions/38650305/test_measure.js'],

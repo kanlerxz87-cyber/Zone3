@@ -135,6 +135,31 @@ def guide_art(kind: str) -> str:
     return f'<div class="p26-guide-art p26-art-{esc(kind)}"><svg viewBox="0 0 320 220" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{artwork[kind]}</svg><span>THE ZONE3 FIELD GUIDE</span></div>'
 
 
+def product_teaser(p: dict) -> str:
+    """The front page's shortlist: one line per product, pointing at the full card.
+
+    5D4-F04 (2026-11-19). The front page and /shop/ were 65% identical because both
+    rendered the full product card. The front page is the editorial front page; the
+    catalogue is the place to compare. A teaser carries the format and the deciding
+    question, then hands off, so the two URLs do different jobs instead of competing
+    for the same query with the same words.
+    """
+    d = DECISION[p['id']]
+    return (f'<li class="p26-teaser" data-teaser data-category="{p["category"]}">'
+            f'<span class="p26-teaser-kind">{esc("Air fryer" if p["category"] == "air-fryers" else "Thermometer")}</span>'
+            f'<span class="p26-teaser-name"><strong>{esc(p["brand"])}</strong> {esc(p["name"])}</span>'
+            f'<span class="p26-teaser-format">{esc(p["format_text"])}</span>'
+            f'<span class="p26-teaser-ask">{esc(d["ask"])}</span>'
+            f'<span class="p26-teaser-actions">'
+            f'<a class="p26-teaser-link" href="shop/{p["category"]}/index.html#{p["id"]}">See the detail</a>'
+            # 5D4-F04 residual: the teaser must keep a real outbound route. Making the front
+            # page distinct from the catalogue removed every Amazon link from it, which would
+            # have left the site's most-visited page with no way to reach a product. The CTA
+            # uses the same recorded, tagged destination as the full card.
+            f'<a class="p26-teaser-cta" href="{esc(chrome.tagged(p["observed_listing_url"]))}" rel="sponsored noopener" target="_blank">View on Amazon {icon("external")}</a>'
+            f'</span></li>')
+
+
 def fits_block(p: dict) -> str:
     """Two-sided fit note. Each side names the format fact and then asks the buyer to check it.
 
@@ -188,8 +213,10 @@ def shell(rel: str, title: str, description: str, body: str, article: dict | Non
 
 
 def home() -> str:
-    cards = ''.join(product_card(p) for p in DATA['products'])
-    guides = ''.join(guide_card(GUIDES[x]) for x in ['basket-or-oven-style', 'capacity-checklist', 'cleanup-and-counter-space'])
+    cards = ''.join(product_teaser(p) for p in DATA['products'])
+    # 5D4-F04: the front page shows the three most recent guides, not the same fixed
+    # trio the catalogue reused, so the front page's reading room is edition-driven.
+    guides = ''.join(guide_card(g) for g in DATA['guides'][:3])
     # "Just added" is whatever the register says shipped in this edition, so a new guide reaches the
     # front-page reading room without anyone hand-editing the front page.
     latest = [g for g in DATA['guides'] if g['published'] == DATA['meta']['updated']] or DATA['guides'][-2:]
@@ -199,7 +226,7 @@ def home() -> str:
 <figure class="p26-hero-figure"><img src="assets/img/publication-kitchen.jpg" alt="AI-generated editorial still life of roasted vegetables in a warm, sunlit kitchen; not product testing" width="1536" height="1024" fetchpriority="high"><figcaption>THE KITCHEN, CONSIDERED. <span>AI-generated editorial image</span></figcaption><a class="p26-hero-story" href="guides/basket-or-oven-style.html"><span class="p26-overline">START WITH THE BIG QUESTION</span><strong>Basket or oven?<br>Let dinner decide.</strong><span class="p26-story-arrow">{icon('arrow')}</span></a></figure></section>
 <div class="p26-principles"><p>{icon('check')} Buyer questions first</p><p>{icon('check')} Sources within reach</p><p>{icon('check')} A reason to choose—or not to buy</p></div>
 <section class="p26-section" id="products" aria-labelledby="p26-products-heading"><div class="p26-section-heading"><div><p class="p26-overline">MEET THE SHORTLIST</p><h2 id="p26-products-heading">Make a little room for possibility.</h2></div><a class="p26-text-link" href="shop/products/index.html">Compare the details {icon('arrow')}</a></div><p class="p26-section-dek">{numeral(CAT_N["air-fryers"])} air fryers. {numeral(CAT_N["meat-thermometers"])} thermometers. Start with the format that makes sense for you.</p>
-<div class="p26-filter-row" role="group" aria-label="Filter products"><button type="button" class="p26-filter is-active" data-filter="all" aria-pressed="true">All tools <span>5</span></button><button type="button" class="p26-filter" data-filter="air-fryers" aria-pressed="false">Air fryers <span>3</span></button><button type="button" class="p26-filter" data-filter="meat-thermometers" aria-pressed="false">Thermometers <span>2</span></button><span class="p26-filter-note">A shortlist, not a ranking.</span></div><p class="p26-sr-only" id="p26-filter-status" aria-live="polite"></p><div class="p26-products-grid">{cards}</div><p class="p26-fine p26-product-footnote">Listing-based introductions, not hands-on reviews. Format illustrations are not photographs of the listed models. Supplied links are <a href="flagged.html#FLG-003">under attribution review</a>; no current price or rating is reproduced.</p></section>
+<div class="p26-filter-row" role="group" aria-label="Filter products"><button type="button" class="p26-filter is-active" data-filter="all" aria-pressed="true">All tools <span>{len(DATA['products'])}</span></button><button type="button" class="p26-filter" data-filter="air-fryers" aria-pressed="false">Air fryers <span>{CAT_N['air-fryers']}</span></button><button type="button" class="p26-filter" data-filter="meat-thermometers" aria-pressed="false">Thermometers <span>{CAT_N['meat-thermometers']}</span></button><span class="p26-filter-note">A shortlist, not a ranking.</span></div><p class="p26-sr-only" id="p26-filter-status" aria-live="polite"></p><ul class="p26-teasers">{cards}</ul><p class="p26-fine p26-product-footnote">Listing-based introductions, not hands-on reviews. Format illustrations are not photographs of the listed models. Supplied links are <a href="flagged.html#FLG-003">under attribution review</a>; no current price or rating is reproduced.</p></section>
 </div>
 <section class="p26-start"><div class="p26-container p26-start-grid"><div><p class="p26-overline">A BETTER PLACE TO START</p><h2>Your counter.<br>Your cooking.<br><em>Your call.</em></h2></div><div><p>Before you compare features, pick the question that sounds like your kitchen.</p><a href="guides/basket-or-oven-style.html"><span><b>01</b> Do I need one basket, two, or an oven?</span>{icon('arrow')}</a><a href="guides/capacity-checklist.html"><span><b>02</b> How much space will my food actually get?</span>{icon('arrow')}</a><a href="guides/instant-read-or-wireless-thermometer.html"><span><b>03</b> Spot check or connected thermometer?</span>{icon('arrow')}</a></div></div></section>
 <div class="p26-container"><section class="p26-section" id="guides" aria-labelledby="p26-guides-heading"><div class="p26-section-heading"><div><p class="p26-overline">THE READING ROOM</p><h2 id="p26-guides-heading">Good questions. Useful answers.</h2></div><a class="p26-text-link" href="guides/index.html">All the guides {icon('arrow')}</a></div><div class="p26-guides-grid">{guides}</div><p class="p26-latest">Just added to this edition <span>· {READ_ON}</span> {' · '.join(f'<a class="p26-text-link" href="guides/{g["slug"]}.html">{esc(g["short_title"])}</a>' for g in latest)}</p></section>
@@ -430,7 +457,59 @@ def suggestions() -> str:
     for d in DATA.get('review_b9008684', {}).get('decision_rows', []):
         answers.append(f'<div class="p26-answer" data-answer><label for="answer-{d["id"]}"><small>{d["id"]}</small> {esc(d["decision"])}</label><textarea id="answer-{d["id"]}" data-answer-id="{d["id"]}" rows="2" placeholder="Write what you found, with the date and where it came from. Blank means not answered yet."></textarea></div>')
     answers_section = f'<section class="p26-section" id="answers"><p class="p26-overline">RECORD WHAT YOU FIND</p><h2>Answers, before decisions.</h2><p>Work through the discovery steps above and write what you actually find next to each question. A blank field means the question is still open. Nothing written here reaches the published site or any server.</p><div class="p26-answers">{chr(39)*0}{chr(39).join([])}{"".join(answers)}</div></section>'
-    worksheet_section = '<section class="p26-section" id="worksheet"><p class="p26-overline">FROM SUGGESTION TO DECISION</p><h2>How to choose a path without implementing it.</h2><ol class="p26-pipeline"><li><strong>Read the row or path</strong><span>Start at the question a proposal cites, or at the path that bundles them. The known, missing and default columns are the same for everyone.</span></li><li><strong>Do the discovery step</strong><span>Follow the discovery action, or write down exactly what blocks it. Never fill a gap with an assumption.</span></li><li><strong>Write the answer</strong><span>Record what you found, with the date and where it came from, in the answers above.</span></li><li><strong>Choose a path</strong><span>Mark each proposal and path shortlist, defer or reject using the review selects.</span></li><li><strong>Save and export</strong><span>Press Save, then Export review JSON. The file contains your choices and answers, and nothing else.</span></li><li><strong>Record the decision</strong><span>Paste the export into the decision record with the date and evidence links. Until it is recorded, nothing has been decided.</span></li><li><strong>Implement separately</strong><span>Implementation happens in a later session that first records the decision. Review mode never changes the site.</span></li></ol></section>'
+    worksheet_section = '<section class="p26-section" id="worksheet"><p class="p26-overline">FROM SUGGESTION TO DECISION</p><h2>How to choose a path without implementing it.</h2><ol class="p26-pipeline"><li><strong>Read the row or path</strong><span>Start at the question a proposal cites, or at the path that bundles them. The known, missing and default columns are the same for everyone.</span></li><li><strong>Do the discovery step</strong><span>Follow the discovery action, or write down exactly what blocks it. Never fill a gap with an assumption.</span></li><li><strong>Write the answer</strong><span>Record what you found, with the date and where it came from, in the answers above.</span></li><li><strong>Choose a path</strong><span>Mark each proposal and path shortlist, defer or reject using the review selects.</span></li><li><strong>Save and export</strong><span>Press Save, then Export review JSON. The file contains your choices and answers, and nothing else.</span></li><li><strong>Record the decision</strong><span>Paste the export into the dated decision-record block below, under your name and the date, with the evidence links. Until it is recorded there, nothing has been decided.</span></li><li><strong>Implement separately</strong><span>Implementation happens in a later session that first records the decision. Review mode never changes the site.</span></li></ol></section>'
+
+    # 5D4-F10 (2026-11-19). The page asked 32 questions and offered 28 review selects, but a
+    # choice could not become a decision: there was no place to record one. This block is the
+    # closing half. It states the exact rule a proposal must satisfy, names the register that
+    # already holds decided items, and gives a copy-ready template so an export has somewhere
+    # to land. It writes nothing and can decide nothing by itself.
+    decided = len(json.loads((ROOT / 'data' / 'shop' / 'decisions.json').read_text(encoding='utf-8'))['decisions'])
+    record_section = (
+        '<section class="p26-section" id="decision-record">'
+        '<p class="p26-overline">THE DECISION RECORD</p>'
+        '<h2>What turns a choice into a decision.</h2>'
+        f'<p>A review export is an opinion with a date. It becomes a decision only when it carries '
+        f'all five fields below and is entered in the decisions register, which today holds '
+        f'<strong>{decided}</strong> recorded item(s). The register is '
+        '<a href="../shop/decisions/index.html">the shop decisions register</a>; '
+        'the historical research decisions live in <a href="../suggestions.html">the suggestions register</a>. '
+        'Neither this page nor your browser can add to either one.</p>'
+        '<div class="p26-table-scroll" tabindex="0" role="region" aria-label="The five fields a decision must carry">'
+        '<table class="p26-table"><thead><tr><th scope="col">Field</th><th scope="col">What goes in it</th>'
+        '<th scope="col">Why it is required</th><th scope="col">Official basis</th></tr></thead><tbody>'
+        f'<tr><th scope="row">Decision</th><td>One sentence: what was chosen, and what was rejected.</td>'
+        f'<td>A rejection is a decision too; leaving it out re-opens a settled question.</td>'
+        f'<td>{source_link("amazon-policies")}</td></tr>'
+        f'<tr><th scope="row">Date</th><td>The date the decision was taken, not the date it was written up.</td>'
+        f'<td>Evidence ages. A decision without a date cannot be reviewed.</td>'
+        f'<td>{source_link("amazon-agreement")}</td></tr>'
+        f'<tr><th scope="row">Decided by</th><td>The person or role accountable for the outcome.</td>'
+        f'<td>An unattributed decision has no owner to ask when it is challenged.</td>'
+        f'<td>{source_link("ftc")}</td></tr>'
+        f'<tr><th scope="row">Evidence</th><td>The source links or register rows the decision rests on.</td>'
+        f'<td>A decision made on an unsourced claim cannot be re-checked later.</td>'
+        f'<td>{source_link("google-reviews")}</td></tr>'
+        f'<tr><th scope="row">What would change it</th><td>The observation that would reopen the question.</td>'
+        f'<td>Without a falsifier a decision becomes an assumption.</td>'
+        f'<td>{source_link("amazon-policies")}</td></tr>'
+        '</tbody></table></div>'
+        '<p class="p26-overline">TEMPLATE — COPY THIS INTO THE REGISTER</p>'
+        '<div class="p26-prompt" id="p26-decision-template"><pre style="margin:0;white-space:pre-wrap;font:inherit">'
+        "Decision: [what was chosen] / [what was rejected]\n"
+        "Date: [YYYY-MM-DD]\n"
+        "Decided by: [name or role]\n"
+        "Evidence: [source link or register row, one per line]\n"
+        "What would change it: [the observation that reopens this]\n"
+        "Review export: [paste the JSON from the Export button, or its saved_at value]"
+        '</pre></div>'
+        '<div class="p26-prompt-actions"><button type="button" class="p26-button p26-button-outline" '
+        'data-copy-from="p26-decision-template">Copy the template</button></div>'
+        '<p class="p26-fine">Adding a row here is a documentation change, not a publication. It changes no '
+        'tracking, no account and no live page; the change still goes through the publishing gate.</p>'
+        '</section>'
+    )
+    worksheet_section = worksheet_section + record_section
     review = review_round_html()
     body = f'''<div class="p26-container"><div class="p26-page-intro"><p class="p26-overline">BEHIND THE SITE / SUGGESTIONS &amp; DECISIONS</p><h1>A good next step<br><em>starts with the evidence.</em></h1><p>Choose a path, see what is missing, and leave an honest note about it — without accidentally implementing anything.</p></div><div class="p26-review-note"><strong>Review mode only.</strong> Choices are saved only when you press Save, in this browser. They do not publish pages, spend money, change accounts or activate tracking. Both the paths and the individual proposals are included in what you save and export, along with any answer you wrote for an evidence question. <a href="../suggestions.html">Open the full historical suggestions register</a>.</div><section class="p26-section" id="paths"><div class="p26-section-heading"><div><p class="p26-overline">{len(DATA['paths'])} PATHS, ONE DECISION AT A TIME</p><h2>Pick a direction, not a feature.</h2></div></div><p class="p26-section-dek">Each path is a bundle of the smaller proposals below, with its dependencies named: what it needs before it can be done honestly, what it buys the reader, and what it still cannot claim afterwards.</p>{sequence_note}<div class="p26-paths-grid">{''.join(paths)}</div></section><section class="p26-section" id="proposals"><div class="p26-section-heading"><div><p class="p26-overline">{len(DATA['proposals'])} PROPOSALS, {len(DATA['questions'])} OPEN QUESTIONS</p><h2>Choose what deserves the next look.</h2></div></div><div class="p26-filter-row" role="group" aria-label="Filter suggestions"><button type="button" class="p26-filter is-active" data-proposal-filter="all" aria-pressed="true">All suggestions</button><button type="button" class="p26-filter" data-proposal-filter="Now" aria-pressed="false">Now</button><button type="button" class="p26-filter" data-proposal-filter="Next" aria-pressed="false">Next</button><button type="button" class="p26-filter" data-proposal-filter="Later" aria-pressed="false">Later</button></div><div class="p26-proposals-grid">{''.join(cards)}</div><div class="p26-review-actions"><button type="button" class="p26-button" data-save-review>Save this review {icon('check')}</button><button type="button" class="p26-button p26-button-outline" data-export-review>Export review JSON</button><button type="button" class="p26-text-button" data-reset-review>Clear saved choices</button><p id="p26-review-status" role="status" aria-live="polite">No changes will be implemented from this page.</p></div><noscript><p>JavaScript is off. You can still read every path, suggestion and evidence question; saving and exporting a local review require JavaScript.</p></noscript></section><section class="p26-section" id="questions"><p class="p26-overline">THE DECISION-READINESS REGISTER</p><h2>What do we know? Who holds the rest?</h2><p>Every open question in one table, with the answer as far as it exists, the person or system who can actually supply the rest, and what a complete answer would look like. These are unanswered operational questions, not an invitation to invent answers. Where a fact cannot be confirmed from an official source it is left blank and flagged. Official references explain the applicable rule or context; repository status and safe defaults are our own observations, not certifications by those third parties.</p><p class="p26-fine">Re-verified <time datetime="2026-11-19">{human_date(REVERIFIED)}</time>: the Associates Operating Agreement §5, Program Policies Participation Requirements 1(f)/(g) and 2(a)–(b), the Google outbound-link guidance and the FTC influencer-disclosure guide were re-read for this pass, and {numeral(CAT_N['air-fryers']).lower()} product listings were re-opened; the record is in <a href="../sessions/6b68afc8/verification-2026-11-19.md">sessions/6b68afc8/verification-2026-11-19.md</a>. Nothing on this page changed as a result.</p><div class="p26-table-scroll" tabindex="0" role="region" aria-label="Decision questions, answer owners, evidence gaps and discovery actions"><table class="p26-table p26-question-table"><thead><tr><th scope="col">Question</th><th scope="col">Known / answer so far</th><th scope="col">Missing information</th><th scope="col">Who can answer · what counts as an answer</th><th scope="col">How to discover it</th><th scope="col">Safe default</th><th scope="col">Official basis</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div></section>{answers_section}{review}<section class="p26-section" id="intake"><div class="p26-intake"><div><p class="p26-overline">HOW TO ADD ONE</p><h2>{esc(intake['title'])}</h2><p>{esc(intake['note'])}</p></div><dl class="p26-intake-list">{intake_rows}</dl></div></section>{worksheet_section}<section class="p26-section" id="design-prompt"><p class="p26-overline">THE NEXT DESIGN BRIEF</p><h2>A prompt worth building from.</h2><p>{esc(DATA['design_prompt']['intro'])} It is a proposed direction grounded in the limits above — not an instruction to treat missing evidence as confirmed.</p><div class="p26-prompt" id="p26-design-prompt">{''.join(blocks)}</div><div class="p26-prompt-actions"><button type="button" class="p26-button p26-button-outline" data-copy-prompt>Copy the whole brief</button><span id="p26-copy-status" role="status"></span></div></section><section class="p26-section"><h2>The publishing gate.</h2><ol class="p26-pipeline"><li><strong>Discover</strong><span>Use authorized first-party inputs. Keep provenance and capture date.</span></li><li><strong>Draft</strong><span>Question-led, source-linked copy. Missing facts stay absent.</span></li><li><strong>Check</strong><span>Disclosures, sponsored links, intent, API permissions, unsupported claims, feed and sitemap.</span></li><li><strong>Approve</strong><span>Require real evidence and account authority for gated capabilities.</span></li><li><strong>Measure</strong><span>Use real query, click and report evidence—not forecasts—to choose the next question.</span></li></ol></section></div>'''
     return shell(
