@@ -50,10 +50,15 @@ brief-status register `_meta`).
 
 ## 3. Release chain
 
-Final `python3 tools/publish.py` results for the merged tree are recorded in the publish record
-in `COORDINATION.md` (Part CDB). During this pass the chain itself caught one real defect:
-`check_all_links.py` failed on the executive brief's link to this file before it existed —
-the record was written and the chain re-run, per "do not merge a broken site".
+- `python3 tools/publish.py` (full 16-builder chain + all 25 checks): **41/41 PASS**, run twice
+  back-to-back on 2026-11-19 with a byte-stable tree between runs (no file changed after the
+  second run).
+- **Clean checkout:** a fresh local clone of the pushed branch (`b773d9a`) ran
+  `python3 tools/publish.py --check`: **25/25 PASS, exit 0** — the published check suite runs
+  from a clean checkout with no npm install (S-10's demand).
+- During this pass the chain itself caught one real defect: `check_all_links.py` failed on the
+  executive brief's link to this file before it existed — the record was written and the chain
+  re-run, per "do not merge a broken site".
 
 ## 4. Explicitly not verified (left blank or flagged, never inferred)
 
