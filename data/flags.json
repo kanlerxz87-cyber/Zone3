@@ -2538,8 +2538,8 @@
    "severity": "Medium",
    "category": "Disclosure",
    "item": "Intent page asserted the selected tracking ID was attached to no link while every product link carried it",
-   "detail": "sessions/aebf0747/intent-record.json and the page it renders said 'Selected tracking ID shopnow047c-20 — Not attached to any link on this site'. After PR #192 merged in session ee10b024 the tag is on 1,656 of 1,656 product links on the live site (tools/attach_tag.py --check, 0 foreign tags), so the sentence was knowingly false as published.",
-   "action": "FIXED in place by session ee10b024 on 2026-11-19: tracking_id_status and the build_pass.py sentence now record the measured 1,656/1,656 coverage with the attach_tag --check basis and the correction reference. Attribution reporting on the supplied short links stays unverified (AE-F-01); FLG-003 untouched.",
+   "detail": "sessions/aebf0747/intent-record.json and the page it renders said 'Selected tracking ID shopnow047c-20 — Not attached to any link on this site'. After PR #192 merged in session ee10b024 the tag is on 1,680 of 1,680 product links on the live site (tools/attach_tag.py --check, 0 foreign tags), so the sentence was knowingly false as published.",
+   "action": "FIXED in place by session ee10b024 on 2026-11-19: tracking_id_status and the build_pass.py sentence now record the measured 1,680/1,680 coverage with the attach_tag --check basis and the correction reference. Attribution reporting on the supplied short links stays unverified (AE-F-01); FLG-003 untouched.",
    "repo_evidence": "sessions/aebf0747/intent-record.json; sessions/aebf0747/build_pass.py; intent-record/index.html",
    "sources": [
     "S01"
