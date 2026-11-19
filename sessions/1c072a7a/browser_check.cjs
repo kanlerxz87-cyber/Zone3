@@ -1,6 +1,6 @@
 /* Local Chromium integration checks. Never navigates to Amazon or creates campaign evidence.
  * Start: python3 tools/preview.py --host 0.0.0.0 --port 3000
- * Install optional pinned dependencies from browser-package.json (see README in this folder).
+ * Install optional pinned dependencies from package.json (see README in this folder).
  * Run: node sessions/1c072a7a/browser_check.cjs
  * Results/screenshots default to ignored .preview/browser/. Set Z3_BROWSER_OUTPUT to preserve a run.
  */
@@ -149,6 +149,7 @@ async function launch() {
     const downloadPath = path.join(OUT, 'review-export.test.json');
     await download.saveAs(downloadPath);
     record = JSON.parse(fs.readFileSync(downloadPath, 'utf8'));
+    fs.unlinkSync(downloadPath); // synthetic review is not an owner decision or deliverable
     assert.equal(record.schema, 'zone3.editorial-review.v1'); assert.equal(record.choices[id], 'shortlist');
     assert(!('email' in record));
     await page.locator('[data-reset-review]').click();
@@ -167,10 +168,15 @@ async function launch() {
     assert((await result.getAttribute('href')).startsWith('guides/'));
     assert(new URL(await result.getAttribute('href'), page.url()).pathname.startsWith('/Zone3/guides/'));
     await page.keyboard.press('Escape');
-    await page.evaluate(() => document.addEventListener('click', event => { if (event.target.closest('a[rel~="sponsored"]')) event.preventDefault(); }));
+    await page.evaluate(() => {
+      for (const kind of ['click', 'auxclick']) document.addEventListener(kind, event => { if (event.target.closest('a[rel~="sponsored"]')) event.preventDefault(); });
+    });
     const accepted = page.waitForResponse(r => new URL(r.url()).pathname === '/collect' && r.request().postDataJSON().e === 'outbound_click');
     await page.locator('a.p26-product-cta').first().click();
     assert.equal((await accepted).status(), 204);
+    const middleAccepted = page.waitForResponse(r => new URL(r.url()).pathname === '/collect' && r.request().postDataJSON().e === 'outbound_click');
+    await page.locator('a.p26-product-cta').first().click({ button: 'middle' });
+    assert.equal((await middleAccepted).status(), 204);
     assert(new URL(page.url()).pathname === '/Zone3/');
     await goto(page, 'guides/basket-or-oven-style.html', '/Zone3');
     await goto(page, 'intent-record/index.html', '/Zone3');

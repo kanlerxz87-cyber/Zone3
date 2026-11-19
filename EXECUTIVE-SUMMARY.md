@@ -1,3 +1,108 @@
+# Executive summary — Zone3 Kitchen
+
+## Current publication build — 2026-11-19 · session 1c072a7a
+
+**Bottom line:** the repository now has one buyer-first kitchen publication, not another parallel
+audit landing page. It introduces the five supplied products in two real categories, publishes
+six practical buyer-question guides, and puts evidence, dashboards and decisions behind one
+navigation group and the footer. The source-linked research record remains reachable.
+
+**Reader experience:** [front page](https://kanlerxz87-cyber.github.io/Zone3/) ·
+[guides](https://kanlerxz87-cyber.github.io/Zone3/guides/) ·
+[product comparison](https://kanlerxz87-cyber.github.io/Zone3/shop/products/) ·
+[suggestions review](https://kanlerxz87-cyber.github.io/Zone3/suggestions/) ·
+[current concise brief](https://kanlerxz87-cyber.github.io/Zone3/executive-brief.html).
+The final merge/deployment evidence is recorded in [COORDINATION](COORDINATION.md), not inferred
+from a local preview. This section supersedes operational status in the dated history below.
+
+### What was built
+
+- A consistent responsive masthead, above-content Associates disclosure and repeated footer,
+  category navigation, local search, product filters, labelled contextual art and original generic
+  format diagrams. There is no invented product photography, named expert or hands-on experience.
+- Six guides covering basket/oven layout, capacity, cleanup/counter space, multi-function questions,
+  instant-read/wireless thermometer workflow and hosting-season planning. These add useful decision
+  checklists, source context and unknowns; they are not tested rankings or popularity claims.
+- One canonical 14-URL reader sitemap, 24-entry RSS union, truthful dates/publisher schema and related
+  reads. Older research/reader editions remain reachable but noindex. The completed C3/C17/3301 work
+  and its source files are preserved, including the [previous shopper edition](publication-prior.html).
+- A review-only suggestions workspace: six proposals, nine known/missing/discovery/default questions,
+  local explicit save/reset, JSON export and a reusable design prompt. A review choice never
+  implements a proposal, changes an account, activates measurement or spends money.
+- A single guarded five-event runtime and self-hosted aggregate collector, reproducible full build,
+  strict current-publication gate, private readout option and automated release CI.
+
+### What is actually known about the products
+
+These are **fresh redirect/title/breadcrumb observations on 2026-11-19**, not owner-intent,
+performance, certification, price, availability or attribution confirmations:
+
+- `link.amazon/B04G1MEwY` → CHEFMAN dual-basket air fryer, [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3).
+- `link.amazon/B02NbDxp3` → Emeril Lagasse French-door air-fryer oven, [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R).
+- `link.amazon/B00hJ57DV` → Chefman basket air fryer, [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH).
+- `link.amazon/B0c8moW59` → ThermoMaven digital meat thermometer, [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5).
+- `link.amazon/B0f3GKalj` → CHEF iQ Sense wireless thermometer, [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z).
+
+The intended ASIN, official intended listing URL, confirmation date and confirmation source remain
+blank for all five, separate from observations. The exact supplied short links are used unchanged.
+The selected ID **`shopnow047c-20`** is recorded but its account assignment/report attribution is
+unverified. FLG-003 stays unresolved; the supplied links are not called invalid. Validate one
+Special Link/product in an authorized enrolled workflow, then check destination and reporting
+before scaling. [Agreement](https://affiliate-program.amazon.com/help/operating/agreement) ·
+[Program Policies](https://affiliate-program.amazon.com/help/operating/policies).
+
+### Measurement is implemented, not deployed in production
+
+The runtime names are the retained repository default: `page_view`, `outbound_click`, `guide_view`,
+`intent_view`, `flag_view`. The brief does not enumerate their names. Only `measure.js` is injected;
+the alternate historical tracker remains source-only. Production config is **off with a blank
+endpoint and no deployment evidence**. The development preview accepts all five through a real
+same-origin collector, but those are local tests, not campaign results.
+
+The collector stores only daily page/product aggregate counts for 90 UTC days. It validates origin,
+known pages/targets, schema/content type/body size; has a basic global write ceiling; omits raw
+request logs; and protects its optional counts endpoint with a server-only read token. Browser
+requests omit credentials and Referer. GPC, DNT and Save-Data stop requests; the counter writes no
+cookies or visitor IDs. Connection IP/browser headers necessarily reach the receiving host, which
+must separately configure its own proxy/log retention. This is not a legal-compliance certificate.
+
+No durable authorized collector host, Search Console ownership/report or authorized Associates
+order report was supplied. The campaign ledger stays empty. A click is not an order, eligible
+session, unique person or conversion. There is no invented conversion score or revenue forecast.
+GitHub Pages is [static hosting and logs visitor IPs for security](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
+
+### Important risks and the decision order
+
+1. **Intent and attribution:** obtain dated authorized intent and enrolled-workflow/report evidence;
+   never copy a redirect into an intended field or use artificial clicks/self-purchases.
+2. **Hosting and privacy:** review the actual business use against [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
+   (P26-F02), choose commercially suitable durable hosting, review applicable privacy/consent and
+   upstream logs, then verify delivery/retention before activating production analytics. A technical
+   deploy does not establish hosting-policy approval.
+3. **Real demand and outcomes:** verify Search Console and obtain dated first-party query/page and
+   Associates reports. The sitemap and cadence improve discovery mechanics, not proven traffic.
+   [Search Console guidance](https://developers.google.com/search/docs/monitor-debug/search-console-start).
+4. **Evidence-led publishing:** review one guide every 14 days as an operating plan. Choose future
+   topics from real evidence when available. Require authorized API/assets and original documented
+   tests before richer dynamic figures or performance rankings. [Google review guidance](https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews).
+
+### Review and verification limits
+
+The full release command runs the retained generation chain and all applicable gates. Current
+reader/review tables have 51 source-linked rows and a dedicated strict gate. Whole-tree legacy
+provenance advisories remain visible (C3-F-01/P26-F05); a green structural build does not freshly
+verify every historical claim. No inherited source/flag row was removed: the integrated registers
+contain 87 sources and 154 flags. [Scoped verification](sessions/1c072a7a/verification-2026-11-19.md) ·
+[repository review](sessions/1c072a7a/repo-review.md) · [release outputs](sessions/1c072a7a/release-checks.json) ·
+[browser results](sessions/1c072a7a/browser-checks.json).
+
+---
+
+## Historical executive summaries (dates and limitations retained)
+
+The material below is the preserved earlier record. Counts, parallel-reader decisions and
+“not built” statements refer to their stated dates, not the current publication described above.
+
 # Executive summary — Zone3 AI-powered Amazon affiliate platform
 
 **Prepared:** 2026-11-14 · **Current-status reconciliation:** 2026-11-17 (session `59b2194c`) · **Originally integrated:** session `edbd56a1` · **Independent correction pass:** session `043344f8` · **Final integration, compliance fix and re-verification:** session `3ead7ac8` · **Editorial topic plan and content-status correction:** session `3d359c23` · **2026-11-17 pass (two new links, the Associates tag, sponsored links, measurement, feed):** session `0c4c4cb6`

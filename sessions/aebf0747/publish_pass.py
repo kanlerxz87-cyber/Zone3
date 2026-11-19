@@ -96,6 +96,8 @@ def apply(text: str, rel: str, existing: set[str]) -> tuple[str, list[str]]:
             new_tag = main_tag[:-1] + ' id="p26-content">'
             text = text[:main_start] + new_tag + text[main_start + len(main_tag):]
         preamble = text[body.end():main_start]
+        # These mark the retained shopper edition's content owner, not old chrome.
+        ownership = list(dict.fromkeys(re.findall(r'<!-- (?:c3be74f2:front|c17d25fd:shopfront) -->', preamble)))
         preamble = re.sub(r'<header\b.*?</header\s*>', '', preamble, flags=re.S | re.I)
         preamble = re.sub(r'<a\b[^>]*class=["\'][^"\']*\bskip\b[^"\']*["\'][^>]*>.*?</a>', '', preamble, flags=re.S | re.I)
         # The inherited pre-main blocks were inspected: header + duplicate disclosure only.
@@ -103,7 +105,7 @@ def apply(text: str, rel: str, existing: set[str]) -> tuple[str, list[str]]:
         if DISCLOSURE in preamble:
             preamble = ''
         preamble = re.sub(r'<!--.*?-->', '', preamble, flags=re.S).strip()
-        opening = chrome.masthead(prefix, rel, existing, main_id) + strip_block(prefix)
+        opening = chrome.masthead(prefix, rel, existing, main_id) + strip_block(prefix) + ''.join(ownership)
         text = text[:body.end()] + '\n' + opening + (preamble + '\n' if preamble else '') + text[main_start:].lstrip()
     else:
         # Legacy redirect stubs still get an above-content disclosure and a working skip link.
@@ -120,6 +122,25 @@ def apply(text: str, rel: str, existing: set[str]) -> tuple[str, list[str]]:
                      'original source-read date <strong>2026-11-16</strong>. '
                      f'<a href="{prefix}index.html">Current publication</a> · '
                      f'<a href="{prefix}executive-brief.html">Current operational status</a>.'
+                     '</aside><!-- /p26:reference -->\n')
+        text = re.sub(r'(<main\b[^>]*>)', lambda m: m.group(1) + reference, text, count=1, flags=re.I)
+    if rel == 'publication-prior.html':
+        reference = ('<!-- p26:reference --><aside class="p26-reference">'
+                     'Previous shopper edition (C3/C17/3301), preserved from the completed 19 Nov 2026 passes. '
+                     'Its listing/source observations retain their original dates; old operational statements are historical. '
+                     '<a href="index.html">Current publication</a> · '
+                     '<a href="executive-brief.html">Current status</a> · '
+                     '<a href="flagged.html#C3-F-01">Inherited provenance caveat</a>.'
+                     '</aside><!-- /p26:reference -->\n')
+        text = re.sub(r'(<main\b[^>]*>)', lambda m: m.group(1) + reference, text, count=1, flags=re.I)
+    if (not chrome.is_indexable(rel) and not rel.startswith('site/')
+            and rel not in {'publication-prior.html', 'executive-brief.html', 'suggestions/index.html',
+                            'measurement/index.html', 'intent-record/index.html'}):
+        reference = ('<!-- p26:reference --><aside class="p26-reference">Research workspace: '
+                     'this page retains dated material from earlier passes. '
+                     f'<a href="{prefix}executive-brief.html">Current implementation status</a> · '
+                     f'<a href="{prefix}measurement/index.html">Current measurement definition</a> · '
+                     f'<a href="{prefix}flagged.html#P26-F05">Historical verification limits</a>.'
                      '</aside><!-- /p26:reference -->\n')
         text = re.sub(r'(<main\b[^>]*>)', lambda m: m.group(1) + reference, text, count=1, flags=re.I)
     foot, missing = footer_block(prefix, existing)

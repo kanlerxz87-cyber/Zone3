@@ -18,6 +18,7 @@ import html
 import json
 import pathlib
 import sys
+from datetime import date, datetime, timezone
 from urllib.parse import urlsplit
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -52,7 +53,14 @@ def config_js(cfg: dict) -> str:
                 or target.query or target.fragment or not target.path.endswith("/collect")
                 or target.hostname in {"localhost", "127.0.0.1"}):
             raise ValueError("Production collection requires a valid HTTPS /collect endpoint without credentials or query strings")
-        if not (cfg.get("deployment_verified") is True and cfg.get("deployment_verified_on") and cfg.get("deployment_evidence")):
+        try:
+            valid_port = target.port is None or 1 <= target.port <= 65535
+            verified_on = date.fromisoformat(cfg.get("deployment_verified_on", ""))
+        except (TypeError, ValueError):
+            raise ValueError("Production activation requires a valid port and ISO deployment verification date") from None
+        if not (valid_port and verified_on <= datetime.now(timezone.utc).date()
+                and cfg.get("deployment_verified") is True
+                and isinstance(cfg.get("deployment_evidence"), str) and cfg["deployment_evidence"].strip()):
             raise ValueError("Production activation requires dated deployment and privacy verification evidence")
     payload = {"enabled": enabled, "endpoint": cfg.get("endpoint_url", "") if enabled else ""}
     return (

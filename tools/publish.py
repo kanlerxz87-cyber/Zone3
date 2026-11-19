@@ -53,6 +53,7 @@ CHECKS = [
     ['python3', 'tools/build_cba81fa5_site.py', '--check'],
     ['python3', 'scripts/mark_sponsored.py', '--check'],
     ['python3', 'tools/apply_sponsored.py', '--check'],
+    ['python3', 'tools/add_disclosure_banner.py', '--check'],
     ['python3', 'tools/build_publication.py', '--check'],
     ['python3', 'tools/check_publication.py'],
     ['python3', 'tools/analytics_endpoint.py', '--self-test'],

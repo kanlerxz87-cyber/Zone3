@@ -136,6 +136,12 @@ class CollectorHTTPTests(unittest.TestCase):
                 build_measurement.config_js({**data, 'enabled': True, 'endpoint_url': endpoint})
         with self.assertRaises(ValueError):
             build_measurement.config_js({**data, 'enabled': True, 'endpoint_url': 'https://example.invalid/collect'})
+        for date in ('not-a-date', '2999-01-01'):
+            with self.subTest(date=date), self.assertRaises(ValueError):
+                build_measurement.config_js({**data, 'enabled': True, 'endpoint_url': 'https://example.invalid/collect', 'deployment_verified': True, 'deployment_verified_on': date, 'deployment_evidence': 'test only'})
+        for port in ('invalid', '70000', '0'):
+            with self.subTest(port=port), self.assertRaises(ValueError):
+                build_measurement.config_js({**data, 'enabled': True, 'endpoint_url': 'https://example.invalid:' + port + '/collect', 'deployment_verified': True, 'deployment_verified_on': '2026-11-19', 'deployment_evidence': 'test only'})
         self.assertIn('"enabled": false', build_measurement.config_js(data))
 
 

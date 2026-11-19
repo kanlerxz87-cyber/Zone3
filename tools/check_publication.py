@@ -97,7 +97,7 @@ def check() -> list[str]:
             need(all(s in source_ids for s in section.get('source_ids', [])), f'{guide["slug"]}: unknown section source')
         need(all(slug in {g['slug'] for g in data['guides']} for slug in guide['related']), f'{guide["slug"]}: unknown related guide')
 
-    current = {rel for rel in build_publication.outputs() if rel.endswith('.html')}
+    current = {rel for rel in build_publication.outputs() if rel.endswith('.html') and rel != 'publication-prior.html'}
     pages = [p for p in ROOT.rglob('*.html') if not any(part in SKIP for part in p.relative_to(ROOT).parts)]
     indexable = set(data['indexable_pages'])
     indexed = set()
@@ -163,6 +163,10 @@ def check() -> list[str]:
     for guide in data['guides']:
         url = chrome.BASE + 'guides/' + guide['slug'] + '.html'
         need(feed_urls.count(url) == 1 and url in urls, f'{guide["slug"]}: guide must appear once in feed and sitemap')
+    prior = (ROOT / 'publication-prior.html').read_text()
+    need(prior.count('<!-- c17d25fd:shopfront -->') == 1 and 'id="decision-heading"' in prior, 'completed C3/C17 composition and decision handoff must remain reachable in the previous edition')
+    need('flagged.html#C3-F-01' in prior and 'noindex,follow' in prior, 'historical edition needs its provenance caveat and noindex policy')
+    need('C3-F-01' in {f['id'] for f in json.loads((ROOT / 'data/flags.json').read_text())['flags']}, 'upstream provenance finding must be retained')
     root = (ROOT / 'index.html').read_text()
     for _, links in chrome.WORKSPACE_GROUPS:
         for rel, label in links:

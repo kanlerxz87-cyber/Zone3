@@ -1,4 +1,95 @@
-# Zone3 — AI Amazon Affiliate Marketing Platform
+# Zone3 Kitchen
+
+A buyer-first kitchen publication: five source-linked product introductions, six practical
+question-led guides, and a separate review/research workspace. Plain HTML, CSS and JavaScript;
+no third-party front-end dependency, scraped product imagery or invented reviewer.
+
+**Site:** https://kanlerxz87-cyber.github.io/Zone3/ · **Current executive brief:**
+[`executive-brief.html`](executive-brief.html) · **Review proposals:**
+[`suggestions/index.html`](suggestions/index.html) · **Release record:**
+[`COORDINATION.md`](COORDINATION.md#session-1c072a7a--publication-consolidation-and-buyer-first-experience-2026-11-19)
+
+## Build, check and preview
+
+From the repository root, with Python 3.11+ and Node 22+:
+
+```bash
+python3 tools/publish.py             # full retained generator chain + every release check
+python3 tools/publish.py --check     # checks only; fails on drift, bad links or privacy regressions
+python3 tools/preview.py --host 0.0.0.0 --port 3000
+```
+
+The preview accepts both `/` and `/Zone3/`. It serves a **development-only** analytics config
+pointing to its real same-origin `/collect` endpoint. It never changes the production config.
+Preview aggregates live under ignored `.preview/`, never in the campaign ledger. Do not use
+a sandbox preview as a durable production analytics endpoint.
+
+The release command lists its exact builders and checks in [`tools/publish.py`](tools/publish.py).
+GitHub Actions rebuilds the tree, runs the gates and requires `git diff --exit-code` to be clean.
+Optional real Chromium/axe checks, pinned dependencies and representative screenshots are in
+[`sessions/1c072a7a/README.md`](sessions/1c072a7a/README.md). Core release checks need no npm install.
+A structural source-link check is not independent fact verification; historical provenance
+advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
+
+## Current publication ownership
+
+- **Content and dates:** [`data/publication.json`](data/publication.json). It contains five dated
+  redirect/title observations, six guides, ten scoped official references, six proposals and
+  nine decision-readiness questions. Intended ASINs/URLs/dates/sources remain distinct from
+  observed destinations. Prices, ratings, review totals and tested performance remain empty.
+- **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
+  retained publication entry point in the canonical chain. Do not hand-edit its output.
+- **One shared shell:** [`tools/publication_chrome.py`](tools/publication_chrome.py) and
+  [`sessions/aebf0747/publish_pass.py`](sessions/aebf0747/publish_pass.py). The disclosure is under
+  the masthead and repeated in the footer. All dashboards stay accessible through one **Behind
+  the site** group and the footer directory. The previous C3/C17 shopper edition is retained at
+  [`publication-prior.html`](publication-prior.html), not silently discarded.
+- **Findability:** 14 canonical reader URLs in the sitemap; six question-led guides; local search;
+  24 RSS entries retaining the other editorial desks. Research/duplicate editions remain reachable
+  with their own canonical URL and `noindex,follow`, rather than competing as new front doors.
+  One guide review every 14 days is an operating plan, not a demand or ranking claim.
+- **Art and authorship:** labelled generated kitchen context and original generic format diagrams,
+  not model photography or test evidence. Zone3 Editorial is a disclosed publisher byline,
+  not a fabricated human expert.
+- **Suggestions:** local Save / Clear, JSON export and a reusable design prompt. Saving a choice
+  never implements it, activates analytics, changes an account or spends money.
+
+## Measurement and account boundaries
+
+Production collection is **OFF** (`data/shop/measurement.json`: blank endpoint, no deployment
+verification). One guarded runtime, `assets/measure.js`, implements `page_view`, `outbound_click`,
+`guide_view`, `intent_view`, `flag_view`. The retired `track.js` source is retained but not injected.
+The self-hosted collector is [`tools/analytics_endpoint.py`](tools/analytics_endpoint.py).
+It stores daily aggregates for 90 UTC days, not raw events or visitor identities. Origin/page/
+product allowlists, body-size limits, a global write ceiling, private optional counts readout and
+atomic persistence are tested. Browser requests omit credentials and Referer; GPC, DNT and
+Save-Data disable them. Transport IP/browser headers are necessarily visible to the receiving host
+but not logged or stored by this collector. Hosting/proxy logging requires separate review.
+
+The supplied ID **`shopnow047c-20`** is recorded, not account-verified. The exact supplied links
+remain unchanged. Validate one Special Link/product through an authorized enrolled workflow,
+including destination and reporting, before scaling. Their status stays unresolved under
+[FLG-003](flagged.html#FLG-003); this project does not call them invalid.
+
+No Search Console ownership or authorized Associates report is available. The campaign ledger is
+empty; local test counts are not visitors, eligible sessions, orders, commissions or conversions.
+No conversion score, popularity signal or revenue forecast is manufactured. Safe build/editorial
+checks are automated; account/API permissions and original test evidence are not simulated.
+
+**Commercial hosting needs review.** [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits)
+restrict business/commercial-transaction-oriented use; a technical Pages deploy is not policy
+approval (P26-F02). Pages is static and cannot run the Python collector. Review host suitability
+before commercial scaling and use an authorized durable HTTPS collector with reviewed logging
+before enabling production measurement. See [privacy](privacy.html), [the scoped verification
+record](sessions/1c072a7a/verification-2026-11-19.md), and [the repository review](sessions/1c072a7a/repo-review.md).
+
+---
+
+The material below is retained **historical architecture and dated observations**, not a claim
+that the old parallel front doors, counts or deferred features still describe the current release.
+Use the current sections above and the executive brief where they differ.
+
+## Historical platform notes — before the 2026-11-19 consolidation
 
 Full-stack affiliate marketing intelligence for Amazon Associates: product intake and
 verification, niche / pricing / review analysis, grounded SEO content generation,
@@ -18,7 +109,7 @@ publish any value that cannot be traced to an official source.
 
 ---
 
-## Status at a glance
+### Historical status at a glance (not current release counts)
 
 | | |
 | --- | --- |
@@ -119,38 +210,13 @@ which is the right answer for a reviewer and the wrong first impression for a re
 | [`site/style-guide.html`](site/style-guide.html) | House style: eleven banned constructions with the rule behind each and the sentence to write instead, plus the seven requirements every reader page must meet before it publishes |
 | Front door on the root page | `index.html` opens with a band (brand, the three listings, the latest guides, the disclosure) generated by `tools/build_cba81fa5_site.py`; the dashboard content stays below it, unchanged |
 
-**Build order matters for the reader layer.** `scripts/build_site.py` still emits the dashboard as
-`index.html`, and `tools/build_cba81fa5_site.py` then injects the front-door band, the guide plan table and
-the `site/` index entries from `data/cba81fa5/guides.json`. Run them in this order — and note that the lint
-fails the build if the band has been dropped (`SITE:generated-region-stale`), because a marketing front door
-that silently disappears on the next rebuild is worse than no front door:
+**Current build entry point:** `python3 tools/publish.py` (see the top of this README).
+The old sequence is retained in [the integration record](sessions/1c072a7a/legacy-build-order.md)
+for reproducibility, not as a competing publishing command. C3/C17 source files remain unchanged;
+`tools/build_publication.py` composes their preceding shopper edition on a temporary page and
+publishes it at `publication-prior.html` with `noindex,follow`. Their direct root-patching CLIs
+intentionally refuse the new `p26-main` owner instead of overwriting it.
 
-```bash
-python3 scripts/build_site.py             # dashboard pages from data/*.json
-python3 tools/build_i2_site.py            # reader site  -> site/
-python3 tools/build_cba81fa5_site.py      # front-door band + guide plan + site index (idempotent)
-python3 tools/cba81fa5_lint.py            # style + compliance lint over site/** (baseline = reviewed inherited items)
-python3 scripts/cba81fa5_test_no_repr_output.py   # no Python repr in any published page (CBA-F-06)
-python3 tools/build_shop.py                     # shop layer from data/shop/*.json (session 974e366d; also self-checks)
-python3 tools/build_measurement.py          # measurement page + assets/measure-config.js from data/shop/measurement.json (session 38650305; counting OFF until an endpoint is set)
-python3 tools/build_brief_status.py        # brief-status/index.html from data/shop/brief-status.json (session 38650305)
-python3 scripts/build_marketing.py         # marketing/*.html (ded63349: re-added to the chain)
-python3 scripts/build_read.py              # read/ editorial layer (ded63349: re-added to the chain)
-python3 scripts/build_5a56c084.py          # articles/ research desk (ded63349: re-added to the chain)
-python3 tools/build_site.py                # second audit pass — picks up pages created by the layers above (ded63349)
-python3 sessions/aebf0747/build_pass.py         # publication pages + guide pages (writes an initial feed draft)
-python3 sessions/aebf0747/publish_pass.py       # mechanical pass: disclosure strip, footer, sponsored rel and head links
-python3 sessions/c3be74f2/build_front_page.py   # source-linked buyer questions, observed listings and decision table (PR #164; idempotent)
-python3 sessions/c17d25fd/build_shopfront.py    # product-first publication layout composed over the C3 evidence/decision layer (this session; idempotent)
-python3 tools/measure_pass.py              # analytics script tags on every published page (markers; idempotent; session 38650305)
-python3 tools/build_feed.py               # feed.xml = UNION of both guide registers; runs after every HTML generator, --check gates drift (session 82372fd1)
-python3 scripts/mark_sponsored.py         # rel="sponsored" on every outbound product link, whole tree incl. sessions/ (0C4-T3; added to the chain by session 66964850 after the PR #161 union — without it check_site rule 10 fails on regenerated session pages)
-python3 scripts/build_sitemap.py          # sitemap for the whole published tree
-
-# Measurement self-tests (session 38650305):
-python3 tools/analytics_endpoint.py --self-test   # collector allow-list, field filter, aggregate-only store
-node sessions/38650305/test_measure.js            # counter in a stubbed browser: off by default, GPC/DNT, click shape (needs Node)
-```
 
 Two redundant verification gates from session ded63349 run *after* the chain as checks (they are
 no-ops on a tree `publish_pass.py` has already processed): `tools/apply_sponsored.py --check`

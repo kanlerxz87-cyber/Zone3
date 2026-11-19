@@ -1,5 +1,5 @@
 {
-  "tested_at": "2026-11-19T06:12:18.610Z",
+  "tested_at": "2026-11-19T06:27:04.759Z",
   "scope": "Local-only preview; synthetic test traffic, not campaign, sales or organic-traffic evidence. Automated WCAG 2.0/2.1 A/AA checks are not an accessibility certification.",
   "checks": [
     {
@@ -581,5 +581,5 @@
   ],
   "browser": "153.0.8010.0",
   "status": "PASS",
-  "completed_at": "2026-11-19T06:13:12.468Z"
+  "completed_at": "2026-11-19T06:27:59.479Z"
 }

@@ -45,6 +45,7 @@ WORKSPACE_GROUPS = [
     ]),
     ('Reference', [
         ('publication-pass.html', 'Previous publication pass'),
+        ('publication-prior.html', 'Previous shopper edition (C3/C17)'),
         ('brief-status/index.html', 'Brief status'),
         ('executive-summary/index.html', 'Research executive summary'),
         ('executive-summary.html', 'Full executive summary'),
