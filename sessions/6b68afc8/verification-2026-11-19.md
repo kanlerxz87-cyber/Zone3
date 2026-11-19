@@ -57,6 +57,17 @@ Recorded so a reader can see the boundary rather than infer one.
   16 sitemap URLs, 26 feed entries) counts files in this checkout with the tree's own skip rules; it
   is a repository observation, not a statement about what Google has indexed.
 
+## 3c · Live read-back after merge
+
+PR **#180** merged 2026-11-19T11:22:35Z as `a61c410`; CI `Publication checks` and
+`pages build and deployment` both **success** on that SHA. The deployed pages were then fetched and read,
+because a `built` status is not a content check: `suggestions/index.html` shows the sequence strip, all
+five path cards with their needs/unblocks/cannot-deliver rails and the merged review round;
+`guides/how-do-you-know-its-done.html` shows the FoodSafety.gov figures with the attribution and the
+21 Nov 2024 source-review date, the three-listing table with "title only" labels, and the
+"not a hands-on review" byline. The five quoted temperature figures and both listing feature strings are
+on the live page as verified in §1–§2. No price, rating or review count appears.
+
 ## 3b · Post-rebase re-check
 
 The push-time base had moved (PRs #173–#176, 130 files). After re-applying this pass onto

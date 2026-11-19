@@ -1,7 +1,8 @@
 # Repo review — 2026-11-19 · session `6b68afc8`
 
 Read-only pass over the tree at the claim base `825f5132` (merge of PR #172), the changes this
-session made and why, and §6 — what the rebase onto `origin/main` (`530d9d9`, PRs #173–#176) required. Findings that are not defects are called out as such, because "flagged" is
+session made and why, and §6 — what **two** push-time rebases onto `origin/main` required (`530d9d9`,
+PRs #173–#176; then `7600f25`, PRs #177/#179). Findings that are not defects are called out as such, because "flagged" is
 otherwise useless as a decision tool.
 
 ## 1 · Baseline
@@ -119,6 +120,12 @@ owned by their generators, and no gate required an exception this time.
 | Deliberately kept from upstream | `REVERIFIED = DATA['meta']['reverified']` is the better source for a "sources were re-read" date than my `meta.updated`, so the re-check notes now read from it; the register-owned derivation is preserved because `REVERIFIED` is itself register data, not a literal |
 | Gate response | first post-rebase build: 1 FAIL on the four prose-complete rows (§5 above) → fixed in the data, not by loosening the gate |
 | After | `python3 tools/publish.py` → **41 commands, 0 failed**; second full run changed 0 files; `git diff --exit-code` clean |
+| Repeat, one hour later | `main` moved again to `7600f25` (**#177/#179**, session `b9008684`: `review_b9008684` + `review_round_html()` in the same three files). Same method, same outcome: union the registers, re-apply the renderer by region, let the builders regenerate. **Four** conflict regions this time (`publication.json`, `tools/build_publication.py`, `COORDINATION.md`, and the generated `suggestions/index.html`, which was resolved by checking out upstream and rebuilding rather than hand-merging HTML) |
+
+The visible result of both rebases is one page that carries two sessions' work at once: their dated
+review round renders between the question table and the intake block, their chooser and fit notes render
+on the catalogue, and this pass's paths, owner column and block brief render around them — the page
+description is derived from both registers, so the sentence cannot go stale against either.
 
 What was *not* done, in one line each: no force-push to `main`, no merge commit papering over the
 registers, no rewrite of `B79-*` or any other session's row, no deletion of my `P27-F05` in favour of
