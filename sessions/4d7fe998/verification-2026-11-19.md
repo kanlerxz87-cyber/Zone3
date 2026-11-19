@@ -1,7 +1,7 @@
 # Verification log — session `4d7fe998`
 
 **Date:** 2026-11-19 (UTC)
-**Checkout:** `arena/4d7fe998-zone3`, re-rebased on `3f0d14bfad1eee800c6e6e3397e43e78b5d93839` (`main`, PR #195; includes PRs #193/#194)
+**Checkout:** `arena/4d7fe998-zone3`, based on PR #195 (`3f0d14bfad1eee800c6e6e3397e43e78b5d93839`) for the publication audit; final release merged as PR #196 (`1623c1c2b6c4b04d526130a316dd6d9344985bdd`)
 **Review scope:** publication state, official-source boundaries, disclosure/sponsored-link policy checks, dashboard/suggestion/intent surfaces, feed/sitemap, tracking/measurement claims, and GitHub Pages suitability.
 **Limit:** structural and scoped source review; not a fresh line-by-line audit of every inherited page or a substitute for account-only evidence.
 
@@ -71,7 +71,15 @@ An earlier attempted alias `python3 tools/check_links.py` does not exist; it was
 - PR [#193](https://github.com/kanlerxz87-cyber/Zone3/pull/193) merged at 13:10:09Z as `42a6952`; publication check run `44530675597` succeeded.
 - PR [#194](https://github.com/kanlerxz87-cyber/Zone3/pull/194) merged at 13:13:26Z as `f29342b`; publication check run `44531216522` succeeded. Pages API status for `f29342b` was `built` at 13:13:51Z.
 - PR [#195](https://github.com/kanlerxz87-cyber/Zone3/pull/195) merged at 13:17:29Z as `3f0d14b`; publication check run `44531961726` succeeded. Pages API status for `3f0d14b` was `built` at 13:17:58Z. This is a coordination-only closeout after #194.
-- Cache-busted live reads at `?revision=3f0d14b` confirmed the 5/9/36/0 executive strip, nine guides including the probe guide, six-path decision desk, product intent/evidence pages and the 17-URL/27-item sitemap/feed tree. The old dashboard remains stale by design/history. This is the upstream base deployment, not yet deployment verification for this session’s PR.
+- Cache-busted live reads at `?revision=3f0d14b` confirmed the 5/9/36/0 executive strip, nine guides including the probe guide, six-path decision desk, product intent/evidence pages and the 17-URL/27-item sitemap/feed tree. The old dashboard remains stale by design/history. This is the audited publication baseline; PR #196 post-merge verification follows.
+
+
+## Final session release after PR #196
+
+- PR [#196](https://github.com/kanlerxz87-cyber/Zone3/pull/196) passed publication check run `44534254715` and merged at `2026-11-19T13:32:02Z` as `1623c1c2b6c4b04d526130a316dd6d9344985bdd`. GitHub Pages API reported this commit as `built` at `2026-11-19T13:32:31Z`.
+- Cache-busted read-back at revision `1623c1c` reconfirmed the executive brief’s **5 submitted links / 9 guides / 36 readiness questions / 0 campaign rows**, plus six paths / 26 proposals / 36 questions / 13 prompt blocks and its explicit unverified/off/review statuses.
+- The live guide index contained nine cards including “Where does the probe go?”; the guide read-back preserved the FoodSafety.gov placement/temperature guidance and did not claim testing of either thermometer. The sitemap read-back listed 17 URLs.
+- PR #196 changed the root Markdown summary and audit/coordination records only; product, tracking, source, flag, measurement, suggestion-register, generator and generated reader-page data remained unchanged. The canonical chain passed 41/41 twice after the #195 rebase, then passed another 41/41 twice on the final post-#196 release-record tree with all four modified audit/coordination files and working-tree status unchanged.
 
 ## Open questions that remain owner- or platform-only
 
