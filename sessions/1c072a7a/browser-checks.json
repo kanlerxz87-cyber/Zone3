@@ -1,0 +1,585 @@
+{
+  "tested_at": "2026-11-19T06:12:18.610Z",
+  "scope": "Local-only preview; synthetic test traffic, not campaign, sales or organic-traffic evidence. Automated WCAG 2.0/2.1 A/AA checks are not an accessibility certification.",
+  "checks": [
+    {
+      "label": "Root preview: real collector accepts page_view and no browser storage/cookies are created",
+      "pass": true
+    },
+    {
+      "label": "Product filters update actual cards and pressed/live state",
+      "pass": true
+    },
+    {
+      "label": "Search: local index, matching result, empty state, Escape and focus restoration",
+      "pass": true
+    },
+    {
+      "label": "One research navigation group, Escape/outside close, and full footer tools",
+      "pass": true
+    },
+    {
+      "label": "Suggestions: priority filter, unsaved state, explicit local save, reload, export, clear, copy prompt",
+      "pass": true
+    },
+    {
+      "label": "Project-site /Zone3/ links, search and real five-event delivery; no Amazon navigation",
+      "pass": true
+    },
+    {
+      "label": "Duplicate runtime does not double count; query/hash/referrer/cookies/identifiers absent from event body",
+      "pass": true
+    },
+    {
+      "label": "Mobile menu: expanded state, hidden navigation, Escape and focus restoration",
+      "pass": true
+    },
+    {
+      "label": "All 16 reader/review pages: desktop/mobile layout, above-fold disclosure and automated WCAG 2.0/2.1 A/AA",
+      "pass": true
+    },
+    {
+      "label": "GPC, DNT and Save-Data each disable ALL real browser analytics requests",
+      "pass": true
+    },
+    {
+      "label": "Production disabled config is inert in a real browser",
+      "pass": true
+    },
+    {
+      "label": "Search failure keeps working guide navigation; storage denial keeps review/export available",
+      "pass": true
+    },
+    {
+      "label": "No-JavaScript fallback: visible navigation, all products, guides and evidence questions",
+      "pass": true
+    },
+    {
+      "label": "All ordinary page requests and collector responses succeed; no page errors or retailer requests",
+      "pass": true,
+      "note": "All five event names exist in the LOCAL test aggregate store. Counts are not reported as campaign evidence."
+    }
+  ],
+  "responsive": [
+    {
+      "page": "index.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "guides/index.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "guides/basket-or-oven-style.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "guides/capacity-checklist.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "guides/cleanup-and-counter-space.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "guides/multi-function-questions.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "guides/instant-read-or-wireless-thermometer.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "guides/holiday-kitchen-checklist.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "shop/index.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "shop/air-fryers/index.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "shop/meat-thermometers/index.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "shop/products/index.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "suggestions/index.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "about.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "privacy.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "executive-brief.html",
+      "width": 1440,
+      "scroll": 1440,
+      "disclosureBottom": 147,
+      "mainTop": 147,
+      "height": 1000
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "guides/index.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "guides/basket-or-oven-style.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "guides/capacity-checklist.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "guides/cleanup-and-counter-space.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "guides/multi-function-questions.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "guides/instant-read-or-wireless-thermometer.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "guides/holiday-kitchen-checklist.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "shop/index.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "shop/air-fryers/index.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "shop/meat-thermometers/index.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "shop/products/index.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "suggestions/index.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "about.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "privacy.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    },
+    {
+      "page": "executive-brief.html",
+      "width": 390,
+      "scroll": 390,
+      "disclosureBottom": 144.1875,
+      "mainTop": 144.1875,
+      "height": 844
+    }
+  ],
+  "accessibility": [
+    {
+      "page": "index.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/index.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/basket-or-oven-style.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/capacity-checklist.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/cleanup-and-counter-space.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/multi-function-questions.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/instant-read-or-wireless-thermometer.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/holiday-kitchen-checklist.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/index.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/air-fryers/index.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/meat-thermometers/index.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/products/index.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "suggestions/index.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "about.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "privacy.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "executive-brief.html",
+      "width": 1440,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "index.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/index.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/basket-or-oven-style.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/capacity-checklist.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/cleanup-and-counter-space.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/multi-function-questions.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/instant-read-or-wireless-thermometer.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "guides/holiday-kitchen-checklist.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/index.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/air-fryers/index.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/meat-thermometers/index.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "shop/products/index.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "suggestions/index.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    },
+    {
+      "page": "about.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": []
+    },
+    {
+      "page": "privacy.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": []
+    },
+    {
+      "page": "executive-brief.html",
+      "width": 390,
+      "violations": [],
+      "incompleteRules": [
+        "color-contrast"
+      ]
+    }
+  ],
+  "screenshots": [
+    "home-desktop.png",
+    "products-desktop.png",
+    "home-mobile.png",
+    "guide-mobile.png",
+    "suggestions-mobile.png"
+  ],
+  "browser": "153.0.8010.0",
+  "status": "PASS",
+  "completed_at": "2026-11-19T06:13:12.468Z"
+}

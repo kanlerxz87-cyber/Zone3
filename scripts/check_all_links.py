@@ -39,7 +39,10 @@ class P(HTMLParser):
 
 
 def main() -> int:
-    pages = sorted(p for p in ROOT.rglob("*.html") if ".git" not in p.parts)
+    # Installed tooling and ignored test artifacts are not published repository pages.
+    # Keep docs/, sessions/ and archive/ in scope; do not hide historical link errors.
+    skip = {".git", "node_modules", ".preview", ".local", "__pycache__"}
+    pages = sorted(p for p in ROOT.rglob("*.html") if not any(part in skip for part in p.relative_to(ROOT).parts))
     parsed: dict[pathlib.Path, P] = {}
     for p in pages:
         parser = P()

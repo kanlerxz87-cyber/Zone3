@@ -778,7 +778,43 @@
    "status": "verified",
    "status_note": "Re-read 2026-11-17 by session 66964850 (Z1-V20). Page footer reads 'Last updated 2025-12-10 UTC'. Verbatim: 'Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.' Same page as shop source SH-S04 (data/shop/sources.json); added to this register so the flat Flagged page can cite it directly (S-05).",
    "used_for": "Z1-F-02 (record-page links without rel=sponsored); the S-05 implementation check."
+  },
+  {
+   "id": "S91",
+   "title": "GitHub Pages limits",
+   "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+   "publisher": "GitHub (official)",
+   "status": "verified",
+   "status_note": "Read with the page-fetch tool on 2026-11-19 (session 1c072a7a). Usage limits prohibit using Pages as free hosting to run an online business or a site primarily facilitating commercial transactions. Applicability to this affiliate business requires review; deployment is not approval.",
+   "used_for": "Usage limits prohibit using Pages as free hosting to run an online business or a site primarily facilitating commercial transactions. Applicability to this affiliate business requires review; deployment is not approval."
+  },
+  {
+   "id": "S92",
+   "title": "FoodSafety.gov safe minimum internal temperatures",
+   "url": "https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures",
+   "publisher": "U.S. government FoodSafety.gov (official)",
+   "status": "verified",
+   "status_note": "Read with the page-fetch tool on 2026-11-19 (session 1c072a7a). Use a food thermometer to check safe internal temperature; some foods require rest time. No product endorsement or certification verification.",
+   "used_for": "Use a food thermometer to check safe internal temperature; some foods require rest time. No product endorsement or certification verification."
+  },
+  {
+   "id": "S93",
+   "title": "What is GitHub Pages?",
+   "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+   "publisher": "GitHub (official)",
+   "status": "verified",
+   "status_note": "Read with the page-fetch tool on 2026-11-19 (session 1c072a7a). Static hosting; GitHub logs IP addresses for security. Cannot host the Python POST collector in Pages.",
+   "used_for": "Static hosting; GitHub logs IP addresses for security. Cannot host the Python POST collector in Pages."
+  },
+  {
+   "id": "S94",
+   "title": "Google Search Central: write high quality reviews",
+   "url": "https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews",
+   "publisher": "Google (official)",
+   "status": "verified",
+   "status_note": "Read with the page-fetch tool on 2026-11-19 (session 1c072a7a). Original evidence and user perspective; support best-in-class claims with first-hand evidence. No ranking guarantee.",
+   "used_for": "Original evidence and user perspective; support best-in-class claims with first-hand evidence. No ranking guarantee."
   }
  ],
- "id_reservation": "S01–S90 allocated (last S90, Google Search Central qualify-outbound-links, added by session 66964850 2026-11-17). Append a NEW row from S91 — never overwrite an existing row."
+ "id_reservation": "S01–S94 allocated (last S91–S94 added by session 1c072a7a 2026-11-19; verification scopes are dated per row). Append a NEW row from S95 — never overwrite an existing row."
 }

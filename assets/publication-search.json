@@ -1,0 +1,68 @@
+[
+  {
+    "title": "Basket or oven-style air fryer: what should you compare?",
+    "description": "One basket, two baskets, or French doors. Make the format decision before you get lost in presets.",
+    "kind": "Air fryers",
+    "path": "guides/basket-or-oven-style.html"
+  },
+  {
+    "title": "A no-hype checklist for comparing air fryer capacity",
+    "description": "A larger number is not a meal plan. Here is what to check before you compare quarts.",
+    "kind": "Air fryers",
+    "path": "guides/capacity-checklist.html"
+  },
+  {
+    "title": "How to assess cleanup and counter-space trade-offs",
+    "description": "Think beyond the footprint. Check the opening space, removable parts and model-specific care instructions.",
+    "kind": "Everyday kitchen",
+    "path": "guides/cleanup-and-counter-space.html"
+  },
+  {
+    "title": "Questions to ask before buying a multi-function kitchen appliance",
+    "description": "Before you count the functions, make a list of the ones you would actually use.",
+    "kind": "Buying smarter",
+    "path": "guides/multi-function-questions.html"
+  },
+  {
+    "title": "Instant-read or wireless thermometer: which questions matter?",
+    "description": "Two thermometer formats, different shopping questions. Start with how you want to take a reading.",
+    "kind": "Meat thermometers",
+    "path": "guides/instant-read-or-wireless-thermometer.html"
+  },
+  {
+    "title": "Hosting dinner? Make a kitchen shortlist before you buy.",
+    "description": "A meal-first checklist for the counter space, cooking format and temperature tools you might need.",
+    "kind": "The seasonal edit",
+    "path": "guides/holiday-kitchen-checklist.html"
+  },
+  {
+    "title": "Chefman 6-quart dual-basket air fryer",
+    "description": "Two separate baskets, or one larger cooking space? Start with what you actually cook.",
+    "kind": "Product shortlist",
+    "path": "shop/air-fryers/index.html#SHOP-01"
+  },
+  {
+    "title": "Emeril Lagasse 26QT French-door air fryer oven",
+    "description": "Considering an oven-style setup? Put door clearance and usable interior space on your checklist.",
+    "kind": "Product shortlist",
+    "path": "shop/air-fryers/index.html#SHOP-02"
+  },
+  {
+    "title": "Chefman TurboFry 8 Qt air fryer",
+    "description": "Check the basket’s usable dimensions before turning the 8 Qt label into a serving estimate.",
+    "kind": "Product shortlist",
+    "path": "shop/air-fryers/index.html#SHOP-03"
+  },
+  {
+    "title": "ThermoMaven Digital meat thermometer",
+    "description": "For a digital-thermometer shortlist, check the exact model instructions for probe placement and care.",
+    "kind": "Product shortlist",
+    "path": "shop/meat-thermometers/index.html#SHOP-04"
+  },
+  {
+    "title": "CHEF iQ Sense wireless meat thermometer",
+    "description": "Before you choose a connected setup, check app requirements, probe limits and your connection.",
+    "kind": "Product shortlist",
+    "path": "shop/meat-thermometers/index.html#SHOP-05"
+  }
+]

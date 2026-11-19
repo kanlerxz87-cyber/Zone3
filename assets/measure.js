@@ -1,72 +1,81 @@
-/* Zone3 outbound-click and page-event counter (build 38650305).
- * Privacy rules, enforced here and documented on measurement/index.html:
- *  - off unless window.Z3_MEASURE.enabled is true AND an endpoint is set;
- *  - nothing is sent when Global Privacy Control or Do Not Track is on;
- *  - no cookies, no storage, no visitor identifier;
- *  - the path is sent without query string or hash; link tokens are path segments only.
- * Events: page_view, outbound_click, guide_view, intent_view, flag_view.
+/* Zone3's ONE active five-event counter.
+ * No cookies/storage/visitor IDs; no query strings, fragments, referrers or credentials.
+ * Production is off until configured. Preview uses a real same-origin /collect endpoint.
+ * A click is not an order, session, unique person, or conversion.
  */
 (function () {
   'use strict';
+  if (window.__z3MeasureInitialized) return;
+  window.__z3MeasureInitialized = true;
   var cfg = window.Z3_MEASURE || {};
   var EVENTS = ['page_view', 'outbound_click', 'guide_view', 'intent_view', 'flag_view'];
+  var HOSTS = ['link.amazon', 'amazon.com', 'www.amazon.com'];
+
+  function endpoint() {
+    if (cfg.enabled !== true || typeof cfg.endpoint !== 'string' || !cfg.endpoint) return '';
+    try {
+      var current = new URL(location.href);
+      var target = new URL(cfg.endpoint, current);
+      var localPreview = target.origin === current.origin && /^(localhost|127\.0\.0\.1)$/.test(current.hostname);
+      if (target.protocol !== 'https:' && !(localPreview && target.protocol === 'http:')) return '';
+      if (target.username || target.password || target.search || target.hash || !/\/collect$/.test(target.pathname)) return '';
+      return target.href;
+    } catch (error) { return ''; }
+  }
 
   function allowed() {
-    if (!cfg.enabled || !cfg.endpoint) return false;
+    if (!endpoint() || typeof fetch !== 'function') return false;
     if (navigator.globalPrivacyControl === true) return false;
     if (navigator.doNotTrack === '1' || window.doNotTrack === '1') return false;
+    if (navigator.connection && navigator.connection.saveData === true) return false;
     return true;
   }
 
-  function send(name, extra) {
+  function send(name, link) {
     if (!allowed() || EVENTS.indexOf(name) < 0) return;
-    var body = { v: 1, e: name, p: location.pathname, h: '' };
-    if (extra) {
-      for (var k in extra) {
-        if (Object.prototype.hasOwnProperty.call(extra, k)) body[k] = extra[k];
-      }
+    var path = location.pathname;
+    if (typeof path !== 'string' || !/^\/[A-Za-z0-9/_.-]{0,199}$/.test(path) || path.indexOf('..') !== -1 || path.indexOf('//') !== -1) return;
+    var body = { v: 1, e: name, p: path, h: '' };
+    if (name === 'outbound_click') {
+      if (!link) return;
+      body.h = link.h; body.t = link.t;
     }
-    var data = JSON.stringify(body);
     try {
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(cfg.endpoint, new Blob([data], { type: 'text/plain' }));
-      } else {
-        fetch(cfg.endpoint, { method: 'POST', body: data, keepalive: true, mode: 'no-cors' });
-      }
-    } catch (err) {
-      /* counting must never break the page */
-    }
+      // Unlike sendBeacon, fetch lets us explicitly omit credentials and the Referer.
+      var request = fetch(endpoint(), {
+        method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'text/plain' },
+        credentials: 'omit', referrerPolicy: 'no-referrer', keepalive: true, mode: 'cors',
+        cache: 'no-store', redirect: 'error'
+      });
+      if (request && request.catch) request.catch(function () { /* measurement never breaks navigation */ });
+    } catch (error) { /* failure is not a successful count; leave the page usable */ }
   }
 
   function linkParts(href) {
     try {
-      var u = new URL(href, location.href);
-      var seg = u.pathname.split('/').filter(Boolean).pop() || '';
-      return { h: u.hostname, t: /^[A-Za-z0-9]{4,20}$/.test(seg) ? seg : '' };
-    } catch (err) {
-      return { h: '', t: '' };
-    }
+      var url = new URL(href, location.href);
+      if (url.protocol !== 'https:' || HOSTS.indexOf(url.hostname) < 0) return null;
+      var match = url.hostname === 'link.amazon' ? url.pathname.match(/^\/([A-Za-z0-9]{9})\/?$/) : url.pathname.match(/\/(?:dp|gp\/product)\/([A-Za-z0-9]{9,10})(?:\/|$)/);
+      return match ? { h: url.hostname, t: match[1] } : null;
+    } catch (error) { return null; }
   }
 
   function pageEvents() {
     var path = location.pathname;
     send('page_view');
-    if (/\/guides\/[^\/]+\.html$/.test(path) && !/\/index\.html$/.test(path)) send('guide_view');
-    if (/\/intent-record\/(index\.html)?$/.test(path)) send('intent_view');
-    if (/\/publication-pass\.html$|\/flagged\.html$|\/flagged\/(index\.html)?$/.test(path)) send('flag_view');
+    if (/\/(?:guides|articles|read)\/[^/]+\.html$/.test(path) && !/\/index\.html$/.test(path)) send('guide_view');
+    if (/\/intent-record\/(?:index\.html)?$|\/intent-record\.html$/.test(path)) send('intent_view');
+    if (/\/(?:publication-pass|flagged)\.html$|\/flagged\/(?:index\.html)?$/.test(path)) send('flag_view');
   }
 
-  document.addEventListener('click', function (ev) {
-    var t = ev.target;
-    if (!t || !t.closest) return;
-    var a = t.closest('a[rel~="sponsored"]');
-    if (!a || !a.href) return;
-    send('outbound_click', linkParts(a.href));
-  }, true);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', pageEvents);
-  } else {
-    pageEvents();
+  function outbound(event) {
+    var target = event.target;
+    if (!target || !target.closest) return;
+    var anchor = target.closest('a[rel~="sponsored"]');
+    if (anchor && anchor.href) send('outbound_click', linkParts(anchor.href));
   }
+  document.addEventListener('click', outbound, true);
+  document.addEventListener('auxclick', function (event) { if (event.button === 1) outbound(event); }, true);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pageEvents, { once: true });
+  else pageEvents();
 })();

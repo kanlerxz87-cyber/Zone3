@@ -19,7 +19,7 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SKIP_TOP = {".git", "archive", "docs", "sessions", "node_modules", "__pycache__"}
+SKIP_TOP = {".git", "archive", "docs", "sessions", "node_modules", "__pycache__", ".preview", ".local"}
 RE_BLOCK = re.compile(r"<!-- z3:measure -->.*?<!-- /z3:measure -->\n?", re.S)
 
 
@@ -36,6 +36,9 @@ def apply(html: str, rel: str) -> str:
     depth = rel.count("/")
     prefix = "../" * depth
     html = RE_BLOCK.sub("", html)
+    # A previous integration shipped a second, incompatible tracker. Preserve its
+    # historical source, but never execute both stacks on a public page.
+    html = re.sub(r'<script\b[^>]*src=["\'][^"\']*assets/track\.js["\'][^>]*>\s*</script>\n?', '', html, flags=re.I)
     # Inside <head>, before </head>. The publish pass places its strip under the masthead and its
     # footer before </body>, and adds head markup only once, so this position is stable on reruns.
     if re.search(r"</head\s*>", html, re.I):

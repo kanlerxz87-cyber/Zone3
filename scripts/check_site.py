@@ -106,6 +106,8 @@ OFFICIAL_HOSTS = {
     # added 2026-11-14 by integration session ecbfe91b so S31 (the ASIN rule page) can be cited.
     "sell.amazon.com",
     "www.ftc.gov", "github.com", "api.github.com",
+    # Read from these official publishers in the 2026-11-19 publication pass.
+    "docs.github.com", "developers.google.com", "www.foodsafety.gov",
 }
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 

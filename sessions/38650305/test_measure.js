@@ -31,7 +31,7 @@ function run({ pathname, configJs, nav = {}, click = null }) {
     JSON,
     Object,
     console,
-    fetch: () => { throw new Error('fetch should not be used when sendBeacon exists'); },
+    fetch: (url, options) => { sent.push({ url, blob: new Blob([options.body]), options }); return Promise.resolve({ status: 204 }); },
   };
   // Any cookie write would be a document.cookie assignment; make it visible.
   Object.defineProperty(doc, 'cookie', { set(v) { cookieWrites.push(v); }, get() { return ''; } });
@@ -69,6 +69,7 @@ async function readAll(list) {
   check(b2.every((x) => x.body.p === '/Zone3/guides/capacity-checklist.html'), 'path is sent without query or hash');
   check(b2.every((x) => Object.keys(x.body).sort().join(',') === 'e,h,p,v'), 'body contains only v, e, p, h (no id, ip, ua, referrer)');
   check(r2.cookieWrites.length === 0, 'no cookie is written');
+  check(r2.sent.every(s => s.options.credentials === 'omit' && s.options.referrerPolicy === 'no-referrer'), 'credentials and referrer are explicitly omitted');
 
   // 3. Global Privacy Control blocks everything.
   const r3 = run({ pathname: '/Zone3/guides/capacity-checklist.html', configJs: ON, nav: { globalPrivacyControl: true } });
