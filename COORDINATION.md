@@ -9546,4 +9546,35 @@ source can support.
 | 0A4-T2 — Re-read each of the five official listing pages and record only what the page itself publishes (title, breadcrumb, listed dimensions, listed capacity, format) | done | 0a48cfda | `sessions/0a48cfda/**` | `amazon.com/dp/<ASIN>` ×5, read 2026-11-19 | F-1: the guide claimed no dimension was published, but three detail tables publish one. F-2: two listings' capacity fields contradict their own titles → FLG-S33. F-4: a dangling in-page anchor caught by `check_all_links`. |
 | 0A4-T3 — Reconcile the "supplied short links vs. tagged Special Links" contradiction against Program Policies 2(b), and record it as a reader-facing flag rather than silently swapping links | done (resolved as: do not swap) | 0a48cfda | `sessions/0a48cfda/verification-2026-11-19.md`; `EXECUTIVE-SUMMARY.md` current opening | Program Policies 2(a)–(b), read 2026-11-19, chunk 3 of 11 | The clause permits "such other format as we may designate", and only an enrolled account shows what Amazon designates. Links left exactly as supplied; FLG-003 stays open; the tagged URLs in `data/special-links.json` were not promoted because their destinations are redirects, not confirmed intent. |
 | 0A4-T4 — Fill the counter-space dimension gap only where the listing publishes a dimension; leave the rest blank and flagged | done | 0a48cfda | `data/publication.json` (`products[].listing_dimensions`), `guides/cleanup-and-counter-space.html`, `tools/build_publication.py`, `assets/publication.css` | listings ×5, read 2026-11-19 | Three filled, two left blank with the reason stated. No interior size, clearance, cord length or door swing is published by any listing, so the per-centimetre arithmetic stays unpublished (E41-P1 re-scoped). |
-| 0A4-T5 — Canonical chain twice, link/disclosure/sponsored checks, PR, merge, Pages confirmation | in progress | 0a48cfda | this branch only | `tools/publish.py` 41/41 twice; 25/25 baseline before edits | No browser was installable in this environment (pinned Chromium needs system NSS libs; only the six allowed hosts are reachable), so the rendered check is structural, not a screenshot. Recorded as a limitation, not a pass. |
+| 0A4-T5 — Canonical chain twice, link/disclosure/sponsored checks, PR, merge, Pages confirmation | done | 0a48cfda | this branch only | `tools/publish.py` 41/41 twice before and after the rebase; 25/25 baseline before edits; live read-back after the deploy | No browser was installable in this environment (pinned Chromium needs system NSS libs; only the six allowed hosts are reachable), so the rendered check is structural plus live HTML read-back, not a screenshot. Recorded as a limitation, not a pass. |
+
+## Part 0A4 — release record (2026-11-19)
+
+**PR [#202](https://github.com/kanlerxz87-cyber/Zone3/pull/202) merged into `main` as `393ab9c` at
+2026-11-19T21:59:12Z.** CI check *Build, provenance, links and privacy* passed (21s, run
+`44624054277`). GitHub Pages reported `status: built` for `393ab9c` at 21:59:13Z.
+
+Live read-back after the deploy (cache-busted with `?revision=393ab9c`):
+
+- `/shop/products/` — comparison table carries the new **Listed size** column; the three air fryers
+  show `13.38"D x 11.81"W x 10.63"H / 6 liters`, `16.9"D x 15.8"W x 14.8"H / 24.6 liters` and
+  `12.75"D x 13.5"W x 10"H / 8 quarts`; both thermometers show **Not published**.
+- `/guides/cleanup-and-counter-space.html` — the false sentence about the titles is gone, the
+  verified sizes are in the body, the new capacity-disagreement section is present, and the
+  "What we haven't established" list now names interior size and clearances.
+- `/` — product cards carry the size line with its read date.
+
+**Rebase record.** `main` advanced eight commits (PRs #199–#201, including guide #11) while this
+branch was open. `git pull --rebase` conflicted twice, both append-only or generated-output
+conflicts: `COORDINATION.md` (resolved by keeping the complete upstream file and re-appending Part
+0A4 once; the in-progress claim rows in that file were superseded by the final rows above), and the
+generated `executive-brief.html`, `suggestions/index.html`, `publication-pass.html`,
+`sessions/aebf0747/*` (resolved by taking this branch's side and re-running the canonical chain, which
+is the only writer of those files). No upstream `data/` content was dropped: the merged register
+carries upstream's eleventh guide alongside this pass's dimension fields and two proposals
+(**11 guides, 30 proposals, 38 questions, 19 sitemap URLs, 29 feed items**). The chain then passed
+**41/41 twice** on the rebased tree with a stable working tree.
+
+**Flagged irregularities (published, non-blocking):** FLG-S33 (new — capacity fields that contradict
+their own titles); FLG-003 (unchanged, open); E41-Q1 and E41-P1 re-scoped rather than closed because
+no listing publishes an interior size, clearance, cord length or door swing.
