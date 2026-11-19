@@ -9571,7 +9571,7 @@ A4F-T1 through A4F-T5 complete and verified above. PR [#199](https://github.com/
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 787a3aab | `arena/787a3aab-zone3` | Independent line-by-line re-verification of the five supplied links, disclosure/sponsored/intent/measurement registers against official sources; add one question-led guide through the canonical publication register; full release chain, PR, merge, Pages verification | in progress | 2026-11-19 |
+| 787a3aab | `arena/787a3aab-zone3` | done (PR #200 merged) — Independent line-by-line re-verification of the five supplied links, disclosure/sponsored/intent/measurement registers against official sources; add one question-led guide through the canonical publication register; full release chain, PR, merge, Pages verification | in progress | 2026-11-19 |
 
 ### Coordination and scope
 
@@ -9588,4 +9588,6 @@ A4F-T1 through A4F-T5 complete and verified above. PR [#199](https://github.com/
 | 787-T2 — Line-by-line verification of links, disclosure, sponsored, intent, measurement, sitemap/feed against official sources | done | 787a3aab | `sessions/787a3aab/repo-review.md`, `sessions/787a3aab/verification-2026-11-19.md` | affiliate-program.amazon.com, developers.google.com, ftc.gov, foodsafety.gov, amazon.com listing pages, live site read-back | to be recorded |
 | 787-T3 — Add one question-led guide through the publication register | done (guide #11 thermometer-ice-water-check, FSIS source) | 787a3aab | `data/publication.json` (additive), generated guide/feed/sitemap pages | official thermometer-accuracy source read in T2 | to be recorded |
 | 787-T4 — Full release chain twice, idempotency, link/disclosure/sponsored checks | done (41/41 twice, idempotent) | 787a3aab | generated outputs only; `sessions/787a3aab/release-checks.md` | `tools/publish.py` | to be recorded |
-| 787-T5 — PR, merge, Pages deploy + live verification, record result | in progress | 787a3aab | this branch; this Part | GitHub PR/Pages APIs, live read-back | to be recorded |
+| 787-T5 — PR, merge, Pages deploy + live verification, record result | done (PR #200 merged 30746b2; Pages built; live guide verified) | 787a3aab | this branch; this Part | GitHub PR/Pages APIs, live read-back | to be recorded |
+
+**787 completion record (2026-11-19):** PR [#200](https://github.com/kanlerxz87-cyber/Zone3/pull/200) merged at `30746b2865be5d690f72ff1991512ab24a38c2c9` (2026-11-19T21:53:10Z) after CI `Build, provenance, links and privacy` passed. GitHub Pages `built` for `30746b2` (2026-11-19T21:53:12Z). Live read-back confirmed `/guides/thermometer-ice-water-check.html` (correct title, FSIS + FoodSafety.gov + listing source links, unknowns block, related reads). Two rebases during the pass (PR #199, PR #201 — both coordination-only main advances) were resolved by keeping upstream `COORDINATION.md` and re-appending Part 787a3aab; no upstream Part dropped. Flagged irregularities 787-F-01…03 remain published in `sessions/787a3aab/verification-2026-11-19.md` and non-blocking. Owner gates (intent, Special Link validation, collector host, Search Console, commercial hosting) remain open by design.
