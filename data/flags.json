@@ -2031,6 +2031,18 @@
     "tools/analytics_endpoint.py"
    ],
    "sources": []
+  },
+  {
+   "id": "C3-F-01",
+   "severity": "High",
+   "category": "Source provenance / release gate",
+   "item": "The whole-tree verifier reports inherited published table rows without an official-source link, explicit flag, or valid repository anchor",
+   "detail": "Baseline verification on 2026-11-19 completed with exit 0 because tools/verify_site.py treats inherited pages as advisory. Its V4 output nevertheless reported 532 advisory findings and a provenance breakdown of 220 uncited rows, alongside rows supported only by repository/GitHub links. Examples are listed in the verifier output for brief-status/index.html, decision-queue.html, suggestions.html, sources.html and other inherited pages. This conflicts with the brief rule that every published table row must have an official source link. A green exit code therefore does not mean every historical table row is line-by-line officially sourced.",
+   "action": "A follow-up owner or integration pass should give every factual row an official source link, an explicit on-page blank/flag, or a valid repository-state anchor; then change the verifier so this condition is release-blocking rather than advisory. This C3 pass did not rewrite other sessions' table generators, and its own root decision table includes an official-context link in every row.",
+   "date": "2026-11-19",
+   "session": "c3be74f2",
+   "sources": [],
+   "repo_evidence": "tools/verify_site.py baseline result on 2026-11-19: VERIFY PASS · 152 pages · 2,517 table rows; provenance amazon_ftc=1,938 · flag_or_blank=90 · repo_only=269 · uncited=220; 532 inherited V4 advisory findings. Captured in sessions/c3be74f2/verification.md. The gate classifies inherited findings as non-blocking in tools/verify_site.py."
   }
  ]
 }
