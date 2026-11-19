@@ -8452,3 +8452,26 @@ No pre-existing flag is edited or removed.
 | Release evidence | Full generator chain was run twice with identical tracked-output hash. Final `check_site`: 42 pages / 5 products / 83 sources / 149 flags; full local link crawl: 198 HTML pages / 264 URLs / **0 errors**; disclosure, sponsored, sitemap, feed, reader, shop and measurement gates passed. Full details: `sessions/c3be74f2/verification.md`. |
 | Published irregularity | **C3-F-01** is visible on `flagged.html`: inherited table-row provenance advisories remain non-blocking in the current verifier; no claim that every legacy table row is official-source-linked is made. |
 | Session status | **C3-T1 through C3-T4 done.** The follow-up governance-only PR records this publish result in `main` as required by the coordination protocol. |
+
+---
+
+## Part c17d25fd — product-led front-page redesign (2026-11-19)
+
+### Session claim and scope
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| C17-T1 — Read the coordination board and check for active overlapping claims | done | c17d25fd | `COORDINATION.md` (this Part) | repo task board | no active overlapping claim at base `3883a0be` |
+| C17-T2 — Rework the generated publication front page into a polished, shopper-first layout; preserve the verified evidence limits and put the review/decision surfaces one click away | done | c17d25fd | `sessions/aebf0747/build_pass.py`, `assets/zone3-publication.css`, generated outputs owned by that build pass (`index.html`, `/guides/`, `/intent-record/`, `publication-pass.html`, `feed.xml`, session verification/summary outputs), `sessions/c17d25fd/**` | existing official-source register and verified guide/product records; official sources rechecked 2026-11-19 (see `sessions/c17d25fd/repo-review.md`) | no content/status conflict; no shared product/source registers changed |
+| C17-T3 — Run the publication generators and all relevant link, disclosure, sponsored-link, sitemap, feed and verification gates; record results | done | c17d25fd | same as C17-T2 plus this Part of `COORDINATION.md` | project gates | all required gates pass; 532 inherited `verify_site` advisories and 22 inherited style-lint advisories disclosed in review |
+| C17-T4 — Final integration and publish record | in progress | c17d25fd | current branch only; this Part of `COORDINATION.md` | — | — |
+
+**Scope rule.** This session does not alter product/source/flag registers, the suggestion/decision records, analytics configuration, or other sessions' source files. Existing suggestion, open-question and decision pages remain the canonical review workflow; the redesigned front page will surface them without treating a proposal as an approved change. Work stays on Arena's fixed branch `arena/c17d25fd-zone3`.
+
+### C17-T2/T3 completion record (2026-11-19)
+
+- Rebuilt the generated front page and ran its downstream generators: `sessions/aebf0747/build_pass.py`, `tools/measure_pass.py`, `tools/build_feed.py`, `scripts/mark_sponsored.py`, and `scripts/build_sitemap.py`. The combined RSS feed remains at 22 entries and the sitemap at 106 pages.
+- Official-source checks and a line-by-line change record are in `sessions/c17d25fd/repo-review.md`; a concise project summary is in `sessions/c17d25fd/EXECUTIVE-SUMMARY.md`. Current Amazon destination listing pages were re-fetched for all five observed ASINs on 2026-11-19. The product facts still display their 2026-11-17 observation date. No link.amazon short-link or Associates-account test is claimed.
+- Gates: `check_site` 42 pages / 5 products / 83 sources / 148 flags; `verify_site` PASS 152 pages / 2,517 rows (532 inherited advisories); `link_report --strict` PASS; `i2_gate` PASS 20 pages; style lint PASS with 0 new / 22 inherited advisories; `check_all_links` 198 HTML pages / 263 external URLs / 0 errors; feed 22 / sitemap 106 / shop 11 all current; sponsored and above-fold disclosure checks pass; analytics collector and browser tests pass offline only. Second publication-generator chain is fingerprint-idempotent. Full list and output interpretation are in the review file.
+- Open blockers retained rather than simulated: intended-ASIN confirmation; enrolled Associates test for each Special Link and tracking-ID/account validation; hosted analytics endpoint; Search Console token; reader-capture provider/consent; human editorial ownership. The supplied short links remain unresolved under FLG-003 and are not described as invalid. Analytics remains disabled in the static Pages build.
+- **Pre-publish irregularities:** none introduced by this scope. Inherited advisory counts are recorded above; the account-only and hosting prerequisites remain open review items.
