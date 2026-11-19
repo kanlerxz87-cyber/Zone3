@@ -41,3 +41,7 @@
 - `assets/measure-config.js` remains disabled because no collector URL/host exists. GitHub Pages is static; no click/conversion or revenue measurement is claimed.
 - No live re-fetch of the cited official pages occurred during this pass. Existing dated source records are cited for manual review; this is not a current-availability check.
 - Rebase: main advanced through PR #166 to `d2c840a` while this branch was in progress. The C3 and C17 work were preserved; the current branch composes navigation/footer changes around that latest root. Resolution is recorded in Part 3301 of `COORDINATION.md`.
+
+## Publish result
+
+PR [#167](https://github.com/kanlerxz87-cyber/Zone3/pull/167) merged at 2026-11-19T05:58:44Z as `b0f63f29fe50ffe796b1be0eff335228136dd763`. GitHub Pages build `1383153250` for that commit reached `built` at 2026-11-19T05:59:07Z. The deployed site URL is https://kanlerxz87-cyber.github.io/Zone3/. This verifies the Pages build result; it is not a live Amazon listing or enrolled-account Special Link compliance test.

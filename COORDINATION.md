@@ -8486,7 +8486,7 @@ No pre-existing flag is edited or removed.
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| 3301-T1 — Integrate the published product-first root page with one grouped Explore navigation and a usable shared footer directory, preserving the C3 evidence/decision layer and latest C17 root composition. | In progress — PR #167 | 3301d334 | `index.html`, `assets/zone3-publication.css`, `sessions/aebf0747/build_pass.py`, `sessions/aebf0747/publish_pass.py`, `sessions/c17d25fd/build_shopfront.py` (C3→C17 marker idempotency), marker-owned generated mastheads/footer blocks, `sessions/3301d334/**`, this Part only | existing source and intent registers; no newly asserted product facts | FLG-003 and intended-product confirmations stay unresolved; C3-F-01 remains published. |
+| 3301-T1 — Integrate the published product-first root page with one grouped Explore navigation and a usable shared footer directory, preserving the C3 evidence/decision layer and latest C17 root composition. | Done — PR #167 merged | 3301d334 | `index.html`, `assets/zone3-publication.css`, `sessions/aebf0747/build_pass.py`, `sessions/aebf0747/publish_pass.py`, `sessions/c17d25fd/build_shopfront.py` (C3→C17 marker idempotency), marker-owned generated mastheads/footer blocks, `sessions/3301d334/**`, this Part only | existing source and intent registers; no newly asserted product facts | FLG-003 and intended-product confirmations stay unresolved; C3-F-01 remains published. |
 
 ### Claim, integration and rebase record
 
@@ -8498,5 +8498,14 @@ This follow-up began from the C3 publication refresh, then main advanced again t
 - `verify_site`: PASS, 152 pages / 2,523 table rows; inherited provenance advisories remain disclosed by C3-F-01.
 - `check_all_links`: 198 HTML pages / 263 distinct external URLs / 0 errors.
 - Sponsored-link, shared footer, C17 shopfront determinism, feed (22 entries), sitemap (106 pages), measurement and offline measurement tests pass. Full command record: `sessions/3301d334/verification-2026-11-19.md`.
+
+### Publish record — 2026-11-19
+
+| Item | Result |
+|---|---|
+| Functional PR | **#167** — https://github.com/kanlerxz87-cyber/Zone3/pull/167 |
+| Merge | **MERGED** at 2026-11-19T05:58:44Z; merge commit `b0f63f29fe50ffe796b1be0eff335228136dd763`. |
+| GitHub Pages | Build **1383153250** for commit `b0f63f2` reached **built** at 2026-11-19T05:59:07Z. Site: https://kanlerxz87-cyber.github.io/Zone3/ |
+| Release evidence | Local gates and generator checks listed above passed; no hosted runtime or live Amazon link test is claimed. |
 
 Owner-side gates remain unchanged: intended ASIN confirmation, enrolled Associates Special Link test, account/API eligibility, Search Console ownership and analytics endpoint hosting. No supplied short link is called invalid, and no measurement or revenue outcome is claimed.
