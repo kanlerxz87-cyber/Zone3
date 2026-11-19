@@ -74,3 +74,10 @@ These remain open because the available public/repository evidence cannot answer
 - [FTC Disclosures 101 for Social Media Influencers](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) — fetched 2026-11-19; page dated November 2019.
 - [Google Search Central: Qualify your outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) — fetched 2026-11-19; current page last updated 2025-12-10 UTC.
 - [Amazon Creators API: GetItems](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) — fetched 2026-11-19. No API data was used in the new UI.
+
+## Pull request, deployment and live verification
+
+- PR [#166](https://github.com/kanlerxz87-cyber/Zone3/pull/166) merged to `main` at `2026-11-19T05:53:37Z`; merge SHA `d2c840a16f0b479cd246a026824eddf19493025e`.
+- GitHub Pages workflow [#44468270785](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44468270785) completed successfully. Deployment `7905359163` reports `success` for the merge SHA and environment URL `https://kanlerxz87-cyber.github.io/Zone3/`.
+- A live page fetch confirmed the deployed product-led hero, observed product shelves, guides, source-linked decision table, and review links. The footer and every-page disclosure were verified with the whole-site local checks before deploy; no browser-based visual inspection was available.
+- Release caveats are unchanged: intended product matches and Associates attribution are unresolved; the live analytics endpoint remains unconfigured. The required follow-up governance-only PR records these facts and release evidence in `COORDINATION.md`.
