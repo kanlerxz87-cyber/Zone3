@@ -8423,3 +8423,14 @@ mark_sponsored --check, apply_sponsored --check). No conflict marker is pushed.
 - The root page is treated as generated output: `sessions/c3be74f2/build_front_page.py` makes the C3-owned, marker-bounded replacement so the change is reproducible and idempotent. Existing `aebf0747` disclosure, RSS and measurement markers remain intact.
 - No product identity is inferred from a redirect, no intention field is filled, and no price, availability, rating, review count, sales claim, commission estimate, trend claim, conversion claim, or customer-experience claim is added.
 - The supplied Associates tag is not inserted into any new link by this pass. Current Special Link/account/report validation remains an owner-side workflow recorded on the existing decision and flagged pages.
+
+### C3 scope extension — 2026-11-19 (claimed before remediation)
+
+The baseline whole-tree verifier returned **532 inherited advisory findings**. Its V4 report identifies
+multiple published table rows that have neither an official-source link, an explicit flag, nor a valid
+repository anchor; this conflicts with the brief's “every table row must have a source link to an
+official site” requirement even though the current checker treats inherited pages as non-blocking. To
+publish that discrepancy rather than silently treating a green exit code as full row verification,
+C3-T1’s scope is extended to `data/flags.json`, the generated `flagged.html`, and the output generated
+by `scripts/build_site.py` that changes solely because of the new flag. The new row will be `C3-F-01`.
+No pre-existing flag is edited or removed.
