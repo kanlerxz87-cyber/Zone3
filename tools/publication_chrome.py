@@ -14,6 +14,23 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://kanlerxz87-cyber.github.io/Zone3/'
 DISCLOSURE = 'As an Amazon Associate I earn from qualifying purchases.'
 
+# 5D4-F01 (2026-11-19). Program Policies Participation Requirements 2(b) requires the
+# Associates tag on every link to an Amazon Site. Before this, the site emitted untagged
+# product links and could not attribute a click. Every renderer funnels its Amazon product
+# URLs through tagged(); tools/attach_tag.py applies the identical rewrite as a post-pass
+# over the finished pages, so a generator that forgets this helper still ships a tagged link.
+TAG = json.loads((ROOT / 'data' / 'shop' / 'config.json').read_text(encoding='utf-8'))['associates_tracking_id']
+_PRODUCT_HOSTS = ('link.amazon/', 'amazon.com/dp/', 'amazon.com/gp/product/')
+
+
+def tagged(url: str) -> str:
+    """Return `url` with the Associates tag attached, preserving any existing params."""
+    if not any(h in url for h in _PRODUCT_HOSTS):
+        return url
+    if 'tag=' in url:
+        return url
+    return url + ('&' if '?' in url else '?') + 'tag=' + TAG
+
 # Keep all previous shared-footer destinations and all current flat research surfaces.
 WORKSPACE_GROUPS = [
     ('Start here', [

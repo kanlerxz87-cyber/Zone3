@@ -154,9 +154,23 @@ def render(path: str, rec: dict) -> str:
 
 # ---------- link helpers -------------------------------------------------
 
+TAG = CFG["associates_tracking_id"]
+
+
+def with_tag(url: str) -> str:
+    """Attach the Associates tag at render time (5D4-F01).
+
+    tools/attach_tag.py runs the same rewrite as a post-pass over every page, so a page
+    that escapes this helper is still caught and the build stays deterministic.
+    """
+    if any(h in url for h in ("link.amazon/", "/dp/", "/gp/product/")) and "tag=" not in url:
+        return url + ("&" if "?" in url else "?") + "tag=" + TAG
+    return url
+
+
 def sponsored(url: str, text: str, extra_cls: str = "") -> str:
     cls = f' class="{extra_cls}"' if extra_cls else ""
-    return (f'<a{cls} href="{e(url)}" rel="sponsored noopener" target="_blank">'
+    return (f'<a{cls} href="{e(with_tag(url))}" rel="sponsored noopener" target="_blank">'
             f'{e(text)}</a>')
 
 
@@ -777,8 +791,17 @@ def check_all(paths: list[str]) -> list[str]:
                 problems.append(f"{path}: Amazon link without noopener: {href}")
             if href.startswith("http") and host not in OFFICIAL_HOSTS:
                 problems.append(f"{path}: outbound link to non-official host: {href}")
-            if "tag=" in href:
-                problems.append(f"{path}: tracking tag embedded in a link (not permitted in this build): {href}")
+            # 5D4-F01 (2026-11-19): the earlier rule refused any tag= in a link, which left every
+            # Amazon destination unattributed. Program Policies Participation Requirements 2(b)
+            # requires the Associates tag on each link to an Amazon Site, so the rule is inverted:
+            # an Amazon product link must carry the selected tracking ID, and a foreign tag is a
+            # conflict that must be raised rather than silently shipped.
+            if host in SPONSORED_HOSTS and ("/dp/" in href or "/gp/product/" in href or "link.amazon/" in href):
+                tag_params = re.findall(r"[?&](?:amp;)?tag=([^&\"]+)", href)
+                if not tag_params:
+                    problems.append(f"{path}: Amazon product link without the Associates tag: {href}")
+                elif any(t != CFG["associates_tracking_id"] for t in tag_params):
+                    problems.append(f"{path}: Amazon product link carries a foreign tag: {href}")
             # internal links resolve
             if not href.startswith(("http", "mailto:", "#")):
                 target = (SHOP / path).parent / href.split("#")[0]
