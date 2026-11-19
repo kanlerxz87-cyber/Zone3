@@ -4,7 +4,7 @@
   "observed_on": "2026-11-17",
   "observed_by": "fetch of each short link and of the resulting amazon.com/dp/ page, same session",
   "selected_tracking_id": "shopnow047c-20",
-  "tracking_id_status": "Selected by the owner. Attached as the tag parameter on every product link on the live site: 1,656 of 1,656 product links carry tag=shopnow047c-20 (tools/attach_tag.py --check, measured 2026-11-19 after integration session ee10b024 merged PR #192; the earlier 'not attached' record is superseded, correction EE-F-01). Attribution reporting is still unverified: it needs an enrolled Associates Special Link test (Operating Agreement Section 1) and a tracking report check. See AE-F-01.",
+  "tracking_id_status": "Selected by the owner. Attached as the tag parameter on every product link on the live site: 1,680 of 1,680 product links carry tag=shopnow047c-20 (tools/attach_tag.py --check, measured 2026-11-19 after integration session ee10b024 merged PR #192; the earlier 'not attached' record is superseded, correction EE-F-01). Attribution reporting is still unverified: it needs an enrolled Associates Special Link test (Operating Agreement Section 1) and a tracking report check. See AE-F-01.",
   "field_rules": [
     "Intended ASIN, official listing URL, confirmation date and confirmation source are the INTENT fields. They are filled only when the owner supplies the intended product and an official page confirms it. None is filled on this pass.",
     "Observed redirect target fields record what the submitted short link opened on the observed date. They are a separate field and are never copied into the intent fields.",

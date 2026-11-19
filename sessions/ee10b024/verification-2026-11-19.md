@@ -94,7 +94,7 @@ family) matched the live text verbatim after normalization.
 
 | ID | What | Disposition |
 |---|---|---|
-| `EE-F-01` | Intent page claimed the tracking ID was "Not attached to any link on this site" while the merged tree tags every product link | **Fixed** — `sessions/aebf0747/intent-record.json` + `build_pass.py` rewritten to measured 1,656/1,656 coverage; attribution reporting stays unverified (`AE-F-01`); `FLG-003` untouched |
+| `EE-F-01` | Intent page claimed the tracking ID was "Not attached to any link on this site" while the merged tree tags every product link | **Fixed** — `sessions/aebf0747/intent-record.json` + `build_pass.py` rewritten to measured 1,680/1,680 coverage; attribution reporting stays unverified (`AE-F-01`); `FLG-003` untouched |
 | `EE-F-02` | Same-day brief-status/executive-summary measurements superseded by the integration (feed 27→11, sitemap 17→20, guides 9→11, pages 121→124 after PRs #157/#160/#192 and main's #198–#206) | **Fixed** — rows S-04/S-05/S-09/S-24/SG-28/SG-29 re-measured against the final merged tree, `_meta.rechecks` entry 5, EXECUTIVE-SUMMARY current counts updated |
 | Count-drift gate vs docstring | E41's "one block" docstring tripped PR #192's typed-count gate after the union | **Fixed** — reworded ("single block"), gate not weakened |
 | Carried, not closed | `FLG-003` (supplied short links never called invalid), `shopnow047c-20` enrollment/assignment unverified, `5D4-F-01` redirect-chain compliance question, S-18 imagery, account/API/Search Console, Pages commercial-use fit | Remain flagged on `flagged.html`; none blocks merge per standing brief |
