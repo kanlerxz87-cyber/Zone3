@@ -9118,9 +9118,6 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
   session, with `checked_on` 2026-11-19 and a scope note.
 - No price, rating, review count, availability or revenue value is introduced. Intended-ASIN fields
   stay blank; FLG-003 is neither claimed nor implied either way.
->>>>>>> 0287705 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
->>>>>>> a48fbbb (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
->>>>>>> 1b22869 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
 ### B38 completion record (B38-T2…T6, 2026-11-19)
 
 | Task | Status | Record |
@@ -9136,3 +9133,32 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
 **Scope statement.** Review-only batch: nothing here implements a suggestion, and no price, rating, review-count, availability, traffic, demand, trend, conversion or revenue value was introduced. Intended-ASIN fields remain blank; FLG-003 remains unresolved and was neither claimed nor implied either way.
 
 **Rebase reconciliation with session `d3493182` (PRs #182/#183), logged 2026-11-19.** Both sessions appended a "batch 3" to the same register and rebased over each other mid-flight (this session's claim also crossed PRs #181/#184/#185). Conflict replay: `main`'s versions of `data/publication.json`, `suggestions/index.html`, `executive-brief.html`, `README.md` and `EXECUTIVE-SUMMARY.md` were taken as base at each stop and this session's additive delta re-applied on top; nothing of any session's rows was dropped or edited. Session `d3493182` added `D34-P1…P6`, `D34-Q1…Q8`, path `P34-P1` and prompt block `d34-polish`; this session adds `B38-P1…P5`, `B38-Q1…Q4` and prompt block `b38-batch3`. Union totals after reconciliation: 15 sources / 26 proposals / 36 questions / 13 prompt blocks / 6 paths / 8 guides. Thematic overlaps are noted for the reviewer, not merged: B38-P1 (style page + automated banned-phrase lint) pairs with D34-P5/D34-Q3 (written voice rules); B38-P2 (visible evidence badges) overlaps part of D34-P4's decision aids; B38-P3's four concrete working titles extend D34-P2's generic slate; B38-P5 corrects DS-03's stale FAQPage premise, which the D34 batch does not touch. No gate or rule was relaxed; the full chain was re-run on the union.
+---
+
+# Part 5D4 — session `5d460e79` (branch `arena/5d460e79-zone3`, base `6eb8c18` = `main` at claim, 2026-11-19)
+
+## 5D4 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 5d460e79 | `arena/5d460e79-zone3` | Reader-facing polish + trust audit: fix register-drift defects, one indexable site, publication front page, suggestions section with evidence register. Files: `tools/build_publication.py`, `tools/publication_chrome.py`, `data/publication.json`, `assets/publication.css`, `sessions/5d460e79/**`, this Part only. | in progress | 2026-11-19 |
+
+## 5D4 Board read before claiming
+
+Read in full: the tail Parts (P27 `6b68afc8`, b9008684, E61 `e61f5735`), the T6/T8 integration records, and the standing rule that **shared outputs — table data, the site index and navigation — change only in the final integration session**. No other session is listed as `in progress` at the time of this claim.
+
+## 5D4 Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| T1 — Audit the built tree line by line against the registers and gates | in progress | 5d460e79 | `sessions/5d460e79/**` | live fetches, see audit file | 5D4-F01…F10 |
+| T2 — Fix register-drift defects found by T1 (counts, orphans, duplicate titles) | unclaimed | — | `tools/build_publication.py`, `tools/build_shop.py` | — | — |
+| T3 — Suggestions section that carries a reviewer from question → evidence → choice | unclaimed | — | `tools/build_publication.py`, `data/publication.json` | — | — |
+| T4 — Publish record, PR, merge, Pages deploy | unclaimed | — | this Part only | — | — |
+
+## 5D4 Rules this session follows
+
+1. No value is filled in that an official source does not state. Blanks stay blank and are named in the flag register.
+2. Every claim added to a reader page carries a source that was fetched in this session and is recorded in `sessions/5d460e79/verification-2026-11-19.md`.
+3. The existing gates are never relaxed to make a build pass. If a gate fires, the cause is fixed.
+4. Register-derived counts stay register-derived: `numeral()`/`len()` instead of typed numerals.
