@@ -436,7 +436,7 @@ def suggestions() -> str:
     return shell(
         'suggestions/index.html',
         'Suggestions, missing information and decision review',
-        f'Review {len(DATA["paths"])} paths and {len(DATA["proposals"])} proposals against {len(DATA["questions"])} open questions{", plus the " + DATA["review_b9008684"]["date"] + " review round" if DATA.get("review_b9008684") else ""}, each with its answer owner, discovery action and safe default, plus a {len(DATA["design_prompt"]["blocks"])}-block design brief. Saving a review never implements changes.',
+        f'Review {len(DATA["paths"])} paths and {len(DATA["proposals"])} proposals against {len(DATA["questions"])} open questions{", plus the " + DATA["review_b9008684"]["date"] + " review round" if DATA.get("review_b9008684") else ""}, each with its answer owner, discovery action and safe default, plus a {numeral(len(DATA["design_prompt"]["blocks"])).lower()}-block design brief. Saving a review never implements changes.',
         body,
     )
 
@@ -452,7 +452,7 @@ def privacy() -> str:
 def executive() -> str:
     rows = [
         ('Publication', 'Shipped', f'One buyer-first front page, catalogue and {numeral(GUIDE_N).lower()} question-led guides; shared navigation, disclosure, RSS and canonical indexing.', 'google-reviews'),
-        (f'{numeral(PRODUCT_N)} submitted products', 'Observed, not intent-confirmed', f'{sum(p["category"] == "air-fryers" for p in DATA["products"])} air-fryer and {sum(p["category"] == "meat-thermometers" for p in DATA["products"])} thermometer destinations re-opened {READ_ON}; title and breadcrumb checks only. Intent fields remain blank.', 'amazon-agreement'),
+        (f'The {numeral(PRODUCT_N).lower()} submitted links', 'Observed, not intent-confirmed', f'{numeral(sum(p["category"] == "air-fryers" for p in DATA["products"])).lower()} air-fryer and {numeral(sum(p["category"] == "meat-thermometers" for p in DATA["products"])).lower()} thermometer destinations re-opened {READ_ON}; title and breadcrumb checks only. Intent fields remain blank.', 'amazon-agreement'),
         ('Affiliate attribution', 'Unverified', 'Tracking ID supplied by the brief; enrolled-workflow destination and report checks are still required. FLG-003 remains unresolved.', 'amazon-policies'),
         ('Measurement', 'Built and locally testable; production off', f'One {numeral(EVENT_N).lower()}-event runtime and a hardened self-hosted aggregate collector. No durable production host was supplied.', 'github-pages'),
         ('Traffic & conversion', 'No evidence yet', 'No Search Console query report, authorized Associates report, measured conversion score or revenue forecast.', 'search-console'),
