@@ -308,3 +308,11 @@ a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
 .p26-latest a{margin-right:4px}
 @media(max-width:950px){.p26-paths-grid{grid-template-columns:1fr}.p26-path-grid{grid-template-columns:1fr;gap:18px}.p26-intake{grid-template-columns:1fr;gap:22px;padding:24px}}
 @media(max-width:760px){.p26-path{padding:20px}.p26-path h3{font-size:24px}.p26-prompt-block p{font-size:12px;line-height:1.9}.p26-intake-row{grid-template-columns:1fr;gap:6px}.p26-sequence{padding:18px 20px}.p26-sequence p{font-size:11px}.p26-path select{min-height:44px}.p26-prompt-head [data-copy-from]{font-size:10px!important;min-height:40px}}
+/* E61 batch-2: per-question answer capture and review-note wording (review-mode only) */
+.p26-answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin-top:22px}
+.p26-answer{border-top:1px solid #b5c2a5;padding-top:12px}
+.p26-answer label{display:block;font-size:11px;line-height:1.7;color:var(--p26-ink);margin-bottom:8px}
+.p26-answer label small{display:inline-block;background:#edf0e5;color:#53634a;font-size:9px;padding:2px 6px;margin-right:7px;vertical-align:middle}
+.p26-answer textarea{display:block;width:100%;min-height:64px;padding:11px 9px;border:1px solid #bfc7b4;border-radius:2px;background:var(--p26-paper);font:11px/1.7 var(--p26-sans);color:var(--p26-ink);resize:vertical}
+.p26-answer textarea:focus-visible{outline:2px solid var(--p26-ink);outline-offset:1px}
+@media(max-width:760px){.p26-answers{grid-template-columns:1fr}}

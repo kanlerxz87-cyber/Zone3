@@ -116,6 +116,13 @@
       "url": "https://developers.google.com/search/docs/appearance/page-experience",
       "checked_on": "2026-11-19",
       "scope": "Self-assessment list read: Core Web Vitals, secure serving, mobile display, no excessive ads, no intrusive interstitials, distinguishable main content."
+    },
+    {
+      "id": "google-helpful",
+      "title": "Google Search Central: creating helpful, reliable, people-first content",
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "checked_on": "2026-11-19",
+      "scope": "Page fetched live 2026-11-19: self-assessment questions, page-experience guidance, people-first and avoid-search-engine-first sections confirmed present. Used as the editorial-decision basis for batch-2 suggestions; it certifies no outcome."
     }
   ],
   "products": [
@@ -1014,6 +1021,94 @@
       "answer_by": "Owner · strategy decision",
       "answer_form": "One sentence of scope, plus a yes/no on the two thermometer listings staying in the shortlist.",
       "owner_input_needed": true
+    },
+    {
+      "id": "E61-Q1",
+      "question": "What evidence will define 'organic traffic success', and when is it reviewed?",
+      "known": "Search Console is not verified and no query data exists; the 14-day cadence is an operating plan, not a traffic result.",
+      "missing": "A verified Search Console property, dated first-party query/page reports, and one written definition of the metric, window and review date.",
+      "discovery": "Verify the property and submit the sitemap, then write the success definition into the decision record and review it only on the stated date with new dated reports.",
+      "default": "No traffic, growth or trending claims. Topics stay editorial hypotheses.",
+      "blocks": "Measured-topic selection (E61-P1, E61-P7)",
+      "source": "search-console",
+      "owner_input_needed": true
+    },
+    {
+      "id": "E61-Q2",
+      "question": "Which product images may be published, from where, under what license?",
+      "known": "Only labelled generic art and one labelled AI editorial scene are used; no Amazon imagery is scraped or republished.",
+      "missing": "A rights decision: authorized API/Associates asset access with its license conditions, original owner-shot photographs with proof of rights, or continued use of generic art.",
+      "discovery": "Confirm API access and license terms (P26-Q6) or commission original photographs; record the chosen path and rights basis in the decision record before any asset ships.",
+      "default": "Keep labelled generic art. No generated image is presented as a product photograph.",
+      "blocks": "Product photography (E61-P3)",
+      "source": "amazon-agreement",
+      "owner_input_needed": true
+    },
+    {
+      "id": "E61-Q3",
+      "question": "Which calendar dates genuinely matter for these products, and what source supports each?",
+      "known": "One hosting-season guide exists; its timing was an editorial choice, not a measured or sourced calendar.",
+      "missing": "A dated seasonal calendar with an official source attached to each date, and measured demand for those windows once Search Console data exists.",
+      "discovery": "List candidate dates, attach one official source per date, re-observe listings on the capture date, then pass the evidence gate before any seasonal republish.",
+      "default": "Refresh existing guides on their review date; invent no seasonal urgency.",
+      "blocks": "Seasonal refresh (E61-P4)",
+      "source": "food-safety",
+      "owner_input_needed": false
+    },
+    {
+      "id": "E61-Q4",
+      "question": "Which social or video channels, if any, and what repurposing rules apply?",
+      "known": "No social or video presence exists. The RSS feed is the only distribution channel and works today.",
+      "missing": "A channel decision, a per-post disclosure workflow, a named owner, and the evidence rule for any popularity phrasing.",
+      "discovery": "Decide channels after the imagery and cadence decisions; test one draft post against the FTC disclosure guidance before scaling.",
+      "default": "RSS remains the only distribution. No follower, view or popularity claim is made.",
+      "blocks": "Distribution (E61-P8)",
+      "source": "ftc",
+      "owner_input_needed": true
+    },
+    {
+      "id": "E61-Q5",
+      "question": "What device mix should mobile work optimize for first?",
+      "known": "Automated checks covered reader pages at 1440/390 px and root layout at 320/768 px. No first-party device data exists.",
+      "missing": "The device dimension from a dated first-party report (Search Console performance or the authorized analytics aggregate) once collection is verified.",
+      "discovery": "Read the device breakdown from the first dated first-party report, then re-test the worst viewport against the checklist.",
+      "default": "Keep the tested breakpoints. No device-mix or audience claim is made.",
+      "blocks": "Mobile UX (E61-P5, E61-P6)",
+      "source": "search-console",
+      "owner_input_needed": true
+    },
+    {
+      "id": "E61-Q6",
+      "question": "When may the catalogue grow beyond the five submitted products?",
+      "known": "Exactly the five supplied links are registered, with observed destinations recorded and intended ASINs still unconfirmed.",
+      "missing": "An owner decision to expand, plus intent confirmation and a validated Special Link for every candidate before any page is written.",
+      "discovery": "Route each candidate through the intent record and the enrolled-workflow link test; record the expansion decision with its evidence.",
+      "default": "The five products remain the entire catalogue scope.",
+      "blocks": "Catalogue growth (E61-P9)",
+      "source": "amazon-policies",
+      "owner_input_needed": true
+    },
+    {
+      "id": "E61-Q7",
+      "question": "What would trigger a hosting migration, and to where?",
+      "known": "GitHub Pages publishes commercial-use limits; the deploy works and the limits flag is published. No traffic data exists to define a trigger.",
+      "missing": "A paper shortlist of candidate hosts with cost and privacy-log review, and a migration trigger chosen from first-party traffic evidence.",
+      "discovery": "Shortlist hosts now without spending, then define the trigger from the first dated measured-traffic report; re-check the GitHub limits page at the same time.",
+      "default": "Stay on GitHub Pages with the commercial-suitability flag published (P26-Q8).",
+      "blocks": "Hosting migration decision",
+      "source": "github-limits",
+      "owner_input_needed": true
+    },
+    {
+      "id": "E61-Q8",
+      "question": "Who signs off disclosure-bearing changes, and where are decisions recorded?",
+      "known": "The publishing gate (Discover, Draft, Check, Approve, Measure) is defined on this page, but no named person holds the Approve step, and review choices live only in a browser until exported.",
+      "missing": "A named approver for disclosure and link changes, and one durable decision-record location (decision center page or this session's COORDINATION part).",
+      "discovery": "Name the approver, choose the record location, and paste the first exported review JSON there with its date and evidence links.",
+      "default": "No disclosure-bearing change ships without a recorded approval; unrecorded choices are treated as not made.",
+      "blocks": "Decision workflow (E61-P2)",
+      "source": "ftc",
+      "owner_input_needed": true
     }
   ],
   "proposals": [
@@ -1147,6 +1242,185 @@
       ],
       "owner_input_needed": true,
       "reviewable_now": true
+    },
+    {
+      "id": "E61-P1",
+      "priority": "Now",
+      "area": "Trust content",
+      "title": "Turn the verification method into reader-facing trust content.",
+      "why": "What separates a careful publication from generated filler is visible method: dated sources, stated limits and blank cells left blank. The workflow already exists behind the site; readers never see it.",
+      "next": "Shape the existing evidence practice into one public 'how we put a guide together' method page built only from what the repo already does (dated captures, source links, intent record, flagged register). Publish nothing new as fact; describe the method itself.",
+      "evidence_needed": [
+        "P26-Q7",
+        "E61-Q1"
+      ],
+      "source": "google-helpful",
+      "status": "Proposed",
+      "owner_input_needed": false,
+      "next_action": "Draft the method page from the repository itself: list each evidence practice (dated captures, source register, intent record, flag register), link its page, and route it for the standard release gates before publishing.",
+      "discoveries": [
+        "Which evidence practices the repository already performs and where each is recorded",
+        "Whether a described method step matches what the build chain actually does"
+      ]
+    },
+    {
+      "id": "E61-P2",
+      "priority": "Now",
+      "area": "Decision quality",
+      "title": "Record every accepted suggestion as a dated decision with the same five fields.",
+      "why": "The brief asks that suggestions be reviewed and a path chosen before any change is implemented. Choices saved in a browser are not a decision record; without one, later sessions cannot tell a chosen path from a discarded idea.",
+      "next": "Use the answer capture below to write the answer to each question, then export the review JSON and paste it, with the date and evidence links, into the decision record (decision center page or this session's COORDINATION part). A decision is not made until it is recorded.",
+      "evidence_needed": [
+        "E61-Q8"
+      ],
+      "source": "ftc",
+      "status": "Workflow proposed",
+      "owner_input_needed": true,
+      "next_action": "Owner exports a completed review JSON from the suggestions page and pastes it, dated, into the decision record with evidence links; the session then records the decision without changing the site.",
+      "discoveries": [
+        "Which proposals the owner shortlists, defers or rejects",
+        "Which evidence links each chosen path carries"
+      ]
+    },
+    {
+      "id": "E61-P3",
+      "priority": "Now",
+      "area": "Imagery",
+      "title": "Decide the product-imagery policy before any photography work starts.",
+      "why": "Real product photography is the strongest remaining polish gap, but Amazon listing imagery is licensed Program Content and cannot simply be copied; generated images must never pass as product photographs.",
+      "next": "Choose one of three rights-cleared paths - authorized API/ Associates asset use after license review, original owner-shot photographs, or keep the labelled generic art - and record the decision and rights basis before any asset is added.",
+      "evidence_needed": [
+        "P26-Q6",
+        "E61-Q2"
+      ],
+      "source": "amazon-agreement",
+      "status": "Needs a decision",
+      "owner_input_needed": true,
+      "next_action": "Owner chooses one rights-cleared path (authorized API/Associates assets after license review, original owner-shot photographs, or keep labelled generic art) and records the choice and its rights basis in the decision record.",
+      "discoveries": [
+        "Which path is chosen and on what stated rights basis",
+        "What license or permission conditions attach to the chosen path"
+      ]
+    },
+    {
+      "id": "E61-P4",
+      "priority": "Next",
+      "area": "Editorial",
+      "title": "Refresh for real calendar moments, not invented seasons.",
+      "why": "The hosting-season guide shows seasonal framing works for this catalogue. A dated, evidence-backed seasonal pass keeps content current without the invented urgency that makes affiliate sites read as filler.",
+      "next": "List candidate dates for cooking and hosting moments, attach an official source to each (as the food-safety reference does for temperatures), re-observe the listings on the capture date, and pass the evidence gate before republishing.",
+      "evidence_needed": [
+        "E61-Q3",
+        "P26-Q4"
+      ],
+      "source": "food-safety",
+      "status": "Proposed cadence",
+      "owner_input_needed": false,
+      "next_action": "Build the dated seasonal calendar: list candidate cooking and hosting dates, attach one official source per date, then re-observe the five listings on the capture date before any seasonal republish passes the evidence gate.",
+      "discoveries": [
+        "Which calendar dates matter for these products and what official source supports each",
+        "Whether the listings change on the re-observation date"
+      ]
+    },
+    {
+      "id": "E61-P5",
+      "priority": "Next",
+      "area": "UX",
+      "title": "Add a which-one-is-for-you chooser above the comparison table.",
+      "why": "The compare page is the deepest data surface; a three-question chooser routes a reader to the right format (two baskets, oven-style, single basket, spot-check or connected thermometer) before the table, instead of after losing them.",
+      "next": "Build the chooser from questions the guides already answer, linking each outcome to a guide and the matching shortlist. No new product claims; ship it as layout only.",
+      "evidence_needed": [
+        "E61-Q5"
+      ],
+      "source": "google-helpful",
+      "status": "Proposed",
+      "owner_input_needed": false,
+      "next_action": "Review the chooser that session b580d790 shipped on the category pages, then decide whether the compare page needs the same chooser above its table; ship it as layout only, no new product claims.",
+      "discoveries": [
+        "Whether the shipped chooser covers the compare-page path a reader takes",
+        "Whether a chooser above the comparison table changes which guides readers open (measured later, once collection is authorized)"
+      ]
+    },
+    {
+      "id": "E61-P6",
+      "priority": "Next",
+      "area": "Mobile UX",
+      "title": "Make the comparison table thumb-first on small screens.",
+      "why": "Shoppers compare on phones. A wide table that scrolls silently loses columns on mobile; page-experience guidance treats this as part of being useful, not decoration.",
+      "next": "Audit the compare table at 320-768 px, keep every column reachable, and consider a sticky format bar that names the column in view. Ship after the audit; measure nothing until collection is authorized.",
+      "evidence_needed": [
+        "E61-Q5"
+      ],
+      "source": "search-console",
+      "status": "Proposed",
+      "owner_input_needed": false,
+      "next_action": "Audit the compare table at 320-768 px, list every column that becomes unreachable, then ship the thumb-first layout fix; measure nothing until collection is authorized.",
+      "discoveries": [
+        "Which table columns are unreachable at each small viewport",
+        "Whether a sticky format bar names the column in view correctly"
+      ]
+    },
+    {
+      "id": "E61-P7",
+      "priority": "Now",
+      "area": "Measurement",
+      "title": "Define what success means, in writing, before any optimization is automated.",
+      "why": "'Improving organic traffic and conversions' is not a target until one first-party metric, one reporting window and one review date are written down. Without that, an optimizer optimizes nothing real.",
+      "next": "Write the success definition (metric, source report, window, review date) into the decision record once Search Console and Associates reports exist; revisit it on the review date only with new dated reports.",
+      "evidence_needed": [
+        "P26-Q4",
+        "P26-Q5",
+        "E61-Q1"
+      ],
+      "source": "search-console",
+      "status": "Needs evidence",
+      "owner_input_needed": true,
+      "next_action": "Once Search Console is verified and Associates reports are authorized, owner and agent write one success definition (metric, source report, window, review date) into the decision record.",
+      "discoveries": [
+        "Which first-party metric the owner accepts as the success definition",
+        "What the first dated report shows for that metric and window"
+      ]
+    },
+    {
+      "id": "E61-P8",
+      "priority": "Later",
+      "area": "Distribution",
+      "title": "Treat social and video as republishing, gated on the same disclosure rule.",
+      "why": "Catchy clips and posts can extend the guides, but every republished claim still needs its source and disclosure, and popularity must never be stated without evidence.",
+      "next": "Decide channels only after the imagery and cadence decisions exist; draft a per-post disclosure checklist; test one post against the FTC guidance before scaling anything.",
+      "evidence_needed": [
+        "E61-Q4",
+        "P26-Q7"
+      ],
+      "source": "ftc",
+      "status": "Gated",
+      "owner_input_needed": true,
+      "next_action": "Owner picks candidate channels after the imagery and cadence decisions exist; draft one per-post disclosure checklist and test a single draft post against the FTC guidance before scaling.",
+      "discoveries": [
+        "Which channel the owner chooses and why",
+        "Whether a draft post passes the disclosure checklist and the FTC guidance test"
+      ]
+    },
+    {
+      "id": "E61-P9",
+      "priority": "Later",
+      "area": "Catalogue",
+      "title": "Grow the catalogue only through intent-confirmed products.",
+      "why": "Every added product multiplies the unconfirmed-intent and attribution review the current five already carry. Feed pressure to write more must not create unverified listings.",
+      "next": "Route any candidate product through the intent record and the one-Special-Link validation first; only then does it earn a page.",
+      "evidence_needed": [
+        "P26-Q1",
+        "P26-Q2",
+        "E61-Q6"
+      ],
+      "source": "amazon-policies",
+      "status": "Gated",
+      "owner_input_needed": true,
+      "next_action": "Route any candidate product through the intent record and the one-Special-Link enrolled-workflow validation first; owner records the expansion decision with its evidence before a page is written.",
+      "discoveries": [
+        "Whether a candidate product passes intent confirmation",
+        "Whether its Special Link validates in the enrolled workflow with correct attribution"
+      ]
     }
   ],
   "indexable_pages": [
@@ -1346,6 +1620,12 @@
         "heading": "10 · Definition of done",
         "text": "The documented chain runs twice and the second run changes nothing; every gate passes; every current table row carries a dated official source or an honest blank; no page loses its disclosure or its sponsored rel; the deployed page is fetched and read back. Then re-measure the counts — pages, guides, sources, flags — and put both readings in the register. “Polished” has to be a number that moved, not a sentence in a changelog.",
         "basis": "github-pages"
+      },
+      {
+        "id": "e61-batch2",
+        "heading": "Batch-2 directions (session e61f5735)",
+        "text": "Add a which-one-is-for-you chooser above the comparison table and keep the comparison thumb-first on small screens, so a phone reader never silently loses a column. Refresh for real, sourced calendar moments instead of invented seasons, and make the verification method itself visible trust content: dated sources, stated limits, blanks left blank. Route social or video distribution through the same disclosure rule as the site. Keep topics chosen from measured first-party queries once they exist, never from instinct or imagined trends, and record every accepted suggestion as a dated decision with its evidence before anything is implemented.",
+        "basis": "google-helpful"
       }
     ]
   },

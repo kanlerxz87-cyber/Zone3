@@ -1177,3 +1177,31 @@ pages, 14 indexable URLs, 24 feed entries. Rebuild is idempotent.
 **Still blocked, unchanged.** Owner-side evidence gates (intended ASINs, enrolled-workflow Special
 Link test, durable analytics host, Search Console, reader capture) remain open and are now laid out
 decision-by-decision in the DS-01…DS-08 register rather than scattered across pages.
+## 15. Batch-2 suggestion register, decision capture and readiness questions — session `e61f5735` (2026-11-19)
+
+**What this pass was asked to do.** Extend the suggestion system so suggestions feed the design
+prompt, someone can review and choose a path before anything is implemented, and a clear list of
+questions, information and answers that must be addressed before any decision can reasonably be
+made — including suggestions for discovering the missing information. Work from what the
+repository already has; verify anything new against an official source; leave every blank blank.
+
+**Shipped (additive only — no existing register row was rewritten).**
+
+| Deliverable | Where |
+|---|---|
+| Nine batch-2 proposals `E61-P1…P9`: reader-facing trust content, a recorded-decision workflow, an imagery-rights decision, sourced seasonal refresh, comparison chooser, thumb-first mobile table, a written success definition before optimization, gated social distribution, and catalogue growth only through intent-confirmed products | `data/publication.json` → `suggestions/index.html` |
+| Eight new decision-readiness questions `E61-Q1…Q8`, each with known / missing / discovery step / safe default and an official basis: traffic success definition, imagery rights, seasonal calendar, distribution channels, device mix, catalogue expansion, hosting-migration trigger, approver and decision record | `data/publication.json` → decision-readiness table |
+| Per-question answer capture: one field per question, saved and exported only by explicit Save/Export, browser-local, never sent anywhere | `suggestions/index.html` + `assets/publication.js` (review schema v2, reads saved v1 choices) |
+| A seven-step "from suggestion to decision" worksheet ending in *Record the decision* — until the export is pasted into a decision record, nothing is decided | `suggestions/index.html` |
+| The design prompt extended with the batch-2 directions (chooser, thumb-first comparison, sourced seasonal refresh, visible method as trust content, measured-topic selection, recorded decisions) | `suggestions/index.html` |
+| One new scoped official reference, fetched live 2026-11-19: Google Search Central, creating helpful, reliable, people-first content — the editorial basis for the trust-content and measured-topic suggestions | `data/publication.json` `google-helpful` |
+
+**Verification performed.** Full canonical chain (`tools/publish.py`) 41/41 PASS, twice, with the
+second rebuild byte-identical (idempotency). Real-Chromium browser checks 14/14 PASS including 32
+automated WCAG 2.0/2.1 A/AA scans; the suggestions flow now tests answer persistence in the saved
+record, across reload, and in the exported JSON (schema v2), plus no-JS question count. All counts
+on reader pages are generated from the register, not hardcoded.
+
+**Not claimed.** No traffic, conversion, ranking, popularity or revenue figure; no new product
+fact; no decision recorded by this session — review mode implements nothing, and the owner's
+exported review JSON is the input to the decision record, not this pass.

@@ -130,19 +130,24 @@ async function launch() {
     await goto(page, 'suggestions/index.html');
     for (const priority of ['Now', 'Next', 'Later', 'all']) {
       await page.locator('[data-proposal-filter="' + priority + '"]').click();
-      assert.equal(await page.locator('[data-proposal]:visible').count(), priority === 'all' ? 6 : data.proposals.filter(p => p.priority === priority).length);
+      assert.equal(await page.locator('[data-proposal]:visible').count(), priority === 'all' ? data.proposals.length : data.proposals.filter(p => p.priority === priority).length);
     }
     const first = page.locator('[data-decision-id]').first();
     const id = await first.getAttribute('data-decision-id');
     await first.selectOption('shortlist');
+    const answerField = page.locator('[data-answer-id]').first();
+    const answerId = await answerField.getAttribute('data-answer-id');
+    await answerField.fill('Verified with the listed source; captured 2026-11-19. Synthetic test text, not a site change.');
     assert.equal(await page.evaluate(() => localStorage.getItem('zone3-publication-review-v1')), null);
     assert((await page.locator('#p26-review-status').textContent()).includes('Unsaved'));
     await page.locator('[data-save-review]').click();
     let record = await page.evaluate(() => JSON.parse(localStorage.getItem('zone3-publication-review-v1')));
     assert.equal(record.choices[id], 'shortlist');
+    assert.equal(record.answers[answerId], 'Verified with the listed source; captured 2026-11-19. Synthetic test text, not a site change.');
     assert.equal(record.implementation, 'none; review only');
     await page.reload({ waitUntil: 'networkidle' });
     assert.equal(await page.locator('[data-decision-id]').first().inputValue(), 'shortlist');
+    assert.equal(await page.locator('[data-answer-id]').first().inputValue(), 'Verified with the listed source; captured 2026-11-19. Synthetic test text, not a site change.');
     const downloadPromise = page.waitForEvent('download');
     await page.locator('[data-export-review]').click();
     const download = await downloadPromise;
@@ -150,11 +155,13 @@ async function launch() {
     await download.saveAs(downloadPath);
     record = JSON.parse(fs.readFileSync(downloadPath, 'utf8'));
     fs.unlinkSync(downloadPath); // synthetic review is not an owner decision or deliverable
-    assert.equal(record.schema, 'zone3.editorial-review.v1'); assert.equal(record.choices[id], 'shortlist');
+    assert.equal(record.schema, 'zone3.editorial-review.v2'); assert.equal(record.choices[id], 'shortlist');
+    assert.equal(record.answers[answerId], 'Verified with the listed source; captured 2026-11-19. Synthetic test text, not a site change.');
     assert(!('email' in record));
     await page.locator('[data-reset-review]').click();
     assert.equal(await page.evaluate(() => localStorage.getItem('zone3-publication-review-v1')), null);
     assert.equal(await page.locator('[data-decision-id]').first().inputValue(), 'unreviewed');
+    assert.equal(await page.locator('[data-answer-id]').first().inputValue(), '');
     await ctx.grantPermissions(['clipboard-read', 'clipboard-write']);
     await page.locator('[data-copy-prompt]').click();
     await page.waitForFunction(() => document.getElementById('p26-copy-status').textContent.includes('copied'));
@@ -266,7 +273,7 @@ async function launch() {
     const p = await isolated.newPage(); await goto(p);
     assert.equal(await p.locator('.p26-nav').isVisible(), true); assert.equal(await p.locator('[data-product-card]:visible').count(), 5);
     await p.locator('.p26-nav a[href="guides/index.html"]').click(); assert.equal(await p.locator('.p26-guide-card').count(), 6);
-    await goto(p, 'suggestions/index.html'); assert.equal(await p.locator('.p26-question-table tbody tr').count(), 9);
+    await goto(p, 'suggestions/index.html'); assert.equal(await p.locator('.p26-question-table tbody tr').count(), data.questions.length);
     await isolated.close();
   });
   await check('All ordinary page requests and collector responses succeed; no page errors or retailer requests', async () => {
