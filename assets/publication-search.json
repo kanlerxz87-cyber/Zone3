@@ -36,6 +36,18 @@
     "path": "guides/holiday-kitchen-checklist.html"
   },
   {
+    "title": "What do “Hi-Fry”, “Sync Finish” and “4-in-1” actually promise?",
+    "description": "Three marketing names from three listings, read closely — what each one says, and the question it leaves you to answer yourself.",
+    "kind": "Air fryers",
+    "path": "guides/air-fryer-label-words.html"
+  },
+  {
+    "title": "How do you know when an air-fryer cook is actually done?",
+    "description": "A beep says time passed. A temperature says the food reached a target. Here is how to separate the two without owning a lab.",
+    "kind": "Everyday kitchen",
+    "path": "guides/how-do-you-know-its-done.html"
+  },
+  {
     "title": "Chefman 6-quart dual-basket air fryer",
     "description": "Two separate baskets, or one larger cooking space? Start with what you actually cook.",
     "kind": "Product shortlist",
