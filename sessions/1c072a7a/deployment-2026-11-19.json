@@ -1,0 +1,90 @@
+{
+  "recorded_at": "2026-11-19T06:38:35.532301+00:00",
+  "scope": "GitHub API build/workflow status plus live page-fetch-tool content observations. Page extraction omits chrome and does not execute JS; responsive/disclosure/interaction assertions are the separately recorded local Chromium checks, not a claimed live-browser audit. No Amazon navigation, account/report access, production analytics, conversions or search ranking is inferred.",
+  "pull_request": {
+    "headRefOid": "426d4489c6d4da764831188472e5150706e90193",
+    "mergeCommit": {
+      "oid": "61d08f886278df775ddb9b433d56b917ca6ef4d1"
+    },
+    "mergedAt": "2026-11-19T06:35:31Z",
+    "number": 171,
+    "state": "MERGED",
+    "url": "https://github.com/kanlerxz87-cyber/Zone3/pull/171"
+  },
+  "pages_build": {
+    "url": "https://api.github.com/repos/kanlerxz87-cyber/Zone3/pages/builds/1383226370",
+    "status": "built",
+    "commit": "61d08f886278df775ddb9b433d56b917ca6ef4d1",
+    "created_at": "2026-11-19T06:35:32Z",
+    "updated_at": "2026-11-19T06:35:56Z",
+    "duration": 24878,
+    "error": {
+      "message": null
+    }
+  },
+  "pages_workflow": {
+    "conclusion": "success",
+    "headSha": "61d08f886278df775ddb9b433d56b917ca6ef4d1",
+    "status": "completed",
+    "updatedAt": "2026-11-19T06:36:02Z",
+    "url": "https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44473287925"
+  },
+  "main_publication_checks": {
+    "conclusion": "success",
+    "headSha": "61d08f886278df775ddb9b433d56b917ca6ef4d1",
+    "status": "completed",
+    "updatedAt": "2026-11-19T06:35:58Z",
+    "url": "https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44473288847"
+  },
+  "live_content_checks": [
+    {
+      "url": "https://kanlerxz87-cyber.github.io/Zone3/?revision=61d08f8",
+      "result": "success",
+      "observation": "New Zone3 Kitchen title/Good food. Thoughtful tools. Your kitchen. hero; all five exact supplied links; new guide/category routes; labelled generated/contextual art."
+    },
+    {
+      "url": "https://kanlerxz87-cyber.github.io/Zone3/guides/instant-read-or-wireless-thermometer.html?revision=61d08f8",
+      "result": "success",
+      "observation": "New thermometer guide, two source-linked listing rows, official food-safety context and explicit testing/accuracy unknowns."
+    },
+    {
+      "url": "https://kanlerxz87-cyber.github.io/Zone3/suggestions/index.html?revision=61d08f8",
+      "chunks_read": [
+        0,
+        1
+      ],
+      "result": "success",
+      "observation": "Six proposals, nine known/missing/discovery/default questions, review-only controls and full reusable design prompt returned."
+    },
+    {
+      "url": "https://kanlerxz87-cyber.github.io/Zone3/executive-brief.html?revision=61d08f8",
+      "result": "success",
+      "observation": "Current shipped/gated summary; hosting suitability, account/intent/report gaps and production-off status are visible."
+    },
+    {
+      "url": "https://kanlerxz87-cyber.github.io/Zone3/privacy.html?revision=61d08f8",
+      "result": "success",
+      "observation": "Production inactive, exact five-event schema, local review storage, unavoidable transport/hosting logs and empty campaign evidence explained."
+    },
+    {
+      "url": "https://kanlerxz87-cyber.github.io/Zone3/assets/measure-config.js?revision=61d08f8",
+      "result": "success",
+      "observation": "Returned disabled config with enabled:false and endpoint:\"\"."
+    },
+    {
+      "url": "https://kanlerxz87-cyber.github.io/Zone3/sitemap.xml?revision=61d08f8",
+      "result": "success",
+      "observation": "All 14 canonical reader URL strings returned; no research/previous-edition URL included."
+    }
+  ],
+  "production_collection": "disabled; verified from deployed config",
+  "remaining_gates": [
+    "intended-product confirmation",
+    "enrolled Associates destination/report attribution",
+    "durable authorized collector host/privacy review",
+    "Search Console ownership/reports",
+    "authorized Associates order reports",
+    "GitHub Pages commercial-hosting suitability"
+  ],
+  "managed_pages_warning": "GitHub-managed Pages workflow reported its own Node20 action-runtime deprecation annotation for upload-artifact@v4; it ran under the platform-provided Node24 compatibility and completed successfully. Repository-owned release actions are pinned to current official releases."
+}
