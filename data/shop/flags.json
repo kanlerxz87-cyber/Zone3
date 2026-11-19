@@ -472,10 +472,10 @@
     {
       "id": "E41-B02",
       "severity": "High",
-      "status": "Open - blocked on evidence",
-      "issue": "S-23's capacity-per-centimetre analysis cannot be published from this repository: no product register holds a footprint or interior dimension for any of the five listings.",
-      "impact": "The one analysis the brief asks for that would genuinely help a buyer decide is absent, and the site says so instead of approximating it.",
-      "what_we_did": "Left the analysis unwritten and recorded what has to be captured first: `E41-P1` and `E41-Q1` on the suggestions desk.",
+      "status": "Open - partly superseded 2026-11-19 (exterior sizes captured; analysis still unwritten)",
+      "issue": "S-23's capacity-per-centimetre analysis was unpublished because no register held a footprint or interior dimension. Amended 2026-11-19 (session 0a48cfda): exterior sizes for three of the five listings are now recorded from their official detail tables, so a footprint exists. The analysis is still unwritten, and for a new reason: the two capacity fields that would be divided disagree with their own titles (FLG-S33), and no interior measurement exists.",
+      "impact": "The analysis the brief asks for is still absent. What changed is the blocker: it is no longer missing dimensions but an unresolved capacity figure, which cannot be settled from the listing page.",
+      "what_we_did": "Left the analysis unwritten and recorded what has to be captured first: `E41-P1` and `E41-Q1` on the suggestions desk. Amendment 2026-11-19: captured the exterior size where the listing publishes one (three of five), left the two thermometers blank with the reason, and re-scoped E41-P1/E41-Q1 to the capacity and interior questions that actually remain. The earlier text above is retained, not rewritten.",
       "sources": [
         {
           "label": "Amazon Associates Operating Agreement (what may be used and how)",
