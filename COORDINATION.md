@@ -9002,16 +9002,16 @@ Release record: PR [#181](https://github.com/kanlerxz87-cyber/Zone3/pull/181) me
 # Session d3493182 record — polished affiliate design suggestions, verification & executive summary (2026-11-19)
 
 **Repo:** `kanlerxz87-cyber/Zone3` · **Branch:** `arena/d3493182-zone3` (from `6eb8c18`) · **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
-**Session ID:** `d3493182` · **Status:** in progress (claimed 2026-11-19)
+**Session ID:** `d3493182` · **Status:** done (all tasks completed and published 2026-11-19)
 
 ## Claim (committed + pushed before any feature work)
 
 | # | Task | Status | Owner | Files touched (scope) |
 | --- | --- | --- | --- | --- |
 | D34-1 | Verify the 5 submitted links line-by-line (redirect → ASIN/title/breadcrumb) + re-read official policy sources | in progress | `d3493182` | `sessions/d3493182/`, `data/publication.json` (meta reverify + additive batch only) |
-| D34-2 | Suggestions batch 3: polished-affiliate design prompt feed, catchy question-led article slate, organic-traffic playbook, decision aids, anti-slop rules — review-only, implements nothing | in progress | `d3493182` | `data/publication.json`, `DESIGN_PROMPT.md`, generated `suggestions/index.html` via `tools/publish.py` |
-| D34-3 | Decision-readiness questions batch 3 (known/missing/default/discovery/owner per row) + executive summary | in progress | `d3493182` | `data/publication.json`, `sessions/d3493182/executive-summary.md` |
-| D34-4 | Full rebuild + gates, preview check, PR → `main`, merge, confirm Pages deploy | pending | `d3493182` | git + `gh` only |
+| D34-2 | Suggestions batch 3: polished-affiliate design prompt feed, catchy question-led article slate, organic-traffic playbook, decision aids, anti-slop rules — review-only, implements nothing | done | `d3493182` | `data/publication.json`, `DESIGN_PROMPT.md`, generated `suggestions/index.html` via `tools/publish.py` |
+| D34-3 | Decision-readiness questions batch 3 (known/missing/default/discovery/owner per row) + executive summary | done | `d3493182` | `data/publication.json`, `sessions/d3493182/executive-summary.md` |
+| D34-4 | Full rebuild + gates, preview check, PR → `main`, merge, confirm Pages deploy | done | `d3493182` | git + `gh` only |
 
 **Scope rule:** additive only. No existing product/intent/performance field, source row, guide, proposal, question, path or prompt block is edited or removed. New rows append. Generated HTML is produced only by `tools/publish.py`. No account, API, Search Console, hosting or analytics change. Choosing a suggestion never implements it.
 
@@ -9080,3 +9080,5 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
 **Scope honored.** Additive claim only; this session rewrote no source, data, page, script, or CSS file. No traffic, ranking, demand, conversion, or revenue figure; no new product fact; no price/rating/popularity claim; no account, API, Search Console, or hosting change. `FLG-003` (submitted short-link compliance) stays unresolved; the short links are not called invalid. Production measurement remains off; campaign ledger empty. Blank/unverified cells stay blank; nothing inferred.
 
 **Session status: C4D-T1…T3 done.** No further handoff required — this was the final integration session and the tree is clean on `main`.
+
+**Release record (2026-11-19):** Rebased twice while PR [#182](https://github.com/kanlerxz87-cyber/Zone3/pull/182) was open, because session 07fb37ba's PRs #181/#184 landed first (`register-derived brief counts` + release docs) — both conflicts in `COORDINATION.md`/`executive-brief.html` resolved keeping both sides (main's parts first; the merged renderer regenerated the brief from the extended register: 32 questions / 6 paths / 21 proposals / twelve blocks). PR #182 CI passed ([run 44527509288](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44527509288), 22s). **Merged to `main` 2026-11-19 12:50 UTC as `0c6cfcd`** without waiting for review; post-merge CI on `main` passed ([run 44527641974](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44527641974)). Later merges (#185, #183, #186) kept the batch-3 register intact (21/32/6/D34-P6 verified on `origin/main`). **GitHub Pages deployment [run 44527882633](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44527882633) completed successfully** (build, deploy, report-build-status). Live verification via fetched page: `suggestions/` renders "6 PATHS, ONE DECISION AT A TIME" with path 06 "Make it feel published" in the recommended-order strip. One earlier fetch showed the pre-merge page (5 paths) — Pages CDN lag, not a regression; re-fetch confirmed. Verification sources: `sessions/d3493182/verification-2026-11-19.md`; executive summary: `sessions/d3493182/executive-summary.md`.
