@@ -9209,7 +9209,7 @@ branch shape is recorded here as a task-ID scope on the fixed branch (same resol
 | CDB-T1 — Claim and coordination | done | cdb0a5ac | `COORDINATION.md` (this Part only) | — | — |
 | CDB-T2 — Brief-gap buyer review: read the current site against the brief (shop-not-audit, suggestions section, questions/answers register, five-product marketing, executive summary); record gaps as suggestions, not silent edits | done | cdb0a5ac | `sessions/cdb0a5ac/**`, `data/publication.json`, `tools/build_publication.py` (register rows + renderer only) | live fetches recorded in `sessions/cdb0a5ac/verification-2026-11-19.md` | CDB-F-01…F-09 (see `sessions/cdb0a5ac/review-2026-11-19.md` §4) |
 | CDB-T3 — Independent line-by-line re-verification of load-bearing claims against live official sources (Google, FTC, Amazon Associates) | done | cdb0a5ac | `sessions/cdb0a5ac/verification-2026-11-19.md` | V1–V5 re-read live 2026-11-19 (Google sponsored-links, FoodSafety.gov chart + Cook step, FTC Disclosures 101, Associates Operating Agreement) | none — all five matched the register rows they support |
-| CDB-T4 — Final integration: full `tools/publish.py` rebuild + every gate, link report, PR → `main`, merge, Pages deploy confirmation, live verification, publish record appended here | in progress | cdb0a5ac | whole tree (integration only) + `COORDINATION.md` (publish record) | — | — |
+| CDB-T4 — Final integration: full `tools/publish.py` rebuild + every gate, link report, PR → `main`, merge, Pages deploy confirmation, live verification, publish record appended here | done | cdb0a5ac | whole tree (integration only) + `COORDINATION.md` (publish record) | PR #194 → `main`, merged `f29342b` | full 41-command chain green ×2, Pages `built`, live checks below |
 
 No other session's claimed files are edited by this session except the append-only register rows in
 `data/publication.json` scoped above; if a merge conflict occurs, it will be resolved without
@@ -9267,3 +9267,41 @@ byte-stable tree between runs; `sessions/8aa259bb/measure_brief_rows.py` re-run 
 brief-status counts; `tools/build_brief_status.py --check` current. Clean-checkout 25/25
 recorded in `sessions/cdb0a5ac/verification-2026-11-19.md` §3 (pre-rebase head; the same
 check suite re-ran green on the rebased head as part of the 41).
+
+
+### CDB-T4 publish result — PR #194 merged (session cdb0a5ac, 2026-11-19)
+
+- **PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/194 — *CDB final integration: DS-01 probe
+  guide, register-derived count repairs, dual-pass brief-status refresh, live source
+  re-verification (session cdb0a5ac)*.
+- **Merged:** `main` at `f29342b4ced37840ce1ff164eb2e037bd5bc7a54` (merge commit,
+  2026-11-19T13:13:26Z), no approval wait, per the standing brief.
+- **Two mid-flight rebases before the merge** (main advanced under this pass twice: PR #191's
+  board record, then PR #193's 222cfe13 review/analytics refresh). Both were rebased with
+  union merges only — README kept 222cfe13's repo-review link and newline fix alongside this
+  session's nine-guide counts; COORDINATION kept every other session's part (222cfe13's +41,
+  B38's +14 publish record) plus Part CDB; zero conflict markers remain; `git diff` between the
+  pre-rebase and post-rebase branch states shows only those upstream additions.
+- **Release gate:** `python3 tools/publish.py` **41/41 PASS twice** on the merged tree with a
+  byte-stable tree between runs; `publish.py --check` 25/25; `tools/build_brief_status.py --check`
+  current; `sessions/8aa259bb/measure_brief_rows.py` re-run for the brief-status figures.
+  The Chromium harness (`sessions/1c072a7a/browser_check.cjs`) could **not** be re-run in this
+  pass — its Playwright/Chromium dependencies are not installed here and the browser CDN is not
+  reachable from this environment; the harness's earlier 14/14 + 32 WCAG PASS (1c072a7a) and the
+  live checks below stand in for it. This is recorded as a limitation, not a pass.
+- **Pages:** `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest` → `status: built` for
+  `f29342b` (the merge commit) with no error.
+- **Live verification** (fetched 2026-11-19 after the deploy):
+  - `/guides/where-does-the-probe-go.html` — live, correct title (63 chars), both official
+    FoodSafety.gov source links present with read dates, both listings' accuracy/app claims in
+    the "What we haven't established" block, disclosure + Sponsored rels, `title only` badges.
+  - `/sitemap.xml` — 17 canonical URLs, new guide among them.
+  - `/feed.xml` — new guide is the first item; 27 items total.
+  - `/index.html` — "Just added to this edition · 19 Nov 2026" list ends with *Where does the
+    probe go?*; product cards unchanged and sponsored-tagged.
+  - `/executive-brief.html` — strip renders **5 / 9 / 36 / 0**; decision-desk row reads
+    "6 paths and 26 proposals against 36 open questions … thirteen blocks"; fine print links the
+    cdb0a5ac verification record (live at `/sessions/cdb0a5ac/verification-2026-11-19.md`).
+  - `/suggestions/index.html` — 6 paths, 26 proposals, question anchors resolving; 15 chunks served.
+- **Board:** all four CDB tasks now `done`; flagged irregularities CDB-F-01…F-09 remain published
+  and non-blocking; FLG-003, SG-29/SG-30 and every owner-blocked item stay open by design.
