@@ -114,7 +114,7 @@ def page(reg: dict) -> str:
   </div>
 </header>
 <main id="main" class="wrap">
-<p class="eyebrow">Measured 2026-11-17 · branch arena/38650305-zone3</p>
+<p class="eyebrow">Re-measured 2026-11-19 (session 8aa259bb, branch arena/8aa259bb-zone3) · first measured 2026-11-17 (branch arena/38650305-zone3)</p>
 <h1>The brief's rows, next to what this site shows</h1>
 <p class="lede">The brief lists status labels for S-04 to S-25 and names SG-27 to SG-30. Several of those labels cannot be matched to anything in this repository. This page keeps the two columns apart: what the brief says, and what was measured here. It does not copy one into the other.</p>
 <p><strong>Counts:</strong> {summary}</p>
@@ -132,7 +132,7 @@ def page(reg: dict) -> str:
 
 <h2>Limits of this page</h2>
 <ul>
-<li>The brief's labels cite the owner's Zone4 decision log. That log was reachable on 2026-11-17, but its individual S-rows were not re-read line by line here, so the 'Brief says' column is quoted, not verified.</li>
+<li>The brief's labels cite the owner's Zone4 decision log. On 2026-11-19 each cited D-number was checked against its recorded or open status in the public Zone4 repository (main). The 'Brief says' column is still quoted, not independently verified, and the Zone4 log is not an official source.</li>
 <li>Some links in the last column are the brief's own, and point to the Zone4 repository or to a page that is not an official source for the row. They are shown as given, not as verification.</li>
 <li>Nothing on this page changes the site. The owner decides which open rows to act on; see the <a href="../shop/flagged/index.html">flagged list</a>.</li>
 </ul>
