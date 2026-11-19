@@ -1306,3 +1306,82 @@ regenerated pages by element count; the executive strip reads 5/8/36/0 and match
 No price, rating, review-count, availability, traffic, demand, conversion or revenue value was
 introduced. Intended-ASIN fields remain blank. FLG-003 remains unresolved and untouched. Nothing
 published by this round implements a suggestion.
+
+---
+
+## 17. Measured-drift pass: compare-page decision aids, one more guide, and counts that cannot drift — session `41e84402` (2026-11-19)
+
+**Base and merge.** Claimed on `arena/41e84402-zone3` from `6eb8c18`; rebased three times and finally *merged*
+`origin/main` `1623c1c` after PRs #181, #183, #185–#191, #193, #194, #195 and #196 landed mid-pass — nine other
+sessions, several of them while this section was being written. Registers were unioned, never line-merged; the
+totals this section leaves behind are **10 guides, 28 proposals, 38 questions, 16 sources, 13 design-brief blocks,
+6 paths, 18 indexable URLs, 28 feed entries, 122 published pages** — every one of them read from the registers by
+the gate, not typed here:
+`07fb37ba`’s executive-brief count fix, `8aa259bb`’s full re-measure of the brief register,
+`d3493182`’s and `b3e82b38`’s suggestion batches and `222cfe13`’s analytics-history clarification are all kept
+as written. Where a *count* in another session’s live desk copy had gone stale against the union — `B38-Q4`
+said “eight guides exist”, `B38-P1` said “the current eight guides” — the clause was made read-from-register
+rather than re-typed, under this board’s own `E41-T4` rule; the dated review round in `review_b9008684` that
+says “the six guides” was left exactly as it was, because it records what was true when it was written. Full record:
+[`sessions/41e84402/verification-2026-11-19.md`](sessions/41e84402/verification-2026-11-19.md);
+machine-readable measurements: `sessions/41e84402/measurement-2026-11-19-drift.json` and
+`sessions/41e84402/measurement-2026-11-19.json`.
+
+**What a buyer gets from this pass.**
+
+| Change | Reader effect | Verified by |
+|---|---|---|
+| The three-question “Which one is for you?” chooser now sits **above the comparison table** on the compare page, not only on the category pages | The page where five listings are set side by side now starts from the buyer’s question; no score, no ranking, nothing sent anywhere | `browser_measure.cjs`: chooser precedes `#comparison` at 320/390/768 px |
+| The comparison table’s **product column stays pinned** while the table scrolls sideways, with a plain note that blank cells are unverified rather than empty-by-failure | A phone reader can compare five listings without losing track of which row is which | measured: `left_before == left_after_scroll == 16 px` at 320/390 px; at 768 px the table fits, so nothing scrolls — reported as measured |
+| Tap targets on that page raised to the WCAG 2.2 2.5.8 minimum | **0 of 26** interactive targets under 24 px, from 18 of 26 under 44 px before (category pills 31 px, an in-cell link 11 px, a guide-card link 18 px) | `browser_measure.cjs` |
+| Every published guide now links the buyer comparison table **in its own body** | The reading path closes: question → guide → shortlist → comparison, in both directions | `measure_drift.py` structure scan, 9 of 9 |
+| One more question-led guide: “What do “1 Sec” and “±0.5℉” on a listing actually tell you?” | A thermometer buyer gets the difference between a response time, a tolerance and a certification wording, with the unknowns named | register-driven: sitemap 17 URLs, feed 27 entries, search index 14 rows |
+
+**Machinery: the class of defect, closed rather than patched.** Another session had already made the
+executive-brief totals register-driven (#181). This pass found the remainder of the same class — “the
+current six guides” twice in the renderer, “which of the six guides” in a live desk row, and a README
+headline contradicting its own findability line four lines below — and made every one of them either
+derived or count-neutral. `README.md`’s numbers are now a **generated** block (`z3:register-facts`,
+written by `tools/build_publication.py`), and `tools/check_publication.py` fails the build when any
+reader page, README line or register field states a count its register does not hold. Negative test,
+recorded: hand-stale-ing the README row produced
+`FAIL README register-facts row 'Question-led guides': README says 8, register says 9`. The gate then
+caught one of this session’s own sentences (“two air-fryer listings” where the register holds three),
+which was reworded rather than exempted — and it also refuses to let the flag backlog grow: a flag row
+that records the date it was raised must record a status (`E41-B01`, because 121 of the register's rows carry no
+status in either the 164-row pre-merge tree or the 169-row merged tree).
+
+**The hole the merge exposed, and what the gate became.** #193 re-typed “eight … question-led guides” and a fresh
+set of counts into `README.md`, and the gate passed it: the numeral had to *abut* the register label, and only
+README's pre-block prose was scanned. Both rules were tightened — a short closed list of qualifiers may now sit
+between the number and the label across a line break, and the whole README outside dated sections is scanned. The
+widened scan immediately flagged this session's own sentence quoting the old headline, which was rewritten
+count-neutral rather than exempted; a planted “ten practical / question-led guides” line then failed the build
+(`FAIL README.md current-state prose: states 10 question-led guides; the register holds 9`) and was removed, so the
+enforcement is demonstrated in both directions. Final state on the merged tree: `tools/publish.py` 41/41 with a
+second run changing no tracked file and `--check` 25/25, `PUBLICATION PASS` over 121 current pages with 102
+official-source table rows, `brief status current · 23 rows`, and the published browser harness at 14/14 checks with
+38 page/viewport accessibility scans and 0 violations.
+
+**Two measurement findings the owner should read before choosing a next step.**
+
+1. `E41-F02` / `E41-B03`: a same-day register row recorded that “all eight guides link to the comparison
+   page (`products/index.html`)”. That string appears on a guide page only in the site-wide footer
+   directory, labelled “Research product register”, which is the research intake page — not the buyer
+   comparison table at `shop/products/index.html` — and it is present on every published page regardless
+   of article linking. Article-level linking to the comparison table did not exist before this pass.
+   No other session’s row text was edited; the correction is appended below it.
+2. `E41-F03` / `E41-B02`: the brief’s capacity-per-centimetre analysis (`S-23`) **cannot be written** from
+   this repository. No product register — `data/publication.json`, `data/shop/products.json`,
+   `data/z3/products.json`, `data/products.json` — holds a footprint or interior dimension for any of the
+   five. The analysis was left unwritten; the capture decision is `E41-P1` with the owner question
+   `E41-Q1` (which authorized source may supply dimensions, dated, with units). Estimating the denominator
+   was the available wrong answer and was not taken.
+
+**Not claimed.** No traffic, query, ranking, conversion, commission or revenue figure; no price, star
+rating or review count; no product photography; no new product fact; no account, API, Search Console,
+hosting or analytics change. The five submitted short links keep their separate fields: intended ASIN /
+official URL / confirmation date / source stay blank, observed redirect targets stay in their own field,
+`FLG-003` stays unresolved and they are not called invalid. Campaign ledger: still **0** rows, by design.
+One editorial observation for whoever tidies this file next: two sections above this one are both numbered
+`## 15.`; no other session’s heading was renumbered here.

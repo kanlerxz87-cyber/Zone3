@@ -52,6 +52,7 @@ PRODUCT_N = len(DATA['products'])
 QUESTION_N = len(DATA['questions'])
 CAMPAIGN_LEDGER = json.loads((ROOT / 'data/shop/campaign-ledger.json').read_text(encoding='utf-8'))
 CAMPAIGN_ROW_N = len(CAMPAIGN_LEDGER['rows'])
+CATEGORY_N = len({p['category'] for p in DATA['products']})
 
 
 def load_module(path: str, name: str):
@@ -214,16 +215,23 @@ def guide_page(g: dict) -> str:
     product_rows = ''.join(f'<tr><th scope="row">{esc(PRODUCTS[x]["brand"] + " " + PRODUCTS[x]["name"])}</th><td>{esc(PRODUCTS[x]["format_text"])}</td><td><a href="{PRODUCTS[x]["observed_listing_url"]}" rel="sponsored noopener">Amazon listing</a><br><small>{READ_ON} · title only</small></td></tr>' for x in g['products'])
     unknowns = ''.join(f'<li>{esc(x)}</li>' for x in g['unknowns'])
     related = ''.join(guide_card(GUIDES[x], '../', art=False) for x in g['related'])
-    body = f'''<div class="p26-container"><nav class="p26-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">The edit</a><span>/</span><a href="index.html">Buying guides</a><span>/</span>{esc(g['category'])}</nav><header class="p26-article-heading"><p class="p26-overline">{esc(g['category'])} <span> / </span> {esc(g['type'])}</p><h1>{esc(g['title'])}</h1><p class="p26-article-dek">{esc(g['dek'])}</p><div class="p26-byline"><span class="p26-author-avatar">z3.</span><p>By <a href="../about.html#authorship">Zone3 Editorial</a><br><span>Published {human_date(g['published'])} · Updated {READ_ON} · Sources re-checked {human_date(REVERIFIED)}</span></p><span class="p26-byline-kind">Listing-based guide<br>Not a hands-on review</span></div></header><div class="p26-article-layout"><aside class="p26-article-aside"><p class="p26-overline">IN THIS GUIDE</p>{''.join(toc)}<a href="#the-shortlist"><span>04</span>The relevant shortlist</a><p class="p26-aside-note">AI-assisted, source-linked editorial. No independent product testing is claimed.</p></aside><article class="p26-article"><div class="p26-takeaway"><p class="p26-overline">THE SHORT ANSWER</p><p>{esc(g['takeaway'])}</p></div>{''.join(sections)}<section id="the-shortlist"><h2>The listings behind the questions.</h2><p>These are title-based introductions, not recommendations based on testing. Every row links its official listing.</p><div class="p26-table-scroll" role="region" aria-label="Relevant product listings" tabindex="0"><table class="p26-table"><thead><tr><th scope="col">Product</th><th scope="col">Format named in listing</th><th scope="col">Source</th></tr></thead><tbody>{product_rows}</tbody></table></div><a class="p26-button" href="../shop/{g['category_slug'] if g['category_slug'] != 'everyday-kitchen' else 'products'}/index.html">Explore the shortlist {icon('arrow')}</a></section><section class="p26-unknowns"><h2>What we haven’t established.</h2><ul>{unknowns}</ul><p>We leave unsupported values out rather than filling the gaps. <a href="../flagged.html">See the review register</a> or <a href="../intent-record/index.html">the product-intent record</a>.</p></section></article></div><section class="p26-section"><div class="p26-section-heading"><div><p class="p26-overline">KEEP THE GOOD QUESTIONS COMING</p><h2>Next on your reading list.</h2></div></div><div class="p26-guides-grid">{related}</div></section>{follow('../')}</div>'''
+    body = f'''<div class="p26-container"><nav class="p26-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">The edit</a><span>/</span><a href="index.html">Buying guides</a><span>/</span>{esc(g['category'])}</nav><header class="p26-article-heading"><p class="p26-overline">{esc(g['category'])} <span> / </span> {esc(g['type'])}</p><h1>{esc(g['title'])}</h1><p class="p26-article-dek">{esc(g['dek'])}</p><div class="p26-byline"><span class="p26-author-avatar">z3.</span><p>By <a href="../about.html#authorship">Zone3 Editorial</a><br><span>Published {human_date(g['published'])} · Updated {READ_ON} · Sources re-checked {human_date(REVERIFIED)}</span></p><span class="p26-byline-kind">Listing-based guide<br>Not a hands-on review</span></div></header><div class="p26-article-layout"><aside class="p26-article-aside"><p class="p26-overline">IN THIS GUIDE</p>{''.join(toc)}<a href="#the-shortlist"><span>04</span>The relevant shortlist</a><p class="p26-aside-note">AI-assisted, source-linked editorial. No independent product testing is claimed.</p></aside><article class="p26-article"><div class="p26-takeaway"><p class="p26-overline">THE SHORT ANSWER</p><p>{esc(g['takeaway'])}</p></div>{''.join(sections)}<section id="the-shortlist"><h2>The listings behind the questions.</h2><p>These are title-based introductions, not recommendations based on testing. Every row links its official listing.</p><div class="p26-table-scroll" role="region" aria-label="Relevant product listings" tabindex="0"><table class="p26-table"><thead><tr><th scope="col">Product</th><th scope="col">Format named in listing</th><th scope="col">Source</th></tr></thead><tbody>{product_rows}</tbody></table></div><a class="p26-button" href="../shop/{g['category_slug'] if g['category_slug'] != 'everyday-kitchen' else 'products'}/index.html">Explore the shortlist {icon('arrow')}</a> <a class="p26-text-link" href="../shop/products/index.html#comparison">Compare all {numeral(PRODUCT_N).lower()} listings in one table {icon('arrow')}</a></section><section class="p26-unknowns"><h2>What we haven’t established.</h2><ul>{unknowns}</ul><p>We leave unsupported values out rather than filling the gaps. <a href="../flagged.html">See the review register</a> or <a href="../intent-record/index.html">the product-intent record</a>.</p></section></article></div><section class="p26-section"><div class="p26-section-heading"><div><p class="p26-overline">KEEP THE GOOD QUESTIONS COMING</p><h2>Next on your reading list.</h2></div></div><div class="p26-guides-grid">{related}</div></section>{follow('../')}</div>'''
     return shell(f'guides/{g["slug"]}.html', g['title'], g['dek'], body, article=g)
 
 
-def comparison_table(products: list[dict], prefix: str) -> str:
+def comparison_table(products: list[dict], prefix: str, sticky: bool = False) -> str:
     rows = []
     for p in products:
         clean = esc(p['cleanup_title_wording']) if p['cleanup_title_wording'] else ''
         rows.append(f'<tr><th scope="row">{esc(p["brand"] + " " + p["name"])}</th><td>{esc(p["format_text"])}</td><td>{clean}</td><td class="blank" aria-label="Unverified: no independent testing"></td><td><span class="p26-status">Listing only · untested</span><br><a href="{prefix}flagged.html#P26-F04">Evidence gap</a></td><td>{source_link(p["id"], "Amazon listing")}<br><small>{human_date(REVERIFIED)}</small></td></tr>')
-    return '<div class="p26-table-scroll" role="region" aria-label="Source-linked product comparison" tabindex="0"><table class="p26-table"><caption>Listing wording, not a performance ranking. Blank cells are unverified; source checks are limited to title and destination.</caption><thead><tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Cleanup wording in title</th><th scope="col">Tested performance</th><th scope="col">Evidence status</th><th scope="col">Official source</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>'
+    hint = ('<p class="p26-fine p26-scroll-hint">On a phone this table scrolls sideways, and the product '
+            'column stays with you. Blank cells are left blank on purpose: they are unverified, not zero.</p>') if sticky else ''
+    body = ('<div class="p26-table-scroll" role="region" aria-label="Source-linked product comparison" tabindex="0"><table class="p26-table">'
+            '<caption>Listing wording, not a performance ranking. Blank cells are unverified; source checks are limited to title and destination.</caption>'
+            '<thead><tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Cleanup wording in title</th>'
+            '<th scope="col">Tested performance</th><th scope="col">Evidence status</th><th scope="col">Official source</th></tr></thead>'
+            '<tbody>' + ''.join(rows) + '</tbody></table></div>')
+    return (f'<div class="p26-compare">{body}{hint}</div>' if sticky else body)
 
 
 def chooser(prefix: str, category: str) -> str:
@@ -283,26 +291,28 @@ def catalogue(category: str = 'all', compare: bool = False) -> tuple[str, str]:
     rel = 'shop/products/index.html' if compare else 'shop/index.html' if category == 'all' else f'shop/{category}/index.html'
     prefix = chrome.prefix_for(rel)
     if category == 'air-fryers':
-        eyebrow, title, intro = 'THE COUNTERTOP SHORTLIST', 'Start with the format.<br><em>Then the features.</em>', 'Three air-fryer listings. Compare one basket, two independent baskets and a French-door oven format. No model is named a winner.'
+        eyebrow, title, intro = 'THE COUNTERTOP SHORTLIST', 'Start with the format.<br><em>Then the features.</em>', f'{numeral(len(ps)).lower()} air-fryer listings. Compare one basket, two independent baskets and a French-door oven format. No model is named a winner.'
         related_slugs = ['basket-or-oven-style', 'capacity-checklist', 'cleanup-and-counter-space']
-        doc_title, doc_desc = 'Air fryers: basket, dual-basket and oven formats compared', 'Three air-fryer listings compared by cooking format, compartment layout and listing wording. No model is named a winner and no price or rating is shown.'
+        doc_title, doc_desc = 'Air fryers: basket, dual-basket and oven formats compared', f'{numeral(len(ps)).lower()} air-fryer listings compared by cooking format, compartment layout and listing wording. No model is named a winner and no price or rating is shown.'
     elif category == 'meat-thermometers':
-        eyebrow, title, intro = 'THE TEMPERATURE-TOOL SHORTLIST', 'A better question<br><em>for your next reading.</em>', 'Two thermometer listings. Compare the reading workflow, check the exact model instructions and keep advertised claims separate from independent evidence.'
+        eyebrow, title, intro = 'THE TEMPERATURE-TOOL SHORTLIST', 'A better question<br><em>for your next reading.</em>', f'{numeral(len(ps)).lower()} thermometer listings. Compare the reading workflow, check the exact model instructions and keep advertised claims separate from independent evidence.'
         related_slugs = ['instant-read-or-wireless-thermometer', 'holiday-kitchen-checklist']
-        doc_title, doc_desc = 'Meat thermometers: wireless or instant-read compared', 'Two meat-thermometer listings compared by reading workflow and app requirements, with the questions to check against each model instruction sheet.'
+        doc_title, doc_desc = 'Meat thermometers: wireless or instant-read compared', f'{numeral(len(ps)).lower()} meat-thermometer listings compared by reading workflow and app requirements, with the questions to check against each model instruction sheet.'
     elif compare:
-        eyebrow, title, intro = 'THE PRODUCT SHORTLIST', 'Not more tools.<br><em>The right questions.</em>', 'Five products, two kitchen categories. Explore the formats and check the questions that matter before you choose.'
+        eyebrow, title, intro = 'THE PRODUCT SHORTLIST', 'Not more tools.<br><em>The right questions.</em>', f'{numeral(PRODUCT_N).lower()} products, {numeral(CATEGORY_N).lower()} kitchen categories. Explore the formats and check the questions that matter before you choose.'
         related_slugs = ['basket-or-oven-style', 'instant-read-or-wireless-thermometer', 'holiday-kitchen-checklist']
         doc_title, doc_desc = 'Compare all five listings side by side', 'All five shortlisted listings in one table: brand, format, listed features and the official Amazon listing for each. Unverified cells are left blank, not guessed.'
     else:
-        eyebrow, title, intro = 'THE PRODUCT SHORTLIST', 'Not more tools.<br><em>The right questions.</em>', 'Five products, two kitchen categories. Explore the formats and check the questions that matter before you choose.'
+        eyebrow, title, intro = 'THE PRODUCT SHORTLIST', 'Not more tools.<br><em>The right questions.</em>', f'{numeral(PRODUCT_N).lower()} products, {numeral(CATEGORY_N).lower()} kitchen categories. Explore the formats and check the questions that matter before you choose.'
         related_slugs = ['basket-or-oven-style', 'instant-read-or-wireless-thermometer', 'holiday-kitchen-checklist']
         doc_title, doc_desc = 'Kitchen shortlist: three air fryers, two thermometers', 'Five source-linked kitchen listings: three air-fryers and two meat thermometers. See the format each one uses before you compare features.'
-    table = comparison_table(ps, prefix)
+    # E41-T2 (session 41e84402): the compare page is the surface S-19 names, so the three-question
+    # chooser now sits above its table too, and the table gets the sticky first column (E61-P6).
+    table = comparison_table(ps, prefix, sticky=compare)
     cards = ''.join(product_card(p, prefix) for p in ps)
-    chooser_html = '' if compare else chooser(prefix, category)
+    chooser_html = chooser(prefix, 'all' if compare else category)
     guides = ''.join(guide_card(GUIDES[x], prefix, art=False) for x in related_slugs)
-    body = f'''<div class="p26-container"><div class="p26-page-intro"><p class="p26-overline">{eyebrow}</p><h1>{title}</h1><p>{intro}</p><div class="p26-category-links"><a href="{prefix}shop/index.html">All tools</a><a href="{prefix}shop/air-fryers/index.html">Air fryers</a><a href="{prefix}shop/meat-thermometers/index.html">Thermometers</a><a href="{prefix}shop/products/index.html">Compare details</a></div></div>{'' if compare else chooser_html}{table if compare else '<div class="p26-products-grid">'+cards+'</div>'}<p class="p26-fine">Product names and formats are listing wording observed {REVERIFIED}. No independent performance, prices, ratings or availability are asserted. Illustrations show generic formats, not the exact products.</p><section class="p26-section" id="comparison"><div class="p26-section-heading"><div><p class="p26-overline">PUT THE DETAILS SIDE BY SIDE</p><h2>{'A few important limits.' if compare else 'Different formats. Clearer questions.'}</h2></div></div>{'<p>Intended ASINs, account ownership and Special Link attribution are still unconfirmed. Blank performance and cleanup cells are unverified—not zero or a negative finding.</p>' if compare else table}<p class="p26-fine">Keep intended product and observed destination separate: <a href="{prefix}intent-record/index.html">confirmation record</a>. The supplied short links’ exact compliance status remains unresolved: <a href="{prefix}flagged.html#FLG-003">FLG-003</a>.</p></section><section class="p26-section"><h2>Read before you decide.</h2><div class="p26-guides-grid">{guides}</div></section>{follow(prefix)}</div>'''
+    body = f'''<div class="p26-container"><div class="p26-page-intro"><p class="p26-overline">{eyebrow}</p><h1>{title}</h1><p>{intro}</p><div class="p26-category-links"><a href="{prefix}shop/index.html">All tools</a><a href="{prefix}shop/air-fryers/index.html">Air fryers</a><a href="{prefix}shop/meat-thermometers/index.html">Thermometers</a><a href="{prefix}shop/products/index.html">Compare details</a></div></div>{chooser_html}{table if compare else '<div class="p26-products-grid">'+cards+'</div>'}<p class="p26-fine">Product names and formats are listing wording observed {REVERIFIED}. No independent performance, prices, ratings or availability are asserted. Illustrations show generic formats, not the exact products.</p><section class="p26-section" id="comparison"><div class="p26-section-heading"><div><p class="p26-overline">PUT THE DETAILS SIDE BY SIDE</p><h2>{'A few important limits.' if compare else 'Different formats. Clearer questions.'}</h2></div></div>{'<p>Intended ASINs, account ownership and Special Link attribution are still unconfirmed. Blank performance and cleanup cells are unverified—not zero or a negative finding.</p>' if compare else table}<p class="p26-fine">Keep intended product and observed destination separate: <a href="{prefix}intent-record/index.html">confirmation record</a>. The supplied short links’ exact compliance status remains unresolved: <a href="{prefix}flagged.html#FLG-003">FLG-003</a>.</p></section><section class="p26-section"><h2>Read before you decide.</h2><div class="p26-guides-grid">{guides}</div></section>{follow(prefix)}</div>'''
     return rel, shell(rel, doc_title, doc_desc, body)
 
 
@@ -475,6 +485,54 @@ def previous_edition() -> str:
     return raw
 
 
+README_MARK = 'z3:register-facts'
+
+
+def readme_facts() -> str:
+    """Generate the one block in README.md that asserts counts, from the registers it describes.
+
+    A hand-written count in a README is a claim that silently goes false the day a register grows.
+    This block is the exception the release gate enforces (session 41e84402, E41-T4): everything
+    else in README.md is written count-neutral, and these lines are rewritten by this builder.
+    """
+    feed = (ROOT / 'feed.xml').read_text(encoding='utf-8').count('<item>')
+    return ('<!-- {m} -->\n'
+            '| Register | Now | File |\n'
+            '|---|---|---|\n'
+            '| Question-led guides | {g} | `data/publication.json → guides` |\n'
+            '| Indexable reader URLs | {i} | `data/publication.json → indexable_pages` |\n'
+            '| Supplied product links | {p} | `data/publication.json → products` |\n'
+            '| Open decision-readiness questions | {q} | `data/publication.json → questions` |\n'
+            '| Suggestions on the desk | {s} | `data/publication.json → proposals` |\n'
+            '| Paths a reviewer can choose | {pa} | `data/publication.json → paths` |\n'
+            '| Design-brief blocks | {b} | `data/publication.json → design_prompt` |\n'
+            '| Scoped official references | {so} | `data/publication.json → sources` |\n'
+            '| RSS entries across all editorial desks | {f} | `feed.xml` |\n'
+            '| Campaign ledger rows | {c} | `data/shop/campaign-ledger.json` (empty by design) |\n'
+            '<!-- /{m} -->').format(
+        m=README_MARK, g=len(DATA['guides']), i=len(DATA['indexable_pages']), p=len(DATA['products']),
+        q=len(DATA['questions']), s=len(DATA['proposals']), pa=len(DATA['paths']),
+        b=len(DATA['design_prompt']['blocks']), so=len(DATA['sources']), f=feed, c=CAMPAIGN_ROW_N)
+
+
+def sync_readme(check: bool) -> bool:
+    """Replace only the sentinel region in README.md. Returns True if the file would change."""
+    path = ROOT / 'README.md'
+    if not path.exists():
+        return False
+    text = path.read_text(encoding='utf-8')
+    block = readme_facts()
+    pattern = re.compile(r'<!-- ' + README_MARK + r' -->.*?<!-- /' + README_MARK + r' -->', re.S)
+    if not pattern.search(text):
+        raise SystemExit('README.md is missing the ' + README_MARK + ' markers; refusing to guess where to write')
+    new = pattern.sub(lambda _: block, text, count=1)
+    if new != text:
+        if not check:
+            path.write_text(new, encoding='utf-8')
+        return True
+    return False
+
+
 def outputs() -> dict[str, str]:
     pages = {'publication-prior.html': previous_edition(), 'index.html': home(), 'guides/index.html': guide_index(), 'suggestions/index.html': suggestions(), 'about.html': about(), 'privacy.html': privacy(), 'executive-brief.html': executive()}
     pages.update({f'guides/{g["slug"]}.html': guide_page(g) for g in DATA['guides']})
@@ -497,6 +555,8 @@ def outputs() -> dict[str, str]:
 
 def build(check: bool = False) -> int:
     stale = []
+    if sync_readme(check):
+        print('README: register-facts block ' + ('STALE' if check else 'updated'))
     for rel, text in outputs().items():
         path = ROOT / rel
         if not path.exists() or path.read_text(encoding='utf-8') != text:

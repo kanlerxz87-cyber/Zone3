@@ -2283,6 +2283,78 @@
       ],
       "raised": "2026-11-19",
       "session": "6b68afc8"
+    },
+    {
+      "id": "E41-F01",
+      "severity": "Medium",
+      "category": "Consistency",
+      "status": "fixed",
+      "raised": "2026-11-19",
+      "session": "41e84402",
+      "item": "Live desk copy and README asserted guide counts the registers had outgrown; the numbers are now generated",
+      "detail": "Measured 2026-11-19 on the tree merged from PR #181: `tools/build_publication.py` said “the current six guides” in two sentences of the suggestions page while `data/publication.json` held eight; `data/publication.json → proposals[P26-S3].discoveries[0]` told the reviewer to pick “which of the six guides” to expand; and README.md's headline read “six practical question-led guides” four lines above its own findability bullet saying eight. Session 07fb37ba's #181 had already made the executive-brief totals register-driven and gated them; this is the remainder of the same class of defect, found by re-running the measurement over every page rather than only the summary strip. The sentences are now count-neutral, the README's numbers are a generated block, and the publication gate fails on a count phrase that disagrees with its register — tested by hand-stale-ing the README row, which produced: “README register-facts row 'Question-led guides': README says 8, register says 9”. The same class was found twice more while this pass was being merged: a re-typed count in the README ownership bullets from a parallel session (`222cfe13`, PR #193), and two live desk clauses (`B38-Q4` “eight guides exist”, `B38-P1` “the current eight guides”) that the union made stale — both reworded to read from the register, while the dated review round's identical wording was left alone. The evidence for this row is repository-internal (the measured commands are in `repo_evidence`), so no external official source is cited and the register shows “no source” by design.",
+      "action": "No further action needed for these three rows. Keep the rule: put a count in the register or in the generated block, never in prose. A dated record written by another session (e.g. review_b9008684's “the current six guides”) is left exactly as written — it was true for its own round and rewriting a dated record is falsification, not tidying.",
+      "repo_evidence": "tools/build_publication.py · README.md · data/publication.json → proposals · tools/check_publication.py (the count-consistency block marked E41-T4)",
+      "sources": [],
+      "resolution_note": " The gate now also reads across a line break and across the whole README outside dated sections; it caught this session's own quotation of the old headline, which was rewritten count-neutral rather than exempted. Verified twice more: the widened scan flagged this README's own quotation of the old headline (reworded count-neutral, not exempted), and a planted 'ten practical / question-led guides' line across a line break failed the gate before being removed."
+    },
+    {
+      "id": "E41-F02",
+      "severity": "Info",
+      "category": "Verification method",
+      "status": "fixed",
+      "raised": "2026-11-19",
+      "session": "41e84402",
+      "item": "A string-match measure of internal linking can read a shared footer link as article-level linking",
+      "detail": "Brief row S-24 (“every article reaches the comparison, the buying guide and its category pillar”) was recorded as measured on 2026-11-19 by session 8aa259bb, on the basis that guide pages contain `products/index.html`. Re-measured the same day: that string occurs on a guide page only inside the shared footer directory, labelled “Research product register” and pointing at `products/index.html` — the research intake register, not the buyer comparison table at `shop/products/index.html`. It is present on every published page whether or not the article links anything. The article bodies held no link to the comparison table before this pass shipped one on all nine guides. The evidence for this row is repository-internal (the measured commands are in `repo_evidence`), so no external official source is cited and the register shows “no source” by design.",
+      "action": "When a register row reports a link, cite the resolved target and the region it sits in, not the filename substring. `sessions/41e84402/measure_drift.py` and the amendment on the brief-status row both do that. No other session's row text was edited.",
+      "repo_evidence": "brief-status/index.html row S-24 · data/shop/flags.json E41-B03 · sessions/8aa259bb/measure_brief_rows.py",
+      "sources": [],
+      "resolution_note": " Closed as a measurement defect in this repository's own scan, with the linking shipped and the corrected claim re-measured on the merged tree."
+    },
+    {
+      "id": "E41-F03",
+      "severity": "High",
+      "category": "Evidence gap",
+      "status": "needs review",
+      "raised": "2026-11-19",
+      "session": "41e84402",
+      "item": "The capacity-per-centimetre analysis the brief asks for cannot be written from any data this repository holds",
+      "detail": "S-23 asks for “capacity per centimetre of counter depth”, and the brief cites P1 dimensions as listed on `https://www.amazon.com/dp/B0CDY277D3`. Measured: `data/publication.json`, `data/shop/products.json`, `data/z3/products.json` and `data/products.json` contain no dimension or depth values for any of the five products — only capacity wording quoted from titles. Publishing the analysis would mean inventing the denominator, so the page was not written. `E41-P1` records what has to be captured first and `E41-Q1` the one question the owner must answer (which authorized source may supply dimensions, and with what date and units). The evidence for this row is repository-internal (the measured commands are in `repo_evidence`), so no external official source is cited and the register shows “no source” by design.",
+      "action": "Owner: choose the authorized source for dimensions and capture them dated. Until then the analysis stays absent, and the site says so in the guide copy rather than estimating.",
+      "repo_evidence": "data/publication.json → products (no dimension field) · sessions/41e84402/verification-2026-11-19.md measurement 4",
+      "sources": [
+        "S14",
+        "S01"
+      ]
+    },
+    {
+      "id": "E41-F04",
+      "severity": "Low",
+      "category": "Reader experience",
+      "status": "needs review",
+      "raised": "2026-11-19",
+      "session": "41e84402",
+      "item": "S-20's “sticky comparison bar” shipped as a sticky product column, which is a narrower thing",
+      "detail": "The compare page's table scrolls sideways on a phone, so the row identity scrolled away with it. This pass made the first column sticky inside the table's own scroll region at every width, added a plain-language note that the table scrolls sideways and that blank cells are unverified rather than zero, and gave the compare page the three-question chooser above its table (the surface S-19 names). A floating bottom bar — the other reading of “sticky comparison bar” — was not built: it consumes viewport height on the smallest phones, and which viewport matters most is a measurement the site does not have. The evidence for this row is repository-internal (the measured commands are in `repo_evidence`), so no external official source is cited and the register shows “no source” by design.",
+      "action": "Owner: answer `E41-Q2` (is the sticky column enough, or is a floating bar wanted). Do not read S-20 as complete in the floating-bar sense.",
+      "repo_evidence": "assets/publication.css (the E41 appendix) · tools/build_publication.py comparison_table(sticky=True)",
+      "sources": []
+    },
+    {
+      "id": "E41-F05",
+      "severity": "Info",
+      "category": "Coordination",
+      "status": "needs review",
+      "raised": "2026-11-19",
+      "session": "41e84402",
+      "item": "Four sessions landed on this tree inside an hour; two claimed work this session had claimed on the board",
+      "detail": "Between this session's claim commit and its first push, `main` moved through PR #181 (07fb37ba: executive-brief counts), #183 (cbbd4d8f: integration/publish), #185 (8aa259bb: the same full re-measure of the brief-status register this session had claimed as E41-T6, plus the shop flag rows) and #187/#188 (d3493182: suggestions batch 3, DESIGN_PROMPT.md §13, README counts). This session did not re-do or revert any of it: it rebased, re-ran #181's gate, took 8aa259bb's re-measured rows as the base and amended them in place, and replaced d3493182's hand-typed README counts with the generated block rather than editing their register rows. Two PRs from 2026-11-17 (#160, #157) are still open and still unmerged; this pass neither merged nor closed them. The evidence for this row is repository-internal (the measured commands are in `repo_evidence`), so no external official source is cited and the register shows “no source” by design.",
+      "action": "If the board wants fewer collisions, the claim step needs a lock window: claim, push, and re-read `git log origin/main` before the first write, because a task that is measured and shipped by someone else mid-claim should become a verification row, not a second implementation.",
+      "repo_evidence": "COORDINATION.md Parts 6b68afc8 / b9008684 / 1c072a7a / 8aa259bb / d3493182 / 41e84402",
+      "sources": [
+        "S93"
+      ]
     }
   ]
 }

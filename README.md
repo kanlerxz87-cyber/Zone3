@@ -1,8 +1,30 @@
 # Zone3 Kitchen
 
-A buyer-first kitchen publication: five source-linked product introductions, nine practical
-question-led guides, and a separate review/research workspace. Plain HTML, CSS and JavaScript;
+A buyer-first kitchen publication: source-linked product introductions, practical question-led
+guides, and a separate review/research workspace. Plain HTML, CSS and JavaScript;
 no third-party front-end dependency, scraped product imagery or invented reviewer.
+
+Counts are never typed into this file by hand. The block below is generated from the registers by
+`python3 tools/build_publication.py` (region `z3:register-facts`) and is checked in CI, so a page,
+this README and a register cannot disagree about how big the site is. Before this rule the headline
+here carried a guide count three short of the register's, and the ownership bullet below it was retyped
+by hand each time the desk grew — both are the same defect, recorded as `E41-F01` and closed by the gate
+that reads this file.
+
+<!-- z3:register-facts -->
+| Register | Now | File |
+|---|---|---|
+| Question-led guides | 10 | `data/publication.json → guides` |
+| Indexable reader URLs | 18 | `data/publication.json → indexable_pages` |
+| Supplied product links | 5 | `data/publication.json → products` |
+| Open decision-readiness questions | 38 | `data/publication.json → questions` |
+| Suggestions on the desk | 28 | `data/publication.json → proposals` |
+| Paths a reviewer can choose | 6 | `data/publication.json → paths` |
+| Design-brief blocks | 13 | `data/publication.json → design_prompt` |
+| Scoped official references | 16 | `data/publication.json → sources` |
+| RSS entries across all editorial desks | 4 | `feed.xml` |
+| Campaign ledger rows | 0 | `data/shop/campaign-ledger.json` (empty by design) |
+<!-- /z3:register-facts -->
 
 **Site:** https://kanlerxz87-cyber.github.io/Zone3/ · **Current executive brief:**
 [`executive-brief.html`](executive-brief.html) · **Review proposals:**
@@ -34,15 +56,14 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
 
 ## Current publication ownership
 
-- **Content and dates:** [`data/publication.json`](data/publication.json). It contains five dated
-  redirect/title observations, nine guides, sixteen scoped official references, twenty-six proposals
-  in four batches (P26-S foundations, E61-P trust/imagery/seasonal/UX/distribution/catalogue, D34-P
-  polished shopfront/article slate/findability/decision aids/voice/success definition, B38-P
-  voice-lint/evidence-badges/slate/cadence/FAQ-correction), six decision paths and thirty-six
-  decision-readiness questions, each with an answer-capture field on the suggestions page. Intended ASINs/URLs/dates/sources remain
-  distinct from observed destinations. Prices, ratings, review totals and tested performance remain
-  empty. Reader-facing counts and check dates are derived from this file by the renderer, so a
-  refresh of the register cannot leave a page asserting a stale number or date (`P27-F02`, `P27-F04`).
+- **Content and dates:** [`data/publication.json`](data/publication.json). It holds the dated
+  redirect/title observations, the guide set, the scoped official references, every batch of
+  proposals, the decision paths and the decision-readiness questions (each with an answer-capture
+  field on the suggestions page) and the design brief. Intended ASINs/URLs/dates/sources stay
+  distinct from observed destinations. Prices, ratings, review totals and tested performance stay
+  empty. Reader-facing counts and check dates are derived from this file by the renderer — and by
+  this README's register-facts block — so a refresh of the register cannot leave a page asserting a
+  stale number or date (`P27-F02`, `P27-F04`, and the residual drift recorded as `E41-F01`).
 - **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
   retained publication entry point in the canonical chain. Do not hand-edit its output.
 - **One shared shell:** [`tools/publication_chrome.py`](tools/publication_chrome.py) and
@@ -50,8 +71,9 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
   the masthead and repeated in the footer. All dashboards stay accessible through one **Behind
   the site** group and the footer directory. The previous C3/C17 shopper edition is retained at
   [`publication-prior.html`](publication-prior.html), not silently discarded.
-- **Findability:** 17 canonical reader URLs in the sitemap; nine question-led guides; local search;
-  27 RSS entries retaining the other editorial desks. Research/duplicate editions remain reachable
+- **Findability:** every canonical reader URL in `sitemap.xml`, the guide set, local search and the
+  unified RSS feed retaining the other editorial desks (the register-facts block above carries the
+  current figures). Research/duplicate editions remain reachable
   with their own canonical URL and `noindex,follow`, rather than competing as new front doors.
   One guide review every 14 days is an operating plan, not a demand or ranking claim.
 - **Art and authorship:** labelled generated kitchen context and original generic format diagrams,
@@ -60,7 +82,7 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
 - **Decision desk:** [`suggestions/index.html`](suggestions/index.html) holds the paths (what each
   one changes, needs, unblocks and still cannot claim), the individual proposals, the register of
   open questions with the answer owner and the discovery action for each, the intake shape a new
-  suggestion has to take, and a thirteen-block design brief with per-block copy. Local Save / Clear,
+  suggestion has to take, and the design brief with per-block copy (block count above). Local Save / Clear,
   JSON export: choosing a path never implements it, activates analytics, changes an account or
   spends money.
 - **Design brief:** [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) is the paste-ready version — rails R1–R12

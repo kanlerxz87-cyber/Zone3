@@ -89,13 +89,37 @@ def page(reg: dict) -> str:
         f"<li><strong>{html.escape(k)}</strong> — {html.escape(v)}</li>"
         for k, v in reg["_meta"]["status_vocabulary"].items()
     )
+
+    # E41-T6 (session 41e84402): the date on this page is data, not a string in the template.
+    # A re-measure that edits the register must not be able to leave a stale date in the header,
+    # the description or the title, so all three are derived from _meta.
+    checks = reg["_meta"].get("rechecks") or []
+    latest = checks[0] if checks else {}
+    earlier = " · ".join(
+        f"{c['on']} ({c['session']})" for c in checks[1:]
+    )
+    eyebrow = (
+        f"Re-measured {latest.get('on', 'date not recorded')} (session {latest.get('session', '?')}, "
+        f"branch {latest.get('branch', '?')})"
+        + (f" · earlier passes: {earlier}" if earlier else "")
+    )
+    s_rows = [r["id"] for r in reg["rows"] if r["id"].startswith("S-")]
+    sg_rows = [r["id"] for r in reg["rows"] if r["id"].startswith("SG-")]
+    span = f"{s_rows[0]} to {s_rows[-1]}" if s_rows else "no S- rows"
+    if sg_rows:
+        span += f", {sg_rows[0]} to {sg_rows[-1]}"
+    measured_label = latest.get("on", "date not recorded")
+    history_items = "".join(
+        f"<li><strong>{html.escape(c['on'])}</strong> — session {html.escape(c['session'])}, branch {html.escape(c.get('branch', '?'))}: {html.escape(c.get('note', ''))}</li>"
+        for c in checks)
+    note = latest.get("note", "")
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brief status — what the brief claims, and what this site shows</title>
-<meta name="description" content="Each row of the brief (S-04 to S-25, SG-27 to SG-30) next to what this repository shows, measured on 2026-11-17, with the flag for any gap.">
+<meta name="description" content="Each row of the brief ({span}) next to what this repository shows, re-measured {measured_label}, with the flag for any gap.">
 <link rel="canonical" href="{CANON}">
 <link rel="stylesheet" href="../assets/zone3-publication.css">
 <style>
@@ -114,10 +138,12 @@ def page(reg: dict) -> str:
   </div>
 </header>
 <main id="main" class="wrap">
-<p class="eyebrow">Re-measured 2026-11-19 (sessions 8aa259bb and cdb0a5ac, merged) · first measured 2026-11-17 (branch arena/38650305-zone3)</p>
+<p class="eyebrow">{eyebrow}</p>
 <h1>The brief's rows, next to what this site shows</h1>
 <p class="lede">The brief lists status labels for S-04 to S-25 and names SG-27 to SG-30. Several of those labels cannot be matched to anything in this repository. This page keeps the two columns apart: what the brief says, and what was measured here. It does not copy one into the other.</p>
 <p><strong>Counts:</strong> {summary}</p>
+<h2>Measurement history</h2>
+<ol class="history">{history_items}</ol>
 
 <h2>How to read the statuses</h2>
 <ul>{vocab}</ul>
