@@ -8647,3 +8647,26 @@ Independent line-by-line re-verification of the five supplied product links (one
 **Sources for this pass (read 2026-11-19 with the page-fetch tool):** Amazon Associates Program Operating Agreement §1/§5; Associates Program Policies, Participation Requirements 1, 2(a), 2(b) and 3; FTC *Disclosures 101 for Social Media Influencers*. Each is re-linked from the source register and the page it supports.
 
 **Status:** `in progress`
+
+### Rebase and parallel-session record — 2026-11-19
+
+- **`main` moved during this task.** At claim time `main` was `825f513` (PR #172). Before this branch could be
+  pushed for review, session `cd746460` merged PRs #173 and #174, advancing `main` to `0d391f2`. Its work is
+  preserved: `git log --oneline 825f513..0d391f2` shows the claim, verification and publish records, and this
+  branch was rebased **on top of** them — nothing of `cd746460`'s was overwritten, discarded or reverted.
+- **Conflict log (required by the brief).** `git pull --rebase origin main` produced exactly one conflict, in
+  `COORDINATION.md`, because both sessions appended a new part at the end of the same file. Resolved by keeping
+  **both** parts in chronological order — `cd746460`'s final-integration record first, this part second — with no
+  content removed from either side. `git grep -Il "^<<<<<<< " -- . ':!archive'` and the `=======`/`>>>>>>>`
+  equivalents return no files: the only remaining occurrences of those strings in the tree are inside quoted prose
+  in older log entries, which is the false positive the board already records.
+- **Corroboration, not duplication.** `cd746460` independently re-opened the same five supplied links on
+  2026-11-19 and reported the same five destination ASINs with matching titles (its CD-T1 record). This session's
+  re-observation reached the identical result before reading that record. Two independent passes agreeing is
+  stronger evidence than either alone, and both stay published.
+- **Why this pass is not a duplicate of `cd746460`'s.** That pass re-verified existing claims. This pass changed
+  reader-facing behaviour and additively extended the registers: unique titles/descriptions with a new gate
+  (B79-F-01), a three-question chooser and two-sided fit notes, a reviewer workflow on the suggestions page,
+  clearer navigation labels, and four new flags. `cd746460` did not touch those files.
+- **Post-rebase build:** `python3 tools/publish.py` on the rebased tree reports **41 commands, 0 failed**, and the
+  tree is clean afterwards (see the release record below).
