@@ -9518,3 +9518,50 @@ The first `git pull --rebase origin main` fetched `2a854c1` and stopped on an ap
 The merged register after PR #194 has 16 scoped official references, 9 guides, 26 proposals, 36 decision-readiness questions, 13 design-prompt blocks, 6 paths, 17 indexable URLs and 27 RSS entries. PR #181 made executive-brief counts register-driven; PR #190 and PR #194 added guide/register batches. This session reconciles only the current-status opening of the root Markdown summary and preserves the full dated CDB, 6b and earlier history. PR #191/#193/#194 coordination records are retained.
 
 **Release status:** PR [#196](https://github.com/kanlerxz87-cyber/Zone3/pull/196) merged at `2026-11-19T13:32:02Z` as `1623c1c2b6c4b04d526130a316dd6d9344985bdd`; publication check `44534254715` passed and GitHub Pages reported `built` at `2026-11-19T13:32:31Z`. Cache-busted live read-back at `?revision=1623c1c` confirmed the current brief, nine-guide index and probe guide, and 17-URL sitemap. PR #160 and #157 remain open and out of scope. Account, owner-intent, reporting and commercial-hosting questions remain unverified or owner/platform-dependent.
+
+# Part: session `a4f9ee45` (2026-11-19) — official-source verification, buyer-first shop site, suggestions register, executive summary, PR to main, merge, Pages deploy
+
+## Session registry (this part)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| a4f9ee45 | `arena/a4f9ee45-zone3` | Official-source verification (Amazon Associates Operating Agreement S01, Program Policies S02; FTC S07/S24; Google Search Central sponsored-links and snippets), buyer-first shop landing page + category subpages + dashboard tables, suggestions & decision register, executive summary, PR to `main`, merge, GitHub Pages deploy confirmation | in progress | 2026-11-19 |
+
+## Files in scope (this session only)
+
+- `COORDINATION.md` — this session's Part only (append-only; no other session's block edited)
+- Shop/reader pages: `index.html`, `shop/`, `guides/`, `assets/`, `sitemap.xml`, `feed.xml`
+- Verification data: `data/sources.json`, `data/products.json`, `data/flags.json`, `data/policy_facts.json`
+- Suggestions & decisions: `suggestions/`, `suggestions.html`, `decision-center.html`, `decision-queue.html`
+- Executive summary: `EXECUTIVE-SUMMARY.md`, `executive-summary.html`
+
+## Task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| A4F-T1 — Official-source verification of live cited sources | done | a4f9ee45 | `COORDINATION.md` (this Part); cross-check `data/sources.json` | S01 Operating Agreement, S02 Program Policies, S07 FTC Disclosures 101, S24 FTC Endorsement Guides, Google Search Central qualify-outbound-links, Google Search Central control-your-snippets | FLG-003: supplied short links' compliance status unresolved; this project does NOT call them invalid; one Special Link per product to be validated in the enrolled Associates workflow before scaling |
+| A4F-T2 — Shop site: landing page + category subpages + dashboard tables | done | a4f9ee45 | `index.html`, `shop/air-fryers/`, `shop/meat-thermometers/`, `shop/products/`, `guides/`, `assets/`, `sitemap.xml`, `feed.xml` | `scripts/check_site.py` | none — check passes |
+| A4F-T3 — Suggestions & decision register (review-before-implement) | done | a4f9ee45 | `suggestions/`, `suggestions.html`, `decision-center.html`, `decision-queue.html`, `data/suggestions.json` | — | none |
+| A4F-T4 — Executive summary | done | a4f9ee45 | `EXECUTIVE-SUMMARY.md`, `executive-summary.html` | — | none |
+| A4F-T5 — PR from this branch to `main`, merge without waiting if checks pass, verify Pages deployment, record result | in progress | a4f9ee45 | this branch → `main`; `COORDINATION.md` (this Part) | PR link + Pages deploy recorded below | none — do not merge a broken site |
+
+## Verification performed (a4f9ee45, all official sources re-read live)
+
+- Amazon Associates Program Operating Agreement (S01): page titled "Amazon.com Associates Central - Associates Program Operating Agreement", updated October 15, 2025. Section 1: Associates earn by placing Special Links (tagged link formats) on their Site; Program Content includes data, images, text, link formats and marketing content. Source: https://affiliate-program.amazon.com/help/operating/agreement
+- Amazon Associates Program Policies (S02): page titled "Amazon.com Associates Central - Associates Program Policies", updated April 14, 2026. Commission Income Statement: Qualifying Purchase occurs when a customer clicks through a Special Link; single session measured from click; 24-hour window; 89 days to complete cart order; 180 days to ship/stream/download and pay. Source: https://affiliate-program.amazon.com/help/operating/policies
+- FTC Disclosures 101 for Social-Media Influencers (S07): https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers
+- FTC Endorsement Guides / endorsements-influencers-reviews (S24): https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews
+- Google Search Central "Qualify your outbound links to Google": `rel="sponsored"` marks advertisements/paid placements. Source: https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links (last updated 2025-12-10 UTC)
+- Google Search Central "Control your snippets in search results": create unique meta descriptions for each page; Google may use the meta description for the snippet. Source: https://developers.google.com/search/docs/appearance/snippet
+- `python3 scripts/check_site.py` (offline): OK — 42 pages, 5 products, 87 sources, 169 flags. All structural checks passed. This is a structural check, not independent re-verification of every historical factual claim; the line-by-line official-source verification above is recorded per fact.
+
+## Irregularities flagged (non-blocking, published on Flagged for Review page)
+
+- FLG-001: submitted link IDs are 9 characters, not the 10-character ASIN shape (S31).
+- FLG-002: observed redirect target is not evidence of owner intent; intended ASIN/URL/date/source stay blank until owner confirmation (product-intent record kept separate from observed redirect).
+- FLG-003: supplied short links' exact compliance status unresolved; not called invalid; validate one Special Link per product via enrolled workflow before scaling.
+- FLG-004/FLG-035/FLG-036: price, rating, review count, best-seller rank, commission rate and availability are null (unverified); nothing inferred; no conversion score or revenue forecast presented.
+
+## Completion record (2026-11-19)
+
+A4F-T1 through A4F-T4 complete and verified above. A4F-T5 in progress: PR from `arena/a4f9ee45-zone3` to `main`, merge after `scripts/check_site.py` passes, then confirm GitHub Pages `built` and record the PR link and merge result here.
