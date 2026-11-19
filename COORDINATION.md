@@ -9543,7 +9543,7 @@ The merged register after PR #194 has 16 scoped official references, 9 guides, 2
 | A4F-T2 — Shop site: landing page + category subpages + dashboard tables | done | a4f9ee45 | `index.html`, `shop/air-fryers/`, `shop/meat-thermometers/`, `shop/products/`, `guides/`, `assets/`, `sitemap.xml`, `feed.xml` | `scripts/check_site.py` | none — check passes |
 | A4F-T3 — Suggestions & decision register (review-before-implement) | done | a4f9ee45 | `suggestions/`, `suggestions.html`, `decision-center.html`, `decision-queue.html`, `data/suggestions.json` | — | none |
 | A4F-T4 — Executive summary | done | a4f9ee45 | `EXECUTIVE-SUMMARY.md`, `executive-summary.html` | — | none |
-| A4F-T5 — PR from this branch to `main`, merge without waiting if checks pass, verify Pages deployment, record result | in progress | a4f9ee45 | this branch → `main`; `COORDINATION.md` (this Part) | PR link + Pages deploy recorded below | none — do not merge a broken site |
+| A4F-T5 — PR from this branch to `main`, merge without waiting if checks pass, verify Pages deployment, record result | done | a4f9ee45 | this branch → `main`; `COORDINATION.md` (this Part) | PR [#199](https://github.com/kanlerxz87-cyber/Zone3/pull/199), merge commit 46e4d160202a21889c2f43a97481733b00d81dff; GitHub Pages `built` | none — check_site.py OK before merge; Pages build confirmed |
 
 ## Verification performed (a4f9ee45, all official sources re-read live)
 
@@ -9564,4 +9564,4 @@ The merged register after PR #194 has 16 scoped official references, 9 guides, 2
 
 ## Completion record (2026-11-19)
 
-A4F-T1 through A4F-T4 complete and verified above. A4F-T5 in progress: PR from `arena/a4f9ee45-zone3` to `main`, merge after `scripts/check_site.py` passes, then confirm GitHub Pages `built` and record the PR link and merge result here.
+A4F-T1 through A4F-T5 complete and verified above. PR [#199](https://github.com/kanlerxz87-cyber/Zone3/pull/199) (`arena/a4f9ee45-zone3` → `main`) merged at commit 46e4d160202a21889c2f43a97481733b00d81dff without waiting for review, per the brief. `python3 scripts/check_site.py` passed before the merge (42 pages, 5 products, 87 sources, 169 flags). GitHub Pages reported `built` after the merge (live site: https://kanlerxz87-cyber.github.io/Zone3/). All tasks done.
