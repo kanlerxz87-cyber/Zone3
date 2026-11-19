@@ -9565,3 +9565,27 @@ The merged register after PR #194 has 16 scoped official references, 9 guides, 2
 ## Completion record (2026-11-19)
 
 A4F-T1 through A4F-T5 complete and verified above. PR [#199](https://github.com/kanlerxz87-cyber/Zone3/pull/199) (`arena/a4f9ee45-zone3` → `main`) merged at commit 46e4d160202a21889c2f43a97481733b00d81dff without waiting for review, per the brief. `python3 scripts/check_site.py` passed before the merge (42 pages, 5 products, 87 sources, 169 flags). GitHub Pages reported `built` after the merge (live site: https://kanlerxz87-cyber.github.io/Zone3/). All tasks done.
+## Part 787a3aab — Fresh line-by-line verification, one new question-led guide, and release (2026-11-19)
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 787a3aab | `arena/787a3aab-zone3` | Independent line-by-line re-verification of the five supplied links, disclosure/sponsored/intent/measurement registers against official sources; add one question-led guide through the canonical publication register; full release chain, PR, merge, Pages verification | in progress | 2026-11-19 |
+
+### Coordination and scope
+
+- Base: `0273fb4` (main, PR #198 merge). Read the board through Part 4d7fe998. The buyer-first publication, 10 guides, suggestions/decision desk (6 paths / 28 proposals / 38 questions), product-intent record, disclosure strip, sponsored links, measurement runtime (OFF), feed and sitemap already exist and pass `tools/publish.py --check` 25/25 on this base. This pass does not create a duplicate publication.
+- File scope: this appended Part of `COORDINATION.md`; new `sessions/787a3aab/**` records; additive rows in `data/publication.json` (one guide, one source, one indexable URL) plus the pages/feed/sitemap those rows generate through the canonical chain. No other session's data rows, product/intent/tracking/measurement registers, or historical pages are rewritten. Open PRs #192, #160, #157 are left untouched.
+- Tasks: 787-T1 claim+push (this Part) · 787-T2 line-by-line verification against official sources with manual-review links · 787-T3 one new guide (thermometer accuracy check) via the register · 787-T4 full release chain twice + idempotency · 787-T5 PR, merge, Pages + live read-back.
+- Rules carried forward: intended_* stays blank until owner confirmation (never copy observed redirects); supplied short links are not called invalid (FLG-003 unresolved); no price/rating/review-count/ tested-performance figures; measurement stays OFF with no endpoint until a durable authorized HTTPS host exists; campaign ledger stays empty until first-party reports exist; no traffic/ranking/revenue claims.
+
+### Task board
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| 787-T1 — Claim this scope and push before implementation | done (claim 1ff4a6a pushed) | 787a3aab | this Part only | board; `git log` base 0273fb4 | none |
+| 787-T2 — Line-by-line verification of links, disclosure, sponsored, intent, measurement, sitemap/feed against official sources | done | 787a3aab | `sessions/787a3aab/repo-review.md`, `sessions/787a3aab/verification-2026-11-19.md` | affiliate-program.amazon.com, developers.google.com, ftc.gov, foodsafety.gov, amazon.com listing pages, live site read-back | to be recorded |
+| 787-T3 — Add one question-led guide through the publication register | done (guide #11 thermometer-ice-water-check, FSIS source) | 787a3aab | `data/publication.json` (additive), generated guide/feed/sitemap pages | official thermometer-accuracy source read in T2 | to be recorded |
+| 787-T4 — Full release chain twice, idempotency, link/disclosure/sponsored checks | done (41/41 twice, idempotent) | 787a3aab | generated outputs only; `sessions/787a3aab/release-checks.md` | `tools/publish.py` | to be recorded |
+| 787-T5 — PR, merge, Pages deploy + live verification, record result | in progress | 787a3aab | this branch; this Part | GitHub PR/Pages APIs, live read-back | to be recorded |

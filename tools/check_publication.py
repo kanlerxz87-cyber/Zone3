@@ -21,7 +21,7 @@ import publication_chrome as chrome
 import build_publication
 
 OFFICIAL = {'www.amazon.com', 'amazon.com', 'affiliate-program.amazon.com', 'www.ftc.gov',
-            'developers.google.com', 'docs.github.com', 'www.foodsafety.gov', 'github.com'}
+            'developers.google.com', 'docs.github.com', 'www.foodsafety.gov', 'www.fsis.usda.gov', 'github.com'}
 SKIP = {'.git', 'archive', 'docs', 'sessions', 'node_modules', '.preview', '.local', '__pycache__'}
 
 
