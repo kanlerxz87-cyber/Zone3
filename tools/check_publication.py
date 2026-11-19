@@ -7,6 +7,7 @@ indexing, guide feed coverage and retained dashboard access. Inherited gates sti
 """
 from __future__ import annotations
 
+import datetime as _dt
 import json
 import re
 import sys
@@ -24,10 +25,11 @@ OFFICIAL = {'www.amazon.com', 'amazon.com', 'affiliate-program.amazon.com', 'www
             'developers.google.com', 'docs.github.com', 'www.foodsafety.gov', 'www.fsis.usda.gov', 'github.com'}
 SKIP = {'.git', 'archive', 'docs', 'sessions', 'node_modules', '.preview', '.local', '__pycache__'}
 
-# Current-publication pages that document the house-style rules rather than sell to a reader:
-# they quote the banned hype/trend register as the rule they enforce, so the phrase-pattern
-# rules are relaxed on them (structural rules still apply in full). Mirrors the RELAXED set in
-# tools/cba81fa5_lint.py for the site/ archive.
+# 6f16ee11 (2026-11-19): current-publication pages that document the house-style rules rather
+# than sell to a reader quote the banned hype/trend register as the rule they enforce, so the
+# phrase-pattern rules are relaxed on them (structural rules still apply in full). Mirrors the
+# RELAXED set in tools/cba81fa5_lint.py for the site/ archive, and the register-driven
+# house_style.lint.relaxed_pages used by the D3B lint below.
 PUB_RELAXED = {'suggestions/index.html'}
 
 
@@ -207,6 +209,61 @@ def check() -> list[str]:
             visible = ' '.join(re.sub(r'<[^>]+>', ' ', html_text[:round_pos] + html_text[html_text.find('</section>', round_pos):]).split())
         claims(visible, rel)
 
+    # --- D3B-T2 (session 3d0d7bd1, 2026-11-19): proposal B38-P1 — the house style is not a mood
+    # board, it is a lint. The banned list lives in the register (house_style.banned); the
+    # reader-facing style page renders from the same block, and this gate fails the release when
+    # one of the patterns appears in strict-scope visible text. Exemptions are mechanical, never
+    # per-sentence: elements marked data-lint="quote" (text whose job is to quote the rules), the
+    # style page's phrase cells (class p26-banned-phrase), and the relaxed pages named in the
+    # register — suggestions/index.html, where the decision register reviews the very
+    # constructions it documents.
+    house = data.get('house_style') or {}
+    need(bool(house.get('rules')) and bool(house.get('banned')), 'house style must carry its rules and banned list (B38-P1)')
+    need(house.get('lint', {}).get('gate') == 'tools/check_publication.py', 'house-style lint must name this gate as its enforcement (B38-P1)')
+    banned = []
+    for row in house.get('banned', []):
+        for pattern in row.get('patterns', []):
+            banned.append((row['id'], re.compile(pattern, re.I)))
+    need(bool(banned), 'house-style banned list must carry at least one matchable pattern (B38-P1)')
+    relaxed = set(house.get('lint', {}).get('relaxed_pages', []))
+    STRIP_QUOTE = re.compile(r'<[a-z]+[^>]*data-lint="quote"[^>]*>.*?</[a-z]+>', re.S)
+    STRIP_CELL = re.compile(r'<[a-z]+[^>]*class="[^"]*p26-banned-phrase[^"]*"[^>]*>.*?</[a-z]+>', re.S)
+    for rel in sorted(current):
+        if rel in relaxed or rel == 'publication-prior.html':
+            continue
+        raw = (ROOT / rel).read_text(encoding='utf-8')
+        raw = STRIP_CELL.sub(' ', STRIP_QUOTE.sub(' ', raw))
+        visible = ' '.join(re.sub(r'<[^>]+>', ' ', raw).split())
+        for bid, pat in banned:
+            m = pat.search(visible)
+            if m:
+                need(False, f'{rel}: banned construction {bid} ({pat.pattern}) near "…{visible[max(0, m.start() - 40):m.end() + 40]}…" — rewrite the sentence or record an exemption decision (B38-P1)')
+
+    # --- D3B-T3 (session 3d0d7bd1, 2026-11-19): proposal B38-P4 — the review date is derived,
+    # and an overdue review is stated, not silently stale. The due date is the edition date plus
+    # the register-owned cadence; if the register's latest re-verification moved past the due
+    # date without a new edition, the release fails until a new edition is published or the slip
+    # is recorded. A decided proposal must carry a dated outcome naming a session record.
+    cadence_days = data['meta'].get('review_cadence_days')
+    need(isinstance(cadence_days, int) and cadence_days > 0 and f'{cadence_days} day' in data['meta'].get('cadence', ''),
+         'meta.review_cadence_days must be a positive number matching the published cadence sentence (B38-P4)')
+    _edition = _dt.date.fromisoformat(data['meta']['updated'])
+    _due = _edition + _dt.timedelta(days=cadence_days)
+    need(_dt.date.fromisoformat(data['meta']['reverified']) <= _due,
+         f'decision review overdue: the register was last re-verified {data["meta"]["reverified"]}, past the derived due date {_due.isoformat()} — publish the new edition or record the slip (B38-P4)')
+    for proposal in data['proposals']:
+        if proposal.get('outcome'):
+            need(bool(re.match(r'^(Adopted|Closed|Rejected|Superseded) \d{4}-\d{2}-\d{2}\b', proposal['outcome'])) and 'sessions/' in proposal['outcome'],
+                 f'{proposal["id"]}: outcome must start with a decision verb and a date, and name a session record (B38-P4)')
+
+    # --- D3B-T4 (session 3d0d7bd1, 2026-11-19): proposal B38-P5 — the corrected DS-03 row must
+    # keep its dated deprecation correction with the verified facts; silently dropping it would
+    # re-introduce the stale rich-result premise the correction exists to remove.
+    _ds_rows = {d['id']: d for d in data.get('review_b9008684', {}).get('decision_rows', [])}
+    _ds03_update = json.dumps(_ds_rows.get('DS-03', {}).get('update', {}), ensure_ascii=False)
+    need(_ds_rows.get('DS-03', {}).get('update', {}).get('on') == '2026-11-19' and 'May 7, 2026' in _ds03_update and 'faq-deprecation' in _ds03_update,
+         'DS-03 must keep its dated FAQ-deprecation correction with the verified dates and official anchor (B38-P5)')
+
     pages = [p for p in ROOT.rglob('*.html') if not any(part in SKIP for part in p.relative_to(ROOT).parts)]
     indexable = set(data['indexable_pages'])
     indexed = set()
@@ -251,15 +308,19 @@ def check() -> list[str]:
         need(not parsed.duplicates, f'{rel}: duplicate HTML ids {parsed.duplicates}')
         need(sum(tag == 'h1' for tag, _ in parsed.attrs) == 1, f'{rel}: exactly one main heading required')
         text = ' '.join(parsed.text)
+        # D3B-T2 (session 3d0d7bd1): the documented house-style exemptions — data-lint="quote"
+        # elements and p26-banned-phrase cells (the style page quoting the constructions it bans)
+        # — apply to the figure/claim scan too. The structural checks above still see the full page.
+        stripped_text = ' '.join(re.sub(r'<[^>]+>', ' ', STRIP_CELL.sub(' ', STRIP_QUOTE.sub(' ', raw))).split())
         for pattern in (r'\$\s*\d', r'\d(?:\.\d)?\s*(?:stars|out of 5)', r'\b\d[\d,]*\s+(?:reviews|ratings)\b', r'\bwe tested\b', r'\bin our test kitchen\b'):
-            need(not re.search(pattern, text, re.I), f'{rel}: prohibited unsupported figure/claim ({pattern})')
-        # House-style anti-slop: the banned hype/trend register published at site/style-guide.html
-        # (enforced on the site/ archive by tools/cba81fa5_lint.py) is now enforced on the live
-        # publication too. A phrase inside quotation marks is a mention — the page is discussing
-        # the construction, not asserting it about a product — and is exempt, the same rule the
-        # archive lint uses. The decision-desk page quotes the banned register as the rule it
-        # enforces, so it is relaxed for the phrase rules (the structural rules below still apply
-        # to it in full), mirroring the archive lint's RELAXED set.
+            need(not re.search(pattern, stripped_text, re.I), f'{rel}: prohibited unsupported figure/claim ({pattern})')
+        # 6f16ee11 (2026-11-19), merged with D3B-T2 by 3d0d7bd1: a second, independent anti-slop
+        # scan over the same page text. The register-driven D3B lint above reads house_style.banned;
+        # this one hard-codes the hype/trend register published at site/style-guide.html, so a
+        # register edit cannot silently weaken the corroboration. Both run; both must pass. It scans
+        # the same stripped view the D3B figure/claim check uses, so the style page's phrase cells
+        # and data-lint="quote" elements are exempt here too; a phrase inside quotation marks is a
+        # mention, not an assertion, and stays exempt (same use/mention rule as the archive lint).
         def _mentioned(t: str, i: int, j: int) -> bool:
             before, after = t[max(0, i - 1):i], t[j:j + 1]
             return before in ('"', "'", '\u201c', '\u201d') and after in ('"', "'", '\u201c', '\u201d')
@@ -271,10 +332,10 @@ def check() -> list[str]:
                 (re.compile(r'\b(?:trending|viral|flying off the shelves|hot item|in demand|best[- ]selling (?:machine|product|air fryer))\b|(?:\b#\s?\d+\s+(?:bestseller|best seller))\b', re.I),
                  'STYLE:unsupported-trend', 'a trend or demand claim needs a dated official surface, cited as a snapshot'),
             ):
-                for m in rx.finditer(text):
-                    if _mentioned(text, m.start(), m.end()):
+                for m in rx.finditer(stripped_text):
+                    if _mentioned(stripped_text, m.start(), m.end()):
                         continue
-                    snippet = text[max(0, m.start() - 70):m.end() + 70].strip()
+                    snippet = stripped_text[max(0, m.start() - 70):m.end() + 70].strip()
                     need(False, f'{rel}: {name} ({why}) -> {snippet!r}')
         for row in parsed.rows:
             row_count += 1

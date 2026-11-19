@@ -9785,3 +9785,30 @@ describe them, so the contradiction shipped.
 - **Lesson recorded:** a change that alters what the site does must also sweep what the site says about
   itself. The next session touching links should run `grep` for self-descriptions, not only the gates.
 
+
+---
+
+# Part 3d0d7bd1 — decision-loop close-out: house style with a lint gate, derived review date, DS-03 correction (2026-11-19)
+
+Branch note: Arena fixes this session to `arena/3d0d7bd1-zone3`, based on `0273fb4` (`main` at PR #198).
+The brief's `session-<id>/<task>` branch shape is recorded as task IDs on the fixed branch, as in earlier parts.
+
+## Session registry (Part 3d0d7bd1)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 3d0d7bd1 | `arena/3d0d7bd1-zone3` | Implement the open, unblocked decision-support proposals B38-P1, B38-P4, B38-P5 and close E41-P2's measured half; reader-facing house-style page + banned-phrase lint in the release gate; derived next-review date with an overdue gate; verified DS-03 FAQ deprecation amendment; records in `sessions/3d0d7bd1/`; PR to `main` | in progress | 2026-11-19 |
+
+## Task board (Part 3d0d7bd1)
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| D3B-T1 — Read the board, confirm no overlapping claim, register and push this claim before implementation | in progress | 3d0d7bd1 | this Part only | board through Part 4d7fe998; `git log origin/main` | none |
+| D3B-T2 — B38-P1: reader-facing house style page (`style.html`) rendered from a new register block, plus a banned-phrase lint step in the publication gate; discovery scan of all 20 current reader pages against the proposed ban list BEFORE adoption; recorded copy rewrites where the scan hit | pending | 3d0d7bd1 | `data/publication.json`, `tools/build_publication.py`, `tools/check_publication.py`, `tools/publication_chrome.py` (footer link), `sessions/3d0d7bd1/**`, `DESIGN_PROMPT.md` (batch section) | B38-P1 row; DESIGN_PROMPT §7 voice block; Google helpful-content guidance (`google-helpful`); scan of built tree 2026-11-19 | none |
+| D3B-T3 — B38-P4: derived next-review date (edition date + 14-day cadence, register-owned) with a deterministic overdue state and a gate that fails when the register moves past the due date without a new edition; outcome field on decided proposals rendered on the cards | pending | 3d0d7bd1 | `data/publication.json`, `tools/build_publication.py`, `tools/check_publication.py` | B38-P4 row; `meta.cadence` (14-day review) | none |
+| D3B-T4 — B38-P5: amend decision row DS-03 with the verified FAQ rich-result deprecation facts (deprecation effective 2026-05-07, notice published 2026-05-08, documentation removed June 2026), read fresh from developers.google.com/search/updates on 2026-11-19 | pending | 3d0d7bd1 | `data/publication.json` (review_b9008684 DS-03 row + renderer), `tools/build_publication.py` | `google-faq-update` re-read 2026-11-19 (May 8 2026 entry: "This feature will no longer appear in Google Search starting May 7, 2026"; June 2026 entry: documentation removed) | none — register claim confirmed verbatim |
+| D3B-T5 — E41-P2: read sessions/41e84402 measurement record, close the measured half (sticky column retained at 320/390/768 px), leave the floating-bar choice with E41-Q2 | pending | 3d0d7bd1 | `data/publication.json` (E41-P2 status/outcome) | `sessions/41e84402/measurement-2026-11-19.json` + verification record | none |
+| D3B-T6 — Run the canonical release chain twice (idempotent), verify gates, PR from this branch, merge, confirm Pages deploy, live read-back, closeout in this Part | pending | 3d0d7bd1 | `sessions/3d0d7bd1/**`, `COORDINATION.md` (this Part only) | `tools/publish.py` x2; PR; Pages API; cache-busted live fetch | none |
+
+Scope note: `data/publication.json` is edited only additively/decision-wise here (house_style block, DS-03 update field, proposal statuses/outcomes, one new indexable page `style.html`, `meta.review_cadence_days`). No product, source, flag, feed or measurement register row is rewritten. Shared files touched: `COORDINATION.md` (this Part only), `DESIGN_PROMPT.md` (§3 re-measure + one batch section), footer via `tools/publication_chrome.py` (one About-column link), which regenerates all pages through the single owned chain.
+>>>>>>> c126257 (D3B-T1: claim decision-loop close-out batch (B38-P1/P4/P5, E41-P2) on the shared board)
