@@ -9711,7 +9711,7 @@ price, rating, review count, traffic, demand, trend, conversion or revenue value
 | 4B0-T2 — Give every Amazon product-detail link the owner-supplied Associates ID, keeping intended/observed fields separate and keeping `rel="sponsored"` | done (`b44da8d`) | 4b0e3c7e | `data/links/associates-links.json`, `tools/attach_associates_tag.py`, `scripts/test_attach_associates_tag.py`, `tools/publish.py`, `tools/build_shop.py`, `tools/build_publication.py`, `tools/build_brief_status.py`, `tools/build_cba81fa5_site.py`, regenerated HTML | Program Policies **2(a)** and **2(b)**, page stamped "Updated: April 14, 2026", read live 2026-11-19 (verbatim quotes in `sessions/4b0e3c7e/verification-2026-11-19.md`) | Tag is owner-supplied; account assignment, enrolment and marketplace **unverified** (FLG-S05). Boundary decisions published as FLG-S12 (citations) and FLG-S13 (9-character tokens) |
 | 4B0-T3 — Stop the feed advertising pages the sitemap excludes | done (`b44da8d`) | 4b0e3c7e | `tools/build_feed.py`, `feed.xml` | `sitemap.xml` (the site's own indexable set); pages' own `noindex` and retired notices | 18 of 28 items pointed at `noindex,follow` archive pages; feed now 10 items, newest guide retained |
 | 4B0-T4 — Make the public CTAs match the site's own statement that the tag is "NOT embedded in any link" | done (`b44da8d`) | 4b0e3c7e | `tools/build_shop.py`, `data/shop/config.json`, `data/special-links.json` (status fields only), `data/shop/flags.json` (FLG-S05 edit and three new rows), regenerated `shop/**` | Program Policies 2(b), 6(v), 6(w); the build's own prose | Buy buttons now go to the tagged product page; the supplied short links stay as the observed record and are **not** called invalid (FLG-003, new FLG-S11) |
-| 4B0-T5 — Full release run twice, PR, merge, Pages read-back, record result | in progress | 4b0e3c7e | this branch; this Part | `tools/publish.py`, GitHub Actions, Pages API | — |
+| 4B0-T5 — Full release run twice, PR, merge, Pages read-back, record result | **done** | 4b0e3c7e | this branch; this Part | `tools/publish.py` 44/44 twice on the final tree; GitHub Actions run on `780171d` **passed**; Pages API; live fetch of `/shop/products/` | See the release record below |
 
 ### 4B0 measurement record (2026-11-19, this tree)
 
@@ -9747,3 +9747,18 @@ not have. The owner should treat this as a real open question, not a settled one
 short links). If the `0a48cfda` reading is the correct one for this account, reverting this Part is a
 single-file change: delete the two entries this session added to `tools/publish.py`, and the site
 returns to the supplied links with no other edit. That reversibility is deliberate.
+
+### 4B0 release record (2026-11-19)
+
+- **PR [#203](https://github.com/kanlerxz87-cyber/Zone3/pull/203)** — "Associates ID on every product-detail link, buy buttons direct, feed limited to indexable pages".
+- **Merged** at `2026-11-19T22:08:52Z` as **`ec7d98e77cb9c6957fb481232004a13fdce61395`**.
+- **Publication check passed** on the final head (`780171d`): run `44625642002`, job `135918605084`, 34 s. The workflow's `git diff --exit-code` step passed, which is the independent proof that a clean checkout rebuilds byte-identically.
+- **Pages:** `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest` → `status: built`, `commit: ec7d98e…`, no error.
+- **Live read-back** (cache-busted `?rev=ec7d98e`):
+  - `/shop/products/` — all five rows' source links are `amazon.com/dp/<ASIN>?tag=shopnow047c-20`; upstream's *Listed size* column (13.38"D x 11.81"W x 10.63"H etc.) and the "Not published" cells for the two thermometers are intact; blank performance cells unchanged.
+  - `/index.html` — buy buttons carry the tag; the card source note shows "Submitted link B04G1MEwY, used as the observed record only"; eleven guides in "Just added to this edition"; the disclosure strip renders above the fold.
+  - `/sitemap.xml` 19 URLs, `/feed.xml` 11 items, all indexable.
+- **Rebase history (6 rebases, no upstream work lost):** `0273fb4` → `30746b2` (guide #11) → `393ab9c` (dimensions + FLG-S33) → `20e2862` → `08faae5` (FLG-S33 amendment) → `9ce02c6` (anti-hype gate). Conflicts were append-only `COORDINATION.md` tails plus generated pages, resolved by keeping the full upstream file and re-appending this Part; three generated files were taken from upstream and rebuilt; `tools/build_publication.py` was merged by hand so both upstream's `dimension_note()`/copy edits and this session's CTA and source-note changes survived (checked: both are present in the merged file). A Python `os`-level marker scan confirmed no conflict marker line survived.
+- **Correction made during the rebase:** upstream replaced "must-have list" in the about page (anti-slop gate). This session's about-page sentence still said the tag's assignment was unverified without saying the tag was now used, so it was corrected to: the ID "is carried as a `tag=` parameter on every product-detail link, as Participation Requirements 2(b) asks. We have not verified its account assignment, enrolment or attribution."
+- **Disagreement left visible, not resolves:** see the table above on session `0a48cfda`'s opposite reading. Both readings are recorded; the owner decides. Reverting is two lines in `tools/publish.py`.
+
