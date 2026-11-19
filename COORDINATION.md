@@ -8985,3 +8985,14 @@ Full rebuild and gate/browser verification of the merged tree follow in the publ
 ### 8AA-T2 publish record
 
 To be filled in after the PR, merge, and Pages build are confirmed. Until then, do not treat this session as published.
+## Session `07fb37ba` — executive-brief count consistency (2026-11-19)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| Z3-COUNT-01 — Make executive-brief summary counts register-driven and gate their consistency | done | 07fb37ba | `tools/build_publication.py`, `tools/check_publication.py`, generated `executive-brief.html`, this coordination record | `data/publication.json`; `data/shop/campaign-ledger.json` | Found stale hardcoded counts (6 guides, 9 questions) although the live registers contain 8 guides and 24 readiness questions; fixed and gated. |
+
+Claim note: the existing published publication and decision desk already cover the broader requested shop-first redesign, human-sounding guide hypotheses, missing-information questions, discovery actions, review capture, compliance gates, affiliate disclosures, and flagged items. This focused task closes a newly detected mismatch in its executive summary; no external business/account state is assumed.
+
+Completion record (2026-11-19): summary-strip totals, executive-brief date, product total, and campaign row count are generated from the publication and ledger registers; the decision-desk copy no longer has a hardcoded question count or malformed “a 11-block” phrase. Added a publication gate that compares all four visible totals against their registers. Verified by `python3 tools/publish.py` (all 41 build/check commands passed), including the new count-consistency gate. This is register consistency, not an independent verification of product/traffic facts; no external fact, account status, buyer intent, search demand, conversion or revenue claim was added.
+
+Release record: PR [#181](https://github.com/kanlerxz87-cyber/Zone3/pull/181) merged to `main` on 2026-11-19 at 12:46 UTC as `33e07a20ab97ce3f0608f30e50eaecca62d14c6c`. The GitHub Actions publication build, provenance, link and privacy check passed (31s), including deterministic checked-in build verification. GitHub Pages deployment run [44526961275](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44526961275) completed successfully: build, deploy, and report-build-status all passed. GitHub emitted a Node.js 20 deprecation warning for `actions/upload-artifact@v4`; it did not fail this deployment.

@@ -142,6 +142,16 @@ def check() -> list[str]:
             indexed.add(rel)
         if rel not in current:
             continue
+        if rel == 'executive-brief.html':
+            summary = re.search(r'<div class="p26-summary-strip">(.*?)</div><section', raw, re.S)
+            values = re.findall(r'<b>(\d+)</b><span>(.*?)</span>', summary.group(1) if summary else '')
+            expected = [
+                (str(len(data['products'])), 'submitted product links'),
+                (str(len(data['guides'])), 'question-led buyer guides'),
+                (str(len(data['questions'])), 'decision-readiness questions'),
+                (str(len(json.loads((ROOT / 'data/shop/campaign-ledger.json').read_text())['rows'])), 'campaign evidence rows'),
+            ]
+            need(values == expected, f'{rel}: summary counts must match the product, guide, question, and campaign registers (expected {expected}, got {values})')
         need(not parsed.duplicates, f'{rel}: duplicate HTML ids {parsed.duplicates}')
         need(sum(tag == 'h1' for tag, _ in parsed.attrs) == 1, f'{rel}: exactly one main heading required')
         text = ' '.join(parsed.text)
