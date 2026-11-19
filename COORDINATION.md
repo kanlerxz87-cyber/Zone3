@@ -9150,3 +9150,24 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
 | Nothing implemented | Review-only round: choices stay local and implement nothing; no price, rating, availability, traffic, demand, trend, conversion or revenue claim; intended-ASIN fields blank; FLG-003 unresolved and untouched |
 
 **Session status: B38-T1…T6 done.** Reviewer inputs that would unblock the most: DS-01 (first guide from the slates), DS-02 (imagery route), B38-Q1 (budget — zero-budget is a valid answer), B38-Q2 (accountable publisher name/contact), and the standing owner gates (Search Console, durable host, enrolled-workflow Special Link test).
+
+# Part — session `222cfe13` (2026-11-19) — brief-alignment review and measurement provenance
+
+> Branch fixed by Arena: `arena/222cfe13-zone3`; base at claim: `6eb8c18e` (`main`).
+> This is an append-only claim. It does not take over or edit another session's scope.
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `222cfe13` | `arena/222cfe13-zone3` | Review the current site against the supplied brief; correct verified README counts; label the inactive analytics stack as historical; document current state, official-source records, checks and blockers. No changes to the canonical publication register, product data, generated pages, front-page navigation or affiliate destinations. | in progress (222-T1) | 2026-11-19 |
+
+## Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 222-T1 — Current-brief alignment and reproducible repo review | in progress | `222cfe13` | `README.md`, `data/analytics.json`, `assets/track.js`, `tools/analytics_collector.py`, `sessions/222cfe13/**`, this Part only | Existing dated records in `sessions/6b68afc8/verification-2026-11-19.md` and `sessions/b9008684/verification-2026-11-19.md`; official URLs listed there | No account-side Special Link test, Search Console token, or production analytics host. The old `0C4-F-08` row in `data/flags.json` needs a final-integrator status review; PR #160 includes that shared register in its scope, so this session will log a request and not edit it. |
+
+## Scope guard
+
+The current site and suggestions desk already implement the brief's reader-facing design and decision workflow. This pass is limited to documentation/provenance clarity and a fresh local gate run. It will not claim new traffic or product facts, change supplied links, enable measurement, or edit `data/flags.json`, `data/publication.json`, `index.html`, shared navigation, or generated HTML.
