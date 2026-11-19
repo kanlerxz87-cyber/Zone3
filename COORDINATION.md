@@ -8683,3 +8683,77 @@ Independent line-by-line re-verification of the five supplied product links (one
 - **Flagged irregularities remain published** (they do not block, by the brief's rule): B79-F-01 (fixed and gated), B79-F-02 (no Associates tag in the supplied URLs), B79-F-03 (prices need an Amazon-served link or API data), B79-F-04 (truncated token and cross-repo reference in the supplied input). Unchanged from earlier: FLG-002, FLG-003, FLG-035, P26-F02, P26-F04, C3-F-01.
 - **Account-dependent work remains unperformed and is not claimed:** Associates enrollment, Special Link generation, tracking-report checks, a durable analytics host, Search Console, authorized Associates reports. Production measurement stays **off**; the campaign ledger stays empty; no visitor, order, conversion or traffic figure is invented anywhere.
 - **Status:** `done` for T9. Task board row below.
+---
+
+## Part: session `b9008684` (2026-11-19) — suggestions review round: design-prompt feed, article slate, organic-traffic mechanics, decision-support register
+
+> Append-only, per board convention. Nothing above this Part was edited. Branch: `arena/b9008684-zone3`
+> (Arena pins a session to one branch; task IDs `B9-T…` replace per-task branch names, per the decision
+> logged by session 7f84fea4). Base after rebase: `0d391f2` (`main`, PR #174 merge).
+>
+> **Namespaces.** This session's suggestions are `D9-…`/`AS-…`/`OT-…`, decision rows `DS-…`, tasks `B9-T…`.
+> They are not the same items as `P26-S*`/`P26-Q*`, `SUG-2F-*`, `DS-01…19` (session 5b443d02) or `DP-P-01…05`
+> (session 73029680). The existing six `P26-S*` proposals and nine `P26-Q*` questions are left untouched.
+
+### B9 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `b9008684` | `arena/b9008684-zone3` | Suggestions review round dated 2026-11-19 (later): suggestions that feed the design prompt (polished marketing site, anti-"AI slop" polish), a catchy question-shaped article slate (working titles, no popularity claims), organic-traffic mechanics (now vs blocked), a decision-support register (have / don't have / discovery / default), a dated verification round, gates → PR → merge → Pages confirm | in progress (B9-T1) | 2026-11-19 |
+
+### B9 Coordination check before claiming
+
+- Read the board in full (through session cd746460's Part). `main` had moved `825f513` → `0d391f2`
+  (PR #173/#174, session cd746460 — a verification-only round) while this branch was being cut;
+  `git pull --rebase origin main` landed cleanly on `0d391f2` before this claim.
+- Open PRs #160 and #157 (sessions `0b2ffabd`, `ed27e766`, last updated 2026-11-17) are stale, touch
+  their own scope only, and are not taken over or edited.
+- No active session holds `tools/build_publication.py` or `data/publication.json`: P26 (1c072a7a) is
+  published/done, cd746460 is published/done and edited no builder.
+
+### B9 Task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| B9-T1 — Read board, rebase, register, claim, push claim first | done (this commit) | b9008684 | `COORDINATION.md` (this Part only) | — | — |
+| B9-T2 — Dated verification round 2026-11-19: re-read the load-bearing official pages (OA §5, Program Policies 2(b)/6(t)/6(w), FTC Disclosures 101, FoodSafety.gov safe-temperature chart, Google outbound-link/review/structured-data guidance, GitHub Pages limits) and the five supplied short links | planned | b9008684 | `sessions/b9008684/**` (fetch records only) | official pages | recorded when done |
+| B9-T3 — Additive review round on the canonical review surface: `review_b9008684` block appended to `data/publication.json` (design-prompt feed suggestions, article slate, traffic mechanics, decision-support rows; up to three new official sources, each fetched), rendered by an additive extension of `tools/build_publication.py` `suggestions()` only. Logged cross-scope change: acting final integrator for this round; the six P26 proposals and nine P26 questions are not modified | planned | b9008684 | `data/publication.json`, `tools/build_publication.py`, regenerated `suggestions/index.html` | official pages fetched in B9-T2 | none expected; any logged |
+| B9-T4 — Executive summary additive dated section; session records (verification record, repo-review note) | planned | b9008684 | `EXECUTIVE-SUMMARY.md`, `sessions/b9008684/**` | register counts | — |
+| B9-T5 — Gates ×2 idempotency, PR to `main`, merge without waiting, Pages deploy confirm, live checks, publish record here | planned | b9008684 | git/`gh`, this Part | gate outputs | — |
+
+### B9 Scope rules
+
+- Review-only: nothing published by this round implements a suggestion. Choices made on the page are
+  stored locally in the browser and never publish, spend, or change configuration (the page already
+  states this; the new round keeps the same select/save/export/no-implementation pattern).
+- No popularity, search-volume, demand, trend, conversion or revenue claim anywhere. Article-slate
+  titles are working titles — editorial hypotheses, each labelled as such on the page.
+- Every `<tbody>` row added to the page carries an official HTTPS source link (enforced by the
+  publication gate). New official sources are fetched by this session before their `checked_on` date
+  is recorded. No price, rating, review count or availability value is introduced.
+- No new standalone page set: the round extends the existing `suggestions/index.html` review surface
+  (one page, one h1, shared masthead/disclosure/footer already gate-enforced) instead of creating a
+  competing suggestions subsite.
+
+### B9 rebase record (2026-11-19, during B9-T5)
+
+While PR #177 was open, `main` advanced `0d391f2` → `f4e638b` (PR #175, session `b580d790` — buyer-journey
+polish: catalogue chooser, fit notes, social-image dimensions, meta re-verification fields, source `S95`
+in `data/publication.json`, four new flags, a reviewer-workflow note). `git pull --rebase origin main`
+conflicted in `COORDINATION.md` (both Parts appended at the tail — resolved by keeping both in full) and
+in `data/publication.json`, `tools/build_publication.py`, `suggestions/index.html`.
+
+**Mistake made and corrected, logged per protocol:** the first resolution used `git checkout --theirs`
+against the rebase, which took **this session's** side (in a rebase `--theirs` is the commit being
+replayed) and would have silently dropped session `b580d790`'s edits to those three files. Caught by
+diffing the rebased result against `f4e638b` before pushing. Correction: `main`'s versions of all three
+files were restored (`git checkout origin/main -- …`), then this session's additive delta was re-applied
+on top — `review_round_html()` + one call site + meta description in `tools/build_publication.py`, and
+`sessions/b9008684/apply_review.py` (idempotent) for the two sources and the review block in
+`data/publication.json`. Verified after the union: b580d790's `reverified*` meta fields, `S95` row and
+catalogue chooser are present, and this session's review block, two sources and review-round rendering
+are present alongside them.
+
+**Gates on the unioned tree:** `tools/publish.py` — **41 commands, 0 failed**; rebuild idempotent
+(`--check` current); publication gate 64 official-source table rows; suggestions page carries 20
+review selects (6 `P26-S*` + 14 `D9/AS`) — both sessions' features verified present.
