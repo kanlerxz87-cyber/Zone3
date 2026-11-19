@@ -9578,3 +9578,11 @@ carries upstream's eleventh guide alongside this pass's dimension fields and two
 **Flagged irregularities (published, non-blocking):** FLG-S33 (new — capacity fields that contradict
 their own titles); FLG-003 (unchanged, open); E41-Q1 and E41-P1 re-scoped rather than closed because
 no listing publishes an interior size, clearance, cord length or door swing.
+
+## Part 0A4 — post-merge amendment (2026-11-19, PR #205)
+
+`E41-B02` still read "no product register holds a footprint or interior dimension for any of the five
+listings", which stopped being true once PR #202 merged. Following the board's amend-don't-rewrite
+convention, that row now carries a dated amendment: exterior sizes exist for three of five, the
+analysis is still unwritten, and the blocker has changed from missing dimensions to an unresolved
+capacity figure (`FLG-S33`) plus absent interior measurements. The earlier text is retained.
