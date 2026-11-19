@@ -8835,3 +8835,19 @@ review selects (6 `P26-S*` + 14 `D9/AS`) — both sessions' features verified pr
 | Nothing implemented | The round is review-only: choices save locally and implement nothing; no price, rating, popularity, demand, conversion or revenue claim was published; intended-ASIN fields stay blank; FLG-003 is neither claimed nor implied either way |
 
 **Session status: B9-T1…T5 done.** Next reviewer inputs that would unblock the most: DS-05 (approve the seasonal strip copy), DS-01 (pick the first slate guide — DS-01's default starts with the thermometer temperature guide), DS-02 (imagery route), and the standing owner gates (Search Console, durable host, enrolled-workflow Special Link test).
+## Part E61 — session `e61f5735` (2026-11-19) — batch-2 suggestion register, decision-capture and readiness questions
+
+**Session ID:** `e61f5735` · **Branch:** `arena/e61f5735-zone3` (fixed Arena branch; all work stays on this branch) · **Base:** `825f5132` (PR #172 merge; the publication state of PR #171 is live on Pages and was fetched live at claim time).
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| E61-T1 — Claim, baseline review (checks + live site fetch) | done | e61f5735 | this Part only | `tools/publish.py --check` 25/25 PASS at base; live fetch of `https://kanlerxz87-cyber.github.io/Zone3/` returned the current front page | none |
+| E61-T2 — Batch-2 proposals and decision-readiness questions in the publication register | in progress | e61f5735 | `data/publication.json` (additive: new `E61-P*` proposals, new `E61-Q*` questions) | existing scoped official references only | none |
+| E61-T3 — Suggestions page: dynamic counts, per-question answer capture (local-only), decision worksheet, extended design prompt | in progress | e61f5735 | `tools/build_publication.py`, `assets/publication.js` | same | none |
+| E61-T4 — Copy consistency where counts/capture are described | in progress | e61f5735 | `tools/build_publication.py` (about/privacy/executive-brief bodies), `README.md` counts | same | none |
+| E61-T5 — Full canonical rebuild, idempotency, all release gates | unclaimed | e61f5735 | generated outputs via `tools/publish.py` only | gates listed in `tools/publish.py` | none |
+| E61-T6 — COORDINATION.md publish record, PR to `main`, merge without waiting for review, Pages deploy verification | unclaimed | e61f5735 | this Part only | GitHub PR/Pages APIs | none |
+
+**Scope rules for this Part:** additive register entries only — no existing proposal, question, source, flag, product or intent row is rewritten. New proposal IDs use the `E61-P*` prefix and new question IDs use `E61-Q*`, namespaced by session like every earlier register. The suggestions page stays review-mode only: saving or exporting a review (now including per-question answers) never publishes, spends, activates tracking or changes an account. No price, rating, test, order, revenue, visitor or demand claim is introduced.
+
+**Claim pushed:** 2026-11-19.
