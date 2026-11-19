@@ -1111,3 +1111,38 @@ checked without a logged-in Associates console (CBB-F-02/CBB-Q-01); no Creators 
 prices and ratings stay blank; the campaign ledger is empty by design; the analytics endpoint and
 reader-capture form need owner infrastructure decisions (SG-29, SG-30, DEC-03); and the two-category
 scope question (CBB-Q-03) decides what the next content batch is about.
+
+---
+
+## 15. Suggestions review round: design-prompt feed, article slate, traffic mechanics, decision support — session `b9008684` (2026-11-19)
+
+**What this pass was asked to do.** Publish suggestions that feed the design prompt for a polished,
+non-generated marketing site; a catchy, question-shaped article slate; organic-traffic mechanics;
+a review section where the best path can be chosen before anything is implemented; and a clear
+have / don't-have / discovery / default register for every decision that still needs information.
+
+**Shipped (all on the canonical review surface, [`suggestions/index.html`](suggestions/index.html)).**
+
+| Deliverable | What it is | Where |
+|---|---|---|
+| Review round — 19 Nov 2026 (session `b9008684`) | A dated section on the suggestions page, below the nine standing evidence questions, using the same select/save/export review-only pattern | `data/publication.json` (`review_b9008684`), rendered by an additive extension of `tools/build_publication.py` `suggestions()` |
+| Design-prompt feed (D9-01…D9-07) | Seven suggestions, each carrying the exact sentence it would add to the design prompt and a "what would change our mind" falsifier: seasonal strip, one-guide-at-a-time slate approval, sourced-only FAQPage schema, mobile pass port, imagery-route decision (blocked, S-18), decision-shaped hub grouping, review-mode falsifier rule | `suggestions/index.html#review-round-b9` |
+| Article slate (AS-01…AS-07) | Seven working titles, question-shaped, each with provenance (FoodSafety.gov chart, listing wording, shipped guides) and pairs-with links into the existing six guides; every card states that a working title is not a popularity, search-volume or demand claim | same section |
+| Organic-traffic actions (5 rows) | Automated now (findability checklist), blocked on owner accounts (Search Console; durable host — GitHub Pages' limits bar business use), the paid-search standing rule (ads must land on this site, never directly/indirectly on Amazon; none run), and the 14-day review cadence | same section, table with official basis per row |
+| Decision-support register (DS-01…DS-08) | For each pending decision: what is already in hand, what is missing, how to discover it, and the safe default if it never arrives — the "questions, information and answers" list, companion to the nine standing questions | same section, table with official basis per row |
+| Two new official sources | Google structured-data intro and page-experience guidance, both fetched live 2026-11-19 and added to the scoped publication register | `data/publication.json` sources (12 total there; the shared `data/sources.json` register is untouched at 87) |
+| Dated verification round | The five supplied links re-fetched (identical destinations, titles, breadcrumbs — corroborating session `cd746460`'s same-day record); OA §4/§5/§6, Policies 2(b)/6(f)/6(s)/6(t)/6(v)/6(w)/6(y), FTC Disclosures 101, FoodSafety.gov chart, Google outbound-link/review/structured-data/page-experience guidance and GitHub Pages limits re-read | `sessions/b9008684/verification-2026-11-19.md` |
+
+**Verified, not inferred.** No popularity, search-volume, trend, conversion or revenue claim is
+published. Prices/ratings seen on fetched pages were deliberately not recorded (2(b)/6(t)). No flag
+was added (register stays at 154): no drift and no new irregularity was found. Intended-ASIN fields
+stay blank; observed redirect targets stay separate. Review choices made on the page remain local
+browser notes and implement nothing.
+
+**Gates at push.** `tools/publish.py`: 41 commands, 0 failed — publication gate now counts 64
+official-source table rows (was 51; +13 review-round rows, each officially linked), 118 current HTML
+pages, 14 indexable URLs, 24 feed entries. Rebuild is idempotent.
+
+**Still blocked, unchanged.** Owner-side evidence gates (intended ASINs, enrolled-workflow Special
+Link test, durable analytics host, Search Console, reader capture) remain open and are now laid out
+decision-by-decision in the DS-01…DS-08 register rather than scattered across pages.

@@ -8734,3 +8734,26 @@ Independent line-by-line re-verification of the five supplied product links (one
 - No new standalone page set: the round extends the existing `suggestions/index.html` review surface
   (one page, one h1, shared masthead/disclosure/footer already gate-enforced) instead of creating a
   competing suggestions subsite.
+
+### B9 rebase record (2026-11-19, during B9-T5)
+
+While PR #177 was open, `main` advanced `0d391f2` → `f4e638b` (PR #175, session `b580d790` — buyer-journey
+polish: catalogue chooser, fit notes, social-image dimensions, meta re-verification fields, source `S95`
+in `data/publication.json`, four new flags, a reviewer-workflow note). `git pull --rebase origin main`
+conflicted in `COORDINATION.md` (both Parts appended at the tail — resolved by keeping both in full) and
+in `data/publication.json`, `tools/build_publication.py`, `suggestions/index.html`.
+
+**Mistake made and corrected, logged per protocol:** the first resolution used `git checkout --theirs`
+against the rebase, which took **this session's** side (in a rebase `--theirs` is the commit being
+replayed) and would have silently dropped session `b580d790`'s edits to those three files. Caught by
+diffing the rebased result against `f4e638b` before pushing. Correction: `main`'s versions of all three
+files were restored (`git checkout origin/main -- …`), then this session's additive delta was re-applied
+on top — `review_round_html()` + one call site + meta description in `tools/build_publication.py`, and
+`sessions/b9008684/apply_review.py` (idempotent) for the two sources and the review block in
+`data/publication.json`. Verified after the union: b580d790's `reverified*` meta fields, `S95` row and
+catalogue chooser are present, and this session's review block, two sources and review-round rendering
+are present alongside them.
+
+**Gates on the unioned tree:** `tools/publish.py` — **41 commands, 0 failed**; rebuild idempotent
+(`--check` current); publication gate 64 official-source table rows; suggestions page carries 20
+review selects (6 `P26-S*` + 14 `D9/AS`) — both sessions' features verified present.
