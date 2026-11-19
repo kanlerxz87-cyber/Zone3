@@ -1,12 +1,13 @@
 # Zone3 Kitchen
 
-A buyer-first kitchen publication: five source-linked product introductions, six practical
+A buyer-first kitchen publication: five source-linked product introductions, eight practical
 question-led guides, and a separate review/research workspace. Plain HTML, CSS and JavaScript;
 no third-party front-end dependency, scraped product imagery or invented reviewer.
 
 **Site:** https://kanlerxz87-cyber.github.io/Zone3/ · **Current executive brief:**
 [`executive-brief.html`](executive-brief.html) · **Review proposals:**
-[`suggestions/index.html`](suggestions/index.html) · **Release record:**
+[`suggestions/index.html`](suggestions/index.html) · **This session's repo review:**
+[`sessions/222cfe13/repo-review-2026-11-19.md`](sessions/222cfe13/repo-review-2026-11-19.md) · **Release record:**
 [`COORDINATION.md`](COORDINATION.md#session-1c072a7a--publication-consolidation-and-buyer-first-experience-2026-11-19)
 
 ## Build, check and preview
@@ -41,7 +42,8 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
   decision-readiness questions, each with an answer-capture field on the suggestions page. Intended ASINs/URLs/dates/sources remain
   distinct from observed destinations. Prices, ratings, review totals and tested performance remain
   empty. Reader-facing counts and check dates are derived from this file by the renderer, so a
-  refresh of the register cannot leave a page asserting a stale number or date (`P27-F02`, `P27-F04`).- **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
+  refresh of the register cannot leave a page asserting a stale number or date (`P27-F02`, `P27-F04`).
+- **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
   retained publication entry point in the canonical chain. Do not hand-edit its output.
 - **One shared shell:** [`tools/publication_chrome.py`](tools/publication_chrome.py) and
   [`sessions/aebf0747/publish_pass.py`](sessions/aebf0747/publish_pass.py). The disclosure is under

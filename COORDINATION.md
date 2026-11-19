@@ -9171,3 +9171,23 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
 ## Scope guard
 
 The current site and suggestions desk already implement the brief's reader-facing design and decision workflow. This pass is limited to documentation/provenance clarity and a fresh local gate run. It will not claim new traffic or product facts, change supplied links, enable measurement, or edit `data/flags.json`, `data/publication.json`, `index.html`, shared navigation, or generated HTML.
+
+### 222-T1 completion record — 2026-11-19
+
+**Status: done.** This session verified that the reader-facing publication, suggestion/decision desk, disclosure shell, product-intent record, guide feed/sitemap, measurement status page and flagged register already exist on current `main`; it did not duplicate those surfaces or edit the shared publication/index registers.
+
+| Work | Result |
+|---|---|
+| README consistency | Corrected the front-page guide count from 6 to the register's 8, the decision-desk brief count from 10 to 11 blocks, fixed the adjacent list formatting, and linked the session review. |
+| Analytics provenance | Marked `data/analytics.json`, `assets/track.js` and `tools/analytics_collector.py` as superseded/legacy only. Kept the old schema and test behavior; the active `data/shop/measurement.json` → `assets/measure.js` → `tools/analytics_endpoint.py` stack remains selected and production-disabled. No event or conversion is claimed. |
+| Review deliverable | `sessions/222cfe13/repo-review-2026-11-19.md` maps the brief to current pages, links dated official-source records, states the current product/traffic/analytics limits, gives the next decision path, and lists inherited provenance advisories. |
+| Baseline/rebase | Claim commit was rebased from `6eb8c18` onto `2a854c1` after `main` advanced through PRs #181/#184. Resolved one append/append conflict in `COORDINATION.md` by keeping the upstream `07fb37ba` completion record first and appending this session's claim; no upstream or claim text was discarded. No active conflict markers remain. |
+| Verification | `python3 tools/publish.py`: **41 commands, 0 failures**; JSON parse, `node --check assets/track.js`, `python3 -m py_compile tools/analytics_collector.py`, `scripts/check_all_links.py`: **207 HTML files / 292 external URLs / 0 errors**; `tools/verify_site.py`: **161 pages / 2,606 rows**, with **218 uncited historical rows** still reported; `git diff --check` clean. The strict provenance report still emits **570 inherited, non-blocking advisories**. |
+| External verification scope | No official external page was freshly fetched in this pass. Product and policy statements point to the same-day dated records `sessions/6b68afc8/verification-2026-11-19.md` and `sessions/b9008684/verification-2026-11-19.md`; this pass did not upgrade their evidence or claim a new fact-check. |
+| Not completed / not possible from repository access | Associates enrollment and Special Link test/report, Search Console ownership token, owner-controlled production analytics host, product-image permissions, and named human review remain open. `FLG-003` is unresolved; the supplied short links are not called invalid. |
+
+### 222-T1 change request — shared flag register not edited
+
+`CH-222-T1-01` asks the next final integrator to reconcile `data/flags.json` flag `0C4-F-08`: its text says two stacks await an owner choice, while the current measurement configuration and templates select/inject one canonical runtime and retain `track.js` only as historical code. The old endpoint is still unhosted (`0C4-F-05` remains valid). This session did not edit `data/flags.json` because open PR #160 includes that shared file in its scope; the request is recorded here rather than resolved by editing another session's register.
+
+**Publish record:** pending the current-branch PR and post-merge Pages/check confirmation.

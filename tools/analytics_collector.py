@@ -1,36 +1,21 @@
 #!/usr/bin/env python3
-"""Reference self-hosted analytics endpoint for the Zone3 measurement layer.
+"""Legacy self-hosted analytics collector — retained for historical self-tests only.
 
-Contract of record: data/analytics.json (0C4-T4, session 0c4c4cb6, 2026-11-17).
-Implements exactly that contract, standard library only:
+Historical contract: data/analytics.json (0C4-T4, session 0c4c4cb6, 2026-11-17).
+This implements the older five-event /e contract for provenance and the legacy test suite;
+it is not the current collector and must not be enabled with the active browser runtime.
+Current source of truth: data/shop/measurement.json; active browser client:
+assets/measure.js; active reference endpoint: tools/analytics_endpoint.py. The current
+production configuration remains OFF and has no deployed endpoint.
 
-  POST /e           one JSON event -> validate -> append to the JSONL ledger -> 204
-                    (400 on a schema violation, 429 never — this reference is
-                     single-process; a production deploy adds rate limiting)
-  GET  /stats       aggregate counts by event and by path -> 201-style JSON only,
-                    no identifiers, no timestamps of individual requests
-  GET  /            tiny human-readable summary
+Historical routes:
+  POST /e           validate and append an old-schema event
+  GET  /stats       legacy aggregate readout
+  GET  /            legacy summary
 
-Privacy rules enforced here, not just promised in data/analytics.json:
-  * no cookies are set, none are read;
-  * only the five defined event ids are accepted;
-  * payload fields are limited to e, p, r, t — anything else is rejected;
-  * the path must start with '/' and carries no query (the client strips it;
-    this server re-strips defensively);
-  * the referrer is kept as a host name only (no scheme, no path);
-  * raw ledger lines are aggregates-in-waiting: prune anything older than
-    --retention-hours (default 24) with --prune, so raw data does not outlive
-    its usefulness.
-
-Usage (run anywhere Python 3 runs; GitHub Pages cannot host it):
-
-    python3 tools/analytics_collector.py --port 8081 --ledger /var/lib/zone3/events.jsonl
-
-Then set the endpoint on the pages:
-
-    window.ZONE3_ANALYTICS_ENDPOINT = "https://your-host/e";
-
-Until that is done the shipped pages send nothing (0C4-F-05).
+This file remains useful for compatibility tests. Do not follow the old deployment
+example or set window.ZONE3_ANALYTICS_ENDPOINT on current pages; doing so beside the
+canonical Z3_MEASURE runtime risks duplicate or incompatible counting.
 """
 from __future__ import annotations
 

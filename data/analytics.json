@@ -1,7 +1,17 @@
 {
  "retrieved": "2026-11-17",
  "retrieved_by": "Session 0c4c4cb6 (branch arena/0c4c4cb6-zone3), task 0C4-T4.",
- "note": "Measurement layer for the 2026-11-17 brief: a privacy-preserving outbound-click counter, a self-hosted analytics endpoint contract, and the five defined events. This file is the schema of record; assets/track.js implements it in the browser; tools/analytics_collector.py is the reference self-hosted endpoint. Nothing here reports a measured number: the endpoint is not deployed yet (0C4-F-05), so no event has been recorded and no page displays any count.",
+ "note": "Historical measurement design from the 2026-11-17 brief. This schema and its client/collector are preserved for provenance and legacy self-tests only; they are not the current runtime and must not be enabled alongside the single active stack. Current source of truth: data/shop/measurement.json; active browser runtime: assets/measure.js; active reference collector: tools/analytics_endpoint.py. Production collection remains OFF and is not deployed, so no production event or conversion count exists.",
+ "lifecycle": {
+  "status": "superseded; legacy only, not injected",
+  "superseded_on": "2026-11-19",
+  "superseded_by": "data/shop/measurement.json",
+  "current_runtime": "assets/measure.js",
+  "current_collector": "tools/analytics_endpoint.py",
+  "legacy_runtime": "assets/track.js",
+  "legacy_collector": "tools/analytics_collector.py",
+  "reason": "The repository selects one canonical five-event runtime. This older page_view/guide_view/product_click/special_link_click/nav_click schema remains only for historical provenance and legacy tests."
+ },
  "privacy": {
   "principles": [
    "No cookies, no localStorage profiles, no fingerprinting, no cross-site identifiers.",
@@ -52,8 +62,8 @@
  ],
  "endpoint": {
   "contract": "POST a single JSON object to the configured endpoint path, Content-Type: application/json, body exactly the event fields above. Respond 204 on accept, 400 on a schema violation, 429 when rate-limited. The endpoint sets no cookies, sends no credentials, and must not require an account.",
-  "reference_implementation": "tools/analytics_collector.py (standard library only): validates against this file's event ids and field rules, appends to a JSONL ledger outside the web root, serves GET /stats as aggregate counts only.",
-  "client_config": "assets/track.js reads window.ZONE3_ANALYTICS_ENDPOINT. While that is null the client sends nothing and no error is raised — the site works exactly as it does today, minus measurement.",
+  "reference_implementation": "Legacy only: tools/analytics_collector.py (standard library) implements this historical contract for its self-test. The current runtime contract is in data/shop/measurement.json and tools/analytics_endpoint.py.",
+  "client_config": "Legacy only: assets/track.js reads window.ZONE3_ANALYTICS_ENDPOINT and is not injected by current page templates. Do not configure it alongside the canonical Z3_MEASURE runtime.",
   "deployment_state": "not deployed",
   "deployment_state_note": "GitHub Pages is static and cannot host the endpoint. The reference collector must run on any host the owner controls (a small VM, a container, a serverless function that speaks the same contract). Until it is deployed and the endpoint URL is set on the pages, zero events are recorded — deliberately, rather than counting into the void (0C4-F-05).",
   "conversion_join": "Amazon Associates reporting is aggregated by tag and date; it does not expose per-click identifiers. Conversions therefore join to this ledger only at tag x date x channel granularity, through the campaign ledger on campaigns.html. This layer never claims a per-visitor conversion attribution."
