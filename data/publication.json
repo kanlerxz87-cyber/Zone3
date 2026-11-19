@@ -12,7 +12,12 @@
       "path": "assets/img/publication-kitchen.jpg",
       "kind": "AI-generated editorial lifestyle illustration",
       "scope": "Generic food and kitchen scene; no advertised product, test meal or testing evidence is depicted."
-    }
+    },
+    "reverified": "2026-11-19",
+    "reverified_by": "session b580d790 (arena/b580d790-zone3)",
+    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. No price, rating, review count or performance claim is made anywhere on the site.",
+    "reverification_evidence": "S95",
+    "reporting_month_note": "Publication months are editorial labels. The current edition date is 19 November 2026."
   },
   "sources": [
     {
@@ -84,6 +89,14 @@
       "url": "https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures",
       "checked_on": "2026-11-19",
       "scope": "Full page read: use a food thermometer to check a safe internal temperature; some foods require rest time. No product endorsement is inferred."
+    },
+    {
+      "id": "S95",
+      "title": "Associates Program Operating Agreement §5 (required disclosure) and Program Policies, Participation Requirements 2(a) (Special Links) and 3(e) (visitor disclosure)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates (official)",
+      "checked_on": "2026-11-19",
+      "scope": "Section 5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated; Program Policies Participation Requirements 2(a) requires Special Links to use the assigned Associates ID, and 3(e) requires accurate, adequate visitor disclosure. Read to support the 19 November 2026 re-verification record below; no account status, tracking report or attribution claim is made from it."
     }
   ],
   "products": [
@@ -444,7 +457,7 @@
     },
     {
       "slug": "multi-function-questions",
-      "title": "Questions to ask before buying a multi-function kitchen appliance",
+      "title": "Questions before buying a multi-function kitchen appliance",
       "short_title": "More presets. But more useful to you?",
       "dek": "Before you count the functions, make a list of the ones you would actually use.",
       "category": "Buying smarter",
@@ -645,7 +658,8 @@
       "default": "Keep all intended fields blank; do not copy redirects into them.",
       "discovery": "Obtain a dated authorized product-intent confirmation and check the official listing.",
       "blocks": "Product/link identity approval",
-      "source": "amazon-agreement"
+      "source": "amazon-agreement",
+      "owner_input_needed": true
     },
     {
       "id": "P26-Q2",
@@ -655,7 +669,8 @@
       "default": "Keep FLG-003 unresolved. Do not describe the supplied short links as invalid or attribution as verified.",
       "discovery": "Use an authorized Associates workflow; inspect destination and tracking report without self-purchases or generated traffic.",
       "blocks": "Validated Special Link rollout",
-      "source": "amazon-policies"
+      "source": "amazon-policies",
+      "owner_input_needed": true
     },
     {
       "id": "P26-Q3",
@@ -665,7 +680,8 @@
       "default": "Production collection stays off; preview tests are not campaign data.",
       "discovery": "Deploy the collector on an authorized host; disable proxy request logs, then verify accepted events and privacy controls.",
       "blocks": "Measured traffic decisions",
-      "source": "github-pages"
+      "source": "github-pages",
+      "owner_input_needed": false
     },
     {
       "id": "P26-Q4",
@@ -675,7 +691,8 @@
       "default": "No claim of trending topics, search volume, rankings or organic growth.",
       "discovery": "Verify the property, submit the sitemap, then record dated first-party query/page reports.",
       "blocks": "Demand-based topic selection",
-      "source": "search-console"
+      "source": "search-console",
+      "owner_input_needed": false
     },
     {
       "id": "P26-Q5",
@@ -685,7 +702,8 @@
       "default": "Leave performance and revenue blank. No conversion scores or forecasts.",
       "discovery": "Import only authorized first-party reports; preserve the source and reporting period; do not create visitor profiles.",
       "blocks": "Campaign optimization",
-      "source": "amazon-policies"
+      "source": "amazon-policies",
+      "owner_input_needed": false
     },
     {
       "id": "P26-Q6",
@@ -695,7 +713,8 @@
       "default": "No scraped prices or reviews; no invented product photographs or test results.",
       "discovery": "Confirm authorized Creators/PA API access and current license conditions before building a refresh job.",
       "blocks": "Richer product cards",
-      "source": "amazon-policies"
+      "source": "amazon-policies",
+      "owner_input_needed": true
     },
     {
       "id": "P26-Q7",
@@ -705,7 +724,8 @@
       "default": "Do not invent people, testing, certification checks or best-in-class verdicts.",
       "discovery": "Commission or perform documented testing and record the methodology before adding rankings.",
       "blocks": "Evidence-led reviews",
-      "source": "google-reviews"
+      "source": "google-reviews",
+      "owner_input_needed": true
     },
     {
       "id": "P26-Q8",
@@ -715,7 +735,8 @@
       "default": "Flag hosting suitability; do not interpret a successful deploy as policy approval.",
       "discovery": "Review the actual use against GitHub Pages limits; use suitable commercial hosting before scaling a business.",
       "blocks": "Commercial expansion",
-      "source": "github-limits"
+      "source": "github-limits",
+      "owner_input_needed": false
     },
     {
       "id": "P26-Q9",
@@ -725,7 +746,8 @@
       "default": "Offer RSS, not a nonfunctional email signup or made-up subscriber counts.",
       "discovery": "Evaluate a provider and applicable consent rules before adding email collection.",
       "blocks": "Email reader capture",
-      "source": "ftc"
+      "source": "ftc",
+      "owner_input_needed": true
     }
   ],
   "proposals": [
@@ -742,7 +764,15 @@
         "P26-Q5"
       ],
       "source": "search-console",
-      "status": "Needs authorization"
+      "status": "Needs authorization",
+      "next_action": "Ask the account owner to deploy the tested collector on an HTTPS host and name the Search Console property, then record both dates here.",
+      "discoveries": [
+        "Whether an HTTPS host is already available and who controls it.",
+        "Who has Search Console access for the site URL prefix.",
+        "What retention the hosting provider's own request logs use."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
     },
     {
       "id": "P26-S2",
@@ -756,7 +786,15 @@
         "P26-Q2"
       ],
       "source": "amazon-policies",
-      "status": "Needs evidence"
+      "status": "Needs evidence",
+      "next_action": "In the enrolled Associates account, generate one Special Link per product and compare its destination and tracking-report entry with the register.",
+      "discoveries": [
+        "Whether the account is enrolled and in good standing.",
+        "Whether each supplied link already carries the selected tracking ID.",
+        "What a tracking report shows after one consented, self-targeted test."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
     },
     {
       "id": "P26-S3",
@@ -770,7 +808,14 @@
         "P26-Q7"
       ],
       "source": "google-reviews",
-      "status": "Proposed cadence"
+      "status": "Proposed cadence",
+      "next_action": "Keep the six live guides as the cluster, review one every 14 days, and add a new question only when a dated report or an owner decision supplies it.",
+      "discoveries": [
+        "Which of the six guides the owner wants expanded first.",
+        "Whether any guide's topic is out of scope for the owner's business."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
     },
     {
       "id": "P26-S4",
@@ -784,7 +829,15 @@
         "P26-Q7"
       ],
       "source": "google-reviews",
-      "status": "Needs evidence"
+      "status": "Needs evidence",
+      "next_action": "Decide whether any hands-on testing will ever be commissioned; if not, record that limitation and stop promising review-style verdicts.",
+      "discoveries": [
+        "Whether a test budget or a tester exists.",
+        "What protocol, if any, the owner would accept as evidence.",
+        "Whether any manufacturer would supply a review unit."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
     },
     {
       "id": "P26-S5",
@@ -800,7 +853,14 @@
         "P26-Q7"
       ],
       "source": "amazon-agreement",
-      "status": "Gated"
+      "status": "Gated",
+      "next_action": "Automate only regeneration and the existing gates; keep publishing, account and API changes manual until the evidence gates in P26-Q1 to P26-Q7 close.",
+      "discoveries": [
+        "Which steps the owner wants automated first.",
+        "Whether API access will be requested and under which program."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
     },
     {
       "id": "P26-S6",
@@ -813,7 +873,14 @@
         "P26-Q9"
       ],
       "source": "ftc",
-      "status": "RSS shipped"
+      "status": "RSS shipped",
+      "next_action": "Keep the RSS feed as the only follow channel until a consent flow, provider and retention decision exist.",
+      "discoveries": [
+        "Whether the owner wants an email list at all.",
+        "Which provider and consent wording would be acceptable."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
     }
   ],
   "indexable_pages": [

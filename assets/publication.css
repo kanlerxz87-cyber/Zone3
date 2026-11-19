@@ -228,3 +228,17 @@ footer.p26-footer.z3-foot{background:#263e31!important;color:#e5e9de!important;p
 @media print{.p26-header,.p26-footer,.p26-search-dialog,.p26-article-aside,.p26-follow,.p26-menu-toggle,.p26-search-trigger{display:none!important}.p26-body{background:white!important;color:#111!important}.p26-container{width:100%}.p26-article-layout{display:block}.p26-table-scroll{overflow:visible}.p26-table{min-width:0}.p26-article-heading h1{font-size:36px}.p26-article a{color:#111!important;text-decoration:underline!important}.p26-section{padding:25px 0}.p26-product-card{break-inside:avoid}.p26-page-intro{padding-top:0}}
 
 .p26-reference{font:11px/1.8 var(--p26-sans);padding:14px 18px;margin:18px 0;background:#edf0e5;border:1px solid #d9e0cf;color:#53634a}.p26-reference a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* b580d790 (2026-11-19): suggestion workflow states and the review-only explainer.
+   Additive only — no existing selector is redefined. */
+.p26-status-owner{background:#f6e7d8!important;color:#8a4b1d!important}
+.p26-proposal-extra{margin:10px 0 6px;border-top:1px solid var(--p26-line);padding-top:10px}
+.p26-proposal-extra>summary{cursor:pointer;font:11px/1.5 var(--p26-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--p26-muted)}
+.p26-proposal-extra>ul{margin:8px 0 0;padding-left:18px}
+.p26-proposal-extra>ul>li{font-size:12px;line-height:1.6;color:var(--p26-body);margin-bottom:4px}
+.p26-howto{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--p26-line);margin:26px 0 0}
+.p26-howto>div{padding:20px 22px;border-right:1px solid var(--p26-line)}
+.p26-howto>div:last-child{border-right:0}
+.p26-howto b{display:block;font:11px/1.4 var(--p26-sans);letter-spacing:.1em;color:var(--p26-orange);margin-bottom:7px}
+.p26-howto p{font-size:12px;line-height:1.65;margin:0}
+@media(max-width:760px){.p26-howto{grid-template-columns:1fr}.p26-howto>div{border-right:0;border-bottom:1px solid var(--p26-line)}.p26-howto>div:last-child{border-bottom:0}}

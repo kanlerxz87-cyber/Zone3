@@ -97,6 +97,19 @@ def check() -> list[str]:
             need(all(s in source_ids for s in section.get('source_ids', [])), f'{guide["slug"]}: unknown section source')
         need(all(slug in {g['slug'] for g in data['guides']} for slug in guide['related']), f'{guide["slug"]}: unknown related guide')
 
+    # b580d790 (2026-11-19): a reviewer must be able to act on every proposal and every
+    # open question without guessing. Each needs a concrete next action, the facts that
+    # action would settle, and an explicit statement of who can unblock it.
+    for proposal in data['proposals']:
+        need(bool(proposal.get('next_action')), f'{proposal["id"]}: no concrete next action for the reviewer')
+        need(len(proposal.get('discoveries', [])) >= 2, f'{proposal["id"]}: needs the missing facts the action would reveal')
+        need(isinstance(proposal.get('owner_input_needed'), bool), f'{proposal["id"]}: who-must-act flag missing')
+    for question in data['questions']:
+        for key in ('known', 'missing', 'discovery', 'default'):
+            need(bool(question.get(key)), f'{question["id"]}: incomplete decision-readiness field {key}')
+        need(isinstance(question.get('owner_input_needed'), bool), f'{question["id"]}: who-can-unblock flag missing')
+    need(bool(data['meta'].get('reverified')), 'publication must state the date its sources were last re-checked')
+
     current = {rel for rel in build_publication.outputs() if rel.endswith('.html') and rel != 'publication-prior.html'}
     pages = [p for p in ROOT.rglob('*.html') if not any(part in SKIP for part in p.relative_to(ROOT).parts)]
     indexable = set(data['indexable_pages'])
@@ -156,6 +169,22 @@ def check() -> list[str]:
             need(article.get('dateModified') == data['meta']['updated'], f'{rel}: date/schema drift')
 
     need(indexed == indexable, f'Index policy drift: extra={indexed-indexable}, missing={indexable-indexed}')
+    # b580d790 (2026-11-19): search engines must be able to tell these pages apart.
+    # Two indexable pages sharing a title or a description was a real defect (B79-F-01).
+    seen_titles: dict[str, str] = {}
+    seen_descs: dict[str, str] = {}
+    for rel in sorted(indexable):
+        raw = (ROOT / rel).read_text(encoding='utf-8')
+        title_match = re.search(r'<title>(.*?)</title>', raw, re.S)
+        desc_match = re.search(r'<meta name="description" content="([^"]*)"', raw)
+        title = (title_match.group(1).strip() if title_match else '')
+        desc = (desc_match.group(1).strip() if desc_match else '')
+        need(bool(title) and 20 <= len(title) <= 85, f'{rel}: unique, reasonably sized title required')
+        need(bool(desc) and 60 <= len(desc) <= 165, f'{rel}: unique, reasonably sized meta description required')
+        need(title not in seen_titles, f'{rel}: duplicate title also used by {seen_titles.get(title)}')
+        need(desc not in seen_descs, f'{rel}: duplicate description also used by {seen_descs.get(desc)}')
+        seen_titles[title] = rel
+        seen_descs[desc] = rel
     sitemap = ET.parse(ROOT / 'sitemap.xml')
     urls = [x.text for x in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
     need(set(urls) == {chrome.canonical(p) for p in indexable} and len(urls) == len(indexable), 'sitemap must contain exactly the canonical reader set, without noindex pages or duplicates')
