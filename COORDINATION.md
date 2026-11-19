@@ -8567,3 +8567,54 @@ P26 CI finalization: PR **#171** is open. Both push/PR builds for c6a9ef6 passed
 - **Preservation:** completed C3/C17/3301 source/assets/records untouched; preceding shopper edition and its five-row decision handoff retained at `publication-prior.html`. All upstream149 flags/83 source rows and original product/intent/campaign registers are preserved; additions yield154 flags/87 sources. Research notices keep dated claims distinguishable from current operation.
 - **Irregularities remain published:** legacy verifier/style advisories (C3-F-01/P26-F05); intended products and Associates attribution/reports; authorized API/test assets; Search Console; durable analytics/privacy host; Pages commercial-hosting suitability (P26-F02). Production collection is **off** and campaign evidence is empty. No visitors, orders, revenue, conversions or organic-traffic improvement was invented. GitHub's managed Pages workflow also emitted its own non-blocking upload-artifact runtime-deprecation annotation; deployment succeeded. The repository-owned workflow uses current official action-release SHA pins.
 - **P26-1…P26-4 implementation/release work complete.** External evidence/activation gates are deliberately unresolved, not falsely completed. Full release proof: `sessions/1c072a7a/deployment-2026-11-19.json`, `release-checks.json`, `browser-checks.json`, `idempotency.json`, `repo-review.md`, and the scoped verification record. This governance-only follow-up publishes the actual release outcome on the same fixed session branch.
+
+## Session `cd746460` — final integration, re-verification, PR/merge/deploy (2026-11-19)
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| cd746460 | `arena/cd746460-zone3` (base `825f513`, PR #172 merge) | Final integration session: independent line-by-line re-verification of the five supplied product links and combined publication data, build + link gate, PR to `main`, merge without waiting, GitHub Pages deploy confirmation, flagged-item publication check. | in progress | 2026-11-19 |
+
+### Task board (claimed before any other work, per protocol)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| CD-T1 — Independent line-by-line re-verification of the five submitted product links and the combined publication register | in progress | cd746460 | `data/publication.json`, `data/shop/products.json`, `sessions/cd746460/**` | five supplied `link.amazon` links; Amazon listing pages; official policy/guidance sources already registered | any drift vs. the 2026-11-19 observations; new irregularities logged, not resolved by inference |
+| CD-T2 — Final integration: combined-data re-check, build + no-broken-links gate, publication of flagged items | in progress | cd746460 | shared outputs only (`data/publication.json`, `index.html`/reader pages via `tools/build_publication.py`, `sitemap.xml`, `feed.xml`, `COORDINATION.md`) | all registered official sources | none expected; any found logged below |
+| CD-T3 — PR to `main`, merge without approval, Pages deploy confirmation | pending | cd746460 | this branch only | — | record PR link, merge SHA, live-fetch results below |
+
+### Scope and non-overlap notes (cd746460)
+
+- Branch base is `825f513` = current `main` (PR #172 merged). This session is the final integration pass on the fixed session branch; it changes only shared outputs (publication table data, reader pages through the canonical builder, sitemap/feed, this log) after re-verification.
+- No other session is active on this branch at claim time; the tree is clean at `825f513`. Upstream registers (`data/shop/*`, legacy dashboards, archives) are read and re-checked, not rewritten unless verification finds drift, which will be logged here first.
+- `git pull --rebase` will be run before every push. Any conflict stops the work: it is resolved without discarding other sessions' work and logged in this section.
+
+### CD-T1 completion record — 2026-11-19
+
+Independent line-by-line re-verification of the five supplied product links (one fresh fetch per link, 2026-11-19):
+
+| Submitted link | Observed ASIN (live) | Registered ASIN | Title (live vs registered) | Result |
+|---|---|---|---|---|
+| https://link.amazon/B04G1MEwY | B0CDY277D3 | B0CDY277D3 | exact match | confirmed |
+| https://link.amazon/B02NbDxp3 | B09B7SB46R | B09B7SB46R | exact match | confirmed |
+| https://link.amazon/B00hJ57DV | B08DKYBTPH | B08DKYBTPH | match in substance — live title carries the non-substantive ® glyph absent from the record | confirmed (noted) |
+| https://link.amazon/B0c8moW59 | B0DHZTCNR5 | B0DHZTCNR5 | exact match | confirmed |
+| https://link.amazon/B0f3GKalj | B0DZFD6R9Z | B0DZFD6R9Z | exact match | confirmed |
+
+- No drift in redirect targets, ASINs or listing titles between the register and the fresh observations. Category breadcrumbs confirm air-fryer vs thermometer placement.
+- `price`, `rating`, `review_count`, `tested_performance` deliberately remain null; observed redirect targets were not merged into intended-intent fields. FLG-003 (supplied-link compliance status) remains unresolved and is not claimed either way.
+- Full record: `sessions/cd746460/verification-2026-11-19.md`.
+
+### CD-T2 completion record — 2026-11-19
+
+- `python3 tools/publish.py`: 41 generation/check commands, **0 failed**. Canonical builder reports the reader pages current (idempotent rebuild).
+- `tools/link_report.py --strict`: 232 rows / 945 cells, 55 blank-by-design, 22 cited sources, no dangling source or flag references. Six historical flag IDs (FLG-001/002/003/007/027, I-F-01) are flagged unreferenced by this build and remain published on `flagged.html` (verified present).
+- Sitemap 14 URLs = 14 `indexable_pages`; feed 24 entries. Flagged items and unverified values remain published on the Flagged for Review page with source links.
+- No broken links; no unsupported figures; disclosure above the fold and in footer on all pages; every Amazon outbound link `rel="sponsored"` (enforced by the strict gates).
+
+### CD-T3 publish record (pending → filled after PR/merge)
+
+- PR: (filled after creation)
+- Merge: (filled after merge)
+- GitHub Pages deploy: (filled after live-fetch confirmation)
