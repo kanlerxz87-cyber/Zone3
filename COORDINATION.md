@@ -9305,3 +9305,36 @@ check suite re-ran green on the rebased head as part of the 41).
   - `/suggestions/index.html` — 6 paths, 26 proposals, question anchors resolving; 15 chunks served.
 - **Board:** all four CDB tasks now `done`; flagged irregularities CDB-F-01…F-09 remain published
   and non-blocking; FLG-003, SG-29/SG-30 and every owner-blocked item stay open by design.
+
+## Part 4d7fe998 — publication request audit and executive-summary consistency (2026-11-19)
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 4d7fe998 | `arena/4d7fe998-zone3` | Reconcile the user's current brief against the shipped reader site and decision desk; verify current executive-summary consistency and document the evidence boundary, remaining owner gates and release checks | in progress (4D7-T2) | 2026-11-19 |
+
+### Coordination and scope
+
+- Original task base: `6eb8c18e7eb981c51e89fac234f094b9a57d106a`; the claim was first based on `2a854c1d6a01d090858c05d607a82d51c48a9268` and is now rebased onto `c8533cd61ade505638fbf4f7866312b838b20eb7` (PR #191 merge, following PR #190). The current branch remains `arena/4d7fe998-zone3`.
+- Read the board through E61/P27 and, after the latest rebase, through B38. The buyer-first shop, question-led guides, suggestions/decision desk, product-intent record, disclosure, sponsored links, measurement, feed and review surfaces already exist; this pass audits the live registers and evidence rather than creating a duplicate publication.
+- PR #160 and PR #157 remain open and their heads have not changed since 2026-11-17; under the board's stale-claim rule, this session takes over only the current-status opening of `EXECUTIVE-SUMMARY.md`, not the branches or their implementation. PR #190 (B38) merged while this branch was in progress. PR #191, a B38 post-merge coordination-only record, also merged at 2026-11-19T13:00:47Z as `c8533cd`; its record is preserved intact.
+- File scope: the current-status opening of `EXECUTIVE-SUMMARY.md` (historical sections retained), new `sessions/4d7fe998/**` audit/release records, and this appended Part of `COORDINATION.md`. Product, intent, tracking, source, flag, measurement, suggestion-register, generator and generated-page files remain read-only in this pass; any discovered contradiction is documented for a scoped follow-up rather than silently rewriting those records.
+
+### Task board
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| 4D7-T1 — Read the board, check scope conflicts, register and push this claim before implementation | done (claim commit rebased; push pending) | 4d7fe998 | this Part only | board; `gh pr view #160/#157/#190/#191`; `git pull --rebase origin main` | append-only `COORDINATION.md` conflicts on successive rebases; all upstream Parts preserved. Removed three orphan `>>>>>>>` marker-only lines introduced by PR #190, retaining adjacent B38 text. PR #160/#157 scope remains untouched. |
+| 4D7-T2 — Audit the current brief against the actual published reader pages and record what is shipped, what is unknown, and what needs owner-authorized discovery | in progress | 4d7fe998 | `sessions/4d7fe998/**` | current data registers, generators, release gates, dated official-source records | no new product or popularity claims |
+| 4D7-T3 — Reconcile the root executive summary's current-status opening with the merged publication state; verify register-derived counts after PR #190 | planned | 4d7fe998 | current-status opening of `EXECUTIVE-SUMMARY.md`; `sessions/4d7fe998/**` | `data/publication.json`, `data/shop/campaign-ledger.json`, merged PRs #181/#190 | PR #181's generator/count gate is already upstream; verify the current 15-source/26-proposal/36-question/13-block/6-path/8-guide register and preserve later session history. |
+| 4D7-T4 — Run the canonical build and full release checks twice, verify idempotency and inspect link/disclosure/sponsored/sitemap/feed/measurement status | planned | 4d7fe998 | generated outputs only through existing chain; `sessions/4d7fe998/**` | `tools/publish.py`, current strict gates | structural pass does not refresh every historical factual claim |
+| 4D7-T5 — Open PR from this branch, merge without waiting if checks pass, verify Pages deployment/live summary and record the result | planned | 4d7fe998 | current branch; this Part | `git`, `gh`, GitHub Actions/Pages and live page read-back | no merge of PR #160 or #157 |
+
+### Rebase conflict and de-duplication record
+
+The first `git pull --rebase origin main` fetched `2a854c1` and stopped on an append-only `COORDINATION.md` conflict; the resolution kept upstream session `07fb37ba` and this Part, then the claim was pushed as `99cd706`. A second rebase fetched `eb60ee0` after PR #190 and conflicted in the same file; the full upstream version was retained, three orphan `>>>>>>>` marker-only lines in the B38 block were removed, and this Part was appended. A third rebase fetched `c8533cd` after PR #191 and again conflicted on the append-only tail; all B38 release-record additions were kept. No `data/`, publication, register or generated reader content was dropped. `git grep` confirms no remaining conflict-marker lines. The claim commit was rewritten after each rebase; the remote still points to the verified prior tip `b0d6967` and the next push uses a lease against that OID.
+
+The merged register has 15 official references, 26 proposals, 36 decision-readiness questions, 13 design-prompt blocks, 6 paths and 8 guides. PR #181 made and gated the executive-brief counts register-driven; PR #190 added the latest batch. 4D7-T3 therefore reconciles only the current-status opening of the root Markdown summary and does not duplicate generator work. PR #191's post-merge record is preserved.
+
+**Claim status:** claim rebased; force-with-lease push is the next action. The site remains review-only wherever it depends on account access, an owner decision or an external production host.
