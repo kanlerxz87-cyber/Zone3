@@ -7,7 +7,7 @@
   "associates_disclosure": "As an Amazon Associate I earn from qualifying purchases.",
   "associates_disclosure_source": "https://affiliate-program.amazon.com/help/operating/agreement",
   "associates_tracking_id": "shopnow047c-20",
-  "tracking_id_status": "User-selected value. This build does not verify account ownership. The ID is NOT embedded in any link, because the submitted short links were used as supplied and Special Link validation has not been run.",
+  "tracking_id_status": "Owner-supplied in the 2026-11-19 brief and embedded as ?tag=shopnow047c-20 on every product-detail link by tools/attach_associates_tag.py (Program Policies Participation Requirements 2(b), read live 2026-11-19, page stamped Updated: April 14, 2026). This build does NOT verify that the ID is assigned to an enrolled Associates account: account ownership, marketplace and the tracking report remain unverified (FLG-S05, FLG-S04). The five supplied link.amazon short links are still not modified and remain the observed record; their compliance status is unresolved (FLG-003), and they are no longer the destination of any buy button (FLG-S11).",
   "categories": [
     {
       "slug": "air-fryers",

@@ -35,7 +35,11 @@ def postprocess(text: str, rel: str) -> str:
     mp = _load_mod("tools/measure_pass.py", "measure_pass_38")
     existing = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob("*") if p.is_file()}
     text, _ = pp.apply(text, rel, existing)
-    return mp.apply(text, rel)
+    text = mp.apply(text, rel)
+    # 4B0-T2: the release chain also puts the owner's Associates tag on product links
+    # (tools/attach_associates_tag.py). Applying it here keeps --check exact.
+    tagger = _load_mod("tools/attach_associates_tag.py", "attach_tag_38")
+    return tagger.apply_to_text(text)
 CANON = "https://kanlerxz87-cyber.github.io/Zone3/brief-status/"
 CLASS = {
     "Verified here": "ok",

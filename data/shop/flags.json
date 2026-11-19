@@ -3,7 +3,7 @@
     "title": "Flagged for review (shop build)",
     "raised_on": "2026-11-17",
     "note": "Flags do not block the merge. Each item is published on the Flagged for review page with its source links, so it can be reviewed after the site is live.",
-    "remeasured_on": "2026-11-19 (session 8aa259bb: M38-F-05, -07, -09, -11, -12, -16 annotated; 8AA-F-01 and -02 added); 2026-11-19 (session 0a48cfda: FLG-S33 added — listing capacity fields disagree)"
+    "remeasured_on": "2026-11-19 (session 8aa259bb: M38-F-05, -07, -09, -11, -12, -16 annotated; 8AA-F-01 and -02 added); 2026-11-19 (session 0a48cfda: FLG-S33 added - listing capacity fields disagree); 2026-11-19 (session 4b0e3c7e): FLG-S05 updated; FLG-S11, -S12, -S13 added for the tag-on-every-product-link change and its boundary."
   },
   "flags": [
     {
@@ -73,17 +73,21 @@
     {
       "id": "FLG-S05",
       "severity": "Medium",
-      "status": "Open - for review",
-      "issue": "The tracking ID shopnow047c-20 was supplied by the requester. Account ownership and marketplace were not verified.",
-      "impact": "If the ID belongs to another account, or to a marketplace other than the one the links point to, reports will not match.",
-      "what_we_did": "Stored in config.json with the status 'user-selected, not verified'. Not embedded in any link.",
+      "status": "Addressed in part - for review",
+      "issue": "The tracking ID shopnow047c-20 was supplied by the requester and, from 2026-11-19, is carried by every product-detail link on the site. Account ownership, enrolment and marketplace were not verified.",
+      "impact": "Program Policies Participation Requirements 2(b) (read live 2026-11-19) requires the Associates ID or tag on every link placed on the site to an Amazon Site, so the link format is now what the rule asks for. If the ID belongs to another account or another marketplace, clicks will not be attributed to the requester.",
+      "what_we_did": "Embedded ?tag=shopnow047c-20 on every amazon.com product-detail link with a 10-character ASIN (tools/attach_associates_tag.py, 14-rule test, enforced in the release chain). No account, login or report was accessed, so ownership remains unverified and no tag was verified in the Associates workflow.",
       "sources": [
+        {
+          "label": "Associates Program Policies, Participation Requirements 2(a) and 2(b): the tag is required as a URL parameter; Special Links must use the assigned Associates ID (read live 2026-11-19; page stamped April 14, 2026)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
         {
           "label": "Operating Agreement, Section 1 (Special Links use the tagged link formats Amazon provides) (SH-S01)",
           "url": "https://affiliate-program.amazon.com/help/operating/agreement"
         }
       ],
-      "claim_not_made": "No claim is made that the ID is the requester's account."
+      "claim_not_made": "No claim is made that the ID is the requester's account, that it is enrolled, or that the tag has been validated in the Associates workflow."
     },
     {
       "id": "FLG-S06",
@@ -536,6 +540,51 @@
         }
       ],
       "claim_not_made": "This does not say which number is correct, that either listing is inaccurate, or that the containers are measured to a different standard. It records only that the two printed fields disagree, so a buyer should check the model manual before treating either as usable capacity."
+    },
+    {
+      "id": "FLG-S11",
+      "severity": "High",
+      "status": "Open - for review",
+      "issue": "The buy buttons used the five supplied link.amazon short links, whose exact compliance status is unresolved (FLG-003). Program Policies Participation Requirements 6(v) and 6(w) (read live 2026-11-19) prohibit obscuring the URL of the site containing Special Links by Redirecting Links and prohibit link-shortening placements that make it unclear the link goes to an Amazon Site. The short links are NOT called invalid: their status is unresolved.",
+      "impact": "A reader could not tell from the link target that the destination is Amazon, and attribution depends on a redirect chain this build cannot inspect.",
+      "what_we_did": "Buy buttons now go directly to the product-detail page with ?tag=shopnow047c-20, so the destination host and path are visible in the link. The short links remain on the site only as the observed record of what was submitted.",
+      "sources": [
+        {
+          "label": "Associates Program Policies, Participation Requirements 6(v) and 6(w) (read live 2026-11-19)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ],
+      "claim_not_made": "This build does not say the supplied short links are invalid; FLG-003 stays unresolved."
+    },
+    {
+      "id": "FLG-S12",
+      "severity": "Low",
+      "status": "Open - for review",
+      "issue": "The tagging boundary is a judgement, not something Amazon's public pages settle: product-detail pages are tagged, while Amazon browse, search and Best-Sellers pages that the research pages link to as citations are not.",
+      "impact": "If the owner wants research citations to be payable links too, those links need the tag; if not, tagging them would put the owner's ID on a link that is not a promotion.",
+      "what_we_did": "Tagged only /dp/ and /gp/product/ links with a 10-character ASIN. Recorded the boundary in data/links/associates-links.json under scope.not_tagged so it can be flipped in one place.",
+      "sources": [
+        {
+          "label": "Associates Program Policies, Participation Requirements 2(b): the tag goes on 'each link you place on your Site to an Amazon Site' (read live 2026-11-19)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ],
+      "claim_not_made": "No claim that either reading is the correct one for this account."
+    },
+    {
+      "id": "FLG-S13",
+      "severity": "Low",
+      "status": "Open - for review",
+      "issue": "Each /dp/<9-character token> link was tagged with the owner's ID after this session's first pass, and now is not. A 9-character token is not an ASIN (Creators API GetItems, ItemIdType=ASIN is 10 characters), and the pages state those links returned Amazon's Page Not Found page.",
+      "impact": "A tagged error link would put the owner's ID on a dead destination; leaving it untagged keeps it as the evidence of the check and costs no attribution.",
+      "what_we_did": "Excluded 9-character /dp/ tokens from tagging, with a test. Those links keep rel=sponsored.",
+      "sources": [
+        {
+          "label": "Creators API GetItems, ItemIdType ASIN = 10-character identifier",
+          "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
+        }
+      ],
+      "claim_not_made": "No claim about whether the tokens themselves are valid submissions (FLG-003)."
     }
   ]
 }

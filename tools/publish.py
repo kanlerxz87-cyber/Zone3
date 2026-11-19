@@ -32,6 +32,9 @@ BUILDERS = [
     ['python3', 'sessions/aebf0747/publish_pass.py'],
     ['python3', 'tools/measure_pass.py'],
     ['python3', 'tools/build_feed.py'],
+    # 4B0-T2: the owner-supplied Associates ID goes on every product-detail link, after every
+    # builder has written its HTML and before the sponsored-token pass, which leaves it alone.
+    ['python3', 'tools/attach_associates_tag.py'],
     ['python3', 'scripts/mark_sponsored.py'],
     ['python3', 'scripts/build_sitemap.py'],
 ]
@@ -52,6 +55,8 @@ CHECKS = [
     ['python3', 'tools/build_brief_status.py', '--check'],
     ['python3', 'tools/build_cba81fa5_site.py', '--check'],
     ['python3', 'scripts/mark_sponsored.py', '--check'],
+    ['python3', 'tools/attach_associates_tag.py', '--check'],
+    ['python3', 'scripts/test_attach_associates_tag.py'],
     ['python3', 'tools/apply_sponsored.py', '--check'],
     ['python3', 'tools/add_disclosure_banner.py', '--check'],
     ['python3', 'tools/build_publication.py', '--check'],
