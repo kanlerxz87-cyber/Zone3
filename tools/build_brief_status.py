@@ -19,6 +19,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 REG = ROOT / "data" / "shop" / "brief-status.json"
 FLAGS = ROOT / "data" / "shop" / "flags.json"
 PAGE = ROOT / "brief-status" / "index.html"
+_TAG = json.loads((ROOT / "data" / "shop" / "config.json").read_text(encoding="utf-8"))["associates_tracking_id"]
 
 
 def _load_mod(rel_path: str, name: str):
@@ -65,9 +66,22 @@ def load() -> tuple[dict, list[str]]:
 
 
 def cell_link(url: str) -> str:
+    """Render a source citation.
+
+    5D4-F01 (2026-11-19): an Amazon product source is tagged in the href, but the visible
+    text must stay the plain URL the register holds. Printing the tagged form put
+    `?tag=shopnow047c-20` into the citation text, which reads as part of the cited address.
+    """
     if not url:
         return "<span class=\"muted\">none given in the brief</span>"
-    return f'<a href="{html.escape(url)}" rel="noopener">{html.escape(url)}</a>'
+    return f'<a href="{html.escape(tagged(url))}" rel="noopener">{html.escape(url)}</a>'
+
+
+def tagged(url: str) -> str:
+    if "tag=" in url or not ("amazon.com/dp/" in url or "amazon.com/gp/product/" in url
+                              or "link.amazon/" in url):
+        return url
+    return url + ("&" if "?" in url else "?") + "tag=" + _TAG
 
 
 def page(reg: dict) -> str:

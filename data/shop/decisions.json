@@ -2,57 +2,73 @@
   "_meta": {
     "title": "Suggestions and decisions",
     "prepared_on": "2026-11-17",
-    "note": "These are suggestions only. Nothing on this list has been implemented beyond what the Findings page says. The 'suggested' label is a recommendation, not a decision."
+    "note": "These are reviewable suggestions, not owner decisions. The local measurement prototype is present but disabled and unhosted; its event names remain a proposal. Repository state is cited separately from official policy and listing sources."
   },
   "decisions": [
     {
       "id": "DEC-01",
-      "question": "How should the five submitted links be replaced or confirmed?",
+      "question": "How should each of the five submitted links be validated for intended product and Associates attribution?",
       "options": [
-        "A. Create one Special Link per product in the Associates account, click it once, and check the destination and the tracking report before using it on the site. Suggested, because it is the only route to a checkable tracking record.",
-        "B. Keep the submitted short links as supplied, but still run the test in option A on at least one link.",
-        "C. Remove any product whose intended ASIN is not confirmed (see DEC-02)."
+        "A. After the owner confirms each intended ASIN, generate one Associates Special Link per product in the enrolled marketplace workflow; check each destination against that intended listing and check report attribution before scaling.",
+        "B. Keep each supplied short link recorded as submitted and its exact compliance status unresolved; do not silently replace it or describe it as invalid.",
+        "C. Leave any unconfirmed intended ASIN and product-specific CTA blank/flagged until the owner confirms intent and the one-link-per-product test is recorded."
       ],
-      "suggested": "A, then B until A succeeds.",
-      "needs": "Access to the Associates account. The requester must run or approve the test.",
+      "suggested": "A for each confirmed intended product, one at a time; preserve the supplied links separately and do not scale until destination and report checks pass.",
+      "needs": "Owner-confirmed intended ASINs, access to the enrolled Associates account and marketplace, and a recorded destination/report check for each product.",
       "sources": [
         {
-          "label": "Commission Income Statement, Section 2(g) (SH-S02)",
+          "label": "Associates Program Policies (Special Link and attribution requirements; SH-S02)",
           "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "Shop intent/observed records; current owner intent remains blank",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
         }
       ]
     },
     {
       "id": "DEC-02",
-      "question": "What is the intended ASIN for each submitted link?",
+      "question": "What is the intended ASIN and official listing URL for each of the five submitted links?",
       "options": [
-        "A. The requester supplies the 10-character ASIN for each link. The build then checks the official listing and records the confirmation date and source.",
-        "B. Accept the observed redirect target as intended. Not suggested: the brief asks for intent, and a redirect is not an intent record.",
-        "C. Leave the intended field blank and publish the observed target only."
+        "A. The requester confirms each intended product/ASIN; then check its official listing and record date/source in the intent fields.",
+        "B. Copy the observed redirect target into intended fields. Not suggested: a redirect is not an owner statement of intent.",
+        "C. Keep the intended fields blank and flagged until confirmation; retain the observed target separately."
       ],
       "suggested": "A.",
-      "needs": "The requester's statement for each link.",
+      "needs": "The requester’s statement for all five links; the repository must keep confirmed intended fields separate from the five dated observed targets.",
       "sources": [
         {
-          "label": "Creators API ItemIdType ASIN (SH-S03)",
+          "label": "Creators API GetItems, ItemIdType / ASIN definition (SH-S03)",
           "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
+        },
+        {
+          "label": "Five-row shop register; observed vs intended fields",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
         }
       ]
     },
     {
       "id": "DEC-03",
-      "question": "How should clicks and conversions be measured?",
+      "question": "How should site activity and conversions be measured, if at all?",
       "options": [
-        "A. Use the Associates reports as the first-party source. No new code is needed. Rows enter the campaign ledger only from those reports.",
-        "B. Add a privacy-preserving outbound-click counter. This needs a collection endpoint on a host outside GitHub Pages, plus the five event definitions.",
-        "C. Both A and B."
+        "A. Keep the campaign ledger empty until an authorized Associates first-party report is available; add only dated report values with provenance.",
+        "B. Review the five event definitions already recorded as a proposal in data/shop/measurement.json. The generated counter config is OFF and endpoint_url is empty; the local collector script is not a hosted service. Do not enable until an owner-selected runtime and its actual logs, IP handling, retention, access controls and notice/consent requirements are reviewed.",
+        "C. Consider both only after the owner accepts/revises the event schema and the deployed runtime passes the host/privacy review; keep order/conversion values report-sourced, not browser events."
       ],
-      "suggested": "A now; B only after the five events are defined and a host is chosen.",
-      "needs": "The five event definitions and a choice of hosting for any endpoint. Neither is in the brief.",
+      "suggested": "A for current reporting; keep the counter OFF. B/C remain proposals until the host and its real logging/retention behavior are verified.",
+      "needs": "Owner decision on the proposed event names/fields; a selected and deployed request-handling runtime; actual network/access-log and retention evidence; and authorized Associates reports for conversions.",
       "sources": [
         {
-          "label": "GitHub Docs: What is GitHub Pages? (SH-S16)",
+          "label": "GitHub Docs: What is GitHub Pages? (static hosting and visitor-IP logging; SH-S16)",
           "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+        },
+        {
+          "label": "Associates Program Policies (SH-S02)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "Repository proposal/config; currently OFF",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/measurement.json"
         }
       ]
     },
@@ -65,7 +81,12 @@
       ],
       "suggested": "A until a name is chosen.",
       "needs": "The requester's choice.",
-      "sources": []
+      "sources": [
+        {
+          "label": "Associates Program Policies (publisher-name constraints; SH-S02)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        }
+      ]
     },
     {
       "id": "DEC-05",
@@ -79,36 +100,78 @@
       "needs": "Confirmation of the approved data path under the Operating Agreement.",
       "sources": [
         {
-          "label": "Operating Agreement, Section 1 (SH-S01)",
+          "label": "Associates Program Operating Agreement, Program Content terms (SH-S01)",
           "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        },
+        {
+          "label": "No image-rights/provenance record in current product register",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
         }
       ]
     },
     {
       "id": "DEC-06",
-      "question": "How often should new guides be published?",
+      "question": "What human-reviewed publishing cadence can the owner sustain?",
       "options": [
-        "A. Monthly, one guide a month.",
-        "B. Quarterly, four guides a year.",
-        "C. Only when a measured question justifies a guide."
+        "A. One question-led guide every 14 days, only after a real editor is named and each guide receives human review.",
+        "B. A slower cadence selected by the owner after editorial capacity is known.",
+        "C. Publish only when an approved guide has a source-backed reason to exist; choose later topics from dated query evidence when available."
       ],
-      "suggested": "C, after the first measurement window has data.",
-      "needs": "A measured source of search or on-site questions. None exists yet.",
-      "sources": []
+      "suggested": "No cadence is adopted. Name a real editor first; use query evidence for topic selection when it exists. The 14-day interval is a proposal only.",
+      "needs": "A real editor/reviewer and an owner-approved, sustainable schedule. Search demand is not measured in this repository.",
+      "sources": [
+        {
+          "label": "FTC Endorsements, Influencers, and Reviews guidance (truthful endorsement context; S24)",
+          "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews"
+        },
+        {
+          "label": "Cadence and reviewer are still proposals/open inputs",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/suggestions.json"
+        }
+      ]
     },
     {
       "id": "DEC-07",
-      "question": "Which guide topic should come first?",
+      "question": "Which buyer-question guide should be prioritized first, and in which category?",
       "options": [
-        "A. 'Basket or oven-style air fryer: what should you compare?'",
-        "B. 'A no-hype checklist for comparing air fryer capacity'",
-        "C. 'How to assess cleanup and counter-space trade-offs'",
-        "D. 'Questions to ask before buying a multi-function kitchen appliance'",
-        "E. A thermometer guide (not yet proposed)"
+        "A. “Basket or oven-style air fryer: what should you compare?”",
+        "B. “A no-hype checklist for comparing air fryer capacity.”",
+        "C. “How to assess cleanup and counter-space trade-offs.”",
+        "D. “What should you compare between instant-read and wireless meat thermometers?”",
+        "E. Hold topic ordering until the owner confirms category scope and a dated query baseline exists."
       ],
-      "suggested": "Hold until DEC-06 has data. These are working titles, not claims about popularity, search volume or product quality.",
-      "needs": "Measured queries (none yet).",
-      "sources": []
+      "suggested": "These are editorial hypotheses, not claims about popularity, search volume, or product superiority. Keep the two observed categories distinct until scope is confirmed.",
+      "needs": "Owner-confirmed audience/category scope and, for measured-demand ordering, a dated query report. No query volume is currently recorded.",
+      "sources": [
+        {
+          "label": "Observed listing page 1 of 5 (SH-S11)",
+          "url": "https://www.amazon.com/dp/B0CDY277D3"
+        },
+        {
+          "label": "Observed listing page 2 of 5 (SH-S12)",
+          "url": "https://www.amazon.com/dp/B09B7SB46R"
+        },
+        {
+          "label": "Observed listing page 3 of 5 (SH-S13)",
+          "url": "https://www.amazon.com/dp/B08DKYBTPH"
+        },
+        {
+          "label": "Observed listing page 4 of 5 (SH-S14)",
+          "url": "https://www.amazon.com/dp/B0DHZTCNR5"
+        },
+        {
+          "label": "Observed listing page 5 of 5 (SH-S15)",
+          "url": "https://www.amazon.com/dp/B0DZFD6R9Z"
+        },
+        {
+          "label": "Two-category shop register; observed destinations are not owner intent",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
+        },
+        {
+          "label": "Twelve working title hypotheses and claim limits",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/design-brief.json"
+        }
+      ]
     },
     {
       "id": "DEC-08",
@@ -121,7 +184,7 @@
       "needs": "None.",
       "sources": [
         {
-          "label": "Operating Agreement, Section 5 (SH-S01)",
+          "label": "Associates Program Operating Agreement, Section 5 (SH-S01)",
           "url": "https://affiliate-program.amazon.com/help/operating/agreement"
         }
       ]
@@ -129,78 +192,172 @@
   ],
   "questions": [
     {
-      "question": "Which ASIN was intended for each link?",
-      "have": "The observed redirect target for each link.",
-      "missing": "The requester's statement of intent.",
-      "how_to_find": "Ask the requester (DEC-02). Then check each ASIN on its official listing.",
+      "question": "Which intended ASIN and official listing URL did the requester mean for each of the five submitted links?",
+      "have": "The shop register records five submitted links and dated observed destinations; all five intended-ASIN fields are blank.",
+      "missing": "The owner’s product intent for each link; a redirect is not proof of intent.",
+      "how_to_find": "Ask the requester to confirm each product, then verify the official listing and record intended ASIN/URL/date/source separately from observed target.",
       "sources": [
         {
-          "label": "Creators API ItemIdType (SH-S03)",
+          "label": "Creators API ItemIdType/ASIN definition (SH-S03)",
           "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items"
+        },
+        {
+          "label": "Five-link intent and observed-target register",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
         }
       ]
     },
     {
-      "question": "Does each link produce a tracked click under the requester's Associates ID?",
-      "have": "Nothing. No Associates report was available.",
-      "missing": "The Associates report.",
-      "how_to_find": "Run the DEC-01 test in the Associates workflow and read the tracking report.",
+      "question": "Does one Associates-generated Special Link per confirmed intended product reach the right listing and appear in the report?",
+      "have": "shopnow047c-20 is recorded as requester-supplied; no account ownership, marketplace or per-product report test is verified.",
+      "missing": "Account verification plus destination/report attribution for one Special Link per owner-confirmed product.",
+      "how_to_find": "Verify the tracking ID and marketplace in the enrolled account; create and test one Special Link per intended product before scaling. Keep supplied links unchanged and unresolved.",
       "sources": [
         {
-          "label": "Commission Income Statement Section 2(g) (SH-S02)",
+          "label": "Associates Program Policies (SH-S02)",
           "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "Requester-supplied tracking ID; not account verified",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/config.json"
         }
       ]
     },
     {
-      "question": "Does shopnow047c-20 belong to the requester's Associates account, for the marketplace the links point to?",
-      "have": "The requester's statement of the value.",
-      "missing": "Account and marketplace check.",
-      "how_to_find": "Check the account settings in the Associates account.",
+      "question": "Does shopnow047c-20 belong to the requester’s enrolled Associates account and chosen marketplace?",
+      "have": "The current config records shopnow047c-20 as a requester-supplied value, not as a verified account credential.",
+      "missing": "Account ownership, marketplace association, enrollment and tracking report attribution.",
+      "how_to_find": "Check account settings in Associates Central and record the owner’s confirmation; do not embed or rewrite links based on the string alone.",
       "sources": [
         {
-          "label": "Operating Agreement, Section 1 (SH-S01)",
+          "label": "Associates Program Operating Agreement (SH-S01)",
           "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        },
+        {
+          "label": "Tracking-ID status",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/config.json"
         }
       ]
     },
     {
-      "question": "Which marketplace should the site serve? The links point to amazon.com. The site's location is Singapore.",
-      "have": "amazon.com redirects for all five links.",
-      "missing": "The requester's choice of marketplace, and the matching Associates country.",
-      "how_to_find": "Confirm the account country and the Schedule 1 marketplace list in the Operating Agreement.",
+      "question": "Which marketplace and audience should the site serve?",
+      "have": "All five dated observed destinations are Amazon.com pages. This does not establish target market, audience, currency or enrolled marketplace.",
+      "missing": "Owner choice of audience/marketplace and a matching enrolled account.",
+      "how_to_find": "Ask the owner and verify the chosen Associates marketplace in the account; do not infer it from the current destinations or the requester’s physical location.",
       "sources": [
         {
-          "label": "Operating Agreement (Schedule 1 marketplaces) (SH-S01)",
+          "label": "Associates Program Operating Agreement, Schedule 1 (SH-S01)",
           "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        },
+        {
+          "label": "Five observed destinations",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
         }
       ]
     },
     {
-      "question": "What are the five events to record?",
-      "have": "Nothing defined in the brief.",
-      "missing": "The event list.",
-      "how_to_find": "Requester supplies the list (DEC-03).",
-      "sources": []
-    },
-    {
-      "question": "Which price, availability and review figures, if any, may appear on the site, and from which source?",
-      "have": "A reason not to show them (FLG-S07).",
-      "missing": "Confirmed approved data path and the current wording of Participation Requirement 2(b), which this build did not re-read.",
-      "how_to_find": "Re-read the Program Policies Participation Requirements and check the approved data path in the Associates account.",
+      "question": "What five measurement events, if any, should be approved, and where can a host run?",
+      "have": "Five definitions exist in the repository as a proposal; the counter config is disabled with empty endpoint_url and the collector is unhosted. GitHub Pages is static and its documentation notes visitor IP logging.",
+      "missing": "Owner approval/revision, deployed runtime, actual host/network logs, IP handling, retention, access controls and applicable notice/consent review. No authorized report is present.",
+      "how_to_find": "Review data/shop/measurement.json as a proposal only; keep collection OFF. Verify official host docs and real staging/network logs before activation. Use authorized Associates reports for conversions.",
       "sources": [
         {
-          "label": "Program Policies (SH-S02)",
+          "label": "GitHub Docs: What is GitHub Pages? (SH-S16)",
+          "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+        },
+        {
+          "label": "Associates Program Policies (SH-S02)",
           "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "Proposed events and OFF config",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/measurement.json"
         }
       ]
     },
     {
-      "question": "Is there any measured search or on-site question data to choose the next topic?",
-      "have": "None.",
-      "missing": "Search Console data and on-site search logs.",
-      "how_to_find": "Connect Search Console for the site once it is live (DEC-03 for the analytics path).",
-      "sources": []
+      "question": "Which price, availability and review figures, if any, may appear, and from which source?",
+      "have": "The existing release policy leaves volatile values out unless an approved Amazon data path is verified.",
+      "missing": "Current account/data-access eligibility and permitted source for the confirmed intended ASIN.",
+      "how_to_find": "Re-read current Program Policies and verify the data path in the enrolled account before displaying these fields.",
+      "sources": [
+        {
+          "label": "Associates Program Policies (SH-S02)",
+          "url": "https://affiliate-program.amazon.com/help/operating/policies"
+        },
+        {
+          "label": "Intended ASINs remain blank",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
+        }
+      ]
+    },
+    {
+      "question": "Is there dated query or on-site data to prioritize a topic?",
+      "have": "No Search Console query export or measured reader-query dataset is recorded in the repository; titles remain editorial hypotheses.",
+      "missing": "A verified canonical property and dated query baseline by category.",
+      "how_to_find": "After canonical routes are selected, verify the property and save a dated Search Console export. Until then, do not label topics trending/popular.",
+      "sources": [
+        {
+          "label": "No query export recorded in repository",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/brief-status.json"
+        },
+        {
+          "label": "Topic hypotheses, not demand claims",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/design-brief.json"
+        }
+      ]
+    },
+    {
+      "question": "Should air fryers and meat thermometers share one publication or remain separate niche sites?",
+      "have": "Five observed listing records divide into three air fryers and two meat thermometers.",
+      "missing": "Owner decision about publication scope, audience and category relationship.",
+      "how_to_find": "Keep the two category groups explicit until the owner confirms the publication promise.",
+      "sources": [
+        {
+          "label": "Official listing pages for observed destinations (SH-S11–SH-S15)",
+          "url": "https://www.amazon.com/dp/B0CDY277D3"
+        },
+        {
+          "label": "Two-category shop register",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
+        }
+      ]
+    },
+    {
+      "question": "Which route set is canonical, and what happens to overlapping reader surfaces?",
+      "have": "Root, /shop/, /guides/, /site/, /read/, /marketing/ and /articles/ surfaces exist; root + shop + guides is only the current recommendation.",
+      "missing": "Owner choice and route/content/inbound-link map.",
+      "how_to_find": "Review DEC-09; map unique content and inbound links before any merge, archive, redirect or noindex change.",
+      "sources": [
+        {
+          "label": "Current architecture recommendation",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/design-brief.json"
+        },
+        {
+          "label": "Root publication record",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/index.html"
+        }
+      ]
+    },
+    {
+      "question": "Who is the real editor/reviewer, and is there image-rights evidence?",
+      "have": "No real human byline/test record or product-image rights record is present in the current shop register.",
+      "missing": "Named editor, testing method/evidence, and rights/provenance for any product image.",
+      "how_to_find": "Name the actual editor; record test method if testing occurs; use only documented owner-created or permitted imagery.",
+      "sources": [
+        {
+          "label": "FTC Endorsements, Influencers, and Reviews (S24)",
+          "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews"
+        },
+        {
+          "label": "Associates Program Operating Agreement, Program Content (SH-S01)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        },
+        {
+          "label": "No product-image rights or testing fields confirmed",
+          "url": "https://github.com/kanlerxz87-cyber/Zone3/blob/main/data/shop/products.json"
+        }
+      ]
     }
   ]
 }

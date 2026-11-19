@@ -26,6 +26,9 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+# 5D4-F01 (2026-11-19): the selected Associates tag, read from its single declaration.
+TAG = json.loads((ROOT / "data" / "shop" / "config.json").read_text(encoding="utf-8"))["associates_tracking_id"]
 SITE = ROOT / "site"
 DATA = ROOT / "data" / "cba81fa5"
 
@@ -57,6 +60,15 @@ def _rel_s(s) -> str:
 
 def _rel_d(d) -> str:
     return _rel(SRC[d["source"]]["url"])
+
+
+def _tag(url: str) -> str:
+    """Attach the Associates tag to an Amazon product URL (5D4-F01, Program Policies 2(b))."""
+    if not url or "tag=" in url:
+        return url
+    if "/dp/" in url or "/gp/product/" in url or "link.amazon/" in url:
+        return url + ("&" if "?" in url else "?") + "tag=" + TAG
+    return url
 
 
 def _rel(url: str) -> str:
@@ -91,11 +103,21 @@ def _tag_pass(html: str) -> str:
 
 
 def mark_sponsored(html: str) -> str:
+    """Add rel=sponsored AND the Associates tag to every product anchor (5D4-F01).
+
+    The post-passes run in this order on the finished pages: mark_sponsored, then
+    attach_tag. Folding the tag attachment in here means a `--check` comparison sees the
+    same final bytes the post-pass tree holds; without it this module reports its own
+    regions stale on every rebuild.
+    """
     def fix(m):
         tag = m.group(0)
         href = re.search(r'href="([^"]*)"', tag)
         if not href or not MARK_PRODUCT_HREF.search(href.group(1)):
             return tag
+        tagged_href = _tag(href.group(1))
+        if tagged_href != href.group(1):
+            tag = tag[:href.start(1)] + tagged_href + tag[href.end(1):]
         rel = re.search(r'rel="([^"]*)"', tag)
         if rel:
             if "sponsored" in rel.group(1).split():
@@ -218,7 +240,9 @@ def products_for_band():
             "label": prod.get("label", ""),
             "asin": obs.get("page_id") or "",
             "title": (obs.get("page_title") or "").replace("Amazon.com: ", "").split(" : Home")[0],
-            "url": f'https://www.amazon.com/dp/{obs.get("page_id")}' if obs.get("page_id") else "",
+            # 5D4-F01: the tag is attached where the URL is built, so this generator's
+            # output matches the attach_tag post-pass byte for byte.
+            "url": _tag(f'https://www.amazon.com/dp/{obs.get("page_id")}') if obs.get("page_id") else "",
         })
     return out
 

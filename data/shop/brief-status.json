@@ -1,377 +1,384 @@
 {
-  "_meta": {
-    "title": "Brief status register — S-04…S-25 and SG-27…SG-30",
-    "session": "38650305",
-    "prepared_on": "2026-11-17",
-    "measured_on": "2026-11-17 (initial); re-measured 2026-11-19 (8aa259bb, then cdb0a5ac); amended and re-measured after the merge 2026-11-19 (41e84402)",
-    "method": "Each row has two columns that are never merged. 'Brief says' is copied from the brief. 'This repo shows' is what was measured or read in this checkout (branch arena/38650305-zone3). Rows marked 'Not found' have no matching text or file here, whatever the brief says. The brief's status labels cite the owner's Zone4 decision log (https://kanlerxz87-cyber.github.io/Zone4/docs/decisions.html); that log was reachable on 2026-11-17 but its individual S-rows were not re-read line by line, so 'Brief says' is not independently verified. A second same-day re-measurement by session cdb0a5ac (branch arena/cdb0a5ac-zone3) merged here: row texts carry both passes' facts, counts reflect the merged tree after the ninth guide shipped, and prior_2026_11_17 still holds the original 17 Nov text wherever a row changed.",
-    "status_vocabulary": {
-      "Verified here": "Measured or read in this checkout on the date shown.",
-      "Partly here": "Some of the claimed work is present; the rest is missing or not measured.",
-      "Not found here": "The brief claims it, but no matching page or file exists in this checkout.",
-      "Conflict": "The repo does something the brief rules out.",
-      "Blocked (owner)": "Needs an account, a decision or a host that this build cannot reach.",
-      "Not measured": "No measurement was made this session."
-    },
-    "remeasured_on": "2026-11-19",
-    "remeasured_by": "sessions 8aa259bb and cdb0a5ac (COORDINATION Parts 8aa259bb, CDB)",
-    "remeasure_method": "sessions/8aa259bb/measure_brief_rows.py (read-only). Rows that changed keep the 2026-11-17 text in 'prior_2026_11_17'. The 'brief_says' column is still quoted from the brief; the Zone4 decision rows were re-read on 2026-11-19 from a shallow clone of kanlerxz87-cyber/Zone4 (main) and checked against their recorded or open status. Session cdb0a5ac scripted its own counts (sessions/cdb0a5ac/verification-2026-11-19.md §2) and merged them without dropping 8aa259bb's Zone4-checked details.",
-    "rechecks": [
-      {
-        "on": "2026-11-19",
-        "session": "41e84402",
-        "branch": "arena/41e84402-zone3",
-        "note": "This pass amended the rows its own changes touched, then re-measured the whole register on the trees it was merged into. On this session's own tree (main 4e48849 + this pass): 121 published pages, 3,016 Amazon anchors of which 1,227 carry no rel=\"sponsored\" (1,222 at the first count), and 0 of the reader pages' amazon.com/dp anchors missing rel=\"sponsored\". On the tree this branch merges into (main 1623c1c, PRs #181 through #196, ten guides after session cdb0a5ac's probe-placement guide): 122 published pages, a title and a meta description on 122 of 122, the disclosure sentence on 122 of 122, 3,026 Amazon anchors with 1,227 unsponsored — every one of them a policy or agreement citation on affiliate-program.amazon.com — og:image and JSON-LD on 31 pages with all 18 indexable reader URLs carrying both, the chooser on 5 pages, 25 pages labelling their art AI-generated, 28 feed entries, and 8 bracket placeholders still in DESIGN_PROMPT.md. Where a row quotes a pre-merge figure it is because that is the tree the row was measured on; the merged numbers are here, which is why this page renders its own dates and history from _meta instead of carrying a typed line."
-      },
-      {
-        "on": "2026-11-19",
-        "session": "cdb0a5ac",
-        "branch": "arena/cdb0a5ac-zone3",
-        "note": "Session cdb0a5ac re-measured every row against the checkout on 2026-11-19 (their Part in COORDINATION.md, record in sessions/cdb0a5ac/verification-2026-11-19.md §2), using sessions/8aa259bb/measure_brief_rows.py and their own scripted counts, and kept the 2026-11-17 text in each row's 'prior_2026_11_17' column. Their row texts are the base of this register; where session 41e84402 measured the same row again, the two sentences sit next to each other rather than one replacing the other, and no row of theirs was rewritten."
-      },
-      {
-        "on": "2026-11-19",
-        "session": "8aa259bb",
-        "branch": "arena/8aa259bb-zone3",
-        "note": "Full re-measure of every row against the checkout, with the Zone4 D-numbers checked against their recorded or open status."
-      },
-      {
-        "on": "2026-11-17",
-        "session": "38650305",
-        "branch": "arena/38650305-zone3",
-        "note": "First measured pass for the brief's S-04…S-25 and SG-27…SG-30 rows."
-      }
-    ]
+ "_meta": {
+  "title": "Brief status register — S-04…S-25 and SG-27…SG-30",
+  "session": "38650305",
+  "prepared_on": "2026-11-17",
+  "measured_on": "2026-11-17 (initial); re-measured 2026-11-19 (8aa259bb, then cdb0a5ac); amended and re-measured after the merge 2026-11-19 (41e84402)",
+  "method": "Each row has two columns that are never merged. 'Brief says' is copied from the brief. 'This repo shows' is what was measured or read in this checkout (branch arena/38650305-zone3). Rows marked 'Not found' have no matching text or file here, whatever the brief says. The brief's status labels cite the owner's Zone4 decision log (https://kanlerxz87-cyber.github.io/Zone4/docs/decisions.html); that log was reachable on 2026-11-17 but its individual S-rows were not re-read line by line, so 'Brief says' is not independently verified. A second same-day re-measurement by session cdb0a5ac (branch arena/cdb0a5ac-zone3) merged here: row texts carry both passes' facts, counts reflect the merged tree after the ninth guide shipped, and prior_2026_11_17 still holds the original 17 Nov text wherever a row changed.",
+  "status_vocabulary": {
+   "Verified here": "Measured or read in this checkout on the date shown.",
+   "Partly here": "Some of the claimed work is present; the rest is missing or not measured.",
+   "Not found here": "The brief claims it, but no matching page or file exists in this checkout.",
+   "Conflict": "The repo does something the brief rules out.",
+   "Blocked (owner)": "Needs an account, a decision or a host that this build cannot reach.",
+   "Not measured": "No measurement was made this session."
   },
-  "rows": [
-    {
-      "id": "S-04",
-      "priority": "P1",
-      "item": "Give every page its own title and meta description",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-04)",
-      "this_repo_shows": "Measured 2026-11-19 by sessions/8aa259bb/measure_brief_rows.py (zero pages missing a title or description) and re-measured the same day by session cdb0a5ac after the ninth guide shipped: all 121 published HTML pages (excluding archive/, docs/, sessions/) carry a non-empty <title> and a meta description. The five meta-refresh redirect stubs (analysis.html, disclosure.html, flagged-for-review.html, marketing.html, categories/home-kitchen-air-fryers.html) carry only the six-character description \"Moved\"; every other page carries a full description of 10+ characters. Two pages carry the generic description the publish pass added (flag M38-F-05; the 2026-11-17 figure of six is superseded). Whether the wording is right is a separate open question (Zone4 D-04, recorded option A: keep and review the wording). Re-measured 2026-11-19 (session 41e84402, after this pass): 122 published pages on the merged tree (this pass added one guide page and session cdb0a5ac added another), and `sessions/8aa259bb/measure_brief_rows.py` still reports no page missing a title or a meta description. The five meta-refresh stubs keep their deliberate 'Moved' pair and stay out of the sitemap.",
-      "our_status": "Verified here",
-      "flag": "M38-F-05",
-      "brief_link": "https://developers.google.com/search/docs/appearance/snippet",
-      "prior_2026_11_17": {
-        "our_status": "Verified here",
-        "this_repo_shows": "All 104 published HTML pages (excluding archive/, docs/, sessions/) carry a <title> and a meta description. Measured 2026-11-17. Where a page had no description, the publish pass added a generic one built from the title (flag M38-F-05).",
-        "flag": "M38-F-05"
-      }
-    },
-    {
-      "id": "S-05",
-      "priority": "P2",
-      "item": "Mark affiliate links rel=\"sponsored\" without breaking the disclosure",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-05)",
-      "this_repo_shows": "Measured 2026-11-19 by sessions/8aa259bb/measure_brief_rows.py, re-run on the merged tree after the ninth guide shipped: 414 affiliate short-link anchors (link.amazon) plus 1,378 other Amazon product/shop-host anchors — 1,792 product anchors in total, all carrying rel=\"sponsored\" (the pre-guide figure of 1,788 is superseded). Session cdb0a5ac independently counted 1,764 amazon.com/link.amazon product-host anchors with 0 missing rel=\"sponsored\" the same day (its stricter host set excludes image/CDN and shop-path hosts). The affiliate-program.amazon.com policy and agreement citations carry no rel by design. The disclosure sentence appears on 121 of 121 pages. The 2026-11-17 figures (1,447 links, 104 pages) are superseded. Re-measured 2026-11-19 (session 41e84402, after this pass): re-run of the same script on this tree: 0 anchors to `www.amazon.com/dp/…` outside `archive/`, `docs/` and `sessions/` are missing `rel=\"sponsored\"`, and the reader set is gated on it by `tools/check_publication.py`. The 1,227 'unsponsored' anchors the script prints (3,026 Amazon anchors in total on the merged tree) are policy and agreement citations on `affiliate-program.amazon.com`, which is what the earlier row says.",
-      "our_status": "Verified here",
-      "flag": "",
-      "brief_link": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
-      "prior_2026_11_17": {
-        "our_status": "Verified here",
-        "this_repo_shows": "1,447 links to amazon.* or link.amazon* on 104 pages; 0 without rel=\"sponsored\". The disclosure strip sits under the masthead on every page (checked by tools/verify_site.py, V1).",
-        "flag": ""
-      }
-    },
-    {
-      "id": "S-06",
-      "priority": "P2",
-      "item": "Add what the appliance is like to live with (original testing)",
-      "brief_says": "Not adopted - see the recorded decision (Zone4 D-06)",
-      "this_repo_shows": "Not adopted (Zone4 D-06, recorded option B: a specification and decision tool). Measured 2026-11-19: no experience claim is published; ten pages contain phrases such as 'we tested', each inside a disclaimer or prohibition; no testing data exists in this checkout; all five products keep tested_performance null, enforced empty by tools/check_publication.py (session cdb0a5ac).",
-      "our_status": "Verified here",
-      "flag": "M38-F-06",
-      "brief_link": "https://developers.google.com/search/docs/essentials/spam-policies",
-      "prior_2026_11_17": {
-        "our_status": "Not measured",
-        "this_repo_shows": "No original testing or first-hand use data exists in this checkout. Consistent with 'not adopted'.",
-        "flag": "M38-F-06"
-      }
-    },
-    {
-      "id": "S-07",
-      "priority": "P2",
-      "item": "Answer the questions people actually type, one page per question",
-      "brief_says": "No status label in the brief",
-      "this_repo_shows": "Nine question-led guides are published under guides/ (working titles, listed in the sitemap and the feed), including the probe-placement guide added 2026-11-19 through the publishing gate (session cdb0a5ac). No search-query data exists in this checkout, so no question was chosen from measured queries. Zone4 D-07 (recorded option A) approved a small set of distinct question pages. Re-measured 2026-11-19 (session 41e84402, after this pass): ten question-led guides are published under `guides/`, each on one buying question — mine on thermometer listing numbers, and a probe-placement guide from session cdb0a5ac in the same merge. No search-query data exists in this checkout, so no question on this site has been chosen from measured queries — that remains SG-29's blocker.",
-      "our_status": "Partly here",
-      "flag": "M38-F-06",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "prior_2026_11_17": {
-        "our_status": "Partly here",
-        "this_repo_shows": "Four question-shaped guides are published under guides/ (working titles). No search-query data exists in this checkout, so no question was chosen from measured queries.",
-        "flag": "M38-F-06"
-      }
-    },
-    {
-      "id": "S-09",
-      "priority": "P2",
-      "item": "Ship a social preview image and structured data, then measure whether search traffic arrives",
-      "brief_says": "Partly implemented 2026-11-16 (Zone4 D-09)",
-      "this_repo_shows": "Measured 2026-11-19: og:image and JSON-LD structured data appear on 30 of 121 published pages (29 of 120 before the ninth guide shipped the same day; the 2026-11-17 figure of 11 of 104 is superseded). No search-traffic measurement exists (SG-29). Re-measured 2026-11-19 (session 41e84402, after this pass): og:image and JSON-LD appear on 31 of 122 published pages on the merged tree (30 of 121 on the tree this pass measured before the merge), and every indexable reader URL carries both (measured by `sessions/41e84402/measure_drift.py`). The pages without them are the `noindex,follow` review surfaces, which is a choice, not a gap. Traffic still cannot be measured.",
-      "our_status": "Partly here",
-      "flag": "M38-F-07",
-      "brief_link": "https://developers.google.com/search/docs/appearance/page-experience",
-      "prior_2026_11_17": {
-        "our_status": "Partly here",
-        "this_repo_shows": "og:image on 11 of 104 pages; JSON-LD structured data on 11 of 104 pages (the reader-site pages under read/). No search-traffic measurement exists (see SG-29).",
-        "flag": "M38-F-07"
-      }
-    },
-    {
-      "id": "S-10",
-      "priority": "P3",
-      "item": "Bring the documentation in line with the code; every published check runs from a clean checkout",
-      "brief_says": "Partly implemented 2026-11-16 (Zone4 D-10)",
-      "this_repo_shows": "Gates: tools/publish.py (16 builders and 25 checks, 41 commands) returned 41 of 41 PASS on this branch on 2026-11-19, and a second run left no changes. ENGINE.md, the file the brief links to, is not in this repository (it is in the Zone4 repository). The clean-checkout rule is enforced by .github/workflows/publication-check.yml; session cdb0a5ac additionally ran the 25-check suite on a fresh local clone of the pushed branch (25/25, exit 0 — sessions/cdb0a5ac/verification-2026-11-19.md §3).",
-      "our_status": "Partly here",
-      "flag": "",
-      "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/ENGINE.md",
-      "prior_2026_11_17": {
-        "our_status": "Partly here",
-        "this_repo_shows": "Gates run green on this branch (verify_site, check_site, i2_gate, cba81fa5_lint, build_shop --check, build_feed --check, build_sitemap --check, check_all_links). A clean-checkout run is recorded in sessions/38650305/verification.md.",
-        "flag": ""
-      }
-    },
-    {
-      "id": "S-11",
-      "priority": "P3",
-      "item": "Fix one wrong flag cross-reference; split open, resolved and historical items on the review page",
-      "brief_says": "Partly implemented 2026-11-16 (Zone4 D-11)",
-      "this_repo_shows": "flagged.html carries 'resolved' and 'historical' labels (string-checked 2026-11-19, session cdb0a5ac). The shop flag page (shop/flagged/) carries a status on each item. The cross-reference fix was not re-audited in this session. Re-measured 2026-11-19 (session 41e84402, after this pass): measured here: `data/flags.json` held 164 rows before the merge and 169 after it, and 121 of them carry no `status` field at all in either tree, so the open / resolved / historical split cannot be built from the register without asserting outcomes nobody verified. The publication gate now requires any row that carries a `raised` date to carry a `status`, so new rows cannot add to the problem. Recorded as `E41-B01`.",
-      "our_status": "Partly here",
-      "flag": "E41-B01",
-      "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/data/sources.json",
-      "prior_2026_11_17": "flagged.html carries 'resolved' and 'historical' labels. The shop flag page (shop/flagged/) carries a status on each item. The cross-reference fix was not re-audited in this session."
-    },
-    {
-      "id": "S-12",
-      "priority": "P2",
-      "item": "Decide the site's voice, and rewrite the articles to it once",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-12)",
-      "this_repo_shows": "A house-style page exists (site/style-guide.html; file checked 2026-11-19, session cdb0a5ac). The voice decision record and the rewrite were not re-read in this session.",
-      "our_status": "Partly here",
-      "flag": "",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "prior_2026_11_17": "A house-style page exists (site/style-guide.html). The voice decision record and the rewrite were not re-read in this session."
-    },
-    {
-      "id": "S-13",
-      "priority": "P2",
-      "item": "Approve a format-first topic calendar: eight catchy, spec-backed articles",
-      "brief_says": "Partly implemented 2026-11-16 (Zone4 D-17)",
-      "this_repo_shows": "Measured 2026-11-19: four articles in articles/ (excluding the index) and nine question-led guides in guides/ (eight before the probe guide shipped the same day). The eight-article target is not met as articles. Zone4 D-17 (recorded) chose four foundational pieces first. The seven-title slate AS-01…AS-07 remains review-only on suggestions/index.html (AS-01’s subject shipped as the probe guide). Re-measured 2026-11-19 (session 41e84402, after this pass): the guide set is now nine, all question-shaped; the four articles in `articles/` are the research desk's. The count in the brief's 'eight catchy articles' line is met by the guide set rather than by `articles/`, and the owner's approval of the calendar is still not recorded in this repository.",
-      "our_status": "Partly here",
-      "flag": "M38-F-08",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "prior_2026_11_17": {
-        "our_status": "Partly here",
-        "this_repo_shows": "Four articles in articles/ (excluding the index) and four question-shaped guides in guides/. The eight-article target is not met as articles. Topic plan: content-topics.html.",
-        "flag": "M38-F-08"
-      }
-    },
-    {
-      "id": "S-14",
-      "priority": "P2",
-      "item": "Adopt the prepared design-prompt draft as the brief for the visual overhaul",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-20); cites DESIGN_PROMPT.md 'in this repository'",
-      "this_repo_shows": "DESIGN_PROMPT.md is present at the repository root (18,855 bytes, measured 2026-11-19) with no unfilled bracketed picks; the 2026-11-17 statement that the file is missing is superseded. Alongside it: design-brief.html (from data/design-brief.json) and the copy-ready block brief on suggestions/index.html. Adoption is recorded in the Zone4 log (D-20, recorded option A); the Zone4 text was not re-read line by line here (session cdb0a5ac).",
-      "our_status": "Verified here",
-      "flag": "M38-F-09",
-      "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/DESIGN_PROMPT.md",
-      "prior_2026_11_17": {
-        "our_status": "Not found here",
-        "this_repo_shows": "No DESIGN_PROMPT.md exists in this checkout. A design-brief page exists (design-brief.html, generated from data/design-brief.json). The brief's link points to the Zone4 repository, not this one.",
-        "flag": "M38-F-09"
-      }
-    },
-    {
-      "id": "S-15",
-      "priority": "P2",
-      "item": "Choose the visual direction and settle the brand name",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-18)",
-      "this_repo_shows": "The brand is still the working name 'Zone3 Kitchen' (measured 2026-11-19 on 3 pages); data/shop/config.json records it as open decision DEC-04, and register row P27-Q1 asks the same question. The Zone4 log says the name is still to be chosen (D-18, recorded option A: 'name to be chosen'). The brief's 'settle the brand name' is therefore not met, by this repository or by the Zone4 record.",
-      "our_status": "Conflict",
-      "flag": "M38-F-09",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "prior_2026_11_17": {
-        "our_status": "Conflict",
-        "this_repo_shows": "The brand is still the working name 'Zone3 Kitchen (working name)'. data/shop/config.json states that the brand name is an open decision (DEC-04).",
-        "flag": "M38-F-09"
-      }
-    },
-    {
-      "id": "S-16",
-      "priority": "P2",
-      "item": "Adopt a written evidence rule for 'trending' and popularity claims",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-19)",
-      "this_repo_shows": "The evidence rule is written in README.md and data/suggestions.json. 'Trending' appears on 20 published pages (16 on 2026-11-17), mostly dashboards, registers and pages that quote the brief line itself. Zone4 D-19 (recorded option A) adopted dated official snapshots as the rule. Enforcement by a gate was not measured.",
-      "our_status": "Partly here",
-      "flag": "",
-      "brief_link": "https://www.amazon.com/Air-Fryers/b/ref=dp_bc_5?ie=UTF8&node=17659096011",
-      "prior_2026_11_17": {
-        "our_status": "Partly here",
-        "this_repo_shows": "The evidence rule is written in README.md and in data/suggestions.json (rendered on suggestions.html). The word 'trending' appears on 16 pages, mostly dashboards and analysis pages. Enforcement by a gate was not measured.",
-        "flag": ""
-      }
-    },
-    {
-      "id": "S-17",
-      "priority": "P2",
-      "item": "Rebuild the front page as an editorial homepage: hero, featured articles, category tiles, then the data",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-21)",
-      "this_repo_shows": "Measured 2026-11-19: index.html places the shortlist section (id=products, five products) before the guides section (id=guides); the masthead and non-dismissible disclosure strip precede both, no dashboard appears before them, and every dashboard surface stays reachable from the single \"Behind the site\" nav group and the footer (enforced by tools/check_publication.py). Zone4 D-21 (recorded option A) keeps the editorial design.",
-      "our_status": "Verified here",
-      "flag": "",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "prior_2026_11_17": {
-        "our_status": "Verified here",
-        "this_repo_shows": "The live front page (index.html, read 2026-11-17) opens with the five products, then the four guides, then what is not confirmed, then how each page is checked. The category tile for the shop is on shop/index.html.",
-        "flag": ""
-      }
-    },
-    {
-      "id": "S-18",
-      "priority": "P2",
-      "item": "Add real product photography, and never generated or copied photography",
-      "brief_says": "Needs a decision first",
-      "this_repo_shows": "Measured 2026-11-19: 22 published pages carry an 'AI-generated' label, including the front-page image assets/img/publication-kitchen.jpg ('AI-generated editorial still life'). assets/img holds four images (hero-kitchen.jpg, capacity.jpg, counter.jpg, publication-kitchen.jpg). No product photograph and no Amazon Program Content asset is used. The brief says 'never generated or copied photography'. Zone4 D-22 is open and awaiting the owner (register E61-Q2). Re-measured 2026-11-19 (session 41e84402, after this pass): 24 published pages now carry an 'AI-generated' label (the guide count grew with the page set); no product photograph is used; the brief rules out generated imagery and Zone4 D-22 stays open. This remains the owner's decision — see `E41-Q1`-style evidence discipline: nothing was substituted.",
-      "our_status": "Conflict",
-      "flag": "M38-F-10",
-      "brief_link": "https://affiliate-program.amazon.com/help/operating/agreement",
-      "prior_2026_11_17": {
-        "our_status": "Conflict",
-        "this_repo_shows": "Three images are in assets/img/: hero-kitchen.jpg, capacity.jpg and counter.jpg. The hero image is a generated-style kitchen illustration (read 2026-11-17), and capacity.jpg's caption says 'Our own illustration'. No product photograph is used. The brief rules out generated imagery.",
-        "flag": "M38-F-10"
-      }
-    },
-    {
-      "id": "S-19",
-      "priority": "P2",
-      "item": "Add a three-question 'which one is for you' chooser above the comparison table",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-23)",
-      "this_repo_shows": "Measured 2026-11-19: the 'Which one is for you?' chooser, with three steps ('THREE QUESTIONS, NO SCORE'), is on shop/index.html, shop/air-fryers/index.html and shop/meat-thermometers/index.html, each above the product table/cards (id=chooser precedes id=comparison on shop/air-fryers). The compare page shop/products/index.html has none — that surface is open proposal E61-P5 (session cdb0a5ac). The 2026-11-17 'not found' result is superseded. Zone4 D-23 (recorded option A) is consistent with this. Re-measured 2026-11-19 (session 41e84402, after this pass): the chooser is now on the comparison page too (`shop/products/index.html`, `id=chooser` immediately before `id=comparison`), which is the surface the brief's wording names. Four surfaces carry it. It routes to a guide, shows no score, and sends nothing.",
-      "our_status": "Verified here",
-      "flag": "",
-      "brief_link": "https://www.amazon.com/dp/B0CDY277D3",
-      "prior_2026_11_17": {
-        "our_status": "Not found here",
-        "this_repo_shows": "The phrase 'which one is for you' appears on no published page (measured 2026-11-17).",
-        "flag": "M38-F-11"
-      }
-    },
-    {
-      "id": "S-20",
-      "priority": "P2",
-      "item": "Mobile-first pass: type scale, tap targets, sticky comparison bar",
-      "brief_says": "No status label in the brief",
-      "this_repo_shows": "The mobile audit is recorded in sessions/82372fd1/mobile-audit.md (merged in PR #140; file exists, checked 2026-11-19) and was not re-measured this session. Zone4 D-24 (recorded option A) states the mobile pass is done. Re-measured 2026-11-19 (session 41e84402, after this pass): the compare table's first column is sticky inside its own scroll region at every width, with a note telling a phone reader the table scrolls sideways, and `#comparison` is now reachable from every guide. This is a sticky column and a scroll note, not a floating bottom bar — the brief's words 'sticky comparison bar' are recorded as `E41-B04` so nobody reads this row as more than it is. Browser-measured on the compare page at 320, 390 and 768 px (`sessions/41e84402/browser_measure.cjs`, report in `sessions/41e84402/measurement-2026-11-19.json`): the product column holds its left edge while the region is scrolled 160 px sideways at 320 and 390 px (it does not need to scroll at 768 px); the three-question chooser renders above the comparison section at all three widths; 0 of 26 interactive targets are under the 24 px WCAG 2.2 2.5.8 minimum, against 18 of 26 under 44 px before this pass, with category pills at 31 px and an in-cell link at 11 px. 14 of 26 remain under 44 px and every one of them is an inline text link, which is the exception 2.5.8 makes for links sized by their line of text. No tap-target or accessibility claim is made beyond those measurements.",
-      "our_status": "Partly here",
-      "flag": "E41-B04",
-      "brief_link": "https://developers.google.com/search/docs/appearance/page-experience",
-      "prior_2026_11_17": {
-        "our_status": "Partly here",
-        "this_repo_shows": "The measured mobile pass for the reader site is recorded in sessions/82372fd1/mobile-audit.md (merged in PR #140). Not re-measured in this session.",
-        "flag": ""
-      }
-    },
-    {
-      "id": "S-23",
-      "priority": "P2",
-      "item": "Publish the counter-space analysis: capacity per centimetre of counter depth",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-26)",
-      "this_repo_shows": "Measured 2026-11-19: no per-centimetre or per-cm capacity analysis appears on any reader page; the only matches are in this register, the shop flag page and the suggestions page, which describe the missing analysis. The counter-space guide does not compute it and cannot honestly do so while interior dimensions remain unverified blanks (session cdb0a5ac, CDB-F-07). Zone4 D-26 (recorded option A) approved publishing it with the arithmetic shown; the arithmetic is not in this repository. Re-measured 2026-11-19 (session 41e84402, after this pass): still not published, and now with the reason measured rather than assumed: no product register in this repository holds a footprint or interior dimension (`data/publication.json`, `data/shop/products.json`, `data/z3/products.json`, `data/products.json` all carry no dimension values), so capacity-per-centimetre would have to be invented. Capturing the numbers is `E41-P1`, and the question an owner must answer first is `E41-Q1`.",
-      "our_status": "Not found here",
-      "flag": "M38-F-11",
-      "brief_link": "https://www.amazon.com/dp/B0CDY277D3",
-      "prior_2026_11_17": {
-        "our_status": "Not found here",
-        "this_repo_shows": "No 'per centimetre' or 'per cm' analysis appears on any published page (measured 2026-11-17). The counter-space guide (guides/cleanup-and-counter-space.html) does not compute capacity per centimetre.",
-        "flag": "M38-F-11"
-      }
-    },
-    {
-      "id": "S-24",
-      "priority": "P2",
-      "item": "Complete the internal linking: every article reaches the comparison, the buying guide and its category pillar",
-      "brief_says": "Implemented 2026-11-16 (Zone4 D-27)",
-      "this_repo_shows": "Measured 2026-11-19: all four articles and all nine guides link to the comparison page (shop/products/index.html) and to a category pillar; the articles also link to the guides index. The 'buying guide' link target is the guides index; no separate buying-guide page is linked from the articles. The earlier gap (guides without pillar links) is closed — every guide links its pillar and at least four other guides. No build check enforces this rule, although Zone4 D-27 (recorded option A) describes one. Re-measured 2026-11-19 (session 41e84402, after this pass): every one of the ten published guides links the buyer comparison table in its own body (`../shop/products/index.html`), not only in the shared footer — re-measured on the merged tree, where session cdb0a5ac's new guide carries the same link. The earlier same-day row counted `products/index.html`, which on a guide page appears only as the footer's 'Research product register' directory link — a string match on a page that every reader page shares. Flagged as `E41-B03`, with no change made to that session's own record.",
-      "our_status": "Partly here",
-      "flag": "M38-F-12",
-      "brief_link": "https://affiliate-program.amazon.com/help/operating/policies",
-      "prior_2026_11_17": {
-        "our_status": "Partly here",
-        "this_repo_shows": "The five pages in articles/ link to a buying page and a category page (string match). The four question guides in guides/ do not link to a buying guide or a category pillar.",
-        "flag": "M38-F-12"
-      }
-    },
-    {
-      "id": "S-25",
-      "priority": "P2",
-      "item": "Grow organic traffic on the verification angle, not on volume",
-      "brief_says": "No status label in the brief",
-      "this_repo_shows": "No traffic data exists. Search Console is not connected (SG-29), so no organic result can be measured. Zone4 D-28 (recorded option A) sets the growth rule: the verification angle, not volume. Re-checked 2026-11-19 (session cdb0a5ac).",
-      "our_status": "Blocked (owner)",
-      "flag": "M38-F-03",
-      "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "prior_2026_11_17": {
-        "our_status": "Blocked (owner)",
-        "this_repo_shows": "No traffic data exists. Search Console is not connected (SG-29), so no organic result can be measured.",
-        "flag": "M38-F-03"
-      }
-    },
-    {
-      "id": "SG-27",
-      "priority": "—",
-      "item": "Nav labels",
-      "brief_says": "Named as a parallel pass row; no definition given",
-      "this_repo_shows": "The brief defines no SG-27 text, and no SG-27 register exists in this checkout. Navigation labels were not audited against any definition. Re-checked 2026-11-19 (session cdb0a5ac).",
-      "our_status": "Not found here",
-      "flag": "M38-F-13",
-      "brief_link": "",
-      "prior_2026_11_17": "The brief defines no SG-27 text, and no SG-27 register exists in this checkout. Navigation labels were not audited against any definition."
-    },
-    {
-      "id": "SG-28",
-      "priority": "—",
-      "item": "Shipped RSS feed",
-      "brief_says": "Named as a parallel pass row",
-      "this_repo_shows": "feed.xml is RSS 2.0 (<rss version=\"2.0\">) with 27 items, measured 2026-11-19 after the ninth guide shipped (26 earlier the same day; the 2026-11-17 figure of 9 entries is superseded). tools/build_feed.py --check is one of the release gates. Every published page carries the RSS autodiscovery link (measured by session cdb0a5ac). Re-measured 2026-11-19 (session 41e84402, after this pass): 28 items on the merged tree, after both new guides were added by the register-driven feed builder (27 on the pre-merge tree).",
-      "our_status": "Verified here",
-      "flag": "",
-      "brief_link": "",
-      "prior_2026_11_17": {
-        "our_status": "Verified here",
-        "this_repo_shows": "feed.xml is RSS 2.0 with 9 entries (the four /guides/ pages and five reader guides). tools/build_feed.py --check reports it current. Every published page links to it (autodiscovery).",
-        "flag": ""
-      }
-    },
-    {
-      "id": "SG-29",
-      "priority": "—",
-      "item": "Search Console",
-      "brief_says": "Named as a parallel pass row",
-      "this_repo_shows": "Not connected. Verifying ownership needs the owner's Google account, which this build cannot access. sitemap.xml lists 17 canonical reader URLs (measured 2026-11-19 after the ninth guide shipped; 16 earlier the same day) and is ready for the owner to submit. Zone4 D-42 (open) asks who verifies the property and submits the sitemap. Re-measured 2026-11-19 (session 41e84402, after this pass): 18 URLs on the merged tree, after both new guides entered `indexable_pages`.",
-      "our_status": "Blocked (owner)",
-      "flag": "M38-F-03",
-      "brief_link": "https://search.google.com/search-console/about",
-      "prior_2026_11_17": {
-        "our_status": "Blocked (owner)",
-        "this_repo_shows": "Not connected. Verifying ownership needs the owner's Google account, which this build cannot access. sitemap.xml exists and is current, ready for submission by the owner.",
-        "flag": "M38-F-03"
-      }
-    },
-    {
-      "id": "SG-30",
-      "priority": "—",
-      "item": "Reader capture",
-      "brief_says": "Named as a parallel pass row",
-      "this_repo_shows": "Not built. No provider, privacy notice or decision on what to capture exists. Capturing reader email would need a privacy notice first. Re-checked 2026-11-19 (session cdb0a5ac).",
-      "our_status": "Blocked (owner)",
-      "flag": "M38-F-14",
-      "brief_link": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "prior_2026_11_17": "Not built. No provider, privacy notice or decision on what to capture exists. Capturing reader email would need a privacy notice first."
-    }
+  "remeasured_on": "2026-11-19",
+  "remeasured_by": "sessions 8aa259bb and cdb0a5ac (COORDINATION Parts 8aa259bb, CDB)",
+  "remeasure_method": "sessions/8aa259bb/measure_brief_rows.py (read-only). Rows that changed keep the 2026-11-17 text in 'prior_2026_11_17'. The 'brief_says' column is still quoted from the brief; the Zone4 decision rows were re-read on 2026-11-19 from a shallow clone of kanlerxz87-cyber/Zone4 (main) and checked against their recorded or open status. Session cdb0a5ac scripted its own counts (sessions/cdb0a5ac/verification-2026-11-19.md §2) and merged them without dropping 8aa259bb's Zone4-checked details.",
+  "rechecks": [
+   {
+    "on": "2026-11-19",
+    "session": "41e84402",
+    "branch": "arena/41e84402-zone3",
+    "note": "This pass amended the rows its own changes touched, then re-measured the whole register on the trees it was merged into. On this session's own tree (main 4e48849 + this pass): 121 published pages, 3,016 Amazon anchors of which 1,227 carry no rel=\"sponsored\" (1,222 at the first count), and 0 of the reader pages' amazon.com/dp anchors missing rel=\"sponsored\". On the tree this branch merges into (main 1623c1c, PRs #181 through #196, ten guides after session cdb0a5ac's probe-placement guide): 122 published pages, a title and a meta description on 122 of 122, the disclosure sentence on 122 of 122, 3,026 Amazon anchors with 1,227 unsponsored — every one of them a policy or agreement citation on affiliate-program.amazon.com — og:image and JSON-LD on 31 pages with all 18 indexable reader URLs carrying both, the chooser on 5 pages, 25 pages labelling their art AI-generated, 28 feed entries, and 8 bracket placeholders still in DESIGN_PROMPT.md. Where a row quotes a pre-merge figure it is because that is the tree the row was measured on; the merged numbers are here, which is why this page renders its own dates and history from _meta instead of carrying a typed line."
+   },
+   {
+    "on": "2026-11-19",
+    "session": "cdb0a5ac",
+    "branch": "arena/cdb0a5ac-zone3",
+    "note": "Session cdb0a5ac re-measured every row against the checkout on 2026-11-19 (their Part in COORDINATION.md, record in sessions/cdb0a5ac/verification-2026-11-19.md §2), using sessions/8aa259bb/measure_brief_rows.py and their own scripted counts, and kept the 2026-11-17 text in each row's 'prior_2026_11_17' column. Their row texts are the base of this register; where session 41e84402 measured the same row again, the two sentences sit next to each other rather than one replacing the other, and no row of theirs was rewritten."
+   },
+   {
+    "on": "2026-11-19",
+    "session": "8aa259bb",
+    "branch": "arena/8aa259bb-zone3",
+    "note": "Full re-measure of every row against the checkout, with the Zone4 D-numbers checked against their recorded or open status."
+   },
+   {
+    "on": "2026-11-17",
+    "session": "38650305",
+    "branch": "arena/38650305-zone3",
+    "note": "First measured pass for the brief's S-04…S-25 and SG-27…SG-30 rows."
+   },
+   {
+    "on": "2026-11-19",
+    "session": "ee10b024",
+    "branch": "arena/ee10b024-zone3",
+    "note": "Post-integration re-measure after PRs #157/#160/#192 were union-merged and origin/main f912a92 (PRs #199-#206) was merged in: 124 published pages, 11 guides, 20 sitemap URLs, 11 feed items (feed now sitemap-consistent per PR #192 and indexable-aligned per PR #203), disclosure 124/124, product links 1,965/1,965 sponsored with 0 missing (sessions/aebf0747/audit-after.json), product links 1,680/1,680 tagged shopnow047c-20 with no foreign tags (tools/attach_tag.py --check) and every product-detail link tagged (tools/attach_associates_tag.py --check, 22,572 inspected). Rows S-04, S-05, S-09, S-24, SG-28 and SG-29 updated in place; all other rows keep their dated measurements."
+   }
   ]
+ },
+ "rows": [
+  {
+   "id": "S-04",
+   "priority": "P1",
+   "item": "Give every page its own title and meta description",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-04)",
+   "this_repo_shows": "Measured 2026-11-19 by sessions/8aa259bb/measure_brief_rows.py (zero pages missing a title or description) and re-measured the same day by session cdb0a5ac after the ninth guide shipped, then again after integration session ee10b024: all 124 published HTML pages (excluding archive/, docs/, sessions/) carry a non-empty <title> and a meta description. The five meta-refresh redirect stubs (analysis.html, disclosure.html, flagged-for-review.html, marketing.html, categories/home-kitchen-air-fryers.html) carry only the six-character description \"Moved\"; every other page carries a full description of 10+ characters. Two pages carry the generic description the publish pass added (flag M38-F-05; the 2026-11-17 figure of six is superseded). Whether the wording is right is a separate open question (Zone4 D-04, recorded option A: keep and review the wording). Re-measured 2026-11-19 (session 41e84402, after this pass): 122 published pages on the merged tree (this pass added one guide page and session cdb0a5ac added another), and `sessions/8aa259bb/measure_brief_rows.py` still reports no page missing a title or a meta description. The five meta-refresh stubs keep their deliberate 'Moved' pair and stay out of the sitemap.",
+   "our_status": "Verified here",
+   "flag": "M38-F-05",
+   "brief_link": "https://developers.google.com/search/docs/appearance/snippet",
+   "prior_2026_11_17": {
+    "our_status": "Verified here",
+    "this_repo_shows": "All 104 published HTML pages (excluding archive/, docs/, sessions/) carry a <title> and a meta description. Measured 2026-11-17. Where a page had no description, the publish pass added a generic one built from the title (flag M38-F-05).",
+    "flag": "M38-F-05"
+   }
+  },
+  {
+   "id": "S-05",
+   "priority": "P2",
+   "item": "Mark affiliate links rel=\"sponsored\" without breaking the disclosure",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-05)",
+   "this_repo_shows": "Measured 2026-11-19 by sessions/8aa259bb/measure_brief_rows.py, re-run on the merged tree after the ninth guide shipped: 414 affiliate short-link anchors (link.amazon) plus 1,378 other Amazon product/shop-host anchors — 1,792 product anchors in total, all carrying rel=\"sponsored\" (the pre-guide figure of 1,788 is superseded). Session cdb0a5ac independently counted 1,764 amazon.com/link.amazon product-host anchors with 0 missing rel=\"sponsored\" the same day (its stricter host set excludes image/CDN and shop-path hosts). The affiliate-program.amazon.com policy and agreement citations carry no rel by design. The disclosure sentence appears on 121 of 121 pages. The 2026-11-17 figures (1,447 links, 104 pages) are superseded. Post-integration re-measure (ee10b024, 2026-11-19, final merged tree): sessions/aebf0747/audit-after.json records 124 pages, disclosure on 124 of 124, 1,965 Amazon product links with rel=\"sponsored\", 0 missing; tools/attach_tag.py --check records 1,680 of 1,680 product links carrying tag=shopnow047c-20, no foreign tags; tools/attach_associates_tag.py --check confirms every product-detail link tagged (22,572 inspected, 0 foreign); measure_brief_rows records 3,252 Amazon anchors in total, of which 1,287 non-product policy/agreement citations carry no rel by design. Earlier same-day figures (1,792 product anchors, 1,941 sponsored, 122 pages) are superseded. Re-measured 2026-11-19 (session 41e84402, after this pass): re-run of the same script on this tree: 0 anchors to `www.amazon.com/dp/…` outside `archive/`, `docs/` and `sessions/` are missing `rel=\"sponsored\"`, and the reader set is gated on it by `tools/check_publication.py`. The 1,227 'unsponsored' anchors the script prints (3,026 Amazon anchors in total on the merged tree) are policy and agreement citations on `affiliate-program.amazon.com`, which is what the earlier row says.",
+   "our_status": "Verified here",
+   "flag": "",
+   "brief_link": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+   "prior_2026_11_17": {
+    "our_status": "Verified here",
+    "this_repo_shows": "1,447 links to amazon.* or link.amazon* on 104 pages; 0 without rel=\"sponsored\". The disclosure strip sits under the masthead on every page (checked by tools/verify_site.py, V1).",
+    "flag": ""
+   }
+  },
+  {
+   "id": "S-06",
+   "priority": "P2",
+   "item": "Add what the appliance is like to live with (original testing)",
+   "brief_says": "Not adopted - see the recorded decision (Zone4 D-06)",
+   "this_repo_shows": "Not adopted (Zone4 D-06, recorded option B: a specification and decision tool). Measured 2026-11-19: no experience claim is published; ten pages contain phrases such as 'we tested', each inside a disclaimer or prohibition; no testing data exists in this checkout; all five products keep tested_performance null, enforced empty by tools/check_publication.py (session cdb0a5ac).",
+   "our_status": "Verified here",
+   "flag": "M38-F-06",
+   "brief_link": "https://developers.google.com/search/docs/essentials/spam-policies",
+   "prior_2026_11_17": {
+    "our_status": "Not measured",
+    "this_repo_shows": "No original testing or first-hand use data exists in this checkout. Consistent with 'not adopted'.",
+    "flag": "M38-F-06"
+   }
+  },
+  {
+   "id": "S-07",
+   "priority": "P2",
+   "item": "Answer the questions people actually type, one page per question",
+   "brief_says": "No status label in the brief",
+   "this_repo_shows": "Nine question-led guides are published under guides/ (working titles, listed in the sitemap and the feed), including the probe-placement guide added 2026-11-19 through the publishing gate (session cdb0a5ac). No search-query data exists in this checkout, so no question was chosen from measured queries. Zone4 D-07 (recorded option A) approved a small set of distinct question pages. Re-measured 2026-11-19 (session 41e84402, after this pass): ten question-led guides are published under `guides/`, each on one buying question — mine on thermometer listing numbers, and a probe-placement guide from session cdb0a5ac in the same merge. No search-query data exists in this checkout, so no question on this site has been chosen from measured queries — that remains SG-29's blocker.",
+   "our_status": "Partly here",
+   "flag": "M38-F-06",
+   "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+   "prior_2026_11_17": {
+    "our_status": "Partly here",
+    "this_repo_shows": "Four question-shaped guides are published under guides/ (working titles). No search-query data exists in this checkout, so no question was chosen from measured queries.",
+    "flag": "M38-F-06"
+   }
+  },
+  {
+   "id": "S-09",
+   "priority": "P2",
+   "item": "Ship a social preview image and structured data, then measure whether search traffic arrives",
+   "brief_says": "Partly implemented 2026-11-16 (Zone4 D-09)",
+   "this_repo_shows": "Measured 2026-11-19: og:image and JSON-LD structured data appear on 33 of 124 published pages (re-measured after integration session ee10b024 added the tenth guide via PR #198; previously 30 of 121, 29 of 120 before the ninth guide shipped the same day; the 2026-11-17 figure of 11 of 104 is superseded). No search-traffic measurement exists (SG-29). Re-measured 2026-11-19 (session 41e84402, after this pass): og:image and JSON-LD appear on 33 of 124 published pages on the merged tree (30 of 121 on the tree this pass measured before the merge), and every indexable reader URL carries both (measured by `sessions/41e84402/measure_drift.py`). The pages without them are the `noindex,follow` review surfaces, which is a choice, not a gap. Traffic still cannot be measured.",
+   "our_status": "Partly here",
+   "flag": "M38-F-07",
+   "brief_link": "https://developers.google.com/search/docs/appearance/page-experience",
+   "prior_2026_11_17": {
+    "our_status": "Partly here",
+    "this_repo_shows": "og:image on 11 of 104 pages; JSON-LD structured data on 11 of 104 pages (the reader-site pages under read/). No search-traffic measurement exists (see SG-29).",
+    "flag": "M38-F-07"
+   }
+  },
+  {
+   "id": "S-10",
+   "priority": "P3",
+   "item": "Bring the documentation in line with the code; every published check runs from a clean checkout",
+   "brief_says": "Partly implemented 2026-11-16 (Zone4 D-10)",
+   "this_repo_shows": "Gates: tools/publish.py (16 builders and 25 checks, 41 commands) returned 41 of 41 PASS on this branch on 2026-11-19, and a second run left no changes. ENGINE.md, the file the brief links to, is not in this repository (it is in the Zone4 repository). The clean-checkout rule is enforced by .github/workflows/publication-check.yml; session cdb0a5ac additionally ran the 25-check suite on a fresh local clone of the pushed branch (25/25, exit 0 — sessions/cdb0a5ac/verification-2026-11-19.md §3).",
+   "our_status": "Partly here",
+   "flag": "",
+   "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/ENGINE.md",
+   "prior_2026_11_17": {
+    "our_status": "Partly here",
+    "this_repo_shows": "Gates run green on this branch (verify_site, check_site, i2_gate, cba81fa5_lint, build_shop --check, build_feed --check, build_sitemap --check, check_all_links). A clean-checkout run is recorded in sessions/38650305/verification.md.",
+    "flag": ""
+   }
+  },
+  {
+   "id": "S-11",
+   "priority": "P3",
+   "item": "Fix one wrong flag cross-reference; split open, resolved and historical items on the review page",
+   "brief_says": "Partly implemented 2026-11-16 (Zone4 D-11)",
+   "this_repo_shows": "flagged.html carries 'resolved' and 'historical' labels (string-checked 2026-11-19, session cdb0a5ac). The shop flag page (shop/flagged/) carries a status on each item. The cross-reference fix was not re-audited in this session. Re-measured 2026-11-19 (session 41e84402, after this pass): measured here: `data/flags.json` held 164 rows before the merge and 169 after it, and 121 of them carry no `status` field at all in either tree, so the open / resolved / historical split cannot be built from the register without asserting outcomes nobody verified. The publication gate now requires any row that carries a `raised` date to carry a `status`, so new rows cannot add to the problem. Recorded as `E41-B01`.",
+   "our_status": "Partly here",
+   "flag": "E41-B01",
+   "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/data/sources.json",
+   "prior_2026_11_17": "flagged.html carries 'resolved' and 'historical' labels. The shop flag page (shop/flagged/) carries a status on each item. The cross-reference fix was not re-audited in this session."
+  },
+  {
+   "id": "S-12",
+   "priority": "P2",
+   "item": "Decide the site's voice, and rewrite the articles to it once",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-12)",
+   "this_repo_shows": "A house-style page exists (site/style-guide.html; file checked 2026-11-19, session cdb0a5ac). The voice decision record and the rewrite were not re-read in this session.",
+   "our_status": "Partly here",
+   "flag": "",
+   "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+   "prior_2026_11_17": "A house-style page exists (site/style-guide.html). The voice decision record and the rewrite were not re-read in this session."
+  },
+  {
+   "id": "S-13",
+   "priority": "P2",
+   "item": "Approve a format-first topic calendar: eight catchy, spec-backed articles",
+   "brief_says": "Partly implemented 2026-11-16 (Zone4 D-17)",
+   "this_repo_shows": "Measured 2026-11-19: four articles in articles/ (excluding the index) and nine question-led guides in guides/ (eight before the probe guide shipped the same day). The eight-article target is not met as articles. Zone4 D-17 (recorded) chose four foundational pieces first. The seven-title slate AS-01…AS-07 remains review-only on suggestions/index.html (AS-01’s subject shipped as the probe guide). Re-measured 2026-11-19 (session 41e84402, after this pass): the guide set is now nine, all question-shaped; the four articles in `articles/` are the research desk's. The count in the brief's 'eight catchy articles' line is met by the guide set rather than by `articles/`, and the owner's approval of the calendar is still not recorded in this repository.",
+   "our_status": "Partly here",
+   "flag": "M38-F-08",
+   "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+   "prior_2026_11_17": {
+    "our_status": "Partly here",
+    "this_repo_shows": "Four articles in articles/ (excluding the index) and four question-shaped guides in guides/. The eight-article target is not met as articles. Topic plan: content-topics.html.",
+    "flag": "M38-F-08"
+   }
+  },
+  {
+   "id": "S-14",
+   "priority": "P2",
+   "item": "Adopt the prepared design-prompt draft as the brief for the visual overhaul",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-20); cites DESIGN_PROMPT.md 'in this repository'",
+   "this_repo_shows": "DESIGN_PROMPT.md is present at the repository root (18,855 bytes, measured 2026-11-19) with no unfilled bracketed picks; the 2026-11-17 statement that the file is missing is superseded. Alongside it: design-brief.html (from data/design-brief.json) and the copy-ready block brief on suggestions/index.html. Adoption is recorded in the Zone4 log (D-20, recorded option A); the Zone4 text was not re-read line by line here (session cdb0a5ac).",
+   "our_status": "Verified here",
+   "flag": "M38-F-09",
+   "brief_link": "https://github.com/kanlerxz87-cyber/Zone4/blob/main/DESIGN_PROMPT.md",
+   "prior_2026_11_17": {
+    "our_status": "Not found here",
+    "this_repo_shows": "No DESIGN_PROMPT.md exists in this checkout. A design-brief page exists (design-brief.html, generated from data/design-brief.json). The brief's link points to the Zone4 repository, not this one.",
+    "flag": "M38-F-09"
+   }
+  },
+  {
+   "id": "S-15",
+   "priority": "P2",
+   "item": "Choose the visual direction and settle the brand name",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-18)",
+   "this_repo_shows": "The brand is still the working name 'Zone3 Kitchen' (measured 2026-11-19 on 3 pages); data/shop/config.json records it as open decision DEC-04, and register row P27-Q1 asks the same question. The Zone4 log says the name is still to be chosen (D-18, recorded option A: 'name to be chosen'). The brief's 'settle the brand name' is therefore not met, by this repository or by the Zone4 record.",
+   "our_status": "Conflict",
+   "flag": "M38-F-09",
+   "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+   "prior_2026_11_17": {
+    "our_status": "Conflict",
+    "this_repo_shows": "The brand is still the working name 'Zone3 Kitchen (working name)'. data/shop/config.json states that the brand name is an open decision (DEC-04).",
+    "flag": "M38-F-09"
+   }
+  },
+  {
+   "id": "S-16",
+   "priority": "P2",
+   "item": "Adopt a written evidence rule for 'trending' and popularity claims",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-19)",
+   "this_repo_shows": "The evidence rule is written in README.md and data/suggestions.json. 'Trending' appears on 20 published pages (16 on 2026-11-17), mostly dashboards, registers and pages that quote the brief line itself. Zone4 D-19 (recorded option A) adopted dated official snapshots as the rule. Enforcement by a gate was not measured.",
+   "our_status": "Partly here",
+   "flag": "",
+   "brief_link": "https://www.amazon.com/Air-Fryers/b/ref=dp_bc_5?ie=UTF8&node=17659096011",
+   "prior_2026_11_17": {
+    "our_status": "Partly here",
+    "this_repo_shows": "The evidence rule is written in README.md and in data/suggestions.json (rendered on suggestions.html). The word 'trending' appears on 16 pages, mostly dashboards and analysis pages. Enforcement by a gate was not measured.",
+    "flag": ""
+   }
+  },
+  {
+   "id": "S-17",
+   "priority": "P2",
+   "item": "Rebuild the front page as an editorial homepage: hero, featured articles, category tiles, then the data",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-21)",
+   "this_repo_shows": "Measured 2026-11-19: index.html places the shortlist section (id=products, five products) before the guides section (id=guides); the masthead and non-dismissible disclosure strip precede both, no dashboard appears before them, and every dashboard surface stays reachable from the single \"Behind the site\" nav group and the footer (enforced by tools/check_publication.py). Zone4 D-21 (recorded option A) keeps the editorial design.",
+   "our_status": "Verified here",
+   "flag": "",
+   "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+   "prior_2026_11_17": {
+    "our_status": "Verified here",
+    "this_repo_shows": "The live front page (index.html, read 2026-11-17) opens with the five products, then the four guides, then what is not confirmed, then how each page is checked. The category tile for the shop is on shop/index.html.",
+    "flag": ""
+   }
+  },
+  {
+   "id": "S-18",
+   "priority": "P2",
+   "item": "Add real product photography, and never generated or copied photography",
+   "brief_says": "Needs a decision first",
+   "this_repo_shows": "Measured 2026-11-19: 22 published pages carry an 'AI-generated' label, including the front-page image assets/img/publication-kitchen.jpg ('AI-generated editorial still life'). assets/img holds four images (hero-kitchen.jpg, capacity.jpg, counter.jpg, publication-kitchen.jpg). No product photograph and no Amazon Program Content asset is used. The brief says 'never generated or copied photography'. Zone4 D-22 is open and awaiting the owner (register E61-Q2). Re-measured 2026-11-19 (session 41e84402, after this pass): 24 published pages now carry an 'AI-generated' label (the guide count grew with the page set); no product photograph is used; the brief rules out generated imagery and Zone4 D-22 stays open. This remains the owner's decision — see `E41-Q1`-style evidence discipline: nothing was substituted.",
+   "our_status": "Conflict",
+   "flag": "M38-F-10",
+   "brief_link": "https://affiliate-program.amazon.com/help/operating/agreement",
+   "prior_2026_11_17": {
+    "our_status": "Conflict",
+    "this_repo_shows": "Three images are in assets/img/: hero-kitchen.jpg, capacity.jpg and counter.jpg. The hero image is a generated-style kitchen illustration (read 2026-11-17), and capacity.jpg's caption says 'Our own illustration'. No product photograph is used. The brief rules out generated imagery.",
+    "flag": "M38-F-10"
+   }
+  },
+  {
+   "id": "S-19",
+   "priority": "P2",
+   "item": "Add a three-question 'which one is for you' chooser above the comparison table",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-23)",
+   "this_repo_shows": "Measured 2026-11-19: the 'Which one is for you?' chooser, with three steps ('THREE QUESTIONS, NO SCORE'), is on shop/index.html, shop/air-fryers/index.html and shop/meat-thermometers/index.html, each above the product table/cards (id=chooser precedes id=comparison on shop/air-fryers). The compare page shop/products/index.html has none — that surface is open proposal E61-P5 (session cdb0a5ac). The 2026-11-17 'not found' result is superseded. Zone4 D-23 (recorded option A) is consistent with this. Re-measured 2026-11-19 (session 41e84402, after this pass): the chooser is now on the comparison page too (`shop/products/index.html`, `id=chooser` immediately before `id=comparison`), which is the surface the brief's wording names. Four surfaces carry it. It routes to a guide, shows no score, and sends nothing.",
+   "our_status": "Verified here",
+   "flag": "",
+   "brief_link": "https://www.amazon.com/dp/B0CDY277D3",
+   "prior_2026_11_17": {
+    "our_status": "Not found here",
+    "this_repo_shows": "The phrase 'which one is for you' appears on no published page (measured 2026-11-17).",
+    "flag": "M38-F-11"
+   }
+  },
+  {
+   "id": "S-20",
+   "priority": "P2",
+   "item": "Mobile-first pass: type scale, tap targets, sticky comparison bar",
+   "brief_says": "No status label in the brief",
+   "this_repo_shows": "The mobile audit is recorded in sessions/82372fd1/mobile-audit.md (merged in PR #140; file exists, checked 2026-11-19) and was not re-measured this session. Zone4 D-24 (recorded option A) states the mobile pass is done. Re-measured 2026-11-19 (session 41e84402, after this pass): the compare table's first column is sticky inside its own scroll region at every width, with a note telling a phone reader the table scrolls sideways, and `#comparison` is now reachable from every guide. This is a sticky column and a scroll note, not a floating bottom bar — the brief's words 'sticky comparison bar' are recorded as `E41-B04` so nobody reads this row as more than it is. Browser-measured on the compare page at 320, 390 and 768 px (`sessions/41e84402/browser_measure.cjs`, report in `sessions/41e84402/measurement-2026-11-19.json`): the product column holds its left edge while the region is scrolled 160 px sideways at 320 and 390 px (it does not need to scroll at 768 px); the three-question chooser renders above the comparison section at all three widths; 0 of 26 interactive targets are under the 24 px WCAG 2.2 2.5.8 minimum, against 18 of 26 under 44 px before this pass, with category pills at 31 px and an in-cell link at 11 px. 14 of 26 remain under 44 px and every one of them is an inline text link, which is the exception 2.5.8 makes for links sized by their line of text. No tap-target or accessibility claim is made beyond those measurements.",
+   "our_status": "Partly here",
+   "flag": "E41-B04",
+   "brief_link": "https://developers.google.com/search/docs/appearance/page-experience",
+   "prior_2026_11_17": {
+    "our_status": "Partly here",
+    "this_repo_shows": "The measured mobile pass for the reader site is recorded in sessions/82372fd1/mobile-audit.md (merged in PR #140). Not re-measured in this session.",
+    "flag": ""
+   }
+  },
+  {
+   "id": "S-23",
+   "priority": "P2",
+   "item": "Publish the counter-space analysis: capacity per centimetre of counter depth",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-26)",
+   "this_repo_shows": "Measured 2026-11-19: no per-centimetre or per-cm capacity analysis appears on any reader page; the only matches are in this register, the shop flag page and the suggestions page, which describe the missing analysis. The counter-space guide does not compute it and cannot honestly do so while interior dimensions remain unverified blanks (session cdb0a5ac, CDB-F-07). Zone4 D-26 (recorded option A) approved publishing it with the arithmetic shown; the arithmetic is not in this repository. Re-measured 2026-11-19 (session 41e84402, after this pass): still not published, and now with the reason measured rather than assumed: no product register in this repository holds a footprint or interior dimension (`data/publication.json`, `data/shop/products.json`, `data/z3/products.json`, `data/products.json` all carry no dimension values), so capacity-per-centimetre would have to be invented. Capturing the numbers is `E41-P1`, and the question an owner must answer first is `E41-Q1`.",
+   "our_status": "Not found here",
+   "flag": "M38-F-11",
+   "brief_link": "https://www.amazon.com/dp/B0CDY277D3",
+   "prior_2026_11_17": {
+    "our_status": "Not found here",
+    "this_repo_shows": "No 'per centimetre' or 'per cm' analysis appears on any published page (measured 2026-11-17). The counter-space guide (guides/cleanup-and-counter-space.html) does not compute capacity per centimetre.",
+    "flag": "M38-F-11"
+   }
+  },
+  {
+   "id": "S-24",
+   "priority": "P2",
+   "item": "Complete the internal linking: every article reaches the comparison, the buying guide and its category pillar",
+   "brief_says": "Implemented 2026-11-16 (Zone4 D-27)",
+   "this_repo_shows": "Measured 2026-11-19: all four articles and all eleven guides link to the comparison page (shop/products/index.html) and to a category pillar; the articles also link to the guides index. The 'buying guide' link target is the guides index; no separate buying-guide page is linked from the articles. The earlier gap (guides without pillar links) is closed — every guide links its pillar and at least four other guides. No build check enforces this rule, although Zone4 D-27 (recorded option A) describes one. Re-measured 2026-11-19 (session 41e84402, after this pass): every one of the ten published guides links the buyer comparison table in its own body (`../shop/products/index.html`), not only in the shared footer — re-measured on the merged tree, where session cdb0a5ac's new guide carries the same link. The earlier same-day row counted `products/index.html`, which on a guide page appears only as the footer's 'Research product register' directory link — a string match on a page that every reader page shares. Flagged as `E41-B03`, with no change made to that session's own record.",
+   "our_status": "Partly here",
+   "flag": "M38-F-12",
+   "brief_link": "https://affiliate-program.amazon.com/help/operating/policies",
+   "prior_2026_11_17": {
+    "our_status": "Partly here",
+    "this_repo_shows": "The five pages in articles/ link to a buying page and a category page (string match). The four question guides in guides/ do not link to a buying guide or a category pillar.",
+    "flag": "M38-F-12"
+   }
+  },
+  {
+   "id": "S-25",
+   "priority": "P2",
+   "item": "Grow organic traffic on the verification angle, not on volume",
+   "brief_says": "No status label in the brief",
+   "this_repo_shows": "No traffic data exists. Search Console is not connected (SG-29), so no organic result can be measured. Zone4 D-28 (recorded option A) sets the growth rule: the verification angle, not volume. Re-checked 2026-11-19 (session cdb0a5ac).",
+   "our_status": "Blocked (owner)",
+   "flag": "M38-F-03",
+   "brief_link": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+   "prior_2026_11_17": {
+    "our_status": "Blocked (owner)",
+    "this_repo_shows": "No traffic data exists. Search Console is not connected (SG-29), so no organic result can be measured.",
+    "flag": "M38-F-03"
+   }
+  },
+  {
+   "id": "SG-27",
+   "priority": "—",
+   "item": "Nav labels",
+   "brief_says": "Named as a parallel pass row; no definition given",
+   "this_repo_shows": "The brief defines no SG-27 text, and no SG-27 register exists in this checkout. Navigation labels were not audited against any definition. Re-checked 2026-11-19 (session cdb0a5ac).",
+   "our_status": "Not found here",
+   "flag": "M38-F-13",
+   "brief_link": "",
+   "prior_2026_11_17": "The brief defines no SG-27 text, and no SG-27 register exists in this checkout. Navigation labels were not audited against any definition."
+  },
+  {
+   "id": "SG-28",
+   "priority": "—",
+   "item": "Shipped RSS feed",
+   "brief_says": "Named as a parallel pass row",
+   "this_repo_shows": "feed.xml is RSS 2.0 (<rss version=\"2.0\">) with 11 items, re-measured 2026-11-19 after integration session ee10b024 union-merged PRs #157/#160/#192 and rebased onto origin/main f912a92: the feed lists only indexable, sitemap-canonical reader URLs (PR #192's sitemap-consistent rule, PR #203's indexable-set alignment; the earlier 27-item feed mixed noindex archive items and is superseded), with eleven guides after PR #200. tools/build_feed.py --check current; every item resolves to a URL in sitemap.xml.",
+   "our_status": "Verified here",
+   "flag": "",
+   "brief_link": "",
+   "prior_2026_11_17": {
+    "our_status": "Verified here",
+    "this_repo_shows": "feed.xml is RSS 2.0 with 9 entries (the four /guides/ pages and five reader guides). tools/build_feed.py --check reports it current. Every published page links to it (autodiscovery).",
+    "flag": ""
+   },
+   "status": "open"
+  },
+  {
+   "id": "SG-29",
+   "priority": "—",
+   "item": "Search Console",
+   "brief_says": "Named as a parallel pass row",
+   "this_repo_shows": "Not connected. Verifying ownership needs the owner's Google account, which this build cannot access. sitemap.xml lists 20 canonical reader URLs (re-measured 2026-11-19 after integration session ee10b024: eleven guides after PR #200, prior figures of 17 and 18 superseded) and is ready for the owner to submit. Zone4 D-42 (open) asks who verifies the property and submits the sitemap. Re-measured 2026-11-19 (session 41e84402, after this pass): 18 URLs on the merged tree, after both new guides entered `indexable_pages`.",
+   "our_status": "Blocked (owner)",
+   "flag": "M38-F-03",
+   "brief_link": "https://search.google.com/search-console/about",
+   "prior_2026_11_17": {
+    "our_status": "Blocked (owner)",
+    "this_repo_shows": "Not connected. Verifying ownership needs the owner's Google account, which this build cannot access. sitemap.xml exists and is current, ready for submission by the owner.",
+    "flag": "M38-F-03"
+   }
+  },
+  {
+   "id": "SG-30",
+   "priority": "—",
+   "item": "Reader capture",
+   "brief_says": "Named as a parallel pass row",
+   "this_repo_shows": "Not built. No provider, privacy notice or decision on what to capture exists. Capturing reader email would need a privacy notice first. Re-checked 2026-11-19 (session cdb0a5ac).",
+   "our_status": "Blocked (owner)",
+   "flag": "M38-F-14",
+   "brief_link": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+   "prior_2026_11_17": "Not built. No provider, privacy notice or decision on what to capture exists. Capturing reader email would need a privacy notice first."
+  }
+ ]
 }

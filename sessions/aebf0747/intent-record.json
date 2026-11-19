@@ -4,7 +4,7 @@
   "observed_on": "2026-11-17",
   "observed_by": "fetch of each short link and of the resulting amazon.com/dp/ page, same session",
   "selected_tracking_id": "shopnow047c-20",
-  "tracking_id_status": "Selected by the owner. Not attached to any link on this site. Attribution on the supplied short links is unverified: it needs an enrolled Associates Special Link test (Operating Agreement Section 1) and a tracking report check. See AE-F-01.",
+  "tracking_id_status": "Selected by the owner. Attached as the tag parameter on every product link on the live site: 1,656 of 1,656 product links carry tag=shopnow047c-20 (tools/attach_tag.py --check, measured 2026-11-19 after integration session ee10b024 merged PR #192; the earlier 'not attached' record is superseded, correction EE-F-01). Attribution reporting is still unverified: it needs an enrolled Associates Special Link test (Operating Agreement Section 1) and a tracking report check. See AE-F-01.",
   "field_rules": [
     "Intended ASIN, official listing URL, confirmation date and confirmation source are the INTENT fields. They are filled only when the owner supplies the intended product and an official page confirms it. None is filled on this pass.",
     "Observed redirect target fields record what the submitted short link opened on the observed date. They are a separate field and are never copied into the intent fields.",
@@ -103,9 +103,29 @@
     }
   ],
   "official_sources": [
-    {"id": "AE-S01", "label": "Amazon Associates Operating Agreement (updated 2025-10-15), Sections 1 and 5", "url": "https://affiliate-program.amazon.com/help/operating/agreement", "read": "2026-11-17"},
-    {"id": "AE-S02", "label": "Amazon Creators API, GetItems: ItemIdType ASIN = 10-character identifier", "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items", "read": "2026-11-17"},
-    {"id": "AE-S03", "label": "Google Search Central: Qualify your outbound links (rel=sponsored), last updated 2025-12-10", "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links", "read": "2026-11-17"},
-    {"id": "AE-S04", "label": "FTC: Disclosures 101 for Social Media Influencers (November 2019)", "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers", "read": "2026-11-17"}
+    {
+      "id": "AE-S01",
+      "label": "Amazon Associates Operating Agreement (updated 2025-10-15), Sections 1 and 5",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "read": "2026-11-17"
+    },
+    {
+      "id": "AE-S02",
+      "label": "Amazon Creators API, GetItems: ItemIdType ASIN = 10-character identifier",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "read": "2026-11-17"
+    },
+    {
+      "id": "AE-S03",
+      "label": "Google Search Central: Qualify your outbound links (rel=sponsored), last updated 2025-12-10",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "read": "2026-11-17"
+    },
+    {
+      "id": "AE-S04",
+      "label": "FTC: Disclosures 101 for Social Media Influencers (November 2019)",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "read": "2026-11-17"
+    }
   ]
 }

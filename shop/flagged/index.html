@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flagged for review — shop build</title>
-<meta name="description" content="36 items flagged for review, each with its source link and what this build did not claim.">
+<meta name="description" content="37 items flagged for review, each with its source link and what this build did not claim.">
 <link rel="stylesheet" href="../assets/shop.css">
 <!-- z3:css --><link rel="stylesheet" href="../../assets/zone3-publication.css">
 <!-- z3:rss --><link rel="alternate" type="application/rss+xml" title="Zone3 Kitchen guides" href="../../feed.xml">
@@ -39,7 +39,7 @@
 <tr>
   <td>FLG-S02</td><td>High</td><td>Open - for review</td>
   <td>The requester has not stated the intended ASIN for any of the five links, and no intent confirmation has been recorded.</td><td>Every row in the intent record is &#x27;Unverified&#x27;. Redirect targets (observed) are not treated as intended products.</td><td>All intended_* and official_listing_url fields are blank. See DEC-02 on the decisions page.</td>
-  <td><a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener" target="_blank">Observed redirects (SH-S06 to SH-S10)</a></td><td>No claim is made that the observed products are the intended ones.</td>
+  <td><a href="https://link.amazon/B04G1MEwY?tag=shopnow047c-20" rel="sponsored noopener" target="_blank">Observed redirects (SH-S06 to SH-S10)</a></td><td>No claim is made that the observed products are the intended ones.</td>
 </tr>
 <tr>
   <td>FLG-S03</td><td>Medium</td><td>Open - for review</td>
@@ -190,6 +190,11 @@
   <td>E41-B04</td><td>Low</td><td>Open - decision needed (owner)</td>
   <td>The brief&#x27;s S-20 asks for a &#x27;sticky comparison bar&#x27;. This repository ships a sticky product column inside the comparison table&#x27;s own scroll region plus a scroll note, which is the part a table can support without data.</td><td>If a floating bottom bar was intended, the row is not done, and adding one costs viewport height on the smallest phones.</td><td>Named what was built in the register row instead of reusing the brief&#x27;s phrase, and put the choice to the owner as `E41-Q2`.</td>
   <td><a href="https://developers.google.com/search/docs/appearance/page-experience">Google Search Central: page experience</a></td><td>No claim that a floating bar would improve conversion or use.</td>
+</tr>
+<tr>
+  <td>5D4-F-01</td><td>High</td><td>Open - attribution question (agent reported, owner review)</td>
+  <td>The submitted https://link.amazon short links resolve to Amazon through a THIRD-PARTY redirect chain. The observed redirect target recorded in this repository carries a linktw.in click token (btn_ref=srctok-...), and the flagged.html and sources.html pages cite linktw.in as the shortener&#x27;s operator. Program Policies Participation Requirements 2(b) requires that the Associates ID or tag be a parameter in the URL of each link placed on the site to an Amazon Site, and 6(v) forbids obscuring the URL of the site containing Special Links by use of Redirecting Links.</td><td>If the supplied short links are redirected through a third-party shortener, a click may not be attributable to this Associates account even though it reaches the right listing. That is the difference between a click that earns and a click that does not. It is separate from, and not resolved by, this session&#x27;s decision to tag every link the site itself emits.</td><td>Did not alter, delete or re-host the supplied short links; they are not declared invalid (FLG-003 stays unresolved, as the brief instructs). Every outbound product link the site emits itself now goes directly to amazon.com/dp/&lt;ASIN&gt;?tag=shopnow047c-20, so the site&#x27;s own destinations can be attributed and are not routed through any shortener. Logged here for the owner to confirm with Associates Central which destination actually credits the account.</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/policies">Amazon Associates Program Policies - Participation Requirements 2(b) and 6(v)</a><br><a href="https://affiliate-program.amazon.com/help/operating/agreement">Amazon Associates Program Operating Agreement</a></td><td>No claim that link.amazon or linktw.in is prohibited, invalid, or non-compliant. The ownership and attribution behaviour of the redirect chain was not tested and is not asserted. Only the dated observation (the redirect target carries a linktw.in token) and the applicable policy text are recorded.</td>
 </tr>
 <tr>
   <td>FLG-S33</td><td>High</td><td>Open - for review</td>
