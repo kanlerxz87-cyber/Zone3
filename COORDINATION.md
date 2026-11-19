@@ -8589,3 +8589,32 @@ P26 CI finalization: PR **#171** is open. Both push/PR builds for c6a9ef6 passed
 - Branch base is `825f513` = current `main` (PR #172 merged). This session is the final integration pass on the fixed session branch; it changes only shared outputs (publication table data, reader pages through the canonical builder, sitemap/feed, this log) after re-verification.
 - No other session is active on this branch at claim time; the tree is clean at `825f513`. Upstream registers (`data/shop/*`, legacy dashboards, archives) are read and re-checked, not rewritten unless verification finds drift, which will be logged here first.
 - `git pull --rebase` will be run before every push. Any conflict stops the work: it is resolved without discarding other sessions' work and logged in this section.
+
+### CD-T1 completion record — 2026-11-19
+
+Independent line-by-line re-verification of the five supplied product links (one fresh fetch per link, 2026-11-19):
+
+| Submitted link | Observed ASIN (live) | Registered ASIN | Title (live vs registered) | Result |
+|---|---|---|---|---|
+| https://link.amazon/B04G1MEwY | B0CDY277D3 | B0CDY277D3 | exact match | confirmed |
+| https://link.amazon/B02NbDxp3 | B09B7SB46R | B09B7SB46R | exact match | confirmed |
+| https://link.amazon/B00hJ57DV | B08DKYBTPH | B08DKYBTPH | match in substance — live title carries the non-substantive ® glyph absent from the record | confirmed (noted) |
+| https://link.amazon/B0c8moW59 | B0DHZTCNR5 | B0DHZTCNR5 | exact match | confirmed |
+| https://link.amazon/B0f3GKalj | B0DZFD6R9Z | B0DZFD6R9Z | exact match | confirmed |
+
+- No drift in redirect targets, ASINs or listing titles between the register and the fresh observations. Category breadcrumbs confirm air-fryer vs thermometer placement.
+- `price`, `rating`, `review_count`, `tested_performance` deliberately remain null; observed redirect targets were not merged into intended-intent fields. FLG-003 (supplied-link compliance status) remains unresolved and is not claimed either way.
+- Full record: `sessions/cd746460/verification-2026-11-19.md`.
+
+### CD-T2 completion record — 2026-11-19
+
+- `python3 tools/publish.py`: 41 generation/check commands, **0 failed**. Canonical builder reports the reader pages current (idempotent rebuild).
+- `tools/link_report.py --strict`: 232 rows / 945 cells, 55 blank-by-design, 22 cited sources, no dangling source or flag references. Six historical flag IDs (FLG-001/002/003/007/027, I-F-01) are flagged unreferenced by this build and remain published on `flagged.html` (verified present).
+- Sitemap 14 URLs = 14 `indexable_pages`; feed 24 entries. Flagged items and unverified values remain published on the Flagged for Review page with source links.
+- No broken links; no unsupported figures; disclosure above the fold and in footer on all pages; every Amazon outbound link `rel="sponsored"` (enforced by the strict gates).
+
+### CD-T3 publish record (pending → filled after PR/merge)
+
+- PR: (filled after creation)
+- Merge: (filled after merge)
+- GitHub Pages deploy: (filled after live-fetch confirmation)
