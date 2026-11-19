@@ -2146,15 +2146,15 @@
       "priority": "Next",
       "area": "Evidence capture",
       "title": "Get the two measurements the counter-space analysis needs — from an authorized source.",
-      "why": "The brief asks for capacity per centimetre of counter depth. Every register in this repository holds the capacity wording and none holds a footprint or interior dimension, so the arithmetic cannot be published without inventing a number.",
+      "why": "The brief asks for capacity per centimetre of counter depth. Until 2026-11-19 no register held a footprint, so the arithmetic could not be published without inventing a number. Three listings’ detail tables have since been read and their exterior sizes recorded, which is enough to state a footprint but not enough to divide capacity by it: the capacity fields disagree with their own titles on two products (FLG-S33), and no interior measurement exists.",
       "next": "For each of the five listings, capture the footprint and interior dimensions from an authorized source (the Product Advertising API response or the brand's own published specification page), date each capture, and store them in the product register. Only then does the per-centimetre article get written.",
       "evidence_needed": [
         "E41-Q1"
       ],
       "source": "amazon-agreement",
-      "status": "Proposed",
+      "status": "Partly shipped 2026-11-19 (exterior sizes captured; interior sizes still absent)",
       "owner_input_needed": true,
-      "next_action": "Decide which authorized source may supply dimensions, capture them dated, and add them to data/publication.json products; this pass deliberately left the analysis unpublished instead of estimating.",
+      "next_action": "Decide whether a per-centimetre figure computed from listed capacity and listed exterior depth is worth publishing given FLG-S33, or wait for interior dimensions. Either way the arithmetic must name which capacity figure it divided.",
       "discoveries": [
         "Whether an authorized response carries usable interior dimensions at all",
         "Which capacity-to-footprint comparison the captured numbers actually support for each of the five"
@@ -2177,6 +2177,44 @@
       "discoveries": [
         "How much table width the sticky column takes at the narrowest tested viewport",
         "Whether every comparison column remains reachable by thumb without a second scroll region"
+      ]
+    },
+    {
+      "id": "0A4-P1",
+      "priority": "Next",
+      "area": "Product content",
+      "title": "Publish the capacity figure the listing itself prints, next to the one in its title.",
+      "why": "Two of the three air-fryer listings print a capacity in the detail table that does not match the number in the title: “6 Quart” against “Capacity: 6 liters”, and “26QT” against “Capacity: 24.6 liters”. The site now shows only the title wording in its feature chips, so a buyer comparing quarts between two products is reading a field that disagrees with the same page’s own table.",
+      "next": "Show both printed figures on the card and the comparison row, each labelled with the field it came from, and link FLG-S33. Do not convert either into servings.",
+      "evidence_needed": [
+        "E41-Q1"
+      ],
+      "source": "amazon-agreement",
+      "status": "Proposed — evidence already captured for three of five products",
+      "owner_input_needed": false,
+      "next_action": "Approve the card copy, then render capacity_as_listed beside the existing feature chips. The data is already in the register.",
+      "discoveries": [
+        "Whether the discrepancy is a labelling convention or a genuine mismatch, which only the manuals settle",
+        "Whether a buyer-facing caveat reads as helpful or as noise on a card"
+      ]
+    },
+    {
+      "id": "0A4-P2",
+      "priority": "Next",
+      "area": "On-page navigation",
+      "title": "Give the guide contents block a number that matches how many sections the guide has.",
+      "why": "The in-guide contents list adds a hand-written fourth entry (“04 The relevant shortlist”) on top of the generated section list. The counter-space guide now has four sections, so its contents block numbers the shortlist a second time as 04 and never reaches it.",
+      "next": "Derive the shortlist entry number from the section count in the renderer instead of typing it, then re-check every guide.",
+      "evidence_needed": [
+        "google-page-experience"
+      ],
+      "source": "google-page-experience",
+      "status": "Proposed",
+      "owner_input_needed": false,
+      "next_action": "Replace the literal “04” in the contents template with the computed next number and add a gate assertion that contents entries are unique.",
+      "discoveries": [
+        "Whether any other guide has a section count that collides with the typed number",
+        "Whether a duplicated contents number affects keyboard or screen-reader order"
       ]
     }
   ],
