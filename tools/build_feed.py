@@ -193,8 +193,71 @@ def union_entries() -> list[dict]:
 
     if not out:
         fail("all registers empty — a feed with no entries would misrepresent the site")
-    out.sort(key=lambda e: (e["date"], e["link"], e["title"]), reverse=True)
-    return out
+
+    # 4B0-T3 follow-up: thin out entries before the sitemap filter, never after it, so the newest
+    # guide always survives. Drop an entry when the page it points at tells the reader the
+    # registry is not correct for that page:
+    #   * a "superseded"/"no longer maintained"/"working name is still open" notice (the archived
+    #     /site/ and /read/ layers carry these), or
+    #   * the page is a bare "moved" redirect stub (no article body).
+    def retired(e: dict) -> str | None:
+        rel = e["link"][len(BASE) + 1:]
+        page = ROOT / rel
+        if not page.exists():
+            return "page is not on disk"
+        raw = page.read_text(encoding="utf-8", errors="replace")
+        body = re.sub(r"<[^>]+>", " ", raw).lower()
+        for phrase in ("no longer maintained", "this edition was superseded", "superseded by the current edition",
+                       "working name is still open"):
+            if phrase in body:
+                return f"page says {phrase!r}"
+        if "http-equiv=\"refresh\"" in raw.lower() and "moved" in body:
+            return "page is a moved-redirect stub"
+        return None
+
+    kept, retired_out = [], []
+    for e in out:
+        why = retired(e)
+        (retired_out if why else kept).append((e, why) if why else e)
+    if retired_out:
+        print(f"feed: {len(retired_out)} entr{'y' if len(retired_out) == 1 else 'ies'} dropped — the page itself says it is retired")
+        for e, why in retired_out:
+            print(f"  - {e['link']} ({why})")
+    kept.sort(key=lambda e: (e["date"], e["link"], e["title"]), reverse=True)
+    return indexable_only(kept)
+
+
+SM = ROOT / "sitemap.xml"
+
+
+def sitemap_urls() -> set[str]:
+    """Canonical URLs the site actually offers for indexing (scripts/build_sitemap.py)."""
+    raw = SM.read_text(encoding="utf-8")
+    return {m.group(1).strip() for m in re.finditer(r"<loc>(.*?)</loc>", raw)}
+
+
+def indexable_only(entries: list[dict]) -> list[dict]:
+    """4B0-T3 — a feed item must point at a page the sitemap offers for indexing.
+
+    On 2026-11-19 the feed carried 28 items and 18 of them pointed at pages marked
+    `robots: noindex,follow` (the archived /site/, /read/ and /articles/ layers),
+    which the sitemap deliberately excludes. Advertising a page to feed readers
+    while telling search engines not to index it is an inconsistency, so a feed
+    entry now has to survive its page being indexable. Nothing is invented: an
+    excluded entry is dropped and reported, and the check fails if the feed would
+    otherwise change.
+    """
+    allowed = sitemap_urls()
+    kept, dropped = [], []
+    for e in entries:
+        (kept if e["link"] in allowed else dropped).append(e)
+    if dropped:
+        print(f"feed: {len(dropped)} entr{'y' if len(dropped) == 1 else 'ies'} dropped — page not offered for indexing by sitemap.xml")
+        for e in dropped:
+            print(f"  - {e['link']}")
+    if not kept:
+        fail("every feed entry points at a noindex page; the feed would be empty")
+    return kept
 
 
 def build_feed() -> str:
@@ -210,8 +273,7 @@ def build_feed() -> str:
     x.append('<rss version="2.0"><channel><title>Zone3 guides</title>')
     x.append(f'<link>{BASE}/guides/index.html</link>')
     x.append(
-        "<description>Question-led kitchen buying guides and archived research notes — the canonical /guides/ pages, "
-        "the Air Fryer Field Notes buying guides, the Research Desk articles and The Crisp Report field notes. "
+        "<description>Question-led kitchen buying guides — every item points at a page this site offers for indexing. "
         "Working titles; every quoted listing title is checked on the date shown; no price, rating or review "
         "count is reproduced and no traffic or ranking claim is made.</description>"
     )

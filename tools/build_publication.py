@@ -154,14 +154,30 @@ def fits_block(p: dict) -> str:
             '<p class="p26-ask">' + esc(d['ask']) + '</p></div>')
 
 
+ASSOCIATES = json.loads((ROOT / 'data' / 'links' / 'associates-links.json').read_text(encoding='utf-8'))
+ASSOCIATES_TAG = ASSOCIATES['tag']['value']
+
+
+def associates_url(url: str) -> str:
+    """Product URL carrying the owner-supplied Associates tag (Program Policies 2(b)).
+
+    Buy buttons point at the product page itself with ?tag=..., so the reader can see the
+    destination in the link; the supplied link.amazon short links stay on the page as the
+    observed record only (FLG-003, FLG-S11). tools/attach_associates_tag.py enforces this
+    site-wide, and this keeps the generator's own output compliant on its own.
+    """
+    return f'{url}&tag={ASSOCIATES_TAG}' if '?' in url else f'{url}?tag={ASSOCIATES_TAG}'
+
+
 def product_card(p: dict, prefix: str = '', compare: bool = False) -> str:
-    # All external product destinations are unchanged supplied links, not claimed validated links.
+    # The buy button goes to the product page with the Associates tag (Program Policies 2(b));
+    # the supplied short link stays in the card's source note as the observed record.
     chips = ''.join(f'<span>{esc(x)}</span>' for x in p['features'])
     return f'''<article class="p26-product-card" id="{p['id']}" data-product-card data-category="{p['category']}">
 <div class="p26-product-art p26-art-{p['format']}"><span class="p26-product-kind">{esc('Air fryer' if p['category']=='air-fryers' else 'Meat thermometer')}</span>{format_art(p['format'])}<span class="p26-art-caption">FORMAT ILLUSTRATION</span></div>
 <div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p>{dimension_note(p)}<div class="p26-features">{chips}</div>{fits_block(p)}
-<a class="p26-product-cta" href="{p['submitted_link']}" rel="sponsored noopener">View on Amazon {icon('external')}</a>
-<div class="p26-card-source"><span>Sponsored</span><details><summary>Listing & source</summary><p>Title and destination observed <time datetime="{p['observed_on']}">{human_date(REVERIFIED)}</time>. {source_link(p['id'], 'Official Amazon listing')} · ASIN <code>{p['observed_asin']}</code>. Features above are listing wording, not test results. Intended product and attribution remain unconfirmed: <a href="{prefix}intent-record/index.html">intent record</a> · <a href="{prefix}flagged.html#FLG-003">link review</a>.</p></details></div></div></article>'''
+<a class="p26-product-cta" href="{associates_url(p['observed_listing_url'])}" rel="sponsored noopener">View on Amazon {icon('external')}</a>
+<div class="p26-card-source"><span>Sponsored</span><details><summary>Listing & source</summary><p>Title and destination observed <time datetime="{p['observed_on']}">{human_date(REVERIFIED)}</time>. {source_link(p['id'], 'Official Amazon listing')} · ASIN <code>{p['observed_asin']}</code>. Features above are listing wording, not test results. Submitted link <a href="{p['submitted_link']}" rel="sponsored noopener">{esc(p['submitted_link'].rsplit('/', 1)[-1])}</a>, used as the observed record only. Intended product and account attribution remain unconfirmed: <a href="{prefix}intent-record/index.html">intent record</a> · <a href="{prefix}flagged.html#FLG-003">link review</a>.</p></details></div></div></article>'''
 
 
 def guide_card(g: dict, prefix: str = '', art: bool = True, compact: bool = False) -> str:
@@ -569,9 +585,13 @@ def outputs() -> dict[str, str]:
     existing = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file()} | set(pages)
     pp = load_module('sessions/aebf0747/publish_pass.py', 'publication_postprocess')
     mp = load_module('tools/measure_pass.py', 'publication_measure')
+    tagger = load_module('tools/attach_associates_tag.py', 'publication_tag')
     for rel in pages:
         pages[rel], missing = pp.apply(pages[rel], rel, existing)
         pages[rel] = mp.apply(pages[rel], rel)
+        # 4B0-T2: the release chain tags product links after every builder; mirror it so
+        # --check compares like with like.
+        pages[rel] = tagger.apply_to_text(pages[rel])
         if missing:
             raise ValueError('Missing workspace destinations: ' + ', '.join(missing))
     search = [{'title': g['title'], 'description': g['dek'], 'kind': g['category'], 'path': f'guides/{g["slug"]}.html'} for g in DATA['guides']]
