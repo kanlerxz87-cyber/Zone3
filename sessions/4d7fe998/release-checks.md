@@ -13,6 +13,11 @@
 - Cache-busted live read-back for revision `3f0d14b` confirmed the five home cards (still using submitted short links), nine guide cards including the new probe-placement guide, 17 sitemap URLs, 27 RSS entries, the brief's 5/9/36/0 status strip, six review-only paths, and current intent/product evidence surfaces. The legacy `/dashboard/` remains an older 3-product/22-source/29-flag snapshot.
 - PR #194's upstream verification record reports its own complete `tools/publish.py` run twice; this is separate from and does not substitute for the branch-local checks below.
 
+## Branch state before PR creation
+
+- Current branch: `arena/4d7fe998-zone3`; rebased on `3f0d14b` and force-with-lease pushed as `5015056f192d16c3eadd0a8825dff6bb88d57eb6` after verifying the remote branch still pointed to `459596b635f411ecbc27494b086dd40c44483c8f`.
+- Post-push `git ls-remote` matched local HEAD `5015056f192d16c3eadd0a8825dff6bb88d57eb6`. No PR for this branch existed at that point. PRs #160 and #157 were rechecked as open and left untouched.
+
 ## Branch-local canonical build and full gates
 
 The canonical command `python3 tools/publish.py` (not `--check`) was run twice on the branch after rebasing to `3f0d14b`. Each run rebuilt the tree and executed all active/legacy structural, provenance, disclosure, sponsored-link, sitemap/feed, external-link, and analytics tests: **41 commands checked; 0 failed** on both runs.
