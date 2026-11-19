@@ -33,6 +33,9 @@ BUILDERS = [
     ['python3', 'tools/measure_pass.py'],
     ['python3', 'tools/build_feed.py'],
     ['python3', 'scripts/mark_sponsored.py'],
+    # 5D4-F01: product links must carry the selected Associates tag (Program Policies 2(b)).
+    # Runs after every generator and after mark_sponsored, before the sitemap snapshot.
+    ['python3', 'tools/attach_tag.py'],
     ['python3', 'scripts/build_sitemap.py'],
 ]
 CHECKS = [
@@ -56,6 +59,11 @@ CHECKS = [
     ['python3', 'tools/add_disclosure_banner.py', '--check'],
     ['python3', 'tools/build_publication.py', '--check'],
     ['python3', 'tools/check_publication.py'],
+    # 5D4-F01 gate: no product link may leave the build without the tracking ID.
+    ['python3', 'tools/attach_tag.py', '--check'],
+    ['python3', 'sessions/5d460e79/test_attach_tag.py'],
+    ['python3', 'sessions/5d460e79/test_counts.py'],
+    ['python3', 'sessions/5d460e79/test_decision_record.py'],
     ['python3', 'tools/analytics_endpoint.py', '--self-test'],
     ['python3', 'sessions/1c072a7a/test_collector.py'],
     ['node', 'sessions/38650305/test_measure.js'],

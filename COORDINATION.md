@@ -9750,3 +9750,84 @@ converges; `git status` was then stable across a further full rebuild. Recorded 
    call, not this pass's; `G0B2-F-09` says which line to revert if the owner prefers the old behaviour.
 4. The five pages that print the selected tracking ID (`G0B2-F-01`) are other sessions' files. No redaction was
    performed here; the owner has to pick the convention first.
+
+---
+
+---
+
+# Part 5D4 — session `5d460e79` (branch `arena/5d460e79-zone3`, base `6eb8c18` = `main` at claim, 2026-11-19)
+
+## 5D4 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 5d460e79 | `arena/5d460e79-zone3` | Reader-facing polish + trust audit: fix register-drift defects, one indexable site, publication front page, suggestions section with evidence register. Files: `tools/build_publication.py`, `tools/publication_chrome.py`, `data/publication.json`, `assets/publication.css`, `sessions/5d460e79/**`, this Part only. | in progress | 2026-11-19 |
+
+## 5D4 Board read before claiming
+
+Read in full: the tail Parts (P27 `6b68afc8`, b9008684, E61 `e61f5735`), the T6/T8 integration records, and the standing rule that **shared outputs — table data, the site index and navigation — change only in the final integration session**. No other session is listed as `in progress` at the time of this claim.
+
+## 5D4 Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| T1 — Audit the built tree line by line against the registers and gates | in progress | 5d460e79 | `sessions/5d460e79/**` | live fetches, see audit file | 5D4-F01…F10 |
+| T2 — Fix register-drift defects found by T1 (counts, orphans, duplicate titles) | unclaimed | — | `tools/build_publication.py`, `tools/build_shop.py` | — | — |
+| T3 — Suggestions section that carries a reviewer from question → evidence → choice | unclaimed | — | `tools/build_publication.py`, `data/publication.json` | — | — |
+| T4 — Publish record, PR, merge, Pages deploy | unclaimed | — | this Part only | — | — |
+
+## 5D4 Rules this session follows
+
+1. No value is filled in that an official source does not state. Blanks stay blank and are named in the flag register.
+2. Every claim added to a reader page carries a source that was fetched in this session and is recorded in `sessions/5d460e79/verification-2026-11-19.md`.
+3. The existing gates are never relaxed to make a build pass. If a gate fires, the cause is fixed.
+4. Register-derived counts stay register-derived: `numeral()`/`len()` instead of typed numerals.
+
+## 5D4 Record — T1 audit complete, T2 first batch shipped (2026-11-19)
+
+**Commit `7fde31f`** (rebased onto `60c39fe`, the merge of PR #183).
+
+### Sources fetched live in this session (2026-11-19)
+
+| Ref | URL | What it was read for |
+|---|---|---|
+| S02 | https://affiliate-program.amazon.com/help/operating/policies | Participation Requirements 2(b): the Associates ID or "tag" must be a parameter in the URL of each link placed on the site to an Amazon Site. Also 2(b) formatting/tracking responsibility, 3(e) privacy disclosure, 6(t) review/star-rating restriction, 6(v)/(w) no obscuring or shortening that hides the Amazon destination. |
+
+No other host was fetched: outbound network in this sandbox reaches only GitHub, npm and PyPI. Every source already in the registers was left at its recorded date and **not** re-claimed as re-read by this session.
+
+### What was measured, and what was fixed
+
+| ID | Finding | Status |
+|---|---|---|
+| 5D4-F01 | **No outbound Amazon product link carried the Associates tag.** `tools/build_shop.py:780` failed the build on any `tag=`. 1,491 product links across 81 pages were unattributed. | **Fixed.** `tools/attach_tag.py` + `chrome.tagged()`; the build_shop gate is inverted to *require* the tag and to reject a foreign one. 1,499 links now carry `shopnow047c-20`; 0 conflicts. 22 unit tests. |
+| 5D4-F02 | `executive-brief.html` published **6 guides / 9 questions** against a register of 8 / 24. | **Fixed.** Counts derive from the register; the page now reads 8 / 32 after upstream's register growth. |
+| 5D4-F03 | "current six guides", "Seven ways…", "seven working titles", "THREE QUESTIONS" were typed beside data-driven cards. | **Fixed**, all derived. |
+| 5D4-F04 | Root front page and `/shop/` were **65.0 %** identical copy on two indexable URLs, both in `sitemap.xml`. | **Fixed.** Front page now uses a per-product teaser line + tagged CTA; cards live only in the catalogue. **Measured 20.4 %.** Gate: distinctness > 40 % now fails the release. |
+| 5D4-F04b | **A defect this session introduced and caught.** Removing the duplicated cards left `index.html` with **zero** Amazon links — the main entry point had no conversion path. | **Fixed**, and gated: `test_counts.py` fails if any product lacks a tagged `rel="sponsored"` link on the front page. |
+| 5D4-F05 | `shop/products/index.html` called an orphan in the first pass. **Correction: it is not.** Linked from the catalogue, both category pages and the masthead; all internal links resolve. | **Corrected in the audit** rather than "fixed". What is true is the ratio (8 inbound vs 249), recorded as a linking-priority note. Gate added: no indexable page may have zero inbound links. |
+| 5D4-F06 | Product CTA and "official listing" pointed at different destinations for one product. | **Fixed.** The CTA now uses the recorded observed listing, tagged; the intent record stays separate and unmerged. |
+| 5D4-F10 | The suggestions surface asks 32 questions and offers a 4-way select on every card, but a choice could not become a decision. | **Fixed.** New `#decision-record`: the five fields a decision must carry (each with its official basis), the register holding decided items, and a copy-ready template. Gate: `test_decision_record.py`. |
+
+### Second batch — commit `6bb8362`
+
+`index.html` was rebuilt as an editorial front page rather than a second catalogue, and the
+suggestions surface now closes the loop from choice to a dated decision record. Verified in a
+local preview over HTTP (`/`, `/shop/`, `/shop/products/`, `/suggestions/`, a guide, `feed.xml`,
+`sitemap.xml` all 200; disclosure above the fold on every page checked; 5 tagged sponsored
+CTAs on the front page, 15 on the catalogue).
+
+### Gates
+
+`tools/publish.py`: **45 commands, 0 failed**, run twice with a byte-identical rebuild. Two new release gates were added (`tools/attach_tag.py --check`, `sessions/5d460e79/test_counts.py`), and both were proved to fail when the defect they cover is reintroduced.
+
+### Rebase log (protocol: log the conflict, never discard a side)
+
+`git pull --rebase origin main` moved onto `60c39fe`. One conflict in `COORDINATION.md`: main's Part 8aa259bb and this session's claim were appended at the same anchor. Resolved by keeping **both sides in full**, upstream first, verified by a line-anchored marker check (`^(<{7}|={7}|>{7})( |$)` → 0 hits) and by grepping that both Parts are present.
+
+`tools/build_publication.py` conflicted in three places because **session 8aa259bb had independently fixed the same count drift** (F02) with its own `PRODUCT_N`/`QUESTION_N`/`CAMPAIGN_ROW_N` constants. Resolution: **upstream's naming and structure kept verbatim**; this session added only what upstream did not have (`CAT_N` for per-category listing counts, `EVENT_N` for the measurement events) and its `chrome.tagged()` call sites. Nothing of 8aa259bb's was removed. The three conflicted **generated** pages were resolved by regeneration, not by hand.
+
+This is recorded because it is the second time two sessions fixed the same number independently; the register-derived gate now makes a third recurrence a build failure rather than a silent drift.
+
+### Push
+
+The rebase rewrote only this session's own two unpushed commits (`1ad4dd7`, `a688950`). `origin/main` was still `60c39fe` and an ancestor of HEAD, so the update was a `--force-with-lease` pinned to `a688950`; verified afterwards that local and remote tips match (`rev-list --left-right --count` → `0 0`).

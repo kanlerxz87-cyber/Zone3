@@ -197,8 +197,46 @@ def union_entries() -> list[dict]:
     return out
 
 
+def noindex_targets(entries: list[dict]) -> tuple[list[dict], list[str]]:
+    """Drop feed entries whose destination page is deliberately noindex (5D4-F02, 2026-11-19).
+
+    A feed that advertises pages the sitemap excludes and the site marks noindex sends a
+    crawler and a subscriber to two different versions of the site. On the base commit 19 of
+    27 items pointed at noindex,follow pages (the /read/ archive, the site/ field notes and
+    the /articles/ desk), all of which scripts/build_sitemap.py skips on purpose.
+
+    The entry is dropped only when the destination page exists on disk AND declares
+    noindex. A missing file is left to the existing live-existence check above, so this
+    function cannot silently hide a broken link.
+    """
+    keep, dropped = [], []
+    for e in entries:
+        link = e['link']
+        if not link.startswith(BASE + '/'):
+            keep.append(e)
+            continue
+        rel = link[len(BASE) + 1:]
+        target = ROOT / rel
+        if target.is_dir():
+            target = target / 'index.html'
+        if not target.exists():
+            keep.append(e)  # let the existing existence rule report it
+            continue
+        text = target.read_text(encoding='utf-8', errors='replace')
+        if re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', text, re.I):
+            dropped.append(link)
+            continue
+        keep.append(e)
+    return keep, dropped
+
+
 def build_feed() -> str:
     entries = union_entries()
+    entries, dropped = noindex_targets(entries)
+    if dropped:
+        print(f'feed: excluded {len(dropped)} noindex destination(s) that the sitemap also excludes')
+    if not entries:
+        fail('every candidate entry points at a noindex page — refusing to publish an empty feed')
     for e in entries:
         blob = e["title"] + " " + e["description"]
         for rx, why in FORBIDDEN:
@@ -208,7 +246,8 @@ def build_feed() -> str:
     x = []
     x.append('<?xml version="1.0" encoding="UTF-8"?>')
     x.append('<rss version="2.0"><channel><title>Zone3 guides</title>')
-    x.append(f'<link>{BASE}/guides/index.html</link>')
+    # Canonical form matches sitemap.xml and the page's rel=canonical (5D4-F02).
+    x.append(f'<link>{BASE}/guides/</link>')
     x.append(
         "<description>Question-led kitchen buying guides and archived research notes — the canonical /guides/ pages, "
         "the Air Fryer Field Notes buying guides, the Research Desk articles and The Crisp Report field notes. "

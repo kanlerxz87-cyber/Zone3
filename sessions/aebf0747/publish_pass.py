@@ -66,6 +66,14 @@ def _sponsor_anchor(tag: str) -> str:
     host = host_m.group(1).lower().split('@')[-1].split(':')[0]
     if any(host == h or host.endswith('.' + h) for h in NON_PRODUCT_HOSTS) or not PRODUCT_HOST.fullmatch(host):
         return tag
+    # 5D4-F01 (2026-11-19): the Associates tag is attached here, in the same pass that marks
+    # the link sponsored, because this pass is the one post-processor both the current
+    # publication and the retained legacy editions run through. Program Policies
+    # Participation Requirements 2(b) requires the tag on every link to an Amazon Site.
+    href = href_m.group(2).strip()
+    tagged = chrome.tagged(href)
+    if tagged != href:
+        tag = tag[:href_m.start(2)] + tagged + tag[href_m.end(2):]
     rel_m = re.search(r'''\srel\s*=\s*(["'])(.*?)\1''', tag, re.I)
     if rel_m:
         tokens = rel_m.group(2).split()
