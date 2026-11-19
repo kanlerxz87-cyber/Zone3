@@ -194,7 +194,11 @@ def main() -> int:
     assert all(p['source'] in (source_ids | {SOURCE['id']}) for p in PROPOSALS), 'unknown proposal basis'
     assert all(q['source'] in source_ids for q in QUESTIONS), 'unknown question basis'
     assert PROMPT_BLOCK['basis'] in source_ids, 'unknown prompt basis'
-    assert len(data['sources']) == 14 and len(data['proposals']) == 15 and len(data['questions']) == 24, 'unexpected register totals'
+    # Union guard (reconciliation with session d3493182, PR #182): totals moved while this
+    # batch was in flight (21 proposals / 32 questions on main). Guard only against the
+    # original pre-batch state so a double-apply on the original tree cannot corrupt it.
+    assert (len(data['sources']), len(data['proposals']), len(data['questions'])) in {
+        (14, 15, 24), (14, 21, 32)}, 'unexpected register totals for the B38 delta'
 
     data['sources'].append(SOURCE)
     data['proposals'].extend(PROPOSALS)

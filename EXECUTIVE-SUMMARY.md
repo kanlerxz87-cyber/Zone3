@@ -1205,3 +1205,47 @@ on reader pages are generated from the register, not hardcoded.
 **Not claimed.** No traffic, conversion, ranking, popularity or revenue figure; no new product
 fact; no decision recorded by this session — review mode implements nothing, and the owner's
 exported review JSON is the input to the decision record, not this pass.
+
+## 16. Batch-3 polish suggestions and decision-gap questions — session `b3e82b38` (2026-11-19)
+
+An additive, review-only round on the canonical publication register. What was added:
+
+- **One fetched official source** — Google Search documentation updates, capturing that the FAQ rich
+  result was deprecated on May 7, 2026 and its documentation removed in June 2026 (source
+  `google-faq-update`, fetched live on the recorded date).
+- **Five proposals `B38-P1…P5`** — publish the house style as a page and enforce it with a
+  banned-phrase lint in the release gate; promote the evidence line into a visible badge system on
+  cards, tables and guides; approve a follow-on slate of four question-shaped working titles (weeknight
+  household size, thermometer accuracy specs, the ice-water check, reheating leftovers — working
+  titles, not demand claims); publish the next review date with an overdue state and outcome links
+  from adopted proposals; and correct the FAQ plan before DS-03 ships, because FAQ rich results no
+  longer exist in Google Search.
+- **Four questions `B38-Q1…Q4`** — recurring budget approval; the accountable publisher name and
+  contact for disclosure purposes; which listing wording may be quoted verbatim; and publishing
+  capacity per review cycle. Each row carries known / missing / discovery / safe-default fields.
+- **One design-prompt block (`b38-batch3`)** — honesty as the design language: evidence badges from
+  register dates, a linted house style, a cadence-derived review date, reader-only FAQ blocks, and
+  register-derived counts everywhere.
+
+**Register totals after the union with session `d3493182`'s parallel batch** (both sessions rebased
+over each other; union logged in `COORDINATION.md`): 15 scoped official references, 26 proposals in
+four batches, 36 decision-readiness questions, 13 design-prompt blocks, 6 paths, 8 guides. Every count
+and check date rendered on the pages derives from the register; nothing is hand-typed.
+
+**Coordination note.** While the claim was being pushed, `main` advanced four times (PRs #181, #184,
+#182/#183, #185). The executive-strip count staleness this session had flagged (6/9 versus a register
+of 8/24) was independently fixed and gated upstream (part Z3-COUNT-01, PR #181) before this batch
+touched anything, so this session verified that fix rather than duplicating it. Session `d3493182`
+shipped its own batch-3 register entries; both batches are preserved intact — conflict replay took
+`main`'s versions as base at each stop and re-applied this session's additive delta on top, and the
+full release chain was re-run on the union. Thematic overlaps (B38-P1 with D34-P5/D34-Q3; B38-P2 with
+part of D34-P4; B38-P3's concrete titles extending D34-P2's generic slate) are noted for the reviewer,
+not merged.
+
+**Verification.** Apply script idempotent (second run a no-op); full `tools/publish.py` run 41/41
+PASS on the union; post-rebuild `--check` 25/25 PASS; every new row confirmed present in the
+regenerated pages by element count; the executive strip reads 5/8/36/0 and matches the registers.
+
+No price, rating, review-count, availability, traffic, demand, conversion or revenue value was
+introduced. Intended-ASIN fields remain blank. FLG-003 remains unresolved and untouched. Nothing
+published by this round implements a suggestion.
