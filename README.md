@@ -34,12 +34,13 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
 ## Current publication ownership
 
 - **Content and dates:** [`data/publication.json`](data/publication.json). It contains five dated
-  redirect/title observations, eight guides, ten scoped official references, six proposals, five
-  decision paths and sixteen decision-readiness questions. Intended ASINs/URLs/dates/sources remain
+  redirect/title observations, eight guides, fourteen scoped official references, fifteen proposals
+  in two batches (P26-S foundations, E61-P trust/imagery/seasonal/UX/distribution/catalogue), five
+  decision paths and twenty-four decision-readiness questions, each with an answer-capture field on
+  the suggestions page. Intended ASINs/URLs/dates/sources remain
   distinct from observed destinations. Prices, ratings, review totals and tested performance remain
   empty. Reader-facing counts and check dates are derived from this file by the renderer, so a
-  refresh of the register cannot leave a page asserting a stale number or date (`P27-F02`, `P27-F04`).
-- **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
+  refresh of the register cannot leave a page asserting a stale number or date (`P27-F02`, `P27-F04`).- **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
   retained publication entry point in the canonical chain. Do not hand-edit its output.
 - **One shared shell:** [`tools/publication_chrome.py`](tools/publication_chrome.py) and
   [`sessions/aebf0747/publish_pass.py`](sessions/aebf0747/publish_pass.py). The disclosure is under

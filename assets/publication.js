@@ -125,21 +125,42 @@
     });
     return out;
   }
-  function reviewRecord() {
-    return { schema: 'zone3.editorial-review.v1', saved_at: new Date().toISOString(), implementation: 'none; review only', choices: reviewChoices() };
+  var answerFields = all('[data-answer-id]');
+  function reviewAnswers() {
+    var out = {};
+    answerFields.forEach(function (field) {
+      var value = field.value.replace(/^\s+|\s+$/g, '');
+      if (value) out[field.getAttribute('data-answer-id')] = value.slice(0, 2000);
+    });
+    return out;
   }
-  if (selects.length) {
+  function reviewRecord() {
+    return { schema: 'zone3.editorial-review.v2', saved_at: new Date().toISOString(), implementation: 'none; review only', choices: reviewChoices(), answers: reviewAnswers() };
+  }
+  if (selects.length || answerFields.length) {
     try {
       var stored = JSON.parse(localStorage.getItem(storageKey) || 'null');
-      if (stored && stored.schema === 'zone3.editorial-review.v1' && stored.choices) {
-        selects.forEach(function (select) {
-          var value = stored.choices[select.getAttribute('data-decision-id')];
-          if (validChoices.indexOf(value) !== -1) select.value = value;
-        });
-        status.textContent = 'Loaded your saved review from this browser. No changes were implemented.';
+      if (stored && (stored.schema === 'zone3.editorial-review.v2' || stored.schema === 'zone3.editorial-review.v1')) {
+        var loaded = false;
+        if (stored.choices) {
+          selects.forEach(function (select) {
+            var value = stored.choices[select.getAttribute('data-decision-id')];
+            if (validChoices.indexOf(value) !== -1) select.value = value;
+          });
+          loaded = true;
+        }
+        if (stored.schema === 'zone3.editorial-review.v2' && stored.answers) {
+          answerFields.forEach(function (field) {
+            var value = stored.answers[field.getAttribute('data-answer-id')];
+            if (typeof value === 'string') field.value = value;
+          });
+          loaded = true;
+        }
+        if (loaded) status.textContent = 'Loaded your saved review from this browser. No changes were implemented.';
       }
     } catch (error) { status.textContent = 'Browser storage is unavailable. You can still review and export without saving.'; }
     selects.forEach(function (select) { select.addEventListener('change', function () { status.textContent = 'Unsaved review choices. Nothing has been implemented.'; }); });
+    answerFields.forEach(function (field) { field.addEventListener('input', function () { status.textContent = 'Unsaved answers. Nothing has been implemented.'; }); });
     document.querySelector('[data-save-review]').addEventListener('click', function () {
       try {
         localStorage.setItem(storageKey, JSON.stringify(reviewRecord()));
@@ -149,7 +170,8 @@
     document.querySelector('[data-reset-review]').addEventListener('click', function () {
       try { localStorage.removeItem(storageKey); } catch (error) { /* continue with in-memory reset */ }
       selects.forEach(function (select) { select.value = 'unreviewed'; });
-      status.textContent = 'Review choices cleared. Nothing was implemented.';
+      answerFields.forEach(function (field) { field.value = ''; });
+      status.textContent = 'Review choices and answers cleared. Nothing was implemented.';
     });
     document.querySelector('[data-export-review]').addEventListener('click', function () {
       var data = JSON.stringify(reviewRecord(), null, 2) + '\n';

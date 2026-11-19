@@ -8835,3 +8835,80 @@ review selects (6 `P26-S*` + 14 `D9/AS`) — both sessions' features verified pr
 | Nothing implemented | The round is review-only: choices save locally and implement nothing; no price, rating, popularity, demand, conversion or revenue claim was published; intended-ASIN fields stay blank; FLG-003 is neither claimed nor implied either way |
 
 **Session status: B9-T1…T5 done.** Next reviewer inputs that would unblock the most: DS-05 (approve the seasonal strip copy), DS-01 (pick the first slate guide — DS-01's default starts with the thermometer temperature guide), DS-02 (imagery route), and the standing owner gates (Search Console, durable host, enrolled-workflow Special Link test).
+## Part E61 — session `e61f5735` (2026-11-19) — batch-2 suggestion register, decision-capture and readiness questions
+
+**Session ID:** `e61f5735` · **Branch:** `arena/e61f5735-zone3` (fixed Arena branch; all work stays on this branch) · **Base:** `825f5132` (PR #172 merge; the publication state of PR #171 is live on Pages and was fetched live at claim time).
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| E61-T1 — Claim, baseline review (checks + live site fetch) | done | e61f5735 | this Part only | `tools/publish.py --check` 25/25 PASS at base; live fetch of `https://kanlerxz87-cyber.github.io/Zone3/` returned the current front page | none |
+| E61-T2 — Batch-2 proposals and decision-readiness questions in the publication register | done | e61f5735 | `data/publication.json` (additive: new `E61-P*` proposals, new `E61-Q*` questions) | existing scoped official references only | none |
+| E61-T3 — Suggestions page: dynamic counts, per-question answer capture (local-only), decision worksheet, extended design prompt | done | e61f5735 | `tools/build_publication.py`, `assets/publication.js` | same | none |
+| E61-T4 — Copy consistency where counts/capture are described | done | e61f5735 | `tools/build_publication.py` (about/privacy/executive-brief bodies), `README.md` counts | same | none |
+| E61-T5 — Full canonical rebuild, idempotency, all release gates | done | e61f5735 | generated outputs via `tools/publish.py` only | gates listed in `tools/publish.py` | none |
+| E61-T6 — COORDINATION.md publish record, PR to `main`, merge without waiting for review, Pages deploy verification | unclaimed | e61f5735 | this Part only | GitHub PR/Pages APIs | none |
+
+**Scope rules for this Part:** additive register entries only — no existing proposal, question, source, flag, product or intent row is rewritten. New proposal IDs use the `E61-P*` prefix and new question IDs use `E61-Q*`, namespaced by session like every earlier register. The suggestions page stays review-mode only: saving or exporting a review (now including per-question answers) never publishes, spends, activates tracking or changes an account. No price, rating, test, order, revenue, visitor or demand claim is introduced.
+
+**Claim pushed:** 2026-11-19.
+
+### E61 implementation and verification record — 2026-11-19
+
+**Register additions (`data/publication.json`, additive only; commit `e4c8f1b`):**
+
+- One source appended: `google-helpful` — https://developers.google.com/search/docs/fundamentals/creating-helpful-content — fetched live by this session on 2026-11-19 (self-assessment, page-experience, people-first and avoid-search-engine-first sections confirmed present). It is cited as the editorial *decision basis* for the trust-content and measured-topic suggestions; it certifies no outcome. No other source row touched; no hostname rule changed (`developers.google.com` was already an approved host in `tools/check_publication.py`).
+- Nine proposals `E61-P1…P9` (batch 2) and eight questions `E61-Q1…Q8` appended with the same field schema as batch 1. Every new row names a pre-existing scoped official reference. Register totals: 11 sources, 15 proposals, 17 questions.
+
+**Generator and capture changes (`tools/build_publication.py`, `assets/publication.js`, `assets/publication.css`):**
+
+- All reader-facing counts are now computed from the register (proposal overline/filter note, suggestions subtitle, executive-brief strip). No number is hardcoded, so the next register batch cannot drift the copy.
+- Per-question answer capture: one labelled textarea per question (`#answers`). Saved/exported only by the existing explicit Save/Export buttons, stored in `localStorage` under the same key, never sent to any server; production analytics config untouched and still off.
+- Review export schema advanced to `zone3.editorial-review.v2` (choices + answers + implementation:"none; review only"). Saved v1 records still load (choices restored; answers absent). Reset clears both. No campaign evidence, no synthetic counts anywhere.
+- New `#worksheet` section: the seven-step path from reading a question row to recording a dated decision in a decision record before any implementation — review mode still implements nothing.
+- Design prompt extended with the batch-2 directions (chooser above the comparison, thumb-first mobile comparison, sourced seasonal refresh, visible method as trust content, distribution under the same disclosure rule, measured-topic selection, recorded decisions).
+- Privacy page wording updated to disclose that saved reviews now include the optional answer text; executive-brief review-workflow row reworded (no count).
+
+**Verification performed (2026-11-19, this session):**
+
+- `python3 tools/publish.py` (full 16-step rebuild + all 25 release gates): **41/41 PASS**, run three times; the second and third rebuilds were **byte-identical** (hash comparison over changed-file set).
+- Real-Chromium harness (`sessions/1c072a7a/browser_check.cjs`, npm-pinned `@sparticuz/chromium` because the Playwright CDN is unreachable from this sandbox): **14/14 checks PASS, 32 automated WCAG 2.0/2.1 A/AA scans PASS** at 1440/390 px over 16 reader/review pages. The harness was extended in its own scoped file to assert the v2 export (choice + answer persistence across reload and in the exported JSON), the answer textarea, and the data-driven no-JS question count. No Amazon navigation, no external requests, production config inert.
+- Screenshots of the answers/worksheet/prompt sections inspected at 1440 px and 390 px.
+- `git status` clean after rebuilds apart from the intended files.
+
+**Not claimed by this session:** no traffic, ranking, demand, conversion or revenue figure; no new product fact; no decision recorded (review mode implements nothing; the owner's exported review JSON is the input to a decision record, not this session); no account, API, Search Console or hosting change.
+### E61 rebase reconciliation with session b580d790 (T9) — 2026-11-19
+
+While PR #178 was open, `main` advanced through session `b580d790`'s PRs #175/#176 (buyer-journey polish, fit notes, category chooser, review-page schema, re-verification record). This branch rebased onto `530d9d9` and reconciled as follows, discarding nothing:
+
+- **`COORDINATION.md`** (both commits): kept both sides in full — main's Parts verbatim first, this Part appended; anchored-grep confirms **0 conflict markers** in the merged tree.
+- **`data/publication.json`**: their version kept (meta `reverified` block, source `S95`, `owner_input_needed`/`next_action`/`discoveries` on batch-1 rows, guide title tweak), then this session's 1 source / 9 proposals / 8 questions re-appended and **augmented to their stricter schema** (`next_action`, ≥2 `discoveries`, boolean `owner_input_needed` per row) so `tools/check_publication.py` passes without relaxing any gate. E61-P5's `next_action` now acknowledges the chooser session b580d790 already shipped and scopes this proposal to the compare page, which still has none. Register totals after merge: 12 sources / 15 proposals / 17 questions.
+- **`tools/build_publication.py`**: their version kept (fit blocks, chooser, compact cards, og:image dimensions, unique titles/descriptions, who-can-unblock column, how-to list, re-verify note, dynamic `REVERIFIED` dates), then this session's features re-applied on top: register-driven counts (their still-hardcoded "SIX PROPOSALS" heading and subtitle are now computed), the `#answers` capture section, the `#worksheet`, the review-note wording, the extended design prompt, the privacy answer-text sentence, and the dynamic executive-brief question count (their verification-record links kept).
+- **`assets/publication.css`**: both appendices kept (their fits/choice styles, this session's answer-capture styles).
+- **Generated pages**: regenerated by the canonical chain; `executive-brief.html` and `suggestions/index.html` now carry both sessions' features (verified element-by-element).
+- **README count** corrected to twelve scoped official references after their S95 landed.
+
+**Post-rebase verification (merged tree):** `tools/publish.py` **41/41 PASS** including b580d790's extended publication gate, twice, byte-identical rebuild; real-Chromium harness **14/14 PASS, 32 WCAG A/AA scans PASS**; 18-element coexistence check (their features + this session's) all PASS. No gate, rule or source row of the other session was relaxed or removed.
+
+### E61 second rebase reconciliation with session b9008684 — 2026-11-19
+
+`main` advanced again through session `b9008684`'s PRs #177/#179 (suggestions review round: design-prompt feed D9-01…07, article slate AS-01…07, traffic actions, decision-support register DS-01…08, +2 fetched official sources) while PR #178 was open. Rebased onto `7600f25`; reconciled additively, discarding nothing:
+
+- **`data/publication.json`**: upstream version (with `review_b9008684` block and the two new sources) taken as base; this session's batch-2 rows re-appended with the b580d790 schema fields intact. Register totals: 14 sources / 15 proposals / 17 questions / 1 review round.
+- **`tools/build_publication.py`**: this session's merged generator (b580d790 features + E61 counts/answers/worksheet/prompt) kept; b9008684's `review_round_html()` grafted in unchanged and rendered between the decision-readiness register and the design prompt, as upstream placed it. The suggestions subtitle now names the review round; the proposal heading stays register-driven.
+- **Answer capture extended**: the `#answers` section now carries one field per question in BOTH registers — 17 decision-readiness questions plus 8 decision-support rows (25 fields) — so every open decision row the site publishes can receive a dated answer.
+- **Harness**: the no-JS question count covers both registers; the v2 export assertions unchanged (14/14 PASS, 32 WCAG A/AA scans PASS after rebase).
+- Process note: the first rebase attempt staged a pre-merge `data/publication.json`, which would have dropped the `review_b9008684` block; the coexistence check caught it (`their DS rows rendered` FAIL → KeyError), the block and both sources were restored, rebuilt, and re-verified before any push. No upstream data was lost in the pushed tree.
+
+**Post-rebase verification (merged tree, final):** `tools/publish.py` **41/41 PASS**, byte-identical rebuild; real-Chromium **14/14 PASS / 32 WCAG scans PASS**; 12-element coexistence check across b580d790 + b9008684 + this session all PASS.
+
+### E61 third rebase reconciliation with session 6b68afc8 (P27) — 2026-11-19
+
+`main` advanced once more through PR #180 (decision desk: path bundles, intake guidance, data-driven design-prompt blocks, two new guides, re-read source scopes, register-derived dates and counts) while PR #178 was open. Rebased onto `a61c410`; reconciled additively:
+
+- **`tools/build_publication.py`**: session 6b68afc8's version taken as base (paths, intake, prompt blocks, `numeral`/`human_date` derived dates, dynamic counts — which independently implement this session's no-hardcoded-counts aim). This session's features re-applied on top: the `#answers` capture section (now covering ALL 24 decision-readiness questions plus the 8 decision-support rows), the `#worksheet`, and the review-note answer wording. No P27 feature removed or relaxed.
+- **`data/publication.json`**: P27's register taken as base (paths, `suggestion_intake`, `design_prompt` blocks, re-read scopes, two new guides); batch-2 rows re-appended; the batch-2 directions added to the design brief as a proper prompt block (`e61-batch2`, basis `google-helpful`) — implementing "suggestions feed the design prompt" inside P27's data-driven structure. Register totals: 14 sources / 15 proposals / 24 questions / 5 paths / 11 prompt blocks / 8 guides.
+- **`assets/publication.css` / `assets/publication.js`**: both sessions' appendices kept; P27's generalized copy handler and this session's answer-capture logic coexist (auto-merge verified by rebuild).
+- **`README.md`**: P27's structural wording kept; counts updated to the merged register.
+- Generated files regenerated by the canonical chain; conflict replay of the record commits folded into the resolution (no upstream text dropped).
+
+Full rebuild and gate/browser verification of the merged tree follow in the publish record below.
