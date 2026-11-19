@@ -11,7 +11,7 @@ of 4 Steps to Food Safety. It shipped through the unchanged gate chain (feed, si
 unique title/description, disclosure strip, `rel="sponsored"` on every product link, Article
 schema with the disclosed organization byline). Alongside it, reader-facing counts that had gone
 stale were repaired to derive from the register: the executive brief strip now reads **9 guides /
-24 questions / 5 products**, the design-prompt intro no longer hardcodes a block total, and the
+36 questions / 5 products** (register merged with the parallel batch-3 rounds), the design-prompt intro no longer hardcodes a block total, and the
 review-round headings count their own rows. One failure during the run was caught by the gate
 itself (a link to this pass's not-yet-written verification record) and fixed by writing the
 record before re-running.
@@ -21,9 +21,9 @@ record before re-running.
 | Area | Position after this pass | Basis |
 |---|---|---|
 | Reader layer | 9 guides, 17 canonical/indexable URLs, 27 feed entries; new guide title 63 chars, description 157 chars, one `h1`, `index,follow`, 4 sponsored Amazon links, all gates green | `data/publication.json`, `sitemap.xml`, `feed.xml` measured 2026-11-19; `tools/publish.py` 41/41 |
-| Sources | 15 scoped official references after adding `food-safety-cook` (Cook-step placement wording, read live 2026-11-19); FoodSafety.gov chart re-read with Date Last Reviewed 21 Nov 2024 unchanged | `sessions/cdb0a5ac/verification-2026-11-19.md` |
+| Sources | 16 scoped official references — main's fifteen plus `food-safety-cook` (Cook-step placement wording, read live 2026-11-19); FoodSafety.gov chart re-read with Date Last Reviewed 21 Nov 2024 unchanged | `sessions/cdb0a5ac/verification-2026-11-19.md` |
 | Policy re-reads | Operating Agreement re-read live (Updated October 15, 2025): Special Links must "properly use the special 'tagged' link formats we provide"; FTC Disclosures 101 re-read (material connection, "hard to miss", "can't talk about your experience with a product you haven't tried"); Google `rel="sponsored"` guidance re-read (last updated 2025-12-10) | verification record above |
-| Counts repaired | Executive summary strip (`6 guides`→derived, `9 questions`→derived), "current six guides" ×2 and "Seven ways…"/"seven working titles" headings now register-derived, "Ten blocks" intro made count-free — all previously stale against the register (`P27-F02` principle) | `tools/build_publication.py` diff; `suggestions/index.html`, `executive-brief.html` re-rendered |
+| Counts repaired | Found stale on the claim base (`6 guides`/`9 questions` strip, "current six guides" ×2, "Seven ways…", "seven working titles", "Ten blocks" intro). Upstream PR #181 (Z3-COUNT-01) had already derived the strip during the parallel round; after this session's rebase the equivalent fixes converged and were verified, not duplicated (`P27-F02` principle). The remaining hardcodes are repaired here. | `tools/build_publication.py` diff; `suggestions/index.html`, `executive-brief.html` re-rendered |
 | Products / attribution | unchanged: 5 submitted links, intent fields blank, `FLG-003` open, `shopnow047c-20` unverified; no price, rating, review count or performance value anywhere | `tools/check_publication.py` gate |
 | Left as dated record | session b9008684's review-round text still says "six guides" inside its own dated round block; not rewritten (historical record kept verbatim), noted as CDB-F-03 | `suggestions/index.html`, review round header |
 

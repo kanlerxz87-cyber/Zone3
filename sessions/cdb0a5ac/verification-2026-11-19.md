@@ -30,7 +30,7 @@ brief-status register `_meta`).
 | Measurement | Result |
 |---|---|
 | Published HTML pages (skipping archive/docs/sessions) | 121 (116 real pages + 5 meta-refresh redirect stubs) |
-| Pages missing `<title>` or meta description | 0 among real pages; the 5 redirect stubs carry none by design (`analysis.html`, `disclosure.html`, `flagged-for-review.html`, `marketing.html`, `categories/home-kitchen-air-fryers.html`) |
+| Pages missing `<title>` or meta description | 0 (sessions/8aa259bb/measure_brief_rows.py re-run: zero of 121). The 5 redirect stubs (`analysis.html`, `disclosure.html`, `flagged-for-review.html`, `marketing.html`, `categories/home-kitchen-air-fryers.html`) carry only the six-character description "Moved"; all other pages carry full descriptions |
 | Links to `amazon.com` / `link.amazon` product hosts | 1,764 — **0** without `rel="sponsored"` |
 | `affiliate-program.amazon.com` policy/source links (not paid links) | 1,215 |
 | Pages carrying the Associates disclosure sentence | 121 / 121 |
