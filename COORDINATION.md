@@ -8441,3 +8441,14 @@ No pre-existing flag is edited or removed.
 - **C3-T2 and C3-T3 done:** the root now has a marker-bounded buyer-first publication layout, an original non-product editorial illustration, four question routes, separate air-fryer / thermometer shelving, product-intent handoff, suggestions and decision handoff, and a source-context cell in every C3 root table row. The C3 patcher is idempotent and runs after the older publication pass.
 - **Release correction made:** the first final local link check found the inherited `index.html#products` masthead route missing after the layout change. C3 restored that anchor while retaining the new `#listing-desk` CTA. The follow-up full-link crawl reports 198 HTML pages, 264 external URLs and 0 errors.
 - **C3-T4 in progress:** documented generator chain was run twice with identical tracked-diff hash; final checks passed locally. PR, merge, Pages deployment and live checks are next.
+
+### C3 final publish record — 2026-11-19
+
+| Item | Result |
+|---|---|
+| Functional PR | **#164** — https://github.com/kanlerxz87-cyber/Zone3/pull/164 |
+| Merge | **MERGED** without waiting for approval at **2026-11-19T05:43:46Z**; merge commit **`6a5dc2dc5f5ffb4784772a501179e659401361f5`**. |
+| GitHub Pages | API build **1383125933** for commit `6a5dc2d` reached **`built`** at **2026-11-19T05:44:16Z**. Site target: https://kanlerxz87-cyber.github.io/Zone3/ |
+| Release evidence | Full generator chain was run twice with identical tracked-output hash. Final `check_site`: 42 pages / 5 products / 83 sources / 149 flags; full local link crawl: 198 HTML pages / 264 URLs / **0 errors**; disclosure, sponsored, sitemap, feed, reader, shop and measurement gates passed. Full details: `sessions/c3be74f2/verification.md`. |
+| Published irregularity | **C3-F-01** is visible on `flagged.html`: inherited table-row provenance advisories remain non-blocking in the current verifier; no claim that every legacy table row is official-source-linked is made. |
+| Session status | **C3-T1 through C3-T4 done.** The follow-up governance-only PR records this publish result in `main` as required by the coordination protocol. |
