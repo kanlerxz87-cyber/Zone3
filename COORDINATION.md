@@ -9519,73 +9519,31 @@ The merged register after PR #194 has 16 scoped official references, 9 guides, 2
 
 **Release status:** PR [#196](https://github.com/kanlerxz87-cyber/Zone3/pull/196) merged at `2026-11-19T13:32:02Z` as `1623c1c2b6c4b04d526130a316dd6d9344985bdd`; publication check `44534254715` passed and GitHub Pages reported `built` at `2026-11-19T13:32:31Z`. Cache-busted live read-back at `?revision=1623c1c` confirmed the current brief, nine-guide index and probe guide, and 17-URL sitemap. PR #160 and #157 remain open and out of scope. Account, owner-intent, reporting and commercial-hosting questions remain unverified or owner/platform-dependent.
 
-# Part: session `a4f9ee45` (2026-11-19) — official-source verification, buyer-first shop site, suggestions register, executive summary, PR to main, merge, Pages deploy
+---
 
-## Session registry (this part)
+# Part 0A4 — session `0a48cfda` (branch `arena/0a48cfda-zone3`, base `0273fb4` = `main` at claim) — 2026-11-19
+
+Branch note: Arena fixes this session to `arena/0a48cfda-zone3`; the brief's `session-<id>/<task>` shape is
+recorded here as a task-ID scope on the fixed branch (same resolution as Parts 7f84fea4, CDB and 4d7fe998).
+
+Read the board through 4D7-T5 before claiming. This session's brief repeats the standing requests
+(shop-not-audit, suggestions section, questions/answers register, five-product marketing, executive
+summary) and asks again for line-by-line verification against official sources. Those surfaces already
+exist in the tree; this pass therefore audits **evidence**, not layout, and changes only what an official
+source can support.
+
+## Session registry (Part 0A4)
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| a4f9ee45 | `arena/a4f9ee45-zone3` | Official-source verification (Amazon Associates Operating Agreement S01, Program Policies S02; FTC S07/S24; Google Search Central sponsored-links and snippets), buyer-first shop landing page + category subpages + dashboard tables, suggestions & decision register, executive summary, PR to `main`, merge, GitHub Pages deploy confirmation | in progress | 2026-11-19 |
+| 0a48cfda | `arena/0a48cfda-zone3` | Evidence audit of the five listings against their official pages; close or re-scope register fields an official source can now support; record what remains owner-gated; run the full gate; integrate. | in progress | 2026-11-19 22:00 |
 
-## Files in scope (this session only)
-
-- `COORDINATION.md` — this session's Part only (append-only; no other session's block edited)
-- Shop/reader pages: `index.html`, `shop/`, `guides/`, `assets/`, `sitemap.xml`, `feed.xml`
-- Verification data: `data/sources.json`, `data/products.json`, `data/flags.json`, `data/policy_facts.json`
-- Suggestions & decisions: `suggestions/`, `suggestions.html`, `decision-center.html`, `decision-queue.html`
-- Executive summary: `EXECUTIVE-SUMMARY.md`, `executive-summary.html`
-
-## Task board (claimed before any other work)
+## Task board (Part 0A4)
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| A4F-T1 — Official-source verification of live cited sources | done | a4f9ee45 | `COORDINATION.md` (this Part); cross-check `data/sources.json` | S01 Operating Agreement, S02 Program Policies, S07 FTC Disclosures 101, S24 FTC Endorsement Guides, Google Search Central qualify-outbound-links, Google Search Central control-your-snippets | FLG-003: supplied short links' compliance status unresolved; this project does NOT call them invalid; one Special Link per product to be validated in the enrolled Associates workflow before scaling |
-| A4F-T2 — Shop site: landing page + category subpages + dashboard tables | done | a4f9ee45 | `index.html`, `shop/air-fryers/`, `shop/meat-thermometers/`, `shop/products/`, `guides/`, `assets/`, `sitemap.xml`, `feed.xml` | `scripts/check_site.py` | none — check passes |
-| A4F-T3 — Suggestions & decision register (review-before-implement) | done | a4f9ee45 | `suggestions/`, `suggestions.html`, `decision-center.html`, `decision-queue.html`, `data/suggestions.json` | — | none |
-| A4F-T4 — Executive summary | done | a4f9ee45 | `EXECUTIVE-SUMMARY.md`, `executive-summary.html` | — | none |
-| A4F-T5 — PR from this branch to `main`, merge without waiting if checks pass, verify Pages deployment, record result | done | a4f9ee45 | this branch → `main`; `COORDINATION.md` (this Part) | PR [#199](https://github.com/kanlerxz87-cyber/Zone3/pull/199), merge commit 46e4d160202a21889c2f43a97481733b00d81dff; GitHub Pages `built` | none — check_site.py OK before merge; Pages build confirmed |
-
-## Verification performed (a4f9ee45, all official sources re-read live)
-
-- Amazon Associates Program Operating Agreement (S01): page titled "Amazon.com Associates Central - Associates Program Operating Agreement", updated October 15, 2025. Section 1: Associates earn by placing Special Links (tagged link formats) on their Site; Program Content includes data, images, text, link formats and marketing content. Source: https://affiliate-program.amazon.com/help/operating/agreement
-- Amazon Associates Program Policies (S02): page titled "Amazon.com Associates Central - Associates Program Policies", updated April 14, 2026. Commission Income Statement: Qualifying Purchase occurs when a customer clicks through a Special Link; single session measured from click; 24-hour window; 89 days to complete cart order; 180 days to ship/stream/download and pay. Source: https://affiliate-program.amazon.com/help/operating/policies
-- FTC Disclosures 101 for Social-Media Influencers (S07): https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers
-- FTC Endorsement Guides / endorsements-influencers-reviews (S24): https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews
-- Google Search Central "Qualify your outbound links to Google": `rel="sponsored"` marks advertisements/paid placements. Source: https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links (last updated 2025-12-10 UTC)
-- Google Search Central "Control your snippets in search results": create unique meta descriptions for each page; Google may use the meta description for the snippet. Source: https://developers.google.com/search/docs/appearance/snippet
-- `python3 scripts/check_site.py` (offline): OK — 42 pages, 5 products, 87 sources, 169 flags. All structural checks passed. This is a structural check, not independent re-verification of every historical factual claim; the line-by-line official-source verification above is recorded per fact.
-
-## Irregularities flagged (non-blocking, published on Flagged for Review page)
-
-- FLG-001: submitted link IDs are 9 characters, not the 10-character ASIN shape (S31).
-- FLG-002: observed redirect target is not evidence of owner intent; intended ASIN/URL/date/source stay blank until owner confirmation (product-intent record kept separate from observed redirect).
-- FLG-003: supplied short links' exact compliance status unresolved; not called invalid; validate one Special Link per product via enrolled workflow before scaling.
-- FLG-004/FLG-035/FLG-036: price, rating, review count, best-seller rank, commission rate and availability are null (unverified); nothing inferred; no conversion score or revenue forecast presented.
-
-## Completion record (2026-11-19)
-
-A4F-T1 through A4F-T5 complete and verified above. PR [#199](https://github.com/kanlerxz87-cyber/Zone3/pull/199) (`arena/a4f9ee45-zone3` → `main`) merged at commit 46e4d160202a21889c2f43a97481733b00d81dff without waiting for review, per the brief. `python3 scripts/check_site.py` passed before the merge (42 pages, 5 products, 87 sources, 169 flags). GitHub Pages reported `built` after the merge (live site: https://kanlerxz87-cyber.github.io/Zone3/). All tasks done.
-## Part 787a3aab — Fresh line-by-line verification, one new question-led guide, and release (2026-11-19)
-
-### Session registry
-
-| Session ID | Branch | Role | Status | Claimed at (UTC) |
-|---|---|---|---|---|
-| 787a3aab | `arena/787a3aab-zone3` | Independent line-by-line re-verification of the five supplied links, disclosure/sponsored/intent/measurement registers against official sources; add one question-led guide through the canonical publication register; full release chain, PR, merge, Pages verification | in progress | 2026-11-19 |
-
-### Coordination and scope
-
-- Base: `0273fb4` (main, PR #198 merge). Read the board through Part 4d7fe998. The buyer-first publication, 10 guides, suggestions/decision desk (6 paths / 28 proposals / 38 questions), product-intent record, disclosure strip, sponsored links, measurement runtime (OFF), feed and sitemap already exist and pass `tools/publish.py --check` 25/25 on this base. This pass does not create a duplicate publication.
-- File scope: this appended Part of `COORDINATION.md`; new `sessions/787a3aab/**` records; additive rows in `data/publication.json` (one guide, one source, one indexable URL) plus the pages/feed/sitemap those rows generate through the canonical chain. No other session's data rows, product/intent/tracking/measurement registers, or historical pages are rewritten. Open PRs #192, #160, #157 are left untouched.
-- Tasks: 787-T1 claim+push (this Part) · 787-T2 line-by-line verification against official sources with manual-review links · 787-T3 one new guide (thermometer accuracy check) via the register · 787-T4 full release chain twice + idempotency · 787-T5 PR, merge, Pages + live read-back.
-- Rules carried forward: intended_* stays blank until owner confirmation (never copy observed redirects); supplied short links are not called invalid (FLG-003 unresolved); no price/rating/review-count/ tested-performance figures; measurement stays OFF with no endpoint until a durable authorized HTTPS host exists; campaign ledger stays empty until first-party reports exist; no traffic/ranking/revenue claims.
-
-### Task board
-
-| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
-|---|---|---|---|---|---|
-| 787-T1 — Claim this scope and push before implementation | done (claim 1ff4a6a pushed) | 787a3aab | this Part only | board; `git log` base 0273fb4 | none |
-| 787-T2 — Line-by-line verification of links, disclosure, sponsored, intent, measurement, sitemap/feed against official sources | done | 787a3aab | `sessions/787a3aab/repo-review.md`, `sessions/787a3aab/verification-2026-11-19.md` | affiliate-program.amazon.com, developers.google.com, ftc.gov, foodsafety.gov, amazon.com listing pages, live site read-back | to be recorded |
-| 787-T3 — Add one question-led guide through the publication register | done (guide #11 thermometer-ice-water-check, FSIS source) | 787a3aab | `data/publication.json` (additive), generated guide/feed/sitemap pages | official thermometer-accuracy source read in T2 | to be recorded |
-| 787-T4 — Full release chain twice, idempotency, link/disclosure/sponsored checks | done (41/41 twice, idempotent) | 787a3aab | generated outputs only; `sessions/787a3aab/release-checks.md` | `tools/publish.py` | to be recorded |
-| 787-T5 — PR, merge, Pages deploy + live verification, record result | in progress | 787a3aab | this branch; this Part | GitHub PR/Pages APIs, live read-back | to be recorded |
+| 0A4-T1 — Claim, read board, re-run the 25-command gate on the untouched tree | done | 0a48cfda | `COORDINATION.md` (this Part only) | board through 4D7-T5 | none — gate 25/25 on `0273fb4` |
+| 0A4-T2 — Re-read each of the five official listing pages and record only what the page itself publishes (title, breadcrumb, listed dimensions, listed capacity, format) | in progress | 0a48cfda | `sessions/0a48cfda/**` | `amazon.com/dp/<ASIN>` ×5 | pending |
+| 0A4-T3 — Reconcile the "supplied short links vs. tagged Special Links" contradiction against Program Policies 2(b), and record it as a reader-facing flag rather than silently swapping links | unclaimed | — | `data/publication.json` (`sources`/`questions`), `data/shop/flags.json` | Operating Agreement §5; Program Policies 2 (a)–(b) | pending |
+| 0A4-T4 — Fill the counter-space dimension gap only where the listing publishes a dimension; leave the rest blank and flagged | unclaimed | — | `data/publication.json` (product `dimensions`), one guide | listings ×5 | pending |
+| 0A4-T5 — Canonical chain twice, link/disclosure/sponsored checks, PR, merge, Pages confirmation | unclaimed | — | this branch only | — | pending |
