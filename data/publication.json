@@ -130,6 +130,13 @@
       "url": "https://developers.google.com/search/updates",
       "checked_on": "2026-11-19",
       "scope": "Fetched live 19 Nov 2026 by session b3e82b38: the May 2026 entry “Deprecating the FAQ rich result feature” (“This feature will no longer appear in Google Search starting May 7, 2026”) and the June 2026 entry “Removing documentation for the FAQ rich result feature”. The former FAQ-page documentation URL now redirects to this updates page."
+    },
+    {
+      "id": "food-safety-cook",
+      "title": "FoodSafety.gov: 4 Steps to Food Safety (Cook step)",
+      "url": "https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety",
+      "checked_on": "2026-11-19",
+      "scope": "Read 2026-11-19 (session cdb0a5ac): Cook-step wording used by the probe guide — use a food thermometer; when you think the food is done, place it in the thickest part of the food, making sure not to touch bone, fat, or gristle; hot-hold 140°F (60°C) or above; microwave 165°F (74°C) or above."
     }
   ],
   "products": [
@@ -817,6 +824,66 @@
         "instant-read-or-wireless-thermometer",
         "holiday-kitchen-checklist",
         "air-fryer-label-words"
+      ]
+    },
+    {
+      "slug": "where-does-the-probe-go",
+      "title": "Where does the probe go? Turkey, ham and roasts",
+      "short_title": "Where does the probe go?",
+      "dek": "Probe placement, rest times and the official minimum temperatures for turkey, ham and roasts — with the two thermometer listings kept as tools, not verdicts.",
+      "category": "Meat thermometers",
+      "category_slug": "meat-thermometers",
+      "type": "The temperature check",
+      "art": "thermometer",
+      "published": "2026-11-19",
+      "products": [
+        "SHOP-04",
+        "SHOP-05"
+      ],
+      "takeaway": "Put the probe in the thickest part of the food, away from bone, fat or gristle; cook to the official minimum temperature for that food; and give the whole cuts their three minutes of rest. The features in a listing title do not change the chart.",
+      "sections": [
+        {
+          "heading": "Start with the chart, not the gadget.",
+          "paragraphs": [
+            "Before comparing thermometer features, decide what you are cooking toward. The FoodSafety.gov safe minimum internal temperature chart gives a number for the food in front of you: poultry 165°F (74°C); ground meat and sausage 160°F (71°C); steaks, roasts and chops of beef, bison, veal, goat, lamb and pork 145°F (63°C); casseroles and leftovers 165°F (74°C); fish 145°F (63°C). The chart's own instruction is simple: always use a food thermometer to check whether the food has reached a safe minimum internal temperature.",
+            "Some entries carry a rest time. The chart explains why: resting allows the innermost parts and juices of the meat to become fully and safely cooked. Three minutes on the board is part of the cooking, not a pause in it — pull a roast early and the number on the probe is not the number in the middle."
+          ],
+          "source_ids": [
+            "food-safety"
+          ]
+        },
+        {
+          "heading": "Where the probe actually goes.",
+          "paragraphs": [
+            "FoodSafety.gov's Cook step answers the placement question in one sentence: when you think your food is done, place the food thermometer in the thickest part of the food, making sure not to touch bone, fat, or gristle. That is the whole technique — the reading you trust comes from the part of the food that cooks slowest, and from keeping the probe out of anything that is not the food you are measuring.",
+            "Placement is a question about the food in front of you, not about the thermometer in your drawer. The check happens at the moment you think the food is done, which is why it belongs at the end of cooking rather than on the plate after it. Nothing in a feature list changes where the probe goes."
+          ],
+          "source_ids": [
+            "food-safety-cook"
+          ]
+        },
+        {
+          "heading": "What the two listings promise — and what they do not.",
+          "paragraphs": [
+            "The shortlist includes two thermometer listings, title and destination observed on 19 November 2026. The ThermoMaven title names “1 Sec Professional” and “±0.5℉ Accuracy | NIST&NSF Certified”; the CHEF iQ title names “Smart Wireless Meat Thermometer”, “WiFi Unlimited Range” and “5 Sensors”. Those are words from the listing titles — they are not readings we took, and this site has not verified any of them.",
+            "What neither title tells you: where each model's own instructions say to place the probe for a whole bird, how the connection behaves in your kitchen, or how either probe reports across a long roast. Those stay in the list below instead of being filled in with a guess. Use the chart as the standard the gadget has to meet — not the other way round."
+          ],
+          "source_ids": [
+            "SHOP-04",
+            "SHOP-05"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Accuracy of either listed thermometer — no accuracy specification is verified here.",
+        "App, connectivity and battery requirements of either listed model.",
+        "Where each model's own instructions say to place the probe for a whole bird.",
+        "How either probe reports during a long cook — nothing on this site is tested."
+      ],
+      "related": [
+        "instant-read-or-wireless-thermometer",
+        "holiday-kitchen-checklist",
+        "how-do-you-know-its-done"
       ]
     },
     {
@@ -1972,6 +2039,7 @@
     "guides/holiday-kitchen-checklist.html",
     "guides/air-fryer-label-words.html",
     "guides/how-do-you-know-its-done.html",
+    "guides/where-does-the-probe-go.html",
     "guides/thermometer-numbers-on-the-label.html"
   ],
   "paths": [
@@ -2116,7 +2184,7 @@
     }
   ],
   "design_prompt": {
-    "intro": "Ten blocks, each doing one job. Paste the whole brief into a design tool or hand a designer one block at a time. Every block is grounded either in a rule already recorded in this repository or in an official policy page, and none of them asks you to assert a fact the site does not have.",
+    "intro": "Each block does one job. Paste the whole brief into a design tool or hand a designer one block at a time. Every block is grounded either in a rule already recorded in this repository or in an official policy page, and none of them asks you to assert a fact the site does not have.",
     "blocks": [
       {
         "id": "job",

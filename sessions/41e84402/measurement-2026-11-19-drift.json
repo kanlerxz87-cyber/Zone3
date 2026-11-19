@@ -1,17 +1,17 @@
 {
  "registers": {
-  "question-led guides": 9,
-  "question-led buyer guides": 9,
+  "question-led guides": 10,
+  "question-led buyer guides": 10,
   "decision-readiness questions": 38,
-  "canonical reader URLs": 17,
+  "canonical reader URLs": 18,
   "products": 5,
   "proposals": 28,
   "paths": 6,
-  "sources": 15
+  "sources": 16
  },
- "sitemap_urls": 17,
- "feed_entries": 27,
- "search_index_rows": 14,
+ "sitemap_urls": 18,
+ "feed_entries": 28,
+ "search_index_rows": 15,
  "count_claims": {},
  "structure": {
   "about.html": {
@@ -164,6 +164,20 @@
    "disclosure": true,
    "amazon_links": 6,
    "amazon_links_sponsored": 6,
+   "chooser": false,
+   "comparison_anchor": false,
+   "sticky_compare_cells": true
+  },
+  "guides/where-does-the-probe-go.html": {
+   "title_chars": 63,
+   "meta_description": true,
+   "canonical": true,
+   "robots": "index,follow,max-image-preview:large",
+   "og_image": true,
+   "json_ld": 1,
+   "disclosure": true,
+   "amazon_links": 4,
+   "amazon_links_sponsored": 4,
    "chooser": false,
    "comparison_anchor": false,
    "sticky_compare_cells": true

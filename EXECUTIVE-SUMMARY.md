@@ -1,6 +1,63 @@
 # Executive summary — Zone3 Kitchen
 
-## Decision desk, two more guides and a dated brief — 2026-11-19 · session `6b68afc8` (most recent)
+## Current status — publication audit and decision readiness · 2026-11-19 · session `4d7fe998`
+
+**Bottom line.** The live buyer-facing publication has five submitted product links in two categories, nine question-led guides, 17 canonical/indexable sitemap URLs and 27 RSS entries. The current register has 16 scoped official references. The decision desk holds six paths, 26 reviewable proposals, 36 open readiness questions, eight decision-support rows and a 13-block design brief. The latest guide, “Where does the probe go?”, was shipped upstream under PR #194 from a review-only default and cites FoodSafety.gov; it is not a product test. Choices remain review-only and implement nothing. Dated snapshots below retain their original scope and counts.
+
+| Area | Current state | Decision boundary | Basis |
+|---|---|---|---|
+| Reader experience | Product-led home page with five listing-based product cards; air-fryer and meat-thermometer categories; nine practical, question-led guides. The research and review surfaces are reachable in “Behind the site” and the footer. | Listing descriptions are not hands-on tests, rankings, popularity evidence or proof of the requester’s intended products. The FoodSafety.gov temperature/placement guide is official public guidance, not a test of the listed thermometers. | [Home](index.html) · [guide index](guides/) · [new probe guide](guides/where-does-the-probe-go.html) · [sitemap](sitemap.xml) · [RSS feed](feed.xml) · [CDB source review](sessions/cdb0a5ac/verification-2026-11-19.md) |
+| Decision desk | Six paths; 26 proposals; 36 readiness questions; eight decision-support rows; 13 design-prompt blocks. Local save/export is review-only. | A saved preference or written answer does not implement a proposal, alter an account, or publish a page. | [Suggestions](suggestions/) · [publication register](data/publication.json) |
+| Evidence and disclosure | Current publication checks cover disclosure placement, sponsored-link markup, publication provenance, sitemap and feed. The Associates sentence is under the masthead and repeated in the footer. | A structural pass and policy citation are not account approval, legal certification or proof every historical claim has been rechecked. | [release record](sessions/4d7fe998/verification-2026-11-19.md) · [Amazon Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored-link guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
+| Intent and attribution | The five observed redirect destinations remain separate from intent; intended ASIN, intended official listing URL, confirmation date and source are blank for every product. `shopnow047c-20` appears as a parameter on five direct product URLs in `products.html`; primary home-card CTAs still use the submitted `link.amazon` URLs. | Account assignment, accepted Special Link workflow/format, marketplace fit and report attribution are unverified. `FLG-003` remains unresolved; the supplied short links are not called invalid. The live intent page’s “Not attached to any link on this site” line conflicts with the specific tagged URLs; this audit records the mismatch without editing the owner-intent/generator sources. | [intent record](intent-record/index.html) · [product evidence](products.html) · [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
+| Measurement and search | One active five-event runtime and aggregate collector are in the repository; the earlier `data/analytics.json` / `assets/track.js` / `tools/analytics_collector.py` stack is now explicitly labelled historical by PR #193. | Active production measurement remains OFF with a blank endpoint and no deployment evidence; the campaign ledger has zero rows. Search Console ownership and query/page reports are not verified. Local tests are not visitors, clicks, orders or campaign results. | [measurement config](data/shop/measurement.json) · [campaign ledger](data/shop/campaign-ledger.json) · [Search Console guidance](https://developers.google.com/search/docs/monitor-debug/search-console-start) |
+| Cadence and topic choice | The registered guide-review cadence is one every 14 days. Nine current guides are represented in the sitemap and feed. | Cadence and titles are plans/editorial hypotheses, not proof of demand or measured popularity. Use Search Console query/page data only after property ownership and reports are verified. | [publication register](data/publication.json) · [Search Console](https://developers.google.com/search/docs/monitor-debug/search-console-start) |
+| Commercial hosting | The live site is deployed on GitHub Pages. | GitHub’s Pages limits restrict free hosting for online businesses and sites primarily facilitating commercial transactions. This affiliate-publication use needs an authoritative fit review or commercially suitable hosting before scaling; this audit does not conclude that GitHub has adjudicated a violation or approved the site. | [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits) · [review record](sessions/4d7fe998/repo-review.md) |
+| Historical evidence | The branch’s canonical `tools/publish.py` chain passed twice (41 commands each, no generated output changed). The current-publication gate passes for 19 rendered reader/workspace pages and 100 official-source table rows; the 17-URL sitemap and 27-item feed are current. PR #193 corrected README to eight guides; PR #194 updated it to nine and shipped the probe guide. | The whole-tree verifier covers 162 pages / 2,622 rows and reports 218 uncited, 292 repository-only, and 577 inherited non-blocking advisory items. The legacy `/dashboard/` still describes three products and older counts. A green structural gate does not freshly verify every historical sentence. | [verification log](sessions/4d7fe998/verification-2026-11-19.md) · [release checks](sessions/4d7fe998/release-checks.md) · [repository review](sessions/4d7fe998/repo-review.md) |
+
+**Known, unknown, and discovery.** Known: the five submitted URLs and their separately recorded observed Amazon destinations; the tracking-ID string in five tagged direct-link URLs; nine guides, 16 scoped references, 17 sitemap URLs, 27 feed entries and an empty campaign ledger. Unknown: which products were intended; whether the ID is assigned to an enrolled Associates account; whether Amazon accepts the submitted short-link form in that account; whether any link reports; actual Search Console queries, traffic or outcomes; and whether GitHub considers this affiliate publication within Pages’ commercial-use limit. Record owner-confirmed intent only in the four intent fields with a date and source. Validate one link per intended product through Associates Central and a first-party report; ask Associates support about the exact short-link form. Verify Search Console ownership before using query/page reports. Resolve the hosting question with GitHub Support or migrate before scaling. Keep price, rating, review, testing and performance claims blank until an authorized evidence path exists.
+
+**Scope and verification.** This audit is documented in [`sessions/4d7fe998/repo-review.md`](sessions/4d7fe998/repo-review.md), [`sessions/4d7fe998/verification-2026-11-19.md`](sessions/4d7fe998/verification-2026-11-19.md) and [`sessions/4d7fe998/release-checks.md`](sessions/4d7fe998/release-checks.md). The audit did not change product, intent, tracking, source, flag, measurement, suggestion-register or generator data, or generated reader pages. Historical sections remain below. Current page/status statements were checked against the latest registers and published pages; historical pages were not re-audited line by line. A green structural check does not turn missing owner/account, Search Console, hosting or first-hand evidence into facts.
+
+---
+
+## Dated snapshot — probe guide shipped, stale counts repaired, sources re-read live · 2026-11-19 · session `cdb0a5ac`
+
+**Bottom line.** This pass closed the gap the decision desk had already sanctioned: the DS-01
+safe default ("publish one slate guide at a time through the publishing gate, starting with the
+thermometer temperature guide") is now executed. The ninth guide, *Where does the probe go?
+Turkey, ham and roasts*, answers slate title AS-01 with a factual spine taken only from two
+FoodSafety.gov pages re-read live today — the safe-minimum-temperature chart and the Cook step
+of 4 Steps to Food Safety. It shipped through the unchanged gate chain (feed, sitemap, canonical,
+unique title/description, disclosure strip, `rel="sponsored"` on every product link, Article
+schema with the disclosed organization byline). Alongside it, reader-facing counts that had gone
+stale were repaired to derive from the register: the executive brief strip now reads **9 guides /
+36 questions / 5 products** (register merged with the parallel batch-3 rounds), the design-prompt intro no longer hardcodes a block total, and the
+review-round headings count their own rows. One failure during the run was caught by the gate
+itself (a link to this pass's not-yet-written verification record) and fixed by writing the
+record before re-running.
+
+**Important details.**
+
+| Area | Position after this pass | Basis |
+|---|---|---|
+| Reader layer | 9 guides, 17 canonical/indexable URLs, 27 feed entries; new guide title 63 chars, description 157 chars, one `h1`, `index,follow`, 4 sponsored Amazon links, all gates green | `data/publication.json`, `sitemap.xml`, `feed.xml` measured 2026-11-19; `tools/publish.py` 41/41 |
+| Sources | 16 scoped official references — main's fifteen plus `food-safety-cook` (Cook-step placement wording, read live 2026-11-19); FoodSafety.gov chart re-read with Date Last Reviewed 21 Nov 2024 unchanged | `sessions/cdb0a5ac/verification-2026-11-19.md` |
+| Policy re-reads | Operating Agreement re-read live (Updated October 15, 2025): Special Links must "properly use the special 'tagged' link formats we provide"; FTC Disclosures 101 re-read (material connection, "hard to miss", "can't talk about your experience with a product you haven't tried"); Google `rel="sponsored"` guidance re-read (last updated 2025-12-10) | verification record above |
+| Counts repaired | Found stale on the claim base (`6 guides`/`9 questions` strip, "current six guides" ×2, "Seven ways…", "seven working titles", "Ten blocks" intro). Upstream PR #181 (Z3-COUNT-01) had already derived the strip during the parallel round; after this session's rebase the equivalent fixes converged and were verified, not duplicated (`P27-F02` principle). The remaining hardcodes are repaired here. | `tools/build_publication.py` diff; `suggestions/index.html`, `executive-brief.html` re-rendered |
+| Products / attribution | unchanged: 5 submitted links, intent fields blank, `FLG-003` open, `shopnow047c-20` unverified; no price, rating, review count or performance value anywhere | `tools/check_publication.py` gate |
+| Left as dated record | session b9008684's review-round text still says "six guides" inside its own dated round block; not rewritten (historical record kept verbatim), noted as CDB-F-03 | `suggestions/index.html`, review round header |
+
+**Deliberately not done.** No owner decision was implemented (paths, proposals and the AS-02…AS-07
+slate stay review-only); no account, API, Search Console or hosting change; no merge of another
+session's branch; no new product fact, price, rating or traffic claim; measurement stays off and
+the campaign ledger stays empty.
+
+**Recommended order, unchanged from the paths:** tighten the shop (needs nothing external) →
+prove the money path (blocked on the Associates account) → turn on the lights (blocked on a
+durable host) → then the evidence-gated work.
+
+## Dated snapshot — decision desk, two more guides and a brief · 2026-11-19 · session `6b68afc8`
 
 **Bottom line.** The site now has a place to *decide*, not only to record. The suggestions surface
 carries five reviewable paths (each with what it changes, what it needs first, what it unblocks and
@@ -1252,13 +1309,14 @@ published by this round implements a suggestion.
 
 ---
 
-## 17. Measured-drift pass: compare-page decision aids, a ninth guide, and counts that cannot drift — session `41e84402` (2026-11-19)
+## 17. Measured-drift pass: compare-page decision aids, one more guide, and counts that cannot drift — session `41e84402` (2026-11-19)
 
-**Base and merge.** Claimed on `arena/41e84402-zone3` from `6eb8c18`; rebased onto `origin/main` `42a6952`
-after PRs #181, #183, #185–#191 and #193 landed mid-pass (six other sessions, two of them while this
-section was being written). Registers were unioned, never line-merged; the totals this section leaves
-behind are 9 guides, 28 proposals, 38 questions, 15 sources, 13 design-brief blocks, 6 paths, 17 indexable
-URLs, 27 feed entries — every one of them read from the registers by the gate, not typed here:
+**Base and merge.** Claimed on `arena/41e84402-zone3` from `6eb8c18`; rebased three times and finally *merged*
+`origin/main` `1623c1c` after PRs #181, #183, #185–#191, #193, #194, #195 and #196 landed mid-pass — nine other
+sessions, several of them while this section was being written. Registers were unioned, never line-merged; the
+totals this section leaves behind are **10 guides, 28 proposals, 38 questions, 16 sources, 13 design-brief blocks,
+6 paths, 18 indexable URLs, 28 feed entries, 122 published pages** — every one of them read from the registers by
+the gate, not typed here:
 `07fb37ba`’s executive-brief count fix, `8aa259bb`’s full re-measure of the brief register,
 `d3493182`’s and `b3e82b38`’s suggestion batches and `222cfe13`’s analytics-history clarification are all kept
 as written. Where a *count* in another session’s live desk copy had gone stale against the union — `B38-Q4`

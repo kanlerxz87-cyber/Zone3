@@ -1,18 +1,18 @@
 # Session `41e84402` — verification record, 2026-11-19
 
-Branch `arena/41e84402-zone3`. Base at claim: `6eb8c18` (`main`, PR #178). Merged base after three rebases: `origin/main` `42a6952` — PRs #181, #183, #185, #186, #187, #188, #189, #190, #191 and #193 landed inside this session's window (sessions `07fb37ba`, `cbbd4d8f`, `8aa259bb`, `d3493182`, `b3e82b38`, `222cfe13`).
+Branch `arena/41e84402-zone3`. Base at claim: `6eb8c18` (`main`, PR #178). Merged base after three rebases and one merge of `origin/main` `1623c1c` — PRs #181, #183, #185–#191, #193, #194, #195 and #196 landed inside this session's window (sessions `07fb37ba`, `cbbd4d8f`, `8aa259bb`, `d3493182`, `b3e82b38`, `222cfe13`, `cdb0a5ac`, `aebf0747`, `4d7fe998`).
 Every number below was produced by a command in this repository, on this checkout, on 2026-11-19. Nothing here is a traffic, demand, conversion, ranking, price, rating or revenue figure, and no Amazon endpoint was navigated to.
 
 ## 1. Commands, and what each one proves
 
 | # | Command | Result on the merged tree |
 |---|---|---|
-| 1 | `python3 tools/publish.py` | **41 commands checked; 0 failed** (16 builders + 25 checks), on the merged union tree. Run three times: the second and third changed **0** tracked files. `python3 tools/publish.py --check` on the same tree: 25 checks, 0 failed. |
-| 2 | `python3 sessions/8aa259bb/measure_brief_rows.py` (another session's read-only measure, re-used, not edited) | 121 published pages; **0** pages missing a `<title>`; **0** missing a meta description; disclosure sentence on **121/121**; og:image and JSON-LD on **30**; `rel="sponsored"` absent from **1,227** `amazon.*` anchors (3,022 total) on the merged tree, all of which are policy/agreement citations on `affiliate-program.amazon.com` — 1,222 of 3,016 on the pre-merge tree |
-| 3 | `python3 sessions/41e84402/measure_drift.py` (this pass; JSON in `measurement-2026-11-19-drift.json`) | **`drift_found: false`** — no live reader page, README line or register field states a count its register does not hold. All **17** indexable reader URLs carry og:image + JSON-LD + disclosure + canonical. **0** of the reader pages' `amazon.com` links are unsponsored. Chooser present on 4 shop surfaces. No dimension-like field in any of the four product registers. |
+| 1 | `python3 tools/publish.py` | **41 commands checked; 0 failed** (16 builders + 25 checks), on the merged union tree of 122 published pages. Run three times: the second and third changed **0** tracked files. `python3 tools/publish.py --check` on the same tree: 25 checks, 0 failed. |
+| 2 | `python3 sessions/8aa259bb/measure_brief_rows.py` (another session's read-only measure, re-used, not edited) | 122 published pages; **0** pages missing a `<title>`; **0** missing a meta description; disclosure sentence on **122/122**; og:image and JSON-LD on **31**; `rel="sponsored"` absent from **1,227** `amazon.*` anchors (3,026 total) on the merged tree, all of which are policy/agreement citations on `affiliate-program.amazon.com` — 1,222 of 3,016 on the tree this pass measured first |
+| 3 | `python3 sessions/41e84402/measure_drift.py` (this pass; JSON in `measurement-2026-11-19-drift.json`) | **`drift_found: false`** on the merged tree — no live reader page, README line or register field states a count its register does not hold (registers read: 10 guides, 28 proposals, 38 questions, 18 canonical URLs, 28 feed entries, 15 search rows). All **18** indexable reader URLs carry og:image + JSON-LD + disclosure + canonical. **0** of the reader pages' `amazon.com` links are unsponsored. Chooser present on 4 shop surfaces. No dimension-like field in any of the four product registers. |
 | 4 | `python3 tools/preview.py --host 127.0.0.1 --port 3000` + `node sessions/41e84402/browser_measure.cjs` (JSON in `measurement-2026-11-19.json`, screenshots in `screenshots/`) | Compare page at 320/390/768 px: sticky product column holds its left edge (`left_before == left_after_scroll == 16px` at 320/390) while the region is scrolled 160 px sideways; the region needs no sideways scroll at 768 px (the table fits, which is recorded, not smoothed over). Chooser with its 3 steps renders above `#comparison` at all three widths. Interactive targets under 24 px: **0 of 26** (before this pass: category pills 31 px, in-cell link 11 px, guide-card link 18 px). 14 of 26 remain under 44 px and all are inline text links. |
-| 5 | `node sessions/1c072a7a/browser_check.cjs` (the published harness, unmodified) | **14/14 checks pass; 38 WCAG 2.0/2.1 A/AA page/viewport scans over 19 pages, 0 violations** (`browser-harness-report-2026-11-19.json` is that run's report, copied here for provenance). |
-| 6 | `python3 tools/build_brief_status.py --check`, `python3 tools/build_publication.py --check`, `python3 scripts/build_sitemap.py --check`, `python3 tools/build_feed.py --check` | all pass — sitemap **17** URLs, feed **27** entries, search index **14** rows, 23 register rows. |
+| 5 | `node sessions/1c072a7a/browser_check.cjs` (the published harness, unmodified) | **14/14 checks pass; 40 WCAG 2.0/2.1 A/AA page/viewport scans over 20 pages, 0 violations** (`browser-harness-report-2026-11-19.json` is that run's report, copied here for provenance). |
+| 6 | `python3 tools/build_brief_status.py --check`, `python3 tools/build_publication.py --check`, `python3 scripts/build_sitemap.py --check`, `python3 tools/build_feed.py --check` | all pass — sitemap **18** URLs, feed **28** entries, search index **15** rows, 23 register rows. |
 
 ## 2. The five links, and what is still not known
 
@@ -63,6 +63,20 @@ No price, star rating, review count, sales, conversion, commission or revenue fi
 | Tap targets ≥24 px on the compare page | `assets/publication.css` E41 appendix rules | `node sessions/41e84402/browser_measure.cjs` |
 
 ## 6. Second-round count drift, found by this session's own gate on the merged tree
+
+Union with `cdb0a5ac` (PRs #194/#195, a tenth guide `guides/where-does-the-probe-go.html`, its own re-measure of
+every brief row, and the same count-derivation applied to `review_round_html`) and with `aebf0747`/`4d7fe998`
+(#196, audit refresh and executive-summary reconciliation) — resolved as a **merge**, not a replay, because four
+commits had landed while this session was mid-flight: `data/publication.json` re-formed from main's register with
+this pass's guide, `E41-P1/P2`, `E41-Q1/Q2` and the count-neutral clause fixes appended; `data/shop/brief-status.json`
+kept **main's** row texts as the base (their re-measure covers 20 rows to my 13) and my `Re-measured … (session
+41e84402…)` sentences were appended field-by-field where absent, with the page-count claims re-measured to 122;
+`tools/build_publication.py` took **main's** derived counts inside `review_round_html` over my literals;
+`tools/build_brief_status.py` kept **my** derived `_meta` machinery, so the hardcoded eyebrow main had typed
+("sessions 8aa259bb and cdb0a5ac, merged") became a `_meta.rechecks` entry for `cdb0a5ac` instead, and the page
+now names four measurement passes without a string in the template. `S-24`'s flag column kept main's `M38-F-12`
+(a single-value field; my `E41-B03` reference lives in the row text) — replacing it, as an earlier attempt of mine
+did, would have silently dropped their cross-reference.
 
 The union with `b3e82b38` (PRs #189–#191) and `222cfe13` (PR #193) moved the registers to **9 guides / 28 proposals /
 38 questions / 15 sources / 13 design blocks / 6 paths**, which re-opened the same `E41-F01` class in three places:

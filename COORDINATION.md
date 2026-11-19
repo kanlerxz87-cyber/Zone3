@@ -9118,9 +9118,6 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
   session, with `checked_on` 2026-11-19 and a scope note.
 - No price, rating, review count, availability or revenue value is introduced. Intended-ASIN fields
   stay blank; FLG-003 is neither claimed nor implied either way.
->>>>>>> 0287705 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
->>>>>>> a48fbbb (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
->>>>>>> 1b22869 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
 ### B38 completion record (B38-T2…T6, 2026-11-19)
 
 | Task | Status | Record |
@@ -9324,16 +9321,200 @@ text; the next integration pass may want to strip them.
 - Every current table row keeps an official HTTPS source; anything that cannot be confirmed stays blank and is flagged.
 - No branch other than `main` (merge target) and `arena/41e84402-zone3` is written. `git pull --rebase origin main` before every push.
 
+### E41 third-round reconciliation with PRs #194–#196 (merged, not rebased)
+
+Four more commits landed on `main` while this Part was in flight: **#194/#195** (`cdb0a5ac` — a tenth guide
+`guides/where-does-the-probe-go.html`, their own re-measure of 20 brief rows, `M38-F-*` dispositions, and the same
+count-derivation applied to `review_round_html`'s “current six guides” and the slate heading) and **#196**
+(`aebf0747` + `4d7fe998` — audit refresh, exec-summary reconciliation, their repo review). Because a fifth rebase
+would have replayed the same tail five times, this branch merged `origin/main` and resolved once:
+
+- `data/publication.json` — main's register as base; my guide, `indexable_pages` row, `E41-P1/P2`, `E41-Q1/Q2` and
+  the count-neutral clause fixes re-applied by id. Union totals: **10 guides / 28 proposals / 38 questions /
+  16 sources / 6 paths / 13 design blocks / 18 indexable URLs / 28 feed entries**.
+- `data/shop/brief-status.json` — **main's rows are the base** (their re-measure covers 20 rows to my 13); my
+  `Re-measured … (session 41e84402…)` sentences appended field-by-field where absent, and every page-count figure
+  in them re-measured to the merged tree (122 pages, 122/122 disclosure, og:image and JSON-LD on 31, 3,026 anchors
+  with 1,227 policy citations, feed 28, sitemap 18, 25 pages labelling AI art). Their `prior_2026_11_17` columns and
+  statuses are untouched; my `S-24` flag stays **theirs** (`M38-F-12`) because the field holds one id — an earlier
+  draft of this merge had overwritten it, which would have dropped their cross-reference.
+- `tools/build_brief_status.py` — my `_meta`-derived eyebrow kept, and their hardcoded line
+  (“sessions 8aa259bb and cdb0a5ac, merged”) converted into a `_meta.rechecks` entry naming their pass, so the page
+  now lists four passes without a typed date.
+- `tools/build_publication.py` — their derived counts inside `review_round_html` and the slate heading **taken over
+  my literals** (same fix, better form); my chooser, sticky-table, `#comparison` links and `readme_facts()` are all
+  retained.
+- `README.md` — my count-neutral prose and the generated block (their version re-typed “nine … question-led
+  guides”, which the union had already outgrown); `sessions/aebf0747/audit-after.json` and their
+  `EXECUTIVE-SUMMARY.md` were left to their own builder, which refreshed both counts on rebuild.
+- `COORDINATION.md` — their Part and this Part both kept; zero conflict markers in the result.
+
+Post-merge gates: `tools/publish.py` 41/41 with a second run changing no tracked file, `--check` 25/25,
+`PUBLICATION PASS` over 122 current pages / 104 official-source rows / 18 indexable URLs / 28 feed entries,
+`brief status current · 23 rows`, `measure_drift.py` `drift_found: false`, this session's compare-page measurement
+PASS at 320/390/768 px, and the published harness at **14/14 checks with 40 page/viewport a11y scans over 20 pages,
+0 violations**.
+
 ### E41 release record
 
-`python3 tools/publish.py` on the merged tree: **41 commands checked; 0 failed**, run twice with the second run
+`python3 tools/publish.py` on the merged tree (122 pages, 10 guides): **41 commands checked; 0 failed**, run twice with the second run
 changing no tracked file; `--check` mode 25/25. `python3 tools/check_publication.py` → `PUBLICATION PASS`
 (121 current HTML pages, 19 rendered reader/workspace pages, 102 official-source table rows, 17 indexable URLs,
 27 feed entries). `python3 tools/build_brief_status.py --check` → `brief status current · 23 rows`. Published
-browser harness `node sessions/1c072a7a/browser_check.cjs` on the local build → **14/14 checks, 38 page/viewport
-accessibility scans, 0 violations**; this session's own measurement `node sessions/41e84402/browser_measure.cjs`
+browser harness `node sessions/1c072a7a/browser_check.cjs` on the local build → **14/14 checks, 40 page/viewport
+accessibility scans over 20 pages, 0 violations**; this session's own measurement `node sessions/41e84402/browser_measure.cjs`
 → **PASS at 320/390/768 px**. Records: `sessions/41e84402/verification-2026-11-19.md`,
 `measurement-2026-11-19-drift.json` (`drift_found: false`), `measurement-2026-11-19.json`,
 `browser-harness-report-2026-11-19.json`, `screenshots/compare-{320x720,390x844,768x1024}.png`.
 Flags `E41-F01…05` (F01 and F02 `fixed` with the gate proof; F03, F04, F05 `needs review` because they wait on
 the owner or on another session's merge), shop flags `E41-B01…04`, desk rows `E41-P1/P2`, questions `E41-Q1/Q2`.
+
+---
+
+# Part CDB — session `cdb0a5ac` (branch `arena/cdb0a5ac-zone3`, base `6eb8c18e` = `main` at claim) — 2026-11-19
+
+Branch note: Arena fixes this session to `arena/cdb0a5ac-zone3`; the brief's `session-<id>/<task>`
+branch shape is recorded here as a task-ID scope on the fixed branch (same resolution as earlier parts).
+
+## Session registry (Part CDB)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| cdb0a5ac | `arena/cdb0a5ac-zone3` | Brief-gap buyer review of the current publication, independent live official-source re-verification round, final integration (full gate run, PR → `main`, merge, Pages deploy confirmation, publish record). | in progress | 2026-11-19 |
+
+## Task board (Part CDB)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| CDB-T1 — Claim and coordination | done | cdb0a5ac | `COORDINATION.md` (this Part only) | — | — |
+| CDB-T2 — Brief-gap buyer review: read the current site against the brief (shop-not-audit, suggestions section, questions/answers register, five-product marketing, executive summary); record gaps as suggestions, not silent edits | done | cdb0a5ac | `sessions/cdb0a5ac/**`, `data/publication.json`, `tools/build_publication.py` (register rows + renderer only) | live fetches recorded in `sessions/cdb0a5ac/verification-2026-11-19.md` | CDB-F-01…F-09 (see `sessions/cdb0a5ac/review-2026-11-19.md` §4) |
+| CDB-T3 — Independent line-by-line re-verification of load-bearing claims against live official sources (Google, FTC, Amazon Associates) | done | cdb0a5ac | `sessions/cdb0a5ac/verification-2026-11-19.md` | V1–V5 re-read live 2026-11-19 (Google sponsored-links, FoodSafety.gov chart + Cook step, FTC Disclosures 101, Associates Operating Agreement) | none — all five matched the register rows they support |
+| CDB-T4 — Final integration: full `tools/publish.py` rebuild + every gate, link report, PR → `main`, merge, Pages deploy confirmation, live verification, publish record appended here | done | cdb0a5ac | whole tree (integration only) + `COORDINATION.md` (publish record) | PR #194 → `main`, merged `f29342b` | full 41-command chain green ×2, Pages `built`, live checks below |
+
+No other session's claimed files are edited by this session except the append-only register rows in
+`data/publication.json` scoped above; if a merge conflict occurs, it will be resolved without
+discarding the other session's work and logged in this Part.
+
+### CDB scope extension (session cdb0a5ac, 2026-11-19)
+
+Beyond the scope claimed in the CDB task board, this session took two more files, neither
+claimed by any active session: `data/shop/brief-status.json` (+ its generated page
+`brief-status/index.html`, owner session 38650305, long done) for a full 23-row re-measurement
+dated 2026-11-19, and `README.md` / `EXECUTIVE-SUMMARY.md` for current-state count corrections
+(9 guides / 17 canonical URLs / 27 feed entries / 15 sources). Session b9008684's dated
+review-round text inside `data/publication.json` was left verbatim (CDB-F-03); no other
+session's data rows were rewritten. The register additions in this session's scope are:
+one guide (`where-does-the-probe-go`, DS-01 safe default, slate AS-01), one source
+(`food-safety-cook`), one indexable URL, and the count-free design-prompt intro.
+
+
+### CDB rebase reconciliation with main's parallel batch (PRs #181–#190) — 2026-11-19
+
+While this pass was working, `main` advanced from `6eb8c18` to `eb60ee0` (PRs #181, #182–#184,
+#185, #186, #187, #188, #189, #190: Z3-COUNT-01 strip derivation; session `d3493182` batch-3
+D34 rows; session `8aa259bb` brief-status re-measurement + Zone4 decision re-reads; session
+`b3e82b38` batch-3 B38 rows). The branch was rebased with nothing discarded:
+
+- **`COORDINATION.md`** (add/add): reconstructed as `origin/main`'s content + this session's
+  Part CDB appended, both sides complete. Three stray `>>>>>>> …` conflict-marker lines that
+  main itself already carried (left by B38's claim replay, lines 9121–9123 of main's file) were
+  removed in the same pass — repair logged as CDB-F-09.
+- **`data/publication.json`**: main's register (15 sources / 26 proposals / 36 questions /
+  13 blocks / 6 paths) taken as base; this session's additive rows re-applied
+  (`food-safety-cook`, guide `where-does-the-probe-go`, its indexable URL) and the count-free
+  design-prompt intro re-applied (main still hardcoded "Ten blocks"). Merged totals:
+  **16 sources / 9 guides / 26 proposals / 36 questions / 13 blocks / 6 paths / 17 indexable**.
+- **`data/shop/brief-status.json`**: both sessions re-measured all 23 rows on 2026-11-19.
+  Merged row by row — `8aa259bb`'s Zone4-checked details, flag annotations and
+  `prior_2026_11_17` snapshots kept as the structural base; this session's merged-tree counts
+  (121 pages, 9 guides, 27 feed items, 17 sitemap URLs, 1,792 sponsored product anchors re-run
+  through `sessions/8aa259bb/measure_brief_rows.py`) folded in; statuses reconciled
+  (S-11/S-12 → `Partly here` on measured strings, SG-27 → `Not found here`, S-19 keeps
+  8aa's `Verified here` plus this session's compare-page/E61-P5 note, S-24 keeps 8aa's honest
+  `Partly here` with the guide-count fix). The builder eyebrow now names both sessions.
+- **`tools/build_publication.py`**: main's derived executive strip (Z3-COUNT-01) taken as
+  base; this session's cdb0a5ac verification-record link grafted into the same sentence; my
+  review-round heading/count derivations applied (main had not touched those lines).
+- **`README.md`**: main's four-batch structure kept; counts set to the merged tree
+  (nine guides, sixteen references, twenty-six proposals, six paths, thirty-six questions,
+  17 canonical URLs, 27 RSS entries).
+- **Generated pages**: full canonical chain re-run after the rebase — only
+  `executive-brief.html` and `suggestions/index.html` needed regeneration (they had been
+  resolved to main's side mid-rebase); every other output rebuilt byte-identical.
+
+**Post-rebase verification (merged tree):** `tools/publish.py` **41/41 PASS twice** with a
+byte-stable tree between runs; `sessions/8aa259bb/measure_brief_rows.py` re-run for the
+brief-status counts; `tools/build_brief_status.py --check` current. Clean-checkout 25/25
+recorded in `sessions/cdb0a5ac/verification-2026-11-19.md` §3 (pre-rebase head; the same
+check suite re-ran green on the rebased head as part of the 41).
+
+
+### CDB-T4 publish result — PR #194 merged (session cdb0a5ac, 2026-11-19)
+
+- **PR:** https://github.com/kanlerxz87-cyber/Zone3/pull/194 — *CDB final integration: DS-01 probe
+  guide, register-derived count repairs, dual-pass brief-status refresh, live source
+  re-verification (session cdb0a5ac)*.
+- **Merged:** `main` at `f29342b4ced37840ce1ff164eb2e037bd5bc7a54` (merge commit,
+  2026-11-19T13:13:26Z), no approval wait, per the standing brief.
+- **Two mid-flight rebases before the merge** (main advanced under this pass twice: PR #191's
+  board record, then PR #193's 222cfe13 review/analytics refresh). Both were rebased with
+  union merges only — README kept 222cfe13's repo-review link and newline fix alongside this
+  session's nine-guide counts; COORDINATION kept every other session's part (222cfe13's +41,
+  B38's +14 publish record) plus Part CDB; zero conflict markers remain; `git diff` between the
+  pre-rebase and post-rebase branch states shows only those upstream additions.
+- **Release gate:** `python3 tools/publish.py` **41/41 PASS twice** on the merged tree with a
+  byte-stable tree between runs; `publish.py --check` 25/25; `tools/build_brief_status.py --check`
+  current; `sessions/8aa259bb/measure_brief_rows.py` re-run for the brief-status figures.
+  The Chromium harness (`sessions/1c072a7a/browser_check.cjs`) could **not** be re-run in this
+  pass — its Playwright/Chromium dependencies are not installed here and the browser CDN is not
+  reachable from this environment; the harness's earlier 14/14 + 32 WCAG PASS (1c072a7a) and the
+  live checks below stand in for it. This is recorded as a limitation, not a pass.
+- **Pages:** `gh api repos/kanlerxz87-cyber/Zone3/pages/builds/latest` → `status: built` for
+  `f29342b` (the merge commit) with no error.
+- **Live verification** (fetched 2026-11-19 after the deploy):
+  - `/guides/where-does-the-probe-go.html` — live, correct title (63 chars), both official
+    FoodSafety.gov source links present with read dates, both listings' accuracy/app claims in
+    the "What we haven't established" block, disclosure + Sponsored rels, `title only` badges.
+  - `/sitemap.xml` — 17 canonical URLs, new guide among them.
+  - `/feed.xml` — new guide is the first item; 27 items total.
+  - `/index.html` — "Just added to this edition · 19 Nov 2026" list ends with *Where does the
+    probe go?*; product cards unchanged and sponsored-tagged.
+  - `/executive-brief.html` — strip renders **5 / 9 / 36 / 0**; decision-desk row reads
+    "6 paths and 26 proposals against 36 open questions … thirteen blocks"; fine print links the
+    cdb0a5ac verification record (live at `/sessions/cdb0a5ac/verification-2026-11-19.md`).
+  - `/suggestions/index.html` — 6 paths, 26 proposals, question anchors resolving; 15 chunks served.
+- **Board:** all four CDB tasks now `done`; flagged irregularities CDB-F-01…F-09 remain published
+  and non-blocking; FLG-003, SG-29/SG-30 and every owner-blocked item stay open by design.
+
+## Part 4d7fe998 — publication request audit and executive-summary consistency (2026-11-19)
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 4d7fe998 | `arena/4d7fe998-zone3` | Reconcile the user's current brief against the shipped reader site and decision desk; verify current executive-summary consistency and document the evidence boundary, remaining owner gates and release checks | in progress (4D7-T5) | 2026-11-19 |
+
+### Coordination and scope
+
+- Original task base: `6eb8c18e7eb981c51e89fac234f094b9a57d106a`; the claim was first based on `2a854c1d6a01d090858c05d607a82d51c48a9268`, then rebased through PR #190 (`eb60ee0`), PR #191 (`c8533cd`), PR #194 (`f29342b`) and latest main PR #195 (`3f0d14bfad1eee800c6e6e3397e43e78b5d93839`, including PR #193). The current branch remains `arena/4d7fe998-zone3`.
+- Read the board through E61/P27 and, after the latest rebase, through B38. The buyer-first shop, question-led guides, suggestions/decision desk, product-intent record, disclosure, sponsored links, measurement, feed and review surfaces already exist; this pass audits the live registers and evidence rather than creating a duplicate publication.
+- PR #160 and PR #157 were left outside this session; their current status is rechecked before PR creation. Under the board's stale-claim rule, this session takes over only the current-status opening of `EXECUTIVE-SUMMARY.md`, not those branches or their implementation. PR #190 (B38), #191 (B38 post-merge record), #193 (README/legacy-analytics provenance), and #194 (DS-01 probe guide and FoodSafety.gov source) merged and are preserved. PR #195 merged at 13:17:29Z as `3f0d14b` with CDB's coordination-only closeout; the latest live Pages build is `built` for this commit.
+- File scope: the current-status opening of `EXECUTIVE-SUMMARY.md` (historical sections retained), new `sessions/4d7fe998/**` audit/release records, and this appended Part of `COORDINATION.md`. Product, intent, tracking, source, flag, measurement, suggestion-register, generator and generated-page files remain read-only in this pass; any discovered contradiction is documented for a scoped follow-up rather than silently rewriting those records.
+
+### Task board
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| 4D7-T1 — Read the board, check scope conflicts, register and push this claim before implementation | done (initial claim `459596b`; refreshed branch force-with-lease pushed as `5015056` after #195) | 4d7fe998 | this Part only | board; PRs #160/#157/#190/#191/#193/#194/#195; `git pull --rebase origin main` | Append-only `COORDINATION.md` conflicts were resolved with all upstream Parts retained. The latest rebase kept the full #195 `origin/main` file and appended this Part; no upstream Part or generated page was dropped. |
+| 4D7-T2 — Audit the current brief against the actual published reader pages and record what is shipped, what is unknown, and what needs owner-authorized discovery | done | 4d7fe998 | `sessions/4d7fe998/repo-review.md`, `sessions/4d7fe998/verification-2026-11-19.md` | current registers; cache-busted live read-back for `3f0d14b`; same-day official-source records | owner/account/host/intent evidence remains unavailable by design; no new product or popularity claims |
+| 4D7-T3 — Reconcile the root executive summary's current-status opening with the merged publication state; verify register-derived counts after PR #194 | done | 4d7fe998 | current-status opening of `EXECUTIVE-SUMMARY.md`; `sessions/4d7fe998/**` | `data/publication.json`, `sitemap.xml`, `feed.xml`, `data/shop/campaign-ledger.json`, PRs #181/#190/#193/#194 | The current tree has 16 scoped references / 9 guides / 26 proposals / 36 questions / 13 prompt blocks / 6 paths / 17 indexable URLs / 27 RSS items. The 4d status precedes retained dated CDB/6b/1c history; no generator or historical body was changed. |
+| 4D7-T4 — Run the canonical build and full release checks twice, verify idempotency and inspect link/disclosure/sponsored/sitemap/feed/measurement status | done | 4d7fe998 | generated outputs only through existing chain; `sessions/4d7fe998/**` | `tools/publish.py` twice on the `3f0d14b` tree; `release-checks.md` | 41/41 each run; SHA-256 and `git status --porcelain -uall` stable; structural pass does not refresh every historical factual claim |
+| 4D7-T5 — Open PR from this branch, merge without waiting if checks pass, verify Pages deployment/live summary and record the result | in progress | 4d7fe998 | current branch; this Part | `git`, `gh`, GitHub Actions/Pages and live page read-back | no merge of PR #160 or #157 |
+
+### Rebase conflict and de-duplication record
+
+The first `git pull --rebase origin main` fetched `2a854c1` and stopped on an append-only `COORDINATION.md` conflict; the resolution kept upstream session `07fb37ba` and this Part, then the claim was pushed as `99cd706`. A second rebase fetched `eb60ee0` after PR #190 and conflicted in the same file; the full upstream version was retained, three orphan `>>>>>>>` marker-only lines in the B38 block were removed, and this Part was appended. A third rebase fetched `c8533cd` after PR #191 and again conflicted on the append-only tail; all B38 release-record additions were kept. The claim was amended and force-with-lease pushed as `459596b635f411ecbc27494b086dd40c44483c8f`, verified as the branch's local and remote tip before audit implementation. After PRs #193/#194 advanced main through `42a6952` to `f29342b`, a fourth `git pull --rebase origin main` conflicted only in the append-only `COORDINATION.md` tail; resolution retained the full main file and appended this Part. PR #195 then advanced main to `3f0d14b` with a CDB publish record; a fifth rebase again conflicted only in `COORDINATION.md`, and resolution kept the complete `origin/main` file (including that publish record) and re-appended this Part. The stashed audit edit to `EXECUTIVE-SUMMARY.md` had conflicted with PR #194's new current CDB section; resolution installed this session's updated current opening, retained CDB's full dated snapshot and every later historical section. The latest rebased claim commit is `208eb15` and audit commit is `5d221b9`. After verifying the remote branch at `459596b`, the refreshed branch was successfully force-with-lease pushed to `5015056`; a post-push read-back matched local HEAD and the remote branch. PR #195 changed no reader/register data; the full release chain was repeated twice on its tree, 41/41 each time, with the five branch-diff files hash-stable and no generated reader content changed. No upstream `data/`, publication, register or generated reader content was dropped. No line-start conflict marker remains.
+
+The merged register after PR #194 has 16 scoped official references, 9 guides, 26 proposals, 36 decision-readiness questions, 13 design-prompt blocks, 6 paths, 17 indexable URLs and 27 RSS entries. PR #181 made executive-brief counts register-driven; PR #190 and PR #194 added guide/register batches. This session reconciles only the current-status opening of the root Markdown summary and preserves the full dated CDB, 6b and earlier history. PR #191/#193/#194 coordination records are retained.
+
+**Claim status:** the original claim was pushed as `459596b635f411ecbc27494b086dd40c44483c8f`. After PR #195, the branch rebased to `3f0d14b` and the refreshed audit branch was force-with-lease pushed as `5015056f192d16c3eadd0a8825dff6bb88d57eb6`; local HEAD and the remote ref were verified equal. PR creation/merge and this session’s post-merge Pages confirmation remain in progress. The site remains review-only wherever it depends on account access, an owner decision or an external production host.
