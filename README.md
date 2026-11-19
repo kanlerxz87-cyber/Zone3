@@ -34,11 +34,11 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
 ## Current publication ownership
 
 - **Content and dates:** [`data/publication.json`](data/publication.json). It contains five dated
-  redirect/title observations, eight guides, fourteen scoped official references, twenty-one proposals
-  in three batches (P26-S foundations, E61-P trust/imagery/seasonal/UX/distribution/catalogue, D34-P
-  polished shopfront/article slate/findability/decision aids/voice/success definition), six
-  decision paths and thirty-two decision-readiness questions, each with an answer-capture field on
-  the suggestions page. Intended ASINs/URLs/dates/sources remain
+  redirect/title observations, eight guides, fifteen scoped official references, twenty-six proposals
+  in four batches (P26-S foundations, E61-P trust/imagery/seasonal/UX/distribution/catalogue, D34-P
+  polished shopfront/article slate/findability/decision aids/voice/success definition, B38-P
+  voice-lint/evidence-badges/slate/cadence/FAQ-correction), six decision paths and thirty-six
+  decision-readiness questions, each with an answer-capture field on the suggestions page. Intended ASINs/URLs/dates/sources remain
   distinct from observed destinations. Prices, ratings, review totals and tested performance remain
   empty. Reader-facing counts and check dates are derived from this file by the renderer, so a
   refresh of the register cannot leave a page asserting a stale number or date (`P27-F02`, `P27-F04`).- **Reader renderer:** [`tools/build_publication.py`](tools/build_publication.py), called by the
@@ -58,7 +58,7 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
 - **Decision desk:** [`suggestions/index.html`](suggestions/index.html) holds the paths (what each
   one changes, needs, unblocks and still cannot claim), the individual proposals, the register of
   open questions with the answer owner and the discovery action for each, the intake shape a new
-  suggestion has to take, and a twelve-block design brief with per-block copy. Local Save / Clear,
+  suggestion has to take, and a thirteen-block design brief with per-block copy. Local Save / Clear,
   JSON export: choosing a path never implements it, activates analytics, changes an account or
   spends money.
 - **Design brief:** [`DESIGN_PROMPT.md`](DESIGN_PROMPT.md) is the paste-ready version — rails R1–R12
