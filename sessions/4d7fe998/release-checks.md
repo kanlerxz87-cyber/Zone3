@@ -18,6 +18,13 @@
 - Current branch: `arena/4d7fe998-zone3`; rebased on `3f0d14b` and force-with-lease pushed as `5015056f192d16c3eadd0a8825dff6bb88d57eb6` after verifying the remote branch still pointed to `459596b635f411ecbc27494b086dd40c44483c8f`.
 - Post-push `git ls-remote` matched local HEAD `5015056f192d16c3eadd0a8825dff6bb88d57eb6`. No PR for this branch existed at that point. PRs #160 and #157 were rechecked as open and left untouched.
 
+## PR #196 merge and post-merge deployment
+
+- PR [#196](https://github.com/kanlerxz87-cyber/Zone3/pull/196), head `d2609653008291f400e4818e9c89c8183cb013bb`, passed publication check `44534254715` and merged at `2026-11-19T13:32:02Z` as `1623c1c2b6c4b04d526130a316dd6d9344985bdd`.
+- GitHub Pages API reported the merge commit `built` at `2026-11-19T13:32:31Z`.
+- Cache-busted live read-back at revision `1623c1c` confirmed the executive brief’s 5/9/36/0 strip, nine-guide index and probe-placement guide, and the 17-URL sitemap. The merge contained audit/coordination/Markdown records only; no product, register or generated reader-page data changed.
+- After completing the post-merge release records, `python3 tools/publish.py` was run twice again on the current tree: **41/41 commands passed both times**. All four modified audit/coordination files and `git status --porcelain -uall` were unchanged across both runs; no generated content changed.
+
 ## Branch-local canonical build and full gates
 
 The canonical command `python3 tools/publish.py` (not `--check`) was run twice on the branch after rebasing to `3f0d14b`. Each run rebuilt the tree and executed all active/legacy structural, provenance, disclosure, sponsored-link, sitemap/feed, external-link, and analytics tests: **41 commands checked; 0 failed** on both runs.
@@ -47,4 +54,4 @@ Structural success does not verify every historical factual claim or any account
 - Product, intent, tracking, source, flag, measurement, suggestion-register and generator files remain untouched by this session. Generated reader pages are kept byte-identical by the local release builds; do not treat an upstream PR #194 page as a change made here.
 - No Amazon account, Search Console, campaign-ledger or production-analytics evidence was available. Production measurement remains off, and the campaign ledger remains empty.
 - PR #160 and PR #157 are not to be merged by this session.
-- The branch PR, its checks, merge (only if checks pass), post-merge Pages deployment, and live summary read-back will be recorded after the local gates.
+- PR #196 passed its publication check, merged, and reached a `built` Pages status; the live brief, guide index/probe guide, and sitemap were re-read at `?revision=1623c1c`. Account-only, owner-only and hosting-policy verification remains outside repository release gates.
