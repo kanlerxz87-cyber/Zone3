@@ -52,18 +52,15 @@ def prefix_for(rel: str) -> str:
 
 NAV = [
     ("index.html", "Home"),
-    ("shop/index.html", "Shop"),  # route kept from PR #135 (session 974e366d)
+    ("shop/index.html", "Shop"),
     ("guides/index.html", "Guides"),
-    ("index.html#products", "Products"),
-    ("intent-record/index.html", "Intent record"),
-    ("sources/index.html", "Sources"),
-    # session 82372fd1 (2026-11-17): the shared gate scripts/check_site.py requires every
-    # PAGES page to link the flagged-for-review register by its canonical name; the dashboard
-    # surfaces must stay reachable from the front page per the owner brief's "single navigation
-    # group" rule. Additive entry; nothing else in the nav changed.
-    ("flagged.html", "Flagged (register)"),
-    ("publication-pass.html", "This pass and flags"),
+    ("marketing/comparison.html", "Compare"),
+    ("articles/index.html", "Articles"),
 ]
+
+# The canonical list is shared with the footer publisher so the operational pages stay
+# reachable without turning the reader-facing masthead into a wall of dashboard links.
+NAV_GROUPS = publish_pass.FOOTER_GROUPS
 
 
 def masthead(prefix: str, current: str) -> str:
@@ -71,11 +68,30 @@ def masthead(prefix: str, current: str) -> str:
     for path, label in NAV:
         cur = ' aria-current="page"' if path == current else ""
         links.append(f'<a href="{prefix}{path}"{cur}>{esc(label)}</a>')
+    grouped = []
+    primary_paths = {path for path, _label in NAV}
+    for group, entries in NAV_GROUPS:
+        items = []
+        for path, label in entries:
+            if path in primary_paths:
+                continue
+            cur = ' aria-current="page"' if path == current else ""
+            items.append(f'<a href="{prefix}{path}"{cur}>{esc(label)}</a>')
+        if items:
+            grouped.append(
+                f'<section class="z3-tools-group"><h3>{esc(group)}</h3>'
+                + "".join(items) + "</section>"
+            )
+    tools = (
+        '<details class="z3-nav-tools"><summary>Research &amp; site tools</summary>'
+        '<div class="z3-nav-panel" aria-label="Research and site tools">'
+        + "".join(grouped) + '</div></details>'
+    )
     return (
-        '<!-- z3:masthead --><header class="z3-mast topbar"><div class="z3-wrap">'  # topbar token: shared gate nav check (82372fd1)
-        f'<a class="z3-brand" href="{prefix}index.html">Zone3<small>Product guides, checked against the listing</small></a>'
-        '<nav class="z3-nav" aria-label="Main">' + "".join(links) + "</nav>"
-        "</div></header>\n"
+        '<!-- z3:masthead --><header class="z3-mast topbar"><div class="z3-wrap">'
+        f'<a class="z3-brand" href="{prefix}index.html">Zone3<small>The kitchen buying desk</small></a>'
+        '<nav class="z3-nav" aria-label="Main">' + "".join(links) + tools + '</nav>'
+        '</div></header>\n'
     )
 
 
@@ -93,7 +109,8 @@ def shell(rel: str, title: str, desc: str, body: str, extra_head: str = "") -> s
         + extra_head +
         "</head>\n<body class=\"z3-body\">\n"
         + masthead(prefix, rel.split("#")[0])
-        + '<main class="z3-main"><div class="z3-wrap">\n'
+        + '<a class="z3-skip" href="#main">Skip to content</a>\n'
+        + '<main id="main" class="z3-main"><div class="z3-wrap">\n'
         + body +
         "\n</div></main>\n</body>\n</html>\n"
     )
@@ -118,65 +135,118 @@ def row_by_asin(asin: str) -> dict:
 # ---------------------------------------------------------------- front page
 
 def front_page() -> str:
-    cards = []
+    air_fryers = [r for r in ROWS if r.get("category_group") == "Air fryers"]
+    thermometers = [r for r in ROWS if r.get("category_group") == "Meat thermometers"]
     kinds = {
-        "B0CDY277D3": ("Air fryer, two baskets", "tag-ok"),
-        "B09B7SB46R": ("Air fryer oven, French door", "tag-ok"),
-        "B08DKYBTPH": ("Air fryer, basket", "tag-ok"),
-        "B0DHZTCNR5": ("Meat thermometer · outside the air-fryer guides", "tag-warn"),
-        "B0DZFD6R9Z": ("Meat thermometer · outside the air-fryer guides", "tag-warn"),
+        "B0CDY277D3": ("Dual-basket air fryer", "z3-product-mark--basket"),
+        "B09B7SB46R": ("French-door air fryer oven", "z3-product-mark--oven"),
+        "B08DKYBTPH": ("Basket air fryer", "z3-product-mark--basket"),
+        "B0DHZTCNR5": ("Digital meat thermometer", "z3-product-mark--thermometer"),
+        "B0DZFD6R9Z": ("Wireless meat thermometer", "z3-product-mark--thermometer"),
     }
-    for r in ROWS:
-        label, cls = kinds[r["observed_redirect_asin"]]
-        cards.append(
-            '<article class="z3-card">'
-            f'<span class="z3-tag {cls}">{esc(label)}</span>'
-            f'<h3>{esc(r["short_name"])}</h3>'
-            f'<p class="z3-kv"><b>Listing ASIN observed:</b> {esc(r["observed_redirect_asin"])} '
-            f'<span>({OBSERVED_ON})</span></p>'
-            '<p class="z3-kv"><b>Intended ASIN:</b> not confirmed</p>'
-            f'<a class="z3-btn" href="{r["submitted_link"]}">Open the listing you submitted</a>'
-            f'<a class="z3-link" href="intent-record/index.html#row-{r["n"]}">Confirmation record</a>'
-            "</article>"
+
+    def product_card(r: dict, index: int, total: int) -> str:
+        label, art = kinds[r["observed_redirect_asin"]]
+        title = r["short_name"]
+        return (
+            '<article class="z3-product-card">'
+            f'<div class="z3-product-card__top"><span class="z3-product-card__category">{esc(label)}</span>'
+            f'<span class="z3-product-card__number">{index:02d} <i>/ {total:02d}</i></span></div>'
+            f'<div class="z3-product-mark {art}" aria-hidden="true"><span>{index:02d}</span></div>'
+            f'<h3>{esc(title)}</h3>'
+            f'<p class="z3-product-card__meta">Listing opened by a submitted link · checked {OBSERVED_ON}</p>'
+            '<div class="z3-product-card__actions">'
+            f'<a class="z3-buy-link" href="{r["submitted_link"]}" rel="sponsored">View on Amazon <span aria-hidden="true">↗</span></a><span class="z3-sponsored-chip">Sponsored</span>'
+            f'<a class="z3-record-link" href="intent-record/index.html#row-{r["n"]}">Listing details</a>'
+            '</div></article>'
         )
+
+    cards = "\n".join(product_card(r, i, len(air_fryers)) for i, r in enumerate(air_fryers, 1))
+    thermometer_cards = "\n".join(
+        product_card(r, i, len(thermometers)) for i, r in enumerate(thermometers, 1)
+    )
     guide_cards = []
-    for g in GUIDES:
+    for i, g in enumerate(GUIDES, 1):
         guide_cards.append(
-            '<article class="z3-card">'
-            f'<span class="z3-tag">Guide · working title</span>'
+            '<article class="z3-guide-card">'
+            f'<span class="z3-guide-card__number">Guide {i:02d}</span>'
             f'<h3>{esc(g["title"])}</h3>'
             f'<p>{esc(g["dek"])}</p>'
-            f'<a class="z3-link" href="guides/{g["slug"]}.html">Read the guide →</a>'
-            "</article>"
+            f'<a href="guides/{g["slug"]}.html">Read the guide <span aria-hidden="true">→</span></a>'
+            '</article>'
         )
+
     body = f"""
-<p class="z3-eyebrow">Product guides · checked against the listing</p>
-<h1 class="z3-h1">Five products, read from their Amazon listings</h1>
-<p class="z3-lede">Each card shows the ASIN the short link opened, the title that listing states, and what we have not confirmed. Product links open the listing you submitted and are marked sponsored.</p>
-<div class="z3-cta-row"><a class="z3-cta" href="#products">See the products</a><a class="z3-cta" href="guides/index.html">Read the guides</a><a class="z3-cta" href="intent-record/index.html">Confirmation record</a></div>
+<section class="z3-home-hero" aria-labelledby="home-title">
+  <div class="z3-home-hero__copy">
+    <p class="z3-eyebrow">Zone3 · The kitchen buying desk</p>
+    <h1 class="z3-home-title" id="home-title">Better questions.<br><em>Better kitchen buys.</em></h1>
+    <p class="z3-home-lede">A calmer way to compare the details behind kitchen listings. Start with air fryers, follow the questions that matter, and see what is still worth checking before you choose.</p>
+    <div class="z3-home-actions">
+      <a class="z3-home-button" href="#air-fryers">Browse air fryers <span aria-hidden="true">↓</span></a>
+      <a class="z3-home-text-link" href="guides/index.html">Read the buyer’s guides <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="z3-home-byline">Useful comparisons, written from the listing details—not pretend hands-on reviews.</p>
+  </div>
+  <aside class="z3-home-hero__art" aria-label="A preview of the questions covered in our buying guides">
+    <span class="z3-art-kicker">The buyer’s notebook</span>
+    <span class="z3-art-title">Start with what<br>you actually need.</span>
+    <span class="z3-art-rule"></span>
+    <span class="z3-art-row"><b>01</b> Form &amp; footprint</span>
+    <span class="z3-art-row"><b>02</b> Capacity &amp; layout</span>
+    <span class="z3-art-row"><b>03</b> Cleanup &amp; care</span>
+    <a href="guides/index.html">Explore the questions <span aria-hidden="true">↗</span></a>
+    <span class="z3-art-stamp" aria-hidden="true">Z3<br>FIELD<br>NOTES</span>
+  </aside>
+</section>
 
-<h2 class="z3-h2" id="products">The products</h2>
-<p class="z3-meta">Observed {OBSERVED_ON}. Prices, star ratings and review counts are not shown on this site.</p>
-<div class="z3-grid">{''.join(cards)}</div>
+<section class="z3-home-section" id="air-fryers" aria-labelledby="air-fryer-heading">
+  <div class="z3-section-heading">
+    <div><p class="z3-eyebrow">The starting shelf</p><h2 id="air-fryer-heading">Air fryers to compare</h2></div>
+    <a class="z3-section-link" href="marketing/comparison.html">Compare the listings <span aria-hidden="true">→</span></a>
+  </div>
+  <p class="z3-section-intro">Three listing snapshots, with the details shown plainly and no made-up verdicts. Open a product listing or use the guides to decide what to compare.</p>
+  <div class="z3-product-grid">{cards}</div>
+  <p class="z3-home-caveat">The product names and listing details below reflect the pages opened by the submitted links on {OBSERVED_ON}. The intended product match and link attribution are not yet confirmed. <a href="intent-record/index.html">See the separate product-intent record</a>.</p>
+</section>
 
-<h2 class="z3-h2" id="guides">Read before you choose</h2>
-<p class="z3-meta">Four question-shaped guides. Their titles are working titles, not claims about what people search for.</p>
-<div class="z3-grid">{''.join(guide_cards)}</div>
+<section class="z3-home-section z3-home-section--soft" aria-labelledby="guides-heading">
+  <div class="z3-section-heading">
+    <div><p class="z3-eyebrow">Read before you decide</p><h2 id="guides-heading">Questions worth asking</h2></div>
+    <a class="z3-section-link" href="guides/index.html">All buyer’s guides <span aria-hidden="true">→</span></a>
+  </div>
+  <p class="z3-section-intro">Practical starting points—not claims about what is trending or what is best.</p>
+  <div class="z3-guide-grid">{"".join(guide_cards)}</div>
+</section>
 
-<h2 class="z3-h2">What we have not confirmed yet</h2>
-<div class="z3-note"><p>Intended ASINs, the tracking ID on the links, the category of two of the five products and the measurement set-up are open. Each is listed with its source on the <a href="publication-pass.html#flagged">flagged-for-review list</a>.</p></div>
+<section class="z3-home-section" aria-labelledby="other-tools-heading">
+  <div class="z3-section-heading">
+    <div><p class="z3-eyebrow">A separate kitchen category</p><h2 id="other-tools-heading">Meat thermometers</h2></div>
+    <a class="z3-section-link" href="shop/meat-thermometers/index.html">Browse the category <span aria-hidden="true">→</span></a>
+  </div>
+  <p class="z3-section-intro">Two observed listings sit outside the air-fryer guide collection. They’re kept in their own category rather than folded into an unrelated comparison.</p>
+  <div class="z3-product-grid z3-product-grid--compact">{thermometer_cards}</div>
+</section>
 
-<h2 class="z3-h2">How each page is checked</h2>
-<ol class="z3-prose">
-  <li>Every product title and ASIN is taken from the listing page on the date shown, and the source link is on the same row.</li>
-  <li>Where a value is not on an official page we opened, the field is left blank and flagged. It is not estimated.</li>
-  <li>The Associates disclosure sits under the masthead and in the footer of every page, using the wording in Operating Agreement Section 5.</li>
-</ol>
-<p class="z3-meta">Publishing cadence (working setting): one new guide every 14 days, chosen from the open questions on the flagged list. The owner can change it.</p>
+<section class="z3-home-review" aria-labelledby="review-heading">
+  <div><p class="z3-eyebrow">Help choose what comes next</p><h2 id="review-heading">Good publishing starts with good questions.</h2>
+  <p>See the proposed paths, the information we still need, and how each gap could be checked. Suggestions are reviewable proposals—not silent changes.</p></div>
+  <div class="z3-review-actions"><a href="suggestions.html">Review suggestions <span aria-hidden="true">→</span></a><a href="decision-queue.html">Open decision queue <span aria-hidden="true">→</span></a><a href="site/answers.html">Known facts &amp; open questions <span aria-hidden="true">→</span></a><a href="flagged.html">See flagged items <span aria-hidden="true">→</span></a></div>
+</section>
+
+<section class="z3-home-note" aria-label="Editorial and affiliate note">
+  <span class="z3-home-note__label">How we work</span>
+  <p>We don’t publish a price, rating, review count, or first-hand verdict unless the permitted source and experience are actually available. That keeps each guide useful without pretending to know more than the listing tells us.</p>
+  <a href="executive-summary/index.html">Read the executive summary <span aria-hidden="true">→</span></a>
+</section>
 """
-    return shell("index.html", "Zone3 — five products and four guides, checked against the Amazon listing",
-                 "Five products read from their Amazon listings: the ASIN each short link opened, the title the listing states, and what is still unconfirmed. Four buyer guides with the source for every quoted title.",
-                 body, extra_head=FRONT_MARK + "\n")
+    return shell(
+        "index.html",
+        "Zone3 | Kitchen buying guides, air fryers & kitchen tools",
+        "Thoughtful buying guides and comparisons for air fryers and kitchen tools. Read clear, question-led guides and see which listing details still need checking.",
+        body,
+        extra_head=FRONT_MARK + "\n",
+    )
 
 
 # ---------------------------------------------------------------- guides
