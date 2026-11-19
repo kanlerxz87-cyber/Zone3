@@ -8842,12 +8842,37 @@ review selects (6 `P26-S*` + 14 `D9/AS`) — both sessions' features verified pr
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
 | E61-T1 — Claim, baseline review (checks + live site fetch) | done | e61f5735 | this Part only | `tools/publish.py --check` 25/25 PASS at base; live fetch of `https://kanlerxz87-cyber.github.io/Zone3/` returned the current front page | none |
-| E61-T2 — Batch-2 proposals and decision-readiness questions in the publication register | in progress | e61f5735 | `data/publication.json` (additive: new `E61-P*` proposals, new `E61-Q*` questions) | existing scoped official references only | none |
-| E61-T3 — Suggestions page: dynamic counts, per-question answer capture (local-only), decision worksheet, extended design prompt | in progress | e61f5735 | `tools/build_publication.py`, `assets/publication.js` | same | none |
-| E61-T4 — Copy consistency where counts/capture are described | in progress | e61f5735 | `tools/build_publication.py` (about/privacy/executive-brief bodies), `README.md` counts | same | none |
-| E61-T5 — Full canonical rebuild, idempotency, all release gates | unclaimed | e61f5735 | generated outputs via `tools/publish.py` only | gates listed in `tools/publish.py` | none |
+| E61-T2 — Batch-2 proposals and decision-readiness questions in the publication register | done | e61f5735 | `data/publication.json` (additive: new `E61-P*` proposals, new `E61-Q*` questions) | existing scoped official references only | none |
+| E61-T3 — Suggestions page: dynamic counts, per-question answer capture (local-only), decision worksheet, extended design prompt | done | e61f5735 | `tools/build_publication.py`, `assets/publication.js` | same | none |
+| E61-T4 — Copy consistency where counts/capture are described | done | e61f5735 | `tools/build_publication.py` (about/privacy/executive-brief bodies), `README.md` counts | same | none |
+| E61-T5 — Full canonical rebuild, idempotency, all release gates | done | e61f5735 | generated outputs via `tools/publish.py` only | gates listed in `tools/publish.py` | none |
 | E61-T6 — COORDINATION.md publish record, PR to `main`, merge without waiting for review, Pages deploy verification | unclaimed | e61f5735 | this Part only | GitHub PR/Pages APIs | none |
 
 **Scope rules for this Part:** additive register entries only — no existing proposal, question, source, flag, product or intent row is rewritten. New proposal IDs use the `E61-P*` prefix and new question IDs use `E61-Q*`, namespaced by session like every earlier register. The suggestions page stays review-mode only: saving or exporting a review (now including per-question answers) never publishes, spends, activates tracking or changes an account. No price, rating, test, order, revenue, visitor or demand claim is introduced.
 
 **Claim pushed:** 2026-11-19.
+
+### E61 implementation and verification record — 2026-11-19
+
+**Register additions (`data/publication.json`, additive only; commit `e4c8f1b`):**
+
+- One source appended: `google-helpful` — https://developers.google.com/search/docs/fundamentals/creating-helpful-content — fetched live by this session on 2026-11-19 (self-assessment, page-experience, people-first and avoid-search-engine-first sections confirmed present). It is cited as the editorial *decision basis* for the trust-content and measured-topic suggestions; it certifies no outcome. No other source row touched; no hostname rule changed (`developers.google.com` was already an approved host in `tools/check_publication.py`).
+- Nine proposals `E61-P1…P9` (batch 2) and eight questions `E61-Q1…Q8` appended with the same field schema as batch 1. Every new row names a pre-existing scoped official reference. Register totals: 11 sources, 15 proposals, 17 questions.
+
+**Generator and capture changes (`tools/build_publication.py`, `assets/publication.js`, `assets/publication.css`):**
+
+- All reader-facing counts are now computed from the register (proposal overline/filter note, suggestions subtitle, executive-brief strip). No number is hardcoded, so the next register batch cannot drift the copy.
+- Per-question answer capture: one labelled textarea per question (`#answers`). Saved/exported only by the existing explicit Save/Export buttons, stored in `localStorage` under the same key, never sent to any server; production analytics config untouched and still off.
+- Review export schema advanced to `zone3.editorial-review.v2` (choices + answers + implementation:"none; review only"). Saved v1 records still load (choices restored; answers absent). Reset clears both. No campaign evidence, no synthetic counts anywhere.
+- New `#worksheet` section: the seven-step path from reading a question row to recording a dated decision in a decision record before any implementation — review mode still implements nothing.
+- Design prompt extended with the batch-2 directions (chooser above the comparison, thumb-first mobile comparison, sourced seasonal refresh, visible method as trust content, distribution under the same disclosure rule, measured-topic selection, recorded decisions).
+- Privacy page wording updated to disclose that saved reviews now include the optional answer text; executive-brief review-workflow row reworded (no count).
+
+**Verification performed (2026-11-19, this session):**
+
+- `python3 tools/publish.py` (full 16-step rebuild + all 25 release gates): **41/41 PASS**, run three times; the second and third rebuilds were **byte-identical** (hash comparison over changed-file set).
+- Real-Chromium harness (`sessions/1c072a7a/browser_check.cjs`, npm-pinned `@sparticuz/chromium` because the Playwright CDN is unreachable from this sandbox): **14/14 checks PASS, 32 automated WCAG 2.0/2.1 A/AA scans PASS** at 1440/390 px over 16 reader/review pages. The harness was extended in its own scoped file to assert the v2 export (choice + answer persistence across reload and in the exported JSON), the answer textarea, and the data-driven no-JS question count. No Amazon navigation, no external requests, production config inert.
+- Screenshots of the answers/worksheet/prompt sections inspected at 1440 px and 390 px.
+- `git status` clean after rebuilds apart from the intended files.
+
+**Not claimed by this session:** no traffic, ranking, demand, conversion or revenue figure; no new product fact; no decision recorded (review mode implements nothing; the owner's exported review JSON is the input to a decision record, not this session); no account, API, Search Console or hosting change.
