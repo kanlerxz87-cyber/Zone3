@@ -8670,3 +8670,16 @@ Independent line-by-line re-verification of the five supplied product links (one
   clearer navigation labels, and four new flags. `cd746460` did not touch those files.
 - **Post-rebase build:** `python3 tools/publish.py` on the rebased tree reports **41 commands, 0 failed**, and the
   tree is clean afterwards (see the release record below).
+
+### T9 publish record — 2026-11-19 (session b580d790)
+
+- **Pull request:** [#175 — Buyer decision aids, unique page metadata, and a reviewable suggestion workflow](https://github.com/kanlerxz87-cyber/Zone3/pull/175). Base `main`, head `arena/b580d790-zone3`.
+- **CI before merge:** `Build, provenance, links and privacy` — **pass**, 23s ([run 44510613045](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44510613045)). `mergeStateStatus: CLEAN`.
+- **Merge:** merged without waiting for approval at **2026-11-19T11:00:02Z**. Merge commit **`f4e638b6cdb03c89922321e2d7f71daeb905406c`**; state MERGED.
+- **Post-merge CI:** `Publication checks` on `main` — **success**, 27s ([run 44510778943](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44510778943)).
+- **GitHub Pages:** `pages build and deployment` — **success** ([run 44510778082](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44510778082)); the Pages builds API reports `status: built`, `commit: f4e638b6…`, `error: null`. Target: https://kanlerxz87-cyber.github.io/Zone3/.
+- **Live verification (fetched with `?revision=f4e638b`):** `/shop/` returns the three-question chooser and all five fit-note pairs with the *new* title "Kitchen shortlist: three air fryers, two thermometers"; `/suggestions/` returns the four-step how-to, the six proposals with each "If you say go" action and "What it would tell us" list, and the who-can-unblock status. Both pages carry the masthead, the under-masthead disclosure, and `Sponsored` markers on every product card. Every product button still points at the exact supplied `link.amazon` URL.
+- **Local evidence at the merge commit:** `python3 tools/publish.py` — **41 commands, 0 failed**; tree clean after rebuild. Disclosure between masthead and `<main>` on **all 118** current pages. Four new flags and one new source published on `flagged.html` / `sources.html`.
+- **Flagged irregularities remain published** (they do not block, by the brief's rule): B79-F-01 (fixed and gated), B79-F-02 (no Associates tag in the supplied URLs), B79-F-03 (prices need an Amazon-served link or API data), B79-F-04 (truncated token and cross-repo reference in the supplied input). Unchanged from earlier: FLG-002, FLG-003, FLG-035, P26-F02, P26-F04, C3-F-01.
+- **Account-dependent work remains unperformed and is not claimed:** Associates enrollment, Special Link generation, tracking-report checks, a durable analytics host, Search Console, authorized Associates reports. Production measurement stays **off**; the campaign ledger stays empty; no visitor, order, conversion or traffic figure is invented anywhere.
+- **Status:** `done` for T9. Task board row below.
