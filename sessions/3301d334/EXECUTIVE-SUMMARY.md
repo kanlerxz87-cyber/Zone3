@@ -7,7 +7,7 @@
 
 ## What this pass did
 
-The C3 publication page shipped in PR #164 was preserved—including its dated listing cards, four question-shaped guides, decision table, evidence links and C3-F-01 provenance flag. This follow-up shifts the reader flow to **observed product listings before the guides**, changes the hero call-to-action to browse listings first, and strengthens the title, description and Open Graph metadata for the air-fryer buying-guide topic.
+The C3 publication page shipped in PR #164 was preserved—including its dated listing cards, four question-shaped guides, decision table, evidence links and C3-F-01 provenance flag. This follow-up keeps the merged product-led reader flow—**observed product listings before the buyer guides**—and makes the reader navigation and shared dashboard directory consistent with that flow. The page title, description and social-preview metadata are shopper-facing and consistent; no unverified product claims were added.
 
 The reader masthead now keeps Home, Shop, Guides and Compare prominent, with one **Explore** menu grouping research, product evidence, dashboards/decisions and site files. The shared footer was updated across all 111 published HTML pages; one Dashboards group exposes 24 report, tracking and decision destinations. The footer also retains RSS and sitemap links. The Associates disclosure remains directly under the masthead and in the footer, and outbound Amazon links retain `rel="sponsored"`.
 
@@ -30,11 +30,11 @@ The existing **[Suggestions & decisions](../../suggestions.html)** and **[Open q
 ## Verification performed
 
 - `python3 scripts/check_site.py` — PASS (42 gated pages; 5 products; 83 sources; **149 flags**, including the merged C3-F-01).
-- `python3 tools/verify_site.py` — PASS (152 pages; 2,522 table rows); 532 inherited advisory items elsewhere in the repository remain non-blocking.
-- `python3 scripts/check_all_links.py` — PASS (198 HTML pages; 264 distinct external URLs; 0 errors).
+- `python3 tools/verify_site.py` — PASS (152 pages; 2,523 table rows); inherited V4 provenance advisories remain non-blocking and are recorded by C3-F-01.
+- `python3 scripts/check_all_links.py` — PASS (198 HTML pages; 263 distinct external URLs; 0 errors).
 - `python3 scripts/mark_sponsored.py --check` — PASS.
 - `python3 sessions/aebf0747/publish_pass.py --check` — PASS (111 pages; 0 changes needed).
-- `python3 sessions/c3be74f2/build_front_page.py --check` — PASS (C3 page current and deterministic).
+- `python3 sessions/c17d25fd/build_shopfront.py --check` — PASS (the final product-led root composition is current after the C3 front-page pass).
 - `python3 tools/build_feed.py --check` — PASS (22 entries current); `python3 scripts/build_sitemap.py --check` — PASS (106 pages covered).
 - `python3 tools/measure_pass.py --check` — PASS (111 pages; 0 changes needed); `node sessions/38650305/test_measure.js` — PASS.
 - Shared masthead generation and Explore link paths were verified against the repo; the footer builder reports no missing targets and its Dashboards group contains 24 destinations.

@@ -179,10 +179,13 @@ def render() -> str:
     new_main = front_main(record)
     if "<!-- aebf0747-front -->" not in raw:
         raise RuntimeError("expected the aebf0747 root publication marker; refusing to patch another page")
+    # A preceding C3 pass can leave the prior C17 wrapper around its own markers.
+    # Consume every recognized wrapper at the boundary so repeated C3 -> C17 builds
+    # collapse back to exactly one C17 marker pair instead of accumulating comments.
     main_pattern = (
-        r'(?:<!-- (?:c3be74f2:front|c17d25fd:shopfront) -->\s*)?'
+        r'(?:(?:<!-- (?:c3be74f2:front|c17d25fd:shopfront) -->)\s*)*'
         r'<main\b[^>]*class="[^"]*z3-main[^"]*"[^>]*>.*?</main>'
-        r'(?:\s*<!-- /(?:c3be74f2:front|c17d25fd:shopfront) -->)?'
+        r'(?:\s*<!-- /(?:c3be74f2:front|c17d25fd:shopfront) -->)*'
     )
     updated, count = re.subn(main_pattern, new_main, raw, count=1, flags=re.S | re.I)
     if count != 1:
@@ -194,13 +197,28 @@ def render() -> str:
         count=1,
         flags=re.S | re.I,
     )
+    description = 'Question-led kitchen buying guides and source-linked comparisons for air fryers and kitchen tools. See what is observed and what still needs confirmation.'
     updated = re.sub(
         r'<meta\s+name="description"\s+content="[^"]*">',
-        '<meta name="description" content="Question-led kitchen buying guides and source-linked comparisons for air fryers and kitchen tools. See what is observed and what still needs confirmation.">',
+        f'<meta name="description" content="{description}">',
         updated,
         count=1,
         flags=re.I,
     )
+    social = {
+        'og:type': 'website',
+        'og:site_name': 'Zone3',
+        'og:title': 'Zone3 | Kitchen buying guides, air fryers &amp; kitchen tools',
+        'og:description': description,
+        'og:url': 'https://kanlerxz87-cyber.github.io/Zone3/',
+    }
+    for prop, value in social.items():
+        tag = f'<meta property="{prop}" content="{value}">'
+        pattern = rf'<meta\s+property="{re.escape(prop)}"\s+content="[^"]*">'
+        if re.search(pattern, updated, re.I):
+            updated = re.sub(pattern, tag, updated, count=1, flags=re.I)
+        else:
+            updated = re.sub(r'</head\s*>', tag + '\n</head>', updated, count=1, flags=re.I)
     return updated
 
 

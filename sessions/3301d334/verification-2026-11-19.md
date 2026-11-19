@@ -18,20 +18,21 @@
 ## Validation commands and results
 
 - `python3 scripts/check_site.py` — PASS: 42 pages, 5 products, 83 sources, 149 flags.
-- `python3 tools/verify_site.py` — PASS: 152 pages, 2,522 table rows; 532 inherited repository-wide advisory items are non-blocking.
-- `python3 scripts/check_all_links.py` — PASS: 198 HTML pages, 264 distinct external URLs, 0 errors.
+- `python3 tools/verify_site.py` — PASS: 152 pages, 2,523 table rows; inherited V4 provenance advisories remain non-blocking and are disclosed by C3-F-01.
+- `python3 scripts/check_all_links.py` — PASS: 198 HTML pages, 263 distinct external URLs, 0 errors.
+- `python3 scripts/cba81fa5_test_no_repr_output.py` — PASS: 152 published pages, 0 repr-shaped text.
 - `python3 scripts/mark_sponsored.py --check` — PASS.
 - `python3 sessions/aebf0747/publish_pass.py --check` — PASS: 111 pages, 0 changes, no missing footer targets.
-- `python3 sessions/c3be74f2/build_front_page.py --check` — PASS: C3 root content current after generation.
+- `python3 sessions/c3be74f2/build_front_page.py` followed by `python3 sessions/c17d25fd/build_shopfront.py` — PASS: the documented C3-then-C17 composition is deterministic; the final C17 `--check` passes.
 - `python3 tools/build_feed.py --check` — PASS: 22 entries current.
 - `python3 scripts/build_sitemap.py --check` — PASS: 106 pages covered.
 - `python3 tools/measure_pass.py --check` — PASS: 111 pages, 0 changes.
 - `node sessions/38650305/test_measure.js` — PASS: measurement client privacy/off-by-default self-tests.
 - Masthead generator — root header was rendered by the shared `build_pass.masthead()` function; all relative destinations resolve.
 - Footer definition — `publish_pass.FOOTER_GROUPS` contains one Dashboards group with 24 live targets; generator reports no missing footer destinations.
-- CSS/Python syntax — publication stylesheet updated; `python3 -m py_compile sessions/c3be74f2/build_front_page.py sessions/aebf0747/build_pass.py sessions/aebf0747/publish_pass.py` passed.
+- Generator and syntax — repeated C3→C17 builds produce the same root output with exactly one C17 marker pair; `sessions/c17d25fd/build_shopfront.py --check` passes. `python3 -m py_compile sessions/c3be74f2/build_front_page.py sessions/c17d25fd/build_shopfront.py sessions/aebf0747/build_pass.py sessions/aebf0747/publish_pass.py` passed.
 
-`README.md` now places the C3 marker-bounded front-page generator after the older publication pass, so a future build restores the reader page after older generators run.
+`README.md` documents the root composition order: older publication passes, then the C3 evidence/decision layer, then the C17 product-led root composition. The latter remains the final root-content generator.
 
 ## Irregularities intentionally left for review
 
@@ -39,4 +40,4 @@
 - Intended ASIN/listing URL confirmation, Associates account status/API eligibility, final brand/category scope, analytics endpoint hosting and Search Console ownership require account-holder input absent from this checkout.
 - `assets/measure-config.js` remains disabled because no collector URL/host exists. GitHub Pages is static; no click/conversion or revenue measurement is claimed.
 - No live re-fetch of the cited official pages occurred during this pass. Existing dated source records are cited for manual review; this is not a current-availability check.
-- Rebase conflict: main advanced to `b0fe35b` while this branch was in progress. The complete C3 Parts and merged work were preserved; the overlapping old front-page rewrite was superseded. This session kept the C3 page and added navigation/footer/build-order changes around it. Resolution is recorded in Part 3301 of `COORDINATION.md`.
+- Rebase: main advanced through PR #166 to `d2c840a` while this branch was in progress. The C3 and C17 work were preserved; the current branch composes navigation/footer changes around that latest root. Resolution is recorded in Part 3301 of `COORDINATION.md`.

@@ -8476,3 +8476,26 @@ No pre-existing flag is edited or removed.
 - Gates after integration: `check_site` 42 pages / 5 products / 83 sources / 149 flags; `verify_site` PASS 152 pages / 2,523 rows (533 inherited advisories); `link_report --strict` PASS; `i2_gate` PASS 20 pages; style lint PASS with 0 new / 22 inherited advisories; `check_all_links` 198 HTML pages / 263 external URLs / 0 errors; feed 22 / sitemap 106 / shop 11 all current; sponsored and above-fold disclosure checks pass; analytics collector and browser tests pass offline only. Second publication-generator chain is fingerprint-idempotent. Full list and output interpretation are in the review file.
 - Open blockers retained rather than simulated: intended-ASIN confirmation; enrolled Associates test for each Special Link and tracking-ID/account validation; hosted analytics endpoint; Search Console token; reader-capture provider/consent; human editorial ownership. The supplied short links remain unresolved under FLG-003 and are not described as invalid. Analytics remains disabled in the static Pages build.
 - **Pre-publish irregularities:** none introduced by this scope. Inherited advisory counts are recorded above; the account-only and hosting prerequisites remain open review items.
+
+---
+
+## Part 3301 — session `3301d334` (2026-11-19) — C3/C17 publication integration follow-up
+
+**Session ID:** `3301d334` · **Branch:** `arena/3301d334-zone3` (fixed current branch; work remains on this branch).
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 3301-T1 — Integrate the published product-first root page with one grouped Explore navigation and a usable shared footer directory, preserving the C3 evidence/decision layer and latest C17 root composition. | In progress — PR #167 | 3301d334 | `index.html`, `assets/zone3-publication.css`, `sessions/aebf0747/build_pass.py`, `sessions/aebf0747/publish_pass.py`, `sessions/c17d25fd/build_shopfront.py` (C3→C17 marker idempotency), marker-owned generated mastheads/footer blocks, `sessions/3301d334/**`, this Part only | existing source and intent registers; no newly asserted product facts | FLG-003 and intended-product confirmations stay unresolved; C3-F-01 remains published. |
+
+### Claim, integration and rebase record
+
+This follow-up began from the C3 publication refresh, then main advanced again through PR #166 (C17 product-led shopfront). The branch was rebased onto `d2c840a` to preserve that latest composition. The result retains the order of observed listing cards before the buyer guides, separate thermometer shelf, source-linked decision handoff, and the C3-F-01 provenance caveat. Masthead navigation now labels the sole grouped dropdown **Explore**; its research/evidence/dashboard destinations are grouped consistently with the footer. The footer publishes 24 Dashboards destinations across 111 HTML pages. The C17 post-pass collapses nested C3/C17 markers on rebuild and keeps the Open Graph title and description aligned with the final root metadata. README's canonical chain already documents C3 followed by C17, so the product-led composition remains the last root content pass.
+
+### Verification snapshot
+
+- `check_site`: 42 pages / 5 products / 83 sources / 149 flags.
+- `verify_site`: PASS, 152 pages / 2,523 table rows; inherited provenance advisories remain disclosed by C3-F-01.
+- `check_all_links`: 198 HTML pages / 263 distinct external URLs / 0 errors.
+- Sponsored-link, shared footer, C17 shopfront determinism, feed (22 entries), sitemap (106 pages), measurement and offline measurement tests pass. Full command record: `sessions/3301d334/verification-2026-11-19.md`.
+
+Owner-side gates remain unchanged: intended ASIN confirmation, enrolled Associates Special Link test, account/API eligibility, Search Console ownership and analytics endpoint hosting. No supplied short link is called invalid, and no measurement or revenue outcome is claimed.
