@@ -93,8 +93,8 @@ def front_main(record: dict) -> str:
     <p class="c3-underlink"><a href="guides/index.html">See all four guides and the working publishing cadence <span aria-hidden="true">→</span></a></p>
   </section>
 
-  <section class="c3-section c3-listing-desk" id="listing-desk" aria-labelledby="listing-desk-title">
-    <div class="c3-section-heading c3-heading-row">
+  <section class="c3-section c3-listing-desk" id="products" aria-labelledby="listing-desk-title">
+    <div class="c3-section-heading c3-heading-row" id="listing-desk">
       <div><p class="z3-eyebrow">The listing desk</p><h2 class="z3-h2" id="listing-desk-title">Listings observed from the submitted links</h2></div>
       <p>Each card names an observed listing, not an owner-confirmed intended product. The direct listing link is the source; the submitted Amazon link is kept separately.</p>
     </div>

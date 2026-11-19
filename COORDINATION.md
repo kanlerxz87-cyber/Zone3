@@ -8434,3 +8434,10 @@ publish that discrepancy rather than silently treating a green exit code as full
 C3-T1’s scope is extended to `data/flags.json`, the generated `flagged.html`, and the output generated
 by `scripts/build_site.py` that changes solely because of the new flag. The new row will be `C3-F-01`.
 No pre-existing flag is edited or removed.
+
+### C3 progress update — 2026-11-19
+
+- **C3-T1 done:** scoped audit records are in `sessions/c3be74f2/`; source-provenance gap is published as **C3-F-01** in `data/flags.json` and on `flagged.html`. It reports the verifier's non-blocking inherited V4 advisory condition rather than calling it verified.
+- **C3-T2 and C3-T3 done:** the root now has a marker-bounded buyer-first publication layout, an original non-product editorial illustration, four question routes, separate air-fryer / thermometer shelving, product-intent handoff, suggestions and decision handoff, and a source-context cell in every C3 root table row. The C3 patcher is idempotent and runs after the older publication pass.
+- **Release correction made:** the first final local link check found the inherited `index.html#products` masthead route missing after the layout change. C3 restored that anchor while retaining the new `#listing-desk` CTA. The follow-up full-link crawl reports 198 HTML pages, 264 external URLs and 0 errors.
+- **C3-T4 in progress:** documented generator chain was run twice with identical tracked-diff hash; final checks passed locally. PR, merge, Pages deployment and live checks are next.
