@@ -9762,3 +9762,26 @@ returns to the supplied links with no other edit. That reversibility is delibera
 - **Correction made during the rebase:** upstream replaced "must-have list" in the about page (anti-slop gate). This session's about-page sentence still said the tag's assignment was unverified without saying the tag was now used, so it was corrected to: the ID "is carried as a `tag=` parameter on every product-detail link, as Participation Requirements 2(b) asks. We have not verified its account assignment, enrolment or attribution."
 - **Disagreement left visible, not resolves:** see the table above on session `0a48cfda`'s opposite reading. Both readings are recorded; the owner decides. Reverting is two lines in `tools/publish.py`.
 
+### 4B0 post-release correction (2026-11-19, `f912a92`)
+
+The first release left a **false statement live**: `/shop/flagged/` still read "The selected tracking
+ID shopnow047c-20 is not embedded in any link", on a page that sits inside the same site whose 1,111
+product links now carry it. The tag pass governed the links and nothing governed the sentences that
+describe them, so the contradiction shipped.
+
+- **Fixed:** `M38-F-02` ("Addressed in part — for review": appeared in no link until 2026-11-19,
+  carried by every product-detail link since, ownership still unverified), `M38-F-01` (link format now
+  meets 2(b); attribution still unproven without the workflow test) and `FLG-S04` (test still open; the
+  format it needs is now in place).
+- **Gated:** `tools/attach_associates_tag.py` now scans the built pages for four phrasings this
+  repository has actually published that assert the tag is absent, and fails the release if any
+  survives. `scripts/test_attach_associates_tag.py` is 15 rules, four of which inject a stale sentence
+  and require the gate to catch it.
+- **Proved by reintroducing the defect:** restored the old sentence into `shop/flagged/index.html`;
+  the gate exited 1 naming the page and the quoted sentence; restoring the page made it pass.
+- **Released:** `f912a92a`; Publication checks **success**, Pages **built** at that commit. Live
+  `?rev=f912a92` read-back confirms the three rewritten rows and no remaining occurrence of the phrase
+  in any `shop/` page.
+- **Lesson recorded:** a change that alters what the site does must also sweep what the site says about
+  itself. The next session touching links should run `grep` for self-descriptions, not only the gates.
+
