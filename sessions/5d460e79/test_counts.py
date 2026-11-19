@@ -167,6 +167,19 @@ if _home_text:
     if 'rel="sponsored' not in _home_text:
         failures.append('index.html product links are not marked rel=sponsored')
 
+# --- 7. the feed must not advertise pages the sitemap excludes --------------------
+# 5D4-F02 (feed half): on the base commit feed.xml carried 27 items while sitemap.xml
+# listed 16 pages; 18 items pointed at noindex,follow archive pages. A subscriber and a
+# crawler were being shown two different sites.
+_sm = set(re.findall(r'<loc>(.*?)</loc>', (ROOT / 'sitemap.xml').read_text(encoding='utf-8')))
+_feed = set(re.findall(r'<link>(.*?)</link>', (ROOT / 'feed.xml').read_text(encoding='utf-8')))
+_extra = _feed - _sm
+if _extra:
+    failures.append(f'feed.xml advertises {len(_extra)} URL(s) absent from sitemap.xml: '
+                    + ', '.join(sorted(_extra)[:3]))
+if not _feed:
+    failures.append('feed.xml has no items')
+
 if failures:
     print(f'FAIL: {len(failures)} count/drift problem(s)')
     for f in failures[:20]:
