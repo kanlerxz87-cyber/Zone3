@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-19T06:30:27.829738+00:00",
+  "command": "python3 tools/publish.py",
+  "scope": "All nonignored tracked and untracked workspace files except this idempotency record. Preview/caches/dependencies are ignored; verification reports were not rewritten by this run.",
+  "file_count_before": 550,
+  "file_count_after": 550,
+  "exit_code": 0,
+  "changed": [],
+  "new": [],
+  "removed": [],
+  "before_digest": "d6fc0f6c968f04f60798cb0cbd9dd7b47508eb9d1f1c7b1c8632ee8e93200c81",
+  "after_digest": "d6fc0f6c968f04f60798cb0cbd9dd7b47508eb9d1f1c7b1c8632ee8e93200c81",
+  "status": "PASS"
+}

@@ -804,7 +804,11 @@ def check_all(paths: list[str]) -> list[str]:
     # sitemap
     sm = SITEMAP.read_text(encoding="utf-8")
     for path in paths:
-        if canonical(path) not in sm:
+        # Session 1c072a7a: only indexable reader/catalogue pages belong in the
+        # canonical sitemap. Historical shop evidence dashboards are noindex,follow.
+        raw = (SHOP / path).read_text(encoding="utf-8")
+        noindex = bool(re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', raw, re.I))
+        if canonical(path) not in sm and not noindex:
             problems.append(f"sitemap.xml: missing {canonical(path)}")
     return problems
 

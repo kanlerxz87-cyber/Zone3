@@ -1,30 +1,13 @@
 #!/usr/bin/env python3
-"""Mechanical publication pass for the Zone3 GitHub Pages tree (session aebf0747).
+"""Idempotent publication pass for every current public HTML page.
 
-Applies four rules to every published HTML page (all *.html except .git/ and archive/):
+One masthead, a disclosure immediately beneath it, one shared footer, sponsored Amazon
+product links, local search, and explicit reader-vs-research indexing. Historical page
+bodies/evidence are retained. docs/, sessions/ and archive/ remain historical snapshots.
+Run after any HTML generator; --check fails if the final chrome would drift.
 
-  1. DISCLOSURE ABOVE THE FOLD. The Associates sentence from Operating Agreement Section 5
-     is placed directly under the top masthead. If the page already carries the sentence
-     within the first 2,500 characters after its masthead, no second copy is added.
-     [Sources: AE-S01 Operating Agreement s.5; AE-S04 FTC Disclosures 101: "Place it so
-     it's hard to miss" and disclosures "likely to be missed" at the end of a page.]
-
-  2. DISCLOSURE REPEATED IN THE FOOTER, with the dashboard surfaces listed as links.
-     Legacy <footer> elements are left as they are; the shared footer is appended before
-     </body> inside markers.
-
-  3. rel="sponsored" ON EVERY OUTBOUND AMAZON PRODUCT LINK. Only the rel attribute is
-     changed; href, text and target are not. Hosts: amazon.* retail domains, link.amazon.*,
-     amzn.to, a.co, amzlinks.in. Excluded: affiliate-program.amazon.com (Associates policy
-     pages, not product links). [Source: AE-S03 Google: rel="sponsored" for paid links.]
-
-  4. HEAD MARKUP: the shared stylesheet and the RSS autodiscovery link.
-
-Every insertion is wrapped in markers (<!-- z3:... -->), so re-running the script replaces
-rather than duplicates. Run it AFTER any generator that rewrites HTML.
-
-    python3 sessions/aebf0747/publish_pass.py            # apply to the tree
-    python3 sessions/aebf0747/publish_pass.py --check    # exit 1 if a rerun would change files
+The disclosure rule implements the brief's placement requirement; it is not a legal
+certification or a claim that a byte offset proves visibility in every viewport.
 """
 from __future__ import annotations
 
@@ -33,240 +16,189 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-SKIP_TOP = {".git", "archive", "docs", "sessions", "node_modules", "__pycache__"}  # docs/ and sessions/ excluded from the 83-page set
-DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
-SITE_URL = "https://kanlerxz87-cyber.github.io/Zone3/"
+sys.path.insert(0, str(ROOT / 'tools'))
+import publication_chrome as chrome
 
+SKIP_TOP = {'.git', 'archive', 'docs', 'sessions', 'node_modules', '__pycache__', '.preview', '.local'}
+DISCLOSURE = chrome.DISCLOSURE
+SITE_URL = chrome.BASE
 PRODUCT_HOST = re.compile(
-    r"^(?:[a-z0-9-]+\.)*(?:amazon\.(?:com|co\.uk|de|fr|ca|com\.au|co\.jp|in|com\.br|com\.mx|"
-    r"es|it|nl|se|pl|sa|ae|com\.tr|eg|sg|cn)|link\.amazon\.com|link\.amazon|amzn\.to|a\.co|amzlinks\.in)$"
+    r'^(?:[a-z0-9-]+\.)*(?:amazon\.(?:com|co\.uk|de|fr|ca|com\.au|co\.jp|in|com\.br|com\.mx|'
+    r'es|it|nl|se|pl|sa|ae|com\.tr|eg|sg|cn)|link\.amazon\.com|link\.amazon|amzn\.to|a\.co|amzlinks\.in)$'
 )
-NON_PRODUCT_HOSTS = ("affiliate-program.amazon.com",)
+NON_PRODUCT_HOSTS = ('affiliate-program.amazon.com',)
+FOOTER_GROUPS = chrome.WORKSPACE_GROUPS
+RE_STRIP = re.compile(r'<!-- z3:strip -->.*?<!-- /z3:strip -->\n?', re.S)
+RE_FOOT = re.compile(r'<!-- z3:footer -->.*?<!-- /z3:footer -->\n?', re.S)
+RE_MAST = re.compile(r'<!-- p26:masthead -->.*?<!-- /p26:masthead -->\n?', re.S)
+RE_SEARCH = re.compile(r'<!-- p26:search -->.*?<!-- /p26:search -->\n?', re.S)
+RE_ASSETS = re.compile(r'<!-- p26:assets -->.*?<!-- /p26:assets -->\n?', re.S)
+RE_REFERENCE = re.compile(r'<!-- p26:reference -->.*?<!-- /p26:reference -->\n?', re.S)
+RE_INDEX = re.compile(r'<!-- p26:indexing -->.*?<!-- /p26:indexing -->\n?', re.S)
 
-# Surfaces reachable from the footer. Each path must exist; missing ones are dropped and reported.
-FOOTER_GROUPS = [
-    ("Read", [
-        ("index.html", "Front page"),
-        ("guides/index.html", "Guides"),
-        ("articles/index.html", "Research Desk articles"),
-        ("read/index.html", "The Crisp Report"),
-        ("site/index.html", "Reader site"),
-    ]),
-    ("Products and pricing", [
-        ("intent-record/index.html", "Product-intent record"),
-        ("products/index.html", "Products"),
-        ("pricing/index.html", "Pricing"),
-        ("commission/index.html", "Commission"),
-        ("reviews/index.html", "Reviews"),
-        ("niches/index.html", "Niches"),
-    ]),
-    ("Governance", [
-        ("publication-pass.html", "This pass and flagged for review"),
-        ("measurement/index.html", "Measurement (counter off)"),
-        ("brief-status/index.html", "Brief status"),
-        ("executive-summary/index.html", "Executive summary"),
-        ("compliance/index.html", "Compliance"),
-        ("agent-terms/index.html", "Agent terms"),
-        ("methodology/index.html", "Methodology"),
-        ("requirements/index.html", "Requirements"),
-        ("sources/index.html", "Sources"),
-        ("verification.html", "Verification log"),
-        ("flagged/index.html", "Flagged (all items)"),
-    ]),
-    ("Dashboards", [
-        ("dashboard/index.html", "Dashboard"),
-        ("dashboard-register.html", "Register (previous front page)"),
-        ("analysis.html", "Analysis"),
-        ("decision-center.html", "Decision center"),
-        ("decision-queue.html", "Decision queue"),
-        ("products.html", "Products register"),
-        ("air-fryers.html", "Air-fryer category"),
-        ("pricing.html", "Pricing & commission"),
-        ("reviews.html", "Reviews & competition"),
-        ("content.html", "Content & compliance"),
-        ("content-topics.html", "Editorial topics"),
-        ("campaigns.html", "Campaign tracking register"),
-        ("campaigns/index.html", "Campaigns"),
-        ("content/index.html", "Content dashboard"),
-        ("measurement.html", "Measurement status"),
-        ("measurement/index.html", "Measurement dashboard"),
-        ("executive-summary.html", "Executive summary"),
-        ("executive-summary/index.html", "Executive summary hub"),
-        ("sources.html", "Sources register"),
-        ("flagged.html", "Flagged register"),
-        ("verification.html", "Verification log"),
-        ("repo-review/index.html", "Repo review"),
-        ("suggestions.html", "Suggestions"),
-        ("design-brief.html", "Design brief"),
-    ]),
-    ("Feeds", [
-        ("feed.xml", "RSS feed"),
-        ("sitemap.xml", "Sitemap"),
-    ]),
-]
-
-RE_STRIP = re.compile(r"<!-- z3:strip -->.*?<!-- /z3:strip -->\n?", re.S)
-RE_FOOT = re.compile(r"<!-- z3:footer -->.*?<!-- /z3:footer -->\n?", re.S)
+prefix_for = chrome.prefix_for
+strip_block = chrome.strip_block
+footer_block = chrome.footer_block
 
 
-def prefix_for(rel: str) -> str:
-    depth = rel.count("/")
-    return "../" * depth
-
-
-def strip_block(prefix: str) -> str:
-    return (
-        '<!-- z3:strip -->\n'
-        '<div class="z3-strip" role="note" aria-label="Affiliate disclosure">'
-        '<div class="z3-wrap"><p><strong>Disclosure:</strong> ' + DISCLOSURE +
-        ' Links to Amazon are marked sponsored. '
-        '<a href="' + prefix + 'publication-pass.html#disclosure">How disclosure is handled</a></p></div></div>\n'
-        '<!-- /z3:strip -->\n'
-    )
-
-
-def footer_block(prefix: str, existing: set[str]) -> tuple[str, list[str]]:
-    missing: list[str] = []
-    groups_html = []
-    for title, links in FOOTER_GROUPS:
-        items = []
-        for path, label in links:
-            if path in existing:
-                items.append(f'<a href="{prefix}{path}">{label}</a>')
-            else:
-                missing.append(path)
-        if items:
-            groups_html.append(f'<div><h4>{title}</h4><nav aria-label="{title}">' + "".join(items) + "</nav></div>")
-    body = (
-        '<!-- z3:footer -->\n'
-        '<footer class="z3-foot" role="contentinfo"><div class="z3-wrap">'
-        '<p class="z3-disc">' + DISCLOSURE + '</p>'
-        '<p class="z3-foot-small">Links to Amazon are marked sponsored. This site is not operated by Amazon. '
-        'Titles, ASINs and breadcrumbs are as observed on the dates shown; no price, rating or forecast is published here.</p>'
-        '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px">'
-        + "".join(groups_html) +
-        '</div></div></footer>\n'
-        '<!-- /z3:footer -->\n'
-    )
-    return body, missing
-
-
-def top_masthead_end(html: str) -> int:
-    """Index just after the top-level masthead (first <header> before <main>), else after <body>."""
-    m_body = re.search(r"<body\b[^>]*>", html, re.I)
-    if not m_body:
-        raise ValueError("no <body>")
-    start = m_body.end()
-    m_main = re.search(r"<main\b", html[start:], re.I)
-    limit = start + (m_main.start() if m_main else min(len(html) - start, 20000))
-    m_hdr = re.search(r"<header\b", html[start:limit], re.I)
-    if m_hdr:
-        close = re.search(r"</header\s*>", html[start + m_hdr.start():], re.I)
+def top_masthead_end(text: str) -> int:
+    body = re.search(r'<body\b[^>]*>', text, re.I)
+    if not body:
+        raise ValueError('no <body>')
+    start = body.end()
+    main = re.search(r'<main\b', text[start:], re.I)
+    limit = start + (main.start() if main else min(len(text) - start, 20000))
+    header = re.search(r'<header\b', text[start:limit], re.I)
+    if header:
+        close = re.search(r'</header\s*>', text[start + header.start():], re.I)
         if close:
-            return start + m_hdr.start() + close.end()
+            return start + header.start() + close.end()
     return start
 
 
 def _sponsor_anchor(tag: str) -> str:
-    href_m = re.search(r"""\shref\s*=\s*(["'])(.*?)\1""", tag, re.I)
+    href_m = re.search(r'''\shref\s*=\s*(["'])(.*?)\1''', tag, re.I)
     if not href_m:
         return tag
-    href = href_m.group(2).strip()
-    host_m = re.match(r"^(?:https?:)?//([^/?#]+)", href, re.I)
+    host_m = re.match(r'^(?:https?:)?//([^/?#]+)', href_m.group(2).strip(), re.I)
     if not host_m:
         return tag
-    host = host_m.group(1).lower().split("@")[-1].split(":")[0]
-    if any(host == h or host.endswith("." + h) for h in NON_PRODUCT_HOSTS):
+    host = host_m.group(1).lower().split('@')[-1].split(':')[0]
+    if any(host == h or host.endswith('.' + h) for h in NON_PRODUCT_HOSTS) or not PRODUCT_HOST.fullmatch(host):
         return tag
-    if not PRODUCT_HOST.match(host):
-        return tag
-    rel_m = re.search(r"""\srel\s*=\s*(["'])(.*?)\1""", tag, re.I)
+    rel_m = re.search(r'''\srel\s*=\s*(["'])(.*?)\1''', tag, re.I)
     if rel_m:
         tokens = rel_m.group(2).split()
-        if "sponsored" in tokens:
+        if 'sponsored' in tokens:
             return tag
-        tokens.append("sponsored")
+        tokens.append('sponsored')
         return tag[:rel_m.start()] + f' rel="{" ".join(tokens)}"' + tag[rel_m.end():]
-    if tag.endswith("/>"):
-        return tag[:-2] + ' rel="sponsored"/>'
-    return tag[:-1] + ' rel="sponsored">'
+    return tag[:-2] + ' rel="sponsored"/>' if tag.endswith('/>') else tag[:-1] + ' rel="sponsored">'
 
 
-def apply(html: str, rel: str, existing: set[str]) -> tuple[str, list[str]]:
+def apply(text: str, rel: str, existing: set[str]) -> tuple[str, list[str]]:
     prefix = prefix_for(rel)
-    # 0. remove previous strip/footer so reruns replace rather than stack
-    html = RE_STRIP.sub("", html)
-    html = RE_FOOT.sub("", html)
-
-    # 1. disclosure under the masthead
-    end = top_masthead_end(html)
-    window = html[end:end + 2500]
-    if DISCLOSURE not in window:
-        html = html[:end] + strip_block(prefix) + html[end:]
-
-    # 2. footer before </body>
-    foot, missing = footer_block(prefix, existing)
-    if re.search(r"</body\s*>", html, re.I):
-        html = re.sub(r"</body\s*>", lambda _m: foot + "</body>", html, count=1, flags=re.I)
+    for pattern in (RE_STRIP, RE_FOOT, RE_MAST, RE_SEARCH, RE_ASSETS, RE_INDEX, RE_REFERENCE):
+        text = pattern.sub('', text)
+    # Replace duplicated chrome, not the historical page's main content.
+    text = re.sub(r'<footer\b.*?</footer\s*>', '', text, flags=re.S | re.I)
+    text = text.replace('<!-- z3:masthead -->', '')
+    body = re.search(r'<body\b[^>]*>', text, re.I)
+    if not body:
+        raise ValueError(f'{rel}: no body element')
+    main = re.search(r'<main\b[^>]*>', text[body.end():], re.I)
+    if main:
+        main_start = body.end() + main.start()
+        main_tag = main.group(0)
+        id_match = re.search(r'''\bid=["']([^"']+)["']''', main_tag, re.I)
+        main_id = id_match.group(1) if id_match else 'p26-content'
+        if not id_match:
+            new_tag = main_tag[:-1] + ' id="p26-content">'
+            text = text[:main_start] + new_tag + text[main_start + len(main_tag):]
+        preamble = text[body.end():main_start]
+        # These mark the retained shopper edition's content owner, not old chrome.
+        ownership = list(dict.fromkeys(re.findall(r'<!-- (?:c3be74f2:front|c17d25fd:shopfront) -->', preamble)))
+        preamble = re.sub(r'<header\b.*?</header\s*>', '', preamble, flags=re.S | re.I)
+        preamble = re.sub(r'<a\b[^>]*class=["\'][^"\']*\bskip\b[^"\']*["\'][^>]*>.*?</a>', '', preamble, flags=re.S | re.I)
+        # The inherited pre-main blocks were inspected: header + duplicate disclosure only.
+        # Their testing/affiliate caveats are repeated in the shared footer and source pages.
+        if DISCLOSURE in preamble:
+            preamble = ''
+        preamble = re.sub(r'<!--.*?-->', '', preamble, flags=re.S).strip()
+        opening = chrome.masthead(prefix, rel, existing, main_id) + strip_block(prefix) + ''.join(ownership)
+        text = text[:body.end()] + '\n' + opening + (preamble + '\n' if preamble else '') + text[main_start:].lstrip()
     else:
-        html = html + foot
+        # Legacy redirect stubs still get an above-content disclosure and a working skip link.
+        main_id = 'p26-content'
+        rest = text[body.end():]
+        rest = re.sub(r'<header\b.*?</header\s*>', '', rest, flags=re.S | re.I).strip()
+        rest = re.sub(r'</body\s*>', '</main></body>', rest, count=1, flags=re.I)
+        text = text[:body.end()] + '\n' + chrome.masthead(prefix, rel, existing, main_id) + strip_block(prefix) + f'<main id="{main_id}">' + rest
 
-    # 3. sponsored product links (attribute only)
-    html = re.sub(r"<a\b[^>]*>", lambda m: _sponsor_anchor(m.group(0)), html, flags=re.I)
+    if rel.startswith('site/'):
+        # Preserve the source-read date originally stated only in the old /site/ footer,
+        # and clearly distinguish the earlier edition from the current front page.
+        reference = ('<!-- p26:reference --><aside class="p26-reference">Earlier reader edition: '
+                     'original source-read date <strong>2026-11-16</strong>. '
+                     f'<a href="{prefix}index.html">Current publication</a> · '
+                     f'<a href="{prefix}executive-brief.html">Current operational status</a>.'
+                     '</aside><!-- /p26:reference -->\n')
+        text = re.sub(r'(<main\b[^>]*>)', lambda m: m.group(1) + reference, text, count=1, flags=re.I)
+    if rel == 'publication-prior.html':
+        reference = ('<!-- p26:reference --><aside class="p26-reference">'
+                     'Previous shopper edition (C3/C17/3301), preserved from the completed 19 Nov 2026 passes. '
+                     'Its listing/source observations retain their original dates; old operational statements are historical. '
+                     '<a href="index.html">Current publication</a> · '
+                     '<a href="executive-brief.html">Current status</a> · '
+                     '<a href="flagged.html#C3-F-01">Inherited provenance caveat</a>.'
+                     '</aside><!-- /p26:reference -->\n')
+        text = re.sub(r'(<main\b[^>]*>)', lambda m: m.group(1) + reference, text, count=1, flags=re.I)
+    if (not chrome.is_indexable(rel) and not rel.startswith('site/')
+            and rel not in {'publication-prior.html', 'executive-brief.html', 'suggestions/index.html',
+                            'measurement/index.html', 'intent-record/index.html'}):
+        reference = ('<!-- p26:reference --><aside class="p26-reference">Research workspace: '
+                     'this page retains dated material from earlier passes. '
+                     f'<a href="{prefix}executive-brief.html">Current implementation status</a> · '
+                     f'<a href="{prefix}measurement/index.html">Current measurement definition</a> · '
+                     f'<a href="{prefix}flagged.html#P26-F05">Historical verification limits</a>.'
+                     '</aside><!-- /p26:reference -->\n')
+        text = re.sub(r'(<main\b[^>]*>)', lambda m: m.group(1) + reference, text, count=1, flags=re.I)
+    foot, missing = footer_block(prefix, existing)
+    tail = chrome.search_block(prefix) + foot
+    text = re.sub(r'</body\s*>', lambda _: tail + '</body>', text, count=1, flags=re.I)
+    text = re.sub(r'<a\b[^>]*>', lambda m: _sponsor_anchor(m.group(0)), text, flags=re.I)
 
-    # 4a. every page has a description (S-04): add a plain one from the title when missing
-    if not re.search(r'<meta[^>]+name=["\']description["\']', html, re.I):
-        t_m = re.search(r"<title>([^<]*)</title>", html, re.I)
-        title_txt = (t_m.group(1).strip() if t_m else rel).replace('"', "&quot;")
-        desc_tag = (f'<!-- z3:desc --><meta name="description" content="{title_txt}. '
-                    f'Published by Zone3; checked on the date shown in the page.">\n')
-        if t_m:
-            html = html[:t_m.end()] + "\n" + desc_tag.rstrip("\n") + html[t_m.end():]
-        else:
-            html = re.sub(r"</head\s*>", lambda _m: desc_tag + "</head>", html, count=1, flags=re.I)
-
-    # 4. head markup
-    head_add = ""
-    if "zone3-publication.css" not in html:
-        head_add += f'<!-- z3:css --><link rel="stylesheet" href="{prefix}assets/zone3-publication.css">\n'
-    if "application/rss+xml" not in html:
-        head_add += (f'<!-- z3:rss --><link rel="alternate" type="application/rss+xml" '
-                     f'title="Zone3 guides" href="{prefix}feed.xml">\n')
-    if head_add:
-        if re.search(r"</head\s*>", html, re.I):
-            html = re.sub(r"</head\s*>", lambda _m: head_add + "</head>", html, count=1, flags=re.I)
-        else:
-            html = re.sub(r"<body\b", lambda m: head_add + m.group(0), html, count=1, flags=re.I)
-    return html, missing
+    if not re.search(r'<meta[^>]+name=["\']description["\']', text, re.I):
+        title = re.search(r'<title>([^<]*)</title>', text, re.I)
+        description = (title.group(1).strip() if title else rel).replace('"', '&quot;')
+        text = re.sub(r'</head\s*>', lambda _: f'<meta name="description" content="{description}">\n</head>', text, count=1, flags=re.I)
+    # Do not canonicalize different audit content to an unrelated reader page. Keep its own
+    # normalized URL and explicitly exclude it from indexing instead.
+    text = re.sub(r'<meta\b[^>]*name=["\']robots["\'][^>]*>\n?', '', text, flags=re.I)
+    text = re.sub(r'<link\b[^>]*rel=["\']canonical["\'][^>]*>\n?', '', text, flags=re.I)
+    indexing = 'index,follow,max-image-preview:large' if chrome.is_indexable(rel) else 'noindex,follow'
+    tags = ''
+    if 'zone3-publication.css' not in text:
+        tags += f'<!-- z3:css --><link rel="stylesheet" href="{prefix}assets/zone3-publication.css">\n'
+    if 'application/rss+xml' not in text:
+        tags += f'<!-- z3:rss --><link rel="alternate" type="application/rss+xml" title="Zone3 Kitchen guides" href="{prefix}feed.xml">\n'
+    tags += f'<!-- p26:indexing --><meta name="robots" content="{indexing}"><link rel="canonical" href="{chrome.canonical(rel)}"><!-- /p26:indexing -->\n'
+    tags += f'<!-- p26:assets --><link rel="stylesheet" href="{prefix}assets/publication.css"><script src="{prefix}assets/publication.js" defer></script><!-- /p26:assets -->\n'
+    # The measurement pass owns the last head block. Insert before it so either pass
+    # can be checked independently after the full chain without reordering the head.
+    measure = re.search(r'<!-- z3:measure -->', text)
+    if measure:
+        text = text[:measure.start()] + tags + text[measure.start():]
+    else:
+        text = re.sub(r'</head\s*>', lambda _: tags + '</head>', text, count=1, flags=re.I)
+    return text, missing
 
 
 def targets(root: pathlib.Path):
-    for p in sorted(root.rglob("*.html")):
+    for p in sorted(root.rglob('*.html')):
         rel = p.relative_to(root).as_posix()
-        if rel.split("/")[0] in SKIP_TOP:
-            continue
-        yield p, rel
+        if rel.split('/')[0] not in SKIP_TOP:
+            yield p, rel
 
 
 def run(root: pathlib.Path = ROOT, write: bool = True) -> dict:
-    existing = {p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file()}
-    stats = {"pages": 0, "changed": 0, "missing_footer_targets": set()}
+    existing = {p.relative_to(root).as_posix() for p in root.rglob('*') if p.is_file()}
+    stats = {'pages': 0, 'changed': 0, 'missing_footer_targets': set()}
     for p, rel in targets(root):
-        stats["pages"] += 1
-        old = p.read_text(encoding="utf-8", errors="replace")
+        stats['pages'] += 1
+        old = p.read_text(encoding='utf-8')
         new, missing = apply(old, rel, existing)
-        stats["missing_footer_targets"].update(missing)
+        stats['missing_footer_targets'].update(missing)
         if new != old:
-            stats["changed"] += 1
+            stats['changed'] += 1
             if write:
-                p.write_text(new, encoding="utf-8")
-    stats["missing_footer_targets"] = sorted(stats["missing_footer_targets"])
+                p.write_text(new, encoding='utf-8')
+    stats['missing_footer_targets'] = sorted(stats['missing_footer_targets'])
     return stats
 
 
-if __name__ == "__main__":
-    check = "--check" in sys.argv
+if __name__ == '__main__':
+    check = '--check' in sys.argv
     result = run(write=not check)
-    print({k: v for k, v in result.items()})
-    if check and result["changed"]:
-        sys.exit(1)
+    print(result)
+    sys.exit(int(check and bool(result['changed'])))

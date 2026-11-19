@@ -2043,6 +2043,100 @@
    "session": "c3be74f2",
    "sources": [],
    "repo_evidence": "tools/verify_site.py baseline result on 2026-11-19: VERIFY PASS · 152 pages · 2,517 table rows; provenance amazon_ftc=1,938 · flag_or_blank=90 · repo_only=269 · uncited=220; 532 inherited V4 advisory findings. Captured in sessions/c3be74f2/verification.md. The gate classifies inherited findings as non-blocking in tools/verify_site.py."
+  },
+  {
+   "id": "P26-F01",
+   "severity": "High",
+   "category": "Measurement",
+   "item": "Production measurement and account reports remain unavailable",
+   "detail": "A single five-event browser runtime and self-hosted aggregate collector are shipped and tested, but the public config remains off because no durable authorized HTTPS collector host exists. Preview delivery is test traffic, not campaign evidence. No Search Console property or authorized Associates order report is available.",
+   "action": "Deploy on authorized durable hosting, verify end-to-end delivery and logging/retention, verify Search Console ownership, and obtain dated first-party reports before optimizing. Never infer orders from clicks.",
+   "sources": [
+    "S02",
+    "S93"
+   ],
+   "repo_evidence": [
+    "data/shop/measurement.json",
+    "data/shop/campaign-ledger.json"
+   ],
+   "raised": "2026-11-19",
+   "session": "1c072a7a",
+   "status": "open"
+  },
+  {
+   "id": "P26-F02",
+   "severity": "High",
+   "category": "Hosting",
+   "item": "Review GitHub Pages suitability before commercial scaling",
+   "detail": "GitHub Pages usage limits say it is not intended or allowed as free hosting to run an online business or a site primarily facilitating commercial transactions. The brief focuses on affiliate revenue. This is a host-suitability concern, not a finding that this specific editorial implementation has been adjudicated by GitHub. A successful deployment is not policy approval.",
+   "action": "Review the actual planned use against GitHub’s limits and move the business to suitable commercial hosting before scaling.",
+   "sources": [
+    "S91"
+   ],
+   "repo_evidence": [
+    "executive-brief.html"
+   ],
+   "raised": "2026-11-19",
+   "session": "1c072a7a",
+   "status": "needs review"
+  },
+  {
+   "id": "P26-F03",
+   "severity": "Low",
+   "category": "Measurement",
+   "item": "Duplicate analytics runtimes consolidated; historical schemas retained",
+   "detail": "The inherited measure.js and track.js define incompatible five-event sets. Runtime injection now uses only measure.js and its existing default schema (page_view, outbound_click, guide_view, intent_view, flag_view). Legacy track.js script tags are removed by measure_pass; a global guard prevents double initialization. Historical alternate source/schema files remain readable, not executed.",
+   "action": "If the event taxonomy is later changed, version it and update browser/collector/config tests together. Do not enable the retired tracker.",
+   "sources": [
+    "S02"
+   ],
+   "repo_evidence": [
+    "assets/measure.js",
+    "tools/measure_pass.py",
+    "data/shop/measurement.json"
+   ],
+   "raised": "2026-11-19",
+   "session": "1c072a7a",
+   "status": "fixed"
+  },
+  {
+   "id": "P26-F04",
+   "severity": "Medium",
+   "category": "Evidence",
+   "item": "No hands-on performance, certification or approved API enrichment is established",
+   "detail": "Current product verification is limited to the five submitted redirect destinations, page titles and category breadcrumbs read 2026-11-19. Title wording is not independent confirmation of accuracy, cooking results, durability or certification. No intended ASIN or enrolled-workflow attribution is confirmed. Generic labelled art is not exact-product photography.",
+   "action": "Collect dated intended-product confirmation, authorized link/report checks, permitted API/asset rights and documented independent testing before expanding claims. Leave unknown numeric values and intent fields blank.",
+   "sources": [
+    "S01",
+    "S02",
+    "S07",
+    "S94"
+   ],
+   "repo_evidence": [
+    "data/publication.json",
+    "sessions/1c072a7a/verification-2026-11-19.md"
+   ],
+   "raised": "2026-11-19",
+   "session": "1c072a7a",
+   "status": "open"
+  },
+  {
+   "id": "P26-F05",
+   "severity": "Info",
+   "category": "Verification",
+   "item": "Structural checks are not a current line-by-line verification of every historical claim",
+   "detail": "The repository contains multiple inherited registers and approximately 200 historical/current HTML pages. This pass rechecked the sources scoped in its dated verification record, ran inherited gates, and added stricter publication gates. It does not assert that every inherited sentence or external link was freshly verified.",
+   "action": "Use each register’s own observation date and the new scoped verification record. Keep inherited irregularities visible; obtain fresh evidence before reusing stale claims.",
+   "sources": [
+    "S01"
+   ],
+   "repo_evidence": [
+    "sessions/1c072a7a/baseline-checks.json",
+    "sessions/1c072a7a/verification-2026-11-19.md"
+   ],
+   "raised": "2026-11-19",
+   "session": "1c072a7a",
+   "status": "needs review"
   }
  ]
 }

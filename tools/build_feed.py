@@ -171,6 +171,26 @@ def union_entries() -> list[dict]:
                         "link": f"{BASE}/read/{slug}.html",
                         "description": re.sub(r"<[^>]+>", "", a.get("dek") or a.get("summary") or a.get("description") or "")})
 
+    # Canonical publication registry: add new guides and update the four existing
+    # entries' current title/dek while retaining their original publication dates.
+    publication = json.loads((ROOT / "data/publication.json").read_text(encoding="utf-8"))
+    by_url = {entry["link"]: entry for entry in out}
+    for guide in publication["guides"]:
+        url = f"{BASE}/guides/{guide['slug']}.html"
+        if not (ROOT / "guides" / f"{guide['slug']}.html").is_file():
+            fail(f"publication guide missing: {url}")
+        if url in by_url:
+            by_url[url]["title"] = guide["title"]
+            by_url[url]["description"] = guide["dek"]
+        else:
+            entry = {"date": guide["published"], "sort_key": guide["published"],
+                     "rfc": rfc822(guide["published"]), "title": guide["title"],
+                     "link": url, "description": guide["dek"]}
+            out.append(entry)
+            by_url[url] = entry
+    if len({entry["link"] for entry in out}) != len(out):
+        fail("duplicate article URL in the unified feed")
+
     if not out:
         fail("all registers empty — a feed with no entries would misrepresent the site")
     out.sort(key=lambda e: (e["date"], e["link"], e["title"]), reverse=True)
@@ -190,7 +210,7 @@ def build_feed() -> str:
     x.append('<rss version="2.0"><channel><title>Zone3 guides</title>')
     x.append(f'<link>{BASE}/guides/index.html</link>')
     x.append(
-        "<description>Question-shaped buyer guides from both desks of this site — the four /guides/ pages, "
+        "<description>Question-led kitchen buying guides and archived research notes — the canonical /guides/ pages, "
         "the Air Fryer Field Notes buying guides, the Research Desk articles and The Crisp Report field notes. "
         "Working titles; every quoted listing title is checked on the date shown; no price, rating or review "
         "count is reproduced and no traffic or ranking claim is made.</description>"

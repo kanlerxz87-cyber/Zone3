@@ -34,7 +34,7 @@ SKIP_DIRS = {".git", "archive", "__pycache__", ".github",
              # 2(b)/6(t) barred displaying them without an Amazon-served link or Creators/PA API
              # data (71-F-04). They are kept in the repository as the audit record but are not
              # part of the public, indexable marketing site, so they are excluded from the sitemap.
-             "docs", "sessions"}
+             "docs", "sessions", "node_modules", ".preview", ".local"}
 # Pages whose entire content is a meta-refresh to another page.
 REDIRECT_STUBS = {
     "analysis.html",
@@ -61,6 +61,11 @@ def collect() -> list[str]:
             continue
         if rel in REDIRECT_STUBS or is_redirect_stub(path):
             continue
+        # A single publication is indexed. Research dashboards and earlier reader
+        # editions stay accessible with noindex,follow, not in the search sitemap.
+        text = path.read_text(encoding="utf-8")
+        if re.search(r'<meta[^>]*name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', text, re.I):
+            continue
         pages.add("" if rel == "index.html" else rel.removesuffix("/index.html") + "/"
                   if rel.endswith("/index.html") else rel)
     return sorted(pages)
@@ -82,24 +87,10 @@ def main() -> int:
     text = render(pages)
     target = ROOT / "sitemap.xml"
     if "--check" in sys.argv:
-        # Coverage, not byte equality. tools/build_site.py rewrites this file from its own
-        # list plus every root *.html, which also sweeps in the meta-refresh stubs this
-        # script deliberately excludes — so an exact-text comparison is never a fixpoint.
-        # What must hold is: no live page is missing from the sitemap.
-        if not target.exists():
-            print("sitemap.xml missing")
+        if not target.exists() or target.read_text(encoding="utf-8") != text:
+            print("sitemap.xml is stale: must match exactly the indexable canonical page set")
             return 1
-        have = set(re.findall(r"<loc>([^<]+)</loc>", target.read_text(encoding="utf-8")))
-        want = {f"{SITE_ORIGIN}{SITE_BASE}/{p}" for p in pages}
-        missing = sorted(want - have)
-        if missing:
-            print(f"sitemap.xml is missing {len(missing)} page(s):")
-            for m in missing:
-                print("  -", m)
-            return 1
-        print(f"sitemap.xml covers every live page ({len(pages)} pages checked, "
-              f"{len(have) - len(want)} extra entr{'y' if len(have) - len(want) == 1 else 'ies'} "
-              f"from the other generator)")
+        print(f"sitemap.xml is current: {len(pages)} indexable pages; no noindex pages or extras")
         return 0
     target.write_text(text, encoding="utf-8")
     print(f"wrote sitemap.xml: {len(pages)} pages")

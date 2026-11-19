@@ -146,15 +146,27 @@ def check(root: pathlib.Path):
         if DISCLOSURE not in txt:
             errs.append(f"G1 {rel}: missing the exact §5 disclosure sentence")
 
-        # ---- G2 placement: banner before nav, non-dismissable
-        banner_pos = raw.find('class="disclose-bar"')
+        # ---- G2 non-dismissable disclosure, before product/editorial content.
+        # Current brief: directly UNDER the masthead (which includes navigation).
+        # Retain the older banner-before-nav rule for unconverted legacy markup.
+        banner_match = re.search(r'<(?:aside|div)\b[^>]*class="[^"]*\bdisclose-bar\b[^"]*"[^>]*>', raw)
+        banner_pos = banner_match.start() if banner_match else -1
         nav_pos = raw.find('<nav aria-label="Main"')
         if banner_pos < 0:
             errs.append(f"G2 {rel}: no disclosure banner (footer-only disclosure fails FTC placement guidance)")
+        elif 'p26-header' in raw:
+            mast_end = raw.find('</header>') + len('</header>')
+            main_pos = raw.find('<main')
+            if not (mast_end <= banner_pos < main_pos):
+                errs.append(f"G2 {rel}: shared disclosure must be under the masthead and before main content")
+            # Sentence must be IN the banner, not merely anywhere on the page.
+            banner_end = raw.find('</aside>', banner_pos)
+            if banner_end < 0 or DISCLOSURE not in raw[banner_pos:banner_end]:
+                errs.append(f"G2 {rel}: shared banner lacks the required sentence")
         elif nav_pos > 0 and banner_pos > nav_pos:
-            errs.append(f"G2 {rel}: disclosure banner appears after the navigation")
+            errs.append(f"G2 {rel}: legacy disclosure banner appears after the navigation")
         if banner_pos >= 0:
-            end = raw.find("</div>", raw.find("</div>", banner_pos) + 1)
+            end = raw.find('</aside>', banner_pos) if 'p26-header' in raw else raw.find("</div>", raw.find("</div>", banner_pos) + 1)
             banner = raw[banner_pos:end if end > 0 else banner_pos + 2500]
             if re.search(r'<button', banner, re.I) or re.search(r'class="[^"]*\b(?:close|dismiss)[a-z-]*', banner, re.I):
                 errs.append(f"G2 {rel}: disclosure banner contains a dismiss control")

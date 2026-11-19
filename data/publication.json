@@ -1,0 +1,835 @@
+{
+  "meta": {
+    "title": "Zone3 Kitchen — publication source record",
+    "session": "1c072a7a",
+    "updated": "2026-11-19",
+    "author": "Zone3 Editorial",
+    "authorship": "AI-assisted, listing-based editorial. No hands-on testing or named human reviewer is claimed.",
+    "cadence": "Review one guide every 14 days; publication is gated on evidence. This is an operating plan, not a traffic forecast.",
+    "tracking_id": "shopnow047c-20",
+    "tracking_status": "User-supplied; account assignment and link attribution unverified.",
+    "image": {
+      "path": "assets/img/publication-kitchen.jpg",
+      "kind": "AI-generated editorial lifestyle illustration",
+      "scope": "Generic food and kitchen scene; no advertised product, test meal or testing evidence is depicted."
+    }
+  },
+  "sources": [
+    {
+      "id": "amazon-agreement",
+      "title": "Amazon Associates Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "checked_on": "2026-11-19",
+      "scope": "Sections 1 and 5 read; tagged link formats and the exact Associates disclosure. Header: updated October 15, 2025."
+    },
+    {
+      "id": "amazon-policies",
+      "title": "Amazon Associates Program Policies",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "checked_on": "2026-11-19",
+      "scope": "Chunks 3–5 read: Participation Requirements 2(a)/(b), 6(s)/(t)/(u)/(w)/(y). Header: updated April 14, 2026. No account-level authorization was available."
+    },
+    {
+      "id": "ftc",
+      "title": "FTC: Disclosures 101",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "checked_on": "2026-11-19",
+      "scope": "Full page read: conspicuous disclosure near endorsements; do not claim experience with an untried product."
+    },
+    {
+      "id": "google-reviews",
+      "title": "Google: write high quality reviews",
+      "url": "https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews",
+      "checked_on": "2026-11-19",
+      "scope": "Full page read: original evidence, user perspective, support for best-in-class claims. No ranking guarantee."
+    },
+    {
+      "id": "google-links",
+      "title": "Google: qualify outbound links",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "checked_on": "2026-11-19",
+      "scope": "Chunk 0 read: sponsored for advertisements/paid placements."
+    },
+    {
+      "id": "search-console",
+      "title": "Google: get started with Search Console",
+      "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
+      "checked_on": "2026-11-19",
+      "scope": "Chunk 0 read: ownership verification, sitemap submission and query/page performance reports."
+    },
+    {
+      "id": "google-canonical",
+      "title": "Google: canonical URL methods",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "checked_on": "2026-11-19",
+      "scope": "Chunk 0 read: redirects, canonical annotations and sitemap inclusion are signals, not guarantees."
+    },
+    {
+      "id": "github-pages",
+      "title": "GitHub: what is GitHub Pages?",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+      "checked_on": "2026-11-19",
+      "scope": "Full page read: static HTML/CSS/JS hosting; GitHub logs IP addresses for security."
+    },
+    {
+      "id": "github-limits",
+      "title": "GitHub Pages limits",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+      "checked_on": "2026-11-19",
+      "scope": "Full page read: Pages is not intended/allowed as free hosting for running an online business or a site primarily facilitating commercial transactions. Host suitability needs review before commercial scaling."
+    },
+    {
+      "id": "food-safety",
+      "title": "FoodSafety.gov: safe minimum internal temperatures",
+      "url": "https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures",
+      "checked_on": "2026-11-19",
+      "scope": "Full page read: use a food thermometer to check a safe internal temperature; some foods require rest time. No product endorsement is inferred."
+    }
+  ],
+  "products": [
+    {
+      "id": "SHOP-01",
+      "category": "air-fryers",
+      "brand": "Chefman",
+      "name": "6-quart dual-basket air fryer",
+      "heading": "Two baskets. One shortlist.",
+      "format": "dual",
+      "description": "Two separate baskets, or one larger cooking space? Start with what you actually cook.",
+      "features": [
+        "6 Quart total",
+        "2 × 3Qt baskets"
+      ],
+      "guide": "basket-or-oven-style",
+      "format_text": "Two independent 3Qt baskets",
+      "cleanup_title_wording": "Nonstick dishwasher-safe baskets",
+      "observed_asin": "B0CDY277D3",
+      "observed_listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "listing_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "submitted_link": "https://link.amazon/B04G1MEwY",
+      "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null
+    },
+    {
+      "id": "SHOP-02",
+      "category": "air-fryers",
+      "brand": "Emeril Lagasse",
+      "name": "26QT French-door air fryer oven",
+      "heading": "The oven-style option.",
+      "format": "oven",
+      "description": "Considering an oven-style setup? Put door clearance and usable interior space on your checklist.",
+      "features": [
+        "26QT in title",
+        "French-door format"
+      ],
+      "guide": "basket-or-oven-style",
+      "format_text": "French-door oven format",
+      "cleanup_title_wording": "",
+      "observed_asin": "B09B7SB46R",
+      "observed_listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "listing_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+      "submitted_link": "https://link.amazon/B02NbDxp3",
+      "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null
+    },
+    {
+      "id": "SHOP-03",
+      "category": "air-fryers",
+      "brand": "Chefman",
+      "name": "TurboFry 8 Qt air fryer",
+      "heading": "One basket. A different question.",
+      "format": "basket",
+      "description": "Check the basket’s usable dimensions before turning the 8 Qt label into a serving estimate.",
+      "features": [
+        "8 Qt in title",
+        "Single basket named"
+      ],
+      "guide": "capacity-checklist",
+      "format_text": "Basket format",
+      "cleanup_title_wording": "Nonstick dishwasher-safe basket",
+      "observed_asin": "B08DKYBTPH",
+      "observed_listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "listing_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "submitted_link": "https://link.amazon/B00hJ57DV",
+      "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null
+    },
+    {
+      "id": "SHOP-04",
+      "category": "meat-thermometers",
+      "brand": "ThermoMaven",
+      "name": "Digital meat thermometer",
+      "heading": "Start with the spot check.",
+      "format": "probe",
+      "description": "For a digital-thermometer shortlist, check the exact model instructions for probe placement and care.",
+      "features": [
+        "Digital in title",
+        "Check model instructions"
+      ],
+      "guide": "instant-read-or-wireless-thermometer",
+      "format_text": "Digital thermometer",
+      "cleanup_title_wording": "",
+      "observed_asin": "B0DHZTCNR5",
+      "observed_listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "listing_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black",
+      "submitted_link": "https://link.amazon/B0c8moW59",
+      "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null
+    },
+    {
+      "id": "SHOP-05",
+      "category": "meat-thermometers",
+      "brand": "CHEF iQ",
+      "name": "Sense wireless meat thermometer",
+      "heading": "A connected-cooking shortlist.",
+      "format": "wireless",
+      "description": "Before you choose a connected setup, check app requirements, probe limits and your connection.",
+      "features": [
+        "Wireless in title",
+        "3 probes in title"
+      ],
+      "guide": "instant-read-or-wireless-thermometer",
+      "format_text": "Wireless; 3 probes in title",
+      "cleanup_title_wording": "",
+      "observed_asin": "B0DZFD6R9Z",
+      "observed_listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "listing_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+      "submitted_link": "https://link.amazon/B0f3GKalj",
+      "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null
+    }
+  ],
+  "guides": [
+    {
+      "slug": "basket-or-oven-style",
+      "title": "Basket or oven-style air fryer: what should you compare?",
+      "short_title": "Basket or oven? Start with your dinner.",
+      "dek": "One basket, two baskets, or French doors. Make the format decision before you get lost in presets.",
+      "category": "Air fryers",
+      "category_slug": "air-fryers",
+      "type": "The starting point",
+      "art": "formats",
+      "published": "2026-11-17",
+      "products": [
+        "SHOP-01",
+        "SHOP-02",
+        "SHOP-03"
+      ],
+      "takeaway": "Choose a format around the food you cook and the space you have—not the biggest number on the box.",
+      "sections": [
+        {
+          "heading": "First, picture an ordinary dinner.",
+          "paragraphs": [
+            "Write down the meal you make on a busy evening. Are you cooking one thing, or trying to finish two different foods together? Do you want a drawer you can pull out, or an oven-style door? These are shopping questions, not a verdict on which appliance cooks better.",
+            "The three listings below offer a useful starting point: one title names two independent baskets, another names a French-door oven, and the third names a basket. Their names describe different layouts; they do not establish cooking performance."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Do not let “oven” make the decision for you.",
+          "paragraphs": [
+            "The Chefman 6-quart listing calls itself an “Air Fryer Oven” and also names “2 Independent 3Qt” baskets. Read the whole description of the format rather than comparing one headline word.",
+            "Put the total capacity and the capacity of each cooking compartment in separate notes. A two-basket layout is not the same buying question as a single uninterrupted cooking space."
+          ],
+          "source_ids": [
+            "SHOP-01"
+          ]
+        },
+        {
+          "heading": "Make the comparison on your own counter.",
+          "checklist": [
+            "Measure your available width, depth and height.",
+            "Check the exact model’s manual for operating clearance and ventilation; those measurements are not verified here.",
+            "Allow room to open the door or pull out the drawer.",
+            "Compare the parts you will handle and wash after a normal meal.",
+            "Only then check the current price and included accessories on Amazon."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Usable basket/interior dimensions and operating clearance.",
+        "Cooking speed, evenness, noise and energy use.",
+        "Which format is best for your kitchen."
+      ],
+      "related": [
+        "capacity-checklist",
+        "cleanup-and-counter-space",
+        "multi-function-questions"
+      ]
+    },
+    {
+      "slug": "capacity-checklist",
+      "title": "A no-hype checklist for comparing air fryer capacity",
+      "short_title": "What does that capacity number actually tell you?",
+      "dek": "A larger number is not a meal plan. Here is what to check before you compare quarts.",
+      "category": "Air fryers",
+      "category_slug": "air-fryers",
+      "type": "Before you buy",
+      "art": "capacity",
+      "published": "2026-11-17",
+      "products": [
+        "SHOP-01",
+        "SHOP-02",
+        "SHOP-03"
+      ],
+      "takeaway": "Compare the space the food will use, not just the capacity printed in the title.",
+      "sections": [
+        {
+          "heading": "Separate the total from the compartments.",
+          "paragraphs": [
+            "The Chefman dual-basket title gives both “6 Quart” and “2 Independent 3Qt” baskets. Keep those numbers separate. The 8 Qt Chefman title names a basket; the Emeril Lagasse title says “26QT” and “Extra Large Interior”.",
+            "Those are listing descriptions—not a measured comparison of usable cooking area. We have not converted any of them into servings, portions or family size."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Take a meal-shaped note.",
+          "paragraphs": [
+            "Before opening another tab, note the food you need to fit and whether you expect to cook it in one layer. Then look for the internal dimensions or a model-specific manual. If you cannot find them, ask the manufacturer rather than guessing from the capacity label."
+          ],
+          "checklist": [
+            "Is the number total capacity or per compartment?",
+            "Are you comparing the same unit?",
+            "What are the usable internal dimensions?",
+            "Will the food fit the way the manual instructs?",
+            "Where will you store the parts when not in use?"
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Know when not to make the upgrade.",
+          "paragraphs": [
+            "If the larger model does not solve a specific space or cooking-layout problem, leave the decision open. A capacity label alone is not evidence of better results. Return to the basket-versus-oven guide to compare the format first."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Usable cooking area, internal dimensions and portion counts.",
+        "How much food can be cooked evenly in each model."
+      ],
+      "related": [
+        "basket-or-oven-style",
+        "cleanup-and-counter-space",
+        "holiday-kitchen-checklist"
+      ]
+    },
+    {
+      "slug": "cleanup-and-counter-space",
+      "title": "How to assess cleanup and counter-space trade-offs",
+      "short_title": "The part after dinner deserves a look, too.",
+      "dek": "Think beyond the footprint. Check the opening space, removable parts and model-specific care instructions.",
+      "category": "Everyday kitchen",
+      "category_slug": "air-fryers",
+      "type": "The practical details",
+      "art": "counter",
+      "published": "2026-11-17",
+      "products": [
+        "SHOP-01",
+        "SHOP-02",
+        "SHOP-03"
+      ],
+      "takeaway": "Measure the working space, then check how you will clean every food-contact part.",
+      "sections": [
+        {
+          "heading": "An appliance needs working space, not just a parking space.",
+          "paragraphs": [
+            "Mark out the place you would put it. Check whether a drawer can pull out fully or a door can open without meeting another appliance. Read the model-specific manual for ventilation and operating clearances. We have not verified those measurements for these products.",
+            "None of the three listing titles gives width, depth or height. Do not turn a photograph or capacity number into a dimension."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Read the cleaning wording one part at a time.",
+          "paragraphs": [
+            "The two Chefman titles use dishwasher-safe wording for their baskets. That wording does not tell you how to clean every other component. The Emeril title names six cooking accessories but does not establish their care requirements.",
+            "Use the current manual to check each removable part, its coating and any dishwasher restrictions. We have not tested cleanup effort or coating durability."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "A five-minute shopping check.",
+          "checklist": [
+            "Measure available counter width, depth and overhead space.",
+            "Find the exact model’s clearance instructions.",
+            "Check where the hot parts can safely rest.",
+            "List each food-contact part and its care instructions.",
+            "Make sure the parts fit your sink, dishwasher or storage space."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        }
+      ],
+      "unknowns": [
+        "External dimensions, ventilation clearances and cord lengths.",
+        "Care requirements for all accessories; coating durability.",
+        "Hands-on cleaning time."
+      ],
+      "related": [
+        "basket-or-oven-style",
+        "capacity-checklist",
+        "multi-function-questions"
+      ]
+    },
+    {
+      "slug": "multi-function-questions",
+      "title": "Questions to ask before buying a multi-function kitchen appliance",
+      "short_title": "More presets. But more useful to you?",
+      "dek": "Before you count the functions, make a list of the ones you would actually use.",
+      "category": "Buying smarter",
+      "category_slug": "air-fryers",
+      "type": "The buying checklist",
+      "art": "functions",
+      "published": "2026-11-17",
+      "products": [
+        "SHOP-01",
+        "SHOP-02",
+        "SHOP-03"
+      ],
+      "takeaway": "Match the functions to real meals and verify the included parts. A preset count is not a performance score.",
+      "sections": [
+        {
+          "heading": "Start with the tasks you already do.",
+          "paragraphs": [
+            "Make a short list: what do you cook, what do you reheat, and which existing appliance would this replace? Keep the functions you would use and set the rest aside. This is an editorial exercise, not a claim that any model replaces another.",
+            "The Emeril title says “24 One-Touch Preset Options”. The Chefman 8 Qt title says “4-in-1” and names Bake, Dehydrate and Frozen. We have not verified the full preset menus or compared the results."
+          ],
+          "source_ids": [
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Check what you need to use each function.",
+          "checklist": [
+            "What does the setting actually do, according to the manual?",
+            "Does it require an accessory, and is that accessory included?",
+            "Does using one function prevent another from running at the same time?",
+            "Will you need to rearrange shelves or baskets?",
+            "How will you clean and store the extra parts?"
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Leave unsupported claims out of the decision.",
+          "paragraphs": [
+            "We have not measured cooking speed, running cost or results. We do not use preset totals to name a winner. If those are your deciding factors, seek model-specific testing with a described method before choosing."
+          ],
+          "source_ids": [
+            "google-reviews"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Complete preset definitions, accessory contents and simultaneous-function limitations.",
+        "Results, speed and energy consumption under comparable conditions."
+      ],
+      "related": [
+        "basket-or-oven-style",
+        "cleanup-and-counter-space",
+        "holiday-kitchen-checklist"
+      ]
+    },
+    {
+      "slug": "instant-read-or-wireless-thermometer",
+      "title": "Instant-read or wireless thermometer: which questions matter?",
+      "short_title": "Spot check or connected probe? Ask this first.",
+      "dek": "Two thermometer formats, different shopping questions. Start with how you want to take a reading.",
+      "category": "Meat thermometers",
+      "category_slug": "meat-thermometers",
+      "type": "A different kind of kitchen tool",
+      "art": "thermometer",
+      "published": "2026-11-19",
+      "products": [
+        "SHOP-04",
+        "SHOP-05"
+      ],
+      "takeaway": "Choose the reading workflow, then check the manual. Do not treat a product’s advertised speed or accuracy as an independent test.",
+      "sections": [
+        {
+          "heading": "Separate a reading from a monitoring setup.",
+          "paragraphs": [
+            "The ThermoMaven listing names a digital meat thermometer. The CHEF iQ listing names a smart wireless meat thermometer with three probes. Those are the two formats on this shortlist—not proof that either will suit every grill, oven or air fryer.",
+            "Ask whether you want to check food at a moment in time or use a connected probe setup. Then confirm the exact model’s permitted use, probe placement and heat limits in its manual. Do not leave a handheld probe in an appliance unless its instructions explicitly allow it."
+          ],
+          "source_ids": [
+            "SHOP-04",
+            "SHOP-05"
+          ]
+        },
+        {
+          "heading": "Treat connection claims as questions to answer.",
+          "checklist": [
+            "Does the setup require an app, account, Wi-Fi or another device?",
+            "Which parts are allowed inside the appliance, and at what temperatures?",
+            "How should each probe be placed, cleaned and stored?",
+            "What happens if the connection or battery is lost?",
+            "What calibration or accuracy information does the manufacturer provide for this exact model?"
+          ],
+          "source_ids": [
+            "SHOP-04",
+            "SHOP-05"
+          ]
+        },
+        {
+          "heading": "Use food-safety guidance for the target temperature.",
+          "paragraphs": [
+            "FoodSafety.gov says to use a food thermometer to check that food has reached a safe minimum internal temperature, and notes that some foods also need rest time. Use its food-specific chart rather than a product advertisement to choose the target.",
+            "We have not tested either thermometer’s accuracy, response time, wireless range or food-safety alerts. A certification claim in a listing title is not independent certification verification by this publication."
+          ],
+          "source_ids": [
+            "food-safety"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Independent accuracy and response-time measurements.",
+        "App compatibility, connection behaviour, battery life and exact operating limits.",
+        "Certification records for the advertised exact models."
+      ],
+      "related": [
+        "holiday-kitchen-checklist",
+        "multi-function-questions",
+        "cleanup-and-counter-space"
+      ]
+    },
+    {
+      "slug": "holiday-kitchen-checklist",
+      "title": "Hosting dinner? Make a kitchen shortlist before you buy.",
+      "short_title": "Hosting season, without the impulse buy.",
+      "dek": "A meal-first checklist for the counter space, cooking format and temperature tools you might need.",
+      "category": "The seasonal edit",
+      "category_slug": "everyday-kitchen",
+      "type": "November kitchen notes",
+      "art": "hosting",
+      "published": "2026-11-19",
+      "products": [
+        "SHOP-01",
+        "SHOP-02",
+        "SHOP-03",
+        "SHOP-04",
+        "SHOP-05"
+      ],
+      "takeaway": "Plan the meal first. Buy a tool only when it solves a named problem in that plan.",
+      "sections": [
+        {
+          "heading": "Write the menu before the shopping list.",
+          "paragraphs": [
+            "List what needs cooking, when you want to serve it and which equipment you already have. Circle the actual bottleneck: space, a cooking compartment, an awkward tray, or taking a temperature reading. A new appliance is one option, not the default answer.",
+            "This is a seasonal planning exercise, not a claim about deals, availability, search demand or products selling out. We publish no sale prices or countdowns."
+          ],
+          "source_ids": [
+            "google-reviews"
+          ]
+        },
+        {
+          "heading": "Give each possible purchase one job.",
+          "checklist": [
+            "For an air fryer: which meal and which cooking layout are you buying it for?",
+            "For an oven-style appliance: have you checked operating clearance and door space?",
+            "For a thermometer: how will you take the reading, and have you read the correct-use instructions?",
+            "For accessories: are the exact parts included or a separate purchase?",
+            "For any new tool: where will you clean and store it after dinner?"
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03",
+            "SHOP-04",
+            "SHOP-05"
+          ]
+        },
+        {
+          "heading": "Keep safe cooking separate from marketing.",
+          "paragraphs": [
+            "Use the official FoodSafety.gov temperature chart for the food you are serving, including any rest time. A preset name, an appliance mode or a thermometer feature is not a substitute for food-specific guidance.",
+            "If your existing equipment covers the plan, your shortlist can stay empty. The useful outcome is a decision—not necessarily a purchase."
+          ],
+          "source_ids": [
+            "food-safety"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Your menu, available counter space and existing equipment.",
+        "Any retailer promotion or delivery promise; none is asserted here."
+      ],
+      "related": [
+        "capacity-checklist",
+        "instant-read-or-wireless-thermometer",
+        "basket-or-oven-style"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "P26-Q1",
+      "question": "Are these the five products you intended?",
+      "known": "Observed: three air fryers and two meat thermometers. Each short link opened the listing recorded below.",
+      "missing": "Intended ASIN, intended official listing URL, confirmation date and confirmation source for every product.",
+      "default": "Keep all intended fields blank; do not copy redirects into them.",
+      "discovery": "Obtain a dated authorized product-intent confirmation and check the official listing.",
+      "blocks": "Product/link identity approval",
+      "source": "amazon-agreement"
+    },
+    {
+      "id": "P26-Q2",
+      "question": "Does each link attribute to the selected Associates account?",
+      "known": "The supplied tracking ID is recorded, but account ownership and tracking reports are unavailable.",
+      "missing": "One enrolled-workflow Special Link validation and first-party tracking-report check per product.",
+      "default": "Keep FLG-003 unresolved. Do not describe the supplied short links as invalid or attribution as verified.",
+      "discovery": "Use an authorized Associates workflow; inspect destination and tracking report without self-purchases or generated traffic.",
+      "blocks": "Validated Special Link rollout",
+      "source": "amazon-policies"
+    },
+    {
+      "id": "P26-Q3",
+      "question": "Where will production analytics run?",
+      "known": "One browser counter and a tested self-hosted collector are shipped. Pages is static hosting.",
+      "missing": "Durable HTTPS collector host, retention/logging configuration and a production delivery test.",
+      "default": "Production collection stays off; preview tests are not campaign data.",
+      "discovery": "Deploy the collector on an authorized host; disable proxy request logs, then verify accepted events and privacy controls.",
+      "blocks": "Measured traffic decisions",
+      "source": "github-pages"
+    },
+    {
+      "id": "P26-Q4",
+      "question": "Which questions bring actual search visitors?",
+      "known": "Buyer questions are editorial hypotheses. No Search Console report is available.",
+      "missing": "Verified Search Console property and dated query/page reports.",
+      "default": "No claim of trending topics, search volume, rankings or organic growth.",
+      "discovery": "Verify the property, submit the sitemap, then record dated first-party query/page reports.",
+      "blocks": "Demand-based topic selection",
+      "source": "search-console"
+    },
+    {
+      "id": "P26-Q5",
+      "question": "Are conversions and commissions measurable yet?",
+      "known": "The campaign ledger has a schema and no rows. Browser clicks are not orders.",
+      "missing": "Authorized dated Associates reports with their eligible sessions, clicks and reported orders.",
+      "default": "Leave performance and revenue blank. No conversion scores or forecasts.",
+      "discovery": "Import only authorized first-party reports; preserve the source and reporting period; do not create visitor profiles.",
+      "blocks": "Campaign optimization",
+      "source": "amazon-policies"
+    },
+    {
+      "id": "P26-Q6",
+      "question": "Can we publish product imagery, prices or ratings?",
+      "known": "No Amazon imagery, price, rating or review count is used by the new publication. Art is labelled illustrative.",
+      "missing": "Authorized API access, applicable usage requirements, approved assets and refresh rules.",
+      "default": "No scraped prices or reviews; no invented product photographs or test results.",
+      "discovery": "Confirm authorized Creators/PA API access and current license conditions before building a refresh job.",
+      "blocks": "Richer product cards",
+      "source": "amazon-policies"
+    },
+    {
+      "id": "P26-Q7",
+      "question": "Who can sign off a hands-on recommendation?",
+      "known": "The publisher byline is Zone3 Editorial; content is AI-assisted and listing-based.",
+      "missing": "A real reviewer identity, a test method, dated measurements and rights-cleared test evidence.",
+      "default": "Do not invent people, testing, certification checks or best-in-class verdicts.",
+      "discovery": "Commission or perform documented testing and record the methodology before adding rankings.",
+      "blocks": "Evidence-led reviews",
+      "source": "google-reviews"
+    },
+    {
+      "id": "P26-Q8",
+      "question": "Is GitHub Pages appropriate for the commercial plan?",
+      "known": "The requested editorial site can be deployed technically; GitHub publishes commercial-use limits.",
+      "missing": "Hosting suitability confirmation for an affiliate-revenue-focused business site.",
+      "default": "Flag hosting suitability; do not interpret a successful deploy as policy approval.",
+      "discovery": "Review the actual use against GitHub Pages limits; use suitable commercial hosting before scaling a business.",
+      "blocks": "Commercial expansion",
+      "source": "github-limits"
+    },
+    {
+      "id": "P26-Q9",
+      "question": "How should new subscribers be captured?",
+      "known": "The RSS feed works without collecting an email address. No email provider is configured.",
+      "missing": "A consent flow, provider, retention policy and a verified sending identity.",
+      "default": "Offer RSS, not a nonfunctional email signup or made-up subscriber counts.",
+      "discovery": "Evaluate a provider and applicable consent rules before adding email collection.",
+      "blocks": "Email reader capture",
+      "source": "ftc"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "P26-S1",
+      "priority": "Now",
+      "area": "Measurement",
+      "title": "Finish the measurement foundation before scaling content.",
+      "why": "Without delivery tests and first-party query reports, “high converting” is a guess.",
+      "next": "Deploy a durable collector, verify Search Console and authorize report access.",
+      "evidence_needed": [
+        "P26-Q3",
+        "P26-Q4",
+        "P26-Q5"
+      ],
+      "source": "search-console",
+      "status": "Needs authorization"
+    },
+    {
+      "id": "P26-S2",
+      "priority": "Now",
+      "area": "Affiliate links",
+      "title": "Approve one Special Link per product, then scale.",
+      "why": "A redirect shows where a link opened, not which account receives attribution.",
+      "next": "Check all five products in the enrolled workflow and keep intended and observed identifiers separate.",
+      "evidence_needed": [
+        "P26-Q1",
+        "P26-Q2"
+      ],
+      "source": "amazon-policies",
+      "status": "Needs evidence"
+    },
+    {
+      "id": "P26-S3",
+      "priority": "Next",
+      "area": "Editorial",
+      "title": "Build a useful kitchen cluster, not a wall of “best” lists.",
+      "why": "The existing five links naturally raise questions about cooking formats, capacity, cleanup and thermometers.",
+      "next": "Use the six linked guides as the initial cluster. Review one guide every 14 days; publish only when its evidence gate passes.",
+      "evidence_needed": [
+        "P26-Q4",
+        "P26-Q7"
+      ],
+      "source": "google-reviews",
+      "status": "Proposed cadence"
+    },
+    {
+      "id": "P26-S4",
+      "priority": "Next",
+      "area": "Product research",
+      "title": "Replace listing-only comparisons with original testing.",
+      "why": "Readers need a reason to trust a recommendation beyond rewritten retailer copy.",
+      "next": "Choose a real test protocol and collect comparable measurements before naming a winner.",
+      "evidence_needed": [
+        "P26-Q6",
+        "P26-Q7"
+      ],
+      "source": "google-reviews",
+      "status": "Needs evidence"
+    },
+    {
+      "id": "P26-S5",
+      "priority": "Later",
+      "area": "Automation",
+      "title": "Automate collection and drafts; keep a publishing gate.",
+      "why": "A confident draft cannot authorize an API, confirm product intent or validate affiliate attribution.",
+      "next": "Queue sourced drafts; reject unsupported claims automatically; release only with dated evidence and link checks.",
+      "evidence_needed": [
+        "P26-Q1",
+        "P26-Q2",
+        "P26-Q6",
+        "P26-Q7"
+      ],
+      "source": "amazon-agreement",
+      "status": "Gated"
+    },
+    {
+      "id": "P26-S6",
+      "priority": "Later",
+      "area": "Audience",
+      "title": "Grow a returning readership without a pretend signup.",
+      "why": "A working feed is more useful than an email form that stores nothing or has no consent plan.",
+      "next": "Use the shipped RSS feed now. Review an email provider only after consent and retention decisions.",
+      "evidence_needed": [
+        "P26-Q9"
+      ],
+      "source": "ftc",
+      "status": "RSS shipped"
+    }
+  ],
+  "indexable_pages": [
+    "index.html",
+    "guides/index.html",
+    "shop/index.html",
+    "shop/air-fryers/index.html",
+    "shop/meat-thermometers/index.html",
+    "shop/products/index.html",
+    "about.html",
+    "privacy.html",
+    "guides/basket-or-oven-style.html",
+    "guides/capacity-checklist.html",
+    "guides/cleanup-and-counter-space.html",
+    "guides/multi-function-questions.html",
+    "guides/instant-read-or-wireless-thermometer.html",
+    "guides/holiday-kitchen-checklist.html"
+  ]
+}

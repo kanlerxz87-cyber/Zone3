@@ -1,0 +1,38 @@
+name: Publication checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, 'arena/1c072a7a-zone3']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publication-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publication:
+    name: Build, provenance, links and privacy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Use Python 3.11
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+      - name: Use Node 22
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Rebuild all retained layers and enforce all release gates
+        run: python3 tools/publish.py
+      - name: Require a deterministic, checked-in build
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=normal)"

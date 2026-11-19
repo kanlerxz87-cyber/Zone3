@@ -743,6 +743,12 @@ def main() -> int:
     (ROOT / "feed.xml").write_text(feed_xml(), encoding="utf-8")
     (HERE / "verification.md").write_text(verification_md(), encoding="utf-8")
 
+    # Session 1c072a7a (2026-11-19): one canonical owner for the reader front page,
+    # guides and catalogue. Historical intent/pass records above remain intact.
+    sys.path.insert(0, str(ROOT / "tools"))
+    import build_publication
+    build_publication.build(check=False)
+
     # 1. apply the mechanical pass so the audit measures the final markup
     publish_pass.run(ROOT, write=True)
     # 2. measure after
