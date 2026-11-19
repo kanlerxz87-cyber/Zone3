@@ -14,8 +14,8 @@
       "scope": "Generic food and kitchen scene; no advertised product, test meal or testing evidence is depicted."
     },
     "reverified": "2026-11-19",
-    "reverified_by": "session b580d790 (arena/b580d790-zone3)",
-    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. No price, rating, review count or performance claim is made anywhere on the site.",
+    "reverified_by": "sessions b580d790 and d3493182 (arena/d3493182-zone3)",
+    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. Session d3493182 (2026-11-19) re-opened all five short links and re-read Agreement Sections 1, 4, 5 and 6, Policies Participation Requirements 2(a)-(b), the FTC guide, and Google helpful-content and outbound-link guidance; observed ASINs, titles and breadcrumbs were unchanged (one thermometer title variant noted in the session record). No price, rating, review count or performance claim is made anywhere on the site.",
     "reverification_evidence": "S95",
     "reporting_month_note": "Publication months are editorial labels. The current edition date is 19 November 2026.",
     "decision_desk": {
@@ -1109,6 +1109,110 @@
       "blocks": "Decision workflow (E61-P2)",
       "source": "ftc",
       "owner_input_needed": true
+    },
+    {
+      "id": "D34-Q1",
+      "question": "What is the one promise under the Zone3 Kitchen name?",
+      "known": "The name and tagline (Kitchen, Considered) are published; the front page leads with products and question-led guides.",
+      "missing": "A one-sentence promise the owner signs off, and what the site will never promise.",
+      "default": "Keep the current name and tagline; make no new brand claim in any layout.",
+      "discovery": "Owner writes the promise in the answers above; a later session records it as a dated decision.",
+      "blocks": "Visual overhaul brief",
+      "source": "google-helpful",
+      "owner_input_needed": true,
+      "answer_by": "Owner · brand",
+      "answer_form": "One sentence: what Zone3 Kitchen promises a buyer, plus one thing it never promises."
+    },
+    {
+      "id": "D34-Q2",
+      "question": "What is the conversion goal of each page — read, compare, or click?",
+      "known": "Every page carries the disclosure under the masthead and sponsored product links; the front page, category pages and guides each have a different job.",
+      "missing": "A stated goal per page type, so call-to-action placement can be judged.",
+      "default": "Keep the current layout: guides answer, category pages compare, product links are the only outbound calls to action.",
+      "discovery": "Owner records the goal per page type in the answers above; measurement later tests it.",
+      "blocks": "Call-to-action design",
+      "source": "amazon-policies",
+      "owner_input_needed": true,
+      "answer_by": "Owner · editorial",
+      "answer_form": "One line per page type (front page, guide, category, comparison): read, compare, or click."
+    },
+    {
+      "id": "D34-Q3",
+      "question": "What voice and banned-word list will every article follow?",
+      "known": "The design prompt already carries a voice block (second person, plain verbs, no hype words) and the site is written to it.",
+      "missing": "Owner approval of the list as the standing rule, including any words to add or remove.",
+      "default": "Keep writing to the current voice block; no new article ships under a different voice.",
+      "discovery": "Owner approves or amends the list in the answers above.",
+      "blocks": "Article slate",
+      "source": "google-helpful",
+      "owner_input_needed": true,
+      "answer_by": "Owner · editorial",
+      "answer_form": "Approved list, or the exact words to add or remove, with the date."
+    },
+    {
+      "id": "D34-Q4",
+      "question": "Which reader capture, if any, will the site offer — RSS only, email, or none?",
+      "known": "RSS is shipped and linked from every page; no email form exists and no address is collected.",
+      "missing": "Provider, consent wording, privacy review and who owns the list, if email is ever offered.",
+      "default": "RSS only; no email capture and no sign-up form.",
+      "discovery": "Owner chooses in the answers above; any provider is reviewed for disclosure and privacy before it is wired.",
+      "blocks": "Returning readership",
+      "source": "ftc",
+      "owner_input_needed": true,
+      "answer_by": "Owner · audience",
+      "answer_form": "RSS only, email (with provider named), or none — plus who owns the list."
+    },
+    {
+      "id": "D34-Q5",
+      "question": "What keyword cluster does each guide target, and how will we know it worked?",
+      "known": "Each guide has a question-shaped title and a sourced fact spine; no Search Console report exists yet.",
+      "missing": "A cluster map (one cluster per guide) and a dated baseline from a verified property.",
+      "default": "No keyword claim is published; titles stay question-shaped and topic choice stays editorial until measured.",
+      "discovery": "Verify the property, submit the sitemap, then record the first dated query report in the answers above.",
+      "blocks": "Topic selection",
+      "source": "search-console",
+      "owner_input_needed": false,
+      "answer_by": "Measurable after launch",
+      "answer_form": "Cluster map plus the first dated query and page report exported from the verified property."
+    },
+    {
+      "id": "D34-Q6",
+      "question": "Which decision aid helps most — question router, comparison table, or checklist?",
+      "known": "The router and fit notes shipped on the front page; the comparison page still needs its chooser and checklist set.",
+      "missing": "Measured engagement per aid once production measurement is on.",
+      "default": "Keep all three aids; add no verdict, score or ranking to any of them.",
+      "discovery": "Compare guide_view and outbound_click aggregates per page once production is on; record the reading in the answers above.",
+      "blocks": "Comparison page design",
+      "source": "google-page-experience",
+      "owner_input_needed": false,
+      "answer_by": "Measurable after launch",
+      "answer_form": "Dated aggregate reading per aid, with the production measurement date it came from."
+    },
+    {
+      "id": "D34-Q7",
+      "question": "What is the minimum evidence a new product needs before it joins the shortlist?",
+      "known": "Five products are registered with observed destinations only; every intended field is blank and FLG-003 is unresolved.",
+      "missing": "A written minimum (intent confirmation plus one validated Special Link) the owner signs off.",
+      "default": "The catalogue stays at five; no new product is added.",
+      "discovery": "Owner writes the minimum in the answers above; the gate then applies to every future product.",
+      "blocks": "Catalogue growth",
+      "source": "amazon-policies",
+      "owner_input_needed": true,
+      "answer_by": "Owner · account access",
+      "answer_form": "The minimum evidence list, with who confirms it and where it is recorded."
+    },
+    {
+      "id": "D34-Q8",
+      "question": "What does polished mean in numbers — which page-experience measures will we re-measure, and when?",
+      "known": "The design prompt requires the section 3 numbers to be re-measured after any polish pass; no baseline is recorded yet.",
+      "missing": "Baseline, target and review date for type scale, tap targets and comparison reachability.",
+      "default": "No polish pass is signed off until the baseline is recorded.",
+      "discovery": "Run the shipped checks, record the baseline in the answers above, and set the review date.",
+      "blocks": "Visual overhaul sign-off",
+      "source": "google-page-experience",
+      "owner_input_needed": false,
+      "answer_by": "Agent, then confirm",
+      "answer_form": "Baseline numbers, targets and the review date, with the check output they came from."
     }
   ],
   "proposals": [
@@ -1421,6 +1525,140 @@
         "Whether a candidate product passes intent confirmation",
         "Whether its Special Link validates in the enrolled workflow with correct attribution"
       ]
+    },
+    {
+      "id": "D34-P1",
+      "priority": "Now",
+      "area": "UX",
+      "title": "Give the shopfront a polished affiliate layout — hero, shortlist, comparison, guides — without adding a single new claim.",
+      "why": "A buyer decides in seconds whether a page is a shop or a register. The current front page already leads with products and guides; this proposal asks for the remaining polish pass (consistent card system, comparison table, guide index, seasonal strip) inside the existing evidence limits.",
+      "next": "Approve the layout system in the design prompt block below, then build it as one pass with the disclosure and sponsored rules re-gated.",
+      "evidence_needed": [
+        "D34-Q1",
+        "D34-Q2",
+        "P27-Q1"
+      ],
+      "source": "google-page-experience",
+      "status": "Proposed",
+      "next_action": "Shortlist this proposal, then record the brand promise (D34-Q1) and per-page goal (D34-Q2) in the answers above; a later build session implements only what those answers allow.",
+      "discoveries": [
+        "Which layout elements a reader notices first on mobile, from the shipped page-experience baseline.",
+        "Whether the comparison table or the guide index earns more outbound clicks once measurement is on.",
+        "Which card facts (format, capacity wording, fit note) a buyer actually uses to choose."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
+    },
+    {
+      "id": "D34-P2",
+      "priority": "Next",
+      "area": "Editorial",
+      "title": "Publish one catchy question-led guide per review cycle from the slate below; each title is a hypothesis, not a trend claim.",
+      "why": "Catchy titles earn the click; question-shaped titles earn the search. The slate reuses buyer questions already in the brief, each tied to a sourced fact spine, so a new guide never needs an invented claim to ship.",
+      "next": "Approve the slate one title at a time; each guide ships through the same publishing gate as the current eight.",
+      "evidence_needed": [
+        "D34-Q5",
+        "P26-Q4"
+      ],
+      "source": "google-helpful",
+      "status": "Proposed cadence",
+      "next_action": "Shortlist the titles you want drafted first, in order; the drafting session writes only the titles whose fact spine is already sourced and links each new guide from two existing guides.",
+      "discoveries": [
+        "Which question-shaped titles draw real Search Console queries once the property is verified.",
+        "Which guides readers finish, from guide_view and outbound_click aggregates once production measurement is on.",
+        "Which titles repeat a question the reading room already answers and should not ship."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
+    },
+    {
+      "id": "D34-P3",
+      "priority": "Next",
+      "area": "Distribution",
+      "title": "Make the site findable on purpose: one canonical home, question-shaped titles, internal links, sitemap and RSS for every guide.",
+      "why": "Organic traffic needs one site to index and a reason to rank it. The machinery (canonical URLs, sitemap, RSS, internal links) already ships; this proposal is the discipline of using it for every new guide instead of relying on instinct.",
+      "next": "Verify the Search Console property, submit the sitemap, and record dated query and page reports before choosing the next topic from demand.",
+      "evidence_needed": [
+        "P26-Q4",
+        "D34-Q5"
+      ],
+      "source": "google-canonical",
+      "status": "Proposed",
+      "next_action": "Ask the owner to verify the Search Console URL-prefix property and submit sitemap.xml; then record the first dated query report in the answers above.",
+      "discoveries": [
+        "Which queries actually bring visitors to which guides, from the first-party query report.",
+        "Which guides are indexed under their canonical URL and which compete as duplicates.",
+        "Whether the RSS feed or search brings returning readers, from the shipped aggregates once production is on."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
+    },
+    {
+      "id": "D34-P4",
+      "priority": "Now",
+      "area": "Decision quality",
+      "title": "Add decision aids that help a buyer choose: question router, fit notes, comparison table, checklists — no verdicts, no scores.",
+      "why": "A buyer does not need a winner; they need the right questions. The router, fit notes and checklists already shipped in part; this proposal completes the set on the comparison page and keeps every aid a question, never a score.",
+      "next": "Approve the comparison-page chooser and checklist set; build them from listing wording already in the register.",
+      "evidence_needed": [
+        "D34-Q6",
+        "P26-Q6"
+      ],
+      "source": "google-reviews",
+      "status": "Proposed",
+      "next_action": "Shortlist this proposal and mark which aid (router, table, checklist) you want first; the build session adds only aids whose every cell is already sourced or visibly blank.",
+      "discoveries": [
+        "Which decision aid a reader uses longest, from page and outbound-click aggregates once production is on.",
+        "Which comparison cells are still blank and therefore cannot be shown as facts.",
+        "Whether a three-question chooser reduces bounce compared with the full table, once measured."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
+    },
+    {
+      "id": "D34-P5",
+      "priority": "Now",
+      "area": "Editorial",
+      "title": "Keep the anti-slop rules in writing: voice, banned words, original diagrams only, every blank labelled.",
+      "why": "The site reads as AI slop when it reads generic. The voice block already exists in the design prompt; this proposal asks the owner to approve it as the standing rule so every future article is written to it once, not rewritten per piece.",
+      "next": "Approve the voice and banned-word list in the design prompt block below, or amend it in the answers above.",
+      "evidence_needed": [
+        "D34-Q3",
+        "E61-Q2"
+      ],
+      "source": "google-helpful",
+      "status": "Workflow proposed",
+      "next_action": "Shortlist or amend the voice list in the answers above; until approved, new drafts keep the current wording and no new article ships under a different voice.",
+      "discoveries": [
+        "Which banned phrases still appear in older pages and need a rewrite pass.",
+        "Which illustrations are labelled generic art and which need a licensed-photo decision first.",
+        "Whether readers trust the labelled blanks more than filled-in guesses, once measured."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
+    },
+    {
+      "id": "D34-P6",
+      "priority": "Next",
+      "area": "Measurement",
+      "title": "Define what organic-traffic success means before optimizing anything: Search Console queries plus first-party reports only.",
+      "why": "Without a written definition, every week looks like growth or decline by accident. The Agreement itself makes no traffic or income representation, so the site must define its own measure and review it on a date.",
+      "next": "Write the success definition (queries, pages, outbound clicks, review date) in the answers above, then measure against it.",
+      "evidence_needed": [
+        "E61-Q1",
+        "P26-Q4",
+        "P26-Q5"
+      ],
+      "source": "search-console",
+      "status": "Needs evidence",
+      "next_action": "Write the definition and review date in the answers above; until then, no optimization is automated and no traffic claim is published.",
+      "discoveries": [
+        "The baseline query and page counts from the first verified Search Console report.",
+        "Which guides earn outbound clicks, from the shipped aggregates once production is on.",
+        "What the first dated Associates report shows for eligible sessions, clicks and reported orders."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
     }
   ],
   "indexable_pages": [
@@ -1556,6 +1794,30 @@
       "risk": "High if the gate is loosened · the failure mode is volume of unverified claims",
       "basis": "amazon-agreement",
       "status": "Gated · build it after P27-P2"
+    },
+    {
+      "id": "P34-P1",
+      "name": "Make it feel published",
+      "sequence": 6,
+      "recommended": false,
+      "pitch": "Turn the shopfront into a publication front page a buyer trusts at a glance — without a single new claim.",
+      "changes": [
+        "One layout system across front page, category pages and guides: hero with disclosure, product cards, comparison table, guide index",
+        "A dated seasonal strip that names the calendar fact and links the guides that answer it",
+        "One catchy question-led guide per review cycle from the approved slate, each through the publishing gate",
+        "Anti-slop rules applied to every page: voice, banned words, labelled generic art, labelled blanks"
+      ],
+      "needs": [
+        "D34-Q1",
+        "D34-Q2",
+        "D34-Q3"
+      ],
+      "unblocks": "A shopfront that reads as a publication, and an article rhythm that can earn organic visits.",
+      "cannot": "It cannot produce a ranking, a tested verdict, licensed photography, or evidence that anyone arrived.",
+      "cost": "Low · a build pass inside this repository, no new access",
+      "risk": "Low · it adds no new claims, and the disclosure and sponsored rules are already gated",
+      "basis": "google-page-experience",
+      "status": "Open · needs a brand + voice decision"
     }
   ],
   "design_prompt": {
@@ -1626,6 +1888,12 @@
         "heading": "Batch-2 directions (session e61f5735)",
         "text": "Add a which-one-is-for-you chooser above the comparison table and keep the comparison thumb-first on small screens, so a phone reader never silently loses a column. Refresh for real, sourced calendar moments instead of invented seasons, and make the verification method itself visible trust content: dated sources, stated limits, blanks left blank. Route social or video distribution through the same disclosure rule as the site. Keep topics chosen from measured first-party queries once they exist, never from instinct or imagined trends, and record every accepted suggestion as a dated decision with its evidence before anything is implemented.",
         "basis": "google-helpful"
+      },
+      {
+        "id": "d34-polish",
+        "heading": "12 · Polished affiliate shopfront (batch 3, session d3493182)",
+        "text": "Paste-ready prompt for a design tool or a designer. Build a polished affiliate shopfront that reads like a publication, not a register, using only facts already in the register. Front page, top to bottom: masthead with the disclosure directly underneath; a hero that names the reader's question (not a product claim); the five-product shortlist as cards, each with its original format illustration, the listing's own capacity wording, a two-sided fit note (fits you if / not for you if) and one sponsored call to action; a comparison table whose every cell is either sourced or visibly blank; the guide index as question-shaped cards; one restrained dated seasonal strip that states a calendar fact and links the guides that answer it; a footer directory that keeps every dashboard surface reachable. Category pages repeat the same card system. Guides keep one question per page, the evidence limit stated on the page, and related links to the comparison, a buying guide and the category pillar. Mobile first: readable type scale, 44-pixel tap targets, the comparison reachable without horizontal hunting. Voice: second person, plain verbs, short sentences; never use must-have, game-changer, obsessed, top-rated, we loved, In conclusion, countdowns, invented urgency, a fake expert, or any trending, best, number-one, price, rating or test claim the register does not hold. Images: labelled generic art only until a licensed-photo decision is recorded. Catchy working titles for the next guides (editorial hypotheses, not demand claims): Two baskets or one big one? What to compare before you buy. How many quarts is dinner for two — and for four? What does Hi-Fry actually promise on the label? Where does the probe go? Turkey, ham and roasts, checked the boring way. Counter-space math: measure before you believe the quart number. Is it done? Check the food, not the timer. Hosting season: make a shortlist before you buy. Instant-read or wireless: which questions matter first? Definition of done: the full release chain passes twice with a clean diff, every table row carries a dated official source or a labelled blank, no page loses its disclosure or sponsored links, and the page-experience baseline is re-measured and recorded.",
+        "basis": "google-page-experience"
       }
     ]
   },

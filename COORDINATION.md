@@ -8943,3 +8943,13 @@ Release record: PR [#181](https://github.com/kanlerxz87-cyber/Zone3/pull/181) me
 
 **Scope rule:** additive only. No existing product/intent/performance field, source row, guide, proposal, question, path or prompt block is edited or removed. New rows append. Generated HTML is produced only by `tools/publish.py`. No account, API, Search Console, hosting or analytics change. Choosing a suggestion never implements it.
 
+
+### D34 publish record — 2026-11-19
+
+**Verification (D34-1, done):** all five short links re-opened live; observed ASINs/titles/breadcrumbs unchanged from the register (one SHOP-04 title variant flagged, register title untouched). Agreement §§1/4/5/6, Policies 2(a)–(b), FTC Disclosures 101, Google helpful-content and outbound-link guidance re-read. Record: `sessions/d3493182/verification-2026-11-19.md`. Intent fields remain blank; FLG-003 unresolved; no price/rating transcribed.
+
+**Batch 3 (D34-2/D34-3, done, review-only):** `data/publication.json` appended additively — 6 proposals D34-P1…P6, 8 questions D34-Q1…Q8, path P34-P1 (sequence 6, not recommended, so the recommended-order note stays accurate), prompt block `d34-polish` (block 12). Meta re-verification scope extended to name this session. `DESIGN_PROMPT.md` §13 added; `README.md` counts updated (21 proposals / 6 paths / 32 questions / 12 blocks). Executive summary: `sessions/d3493182/executive-summary.md`. No existing row edited or removed; review round `review_b9008684` untouched.
+
+**Build:** `python3 tools/publish.py` **41/41 PASS**, run twice; second rebuild byte-identical (same 5 modified files + new session dir). Generated `suggestions/index.html` verified: "21 PROPOSALS, 32 OPEN QUESTIONS", "6 PATHS", "12-block design brief", all D34 IDs present, 40 answer fields (32 questions + 8 decision rows), disclosure present twice. Preview (`tools/preview.py`, port 3000): `/`, `/suggestions/`, `/guides/`, `/shop/` all 200.
+
+**Not claimed:** no traffic, ranking, demand, conversion or revenue figure; no new product fact; no decision recorded (review mode implements nothing); no account, API, Search Console, hosting or analytics change. Production measurement remains off.
