@@ -9004,3 +9004,62 @@ Claim note: the existing published publication and decision desk already cover t
 Completion record (2026-11-19): summary-strip totals, executive-brief date, product total, and campaign row count are generated from the publication and ledger registers; the decision-desk copy no longer has a hardcoded question count or malformed “a 11-block” phrase. Added a publication gate that compares all four visible totals against their registers. Verified by `python3 tools/publish.py` (all 41 build/check commands passed), including the new count-consistency gate. This is register consistency, not an independent verification of product/traffic facts; no external fact, account status, buyer intent, search demand, conversion or revenue claim was added.
 
 Release record: PR [#181](https://github.com/kanlerxz87-cyber/Zone3/pull/181) merged to `main` on 2026-11-19 at 12:46 UTC as `33e07a20ab97ce3f0608f30e50eaecca62d14c6c`. The GitHub Actions publication build, provenance, link and privacy check passed (31s), including deterministic checked-in build verification. GitHub Pages deployment run [44526961275](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44526961275) completed successfully: build, deploy, and report-build-status all passed. GitHub emitted a Node.js 20 deprecation warning for `actions/upload-artifact@v4`; it did not fail this deployment.
+
+---
+
+# Session d3493182 record — polished affiliate design suggestions, verification & executive summary (2026-11-19)
+
+**Repo:** `kanlerxz87-cyber/Zone3` · **Branch:** `arena/d3493182-zone3` (from `6eb8c18`) · **Live site:** https://kanlerxz87-cyber.github.io/Zone3/
+**Session ID:** `d3493182` · **Status:** in progress (claimed 2026-11-19)
+
+## Claim (committed + pushed before any feature work)
+
+| # | Task | Status | Owner | Files touched (scope) |
+| --- | --- | --- | --- | --- |
+| D34-1 | Verify the 5 submitted links line-by-line (redirect → ASIN/title/breadcrumb) + re-read official policy sources | in progress | `d3493182` | `sessions/d3493182/`, `data/publication.json` (meta reverify + additive batch only) |
+| D34-2 | Suggestions batch 3: polished-affiliate design prompt feed, catchy question-led article slate, organic-traffic playbook, decision aids, anti-slop rules — review-only, implements nothing | in progress | `d3493182` | `data/publication.json`, `DESIGN_PROMPT.md`, generated `suggestions/index.html` via `tools/publish.py` |
+| D34-3 | Decision-readiness questions batch 3 (known/missing/default/discovery/owner per row) + executive summary | in progress | `d3493182` | `data/publication.json`, `sessions/d3493182/executive-summary.md` |
+| D34-4 | Full rebuild + gates, preview check, PR → `main`, merge, confirm Pages deploy | pending | `d3493182` | git + `gh` only |
+
+**Scope rule:** additive only. No existing product/intent/performance field, source row, guide, proposal, question, path or prompt block is edited or removed. New rows append. Generated HTML is produced only by `tools/publish.py`. No account, API, Search Console, hosting or analytics change. Choosing a suggestion never implements it.
+
+
+### D34 publish record — 2026-11-19
+
+**Verification (D34-1, done):** all five short links re-opened live; observed ASINs/titles/breadcrumbs unchanged from the register (one SHOP-04 title variant flagged, register title untouched). Agreement §§1/4/5/6, Policies 2(a)–(b), FTC Disclosures 101, Google helpful-content and outbound-link guidance re-read. Record: `sessions/d3493182/verification-2026-11-19.md`. Intent fields remain blank; FLG-003 unresolved; no price/rating transcribed.
+
+**Batch 3 (D34-2/D34-3, done, review-only):** `data/publication.json` appended additively — 6 proposals D34-P1…P6, 8 questions D34-Q1…Q8, path P34-P1 (sequence 6, not recommended, so the recommended-order note stays accurate), prompt block `d34-polish` (block 12). Meta re-verification scope extended to name this session. `DESIGN_PROMPT.md` §13 added; `README.md` counts updated (21 proposals / 6 paths / 32 questions / 12 blocks). Executive summary: `sessions/d3493182/executive-summary.md`. No existing row edited or removed; review round `review_b9008684` untouched.
+
+**Build:** `python3 tools/publish.py` **41/41 PASS**, run twice; second rebuild byte-identical (same 5 modified files + new session dir). Generated `suggestions/index.html` verified: "21 PROPOSALS, 32 OPEN QUESTIONS", "6 PATHS", "12-block design brief", all D34 IDs present, 40 answer fields (32 questions + 8 decision rows), disclosure present twice. Preview (`tools/preview.py`, port 3000): `/`, `/suggestions/`, `/guides/`, `/shop/` all 200.
+
+**Not claimed:** no traffic, ranking, demand, conversion or revenue figure; no new product fact; no decision recorded (review mode implements nothing); no account, API, Search Console, hosting or analytics change. Production measurement remains off.
+
+## Part: session `cbbd4d8f` (2026-11-19) — final integration: publish cycle, PR, merge, Pages deploy
+
+> Append-only, per board convention. Nothing above this Part was edited. Branch: `arena/cbbd4d8f-zone3` (Arena pins a session to one branch; task IDs `C4D-…` replace per-task branch names). Base: `6eb8c18` (`main`, PR #178 merge; the publication state is live on Pages at claim time).
+
+> **Namespaces.** This session's task IDs use the `C4D-…` prefix. They are not the same items as earlier sessions' IDs.
+
+### C4D Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `cbbd4d8f` | `arena/cbbd4d8f-zone3` | Final integration: full canonical rebuild, release gates, PR to `main`, merge without waiting for review, GitHub Pages deploy confirmation, publish record | in progress (C4D-T1) | 2026-11-19 |
+
+### C4D Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| C4D-T1 — Claim, baseline gate run, repo review of current reader surfaces | in progress | `cbbd4d8f` | `COORDINATION.md` (this claim only); no source edits | `tools/publish.py --check` 25/25 PASS; full build 41/41 PASS; live fetch of `https://kanlerxz87-cyber.github.io/Zone3/` | none |
+| C4D-T2 — Full canonical rebuild + all release gates (idempotent) | unclaimed | `cbbd4d8f` | generated outputs via `tools/publish.py` only | gates in `tools/publish.py` | none |
+| C4D-T3 — PR to `main`, merge without waiting, Pages deploy verification | unclaimed | `cbbd4d8f` | git + `gh` only | GitHub PR/Pages APIs | none |
+
+### C4D Scope rules
+
+- Additive claim only: this session edits `COORDINATION.md` to record the claim and the publish result; it rewrites no source, data, page, script or CSS file. The canonical publication renderer (`tools/build_publication.py`, `tools/check_publication.py`, `data/publication.json`) carries no live non-stale claim, so no regeneration beyond the idempotent build is needed.
+- The build is already idempotent (`git status --porcelain` empty after `tools/publish.py`). If a future edit is required, it is made on this branch only, then `tools/publish.py` is re-run and `git diff --exit-code` must be clean.
+- No traffic, ranking, demand, conversion or revenue figure; no new product fact; no price/rating/popularity claim; no account, API, Search Console or hosting change. `FLG-003` (submitted short-link compliance) stays unresolved; the short links are not called invalid. Production measurement remains off.
+
+### C4D Coordination check before claiming
+
+No other session has a live non-stale claim on `tools/build_publication.py`, `tools/publication_chrome.py`, `tools/check_publication.py` or `data/publication.json`. Earlier `in progress` rows (0c4c4cb6, 66964850, c3be74f2, 5b443d02, 3c886b62) are historical records; none edits the canonical renderer today.

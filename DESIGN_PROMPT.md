@@ -162,3 +162,55 @@ It takes no position on the sixteen open questions in the decision-readiness reg
 | this file | the rails R1–R12, the component table, the measured inventory, and a definition of done keyed to the gates as they run today | any colour, name or copy it invented |
 
 Where they disagree, the rails win, because the rails are the ones with a source.
+
+---
+
+## 13. Batch 3 — polished affiliate shopfront (session d3493182, 2026-11-19)
+
+Review-only proposals D34-P1…P6, questions D34-Q1…Q8, path P34-P1 and prompt block 12 on
+[`suggestions/index.html`](suggestions/index.html). Nothing here is implemented by reading it.
+Each line below quotes the official clause it rests on; where it needs an answer, it names the
+question.
+
+- **The shopfront job.** Front page, top to bottom: masthead with the disclosure directly
+  underneath; a hero that names the reader's question; the five-product shortlist as cards
+  (format illustration, listing capacity wording, two-sided fit note, one sponsored call to
+  action); a comparison table whose every cell is sourced or visibly blank; the guide index as
+  question-shaped cards; one restrained dated seasonal strip; a footer directory. Basis:
+  [Google: understanding page experience](https://developers.google.com/search/docs/appearance/page-experience)
+  (overall great page experience, not one or two aspects). Needs D34-Q1 (brand promise) and
+  D34-Q2 (per-page goal) before any build.
+- **The article slate.** One catchy question-led guide per review cycle, each through the same
+  publishing gate. Working titles (editorial hypotheses, never demand claims): "Two baskets or
+  one big one? What to compare before you buy." · "How many quarts is dinner for two — and for
+  four?" · "What does 'Hi-Fry' actually promise on the label?" · "Where does the probe go?
+  Turkey, ham and roasts, checked the boring way." · "Counter-space math: measure before you
+  believe the quart number." · "Is it done? Check the food, not the timer." · "Hosting season:
+  make a shortlist before you buy." · "Instant-read or wireless: which questions matter first?"
+  Basis: [Google: creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
+  — "Are you writing about things simply because they seem trending?" is a warning sign, so no
+  title is ever described as trending, popular or searched-for. Needs D34-Q5 (cluster map).
+- **Findability discipline.** One canonical home, question-shaped titles, internal links from
+  two existing guides, sitemap and RSS entry for every new guide. Basis:
+  [Google: canonical URL methods](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+  (signals, not guarantees). Needs a verified Search Console property and a dated query report
+  (P26-Q4) before topic choice follows demand.
+- **Decision aids, not verdicts.** Question router, fit notes, comparison table, checklists —
+  every aid a question, never a score. Basis:
+  [Google: write high quality reviews](https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews)
+  (original evidence, user perspective, support for best-in-class claims). Needs D34-Q6
+  (measured engagement per aid).
+- **Anti-slop rules.** Second person, plain verbs, short sentences; never must-have,
+  game-changer, obsessed, top-rated, we loved, In conclusion, countdowns, invented urgency, a
+  fake expert, or any trending/best/price/rating/test claim the register does not hold. Labelled
+  generic art only until a licensed-photo decision is recorded (E61-Q2). Basis: Google helpful
+  content self-assessment (original information, insight beyond the obvious, descriptive titles
+  without exaggeration). Needs D34-Q3 (voice approval).
+- **Written success definition.** Queries, pages, outbound clicks and a review date, recorded
+  before any optimization is automated. Basis: Agreement §4 (Amazon makes no traffic or income
+  representation) and [Google: get started with Search Console](https://developers.google.com/search/docs/monitor-debug/search-console-start).
+  Needs E61-Q1, P26-Q4, P26-Q5.
+- **What this batch deliberately does not decide.** The brand promise (D34-Q1), per-page goal
+  (D34-Q2), voice list (D34-Q3), reader capture (D34-Q4), cluster map (D34-Q5), aid priority
+  (D34-Q6), catalogue minimum (D34-Q7) and polish baseline (D34-Q8) — because a design brief
+  cannot answer those, and pretending otherwise is how an unverified assumption becomes a layout.
