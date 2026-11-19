@@ -114,7 +114,7 @@ def page(reg: dict) -> str:
   </div>
 </header>
 <main id="main" class="wrap">
-<p class="eyebrow">Re-measured 2026-11-19 (session 8aa259bb, branch arena/8aa259bb-zone3) · first measured 2026-11-17 (branch arena/38650305-zone3)</p>
+<p class="eyebrow">Re-measured 2026-11-19 (sessions 8aa259bb and cdb0a5ac, merged) · first measured 2026-11-17 (branch arena/38650305-zone3)</p>
 <h1>The brief's rows, next to what this site shows</h1>
 <p class="lede">The brief lists status labels for S-04 to S-25 and names SG-27 to SG-30. Several of those labels cannot be matched to anything in this repository. This page keeps the two columns apart: what the brief says, and what was measured here. It does not copy one into the other.</p>
 <p><strong>Counts:</strong> {summary}</p>

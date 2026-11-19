@@ -1,6 +1,6 @@
 # Zone3 Kitchen
 
-A buyer-first kitchen publication: five source-linked product introductions, eight practical
+A buyer-first kitchen publication: five source-linked product introductions, nine practical
 question-led guides, and a separate review/research workspace. Plain HTML, CSS and JavaScript;
 no third-party front-end dependency, scraped product imagery or invented reviewer.
 
@@ -35,7 +35,7 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
 ## Current publication ownership
 
 - **Content and dates:** [`data/publication.json`](data/publication.json). It contains five dated
-  redirect/title observations, eight guides, fifteen scoped official references, twenty-six proposals
+  redirect/title observations, nine guides, sixteen scoped official references, twenty-six proposals
   in four batches (P26-S foundations, E61-P trust/imagery/seasonal/UX/distribution/catalogue, D34-P
   polished shopfront/article slate/findability/decision aids/voice/success definition, B38-P
   voice-lint/evidence-badges/slate/cadence/FAQ-correction), six decision paths and thirty-six
@@ -50,8 +50,8 @@ advisories remain explicitly published as [C3-F-01](flagged.html#C3-F-01).
   the masthead and repeated in the footer. All dashboards stay accessible through one **Behind
   the site** group and the footer directory. The previous C3/C17 shopper edition is retained at
   [`publication-prior.html`](publication-prior.html), not silently discarded.
-- **Findability:** 16 canonical reader URLs in the sitemap; eight question-led guides; local search;
-  26 RSS entries retaining the other editorial desks. Research/duplicate editions remain reachable
+- **Findability:** 17 canonical reader URLs in the sitemap; nine question-led guides; local search;
+  27 RSS entries retaining the other editorial desks. Research/duplicate editions remain reachable
   with their own canonical URL and `noindex,follow`, rather than competing as new front doors.
   One guide review every 14 days is an operating plan, not a demand or ranking claim.
 - **Art and authorship:** labelled generated kitchen context and original generic format diagrams,
