@@ -2171,6 +2171,17 @@
       "sources": [
         "S02"
       ]
+    },
+    {
+      "id": "B79-F-04",
+      "severity": "High",
+      "category": "Owner input hygiene",
+      "item": "Two errors in how the five product links were supplied: one token was truncated, and every link is pasted from a page path that can break",
+      "detail": "Reproduced from the owner's own messages rather than inferred. (1) The first message gives 'https://link.amazon/B04G1MEwY'; a later list of the same five links gives 'https://link.amazon/B04G' - the token is three characters short. A truncated short link cannot resolve to any listing and would show a reader an Amazon error page if it were ever built into a button. It was not used: every rendered button uses the five complete links recorded in data/shop/products.json. (2) The same message pastes http://COORDINATION.md and http://ENGINE.md - local file names rather than URLs - and links to a different repository (kanlerxz87-cyber/Zone4) for the S-04, S-05, S-09 to S-17 decision records. No Zone4 page could be read from this repository, so those decisions are re-assessed from the code and the official sources here rather than cited from Zone4. (3) Several URLs in that message wrap across lines (for example a Google snippet link split before 'creating-helpful-content'), which is how a working URL can accidentally be copied as a broken one. Flagged because a reader-facing button built from a pasted, wrapped URL is a silent money-losing defect.",
+      "action": "When supplying or updating product links, paste the full link on one line from the Associates dashboard. Do not shorten, retype or re-wrap them; the site copies the exact string it is given.",
+      "sources": [
+        "S02"
+      ]
     }
   ]
 }
