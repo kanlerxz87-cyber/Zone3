@@ -9518,3 +9518,25 @@ The first `git pull --rebase origin main` fetched `2a854c1` and stopped on an ap
 The merged register after PR #194 has 16 scoped official references, 9 guides, 26 proposals, 36 decision-readiness questions, 13 design-prompt blocks, 6 paths, 17 indexable URLs and 27 RSS entries. PR #181 made executive-brief counts register-driven; PR #190 and PR #194 added guide/register batches. This session reconciles only the current-status opening of the root Markdown summary and preserves the full dated CDB, 6b and earlier history. PR #191/#193/#194 coordination records are retained.
 
 **Release status:** PR [#196](https://github.com/kanlerxz87-cyber/Zone3/pull/196) merged at `2026-11-19T13:32:02Z` as `1623c1c2b6c4b04d526130a316dd6d9344985bdd`; publication check `44534254715` passed and GitHub Pages reported `built` at `2026-11-19T13:32:31Z`. Cache-busted live read-back at `?revision=1623c1c` confirmed the current brief, nine-guide index and probe guide, and 17-URL sitemap. PR #160 and #157 remain open and out of scope. Account, owner-intent, reporting and commercial-hosting questions remain unverified or owner/platform-dependent.
+
+
+# Part 94b8d476 — buyer-first publication and decision-readiness review (2026-11-19)
+
+## Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `94b8d476` | `arena/94b8d476-zone3` | Audit the current publication against the user's affiliate-site brief; produce a sourced decision-readiness review and prioritized recommendations without duplicating existing desk entries or changing unresolved product/link facts. | in progress | 2026-11-19 |
+
+## Task board
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| 94B-T1 — Read the coordination board, register this scope, and check overlapping open PRs | in progress | `94b8d476` | this Part of `COORDINATION.md` | board read; current branch `0273fb4`; PRs #157, #160, #192, #198 inspected | Open PR #192 is recent and touches `suggestions/index.html` plus reader-facing surfaces; #160 and #157 remain open and touch the design/decision registers. Those files are read-only for this pass. |
+| 94B-T2 — Map the current site and evidence to the user's request; identify only genuinely unresolved choices | unclaimed | `94b8d476` | `sessions/94b8d476/**` | current publication register, shipped pages, dated evidence already in the repository | — |
+| 94B-T3 — Write a prioritized, source-linked executive review with known / unknown / discovery / safe-default fields | unclaimed | `94b8d476` | `sessions/94b8d476/**` | same-day repository records; no external fact is upgraded without a live official-source read | — |
+| 94B-T4 — Record cross-scope requests if a real site change is blocked by an open session; run read-only release gates and close out | unclaimed | `94b8d476` | this Part of `COORDINATION.md`; `sessions/94b8d476/**` | open-PR file lists; canonical checks | — |
+
+### Scope boundary
+
+This session works on the fixed Arena branch `arena/94b8d476-zone3`. Its initial write scope is limited to this Part of `COORDINATION.md` and `sessions/94b8d476/**`. The current Suggestions & Decisions page, design prompt, publication register, generated pages, product/link records, and navigation are read-only unless a later coordination note records a non-conflicting, explicitly approved scope change. Existing content is not duplicated merely to create more suggestions.
