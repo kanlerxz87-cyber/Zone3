@@ -5,7 +5,7 @@
 
 ## What changed
 
-Zone3’s root page has been redesigned as a publication front page rather than an audit dashboard. It now leads with a shopper-facing editorial promise, organized product shelves, question-led guides, and a clear path to compare listings. Three air-fryer listings are featured first; two meat-thermometer listings remain in a separate category because they are outside the air-fryer guide scope. The design uses responsive, CSS-only editorial artwork rather than unsupported product images.
+Zone3’s root page has been redesigned as a publication front page rather than an audit dashboard. It leads with a shopper-facing editorial promise, organized product shelves, question-led guides, and a clear path to compare listings. Three air-fryer listings are featured first; two meat-thermometer listings remain in a separate category because they are outside the air-fryer guide scope. The shop-first layout composes over PR #164’s source-linked question/decision layer and uses its abstract editorial illustration—not a product photo.
 
 A single **Research & site tools** dropdown and the existing grouped footer retain access to dashboards, compliance, sources, flags, suggestions, decisions, measurement, the sitemap, and the feed. The home page now surfaces the existing suggestions page, decision queue, known/open questions, and flagged-items register so proposals can be reviewed before implementation.
 

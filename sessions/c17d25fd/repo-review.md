@@ -9,7 +9,7 @@
 
 The repository already contains the underlying product register, four question-led air-fryer guides, an article hub, an executive summary, a reviewable suggestions page, a decision queue, an open-questions page, a flagged-items register, a sitemap, an RSS feed, a measurement implementation, and an empty campaign ledger. The root page had these elements but its presentation led with the verification procedure and read more like a source register than a buyer-facing publication.
 
-This session reworked the root page as a warmer editorial shopfront: a buyer-question hero, a three-listing air-fryer shelf, a separate two-listing meat-thermometer category, guide cards, and a review section linking directly to Suggestions, Decisions, Known Facts & Open Questions, and Flagged Items. Abstract CSS illustrations are used instead of product photos; no new product imagery or product-content data was added. The short top navigation now has five reader routes and one **Research & site tools** disclosure group generated from the same canonical links as the footer. The footer continues to provide the grouped dashboard and publication links.
+This session first built a warmer editorial shopfront, then integrated it with PR #164 (session c3be74f2), which merged to `main` while this branch was being completed. The integration keeps the main-branch C3 provenance handoff and flag while making the root page product-first: a buyer-question hero, a three-listing air-fryer shelf, a separate two-listing meat-thermometer category, guide cards, a source-linked decision table, and a review section linking directly to Suggestions, Decisions, Known Facts & Open Questions, and Flagged Items. Product cards now link separately to the supplied link and the observed official listing, with the unconfirmed intent/attribution status stated nearby. The hero uses C3’s abstract editorial illustration, not a product photo; this session added no product imagery or product-content data. The short top navigation has five reader routes and one **Research & site tools** dropdown generated from the same canonical links as the footer. The footer continues to provide the grouped dashboard and publication links. The C17 generator is a post-pass after the C3 generator; neither C3-owned files nor its `C3-F-01` register row were edited.
 
 All five product CTAs retain the supplied Amazon short URLs. Each has `rel="sponsored"` and a visible **Sponsored** label. The page states that the intended-product match and affiliate attribution are not yet confirmed, and links to the separate product-intent record. No observed destination was copied into an intended-ASIN field. No price, availability, rating, review count, popularity/trend claim, personal product experience, conversion claim, or revenue forecast was added.
 
@@ -45,14 +45,14 @@ These remain open because the available public/repository evidence cannot answer
 - **Not a new finding:** the public page keeps the submitted short-link CTAs rather than switching to the prepared tagged direct links. The repository records those prepared Special Links as pending an enrolled-account test; the tracking ID’s account assignment is unvalidated. See [FLG-003](https://kanlerxz87-cyber.github.io/Zone3/flagged.html#FLG-003), the product-intent record, and the Special Links register. No claim that the submitted short links are invalid is made.
 - **Not a new finding:** all five intended ASIN fields remain blank. Displayed product names and categories describe observed destination listings, not confirmation that those were the intended products.
 - **Measurement is not live:** event code and privacy tests exist, but the endpoint is not deployed and the generated configuration disables sending by design.
-- The site-wide `verify_site.py` run reports **532 advisory items inherited from earlier pages** (non-blocking); its required checks pass. `cba81fa5_lint.py` reports **0 new findings and 22 inherited advisory findings**. They are outside this session’s scope and were not silently suppressed.
+- After integration with PR #164, the site-wide `verify_site.py` run reports **533 advisory items inherited from earlier pages** (non-blocking); its required checks pass. This includes the preserved C3-F-01 provenance flag. `cba81fa5_lint.py` reports **0 new findings and 22 inherited advisory findings**. They are outside this session’s scope and were not silently suppressed.
 
 ## Gates run after the page build
 
 | Gate | Result |
 |---|---|
-| `python3 scripts/check_site.py` | PASS — 42 pages, 5 products, 83 sources, 148 flags |
-| `python3 tools/verify_site.py` | PASS — 152 pages, 2,517 table rows; required provenance/link checks pass; 532 inherited advisories noted above |
+| `python3 scripts/check_site.py` | PASS — 42 pages, 5 products, 83 sources, 149 flags |
+| `python3 tools/verify_site.py` | PASS — 152 pages, 2,523 table rows; 2,141 rows with official sources, 420 flagged, 117 repository-anchored; 533 inherited advisories noted above |
 | `python3 tools/link_report.py --strict` | PASS — exit 0 |
 | `python3 tools/i2_gate.py` | PASS — 20 pages; disclosure, sponsored, row-provenance and prohibited-construct checks pass |
 | `python3 tools/cba81fa5_lint.py` | PASS — 0 new, 22 inherited advisory findings |

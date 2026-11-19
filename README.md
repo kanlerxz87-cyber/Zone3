@@ -138,8 +138,10 @@ python3 scripts/build_marketing.py         # marketing/*.html (ded63349: re-adde
 python3 scripts/build_read.py              # read/ editorial layer (ded63349: re-added to the chain)
 python3 scripts/build_5a56c084.py          # articles/ research desk (ded63349: re-added to the chain)
 python3 tools/build_site.py                # second audit pass — picks up pages created by the layers above (ded63349)
-python3 sessions/aebf0747/build_pass.py         # publication front page, /guides/ pages, their feed draft (writes feed.xml; next step supersedes it)
-python3 sessions/aebf0747/publish_pass.py       # mechanical pass: disclosure strip, sponsored rel, head links (markers; idempotent)
+python3 sessions/aebf0747/build_pass.py         # publication pages + guide pages (writes an initial feed draft)
+python3 sessions/aebf0747/publish_pass.py       # mechanical pass: disclosure strip, footer, sponsored rel and head links
+python3 sessions/c3be74f2/build_front_page.py   # source-linked buyer questions, observed listings and decision table (PR #164; idempotent)
+python3 sessions/c17d25fd/build_shopfront.py    # product-first publication layout composed over the C3 evidence/decision layer (this session; idempotent)
 python3 tools/measure_pass.py              # analytics script tags on every published page (markers; idempotent; session 38650305)
 python3 tools/build_feed.py               # feed.xml = UNION of both guide registers; runs after every HTML generator, --check gates drift (session 82372fd1)
 python3 scripts/mark_sponsored.py         # rel="sponsored" on every outbound product link, whole tree incl. sessions/ (0C4-T3; added to the chain by session 66964850 after the PR #161 union — without it check_site rule 10 fails on regenerated session pages)

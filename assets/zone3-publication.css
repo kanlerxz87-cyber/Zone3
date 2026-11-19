@@ -200,3 +200,12 @@ table.z3-table code{font-size:13px;background:#f3f1ea;padding:1px 4px;border-rad
 }
 @media(prefers-reduced-motion:reduce){.z3-product-card{transition:none}.z3-product-card:hover{transform:none}}
 .z3-sponsored-chip{color:#6f6a5b;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.z3-product-card__source{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin:0 17px 16px;padding-top:10px;border-top:1px solid #eeece5}
+.z3-product-card__source>a:first-child{color:#506552;font-size:11px;font-weight:700;text-decoration:none}
+.z3-product-card__source>a:first-child:hover{text-decoration:underline;text-underline-offset:3px}
+.z3-product-card__source .z3-record-link{font-size:11px}
+.z3-decision-table{min-width:720px}
+.z3-home-decision .z3-table th{white-space:normal}
+.z3-home-hero__image{max-width:none}
+.z3-home-hero__image img{display:block;width:100%;aspect-ratio:1.24;object-fit:cover;border-radius:6px}
+.z3-home-hero__image figcaption{position:relative;color:#4d5e68;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-top:12px}
