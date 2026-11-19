@@ -1,9 +1,9 @@
 {
  "retrieved": "2026-11-17",
- "session": "4f83ee7b; extended 2026-11-17 by 0c4c4cb6 (SUG-11..15, Q1 answer, SUG-05 unblocked; additive); register rows from ed27e766 (PR #157) merged 2026-11-19 by ee10b024 (VB/SUG id remaps recorded in COORDINATION.md Part ee10b024)",
- "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log. MERGE (2026-11-17): session cbb03ec7 added CBB-SUG-01..04 and the brief's parallel-pass rows SG-27..SG-30 (nav labels, RSS feed, Search Console, reader capture) as proposals only; nothing on this page is implemented by that session either. || 0c4c4cb6: Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log. MERGE (2026-11-19, session ee10b024): PR #157's refresh applied where it changed rows main had not changed (VB-1, VB-2, Q1-Q12 refreshes, review_2026_11_17_ed27e766); PR rows whose ids collided with different main rows were re-identified: theirs' VB-3/VB-4/VB-5/VB-6 topics -> VB-7/VB-8/VB-9 where genuinely new (VB-3 disclosure covered by main's VB-4), theirs' SUG-11/SUG-12/SUG-13 -> SUG-16/SUG-17/SUG-18. Nothing from either side deleted.",
+ "session": "4f83ee7b; extended 2026-11-17 by 0c4c4cb6 (SUG-11..15, Q1 answer, SUG-05 unblocked; additive); register rows from ed27e766 (PR #157) merged 2026-11-19 by ee10b024 (VB/SUG id remaps recorded in COORDINATION.md Part ee10b024); PR #160 (0b2ffabd) rows merged 2026-11-19 by ee10b024 with id remap SUG-11..14→SUG-19..22, Q13..Q16→Q15..Q18 (main had claimed the earlier ids); D11..D14 and review_2026_11_17b added as-is",
+ "note": "Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log. MERGE (2026-11-17): session cbb03ec7 added CBB-SUG-01..04 and the brief's parallel-pass rows SG-27..SG-30 (nav labels, RSS feed, Search Console, reader capture) as proposals only; nothing on this page is implemented by that session either. || 0c4c4cb6: Design and marketing SUGGESTIONS for making this site read like a polished marketing affiliate website, plus the questions that must be answered before any of them is implemented. Every row that states a fact carries an official source ID from data/sources.json; every row that is a proposal is labelled as a proposal and is not a verified fact. Nothing unverified is inferred or filled in: where a value cannot be confirmed from an official source it is left blank and flagged. Suggestions here were published for review and decision by session 4f83ee7b (2026-11-15). Session 5a56c084 (2026-11-16) recorded a decision per proposal in its 'implementation' field and rendered it in the Decision log; only unblocked proposals were implemented, blocked ones stay blocked, and open questions Q1-Q10 remain for the owner. MERGE (2026-11-16): session f132f462 independently recorded decisions on SUG-01, SUG-04 and SUG-08 and implemented its own versions of those proposals; both sessions' decision records are kept as a list per proposal. Status moves to 'accepted' once any decision is recorded. The two sessions' implementations are separate builds that were merged additively; where they overlap on the same page, the merged generator renders both records in the Decision log. MERGE (2026-11-19, session ee10b024): PR #157's refresh applied where it changed rows main had not changed (VB-1, VB-2, Q1-Q12 refreshes, review_2026_11_17_ed27e766); PR rows whose ids collided with different main rows were re-identified: theirs' VB-3/VB-4/VB-5/VB-6 topics -> VB-7/VB-8/VB-9 where genuinely new (VB-3 disclosure covered by main's VB-4), theirs' SUG-11/SUG-12/SUG-13 -> SUG-16/SUG-17/SUG-18. Nothing from either side deleted. MERGE (2026-11-19, session ee10b024): PR #160's decision-readiness ledger landed as review_2026_11_17b, proposals SUG-19..SUG-22, questions Q15..Q18 and discovery actions D11..D14; its source citations were re-pointed S91→S95, S92→S96, S93→S97 after later sessions claimed S91..S94 (remap recorded in COORDINATION.md Part ee10b024).",
  "statuses": {
-  "proposed": "Published here for review. Not implemented. Implementation starts only after a decision is recorded.",
+  "proposed": "Published here for review. Not implemented. Implementation starts only after a decision is recorded. SUG-19 to SUG-22 (added 2026-11-17) are in this state.",
   "blocked": "Cannot proceed until a specific verified prerequisite or owner input exists. The blocker is named in the row."
  },
  "verified_basis": [
@@ -21,7 +21,17 @@
     "SH-S12",
     "SH-S13",
     "SH-S14",
-    "SH-S15"
+    "SH-S15",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S52",
+    "S53",
+    "S54",
+    "S55"
    ],
    "note": "Observed destination and intended ASIN are disjoint fields. All five intended fields remain blank; do not infer identity from a redirect.",
    "repo": "data/shop/products.json"
@@ -31,7 +41,9 @@
    "item": "ASIN identifier shape",
    "value": "The Creators API GetItems reference defines ASIN as a 10-character alphanumeric identifier. The five submitted tokens are 9 characters each; that shape check alone does not decide whether a submitted short link is compliant.",
    "source": [
-    "SH-S03"
+    "SH-S03",
+    "S06",
+    "S45"
    ],
    "note": "The exact compliance status of the submitted short links remains unresolved (FLG-003); do not call them invalid.",
    "repo": "data/shop/products.json"
@@ -841,6 +853,99 @@
    ],
    "status": "proposed",
    "blocker": "The reviewer, Search Console property and data window are not established. The 14-day setting is a proposal, not an owner-approved commitment."
+  },
+  {
+   "id": "SUG-19",
+   "title": "Sitemap and head hygiene that a crawler can verify, not imitate",
+   "what": "Three mechanical edits, no copy involved: give every listed page a <lastmod> taken from its own last git commit date; drop 404.html and the meta-refresh stubs from the URL set the sitemap publishes; and make the head block identical in shape across the six reader surfaces (title, description, canonical, og:title/og:description/og:image, one JSON-LD block). Measured today: 101 sitemap URLs with 0 lastmod, canonical on 102 of 136 pages, og:image and JSON-LD on 11 of 136 (all of read/).",
+   "why": "A polished site and an audit site look the same to a crawler; the difference is in the head. Google's sitemap guidance is explicit that lastmod counts only when it is 'consistently and verifiably' accurate, so a build-time date would be worse than none and a git date is the verifiable one. Google also ignores priority and changefreq, so nothing is lost by not adding them.",
+   "compliance": [
+    {
+     "text": "Google: 'Include the URLs in your sitemap that you want to see in Google's search results.' and 'Google uses the <lastmod> value if it's consistently and verifiably (for example by comparing to the last modification of the page) accurate.' and 'Google ignores <priority> and <changefreq> values.'",
+     "source": [
+      "S96"
+     ]
+    },
+    {
+     "text": "Google: 'Identical or similar descriptions on every page of a site aren't helpful when individual pages appear in search results' - which the register's measured title and description audit already satisfies (0 missing, 0 under 60 characters, one duplicate on the redirect stubs).",
+     "source": [
+      "S95"
+     ]
+    }
+   ],
+   "blocker": "Two generators write sitemap.xml (scripts/build_sitemap.py and tools/build_site.py), so the fix is one owner, not one edit - see flag G0B2-F-06.",
+   "implementation": [],
+   "status": "proposed",
+   "prompt_ref": "DESIGN_PROMPT.md"
+  },
+  {
+   "id": "SUG-20",
+   "title": "One social card per reader surface, drawn only from this site's own artwork",
+   "what": "Publish a 1200x630 preview card per reader surface and reference it from og:image and twitter:card on every reader page. The card is typographic: the guide's question, the site name, and the 'checked against the listing' date - the same three things the page leads with. No product photography, no Amazon imagery, no generated picture of a product.",
+   "why": "A shared link is the only marketing channel that costs nothing here, and it currently shows a title and nothing else on five of the six surfaces (measured: og:image on 11 of 136 pages, all read/). A typographic card also happens to be the honest one: the site has no right to display Amazon's images, and it has not tested a single product, so an invented 'lifestyle' shot would be the exact tell the owner asked to remove.",
+   "compliance": [
+    {
+     "text": "Program Content (which includes the listing's images and text) may not be copied onto the Site; the site's own gate enforces it - verify_site V6 fails any <img> whose src is an Amazon asset or CDN host.",
+     "source": [
+      "S01",
+      "S02"
+     ]
+    },
+    {
+     "text": "S-18 in the owner's own list ('add real product photography, and never generated or copied photography') is recorded as 'Needs a decision first' - so this suggestion ships without photography, and keeps the photography question open rather than answering it with a generated image.",
+     "source": []
+    }
+   ],
+   "implementation": [],
+   "status": "proposed",
+   "prompt_ref": "DESIGN_PROMPT.md"
+  },
+  {
+   "id": "SUG-21",
+   "title": "Aggregate-only click measurement, so the reporting half of the design is legal to build",
+   "what": "A per-page outbound click counter (static, first-party, no cookies, no user identifier) next to the existing dated register, and a rule written into the campaign ledger: sub-tags and Associates reporting are never associated with a specific end user. Segment by page, guide and date - never by visitor.",
+   "why": "This is the gate that decides how far the 'conversion-ready' redesign can go. The owner brief asks for click and conversion measurement; Amazon's clause says a site may not dynamically assign sub-tags to users or tie program reporting to an individual. Aggregate counts are allowed, per-person attribution is not, and a marketing redesign that quietly adds the second one is worse than no redesign. Measured today against that layer: its store is per UTC day, per event, per page path, per link host and token - a count and nothing else, no IP address, user agent, referrer or client-supplied date - which is what the aggregate rule asks for, and it stays compatible with Participation Requirements 2(b)'s ban on tying program reporting to a specific end user (PF-58).",
+   "compliance": [
+    {
+     "text": "'Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).' - read verbatim 2026-11-17.",
+     "source": [
+      "S80"
+     ]
+    },
+    {
+     "text": "'You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.' - PF-33.",
+     "source": [
+      "S02"
+     ]
+    }
+   ],
+   "implementation": [],
+   "status": "proposed",
+   "prompt_ref": "DESIGN_PROMPT.md",
+   "blocker": "Nothing to build, in fact: a privacy-preserving collector and an off-by-default counter already exist in this repository (tools/analytics_endpoint.py, assets/measure.js, site/measure.html, built by session 38650305 / ded63349, self-test passing, counting OFF until an endpoint_url is set). What waits is owner-side: host the collector, and confirm or replace the five event names it proposes. No counter, no analytics script and no event vocabulary is added by this proposal."
+  },
+  {
+   "id": "SUG-22",
+   "title": "Make 'checked date + source' the visual signature instead of urgency",
+   "what": "One badge style, used everywhere: 'Checked 17 Nov 2026 - from the listing'. It sits on every product card, guide header and comparison row, links to the dated source register row, and ages visibly. Paired with this, the layout can afford to be confident and quiet: one serif display face for the questions, a wide measure, generous whitespace, no countdown, no 'deal ends', no animated carousel.",
+   "why": "This is the cheapest available answer to 'it must not read like AI slop'. Generic affiliate pages buy attention with urgency and manufactured specificity ('limited time!', 'our top pick'). This site's real asset is the opposite: every claim has a date and a source, which is also the only kind of specificity the rules leave available while there is no API feed and no first-hand testing. The badge is marketing because it is a promise a competitor cannot copy without doing the work.",
+   "compliance": [
+    {
+     "text": "'You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.' - read verbatim 2026-11-17, so a countdown widget needs an owner and a dated check before it can exist.",
+     "source": [
+      "S80"
+     ]
+    },
+    {
+     "text": "'You can't talk about your experience with a product you haven't tried.' - so the badge dates the source, never the reviewer.",
+     "source": [
+      "S07"
+     ]
+    }
+   ],
+   "implementation": [],
+   "status": "proposed",
+   "prompt_ref": "DESIGN_PROMPT.md"
   }
  ],
  "questions": [
@@ -850,7 +955,8 @@
    "what_we_know": "The repository records shopnow047c-20 as the value supplied by the requester; it does not verify account ownership, marketplace association or attribution.",
    "source": [
     "SH-S01",
-    "SH-S02"
+    "SH-S02",
+    "S02"
    ],
    "what_we_dont_know": "UPDATE 2026-11-17 (session 92988cd8): the owner supplied a Tracking ID in the brief. Its value is recorded in COORDINATION.md, Part session 92988cd8, and deliberately not stored in data files or pages -- this register's own rule for Q1 is to record owner answers in the coordination log and keep the tag out of public files. Still unknown: whether the tag is registered to an approved Associates account, whether the account is approved, and whether the marketplace matches (Schedule 1 lists the United States / amazon.com only, S01). No public page can settle any of that. || UPDATE 2026-11-17 (session 0c4c4cb6): the value is also recorded in data/special-links.json and is carried by the five published Special Links on products.html — a Special Link without the tag cannot earn, so the brief's instruction to build the links requires it to appear in the href. Still unknown: whether each link's click reports in Associates Central (0C4-F-04).",
    "why_it_matters": "Without a tested Special Link, the site cannot claim tracked commissions or scale rewritten product links.",
@@ -869,7 +975,14 @@
     "SH-S12",
     "SH-S13",
     "SH-S14",
-    "SH-S15"
+    "SH-S15",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S55"
    ],
    "what_we_dont_know": "The requester’s intended ASIN and official listing URL for each of the five links. All five intended fields are blank.",
    "why_it_matters": "A correct redirect observation does not prove the product is the one requested; every recommendation, guide and product CTA depends on intended identity.",
@@ -886,7 +999,8 @@
     "SH-S12",
     "SH-S13",
     "SH-S14",
-    "SH-S15"
+    "SH-S15",
+    "S01"
    ],
    "what_we_dont_know": "The intended audience geography, supported marketplace(s), language and whether the site should remain US-only.",
    "why_it_matters": "Product availability, links, terms and commission schedules depend on the selected marketplace; the requester’s physical location is not evidence of target audience.",
@@ -912,7 +1026,8 @@
    "question": "Who is the named human editor, and what publishing cadence can they sustain?",
    "what_we_know": "Question-shaped guides, a feed and sitemap build path exist. No named human reviewer is recorded. A 14-day cadence has appeared as a proposal, not an owner-approved schedule.",
    "source": [
-    "S07"
+    "S07",
+    "S01"
    ],
    "what_we_dont_know": "The reviewer’s real name, authority, review time and adopted cadence.",
    "why_it_matters": "Authorship and human review cannot be generated by code; without a real reviewer, a byline or “tested” language would mislead.",
@@ -937,7 +1052,8 @@
    "question": "Which publisher name, voice and visual identity should be canonical?",
    "what_we_know": "Current pages use several working identities, including Zone3, Zone3 Kitchen, Air Fryer Field Notes and The Crisp Report. A final brand choice is not recorded.",
    "source": [
-    "S02"
+    "S02",
+    "S01"
    ],
    "what_we_dont_know": "The chosen publisher name, palette, voice, trademark/domain clearance and whether the name should span both product categories.",
    "why_it_matters": "Multiple names and voices make the site look assembled from parallel builds instead of edited as one publication.",
@@ -955,7 +1071,8 @@
    "what_we_know": "The campaign ledger is empty. The repository has a five-event prototype proposal, but enabled=false and endpoint_url is empty; a collector script is present but is not hosted. GitHub Pages is static and its documentation states visitor IP addresses are logged.",
    "source": [
     "SH-S16",
-    "SH-S02"
+    "SH-S02",
+    "S02"
    ],
    "what_we_dont_know": "Owner approval of the event proposal, an actual host/runtime, application and provider/network logging, IP handling, retention, access controls, applicable notice/consent requirements, and authorized conversion reports.",
    "why_it_matters": "No endpoint is live. “Privacy-preserving” cannot be claimed until the actual collection path and host logging are verified.",
@@ -970,7 +1087,9 @@
    "id": "Q9",
    "question": "What measured reader queries or topic signals exist?",
    "what_we_know": "The repository contains question-led working titles, a feed and sitemap, but no dated Search Console query export or measured reader-query dataset.",
-   "source": [],
+   "source": [
+    "S02"
+   ],
    "what_we_dont_know": "Which queries have impressions/clicks, their dates, the canonical property’s baseline and whether readers reach the product guides.",
    "why_it_matters": "Without measured queries, “trending” and “high-converting” would be guesses; the next topic cannot be selected from evidence yet.",
    "how_to_discover": "After choosing the canonical URL, verify the site property in Search Console and save a dated query export; compare equivalent date windows, and keep topic ideas labelled as hypotheses until data exists.",
@@ -987,7 +1106,9 @@
    "what_we_know": "The exact Associates disclosure is on the publication pages; the Operating Agreement and FTC sources in the register describe clear/prominent placement and disclosure with the endorsement.",
    "source": [
     "SH-S01",
-    "SH-S05"
+    "SH-S05",
+    "S01",
+    "S44"
    ],
    "what_we_dont_know": "Whether the owner wants a formal legal review or has additional jurisdiction-specific requirements.",
    "why_it_matters": "Disclosure must remain visible alongside recommendations across every template and category page.",
@@ -1005,7 +1126,8 @@
    "what_we_dont_know": "Whether the owner intends a broader kitchen-appliance publication or an air-fryer-only niche, and whether the second category merits its own guide cluster.",
    "why_it_matters": "A cross-category homepage and editorial calendar need one coherent reader promise; category grouping should not be guessed from the links alone.",
    "how_to_discover": "Owner confirms each of the two links in the enrolled Associates workflow (or withdraws it) — the answer lands in the intended block of the Product-intent confirmation record on products.html. Flag G82-F-03 now tracks only that intent half; its observed half was closed 2026-11-17 (session 66964850).",
-   "repo": "data/shop/products.json"
+   "repo": "data/shop/products.json",
+   "repo_evidence": "data/products.json"
   },
   {
    "id": "Q12",
@@ -1023,7 +1145,8 @@
     "read/index.html",
     "marketing/index.html",
     "articles/index.html"
-   ]
+   ],
+   "repo_evidence": "sessions/0b2ffabd/repo-review.md"
   },
   {
    "id": "Q13",
@@ -1053,6 +1176,57 @@
    "what_we_dont_know": "Whether an approved Associates feed or written permission exists, and who owns any original photography on the site.",
    "why_it_matters": "The design should not show generated, scraped or copied product photography as if it were genuine product imagery.",
    "how_to_discover": "Use a permitted Amazon-served image source or original owner-created photography with documented rights; otherwise stay text-first and use original non-photographic diagrams."
+  },
+  {
+   "id": "Q15",
+   "question": "Is the 'checked date + source' treatment accepted as the site's visual signature (and so as its marketing voice)?",
+   "what_we_know": "The register already dates every listing observation and links a source row, and the rails rule out price, rating and first-hand claims while Q4/Q6 stand. That leaves date-and-provenance as the only specific, legal thing the site can put in a badge.",
+   "source": [
+    "S80",
+    "S07"
+   ],
+   "what_we_dont_know": "Whether the owner wants that to be the brand - a 'checked' chip is a different feel from a deal chip, and it is a promise the site has to keep honouring on every future page.",
+   "why_it_matters": "It decides SUG-22 and, with it, the whole type-and-layout pass: whether the front page is built around dated product cards or around a ranked list.",
+   "how_to_discover": "Owner answers in one line on the review console. No external information is required - it is a positioning choice, and both options are compliant.",
+   "repo_evidence": "DESIGN_PROMPT.md"
+  },
+  {
+   "id": "Q16",
+   "question": "Should the governance and dashboard surfaces (flagged, sources, verification, sessions, decision pages) be indexable at all?",
+   "what_we_know": "sitemap.xml currently publishes 101 URLs drawn from the whole tree, including 404.html and the register pages; robots.txt already disallows /docs/ and /sessions/. Google's own rule is to list the URLs you want to appear in results.",
+   "source": [
+    "S96"
+   ],
+   "what_we_dont_know": "Whether the owner wants the audit surface visible in search at all, or only the reader pages competing for traffic.",
+   "why_it_matters": "It changes one collect() list in scripts/build_sitemap.py plus a noindex rule in the generator - and it is the difference between 'one site to index' and 136 pages of mixed intent competing with their own guides.",
+   "how_to_discover": "Owner decision. If 'reader pages only', one integration session narrows the sitemap set and adds <meta name=robots content=noindex> in the register generator; nothing else moves.",
+   "repo_evidence": "scripts/build_sitemap.py"
+  },
+  {
+   "id": "Q17",
+   "question": "Does the owner accept aggregate-only measurement (per page, per date - never per visitor) as the shape of the click/conversion work?",
+   "what_we_know": "The clause read verbatim today forbids associating any sub-tag or program reporting with a specific end user (PF-59, S80). The site today records no clicks at all; the ledger is empty by design and every column names its required source.",
+   "source": [
+    "S80",
+    "S30"
+   ],
+   "what_we_dont_know": "Whether the owner still wants a self-hosted endpoint (GitHub Pages serves static files only, so an endpoint needs somewhere else to run), or is content with first-party Amazon reports plus Search Console.",
+   "why_it_matters": "It decides whether Priority 4 of the brief ('turn on click and conversion measurement before writing anything else') can be met at all on this host, and with what schema.",
+   "how_to_discover": "Owner answers alongside Q8. Practical first step that needs no infrastructure: Search Console property + submit sitemap (D12), and the Associates reports the account already produces. Note for whoever answers this: the in-tree collector (tools/analytics_endpoint.py) is already aggregate-only and already off until an endpoint is set, so the answer is a hosting decision plus a yes/no on the five proposed event names, not a design question.",
+   "repo_evidence": "campaigns.html"
+  },
+  {
+   "id": "Q18",
+   "question": "If the two thermometer listings stay in scope, do they get their own cluster - or do they stay a footnote on an air-fryer site?",
+   "what_we_know": "Both links resolve (captured twice today by different sessions: S70, S71 and sessions/aebf0747/intent-record.json), and both listings file under Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat - not the air-fryer node. The CHEF iQ title itself lists 'Air Fryer' among its uses, which is the only listing-side bridge available.",
+   "source": [
+    "S70",
+    "S71"
+   ],
+   "what_we_dont_know": "Whether the owner intended these two products for this project at all (Q11), and if so whether the site should carry a second category or keep the guides single-topic.",
+   "why_it_matters": "A second category changes navigation, the sitemap, the cluster plan and what 'one site to index' means. Writing thermometer content into an air-fryer site is exactly the kind of dilution that makes a site read as auto-generated.",
+   "how_to_discover": "Owner confirms each link in the enrolled Associates workflow (D7), then either 'fold into a thermometer cluster' or 'withdraw from scope'. Until then the existing label - 'Meat thermometer, outside the air-fryer guides' - is what stays on the page.",
+   "repo_evidence": "data/products.json"
   }
  ],
  "discovery": [
@@ -1065,7 +1239,9 @@
     "S02",
     "S04",
     "S07",
-    "SH-S03"
+    "SH-S03",
+    "S29",
+    "S44"
    ],
    "repo": "data/shop/products.json"
   },
@@ -1075,7 +1251,10 @@
    "discovers": "Q1: account/tag status, marketplace fit and the required per-product Special Link tests; does not infer product intent from redirects",
    "source": [
     "S02",
-    "SH-S02"
+    "SH-S02",
+    "S28",
+    "S29",
+    "S04"
    ],
    "repo": "data/shop/config.json"
   },
@@ -1093,7 +1272,14 @@
     "SH-S12",
     "SH-S13",
     "SH-S14",
-    "SH-S15"
+    "SH-S15",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S55"
    ],
    "repo": "data/shop/products.json"
   },
@@ -1101,14 +1287,19 @@
    "id": "D4",
    "action": "Choose the canonical audience, brand and page set. Inventory all reader URLs, copy unique material to the chosen canonical set, and run the local-link/sitemap checks before archiving anything.",
    "discovers": "Q3, Q7, Q11 and Q12. This is an owner decision informed by a repository inventory.",
-   "source": [],
+   "source": [
+    "S02",
+    "S04"
+   ],
    "repo": "sitemap.xml"
   },
   {
    "id": "D5",
    "action": "Verify the canonical site property in Search Console and keep a dated query export by marketplace/category; start topic selection only after a baseline exists.",
    "discovers": "Q9 and which working titles merit a later guide.",
-   "source": [],
+   "source": [
+    "S02"
+   ],
    "repo": "sitemap.xml"
   },
   {
@@ -1117,7 +1308,10 @@
    "discovers": "Q8/Q13: owner-approved event requirements, endpoint/runtime, host log/IP/retention behavior and privacy review; no endpoint is currently hosted",
    "source": [
     "SH-S16",
-    "S02"
+    "S02",
+    "S01",
+    "S44",
+    "S07"
    ],
    "repo": "data/shop/measurement.json"
   },
@@ -1127,7 +1321,8 @@
    "discovers": "Q5 and the editorial workflow.",
    "source": [
     "S01",
-    "S07"
+    "S07",
+    "S02"
    ],
    "repo": "guides/index.html"
   },
@@ -1136,7 +1331,8 @@
    "action": "For product imagery, record the original photographer/source, permissions or approved Program Content route before publishing. If evidence is absent, keep the page text-first.",
    "discovers": "Q14 and the image-rights gate.",
    "source": [],
-   "repo": "assets/img"
+   "repo": "assets/img",
+   "repo_evidence": "DESIGN_PROMPT.md"
   },
   {
    "id": "D9",
@@ -1151,7 +1347,45 @@
    "id": "D10",
    "action": "Owner records one line in the decision export: 'canonical reader layer = …'. Then any session implements DP-C's cross-linking and the other two layers gain archive banners pointing at it.",
    "discovers": "Q12; resolves Z14-F-04 and the duplication note; gives search engines one site to index, as the brief asks.",
-   "source": []
+   "source": [],
+   "repo_evidence": "data/decision-queue.json"
+  },
+  {
+   "id": "D11",
+   "action": "Re-read the Google pages that govern the head block immediately before implementing SUG-19/SUG-20, and date the read in the register. Search documentation moves: the FAQ rich-result page this project nearly built on is already redirected to a removal notice (read 2026-11-17).",
+   "discovers": "Whether each planned head element is still documented, so a polish pass does not ship markup for a retired feature.",
+   "source": [
+    "S96",
+    "S97"
+   ],
+   "repo_evidence": "DESIGN_PROMPT.md"
+  },
+  {
+   "id": "D12",
+   "action": "Create a Search Console URL-prefix property for https://kanlerxz87-cyber.github.io/Zone3/ and submit the existing sitemap.xml. A domain property is not verifiable for a project page under someone else's apex, so the property type is fixed by the host, not chosen.",
+   "discovers": "Impressions, queries and the pages that actually arrive - the only input that can pick the next topic without inventing a search-volume number.",
+   "source": [
+    "S96"
+   ],
+   "repo_evidence": "DESIGN_PROMPT.md"
+  },
+  {
+   "id": "D13",
+   "action": "Before and after any head-metadata or layout pass, re-run the coverage counts recorded in sessions/0b2ffabd/repo-review.md section 4 (find/grep one-liners: canonical, og:image, JSON-LD, sitemap lastmod, title and description uniqueness) and put both numbers in the flag register.",
+   "discovers": "Whether 'polished' changed anything measurable - canonical coverage (102 of 136 pages today), social preview and structured data (11 pages today, all read/), sitemap URL count and lastmod presence (101 URLs, 0 <lastmod> today), duplicate and missing head copy (0 missing, four 'Moved' stubs sharing a title today) - instead of being asserted in a changelog nobody reads.",
+   "source": [
+    "S96"
+   ],
+   "repo_evidence": "sessions/0b2ffabd/repo-review.md"
+  },
+  {
+   "id": "D14",
+   "action": "Ask the owner, in one line, whether the register and dashboard surfaces should be noindex'd; if yes, one integration session narrows scripts/build_sitemap.py's collected set and adds the meta tag in the generator that owns those pages.",
+   "discovers": "Q16, and with it what 'make it findable' means for a repository that also publishes its own audit trail.",
+   "source": [
+    "S96"
+   ],
+   "repo_evidence": "DESIGN_PROMPT.md"
   }
  ],
  "workflow": [
@@ -1163,7 +1397,12 @@
   "Review the existing five-event schema as a proposal. The counter config is OFF and the collector is unhosted; verify a selected host's real access/network logs, IP handling, retention and controls before any activation. Use authorized Associates reports for conversions.",
   "Verify the canonical property and obtain dated query data before describing topics as popular or using search performance as a cadence signal.",
   "Publish only approved, human-reviewed buyer-question guides with official source links, required disclosure, rel=\"sponsored\" outbound links and feed/sitemap updates.",
-  "Rebuild and run the full release gates after each generator change; leave unconfirmed values blank and flagged."
+  "Rebuild and run the full release gates after each generator change; leave unconfirmed values blank and flagged.",
+  "1. Review this page with the suggestions (SUG-01 to SUG-22) and the open questions (Q1 to Q18) side by side. SUG-01 to SUG-10 and Q1 to Q12 carry decisions and re-statuses from the earlier passes; SUG-19 to SUG-22 and Q15 to Q18 were added by the 2026-11-17 design-prompt review and carry none yet.",
+  "2. Answer each open question from the owner; record the answer and its source or note that it is a decision, not a fact.",
+  "3. For each suggestion, choose Accept, Reject or Defer, and record the choice and the reason in COORDINATION.md under this session's part.",
+  "4. Only accepted suggestions are implemented, in a follow-up session that re-verifies the affected pages against official sources before publishing.",
+  "5. Blocked suggestions stay blocked until the named blocker is resolved: SUG-05 waits on the Associates tag (Q1), the held articles wait on Q4 (API figures) and Q6 (first-hand use). Nothing on this page is implemented by reading it."
  ],
  "review_2026_11_17": {
   "date": "2026-11-17",
@@ -1689,6 +1928,273 @@
    "For SUG-12, use the five definitions in the repository as a review draft only. Keep collection OFF; host/runtime and actual logging/retention/privacy review are prerequisites, not a consequence of accepting the schema.",
    "For product identity and Special Links, use the account workflow rather than accepting observed redirects as intent or compliance evidence.",
    "Nothing on this page makes a route, analytics or account change by itself. Keep unresolved items visibly flagged."
+  ]
+ },
+ "review_2026_11_17b": {
+  "date": "2026-11-17",
+  "session": "0b2ffabd",
+  "note": "Fourth pass over this page, same date as the third but a different question: the third pass listed the paths, this one writes the brief a design pass would be run from, and states exactly which answer makes each part of it buildable. It sits beside session 73029680's late review on the same page: that review proposes replacement lines for the 2026-11-16 prompt pack in design-brief.html and orders the open questions into a runbook; this one supplies the official-source rails the prompt needs and the per-decision readiness ledger. The two do not overlap in data - read both before choosing, and note that their runbook item 2 and this page's Q12 ask the same owner question once. Everything measured here was measured on the merged tree (main@2868a3a plus this pass) with the commands in sessions/0b2ffabd/repo-review.md; every new fact cites a page read today (S90-S97 for the Google documentation, and the existing rows S79, S80, S30, S07, S70-S73 for the Amazon and FTC pages re-read the same day). No proposal on this page is implemented by this pass, and no reader page was restyled.",
+  "layers": [
+   {
+    "surface": "site/",
+    "name": "Air Fryer Field Notes",
+    "pages": 20,
+    "canonical": 20,
+    "social_and_schema": 0,
+    "owner": "sessions 59d84c55 + cba81fa5; CSS by 82372fd1 (S-20); measurement + intent pages by ded63349"
+   },
+   {
+    "surface": "read/",
+    "name": "The Crisp Report",
+    "pages": 11,
+    "canonical": 11,
+    "social_and_schema": 11,
+    "owner": "sessions 145b8df7 / d18303ca - the only surface with og:image and JSON-LD"
+   },
+   {
+    "surface": "shop/",
+    "name": "Zone3 Kitchen",
+    "pages": 11,
+    "canonical": 11,
+    "social_and_schema": 0,
+    "owner": "session 974e366d (PR #135)"
+   },
+   {
+    "surface": "marketing/",
+    "name": "Research Desk briefs",
+    "pages": 7,
+    "canonical": 1,
+    "social_and_schema": 0,
+    "owner": "session b90c5685 / PR #26 re-home; 6 of 7 pages have no canonical"
+   },
+   {
+    "surface": "guides/",
+    "name": "Root question guides",
+    "pages": 5,
+    "canonical": 5,
+    "social_and_schema": 0,
+    "owner": "session aebf0747 (PR #136)"
+   },
+   {
+    "surface": "articles/",
+    "name": "Research Desk articles",
+    "pages": 5,
+    "canonical": 5,
+    "social_and_schema": 0,
+    "owner": "session 5a56c084"
+   },
+   {
+    "surface": "(root)",
+    "name": "Register and dashboards",
+    "pages": 25,
+    "canonical": 22,
+    "social_and_schema": 0,
+    "owner": "root publication front page aebf0747; previous front page kept at dashboard-register.html"
+   }
+  ],
+  "layers_note": "Q12 was written when there were three reader layers. Measured on the merged tree there are six - 59 reader pages across five brands and voices - plus 25 root register and dashboard pages and 136 HTML pages in the whole published tree. The site/ layer grew from 18 to 20 while this review was being written, which is the point of measuring instead of quoting: only read/ carries a social preview and structured data at all. That is the strongest 'generated' tell on the site and the reason search cannot pick a winner; it is also why the design prompt below names a layer as its first input rather than assuming one.",
+  "prompt": {
+   "intro": "Held as a file so a design session can be handed one document instead of a chat: DESIGN_PROMPT.md at the repository root. It is assembled only from decisions already recorded in this repository plus the official pages read today, and it is a draft until a path (DP-A/B/C) and Q12/Q15 are answered.",
+   "feel": [
+    "Reads as a shop that happens to keep receipts, not as a lab that occasionally sells things: the product and the question are above the fold, the verification is one click away and never above it.",
+    "Specific instead of enthusiastic: a dated 'checked' chip, a source link on every claim row, and no adjective that a listing page cannot support.",
+    "One voice per surface. Six brands is the current state and the cost of not answering Q12; the prompt assumes one is chosen and the others become companion sections with cross-links, not duplicates."
+   ],
+   "rails": [
+    {
+     "rail": "Disclosure placement is fixed",
+     "rule": "'You must clearly and prominently state ... As an Amazon Associate I earn from qualifying purchases.' - Operating Agreement Section 5; a breach of Section 5 'will be deemed a material breach'.",
+     "source": [
+      "S79"
+     ],
+     "meaning": "The strip under the masthead and the footer repeat stay. A redesign may restyle the strip; it may not move, shrink or 'clean' it off the fold, and the lint that checks placement must stay green."
+    },
+    {
+     "rail": "No price, availability, rating or review count",
+     "rule": "'your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API'; customer reviews and star ratings only if obtained through the API.",
+     "source": [
+      "S80"
+     ],
+     "meaning": "No price chip, no strikethrough was-price, no star row, no '4.7 from 12,000 reviews' in any card, table, meta description or preview image. The layout has to look confident without them - which is the design problem, and the reason the dated-source chip is the hero element."
+    },
+    {
+     "rail": "No countdown, 'deal ends', or promo badge",
+     "rule": "'You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.'",
+     "source": [
+      "S80"
+     ],
+     "meaning": "Urgency modules are not forbidden by policy, they are forbidden by maintenance: they need a named owner and a dated re-check before they can exist. Until one exists, none ships."
+    },
+    {
+     "rail": "Comparison tables compare features, not prices",
+     "rule": "Displaying prices 'in any comparison format ... together with prices for the same or similar products offered through any web site ... other than an Amazon Site' obliges the site to show Amazon's lowest new (and, when provided, lowest used) price.",
+     "source": [
+      "S80"
+     ],
+     "meaning": "The comparison stays capacity/dimensions/claims-based. Adding a price column is not a copy edit, it is a licence to publish a whole table you cannot populate."
+    },
+    {
+     "rail": "Links stay direct, visible and un-bookmarked",
+     "rule": "'You must not encourage customers to bookmark your Special Links. All Special Links must be accessed directly from your Site.' Plus: no link shortening or presentation 'in a manner that makes it unclear that you are linking to an Amazon Site'.",
+     "source": [
+      "S80"
+     ],
+     "meaning": "No 'save for later' affordance on a buy link, no intermediate interstitial, no cute 'get it now' button that hides the destination. The button text names Amazon; rel=sponsored stays (Google's own guidance for paid placements)."
+    },
+    {
+     "rail": "Measurement is aggregate",
+     "rule": "'Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).'",
+     "source": [
+      "S80"
+     ],
+     "meaning": "A per-page click counter and dated campaign rows are buildable; per-visitor journeys, personalised sub-tags and user-level joins to Associates reports are not. This is the constraint the brief's Priority 4 has to be shaped around."
+    },
+    {
+     "rail": "A product-list page needs its own reason to exist",
+     "rule": "'When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link.' Enrolment-side: 'Your Site(s) must contain original content ... Original content utilizing third-party materials must contain significant commentary, analysis, or transformation'.",
+     "source": [
+      "S80",
+      "S02"
+     ],
+     "meaning": "A grid of cards is not a landing page. Every surface that links to a listing carries analysis the listing does not have - which is exactly what the guides, the capacity maths and the counter-space piece are for."
+    },
+    {
+     "rail": "No Amazon imagery, and no invented product imagery",
+     "rule": "Program Content belongs to Amazon and may not be copied onto the Site; this repository's own gate (verify_site V6) fails any <img> whose src is an Amazon asset or CDN host.",
+     "source": [
+      "S01",
+      "S02"
+     ],
+     "meaning": "Illustrations are this site's own artwork only. Real product photography is S-18, still 'needs a decision' - so a redesign ships with typographic and diagrammatic imagery, not with a generated photo of an air fryer."
+    }
+   ],
+   "sections": [
+    {
+     "name": "Masthead and disclosure",
+     "spec": "Wordmark, one-line promise, six-item nav maximum. Disclosure strip immediately under it, full width, contrast-checked, repeated in the footer. Nothing in the redesign changes its position; the lint fails the build if it moves."
+    },
+    {
+     "name": "Front page shelf",
+     "spec": "Five product cards (three air fryers, two thermometers labelled as outside the air-fryer guides until Q18 answers). Each card: listing title as served, the observed ASIN with its date, a 'fits you if / not for you if' pair generated only from quoted listing features, and one sponsored button. The three-question chooser sits above the shelf, not below it."
+    },
+    {
+     "name": "Guides desk",
+     "spec": "Question-shaped titles, dated byline block stating plainly that the desk is an agent desk until a human reviewer is named (Q5), and a 'what changed since this was written' line that only a re-read can produce. One guide a week, each one landing in the register, feed and sitemap by construction."
+    },
+    {
+     "name": "Comparison",
+     "spec": "Feature rows with a source cell per row; sticky mobile bar; no price column (see the rails). The counter-space analysis - capacity per centimetre of counter depth - is the section a buyer cannot get from a listing, so it leads, not the spec grid."
+    },
+    {
+     "name": "Imagery",
+     "spec": "Own artwork: diagrams for capacity and clearance, typographic social cards, one favicon set. No stock, no Amazon assets, no generated product photos."
+    },
+    {
+     "name": "Head block",
+     "spec": "Per page: unique title, unique description that says what the page checked (no price), canonical, og:title/og:description/og:image, one JSON-LD block (Article/BreadcrumbList). No FAQPage: Google removed that rich-result documentation in June 2026, so the guides stand on reader value."
+    },
+    {
+     "name": "Governance footer",
+     "spec": "Every dashboard, source register, verification log and flagged page stays reachable from the footer in one group. Readers never see the audit; auditors never lose the page."
+    }
+   ],
+   "avoid": [
+    "'Best', 'top-rated', 'most popular', 'trending' - not one of them, without a dated first-party snapshot behind it, and there is no snapshot endpoint to produce one.",
+    "Any number that is not on a page we opened: ratings, review counts, sales, 'bought in past month', conversion rates.",
+    "A persona byline ('our team of expert testers') - the FTC rule is that you cannot talk about a product you have not tried, and an invented expert is worse than an honest agent desk.",
+    "Price-comparison framing, countdowns, 'almost gone' stock language, exit pop-ups.",
+    "A second landing page for the same products. Until Q12 is answered the site already has six; a redesign must reduce that, not add to it."
+   ]
+  },
+  "decision_readiness": [
+   {
+    "decision": "Which reader layer is canonical (Q12)",
+    "answer": "One line: 'canonical reader layer = site/' (or read/, shop/, marketing/, guides/, articles/).",
+    "who": "Owner alone.",
+    "unblocks": "DP-C, the head-block pass, the single feed and single nav, and the recommendation in DESIGN_PROMPT.md.",
+    "default": "All six stay live and cross-linked; polish is written N times instead of once.",
+    "where": "Decision export on decision-queue.html or site/decisions.html; recorded by the next integration session in COORDINATION.md."
+   },
+   {
+    "decision": "Associates tag and link rewrite (Q1)",
+    "answer": "The tag of the enrolled account, tested on one link per product through Special Links, destination and tracking report confirmed before scaling.",
+    "who": "Owner, in Associates Central.",
+    "unblocks": "SUG-05 and every conversion-ready CTA; makes links earn.",
+    "default": "Links stay exactly as submitted (link.amazon/<code>), marked sponsored, with no claim that they are invalid - FLG-003 is unresolved, not denied.",
+    "where": "Value in COORDINATION.md only (G0B2-F-01 asks the owner to confirm that convention); never pasted into reader copy."
+   },
+   {
+    "decision": "Intended ASINs (Q2, Q11)",
+    "answer": "For each of the five links: the intended 10-character ASIN and official listing URL, or a withdrawal.",
+    "who": "Owner.",
+    "unblocks": "Every editorial page about those products; the two thermometer rows in data/products.json.",
+    "default": "Intent cells stay blank with the observed redirect in its own field; the two thermometers stay labelled outside the air-fryer guides.",
+    "where": "The product-intent confirmation record (intent-record/index.html and the table on products.html)."
+   },
+   {
+    "decision": "API access for figures (Q4)",
+    "answer": "Enrolment status and the documented prerequisite (10 qualifying sales in the past 30 days) checked in the account.",
+    "who": "Owner, in the account.",
+    "unblocks": "The held 'best value' guide, any price/availability/rating display with a date stamp, and the price-comparison rail's alternative path.",
+    "default": "Those cells stay blank and flagged; the design does not fake them with scraped numbers.",
+    "where": "COORDINATION.md decision log; then an intake pass that re-creates the rows from API output."
+   },
+   {
+    "decision": "First-hand testing (Q6, S-06)",
+    "answer": "Whether the products will be bought and used, and by whom.",
+    "who": "Owner.",
+    "unblocks": "The one thing a listing cannot tell a reader - what the appliance is like to live with - as a real, allowed content lane.",
+    "default": "S-06 stays 'not adopted'; guides keep the no-invented-experience rule the lint enforces.",
+    "where": "D-06 in the decisions log; the sentence that goes on the page if the answer is yes."
+   },
+   {
+    "decision": "Human reviewer and cadence (Q5)",
+    "answer": "A name for the byline and a cadence; one guide a week is the standing proposal.",
+    "who": "Owner.",
+    "unblocks": "The byline block, 'reviewed by', and any claim that a human read the page.",
+    "default": "Pages say the desk is an agent desk; the register still dates everything, so staleness is visible.",
+    "where": "COORDINATION.md and the guide register's reviewer field."
+   },
+   {
+    "decision": "Analytics shape (Q8, Q17)",
+    "answer": "Aggregate-only per-page counts accepted? Self-hosted endpoint wanted, given Pages serves static files only?",
+    "who": "Owner, with the clause in front of them (PF-59).",
+    "unblocks": "The click counter and the campaign ledger's measurement half.",
+    "default": "Empty ledger, dated, with columns naming the authorized first-party source each value must come from.",
+    "where": "COORDINATION.md decision log; the ledger schema in campaigns.html."
+   },
+   {
+    "decision": "Index surface (Q16)",
+    "answer": "'everything stays indexable' or 'reader pages only'.",
+    "who": "Owner.",
+    "unblocks": "One collect() list in scripts/build_sitemap.py and one noindex rule.",
+    "default": "101 URLs published, including the register and 404.html.",
+    "where": "Flag G0B2-F-06; the sitemap generator."
+   }
+  ],
+  "paths_status": [
+   {
+    "id": "DP-A",
+    "changed": "Still the cheapest look-for-the-money path, and now it has its rails written down.",
+    "cost_now": "Unchanged: one generator pass over the site/ home and front-door region, now twenty pages rather than eighteen. Compatible with any Q12 answer except 'fold everything into shop/'."
+   },
+   {
+    "id": "DP-B",
+    "changed": "The cadence machinery is shipped (register-driven feed and sitemap); what it lacks is a name.",
+    "cost_now": "Editorial continuity, not code. Blocked half on Q5 (reviewer) and Q6 (testing lane), not on tooling."
+   },
+   {
+    "id": "DP-C",
+    "changed": "Recosted on the merged tree: not 'small edits' but a six-surface decision - 59 reader pages across five brands, 136 pages in the published tree, with only read/ carrying a head block.",
+    "cost_now": "One integration session, banners and cross-links first, no deletions. This is now the highest-value path, because it is the only one that improves both the slop signal and the indexing story at once."
+   }
+  ],
+  "measurement": "Findability numbers measured on the merged tree 2026-11-17, for the owner to sanity-check any later claim of 'optimised': 136 HTML pages outside docs/ and archive/ (verify_site's own audited set is 144); canonical link on 102 of the 136; og:image and JSON-LD on 11 - every one of them in read/, none anywhere else; 50 root+site+guides pages checked for head copy - 0 missing titles, 0 missing or sub-60-character descriptions, four pages sharing the title 'Moved' (the redirect stubs); sitemap.xml 101 URLs with 0 <lastmod> and 0 <priority>/<changefreq>; feed.xml 9 entries; robots.txt disallows /docs/ and /sessions/ and declares the sitemap; check_all_links reports 190 pages, 241 distinct external URLs and 0 errors. Every one of those is a one-line command in sessions/0b2ffabd/repo-review.md, so a polish pass can be verified, not admired.",
+  "how_to_choose": [
+   "Answer the eight rows of the decision-readiness table that are yours - most of them are one word - on the review console (decision-queue.html) or site/decisions.html. The export is the record a build session implements from.",
+   "Order matters: Q12/DP-C first (it picks the surface the design pass runs on - and it is the same question as the late review's runbook item 2, so answer it once), then SUG-22/SUG-20 (the look), then DP-B (the cadence), then SUG-21 (the measurement) once Q17 is answered. SUG-19 is unblocked except for the two-writer sitemap ownership note.",
+   "Accepting a path changes nothing on this page by itself; that is the point of the gate. An unblocked path is one green-build away after a decision is recorded.",
+   "Blocked items stay visibly blocked (Q1, Q4, Q6-family). The site shows a gap rather than filling it with a guess - and the gap is the argument that the numbers it does print are real."
   ]
  }
 }

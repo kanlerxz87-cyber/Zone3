@@ -244,6 +244,74 @@ The source register records the submitted-link destinations (`SH-S06`–`SH-S10`
 
 ---
 
+## Update 2026-11-17 — session 0b2ffabd (the design prompt, the decision-readiness ledger, the six-surface correction)
+
+**What this pass adds.** The owner brief asks for suggestions that feed a site-design prompt, a dedicated
+suggestions section a human can review before anything is implemented, and "a clear list of questions,
+informations and answers that need to be addressed before any decision can be reasonably made". This pass
+delivers those as documents and register rows and implements none of the redesign: `DESIGN_PROMPT.md` at the
+repository root is the brief a design session is handed, and `suggestions.html` gained the design prompt itself, a
+decision-readiness ledger over eight decisions (the form the answer must take, who can supply it, what it
+unblocks, the default while it stays blank, where to record it), four new proposals (SUG-19…SUG-22), four new
+owner questions (Q15…Q18) and four discovery actions (D11…D14). Nothing was invented to fill a gap.
+
+**Re-read from official pages, and where it landed.** `sessions/0b2ffabd/verification.md` holds the dated quotes:
+Operating Agreement §5's disclosure sentence and §6's "will be deemed a material breach"; Program Policies
+Participation Requirements 2(a)/2(b), including four clauses this repository had never quoted (no bookmarking of
+Special Links and "All Special Links must be accessed directly from your Site"; the ban on associating a sub-tag
+or program reporting "with a specific end user of your Site"; the duty to remove limited-time-promotion
+references as soon as the promotion ends; "When linking to pages with Product lists you must have additional
+original content on your Site that is relevant to the Special Link"); Commission Income Statement 2(e)/2(g)/2(c);
+FTC *Disclosures 101*; and Google Search Central on `rel="sponsored"`, per-page descriptions and sitemaps. Those
+six clauses are `data/policy_facts.json` PF-57…PF-62. Four Google pages became sources **S90 and S95–S97**; the register
+had never cited Google documentation at all, which is why `scripts/check_site.py` gained one line
+(`OFFICIAL_HOSTS`, flag `G0B2-F-09`) instead of a paraphrase.
+
+**Corrections this pass made to the record.** (1) The reader-facing site is **six surfaces, not three layers** —
+measured on the merged tree: `site/` 20 pages, `read/` 11, `shop/` 11, `marketing/` 7, `guides/` 5, `articles/` 5,
+plus 25 root register pages, 136 HTML pages outside `docs/` and `archive/` (`G0B2-F-02`; Q12 and DP-C recosted,
+and session `73029680`'s runbook item 2 asks the same owner question). (2) Findability coverage measured rather
+than asserted: canonical on 102 of 136 pages, `og:image` and JSON-LD on 11 — all of them in `read/`, nowhere else —
+`sitemap.xml` 101 URLs with zero `<lastmod>` and zero `<priority>`/`<changefreq>`, `feed.xml` 9 entries
+(`G0B2-F-06`, SUG-19/SUG-20). (3) The provenance gaps `verify_site` V4 had been reporting on `suggestions.html`
+are closed at the data layer (0 advisories on any row this pass added; no HTML hand-patched). The 14 that remain
+on that page belong to another session's tables and are filed as a change request, not edited (`G0B2-F-04`,
+`G0B2-F-11`); three of this pass's own rows are reported on `flagged.html`, because that table has no repo-anchor
+column and `tools/verify_site.py` keeps its own host list — recorded in `G0B2-F-09` rather than tuned away. (4) This session first filed its source rows as S70–S81; main had already given that
+block to two other sessions the same day, so the ids were renumbered on rebase and eight duplicate rows were
+deleted in favour of the existing entries — recorded as `G0B2-F-10` so a later reader can follow the arithmetic.
+
+**Still blocked, and visibly so.** No Associates tag in the register → SUG-05's tagged CTAs and any rewrite of the
+live links stay blocked, and the supplied `link.amazon` short links remain *unresolved*, never called invalid
+(FLG-003, D9). No API credentials → no price, availability, rating or review-count display anywhere, and Google's
+hint that a product meta description can carry a price is resolved against Participation Requirements 2(b) as
+"specific, never priced" (`G0B2-F-07`). No first-hand testing → S-06 stays "not adopted" and no byline claims a
+human read anything (Q5/Q6). No Search Console property → the next topic still comes from the question list, not
+from a claimed search-volume number (D8/D12). The five measurement events are *proposed* in
+`site/measure.html` with an aggregate-only collector built and switched off (`tools/analytics_endpoint.py`,
+`M38-F-04` in `data/shop/flags.json`); what waits is a host and the owner's confirmation of the names, and SUG-21
+says so rather than proposing to build it again. The two thermometer links are registered as P4/P5 with
+`confirmed_as_submitted_product: false`, so their intended identity is still an owner answer (`G0B2-F-03`, Q18).
+And the selected tracking ID is printed on five published pages while Q1's rule keeps it in `COORDINATION.md`
+only — both cannot be the convention, and this pass records the conflict instead of silently redacting another
+session's pages (`G0B2-F-01`).
+
+**Gates.** Everything green on the merged tree and the chain re-run twice to convergence: `check_site` OK
+(36 pages / 5 products / 86 sources / 135 flags) · `verify_site` PASS (144 pages / 2,332 rows / 1,993 with an
+official source / 116 repo-anchored) · `link_report --strict` exit 0 · `i2_gate` PASS · `cba81fa5_lint` 0 new /
+22 inherited · `publish_pass --check`, `measure_pass --check`, `build_feed --check`, `build_shop --check`,
+`build_sitemap --check`, each generator's own `--check` current · `check_all_links` 190 pages / 241 URLs / 0
+errors · `analytics_endpoint --self-test` PASS · `sessions/aebf0747/audit.py` 1,558 Amazon links, all sponsored,
+0 missing. `link_report` still prints its honest "cannot be obtained" list — prices, ratings, trend rank,
+conversion rate, competition density, clicks/orders/revenue — which is the point: those numbers are absent, not
+hidden.
+
+---
+
+**Integration note (2026-11-19, session `ee10b024`).** Re-landed with this session's ids remapped onto today's register — its Google source rows are S90 (identical to main's row) and S95–S97 (S91–S94 were claimed by later sessions), its proposals are SUG-19…SUG-22 and its questions Q15…Q18 (`G0B2-F-10`). The root `DESIGN_PROMPT.md` this update describes was superseded by session `6b68afc8`'s 2026-11-19 rails brief; this pass's draft is archived at `sessions/0b2ffabd/DESIGN_PROMPT.md`. Gate and page numbers above are this pass's dated 2026-11-17 measurements, not current counts.
+
+---
+
 ## Update 2026-11-17 — session 38650305 (measurement layer, brief-status register, publication pass)
 
 **Bottom line.** Click and page-event measurement is built, and it is **off**. Nothing is sent until someone hosts the collector and sets its address, because GitHub Pages cannot run one. Several rows of the brief cannot be matched to anything in this repository, and three items need the owner: an Associates account (Special Link test), a Google account (Search Console) and a collector host.

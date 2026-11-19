@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-14",
+  "retrieved": "2026-11-17 — S01/S02 clause set from earlier sessions, plus six clauses read verbatim 2026-11-17 by session 0b2ffabd (PF-57 to PF-62, from Participation Requirements 2(a)/2(b)).",
   "note": "Every quote is copied verbatim from the official page named in 'source' and 'section'. Re-read on 2026-11-13 where marked. PF-14 was withdrawn on 2026-11-13: its text was not found in the sections read. Quotes are short; bracketed text is an editorial placeholder in the source. 'applies_to' is the project's reading and is not a quote. PF-52 added 2026-11-14 by session edbd56a1.",
   "facts": [
     {
@@ -437,6 +437,60 @@
       "topic": "Default category rate for anything not named in Table 1",
       "quote": "All Other Categories | 4.00%",
       "source": "S25"
+    },
+    {
+      "id": "PF-57",
+      "topic": "Special Links must use the assigned Associates ID",
+      "quote": "After you have applied to the Associates Program, you are permitted to display Special Links on your Site. Special Links enable accurate tracking, reporting, and accrual of commission income. Special Links must use the Associates ID we have assigned to you.",
+      "source": "S80",
+      "section": "Associates Program Participation Requirements, Section 2(a) (read verbatim 2026-11-17 by session 0b2ffabd)",
+      "applies_to": "Why no link on this site can earn until the tag exists (Q1), and why the CTAs stay untagged rather than guessed.",
+      "note": " Appended 2026-11-17 by session 0b2ffabd from its own dated read of the same page (`sessions/0b2ffabd/verification.md` §2)."
+    },
+    {
+      "id": "PF-58",
+      "topic": "No bookmarking of Special Links; Special Links accessed directly",
+      "quote": "You must not encourage customers to bookmark your Special Links. All Special Links must be accessed directly from your Site.",
+      "source": "S80",
+      "section": "Associates Program Participation Requirements, Section 2(b) (read verbatim 2026-11-17 by session 0b2ffabd)",
+      "applies_to": "Rails for the marketing redesign: no 'save this deal / bookmark for price' affordance, and no interstitial or redirect hop between the article and the listing.",
+      "note": " Appended 2026-11-17 by session 0b2ffabd from its own dated read of the same page (`sessions/0b2ffabd/verification.md` §2)."
+    },
+    {
+      "id": "PF-59",
+      "topic": "Sub-tags and program reporting may never be tied to a specific end user",
+      "quote": "Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).",
+      "source": "S80",
+      "section": "Associates Program Participation Requirements, Section 2(b) (read verbatim 2026-11-17 by session 0b2ffabd)",
+      "applies_to": "The click/conversion measurement item (Q8, Priority 4): counts stay aggregate and per-page; no per-visitor sub-tagging, no user-level join between the site's counter and the Associates report.",
+      "note": " Appended 2026-11-17 by session 0b2ffabd from its own dated read of the same page (`sessions/0b2ffabd/verification.md` §2)."
+    },
+    {
+      "id": "PF-60",
+      "topic": "Product-list links require additional original content relevant to the Special Link",
+      "quote": "Special Links must link to Products (as defined in the Products Statement). When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link. Product lists include search results, events (e.g. Prime Day), or a department homepage (e.g. grocery).",
+      "source": "S80",
+      "section": "Associates Program Participation Requirements, Section 2(b) (read verbatim 2026-11-17 by session 0b2ffabd)",
+      "applies_to": "Why this site publishes guides and comparison pages rather than link roundups, and why a category tile is only allowed to link to Amazon from a page that carries its own analysis.",
+      "note": " Appended 2026-11-17 by session 0b2ffabd from its own dated read of the same page (`sessions/0b2ffabd/verification.md` §2)."
+    },
+    {
+      "id": "PF-61",
+      "topic": "Limited-time promotion references must be removed as soon as the promotion ends",
+      "quote": "You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.",
+      "source": "S80",
+      "section": "Associates Program Participation Requirements, Section 2(b) (read verbatim 2026-11-17 by session 0b2ffabd)",
+      "applies_to": "Rails for the marketing redesign: no countdown timer, 'deal ends soon' badge or seasonal discount banner unless a dated, first-party re-check process owns its removal.",
+      "note": " Appended 2026-11-17 by session 0b2ffabd from its own dated read of the same page (`sessions/0b2ffabd/verification.md` §2)."
+    },
+    {
+      "id": "PF-62",
+      "topic": "Comparison display condition (lowest new, and lowest used when provided)",
+      "quote": "In addition, if you choose to display prices for any Product on your Site in any “comparison” format (including through the use of any price-comparison tool or engine) together with prices for the same or similar products offered through any web site or other means other than an Amazon Site, you must display both the lowest “new” price and, if we provide it to you, the lowest “used” price at which the Product is available on the Amazon Site.",
+      "source": "S80",
+      "section": "Associates Program Participation Requirements, Section 2(b) (read verbatim 2026-11-17 by session 0b2ffabd)",
+      "applies_to": "Why the comparison tables on this site compare listed features and capacity, not prices: a price comparison would trigger an additional display duty the site cannot satisfy without API data.",
+      "note": " Appended 2026-11-17 by session 0b2ffabd from its own dated read of the same page (`sessions/0b2ffabd/verification.md` §2)."
     }
   ]
 }

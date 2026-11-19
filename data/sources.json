@@ -1,7 +1,7 @@
 {
- "retrieved": "2026-11-16 — union: earlier sessions' dated entries plus session 145b8df7's S60-S68 re-verification captures (S59 is the FTC Consumer Reviews and Testimonials Rule Q&A, added by session 1f1b8bd2) | 2026-11-17: session 2f181cd9 appended S70-S82 (the two new submitted links, their destinations and direct-identifier checks, the three original links re-fetched, and the Operating Agreement, Program Policies, Table 1 and the ASIN definition re-read).",
+ "retrieved": "2026-11-17 — union: earlier sessions' dated entries, session 2f181cd9's S70-S82 and session 73029680's S83-S89 five-link captures, plus session 0b2ffabd's four Google Search Central captures (S90-S97). Session 0b2ffabd's own same-day re-reads of the Operating Agreement, the Program Policies, the Commission Income Statement and the FTC page are recorded against the existing rows S79, S80, S30 and S07 rather than as duplicate entries; its dated read notes are in `sessions/0b2ffabd/verification.md`.",
  "retrieved_by": "Session 7f84fea4 (branch arena/7f84fea4-zone3). Merged with session 26634cd5 on integration. Integrated with session 9fef7647 (PR #26) by session b90c5685 on 2026-11-14.",
- "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45). RENUMBERING (2026-11-14, session b90c5685): PR #26's unique sources are kept as S46-S54 and this session's re-fetch as S55, because PR #26 had used S30-S32 and S33-S38 for pages main already assigns other IDs to.",
+ "note": "Status key: verified = page fetched and quoted in data/policy_facts.json or products.json; observed = a live page result recorded as-is (a destination or a title, not proof that it is the intended product); not-accessible = source could not be read, so nothing is taken from it; third-party = not an official source, used only to raise a flag, never as a fact. alias_of_26634cd5 = the ID this source had in the other session's registry (archive/26634cd5/data/sources.json), merged here without duplicating the page. S45 added and dated ecbfe91b re-verifications appended on merge of session ecbfe91b, 2026-11-14 (its proposed S30/S31 were remapped: Best Sellers page is S43 here; ASIN rule page is S45). RENUMBERING (2026-11-14, session b90c5685): PR #26's unique sources are kept as S46-S54 and this session's re-fetch as S55, because PR #26 had used S30-S32 and S33-S38 for pages main already assigns other IDs to. MERGE (2026-11-19, session ee10b024): PR #160's three Google Search Central rows landed as S95 (snippet), S96 (sitemaps), S97 (search updates); its S90 row was identical to main's S90 (qualify-outbound-links) and deduplicated.",
  "sources": [
   {
    "id": "S01",
@@ -67,7 +67,7 @@
    "publisher": "U.S. Federal Trade Commission (official)",
    "status": "verified",
    "status_note": "Fetched 2026-11-13. Brochure dated November 2019 on the page. Re-verified 2026-11-14 (session ecbfe91b): page re-read; still dated November 2019 on the page.",
-   "used_for": "Disclosure placement and content honesty rules for the content section.",
+   "used_for": "Disclosure placement and content honesty rules for the content section. Re-read in full 2026-11-17 by session 0b2ffabd (with the November 2019 page date); the 'hard to miss', ABOUT-page and 'product you haven't tried' passages it cites are quoted in `sessions/0b2ffabd/verification.md` §4.",
    "alias_of_26634cd5": "S10"
   },
   {
@@ -287,7 +287,7 @@
    "publisher": "Amazon Associates (official)",
    "status": "verified",
    "status_note": "Re-read 2026-11-14. Quote confirmed verbatim: 'any Product purchased by a customer who is referred to an Amazon Site by a link that sends users indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or take some other affirmative action on that intermediate site (a \"Redirecting Link\")'.",
-   "used_for": "Why a link.amazon/<code> short link must not be published as the Special Link (see commission/index.html and FLG-003)."
+   "used_for": "Why a link.amazon/<code> short link must not be published as the Special Link (see commission/index.html and FLG-003). Re-read 2026-11-17 by session 0b2ffabd, which added 2(g) (malformed or untracked links) and 2(c) (Prohibited Paid Search Placement) beside 2(e); record `sessions/0b2ffabd/verification.md` §3."
   },
   {
    "id": "S31",
@@ -584,7 +584,7 @@
    "publisher": "Amazon (official)",
    "status": "observed",
    "status_note": "Served a product page for ASIN B0DHZTCNR5. No Associates tag is present in the URL, so the click is not attributable (S02, Participation Requirements 2(b)).",
-   "used_for": "Redirect destination of the fourth submitted link, observed 2026-11-17.",
+   "used_for": "Redirect destination of the fourth submitted link, observed 2026-11-17. Independently captured on the same day (2026-11-17) by session 0b2ffabd; both captures agree on the destination. Record `sessions/0b2ffabd/verification.md` §6.",
    "session": "2f181cd9"
   },
   {
@@ -594,7 +594,7 @@
    "publisher": "Amazon (official)",
    "status": "observed",
    "status_note": "Served a product page for ASIN B0DZFD6R9Z. No Associates tag is present in the URL.",
-   "used_for": "Redirect destination of the fifth submitted link, observed 2026-11-17.",
+   "used_for": "Redirect destination of the fifth submitted link, observed 2026-11-17. Independently captured on the same day (2026-11-17) by session 0b2ffabd; both captures agree on the destination. Record `sessions/0b2ffabd/verification.md` §6.",
    "session": "2f181cd9"
   },
   {
@@ -604,7 +604,7 @@
    "publisher": "Amazon (official)",
    "status": "observed",
    "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Product title and category breadcrumb of the fourth destination listing.",
+   "used_for": "Product title and category breadcrumb of the fourth destination listing. Re-read 2026-11-17 by session 0b2ffabd, which also recorded the Home & Kitchen breadcrumb; no price, rating or review figure was transcribed (2(b)/6(t)).",
    "session": "2f181cd9"
   },
   {
@@ -614,7 +614,7 @@
    "publisher": "Amazon (official)",
    "status": "observed",
    "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Product title and category breadcrumb of the fifth destination listing.",
+   "used_for": "Product title and category breadcrumb of the fifth destination listing. Re-read 2026-11-17 by session 0b2ffabd, which also recorded the Home & Kitchen breadcrumb; no price, rating or review figure was transcribed (2(b)/6(t)).",
    "session": "2f181cd9"
   },
   {
@@ -674,7 +674,7 @@
    "publisher": "Amazon Associates (official)",
    "status": "verified",
    "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Verbatim disclosure sentence and the material-breach clause, re-read this session.",
+   "used_for": "Verbatim disclosure sentence and the material-breach clause, re-read this session. Also cited by session 0b2ffabd (2026-11-17) for the Section 5 disclosure sentence and Section 6's material-breach consequence; its dated read record is `sessions/0b2ffabd/verification.md` §1.",
    "session": "2f181cd9"
   },
   {
@@ -684,7 +684,7 @@
    "publisher": "Amazon Associates (official)",
    "status": "verified",
    "status_note": "Read 2026-11-17 by session 2f181cd9.",
-   "used_for": "Original-content requirement, the price-display rule, the star-rating rule, the cloaking rule, the link-shortener rule and the price-tracking rule, all re-read verbatim this session.",
+   "used_for": "Original-content requirement, the price-display rule, the star-rating rule, the cloaking rule, the link-shortener rule and the price-tracking rule, all re-read verbatim this session. Also cited by session 0b2ffabd (2026-11-17) for Participation Requirements 2(a)/2(b) clauses quoted nowhere before: no-bookmark and direct-access, the sub-tag/end-user ban, product-list originality, and limited-time-promotion removal; re-read record `sessions/0b2ffabd/verification.md` §2.",
    "session": "2f181cd9"
   },
   {
@@ -814,6 +814,33 @@
    "status": "verified",
    "status_note": "Read with the page-fetch tool on 2026-11-19 (session 1c072a7a). Original evidence and user perspective; support best-in-class claims with first-hand evidence. No ranking guarantee.",
    "used_for": "Original evidence and user perspective; support best-in-class claims with first-hand evidence. No ranking guarantee."
+  },
+  {
+   "id": "S95",
+   "title": "Google Search Central: Control your snippets in search results (page-level titles and meta descriptions)",
+   "url": "https://developers.google.com/search/docs/appearance/snippet",
+   "publisher": "Google (official documentation)",
+   "status": "verified",
+   "status_note": "Read 2026-11-17 by session 0b2ffabd, chunks 0-1 of 3; page footer states 'Last updated 2026-04-20 UTC'. Verbatim: “Identical or similar descriptions on every page of a site aren't helpful when individual pages appear in search results. Wherever possible, create descriptions that accurately describe the specific page.” and “meta descriptions comprised of long strings of keywords don't give users a clear idea of the page's content, and are less likely to be displayed as a snippet.” Google's own product-page example invites a price into the description; Program Policies 2(b) (S71) forbids displaying one without an Amazon-served link or API data, so the rule this site adopts is page-level specificity without price.",
+   "used_for": "S-04 (unique title and description per page) and the measured coverage row in the 2026-11-17 review."
+  },
+  {
+   "id": "S96",
+   "title": "Google Search Central: Build and submit a sitemap (size limits, root placement, lastmod accuracy, feed as sitemap)",
+   "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+   "publisher": "Google (official documentation)",
+   "status": "verified",
+   "status_note": "Read 2026-11-17 by session 0b2ffabd, chunks 0-1 of 4. Verbatim: “All formats limit a single sitemap to 50MB (uncompressed) or 50,000 URLs.”; “unless you submit your sitemap through Search Console, a sitemap affects only descendants of the parent directory”; “Include the URLs in your sitemap that you want to see in Google's search results.”; “Google ignores <priority> and <changefreq> values.”; “Google uses the <lastmod> value if it's consistently and verifiably (for example by comparing to the last modification of the page) accurate.”; “Google accepts RSS 2.0 and Atom 1.0 feeds.”",
+   "used_for": "The findability rows of the 2026-11-17 review; SUG-11 (sitemap and Search Console hygiene)."
+  },
+  {
+   "id": "S97",
+   "title": "Google Search Central: What's new (June 2026, \"Removing documentation for the FAQ rich result feature\") and the FAQPage doc redirect",
+   "url": "https://developers.google.com/search/updates",
+   "publisher": "Google (official documentation)",
+   "status": "verified",
+   "status_note": "Read 2026-11-17 by session 0b2ffabd. Requesting https://developers.google.com/search/docs/appearance/structured-data/faqpage serves this updates page anchored at #removing-faq-rich-result, whose June 2026 entry is titled “Removing documentation for the FAQ rich result feature”. Only the entry title and the redirect were observed; the removal paragraph's body text was not read, so no body wording is quoted anywhere on this site. Consequence recorded in the register: question-shaped guides are justified by reader value, not by a FAQ rich result, and no FAQPage JSON-LD is to be added.",
+   "used_for": "The 'measure whether anyone arrives' item and the anti-pattern note in DESIGN_PROMPT.md."
   }
  ],
  "id_reservation": "S01–S94 allocated (last S91–S94 added by session 1c072a7a 2026-11-19; verification scopes are dated per row). Append a NEW row from S95 — never overwrite an existing row."
