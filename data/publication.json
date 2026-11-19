@@ -22,7 +22,8 @@
       "session": "6b68afc8",
       "updated": "2026-11-19",
       "note": "Paths are bundles of proposals with their dependencies made visible. A path choice is a review note in the reader’s browser; it is not an implementation request and it never publishes."
-    }
+    },
+    "review_cadence_days": 14
   },
   "sources": [
     {
@@ -167,6 +168,15 @@
       "listing_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
       "submitted_link": "https://link.amazon/B04G1MEwY",
       "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null,
       "listing_dimensions": {
         "observed_on": "2026-11-19",
         "observed_by": "session 0a48cfda",
@@ -180,16 +190,7 @@
         "capacity_note": "The title says “6 Quart”; the detail table says “Capacity: 6 liters”. Six US quarts is about 5.7 L, so the two listing fields do not agree with each other.",
         "status": "verified against the official listing page, 2026-11-19",
         "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
-      },
-      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
-      "intended_asin": "",
-      "official_listing_url": "",
-      "intent_confirmed_on": "",
-      "intent_confirmation_source": "",
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "tested_performance": null
+      }
     },
     {
       "id": "SHOP-02",
@@ -211,6 +212,15 @@
       "listing_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
       "submitted_link": "https://link.amazon/B02NbDxp3",
       "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null,
       "listing_dimensions": {
         "observed_on": "2026-11-19",
         "observed_by": "session 0a48cfda",
@@ -224,16 +234,7 @@
         "capacity_note": "The title says “26QT”; the detail table says “Capacity: 24.6 liters”, which is 26 US quarts.",
         "status": "verified against the official listing page, 2026-11-19",
         "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
-      },
-      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
-      "intended_asin": "",
-      "official_listing_url": "",
-      "intent_confirmed_on": "",
-      "intent_confirmation_source": "",
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "tested_performance": null
+      }
     },
     {
       "id": "SHOP-03",
@@ -255,6 +256,15 @@
       "listing_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
       "submitted_link": "https://link.amazon/B00hJ57DV",
       "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null,
       "listing_dimensions": {
         "observed_on": "2026-11-19",
         "observed_by": "session 0a48cfda",
@@ -268,16 +278,7 @@
         "capacity_note": "The title and the detail table both say 8 quarts for this size.",
         "status": "verified against the official listing page, 2026-11-19",
         "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
-      },
-      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
-      "intended_asin": "",
-      "official_listing_url": "",
-      "intent_confirmed_on": "",
-      "intent_confirmation_source": "",
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "tested_performance": null
+      }
     },
     {
       "id": "SHOP-04",
@@ -299,6 +300,15 @@
       "listing_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer, Auto-Rotate Bright LED Screen, Highly Waterproof for Grill BBQ Camping, Black",
       "submitted_link": "https://link.amazon/B0c8moW59",
       "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null,
       "listing_dimensions": {
         "observed_on": "2026-11-19",
         "observed_by": "session 0a48cfda",
@@ -312,16 +322,7 @@
         "capacity_note": "",
         "status": "unverified — the detail table on this listing has no Product Dimensions row",
         "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
-      },
-      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
-      "intended_asin": "",
-      "official_listing_url": "",
-      "intent_confirmed_on": "",
-      "intent_confirmation_source": "",
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "tested_performance": null
+      }
     },
     {
       "id": "SHOP-05",
@@ -343,6 +344,15 @@
       "listing_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
       "submitted_link": "https://link.amazon/B0f3GKalj",
       "observed_on": "2026-11-19",
+      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
+      "intended_asin": "",
+      "official_listing_url": "",
+      "intent_confirmed_on": "",
+      "intent_confirmation_source": "",
+      "price": null,
+      "rating": null,
+      "review_count": null,
+      "tested_performance": null,
       "listing_dimensions": {
         "observed_on": "2026-11-19",
         "observed_by": "session 0a48cfda",
@@ -356,16 +366,7 @@
         "capacity_note": "",
         "status": "unverified — the detail table on this listing has no Product Dimensions row",
         "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
-      },
-      "observation_scope": "Redirect destination, listing page title and category breadcrumb only. Title wording is not independent verification of performance. Normalized /dp/ URL omits transient redirect query parameters.",
-      "intended_asin": "",
-      "official_listing_url": "",
-      "intent_confirmed_on": "",
-      "intent_confirmation_source": "",
-      "price": null,
-      "rating": null,
-      "review_count": null,
-      "tested_performance": null
+      }
     }
   ],
   "guides": [
@@ -1594,6 +1595,17 @@
       "blocks": "Nothing; E61-P6 and S-20 are already served in their minimal form",
       "source": "google-page-experience",
       "owner_input_needed": true
+    },
+    {
+      "id": "D3B-Q1",
+      "question": "Who may add a phrase to — or remove one from — the house-style banned list, and on what evidence?",
+      "known": "The list shipped 2026-11-19 with proposal B38-P1, register-driven from data/publication.json (house_style.banned) and enforced by the release gate on every build; the discovery scan and the rewrites it caused are recorded.",
+      "missing": "An editing rule from the owner: whether a lint finding, a reader note or a reviewer proposal can add a phrase, and whether removals need a recorded decision rather than an edit.",
+      "discovery": "Record every proposed addition with the page and sentence that prompted it, then batch the additions into the next review round; removals go through the same dated decision record as any other published change.",
+      "default": "The list grows when shipped copy would have failed it; removals need a dated, recorded decision. Nothing is scheduled for removal.",
+      "blocks": "Nothing; the gate runs with today's list regardless of the answer",
+      "source": "google-helpful",
+      "owner_input_needed": true
     }
   ],
   "proposals": [
@@ -2053,13 +2065,14 @@
         "E61-Q8"
       ],
       "source": "google-helpful",
-      "status": "Proposed",
+      "status": "Adopted & shipped 2026-11-19",
       "owner_input_needed": false,
       "next_action": "Write the style page from the design prompt's voice block, add a banned-phrase lint step to the release checks, run the full gate, and record the decision before publishing either.",
       "discoveries": [
         "Which phrases the published guides already avoid, so the lint starts from observed practice rather than taste",
         "Whether any existing sentence fails the proposed ban list — those would need a rewrite decision before the lint ships"
-      ]
+      ],
+      "outcome": "Adopted 2026-11-19 by session 3d0d7bd1: the house style is published at style.html from the register block, and the banned-phrase lint runs inside tools/check_publication.py on every build. Discovery scan and the two recorded rewrites: sessions/3d0d7bd1/decisions.md."
     },
     {
       "id": "B38-P2",
@@ -2113,13 +2126,14 @@
         "E61-Q8"
       ],
       "source": "search-console",
-      "status": "Proposed",
+      "status": "Adopted & shipped 2026-11-19",
       "owner_input_needed": false,
       "next_action": "Add the derived due date (with an overdue state, not a silently stale one) and the outcome-link field to the renderers, then record the decision before publishing.",
       "discoveries": [
         "Whether a cadence-derived due date misleads once missed — which is why it needs a visible overdue state rather than a stale date",
         "Which proposals already have a decision record an outcome link could point to"
-      ]
+      ],
+      "outcome": "Adopted 2026-11-19 by session 3d0d7bd1: the next-review date is derived from the edition date plus meta.review_cadence_days (14), rendered with a deterministic overdue state, and a release gate fails when the register moves past the due date without a new edition. Decided proposals carry an Outcome line. Record: sessions/3d0d7bd1/decisions.md."
     },
     {
       "id": "B38-P5",
@@ -2133,13 +2147,14 @@
         "P26-Q4"
       ],
       "source": "google-faq-update",
-      "status": "Proposed",
+      "status": "Adopted & shipped 2026-11-19",
       "owner_input_needed": false,
       "next_action": "Amend the DS-03 decision row's context with the deprecation dates before any FAQ work starts, then record the corrected decision.",
       "discoveries": [
         "Whether any current guide already has three or more sourced answers that would make an FAQ block worth shipping for readers alone",
         "What non-Google consumer of FAQPage markup, if any, the site would be serving before any markup is added"
-      ]
+      ],
+      "outcome": "Adopted 2026-11-19 by session 3d0d7bd1: decision row DS-03 now carries a dated correction with the verified deprecation facts (no longer shown in Google Search starting May 7, 2026; notice published May 8, 2026; documentation removed June 2026), re-read from developers.google.com/search/updates on 2026-11-19. FAQPage markup, if ever shipped, must name a non-Google consumer. Record: sessions/3d0d7bd1/decisions.md."
     },
     {
       "id": "E41-P1",
@@ -2171,13 +2186,14 @@
         "E41-Q2"
       ],
       "source": "google-page-experience",
-      "status": "Partly shipped by this pass",
+      "status": "Closed 2026-11-19 — measured half done",
       "owner_input_needed": false,
       "next_action": "Read the 2026-11-19 measurement record in sessions/41e84402/, then either shortlist a floating compare bar or close the row as done with the sticky column.",
       "discoveries": [
         "How much table width the sticky column takes at the narrowest tested viewport",
         "Whether every comparison column remains reachable by thumb without a second scroll region"
-      ]
+      ],
+      "outcome": "Closed 2026-11-19 by session 3d0d7bd1 after reading sessions/41e84402/measurement-2026-11-19.json: the sticky product column holds its edge at 320/390/768 px while the region scrolls, the table needs no sideways scroll at 768 px, and interactive targets under 24 px went from 4 to 0. The floating-compare-bar choice stays open under E41-Q2 rather than being guessed. Record: sessions/3d0d7bd1/decisions.md."
     },
     {
       "id": "0A4-P1",
@@ -2227,6 +2243,7 @@
     "shop/products/index.html",
     "about.html",
     "privacy.html",
+    "style.html",
     "guides/basket-or-oven-style.html",
     "guides/capacity-checklist.html",
     "guides/cleanup-and-counter-space.html",
@@ -2758,7 +2775,15 @@
         "missing": "Sourced, visible Q&A pairs per guide.",
         "discovery": "Draft pairs from existing guide sections; validate markup before shipping.",
         "default": "No FAQ schema until every answer is sourced and visible on the page.",
-        "basis": "google-structured-data"
+        "basis": "google-structured-data",
+        "update": {
+          "on": "2026-11-19",
+          "by": "session 3d0d7bd1 (proposal B38-P5)",
+          "text": "FAQ rich results no longer exist in Google Search: per Google's own documentation updates (read 2026-11-19), the feature stopped appearing in Search starting May 7, 2026 (notice published May 8, 2026) and its documentation was removed in June 2026. Keep the sourced-answer requirement; decide FAQ blocks on reader utility alone, and name the non-Google consumer before any FAQPage markup ships.",
+          "anchors": [
+            "https://developers.google.com/search/updates#faq-deprecation"
+          ]
+        }
       },
       {
         "id": "DS-04",
@@ -2808,5 +2833,206 @@
     ],
     "prompt_intro": "Lines this round would append to the design prompt if approved. Copying or appending them is an approval step for the reviewer; nothing is applied by reading this page.",
     "prompt_lines": "Publish on a dated seasonal rhythm without ever claiming demand: a restrained seasonal strip names the calendar fact and links the guides that answer it. Grow the reading room one question-shaped guide at a time; each new guide keeps the same evidence limits, related-links mesh, Article schema, canonical URL, sitemap and RSS entry as the current six. Add FAQPage structured data only when every answer is already visible and sourced on the page. Keep the mobile-first type scale and 44-pixel tap targets, and make the format comparison reachable from long guides. Use labelled generic art until authorized exact-product assets exist, and label real imagery with its source and date when it arrives. Group the reading room by the decision a reader is facing. Every suggestion shows what evidence would change the decision; a review choice never implements itself. If paid search is ever used it lands on this site — never directly or indirectly on an Amazon Site — and organic findability starts with Search Console verification and a first-party query report."
+  },
+  "house_style": {
+    "adopted": "2026-11-19",
+    "adopted_by": "session 3d0d7bd1, recording decision B38-P1 in sessions/3d0d7bd1/decisions.md",
+    "proposal": "B38-P1",
+    "intro": "The voice was decided once (S-12) and written into the design brief. This register block makes it public and mechanical: one list of banned constructions drives the reader-facing style page and the release gate. The lint is a floor, not an editor — a sentence can pass it and still be bad.",
+    "rules": [
+      {
+        "id": "HS-01",
+        "rule": "Second person, short declarative sentences, one idea per paragraph; a checklist when the reader has to do something.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "HS-02",
+        "rule": "Every product statement names its listing and the date it was read.",
+        "basis": "google-reviews"
+      },
+      {
+        "id": "HS-03",
+        "rule": "Every guide ends with what it did not establish.",
+        "basis": "google-reviews"
+      },
+      {
+        "id": "HS-04",
+        "rule": "No experience we do not have: no invented tester, no hands-on claim, no quote without a source.",
+        "basis": "ftc"
+      },
+      {
+        "id": "HS-05",
+        "rule": "No number without a dated first-party source behind it; absent numbers stay absent.",
+        "basis": "amazon-agreement"
+      },
+      {
+        "id": "HS-06",
+        "rule": "No urgency, countdown or scarcity framing; a seasonal page states calendar facts, never demand.",
+        "basis": "amazon-policies"
+      }
+    ],
+    "banned": [
+      {
+        "id": "B01",
+        "phrase": "must-have",
+        "patterns": [
+          "must-have",
+          "\\b(?:a|the|this|another|our|every) must have\\b"
+        ],
+        "why": "Settles the reader's choice before any evidence; the fingerprint of a generated shortlist.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B02",
+        "phrase": "game-changer",
+        "patterns": [
+          "game[- ]changer"
+        ],
+        "why": "Breathless superlative with nothing behind it.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B03",
+        "phrase": "top-rated",
+        "patterns": [
+          "top[- ]rated"
+        ],
+        "why": "A rating claim the register does not hold; ratings may only appear when Amazon serves them.",
+        "basis": "google-reviews"
+      },
+      {
+        "id": "B04",
+        "phrase": "unbeatable",
+        "patterns": [
+          "unbeatable"
+        ],
+        "why": "A vague superlative no listing or evidence supports.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B05",
+        "phrase": "obsessed",
+        "patterns": [
+          "\\bobsess(?:ed|es|ion)\\b"
+        ],
+        "why": "Invented emotion; a listing-based site has no feelings to report.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B06",
+        "phrase": "elevate your cooking",
+        "patterns": [
+          "\\belevat(?:e|es|ing)\\b"
+        ],
+        "why": "A lifestyle promise the page cannot support.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B07",
+        "phrase": "dive in",
+        "patterns": [
+          "\\bdive (?:right )?in(?:to)?\\b"
+        ],
+        "why": "Filler imperative that replaces an instruction.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B08",
+        "phrase": "in today's fast-paced world",
+        "patterns": [
+          "in today'?s (?:fast[- ]paced|busy) world"
+        ],
+        "why": "The generated-filler opener.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B09",
+        "phrase": "look no further",
+        "patterns": [
+          "look no further"
+        ],
+        "why": "Sells certainty the page does not have.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B10",
+        "phrase": "in conclusion",
+        "patterns": [
+          "in conclusion"
+        ],
+        "why": "Essay boilerplate instead of an answer.",
+        "basis": "google-helpful"
+      },
+      {
+        "id": "B11",
+        "phrase": "we loved / we tried / we tested",
+        "patterns": [
+          "\\bwe (?:loved|tried|tested)\\b"
+        ],
+        "why": "An experience claim; nobody here has cooked with these appliances (FTC).",
+        "basis": "ftc"
+      },
+      {
+        "id": "B12",
+        "phrase": "readers rave",
+        "patterns": [
+          "readers rave"
+        ],
+        "why": "Invented social proof with no source.",
+        "basis": "ftc"
+      },
+      {
+        "id": "B13",
+        "phrase": "trending / viral",
+        "patterns": [
+          "\\btrending\\b",
+          "\\bviral\\b"
+        ],
+        "why": "A demand claim; no traffic report exists in this repository.",
+        "basis": "amazon-agreement"
+      },
+      {
+        "id": "B14",
+        "phrase": "demand and scarcity framings",
+        "patterns": [
+          "flying off the shelves",
+          "\\bhot item\\b",
+          "\\bin demand\\b",
+          "best[- ]selling",
+          "#\\d+ bestseller"
+        ],
+        "why": "Popularity or scarcity the register cannot evidence.",
+        "basis": "amazon-policies"
+      },
+      {
+        "id": "B15",
+        "phrase": "the generated-filler set",
+        "patterns": [
+          "revolutioni[sz]e\\w*",
+          "unparalleled",
+          "\\bseamless(?:ly)?\\b",
+          "\\bunlock\\w*\\b",
+          "cutting[- ]edge",
+          "state[- ]of[- ]the[- ]art",
+          "say goodbye to",
+          "indulge in",
+          "curated selection",
+          "a testament to",
+          "\\bdelve\\w*\\b"
+        ],
+        "why": "The vocabulary of machine-written marketing copy.",
+        "basis": "google-helpful"
+      }
+    ],
+    "lint": {
+      "gate": "tools/check_publication.py",
+      "scans": "Every current reader page rendered by tools/build_publication.py",
+      "relaxed_pages": [
+        "suggestions/index.html"
+      ],
+      "relaxed_reason": "The decision register quotes the banned constructions when it reviews them, and quotes Google's own warning wording; text marked data-lint=\"quote\" anywhere, and the style page's phrase cells (class p26-banned-phrase), are exempt for the same reason.",
+      "note": "The lint fails the release on any listed pattern in strict-scope visible text. It is a floor, not an editor: a page can pass and still be badly written."
+    },
+    "rewrite_record": "Before adoption, all 20 current reader pages were scanned against this list on 2026-11-19 (record in sessions/3d0d7bd1/decisions.md). Buyer-facing copy was already clean; two meta-uses of banned tokens were rewritten rather than exempted: the front-page hero and the about page's 'must-have list' line. The about page's compliance sentence declining any trending claim is wrapped in data-lint=\"quote\"."
   }
 }
