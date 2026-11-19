@@ -52,18 +52,18 @@ def front_main(record: dict) -> str:
     air_cards = "".join(product_card(row, "Air fryers") for row in air)
     thermometer_cards = "".join(product_card(row, "Meat thermometers") for row in thermometers)
 
-    return f'''<!-- c3be74f2:front -->
+    page = f'''<!-- c3be74f2:front -->
 <main class="z3-main c3-front"><div class="z3-wrap">
   <section class="c3-hero" aria-labelledby="c3-front-title">
     <div class="c3-hero-copy">
-      <p class="z3-eyebrow">Zone3 / kitchen decision notes</p>
-      <h1 class="z3-h1" id="c3-front-title">A clearer brief for your next kitchen-tool decision.</h1>
-      <p class="c3-dek">Start with the question you are trying to answer — capacity, layout, cleanup or functions — then read the listing with a record of what is known and what still needs confirmation.</p>
+      <p class="z3-eyebrow">Zone3 / kitchen buying guides</p>
+      <h1 class="z3-h1" id="c3-front-title">Kitchen shopping, with the useful details in view.</h1>
+      <p class="c3-dek">Browse the observed air-fryer listings, then use plain-spoken guides to compare layout, capacity, cleanup and functions. Unknowns stay visible; they are never guessed.</p>
       <div class="c3-hero-actions">
-        <a class="c3-button c3-button-accent" href="#questions">Start with a buyer question <span aria-hidden="true">↓</span></a>
-        <a class="c3-button c3-button-line" href="#listing-desk">Browse the listing desk</a>
+        <a class="c3-button c3-button-accent" href="#listing-desk">Browse the listings <span aria-hidden="true">↓</span></a>
+        <a class="c3-button c3-button-line" href="#questions">Start with a buyer question</a>
       </div>
-      <p class="c3-fineprint">We have not tested these products. No price, rating, review count, performance forecast or product ranking is published here.</p>
+      <p class="c3-fineprint">The observed targets are not confirmed as the intended products. No hands-on testing, price, rating, review-count or popularity claims are published here.</p>
     </div>
     <figure class="c3-hero-art">
       <img src="assets/zone3-kitchen-notes-hero.png" alt="Abstract editorial illustration of a kitchen worktop and a small checklist card.">
@@ -127,6 +127,14 @@ def front_main(record: dict) -> str:
   </section>
 </div></main>
 <!-- /c3be74f2:front -->'''
+    # Lead with the observed listings after the editorial hero/status strip, then invite the
+    # reader into the question-shaped guides. Keep the decision table and provenance note below.
+    question = re.search(r'  <section class="c3-section" id="questions".*?</section>\n', page, re.S)
+    listing = re.search(r'  <section class="c3-section c3-listing-desk".*?</section>\n', page, re.S)
+    if not question or not listing or question.start() > listing.start():
+        raise RuntimeError("expected questions before listing section in the source template")
+    page = page[:question.start()] + listing.group(0) + "\n" + question.group(0) + page[listing.end():]
+    return page
 
 
 def render() -> str:
@@ -143,14 +151,31 @@ def render() -> str:
     replaced, count = re.subn(main_pattern, new_main, raw, count=1, flags=re.S | re.I)
     if count != 1:
         raise RuntimeError(f"expected one root main replacement; got {count}")
-    replaced = re.sub(r'<title>.*?</title>', '<title>Zone3 — Kitchen decision notes and source-linked buyer guides</title>', replaced, count=1, flags=re.S | re.I)
+    title = 'Air Fryer Buying Guides &amp; Comparisons | Zone3'
+    description = ('Practical air fryer buying guides and source-linked comparisons. Compare basket and oven-style layouts, '
+                   'capacity, cleanup and functions; listing intent stays separate from observed destinations.')
+    replaced = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', replaced, count=1, flags=re.S | re.I)
     replaced = re.sub(
         r'<meta\s+name="description"\s+content="[^"]*">',
-        '<meta name="description" content="Source-linked kitchen buyer questions, five observed Amazon listing destinations, and a clear record of what remains unconfirmed.">',
+        f'<meta name="description" content="{description}">',
         replaced,
         count=1,
         flags=re.I,
     )
+    social = [
+        ('og:type', 'website'),
+        ('og:site_name', 'Zone3'),
+        ('og:title', title),
+        ('og:description', description),
+        ('og:url', 'https://kanlerxz87-cyber.github.io/Zone3/'),
+    ]
+    for prop, value in social:
+        tag = f'<meta property="{prop}" content="{value}">'
+        pattern = rf'<meta\s+property="{re.escape(prop)}"\s+content="[^"]*">'
+        if re.search(pattern, replaced, re.I):
+            replaced = re.sub(pattern, tag, replaced, count=1, flags=re.I)
+        else:
+            replaced = re.sub(r'</head\s*>', tag + '\\n</head>', replaced, count=1, flags=re.I)
     return replaced
 
 
