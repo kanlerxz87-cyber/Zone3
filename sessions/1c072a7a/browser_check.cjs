@@ -273,7 +273,7 @@ async function launch() {
     const p = await isolated.newPage(); await goto(p);
     assert.equal(await p.locator('.p26-nav').isVisible(), true); assert.equal(await p.locator('[data-product-card]:visible').count(), 5);
     await p.locator('.p26-nav a[href="guides/index.html"]').click(); assert.equal(await p.locator('.p26-guide-card').count(), 6);
-    await goto(p, 'suggestions/index.html'); assert.equal(await p.locator('.p26-question-table tbody tr').count(), data.questions.length);
+    await goto(p, 'suggestions/index.html'); assert.equal(await p.locator('.p26-question-table tbody tr').count(), data.questions.length + (data.review_b9008684 ? data.review_b9008684.decision_rows.length : 0));
     await isolated.close();
   });
   await check('All ordinary page requests and collector responses succeed; no page errors or retailer requests', async () => {

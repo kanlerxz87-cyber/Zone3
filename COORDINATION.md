@@ -8888,3 +8888,15 @@ While PR #178 was open, `main` advanced through session `b580d790`'s PRs #175/#1
 - **README count** corrected to twelve scoped official references after their S95 landed.
 
 **Post-rebase verification (merged tree):** `tools/publish.py` **41/41 PASS** including b580d790's extended publication gate, twice, byte-identical rebuild; real-Chromium harness **14/14 PASS, 32 WCAG A/AA scans PASS**; 18-element coexistence check (their features + this session's) all PASS. No gate, rule or source row of the other session was relaxed or removed.
+
+### E61 second rebase reconciliation with session b9008684 — 2026-11-19
+
+`main` advanced again through session `b9008684`'s PRs #177/#179 (suggestions review round: design-prompt feed D9-01…07, article slate AS-01…07, traffic actions, decision-support register DS-01…08, +2 fetched official sources) while PR #178 was open. Rebased onto `7600f25`; reconciled additively, discarding nothing:
+
+- **`data/publication.json`**: upstream version (with `review_b9008684` block and the two new sources) taken as base; this session's batch-2 rows re-appended with the b580d790 schema fields intact. Register totals: 14 sources / 15 proposals / 17 questions / 1 review round.
+- **`tools/build_publication.py`**: this session's merged generator (b580d790 features + E61 counts/answers/worksheet/prompt) kept; b9008684's `review_round_html()` grafted in unchanged and rendered between the decision-readiness register and the design prompt, as upstream placed it. The suggestions subtitle now names the review round; the proposal heading stays register-driven.
+- **Answer capture extended**: the `#answers` section now carries one field per question in BOTH registers — 17 decision-readiness questions plus 8 decision-support rows (25 fields) — so every open decision row the site publishes can receive a dated answer.
+- **Harness**: the no-JS question count covers both registers; the v2 export assertions unchanged (14/14 PASS, 32 WCAG A/AA scans PASS after rebase).
+- Process note: the first rebase attempt staged a pre-merge `data/publication.json`, which would have dropped the `review_b9008684` block; the coexistence check caught it (`their DS rows rendered` FAIL → KeyError), the block and both sources were restored, rebuilt, and re-verified before any push. No upstream data was lost in the pushed tree.
+
+**Post-rebase verification (merged tree, final):** `tools/publish.py` **41/41 PASS**, byte-identical rebuild; real-Chromium **14/14 PASS / 32 WCAG scans PASS**; 12-element coexistence check across b580d790 + b9008684 + this session all PASS.
