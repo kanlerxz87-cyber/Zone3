@@ -2,12 +2,12 @@
 
 **Reviewed:** 2026-11-19 UTC
 **Branch:** `arena/4d7fe998-zone3`
-**Base after coordination rebases:** `f29342b4ced37840ce1ff164eb2e037bd5bc7a54` (`main`, PR #194; includes PR #193)
+**Base after coordination rebases:** `3f0d14bfad1eee800c6e6e3397e43e78b5d93839` (`main`, PR #195; includes PRs #193/#194)
 **Scope:** Audit the current publication, public claims, evidence boundaries, and open owner/platform decisions. This review does not change product, intent, tracking, source, flag, measurement, suggestion-register, generator, or generated-page data. The root executive-summary opening is reconciled separately; historical sections are retained.
 
 ## Executive finding
 
-The requested reader-facing publication and decision workspace are already present. On the latest rebased tree, the current primary edition is product-led, has two product categories and nine question-led guides, and keeps the research/review surfaces reachable in a single “Behind the site” navigation group and the footer. The suggestions page is explicitly review-only. The canonical upstream build and Pages deployment for PR #194 succeeded; this branch is separately running the full release chain after rebasing.
+The requested reader-facing publication and decision workspace are already present. On the latest rebased tree, the current primary edition is product-led, has two product categories and nine question-led guides, and keeps the research/review surfaces reachable in a single “Behind the site” navigation group and the footer. The suggestions page is explicitly review-only. PR #194’s canonical build and PR #195’s coordination-only Pages deployment succeeded; this branch’s full release chain was re-run after rebasing onto #195.
 
 This is not yet a verified revenue or attribution system. Product intent is unconfirmed, the five primary product-card calls to action still use the submitted `link.amazon` links, the owner-supplied tracking ID has not been tested in an enrolled Associates account, Search Console and Associates reports are not verified, and production measurement is disabled. In particular, the repository contains five direct Amazon product URLs with `tag=shopnow047c-20` on the product-evidence page, but that markup does **not** prove account assignment, a Special Link generated or approved in the enrolled workflow, or successful reporting. `FLG-003` remains unresolved; the submitted short links are not called invalid.
 
@@ -15,15 +15,15 @@ Two visible claims conflict with current repository evidence: the live intent-re
 
 ### Upstream additions during this audit
 
-After the initial `c8533cd` baseline, PR #193 merged at `42a6952` (2026-11-19 13:10:09Z), correcting the README guide count and marking the superseded analytics schema/client/collector as historical. PR #194 then merged at `f29342b` (2026-11-19 13:13:26Z), adding the DS-01 probe-placement guide and FoodSafety.gov source, bringing the register to 9 guides / 16 scoped references / 17 indexable URLs / 27 RSS items. Both publication checks succeeded; Pages API reports `f29342b` built. This review’s final observations use that later tree and a cache-busted live read-back; no upstream product/tracking intent was changed by this audit.
+After the initial `c8533cd` baseline, PR #193 merged at `42a6952` (2026-11-19 13:10:09Z), correcting the README guide count and marking the superseded analytics schema/client/collector as historical. PR #194 then merged at `f29342b` (2026-11-19 13:13:26Z), adding the DS-01 probe-placement guide and FoodSafety.gov source, bringing the register to 9 guides / 16 scoped references / 17 indexable URLs / 27 RSS items. PR #195 merged at `3f0d14b` (2026-11-19 13:17:29Z) as a coordination-only publish closeout; its check passed and Pages API reports `3f0d14b` built. The reader tree is unchanged from `f29342b`; this review’s latest observations use the `3f0d14b` revision and cache-busted live read-back. No upstream product/tracking intent was changed by this audit.
 
 ## What is shipped in the current reader layer
 
 | Area | Repository / live observation | Evidence boundary |
 |---|---|---|
-| Product-led front page | Five product cards: three air-fryer destinations and two meat-thermometer destinations; cards include a fit/not-fit prompt and link to a question-led guide. The five displayed product identities are descriptions of observed listing destinations, not confirmed requester intent. | Live front page, cache-busted for Pages build `f29342b`; `data/publication.json`; `data/shop/products.json`. No hands-on test is claimed. |
+| Product-led front page | Five product cards: three air-fryer destinations and two meat-thermometer destinations; cards include a fit/not-fit prompt and link to a question-led guide. The five displayed product identities are descriptions of observed listing destinations, not confirmed requester intent. | Live front page, cache-busted for Pages build `3f0d14b`; `data/publication.json`; `data/shop/products.json`. No hands-on test is claimed. |
 | Categories and guides | Air-fryer and meat-thermometer category pages are present. The current publication register has nine guides (16 scoped official references), all nine guide URLs are in the 17-URL sitemap; the 27-item feed includes all nine, plus five older `/site/guides/` items. PR #194 added “Where does the probe go?” from the reviewed DS-01 slate default, with FoodSafety.gov temperature/placement guidance; it is not a thermometer test. | `data/publication.json`, `sitemap.xml`, `feed.xml`, live `/guides/` and [`guides/where-does-the-probe-go.html`](../../guides/where-does-the-probe-go.html). Guide titles are editorial hypotheses, not evidence of search demand or popularity. |
-| Suggestions and decision readiness | 26 proposals, 36 decision-readiness questions, six paths, 13 design-prompt blocks, and eight decision-support rows. The suggestions page has 44 answer fields (36 questions plus eight decision rows). Saving a preference is local and does not implement a proposal. | `data/publication.json`, `suggestions/index.html`; live `/suggestions/` after build `f29342b`. |
+| Suggestions and decision readiness | 26 proposals, 36 decision-readiness questions, six paths, 13 design-prompt blocks, and eight decision-support rows. The suggestions page has 44 answer fields (36 questions plus eight decision rows). Saving a preference is local and does not implement a proposal. | `data/publication.json`, `suggestions/index.html`; live `/suggestions/` after build `3f0d14b`. |
 | Publishing cadence and topic discovery | The register proposes reviewing one guide every 14 days. It says future topics should use actual Search Console/query evidence when available. | `data/publication.json` and the review registers. This is an operating plan, not a published or measured cadence, traffic claim, ranking, or demand signal. |
 | Disclosure and link markup | The Associates disclosure is present above the fold and in the footer; the release gates check disclosure placement. The sponsored-link checker reports every outbound product link marked `rel="sponsored"`. Google recommends `rel="sponsored"` for advertisement or paid-placement links. | `python3 tools/publish.py --check`; `scripts/mark_sponsored.py --check`; `tools/apply_sponsored.py --check`; official [Google outbound-link guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links). This is a markup check, not Amazon account approval. |
 | Product-intent record | Five observed destination ASINs and listing URLs are recorded separately from intent. For all five, intended ASIN, intended official listing URL, confirmation date, and confirmation source remain blank. | `data/products.json`, `sessions/aebf0747/intent-record.json`, live `/intent-record/`. Do not copy an observed redirect into an intended-product field. |
@@ -49,7 +49,7 @@ A follow-up should reconcile these text/generator sources without changing the i
 
 ## Evidence coverage and audit limits
 
-The final branch-local release checks ran after the rebase onto PR #194 (`f29342b`):
+The final branch-local release checks ran after the rebase onto PR #195 (`3f0d14b`):
 
 - `tools/build_publication.py --check`: 20 publication pages current.
 - `tools/check_publication.py`: **PUBLICATION PASS** — 121 current HTML pages, 19 rendered reader/workspace pages, 100 official-source table rows, 17 indexable URLs, 27 feed entries.

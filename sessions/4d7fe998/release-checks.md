@@ -2,19 +2,20 @@
 
 **Date:** 2026-11-19 UTC
 **Branch:** `arena/4d7fe998-zone3`
-**Rebased main:** `f29342b4ced37840ce1ff164eb2e037bd5bc7a54` (PR #194, including #193)
+**Rebased main:** `3f0d14bfad1eee800c6e6e3397e43e78b5d93839` (PR #195, including #193/#194)
 **Scope:** canonical build, complete publication gates twice, hash-based idempotency, GitHub Actions/Pages/read-back, and explicit file-scope confirmation.
 
 ## Upstream baseline and live read-back
 
 - PR [#193](https://github.com/kanlerxz87-cyber/Zone3/pull/193) merged at `2026-11-19T13:10:09Z` as `42a6952`. Publication check `44530675597` succeeded.
 - PR [#194](https://github.com/kanlerxz87-cyber/Zone3/pull/194) merged at `2026-11-19T13:13:26Z` as `f29342b`. Publication check `44531216522` succeeded; the Pages API reported the `f29342b` deployment as `built` at `2026-11-19T13:13:51Z`.
-- Cache-busted live read-back for revision `f29342b` confirmed the five home cards (still using submitted short links), nine guide cards including the new probe-placement guide, 17 sitemap URLs, 27 RSS entries, the brief's 5/9/36/0 status strip, six review-only paths, and current intent/product evidence surfaces. The legacy `/dashboard/` remains an older 3-product/22-source/29-flag snapshot.
+- PR [#195](https://github.com/kanlerxz87-cyber/Zone3/pull/195) merged at `2026-11-19T13:17:29Z` as `3f0d14b`; it is a coordination-only CDB closeout. Publication check `44531961726` succeeded and Pages reported `3f0d14b` as `built` at `2026-11-19T13:17:58Z`.
+- Cache-busted live read-back for revision `3f0d14b` confirmed the five home cards (still using submitted short links), nine guide cards including the new probe-placement guide, 17 sitemap URLs, 27 RSS entries, the brief's 5/9/36/0 status strip, six review-only paths, and current intent/product evidence surfaces. The legacy `/dashboard/` remains an older 3-product/22-source/29-flag snapshot.
 - PR #194's upstream verification record reports its own complete `tools/publish.py` run twice; this is separate from and does not substitute for the branch-local checks below.
 
 ## Branch-local canonical build and full gates
 
-The canonical command `python3 tools/publish.py` (not `--check`) was run twice on the branch after rebasing to `f29342b`. Each run rebuilt the tree and executed all active/legacy structural, provenance, disclosure, sponsored-link, sitemap/feed, external-link, and analytics tests: **41 commands checked; 0 failed** on both runs.
+The canonical command `python3 tools/publish.py` (not `--check`) was run twice on the branch after rebasing to `3f0d14b`. Each run rebuilt the tree and executed all active/legacy structural, provenance, disclosure, sponsored-link, sitemap/feed, external-link, and analytics tests: **41 commands checked; 0 failed** on both runs.
 
 | Run | Command | Result | Working-tree result |
 |---|---|---|---|

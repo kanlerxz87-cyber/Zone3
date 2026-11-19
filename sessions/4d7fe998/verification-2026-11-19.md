@@ -1,22 +1,22 @@
 # Verification log — session `4d7fe998`
 
 **Date:** 2026-11-19 (UTC)
-**Checkout:** `arena/4d7fe998-zone3`, re-rebased on `f29342b4ced37840ce1ff164eb2e037bd5bc7a54` (`main`, PR #194; includes PR #193)
+**Checkout:** `arena/4d7fe998-zone3`, re-rebased on `3f0d14bfad1eee800c6e6e3397e43e78b5d93839` (`main`, PR #195; includes PRs #193/#194)
 **Review scope:** publication state, official-source boundaries, disclosure/sponsored-link policy checks, dashboard/suggestion/intent surfaces, feed/sitemap, tracking/measurement claims, and GitHub Pages suitability.
 **Limit:** structural and scoped source review; not a fresh line-by-line audit of every inherited page or a substitute for account-only evidence.
 
-## Live publication observations after PR #194
+## Live publication observations after PR #195
 
-Fetched Pages after the PR #194 deployment; cache-busted with `?revision=f29342b` to avoid an older edge response:
+PR #195 is a coordination-only closeout; Pages API reports `3f0d14b` as `built`. The reader tree is unchanged from PR #194. Re-fetched Pages cache-busted with `?revision=3f0d14b` to confirm the latest deployed revision:
 
-- Home: <https://kanlerxz87-cyber.github.io/Zone3/?revision=f29342b> — five product cards in two categories. Primary “View on Amazon” CTAs still use the submitted `link.amazon` short URLs. Cards keep listing observations separate from intent and disclose that they are not hands-on reviews; no live price or rating is shown.
-- Executive brief: <https://kanlerxz87-cyber.github.io/Zone3/executive-brief.html?revision=f29342b> — live register-driven strip reads 5 submitted links / 9 guides / 36 readiness questions / 0 campaign rows. Decision desk reads six paths / 26 proposals / 36 questions / 13 prompt blocks. It labels attribution unverified, production measurement off and commercial hosting for review.
-- Suggestions: <https://kanlerxz87-cyber.github.io/Zone3/suggestions/?revision=f29342b> — six paths; explicit review-only wording; local save/export; no implementation action. Local HTML contains 44 answer textareas for 36 readiness questions plus eight decision-support rows.
-- Guides: <https://kanlerxz87-cyber.github.io/Zone3/guides/?revision=f29342b> — nine live guide cards. All nine are in the sitemap and feed. The new guide is “Where does the probe go? Turkey, ham and roasts”; its official food-safety guidance is not a hands-on test of either listed thermometer.
-- New guide: <https://kanlerxz87-cyber.github.io/Zone3/guides/where-does-the-probe-go.html?revision=f29342b> — says to check the thickest part away from bone/fat/gristle; reproduces cited FoodSafety.gov minimum-temperature/rest guidance and labels listing phrases as unverified listing claims. The upstream CDB record contains the dated official-source reads and text-level verification.
-- Product-intent record: <https://kanlerxz87-cyber.github.io/Zone3/intent-record/?revision=f29342b> — all five intended-ASIN, intended-listing, confirmation-date and confirmation-source fields remain blank separately from observed redirects. It still says “Not attached to any link on this site,” which conflicts with tagged direct URLs on the product-evidence page; that does not establish account attribution.
-- Product evidence: <https://kanlerxz87-cyber.github.io/Zone3/products.html?revision=f29342b> — separate SL1–SL5 table displays five direct `amazon.com/dp/<observed-ASIN>?tag=shopnow047c-20` URLs, all “Pending validation in the enrolled workflow.” The same page still contains older Product 4/5 row claims “No Associates tag, so no Special Link exists,” and older repository/config/flag statements say no tag appears. Treat these as copy contradictions, not evidence that the tagged links are approved or report.
-- Legacy dashboard: <https://kanlerxz87-cyber.github.io/Zone3/dashboard/?revision=f29342b> — still shows 3 products / 22 sources / 29 flags and the older dashboard content; it is a dated legacy surface, not the current reader register.
+- Home: <https://kanlerxz87-cyber.github.io/Zone3/?revision=3f0d14b> — five product cards in two categories. Primary “View on Amazon” CTAs still use the submitted `link.amazon` short URLs. Cards keep listing observations separate from intent and disclose that they are not hands-on reviews; no live price or rating is shown.
+- Executive brief: <https://kanlerxz87-cyber.github.io/Zone3/executive-brief.html?revision=3f0d14b> — live register-driven strip reads 5 submitted links / 9 guides / 36 readiness questions / 0 campaign rows. Decision desk reads six paths / 26 proposals / 36 questions / 13 prompt blocks. It labels attribution unverified, production measurement off and commercial hosting for review.
+- Suggestions: <https://kanlerxz87-cyber.github.io/Zone3/suggestions/?revision=3f0d14b> — six paths; explicit review-only wording; local save/export; no implementation action. Local HTML contains 44 answer textareas for 36 readiness questions plus eight decision-support rows.
+- Guides: <https://kanlerxz87-cyber.github.io/Zone3/guides/?revision=3f0d14b> — nine live guide cards. All nine are in the sitemap and feed. The new guide is “Where does the probe go? Turkey, ham and roasts”; its official food-safety guidance is not a hands-on test of either listed thermometer.
+- New guide: <https://kanlerxz87-cyber.github.io/Zone3/guides/where-does-the-probe-go.html?revision=3f0d14b> — says to check the thickest part away from bone/fat/gristle; reproduces cited FoodSafety.gov minimum-temperature/rest guidance and labels listing phrases as unverified listing claims. The upstream CDB record contains the dated official-source reads and text-level verification.
+- Product-intent record: <https://kanlerxz87-cyber.github.io/Zone3/intent-record/?revision=3f0d14b> — all five intended-ASIN, intended-listing, confirmation-date and confirmation-source fields remain blank separately from observed redirects. It still says “Not attached to any link on this site,” which conflicts with tagged direct URLs on the product-evidence page; that does not establish account attribution.
+- Product evidence: <https://kanlerxz87-cyber.github.io/Zone3/products.html?revision=3f0d14b> — separate SL1–SL5 table displays five direct `amazon.com/dp/<observed-ASIN>?tag=shopnow047c-20` URLs, all “Pending validation in the enrolled workflow.” The same page still contains older Product 4/5 row claims “No Associates tag, so no Special Link exists,” and older repository/config/flag statements say no tag appears. Treat these as copy contradictions, not evidence that the tagged links are approved or report.
+- Legacy dashboard: <https://kanlerxz87-cyber.github.io/Zone3/dashboard/?revision=3f0d14b> — still shows 3 products / 22 sources / 29 flags and the older dashboard content; it is a dated legacy surface, not the current reader register.
 
 Local inventory on the same base:
 
@@ -70,7 +70,8 @@ An earlier attempted alias `python3 tools/check_links.py` does not exist; it was
 - PR [#191](https://github.com/kanlerxz87-cyber/Zone3/pull/191) merged at 13:00:47Z as `c8533cd`; its publication check and Pages build/deployment succeeded.
 - PR [#193](https://github.com/kanlerxz87-cyber/Zone3/pull/193) merged at 13:10:09Z as `42a6952`; publication check run `44530675597` succeeded.
 - PR [#194](https://github.com/kanlerxz87-cyber/Zone3/pull/194) merged at 13:13:26Z as `f29342b`; publication check run `44531216522` succeeded. Pages API status for `f29342b` was `built` at 13:13:51Z.
-- Cache-busted live reads at `?revision=f29342b` confirmed the 5/9/36/0 executive strip, nine guides, six-path decision desk, product intent/evidence pages and the 17-URL/27-item sitemap/feed tree. The old dashboard remains stale by design/history. This is the upstream base deployment, not yet deployment verification for this session’s PR.
+- PR [#195](https://github.com/kanlerxz87-cyber/Zone3/pull/195) merged at 13:17:29Z as `3f0d14b`; publication check run `44531961726` succeeded. Pages API status for `3f0d14b` was `built` at 13:17:58Z. This is a coordination-only closeout after #194.
+- Cache-busted live reads at `?revision=3f0d14b` confirmed the 5/9/36/0 executive strip, nine guides including the probe guide, six-path decision desk, product intent/evidence pages and the 17-URL/27-item sitemap/feed tree. The old dashboard remains stale by design/history. This is the upstream base deployment, not yet deployment verification for this session’s PR.
 
 ## Open questions that remain owner- or platform-only
 
