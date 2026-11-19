@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flagged for review — shop build</title>
-<meta name="description" content="28 items flagged for review, each with its source link and what this build did not claim.">
+<meta name="description" content="32 items flagged for review, each with its source link and what this build did not claim.">
 <link rel="stylesheet" href="../assets/shop.css">
 <!-- z3:css --><link rel="stylesheet" href="../../assets/zone3-publication.css">
 <!-- z3:rss --><link rel="alternate" type="application/rss+xml" title="Zone3 Kitchen guides" href="../../feed.xml">
@@ -170,6 +170,26 @@
   <td>8AA-F-02</td><td>High</td><td>Open - decision needed (owner)</td>
   <td>The Zone4 decision log&#x27;s open decision D-40 (cited by ID; not an official source) recommends option A: none of the two newly added short links should be added to the shop until intended identity and destination are confirmed. This repository&#x27;s shop publishes all five supplied links (SHOP-01 to SHOP-05).</td><td>The site and the open recommendation disagree about which links are live. Intended products are unconfirmed for all five (FLG-S01, FLG-002).</td><td>Did not remove any link. The brief asks for all five products to be shown. Logged the conflict for the owner.</td>
   <td><a href="https://affiliate-program.amazon.com/help/operating/policies">Amazon Associates Program Policies (Special Links)</a></td><td>No claim that either short link is invalid. Each product is shown with its observed listing and no confirmed intent.</td>
+</tr>
+<tr>
+  <td>E41-B01</td><td>Medium</td><td>Open - for review</td>
+  <td>121 of the 164 rows in `data/flags.json` (169 rows on the merged tree; still 121 with no status) carry no `status` field, so the Flagged-for-review page cannot be split into open, resolved and historical the way brief row S-11 asks. An earlier same-day register row recorded this as &#x27;Not measured&#x27;.</td><td>The review page shows one long list. A reader cannot tell a live problem from a closed one without opening the text.</td><td>Did not guess statuses onto historical rows. Measured the counts, and required any new row that carries a `raised` date to carry a `status` so the backlog cannot grow. The fix is an owner or integration pass over the historical rows.</td>
+  <td><a href="https://docs.github.com/pages/getting-started-with-github-pages/what-is-github-pages">GitHub Pages documentation (what the published site is)</a></td><td>No claim that any of the 121 unlabelled rows is resolved.</td>
+</tr>
+<tr>
+  <td>E41-B02</td><td>High</td><td>Open - blocked on evidence</td>
+  <td>S-23&#x27;s capacity-per-centimetre analysis cannot be published from this repository: no product register holds a footprint or interior dimension for any of the five listings.</td><td>The one analysis the brief asks for that would genuinely help a buyer decide is absent, and the site says so instead of approximating it.</td><td>Left the analysis unwritten and recorded what has to be captured first: `E41-P1` and `E41-Q1` on the suggestions desk.</td>
+  <td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Amazon Associates Operating Agreement (what may be used and how)</a></td><td>No dimension, fit or &#x27;fits your counter&#x27; claim is made anywhere on the site.</td>
+</tr>
+<tr>
+  <td>E41-B03</td><td>Medium</td><td>Open - for review</td>
+  <td>A same-day measurement of S-24 recorded that every guide links the comparison page, matched on the string `products/index.html`. On a guide page that string appears only in the shared footer directory, labelled &#x27;Research product register&#x27; — it is not the buyer comparison table, and it is present on every published page regardless of article linking.</td><td>A register row read as verified was measuring a footer link. Anyone choosing a next step from it would skip a real gap.</td><td>Measured the guide bodies separately, shipped the body-level link to `../shop/products/index.html#comparison` on all nine guides, and left the earlier row&#x27;s text intact above the amendment so both readings are visible.</td>
+  <td><a href="https://developers.google.com/search/docs/crawling-indexing/links-crawlable">Google Search Central: links and crawling (anchor text and targets should describe the destination)</a></td><td>No claim that the earlier session&#x27;s other rows are wrong; this row was re-measured and the method difference is stated.</td>
+</tr>
+<tr>
+  <td>E41-B04</td><td>Low</td><td>Open - decision needed (owner)</td>
+  <td>The brief&#x27;s S-20 asks for a &#x27;sticky comparison bar&#x27;. This repository ships a sticky product column inside the comparison table&#x27;s own scroll region plus a scroll note, which is the part a table can support without data.</td><td>If a floating bottom bar was intended, the row is not done, and adding one costs viewport height on the smallest phones.</td><td>Named what was built in the register row instead of reusing the brief&#x27;s phrase, and put the choice to the owner as `E41-Q2`.</td>
+  <td><a href="https://developers.google.com/search/docs/appearance/page-experience">Google Search Central: page experience</a></td><td>No claim that a floating bar would improve conversion or use.</td>
 </tr>
     </tbody>
   </table>

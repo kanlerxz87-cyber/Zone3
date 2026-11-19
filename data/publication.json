@@ -818,6 +818,85 @@
         "holiday-kitchen-checklist",
         "air-fryer-label-words"
       ]
+    },
+    {
+      "slug": "thermometer-numbers-on-the-label",
+      "title": "What do “1 Sec” and “±0.5℉” on a listing actually tell you?",
+      "short_title": "What a thermometer’s numbers need before they mean something.",
+      "dek": "Two thermometer listings put figures in the title. Here is the difference between a number you can go and check and one you take on trust.",
+      "category": "Meat thermometers",
+      "category_slug": "meat-thermometers",
+      "type": "Reading the label",
+      "art": "thermometer",
+      "published": "2026-11-19",
+      "products": [
+        "SHOP-04",
+        "SHOP-05"
+      ],
+      "takeaway": "A figure in a title is a claim about a measurement, not the measurement. Quote the words, then look for what the number was taken against — method, conditions and which part of the tool it describes. Until that is in front of you, it is a brand’s wording about its own listing, not a basis for comparing two brands.",
+      "sections": [
+        {
+          "heading": "Start with what the titles actually carry.",
+          "paragraphs": [
+            "One listing reads, in part: “1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified Food Thermometer … Highly Waterproof”. The other reads, in part: “3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors”. Those strings were read off the listing titles; the exact wording is Amazon’s page to change, and a title is marketing space rather than a specification sheet.",
+            "Now look at how little each figure answers on its own. “1 Sec” is a duration with no stated starting point — immersion to first digit shown, or to a stable reading? “±0.5℉” is a tolerance with no stated reference — one calibration point, a range, or a typical kitchen? The title does not say, and the two questions have different answers in a manual."
+          ],
+          "checklist": [
+            "Which words in the title are figures, and which are names or adjectives?",
+            "Does the listing state what a figure was measured against, or only what it is?",
+            "Do two listings in one shortlist use the same word for two different things?",
+            "Where would you look for the method — a manual, a spec table, or nowhere?"
+          ],
+          "source_ids": [
+            "SHOP-04",
+            "SHOP-05"
+          ]
+        },
+        {
+          "heading": "A response time, a tolerance and a certification are three different claims.",
+          "paragraphs": [
+            "They are easy to read as a single number for “how good it is”. They are not that. A response time describes how fast a display settles; a tolerance describes how far a reading might sit from a reference; a certification or calibration mention describes a relationship between a device and a standard, which is a separate question from whether that relationship is something you can check on the unit that arrives. Two brands can both be accurate about their own wording and still not be comparable, because the words measure different things.",
+            "The same care applies to the connected listing. “Unlimited range” is a word about connectivity, not a distance — unlimited by what: the network, the plan, your home? “1000°F heat safe” names a component limit, not a cooking method, and a probe count in a title tells you what ships in the box, not what the app will show you while dinner cooks."
+          ],
+          "checklist": [
+            "For each figure, name its subject: the display, the probe, the cable, the app, or the box?",
+            "Is there a condition attached (temperature, distance, battery state), or only a number?",
+            "Would you accept the same sentence about a competitor’s product without the condition?"
+          ],
+          "source_ids": [
+            "SHOP-04",
+            "SHOP-05",
+            "amazon-policies"
+          ]
+        },
+        {
+          "heading": "What a title cannot do for you.",
+          "paragraphs": [
+            "It cannot become a claim by us. Amazon’s Program Policies prohibit inaccurate, overbroad, deceptive or otherwise misleading statements about a product, and the FTC’s guidance on endorsements is blunt about experience: you cannot describe a product you have not used. So this page quotes titles and stops there — including this sentence.",
+            "It also cannot tell you what to cook food to. When a reading is the thing you are relying on, the reference for safe minimum temperatures is published food-safety guidance for the category of food, not a listing. If you want the check itself explained — where a probe goes, and why a timer is not a temperature — that is a separate question with its own page here."
+          ],
+          "checklist": [
+            "Before repeating any figure from a title, open the exact model’s own instructions.",
+            "If the condition behind a figure is missing, treat the figure as unverified rather than as a weak yes.",
+            "Compare two products only where both state the same kind of figure in the same way."
+          ],
+          "source_ids": [
+            "amazon-policies",
+            "ftc",
+            "food-safety"
+          ]
+        }
+      ],
+      "unknowns": [
+        "The test conditions behind “1 Sec” and “±0.5℉” for either model.",
+        "What a certification or calibration mention covers for the specific unit as sold.",
+        "Prices, ratings, review counts and any accuracy measurement of our own — none is held here."
+      ],
+      "related": [
+        "instant-read-or-wireless-thermometer",
+        "how-do-you-know-its-done",
+        "air-fryer-label-words"
+      ]
     }
   ],
   "questions": [
@@ -1260,7 +1339,7 @@
     {
       "id": "B38-Q4",
       "question": "How many new guides per review cycle are wanted, and what capacity limits apply?",
-      "known": "The cadence is one guide reviewed every 14 days and eight guides exist. Nothing records how much verification and drafting effort one guide actually costs, or how many the owner wants per cycle.",
+      "known": "The cadence is one guide reviewed every 14 days; the guide count is whatever `data/publication.json` holds on the day the decision is made, so it is read from the register rather than quoted here. Nothing records how much verification and drafting effort one guide actually costs, or how many the owner wants per cycle.",
       "missing": "A capacity commitment per cycle, and a measured sense of effort per guide from the last two shipped guides.",
       "discovery": "Owner states the wanted number; the agent measures the real gate, verification and drafting steps from the last two guides and records both in the decision record.",
       "default": "Keep one guide per 14-day cycle until measured evidence says otherwise.",
@@ -1268,6 +1347,28 @@
       "source": "google-helpful",
       "owner_input_needed": true,
       "answer_form": "A number per cycle plus a dated effort note, or an explicit keep-the-cadence decision."
+    },
+    {
+      "id": "E41-Q1",
+      "question": "Where do the interior and footprint dimensions come from for each of the five listings?",
+      "known": "No product register in this repository holds a dimension value; the guide copy only asks readers to check dimensions themselves. The capacity wording quoted on the site comes from listing titles.",
+      "missing": "A dated, authorized source for footprint and interior dimensions per product — an API response the account is entitled to, or the brand's own published specification page — plus the units and the measurement method.",
+      "discovery": "Capture the dimensions for one product from the chosen authorized source, store them with the capture date and the source URL, and see whether the number is a usable figure or marketing rounding.",
+      "default": "The per-centimetre analysis stays unwritten. No dimension is estimated from a photo, a title or a sibling model.",
+      "blocks": "S-23 counter-space analysis; any 'fits your counter' claim",
+      "source": "amazon-agreement",
+      "owner_input_needed": true
+    },
+    {
+      "id": "E41-Q2",
+      "question": "Is a sticky product column enough on a phone, or does the shop also need a floating compare bar?",
+      "known": "This pass shipped a sticky first column and a plain-language scroll note on the compare table, measured at 320/390/768 px in the browser record. A floating bar would add a second scroll region and can cover content.",
+      "missing": "A preference from the owner, ideally weighted by the device mix that only first-party reporting can supply (E61-Q5), and a tap-target read on the bar itself if one is built.",
+      "discovery": "Compare the two treatments on a real small phone for one shopping task — choosing between the shortlisted air-fryer formats — and record which columns were reachable and how often the reader had to scroll sideways.",
+      "default": "Keep the sticky column and the scroll note; do not add a floating bar until a reader need is observed.",
+      "blocks": "Nothing; E61-P6 and S-20 are already served in their minimal form",
+      "source": "google-page-experience",
+      "owner_input_needed": true
     }
   ],
   "proposals": [
@@ -1331,7 +1432,7 @@
       "status": "Proposed cadence",
       "next_action": "Keep the six live guides as the cluster, review one every 14 days, and add a new question only when a dated report or an owner decision supplies it.",
       "discoveries": [
-        "Which of the six guides the owner wants expanded first.",
+        "Which of the published guides the owner wants expanded first.",
         "Whether any guide's topic is out of scope for the owner's business."
       ],
       "owner_input_needed": true,
@@ -1731,7 +1832,7 @@
       "owner_input_needed": false,
       "next_action": "Write the style page from the design prompt's voice block, add a banned-phrase lint step to the release checks, run the full gate, and record the decision before publishing either.",
       "discoveries": [
-        "Which phrases the current eight guides already avoid, so the lint starts from observed practice rather than taste",
+        "Which phrases the published guides already avoid, so the lint starts from observed practice rather than taste",
         "Whether any existing sentence fails the proposed ban list — those would need a rewrite decision before the lint ships"
       ]
     },
@@ -1814,6 +1915,44 @@
         "Whether any current guide already has three or more sourced answers that would make an FAQ block worth shipping for readers alone",
         "What non-Google consumer of FAQPage markup, if any, the site would be serving before any markup is added"
       ]
+    },
+    {
+      "id": "E41-P1",
+      "priority": "Next",
+      "area": "Evidence capture",
+      "title": "Get the two measurements the counter-space analysis needs — from an authorized source.",
+      "why": "The brief asks for capacity per centimetre of counter depth. Every register in this repository holds the capacity wording and none holds a footprint or interior dimension, so the arithmetic cannot be published without inventing a number.",
+      "next": "For each of the five listings, capture the footprint and interior dimensions from an authorized source (the Product Advertising API response or the brand's own published specification page), date each capture, and store them in the product register. Only then does the per-centimetre article get written.",
+      "evidence_needed": [
+        "E41-Q1"
+      ],
+      "source": "amazon-agreement",
+      "status": "Proposed",
+      "owner_input_needed": true,
+      "next_action": "Decide which authorized source may supply dimensions, capture them dated, and add them to data/publication.json products; this pass deliberately left the analysis unpublished instead of estimating.",
+      "discoveries": [
+        "Whether an authorized response carries usable interior dimensions at all",
+        "Which capacity-to-footprint comparison the captured numbers actually support for each of the five"
+      ]
+    },
+    {
+      "id": "E41-P2",
+      "priority": "Next",
+      "area": "Mobile UX",
+      "title": "Close the thumb-first comparison table with a measured pass, not an assumed one.",
+      "why": "This pass shipped the sticky product column and the sideways-scroll note on the compare page, which answers the part of the brief that a table can answer without data. Whether a floating compare bar is also wanted is a design decision, and which viewport matters most is a measurement the site does not have.",
+      "next": "Re-run the browser pass at 320, 390 and 768 px on the compare page, record which columns are reachable and what the sticky column costs in width, then decide whether a floating bar earns its complexity.",
+      "evidence_needed": [
+        "E41-Q2"
+      ],
+      "source": "google-page-experience",
+      "status": "Partly shipped by this pass",
+      "owner_input_needed": false,
+      "next_action": "Read the 2026-11-19 measurement record in sessions/41e84402/, then either shortlist a floating compare bar or close the row as done with the sticky column.",
+      "discoveries": [
+        "How much table width the sticky column takes at the narrowest tested viewport",
+        "Whether every comparison column remains reachable by thumb without a second scroll region"
+      ]
     }
   ],
   "indexable_pages": [
@@ -1832,7 +1971,8 @@
     "guides/instant-read-or-wireless-thermometer.html",
     "guides/holiday-kitchen-checklist.html",
     "guides/air-fryer-label-words.html",
-    "guides/how-do-you-know-its-done.html"
+    "guides/how-do-you-know-its-done.html",
+    "guides/thermometer-numbers-on-the-label.html"
   ],
   "paths": [
     {

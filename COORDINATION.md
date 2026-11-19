@@ -9191,3 +9191,149 @@ The current site and suggestions desk already implement the brief's reader-facin
 `CH-222-T1-01` asks the next final integrator to reconcile `data/flags.json` flag `0C4-F-08`: its text says two stacks await an owner choice, while the current measurement configuration and templates select/inject one canonical runtime and retain `track.js` only as historical code. The old endpoint is still unhosted (`0C4-F-05` remains valid). This session did not edit `data/flags.json` because open PR #160 includes that shared file in its scope; the request is recorded here rather than resolved by editing another session's register.
 
 **Publish record:** pending the current-branch PR and post-merge Pages/check confirmation.
+
+
+---
+
+## Part: session `41e84402` (2026-11-19) — measured-drift pass: close E61-P5/P6, make every count derive, and re-measure the brief register
+
+> Append-only, per board convention. Nothing above this line was edited. Branch: `arena/41e84402-zone3`.
+> Base: `6eb8c18` (`main`, PR #178 merge) at claim; rebased three times, final merged base `42a6952`
+> (PRs #181, #183, #185–#191, #193 — six other sessions landed inside this window).
+> Namespace: this session's flags are `E41-F*`, its verification rows are `E41-V*`, its tasks are `E41-T*`.
+> These are not `P26-*`, `P27-*`, `E61-*`, `D9-*`/`AS-*`/`OT-*`/`DS-*` (session b9008684) or `M38-*`.
+
+### E41 session registry row
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `41e84402` | `arena/41e84402-zone3` | Dated correctness-and-usability pass: (1) measure where generated reader copy drifted from the register, (2) ship the two unblocked reader upgrades the desk already approved (`E61-P5` chooser on the compare page, `E61-P6` thumb-first comparison table), (3) re-measure the S-04…S-25 / SG-27…SG-30 register against today's tree, (4) publish the cadence's next two guides, (5) gates → PR → merge → Pages read-back | shipped — E41-T1…T7, see the release record at the end of this Part | 2026-11-19T12:50Z |
+
+### E41 board read before claiming
+
+- Read `COORDINATION.md` in full through session `6b68afc8`'s Part and the trailing `E61` reconciliation notes. `main` head is `6eb8c18` (PR #178) and `origin/main` is at the same commit, so this branch starts on the live published tree.
+- Open PRs **#160** (`arena/0b2ffabd-zone3`) and **#157** (`arena/ed27e766-zone3`) are still open, last touched 2026-11-17, and are the same two stale rows sessions `6b68afc8` (`P27-F01`) and `b9008684` named. This session does **not** merge, rebase or edit them; it only records that they are still open.
+- Gate baseline measured before claiming: `python3 tools/publish.py` → **41 commands checked; 0 failed**; `git status --porcelain` empty. Pages build latest: `status=built`, `commit=6eb8c18`, source `main` `/`.
+- `tools/build_publication.py`, `tools/check_publication.py`, `assets/publication.css`, `data/publication.json`, `tools/build_brief_status.py`, `data/shop/brief-status.json` and `data/shop/flags.json` carry **no live non-stale claim** on this board (P26/P27/E61/B9/M38 Parts all report shipped/merged work; the two open PRs do not touch the brief-status builder). This session works on them under the integration rule and edits no other session's history.
+- Deliberately **not** touched by this session: `data/sources.json` rows (append-only, S95+ per `6b68afc8`), the intended-ASIN/observed-redirect fields, the `S-18`/`Q6` imagery decision (owner's to make), `data/shop/campaign-ledger.json` (empty by design), and every dated record written by another session — including `review_b9008684`'s prose, which says "the current six guides" and is correct *as of its own round date*, so it stays as written.
+
+### E41 task board (claimed before any other work)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| E41-T1 — Board read, gate baseline, measured audit of register-vs-page drift | **shipped** | `41e84402` | read-only + `sessions/41e84402/**` | local gates | → `E41-F*` |
+| E41-T2 — `E61-P5`: three-question chooser above the comparison table on the compare page (no ranking, no score) | **shipped** | `41e84402` | `tools/build_publication.py`, `assets/publication.css` | S02 (Participation Requirements 6(v)/(w)) | — |
+| E41-T3 — `E61-P6` + the tap-target half of S-20: sticky product column inside the scroll region, a plain scroll note, and every interactive target on the compare page at or above the WCAG 2.2 2.5.8 24 px box (measured in Chromium at 320/390/768 px) | **shipped** | `41e84402` | `assets/publication.css` | page-experience guidance | — |
+| E41-T4 — **Residual** count drift only: `README.md`'s guide count and any live (undated) reader prose that still asserts a guide/question count. The executive-strip fix and its gate shipped in #181; not re-done | **shipped** | `41e84402` | `tools/build_publication.py`, `tools/check_publication.py`, `README.md` | local measurement | → `E41-F01` |
+| E41-T5 — Publish the cadence’s next guide, listing-wording only, register-driven sitemap/feed/search. **Scope corrected mid-pass:** the stated cadence is one guide per 14 days, so one guide shipped rather than two; padding the count would have been the kind of claim this board exists to prevent | **shipped** | `41e84402` | `data/publication.json` (append guides + indexable rows), generated `guides/*.html` | listings SHOP-01…05 + existing scoped references | unverified fields stay blank |
+| E41-T6 — Re-measure the brief register against today's tree (dates derived from the register, never a literal) | **shipped** | `41e84402` | `data/shop/brief-status.json`, `tools/build_brief_status.py`, `data/shop/flags.json` (append `E41-B01…04`) | measured commands in `sessions/41e84402/` | → `M38-*` rows updated, `E41-F*` |
+| E41-T7 — Flags for what this pass found, two desk rows/questions for what it could not settle, full chain ×2 (idempotency), PR → merge without waiting → Pages build → live read-back, records | **shipped — see the release record at the end of this Part** | `41e84402` | `data/flags.json` (append), `flagged.html` (generated), `EXECUTIVE-SUMMARY.md` (additive section), this Part | gate outputs | `E41-F01…05`, `E41-B01…04` |
+
+### E41 reconciliation with the four PRs that landed mid-pass (logged before the release, per the board's conflict rule)
+
+`main` moved `6eb8c18 → 33e07a2 → 4e48849` inside this session's window: **#181** (`07fb37ba`,
+executive-brief count consistency), **#183/#186** (`cbbd4d8f`, final integration/publish record),
+**#185** (`8aa259bb`, a full re-measure of the brief register + `8AA-F-*` flags + a `tools/build_brief_status.py`
+eyebrow fix) and **#187/#188** (`d3493182`, suggestions batch 3: `D34-P1…P6`, `D34-Q1…Q8`, path `P34-P1`,
+prompt block `d34-polish`, `DESIGN_PROMPT.md` §13, and hand-typed README counts). Resolution, discarding nothing:
+
+- **`data/publication.json`** — upstream taken as the base; this session's one guide, its `indexable_pages` row,
+  the `P26-S3` count-neutral fix, and `E41-P1/P2` + `E41-Q1/Q2` re-applied on top. No existing row of any other
+  session was rewritten except the one desk field this board's own rule covers.
+- **`tools/build_publication.py`** — #181's derived executive totals kept verbatim; this pass added the compare-page
+  chooser, the sticky-table markup, `readme_facts()`/`sync_readme()`, and the derivation of the six remaining
+  hand-typed counts in `catalogue()`'s own intro/description strings (`Three air-fryer listings`, `Two thermometer
+  listings`, `Five products, two kitchen categories`) which are now computed from `data['products']`.
+- **`tools/check_publication.py`** — #181's summary-strip equality gate kept and extended, not replaced: the phrase
+  list grew to the catalogue counts, and README's generated block is compared to the registers. The gate then
+  refused this session's own `E41-Q2` wording ("two air-fryer listings" where the register holds three) — that text
+  was reworded rather than exempted, and `review_b9008684`'s "the current six guides" was left alone as a dated record.
+- **`data/shop/brief-status.json` / `tools/build_brief_status.py`** — #185's re-measured rows are the base; this pass
+  amended 13 of them in place (appended sentences; `prior_2026_11_17` untouched) and moved the page's dates into
+  `_meta.rechecks` so the next re-measure cannot leave a stale eyebrow — the exact gap #185 recorded against itself.
+- **`README.md`** — #187's hand-typed counts replaced by the generated `z3:register-facts` block; the preamble and the
+  ownership bullets are now count-neutral.
+- **`assets/publication.css`** — append-only E41 block after the existing appendices; nothing prior was edited.
+- **`COORDINATION.md`** — both sides kept on two `rebase` conflicts (marker count 0 after each). One consequence
+  recorded for the board, not hidden: while resolving the second conflict this session reset its branch onto
+  `origin/main` and re-applied its work as patches, and the `data/publication.json` patch was deliberately *not*
+  replayed (a whole-file rewrite would have clobbered #185/#187 rows) — the guide and desk rows were re-applied
+  additively instead, then rebuilt and re-verified.
+
+**Second reconciliation, logged before this Part's release line.** After this Part was first appended, `main`
+advanced `4e48849 → 42a6952` (`b3e82b38`'s batch-3 union #189/#190/#191 and `222cfe13`'s analytics-history and
+repo-review pass #193). The rebase conflicted on `COORDINATION.md`, `EXECUTIVE-SUMMARY.md`, `README.md`,
+`data/publication.json`, `executive-brief.html` and `suggestions/index.html`; every one resolved to a **union** —
+both Parts kept in the board, `## 16.` kept for B38 and this session's section moved to `## 17.`, the register's
+`questions` and `proposals` arrays re-formed with B38's rows first and `E41-Q1/Q2` / `E41-P1/P2` after them, and
+the two generated pages rebuilt by the renderer rather than hand-merged. `README.md` kept this session's
+count-neutral prose, because `#193` had re-typed “eight … question-led guides” and “eight guides, fifteen …
+twenty-six proposals … thirty-six decision-readiness questions” into the ownership bullets that the register has
+since outgrown (nine guides, 28 proposals, 38 questions) — the numbers now come from the generated
+`z3:register-facts` block. Two of B38's live desk clauses were made read-from-register under `E41-T4`
+(`B38-Q4` “eight guides exist”, `B38-P1` “the current eight guides”); no B38 row was deleted or reworded beyond
+those two clauses. In `data/shop/brief-status.json` the two measurement passes this session made were merged into one
+`_meta.rechecks[0]` note carrying both the pre-merge and post-merge numbers, because the page's eyebrow and history
+list are generated from `_meta` — a second same-session entry would have read as two different sessions. Also recorded as an
+observation, not fixed: `main`'s board tail (lines 9121–9123 of the pre-merge file) contains three stray
+`>>>>>>> <sha> (B38-T1: …)` marker lines committed by an earlier session; they are another session's text, so
+this pass left them and flags them here for whoever tidies the board.
+
+Two rows this session had claimed were shipped by someone else first (#181's count gate, #185's brief-register
+re-measure). Both were re-scoped to verification and amendment. The board's 60-minute handoff rule was not needed:
+every collision resolved by rebase, not by takeover. `gh pr list --state open` still shows **#160** and **#157**
+(2026-11-17) unmerged; this pass neither merged nor closed them, and `E41-F05` records the crowding.
+
+### E41 second-round reconciliation with PRs #189–#193, and the gate hole this session closed
+
+After this Part was first written, `main` advanced again: **#189 / #190 / #191** (`b3e82b38`, batch-3 union:
+`B38-P1…P5`, `B38-Q1…Q4`, source `google-faq-update`, design block `b38-batch3`) and **#193** (`222cfe13`,
+analytics-history clarification, its repo review, and README counts re-typed by hand). The register union this
+session then leaves on `main` is **9 guides / 28 proposals / 38 questions / 15 sources / 13 design-brief blocks /
+6 paths / 17 indexable URLs / 27 feed entries**, all read from the registers by the gate and by README's generated
+block — `git pull --rebase` conflicted on `COORDINATION.md`, `EXECUTIVE-SUMMARY.md`, `README.md`,
+`data/publication.json`, `executive-brief.html` and `suggestions/index.html`, and each resolved to a union with
+both sides' rows intact (the last two are generated, rebuilt by the renderer, not hand-merged).
+
+That union re-opened the same count class three times, and this session's own gate found two of them:
+
+| Row | What it asserted | Disposition |
+|---|---|---|
+| `README.md` headline + ownership bullets (#193) | “eight practical question-led guides”, “eight guides, … twenty-six proposals … thirty-six … questions” against registers of 9 / 28 / 38 | this Part's count-neutral prose and generated block kept; no new numbers typed |
+| `B38-Q4.known` | “eight guides exist” | clause rewritten to read from the register; the rest of the row, including its cadence point, untouched |
+| `B38-P1.discoveries[0]` | “the current eight guides” | now “the published guides” |
+| `review_b9008684` | “the six guides” | **left as written** — a dated review round records its date |
+
+The gate had a hole that let #187 and #193 through: it required the numeral to abut the register label and scanned
+only README's pre-block prose. It now tolerates a short closed list of qualifiers across a line break and scans the
+whole README outside dated sections. Proven both ways: a planted “ten practical / question-led guides” line in the
+ownership bullets produced `FAIL … states 10 question-led guides; the register holds 9` → `PUBLICATION FAIL`, and
+the widened scan flagged this session's own README sentence quoting the old headline, which was rewritten
+count-neutral instead of exempted.
+
+One board irregularity recorded, **not** edited: `main`'s `COORDINATION.md` already carries three stray
+`>>>>>>> <sha> (B38-T1: …)` marker lines inside the B38 Part (they arrived with #189). They are another session's
+text; the next integration pass may want to strip them.
+
+### E41 rules this session follows
+
+- Reader-facing HTML is never hand-edited: `python3 tools/publish.py` owns the tree, and the release requires a second run that changes no tracked file.
+- No invented price, star rating, review count, popularity/trending claim, order, conversion score or revenue forecast. No generated or copied product photography; no Amazon Program Content asset is stored locally.
+- Intended-ASIN/confirmation fields stay separate from observed redirect targets. `FLG-003` stays unresolved; the submitted short links are not called invalid.
+- A suggestion is implemented only when it is unblocked by evidence the repository already holds; anything needing the owner's account, camera, host or sign-off stays an open question on the desk, with the answer field where it is.
+- Every current table row keeps an official HTTPS source; anything that cannot be confirmed stays blank and is flagged.
+- No branch other than `main` (merge target) and `arena/41e84402-zone3` is written. `git pull --rebase origin main` before every push.
+
+### E41 release record
+
+`python3 tools/publish.py` on the merged tree: **41 commands checked; 0 failed**, run twice with the second run
+changing no tracked file; `--check` mode 25/25. `python3 tools/check_publication.py` → `PUBLICATION PASS`
+(121 current HTML pages, 19 rendered reader/workspace pages, 102 official-source table rows, 17 indexable URLs,
+27 feed entries). `python3 tools/build_brief_status.py --check` → `brief status current · 23 rows`. Published
+browser harness `node sessions/1c072a7a/browser_check.cjs` on the local build → **14/14 checks, 38 page/viewport
+accessibility scans, 0 violations**; this session's own measurement `node sessions/41e84402/browser_measure.cjs`
+→ **PASS at 320/390/768 px**. Records: `sessions/41e84402/verification-2026-11-19.md`,
+`measurement-2026-11-19-drift.json` (`drift_found: false`), `measurement-2026-11-19.json`,
+`browser-harness-report-2026-11-19.json`, `screenshots/compare-{320x720,390x844,768x1024}.png`.
+Flags `E41-F01…05` (F01 and F02 `fixed` with the gate proof; F03, F04, F05 `needs review` because they wait on
+the owner or on another session's merge), shop flags `E41-B01…04`, desk rows `E41-P1/P2`, questions `E41-Q1/Q2`.

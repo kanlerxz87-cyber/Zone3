@@ -111,6 +111,96 @@ def check() -> list[str]:
     need(bool(data['meta'].get('reverified')), 'publication must state the date its sources were last re-checked')
 
     current = {rel for rel in build_publication.outputs() if rel.endswith('.html') and rel != 'publication-prior.html'}
+    # --- E41-T6 (session 41e84402): 121 of the 164 rows in data/flags.json carry no status at all,
+    # which is why the review page cannot be split into open / resolved / historical (S-11). No status
+    # is asserted onto a historical row from here; what can be done is stop the backlog growing —
+    # any row that records the date it was raised must also record a status.
+    for f in json.loads((ROOT / 'data/flags.json').read_text(encoding='utf-8'))['flags']:
+        if f.get('raised'):
+            need(bool(str(f.get('status', '')).strip()), f"{f['id']}: a dated flag row must carry a status (E41-B01)")
+
+    # --- E41-T4 (session 41e84402, 2026-11-19): counts in prose cannot be maintained, only derived.
+    # Session 07fb37ba's gate above compares the executive-brief totals to the registers. This part
+    # closes the rest of the measured drift: a reader-facing sentence, a README line or a register
+    # field that states how many guides/questions/pages there are must agree with the register, or
+    # say nothing at all. Dated records (another session's review round, the meta notes) are excluded:
+    # a record written on a date is that date's truth and must not be quietly rewritten.
+    cats = {}
+    for prod in data['products']:
+        cats[prod['category']] = cats.get(prod['category'], 0) + 1
+    counts = {  # exact register labels only, and the numeral must sit right in front of them
+        'question-led guides': len(data['guides']),
+        'question-led buyer guides': len(data['guides']),
+        'decision-readiness questions': len(data['questions']),
+        'canonical reader URLs': len(data['indexable_pages']),
+        'air-fryer listings': cats.get('air-fryers', 0),
+        'meat-thermometer listings': cats.get('meat-thermometers', 0),
+        'thermometer listings': cats.get('meat-thermometers', 0),
+        'kitchen categories': len(cats),
+    }
+    words = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8,
+             'nine': 9, 'ten': 10, 'eleven': 11, 'twelve': 12, 'thirteen': 13, 'fourteen': 14,
+             'fifteen': 15, 'sixteen': 16, 'seventeen': 17, 'eighteen': 18, 'nineteen': 19, 'twenty': 20,
+             'twenty-four': 24}
+
+    # A qualifier and a line break between the number and the label must not hide the claim:
+    # "eight practical\nquestion-led guides" is still a count claim about the guide register. Only a short
+    # closed list of descriptive adjectives is allowed in the gap, so a roadmap sentence about shipping
+    # "eight new guides" is not mistaken for a statement about what the register holds.
+    NUMBER = r'(\d{1,3}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|twenty-four)'
+    GAP = r'(?:\s+(?:practical|published|current|dated|scoped|working|question-led|buyer))*\s+'
+
+    def claims(text: str, label: str) -> None:
+        for phrase, expected in counts.items():
+            pat = re.compile(NUMBER + GAP + re.escape(phrase) + r'\b', re.I | re.S)
+            for m in pat.finditer(text):
+                said = words.get(m.group(1).lower(), None)
+                if said is None and m.group(1).isdigit():
+                    said = int(m.group(1))
+                if said is not None and said != expected:
+                    need(False, f'{label}: states {said} {phrase}; the register holds {expected}. Derive it or make the sentence count-neutral')
+
+    readme = (ROOT / 'README.md').read_text(encoding='utf-8')
+    facts = re.search(r'<!-- z3:register-facts -->(.*?)<!-- /z3:register-facts -->', readme, re.S)
+    need(bool(facts), 'README.md must carry the generated z3:register-facts block')
+    if facts:
+        rows = dict(re.findall(r'\| ([^|]+?) \| (\d+) \|', facts.group(1)))
+        expect = {'Question-led guides': len(data['guides']), 'Indexable reader URLs': len(data['indexable_pages']),
+                  'Supplied product links': len(data['products']), 'Open decision-readiness questions': len(data['questions']),
+                  'Suggestions on the desk': len(data['proposals']), 'Paths a reviewer can choose': len(data['paths']),
+                  'Design-brief blocks': len(data['design_prompt']['blocks']), 'Scoped official references': len(data['sources'])}
+        for key, value in expect.items():
+            need(rows.get(key) == str(value), f'README register-facts row {key!r}: README says {rows.get(key)}, register says {value}')
+        # Current-state prose is everything outside the generated block and outside a dated section:
+        # a release record or session log is allowed to state what was true when it was written, a
+        # description of what the repository holds today is not. Scanning only the intro paragraph left
+        # the ownership bullets unchecked, which is where the counts kept getting retyped.
+        DATED = re.compile(r'^#{2,3}\s+.*(record|history|log|session|update|archive)', re.I | re.S)
+
+        def current_state(text: str) -> str:
+            keep, live = [], True
+            for line in text.split('\n'):
+                if line.startswith('## '):
+                    live = not DATED.search(line + '\n')
+                keep.append(line if live else '')
+            return '\n'.join(keep)
+
+        prose = readme.replace(facts.group(0), '')
+        claims(current_state(prose), 'README.md current-state prose')
+    for key in ('proposals', 'questions', 'paths'):
+        for row in data[key]:
+            claims(json.dumps(row, ensure_ascii=False), f'data/publication.json {key} {row.get("id", "?")}')
+    claims(json.dumps(data['design_prompt'], ensure_ascii=False), 'data/publication.json design_prompt')
+    for rel in sorted(current):
+        if not rel.endswith('.html') or rel == 'publication-prior.html':
+            continue
+        html_text = (ROOT / rel).read_text(encoding='utf-8')
+        visible = ' '.join(re.sub(r'<[^>]+>', ' ', html_text).split())
+        round_pos = html_text.find('id="review-round-')
+        if round_pos != -1:  # the dated round keeps its own wording; check only the copy around it
+            visible = ' '.join(re.sub(r'<[^>]+>', ' ', html_text[:round_pos] + html_text[html_text.find('</section>', round_pos):]).split())
+        claims(visible, rel)
+
     pages = [p for p in ROOT.rglob('*.html') if not any(part in SKIP for part in p.relative_to(ROOT).parts)]
     indexable = set(data['indexable_pages'])
     indexed = set()

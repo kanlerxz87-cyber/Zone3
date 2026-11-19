@@ -453,6 +453,66 @@
         }
       ],
       "claim_not_made": "No claim that either short link is invalid. Each product is shown with its observed listing and no confirmed intent."
+    },
+    {
+      "id": "E41-B01",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "121 of the 164 rows in `data/flags.json` (169 rows on the merged tree; still 121 with no status) carry no `status` field, so the Flagged-for-review page cannot be split into open, resolved and historical the way brief row S-11 asks. An earlier same-day register row recorded this as 'Not measured'.",
+      "impact": "The review page shows one long list. A reader cannot tell a live problem from a closed one without opening the text.",
+      "what_we_did": "Did not guess statuses onto historical rows. Measured the counts, and required any new row that carries a `raised` date to carry a `status` so the backlog cannot grow. The fix is an owner or integration pass over the historical rows.",
+      "sources": [
+        {
+          "label": "GitHub Pages documentation (what the published site is)",
+          "url": "https://docs.github.com/pages/getting-started-with-github-pages/what-is-github-pages"
+        }
+      ],
+      "claim_not_made": "No claim that any of the 121 unlabelled rows is resolved."
+    },
+    {
+      "id": "E41-B02",
+      "severity": "High",
+      "status": "Open - blocked on evidence",
+      "issue": "S-23's capacity-per-centimetre analysis cannot be published from this repository: no product register holds a footprint or interior dimension for any of the five listings.",
+      "impact": "The one analysis the brief asks for that would genuinely help a buyer decide is absent, and the site says so instead of approximating it.",
+      "what_we_did": "Left the analysis unwritten and recorded what has to be captured first: `E41-P1` and `E41-Q1` on the suggestions desk.",
+      "sources": [
+        {
+          "label": "Amazon Associates Operating Agreement (what may be used and how)",
+          "url": "https://affiliate-program.amazon.com/help/operating/agreement"
+        }
+      ],
+      "claim_not_made": "No dimension, fit or 'fits your counter' claim is made anywhere on the site."
+    },
+    {
+      "id": "E41-B03",
+      "severity": "Medium",
+      "status": "Open - for review",
+      "issue": "A same-day measurement of S-24 recorded that every guide links the comparison page, matched on the string `products/index.html`. On a guide page that string appears only in the shared footer directory, labelled 'Research product register' — it is not the buyer comparison table, and it is present on every published page regardless of article linking.",
+      "impact": "A register row read as verified was measuring a footer link. Anyone choosing a next step from it would skip a real gap.",
+      "what_we_did": "Measured the guide bodies separately, shipped the body-level link to `../shop/products/index.html#comparison` on all nine guides, and left the earlier row's text intact above the amendment so both readings are visible.",
+      "sources": [
+        {
+          "label": "Google Search Central: links and crawling (anchor text and targets should describe the destination)",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
+        }
+      ],
+      "claim_not_made": "No claim that the earlier session's other rows are wrong; this row was re-measured and the method difference is stated."
+    },
+    {
+      "id": "E41-B04",
+      "severity": "Low",
+      "status": "Open - decision needed (owner)",
+      "issue": "The brief's S-20 asks for a 'sticky comparison bar'. This repository ships a sticky product column inside the comparison table's own scroll region plus a scroll note, which is the part a table can support without data.",
+      "impact": "If a floating bottom bar was intended, the row is not done, and adding one costs viewport height on the smallest phones.",
+      "what_we_did": "Named what was built in the register row instead of reusing the brief's phrase, and put the choice to the owner as `E41-Q2`.",
+      "sources": [
+        {
+          "label": "Google Search Central: page experience",
+          "url": "https://developers.google.com/search/docs/appearance/page-experience"
+        }
+      ],
+      "claim_not_made": "No claim that a floating bar would improve conversion or use."
     }
   ]
 }

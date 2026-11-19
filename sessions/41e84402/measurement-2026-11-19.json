@@ -1,0 +1,311 @@
+{
+ "measured_at": "2026-11-19",
+ "tool": "Chromium via @sparticuz/chromium + playwright",
+ "scope": "Local dev preview at three widths. Measures layout and tap geometry only: no traffic, conversion, device-mix or ranking claim.",
+ "tap_target_minimum_px": 44,
+ "viewports": [
+  {
+   "width": 320,
+   "height": 720,
+   "sticky_product_column": {
+    "found": true,
+    "position": "sticky",
+    "left_before": 16,
+    "left_after_scroll_160px": 16,
+    "stayed_pinned": true,
+    "region_scrolls_sideways": true,
+    "column_width": 145,
+    "row_count": 5
+   },
+   "page_order": {
+    "chooser": true,
+    "comparison": true,
+    "chooser_above_table": true,
+    "chooser_steps": 3,
+    "hint": true
+   },
+   "tap_targets": {
+    "examined": 26,
+    "under_minimum": [
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 288
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 288
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 288
+     },
+     {
+      "text": "Follow by RSS",
+      "height_px": 42,
+      "width_px": 154
+     }
+    ]
+   }
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "sticky_product_column": {
+    "found": true,
+    "position": "sticky",
+    "left_before": 16,
+    "left_after_scroll_160px": 16,
+    "stayed_pinned": true,
+    "region_scrolls_sideways": true,
+    "column_width": 145,
+    "row_count": 5
+   },
+   "page_order": {
+    "chooser": true,
+    "comparison": true,
+    "chooser_above_table": true,
+    "chooser_steps": 3,
+    "hint": true
+   },
+   "tap_targets": {
+    "examined": 26,
+    "under_minimum": [
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 26,
+      "width_px": 68
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 68
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 358
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 358
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 358
+     },
+     {
+      "text": "Follow by RSS",
+      "height_px": 42,
+      "width_px": 154
+     }
+    ]
+   }
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "sticky_product_column": {
+    "found": true,
+    "position": "sticky",
+    "left_before": 32,
+    "left_after_scroll_160px": 32,
+    "stayed_pinned": true,
+    "region_scrolls_sideways": false,
+    "column_width": 192,
+    "row_count": 5
+   },
+   "page_order": {
+    "chooser": true,
+    "comparison": true,
+    "chooser_above_table": true,
+    "chooser_steps": 3,
+    "hint": true
+   },
+   "tap_targets": {
+    "examined": 26,
+    "under_minimum": [
+     {
+      "text": "All tools",
+      "height_px": 35,
+      "width_px": 74
+     },
+     {
+      "text": "Air fryers",
+      "height_px": 35,
+      "width_px": 80
+     },
+     {
+      "text": "Thermometers",
+      "height_px": 35,
+      "width_px": 108
+     },
+     {
+      "text": "Compare details",
+      "height_px": 35,
+      "width_px": 116
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 37,
+      "width_px": 67
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 66
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 37,
+      "width_px": 67
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 66
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 37,
+      "width_px": 67
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 66
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 37,
+      "width_px": 67
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 66
+     },
+     {
+      "text": "Evidence gap",
+      "height_px": 37,
+      "width_px": 67
+     },
+     {
+      "text": "Amazon listing",
+      "height_px": 37,
+      "width_px": 66
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 219
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 219
+     },
+     {
+      "text": "Read the guide",
+      "height_px": 24,
+      "width_px": 219
+     }
+    ]
+   }
+  }
+ ]
+}
