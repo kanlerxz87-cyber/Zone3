@@ -9025,3 +9025,33 @@ Release record: PR [#181](https://github.com/kanlerxz87-cyber/Zone3/pull/181) me
 **Build:** `python3 tools/publish.py` **41/41 PASS**, run twice; second rebuild byte-identical (same 5 modified files + new session dir). Generated `suggestions/index.html` verified: "21 PROPOSALS, 32 OPEN QUESTIONS", "6 PATHS", "12-block design brief", all D34 IDs present, 40 answer fields (32 questions + 8 decision rows), disclosure present twice. Preview (`tools/preview.py`, port 3000): `/`, `/suggestions/`, `/guides/`, `/shop/` all 200.
 
 **Not claimed:** no traffic, ranking, demand, conversion or revenue figure; no new product fact; no decision recorded (review mode implements nothing); no account, API, Search Console, hosting or analytics change. Production measurement remains off.
+
+## Part: session `cbbd4d8f` (2026-11-19) — final integration: publish cycle, PR, merge, Pages deploy
+
+> Append-only, per board convention. Nothing above this Part was edited. Branch: `arena/cbbd4d8f-zone3` (Arena pins a session to one branch; task IDs `C4D-…` replace per-task branch names). Base: `6eb8c18` (`main`, PR #178 merge; the publication state is live on Pages at claim time).
+
+> **Namespaces.** This session's task IDs use the `C4D-…` prefix. They are not the same items as earlier sessions' IDs.
+
+### C4D Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `cbbd4d8f` | `arena/cbbd4d8f-zone3` | Final integration: full canonical rebuild, release gates, PR to `main`, merge without waiting for review, GitHub Pages deploy confirmation, publish record | in progress (C4D-T1) | 2026-11-19 |
+
+### C4D Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| C4D-T1 — Claim, baseline gate run, repo review of current reader surfaces | in progress | `cbbd4d8f` | `COORDINATION.md` (this claim only); no source edits | `tools/publish.py --check` 25/25 PASS; full build 41/41 PASS; live fetch of `https://kanlerxz87-cyber.github.io/Zone3/` | none |
+| C4D-T2 — Full canonical rebuild + all release gates (idempotent) | unclaimed | `cbbd4d8f` | generated outputs via `tools/publish.py` only | gates in `tools/publish.py` | none |
+| C4D-T3 — PR to `main`, merge without waiting, Pages deploy verification | unclaimed | `cbbd4d8f` | git + `gh` only | GitHub PR/Pages APIs | none |
+
+### C4D Scope rules
+
+- Additive claim only: this session edits `COORDINATION.md` to record the claim and the publish result; it rewrites no source, data, page, script or CSS file. The canonical publication renderer (`tools/build_publication.py`, `tools/check_publication.py`, `data/publication.json`) carries no live non-stale claim, so no regeneration beyond the idempotent build is needed.
+- The build is already idempotent (`git status --porcelain` empty after `tools/publish.py`). If a future edit is required, it is made on this branch only, then `tools/publish.py` is re-run and `git diff --exit-code` must be clean.
+- No traffic, ranking, demand, conversion or revenue figure; no new product fact; no price/rating/popularity claim; no account, API, Search Console or hosting change. `FLG-003` (submitted short-link compliance) stays unresolved; the short links are not called invalid. Production measurement remains off.
+
+### C4D Coordination check before claiming
+
+No other session has a live non-stale claim on `tools/build_publication.py`, `tools/publication_chrome.py`, `tools/check_publication.py` or `data/publication.json`. Earlier `in progress` rows (0c4c4cb6, 66964850, c3be74f2, 5b443d02, 3c886b62) are historical records; none edits the canonical renderer today.
