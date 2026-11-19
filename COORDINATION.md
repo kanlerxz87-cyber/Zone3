@@ -8989,10 +8989,10 @@ Full rebuild and gate/browser verification of the merged tree follow in the publ
 - **Gates on the merged tree:** `tools/publish.py` 41 of 41 PASS. GitHub `Publication checks` (run 44527681012) on head `1adf3aa`: success, including the step that requires a deterministic, checked-in build (`git diff --exit-code`).
 - **GitHub Pages:** legacy build from `main` `/`. Build for `4f2589d` status `built` (2026-11-19 12:51:39Z). PR #183 (session `cbbd4d8f`) landed on `main` at `60c39fe` afterwards, and its build is also `built` (12:52:05Z).
 - **Live check (fetched 2026-11-19):** https://kanlerxz87-cyber.github.io/Zone3/brief-status/ shows the re-measured rows and the corrected counts (Verified here 7 · Partly here 7 · Not measured 3 · Conflict 2 · Not found here 1 · Blocked (owner) 3). https://kanlerxz87-cyber.github.io/Zone3/shop/flagged/ shows the flags, including the new 8AA rows and the annotated M38 rows.
-- **Known gap found after the merge:** the live brief-status eyebrow still read "Measured 2026-11-17". The template is in `tools/build_brief_status.py`. The fix (eyebrow and the Zone4 limits bullet) is on the branch and goes out in a record-only follow-up PR, which also records this section.
+- **Known gap found after the merge:** the live brief-status eyebrow still read "Measured 2026-11-17". The template is in `tools/build_brief_status.py`. Fixed (eyebrow and the Zone4 limits bullet) in the record-only follow-up PR #187, merged as `1baf727`; the Pages build for `1baf727` is `built`, and the live page now shows the corrected header (fetched after the build).
 - **Still not done (owner):** the Associates Special Link test, product-intent confirmation, production analytics, Search Console, reader capture, photography, brand name. The site makes no claim that any of these is complete.
 
-Status of this session: **published** (PR #185 merged, Pages built). Follow-up record PR: see the next entry.
+Status of this session: **published**. PR #185 merged as `4f2589d` (Pages built). Follow-up record PR #187 (header fix and this record) merged as `1baf727` (Pages built). This is the last record PR for session 8aa259bb; any merge of this PR is recorded on GitHub only.
 ## Session `07fb37ba` — executive-brief count consistency (2026-11-19)
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
