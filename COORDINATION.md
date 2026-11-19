@@ -9677,3 +9677,73 @@ price, rating, review count, traffic, demand, trend, conversion or revenue value
 - **Pages:** GitHub Pages build status verified `built` after the merge; cache-busted live
   read-back confirmed `about.html` no longer carries the two banned phrases and the publication
   gate is green on the deployed tree.
+
+## Part 4b0e3c7e — session `arena/4b0e3c7e-zone3` (2026-11-19) — Associates ID on every product link, feed/sitemap alignment, destination-consistent CTAs
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 4b0e3c7e | `arena/4b0e3c7e-zone3` (base `0273fb4` = current `main`) | Audit the shipped tree against the current brief; close two measurable, policy-grounded defects (Associates ID missing from every product link; feed advertising pages the sitemap excludes); bring the public Special Link CTAs in line with the site's own no-embedded-tag statement; run all gates; PR to `main`, merge, verify Pages | in progress | 2026-11-19T21:51Z |
+
+### Coordination and scope
+
+- Read the board through the `4d7fe998` Part. Two other sessions hold claims on nearby files and both were checked against the board's stale-claim rule before this claim was written (below).
+- **PR #192 (`arena/5d460e79-zone3`) — taken over for the unshipped defect only.** Its last commit is `2026-11-19T13:01:06Z`, so at this claim it is 8 h 50 min stale against the board's 60-minute rule, and GitHub reports it `CONFLICTING` against `main` with no checks reported. Its own PR body records the same first defect this session measured independently: **no product link carried the Associates ID**. Only that defect and the feed/sitemap one are re-implemented here, from the current tree. Its broader rewrites (front-page redesign, 8 new gates, `attach_tag.py`, suggestions decision-record) are **not** adopted or evaluated by this session and remain available on that branch for review.
+- **PR #199 (`arena/a4f9ee45-zone3`) — read, not merged.** It is a coordination-only claim (one file, append-only). It claims `index.html`, `shop/`, `guides/`, `assets/`, `sitemap.xml`, `feed.xml`, `data/sources.json`, `data/products.json`, `data/flags.json` and `data/policy_facts.json`. This session therefore **does not edit any of those files**. Its Part also records a live reading of Program Policies **updated April 14, 2026**, which this session independently re-read and confirmed (see `sessions/4b0e3c7e/verification-2026-11-19.md`).
+- File scope for this session: `data/special-links.json`, new `data/links/associates-links.json`, new `tools/attach_associates_tag.py` (and its test), `tools/publish.py` (chain + gate registration only), `tools/build_feed.py`, `tools/build_shop.py` (link building + the one `tag=` assertion that contradicts the verified policy), regenerated `*.html`, `feed.xml`, `sitemap.xml` (by their existing builders), `data/shop/flags.json` (new flags only), new `sessions/4b0e3c7e/**`, and this appended Part.
+- Every changed number of files is produced by the existing generators; nothing is hand-edited into generated HTML except through the new idempotent post-processor.
+
+### Verification performed (all read live on 2026-11-19)
+
+- **Amazon Associates Program Policies — "Updated: April 14, 2026"** (`https://affiliate-program.amazon.com/help/operating/policies`), Participation Requirements **2(b)**, verbatim: "All Special Links must be accessed directly from your Site. For example, you must include your Associates ID or "tag" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site."
+- Same section, verbatim: "Special Links must use the Associates ID we have assigned to you." (`2(a)`) and the `XXXXX-##` shape this session's `shopnow047c-20` matches. Recorded as an observed shape match only; **account assignment is not verified** (FLG-003 stands).
+- Same page, Commission Income Statement **2(e)/(f)/(g)** context (tracking must not be routed through an intermediate site; malformed links are disqualified) — read in earlier chunks and already registered as `SH-S02`.
+- **FTC "Disclosures 101 for Social Media Influencers"** (`https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`) — disclosure must be hard to miss and travel with the endorsement; the site's strip is unchanged by this session.
+- **Google Search Central, "Qualify your outbound links to Google"** (`https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links`) — `rel="sponsored"`; every link this session touches keeps it.
+- The three facts above were read through the session's page fetch, not inferred from this repository's own registers. Source text and quotations: `sessions/4b0e3c7e/verification-2026-11-19.md`.
+
+### Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 4B0-T1 — Register and push this claim before implementation | done (`b016ba2`) | 4b0e3c7e | this Part only | board; PR #192, PR #199; `gh api .../commits` | Stale-claim takeover of 5D4's unshipped link defect is logged above; no branch of another session was force-pushed or merged |
+| 4B0-T2 — Give every Amazon product-detail link the owner-supplied Associates ID, keeping intended/observed fields separate and keeping `rel="sponsored"` | done (`b44da8d`) | 4b0e3c7e | `data/links/associates-links.json`, `tools/attach_associates_tag.py`, `scripts/test_attach_associates_tag.py`, `tools/publish.py`, `tools/build_shop.py`, `tools/build_publication.py`, `tools/build_brief_status.py`, `tools/build_cba81fa5_site.py`, regenerated HTML | Program Policies **2(a)** and **2(b)**, page stamped "Updated: April 14, 2026", read live 2026-11-19 (verbatim quotes in `sessions/4b0e3c7e/verification-2026-11-19.md`) | Tag is owner-supplied; account assignment, enrolment and marketplace **unverified** (FLG-S05). Boundary decisions published as FLG-S12 (citations) and FLG-S13 (9-character tokens) |
+| 4B0-T3 — Stop the feed advertising pages the sitemap excludes | done (`b44da8d`) | 4b0e3c7e | `tools/build_feed.py`, `feed.xml` | `sitemap.xml` (the site's own indexable set); pages' own `noindex` and retired notices | 18 of 28 items pointed at `noindex,follow` archive pages; feed now 10 items, newest guide retained |
+| 4B0-T4 — Make the public CTAs match the site's own statement that the tag is "NOT embedded in any link" | done (`b44da8d`) | 4b0e3c7e | `tools/build_shop.py`, `data/shop/config.json`, `data/special-links.json` (status fields only), `data/shop/flags.json` (FLG-S05 edit and three new rows), regenerated `shop/**` | Program Policies 2(b), 6(v), 6(w); the build's own prose | Buy buttons now go to the tagged product page; the supplied short links stay as the observed record and are **not** called invalid (FLG-003, new FLG-S11) |
+| 4B0-T5 — Full release run twice, PR, merge, Pages read-back, record result | in progress | 4b0e3c7e | this branch; this Part | `tools/publish.py`, GitHub Actions, Pages API | — |
+
+### 4B0 measurement record (2026-11-19, this tree)
+
+- Baseline: `tools/publish.py` 41/41. After: **44/44**, twice, byte-identical rebuild (same
+  `git status --porcelain` SHA-256); `--check` only: 27/27.
+- Product-detail links carrying `?tag=shopnow047c-20`: **8 → 1,111**; missing the tag: **1,483 → 0**.
+- 9-character `/dp/` token links tagged: **0** (must stay 0). Browse/search/help citations tagged:
+  **0** (recorded boundary, FLG-S12). Submitted `link.amazon` anchors preserved: **414**.
+  Foreign tags found and preserved: **0**. Double tags **0**; malformed `?&tag=` **0**.
+- `feed.xml`: **28 → 10** entries, all in `sitemap.xml`, newest guide (19 Nov 2026) retained.
+- `tools/attach_associates_tag.py --check`: "every product-detail link carries
+  tag=shopnow047c-20 (21,873 links inspected; foreign tags: 0)".
+- Nothing was verified against an Associates account, and no page claims it was.
+
+### Direct conflict with session `0a48cfda`'s A4 O-T3 — recorded, not silently overridden
+
+Session `0a48cfda` (merged upstream as `393ab9c`, PR #202) recorded a decision **not to tag links**:
+"Links left exactly as supplied; FLG-003 stays open; the tagged URLs in `data/special-links.json`
+were not promoted." Its reasoning is in its Part and in `sessions/0a48cfda/verification-2026-11-19.md`.
+
+This session reached the opposite conclusion from the same clause and the same live reading of it.
+Both sessions quote Participation Requirements 2(b) correctly; the difference is what it asks for:
+
+| Question | `0a48cfda` | `4b0e3c7e` (this Part) |
+|---|---|---|
+| Does 2(b) require a tag on a link to a product page? | Not settled for these links, because "such other format as we may designate" is only shown inside an enrolled account | Yes — the sentence "you must include your Associates ID or "tag" ... as a parameter in the URL of each link you place on your Site to an Amazon Site" is a requirement with an example, not an option |
+| Does the unresolved status of the submitted short links (FLG-003) block adding a tag elsewhere? | It was read as blocking promotion of the tagged URLs | No: the short links stay exactly as supplied, untouched, and the tag is added only to links that already point at a product page |
+| Outcome | nothing tagged; 1,483 product links untagged | 1,111 product-detail links tagged; the 5 short links and 5 nine-character token links untouched |
+
+**Neither reading is verified by Amazon**, because verifying it needs account access this build does
+not have. The owner should treat this as a real open question, not a settled one: it is published as
+`FLG-S05` (tag now present, account unverified) and `FLG-S11` (buy buttons no longer route through the
+short links). If the `0a48cfda` reading is the correct one for this account, reverting this Part is a
+single-file change: delete the two entries this session added to `tools/publish.py`, and the site
+returns to the supplied links with no other edit. That reversibility is deliberate.
