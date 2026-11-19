@@ -2,7 +2,7 @@
 
 Date: 2026-11-17. Branch `arena/aebf0747-zone3`. Live page: https://kanlerxz87-cyber.github.io/Zone3/publication-pass.html
 
-- Disclosure sentence (Operating Agreement Section 5) under the masthead of the published HTML pages: 123 of 123 (before this pass: 78 of 83). Footer repeat: 123 of 123.
+- Disclosure sentence (Operating Agreement Section 5) under the masthead of the published HTML pages: 124 of 124 (before this pass: 78 of 83). Footer repeat: 124 of 124.
 - Amazon product links with rel="sponsored": 1965 of 1965 (before: 6 of 1317). The links that still lack it are Associates policy pages, not product links.
 - The front page leads with the five supplied products. The previous root page is kept unchanged at dashboard-register.html.
 - Four question-shaped guides (working titles) quote listing titles only. They use no prices, ratings or popularity claims.

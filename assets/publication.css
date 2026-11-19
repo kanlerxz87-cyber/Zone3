@@ -393,3 +393,12 @@ a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
 .p26-teaser-cta:hover,.p26-teaser-cta:focus-visible{background:var(--p26-accent)}
 .p26-teaser-cta .p26-icon{width:13px;height:13px}
 @media(max-width:760px){.p26-teaser-actions{grid-column:2;grid-row:2;align-self:start}.p26-teaser-cta{min-height:44px}}
+/* D3B appendix (session 3d0d7bd1, 2026-11-19): the house-style page and the decision-loop strip.
+   Same rails as the rest of the publication: hairlines, no shadows, one accent, small type that
+   is meant to be read. */
+.p26-style-rules{list-style:none;padding:0;margin:0 0 20px}
+.p26-style-rules li{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid var(--p26-line)}
+.p26-style-rules li:last-child{border-bottom:0}
+.p26-style-rules li span{color:var(--p26-muted);font-size:12px}
+.p26-outcome{border-left:3px solid var(--p26-orange);padding-left:12px;margin-top:10px}
+.p26-correction{display:block;margin-top:8px;color:var(--p26-muted);font-weight:400}

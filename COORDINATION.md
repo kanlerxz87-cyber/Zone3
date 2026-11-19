@@ -9762,6 +9762,80 @@ returns to the supplied links with no other edit. That reversibility is delibera
 - **Correction made during the rebase:** upstream replaced "must-have list" in the about page (anti-slop gate). This session's about-page sentence still said the tag's assignment was unverified without saying the tag was now used, so it was corrected to: the ID "is carried as a `tag=` parameter on every product-detail link, as Participation Requirements 2(b) asks. We have not verified its account assignment, enrolment or attribution."
 - **Disagreement left visible, not resolves:** see the table above on session `0a48cfda`'s opposite reading. Both readings are recorded; the owner decides. Reverting is two lines in `tools/publish.py`.
 
+### 4B0 post-release correction (2026-11-19, `f912a92`)
+
+The first release left a **false statement live**: `/shop/flagged/` still read "The selected tracking
+ID shopnow047c-20 is not embedded in any link", on a page that sits inside the same site whose 1,111
+product links now carry it. The tag pass governed the links and nothing governed the sentences that
+describe them, so the contradiction shipped.
+
+- **Fixed:** `M38-F-02` ("Addressed in part — for review": appeared in no link until 2026-11-19,
+  carried by every product-detail link since, ownership still unverified), `M38-F-01` (link format now
+  meets 2(b); attribution still unproven without the workflow test) and `FLG-S04` (test still open; the
+  format it needs is now in place).
+- **Gated:** `tools/attach_associates_tag.py` now scans the built pages for four phrasings this
+  repository has actually published that assert the tag is absent, and fails the release if any
+  survives. `scripts/test_attach_associates_tag.py` is 15 rules, four of which inject a stale sentence
+  and require the gate to catch it.
+- **Proved by reintroducing the defect:** restored the old sentence into `shop/flagged/index.html`;
+  the gate exited 1 naming the page and the quoted sentence; restoring the page made it pass.
+- **Released:** `f912a92a`; Publication checks **success**, Pages **built** at that commit. Live
+  `?rev=f912a92` read-back confirms the three rewritten rows and no remaining occurrence of the phrase
+  in any `shop/` page.
+- **Lesson recorded:** a change that alters what the site does must also sweep what the site says about
+  itself. The next session touching links should run `grep` for self-descriptions, not only the gates.
+
+
+---
+
+# Part 3d0d7bd1 — decision-loop close-out: house style with a lint gate, derived review date, DS-03 correction (2026-11-19)
+
+Branch note: Arena fixes this session to `arena/3d0d7bd1-zone3`, based on `0273fb4` (`main` at PR #198).
+The brief's `session-<id>/<task>` branch shape is recorded as task IDs on the fixed branch, as in earlier parts.
+
+## Session registry (Part 3d0d7bd1)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 3d0d7bd1 | `arena/3d0d7bd1-zone3` | Implement the open, unblocked decision-support proposals B38-P1, B38-P4, B38-P5 and close E41-P2's measured half; reader-facing house-style page + banned-phrase lint in the release gate; derived next-review date with an overdue gate; verified DS-03 FAQ deprecation amendment; records in `sessions/3d0d7bd1/`; PR to `main` | done (PR #208) | 2026-11-19 |
+
+## Task board (Part 3d0d7bd1)
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| D3B-T1 — Read the board, confirm no overlapping claim, register and push this claim before implementation | done (rebased twice for upstream PRs #199–#203; upstream Parts kept in full) | 3d0d7bd1 | this Part only | board through Part 4d7fe998; `git log origin/main` | none |
+| D3B-T2 — B38-P1: reader-facing house style page (`style.html`) rendered from a new register block, plus a banned-phrase lint step in the publication gate; discovery scan of all 20 current reader pages against the proposed ban list BEFORE adoption; recorded copy rewrites where the scan hit | done (live read-back at `?revision=7d44fb2`) | 3d0d7bd1 | `data/publication.json`, `tools/build_publication.py`, `tools/check_publication.py`, `tools/publication_chrome.py` (footer link), `sessions/3d0d7bd1/**`, `DESIGN_PROMPT.md` (batch section) | B38-P1 row; DESIGN_PROMPT §7 voice block; Google helpful-content guidance (`google-helpful`); scan of built tree 2026-11-19 | none |
+| D3B-T3 — B38-P4: derived next-review date (edition date + 14-day cadence, register-owned) with a deterministic overdue state and a gate that fails when the register moves past the due date without a new edition; outcome field on decided proposals rendered on the cards | done ("Next review due 3 Dec 2026" live on the decision desk) | 3d0d7bd1 | `data/publication.json`, `tools/build_publication.py`, `tools/check_publication.py` | B38-P4 row; `meta.cadence` (14-day review) | none |
+| D3B-T4 — B38-P5: amend decision row DS-03 with the verified FAQ rich-result deprecation facts (deprecation effective 2026-05-07, notice published 2026-05-08, documentation removed June 2026), read fresh from developers.google.com/search/updates on 2026-11-19 | done (correction rendered under DS-03; gate pins it) | 3d0d7bd1 | `data/publication.json` (review_b9008684 DS-03 row + renderer), `tools/build_publication.py` | `google-faq-update` re-read 2026-11-19 (May 8 2026 entry: "This feature will no longer appear in Google Search starting May 7, 2026"; June 2026 entry: documentation removed) | none — register claim confirmed verbatim |
+| D3B-T5 — E41-P2: read sessions/41e84402 measurement record, close the measured half (sticky column retained at 320/390/768 px), leave the floating-bar choice with E41-Q2 | done (row Closed 2026-11-19 with outcome) | 3d0d7bd1 | `data/publication.json` (E41-P2 status/outcome) | `sessions/41e84402/measurement-2026-11-19.json` + verification record | none |
+| D3B-T6 — Run the canonical release chain twice (idempotent), verify gates, PR from this branch, merge, confirm Pages deploy, live read-back, closeout in this Part | done | 3d0d7bd1 | `sessions/3d0d7bd1/**`, `COORDINATION.md` (this Part only) | `tools/publish.py` x2; PR; Pages API; cache-busted live fetch | none |
+
+Scope note: `data/publication.json` is edited only additively/decision-wise here (house_style block, DS-03 update field, proposal statuses/outcomes, one new indexable page `style.html`, `meta.review_cadence_days`). No product, source, flag, feed or measurement register row is rewritten. Shared files touched: `COORDINATION.md` (this Part only), `DESIGN_PROMPT.md` (§3 re-measure + one batch section), footer via `tools/publication_chrome.py` (one About-column link), which regenerates all pages through the single owned chain.
+
+### Release and deploy record (Part 3d0d7bd1)
+
+- **Chain:** `python3 tools/publish.py` — 41/41 twice pre-rebase; after the two mid-session upstream
+  moves (PRs #199–#206, then #203's Associates-tagged links chain growth to 44), **44/44 twice,
+  byte-stable** on the final tree. `tools/check_publication.py`: 124 current HTML pages, 122
+  official-source table rows, 20 indexable URLs, 29 feed items; both lint layers (the
+  register-driven D3B lint and 6f16ee11's hard-coded STYLE corroboration) run and pass together.
+- **PR:** [#208](https://github.com/kanlerxz87-cyber/Zone3/pull/208) — check
+  "Build, provenance, links and privacy" passed; **merged 2026-11-19T22:21:34Z as `7d44fb2`**,
+  no approval wait, per the standing brief.
+- **Pages:** `built` for `7d44fb2`. Cache-busted live read-back: `style.html` renders the six
+  rules and the full banned-construction table with official bases; the suggestions page renders
+  "Next review due 3 Dec 2026" with the not-overdue state, four Outcome lines and the DS-03
+  correction; the front page carries the rewritten hero, the "How we write" footer link and the
+  Associates-tagged buy buttons from PR #203; `sitemap.xml` serves exactly 20 URLs including
+  `style.html`.
+- **Register after merge:** 11 guides · 30 proposals (B38-P1/P4/P5 adopted, E41-P2 closed;
+  upstream 0A4-P1/P2 preserved) · 39 questions (D3B-Q1 added; E41-Q2 and every owner-gated
+  question unchanged) · 6 paths · 13 design-prompt blocks · 17 scoped official references.
+- **Open items left open on purpose:** D3B-Q1 (banned-list editing rule), E41-Q2 (floating
+  compare bar), E41-P1 (interior dimensions), FLG-003 (link attribution), P26-Q3 (production
+  host), and every other owner-gated row — unchanged, by design.
+>>>>>>> c126257 (D3B-T1: claim decision-loop close-out batch (B38-P1/P4/P5, E41-P2) on the shared board)
+
 ---
 
 ---
@@ -9785,7 +9859,7 @@ Branch note: Arena fixes this session to `arena/ee10b024-zone3`; the brief's `se
 | EE-T3 — Union-merge accepted PR content without discarding any session's work; log every conflict resolution | **done** (45 conflicted paths across 3 merges) | ee10b024 | whole tree (integration only) | remap protocol + zero-loss assertions | none |
 | EE-T4 — Line-by-line re-verification of combined load-bearing claims against live official sources | **done** (OA §5/§6(a), PR 2(a)/2(b)/6(t)/(v)/(w), Google rel=sponsored, FTC Disclosures 101 read live 2026-11-19) | ee10b024 | `sessions/ee10b024/verification-2026-11-19.md` | official sources only | none |
 | EE-T5 — Full gate chain ×2 (idempotency), link check, broken-link fixes | **done** — `tools/publish.py` 49/49 twice on the final merged tree (46 after PR #192, plus main's stale-claim gate); 6 same-day stale measurements + 1 false intent line fixed (`EE-F-01/02`) | ee10b024 | registers + generated outputs via canonical chain | local gates | none |
-| EE-T6 — PR → `main`, merge without waiting if gates green, Pages deploy confirmation, live read-back, publish record appended here | in progress — PR [#207](https://github.com/kanlerxz87-cyber/Zone3/pull/207) opened; `origin/main` advanced to `f912a92` (PRs #199–#206) during review, merged into this branch in one union pass (56 conflicted paths) and gates re-ran 49/49 twice; merge retry pending | ee10b024 | current branch; this Part | gh/git | — |
+| EE-T6 — PR → `main`, merge without waiting if gates green, Pages deploy confirmation, live read-back, publish record appended here | in progress — PR [#207](https://github.com/kanlerxz87-cyber/Zone3/pull/207) opened; `origin/main` advanced to `f912a92` (PRs #199–#206) during review, merged into this branch in one union pass (56 paths) and gates re-ran 49/49 twice; `origin/main` advanced again to `b99ea49` (PRs #208/#209) and a second union pass (12 paths) re-ran 49/49 twice on the final tree; merge retry pending | ee10b024 | current branch; this Part | gh/git | — |
 
 
 ---

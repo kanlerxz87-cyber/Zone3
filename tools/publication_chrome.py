@@ -187,7 +187,7 @@ def footer_block(prefix: str, existing: set[str]) -> tuple[str, list[str]]:
         + '<p>A considered kitchen starts<br>with a good question.</p></div>'
         + '<div class="p26-footer-links"><div><h2>Find your next read</h2>'
         + f'<a href="{prefix}guides/index.html">All buying guides</a><a href="{prefix}shop/air-fryers/index.html">Air fryers</a><a href="{prefix}shop/meat-thermometers/index.html">Meat thermometers</a><a href="{prefix}shop/index.html">The product shortlist</a></div>'
-        + f'<div><h2>About Zone3</h2><a href="{prefix}about.html">Our editorial approach</a><a href="{prefix}about.html#disclosure">Affiliate disclosure</a><a href="{prefix}privacy.html">Privacy & measurement</a><a href="{prefix}feed.xml">Follow by RSS</a></div>'
+        + f'<div><h2>About Zone3</h2><a href="{prefix}about.html">Our editorial approach</a><a href="{prefix}about.html#disclosure">Affiliate disclosure</a><a href="{prefix}style.html">How we write</a><a href="{prefix}privacy.html">Privacy & measurement</a><a href="{prefix}feed.xml">Follow by RSS</a></div>'
         + f'<div><h2>Behind the site</h2><a href="{prefix}suggestions/index.html">Suggestions & decisions</a><a href="{prefix}executive-brief.html">Executive brief</a><a href="{prefix}flagged.html">Flagged for review</a><a href="{prefix}measurement/index.html">Measurement status</a></div></div></div>'
         + '<details class="p26-research-tools"><summary>All research tools & source registers <span aria-hidden="true">+</span></summary><div class="p26-tools-grid">'
         + workspace_links(prefix, existing) + '</div></details>'

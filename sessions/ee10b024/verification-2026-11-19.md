@@ -17,7 +17,7 @@ order. After PR #207 opened, `origin/main` had advanced (PRs #199–#206, `f912a
 latest main was merged into this branch in one union pass (56 conflicted paths: generated
 pages regenerated, `tools/build_shop.py` took main's gated 4b0 implementation, `build_publication.py`
 unioned with `git merge-file`, shop flags three-way merged to 37 ids with zero losses,
-`COORDINATION.md` append-only union) and the chain re-ran at 49/49 twice. PR #160's own conflict pre-check (`git merge-tree --write-tree --name-only origin/main`)
+`COORDINATION.md` append-only union) and the chain re-ran at 49/49 twice; `origin/main` then advanced again to `b99ea49` (PRs #208/#209) and a second union pass (12 paths) re-ran the chain at 49/49 twice with the final tree at 124 pages / 11 guides / 20 URLs / 39 questions. PR #160's own conflict pre-check (`git merge-tree --write-tree --name-only origin/main`)
 was run before merging it; the residual conflicts were resolved as recorded in
 `COORDINATION.md` Part ee10b024.
 
@@ -73,10 +73,10 @@ plus the previous 41. Key measured outputs after the chain ran:
 |---|---|---|
 | Product links tagged `shopnow047c-20` | 1,680 / 1,680, 0 foreign tags; every product-detail link tagged (22,572 inspected, 0 foreign) | `tools/attach_tag.py --check`, `tools/attach_associates_tag.py --check` |
 | Amazon product links `rel="sponsored"` | 1,965 / 1,965, 0 missing | `sessions/aebf0747/audit-after.json` |
-| Disclosure sentence | 123 / 123 published pages | same |
-| Sitemap canonical URLs | 19 | `scripts/build_sitemap.py --check` |
+| Disclosure sentence | 124 / 124 published pages | same |
+| Sitemap canonical URLs | 20 | `scripts/build_sitemap.py --check` |
 | Feed items | 11 (indexable/sitemap-consistent after PRs #192 and #203) | `tools/build_feed.py --check` |
-| Guides / proposals / questions | 11 / 30 / 38 | `data/publication.json` |
+| Guides / proposals / questions | 11 / 30 / 39 | `data/publication.json` |
 
 ## 5. Live official-source re-reads (fetch_page, 2026-11-19)
 
@@ -95,7 +95,7 @@ family) matched the live text verbatim after normalization.
 | ID | What | Disposition |
 |---|---|---|
 | `EE-F-01` | Intent page claimed the tracking ID was "Not attached to any link on this site" while the merged tree tags every product link | **Fixed** — `sessions/aebf0747/intent-record.json` + `build_pass.py` rewritten to measured 1,656/1,656 coverage; attribution reporting stays unverified (`AE-F-01`); `FLG-003` untouched |
-| `EE-F-02` | Same-day brief-status/executive-summary measurements superseded by the integration (feed 27→11, sitemap 17→19, guides 9→11, pages 121→123 after PRs #157/#160/#192 and main's #198–#206) | **Fixed** — rows S-04/S-05/S-09/S-24/SG-28/SG-29 re-measured against the final merged tree, `_meta.rechecks` entry 5, EXECUTIVE-SUMMARY current counts updated |
+| `EE-F-02` | Same-day brief-status/executive-summary measurements superseded by the integration (feed 27→11, sitemap 17→20, guides 9→11, pages 121→124 after PRs #157/#160/#192 and main's #198–#206) | **Fixed** — rows S-04/S-05/S-09/S-24/SG-28/SG-29 re-measured against the final merged tree, `_meta.rechecks` entry 5, EXECUTIVE-SUMMARY current counts updated |
 | Count-drift gate vs docstring | E41's "one block" docstring tripped PR #192's typed-count gate after the union | **Fixed** — reworded ("single block"), gate not weakened |
 | Carried, not closed | `FLG-003` (supplied short links never called invalid), `shopnow047c-20` enrollment/assignment unverified, `5D4-F-01` redirect-chain compliance question, S-18 imagery, account/API/Search Console, Pages commercial-use fit | Remain flagged on `flagged.html`; none blocks merge per standing brief |
 

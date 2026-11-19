@@ -41,20 +41,26 @@ Hosting sits outside the design brief but constrains it: GitHub Pages "is not in
 
 ## 3. What is actually on the site today (measured 2026-11-19)
 
-| Surface | Count | Note |
+Re-measured 2026-11-19 after PRs #198, #199, #200 and #201 and session `3d0d7bd1`'s batch by
+counting the checked-in tree and the registers, not by retyping: the two readings are recorded
+in `sessions/3d0d7bd1/verification-2026-11-19.md`. The 8-guide and 16-URL rows below were this
+brief's original 2026-11-19 reading; the "now" column is the current one.
+
+| Surface | Count (now) | Note |
 |---|---|---|
-| HTML pages outside `docs/`, `sessions/`, `archive/` | 120 | the whole published tree |
-| Indexable reader set (canonical + in `sitemap.xml`) | 16 | front page, guide index, 8 guides, four shop surfaces, about, privacy |
-| Question-led guides | 8 | 2026-11-17 four · 2026-11-19 two more · 2026-11-19 this pass adds "Hi-Fry/Sync Finish/4-in-1" and "How do you know when an air-fryer cook is actually done?" |
+| HTML pages outside `docs/`, `sessions/`, `archive/` | 124 | the whole published tree |
+| Indexable reader set (canonical + in `sitemap.xml`) | 20 | front page, guide index, 11 guides, four shop surfaces, about, privacy, **and the new house-style page `style.html`** |
+| Question-led guides | 11 | 2026-11-17 four · 2026-11-19 three more · "Hi-Fry/Sync Finish/4-in-1", "How do you know when an air-fryer cook is actually done?", "Where does the probe go?", "1 Sec / ±0.5℉ on the label", "the ice-water check" |
 | Submitted product links registered | 5 | 3 air fryers, 2 meat thermometers; titles re-opened 2026-11-19 |
-| Pages carrying `rel="canonical"` | 120 / 120 | |
-| Pages carrying `og:image` | 29 / 120 | the reader layer and its archives; the legacy registers do not |
-| Pages with a meta description ≥ 60 characters | 115 / 120 | the five exceptions are meta-refresh stubs titled "Moved", excluded from the sitemap on purpose |
-| `sitemap.xml` `<url>` entries | 16 | 0 `<lastmod>`; see the rejected-idea note in `P27-F06` |
-| `feed.xml` entries | 26 | union of the guide registers, desk notes and archive items |
-| Decision-desk rows on the suggestions page | 5 paths · 6 proposals · 16 open questions · 10 brief blocks | each with an answer owner and a safe default |
-| Source register | 87 rows | official-host only |
+| Pages carrying `rel="canonical"` | 124 / 124 | |
+| Pages carrying `og:image` | 33 / 124 | the reader layer and its archives; the legacy registers do not |
+| Pages with a meta description ≥ 60 characters | 119 / 124 | the five exceptions are meta-refresh stubs titled "Moved", excluded from the sitemap on purpose |
+| `sitemap.xml` `<url>` entries | 20 | 0 `<lastmod>`; see the rejected-idea note in `P27-F06` |
+| `feed.xml` entries | 29 | union of the guide registers, desk notes and archive items |
+| Decision-desk rows on the suggestions page | 6 paths · 30 proposals · 39 questions · 13 brief blocks | each with an answer owner and a safe default; decided proposals now carry dated Outcome lines (B38-P4) |
+| Source register | 17 rows | official-host only |
 | Flag register | 164 rows | published on the Flagged-for-review page |
+| House-style lint | 15 banned-construction rows | enforced by a release gate since 2026-11-19 (`house_style` in the register; B38-P1) |
 
 ---
 
@@ -214,3 +220,41 @@ question.
   (D34-Q2), voice list (D34-Q3), reader capture (D34-Q4), cluster map (D34-Q5), aid priority
   (D34-Q6), catalogue minimum (D34-Q7) and polish baseline (D34-Q8) — because a design brief
   cannot answer those, and pretending otherwise is how an unverified assumption becomes a layout.
+
+---
+
+## 14. Batch 4 — the decision loop closes (session 3d0d7bd1, 2026-11-19)
+
+Implemented proposals B38-P1, B38-P4 and B38-P5, and closed the measured half of E41-P2; each
+decision is recorded with its evidence in `sessions/3d0d7bd1/decisions.md` and rendered as a
+dated Outcome line on its proposal card. Nothing here was built before the decision was written.
+
+- **The house style is a page and a lint, not a mood board (B38-P1).** `style.html` renders from
+  the same register block the release gate reads (`house_style` in `data/publication.json`), so
+  the page a reader sees and the gate the build enforces cannot drift. The lint fails the release
+  on any banned construction in strict-scope text; exemptions are mechanical and documented
+  (quoted rules, the style page's own phrase cells, the suggestions register that reviews the
+  list). Before adoption, every current reader page was scanned against the proposed list —
+  buyer-facing copy was already clean, two meta-usages were rewritten, one honest compliance
+  sentence was exempted, and all of it is recorded. Basis:
+  [Google: creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content).
+  New open question: **D3B-Q1** — who may edit the list, and on what evidence.
+- **The review date is derived, and overdue is stated, never stale (B38-P4).** "Next review due
+  3 Dec 2026" comes from the edition date plus the register-owned 14-day cadence; the overdue
+  state compares register dates so builds stay byte-stable, and a gate fails the release when the
+  register moves past the due date without a new edition. Decided proposals carry Outcome lines.
+  Basis: [Google: get started with Search Console](https://developers.google.com/search/docs/monitor-debug/search-console-start).
+- **DS-03 is corrected before any FAQ work starts (B38-P5).** Google's own documentation updates
+  page, re-read 2026-11-19: the FAQ rich result "will no longer appear in Google Search starting
+  May 7, 2026" (notice published May 8, 2026), and its documentation was removed in June 2026.
+  The original DS-03 row is kept verbatim; the dated correction sits beneath it with the official
+  anchor, and a gate pins the correction so it cannot be silently dropped.
+- **The thumb-first comparison closes on measurement, not assumption (E41-P2).** The 2026-11-19
+  browser record shows the sticky product column holds at 320/390/768 px with every column
+  reachable; the sticky column is the closed outcome, and the floating-bar idea stays where the
+  register put it — open question E41-Q2, waiting on device-mix evidence that does not exist.
+- **What this batch deliberately does not decide.** The banned-list editing rule (D3B-Q1), the
+  floating compare bar (E41-Q2), the authorized source for product dimensions (E41-P1/E41-Q1),
+  the brand promise (D34-Q1) and every owner-gated question in the decision-readiness register —
+  a design brief cannot answer those, and pretending otherwise is how an unverified assumption
+  becomes a layout.
