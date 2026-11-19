@@ -9182,10 +9182,19 @@ No other host was fetched: outbound network in this sandbox reaches only GitHub,
 | 5D4-F01 | **No outbound Amazon product link carried the Associates tag.** `tools/build_shop.py:780` failed the build on any `tag=`. 1,491 product links across 81 pages were unattributed. | **Fixed.** `tools/attach_tag.py` + `chrome.tagged()`; the build_shop gate is inverted to *require* the tag and to reject a foreign one. 1,499 links now carry `shopnow047c-20`; 0 conflicts. 22 unit tests. |
 | 5D4-F02 | `executive-brief.html` published **6 guides / 9 questions** against a register of 8 / 24. | **Fixed.** Counts derive from the register; the page now reads 8 / 32 after upstream's register growth. |
 | 5D4-F03 | "current six guides", "Seven ways…", "seven working titles", "THREE QUESTIONS" were typed beside data-driven cards. | **Fixed**, all derived. |
-| 5D4-F04 | Root front page and `/shop/` were 65 % identical copy on two indexable URLs. | **Open** — T2. |
-| 5D4-F05 | `shop/products/index.html` (the comparison table) is effectively orphaned. | **Open** — T2. |
+| 5D4-F04 | Root front page and `/shop/` were **65.0 %** identical copy on two indexable URLs, both in `sitemap.xml`. | **Fixed.** Front page now uses a per-product teaser line + tagged CTA; cards live only in the catalogue. **Measured 20.4 %.** Gate: distinctness > 40 % now fails the release. |
+| 5D4-F04b | **A defect this session introduced and caught.** Removing the duplicated cards left `index.html` with **zero** Amazon links — the main entry point had no conversion path. | **Fixed**, and gated: `test_counts.py` fails if any product lacks a tagged `rel="sponsored"` link on the front page. |
+| 5D4-F05 | `shop/products/index.html` called an orphan in the first pass. **Correction: it is not.** Linked from the catalogue, both category pages and the masthead; all internal links resolve. | **Corrected in the audit** rather than "fixed". What is true is the ratio (8 inbound vs 249), recorded as a linking-priority note. Gate added: no indexable page may have zero inbound links. |
 | 5D4-F06 | Product CTA and "official listing" pointed at different destinations for one product. | **Fixed.** The CTA now uses the recorded observed listing, tagged; the intent record stays separate and unmerged. |
-| 5D4-F10 | The suggestions surface asks 24→32 questions but cannot record a decision. | **Open** — T3. |
+| 5D4-F10 | The suggestions surface asks 32 questions and offers a 4-way select on every card, but a choice could not become a decision. | **Fixed.** New `#decision-record`: the five fields a decision must carry (each with its official basis), the register holding decided items, and a copy-ready template. Gate: `test_decision_record.py`. |
+
+### Second batch — commit `6bb8362`
+
+`index.html` was rebuilt as an editorial front page rather than a second catalogue, and the
+suggestions surface now closes the loop from choice to a dated decision record. Verified in a
+local preview over HTTP (`/`, `/shop/`, `/shop/products/`, `/suggestions/`, a guide, `feed.xml`,
+`sitemap.xml` all 200; disclosure above the fold on every page checked; 5 tagged sponsored
+CTAs on the front page, 15 on the catalogue).
 
 ### Gates
 
