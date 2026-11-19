@@ -242,3 +242,26 @@ footer.p26-footer.z3-foot{background:#263e31!important;color:#e5e9de!important;p
 .p26-howto b{display:block;font:11px/1.4 var(--p26-sans);letter-spacing:.1em;color:var(--p26-orange);margin-bottom:7px}
 .p26-howto p{font-size:12px;line-height:1.65;margin:0}
 @media(max-width:760px){.p26-howto{grid-template-columns:1fr}.p26-howto>div{border-right:0;border-bottom:1px solid var(--p26-line)}.p26-howto>div:last-child{border-bottom:0}}
+
+/* b580d790 (2026-11-19): the three-question chooser on the catalogue pages.
+   Additive only. Each answer is a link to a guide, never a ranked score. */
+.p26-chooser-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--p26-line);border-bottom:1px solid var(--p26-line)}
+.p26-chooser-step{padding:26px 26px 8px;border-right:1px solid var(--p26-line)}
+.p26-chooser-step:last-child{border-right:0}
+.p26-chooser-step h3{font:400 21px/1.25 var(--p26-serif,Georgia,serif);margin:0 0 16px;color:var(--p26-ink)}
+.p26-choice-list{display:flex;flex-direction:column}
+a.p26-choice{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:12px 0;border-top:1px solid var(--p26-line);text-decoration:none;color:var(--p26-ink)}
+a.p26-choice:first-child{border-top:0}
+a.p26-choice:hover{color:var(--p26-orange)}
+a.p26-choice .p26-overline{margin:0}
+.p26-choice-go{display:inline-flex;align-items:center;gap:6px;font:500 10px/1 var(--p26-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--p26-muted);white-space:nowrap}
+a.p26-choice:hover .p26-choice-go{color:var(--p26-orange)}
+a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
+@media(max-width:760px){.p26-chooser-grid{grid-template-columns:1fr}.p26-chooser-step{border-right:0;border-bottom:1px solid var(--p26-line);padding:20px 0 6px}.p26-chooser-step:last-child{border-bottom:0}}
+
+/* b580d790 (2026-11-19): the two-sided fit note on product cards.
+   Listing-derived format wording plus one editorial question — never a verdict. */
+.p26-fits{margin:12px 0 4px;padding:13px 0 0;border-top:1px solid var(--p26-line)}
+.p26-fits p{font-size:12px;line-height:1.65;margin:0 0 7px;color:var(--p26-body)}
+.p26-fits p>span{display:block;font:500 9px/1 var(--p26-sans);letter-spacing:.11em;text-transform:uppercase;color:var(--p26-muted);margin-bottom:4px}
+.p26-fits p.p26-ask{font-style:italic;color:var(--p26-ink);font-size:11px;margin-top:9px;padding-top:8px;border-top:1px dotted var(--p26-line)}

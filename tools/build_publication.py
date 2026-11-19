@@ -44,6 +44,37 @@ def source_link(source_id: str, label: str | None = None) -> str:
     return f'<a href="{esc(s["url"])}">{esc(label or s["title"])}</a>'
 
 
+# b580d790 (2026-11-19): buyer decision aids. Every sentence below is derived from the
+# listing wording already stored for the product, or it is an explicitly labelled
+# editorial question. No price, rating, test result or performance claim is introduced.
+DECISION = {
+    'SHOP-01': {
+        'fits': 'You want to cook two different things at once and set them to finish together.',
+        'not': 'You need one wide cooking surface for a single large item.',
+        'ask': 'Does the sync-finish feature cover the meals you actually cook?',
+    },
+    'SHOP-02': {
+        'fits': 'You would rather reach into a French-door oven than pull out a basket.',
+        'not': 'Counter depth or door swing is already tight in your kitchen.',
+        'ask': 'How much space does the door need in front of the unit?',
+    },
+    'SHOP-03': {
+        'fits': 'One basket, one temperature, and the food all wants the same treatment.',
+        'not': 'You routinely cook two different dishes at the same time.',
+        'ask': 'Will the food you cook most often fit in a single layer?',
+    },
+    'SHOP-04': {
+        'fits': 'You want a handheld spot check and will read the model instructions first.',
+        'not': 'You need continuous readings while the food rests or roasts.',
+        'ask': 'Where does the manual say to place the probe for a whole chicken?',
+    },
+    'SHOP-05': {
+        'fits': 'You want readings on a phone and do not mind an app and a connection.',
+        'not': 'You want no pairing, no account and no battery to manage.',
+        'ask': 'What do the app requirements and probe limits say for your setup?',
+    },
+}
+
 def format_art(kind: str, label: str = '') -> str:
     """Original generic format diagrams. Never presented as photographs of the exact SKU."""
     shapes = {
@@ -69,18 +100,32 @@ def guide_art(kind: str) -> str:
     return f'<div class="p26-guide-art p26-art-{esc(kind)}"><svg viewBox="0 0 320 220" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{artwork[kind]}</svg><span>THE ZONE3 FIELD GUIDE</span></div>'
 
 
+def fits_block(p: dict) -> str:
+    """Two-sided fit note. Each side names the format fact and then asks the buyer to check it.
+
+    This is deliberately not a verdict: the listing wording supports the format difference,
+    and nothing here is presented as a test result or a recommendation of one model.
+    """
+    d = DECISION[p['id']]
+    return ('<div class="p26-fits"><p><span>Fits you if</span>' + esc(d['fits']) + '</p>'
+            '<p><span>Not for you if</span>' + esc(d['not']) + '</p>'
+            '<p class="p26-ask">' + esc(d['ask']) + '</p></div>')
+
+
 def product_card(p: dict, prefix: str = '', compare: bool = False) -> str:
     # All external product destinations are unchanged supplied links, not claimed validated links.
     chips = ''.join(f'<span>{esc(x)}</span>' for x in p['features'])
     return f'''<article class="p26-product-card" id="{p['id']}" data-product-card data-category="{p['category']}">
 <div class="p26-product-art p26-art-{p['format']}"><span class="p26-product-kind">{esc('Air fryer' if p['category']=='air-fryers' else 'Meat thermometer')}</span>{format_art(p['format'])}<span class="p26-art-caption">FORMAT ILLUSTRATION</span></div>
-<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p><div class="p26-features">{chips}</div>
+<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p><div class="p26-features">{chips}</div>{fits_block(p)}
 <a class="p26-product-cta" href="{p['submitted_link']}" rel="sponsored noopener">View on Amazon {icon('external')}</a>
 <div class="p26-card-source"><span>Sponsored</span><details><summary>Listing & source</summary><p>Title and destination observed <time datetime="{p['observed_on']}">{REVERIFIED}</time>. {source_link(p['id'], 'Official Amazon listing')} · ASIN <code>{p['observed_asin']}</code>. Features above are listing wording, not test results. Intended product and attribution remain unconfirmed: <a href="{prefix}intent-record/index.html">intent record</a> · <a href="{prefix}flagged.html#FLG-003">link review</a>.</p></details></div></div></article>'''
 
 
-def guide_card(g: dict, prefix: str = '', art: bool = True) -> str:
+def guide_card(g: dict, prefix: str = '', art: bool = True, compact: bool = False) -> str:
     artwork = guide_art(g['art']).replace('src="../assets/', f'src="{prefix}assets/') if art else ''
+    if compact:
+        return f'''<a class="p26-choice" href="{prefix}guides/{g['slug']}.html"><span class="p26-overline">{esc(g['type'])}</span><strong>{esc(g['short_title'])}</strong><span class="p26-choice-go">Read the guide {icon('arrow')}</span></a>'''
     return f'''<article class="p26-guide-card">{artwork}<div class="p26-guide-copy"><p class="p26-overline">{esc(g['type'])}</p><h3><a href="{prefix}guides/{g['slug']}.html">{esc(g['short_title'])}</a></h3><p>{esc(g['dek'])}</p><a class="p26-text-link" href="{prefix}guides/{g['slug']}.html">Read the guide {icon('arrow')}</a></div></article>'''
 
 
@@ -153,6 +198,58 @@ def comparison_table(products: list[dict], prefix: str) -> str:
     return '<div class="p26-table-scroll" role="region" aria-label="Source-linked product comparison" tabindex="0"><table class="p26-table"><caption>Listing wording, not a performance ranking. Blank cells are unverified; source checks are limited to title and destination.</caption><thead><tr><th scope="col">Product</th><th scope="col">Format</th><th scope="col">Cleanup wording in title</th><th scope="col">Tested performance</th><th scope="col">Evidence status</th><th scope="col">Official source</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div>'
 
 
+def chooser(prefix: str, category: str) -> str:
+    """Three-question format chooser. It narrows to a guide; it never names a winner."""
+    if category == 'air-fryers':
+        questions = [
+            ('How many things do you cook at once?',
+             ['Two dishes, different timings', 'One big batch', 'I want an oven, not a basket'],
+             ['basket-or-oven-style']),
+            ('What matters most on the counter?',
+             ['A compact footprint', 'Room for a large interior', 'Easy parts to wash'],
+             ['cleanup-and-counter-space']),
+            ('How do you read a capacity label?',
+             ['Quarts is enough for me', 'I need internal dimensions', 'I am not sure yet'],
+             ['capacity-checklist']),
+        ]
+    elif category == 'meat-thermometers':
+        questions = [
+            ('Spot check or continuous reading?',
+             ['A quick spot check', 'A reading while it cooks', 'Still deciding'],
+             ['instant-read-or-wireless-thermometer']),
+            ('Do you want an app?',
+             ['Yes, phone readings', 'No, keep it simple', 'Show me the trade-off'],
+             ['instant-read-or-wireless-thermometer']),
+            ('What are you cooking next?',
+             ['A roast or whole bird', 'Everyday pan cooking', 'A holiday table'],
+             ['holiday-kitchen-checklist']),
+        ]
+    else:
+        questions = [
+            ('What are you actually choosing?',
+             ['An air fryer', 'A meat thermometer'],
+             ['basket-or-oven-style', 'instant-read-or-wireless-thermometer']),
+            ('Basket, two baskets, or oven?',
+             ['One basket', 'Two baskets', 'An oven'],
+             ['basket-or-oven-style']),
+            ('What should we check together?',
+             ['Capacity and dimensions', 'Cleanup and counter space', 'App and connection needs'],
+             ['capacity-checklist', 'cleanup-and-counter-space']),
+        ]
+    blocks = []
+    for n, (question, answers, slugs) in enumerate(questions, 1):
+        opts = ''.join(
+            '<a class="p26-choice" href="' + prefix + 'guides/' + slugs[min(i, len(slugs) - 1)] + '.html">'
+            + '<span class="p26-overline">' + esc(a) + '</span>'
+            + '<span class="p26-choice-go">Go ' + icon('arrow') + '</span></a>'
+            for i, a in enumerate(answers))
+        blocks.append(f'<div class="p26-chooser-step"><p class="p26-overline">QUESTION 0{n}</p><h3>{esc(question)}</h3><div class="p26-choice-list">{opts}</div></div>')
+    return ('<section class="p26-section p26-chooser" id="chooser"><div class="p26-section-heading"><div>'
+            '<p class="p26-overline">THREE QUESTIONS, NO SCORE</p><h2>Which one is for you?</h2></div></div>'
+            '<p class="p26-section-dek">This narrows the field to the guide that answers your question. It does not rank the products, '
+            'and it cannot tell you what will fit your kitchen. Nothing you choose here is sent anywhere.</p>'
+            '<div class="p26-chooser-grid">' + ''.join(blocks) + '</div></section>')
+
 def catalogue(category: str = 'all', compare: bool = False) -> tuple[str, str]:
     ps = [p for p in DATA['products'] if category == 'all' or p['category'] == category]
     rel = 'shop/products/index.html' if compare else 'shop/index.html' if category == 'all' else f'shop/{category}/index.html'
@@ -175,8 +272,9 @@ def catalogue(category: str = 'all', compare: bool = False) -> tuple[str, str]:
         doc_title, doc_desc = 'Kitchen shortlist: three air fryers, two thermometers', 'Five source-linked kitchen listings: three air-fryers and two meat thermometers. See the format each one uses before you compare features.'
     table = comparison_table(ps, prefix)
     cards = ''.join(product_card(p, prefix) for p in ps)
+    chooser_html = '' if compare else chooser(prefix, category)
     guides = ''.join(guide_card(GUIDES[x], prefix, art=False) for x in related_slugs)
-    body = f'''<div class="p26-container"><div class="p26-page-intro"><p class="p26-overline">{eyebrow}</p><h1>{title}</h1><p>{intro}</p><div class="p26-category-links"><a href="{prefix}shop/index.html">All tools</a><a href="{prefix}shop/air-fryers/index.html">Air fryers</a><a href="{prefix}shop/meat-thermometers/index.html">Thermometers</a><a href="{prefix}shop/products/index.html">Compare details</a></div></div>{table if compare else '<div class="p26-products-grid">'+cards+'</div>'}<p class="p26-fine">Product names and formats are listing wording observed {REVERIFIED}. No independent performance, prices, ratings or availability are asserted. Illustrations show generic formats, not the exact products.</p><section class="p26-section" id="comparison"><div class="p26-section-heading"><div><p class="p26-overline">PUT THE DETAILS SIDE BY SIDE</p><h2>{'A few important limits.' if compare else 'Different formats. Clearer questions.'}</h2></div></div>{'<p>Intended ASINs, account ownership and Special Link attribution are still unconfirmed. Blank performance and cleanup cells are unverified—not zero or a negative finding.</p>' if compare else table}<p class="p26-fine">Keep intended product and observed destination separate: <a href="{prefix}intent-record/index.html">confirmation record</a>. The supplied short links’ exact compliance status remains unresolved: <a href="{prefix}flagged.html#FLG-003">FLG-003</a>.</p></section><section class="p26-section"><h2>Read before you decide.</h2><div class="p26-guides-grid">{guides}</div></section>{follow(prefix)}</div>'''
+    body = f'''<div class="p26-container"><div class="p26-page-intro"><p class="p26-overline">{eyebrow}</p><h1>{title}</h1><p>{intro}</p><div class="p26-category-links"><a href="{prefix}shop/index.html">All tools</a><a href="{prefix}shop/air-fryers/index.html">Air fryers</a><a href="{prefix}shop/meat-thermometers/index.html">Thermometers</a><a href="{prefix}shop/products/index.html">Compare details</a></div></div>{'' if compare else chooser_html}{table if compare else '<div class="p26-products-grid">'+cards+'</div>'}<p class="p26-fine">Product names and formats are listing wording observed {REVERIFIED}. No independent performance, prices, ratings or availability are asserted. Illustrations show generic formats, not the exact products.</p><section class="p26-section" id="comparison"><div class="p26-section-heading"><div><p class="p26-overline">PUT THE DETAILS SIDE BY SIDE</p><h2>{'A few important limits.' if compare else 'Different formats. Clearer questions.'}</h2></div></div>{'<p>Intended ASINs, account ownership and Special Link attribution are still unconfirmed. Blank performance and cleanup cells are unverified—not zero or a negative finding.</p>' if compare else table}<p class="p26-fine">Keep intended product and observed destination separate: <a href="{prefix}intent-record/index.html">confirmation record</a>. The supplied short links’ exact compliance status remains unresolved: <a href="{prefix}flagged.html#FLG-003">FLG-003</a>.</p></section><section class="p26-section"><h2>Read before you decide.</h2><div class="p26-guides-grid">{guides}</div></section>{follow(prefix)}</div>'''
     return rel, shell(rel, doc_title, doc_desc, body)
 
 
