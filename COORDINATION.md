@@ -8757,3 +8757,27 @@ are present alongside them.
 **Gates on the unioned tree:** `tools/publish.py` — **41 commands, 0 failed**; rebuild idempotent
 (`--check` current); publication gate 64 official-source table rows; suggestions page carries 20
 review selects (6 `P26-S*` + 14 `D9/AS`) — both sessions' features verified present.
+
+### B9 completion record and publish result (B9-T5, 2026-11-19)
+
+| Task | Status | Record |
+|---|---|---|
+| B9-T1 — claim, rebase, register | done | claim pushed as `03c233b` before any other work; two rebases onto `main` (`f4e638b` PR #175, `530d9d9` PR #176) resolved by union, logged above including the corrected `--theirs` mistake |
+| B9-T2 — dated verification round | done | `sessions/b9008684/verification-2026-11-19.md`: 10 official pages re-read + 5 supplied links re-fetched; no drift; corroborates session `cd746460`'s same-day record |
+| B9-T3 — review round on the canonical surface | done | `data/publication.json` (+2 sources, +`review_b9008684`), `tools/build_publication.py` (additive `review_round_html()` + one call site + meta description), regenerated `suggestions/index.html` |
+| B9-T4 — executive summary + session records | done | `EXECUTIVE-SUMMARY.md` §15; `sessions/b9008684/{verification-2026-11-19.md,repo-review.md,apply_review.py}` |
+| B9-T5 — gates, PR, merge, Pages confirm, live checks | done | see below |
+
+**Publish result.**
+
+| Item | Result |
+|---|---|
+| Pull request | [#177](https://github.com/kanlerxz87-cyber/Zone3/pull/177) — `arena/b9008684-zone3` → `main` |
+| Pre-merge CI | "Build, provenance, links and privacy" — **pass** (run 44511774961, 21 s) |
+| Merge | **MERGED** without waiting for review, per the brief — 2026-11-19T11:07:03Z, merge commit **`8c60498`** |
+| GitHub Pages | Build for `8c60498226bc35afa0dcb916d1b7d281c5b63b9e`: **`built`**, error null (Pages API `builds/latest`, checked 2026-11-19T11:07:29Z) |
+| Live checks (cache-busted `?revision=8c60498`) | `suggestions/index.html` serves the six standing proposals with session b580d790's reviewer workflow intact, then the review round: D9-01…D9-07 cards with "Adds to the design prompt" sentences, falsifiers, basis links and review selects; the additive prompt block; the article slate (AS-01…"checked the boring way") with pairs-with links and provenance. Page title: "Suggestions, missing information and decision review". |
+| Local gates at merge | `tools/publish.py` **41 commands, 0 failed**; rebuild idempotent; publication gate **64 official-source table rows** (+13 this round, each officially linked), 118 current pages, 14 indexable URLs, 24 feed entries; 20 review selects on the suggestions page (6 P26 + 14 B9); disclosure under masthead on every current page; no new flags (register stays at 154) |
+| Nothing implemented | The round is review-only: choices save locally and implement nothing; no price, rating, popularity, demand, conversion or revenue claim was published; intended-ASIN fields stay blank; FLG-003 is neither claimed nor implied either way |
+
+**Session status: B9-T1…T5 done.** Next reviewer inputs that would unblock the most: DS-05 (approve the seasonal strip copy), DS-01 (pick the first slate guide — DS-01's default starts with the thermometer temperature guide), DS-02 (imagery route), and the standing owner gates (Search Console, durable host, enrolled-workflow Special Link test).
