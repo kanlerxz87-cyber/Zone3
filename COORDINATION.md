@@ -9586,3 +9586,94 @@ listings", which stopped being true once PR #202 merged. Following the board's a
 convention, that row now carries a dated amendment: exterior sizes exist for three of five, the
 analysis is still unwritten, and the blocker has changed from missing dimensions to an unresolved
 capacity figure (`FLG-S33`) plus absent interior measurements. The earlier text is retained.
+
+## Part 6f16ee11 — independent verification + live-publication anti-slop gate (2026-11-19)
+
+### Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 6f16ee11 | `arena/6f16ee11-zone3` | Independent line-by-line re-verification of the load-bearing policy claims against live official sources; close the anti-slop machinery gap on the live publication; record irregularities | done (PR merged; Pages verified) | 2026-11-19 |
+
+### Coordination and scope
+
+- Original task base: `0273fb400165d231261fd675431ce88f9fe54769` (tip of `main` at session start).
+- Claimed a non-overlapping scope before implementing. Reviewed the open PRs first: PR #192
+  (session `5d460e79`) owns product-link tagging + count derivation + index distinctness;
+  PR #160 (`0b2ffabd`) owns the design prompt + decision-readiness ledger; PR #157 (`ed27e766`)
+  owns the five-link decision/design refresh. None of them touch `tools/build_publication.py`,
+  `tools/check_publication.py`, or `about.html`, so this session worked only there plus the
+  additive session record.
+- File scope: `tools/check_publication.py`, `tools/build_publication.py`, the regenerated
+  `about.html`, `sessions/6f16ee11/**`, and this appended Part of `COORDINATION.md`. Shared
+  register, navigation, index, feed and product data are unchanged.
+
+### Task board
+
+| Task | Status | Owner | Files in scope | Sources / method | Irregularities |
+|---|---|---|---|---|---|
+| 6F1-T1 — Read the board, check scope conflicts, register and push the claim before implementation | done | 6f16ee11 | this Part only | board; PRs #192/#160/#157; `git log` at `0273fb4` | none |
+| 6F1-T2 — Independent line-by-line re-verification of every load-bearing policy claim against the live official page it cites | done | 6f16ee11 | `sessions/6f16ee11/verification-2026-11-19.md`, `verification-2026-11-19.json` | live `fetch_page`: Operating Agreement, Program Policies, FTC Disclosures 101, Google qualify-outbound-links, GitHub Pages limits | IRR-01 (tag parameter, cross-scope) |
+| 6F1-T3 — Close the anti-slop machinery gap: the published house-style lint covered only the `site/` archive, not the live publication | done | 6f16ee11 | `tools/check_publication.py`, `tools/build_publication.py`, `about.html` | `site/style-guide.html` (published house style); `tools/cba81fa5_lint.py` (archive lint, same regexes + use/mention rule) | IRR-02 (fixed) |
+| 6F1-T4 — Run the canonical build and full release checks; prove the new gate fires; record the result | done | 6f16ee11 | generated outputs only through the existing chain; `sessions/6f16ee11/repo-review.md` | `tools/publish.py` (41/41); `tools/check_publication.py`; negative test on the new scan | none |
+| 6F1-T5 — Open PR from this branch, merge without waiting if checks pass, verify Pages deployment and record the result | done | 6f16ee11 | current branch; this Part | GitHub Actions/Pages and cache-busted live read-back | none |
+
+### Verification performed (session 6f16ee11, 2026-11-19)
+
+Live official fetches, each read against the register's recorded wording (full per-claim table in
+`sessions/6f16ee11/verification-2026-11-19.md`):
+
+- **Operating Agreement** (`https://affiliate-program.amazon.com/help/operating/agreement`,
+  "Updated: October 15, 2025"): §1 Special Links = tagged link formats; §4 no traffic/income
+  representation; §5 "clearly and prominently" + the required sentence; §6 §5 violation =
+  material breach. **Confirmed.**
+- **Program Policies** (`https://affiliate-program.amazon.com/help/operating/policies`,
+  "Updated: April 14, 2026"): PR 1(f)/1(g); 2(a) Special Links use the assigned Associates ID;
+  2(b) tag as a URL parameter, no bookmarking inducement, sub-tag not tied to an end user,
+  original content, promotion removal, no misleading claims, price via Amazon-served link or
+  Creators/PA API; 6(t) no reviews/ratings without API; 6(v) no obscuring the Special Link URL
+  via Redirecting Links; 6(w) no link-shortening that obscures the Amazon destination.
+  **Confirmed.**
+- **FTC Disclosures 101** (`https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers`,
+  November 2019): disclosure "hard to miss", placed with the endorsement; no experience talk
+  about an untried product. **Confirmed.**
+- **Google qualify outbound links** (`https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links`,
+  last updated 2025-12-10): `rel="sponsored"` marks advertisements/paid placements. **Confirmed.**
+- **GitHub Pages limits** (`https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits`):
+  not for online business / e-commerce / commercial-transaction sites; 1 GB; soft 100 GB/month;
+  soft 10 builds/hour. **Confirmed.**
+
+Eleven checked claims, all verified. No product fact beyond listing wording re-asserted; no
+price, rating, review count, traffic, demand, trend, conversion or revenue value claimed.
+
+### Irregularities raised by this session
+
+- **IRR-01 (high, compliance — cross-scope, logged not fixed).** Program Policies 2(b), read
+  live, requires the Associates ID/"tag" as a URL parameter on each link to an Amazon Site. The
+  live product links render without `tag=`. PR #192 (session `5d460e79`) owns the fix via
+  `tools/attach_tag.py`; per the board's cross-scope rule this session did not edit it and
+  logged the coordination note instead. FLG-003 stays unresolved; no claim that the supplied
+  short links are valid or invalid is made.
+- **IRR-02 (medium, machinery — fixed this session).** The published house style
+  (`site/style-guide.html`) forbids a banned hype/trend register and states a script fails the
+  build when a page slips. The enforcing script (`tools/cba81fa5_lint.py`) scanned only the
+  `site/` archive; the live publication was scanned for price/rating/experience but not for the
+  banned hype/trend phrases. A scan found two genuine uses on `about.html` ("must-have list",
+  "trending status"). Fixed in `tools/build_publication.py` and closed with a new HYPE + TREND
+  scan in `tools/check_publication.py` (with the same use/mention distinction and a `PUB_RELAXED`
+  set for the decision-desk page that quotes the register as its rule). The gate was proved to
+  fire on the pre-fix hits and passes after; a negative test confirms a reintroduced use is
+  flagged and a quoted mention is exempt.
+
+### Release and deploy record
+
+- **Release gate:** `python3 tools/publish.py` → **41/41 PASS**. `tools/check_publication.py` →
+  **PASS** (122 current HTML pages, 20 rendered reader/workspace pages, 104 official-source
+  table rows, 18 indexable URLs, 28 feed entries). Diff is three files plus the session record;
+  no shared data, navigation, index, feed or count changed.
+- **PR:** [#199](https://github.com/kanlerxz87-cyber/Zone3/pull/199) — *Session 6f16ee11:
+  independent policy re-verification + live-publication anti-slop gate*.
+- **Merged:** at the merge commit recorded below, no approval wait, per the standing brief.
+- **Pages:** GitHub Pages build status verified `built` after the merge; cache-busted live
+  read-back confirmed `about.html` no longer carries the two banned phrases and the publication
+  gate is green on the deployed tree.
