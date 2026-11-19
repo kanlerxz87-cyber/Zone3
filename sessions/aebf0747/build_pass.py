@@ -83,8 +83,8 @@ def masthead(prefix: str, current: str) -> str:
                 + "".join(items) + "</section>"
             )
     tools = (
-        '<details class="z3-nav-tools"><summary>Research &amp; site tools</summary>'
-        '<div class="z3-nav-panel" aria-label="Research and site tools">'
+        '<details class="z3-nav-tools"><summary>Explore</summary>'
+        '<div class="z3-nav-panel" aria-label="Explore pages">'
         + "".join(grouped) + '</div></details>'
     )
     return (
