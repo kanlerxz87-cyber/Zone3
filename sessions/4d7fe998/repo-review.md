@@ -7,7 +7,7 @@
 
 ## Executive finding
 
-The requested reader-facing publication and decision workspace are already present. On the latest rebased tree, the current primary edition is product-led, has two product categories and nine question-led guides, and keeps the research/review surfaces reachable in a single “Behind the site” navigation group and the footer. The suggestions page is explicitly review-only. PR #194’s canonical build and PR #195’s coordination-only Pages deployment succeeded; this branch’s full release chain was re-run after rebasing onto #195.
+The requested reader-facing publication and decision workspace are already present. On the latest rebased tree, the current primary edition is product-led, has two product categories and nine question-led guides, and keeps the research/review surfaces reachable in a single “Behind the site” navigation group and the footer. The suggestions page is explicitly review-only. PR #194’s canonical build and PR #195’s coordination-only Pages deployment succeeded; this branch’s full release chain was re-run after rebasing onto #195. PR #196 then merged the audit (publication check passed; Pages built), and a cache-busted post-merge read-back reconfirmed the current brief, guide index/probe guide and sitemap.
 
 This is not yet a verified revenue or attribution system. Product intent is unconfirmed, the five primary product-card calls to action still use the submitted `link.amazon` links, the owner-supplied tracking ID has not been tested in an enrolled Associates account, Search Console and Associates reports are not verified, and production measurement is disabled. In particular, the repository contains five direct Amazon product URLs with `tag=shopnow047c-20` on the product-evidence page, but that markup does **not** prove account assignment, a Special Link generated or approved in the enrolled workflow, or successful reporting. `FLG-003` remains unresolved; the submitted short links are not called invalid.
 
@@ -105,3 +105,8 @@ The current host is GitHub Pages and the publication contains affiliate product 
 ## Scope and limitation
 
 This is a scoped repository/publication audit. External pages, official sources and current live reader surfaces were reviewed, and inherited build/provenance gates were run. It does not establish Amazon account state, Associates approval, Special Link attribution, product intent, traffic, Search Console access, reader behavior, conversion, earnings, GitHub policy approval, or first-hand product performance. No such value is inferred or filled in by this review.
+
+
+## Final audit release record
+
+PR [#196](https://github.com/kanlerxz87-cyber/Zone3/pull/196) merged at `2026-11-19T13:32:02Z` as `1623c1c2b6c4b04d526130a316dd6d9344985bdd`; publication check `44534254715` passed, and GitHub Pages reported the merge `built` at `13:32:31Z`. Cache-busted reads at `?revision=1623c1c` reconfirmed the brief’s 5/9/36/0 counts and owner/platform limits, all nine guide cards including the probe-placement guide, and the 17-URL sitemap. PR #196 changed only Markdown audit/coordination files and the root executive-summary opening; generated reader content and the protected product/tracking/source/flag/measurement/suggestion/generator data were not changed.
