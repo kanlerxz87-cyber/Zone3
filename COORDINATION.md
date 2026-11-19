@@ -9118,9 +9118,6 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
   session, with `checked_on` 2026-11-19 and a scope note.
 - No price, rating, review count, availability or revenue value is introduced. Intended-ASIN fields
   stay blank; FLG-003 is neither claimed nor implied either way.
->>>>>>> 0287705 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
->>>>>>> a48fbbb (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
->>>>>>> 1b22869 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
 ### B38 completion record (B38-T2…T6, 2026-11-19)
 
 | Task | Status | Record |
@@ -9191,3 +9188,82 @@ The current site and suggestions desk already implement the brief's reader-facin
 `CH-222-T1-01` asks the next final integrator to reconcile `data/flags.json` flag `0C4-F-08`: its text says two stacks await an owner choice, while the current measurement configuration and templates select/inject one canonical runtime and retain `track.js` only as historical code. The old endpoint is still unhosted (`0C4-F-05` remains valid). This session did not edit `data/flags.json` because open PR #160 includes that shared file in its scope; the request is recorded here rather than resolved by editing another session's register.
 
 **Publish record:** pending the current-branch PR and post-merge Pages/check confirmation.
+
+---
+
+# Part CDB — session `cdb0a5ac` (branch `arena/cdb0a5ac-zone3`, base `6eb8c18e` = `main` at claim) — 2026-11-19
+
+Branch note: Arena fixes this session to `arena/cdb0a5ac-zone3`; the brief's `session-<id>/<task>`
+branch shape is recorded here as a task-ID scope on the fixed branch (same resolution as earlier parts).
+
+## Session registry (Part CDB)
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| cdb0a5ac | `arena/cdb0a5ac-zone3` | Brief-gap buyer review of the current publication, independent live official-source re-verification round, final integration (full gate run, PR → `main`, merge, Pages deploy confirmation, publish record). | in progress | 2026-11-19 |
+
+## Task board (Part CDB)
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| CDB-T1 — Claim and coordination | done | cdb0a5ac | `COORDINATION.md` (this Part only) | — | — |
+| CDB-T2 — Brief-gap buyer review: read the current site against the brief (shop-not-audit, suggestions section, questions/answers register, five-product marketing, executive summary); record gaps as suggestions, not silent edits | done | cdb0a5ac | `sessions/cdb0a5ac/**`, `data/publication.json`, `tools/build_publication.py` (register rows + renderer only) | live fetches recorded in `sessions/cdb0a5ac/verification-2026-11-19.md` | CDB-F-01…F-09 (see `sessions/cdb0a5ac/review-2026-11-19.md` §4) |
+| CDB-T3 — Independent line-by-line re-verification of load-bearing claims against live official sources (Google, FTC, Amazon Associates) | done | cdb0a5ac | `sessions/cdb0a5ac/verification-2026-11-19.md` | V1–V5 re-read live 2026-11-19 (Google sponsored-links, FoodSafety.gov chart + Cook step, FTC Disclosures 101, Associates Operating Agreement) | none — all five matched the register rows they support |
+| CDB-T4 — Final integration: full `tools/publish.py` rebuild + every gate, link report, PR → `main`, merge, Pages deploy confirmation, live verification, publish record appended here | in progress | cdb0a5ac | whole tree (integration only) + `COORDINATION.md` (publish record) | — | — |
+
+No other session's claimed files are edited by this session except the append-only register rows in
+`data/publication.json` scoped above; if a merge conflict occurs, it will be resolved without
+discarding the other session's work and logged in this Part.
+
+### CDB scope extension (session cdb0a5ac, 2026-11-19)
+
+Beyond the scope claimed in the CDB task board, this session took two more files, neither
+claimed by any active session: `data/shop/brief-status.json` (+ its generated page
+`brief-status/index.html`, owner session 38650305, long done) for a full 23-row re-measurement
+dated 2026-11-19, and `README.md` / `EXECUTIVE-SUMMARY.md` for current-state count corrections
+(9 guides / 17 canonical URLs / 27 feed entries / 15 sources). Session b9008684's dated
+review-round text inside `data/publication.json` was left verbatim (CDB-F-03); no other
+session's data rows were rewritten. The register additions in this session's scope are:
+one guide (`where-does-the-probe-go`, DS-01 safe default, slate AS-01), one source
+(`food-safety-cook`), one indexable URL, and the count-free design-prompt intro.
+
+
+### CDB rebase reconciliation with main's parallel batch (PRs #181–#190) — 2026-11-19
+
+While this pass was working, `main` advanced from `6eb8c18` to `eb60ee0` (PRs #181, #182–#184,
+#185, #186, #187, #188, #189, #190: Z3-COUNT-01 strip derivation; session `d3493182` batch-3
+D34 rows; session `8aa259bb` brief-status re-measurement + Zone4 decision re-reads; session
+`b3e82b38` batch-3 B38 rows). The branch was rebased with nothing discarded:
+
+- **`COORDINATION.md`** (add/add): reconstructed as `origin/main`'s content + this session's
+  Part CDB appended, both sides complete. Three stray `>>>>>>> …` conflict-marker lines that
+  main itself already carried (left by B38's claim replay, lines 9121–9123 of main's file) were
+  removed in the same pass — repair logged as CDB-F-09.
+- **`data/publication.json`**: main's register (15 sources / 26 proposals / 36 questions /
+  13 blocks / 6 paths) taken as base; this session's additive rows re-applied
+  (`food-safety-cook`, guide `where-does-the-probe-go`, its indexable URL) and the count-free
+  design-prompt intro re-applied (main still hardcoded "Ten blocks"). Merged totals:
+  **16 sources / 9 guides / 26 proposals / 36 questions / 13 blocks / 6 paths / 17 indexable**.
+- **`data/shop/brief-status.json`**: both sessions re-measured all 23 rows on 2026-11-19.
+  Merged row by row — `8aa259bb`'s Zone4-checked details, flag annotations and
+  `prior_2026_11_17` snapshots kept as the structural base; this session's merged-tree counts
+  (121 pages, 9 guides, 27 feed items, 17 sitemap URLs, 1,792 sponsored product anchors re-run
+  through `sessions/8aa259bb/measure_brief_rows.py`) folded in; statuses reconciled
+  (S-11/S-12 → `Partly here` on measured strings, SG-27 → `Not found here`, S-19 keeps
+  8aa's `Verified here` plus this session's compare-page/E61-P5 note, S-24 keeps 8aa's honest
+  `Partly here` with the guide-count fix). The builder eyebrow now names both sessions.
+- **`tools/build_publication.py`**: main's derived executive strip (Z3-COUNT-01) taken as
+  base; this session's cdb0a5ac verification-record link grafted into the same sentence; my
+  review-round heading/count derivations applied (main had not touched those lines).
+- **`README.md`**: main's four-batch structure kept; counts set to the merged tree
+  (nine guides, sixteen references, twenty-six proposals, six paths, thirty-six questions,
+  17 canonical URLs, 27 RSS entries).
+- **Generated pages**: full canonical chain re-run after the rebase — only
+  `executive-brief.html` and `suggestions/index.html` needed regeneration (they had been
+  resolved to main's side mid-rebase); every other output rebuilt byte-identical.
+
+**Post-rebase verification (merged tree):** `tools/publish.py` **41/41 PASS twice** with a
+byte-stable tree between runs; `sessions/8aa259bb/measure_brief_rows.py` re-run for the
+brief-status counts; `tools/build_brief_status.py --check` current. Clean-checkout 25/25
+recorded in `sessions/cdb0a5ac/verification-2026-11-19.md` §3 (pre-rebase head; the same
+check suite re-ran green on the rebased head as part of the 41).
