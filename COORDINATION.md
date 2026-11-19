@@ -9090,3 +9090,49 @@ No other session has a live non-stale claim on `tools/build_publication.py`, `to
 **Session status: C4D-T1…T3 done.** No further handoff required — this was the final integration session and the tree is clean on `main`.
 
 **Release record (2026-11-19):** Rebased twice while PR [#182](https://github.com/kanlerxz87-cyber/Zone3/pull/182) was open, because session 07fb37ba's PRs #181/#184 landed first (`register-derived brief counts` + release docs) — both conflicts in `COORDINATION.md`/`executive-brief.html` resolved keeping both sides (main's parts first; the merged renderer regenerated the brief from the extended register: 32 questions / 6 paths / 21 proposals / twelve blocks). PR #182 CI passed ([run 44527509288](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44527509288), 22s). **Merged to `main` 2026-11-19 12:50 UTC as `0c6cfcd`** without waiting for review; post-merge CI on `main` passed ([run 44527641974](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44527641974)). Later merges (#185, #183, #186) kept the batch-3 register intact (21/32/6/D34-P6 verified on `origin/main`). **GitHub Pages deployment [run 44527882633](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44527882633) completed successfully** (build, deploy, report-build-status). Live verification via fetched page: `suggestions/` renders "6 PATHS, ONE DECISION AT A TIME" with path 06 "Make it feel published" in the recommended-order strip. One earlier fetch showed the pre-merge page (5 paths) — Pages CDN lag, not a regression; re-fetch confirmed. Verification sources: `sessions/d3493182/verification-2026-11-19.md`; executive summary: `sessions/d3493182/executive-summary.md`.
+## Part B38 — session `b3e82b38` (2026-11-19) — batch-3 polish suggestions and decision-gap questions
+
+**Session ID:** `b3e82b38` · **Branch:** `arena/b3e82b38-zone3` (fixed Arena branch; all work stays on it) · **Base:** `6eb8c18` (PR #178 merge).
+
+**Mid-claim main advance, logged per protocol.** The claim commit was first made on `6eb8c18`; while pushing, `main` advanced `6eb8c18` → `33e07a2` (PR #181, session `07fb37ba`, part Z3-COUNT-01). The rebase stopped on the expected `COORDINATION.md` tail conflict (both sessions appended a Part). Resolved by the standing convention: `main`'s board taken verbatim, this Part appended after it, nothing of the other session discarded or edited. During the same advance, Z3-COUNT-01 **independently fixed and gated the exact irregularity this Part had found** (stale hardcoded executive-strip counts, 6/9 vs register 8/24). This session therefore verifies that fix instead of re-applying it (B38-T4); the finding is recorded, not duplicated.
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| B38-T1 — Read board, verify baseline, claim, push claim | done | b3e82b38 | `COORDINATION.md` (this Part only) | `tools/publish.py --check` at base `6eb8c18`: 25/25 PASS; re-run on new base `33e07a2` before further work | B38-IR-01 (found at claim time, fixed upstream by Z3-COUNT-01/PR #181 while the claim was being pushed; verified by this session in B38-T4) |
+| B38-T2 — Fetch any new official source cited by this batch before use (expected: Google FAQ-page guidance, for the no-rich-result expectation) | planned | b3e82b38 | fetch record in `sessions/b3e82b38/` only | official page fetched live this session | recorded when done |
+| B38-T3 — Batch-3 register entries, additive: `B38-P1…P5` proposals, `B38-Q1…Q4` questions, one `design_prompt` block `b38-batch3`; no existing row rewritten, no product/source/flag row touched | planned | b3e82b38 | `data/publication.json` | existing scoped official references + the B38-T2 fetch | none expected |
+| B38-T4 — Verify the upstream Z3-COUNT-01 fix on the new base (strip derived from registers; new gate compares strip to registers) and confirm the register-driven renderers pick up the new rows with zero code change | planned | b3e82b38 | none (verification only) | `tools/publish.py` on the merged tree | none expected |
+| B38-T5 — README counts updated to the new register totals (established count-update practice); EXECUTIVE-SUMMARY.md additive dated section; session record in `sessions/b3e82b38/` | planned | b3e82b38 | `README.md`, `EXECUTIVE-SUMMARY.md`, `sessions/b3e82b38/**` | register counts | — |
+| B38-T6 — Full rebuild, idempotency, all release gates, PR to `main`, merge without waiting for review, Pages deploy verification, publish record here | planned | b3e82b38 | git/`gh`, this Part | gate outputs + Pages API | — |
+
+### B38 Scope rules
+
+- Review-only batch: nothing published by this round implements a suggestion. Choices saved on the
+  suggestions page stay local and implement nothing; the page already states this and the pattern is
+  unchanged.
+- Additive register entries only, namespaced `B38-P*` / `B38-Q*`; the one `design_prompt` block uses
+  id `b38-batch3` with basis `google-helpful`. No popularity, search-volume, demand, trend,
+  conversion or revenue claim anywhere; slate titles are working titles — editorial hypotheses.
+- If no new source ends up cited, no `sources` row is added and the README source count stays
+  fourteen; if the FAQ guidance is cited, exactly one source row is appended after a live fetch this
+  session, with `checked_on` 2026-11-19 and a scope note.
+- No price, rating, review count, availability or revenue value is introduced. Intended-ASIN fields
+  stay blank; FLG-003 is neither claimed nor implied either way.
+>>>>>>> 0287705 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
+>>>>>>> a48fbbb (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
+>>>>>>> 1b22869 (B38-T1: claim batch-3 round, re-based on main 33e07a2 (PR #181); upstream strip fix verified, not duplicated)
+### B38 completion record (B38-T2…T6, 2026-11-19)
+
+| Task | Status | Record |
+|---|---|---|
+| B38-T2 — official fetches | done | `sessions/b3e82b38/verification-2026-11-19.md`: Google updates page read live (FAQ rich result deprecated 7 May 2026; documentation removed June 2026) → appended once as source `google-faq-update`; `google-helpful` re-confirmed live, no source row changed. |
+| B38-T3 — batch-3 register entries | done | `sessions/b3e82b38/apply_batch3.py` (idempotent, insertions only): 5 proposals `B38-P1…P5`, 4 questions `B38-Q1…Q4`, 1 design-prompt block `b38-batch3`. |
+| B38-T4 — upstream fix verified, zero generator edits | done | Z3-COUNT-01 (PR #181) had already derived the executive strip from the registers and gated it; verified on the new base. Register-driven renderers picked up the new rows with no code change. |
+| B38-T5 — docs and session records | done | README counts and `EXECUTIVE-SUMMARY.md` §16 are applied in the reconciliation commit on top of session `d3493182`'s own register updates (both sessions rebased over each other; union totals recorded there). `sessions/b3e82b38/{verification-2026-11-19.md, repo-review.md}` written. |
+| B38-T6 — gates, PR, merge, Pages | done | Gates run on the reconciled union (see reconciliation note). PR opened from this branch and merged without waiting for review, per the brief (release result in the block below, recorded after merge). |
+
+**Irregularities.** B38-IR-01 (stale executive-strip counts, found at claim time) — resolved upstream by Z3-COUNT-01 before this session edited anything; verified, not duplicated. B38-IR-02 (DS-03's FAQPage premise is stale post-deprecation) — not edited; proposal B38-P5 records the correction for the reviewer. B38-IR-03 (no budget or accountable-publisher question in the register) — filled additively as B38-Q1/B38-Q2. Details in `sessions/b3e82b38/repo-review.md`.
+
+**Scope statement.** Review-only batch: nothing here implements a suggestion, and no price, rating, review-count, availability, traffic, demand, trend, conversion or revenue value was introduced. Intended-ASIN fields remain blank; FLG-003 remains unresolved and was neither claimed nor implied either way.
+
+**Rebase reconciliation with session `d3493182` (PRs #182/#183), logged 2026-11-19.** Both sessions appended a "batch 3" to the same register and rebased over each other mid-flight (this session's claim also crossed PRs #181/#184/#185). Conflict replay: `main`'s versions of `data/publication.json`, `suggestions/index.html`, `executive-brief.html`, `README.md` and `EXECUTIVE-SUMMARY.md` were taken as base at each stop and this session's additive delta re-applied on top; nothing of any session's rows was dropped or edited. Session `d3493182` added `D34-P1…P6`, `D34-Q1…Q8`, path `P34-P1` and prompt block `d34-polish`; this session adds `B38-P1…P5`, `B38-Q1…Q4` and prompt block `b38-batch3`. Union totals after reconciliation: 15 sources / 26 proposals / 36 questions / 13 prompt blocks / 6 paths / 8 guides. Thematic overlaps are noted for the reviewer, not merged: B38-P1 (style page + automated banned-phrase lint) pairs with D34-P5/D34-Q3 (written voice rules); B38-P2 (visible evidence badges) overlaps part of D34-P4's decision aids; B38-P3's four concrete working titles extend D34-P2's generic slate; B38-P5 corrects DS-03's stale FAQPage premise, which the D34 batch does not touch. No gate or rule was relaxed; the full chain was re-run on the union.
