@@ -9535,11 +9535,11 @@ Branch note: Arena fixes this session to `arena/ee10b024-zone3`; the brief's `se
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| EE-T1 — Board read, claim, push | in progress | ee10b024 | `COORDINATION.md` (this Part only) | — | — |
-| EE-T2 — Triage open PRs #157/#160/#192 (all CONFLICTING with `main`); stale-claim rule applied (>60 min, last commits 2026-11-17/19) | unclaimed → ee10b024 | ee10b024 | integration merges into this branch | board history | — |
-| EE-T3 — Union-merge accepted PR content without discarding any session's work; log every conflict resolution | unclaimed | ee10b024 | whole tree (integration only) | — | — |
-| EE-T4 — Line-by-line re-verification of combined load-bearing claims against live official sources | unclaimed | ee10b024 | `sessions/ee10b024/**` | official sources only | — |
-| EE-T5 — Full gate chain ×2 (idempotency), link check, broken-link fixes | unclaimed | ee10b024 | generated outputs via canonical chain | local gates | — |
+| EE-T1 — Board read, claim, push | **done** | ee10b024 | `COORDINATION.md` (this Part only) | claim `5af7c07` pushed | none |
+| EE-T2 — Triage open PRs #157/#160/#192 (all CONFLICTING with `main`); stale-claim rule applied (>60 min, last commits 2026-11-17/19) | **done** | ee10b024 | triage only; PR refs fetched to `refs/tmp/pr{157,160,192}` | merge-base + `merge-tree` conflict sets | none |
+| EE-T3 — Union-merge accepted PR content without discarding any session's work; log every conflict resolution | **done** (45 conflicted paths across 3 merges) | ee10b024 | whole tree (integration only) | remap protocol + zero-loss assertions | none |
+| EE-T4 — Line-by-line re-verification of combined load-bearing claims against live official sources | **done** (OA §5/§6(a), PR 2(a)/2(b)/6(t)/(v)/(w), Google rel=sponsored, FTC Disclosures 101 read live 2026-11-19) | ee10b024 | `sessions/ee10b024/verification-2026-11-19.md` | official sources only | none |
+| EE-T5 — Full gate chain ×2 (idempotency), link check, broken-link fixes | **done** — `tools/publish.py` 46/46 twice; 6 same-day stale measurements + 1 false intent line fixed (`EE-F-01/02`) | ee10b024 | registers + generated outputs via canonical chain | local gates | none |
 | EE-T6 — PR → `main`, merge without waiting if gates green, Pages deploy confirmation, live read-back, publish record appended here | unclaimed | ee10b024 | current branch; this Part | gh/git | — |
 
 

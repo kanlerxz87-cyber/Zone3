@@ -582,7 +582,7 @@ README_MARK = 'z3:register-facts'
 
 
 def readme_facts() -> str:
-    """Generate the one block in README.md that asserts counts, from the registers it describes.
+    """Generate the single block in README.md that asserts counts, from the registers it describes.
 
     A hand-written count in a README is a claim that silently goes false the day a register grows.
     This block is the exception the release gate enforces (session 41e84402, E41-T4): everything

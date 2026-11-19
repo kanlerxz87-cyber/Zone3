@@ -2532,6 +2532,34 @@
    "session": "0b2ffabd",
    "sources": [],
    "repo_evidence": "sessions/0b2ffabd/repo-review.md section 4; scripts/build_site.py build_suggestions()"
+  },
+  {
+   "id": "EE-F-01",
+   "severity": "Medium",
+   "category": "Disclosure",
+   "item": "Intent page asserted the selected tracking ID was attached to no link while every product link carried it",
+   "detail": "sessions/aebf0747/intent-record.json and the page it renders said 'Selected tracking ID shopnow047c-20 — Not attached to any link on this site'. After PR #192 merged in session ee10b024 the tag is on 1,656 of 1,656 product links on the live site (tools/attach_tag.py --check, 0 foreign tags), so the sentence was knowingly false as published.",
+   "action": "FIXED in place by session ee10b024 on 2026-11-19: tracking_id_status and the build_pass.py sentence now record the measured 1,656/1,656 coverage with the attach_tag --check basis and the correction reference. Attribution reporting on the supplied short links stays unverified (AE-F-01); FLG-003 untouched.",
+   "repo_evidence": "sessions/aebf0747/intent-record.json; sessions/aebf0747/build_pass.py; intent-record/index.html",
+   "sources": [
+    "S01"
+   ],
+   "date": "2026-11-19",
+   "session": "ee10b024",
+   "status": "fixed"
+  },
+  {
+   "id": "EE-F-02",
+   "severity": "Low",
+   "category": "Register",
+   "item": "Same-day brief-status and executive-summary measurements superseded by the ee10b024 integration",
+   "detail": "Rows S-04, S-05, S-09, S-24, SG-28 and SG-29 plus the EXECUTIVE-SUMMARY current-status counts were measured earlier on 2026-11-19 before PRs #157/#160/#192 and the tenth guide (PR #198) landed: feed 27 to 10 items (feed is now sitemap-consistent), sitemap 17 to 18 URLs, guides 9 to 10, product-link and disclosure page counts changed.",
+   "action": "FIXED in place by session ee10b024 on 2026-11-19: the six rows re-measured with measure_brief_rows.py and sessions/aebf0747/audit-after.json and updated in place, _meta.rechecks entry 5 records the pass, EXECUTIVE-SUMMARY current-status counts updated to 10/18/10/28/38.",
+   "repo_evidence": "data/shop/brief-status.json; EXECUTIVE-SUMMARY.md; sessions/8aa259bb/measure_brief_rows.py",
+   "sources": [],
+   "date": "2026-11-19",
+   "session": "ee10b024",
+   "status": "fixed"
   }
  ]
 }
