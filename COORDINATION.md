@@ -10307,3 +10307,28 @@ Done — cover, illustrated product routes, working category filters and source 
 Conflict log: main advanced with PRs #211–213. Preserved both board histories, retained the upstream newest-guide ordering, Sunday-dinner theme and all three task links; integrated their shopping navigation below the illustrated shortlist. Rebuilt index from the merged generator. No competing session branch edited.
 
 Integration update: retained PR #215’s added guides and questions. Regenerated executive brief on the combined register. Both board entries kept when #218 advanced main. Release PR: [#219](https://github.com/kanlerxz87-cyber/Zone3/pull/219).
+
+---
+
+# Part 1309d381 — AI-platform readiness and decision-desk extension (2026-11-20)
+
+## Session registry and claim
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 1309d381 | `arena/1309d381-zone3` | Add a source-linked AI/data-permission decision to the existing suggestions review, update its copy-ready design prompt and executive brief; verify the generated site without enabling account-dependent automation. | in progress | 2026-11-20 |
+
+Board read before claim: current `main` was fast-forwarded to `deb67e5` after PR #211; its latest front-page buyer-journey work is recorded complete. This pass does not edit its front-page template, category/product registers, navigation, or tracking configuration. Historical `in progress` labels are not taken as current ownership claims where the corresponding release is already recorded as merged.
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| 1309-T1 — Review the current product/AI automation and decision-readiness records | in progress | 1309d381 | Read-only; results to be recorded in `sessions/1309d381/review.md` | Existing S02/S04, Google Search Central and repo registers; no new live official-host fetch claimed | No Amazon account/API approval, Search Console report, or authorized Associates performance report is present |
+| 1309-T2 — Add an AI/data-permission proposal, an answerable evidence question, and a copy-ready prompt block | in progress | 1309d381 | `data/publication.json`, `DESIGN_PROMPT.md`, `tools/build_publication.py`, generated `suggestions/index.html`, `executive-brief.html`, `README.md` | Amazon Associates Program Policies (S02); existing recorded policy facts PF-22–25; official source links remain in the site | Leave Amazon-data AI analysis, ranking and API automation gated; do not imply account approval or measured performance |
+| 1309-T3 — Run the full build/check chain and inspect outputs | unclaimed | 1309d381 | Generated outputs and `sessions/1309d381/**` | Repository gates; source records above | — |
+| 1309-T4 — PR, merge and deployment verification | unclaimed | 1309d381 | Current branch, PR and this Part only | GitHub checks and Pages deployment status | — |
+
+**Scope guard:** this is an additive decision/prompt change, not permission to activate analytics, use model APIs, replace product links, infer product intent, or publish “trending/high-converting” claims. The user-requested reader-facing site, editorial pages, disclosure, sponsored links and decision desk already exist at this base; this pass strengthens the specific AI platform boundary instead of duplicating them.
+
+### Rebase/conflict log (2026-11-20)
+
+Before pushing the claim, `git pull --rebase origin main` advanced the branch from `deb67e5` to `bb3d554` (PR #212) and produced one append/append conflict in `COORDINATION.md`. Resolved by retaining the complete upstream `fc812c5e` verification/release record first and this session's claim after it; no content from either side was discarded. The current conflict markers were removed; the earlier marker-like text in the historical coordination log was left unchanged. The claim is being pushed after this reconciliation.
