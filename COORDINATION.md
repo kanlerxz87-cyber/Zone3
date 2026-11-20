@@ -10093,7 +10093,7 @@ Read in full: the tail Parts (P27 `6b68afc8`, b9008684, E61 `e61f5735`), the T6/
 | T1 — Audit the built tree line by line against the registers and gates | in progress | 5d460e79 | `sessions/5d460e79/**` | live fetches, see audit file | 5D4-F01…F10 |
 | T2 — Fix register-drift defects found by T1 (counts, orphans, duplicate titles) | unclaimed | — | `tools/build_publication.py`, `tools/build_shop.py` | — | — |
 | T3 — Suggestions section that carries a reviewer from question → evidence → choice | unclaimed | — | `tools/build_publication.py`, `data/publication.json` | — | — |
-| T4 — Publish record, PR, merge, Pages deploy | in progress | — | this Part only | — | — |
+| T4 — Publish record, PR, merge, Pages deploy | done | — | this Part only | — | — |
 
 ## 5D4 Rules this session follows
 
@@ -10253,7 +10253,7 @@ Read: COORDINATION tail (Parts 5D4, ee10b024 release record), README build chain
 | T1 — Line-by-line verification from official sources (agreement, policies, FTC, Google, FoodSafety/FSIS, GitHub Pages, 5 links) | done | 263214e8 | `sessions/263214e8/**` | live fetches, see verification file | — |
 | T2 — Shopfront polish + new question-led guide(s), sitemap/feed updated | done | — | `data/publication.json`, `tools/build_publication.py`, `assets/publication.css` | — | — |
 | T3 — Suggestions/questions/discovery additions + executive summary refresh | done | — | `data/publication.json`, `EXECUTIVE-SUMMARY.md` | — | — |
-| T4 — Publish record, PR, merge, Pages deploy | in progress | — | this Part only | — | — |
+| T4 — Publish record, PR, merge, Pages deploy | done | — | this Part only | — | — |
 
 ## 263214e8 Rules this session follows
 
@@ -10286,6 +10286,16 @@ Executive summary prepended with a dated 2026-11-20 snapshot; history retained b
 effect for new guides; second run green; third run green and stable). Preview verified over HTTP:
 front page, guides index, both new guides, suggestions, shop, feed and sitemap all 200;
 disclosure above the fold; sponsored + tagged CTAs present.
+
+### Release record (Part 263214e8)
+
+- **PR:** [#215](https://github.com/kanlerxz87-cyber/Zone3/pull/215) — merged without waiting after gates were green.
+- **Merge:** `2026-11-20T05:54:13Z` as `8b328358e1aabd01811c8fdfef18803dc5c5a8db` into `main`.
+- **Checks:** `Publication checks` on the PR — success (run 44683993041); on the merge push — success (run 44684099928); `pages-build-and-deployment` — success (run 44684098857, 28 s).
+- **Gates:** `tools/publish.py` 49/49 twice on the final rebased tree (rebased onto `7328c6d` after PRs #213/#214 merged; conflicts in `COORDINATION.md`, `EXECUTIVE-SUMMARY.md`, `assets/publication.css`, `index.html` resolved keeping both sides in full, upstream first; `index.html` regenerated). Final numbers: 126 published pages, 13 guides, 22 sitemap URLs, 34 proposals, 43 questions, 17 sources, 1,981/1,981 product links sponsored with tag, disclosure 126/126.
+- **Live read-back:** `https://kanlerxz87-cyber.github.io/Zone3/?revision=8b32835` — "THE COUNTERTOP ISSUE" front page live, all five CTAs carry `tag=shopnow047c-20`, both new guides present ("Measure first. Shop second.", "Brown outside is not done inside."), FLG-003 footnote intact, no price or rating reproduced.
+- **Flagged, not blocking:** FLG-003 (supplied short links never called invalid), 263-F01 (SHOP-04 title wording drift, Info), 263-F02 (Commission Appendix login-gated), P26-F02 (Pages commercial-use fit), account/API/Search Console access.
+
 ## c08695c1 · Counter Edit integration · 2026-11-20
 
 In progress — owner `c08695c1`, fixed branch `arena/c08695c1-zone3`. Scope: current front page in `tools/build_publication.py` and its generated `index.html`, new front-page assets, `sessions/c08695c1/`, board. Check collector and release gates first, refresh editorial presentation and decision brief, then integrate and confirm deployment. No edits to other sessions' scoped records.
@@ -10293,3 +10303,5 @@ In progress — owner `c08695c1`, fixed branch `arena/c08695c1-zone3`. Scope: cu
 Done — cover, illustrated product routes, working category filters and source review. Scope includes regenerated executive brief linking the [edition report](sessions/c08695c1/edition.md). In the preview, tested all three filter counts at 1440, 390 and 320 px, cover loading and no horizontal overflow. Re-read five Amazon listing titles, Agreement §1, the commission statement introduction, FTC Disclosures 101 and GitHub Pages hosting overview. No enrollment, attribution or commercial-hosting approval inferred. FLG-003 and the production measurement gate remain open.
 
 Conflict log: main advanced with PRs #211–213. Preserved both board histories, retained the upstream newest-guide ordering, Sunday-dinner theme and all three task links; integrated their shopping navigation below the illustrated shortlist. Rebuilt index from the merged generator. No competing session branch edited.
+
+Integration update: retained PR #215’s added guides and questions. Regenerated executive brief on the combined register. Both board entries kept when #218 advanced main. Release PR: [#219](https://github.com/kanlerxz87-cyber/Zone3/pull/219).
