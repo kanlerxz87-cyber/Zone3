@@ -32,6 +32,9 @@ BUILDERS = [
     ['python3', 'sessions/aebf0747/publish_pass.py'],
     ['python3', 'tools/measure_pass.py'],
     ['python3', 'tools/build_feed.py'],
+    # README carries the shipped RSS XML count, so refresh the canonical pages and README only
+    # after the feed has reached its final, sitemap-filtered state.
+    ['python3', 'tools/build_publication.py'],
     # 4B0-T2: the owner-supplied Associates ID goes on every product-detail link, after every
     # builder has written its HTML and before the sponsored-token pass, which leaves it alone.
     ['python3', 'tools/attach_associates_tag.py'],
@@ -63,6 +66,7 @@ CHECKS = [
     ['python3', 'tools/apply_sponsored.py', '--check'],
     ['python3', 'tools/add_disclosure_banner.py', '--check'],
     ['python3', 'tools/build_publication.py', '--check'],
+    ['python3', 'tools/check_feed_readme.py'],
     ['python3', 'tools/check_publication.py'],
     # 5D4-F01 gate: no product link may leave the build without the tracking ID.
     ['python3', 'tools/attach_tag.py', '--check'],

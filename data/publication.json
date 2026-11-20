@@ -145,6 +145,13 @@
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
       "checked_on": "2026-11-20",
       "scope": "Re-read 20 Nov 2026 (session 263214e8): color is not a reliable indicator; thermometer is the only reliable check; thickest part away from bone, fat or gristle; check manufacturer instructions for insertion depth; ice-water calibration at 32F."
+    },
+    {
+      "id": "amazon-ai-usage",
+      "title": "Amazon Associates Program Policies — IP License and Usage Requirements (S02; recorded read 13 Nov 2026)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "checked_on": "2026-11-13",
+      "scope": "Existing repository record PF-22–PF-24 in data/policy_facts.json. The recorded reading describes restrictions on data mining and on use of Creators API, PA API or Data Feeds to aggregate, analyze, extract or repurpose Product Advertising Content or directly train/fine-tune a model without express prior written approval; PF-24 records a related third-party model-development restriction. This session did not re-fetch these clauses; re-read the official page before any production use."
     }
   ],
   "products": [
@@ -1797,6 +1804,19 @@
       "owner_input_needed": true,
       "answer_by": "Owner · editorial",
       "answer_form": "A dated record naming the approver and the publish checklist."
+    },
+    {
+      "id": "AI-1309-Q1",
+      "question": "Has Amazon expressly authorized the specific AI use of Amazon product content and API data?",
+      "known": "The repository policy record PF-23/PF-24 cites S02 (recorded read 13 Nov 2026): it describes restrictions on using Creators API, PA API or Data Feeds to aggregate, analyze, extract or repurpose Product Advertising Content, and on direct model training/fine-tuning, without express prior written approval. This session did not re-fetch those clauses. No approval scope has been entered in the decision register.",
+      "missing": "A dated written approval or refusal covering the exact data inputs, analysis operations, model use/training, third-party processing and retention; separate confirmation of the Associates account and any API eligibility.",
+      "default": "Keep Amazon Program Content, API/Data Feed content and Special Links out of AI analysis/model training until the current official terms are rechecked and express written approval is recorded. Do not publish trend, high-converting, commission-potential or product-ranking scores without dated authorized reports.",
+      "discovery": "Re-read the official policy page, then ask through the enrolled Associates account for written approval covering the exact proposed data and model operations. Verify account/API status separately. Record only the date, approval scope and sanitized reference; never store credentials, screenshots or private account data.",
+      "blocks": "AI use of Amazon content or API/Data Feeds; automated product scoring/ranking; any performance claim that lacks first-party reports",
+      "source": "amazon-ai-usage",
+      "owner_input_needed": true,
+      "answer_by": "Associates account owner + Amazon support; publishing editor for release sign-off",
+      "answer_form": "Dated approval/refusal, permitted data and operations, model/vendor use and retention, account/API status, and reviewer. No keys, passwords or account screenshots."
     }
   ],
   "proposals": [
@@ -2504,6 +2524,30 @@
       ],
       "owner_input_needed": true,
       "reviewable_now": true
+    },
+    {
+      "id": "AI-1309-P1",
+      "priority": "Next",
+      "area": "AI and automation",
+      "title": "Keep Amazon-data AI gated until permissions and evidence are on file.",
+      "why": "The brief asks for AI analysis of product trends, pricing, reviews, competition, commissions and conversions. The repository’s prior S02 reading records specific limits on Amazon content/API analysis and model use without express prior written approval (PF-23/PF-24); no approval scope or first-party performance reports are recorded here. A model output is not evidence.",
+      "next": "Keep deterministic build, disclosure, sponsored-link, source, sitemap and feed checks automated. Keep Amazon Product Advertising Content and API/Data Feed inputs out of model analysis/training unless current terms and written approval permit the exact use. Treat titles as editorial hypotheses; use dated Search Console and authorized Associates reports before any trend or performance claim.",
+      "evidence_needed": [
+        "AI-1309-Q1",
+        "P26-Q4",
+        "P26-Q5",
+        "P27-Q6"
+      ],
+      "source": "amazon-ai-usage",
+      "status": "Gated · written approval + first-party evidence",
+      "next_action": "Leave the AI/product-data adapter disabled. Re-read S02, obtain and record written approval for the exact data and model operations, verify account/API status, and define a human reviewer and a dated rollback rule before any non-production test. Never store account credentials in the repository.",
+      "discoveries": [
+        "Whether Amazon provides express written approval for the proposed input fields, analysis, third-party processing, model training and retention.",
+        "Which dated Search Console query/page reports and authorized Associates reports exist for topic selection and performance claims.",
+        "Which model provider settings prevent unauthorized training/retention for any approved data, and who signs off the release."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
     }
   ],
   "indexable_pages": [
@@ -2631,20 +2675,22 @@
       "changes": [
         "Intake that records intended ASIN, official listing URL, confirmation date and source, with observed redirects in separate fields",
         "A draft queue that rejects any row without a dated official source",
-        "One release command: disclosure, sponsored rels, provenance, feed and sitemap, link checks — before anything publishes"
+        "One release command: disclosure, sponsored rels, provenance, feed and sitemap, link checks — before anything publishes",
+        "A written data-permission record and an OFF-by-default AI adapter; enabling it requires a dated approval for the exact Amazon data and model operations."
       ],
       "needs": [
         "P26-Q1",
         "P26-Q2",
         "P26-Q6",
-        "P27-Q6"
+        "P27-Q6",
+        "AI-1309-Q1"
       ],
       "unblocks": "More products and more guides without more manual bookkeeping.",
-      "cannot": "Automation cannot authorise an API, confirm product intent, or validate attribution. A confident draft is not evidence.",
+      "cannot": "Automation cannot authorize an API, confirm product intent, validate attribution or replace first-party reports. A confident draft is not evidence; Amazon data/model use stays OFF until the policy and written approval gate is closed.",
       "cost": "Medium–large · a pipeline pass plus someone to work the exceptions",
       "risk": "High if the gate is loosened · the failure mode is volume of unverified claims",
       "basis": "amazon-agreement",
-      "status": "Gated · build it after P27-P2"
+      "status": "Gated · answer AI-1309-Q1 and prove the money path first"
     },
     {
       "id": "P34-P1",
@@ -2751,6 +2797,12 @@
         "heading": "Batch-3 directions (session b3e82b38)",
         "text": "Treat honesty as the design language. Render a two-level evidence badge — what was checked and when, what was not — on every card, comparison table and guide header, from register dates. Publish the house style as a page and enforce it with a banned-phrase lint in the release gate. Derive the next review date from the cadence and show it with an overdue state. Write FAQ blocks for readers only, never for a Google rich result, which was deprecated in May 2026. Grow the reading room with question-shaped working titles like the four in B38-P3, one per review cycle, through the same gate as every other guide. Every date and count on every page comes from the register — typed copy goes stale, derived copy cannot.",
         "basis": "google-helpful"
+      },
+      {
+        "id": "ai-1309-gate",
+        "heading": "16 · AI assistance, with a permission and evidence gate (session 1309d381)",
+        "text": "Keep the public experience a polished, product-first kitchen publication; keep the research desk behind one clearly labelled Suggestions & decisions surface. For automation, show explicit states: live, prototype/off, blocked, or needs review. Automate deterministic checks that use approved local records: required disclosure, rel=\"sponsored\", source/date fields, product-intent field separation, internal links, feed, sitemap and build tests. Do not describe an AI product-research or optimization engine as live unless its authorized inputs, endpoint, human reviewer and measurement evidence are actually deployed. The repository records Amazon policy facts PF-23/PF-24 from an S02 reading dated 13 Nov 2026; this pass did not re-fetch those clauses. Before any production model or API use, re-read the official policy and record express written approval for the exact Amazon Program Content/API/Data Feed inputs and analysis or model operations. Until then, keep those inputs out of AI analysis, aggregation, extraction, repurposing and model training; do not scrape Amazon pages or infer a product from a redirect. Treat the four supplied buyer titles as questions, not popularity claims; all four are already represented in the published guide set, so check the register before drafting duplicates. Never publish a trend, high-converting, commission-potential, price, review, competitor or ranking score without a dated authorized source. Use Search Console query/page reports and authorized Associates reports only when obtained, keep conversions at the report’s permitted aggregate level, and require a named human to verify each factual sentence and approve publication. Every suggestion must state what is known, what is missing, who can answer, how to discover it, the safe default and what the decision unblocks; a saved choice must not publish or enable anything.",
+        "basis": "amazon-ai-usage"
       }
     ]
   },

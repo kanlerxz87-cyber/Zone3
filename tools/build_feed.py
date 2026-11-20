@@ -72,8 +72,13 @@ def rfc822(iso: str) -> str:
     return d.strftime("%a, %d %b %Y 00:00:00 +0000")
 
 
-def union_entries() -> list[dict]:
-    """Entries from both registers, newest first. Deterministic tie-break: link, then title."""
+def union_entries(*, indexable: bool = True) -> list[dict]:
+    """Entries from both registers, newest first.
+
+    With ``indexable=False`` return the post-retirement candidate union before the sitemap
+    eligibility filter. The publication feed uses the default and emits only indexable pages.
+    Deterministic tie-break: link, then title.
+    """
     out: list[dict] = []
 
     shop = json.loads(SHOPREG.read_text(encoding="utf-8"))
@@ -224,7 +229,7 @@ def union_entries() -> list[dict]:
         for e, why in retired_out:
             print(f"  - {e['link']} ({why})")
     kept.sort(key=lambda e: (e["date"], e["link"], e["title"]), reverse=True)
-    return indexable_only(kept)
+    return indexable_only(kept) if indexable else kept
 
 
 SM = ROOT / "sitemap.xml"

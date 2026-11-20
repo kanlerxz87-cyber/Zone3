@@ -17,12 +17,12 @@ that reads this file.
 | Question-led guides | 13 | `data/publication.json → guides` |
 | Indexable reader URLs | 22 | `data/publication.json → indexable_pages` |
 | Supplied product links | 5 | `data/publication.json → products` |
-| Open decision-readiness questions | 43 | `data/publication.json → questions` |
-| Suggestions on the desk | 34 | `data/publication.json → proposals` |
+| Open decision-readiness questions | 44 | `data/publication.json → questions` |
+| Suggestions on the desk | 35 | `data/publication.json → proposals` |
 | Paths a reviewer can choose | 6 | `data/publication.json → paths` |
-| Design-brief blocks | 13 | `data/publication.json → design_prompt` |
-| Scoped official references | 17 | `data/publication.json → sources` |
-| RSS entries across all editorial desks | 4 | `feed.xml` |
+| Design-brief blocks | 14 | `data/publication.json → design_prompt` |
+| Scoped official references | 18 | `data/publication.json → sources` |
+| Published RSS items (XML channel items) | 13 | `feed.xml` |
 | Campaign ledger rows | 0 | `data/shop/campaign-ledger.json` (empty by design) |
 <!-- /z3:register-facts -->
 
