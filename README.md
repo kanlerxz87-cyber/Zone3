@@ -14,11 +14,11 @@ that reads this file.
 <!-- z3:register-facts -->
 | Register | Now | File |
 |---|---|---|
-| Question-led guides | 11 | `data/publication.json → guides` |
-| Indexable reader URLs | 20 | `data/publication.json → indexable_pages` |
+| Question-led guides | 13 | `data/publication.json → guides` |
+| Indexable reader URLs | 22 | `data/publication.json → indexable_pages` |
 | Supplied product links | 5 | `data/publication.json → products` |
-| Open decision-readiness questions | 39 | `data/publication.json → questions` |
-| Suggestions on the desk | 30 | `data/publication.json → proposals` |
+| Open decision-readiness questions | 43 | `data/publication.json → questions` |
+| Suggestions on the desk | 34 | `data/publication.json → proposals` |
 | Paths a reviewer can choose | 6 | `data/publication.json → paths` |
 | Design-brief blocks | 13 | `data/publication.json → design_prompt` |
 | Scoped official references | 17 | `data/publication.json → sources` |

@@ -10093,7 +10093,7 @@ Read in full: the tail Parts (P27 `6b68afc8`, b9008684, E61 `e61f5735`), the T6/
 | T1 — Audit the built tree line by line against the registers and gates | in progress | 5d460e79 | `sessions/5d460e79/**` | live fetches, see audit file | 5D4-F01…F10 |
 | T2 — Fix register-drift defects found by T1 (counts, orphans, duplicate titles) | unclaimed | — | `tools/build_publication.py`, `tools/build_shop.py` | — | — |
 | T3 — Suggestions section that carries a reviewer from question → evidence → choice | unclaimed | — | `tools/build_publication.py`, `data/publication.json` | — | — |
-| T4 — Publish record, PR, merge, Pages deploy | unclaimed | — | this Part only | — | — |
+| T4 — Publish record, PR, merge, Pages deploy | in progress | — | this Part only | — | — |
 
 ## 5D4 Rules this session follows
 
@@ -10235,10 +10235,10 @@ Read: COORDINATION tail (Parts 5D4, ee10b024 release record), README build chain
 
 | Task | Status | Owner | Files in scope | Sources | Irregularities |
 |---|---|---|---|---|---|
-| T1 — Line-by-line verification from official sources (agreement, policies, FTC, Google, FoodSafety/FSIS, GitHub Pages, 5 links) | in progress | 263214e8 | `sessions/263214e8/**` | live fetches, see verification file | — |
-| T2 — Shopfront polish + new question-led guide(s), sitemap/feed updated | unclaimed | — | `data/publication.json`, `tools/build_publication.py`, `assets/publication.css` | — | — |
-| T3 — Suggestions/questions/discovery additions + executive summary refresh | unclaimed | — | `data/publication.json`, `EXECUTIVE-SUMMARY.md` | — | — |
-| T4 — Publish record, PR, merge, Pages deploy | unclaimed | — | this Part only | — | — |
+| T1 — Line-by-line verification from official sources (agreement, policies, FTC, Google, FoodSafety/FSIS, GitHub Pages, 5 links) | done | 263214e8 | `sessions/263214e8/**` | live fetches, see verification file | — |
+| T2 — Shopfront polish + new question-led guide(s), sitemap/feed updated | done | — | `data/publication.json`, `tools/build_publication.py`, `assets/publication.css` | — | — |
+| T3 — Suggestions/questions/discovery additions + executive summary refresh | done | — | `data/publication.json`, `EXECUTIVE-SUMMARY.md` | — | — |
+| T4 — Publish record, PR, merge, Pages deploy | in progress | — | this Part only | — | — |
 
 ## 263214e8 Rules this session follows
 
@@ -10247,3 +10247,27 @@ Read: COORDINATION tail (Parts 5D4, ee10b024 release record), README build chain
 3. Existing gates never relaxed. If a gate fires, the cause is fixed.
 4. Register-derived counts stay register-derived.
 5. Supplied short links never called invalid; FLG-003 stays unresolved. No price/rating/review/tested-performance claims. No traffic/conversion/revenue claims. Production measurement stays OFF.
+
+## 263214e8 Record — T1–T3 done (2026-11-20)
+
+**Verification (T1).** Agreement (Updated October 15, 2025), Policies (Updated April 14, 2026),
+FTC Disclosures 101, Google outbound-link/helpful/reviews/Search Console, FoodSafety.gov,
+USDA FSIS thermometers and GitHub Pages limits re-read live 2026-11-20; all five short links
+re-followed (destinations unchanged; one thermometer title wording variant recorded as 263-F01,
+register title left unchanged). Commission Appendix rate table is login-gated and was not
+re-verified (263-F02). Record: `sessions/263214e8/verification-2026-11-20.md`.
+
+**Shopfront + guides (T2).** Two question-led guides added from official sources:
+`measure-your-counter-first` (exterior sizes as printed on the three air-fryer listings +
+manufacturer-instructions principle) and `color-is-not-doneness` (FSIS color guidance +
+FoodSafety.gov chart). Sitemap (22 URLs) and feed updated via the canonical chain. Restrained
+hover polish appended to `assets/publication.css`; no layout, colour or type-scale change.
+
+**Suggestions + summary (T3).** Four proposals (263-P1..P4) and four questions (263-Q1..Q4)
+added to `data/publication.json` (now 13 guides, 43 questions, 34 proposals, 22 indexable URLs).
+Executive summary prepended with a dated 2026-11-20 snapshot; history retained below.
+
+**Gates.** `tools/publish.py` 49/49 twice (first run surfaced the known feed/sitemap ordering
+effect for new guides; second run green; third run green and stable). Preview verified over HTTP:
+front page, guides index, both new guides, suggestions, shop, feed and sitemap all 200;
+disclosure above the fold; sponsored + tagged CTAs present.

@@ -29,6 +29,36 @@ intent/price/rating fields, tagged direct CTAs, collection off, empty ledger.
 
 **Scope note.** PR #211 (`arena/ece5f73c-zone3`) owns the front-page files
 (`index.html`, `assets/publication.css`, `tools/build_publication.py`) and was not touched.
+## Current status — owner-brief pass: re-verified, two guides added, suggestions extended · 2026-11-20 · session `263214e8`
+
+**Bottom line.** The five submitted links were re-followed on 2026-11-20 and all five open the same
+Amazon listings as the register holds (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z).
+The Operating Agreement, Program Policies, FTC disclosure guide, Google guidance, FoodSafety.gov,
+USDA FSIS and GitHub Pages limits were re-read live. Two question-led guides were added from those
+official sources, the suggestions desk gained four proposals and four questions, and the shopfront
+received a restrained polish pass. Nothing that requires account access was simulated.
+
+| Area | Current state after this pass | Decision boundary | Basis |
+|---|---|---|---|
+| Product links | Five supplied short links, observed destinations unchanged. Intended ASINs, official listing URLs, confirmation dates and sources remain blank for all five. | A redirect is an observation, not intent. The short links are not called invalid; compliance status stays unresolved (FLG-003). One Special Link per product must be validated in the enrolled workflow before scaling. | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) · [intent record](intent-record/index.html) |
+| Reader guides | Thirteen question-led guides, including two new on 2026-11-20: measuring the counter before buying, and color versus doneness. Each guide carries its sources and its unknowns. | Listing wording is not a hands-on result. No ranking, popularity or demand claim is made. New topics are chosen from measured queries once Search Console reports exist. | [guide index](guides/index.html) · [FoodSafety.gov](https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures) · [USDA FSIS](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers) |
+| Suggestions desk | Thirty-four proposals, forty-three open questions, six paths. Each proposal names a next action, the facts that action would settle, and who can unblock it. | Choosing a path records a review note only; it implements nothing, activates no account and spends nothing. | [suggestions](suggestions/index.html) |
+| Disclosure and links | The Associates sentence sits under the masthead on every page and repeats in the footer. Every outbound product link carries rel="sponsored" and the selected tracking ID. | Placement follows the FTC guidance that a footer-only disclosure is likely to be missed. | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) · [Google outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
+| Measurement | Production collection stays off. The five-event runtime and the empty campaign ledger are unchanged. | No Search Console property and no authorized Associates report exist, so no traffic, conversion or revenue statement can be made. | [measurement](measurement/index.html) · [campaign ledger](data/shop/campaign-ledger.json) |
+| Hosting | GitHub Pages serves the site as a technical deploy. | GitHub states Pages is not intended for running an online business or e-commerce site. Commercial hosting needs separate review before scaling. | [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits) |
+
+**Questions that must be answered before the next decision, and who holds the answer.** The full
+register is on the [suggestions page](suggestions/index.html#questions). The four questions added
+this pass are: which topics will bring real search visitors (measured after launch); what polished
+means in measurable terms (owner, editorial); which automation is safe without account access
+(owner, infrastructure and account); and the publishing cadence with a named approver (owner,
+editorial). Until then the site keeps the safe defaults in the register: blank intent fields,
+unresolved link status, no prices or ratings, production measurement off, and one guide review
+every 14 days gated on evidence.
+
+**Scope and verification.** Changed in this pass: `data/publication.json` (two guides, four
+proposals, four questions, refreshed source scopes), `assets/publication.css` (hover polish),
+this opening, and `sessions/263214e8/verification-2026-11-20.md` (line-by-line record).
 Historical sections below keep their original dates and scope and were not re-checked line by line.
 
 ---
