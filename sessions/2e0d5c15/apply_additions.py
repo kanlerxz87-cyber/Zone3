@@ -15,8 +15,6 @@ import pathlib
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-ROOT = pathlib.Path(__file__).resolve().parents[2]
->>>>>>> 93c3a61 (2e0d5c15: reproducible rebase tooling (apply_additions.py, coordination_part.md))
 PUB = ROOT / 'data' / 'publication.json'
 FLAGS = ROOT / 'data' / 'flags.json'
 
