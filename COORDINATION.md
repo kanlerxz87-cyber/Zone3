@@ -10295,3 +10295,13 @@ disclosure above the fold; sponsored + tagged CTAs present.
 - **Gates:** `tools/publish.py` 49/49 twice on the final rebased tree (rebased onto `7328c6d` after PRs #213/#214 merged; conflicts in `COORDINATION.md`, `EXECUTIVE-SUMMARY.md`, `assets/publication.css`, `index.html` resolved keeping both sides in full, upstream first; `index.html` regenerated). Final numbers: 126 published pages, 13 guides, 22 sitemap URLs, 34 proposals, 43 questions, 17 sources, 1,981/1,981 product links sponsored with tag, disclosure 126/126.
 - **Live read-back:** `https://kanlerxz87-cyber.github.io/Zone3/?revision=8b32835` — "THE COUNTERTOP ISSUE" front page live, all five CTAs carry `tag=shopnow047c-20`, both new guides present ("Measure first. Shop second.", "Brown outside is not done inside."), FLG-003 footnote intact, no price or rating reproduced.
 - **Flagged, not blocking:** FLG-003 (supplied short links never called invalid), 263-F01 (SHOP-04 title wording drift, Info), 263-F02 (Commission Appendix login-gated), P26-F02 (Pages commercial-use fit), account/API/Search Console access.
+
+## c08695c1 · Counter Edit integration · 2026-11-20
+
+In progress — owner `c08695c1`, fixed branch `arena/c08695c1-zone3`. Scope: current front page in `tools/build_publication.py` and its generated `index.html`, new front-page assets, `sessions/c08695c1/`, board. Check collector and release gates first, refresh editorial presentation and decision brief, then integrate and confirm deployment. No edits to other sessions' scoped records.
+
+Done — cover, illustrated product routes, working category filters and source review. Scope includes regenerated executive brief linking the [edition report](sessions/c08695c1/edition.md). In the preview, tested all three filter counts at 1440, 390 and 320 px, cover loading and no horizontal overflow. Re-read five Amazon listing titles, Agreement §1, the commission statement introduction, FTC Disclosures 101 and GitHub Pages hosting overview. No enrollment, attribution or commercial-hosting approval inferred. FLG-003 and the production measurement gate remain open.
+
+Conflict log: main advanced with PRs #211–213. Preserved both board histories, retained the upstream newest-guide ordering, Sunday-dinner theme and all three task links; integrated their shopping navigation below the illustrated shortlist. Rebuilt index from the merged generator. No competing session branch edited.
+
+Integration update: retained PR #215’s added guides and questions. Regenerated executive brief on the combined register. Both board entries kept when #218 advanced main. Release PR: [#219](https://github.com/kanlerxz87-cyber/Zone3/pull/219).
