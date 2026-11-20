@@ -10286,3 +10286,6 @@ Executive summary prepended with a dated 2026-11-20 snapshot; history retained b
 effect for new guides; second run green; third run green and stable). Preview verified over HTTP:
 front page, guides index, both new guides, suggestions, shop, feed and sitemap all 200;
 disclosure above the fold; sponsored + tagged CTAs present.
+## c08695c1 · Counter Edit integration · 2026-11-20
+
+In progress — owner `c08695c1`, fixed branch `arena/c08695c1-zone3`. Scope: current front page in `tools/build_publication.py` and its generated `index.html`, new front-page assets, `sessions/c08695c1/`, board. Check collector and release gates first, refresh editorial presentation and decision brief, then integrate and confirm deployment. No edits to other sessions' scoped records.
