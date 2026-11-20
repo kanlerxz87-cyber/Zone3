@@ -10214,6 +10214,21 @@ Done · [PR #211](https://github.com/kanlerxz87-cyber/Zone3/pull/211). The three
   diagnosis of register-speak in body copy, a five-question anti-slop acceptance test, a
   seven-title trend-shaped article plan with kill criteria, organic-traffic mechanics inside the
   rails, front-page stop-list, and the decision gate that still blocks every item.
-- **AE-T4 · in progress** — PR to `main`, merge, Pages confirmation recorded below.
+- **AE-T4 · done.** [PR #214](https://github.com/kanlerxz87-cyber/Zone3/pull/214) → merged into `main`
+  without waiting after gates were green. **Merge:** `2026-11-20T05:52:09Z` as
+  `7328c6d220b70e0ef21679026cd2d2154d1c1a9f`. **Checks:** `Publication checks` — success on `88cd2d5`
+  (PR) and on `7328c6d` (merge push); `pages build and deployment` — success run 44683870187,
+  commit `7328c6d`. **Gates on the merged tree:** `publish.py --check` 31/31, `check_site.py` OK,
+  `check_all_links.py` 211 pages / 349 URLs / 0 errors. **Merge conflict resolved, nothing discarded:**
+  PR #211 (`ece5f73c`, front page) and PR #212 (`fc812c5e`, same-day re-verification) landed on `main`
+  while this PR was open, so both conflicts (`COORDINATION.md`, `EXECUTIVE-SUMMARY.md`) were resolved
+  by keeping **both sessions' 2026-11-20 sections in full** — upstream first, this Part second — and
+  the executive summary now carries a cross-reference stating that the two same-day passes agree and
+  that their differing check counts (49 vs 31) come from different registered command menus, not from
+  different depth. Gates were re-run after the resolution and before pushing.
+- **Known, pre-existing, not touched:** a stray `>>>>>>> c126257 …` line survives from an earlier
+  session's resolution at the tail of that Part (~line 9837). It is inside an already-merged section
+  owned by another session, so it is recorded here rather than edited in this Part. It does not affect
+  any rendered page (no reader page is generated from `COORDINATION.md`).
 - **Change request (out of scope, for integration):** AE-F-01 above — decide add-banner / archive /
   delete for `sessions/3c886b62/`. This session did not edit those files.
