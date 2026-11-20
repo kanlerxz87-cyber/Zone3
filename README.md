@@ -15,10 +15,10 @@ that reads this file.
 | Register | Now | File |
 |---|---|---|
 | Question-led guides | 11 | `data/publication.json → guides` |
-| Indexable reader URLs | 20 | `data/publication.json → indexable_pages` |
+| Indexable reader URLs | 25 | `data/publication.json → indexable_pages` |
 | Supplied product links | 5 | `data/publication.json → products` |
 | Open decision-readiness questions | 39 | `data/publication.json → questions` |
-| Suggestions on the desk | 30 | `data/publication.json → proposals` |
+| Suggestions on the desk | 31 | `data/publication.json → proposals` |
 | Paths a reviewer can choose | 6 | `data/publication.json → paths` |
 | Design-brief blocks | 13 | `data/publication.json → design_prompt` |
 | Scoped official references | 17 | `data/publication.json → sources` |

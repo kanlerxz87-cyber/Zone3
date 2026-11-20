@@ -10174,7 +10174,7 @@ Done · [PR #211](https://github.com/kanlerxz87-cyber/Zone3/pull/211). The three
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `9ed0552a` | `arena/9ed0552a-zone3` | Reader-first product pages: give each of the five registered listings its own indexable page inside the shop, linked from the front page, both category pages and the comparison table; register the shipped decision; run the release gates; integrate via PR | in progress (9E-T1…T4) | 2026-11-20 |
+| `9ed0552a` | `arena/9ed0552a-zone3` | Reader-first product pages: give each of the five registered listings its own indexable page inside the shop, linked from the front page, both category pages and the comparison table; register the shipped decision; run the release gates; integrate via PR | in progress (9E-T4: PR, merge, deploy) | 2026-11-20 |
 
 ## 9E Coordination check before claiming
 
@@ -10191,6 +10191,25 @@ Done · [PR #211](https://github.com/kanlerxz87-cyber/Zone3/pull/211). The three
 | 9E-T2 — One indexable page per registered listing, built only from recorded facts | **done** | `9ed0552a` | `tools/build_publication.py`, `data/publication.json`, generated `shop/{category}/{slug}.html`, `index.html`, `shop/**/index.html`, `assets/publication-search.json`, `sitemap.xml`, `README.md` (generated block) | records made 2026-11-19 by sessions `b580d790`, `d3493182`, `0a48cfda` and `1c072a7a`, held in `data/publication.json` and `data/shop/products.json` | none new |
 | 9E-T3 — Register the shipped decision and the gate that keeps it true | **done** | `9ed0552a` | `data/publication.json` (one decided proposal), `sessions/9ed0552a/test_product_pages.py`, `tools/publish.py` | repo gates; no external rule claimed for the page shape | none |
 | 9E-T4 — Gates, PR, merge, Pages deploy, live read-back | in progress | `9ed0552a` | this Part only | `gh`, `git` | — |
+
+## 9E Verification and release evidence (2026-11-20)
+
+Design decision, sources and claim-by-claim provenance: `sessions/9ed0552a/review.md` and `sessions/9ed0552a/verification-2026-11-20.md`.
+
+| Gate on the final tree | Result |
+|---|---|
+| `python3 tools/publish.py` | **51/51 commands, 0 failed**, run three times; the last two rebuilds produced a byte-identical tree |
+| `sessions/9ed0552a/test_product_pages.py` | PASS — 5 listing pages present, indexable, sourced, tagged, sponsored and reachable |
+| `sessions/9ed0552a/test_product_pages.py --self-test` | PASS — 6 deliberately broken copies each caught |
+| `tools/check_publication.py` | PASS — 129 current HTML pages, 25 indexable URLs, 11 feed entries |
+| `scripts/build_sitemap.py --check` | PASS — 25 indexable pages, no extras |
+| `tools/attach_tag.py --check` | PASS — 1,703 product links tagged `shopnow047c-20`, no foreign tags |
+| `scripts/check_all_links.py` | PASS — 216 HTML pages, 354 distinct external URLs, 0 errors |
+| `tools/verify_site.py` | PASS — 170 pages, 2,748 table rows |
+| `scripts/check_site.py` | OK — 42 pages, 5 products, 90 sources, 184 flags |
+| `tools/link_report.py --strict` · `sessions/5d460e79/test_counts.py` · `tools/build_feed.py --check` | PASS |
+
+**Stated limitation, published as 9E-F02:** this sandbox reached GitHub, npm and PyPI only, so no Amazon or government page was fetched on 2026-11-20. Every new page restates a register value with its own 19 November observation date and prints that date; no same-day re-check, price, rating, availability, commission or performance claim is made. Intended-ASIN fields remain blank and separate from the observed redirect; FLG-003 remains unresolved and the supplied short links are still not called invalid.
 
 ## 9E Rules this session follows
 

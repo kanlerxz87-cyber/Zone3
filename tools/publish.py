@@ -68,6 +68,10 @@ CHECKS = [
     ['python3', 'tools/attach_tag.py', '--check'],
     ['python3', 'sessions/5d460e79/test_attach_tag.py'],
     ['python3', 'sessions/5d460e79/test_counts.py'],
+    # 9E-T2 gate: every registered listing has an indexable, sourced, tagged, sponsored page
+    # that the front page, its category page and the comparison table all link to.
+    ['python3', 'sessions/9ed0552a/test_product_pages.py'],
+    ['python3', 'sessions/9ed0552a/test_product_pages.py', '--self-test'],
     ['python3', 'sessions/5d460e79/test_decision_record.py'],
     ['python3', 'tools/analytics_endpoint.py', '--self-test'],
     ['python3', 'sessions/1c072a7a/test_collector.py'],
