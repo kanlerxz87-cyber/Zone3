@@ -9834,7 +9834,6 @@ Scope note: `data/publication.json` is edited only additively/decision-wise here
 - **Open items left open on purpose:** D3B-Q1 (banned-list editing rule), E41-Q2 (floating
   compare bar), E41-P1 (interior dimensions), FLG-003 (link attribution), P26-Q3 (production
   host), and every other owner-gated row — unchanged, by design.
->>>>>>> c126257 (D3B-T1: claim decision-loop close-out batch (B38-P1/P4/P5, E41-P2) on the shared board)
 
 ---
 
