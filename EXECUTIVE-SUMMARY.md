@@ -6,7 +6,7 @@
 instead of rebuilding it. All five supplied short links still open the same five listings, all five
 listing titles match the register verbatim, the load-bearing policy clauses (Operating Agreement §5,
 Participation Requirements 2(b)/6(t)/6(w), FTC Disclosures 101) still say what the site assumes they
-say, and the full build chain is green (49/49, no drift). No product fact, price, rating, review
+say, and the full build chain is green (51/51, no drift). No product fact, price, rating, review
 count, commission rate, traffic or revenue figure was added or inferred; every blank stays blank and
 flagged. The only files changed are this note, the session verification record, and the coordination
 board. Full record: [`sessions/fc812c5e/verification-2026-11-20.md`](sessions/fc812c5e/verification-2026-11-20.md).
@@ -18,7 +18,7 @@ board. Full record: [`sessions/fc812c5e/verification-2026-11-20.md`](sessions/fc
 | Findability | 20 sitemap URLs, 11 feed entries, canonical + Open Graph on reader pages; Search Console still unverified (owner-only). | No search-demand or ranking claim is made; topics stay editorial hypotheses until first-party reports exist. | [sitemap](sitemap.xml) · [feed](feed.xml) |
 | Measurement | Five-event runtime shipped, production collection OFF, ledger empty. | No conversion/traffic/revenue statement can be made until a durable host and authorized reports exist. | [measurement](measurement/index.html) |
 | Decision desk | 6 paths, 30 proposals, 39 questions, 50 review-only selects with export; design brief with 12 rails. | Choices implement nothing; each needs its evidence gate first. | [suggestions](suggestions/index.html) · [design brief](DESIGN_PROMPT.md) |
-| Release | `tools/publish.py` 49/49, working tree clean after rebuild. | Structural gates are not fact verification; facts were verified separately above. | [session record](sessions/fc812c5e/verification-2026-11-20.md) |
+| Release | `tools/publish.py` 51/51, working tree clean after rebuild. | Structural gates are not fact verification; facts were verified separately above. | [session record](sessions/fc812c5e/verification-2026-11-20.md) |
 
 **Questions that still need an owner answer before the next decision** (full register on the
 [suggestions page](suggestions/index.html#questions)): confirm the intended ASIN/URL per product;
@@ -211,7 +211,7 @@ Historical sections below keep their original dates and scope and were not re-ch
 
 | Area | Position after this integration | Basis |
 |---|---|---|
-| Gates | `tools/publish.py` 49/49 twice, no generated output changed between runs | chain output 2026-11-19 |
+| Gates | `tools/publish.py` 51/51 twice, no generated output changed between runs | chain output 2026-11-19 |
 | Tag and disclosure | 1,680/1,680 product links tagged, 0 foreign tags; every product-detail link tagged (22,572 inspected); 1,965/1,965 Amazon product links `rel="sponsored"`, 0 missing; disclosure sentence on 124/124 published pages | `tools/attach_tag.py --check`, `tools/attach_associates_tag.py --check`, `sessions/aebf0747/audit-after.json` |
 | Feeds and sitemap | 20 sitemap URLs, 11 feed items — the feed lists only indexable, sitemap-canonical reader URLs (PR #192 rule, PR #203 alignment) | `scripts/build_sitemap.py --check`, `tools/build_feed.py --check` |
 | Decision desk | 30 proposals, 39 readiness questions; PR #160's `review_2026_11_17b` ledger shipped on `suggestions.html` with rows `SUG-19..22` and `Q15..18`; PR #157's `SUG-16/17/18` on `decision-queue.html` | `data/suggestions.json`, `data/decision-queue.json`, rendered pages |
@@ -1655,3 +1655,49 @@ official URL / confirmation date / source stay blank, observed redirect targets 
 `FLG-003` stays unresolved and they are not called invalid. Campaign ledger: still **0** rows, by design.
 One editorial observation for whoever tidies this file next: two sections above this one are both numbered
 `## 15.`; no other session’s heading was renumbered here.
+
+---
+
+## Session 2e0d5c15 — 2026-11-20: the registers, re-measured; two bugs that were hiding a sentence
+
+This dated section is written by session `2e0d5c15` on the merged tree at `main@957e5ab`. It adds no
+product fact, price, rating or revenue figure, and it supersedes older counts above rather than rewriting
+them. Full record: [`sessions/2e0d5c15/verification-2026-11-20.md`](sessions/2e0d5c15/verification-2026-11-20.md).
+
+**Current counts, measured on this tree.** 131 published HTML pages; **27** canonical reader URLs, identical
+to the 27 `<loc>` entries in `sitemap.xml`; **13** RSS items, all sitemap-canonical; **13** question-led guides
+and 4 research-desk articles; **37** reviewable proposals and **46** decision-readiness questions after this
+pass's two of each; **187** flag rows; 17 scoped official references; **139** official-source table rows; the
+disclosure sentence on 131 of 131 pages; `og:image` and JSON-LD on 40 pages, with all 27 indexable URLs carrying
+both; 13 of 13 guides linking the comparison table in their own body. Any smaller figure in the rows above is
+the measurement of the tree it was written on.
+
+**What was wrong, and what was done about it.**
+
+| Finding | Evidence | Action taken | Still open |
+|---|---|---|---|
+| Four status cells ended on a figure their registers do not hold — S-07 and S-24 said ten guides, S-13 said nine (register 11, then 13 the same day), SG-29 said 18 sitemap URLs (register 20, then 22) — after an integration pass had recorded them as fixed, and two cells contradicted an earlier sentence inside themselves | registers, `sitemap.xml`, `feed.xml` read 2026-11-20 | one dated correction sentence appended to each cell, naming the count measured on the merged tree; no earlier text rewritten (`2E0-F01`) | the procedural gap is question `2E0-Q1`: no gate compares a row's final sentence with its register |
+| Two pages were silently losing a word: `<token>` and `<short-id>` were written into HTML unescaped, so a browser read them as unknown elements. On `products/index.html` that removed the word from the sentence explaining why a `/dp/` Page Not Found does not mean a short link is broken | `sessions/2e0d5c15/nesting_audit.py` across the published tree | fixed **in the generators** (`scripts/build_5a56c084.py`, `tools/build_site.py`); the audit reports 4 pages instead of 6 (`2E0-F02`) | four `noindex` legacy pages still carry unclosed inline elements; keep/repair/retire is question `2E0-Q2` |
+| Anchor integrity had no reproducible check beyond the URL checker | — | two read-only audit scripts added: 1,248 in-page fragment links, 0 broken; 356 external URLs, 0 errors | nothing |
+| Two published files carried merge debris: a stray `>>>>>>> c126257 …` marker in `COORDINATION.md` (the board every parallel session reads first) and a bare `=======` line in `assets/publication.css` (the served stylesheet). No gate looks for this class, and it recurred once during this session's own rebase | `git grep` across `*.html`, `*.md`, `*.json`, `*.py`, `*.css`, `*.js` | both lines deleted, both sessions' content untouched, gate re-run 51/51 (`2E0-F03`) | whether the gate should refuse this class at all is question `2E0-Q3` |
+
+**What was added for review, and nothing more.** Proposal `2E0-P1` asks for one guide on reheating leftovers
+in an air fryer, built on the FSIS reheat rule quoted in this session ("be sure they reach 165° F as measured
+with a food thermometer", [FSIS](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety))
+and the [FoodSafety.gov](https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures)
+chart. Proposal `2E0-P2` asks for `BreadcrumbList` markup derived from each guide's visible trail
+([Google](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb)). Neither is
+implemented; both are chosen or rejected on the [suggestions page](suggestions/index.html), and choosing
+implements nothing.
+
+**Policy text re-read today.** The Associates *Program Policies* page carries the header "Updated: April 14,
+2026"; its Commission Income Statement §2(e) defines a **Redirecting Link** as a link that "sends users
+indirectly to an Amazon Site via an intermediate site, without requiring the customer to click on a link or
+take some other affirmative action on that intermediate site"
+([source](https://affiliate-program.amazon.com/help/operating/policies)). That definition is what FLG-003
+turns on, and it does not settle whether the supplied `link.amazon/…` URLs behave that way for this account.
+FLG-003 stays open, the intent fields stay blank, and no destination or tracking value changed.
+
+**Gates.** `tools/publish.py`: 51 of 51 PASS after rebasing onto the merged tree, and a following `--check`
+run left it unchanged. Structural gates do not verify historical sentences — which is exactly the failure
+this pass found.

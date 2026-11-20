@@ -576,7 +576,7 @@ def page_products(depth):
     b.append(table(PRODUCTS["table"], depth, "intake"))
     b.append('<div style="height:22px"></div>')
     b.append(callout("ok", "How to read this table",
-        "<p>The nine-character values are Amazon short-link identifiers, not ASINs. Each supplied short URL resolves to the live ten-character-ASIN listing shown here; a direct /dp/<short-id> Page Not Found response does not mean the short link is broken. Listing identity is verified. Static price display, API-derived review data, tracking, clicks and conversions remain subject to policy and access requirements.</p>"))
+        "<p>The nine-character values are Amazon short-link identifiers, not ASINs. Each supplied short URL resolves to the live ten-character-ASIN listing shown here; a direct /dp/&lt;short-id&gt; Page Not Found response does not mean the short link is broken. Listing identity is verified. Static price display, API-derived review data, tracking, clicks and conversions remain subject to policy and access requirements.</p>"))
     b.append('<div style="height:22px"></div>')
     b.append(sec("Attribute sheet — the research payload"))
     b.append(table(PRODUCTS["attributes_table"], depth, "attrs"))
