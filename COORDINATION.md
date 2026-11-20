@@ -10298,6 +10298,8 @@ disclosure above the fold; sponsored + tagged CTAs present.
 
 ## c08695c1 · Counter Edit integration · 2026-11-20
 
+**Released:** [PR #219](https://github.com/kanlerxz87-cyber/Zone3/pull/219) merged into `main` as `bb114818f608ba71311a5762426e54e2f44c8a58` at 05:57:04 UTC. [Pages build and deployment](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44684402828) succeeded; fetched the live cover and checked its five product links. Final release gate: 49/49 commands, 126 published HTML pages, 136 official-source reader/workspace table rows, 22 sitemap URLs, 13 RSS entries.
+
 In progress — owner `c08695c1`, fixed branch `arena/c08695c1-zone3`. Scope: current front page in `tools/build_publication.py` and its generated `index.html`, new front-page assets, `sessions/c08695c1/`, board. Check collector and release gates first, refresh editorial presentation and decision brief, then integrate and confirm deployment. No edits to other sessions' scoped records.
 
 Done — cover, illustrated product routes, working category filters and source review. Scope includes regenerated executive brief linking the [edition report](sessions/c08695c1/edition.md). In the preview, tested all three filter counts at 1440, 390 and 320 px, cover loading and no horizontal overflow. Re-read five Amazon listing titles, Agreement §1, the commission statement introduction, FTC Disclosures 101 and GitHub Pages hosting overview. No enrollment, attribution or commercial-hosting approval inferred. FLG-003 and the production measurement gate remain open.
