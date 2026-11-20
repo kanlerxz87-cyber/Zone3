@@ -10331,7 +10331,7 @@ Board read before claim: current `main` was fast-forwarded to `deb67e5` after PR
 
 ### Rebase/conflict log (2026-11-20)
 
-Before pushing the claim, `git pull --rebase origin main` advanced the branch from `deb67e5` to `bb3d554` (PR #212) and produced one append/append conflict in `COORDINATION.md`. Resolved by retaining the complete upstream `fc812c5e` verification/release record first and this session's claim after it; no content from either side was discarded. The current conflict markers were removed; the earlier marker-like text in the historical coordination log was left unchanged. The claim is being pushed after this reconciliation.
+Before the initial claim push, `git pull --rebase origin main` advanced the branch from `deb67e5` to `bb3d554` (PR #212) and produced one append/append conflict in `COORDINATION.md`. Both the complete upstream `fc812c5e` record and this claim were retained. Before the next push, a second required pull advanced `bb3d554` to `2d7a8e8` (PR #217) and conflicted again at the appended coordination sections. The resolution keeps the updated `fc812c5e` release record and the complete `ae4e29b6` verification/merge record from upstream, followed by this session's Part. Only a stale duplicate of the upstream `fc812c5e` lines in the rebased claim commit was omitted; that record remains in full from upstream. No unique content from either session was discarded, and both current conflict boundaries were removed. The earlier marker-like line in the historical coordination log was left unchanged. The rebased claim, review and scope extension are ready for the next push.
 
 ### Scope extension — RSS-count drift gate (2026-11-20)
 
