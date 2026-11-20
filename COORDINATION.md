@@ -10307,3 +10307,78 @@ Done — cover, illustrated product routes, working category filters and source 
 Conflict log: main advanced with PRs #211–213. Preserved both board histories, retained the upstream newest-guide ordering, Sunday-dinner theme and all three task links; integrated their shopping navigation below the illustrated shortlist. Rebuilt index from the merged generator. No competing session branch edited.
 
 Integration update: retained PR #215’s added guides and questions. Regenerated executive brief on the combined register. Both board entries kept when #218 advanced main. Release PR: [#219](https://github.com/kanlerxz87-cyber/Zone3/pull/219).
+
+# Part 9E — session `9ed0552a` (branch `arena/9ed0552a-zone3`, base `deb67e5` = `main` after PR #211, 2026-11-20 UTC)
+
+## 9E Session registry and claim
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `9ed0552a` | `arena/9ed0552a-zone3` | Reader-first product pages: give each of the five registered listings its own indexable page inside the shop, linked from the front page, both category pages and the comparison table; register the shipped decision; run the release gates; integrate via PR | in progress (9E-T4: PR, merge, deploy) | 2026-11-20 |
+
+## 9E Coordination check before claiming
+
+- `main` at claim: `deb67e5` (merge of PR #211, session `ece5f73c`, 05:49:14Z). This branch was rebased onto it before any edit.
+- `gh pr list --state open` returned **one** open PR: **#212** (`arena/fc812c5e-zone3`), which touches only `COORDINATION.md`, `EXECUTIVE-SUMMARY.md` and `sessions/fc812c5e/**`. It was already `CONFLICTING` against `main` when read. **Those three paths are outside this session's scope and are not edited here**; the append-only `COORDINATION.md` region is the only possible touch point, and this Part is appended after the last line, not merged into it.
+- No other session claims `tools/build_publication.py`, `data/publication.json` or the generated `shop/**` reader pages at the time of this claim. PR #211 (merged) last touched `home()` in that generator; the edits here are additive functions plus link changes in `product_teaser`/`product_card`/`comparison_table`, rebased on top.
+- Standing rule kept: shared outputs — the site index, navigation and table data — change only in the final integration session. This session **is** the integration session for its own branch and merges it itself, as the brief instructs.
+
+## 9E Task board
+
+| Task | Status | Owner | Files in scope | Sources / basis | Irregularities |
+|---|---|---|---|---|---|
+| 9E-T1 — Audit the reader path and confirm the gap | **done** — 20 indexable URLs: 11 guides, 3 shop surfaces, 3 static pages, root, guides index, no per-listing page; `/marketing/product-*.html` covers only the first three products, is `noindex` and is not the current chrome | `9ed0552a` | `sessions/9ed0552a/**` | tree walk + `data/publication.json` | 9E-F01 |
+| 9E-T2 — One indexable page per registered listing, built only from recorded facts | **done** | `9ed0552a` | `tools/build_publication.py`, `data/publication.json`, generated `shop/{category}/{slug}.html`, `index.html`, `shop/**/index.html`, `assets/publication-search.json`, `sitemap.xml`, `README.md` (generated block) | records made 2026-11-19 by sessions `b580d790`, `d3493182`, `0a48cfda` and `1c072a7a`, held in `data/publication.json` and `data/shop/products.json` | none new |
+| 9E-T3 — Register the shipped decision and the gate that keeps it true | **done** | `9ed0552a` | `data/publication.json` (one decided proposal), `sessions/9ed0552a/test_product_pages.py`, `tools/publish.py` | repo gates; no external rule claimed for the page shape | none |
+| 9E-T4 — Gates, PR, merge, Pages deploy, live read-back | in progress | `9ed0552a` | this Part only | `gh`, `git` | — |
+
+## 9E Verification and release evidence (2026-11-20)
+
+Design decision, sources and claim-by-claim provenance: `sessions/9ed0552a/review.md` and `sessions/9ed0552a/verification-2026-11-20.md`.
+
+| Gate on the final tree | Result |
+|---|---|
+| `python3 tools/publish.py` | **51/51 commands, 0 failed** — run three times on this branch's base and twice more after the merge of `main`; the final two rebuilds produced a byte-identical tree |
+| `sessions/9ed0552a/test_product_pages.py` | PASS — 5 listing pages present, indexable, sourced, tagged, sponsored and reachable |
+| `sessions/9ed0552a/test_product_pages.py --self-test` | PASS — 6 deliberately broken copies each caught |
+| `tools/check_publication.py` | PASS — 131 current HTML pages, 27 indexable URLs, 13 feed entries (merged tree: `main` added two guides while this branch was open) |
+| `scripts/build_sitemap.py --check` | PASS — 27 indexable pages, no extras |
+| `tools/attach_tag.py --check` | PASS — 1,719 product links tagged `shopnow047c-20`, no foreign tags |
+| `scripts/check_all_links.py` | PASS — 218 HTML pages, 356 distinct external URLs, 0 errors |
+| `tools/verify_site.py` | PASS — 172 pages, 2,757 table rows, V1–V7 |
+| `scripts/check_site.py` | OK — 42 pages, 5 products, 90 sources, 184 flags |
+| `tools/link_report.py --strict` · `sessions/5d460e79/test_counts.py` · `tools/build_feed.py --check` | PASS |
+
+**Stated limitation, published as 9E-F02:** this sandbox reached GitHub, npm and PyPI only, so no Amazon or government page was fetched on 2026-11-20. Every new page restates a register value with its own 19 November observation date and prints that date; no same-day re-check, price, rating, availability, commission or performance claim is made. Intended-ASIN fields remain blank and separate from the observed redirect; FLG-003 remains unresolved and the supplied short links are still not called invalid.
+
+## 9E Rules this session follows
+
+1. **No new external fact is created.** This sandbox's outbound network reaches GitHub, npm and PyPI only; amazon.com was **not** fetched by this session. Every product-page statement restates a value already recorded with its own date and source in `data/publication.json` / `data/shop/products.json`, and the page prints that date. No live re-check is claimed, and no price, rating, review count, rank or performance figure is added.
+2. Intended-ASIN fields stay blank and separate from the observed redirect. The product pages print both, labelled, and copy neither into the other.
+3. A blank stays blank: where a listing does not publish a dimension, the page says so.
+4. Gates are never relaxed. If a gate fires, the cause is fixed.
+5. Register-derived counts only (`numeral()`/`len()`), never typed numerals.
+
+## 9E Finding
+
+| ID | Finding | Status |
+|---|---|---|
+| 9E-F01 | The site had **no per-listing page**. Five products were reachable only as cards inside two category pages and one comparison table, so the only indexable product-intent URLs were category-level. `/marketing/product-1…3*.html` is `noindex`, covers three of the five, and is a retained earlier pass — not the canonical shop. | **Fixed** in 9E-T2: five indexable pages, one per registered listing, each linked from the front-page teaser, its category card and the comparison table. |
+
+## 9E Merge log (2026-11-20)
+
+`main` advanced four times while this branch was open: PR #212 (`fc812c5e`), PR #213/#214 (`ae4e29b6`), PR #215/#218 (`263214e8`). `git pull --rebase` stopped on the append-only `COORDINATION.md` region, so the rebase was aborted and `main` was merged instead — the convention already logged on this board.
+
+- **Board:** resolved as `origin/main`'s file verbatim **plus** this Part appended at the end. Nothing from any session was removed or rewritten. Verified: no `<<<<<<<` marker introduced by this resolution (the one stray `>>>>>>> c126257` line at ~line 9837 is pre-existing and recorded as such by session `ae4e29b6`).
+- **`data/publication.json`:** took `main`'s version (two new guides, 43 questions, 34 proposals) and re-ran `sessions/9ed0552a/add_product_pages_data.py`, which only adds the five `slug`/`page` records, five `indexable_pages` entries and proposal 9E-P1 when they are absent.
+- **`assets/publication.css`:** both sides kept — this session's listing-note rules, then `263214e8`'s hover block last so upstream's cascade wins where they overlap.
+- **Generated pages, `sitemap.xml`, `README.md`:** resolved by regenerating with `tools/publish.py`, not by hand. The merged tree passes 51/51 twice and rebuilds byte-identically.
+- No other session's file was edited; no force-push; this branch's claim commit remains an ancestor.
+
+### 9E Merge log, second sync (2026-11-20, before merge)
+
+`main` moved again while PR #224 was open: PR #219/#221 (`c08695c1`, the Counter Edit front page, field notes, filterable shortlist, new `assets/counter-edit.css` and cover image). Conflicts were limited to `COORDINATION.md` and the two generated pages `index.html` and `executive-brief.html`; `tools/build_publication.py` auto-merged and was checked by hand to confirm both sides survive — `c08695c1`'s front page **and** this session's `product_page()`/`product_rel()` and their call sites.
+
+- Board: `origin/main` verbatim plus this Part appended; no marker introduced (the one pre-existing stray `>>>>>>> c126257` line at ~line 9837 stays, as recorded by `ae4e29b6`).
+- `index.html`, `executive-brief.html`: resolved by regeneration, not by hand.
+- Regenerated tree: `tools/publish.py` **51/51, 0 failed**; `check_publication` 131 current pages / 27 indexable / 13 feed entries; sitemap 27/0 extra; `attach_tag` 1,719/1,719 tagged, 0 foreign; `check_all_links` 218 pages / 356 URLs / 0 errors; `verify_site` 172 pages / 2,757 rows; `check_site` 42 pages / 90 sources / 184 flags. Every one of the five listing pages is still linked from the Counter Edit front page.

@@ -169,7 +169,7 @@ def product_teaser(p: dict) -> str:
             f'<span class="p26-teaser-format">{esc(p["format_text"])}</span>'
             f'<span class="p26-teaser-ask">{esc(d["ask"])}</span>'
             f'<span class="p26-teaser-actions">'
-            f'<a class="p26-teaser-link" href="shop/{p["category"]}/index.html#{p["id"]}">See the detail</a>'
+            f'<a class="p26-teaser-link" href="' + product_rel(p) + '">Read the listing note</a>'
             # 5D4-F04 residual: the teaser must keep a real outbound route. Making the front
             # page distinct from the catalogue removed every Amazon link from it, which would
             # have left the site's most-visited page with no way to reach a product. The CTA
@@ -211,8 +211,9 @@ def product_card(p: dict, prefix: str = '', compare: bool = False) -> str:
     chips = ''.join(f'<span>{esc(x)}</span>' for x in p['features'])
     return f'''<article class="p26-product-card" id="{p['id']}" data-product-card data-category="{p['category']}">
 <div class="p26-product-art p26-art-{p['format']}"><span class="p26-product-kind">{esc('Air fryer' if p['category']=='air-fryers' else 'Meat thermometer')}</span>{format_art(p['format'])}<span class="p26-art-caption">FORMAT ILLUSTRATION</span></div>
-<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3>{esc(p['name'])}</h3><p>{esc(p['description'])}</p>{dimension_note(p)}<div class="p26-features">{chips}</div>{fits_block(p)}
+<div class="p26-product-copy"><p class="p26-overline">{esc(p['brand'])}</p><h3><a href="{prefix}{product_rel(p)}">{esc(p['name'])}</a></h3><p>{esc(p['description'])}</p>{dimension_note(p)}<div class="p26-features">{chips}</div>{fits_block(p)}
 <a class="p26-product-cta" href="{associates_url(p['observed_listing_url'])}" rel="sponsored noopener">View on Amazon {icon('external')}</a>
+<a class="p26-text-link" href="{prefix}{product_rel(p)}">Read the listing note {icon('arrow')}</a>
 <div class="p26-card-source"><span>Sponsored</span><details><summary>Listing & source</summary><p>Title and destination observed <time datetime="{p['observed_on']}">{human_date(REVERIFIED)}</time>. {source_link(p['id'], 'Official Amazon listing')} · ASIN <code>{p['observed_asin']}</code>. Features above are listing wording, not test results. Submitted link <a href="{p['submitted_link']}" rel="sponsored noopener">{esc(p['submitted_link'].rsplit('/', 1)[-1])}</a>, used as the observed record only. Intended product and account attribution remain unconfirmed: <a href="{prefix}intent-record/index.html">intent record</a> · <a href="{prefix}flagged.html#FLG-003">link review</a>.</p></details></div></div></article>'''
 
 
@@ -292,7 +293,7 @@ def guide_page(g: dict) -> str:
         checklist = '<ul class="p26-checklist">' + ''.join(f'<li>{esc(x)}</li>' for x in section['checklist']) + '</ul>' if section.get('checklist') else ''
         sources = ' · '.join(source_link(x) for x in section['source_ids'])
         sections.append(f'<section id="section-{n}"><h2>{esc(section["heading"])}</h2>{paragraphs}{checklist}<p class="p26-source-note">Source context: {sources}. Read {READ_ON}. Shopping prompts are editorial suggestions.</p></section>')
-    product_rows = ''.join(f'<tr><th scope="row">{esc(PRODUCTS[x]["brand"] + " " + PRODUCTS[x]["name"])}</th><td>{esc(PRODUCTS[x]["format_text"])}</td><td><a href="{esc(chrome.tagged(PRODUCTS[x]["observed_listing_url"]))}" rel="sponsored noopener">Amazon listing</a><br><small>{READ_ON} · title only</small></td></tr>' for x in g['products'])
+    product_rows = ''.join(f'<tr><th scope="row"><a href="../{product_rel(PRODUCTS[x])}">{esc(PRODUCTS[x]["brand"] + " " + PRODUCTS[x]["name"])}</a></th><td>{esc(PRODUCTS[x]["format_text"])}</td><td><a href="{esc(chrome.tagged(PRODUCTS[x]["observed_listing_url"]))}" rel="sponsored noopener">Amazon listing</a><br><small>{READ_ON} · title only</small></td></tr>' for x in g['products'])
     unknowns = ''.join(f'<li>{esc(x)}</li>' for x in g['unknowns'])
     related = ''.join(guide_card(GUIDES[x], '../', art=False) for x in g['related'])
     body = f'''<div class="p26-container"><nav class="p26-breadcrumb" aria-label="Breadcrumb"><a href="../index.html">The edit</a><span>/</span><a href="index.html">Buying guides</a><span>/</span>{esc(g['category'])}</nav><header class="p26-article-heading"><p class="p26-overline">{esc(g['category'])} <span> / </span> {esc(g['type'])}</p><h1>{esc(g['title'])}</h1><p class="p26-article-dek">{esc(g['dek'])}</p><div class="p26-byline"><span class="p26-author-avatar">z3.</span><p>By <a href="../about.html#authorship">Zone3 Editorial</a><br><span>Published {human_date(g['published'])} · Updated {READ_ON} · Sources re-checked {human_date(REVERIFIED)}</span></p><span class="p26-byline-kind">Listing-based guide<br>Not a hands-on review</span></div></header><div class="p26-article-layout"><aside class="p26-article-aside"><p class="p26-overline">IN THIS GUIDE</p>{''.join(toc)}<a href="#the-shortlist"><span>0{len(g['sections']) + 1}</span>The relevant shortlist</a><p class="p26-aside-note">AI-assisted, source-linked editorial. No independent product testing is claimed.</p></aside><article class="p26-article"><div class="p26-takeaway"><p class="p26-overline">THE SHORT ANSWER</p><p>{esc(g['takeaway'])}</p></div>{''.join(sections)}<section id="the-shortlist"><h2>The listings behind the questions.</h2><p>These are title-based introductions, not recommendations based on testing. Every row links its official listing.</p><div class="p26-table-scroll" role="region" aria-label="Relevant product listings" tabindex="0"><table class="p26-table"><thead><tr><th scope="col">Product</th><th scope="col">Format named in listing</th><th scope="col">Source</th></tr></thead><tbody>{product_rows}</tbody></table></div><a class="p26-button" href="../shop/{g['category_slug'] if g['category_slug'] != 'everyday-kitchen' else 'products'}/index.html">Explore the shortlist {icon('arrow')}</a> <a class="p26-text-link" href="../shop/products/index.html#comparison">Compare all {numeral(PRODUCT_N).lower()} listings in one table {icon('arrow')}</a></section><section class="p26-unknowns"><h2>What we haven’t established.</h2><ul>{unknowns}</ul><p>We leave unsupported values out rather than filling the gaps. <a href="../flagged.html">See the review register</a> or <a href="../intent-record/index.html">the product-intent record</a>.</p></section></article></div><section class="p26-section"><div class="p26-section-heading"><div><p class="p26-overline">KEEP THE GOOD QUESTIONS COMING</p><h2>Next on your reading list.</h2></div></div><div class="p26-guides-grid">{related}</div></section>{follow('../')}</div>'''
@@ -305,7 +306,7 @@ def comparison_table(products: list[dict], prefix: str, sticky: bool = False) ->
         ld = p.get('listing_dimensions') or {}
         dims = (esc(ld['as_listed']) + f'<br><small>{esc(ld["capacity_as_listed"])}</small>') if ld.get('as_listed') \
             else '<span class="p26-unknown">Not published</span>'
-        rows.append(f'<tr><th scope="row">{esc(p["brand"] + " " + p["name"])}</th><td>{esc(p["format_text"])}</td><td>{dims}</td><td class="blank" aria-label="Unverified: no independent testing"></td><td><span class="p26-status">Listing only · untested</span><br><a href="{prefix}flagged.html#P26-F04">Evidence gap</a></td><td>{source_link(p["id"], "Amazon listing")}<br><small>{human_date(REVERIFIED)}</small></td></tr>')
+        rows.append(f'<tr><th scope="row"><a href="{prefix}{product_rel(p)}">{esc(p["brand"] + " " + p["name"])}</a></th><td>{esc(p["format_text"])}</td><td>{dims}</td><td class="blank" aria-label="Unverified: no independent testing"></td><td><span class="p26-status">Listing only · untested</span><br><a href="{prefix}flagged.html#P26-F04">Evidence gap</a></td><td>{source_link(p["id"], "Amazon listing")}<br><small>{human_date(REVERIFIED)}</small></td></tr>')
     hint = ('<p class="p26-fine p26-scroll-hint">On a phone this table scrolls sideways, and the product '
             'column stays with you. Blank cells are left blank on purpose: they are unverified, not zero.</p>') if sticky else ''
     body = ('<div class="p26-table-scroll" role="region" aria-label="Source-linked product comparison" tabindex="0"><table class="p26-table">'
@@ -314,6 +315,83 @@ def comparison_table(products: list[dict], prefix: str, sticky: bool = False) ->
             '<th scope="col">Tested performance</th><th scope="col">Evidence status</th><th scope="col">Official source</th></tr></thead>'
             '<tbody>' + ''.join(rows) + '</tbody></table></div>')
     return (f'<div class="p26-compare">{body}{hint}</div>' if sticky else body)
+
+
+def product_rel(p: dict) -> str:
+    """Canonical path of a listing's own reader page.
+
+    9E-T2 (session 9ed0552a, 2026-11-20). Before this, the product listings were reachable only
+    as cards inside two category pages and one comparison table, so every product-intent URL
+    was category-level. The page is generated from the same register record as the card, and
+    it introduces no value that the register does not already hold with a date and a source.
+    """
+    return f'shop/{p["category"]}/{p["slug"]}.html'
+
+
+def product_page(p: dict) -> str:
+    """One reader-facing page per registered listing: what the listing says, what it does not.
+
+    The page deliberately keeps the order a buyer uses — format, then the listing's own words,
+    then the gaps, then the questions to take to the manual — and it puts the record and the
+    sponsored link where a reader can see both. It states no price, rating, rank, test result
+    or performance figure, and it never copies the observed redirect into an intended field.
+    """
+    rel = product_rel(p)
+    prefix = chrome.prefix_for(rel)
+    d = DECISION[p['id']]
+    page = p['page']
+    cat = {'air-fryers': 'Air fryers', 'meat-thermometers': 'Meat thermometers'}[p['category']]
+    kind = 'Air fryer' if p['category'] == 'air-fryers' else 'Meat thermometer'
+    ld = p.get('listing_dimensions') or {}
+
+    facts = [f'<li>Format named in the listing: <strong>{esc(p["format_text"])}</strong></li>']
+    # A register entry that reads as advice ('Check model instructions') is a prompt, not a
+    # listing fact; it belongs with the questions, so it is not repeated as a named value here.
+    facts += [f'<li>{esc(x)}</li>' for x in p['features'] if not x.lower().startswith('check ')]
+    if p.get('cleanup_title_wording'):
+        facts.append(f'<li>Care wording in the title: {esc(p["cleanup_title_wording"])}</li>')
+    if ld.get('as_listed'):
+        facts.append(f'<li>Exterior size as listed: <strong>{esc(ld["as_listed"])}</strong> '
+                     f'<span class="p26-fine">(read {human_date(ld["observed_on"])}; not our measurement)</span></li>')
+        facts.append(f'<li>Capacity as listed: <strong>{esc(ld["capacity_as_listed"])}</strong></li>')
+    else:
+        facts.append('<li>Exterior size: not published in this listing’s detail table. '
+                     'Left blank rather than estimated.</li>')
+    capacity_note = (f'<p class="p26-fine">{esc(ld["capacity_note"])} {source_link(p["id"], "The listing entry")} '
+                     f'was read {human_date(ld["observed_on"])}.</p>') if ld.get('capacity_note') else ''
+
+    unknowns = []
+    if ld.get('scope'):
+        unknowns.append(f'<li>{esc(ld["scope"])}</li>')
+    unknowns.append('<li>No independent testing: this page reports no measured cooking, reading, '
+                    'noise or durability result, and no verdict about which model is best.</li>')
+    unknowns.append('<li>No current price, star rating, review count or availability is reproduced here. '
+                    'The listing is the only place this page points for them.</li>')
+    unknowns.append('<li>The intended ASIN for the supplied link and the account attribution behind it are '
+                    'unconfirmed. The ASIN printed below is the page the supplied link opened, and nothing more.</li>')
+
+    questions = ''.join(f'<li>{esc(q)}</li>' for q in page['questions'])
+    related = ''.join(guide_card(GUIDES[s], prefix, art=False) for s in page['related'])
+    # Sibling links keep a reader inside the shortlist instead of sending them back to a
+    # category page to start again; they are plain internal links, not product links.
+    siblings = ''.join(f'<a href="{prefix}{product_rel(q)}"><span>{esc(q["brand"])}</span>{esc(q["name"])}</a>'
+                        for q in DATA['products'] if q['category'] == p['category'] and q['id'] != p['id'])
+
+    record = (
+        f'<li><strong>Observed ASIN:</strong> <code>{esc(p["observed_asin"])}</code>, read '
+        f'<time datetime="{p["observed_on"]}">{human_date(p["observed_on"])}</time> from the page the supplied link opened.</li>'
+        f'<li><strong>Official listing:</strong> {source_link(p["id"], p["observed_listing_url"])} '
+        f'<span class="p26-fine">(sponsored link, tagged)</span></li>'
+        f'<li><strong>Supplied link, kept as the observed record:</strong> '
+        f'<a href="{esc(p["submitted_link"])}" rel="sponsored noopener">{esc(p["submitted_link"])}</a></li>'
+        f'<li><strong>Intended ASIN, intended listing and confirmation date:</strong> not supplied by the requester, '
+        f'so they stay blank — see the <a href="{prefix}intent-record/index.html">confirmation record</a> and '
+        f'<a href="{prefix}flagged.html#FLG-003">the link review (FLG-003)</a>.</li>'
+        f'<li><strong>Observation scope:</strong> {esc(p["observation_scope"])}</li>'
+    )
+
+    body = f'''<div class="p26-container"><nav class="p26-breadcrumb" aria-label="Breadcrumb"><a href="{prefix}index.html">The edit</a><span>/</span><a href="index.html">{esc(cat)}</a><span>/</span>{esc(p['brand'])}</nav><header class="p26-article-heading"><p class="p26-overline">{esc(cat)} <span> / </span> Listing note</p><h1>{esc(p['brand'])} {esc(p['name'])}</h1><p class="p26-article-dek">{esc(p['description'])}</p><div class="p26-byline"><span class="p26-author-avatar">z3.</span><p>By <a href="{prefix}about.html#authorship">Zone3 Editorial</a><br><span>Listing checked {human_date(p['observed_on'])} · {DATA['meta']['updated'] and human_date(DATA['meta']['updated'])[3:]} edition</span></p><span class="p26-byline-kind">Listing-based note<br>Not a hands-on review</span></div></header><div class="p26-article-layout"><aside class="p26-article-aside"><p class="p26-overline">ON THIS PAGE</p><a href="#what-the-listing-names"><span>01</span>What the listing names</a><a href="#what-it-does-not-settle"><span>02</span>Fit, and what is open</a><a href="#questions"><span>03</span>Questions to ask</a><a href="#record"><span>04</span>The record behind it</a><p class="p26-aside-note">AI-assisted, source-linked editorial. No independent product testing is claimed.</p><p class="p26-overline p26-aside-more">ALSO IN {esc(cat.upper())}</p>{siblings}</aside><article class="p26-article"><div class="p26-takeaway"><p class="p26-overline">THE SHORT ANSWER</p><p>{esc(page['takeaway'])}</p></div><section id="what-the-listing-names"><h2>What the listing names.</h2><figure class="p26-product-art p26-art-{p['format']}"><span class="p26-product-kind">{esc(kind)}</span>{format_art(p['format'])}<span class="p26-art-caption">FORMAT ILLUSTRATION</span></figure><p class="p26-fine">A generic drawing of the format, not a photograph of this model.</p><ul class="p26-checklist">{''.join(facts)}</ul>{capacity_note}<p class="p26-source-note">Source context: {source_link(p['id'], 'the Amazon listing reached by the supplied link')}. Title and detail table read {human_date(p['observed_on'])}. Listing wording is not independent verification of performance.</p></section><section id="what-it-does-not-settle"><h2>Where it fits. What it does not settle.</h2><div class="p26-fits"><p><span>Fits you if</span>{esc(d['fits'])}</p><p><span>Not for you if</span>{esc(d['not'])}</p><p class="p26-ask">{esc(d['ask'])}</p></div><ul class="p26-unknowns-list">{''.join(unknowns)}</ul></section><section id="questions"><h2>Questions to put to this model.</h2><p>Take these to the model’s own manual, care sheet or the listing’s question section before you decide. They are editorial prompts, not findings.</p><ul class="p26-checklist">{questions}</ul></section><section id="check-it-yourself"><h2>Check it yourself.</h2><p>The link below opens the same Amazon listing this page’s record names, with the Associates tag in the URL. It is the only place this page sends you for a current price or availability.</p><p><a class="p26-button" href="{esc(associates_url(p['observed_listing_url']))}" rel="sponsored noopener" target="_blank">Check the listing on Amazon {icon('external')}</a> <span class="p26-status">Sponsored</span></p><p class="p26-fine">Opens amazon.com in a new tab. We have not verified account attribution for this tag (FLG-003), and no order, commission or ranking is implied.</p><p class="p26-fine"><a href="{prefix}shop/products/index.html#comparison">Compare all {numeral(PRODUCT_N).lower()} listings in one table</a> · <a href="index.html">Back to {esc(cat)}</a></p></section><section id="record" class="p26-unknowns"><h2>The record behind this page.</h2><ul>{record}</ul><p>Every value above is the register’s own, with its date. Where a field could not be confirmed from an official source, it is blank and flagged rather than filled in.</p></section></article></div><section class="p26-section"><div class="p26-section-heading"><div><p class="p26-overline">KEEP THE GOOD QUESTIONS COMING</p><h2>Next on your reading list.</h2></div></div><div class="p26-guides-grid">{related}</div></section>{follow(prefix)}</div>'''
+    return shell(rel, page['title'], page['description'], body)
 
 
 def chooser(prefix: str, category: str) -> str:
@@ -734,6 +812,8 @@ def sync_readme(check: bool) -> bool:
 def outputs() -> dict[str, str]:
     pages = {'publication-prior.html': previous_edition(), 'index.html': home(), 'guides/index.html': guide_index(), 'suggestions/index.html': suggestions(), 'about.html': about(), 'privacy.html': privacy(), 'executive-brief.html': executive(), 'style.html': style()}
     pages.update({f'guides/{g["slug"]}.html': guide_page(g) for g in DATA['guides']})
+    # 9E-T2: one reader page per registered listing, generated from the same record as its card.
+    pages.update({product_rel(p): product_page(p) for p in DATA['products']})
     for cat, cmp in [('all', False), ('air-fryers', False), ('meat-thermometers', False), ('all', True)]:
         rel, doc = catalogue(cat, cmp)
         pages[rel] = doc
@@ -750,7 +830,7 @@ def outputs() -> dict[str, str]:
         if missing:
             raise ValueError('Missing workspace destinations: ' + ', '.join(missing))
     search = [{'title': g['title'], 'description': g['dek'], 'kind': g['category'], 'path': f'guides/{g["slug"]}.html'} for g in DATA['guides']]
-    search += [{'title': p['brand'] + ' ' + p['name'], 'description': p['description'], 'kind': 'Product shortlist', 'path': f'shop/{p["category"]}/index.html#{p["id"]}'} for p in DATA['products']]
+    search += [{'title': p['brand'] + ' ' + p['name'], 'description': p['description'], 'kind': 'Listing note', 'path': product_rel(p)} for p in DATA['products']]
     pages['assets/publication-search.json'] = json.dumps(search, ensure_ascii=False, indent=2) + '\n'
     return pages
 

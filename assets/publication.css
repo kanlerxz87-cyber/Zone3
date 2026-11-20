@@ -407,7 +407,14 @@ a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
 .p26-shop-paths a{display:grid;gap:.65rem;padding:1.35rem 1.5rem;color:inherit;text-decoration:none;border-inline-end:1px solid #ffffff38}
 .p26-shop-paths small{font:600 10px/1.4 var(--p26-sans);letter-spacing:.13em;color:#dae2ce}.p26-shop-paths span{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font:clamp(19px,2vw,28px)/1.15 var(--p26-serif)}.p26-shop-paths a:is(:hover,:focus-visible){background:#365640;text-decoration:underline}.p26-shop-paths a:focus-visible{outline:2px solid white;outline-offset:-4px}
 @media(max-width:700px){.p26-shop-paths{grid-template-columns:1fr}.p26-shop-paths a{border-inline-end:0;border-bottom:1px solid #ffffff38;padding:1rem 1.25rem}}
-=======
+/* 9E-T2 (session 9ed0552a, 2026-11-20): the gaps list on a listing note. Plain bullets read as
+   a wall of caveats; this keeps them legible as four separate lines under a rule. */
+.p26-article .p26-unknowns-list{list-style:none;padding:0;margin:24px 0 0}
+.p26-article .p26-unknowns-list>li{font-size:12px;line-height:1.85;color:var(--p26-muted);padding:10px 0;border-top:1px solid var(--p26-line)}
+.p26-article .p26-unknowns-list>li:last-child{border-bottom:1px solid var(--p26-line)}
+.p26-article .p26-product-art{margin:24px 0 10px}
+/* 9E-T2: sibling shortlist links in the listing-note aside. */
+.p26-article-aside>p.p26-aside-more{margin:26px 0 0;border-top:1px solid var(--p26-line);padding-top:18px}
 
 /* 263214e8 (2026-11-20): shopfront polish pass. Same rails as the rest of the publication —
    hairlines, no shadows, one accent, small type meant to be read. Hover states only; no
