@@ -10174,3 +10174,31 @@ The rebase rewrote only this session's own two unpushed commits (`1ad4dd7`, `a68
 - AE-T4: PR to `main`, merge without waiting (per standing brief), confirm GitHub Pages build, record PR link + merge result here.
 
 **Standing rules for this session:** No price/rating/review/commission-per-product claims (Program Policies 2(b)/6(t), S02). No intent confirmation inferred from redirects (FLG-002). Supplied short links never called invalid (FLG-003). Disclosure + `rel="sponsored"` + tag gates must stay green. Blocked proposals (tag validation, intent, Search Console, analytics host, human editor, testing, API) stay blocked and flagged, not implemented.
+
+### ae4e29b6 — completion record (2026-11-20)
+
+- **AE-T1 · done.** All five `link.amazon/…` links fetched live 2026-11-20; every one landed on the
+  destination already recorded in `data/products.json` (`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`,
+  `B0DHZTCNR5`, `B0DZFD6R9Z`) — **no drift**. Listing titles read from the arrived-at pages; prices,
+  ratings, review counts and availability deliberately **not** transcribed (S02 2(b)/6(t)). Seven
+  official sources re-opened (S01 Agreement dated 2025-10-15, S02 Policies dated 2026-04-14, S06/S31
+  Creators API GetItems, S07 FTC Disclosures 101, S25 commission Table 1, S90 Google sponsored links,
+  S96 sitemap) plus PF-03/04/05/38/58/59 — **no policy fact needed correcting**. Submitted IDs still
+  9 characters against a 10-character ASIN definition (FLG-001 open; supplied links **not** called
+  invalid, FLG-003 unresolved). Record: `sessions/ae4e29b6/verification-2026-11-20.md`.
+- **AE-T2 · done.** `tools/publish.py --check` **31/31 PASS**; `check_site.py` OK 42 pages / 5
+  products / 90 sources / 182 flags; `check_all_links.py` 211 pages / 349 URLs / **0 errors**;
+  sitemap current 20 URLs; feed 11 items; `check_publication.py` PUBLICATION PASS (124 pages, 22
+  rendered, 127 source rows). Disclosure 142/157 non-archive pages; the 15 misses are
+  `sessions/3c886b62/*.html` (archived prior-session prototype, `robots`-disallowed, out of scope →
+  new flag **AE-F-01**, logged for the integration session). 134/134 Amazon anchors across the front
+  page, 12 guides and shop surfaces carry `rel="sponsored"`; front page carries `tag=shopnow047c-20`
+  5/5. Measurement OFF, campaign ledger empty by design.
+- **AE-T3 · done.** `EXECUTIVE-SUMMARY.md` — new dated 2026-11-20 status section prepended (prior
+  status kept verbatim below). `DESIGN_PROMPT.md` — §15 "Batch 5 — the anti-slop feed" appended:
+  diagnosis of register-speak in body copy, a five-question anti-slop acceptance test, a
+  seven-title trend-shaped article plan with kill criteria, organic-traffic mechanics inside the
+  rails, front-page stop-list, and the decision gate that still blocks every item.
+- **AE-T4 · in progress** — PR to `main`, merge, Pages confirmation recorded below.
+- **Change request (out of scope, for integration):** AE-F-01 above — decide add-banner / archive /
+  delete for `sessions/3c886b62/`. This session did not edit those files.
