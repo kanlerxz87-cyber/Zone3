@@ -10158,3 +10158,19 @@ The rebase rewrote only this session's own two unpushed commits (`1ad4dd7`, `a68
 - **Gates:** `tools/publish.py` 49/49 twice on the final tree (each of the three PR merges and both main re-merges re-ran the chain; final numbers: 124 published pages, 11 guides, 20 sitemap URLs, 11 feed items, 30 proposals, 39 questions, 17 sources, 13 brief blocks, 1,680/1,680 product links tagged with no foreign tags, 1,965/1,965 sponsored with 0 missing, disclosure 124/124).
 - **Live read-back:** `https://kanlerxz87-cyber.github.io/Zone3/?revision=f3eeafc` — teaser CTAs carry `tag=shopnow047c-20`, `Three air fryers. Two thermometers.` derived from `CAT_N`, FLG-003 footnote intact; `intent-record/index.html` shows the EE-F-01 correction; sitemap lists 20 URLs including the 11 guides and `style.html`.
 - **Flagged, not blocking (standing brief):** `FLG-003` (supplied short links never called invalid), `AE-F-01`/attribution enrolment unverified, `5D4-F-01` redirect-chain compliance question, `EE-F-01/02` fixed this round, S-18 imagery, account/API/Search Console, Pages commercial-use fit.
+
+---
+
+# Part ae4e29b6 — Independent re-verification, executive summary refresh, and design-prompt feed (2026-11-20)
+
+**Session:** `ae4e29b6` · **Branch:** `arena/ae4e29b6-zone3` · **Base:** `main@6a6fdc3` (PR #210 merge)
+**Claimed:** 2026-11-20 · **Status:** in progress
+**Scope (non-overlapping, additive only):** `sessions/ae4e29b6/**`, `EXECUTIVE-SUMMARY.md` (prepend dated 2026-11-20 status section), `DESIGN_PROMPT.md` (append dated 2026-11-20 addendum), `COORDINATION.md` (this Part only). No generated HTML, no `data/*.json`, no `tools/*`, no `scripts/*` edits in this session. If a fix requires a file outside this scope, it will be logged here as a change request, not edited.
+
+**Tasks:**
+- AE-T1: Line-by-line re-verification of the 5 submitted links, 5 observed destinations, and load-bearing official sources (S01, S02, S06/S31, S07, S25, S90, S96) with source links; blank + flagged where unverified. Record in `sessions/ae4e29b6/verification-2026-11-20.md`.
+- AE-T2: Site integrity gates (`tools/publish.py --check`, `scripts/check_site.py`, `scripts/check_all_links.py`, sitemap/feed checks, disclosure/sponsored/tag counts). Fix only in-scope files; log out-of-scope defects as flags.
+- AE-T3: Executive summary refresh (2026-11-20 status section in `EXECUTIVE-SUMMARY.md`) + design-prompt feed addendum in `DESIGN_PROMPT.md` (polished-marketing prompt lines, question-shaped article plan, organic-traffic mechanics, anti-slop rails, decision gate via `suggestions/index.html`).
+- AE-T4: PR to `main`, merge without waiting (per standing brief), confirm GitHub Pages build, record PR link + merge result here.
+
+**Standing rules for this session:** No price/rating/review/commission-per-product claims (Program Policies 2(b)/6(t), S02). No intent confirmation inferred from redirects (FLG-002). Supplied short links never called invalid (FLG-003). Disclosure + `rel="sponsored"` + tag gates must stay green. Blocked proposals (tag validation, intent, Search Console, analytics host, human editor, testing, API) stay blocked and flagged, not implemented.
