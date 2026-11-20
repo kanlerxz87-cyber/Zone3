@@ -50,20 +50,20 @@ an earlier snapshot, not the number of published feed items.
 
 | Surface | Count (now) | Note |
 |---|---|---|
-| HTML pages outside `docs/`, `sessions/`, `archive/` | 126 | the whole published tree |
-| Indexable reader set (canonical + in `sitemap.xml`) | 22 | front page, guide index, 13 guides, four shop surfaces, about, privacy and `style.html` |
+| HTML pages outside `docs/`, `sessions/`, `archive/` | 131 | the whole published tree |
+| Indexable reader set (canonical + in `sitemap.xml`) | 27 | front page, guide index, 13 guides, four shop surfaces, the five registered product pages, about, privacy and `style.html` |
 | Question-led guides | 13 | counted from `data/publication.json → guides`; also checked by `tools/check_feed_readme.py` |
 | Submitted product links registered | 5 | 3 air fryers, 2 meat thermometers; listing titles last re-opened 2026-11-19 |
-| Pages carrying `rel="canonical"` | 126 / 126 | |
-| Pages carrying `og:image` | 39 / 126 | the current reader layer, shop surfaces, guide index and brief pages; the legacy registers do not |
-| Pages with a meta description ≥ 60 characters | 121 / 126 | the five exceptions are meta-refresh stubs titled “Moved”, excluded from the sitemap on purpose |
-| `sitemap.xml` `<url>` entries | 22 | 0 `<lastmod>`; see the rejected-idea note in `P27-F06` |
+| Pages carrying `rel="canonical"` | 131 / 131 | |
+| Pages carrying `og:image` | 44 / 131 | the current reader layer, shop surfaces, guide index and brief pages; the legacy registers do not |
+| Pages with a meta description ≥ 60 characters | 126 / 131 | the five exceptions are meta-refresh stubs titled “Moved”, excluded from the sitemap on purpose |
+| `sitemap.xml` `<url>` entries | 27 | 0 `<lastmod>`; see the rejected-idea note in `P27-F06` |
 | Feed candidates before sitemap filtering | 31 | current post-retirement union of feed-register inputs; not a published-item count |
 | RSS destinations omitted by sitemap filter | 18 | candidate destinations not listed in `sitemap.xml` |
 | Published `feed.xml` items | 13 | actual RSS channel `<item>` elements after the filters; `tools/check_feed_readme.py` checks this against the README and this table |
-| Decision-desk rows on the suggestions page | 6 paths · 35 proposals · 44 questions · 14 brief blocks | each question names known evidence, missing information, an answer owner and a safe default; `tools/check_feed_readme.py` checks these four figures against the register |
+| Decision-desk rows on the suggestions page | 6 paths · 38 proposals · 47 questions · 14 brief blocks | each question names known evidence, missing information, an answer owner and a safe default; `tools/check_feed_readme.py` checks these four figures against the register |
 | Source register | 18 rows | official-host references; one row scopes the existing Amazon policy-fact record and its 2026-11-13 read date |
-| Flag register | 182 rows | published on the Flagged-for-review page |
+| Flag register | 187 rows | published on the Flagged-for-review page |
 | House-style lint | 15 banned-construction rows | enforced by a release gate since 2026-11-19 (`house_style` in the register; B38-P1) |
 
 ---
@@ -327,7 +327,7 @@ and the category page lists it — otherwise it is an orphan.
 
 ### 15.4 Organic-traffic mechanics that are actually in our control
 
-- **One site, one index surface.** 22 canonical URLs, one sitemap, one feed, `robots.txt` declaring
+- **One site, one index surface.** 27 canonical URLs, one sitemap, one feed, `robots.txt` declaring
   it. Any new guide must be added to all three in the same commit or the gate fails.
 - **Question-shaped titles and H1s**, matching how the query is typed. The thirteen live guides already
   do this; the front page should borrow the shape rather than listing sections.

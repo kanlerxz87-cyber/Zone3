@@ -2560,6 +2560,72 @@
    "date": "2026-11-19",
    "session": "ee10b024",
    "status": "fixed"
+  },
+  {
+   "id": "9E-F01",
+   "severity": "Medium",
+   "category": "Site structure",
+   "item": "The canonical shop had no page for an individual listing",
+   "detail": "All five registered listings were reachable only as cards inside shop/air-fryers/, shop/meat-thermometers/ and the comparison table, so every product-intent URL was category-level. The retained marketing/product-*.html pages cover three of the five, carry noindex,follow and use earlier chrome, so they could not stand in as the canonical page for a listing.",
+   "action": "FIXED 2026-11-20 by session 9ed0552a: build_publication now emits shop/<category>/<slug>.html for each registered listing from the existing register record; the front page teasers, both category cards, the comparison table and the guide shortlist tables link to those pages; the URLs are indexable, listed in sitemap.xml and included in the local site search index. Release gate: sessions/9ed0552a/test_product_pages.py, with a --self-test that proves the gate catches six deliberate regressions.",
+   "repo_evidence": "tools/build_publication.py; data/publication.json; sitemap.xml; sessions/9ed0552a/test_product_pages.py",
+   "date": "2026-11-20",
+   "session": "9ed0552a",
+   "status": "fixed"
+  },
+  {
+   "id": "9E-F02",
+   "severity": "Low",
+   "category": "Verification scope",
+   "item": "The listing notes restate observations dated 2026-11-19; no listing was re-fetched on 2026-11-20",
+   "detail": "This build environment could reach GitHub, npm and PyPI only, so amazon.com was not fetched by this session. Every value on the new pages comes from the register entry with its own observation date, and each page prints that date. No same-day re-check, price, rating, availability or performance claim is made.",
+   "action": "No value changed. The limitation is stated on every page ('Listing checked 19 Nov 2026'). A later pass with outbound access should re-open the five supplied links and update observed_on before any newer date is asserted.",
+   "repo_evidence": "data/publication.json (products[].observed_on); shop/air-fryers/*.html; shop/meat-thermometers/*.html",
+   "date": "2026-11-20",
+   "session": "9ed0552a",
+   "status": "open — limitation stated on the page"
+  },
+  {
+   "id": "2E0-F01",
+   "severity": "Medium",
+   "category": "Register",
+   "item": "Re-measure lines that contradicted the registers survived a pass that recorded them as fixed",
+   "detail": "Flag EE-F-02 (session ee10b024) records rows S-04, S-05, S-09, S-24, SG-28 and SG-29 as re-measured and fixed in place. Read on 2026-11-20, four cells still ended with a figure their registers do not hold: SG-29 closed with '18 URLs on the merged tree' while sitemap.xml and data/publication.json listed 20 when this pass began (and more after the same day's merges); S-07 closed with 'ten question-led guides' and S-24 with 'ten published guides' while the register held 11, then 13; S-13 closed with 'nine question-shaped guides' against the same 11-then-13. Two cells contradicted themselves: SG-29 states '20 canonical reader URLs' earlier in the same cell, and S-24 states 'all eleven guides' before the 'ten' sentence. Every earlier sentence is a dated record and is kept.",
+   "action": "CORRECTED 2026-11-20 by session 2e0d5c15: one dated correction sentence appended to each of S-07, S-13, S-24 and SG-29, naming the count measured on the merged tree at the time of the pass; no earlier text rewritten; _meta.rechecks entry added. The residual risk is procedural, not editorial: nothing in the release gate compares a row's last measured sentence with its register, so the same drift can recur. Published for review as question 2E0-Q1.",
+   "repo_evidence": "data/shop/brief-status.json; data/publication.json; sitemap.xml; feed.xml; sessions/2e0d5c15/verification-2026-11-20.md",
+   "sources": [],
+   "date": "2026-11-20",
+   "raised": "2026-11-20",
+   "session": "2e0d5c15",
+   "status": "fixed"
+  },
+  {
+   "id": "2E0-F02",
+   "severity": "Low",
+   "category": "HTML integrity",
+   "item": "Six published noindex pages carried malformed HTML nesting, two of them losing a word from the rendered sentence",
+   "detail": "Measured 2026-11-20 by parsing every published page (outside archive/, docs/ and sessions/) with Python's html.parser: six reported stray end tags — articles/what-an-amazon-affiliate-link-has-to-look-like.html, category/kitchen.html, products/index.html, site/flagged.html, site/guides/air-fryer-oven-vs-basket.html and site/guides/index.html. Two of the six wrote a placeholder unescaped into the markup (<token> in the article's prose and <short-id> on products/index.html), so a browser read each as an unknown element and the word vanished from the rendered sentence ('a direct /dp/ Page Not Found response does not mean the short link is broken'). All six carry robots noindex,follow, none is listed in sitemap.xml or feed.xml, and none is produced by the current reader generator (tools/build_publication.py). The reader set and every indexable page parsed clean before and after this pass. No browser-measured rendering defect is claimed, because none was measured.",
+   "action": "PARTLY FIXED 2026-11-20 by session 2e0d5c15. The two unescaped-placeholder defects were fixed in the generators that write them, not by hand: scripts/build_5a56c084.py now escapes article prose before substituting source markers, and tools/build_site.py writes &lt;short-id&gt;. The nesting audit (sessions/2e0d5c15/nesting_audit.py) then reported 4 pages instead of 6 and all 49 release gates passed. The four that remain — category/kitchen.html, site/flagged.html, site/guides/air-fryer-oven-vs-basket.html, site/guides/index.html — carry unclosed inline elements inside list and table cells; each belongs to an older generator owned by a finished pass, so they are published for review rather than hand-edited. The keep / repair / retire decision is question 2E0-Q2.",
+   "repo_evidence": "sessions/2e0d5c15/nesting_audit.py; scripts/build_5a56c084.py; tools/build_site.py; sessions/2e0d5c15/verification-2026-11-20.md",
+   "sources": [],
+   "date": "2026-11-20",
+   "raised": "2026-11-20",
+   "session": "2e0d5c15",
+   "status": "needs review"
+  },
+  {
+   "id": "2E0-F03",
+   "severity": "Medium",
+   "category": "Repository hygiene",
+   "item": "Merge-conflict debris was live in two published files: the shared board and the site stylesheet",
+   "detail": "Two occurrences of the same defect class were live on main. (1) COORDINATION.md carried the line ‘>>>>>>> c126257 (D3B-T1: claim decision-loop close-out batch (B38-P1/P4/P5, E41-P2) on the shared board)’ with no matching ‘<<<<<<<’ or ‘=======’ — the tail of a conflict resolution committed without deleting the marker, on the file every parallel session reads before claiming work. (2) assets/publication.css carried a bare ‘=======’ line, inside the served stylesheet, likewise left by a merge. None of the 49 release checks looks for merge debris: they read structure, links, provenance and claims. A tree-wide scan over *.html, *.md, *.json, *.py, *.css and *.js found no other occurrence and no generated page affected.",
+   "action": "FIXED 2026-11-20 by session 2e0d5c15: both marker lines deleted with the surrounding content of both sessions untouched, and the full gate re-run (49/49). The marker recurred once inside this session's own rebase, which is the argument for a check rather than another manual sweep; question 2E0-Q3 asks the owner whether the gate should refuse this class, and how broadly to scope it.",
+   "repo_evidence": "COORDINATION.md; assets/publication.css; sessions/2e0d5c15/verification-2026-11-20.md",
+   "sources": [],
+   "date": "2026-11-20",
+   "raised": "2026-11-20",
+   "session": "2e0d5c15",
+   "status": "fixed"
   }
  ]
 }

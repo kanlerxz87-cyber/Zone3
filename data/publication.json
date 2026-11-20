@@ -197,6 +197,24 @@
         "capacity_note": "The title says “6 Quart”; the detail table says “Capacity: 6 liters”. Six US quarts is about 5.7 L, so the two listing fields do not agree with each other.",
         "status": "verified against the official listing page, 2026-11-19",
         "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
+      "slug": "chefman-6-quart-dual-basket-air-fryer",
+      "page": {
+        "slug": "chefman-6-quart-dual-basket-air-fryer",
+        "title": "Chefman 6-quart dual-basket air fryer: a listing note",
+        "description": "What the Chefman 6-quart dual-basket listing names, what it leaves open, and the questions to settle before two baskets earn counter space.",
+        "takeaway": "The listing describes two independent 3-quart baskets that can be set to finish together. Whether that is the right shape for your dinners is the question this page helps you settle.",
+        "questions": [
+          "Do the meals you cook on repeat need two separate timings, or would one wider basket do the same job?",
+          "Does the sync-finish wording cover the meals you actually cook, and does the manual say what happens when the two baskets hold different foods?",
+          "Which parts does the listing call dishwasher safe, and does the care section of the manual agree?",
+          "How much clearance does the manual ask for around the vents, and where would that leave you on your counter?"
+        ],
+        "related": [
+          "basket-or-oven-style",
+          "capacity-checklist",
+          "cleanup-and-counter-space"
+        ]
       }
     },
     {
@@ -241,6 +259,24 @@
         "capacity_note": "The title says “26QT”; the detail table says “Capacity: 24.6 liters”, which is 26 US quarts.",
         "status": "verified against the official listing page, 2026-11-19",
         "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
+      "slug": "emeril-lagasse-26qt-french-door-air-fryer-oven",
+      "page": {
+        "slug": "emeril-lagasse-26qt-french-door-air-fryer-oven",
+        "title": "Emeril Lagasse 26QT French-door air fryer oven: a listing note",
+        "description": "What the Emeril Lagasse 26QT French-door listing names, what it leaves open, and how to check door swing and interior space before you buy.",
+        "takeaway": "The listing describes a French-door oven with a 26QT label, a preset count and six included accessories. Door swing and usable interior are the two questions it cannot answer for you.",
+        "questions": [
+          "How far in front of the unit does the door travel when it opens, and is that floor space clear on your counter?",
+          "What usable interior height and depth does the manual state, and would the roast you have in mind fit?",
+          "Do the six included accessories cover the cooking you actually do, and where will they live when they are not in the oven?",
+          "Would you rather reach into a door or pull out a basket on a normal weeknight?"
+        ],
+        "related": [
+          "basket-or-oven-style",
+          "cleanup-and-counter-space",
+          "holiday-kitchen-checklist"
+        ]
       }
     },
     {
@@ -285,6 +321,24 @@
         "capacity_note": "The title and the detail table both say 8 quarts for this size.",
         "status": "verified against the official listing page, 2026-11-19",
         "scope": "Exterior dimensions exactly as the listing detail table prints them. Not our measurement, and not a usable interior size. Ventilation clearance, cord length, door swing and basket dimensions are not published there and stay blank."
+      },
+      "slug": "chefman-turbofry-8-qt-air-fryer",
+      "page": {
+        "slug": "chefman-turbofry-8-qt-air-fryer",
+        "title": "Chefman TurboFry 8 Qt air fryer: a listing note",
+        "description": "What the Chefman TurboFry 8 Qt listing names, what an 8-quart label does not settle, and how to test one basket against your usual dinner.",
+        "takeaway": "The listing describes a single-basket air fryer with an 8-quart capacity. A capacity label describes a volume, not the size of one layer of food, so measure before you count servings.",
+        "questions": [
+          "Will the food you cook most often fit in a single layer, or will you be cooking in batches?",
+          "What are the basket's internal dimensions, as opposed to the exterior size printed in the detail table?",
+          "Do you routinely cook two different dishes that need separate timings?",
+          "Which parts go in the dishwasher, per the care instructions?"
+        ],
+        "related": [
+          "capacity-checklist",
+          "how-do-you-know-its-done",
+          "cleanup-and-counter-space"
+        ]
       }
     },
     {
@@ -329,6 +383,24 @@
         "capacity_note": "",
         "status": "unverified — the detail table on this listing has no Product Dimensions row",
         "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
+      },
+      "slug": "thermomaven-digital-meat-thermometer",
+      "page": {
+        "slug": "thermomaven-digital-meat-thermometer",
+        "title": "ThermoMaven digital meat thermometer: a listing note",
+        "description": "What the ThermoMaven digital thermometer listing names, what its title claims, and the manual questions to settle before you rely on a reading.",
+        "takeaway": "The title makes speed, accuracy and certification claims. This page keeps them as the listing’s wording and points to the checks a reader can actually run.",
+        "questions": [
+          "Where does the manual say to place the probe in a whole chicken, and how deep does it need to go?",
+          "Can the accuracy figure be checked at home, and what does an ice-water test show before you trust a reading?",
+          "How long does a reading take in practice, and is the display readable in your kitchen light?",
+          "What exactly does the certification wording on the title cover, and who issued it?"
+        ],
+        "related": [
+          "thermometer-ice-water-check",
+          "thermometer-numbers-on-the-label",
+          "where-does-the-probe-go"
+        ]
       }
     },
     {
@@ -373,6 +445,24 @@
         "capacity_note": "",
         "status": "unverified — the detail table on this listing has no Product Dimensions row",
         "scope": "Checked 2026-11-19: the detail table lists brand, features, colour and care but no dimensions. Left blank rather than turned into a guess."
+      },
+      "slug": "chef-iq-sense-wireless-meat-thermometer",
+      "page": {
+        "slug": "chef-iq-sense-wireless-meat-thermometer",
+        "title": "CHEF iQ Sense wireless meat thermometer: a listing note",
+        "description": "What the CHEF iQ Sense listing names, what a wireless probe still leaves open, and the app, range and battery questions to settle first.",
+        "takeaway": "The title names three probes, a WiFi range claim and five sensors. What it cannot tell you is what the app needs, how long a probe lasts and what a dropped connection does to a reading.",
+        "questions": [
+          "What does the app need before the first reading: an account, a phone version, a network?",
+          "How long does a charged probe last, and how is it charged or replaced?",
+          "What probe limits does the instruction sheet state for oven, grill and air-fryer use?",
+          "What happens to a reading if the connection drops in the middle of a cook?"
+        ],
+        "related": [
+          "instant-read-or-wireless-thermometer",
+          "thermometer-numbers-on-the-label",
+          "where-does-the-probe-go"
+        ]
       }
     }
   ],
@@ -1806,6 +1896,39 @@
       "answer_form": "A dated record naming the approver and the publish checklist."
     },
     {
+      "id": "2E0-Q1",
+      "question": "Who re-measures the registers on every release, and what makes a re-measure line trustworthy?",
+      "known": "This register's method says it: append a dated line, never rewrite a dated record. In practice four cells still closed on a figure the registers do not hold, after an integration session had recorded them as fixed (EE-F-02, corrected here as 2E0-F01).",
+      "missing": "A named owner for the re-measure step at release, and a rule that no row may close on a figure that disagrees with its register on the day of the merge.",
+      "discovery": "Run the read-only scripts (sessions/8aa259bb/measure_brief_rows.py, sessions/41e84402/measure_drift.py) before every pull request, read the last sentence of each row against the register, and append a dated correction where they disagree.",
+      "default": "Append, never rewrite; a row whose last line contradicts the register is listed on the Flagged page until it is corrected.",
+      "blocks": "Nothing; the release gate runs whether or not the question is answered",
+      "source": "google-helpful",
+      "owner_input_needed": true
+    },
+    {
+      "id": "2E0-Q2",
+      "question": "Should the four pages that still carry malformed HTML be repaired or retired?",
+      "known": "Measured on this tree: four published pages carry stray end tags — category/kitchen.html, site/flagged.html, site/guides/air-fryer-oven-vs-basket.html, site/guides/index.html — each an unclosed inline element inside a list or a table. A related defect on two other pages (an unescaped <token> and <short-id> that dropped a word from the rendered sentence) was fixed in its generators during this pass. All four remaining pages are noindex,follow, none is in the sitemap or the feed, and none is written by the current reader generator.",
+      "missing": "An owner decision on whether these surfaces are kept as history, repaired inside their own generator, or removed — and who does the repair.",
+      "discovery": "List each page's inbound links from the reader set, then repair through the generator that writes it; a hand edit is overwritten by the next build.",
+      "default": "Leave them live and noindex; they carry the disclosure and break no reader path.",
+      "blocks": "Nothing",
+      "source": "google-page-experience",
+      "owner_input_needed": true
+    },
+    {
+      "id": "2E0-Q3",
+      "question": "Should the release gate refuse a merge-conflict marker anywhere in the published tree?",
+      "known": "Measured 2026-11-20: two occurrences of merge debris were live on main — a stray ‘>>>>>>> c126257 …’ line in COORDINATION.md and a bare ‘=======’ line in assets/publication.css — and no gate noticed either; the release checks read structure, links, provenance and claims, not the absence of merge debris. The marker recurred once inside this session's own rebase. Both occurrences were removed by this pass (flag 2E0-F03).",
+      "missing": "An owner decision on whether that check belongs in the gate, and how broadly to scope it (the published files only, or sessions/ and docs/ too).",
+      "discovery": "Run a one-line scan over the tree before every release; it takes under a second and prints the file, the line and the marker.",
+      "default": "Scan and fix by hand until the check is adopted; nothing is published with a marker knowingly.",
+      "blocks": "Nothing",
+      "source": "google-helpful",
+      "owner_input_needed": true
+    },
+    {
       "id": "AI-1309-Q1",
       "question": "Has Amazon expressly authorized the specific AI use of Amazon product content and API data?",
       "known": "The repository policy record PF-23/PF-24 cites S02 (recorded read 13 Nov 2026): it describes restrictions on using Creators API, PA API or Data Feeds to aggregate, analyze, extract or repurpose Product Advertising Content, and on direct model training/fine-tuning, without express prior written approval. This session did not re-fetch those clauses. No approval scope has been entered in the decision register.",
@@ -2526,6 +2649,67 @@
       "reviewable_now": true
     },
     {
+      "id": "9E-P1",
+      "priority": "Now",
+      "area": "Shop structure",
+      "title": "Give each registered listing its own reader-facing page, not just a card in a category.",
+      "why": "Five products were reachable only as cards inside two category pages and one comparison table, so every product-intent search landed on a category page. A buyer comparing one model wants that model’s page, with its own source record.",
+      "next": "Read the page for any listing, then check its official Amazon link against the register.",
+      "evidence_needed": [
+        "P26-Q1"
+      ],
+      "source": "google-reviews",
+      "status": "Adopted & shipped 2026-11-20",
+      "next_action": "Shipped in this session: build_publication emits shop/<category>/<slug>.html per listing, links them from the front page, the category cards and the comparison table, and adds them to the sitemap, the search index and the indexing policy. The gate is sessions/9ed0552a/test_product_pages.py.",
+      "discoveries": [
+        "Whether a per-model page changes what search engines can tell apart, once real query data exists.",
+        "Which listing the owner wants validated first, once account access exists."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true,
+      "outcome": "Adopted 2026-11-20 by session 9ed0552a; shipped in sessions/9ed0552a/review.md with the gate sessions/9ed0552a/test_product_pages.py."
+    },
+    {
+      "id": "2E0-P1",
+      "priority": "Next",
+      "area": "Content",
+      "title": "Publish the day-after guide: reheating in an air fryer, and the one number that decides it.",
+      "why": "The seasonal cluster covers the meal; nothing covers the days after it. USDA's Food Safety and Inspection Service publishes a single figure a reader can act on with a thermometer — leftovers reach 165°F as measured with a food thermometer — and the FoodSafety.gov chart this site already cites repeats it for leftovers and casseroles. That is a question-shaped article with no product claim inside it.",
+      "next": "Open the FSIS 'Leftovers and Food Safety' page and the FoodSafety.gov chart, record both as register sources with the date read, confirm the reheat figure and the two-hour refrigeration rule are unchanged, then draft through the same gate as the current guides.",
+      "evidence_needed": [
+        "food-safety"
+      ],
+      "source": "food-safety",
+      "status": "Proposed",
+      "next_action": "Add the FSIS leftovers page and the FSIS food-thermometer factsheet to data/publication.json sources, write the guide with the 165°F reheat rule, the 40–140°F danger zone and the two-hour refrigeration rule quoted and dated, link it from the thermometer and air-fryer category pages, and let the build add it to the feed and sitemap.",
+      "discoveries": [
+        "Whether FSIS has changed the 165°F reheat figure or the two-hour rule since its page was last updated.",
+        "Whether anyone reaches the site with a reheating question — not measurable until Search Console ownership is verified."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
+    },
+    {
+      "id": "2E0-P2",
+      "priority": "Next",
+      "area": "Findability",
+      "title": "Describe the breadcrumb trail in structured data on every guide.",
+      "why": "Each guide already shows The edit / Buying guides / category above its title. Google's structured-data documentation describes BreadcrumbList as the machine-readable form of exactly that trail, so it states nothing a page does not already show and needs no new evidence.",
+      "next": "Add one BreadcrumbList block beside the existing Article block in the guide template, keep the visible trail as its source of truth, then validate one deployed URL in Google's Rich Results Test and record what it returns.",
+      "evidence_needed": [
+        "google-structured-data"
+      ],
+      "source": "google-structured-data",
+      "status": "Proposed",
+      "next_action": "Render BreadcrumbList JSON-LD on guides/*.html from the same three labels the visible trail uses, add a check in tools/check_publication.py that the markup and the trail agree, and re-run the release gate.",
+      "discoveries": [
+        "Whether Google still returns breadcrumb rich results for pages of this kind.",
+        "Whether the markup can drift from the visible trail without a gate noticing."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
+    },
+    {
       "id": "AI-1309-P1",
       "priority": "Next",
       "area": "AI and automation",
@@ -2572,7 +2756,12 @@
     "guides/thermometer-numbers-on-the-label.html",
     "guides/thermometer-ice-water-check.html",
     "guides/measure-your-counter-first.html",
-    "guides/color-is-not-doneness.html"
+    "guides/color-is-not-doneness.html",
+    "shop/air-fryers/chefman-6-quart-dual-basket-air-fryer.html",
+    "shop/air-fryers/emeril-lagasse-26qt-french-door-air-fryer-oven.html",
+    "shop/air-fryers/chefman-turbofry-8-qt-air-fryer.html",
+    "shop/meat-thermometers/thermomaven-digital-meat-thermometer.html",
+    "shop/meat-thermometers/chef-iq-sense-wireless-meat-thermometer.html"
   ],
   "paths": [
     {

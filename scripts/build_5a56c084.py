@@ -29,6 +29,7 @@ was not confirmed instead.
 """
 from __future__ import annotations
 
+import html
 import json
 import pathlib
 import re
@@ -89,6 +90,11 @@ def inline(text: str) -> str:
     rewrites root-relative hrefs on subdirectory pages, so 'flagged.html' works
     from articles/ as well as from the flat root pages.
     """
+    # 2e0d5c15 (2026-11-20): escape the prose before substituting markers. Article copy
+    # writes placeholders as literal text ("amazon.com/dp/<token>"); unescaped, a browser
+    # reads <token> as an unknown element and the word disappears from the sentence.
+    # The marker patterns use only braces and capitals, so escaping cannot disturb them.
+    text = html.escape(text, quote=False)
     text = re.sub(r"\{\{(S\d+)\}\}", lambda m: src_anchor(m.group(1)), text)
     text = re.sub(r"\{\{(FLG-\d+)\}\}", lambda m: flag_anchor(m.group(1)), text)
     return text
