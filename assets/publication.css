@@ -402,3 +402,8 @@ a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
 .p26-style-rules li span{color:var(--p26-muted);font-size:12px}
 .p26-outcome{border-left:3px solid var(--p26-orange);padding-left:12px;margin-top:10px}
 .p26-correction{display:block;margin-top:8px;color:var(--p26-muted);font-weight:400}
+/* Front-page shopping routes: real destinations, usable without JavaScript. */
+.p26-shop-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#284334;color:#fff9eb}
+.p26-shop-paths a{display:grid;gap:.65rem;padding:1.35rem 1.5rem;color:inherit;text-decoration:none;border-inline-end:1px solid #ffffff38}
+.p26-shop-paths small{font:600 10px/1.4 var(--p26-sans);letter-spacing:.13em;color:#dae2ce}.p26-shop-paths span{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font:clamp(19px,2vw,28px)/1.15 var(--p26-serif)}.p26-shop-paths a:is(:hover,:focus-visible){background:#365640;text-decoration:underline}.p26-shop-paths a:focus-visible{outline:2px solid white;outline-offset:-4px}
+@media(max-width:700px){.p26-shop-paths{grid-template-columns:1fr}.p26-shop-paths a{border-inline-end:0;border-bottom:1px solid #ffffff38;padding:1rem 1.25rem}}
