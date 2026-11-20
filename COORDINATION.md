@@ -10173,3 +10173,47 @@ Done · [PR #211](https://github.com/kanlerxz87-cyber/Zone3/pull/211). The three
 - **Irregularities:** none new. Info only: `DESIGN_PROMPT.md` §3 feed count (29) is stale vs shipped `feed.xml` (11, check passes); decision labels use `shortlist/defer/reject` (function identical to Accept/Reject/Defer). Standing flags FLG-002/003/005/006 and account/host blockers unchanged, published on the Flagged-for-review page, non-blocking.
 - **Rebase log:** PR #211 merged to `main` (`deb67e5`) while this PR was open, so the first merge attempt conflicted in `COORDINATION.md` (both sessions appended at the same anchor). Resolved by keeping **both sides in full**, upstream (`ece5f73c`) first, then this Part; no content discarded. Re-ran gates after rebase before pushing.
 - **Release record:** [PR #212](https://github.com/kanlerxz87-cyber/Zone3/pull/212) — merged without waiting after gates green. **Merge:** `2026-11-20T05:50:05Z` as `bb3d554e0bff56c3833c9953d9abbb8f4655be0e` into `main`. **Checks:** `Publication checks` on the PR — success (run 44683621597); on the merge push — success (run 44683649283); `pages-build-and-deployment` — success (run 44683648529, 31 s). **Gates:** `tools/publish.py` 49/49 before the PR and 31/31 `--check` after the rebase. **Live read-back:** `https://kanlerxz87-cyber.github.io/Zone3/?revision=bb3d554` — PR #211 front page live ("THE COUNTERTOP ISSUE"), all five CTAs carry `tag=shopnow047c-20`, FLG-003 footnote intact, "no current price or rating is reproduced". **Flagged, not blocking:** FLG-002/003/005/006 and account/host blockers, published on the Flagged-for-review page.
+
+---
+
+# Part ae4e29b6 — Independent re-verification, executive summary refresh, and design-prompt feed (2026-11-20)
+
+**Session:** `ae4e29b6` · **Branch:** `arena/ae4e29b6-zone3` · **Base:** `main@6a6fdc3` (PR #210 merge)
+**Claimed:** 2026-11-20 · **Status:** in progress
+**Scope (non-overlapping, additive only):** `sessions/ae4e29b6/**`, `EXECUTIVE-SUMMARY.md` (prepend dated 2026-11-20 status section), `DESIGN_PROMPT.md` (append dated 2026-11-20 addendum), `COORDINATION.md` (this Part only). No generated HTML, no `data/*.json`, no `tools/*`, no `scripts/*` edits in this session. If a fix requires a file outside this scope, it will be logged here as a change request, not edited.
+
+**Tasks:**
+- AE-T1: Line-by-line re-verification of the 5 submitted links, 5 observed destinations, and load-bearing official sources (S01, S02, S06/S31, S07, S25, S90, S96) with source links; blank + flagged where unverified. Record in `sessions/ae4e29b6/verification-2026-11-20.md`.
+- AE-T2: Site integrity gates (`tools/publish.py --check`, `scripts/check_site.py`, `scripts/check_all_links.py`, sitemap/feed checks, disclosure/sponsored/tag counts). Fix only in-scope files; log out-of-scope defects as flags.
+- AE-T3: Executive summary refresh (2026-11-20 status section in `EXECUTIVE-SUMMARY.md`) + design-prompt feed addendum in `DESIGN_PROMPT.md` (polished-marketing prompt lines, question-shaped article plan, organic-traffic mechanics, anti-slop rails, decision gate via `suggestions/index.html`).
+- AE-T4: PR to `main`, merge without waiting (per standing brief), confirm GitHub Pages build, record PR link + merge result here.
+
+**Standing rules for this session:** No price/rating/review/commission-per-product claims (Program Policies 2(b)/6(t), S02). No intent confirmation inferred from redirects (FLG-002). Supplied short links never called invalid (FLG-003). Disclosure + `rel="sponsored"` + tag gates must stay green. Blocked proposals (tag validation, intent, Search Console, analytics host, human editor, testing, API) stay blocked and flagged, not implemented.
+
+### ae4e29b6 — completion record (2026-11-20)
+
+- **AE-T1 · done.** All five `link.amazon/…` links fetched live 2026-11-20; every one landed on the
+  destination already recorded in `data/products.json` (`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`,
+  `B0DHZTCNR5`, `B0DZFD6R9Z`) — **no drift**. Listing titles read from the arrived-at pages; prices,
+  ratings, review counts and availability deliberately **not** transcribed (S02 2(b)/6(t)). Seven
+  official sources re-opened (S01 Agreement dated 2025-10-15, S02 Policies dated 2026-04-14, S06/S31
+  Creators API GetItems, S07 FTC Disclosures 101, S25 commission Table 1, S90 Google sponsored links,
+  S96 sitemap) plus PF-03/04/05/38/58/59 — **no policy fact needed correcting**. Submitted IDs still
+  9 characters against a 10-character ASIN definition (FLG-001 open; supplied links **not** called
+  invalid, FLG-003 unresolved). Record: `sessions/ae4e29b6/verification-2026-11-20.md`.
+- **AE-T2 · done.** `tools/publish.py --check` **31/31 PASS**; `check_site.py` OK 42 pages / 5
+  products / 90 sources / 182 flags; `check_all_links.py` 211 pages / 349 URLs / **0 errors**;
+  sitemap current 20 URLs; feed 11 items; `check_publication.py` PUBLICATION PASS (124 pages, 22
+  rendered, 127 source rows). Disclosure 142/157 non-archive pages; the 15 misses are
+  `sessions/3c886b62/*.html` (archived prior-session prototype, `robots`-disallowed, out of scope →
+  new flag **AE-F-01**, logged for the integration session). 134/134 Amazon anchors across the front
+  page, 12 guides and shop surfaces carry `rel="sponsored"`; front page carries `tag=shopnow047c-20`
+  5/5. Measurement OFF, campaign ledger empty by design.
+- **AE-T3 · done.** `EXECUTIVE-SUMMARY.md` — new dated 2026-11-20 status section prepended (prior
+  status kept verbatim below). `DESIGN_PROMPT.md` — §15 "Batch 5 — the anti-slop feed" appended:
+  diagnosis of register-speak in body copy, a five-question anti-slop acceptance test, a
+  seven-title trend-shaped article plan with kill criteria, organic-traffic mechanics inside the
+  rails, front-page stop-list, and the decision gate that still blocks every item.
+- **AE-T4 · in progress** — PR to `main`, merge, Pages confirmation recorded below.
+- **Change request (out of scope, for integration):** AE-F-01 above — decide add-banner / archive /
+  delete for `sessions/3c886b62/`. This session did not edit those files.
