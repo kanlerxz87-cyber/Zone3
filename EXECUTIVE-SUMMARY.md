@@ -1,5 +1,119 @@
 # Executive summary — Zone3 Kitchen
 
+## Independent re-verification pass · 2026-11-20 · session `fc812c5e`
+
+**Bottom line.** The shop-first publication was already live, so this pass re-verified it line by line
+instead of rebuilding it. All five supplied short links still open the same five listings, all five
+listing titles match the register verbatim, the load-bearing policy clauses (Operating Agreement §5,
+Participation Requirements 2(b)/6(t)/6(w), FTC Disclosures 101) still say what the site assumes they
+say, and the full build chain is green (49/49, no drift). No product fact, price, rating, review
+count, commission rate, traffic or revenue figure was added or inferred; every blank stays blank and
+flagged. The only files changed are this note, the session verification record, and the coordination
+board. Full record: [`sessions/fc812c5e/verification-2026-11-20.md`](sessions/fc812c5e/verification-2026-11-20.md).
+
+| Area | Current state after this pass | Decision boundary | Basis |
+|---|---|---|---|
+| Products | 5 submitted links → 5 observed ASINs (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z); titles re-read 2026-11-20, 5/5 verbatim. Intent fields blank for all five. | Observed ≠ intended. FLG-003 stays open; short links are never called invalid. | [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) · [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) · [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) · [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) · [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) |
+| Compliance | Disclosure strip above the fold on every page; every product CTA tagged `shopnow047c-20` and `rel="sponsored"`; no price/rating/review count published (2(b)/6(t)). | Tag presence is not proof of enrolment or attribution; that check needs the enrolled workflow. | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) · [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
+| Findability | 20 sitemap URLs, 11 feed entries, canonical + Open Graph on reader pages; Search Console still unverified (owner-only). | No search-demand or ranking claim is made; topics stay editorial hypotheses until first-party reports exist. | [sitemap](sitemap.xml) · [feed](feed.xml) |
+| Measurement | Five-event runtime shipped, production collection OFF, ledger empty. | No conversion/traffic/revenue statement can be made until a durable host and authorized reports exist. | [measurement](measurement/index.html) |
+| Decision desk | 6 paths, 30 proposals, 39 questions, 50 review-only selects with export; design brief with 12 rails. | Choices implement nothing; each needs its evidence gate first. | [suggestions](suggestions/index.html) · [design brief](DESIGN_PROMPT.md) |
+| Release | `tools/publish.py` 49/49, working tree clean after rebuild. | Structural gates are not fact verification; facts were verified separately above. | [session record](sessions/fc812c5e/verification-2026-11-20.md) |
+
+**Questions that still need an owner answer before the next decision** (full register on the
+[suggestions page](suggestions/index.html#questions)): confirm the intended ASIN/URL per product;
+validate one Special Link per product in the enrolled workflow and read the tracking report; confirm
+Associates enrolment and Creators API eligibility; choose a durable analytics host and verify Search
+Console; resolve GitHub Pages commercial-use fit. Until then the site keeps its safe defaults: blank
+intent/price/rating fields, tagged direct CTAs, collection off, empty ledger.
+
+**Scope note.** PR #211 (`arena/ece5f73c-zone3`) owns the front-page files
+(`index.html`, `assets/publication.css`, `tools/build_publication.py`) and was not touched.
+## Current status — owner-brief pass: re-verified, two guides added, suggestions extended · 2026-11-20 · session `263214e8`
+
+**Bottom line.** The five submitted links were re-followed on 2026-11-20 and all five open the same
+Amazon listings as the register holds (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z).
+The Operating Agreement, Program Policies, FTC disclosure guide, Google guidance, FoodSafety.gov,
+USDA FSIS and GitHub Pages limits were re-read live. Two question-led guides were added from those
+official sources, the suggestions desk gained four proposals and four questions, and the shopfront
+received a restrained polish pass. Nothing that requires account access was simulated.
+
+| Area | Current state after this pass | Decision boundary | Basis |
+|---|---|---|---|
+| Product links | Five supplied short links, observed destinations unchanged. Intended ASINs, official listing URLs, confirmation dates and sources remain blank for all five. | A redirect is an observation, not intent. The short links are not called invalid; compliance status stays unresolved (FLG-003). One Special Link per product must be validated in the enrolled workflow before scaling. | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) · [intent record](intent-record/index.html) |
+| Reader guides | Thirteen question-led guides, including two new on 2026-11-20: measuring the counter before buying, and color versus doneness. Each guide carries its sources and its unknowns. | Listing wording is not a hands-on result. No ranking, popularity or demand claim is made. New topics are chosen from measured queries once Search Console reports exist. | [guide index](guides/index.html) · [FoodSafety.gov](https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures) · [USDA FSIS](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers) |
+| Suggestions desk | Thirty-four proposals, forty-three open questions, six paths. Each proposal names a next action, the facts that action would settle, and who can unblock it. | Choosing a path records a review note only; it implements nothing, activates no account and spends nothing. | [suggestions](suggestions/index.html) |
+| Disclosure and links | The Associates sentence sits under the masthead on every page and repeats in the footer. Every outbound product link carries rel="sponsored" and the selected tracking ID. | Placement follows the FTC guidance that a footer-only disclosure is likely to be missed. | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) · [Google outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
+| Measurement | Production collection stays off. The five-event runtime and the empty campaign ledger are unchanged. | No Search Console property and no authorized Associates report exist, so no traffic, conversion or revenue statement can be made. | [measurement](measurement/index.html) · [campaign ledger](data/shop/campaign-ledger.json) |
+| Hosting | GitHub Pages serves the site as a technical deploy. | GitHub states Pages is not intended for running an online business or e-commerce site. Commercial hosting needs separate review before scaling. | [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits) |
+
+**Questions that must be answered before the next decision, and who holds the answer.** The full
+register is on the [suggestions page](suggestions/index.html#questions). The four questions added
+this pass are: which topics will bring real search visitors (measured after launch); what polished
+means in measurable terms (owner, editorial); which automation is safe without account access
+(owner, infrastructure and account); and the publishing cadence with a named approver (owner,
+editorial). Until then the site keeps the safe defaults in the register: blank intent fields,
+unresolved link status, no prices or ratings, production measurement off, and one guide review
+every 14 days gated on evidence.
+
+**Scope and verification.** Changed in this pass: `data/publication.json` (two guides, four
+proposals, four questions, refreshed source scopes), `assets/publication.css` (hover polish),
+this opening, and `sessions/263214e8/verification-2026-11-20.md` (line-by-line record).
+Historical sections below keep their original dates and scope and were not re-checked line by line.
+
+---
+
+## Independent re-verification, zero corrections · 2026-11-20 · session `ae4e29b6`
+
+**Read with the `fc812c5e` section above, not instead of it.** That session re-read the same five
+listings on the same day and reached the same conclusion from a different angle (it also re-confirmed
+all five listing titles verbatim against the register). The two passes agree; neither found drift.
+Their chain ran 49 checks, this one 31, because the two sessions inherited different menus of
+registered commands — the counts are not comparable and neither is a claim about depth.
+
+**Bottom line.** This pass re-opened all five submitted product links and seven load-bearing official
+pages on 2026-11-20 and re-ran the full release chain. **Nothing needed correcting.** The five links
+land on exactly the five destinations the register already records, the policy clauses behind every
+site rail still say what the rails assume, and all 31 checks pass. The remaining gaps are
+account-side, not editorial — and they stay flagged rather than being closed with an inference.
+Full record: [`sessions/ae4e29b6/verification-2026-11-20.md`](sessions/ae4e29b6/verification-2026-11-20.md).
+
+1. **The links resolve; intent still does not.** `link.amazon/B04G1MEwY` → `B0CDY277D3`,
+   `B02NbDxp3` → `B09B7SB46R`, `B00hJ57DV` → `B08DKYBTPH`, `B0c8moW59` → `B0DHZTCNR5`,
+   `B0f3GKalj` → `B0DZFD6R9Z`. All five match `data/products.json` byte for byte, so **no drift in
+   five days**. What is still missing is the owner's confirmation that those are the intended
+   products (FLG-002) — a redirect cannot supply it, and none was invented.
+2. **The submitted IDs are 9 characters; an ASIN is 10.** Re-confirmed against the Creators API
+   `GetItems` reference (S06/S31) and the direct-`/dp/` check (S08). This is a real, stable
+   irregularity (FLG-001), not a typo to be silently repaired — the site keeps stating it and keeps
+   the supplied links **not** called invalid (FLG-003).
+3. **Prices, ratings and review counts stay blank on purpose.** Every one of those numbers was
+   visible on the live pages today. None was transcribed: Program Policies 2(b) allows a site to
+   show prices and availability only from an Amazon-served link or the Creators/PA API, and 6(t)
+   restricts review republication. Copying them into this repository would build a second,
+   unlicensed data store — the opposite of the compliance gate this project asks for.
+4. **The compliance rails held under a fresh read.** Operating Agreement §5 (page dated 2025-10-15)
+   still requires the exact Associates sentence and §6 still calls a breach material; Program
+   Policies 2(b) (page dated 2026-04-14) still requires the tag in every Special Link URL and bars
+   bookmark encouragement and per-user sub-tags; FTC *Disclosures 101* still asks for the disclosure
+   in the same place and language as the endorsement; Google still wants `rel="sponsored"` on paid
+   placements. `data/policy_facts.json` needed no edit.
+5. **The published site is clean by count.** 142 of 157 non-archive pages carry the Associates
+   sentence; the 15 that do not are an archived prototype folder from an earlier session
+   (`sessions/3c886b62/`), excluded from the sitemap and disallowed in `robots.txt`. 134 Amazon
+   anchors across the front page, 12 guides and every shop surface carry `rel="sponsored"` — **zero
+   exceptions**; the front page carries the tag on all five CTAs. Sitemap 20 URLs, feed 11 items.
+   Measurement is still OFF with an empty ledger, as designed.
+6. **One new flag, logged not fixed.** `AE-F-01`: those 15 archived files have no disclosure banner.
+   They are out of this session's file scope, so the request is written into the record for the
+   integration session to resolve (add a banner, archive, or delete) rather than edited here.
+7. **Still blocked, still not faked.** Associates tag validation and click-report confirmation
+   (`shopnow047c-20` is owner-supplied, unvalidated), product-intent confirmation, Search Console
+   access, an analytics host, a human editor, paid testing, and API enrolment all require an account
+   action outside this repository. They are listed on the suggestions/decisions surfaces with the
+   evidence that would unblock each one — not quietly assumed.
+
+
 ## Current status — listing evidence re-read, register corrected · 2026-11-19 · session `0a48cfda`
 
 **Bottom line.** The reader-facing publication was already built, so this pass spent its time on the

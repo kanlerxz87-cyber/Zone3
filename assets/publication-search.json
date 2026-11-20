@@ -66,6 +66,18 @@
     "path": "guides/thermometer-ice-water-check.html"
   },
   {
+    "title": "Before you buy: what to measure on your counter",
+    "description": "Exterior size is the one number a listing prints. Here is how to use it — and what it still does not tell you.",
+    "kind": "Air fryers",
+    "path": "guides/measure-your-counter-first.html"
+  },
+  {
+    "title": "Color is not doneness: what to check instead",
+    "description": "Grill marks and color can mislead. The official guidance points to one check that does not guess.",
+    "kind": "Meat thermometers",
+    "path": "guides/color-is-not-doneness.html"
+  },
+  {
     "title": "Chefman 6-quart dual-basket air fryer",
     "description": "Two separate baskets, or one larger cooking space? Start with what you actually cook.",
     "kind": "Listing note",

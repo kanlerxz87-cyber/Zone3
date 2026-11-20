@@ -415,3 +415,18 @@ a.p26-choice strong{font:600 14px/1.4 var(--p26-sans)}
 .p26-article .p26-product-art{margin:24px 0 10px}
 /* 9E-T2: sibling shortlist links in the listing-note aside. */
 .p26-article-aside>p.p26-aside-more{margin:26px 0 0;border-top:1px solid var(--p26-line);padding-top:18px}
+
+/* 263214e8 (2026-11-20): shopfront polish pass. Same rails as the rest of the publication —
+   hairlines, no shadows, one accent, small type meant to be read. Hover states only; no
+   layout, colour or type-scale change, so the measured page experience is untouched. */
+.p26-guide-card{border-top:1px solid var(--p26-line);padding-top:18px;transition:border-color .18s}
+.p26-guide-card:hover{border-top-color:var(--p26-orange)}
+.p26-guide-card:hover .p26-guide-copy h3 a{color:var(--p26-orange)}
+.p26-guide-copy h3 a{transition:color .18s}
+.p26-product-card{transition:border-color .18s}
+.p26-product-card:hover{border-color:#c9cdc0}
+.p26-article h2{text-wrap:balance}
+.p26-page-intro h1,.p26-hero h1{text-wrap:balance}
+.p26-takeaway{border-left:3px solid var(--p26-orange)}
+.p26-checklist li::marker{color:var(--p26-orange)}
+@media(prefers-reduced-motion:reduce){.p26-guide-card,.p26-product-card,.p26-guide-copy h3 a{transition:none}}

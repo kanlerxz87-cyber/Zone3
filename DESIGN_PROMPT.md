@@ -258,3 +258,97 @@ dated Outcome line on its proposal card. Nothing here was built before the decis
   the brand promise (D34-Q1) and every owner-gated question in the decision-readiness register —
   a design brief cannot answer those, and pretending otherwise is how an unverified assumption
   becomes a layout.
+
+---
+
+## 15. Batch 5 — the anti-slop feed (session ae4e29b6, 2026-11-20)
+
+This addendum feeds the *design* question the owner keeps returning to: why does the site still read
+like an audit, and what exactly would make it read like a shop a person would trust? It is written
+after re-opening all five listings and seven policy pages on 2026-11-20 (record:
+`sessions/ae4e29b6/verification-2026-11-20.md`). Nothing here is a claim about search volume,
+popularity or conversion — no such data exists in this repository, and rail R11 still forbids
+inventing it.
+
+### 15.1 The diagnosis: the pages explain the rule instead of answering the question
+
+The registry language is the tell. A shop says *take the 6-quart dual basket if you cook two things
+at once and hate timing them*. An audit says *P1 observes a 6 Quart capacity per the destination
+title, unconfirmed as the submitted product*. Both statements are true; only the first is a page a
+buyer finishes reading. The fix is not to delete the honesty — it is to move it one layer down:
+answer first, footnote the provenance inline, and keep the full register reachable.
+
+Concretely, three habits to break:
+
+1. **Register IDs in body copy.** `P1`, `SHOP-03`, `FLG-022` belong in a provenance drawer, not in a
+   sentence a stranger reads. Keep them in the table and the flag pages.
+2. **Hedging stacked three deep.** "Reported by the listing title, not independently verified, and
+   not a claim of superiority" in one paragraph reads as machine caution. One short line — *"from the
+   listing's own wording; we haven't handled it"* — carries the same honesty.
+3. **Symmetric treatment of unequal things.** Five products and nineteen open questions are not the
+   same editorial weight. The front page should be five products and one door to the research.
+
+### 15.2 The anti-slop test — a page passes if a stranger can answer all five in ten seconds
+
+- What is this thing, in the first twelve words?
+- Who is it for, and who should skip it?
+- What does it *not* tell me, stated once?
+- What do I do next — and is the link visibly a paid link?
+- Who wrote this, and when was it last checked?
+
+A block that cannot answer one of those is decoration. This is the acceptance test for every
+redesign comp.
+
+### 15.3 Trend-shaped article plan (hypotheses, not volume claims)
+
+The owner asked for "catchy trendy articles that generate organic traffic". Search demand for these
+is **unmeasured** in this repo; each row is an editorial hypothesis with the evidence that would
+promote or kill it. Publish order should follow measured arrivals once measurement is on — not
+instinct.
+
+| Working title | Buyer question it answers | Why it could earn a click | Killed by |
+|---|---|---|---|
+| "Two baskets, one plug: what a dual-basket air fryer actually changes about dinner" | Do I need two zones? | The format is genuinely confusing and the listings only describe features | Nothing arrives in 90 days of measured queries |
+| "The 6-quart lie: why capacity numbers don't compare across brands" | Is a bigger number a bigger basket? | Contradicts the number the shopper is anchored on, backed by the listing's own Qt-per-basket wording | A source that shows comparable measurement standards |
+| "French-door vs basket: the counter-space question nobody answers" | Which fits my counter? | Ties directly to the dimension rows already verified | Authorized dimension source unavailable (E41-P1) |
+| "What 'Hi-Fry' and 'Sync Finish' mean before you pay for them" | Are these features or marketing? | Decodes label words a shopper sees but can't evaluate | Already covered by `guides/air-fryer-label-words.html` — extend, don't duplicate |
+| "Probe in, phone out: when a wireless thermometer beats a $17 instant-read" | Is the expensive one worth it? | Price-gap framing without quoting a price | Any statement of price or rating (R2) |
+| "Thanksgiving timing, without the guesswork" | How do I not ruin the bird? | Seasonal, genuinely searched, links to the thermometer cluster | Framing as urgency or a limited-time promotion (R3) |
+| "The ice-water check: five minutes that tells you if your thermometer lies" | Can I trust this thing? | Useful with zero purchase, which is what makes it linkable | — (already published; this is the model to copy) |
+
+**Clusters, not one-offs.** Air-fryer format (4 guides live) and thermometer accuracy (5 guides live)
+are the two clusters the site can defend. A third cluster should not start until one of these two
+shows measured arrivals. Cluster rule: every new guide links to two siblings and one category page,
+and the category page lists it — otherwise it is an orphan.
+
+### 15.4 Organic-traffic mechanics that are actually in our control
+
+- **One site, one index surface.** 20 canonical URLs, one sitemap, one feed, `robots.txt` declaring
+  it. Any new guide must be added to all three in the same commit or the gate fails.
+- **Question-shaped titles and H1s**, matching how the query is typed. The eleven live guides already
+  do this; the front page should borrow the shape rather than listing sections.
+- **Internal links with descriptive anchors** ("capacity checklist", not "read more") — the cheapest
+  ranking and retention lever available and entirely within the rails.
+- **Freshness a reader can see**: a dated "last checked" line per guide, which is honest because the
+  register genuinely records the date.
+- **Search Console is the missing instrument** (blocked, owner-gated). Until it is connected, no
+  claim about queries, impressions or rankings may appear anywhere on the site.
+
+### 15.5 What to stop doing on the front page
+
+- Stop leading with the verification method. Lead with the five products, then one line on how they
+  were chosen, then the door to the research.
+- Stop equal-weighting the nine dashboard surfaces. Footer, one navigation group, as the brief says.
+- Stop describing the disclosure twice in the same viewport; once above the fold, once in the footer,
+  exactly as the rail requires — not a third time in body copy.
+- Stop any visual that implies a hands-on test we did not run (R7). Illustrations labelled as
+  illustrations are the only imagery permitted (R9).
+
+### 15.6 The decision gate stays in front of all of this
+
+Every item above is a proposal. It goes live only after the owner picks a path on
+[`suggestions/index.html`](https://kanlerxz87-cyber.github.io/Zone3/suggestions/index.html), where each
+carries its answer owner and a safe default. The specific blockers a designer will hit on day one:
+brand name and promise (Q1/D34-Q1), the authorized dimension source (E41-P1/Q1), imagery licensing
+(S-18), and whether a human editor exists at all (editor/cadence question). A comp that assumes those
+are settled is not a design, it is a guess wearing a typeface.

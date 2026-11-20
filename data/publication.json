@@ -2,7 +2,7 @@
   "meta": {
     "title": "Zone3 Kitchen — publication source record",
     "session": "1c072a7a",
-    "updated": "2026-11-19",
+    "updated": "2026-11-20",
     "author": "Zone3 Editorial",
     "authorship": "AI-assisted, listing-based editorial. No hands-on testing or named human reviewer is claimed.",
     "cadence": "Review one guide every 14 days; publication is gated on evidence. This is an operating plan, not a traffic forecast.",
@@ -13,11 +13,11 @@
       "kind": "AI-generated editorial lifestyle illustration",
       "scope": "Generic food and kitchen scene; no advertised product, test meal or testing evidence is depicted."
     },
-    "reverified": "2026-11-19",
-    "reverified_by": "sessions b580d790, d3493182 (arena/d3493182-zone3) and 0a48cfda",
-    "reverification_scope": "Re-read 2026-11-19: Amazon Associates Program Operating Agreement (S01) and the Associates Program Policies, Participation Requirements 1, 2(a) and 3 (S02); the FTC influencer disclosure guide (S07); and all five supplied short links in a browser-user-agent fetch. Observed destinations were unchanged from the register. Session d3493182 (2026-11-19) re-opened all five short links and re-read Agreement Sections 1, 4, 5 and 6, Policies Participation Requirements 2(a)-(b), the FTC guide, and Google helpful-content and outbound-link guidance; observed ASINs, titles and breadcrumbs were unchanged (one thermometer title variant noted in the session record). No price, rating, review count or performance claim is made anywhere on the site. Session 0a48cfda (2026-11-19) re-read all five official listing detail tables: titles and breadcrumbs unchanged, exterior dimensions found and recorded for three listings, none published for the two thermometers.",
+    "reverified": "2026-11-20",
+    "reverified_by": "sessions b580d790, d3493182 (arena/d3493182-zone3), 0a48cfda and 263214e8 (arena/263214e8-zone3)",
+    "reverification_scope": "Re-read 2026-11-20 (session 263214e8): Amazon Associates Program Operating Agreement (S01, Updated October 15, 2025) and the Associates Program Policies (S02, Updated April 14, 2026), Participation Requirements 2(a)-(b) and 6(t)/(v)/(w); the FTC influencer disclosure guide (S07); Google outbound-link, helpful-content, reviews and Search Console guidance; FoodSafety.gov safe minimum internal temperatures and USDA FSIS Food Thermometers; GitHub Pages limits; and all five supplied short links. Observed destinations were unchanged from the register (one thermometer title wording variant recorded as 263-F01; register title left unchanged). The Commission Appendix rate table is login-gated and was not re-verified this pass (263-F02). No price, rating, review count or performance claim is made anywhere on the site. Prior scope retained: 2026-11-19 re-reads by sessions b580d790, d3493182 and 0a48cfda (Agreement, Policies, FTC, five short links, listing detail tables with exterior dimensions for three listings).",
     "reverification_evidence": "S95",
-    "reporting_month_note": "Publication months are editorial labels. The current edition date is 19 November 2026.",
+    "reporting_month_note": "Publication months are editorial labels. The current edition date is 20 November 2026.",
     "decision_desk": {
       "session": "6b68afc8",
       "updated": "2026-11-19",
@@ -30,43 +30,43 @@
       "id": "amazon-agreement",
       "title": "Amazon Associates Operating Agreement",
       "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-      "checked_on": "2026-11-19",
-      "scope": "Re-read 19 Nov 2026 (decision-desk pass), chunk 1 of 4: §5 “You must clearly and prominently state… As an Amazon Associate I earn from qualifying purchases”, §6 treating any §5 violation as a material breach, and the no-traffic-or-income-representation sentence in §4. Header: updated October 15, 2025."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): header Updated October 15, 2025. Section 1 (Special Links must use tagged formats), Section 5 (exact disclosure sentence), Section 6 (Section 5 violation is a material breach), Section 4 (no representation about traffic or commission income)."
     },
     {
       "id": "amazon-policies",
       "title": "Amazon Associates Program Policies",
       "url": "https://affiliate-program.amazon.com/help/operating/policies",
-      "checked_on": "2026-11-19",
-      "scope": "Re-read 19 Nov 2026 (decision-desk pass), chunk 3 of 11: 1(f)/(g) child-directed and Amazon-trademark-in-identifier bans; 2(a) Special Links enable tracking and must use the assigned Associates ID; 2(b) tag parameter, no bookmarking inducement, sub-tag must not map to an end user, original content required on listing pages, promotion-removal duty, no inaccurate/overbroad/misleading claims, price display only via an Amazon-served link or a licensed API. Header: updated April 14, 2026."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): header Updated April 14, 2026. Commission Income Statement Section 1 (24-hour session), Section 2(e) Redirecting Link and 2(g) improperly formatted links disqualified. Participation Requirements 2(a) (Special Links must use assigned Associates ID), 2(b) (tag XXXXX-## as URL parameter; sub-tags never per end user; prices/availability only if Amazon serves the link or via Creators/PA API; no misleading claims), 6(t) (reviews/star ratings only via Creators/PA API), 6(v)/(w) (no cloaking or unclear shortening), 6(y) (no price tracking/alerting). IP License Agent Terms Section 4."
     },
     {
       "id": "ftc",
       "title": "FTC: Disclosures 101",
       "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "checked_on": "2026-11-19",
-      "scope": "Re-read 19 Nov 2026 (decision-desk pass), whole page: place the disclosure with the endorsement so it is hard to miss; simple wording; you cannot talk about your experience with a product you have not tried. Dated November 2019."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): place the disclosure so it is hard to miss, with the endorsement message itself; likely missed if only on an about/profile page or behind a click; simple clear language; cannot describe experience with a product not tried. Guide dated November 2019."
     },
     {
       "id": "google-reviews",
       "title": "Google: write high quality reviews",
       "url": "https://developers.google.com/search/docs/specialty/ecommerce/write-high-quality-reviews",
-      "checked_on": "2026-11-19",
-      "scope": "Full page read: original evidence, user perspective, support for best-in-class claims. No ranking guarantee."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): demonstrate knowledge; evidence of own experience; quantitative measurements; pros/cons from original research; first-hand evidence required for best claims. Last updated 2025-12-10 UTC. This site makes no first-hand claim."
     },
     {
       "id": "google-links",
       "title": "Google: qualify outbound links",
       "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
-      "checked_on": "2026-11-19",
-      "scope": "Re-read 19 Nov 2026 (decision-desk pass): sponsored marks advertisements or paid placements; marked links are generally not followed. Page last updated 10 Dec 2025."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): rel=sponsored for advertisements or paid placements; multiple values space/comma separated. Last updated 2025-12-10 UTC."
     },
     {
       "id": "search-console",
       "title": "Google: get started with Search Console",
       "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
-      "checked_on": "2026-11-19",
-      "scope": "Chunk 0 read: ownership verification, sitemap submission and query/page performance reports."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): verify ownership, submit sitemap, Search performance report shows impressions/clicks by query, page and country. No property verified for this site."
     },
     {
       "id": "google-canonical",
@@ -86,15 +86,15 @@
       "id": "github-limits",
       "title": "GitHub Pages limits",
       "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
-      "checked_on": "2026-11-19",
-      "scope": "Re-read 19 Nov 2026 (decision-desk pass): Pages is not intended for or allowed as free hosting for an online business, e-commerce site or any site primarily directed at facilitating commercial transactions; 1 GB published site, soft 100 GB/month bandwidth, 10 builds/hour."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): GitHub Pages is not intended for or allowed to be used as a free web-hosting service to run an online business or e-commerce site; soft bandwidth limit 100 GB per month."
     },
     {
       "id": "food-safety",
       "title": "FoodSafety.gov: safe minimum internal temperatures",
       "url": "https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures",
-      "checked_on": "2026-11-19",
-      "scope": "Re-read 19 Nov 2026 (decision-desk pass): poultry 165°F (74°C); ground meat and sausage 160°F (71°C); beef/bison/veal/goat/lamb and pork steaks, roasts and chops 145°F (63°C) with a three-minute rest; casseroles and leftovers 165°F (74°C); fish 145°F (63°C). Date last reviewed 21 Nov 2024."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): beef/veal/lamb steaks, roasts, chops 145F rest 3 minutes; ground meat 160F; poultry 165F; raw ham 145F rest 3 minutes; pork 145F rest 3 minutes; seafood 145F. Last reviewed November 21, 2024."
     },
     {
       "id": "S95",
@@ -122,8 +122,8 @@
       "id": "google-helpful",
       "title": "Google Search Central: creating helpful, reliable, people-first content",
       "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "checked_on": "2026-11-19",
-      "scope": "Page fetched live 2026-11-19: self-assessment questions, page-experience guidance, people-first and avoid-search-engine-first sections confirmed present. Used as the editorial-decision basis for batch-2 suggestions; it certifies no outcome."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): people-first content; self-assess questions on original information, substantial description and descriptive titles without exaggeration."
     },
     {
       "id": "google-faq-update",
@@ -143,8 +143,8 @@
       "id": "fsis-thermometers",
       "title": "USDA FSIS Food Thermometers (calibration: ice-water and boiling-water methods)",
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
-      "checked_on": "2026-11-19",
-      "scope": "Re-read 19 Nov 2026 (session 787a3aab): Calibration section — ice-water method (fill a large glass with ice cubes, add drinking water, stir well, immerse the stem a minimum of 2 inches touching neither the sides nor the bottom, wait a minimum of 30 seconds, check without removing the stem; should read 32 degrees F; adjust per manufacturer instructions) and boiling-water method (at least 2 inches, at least 30 seconds, 212 degrees F at sea level, altitude caveat). Also: most thermometers give an accurate reading within 2 to 4 degrees F when placed correctly; place in the thickest part away from bone, fat or gristle; follow manufacturer instructions for insertion depth. Page last updated Mar 21, 2025."
+      "checked_on": "2026-11-20",
+      "scope": "Re-read 20 Nov 2026 (session 263214e8): color is not a reliable indicator; thermometer is the only reliable check; thickest part away from bone, fat or gristle; check manufacturer instructions for insertion depth; ice-water calibration at 32F."
     }
   ],
   "products": [
@@ -1212,6 +1212,145 @@
         "thermometer-numbers-on-the-label",
         "instant-read-or-wireless-thermometer"
       ]
+    },
+    {
+      "slug": "measure-your-counter-first",
+      "title": "Before you buy: what to measure on your counter",
+      "short_title": "Measure first. Shop second.",
+      "dek": "Exterior size is the one number a listing prints. Here is how to use it — and what it still does not tell you.",
+      "category": "Air fryers",
+      "category_slug": "air-fryers",
+      "type": "Before you buy",
+      "art": "counter",
+      "published": "2026-11-20",
+      "products": [
+        "SHOP-01",
+        "SHOP-02",
+        "SHOP-03"
+      ],
+      "takeaway": "Measure the space you have, then compare the exterior size the listing prints. The listing does not print usable interior space or clearance, so leave those checks to the manual.",
+      "sections": [
+        {
+          "heading": "Start with the number the listing actually prints.",
+          "paragraphs": [
+            "Each of the three air-fryer listings prints an exterior size in its detail table. The Chefman 6-quart listing prints 13.38 inches deep by 11.81 inches wide by 10.63 inches high. The Emeril Lagasse 26QT listing prints 16.9 inches deep by 15.8 inches wide by 14.8 inches high. The Chefman 8-quart listing prints 12.75 inches deep by 13.5 inches wide by 10 inches high. These are exterior measurements as printed, read on 19 November 2026 — not a measurement made here, and not a usable interior size.",
+            "Use the printed exterior size to check the counter you have. Measure the width, depth and height available, then compare like with like. A larger exterior does not mean a larger cooking space, and no serving count is derived from any of these figures."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        },
+        {
+          "heading": "Leave room for the door, the drawer and the air.",
+          "paragraphs": [
+            "The exterior size is only the box. The appliance also needs room to open, room to pull out a basket or swing a door, and the ventilation clearance the manual requires. None of those figures is published on the three listings, so they stay as checks for you to run against the exact model manual.",
+            "USDA guidance makes the same point for thermometers: check the manufacturer's instructions before use, because the instructions state how the tool must be used to give an accurate result. The same habit applies here — the manual for the exact model is the source for clearance, cord reach and door swing."
+          ],
+          "checklist": [
+            "Measure the available width, depth and height where the appliance will sit.",
+            "Allow room to open the door or pull out the drawer.",
+            "Check the exact model's manual for ventilation clearance and cord reach.",
+            "Compare the parts you will handle and wash after a normal meal.",
+            "Only then check the current price and included accessories on Amazon."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03",
+            "fsis-thermometers"
+          ]
+        },
+        {
+          "heading": "What the measurement does not settle.",
+          "paragraphs": [
+            "Two of the three listings print two different capacity figures. The Chefman 6-quart title says 6 Quart while its detail table says 6 liters. The Emeril Lagasse title says 26QT while its table says 24.6 liters, which is 26 US quarts. The Chefman 8-quart title and table agree on 8 quarts. Both printed figures are recorded in the register; this guide does not choose between them and does not convert either into servings.",
+            "Interior dimensions, ventilation clearance, cord length and door swing are not published on these listings. Until the manual or an authorized feed supplies them, no fit verdict is given for any counter."
+          ],
+          "source_ids": [
+            "SHOP-01",
+            "SHOP-02",
+            "SHOP-03"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Usable interior dimensions, ventilation clearance, cord length and door swing for each model.",
+        "Which capacity figure is correct where a listing prints two that disagree.",
+        "Whether any model fits a given counter — no verdict without the exact model manual."
+      ],
+      "related": [
+        "capacity-checklist",
+        "cleanup-and-counter-space",
+        "basket-or-oven-style"
+      ]
+    },
+    {
+      "slug": "color-is-not-doneness",
+      "title": "Color is not doneness: what to check instead",
+      "short_title": "Brown outside is not done inside.",
+      "dek": "Grill marks and color can mislead. The official guidance points to one check that does not guess.",
+      "category": "Meat thermometers",
+      "category_slug": "meat-thermometers",
+      "type": "The temperature check",
+      "art": "thermometer",
+      "published": "2026-11-20",
+      "products": [
+        "SHOP-04",
+        "SHOP-05"
+      ],
+      "takeaway": "Color and grill marks do not show that food reached a safe internal temperature. A food thermometer placed in the thickest part does — check the chart for the target.",
+      "sections": [
+        {
+          "heading": "Why color misleads.",
+          "paragraphs": [
+            "USDA's Food Safety and Inspection Service states it directly: color is not a reliable indicator that food is safe. In a USDA study, 21 percent of participants relied on visual cues such as color and grill marks to judge whether hamburger patties were fully cooked. Ground beef can turn brown on the outside before it reaches a safe internal temperature.",
+            "The same guidance gives the alternative: using a food thermometer is the only reliable way to ensure food has been cooked to a safe minimum internal temperature. The check replaces the guess."
+          ],
+          "source_ids": [
+            "fsis-thermometers"
+          ]
+        },
+        {
+          "heading": "Where the probe goes.",
+          "paragraphs": [
+            "Placement decides whether the reading means anything. The thermometer should be placed in the thickest part of the food, away from bone, fat or gristle. For thin foods, it should be inserted through the side until it reaches the center. Each piece should be checked, because size, quantity and distribution make pieces reach the target at different times. For large or irregularly shaped food, such as a roast, the temperature should be checked in several places.",
+            "Before use, the manufacturer's instructions should be read. They state how far the thermometer must be inserted to give an accurate reading."
+          ],
+          "checklist": [
+            "Place the probe in the thickest part, away from bone, fat or gristle.",
+            "For thin foods, insert through the side to the center.",
+            "Check each piece; check large or irregular food in several places.",
+            "Read the manufacturer's instructions for insertion depth before cooking."
+          ],
+          "source_ids": [
+            "fsis-thermometers"
+          ]
+        },
+        {
+          "heading": "The target comes from the chart, not the listing.",
+          "paragraphs": [
+            "Once the tool is placed correctly, the number to cook toward comes from the published safe-minimum chart for that food. FoodSafety.gov lists beef, veal, goat and lamb steaks, roasts and chops at 145 degrees F with a 3-minute rest; ground meat and sausage at 160 degrees F; chicken, turkey and other poultry at 165 degrees F; raw ham at 145 degrees F with a 3-minute rest; pork steaks, roasts and chops at 145 degrees F with a 3-minute rest; and seafood at 145 degrees F.",
+            "The two thermometer listings in the shortlist are tools for taking that reading. No accuracy measurement is held for either model, and no figure in a listing title is treated as a measured result. Check the tool against ice water, place it correctly, and cook to the chart."
+          ],
+          "source_ids": [
+            "food-safety",
+            "SHOP-04",
+            "SHOP-05"
+          ]
+        }
+      ],
+      "unknowns": [
+        "The insertion depth each listed model's instructions require for an accurate reading.",
+        "The accuracy of either listed thermometer — no accuracy measurement is held on this site.",
+        "Whether wireless probe placement differs from the general guidance — that is in each model's instructions."
+      ],
+      "related": [
+        "where-does-the-probe-go",
+        "thermometer-ice-water-check",
+        "how-do-you-know-its-done"
+      ]
     }
   ],
   "questions": [
@@ -1696,6 +1835,58 @@
       "blocks": "Nothing; the gate runs with today's list regardless of the answer",
       "source": "google-helpful",
       "owner_input_needed": true
+    },
+    {
+      "id": "263-Q1",
+      "question": "Which question-led topics will bring real search visitors?",
+      "known": "Eleven guides are published. No Search Console property is verified and no query report exists.",
+      "missing": "Dated query and page reports showing which questions readers actually search for.",
+      "default": "No claim about demand, rankings or growth. Topic choice stays editorial until reports exist.",
+      "discovery": "Verify the property, submit the sitemap, then export dated query and page reports.",
+      "blocks": "Choosing the next topic from measured queries",
+      "source": "search-console",
+      "owner_input_needed": false,
+      "answer_by": "Measurable after launch",
+      "answer_form": "A verified property plus dated query and page reports exported from it."
+    },
+    {
+      "id": "263-Q2",
+      "question": "What does polished mean in measurable terms for this shopfront?",
+      "known": "The front page, cards and guides share one shell; disclosure, sponsored links and canonical indexing are gate-enforced.",
+      "missing": "A written definition: which page-experience measures count, and what threshold passes.",
+      "default": "Keep the current restrained identity; change only what a gate or a dated decision names.",
+      "discovery": "Record the measures and thresholds in the decision record before the next design pass.",
+      "blocks": "Next design pass",
+      "source": "google-helpful",
+      "owner_input_needed": true,
+      "answer_by": "Owner · editorial",
+      "answer_form": "A dated decision record naming the measures, thresholds and reviewer."
+    },
+    {
+      "id": "263-Q3",
+      "question": "Which automation is safe to run without account access?",
+      "known": "Builders, link checks, sitemap and feed updates and the five-event collector run locally; production collection is off.",
+      "missing": "A durable HTTPS host, its logging configuration, and account access for link validation and reports.",
+      "default": "Automate checks and drafts only; publishing, validation and ledger rows stay manual.",
+      "discovery": "Deploy the collector on reviewed hosting; run one Special Link validation in the enrolled workflow.",
+      "blocks": "Automated publishing and campaign optimization",
+      "source": "amazon-policies",
+      "owner_input_needed": false,
+      "answer_by": "Owner · infrastructure and account",
+      "answer_form": "Host details plus a dated Special Link validation record."
+    },
+    {
+      "id": "263-Q4",
+      "question": "What is the publishing cadence and who approves each guide?",
+      "known": "One guide review every 14 days is the operating plan; each guide carries its sources and unknowns.",
+      "missing": "A named approver and a written checklist for what counts as ready to publish.",
+      "default": "Review one guide per cycle; publish only when the evidence gate passes.",
+      "discovery": "Record the approver and checklist in the decision record; keep the gate as the floor.",
+      "blocks": "New guide publication",
+      "source": "google-reviews",
+      "owner_input_needed": true,
+      "answer_by": "Owner · editorial",
+      "answer_form": "A dated record naming the approver and the publish checklist."
     }
   ],
   "proposals": [
@@ -2324,6 +2515,87 @@
       ]
     },
     {
+      "id": "263-P1",
+      "priority": "Now",
+      "area": "Editorial",
+      "title": "Publish one question-led guide per review cycle, chosen from measured queries.",
+      "why": "Without Search Console query data, topic choice is instinct. The register already holds the cadence and the gate; what is missing is the measured input.",
+      "next": "Keep the 14-day review rhythm; add one guide per cycle only when a dated query report or an owner decision names the question.",
+      "evidence_needed": [
+        "P26-Q4"
+      ],
+      "source": "search-console",
+      "status": "Proposed",
+      "next_action": "Verify the Search Console property, submit the sitemap, then record dated query and page reports and pick the next question from them.",
+      "discoveries": [
+        "Which queries actually reach the current guides (dated Search Console export).",
+        "Which guide topics the owner wants expanded first."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
+    },
+    {
+      "id": "263-P2",
+      "priority": "Now",
+      "area": "Shopfront",
+      "title": "Add a measure-first decision aid above the shortlist.",
+      "why": "Exterior size is the one printed number a buyer can check at home. A short aid that asks for width, depth and height before the cards helps the reader compare without a verdict from this site.",
+      "next": "Place a three-question aid (space, format, food) above the product cards, each linking to the guide that answers it.",
+      "evidence_needed": [
+        "P26-Q1"
+      ],
+      "source": "google-helpful",
+      "status": "Proposed",
+      "next_action": "Build the aid from the listing dimensions already in the register; keep interior size and clearance as manual checks, not site verdicts.",
+      "discoveries": [
+        "Whether the owner wants the aid above the shortlist or inside each category page.",
+        "Whether any interior dimensions become available from a manual or authorized feed."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
+    },
+    {
+      "id": "263-P3",
+      "priority": "Next",
+      "area": "Automation",
+      "title": "Automate collection and drafting behind the publishing gate.",
+      "why": "The collector and draft steps can run without account access, but publishing, link validation and campaign claims cannot. The gate is what keeps automation safe.",
+      "next": "Automate link checks, sitemap and feed updates and draft assembly; keep human approval for publish, Special Link validation and ledger rows.",
+      "evidence_needed": [
+        "P26-Q3",
+        "P26-Q5"
+      ],
+      "source": "amazon-policies",
+      "status": "Proposed",
+      "next_action": "Wire the existing builders into one scheduled run with the current gates; record each run date and keep production measurement off until a durable host is approved.",
+      "discoveries": [
+        "Whether a durable HTTPS host is available and who controls it.",
+        "What retention the host's own request logs use."
+      ],
+      "owner_input_needed": false,
+      "reviewable_now": true
+    },
+    {
+      "id": "263-P4",
+      "priority": "Next",
+      "area": "Findability",
+      "title": "Keep one canonical home and submit the sitemap to Search Console.",
+      "why": "One indexable home with a submitted sitemap is the smallest findable setup. Duplicate or noindex editions stay reachable but do not compete as front doors.",
+      "next": "Keep the canonical set in the register, submit sitemap.xml once the property is verified, and record the submission date.",
+      "evidence_needed": [
+        "P26-Q4"
+      ],
+      "source": "search-console",
+      "status": "Proposed",
+      "next_action": "Verify ownership, submit the sitemap, and record the dated confirmation here; no ranking or traffic claim until reports exist.",
+      "discoveries": [
+        "Who holds Search Console access for the site URL prefix.",
+        "Whether the owner wants a custom domain before submission."
+      ],
+      "owner_input_needed": true,
+      "reviewable_now": true
+    },
+    {
       "id": "9E-P1",
       "priority": "Now",
       "area": "Shop structure",
@@ -2366,6 +2638,8 @@
     "guides/where-does-the-probe-go.html",
     "guides/thermometer-numbers-on-the-label.html",
     "guides/thermometer-ice-water-check.html",
+    "guides/measure-your-counter-first.html",
+    "guides/color-is-not-doneness.html",
     "shop/air-fryers/chefman-6-quart-dual-basket-air-fryer.html",
     "shop/air-fryers/emeril-lagasse-26qt-french-door-air-fryer-oven.html",
     "shop/air-fryers/chefman-turbofry-8-qt-air-fryer.html",
