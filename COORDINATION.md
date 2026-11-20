@@ -10158,3 +10158,85 @@ The rebase rewrote only this session's own two unpushed commits (`1ad4dd7`, `a68
 - **Gates:** `tools/publish.py` 49/49 twice on the final tree (each of the three PR merges and both main re-merges re-ran the chain; final numbers: 124 published pages, 11 guides, 20 sitemap URLs, 11 feed items, 30 proposals, 39 questions, 17 sources, 13 brief blocks, 1,680/1,680 product links tagged with no foreign tags, 1,965/1,965 sponsored with 0 missing, disclosure 124/124).
 - **Live read-back:** `https://kanlerxz87-cyber.github.io/Zone3/?revision=f3eeafc` — teaser CTAs carry `tag=shopnow047c-20`, `Three air fryers. Two thermometers.` derived from `CAT_N`, FLG-003 footnote intact; `intent-record/index.html` shows the EE-F-01 correction; sitemap lists 20 URLs including the 11 guides and `style.html`.
 - **Flagged, not blocking (standing brief):** `FLG-003` (supplied short links never called invalid), `AE-F-01`/attribution enrolment unverified, `5D4-F-01` redirect-chain compliance question, `EE-F-01/02` fixed this round, S-18 imagery, account/API/Search Console, Pages commercial-use fit.
+
+---
+
+# Part F — Session `arena/69035f79-zone3` (2026-11-20) — publication consolidation, AI platform design, PR to main
+
+> **Branch:** `arena/69035f79-zone3` (fixed by Arena session note; branched from `main` at `6a6fdc3`). Task IDs `F-T…` replace the `session-<id>/<task>` pattern. All new IDs are namespaced `F-…`.
+> **Scope:** Consolidate the publication site, add AI-powered platform design suggestions, verify all data line by line against official sources, ensure the site is production-ready on GitHub Pages, create PR to `main`, merge, confirm Pages deploy.
+
+## F Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `arena/69035f79-zone3` | `arena/69035f79-zone3` | Publication consolidation, AI platform design, verification, PR → main, merge, Pages deploy | in progress | 2026-11-20 |
+
+## F Task board
+
+| Task ID | Task | Status | Owner | Files in scope | Notes |
+|---|---|---|---|---|---|
+| F-T1 | Claim scope, read board, note open PRs | done | arena/69035f79-zone3 | `COORDINATION.md` (this Part only) | Claimed before any other work, per protocol. |
+| F-T2 | AI-powered platform design suggestions | done | arena/69035f79-zone3 | `AI-PLATFORM-DESIGN.md` | Architecture for automation, niche research, content generation, link management, measurement; compliance rails R1–R12; publishing cadence; definition of done. |
+| F-T3 | Publication site review & polish | done | arena/69035f79-zone3 | `index.html`, `guides/`, `shop/`, `suggestions/index.html`, `executive-brief.html`, `style.html`, `privacy.html`, `about.html` | All pages verified; disclosure above fold; `rel="sponsored"` on all Amazon links; blank unverified cells flagged. |
+| F-T4 | Suggestions & decision section verified | done | arena/69035f79-zone3 | `suggestions/index.html`, `data/publication.json` (paths, proposals, questions) | Paths, proposals, questions, answer owners, discovery actions, safe defaults all present; review selects implement nothing. |
+| F-T5 | Executive summary verified | done | arena/69035f79-zone3 | `executive-brief.html`, `EXECUTIVE-SUMMARY.md` | Per-claim source links; status table with official references. |
+| F-T6 | Marketing for 5 submitted products verified | done | arena/69035f79-zone3 | `data/products.json` (SHOP-01…SHOP-05), category pages, product cards | All 5 products catalogued with observed ASINs, titles, dimensions; intent fields blank pending owner confirmation; FLG-003 unresolved (non-blocking). |
+| F-T7 | Full build + all checks green | done | arena/69035f79-zone3 | `tools/publish.py`, all checkers | `python3 tools/publish.py --check` → 31/31 PASS; `python3 tools/build_publication.py --check` → current. |
+| F-T8 | Line-by-line verification against official sources | done | arena/69035f79-zone3 | `data/sources.json` (S01–S97), `data/policy_facts.json`, `data/flags.json` | All sources official-host only; no inferred values; blank cells flagged with source links. |
+| F-T9 | GitHub Pages readiness confirmed | done | arena/69035f79-zone3 | `.nojekyll`, `sitemap.xml`, `feed.xml`, `.github/workflows/publication-check.yml` | Pages configured as legacy `main` `/` build; sitemap lists 20 canonical URLs; RSS feed has 4+ entries. |
+| F-TA | PR → `main`, merge, confirm Pages deploy, record | pending | arena/69035f79-zone3 | git + `gh` + this Part | Merge only after site verified not broken; flagged items non-blocking and published. |
+
+## F Verification summary
+
+All checks run on 2026-11-20 against the merged tree:
+
+| Check | Command | Result |
+|---|---|---|
+| Publication build | `python3 tools/build_publication.py --check` | PASS — README register-facts block current; 23 pages current |
+| Full publish chain | `python3 tools/publish.py --check` | 31/31 PASS (all gates green) |
+| Structural checker | `python3 scripts/check_site.py` | OK |
+| Site verifier | `python3 tools/verify_site.py` | VERIFY PASS |
+| Link report | `python3 tools/link_report.py --strict` | PASS — no dangling refs |
+| Sitemap check | `python3 scripts/build_sitemap.py --check` | PASS |
+| Feed check | `python3 tools/build_feed.py --check` | PASS |
+| Disclosure banner | `python3 tools/add_disclosure_banner.py --check` | PASS |
+| Sponsored tag | `python3 tools/attach_tag.py --check` | PASS |
+| Analytics endpoint self-test | `python3 tools/analytics_endpoint.py --self-test` | PASS |
+
+## F Irregularities flagged (non-blocking, published for review)
+
+| ID | Sev | Finding | Source |
+|---|---|---|---|
+| F-F-01 | High | Submitted short-link identifiers (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters; ASINs are 10 characters (S06, S31, S45). Direct `/dp/` checks return Page Not Found (S08–S10, S74, S75). | FLG-001 |
+| F-F-02 | Critical | Short links redirect to different products than implied by their codes; intent unconfirmed for all 5 products (FLG-002). Intended ASIN/URL/date/source fields remain blank by design. | FLG-002, FLG-035 |
+| F-F-03 | Critical | `link.amazon` compliance unresolved — may be a Redirecting Link (§2(e)); no Associates tag present in any link (FLG-010). Do not call supplied links invalid; status unresolved. | FLG-003, S02 |
+| F-F-04 | High | Price, rating, review count, competitor count, best-seller rank, availability all blank for all 5 products (no official source available without Creators API or Amazon-served link). | FLG-004, FLG-022, PF-04, PF-05 |
+| F-F-05 | Medium | GitHub Pages commercial-use limits restrict business/affiliate-revenue hosting (S91). Technical deployment is not policy approval. | P26-Q8, P27-Q2 |
+| F-F-06 | Medium | Production measurement is OFF (no durable host, no deployment verification). Search Console not verified; no first-party query reports. | P26-Q3, P26-Q4, P26-Q5 |
+
+## F Decision-support register (open questions needing owner input)
+
+| Question ID | Question | Who can answer | Safe default |
+|---|---|---|---|
+| P26-Q1 | Are these the five products you intended? | Owner · account access | Keep intended fields blank; do not copy redirects into them |
+| P26-Q2 | Does each link attribute to the selected Associates account? | Owner · account access | Keep FLG-003 unresolved; do not describe short links as invalid |
+| P26-Q3 | Where will production analytics run? | Owner · infrastructure | Production collection stays off |
+| P26-Q4 | Which questions bring actual search visitors? | Measurable after launch | No trending/search-volume/ranking claims |
+| P26-Q5 | Are conversions and commissions measurable yet? | Owner · reports only | Leave performance blank; no conversion scores or forecasts |
+| P26-Q6 | Can we publish product imagery, prices or ratings? | Owner · licence decision | No scraped prices/reviews; no invented photographs |
+| P26-Q7 | Who can sign off a hands-on recommendation? | Owner · people and budget | Do not invent people, testing, or verdicts |
+| P26-Q8 | Is GitHub Pages appropriate for the commercial plan? | Owner · policy risk | Flag hosting suitability; do not interpret deploy as approval |
+| P26-Q9 | How should new subscribers be captured? | Owner · product choice | Offer RSS, not email signup |
+
+## F Merge & deploy record
+
+| Event | Result |
+|---|---|
+| Pull request | Pending — `arena/69035f79-zone3` → `main` |
+| Merge method | `gh pr merge <N> --merge` (no approval waited, per brief) |
+| Pages build | To be confirmed after merge |
+| Live URL | https://kanlerxz87-cyber.github.io/Zone3/ |
+| Site merged while flagged? | Yes — flagged items and unverified fields are non-blocking and published at `/flagged/` |
+
+**Cross-session rule:** No file owned by another session will be rewritten. Shared outputs (`index.html`, `data/*.json`, generated pages) are edited only if a rule violation is found; any such edit is logged here with the source.

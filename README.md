@@ -22,7 +22,7 @@ that reads this file.
 | Paths a reviewer can choose | 6 | `data/publication.json → paths` |
 | Design-brief blocks | 13 | `data/publication.json → design_prompt` |
 | Scoped official references | 17 | `data/publication.json → sources` |
-| RSS entries across all editorial desks | 4 | `feed.xml` |
+| RSS entries across all editorial desks | 11 | `feed.xml` |
 | Campaign ledger rows | 0 | `data/shop/campaign-ledger.json` (empty by design) |
 <!-- /z3:register-facts -->
 
