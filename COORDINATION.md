@@ -10161,3 +10161,5 @@ The rebase rewrote only this session's own two unpushed commits (`1ad4dd7`, `a68
 
 ## ece5f73c — front-page buyer journey
 In progress · ece5f73c · scope: front-page template in tools/build_publication.py, generated index.html and front-specific CSS in assets/publication.css. Existing research and account gates retained.
+
+Done · [PR #211](https://github.com/kanlerxz87-cyber/Zone3/pull/211). The three task links use existing category/guide routes. Guide chronology checked against data/publication.json. Full release ran 49 commands with no failures. No listing, revenue or attribution claim was newly verified. Existing FLG-003 and account/receiver gates remain open. Merge and deployment status: [PR event record](https://github.com/kanlerxz87-cyber/Zone3/pull/211) and [Pages deployments](https://github.com/kanlerxz87-cyber/Zone3/deployments/github-pages).
