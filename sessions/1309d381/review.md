@@ -47,3 +47,14 @@ This pass clarifies the distinction in section 3 of `DESIGN_PROMPT.md`, updates 
 - GitHub Pages hosting limits: <https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits>
 
 No new product-level fact, price, rating, review count, commission rate, trend, conversion or revenue claim is added by this review.
+
+## Release and deployment (2026-11-20)
+
+- Branch `arena/1309d381-zone3`; `main` was at `c7db696` (PRs #222, #224, #225, #226) when this pass merged it. The board was rebuilt as upstream's file verbatim plus this Part, generated pages were taken from upstream and rebuilt by the chain, and `data/publication.json` was reconstructed with upstream's rows plus this session's four additive entries by id — no upstream row was dropped or rewritten.
+- PR [#227](https://github.com/kanlerxz87-cyber/Zone3/pull/227) merged into `main` on 2026-11-20T06:15:27Z as `2ebb5a9c0d83b1717b34f8e6859c9baa32d7503d`.
+- Checks: PR run [44686357940](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44686357940) passed; on the merge push, `Publication checks` [44686520931](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44686520931) and `pages build and deployment` [44686519931](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44686519931) both succeeded.
+- Merged-tree gates: `python3 tools/publish.py` — 53/53 commands, 0 failed, twice, byte-identical tree; `check_publication.py` — 131 HTML pages, 29 reader/workspace pages, 141 official-source rows, 27 indexable URLs, 13 feed items; `check_feed_readme.py` — every measured design row current.
+- Live read-back at `?revision=2ebb5a9`: `AI-1309-P1` renders with `AI-1309-Q1` as its evidence anchor, and the executive brief shows the AI-permission row as "Disabled pending a specific approval" alongside 5 / 13 / 47 / 0.
+- The first post-merge gate run is the strongest evidence for the new check: it failed on the merged tree because the brief still said 126 pages when the tree had 131, which is exactly the staleness this pass set out to catch.
+
+No traffic, ranking, conversion, commission or revenue claim was added. No account, API, model or tracking configuration changed. Product intent, Associates account/API approval, Search Console access and `FLG-003` remain open.
