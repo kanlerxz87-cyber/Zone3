@@ -1,5 +1,38 @@
 # Executive summary — Zone3 Kitchen
 
+## Independent re-verification pass · 2026-11-20 · session `fc812c5e`
+
+**Bottom line.** The shop-first publication was already live, so this pass re-verified it line by line
+instead of rebuilding it. All five supplied short links still open the same five listings, all five
+listing titles match the register verbatim, the load-bearing policy clauses (Operating Agreement §5,
+Participation Requirements 2(b)/6(t)/6(w), FTC Disclosures 101) still say what the site assumes they
+say, and the full build chain is green (49/49, no drift). No product fact, price, rating, review
+count, commission rate, traffic or revenue figure was added or inferred; every blank stays blank and
+flagged. The only files changed are this note, the session verification record, and the coordination
+board. Full record: [`sessions/fc812c5e/verification-2026-11-20.md`](sessions/fc812c5e/verification-2026-11-20.md).
+
+| Area | Current state after this pass | Decision boundary | Basis |
+|---|---|---|---|
+| Products | 5 submitted links → 5 observed ASINs (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z); titles re-read 2026-11-20, 5/5 verbatim. Intent fields blank for all five. | Observed ≠ intended. FLG-003 stays open; short links are never called invalid. | [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) · [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) · [B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) · [B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) · [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) |
+| Compliance | Disclosure strip above the fold on every page; every product CTA tagged `shopnow047c-20` and `rel="sponsored"`; no price/rating/review count published (2(b)/6(t)). | Tag presence is not proof of enrolment or attribution; that check needs the enrolled workflow. | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) · [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
+| Findability | 20 sitemap URLs, 11 feed entries, canonical + Open Graph on reader pages; Search Console still unverified (owner-only). | No search-demand or ranking claim is made; topics stay editorial hypotheses until first-party reports exist. | [sitemap](sitemap.xml) · [feed](feed.xml) |
+| Measurement | Five-event runtime shipped, production collection OFF, ledger empty. | No conversion/traffic/revenue statement can be made until a durable host and authorized reports exist. | [measurement](measurement/index.html) |
+| Decision desk | 6 paths, 30 proposals, 39 questions, 50 review-only selects with export; design brief with 12 rails. | Choices implement nothing; each needs its evidence gate first. | [suggestions](suggestions/index.html) · [design brief](DESIGN_PROMPT.md) |
+| Release | `tools/publish.py` 49/49, working tree clean after rebuild. | Structural gates are not fact verification; facts were verified separately above. | [session record](sessions/fc812c5e/verification-2026-11-20.md) |
+
+**Questions that still need an owner answer before the next decision** (full register on the
+[suggestions page](suggestions/index.html#questions)): confirm the intended ASIN/URL per product;
+validate one Special Link per product in the enrolled workflow and read the tracking report; confirm
+Associates enrolment and Creators API eligibility; choose a durable analytics host and verify Search
+Console; resolve GitHub Pages commercial-use fit. Until then the site keeps its safe defaults: blank
+intent/price/rating fields, tagged direct CTAs, collection off, empty ledger.
+
+**Scope note.** PR #211 (`arena/ece5f73c-zone3`) owns the front-page files
+(`index.html`, `assets/publication.css`, `tools/build_publication.py`) and was not touched.
+Historical sections below keep their original dates and scope and were not re-checked line by line.
+
+---
+
 ## Current status — listing evidence re-read, register corrected · 2026-11-19 · session `0a48cfda`
 
 **Bottom line.** The reader-facing publication was already built, so this pass spent its time on the
