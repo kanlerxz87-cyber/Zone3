@@ -10398,7 +10398,7 @@ Design decision, sources and claim-by-claim provenance: `sessions/9ed0552a/revie
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| 2e0d5c15 | `arena/2e0d5c15-zone3` | Register-integrity + rendering-integrity audit: correct status cells whose last sentence contradicts the registers; fix unescaped-placeholder generator bugs; remove merge debris from two published files; add reviewable proposals and questions; release gates, PR to `main`, merge, Pages deploy confirmation. Files: `data/shop/brief-status.json`, `data/flags.json`, `data/publication.json` (append-only), `scripts/build_5a56c084.py`, `tools/build_site.py`, `assets/publication.css` (one marker line), `COORDINATION.md` (this Part + two marker lines), `sessions/2e0d5c15/**`, `EXECUTIVE-SUMMARY.md` (dated section). | in progress (2E0-T4) | 2026-11-20 |
+| 2e0d5c15 | `arena/2e0d5c15-zone3` | Register-integrity + rendering-integrity audit: correct status cells whose last sentence contradicts the registers; fix unescaped-placeholder generator bugs; remove merge debris from two published files; add reviewable proposals and questions; release gates, PR to `main`, merge, Pages deploy confirmation. Files: `data/shop/brief-status.json`, `data/flags.json`, `data/publication.json` (append-only), `scripts/build_5a56c084.py`, `tools/build_site.py`, `assets/publication.css` (one marker line), `COORDINATION.md` (this Part + two marker lines), `sessions/2e0d5c15/**`, `EXECUTIVE-SUMMARY.md` (dated section). | done — released | 2026-11-20 |
 
 ## 2E0 Board read before claiming
 
@@ -10416,7 +10416,7 @@ full and none of it was reverted. No open PR touched this pass's files.
 | T2 — Correct the status cells that close on a wrong figure | done | 2e0d5c15 | `data/shop/brief-status.json` | repository measurement | 2E0-F01 |
 | T3 — Fix the two unescaped-placeholder defects at their generators | done | 2e0d5c15 | `scripts/build_5a56c084.py`, `tools/build_site.py` | repository measurement | 2E0-F02 |
 | T4 — Remove merge debris from two published files | done | 2e0d5c15 | `COORDINATION.md`, `assets/publication.css` | tree-wide scan | 2E0-F03 |
-| T5 — Add reviewable proposals and questions, run all gates, PR, merge, confirm Pages | in progress | 2e0d5c15 | `data/publication.json` (append-only), `data/flags.json`, `EXECUTIVE-SUMMARY.md` (dated section) | V1–V5 | — |
+| T5 — Add reviewable proposals and questions, run all gates, PR, merge, confirm Pages | done | 2e0d5c15 | `data/publication.json` (append-only), `data/flags.json`, `EXECUTIVE-SUMMARY.md` (dated section) | V1–V5 | — |
 
 ## 2E0 Work performed
 
@@ -10492,4 +10492,7 @@ tree-wide scan. No other session's work was discarded at any point.
 
 - Branch: `arena/2e0d5c15-zone3`, rebased onto `main` at `bb3d554`, `8b32835`, `83e027c` and finally `957e5ab`.
 - Pull request: [#222](https://github.com/kanlerxz87-cyber/Zone3/pull/222) — register correction, two rendering bugs fixed, merge debris removed, decision-desk additions.
-- Merge and Pages deploy: recorded in the follow-up commit on this branch once the merge and the Pages run are confirmed.
+- **Merge:** 2026-11-20T06:06:54Z as merge commit `d5b2fb17ff7239c35d6732d1156625150165e65f` into `main`, merged without waiting for approval once the branch reported `MERGEABLE` and the gate was green.
+- **Checks on the merge push:** `Publication checks` — success (run [44685513632](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44685513632)); `pages build and deployment` — success (run [44685513081](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44685513081)).
+- **Live read-back** (fetched from the deployed site after the run, at `?revision=d5b2fb1`): the cover loads, all five product CTAs carry `tag=shopnow047c-20`, and the FLG-003 footnote is intact. `suggestions/index.html` serves `2E0-P1`, `2E0-P2` and `2E0-Q1`–`2E0-Q3`; `flagged.html` serves `2E0-F01`–`2E0-F03`; the deployed `assets/publication.css` contains **0** marker lines; `products/index.html` renders the escaped `&lt;short-id&gt;` sentence that had lost a word ("… does not mean the short link is broken"); `COORDINATION.md` on `main` contains **0** marker lines.
+- **Why it took four rebases:** `main` advanced seven times while this branch was open (PRs #212–#225). Each conflict was resolved by taking the upstream register and generated pages, re-applying this pass's additive rows with `sessions/2e0d5c15/apply_additions.py`, and rebuilding every generated page — never by hand-merging generated HTML.
