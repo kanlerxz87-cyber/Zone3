@@ -10217,3 +10217,33 @@ Done · [PR #211](https://github.com/kanlerxz87-cyber/Zone3/pull/211). The three
 - **AE-T4 · in progress** — PR to `main`, merge, Pages confirmation recorded below.
 - **Change request (out of scope, for integration):** AE-F-01 above — decide add-banner / archive /
   delete for `sessions/3c886b62/`. This session did not edit those files.
+---
+
+# Part 263214e8 — session `263214e8` (branch `arena/263214e8-zone3`, base `6a6fdc3` = `main` at claim, 2026-11-20)
+
+## 263214e8 Session registry
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| 263214e8 | `arena/263214e8-zone3` | Owner brief pass: line-by-line re-verification from official sources, polished shopfront + question-led guides, suggestions/questions/discovery register, executive summary refresh, PR to `main`. Files: `data/publication.json`, `tools/build_publication.py`, `assets/publication.css`, `sessions/263214e8/**`, `EXECUTIVE-SUMMARY.md`, this Part only. | in progress | 2026-11-20 |
+
+## 263214e8 Board read before claiming
+
+Read: COORDINATION tail (Parts 5D4, ee10b024 release record), README build chain, `data/publication.json` (5 products, 11 guides, 39 questions, 30 proposals, 17 sources), `data/shop/products.json` intent record, `data/shop/measurement.json` + campaign ledger, `tools/publish.py` (31 checks green at baseline 2026-11-20). No other session listed `in progress` at claim time. Shared outputs changed only in this session's scope; other sessions' files untouched.
+
+## 263214e8 Task board
+
+| Task | Status | Owner | Files in scope | Sources | Irregularities |
+|---|---|---|---|---|---|
+| T1 — Line-by-line verification from official sources (agreement, policies, FTC, Google, FoodSafety/FSIS, GitHub Pages, 5 links) | in progress | 263214e8 | `sessions/263214e8/**` | live fetches, see verification file | — |
+| T2 — Shopfront polish + new question-led guide(s), sitemap/feed updated | unclaimed | — | `data/publication.json`, `tools/build_publication.py`, `assets/publication.css` | — | — |
+| T3 — Suggestions/questions/discovery additions + executive summary refresh | unclaimed | — | `data/publication.json`, `EXECUTIVE-SUMMARY.md` | — | — |
+| T4 — Publish record, PR, merge, Pages deploy | unclaimed | — | this Part only | — | — |
+
+## 263214e8 Rules this session follows
+
+1. No value filled in that an official source does not state. Blanks stay blank and are named in the flag register.
+2. Every claim added to a reader page carries a source fetched in this session and recorded in `sessions/263214e8/verification-2026-11-20.md`.
+3. Existing gates never relaxed. If a gate fires, the cause is fixed.
+4. Register-derived counts stay register-derived.
+5. Supplied short links never called invalid; FLG-003 stays unresolved. No price/rating/review/tested-performance claims. No traffic/conversion/revenue claims. Production measurement stays OFF.
