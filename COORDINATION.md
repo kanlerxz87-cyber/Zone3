@@ -10163,3 +10163,45 @@ The rebase rewrote only this session's own two unpushed commits (`1ad4dd7`, `a68
 In progress · ece5f73c · scope: front-page template in tools/build_publication.py, generated index.html and front-specific CSS in assets/publication.css. Existing research and account gates retained.
 
 Done · [PR #211](https://github.com/kanlerxz87-cyber/Zone3/pull/211). The three task links use existing category/guide routes. Guide chronology checked against data/publication.json. Full release ran 49 commands with no failures. No listing, revenue or attribution claim was newly verified. Existing FLG-003 and account/receiver gates remain open. Merge and deployment status: [PR event record](https://github.com/kanlerxz87-cyber/Zone3/pull/211) and [Pages deployments](https://github.com/kanlerxz87-cyber/Zone3/deployments/github-pages).
+
+---
+
+---
+
+# Part 9E — session `9ed0552a` (branch `arena/9ed0552a-zone3`, base `deb67e5` = `main` after PR #211, 2026-11-20 UTC)
+
+## 9E Session registry and claim
+
+| Session ID | Branch | Role | Status | Claimed at (UTC) |
+|---|---|---|---|---|
+| `9ed0552a` | `arena/9ed0552a-zone3` | Reader-first product pages: give each of the five registered listings its own indexable page inside the shop, linked from the front page, both category pages and the comparison table; register the shipped decision; run the release gates; integrate via PR | in progress (9E-T1…T4) | 2026-11-20 |
+
+## 9E Coordination check before claiming
+
+- `main` at claim: `deb67e5` (merge of PR #211, session `ece5f73c`, 05:49:14Z). This branch was rebased onto it before any edit.
+- `gh pr list --state open` returned **one** open PR: **#212** (`arena/fc812c5e-zone3`), which touches only `COORDINATION.md`, `EXECUTIVE-SUMMARY.md` and `sessions/fc812c5e/**`. It was already `CONFLICTING` against `main` when read. **Those three paths are outside this session's scope and are not edited here**; the append-only `COORDINATION.md` region is the only possible touch point, and this Part is appended after the last line, not merged into it.
+- No other session claims `tools/build_publication.py`, `data/publication.json` or the generated `shop/**` reader pages at the time of this claim. PR #211 (merged) last touched `home()` in that generator; the edits here are additive functions plus link changes in `product_teaser`/`product_card`/`comparison_table`, rebased on top.
+- Standing rule kept: shared outputs — the site index, navigation and table data — change only in the final integration session. This session **is** the integration session for its own branch and merges it itself, as the brief instructs.
+
+## 9E Task board
+
+| Task | Status | Owner | Files in scope | Sources / basis | Irregularities |
+|---|---|---|---|---|---|
+| 9E-T1 — Audit the reader path and confirm the gap | **done** — 20 indexable URLs: 11 guides, 3 shop surfaces, 3 static pages, root, guides index, no per-listing page; `/marketing/product-*.html` covers only the first three products, is `noindex` and is not the current chrome | `9ed0552a` | `sessions/9ed0552a/**` | tree walk + `data/publication.json` | 9E-F01 |
+| 9E-T2 — One indexable page per registered listing, built only from recorded facts | **done** | `9ed0552a` | `tools/build_publication.py`, `data/publication.json`, generated `shop/{category}/{slug}.html`, `index.html`, `shop/**/index.html`, `assets/publication-search.json`, `sitemap.xml`, `README.md` (generated block) | records made 2026-11-19 by sessions `b580d790`, `d3493182`, `0a48cfda` and `1c072a7a`, held in `data/publication.json` and `data/shop/products.json` | none new |
+| 9E-T3 — Register the shipped decision and the gate that keeps it true | **done** | `9ed0552a` | `data/publication.json` (one decided proposal), `sessions/9ed0552a/test_product_pages.py`, `tools/publish.py` | repo gates; no external rule claimed for the page shape | none |
+| 9E-T4 — Gates, PR, merge, Pages deploy, live read-back | in progress | `9ed0552a` | this Part only | `gh`, `git` | — |
+
+## 9E Rules this session follows
+
+1. **No new external fact is created.** This sandbox's outbound network reaches GitHub, npm and PyPI only; amazon.com was **not** fetched by this session. Every product-page statement restates a value already recorded with its own date and source in `data/publication.json` / `data/shop/products.json`, and the page prints that date. No live re-check is claimed, and no price, rating, review count, rank or performance figure is added.
+2. Intended-ASIN fields stay blank and separate from the observed redirect. The product pages print both, labelled, and copy neither into the other.
+3. A blank stays blank: where a listing does not publish a dimension, the page says so.
+4. Gates are never relaxed. If a gate fires, the cause is fixed.
+5. Register-derived counts only (`numeral()`/`len()`), never typed numerals.
+
+## 9E Finding
+
+| ID | Finding | Status |
+|---|---|---|
+| 9E-F01 | The site had **no per-listing page**. Five products were reachable only as cards inside two category pages and one comparison table, so the only indexable product-intent URLs were category-level. `/marketing/product-1…3*.html` is `noindex`, covers three of the five, and is a retained earlier pass — not the canonical shop. | **Fixed** in 9E-T2: five indexable pages, one per registered listing, each linked from the front-page teaser, its category card and the comparison table. |
