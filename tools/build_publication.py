@@ -16,6 +16,7 @@ import re
 import sys
 import tempfile
 from pathlib import Path
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -728,6 +729,7 @@ def executive() -> str:
         ('Affiliate attribution', 'Unverified', 'Tracking ID supplied by the brief; enrolled-workflow destination and report checks are still required. FLG-003 remains unresolved.', 'amazon-policies'),
         ('Measurement', 'Built and locally testable; production off', f'One {numeral(EVENT_N).lower()}-event runtime and a hardened self-hosted aggregate collector. No durable production host was supplied.', 'github-pages'),
         ('Traffic & conversion', 'No evidence yet', 'No Search Console query report, authorized Associates report, measured conversion score or revenue forecast.', 'search-console'),
+        ('AI and Amazon-data permission', 'Disabled pending a specific approval', 'No written approval scope or production AI/data adapter is recorded. The repository’s S02/PF-23/PF-24 reading is dated 13 Nov 2026 and was not re-fetched in this pass; re-read current terms before any use. AI-1309-Q1/P1 keeps Amazon content/API inputs gated and requires dated authorized evidence for performance claims.', 'amazon-ai-usage'),
         ('Decision desk', 'Published for review', f'{len(DATA["paths"])} paths and {len(DATA["proposals"])} proposals against {QUESTION_N} open questions, each with an answer owner, a discovery action and a safe default; the copy-ready design brief has {numeral(len(DATA["design_prompt"]["blocks"])).lower()} blocks. Choosing a path saves a local note and implements nothing.', 'amazon-policies'),
         ('Review workflow', 'Shipped', 'Local review, export, clear-choices, per-block copy and the publishing-gate order are live on the suggestions page. No account, spend or publication action is wired to it.', 'ftc'),
         ('Automation', 'Gated', 'Build, provenance structure, disclosure, sponsored links, feed/sitemap and tests are automated. Missing account permissions and research evidence are not fabricated.', 'amazon-policies'),
@@ -771,7 +773,11 @@ def readme_facts() -> str:
     This block is the exception the release gate enforces (session 41e84402, E41-T4): everything
     else in README.md is written count-neutral, and these lines are rewritten by this builder.
     """
-    feed = (ROOT / 'feed.xml').read_text(encoding='utf-8').count('<item>')
+    feed_root = ET.parse(ROOT / 'feed.xml').getroot()
+    channel = feed_root.find('channel')
+    if feed_root.tag != 'rss' or channel is None:
+        raise ValueError('feed.xml must be an RSS document with a channel')
+    feed = len(channel.findall('item'))
     return ('<!-- {m} -->\n'
             '| Register | Now | File |\n'
             '|---|---|---|\n'
@@ -783,7 +789,7 @@ def readme_facts() -> str:
             '| Paths a reviewer can choose | {pa} | `data/publication.json → paths` |\n'
             '| Design-brief blocks | {b} | `data/publication.json → design_prompt` |\n'
             '| Scoped official references | {so} | `data/publication.json → sources` |\n'
-            '| RSS entries across all editorial desks | {f} | `feed.xml` |\n'
+            '| Published RSS items (XML channel items) | {f} | `feed.xml` |\n'
             '| Campaign ledger rows | {c} | `data/shop/campaign-ledger.json` (empty by design) |\n'
             '<!-- /{m} -->').format(
         m=README_MARK, g=len(DATA['guides']), i=len(DATA['indexable_pages']), p=len(DATA['products']),
@@ -839,6 +845,8 @@ def build(check: bool = False) -> int:
     stale = []
     if sync_readme(check):
         print('README: register-facts block ' + ('STALE' if check else 'updated'))
+        if check:
+            stale.append('README.md')
     for rel, text in outputs().items():
         path = ROOT / rel
         if not path.exists() or path.read_text(encoding='utf-8') != text:

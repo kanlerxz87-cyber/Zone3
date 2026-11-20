@@ -4,7 +4,7 @@
 Dated 2026-11-19 · written by session `6b68afc8` against `main` at `825f513` · owner of the numbers below is this repository, measured, not admired.
 Read it with [`suggestions/index.html`](https://kanlerxz87-cyber.github.io/Zone3/suggestions/index.html): the paths and open questions that decide *whether* each section below may be built live there.
 
-Every clause quoted here was opened on 2026-11-19 from the official page, and each rail names the register row that carries it (`data/sources.json` in this repository).
+Every clause quoted in the original rails was opened on 2026-11-19 from the official page, and each rail names the register row that carries it (`data/sources.json` in this repository). On 2026-11-20 session `1309d381` re-measured the local inventory and added the AI/data-permission gate below. That addition cites the repository's recorded policy reading and explicitly does not claim a fresh policy-page re-read or approval.
 
 ---
 
@@ -39,27 +39,31 @@ Hosting sits outside the design brief but constrains it: GitHub Pages "is not in
 
 ---
 
-## 3. What is actually on the site today (measured 2026-11-19)
+## 3. What is actually on the site today (measured 2026-11-20)
 
-Re-measured 2026-11-19 after PRs #198, #199, #200 and #201 and session `3d0d7bd1`'s batch by
-counting the checked-in tree and the registers, not by retyping: the two readings are recorded
-in `sessions/3d0d7bd1/verification-2026-11-19.md`. The 8-guide and 16-URL rows below were this
-brief's original 2026-11-19 reading; the "now" column is the current one.
+Re-measured on 2026-11-20 from the checked-in tree and current registers after PRs #215, #219
+and #221; this is a local build snapshot, not a live-traffic or search-demand report. The current
+register/build counts are recorded in `sessions/1309d381/review.md`. RSS counts have two distinct
+meanings: the feed builder's post-retirement candidate union before sitemap filtering, and the
+actual XML `<item>` nodes shipped in `feed.xml`. The older value 29 was a broader union count from
+an earlier snapshot, not the number of published feed items.
 
 | Surface | Count (now) | Note |
 |---|---|---|
-| HTML pages outside `docs/`, `sessions/`, `archive/` | 124 | the whole published tree |
-| Indexable reader set (canonical + in `sitemap.xml`) | 20 | front page, guide index, 11 guides, four shop surfaces, about, privacy, **and the new house-style page `style.html`** |
-| Question-led guides | 11 | 2026-11-17 four · 2026-11-19 three more · "Hi-Fry/Sync Finish/4-in-1", "How do you know when an air-fryer cook is actually done?", "Where does the probe go?", "1 Sec / ±0.5℉ on the label", "the ice-water check" |
-| Submitted product links registered | 5 | 3 air fryers, 2 meat thermometers; titles re-opened 2026-11-19 |
-| Pages carrying `rel="canonical"` | 124 / 124 | |
-| Pages carrying `og:image` | 33 / 124 | the reader layer and its archives; the legacy registers do not |
-| Pages with a meta description ≥ 60 characters | 119 / 124 | the five exceptions are meta-refresh stubs titled "Moved", excluded from the sitemap on purpose |
-| `sitemap.xml` `<url>` entries | 20 | 0 `<lastmod>`; see the rejected-idea note in `P27-F06` |
-| `feed.xml` entries | 29 | union of the guide registers, desk notes and archive items |
-| Decision-desk rows on the suggestions page | 6 paths · 30 proposals · 39 questions · 13 brief blocks | each with an answer owner and a safe default; decided proposals now carry dated Outcome lines (B38-P4) |
-| Source register | 17 rows | official-host only |
-| Flag register | 164 rows | published on the Flagged-for-review page |
+| HTML pages outside `docs/`, `sessions/`, `archive/` | 131 | the whole published tree |
+| Indexable reader set (canonical + in `sitemap.xml`) | 27 | front page, guide index, 13 guides, four shop surfaces, the five registered product pages, about, privacy and `style.html` |
+| Question-led guides | 13 | counted from `data/publication.json → guides`; also checked by `tools/check_feed_readme.py` |
+| Submitted product links registered | 5 | 3 air fryers, 2 meat thermometers; listing titles last re-opened 2026-11-19 |
+| Pages carrying `rel="canonical"` | 131 / 131 | |
+| Pages carrying `og:image` | 44 / 131 | the current reader layer, shop surfaces, guide index and brief pages; the legacy registers do not |
+| Pages with a meta description ≥ 60 characters | 126 / 131 | the five exceptions are meta-refresh stubs titled “Moved”, excluded from the sitemap on purpose |
+| `sitemap.xml` `<url>` entries | 27 | 0 `<lastmod>`; see the rejected-idea note in `P27-F06` |
+| Feed candidates before sitemap filtering | 31 | current post-retirement union of feed-register inputs; not a published-item count |
+| RSS destinations omitted by sitemap filter | 18 | candidate destinations not listed in `sitemap.xml` |
+| Published `feed.xml` items | 13 | actual RSS channel `<item>` elements after the filters; `tools/check_feed_readme.py` checks this against the README and this table |
+| Decision-desk rows on the suggestions page | 6 paths · 38 proposals · 47 questions · 14 brief blocks | each question names known evidence, missing information, an answer owner and a safe default; `tools/check_feed_readme.py` checks these four figures against the register |
+| Source register | 18 rows | official-host references; one row scopes the existing Amazon policy-fact record and its 2026-11-13 read date |
+| Flag register | 187 rows | published on the Flagged-for-review page |
 | House-style lint | 15 banned-construction rows | enforced by a release gate since 2026-11-19 (`house_style` in the register; B38-P1) |
 
 ---
@@ -147,7 +151,7 @@ Five first-party events (`page_view`, `outbound_click`, `guide_view`, `intent_vi
 
 ## 10. Definition of done
 
-1. `python3 tools/publish.py` — 16 generation steps and 25 release gates — run **twice**; the second run must change nothing (`git diff --exit-code`, clean `git status`).
+1. Run the complete documented generation chain and all release gates in `python3 tools/publish.py` **twice**; the second run must change nothing (`git diff --exit-code`, clean `git status`).
 2. Every current table row carries a dated official source or a labelled blank; no page loses its disclosure, its sponsored rels or its footer access.
 3. `feed.xml` and `sitemap.xml` gained the new guide automatically, and the indexable set still equals the canonical set.
 4. The deployed page is fetched and read back after merge — a Pages build status of `built` is not a content check.
@@ -157,14 +161,14 @@ Five first-party events (`page_view`, `outbound_click`, `guide_view`, `intent_vi
 
 ## 11. What this brief deliberately does not decide
 
-It takes no position on the sixteen open questions in the decision-readiness register — the brand name (`P27-Q1`), hosting suitability (`P27-Q2`), review sign-off (`P27-Q3`), whether testing gets a budget (`P27-Q4`), the refresh policy (`P27-Q5`), the Associates account's view of the supplied links (`P27-Q6`, with `FLG-003` unresolved), and the category scope (`P27-Q7`) — because a design brief cannot answer those, and pretending otherwise is how an unverified assumption becomes a layout.
+It takes no position on the open questions in the decision-readiness register — the brand name (`P27-Q1`), hosting suitability (`P27-Q2`), review sign-off (`P27-Q3`), whether testing gets a budget (`P27-Q4`), the refresh policy (`P27-Q5`), the Associates account's view of the supplied links (`P27-Q6`, with `FLG-003` unresolved), and the category scope (`P27-Q7`) — because a design brief cannot answer those, and pretending otherwise is how an unverified assumption becomes a layout.
 
 ## 12. How this relates to the other design artifacts
 
 | Artifact | Holds | Does not hold |
 |---|---|---|
 | `design-brief.html` (session 757efebc) | the earlier six-prompt pack and the visual direction as adopted on 2026-11-16 | the official clause behind each rule; three-product, pre-consolidation inventory |
-| `suggestions/index.html` (this pass) | paths, open questions with answer owners, safe defaults, the intake shape and the ten copy-ready brief blocks | a completed change: a saved choice implements nothing |
+| `suggestions/index.html` (this pass) | paths, open questions with answer owners, safe defaults, the intake shape and the current copy-ready brief blocks | a completed change: a saved choice implements nothing |
 | this file | the rails R1–R12, the component table, the measured inventory, and a definition of done keyed to the gates as they run today | any colour, name or copy it invented |
 
 Where they disagree, the rails win, because the rails are the ones with a source.
@@ -285,8 +289,8 @@ Concretely, three habits to break:
 2. **Hedging stacked three deep.** "Reported by the listing title, not independently verified, and
    not a claim of superiority" in one paragraph reads as machine caution. One short line — *"from the
    listing's own wording; we haven't handled it"* — carries the same honesty.
-3. **Symmetric treatment of unequal things.** Five products and nineteen open questions are not the
-   same editorial weight. The front page should be five products and one door to the research.
+3. **Symmetric treatment of unequal things.** Five products and dozens of research questions are not
+   the same editorial weight. The front page should be five products and one door to the research.
 
 ### 15.2 The anti-slop test — a page passes if a stranger can answer all five in ten seconds
 
@@ -323,9 +327,9 @@ and the category page lists it — otherwise it is an orphan.
 
 ### 15.4 Organic-traffic mechanics that are actually in our control
 
-- **One site, one index surface.** 20 canonical URLs, one sitemap, one feed, `robots.txt` declaring
+- **One site, one index surface.** 27 canonical URLs, one sitemap, one feed, `robots.txt` declaring
   it. Any new guide must be added to all three in the same commit or the gate fails.
-- **Question-shaped titles and H1s**, matching how the query is typed. The eleven live guides already
+- **Question-shaped titles and H1s**, matching how the query is typed. The thirteen live guides already
   do this; the front page should borrow the shape rather than listing sections.
 - **Internal links with descriptive anchors** ("capacity checklist", not "read more") — the cheapest
   ranking and retention lever available and entirely within the rails.
@@ -338,7 +342,7 @@ and the category page lists it — otherwise it is an orphan.
 
 - Stop leading with the verification method. Lead with the five products, then one line on how they
   were chosen, then the door to the research.
-- Stop equal-weighting the nine dashboard surfaces. Footer, one navigation group, as the brief says.
+- Stop equal-weighting the research surfaces. Keep them in the footer and one navigation group, as the brief says.
 - Stop describing the disclosure twice in the same viewport; once above the fold, once in the footer,
   exactly as the rail requires — not a third time in body copy.
 - Stop any visual that implies a hands-on test we did not run (R7). Illustrations labelled as
@@ -352,3 +356,40 @@ carries its answer owner and a safe default. The specific blockers a designer wi
 brand name and promise (Q1/D34-Q1), the authorized dimension source (E41-P1/Q1), imagery licensing
 (S-18), and whether a human editor exists at all (editor/cadence question). A comp that assumes those
 are settled is not a design, it is a guess wearing a typeface.
+
+---
+
+## 16. AI assistance is permission-gated, evidence-led and reviewable
+
+This section is a design and operating guardrail, not a claim that an AI research feature is live or
+approved. The repository's policy record PF-22–PF-25 cites the official [Amazon Associates Program
+Policies](https://affiliate-program.amazon.com/help/operating/policies), based on a reading dated
+2026-11-13. That recorded reading describes restrictions on automated mining and on analysis,
+extraction, repurposing or model training/fine-tuning involving Amazon Product Advertising Content,
+Creators API, PA API or Data Feeds without express prior written approval. Session `1309d381` did not
+re-fetch those clauses; re-read the current official terms before any production use. Neither access
+to a model nor a confident answer is permission or evidence.
+
+- **Default state: off.** Keep Amazon listing text, prices, reviews, images, Special Links and
+  Product Advertising Content/API/Data Feed outputs out of AI analysis, aggregation, scoring,
+  extraction, repurposing and training unless current terms and written permission cover the exact
+  data and operation. Do not scrape Amazon pages or infer intended products from redirects.
+- **Approval must be specific.** Record the date and sanitized scope of express written approval for
+  the input fields, purpose, model/provider, third-party processing, training, retention and reporting.
+  Verify Associates account/API eligibility separately. Never put passwords, API keys, account
+  screenshots or private reports in the repository.
+- **Automate what is safe and reproducible.** Prefer deterministic local checks for required
+  disclosure, `rel="sponsored"`, source/date fields, product-intent separation, internal links,
+  RSS, sitemap and tests. An AI adapter must remain visibly `OFF` or `BLOCKED` until permission,
+  deployment, provenance, reviewer and rollback conditions are all recorded; a prototype is not live.
+- **Evidence and claims.** Treat article ideas as editorial hypotheses, not search-demand claims.
+  Do not produce trend, popularity, ranking, price, review, commission or conversion assertions from
+  model output. Use dated authorized Search Console or Associates reports where available, state
+  their scope, and require a named human to verify every factual sentence before publication.
+- **Keep the review decision in front.** `AI-1309-Q1` and `AI-1309-P1` in the Suggestions &
+  decisions area name the missing approval/evidence, answer owner, safe default and discovery steps.
+  A saved reviewer choice implements nothing; no UI control should activate a model, API or tracker.
+
+The current gate is intentionally conservative: no express written AI/data-use approval or approved
+report is recorded here. Until the question is answered with source-backed evidence, the design should
+show buyer-facing help first and keep AI research behind an explicit blocked state.
