@@ -85,4 +85,7 @@ not called invalid.
 
 ## Release record
 
-Filled in `COORDINATION.md` (Part 9E) once the PR merged and Pages deployed.
+- **PR:** [#224](https://github.com/kanlerxz87-cyber/Zone3/pull/224) — merged without waiting after gates and the PR check were green.
+- **Merge:** `2026-11-20T06:01:20Z` as `957e5abbfe594e9a34114534dc65e844161f8940` into `main`.
+- **Checks:** `Publication checks` success on the PR (run 44684702172) and on the merge push (run 44684874120); `pages build and deployment` success on `957e5ab` (run 44684872897).
+- **Live read-back:** the Counter Edit front page lists all five products with `Read the listing note` and a tagged `View on Amazon`; the Chefman listing note renders with tagged sponsored links and the blank intended-ASIN fields; `sitemap.xml` lists 27 URLs including the five new pages.
