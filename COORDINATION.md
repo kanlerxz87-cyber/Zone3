@@ -10296,6 +10296,18 @@ disclosure above the fold; sponsored + tagged CTAs present.
 - **Live read-back:** `https://kanlerxz87-cyber.github.io/Zone3/?revision=8b32835` — "THE COUNTERTOP ISSUE" front page live, all five CTAs carry `tag=shopnow047c-20`, both new guides present ("Measure first. Shop second.", "Brown outside is not done inside."), FLG-003 footnote intact, no price or rating reproduced.
 - **Flagged, not blocking:** FLG-003 (supplied short links never called invalid), 263-F01 (SHOP-04 title wording drift, Info), 263-F02 (Commission Appendix login-gated), P26-F02 (Pages commercial-use fit), account/API/Search Console access.
 
+## c08695c1 · Counter Edit integration · 2026-11-20
+
+**Released:** [PR #219](https://github.com/kanlerxz87-cyber/Zone3/pull/219) merged into `main` as `bb114818f608ba71311a5762426e54e2f44c8a58` at 05:57:04 UTC. [Pages build and deployment](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44684402828) succeeded; fetched the live cover and checked its five product links. Final release gate: 49/49 commands, 126 published HTML pages, 136 official-source reader/workspace table rows, 22 sitemap URLs, 13 RSS entries.
+
+In progress — owner `c08695c1`, fixed branch `arena/c08695c1-zone3`. Scope: current front page in `tools/build_publication.py` and its generated `index.html`, new front-page assets, `sessions/c08695c1/`, board. Check collector and release gates first, refresh editorial presentation and decision brief, then integrate and confirm deployment. No edits to other sessions' scoped records.
+
+Done — cover, illustrated product routes, working category filters and source review. Scope includes regenerated executive brief linking the [edition report](sessions/c08695c1/edition.md). In the preview, tested all three filter counts at 1440, 390 and 320 px, cover loading and no horizontal overflow. Re-read five Amazon listing titles, Agreement §1, the commission statement introduction, FTC Disclosures 101 and GitHub Pages hosting overview. No enrollment, attribution or commercial-hosting approval inferred. FLG-003 and the production measurement gate remain open.
+
+Conflict log: main advanced with PRs #211–213. Preserved both board histories, retained the upstream newest-guide ordering, Sunday-dinner theme and all three task links; integrated their shopping navigation below the illustrated shortlist. Rebuilt index from the merged generator. No competing session branch edited.
+
+Integration update: retained PR #215’s added guides and questions. Regenerated executive brief on the combined register. Both board entries kept when #218 advanced main. Release PR: [#219](https://github.com/kanlerxz87-cyber/Zone3/pull/219).
+
 # Part 9E — session `9ed0552a` (branch `arena/9ed0552a-zone3`, base `deb67e5` = `main` after PR #211, 2026-11-20 UTC)
 
 ## 9E Session registry and claim
@@ -10362,3 +10374,11 @@ Design decision, sources and claim-by-claim provenance: `sessions/9ed0552a/revie
 - **`assets/publication.css`:** both sides kept — this session's listing-note rules, then `263214e8`'s hover block last so upstream's cascade wins where they overlap.
 - **Generated pages, `sitemap.xml`, `README.md`:** resolved by regenerating with `tools/publish.py`, not by hand. The merged tree passes 51/51 twice and rebuilds byte-identically.
 - No other session's file was edited; no force-push; this branch's claim commit remains an ancestor.
+
+### 9E Merge log, second sync (2026-11-20, before merge)
+
+`main` moved again while PR #224 was open: PR #219/#221 (`c08695c1`, the Counter Edit front page, field notes, filterable shortlist, new `assets/counter-edit.css` and cover image). Conflicts were limited to `COORDINATION.md` and the two generated pages `index.html` and `executive-brief.html`; `tools/build_publication.py` auto-merged and was checked by hand to confirm both sides survive — `c08695c1`'s front page **and** this session's `product_page()`/`product_rel()` and their call sites.
+
+- Board: `origin/main` verbatim plus this Part appended; no marker introduced (the one pre-existing stray `>>>>>>> c126257` line at ~line 9837 stays, as recorded by `ae4e29b6`).
+- `index.html`, `executive-brief.html`: resolved by regeneration, not by hand.
+- Regenerated tree: `tools/publish.py` **51/51, 0 failed**; `check_publication` 131 current pages / 27 indexable / 13 feed entries; sitemap 27/0 extra; `attach_tag` 1,719/1,719 tagged, 0 foreign; `check_all_links` 218 pages / 356 URLs / 0 errors; `verify_site` 172 pages / 2,757 rows; `check_site` 42 pages / 90 sources / 184 flags. Every one of the five listing pages is still linked from the Counter Edit front page.
