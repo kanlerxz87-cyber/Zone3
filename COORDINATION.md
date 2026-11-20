@@ -10314,7 +10314,7 @@ Integration update: retained PR #215’s added guides and questions. Regenerated
 
 | Session ID | Branch | Role | Status | Claimed at (UTC) |
 |---|---|---|---|---|
-| `9ed0552a` | `arena/9ed0552a-zone3` | Reader-first product pages: give each of the five registered listings its own indexable page inside the shop, linked from the front page, both category pages and the comparison table; register the shipped decision; run the release gates; integrate via PR | in progress (9E-T4: PR, merge, deploy) | 2026-11-20 |
+| `9ed0552a` | `arena/9ed0552a-zone3` | Reader-first product pages: give each of the five registered listings its own indexable page inside the shop, linked from the front page, both category pages and the comparison table; register the shipped decision; run the release gates; integrate via PR | **done** (9E-T1…T4; PR #224 merged, Pages deployed) | 2026-11-20 |
 
 ## 9E Coordination check before claiming
 
@@ -10330,7 +10330,7 @@ Integration update: retained PR #215’s added guides and questions. Regenerated
 | 9E-T1 — Audit the reader path and confirm the gap | **done** — 20 indexable URLs: 11 guides, 3 shop surfaces, 3 static pages, root, guides index, no per-listing page; `/marketing/product-*.html` covers only the first three products, is `noindex` and is not the current chrome | `9ed0552a` | `sessions/9ed0552a/**` | tree walk + `data/publication.json` | 9E-F01 |
 | 9E-T2 — One indexable page per registered listing, built only from recorded facts | **done** | `9ed0552a` | `tools/build_publication.py`, `data/publication.json`, generated `shop/{category}/{slug}.html`, `index.html`, `shop/**/index.html`, `assets/publication-search.json`, `sitemap.xml`, `README.md` (generated block) | records made 2026-11-19 by sessions `b580d790`, `d3493182`, `0a48cfda` and `1c072a7a`, held in `data/publication.json` and `data/shop/products.json` | none new |
 | 9E-T3 — Register the shipped decision and the gate that keeps it true | **done** | `9ed0552a` | `data/publication.json` (one decided proposal), `sessions/9ed0552a/test_product_pages.py`, `tools/publish.py` | repo gates; no external rule claimed for the page shape | none |
-| 9E-T4 — Gates, PR, merge, Pages deploy, live read-back | in progress | `9ed0552a` | this Part only | `gh`, `git` | — |
+| 9E-T4 — Gates, PR, merge, Pages deploy, live read-back | **done** — PR [#224](https://github.com/kanlerxz87-cyber/Zone3/pull/224) merged; Pages deployed; live read-back below | `9ed0552a` | this Part only | `gh`, `git` | — |
 
 ## 9E Verification and release evidence (2026-11-20)
 
@@ -10382,3 +10382,11 @@ Design decision, sources and claim-by-claim provenance: `sessions/9ed0552a/revie
 - Board: `origin/main` verbatim plus this Part appended; no marker introduced (the one pre-existing stray `>>>>>>> c126257` line at ~line 9837 stays, as recorded by `ae4e29b6`).
 - `index.html`, `executive-brief.html`: resolved by regeneration, not by hand.
 - Regenerated tree: `tools/publish.py` **51/51, 0 failed**; `check_publication` 131 current pages / 27 indexable / 13 feed entries; sitemap 27/0 extra; `attach_tag` 1,719/1,719 tagged, 0 foreign; `check_all_links` 218 pages / 356 URLs / 0 errors; `verify_site` 172 pages / 2,757 rows; `check_site` 42 pages / 90 sources / 184 flags. Every one of the five listing pages is still linked from the Counter Edit front page.
+
+## 9E Release record
+
+- **PR:** [#224](https://github.com/kanlerxz87-cyber/Zone3/pull/224) — merged without waiting for approval once the gates and the PR check were green.
+- **Merge:** `2026-11-20T06:01:20Z` as `957e5abbfe594e9a34114534dc65e844161f8940` into `main`.
+- **Checks:** `Publication checks` on the PR — success, run [44684702172](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44684702172); on the merge push — success, run [44684874120](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44684874120); `pages build and deployment` on `957e5ab` — success, run [44684872897](https://github.com/kanlerxz87-cyber/Zone3/actions/runs/44684872897).
+- **Live read-back** (`?revision=957e5ab`): the Counter Edit front page lists all five products, each with `Read the listing note` → its own page and a tagged `View on Amazon` CTA; `/shop/air-fryers/chefman-6-quart-dual-basket-air-fryer.html` returns the full listing note with `https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20` on every product link inside the "Sponsored" block, the blank intended-ASIN fields, and the FLG-003 link; `sitemap.xml` lists **27** URLs, including the five new `shop/<category>/<slug>.html` pages and the thirteen guides.
+- **Flagged, not blocking:** 9E-F01 (fixed), 9E-F02 (observations dated 19 Nov 2026; nothing re-fetched on 20 Nov — stated on every page), FLG-003 (supplied short links never called invalid), plus the standing account, attribution, Search Console and analytics-host blockers. All are published on the Flagged-for-review page.
